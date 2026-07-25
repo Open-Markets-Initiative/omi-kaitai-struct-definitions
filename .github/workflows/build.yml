@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Kaitai Struct Compiler
+        run: curl -sL https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.10/kaitai-struct-compiler-0.10.zip -o ksc.zip && unzip -q ksc.zip
+
+      - name: Compile Definitions
+        run: find . -name '*.ksy' | xargs kaitai-struct-compiler-0.10/bin/kaitai-struct-compiler -t python -t csharp --outdir generated
+
+      - name: Compile Python Parsers
+        run: python3 -m compileall -q generated/python
+
+      - name: Build CSharp Parsers
+        run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers
+
+
