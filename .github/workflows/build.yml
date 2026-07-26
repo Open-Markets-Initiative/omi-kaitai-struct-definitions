@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install Kaitai Struct Compiler
-        run: curl -sL https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.10/kaitai-struct-compiler-0.10.zip -o ksc.zip && unzip -q ksc.zip
+        run: curl -sL https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.10/kaitai-struct-compiler-0.10.zip -o "$RUNNER_TEMP/ksc.zip" && unzip -q "$RUNNER_TEMP/ksc.zip" -d "$RUNNER_TEMP"
 
       - name: Compile Definitions
-        run: find . -name '*.ksy' | xargs kaitai-struct-compiler-0.10/bin/kaitai-struct-compiler -t python -t csharp --outdir generated
+        run: find . -name '*.ksy' | xargs "$RUNNER_TEMP/kaitai-struct-compiler-0.10/bin/kaitai-struct-compiler" -t python -t csharp --outdir generated
 
       - name: Compile Python Parsers
         run: python3 -m compileall -q generated/python

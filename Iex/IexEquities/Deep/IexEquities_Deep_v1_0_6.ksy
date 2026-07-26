@@ -1,29 +1,29 @@
 # ---------------------------------------------------------------------
-# Kaitai Struct Definition
+# Omi Kaitai Struct Definition: Iex IexEquities Deep v1.0.6
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: iexequities_tops_v1_6_6
-  title: Iex IexEquities Tops IexTp v1.6.6
+  id: iexequities_deep_v1_0_6
+  title: Iex IexEquities Deep IexTp v1.0.6
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities Top Of Book IexTp v1.6.6'
-doc-ref:
-  - https://www.iexexchange.io/resources/trading/documents
-  - https://iextrading.com/trading/market-data/
+doc: 'Investors Exchange IEX Equities Depth Of Book IexTp v1.0.6'
+doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
   - id: iextp_header
     type: iextp_header
     doc: 'IexTp packet header'
   - id: messages
-    type: message
     repeat: expr
     repeat-expr: iextp_header.message_count
-    doc: 'IexTp message'
+    type:
+      switch-on: iextp_header.message_count
+      cases:
+        _: message
 
 types:
   iextp_header:
@@ -64,16 +64,18 @@ types:
         type: message_header
         doc: 'IexTp message header'
       - id: message_data
+        size: message_header.message_length + 2 - 3
         type:
           switch-on: message_header.message_type
           cases:
             'message_type::system_event_message': system_event_message
             'message_type::security_directory_message': security_directory_message
             'message_type::trading_status_message': trading_status_message
-            'message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
             'message_type::operational_halt_status_message': operational_halt_status_message
             'message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
-            'message_type::quote_update_message': quote_update_message
+            'message_type::security_event_message': security_event_message
+            'message_type::price_level_buy_update_message': price_level_buy_update_message
+            'message_type::price_level_sell_update_message': price_level_sell_update_message
             'message_type::trade_report_message': trade_report_message
             'message_type::official_price_message': official_price_message
             'message_type::trade_break_message': trade_break_message
@@ -155,21 +157,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reason for the trading status change'
-  retail_liquidity_indicator_message:
-    seq:
-      - id: retail_liquidity_indicator
-        type: u1
-        enum: retail_liquidity_indicator
-        doc: 'Retail Liquidity Indicator identifier'
-      - id: timestamp
-        type: s8
-        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
-      - id: symbol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Security identifier'
   operational_halt_status_message:
     seq:
       - id: operational_halt_status
@@ -204,11 +191,12 @@ types:
         type: u1
         enum: detail
         doc: 'Detail of the Reg. SHO short sale price test restriction status'
-  quote_update_message:
+  security_event_message:
     seq:
-      - id: quote_update_flags
-        type: quote_update_flags
-        doc: 'Quote Update Flags'
+      - id: security_event
+        type: u1
+        enum: security_event
+        doc: 'Security event identifier'
       - id: timestamp
         type: s8
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -218,29 +206,48 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: bid_size
-        type: u4
-        doc: 'Aggregate quoted best bid size'
-      - id: bid_price
-        type: s8
-        doc: 'Best quoted bid price. Implied decimal with scale 1e-4'
-      - id: ask_price
-        type: s8
-        doc: 'Best quoted ask price. Implied decimal with scale 1e-4'
-      - id: ask_size
-        type: u4
-        doc: 'Aggregate quoted best ask size'
-  quote_update_flags:
+  price_level_buy_update_message:
     seq:
-      - id: unused_6
-        type: b6
-        doc: 'Unused'
-      - id: market_session
-        type: b1
-        doc: 'Market Session Flag'
-      - id: symbol_availability
-        type: b1
-        doc: 'Symbol is halted, paused, or otherwise not available for trading on IEX'
+      - id: event_flags
+        type: u1
+        enum: event_flags
+        doc: 'Identifies event processing by the System'
+      - id: timestamp
+        type: s8
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
+      - id: size
+        type: u4
+        doc: 'Aggregate quoted size'
+      - id: price
+        type: s8
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
+  price_level_sell_update_message:
+    seq:
+      - id: event_flags
+        type: u1
+        enum: event_flags
+        doc: 'Identifies event processing by the System'
+      - id: timestamp
+        type: s8
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
+      - id: size
+        type: u4
+        doc: 'Aggregate quoted size'
+      - id: price
+        type: s8
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
   trade_report_message:
     seq:
       - id: sale_condition_flags
@@ -257,13 +264,13 @@ types:
         doc: 'Security identifier'
       - id: size
         type: u4
-        doc: 'Trade volume'
+        doc: 'Aggregate quoted size'
       - id: price
         type: s8
-        doc: 'Trade price. Implied decimal with scale 1e-4'
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'IEX Generated Identifier. Trade ID is also'
   sale_condition_flags:
     seq:
       - id: unused_3
@@ -318,13 +325,13 @@ types:
         doc: 'Security identifier'
       - id: size
         type: u4
-        doc: 'Trade volume'
+        doc: 'Aggregate quoted size'
       - id: price
         type: s8
-        doc: 'Trade price. Implied decimal with scale 1e-4'
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'IEX Generated Identifier. Trade ID is also'
   auction_information_message:
     seq:
       - id: auction_type
@@ -380,156 +387,154 @@ types:
 enums:
   message_type:
     0x53:
-      id: system_event_message
-      doc: 'The System Event Message is used to indicate events that apply to the market or the data feed'
+      id: 'system_event_message'
+      doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
     0x44:
-      id: security_directory_message
+      id: 'security_directory_message'
       doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
     0x48:
-      id: trading_status_message
+      id: 'trading_status_message'
       doc: 'The Trading Status Message is used to indicate the current trading status of a security.'
-    0x49:
-      id: retail_liquidity_indicator_message
-      doc: 'broadcasts a real-time Retail Liquidity Indicator Message each time there is an update to IEX''s eligible retail liquidity interest during the trading day'
     0x4f:
-      id: operational_halt_status_message
+      id: 'operational_halt_status_message'
       doc: 'The Exchange may suspend trading of one or more securities on IEX for operational reasons and indicates such operational halt using the Operational Halt Status Message.'
     0x50:
-      id: short_sale_price_test_status_message
+      id: 'short_sale_price_test_status_message'
       doc: 'The Short Sale Price Test Message is used to indicate when a short sale price test restriction is in effect for a security.'
-    0x51:
-      id: quote_update_message
-      doc: 'Tops broadcasts a real-time Quote Update Message each time IEX''s best bid or offer quotation is updated during the trading day'
+    0x45:
+      id: 'security_event_message'
+      doc: 'The Security Event Message is used to indicate events that apply to a security'
+    0x38:
+      id: 'price_level_buy_update_message'
+      doc: 'Deep broadcasts a real-time Price Level Update Message each time a displayed price level on IEX is updated during the trading day'
+    0x35:
+      id: 'price_level_sell_update_message'
+      doc: 'Deep broadcasts a real-time Price Level Update Message each time a displayed price level on IEX is updated during the trading day'
     0x54:
-      id: trade_report_message
+      id: 'trade_report_message'
       doc: 'Trade Report Messages are sent when an order on the IEX Order Book is executed in whole or in part'
     0x58:
-      id: official_price_message
+      id: 'official_price_message'
       doc: 'Official Price Messages are sent for each IEX-listed security to indicate the IEX Official Opening Price and IEX Official Closing Price.'
     0x42:
-      id: trade_break_message
+      id: 'trade_break_message'
       doc: 'Trade Break Messages are sent when an execution on IEX is broken on that same trading day'
     0x41:
-      id: auction_information_message
+      id: 'auction_information_message'
       doc: 'Broadcasts an Auction Information Message every one second between the Lock-in Time and the auction match for Opening and Closing Auctions, and during the Display Only Period for IPO, Halt, and Volatility Auctions.'
   system_event:
-    0x4f:
-      id: start_of_messages
-      doc: 'Outside Of Heartbeat Messages On The Lower Level Protocol The Start Of Day Message Is The First Message Sent In Any Trading Session'
     0x53:
-      id: start_of_system_hours
+      id: 'start_of_system_hours'
       doc: 'This Message Indicates That Iex Is Open And Ready To Start Accepting Orders'
     0x52:
-      id: start_of_regular_market_hours
+      id: 'start_of_regular_market_hours'
       doc: 'This Message Indicates That Day And Gtx Orders As Well As Market Orders And Pegged Orders Are Available For Execution On Iex'
     0x4d:
-      id: end_of_regular_market_hours
+      id: 'end_of_regular_market_hours'
       doc: 'This Message Indicates That Day Orders Market Orders And Pegged Orders Are No Longer Accepted By Iex'
     0x45:
-      id: end_of_system_hours
+      id: 'end_of_system_hours'
       doc: 'This Message Indicates That Iex Is Now Closed And Will Not Accept Any New Orders During This Trading Session'
     0x43:
-      id: end_of_messages
+      id: 'end_of_messages'
       doc: 'This Is Always The Last Message Sent In Any Trading Session'
   luld_tier:
     0:
-      id: not_applicable
+      id: 'not_applicable'
       doc: 'Not Applicable'
     1:
-      id: tier_1_nms_stock
+      id: 'tier_1_nms_stock'
       doc: 'Tier 1 Nms Stock'
     2:
-      id: tier_2_nms_stock
+      id: 'tier_2_nms_stock'
       doc: 'Tier 2 Nms Stock'
   trading_status:
     0x48:
-      id: trading_halted_across_all_us_equity_markets
+      id: 'trading_halted_across_all_us_equity_markets'
       doc: 'Trading Halted Across All Us Equity Markets'
-    0x4f:
-      id: trading_halt_released_into_an_order_acceptance_period_on_iex
-      doc: 'Trading Halt Released Into An Order Acceptance Period On Iex'
     0x50:
-      id: trading_paused_and_order_acceptance_period_on_iex
+      id: 'trading_paused_and_order_acceptance_period_on_iex'
       doc: 'Trading Paused And Order Acceptance Period On Iex'
     0x54:
-      id: trading_on_iex
+      id: 'trading_on_iex'
       doc: 'Trading On Iex'
-  retail_liquidity_indicator:
-    0x20:
-      id: not_applicable
-      doc: 'Not Applicable'
-    0x41:
-      id: buy_interest
-      doc: 'Buy Interest'
-    0x42:
-      id: sell_interest
-      doc: 'Sell Interest'
-    0x43:
-      id: buy_and_sell_interest
-      doc: 'Buy And Sell Interest'
   operational_halt_status:
     0x4f:
-      id: iex_specific_operational_trading_halt
+      id: 'iex_specific_operational_trading_halt'
       doc: 'Iex Specific Operational Trading Halt'
     0x4e:
-      id: not_operationally_halted_on_iex
+      id: 'not_operationally_halted_on_iex'
       doc: 'Not Operationally Halted On Iex'
   short_sale_price_test_status:
     0:
-      id: not_in_effect
+      id: 'not_in_effect'
       doc: 'Not In Effect'
     1:
-      id: in_effect
+      id: 'in_effect'
       doc: 'In Effect'
   detail:
     0x20:
-      id: no_price_test_in_place
+      id: 'no_price_test_in_place'
       doc: 'No Price Test In Place'
     0x41:
-      id: activated
+      id: 'short_sale_price_test_restriction_in_effect_due_to_an_intraday_price_drop_in_the_security'
       doc: 'Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In The Security'
     0x43:
-      id: continued
+      id: 'short_sale_price_test_restriction_remains_in_effect_from_prior_day'
       doc: 'Short Sale Price Test Restriction Remains In Effect From Prior Day'
     0x44:
-      id: deactivated
+      id: 'short_sale_price_test_restriction_deactivated'
       doc: 'Short Sale Price Test Restriction Deactivated'
     0x4e:
-      id: not_available
-      doc: 'Not Available'
+      id: 'detail_not_available'
+      doc: 'Detail Not Available'
+  security_event:
+    0x4f:
+      id: 'opening_process_complete'
+      doc: 'Opening Process Complete'
+    0x43:
+      id: 'closing_process_complete'
+      doc: 'Closing Process Complete'
+  event_flags:
+    0:
+      id: 'order_book_is_processing_an_event'
+      doc: 'Order Book Is Processing An Event'
+    1:
+      id: 'event_processing_complete'
+      doc: 'Event Processing Complete'
   price_type:
     0x51:
-      id: iex_official_opening_price
+      id: 'iex_official_opening_price'
       doc: 'Iex Official Opening Price'
     0x4d:
-      id: iex_official_closing_price
+      id: 'iex_official_closing_price'
       doc: 'Iex Official Closing Price'
   auction_type:
     0x4f:
-      id: opening_auction
+      id: 'opening_auction'
       doc: 'Opening Auction'
     0x43:
-      id: closing_auction
+      id: 'closing_auction'
       doc: 'Closing Auction'
     0x49:
-      id: ipo_auction
+      id: 'ipo_auction'
       doc: 'Ipo Auction'
     0x48:
-      id: halt_auction
+      id: 'halt_auction'
       doc: 'Halt Auction'
     0x56:
-      id: volatility_auction
+      id: 'volatility_auction'
       doc: 'Volatility Auction'
   imbalance_side:
     0x42:
-      id: buy
+      id: 'buy'
       doc: 'Buy'
     0x53:
-      id: sell
+      id: 'sell'
       doc: 'Sell'
     0x4e:
-      id: none
-      doc: 'No Imbalance'
+      id: 'none'
+      doc: 'None'
 
 # ---------------------------------------------------------------------
 # Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
@@ -538,9 +543,9 @@ enums:
 #
 # Protocol:
 #   Organization: Investors Exchange
-#   Version: 1.6.6
-#   Date: 10/19/2021
-#   Specification: IEX TOPS Specification v1.66.pdf
+#   Version: 1.0.6
+#   Date: 2/27/2018
+#   Specification: IEX DEEP Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

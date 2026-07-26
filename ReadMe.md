@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 7 | 3,996 |
+| 31 | 76,831 |
 
 ## Testing
 
@@ -40,9 +40,9 @@ For a list of Omi Hft projects: [Omi Projects](https://github.com/Open-Markets-I
 For details of Omi rules and regulations: [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory")
 ## Protocols
 
-Definitions by Organization: [Iex][Iex.Directory]
+Definitions by Organization: [Cme][Cme.Directory], [Iex][Iex.Directory]
 
-Definitions by Exchange/Ats/Sip: [IexEquities][IexEquities.Directory]
+Definitions by Exchange/Ats/Sip: [CmeFutures][CmeFutures.Directory], [IexEquities][IexEquities.Directory], [IexOptions][IexOptions.Directory]
 
 ## Disclaimer
 
@@ -60,12 +60,25 @@ Enjoy.
 [Omi.Glossary.Testing.Untested]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Glossary/Testing.md "Testing Status: Protocol has not been tested on live data"
 [Omi.Encoding.Definitions]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/ReadMe.md "Encoding Directory"
 
+[Omi.Encoding.Sbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Sbe.md "Sbe Encoding"
 [Omi.Encoding.IexTp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/IexTp.md "IexTp Encoding"
 
+[Cme.CmeFutures.Mdp3]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/Mdp3.md "Market Data Platform 3"
+[Cme.CmeFutures.Streamlined]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/Streamlined.md "Streamlined Market Data"
+[Cme.CmeFutures.Settlements]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/Settlements.md "Settlements"
+[Cme.CmeFutures.Derived]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/Derived.md "Derived Market Data"
+[Cme.CmeFutures.EbsSpectrum]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/EbsSpectrum.md "Ebs Spectrum Market Data"
+[Cme.CmeFutures.BrokerTecUst]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/BrokerTecUst.md "BrokerTec Us Treasuries"
+[Cme.CmeFutures.iLink3]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/iLink3.md "iLink 3"
 [Iex.IexEquities.Tops]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/Tops.md "Top Of Book"
 [Iex.IexEquities.Deep]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/Deep.md "Depth Of Book"
 [Iex.IexEquities.DeepPlus]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/DeepPlus.md "DeepPlus"
+[Iex.IexOptions.MarketData]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexOptions/MarketData.md "Market Data"
+[Iex.IexOptions.BinaryOrderEntry]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexOptions/BinaryOrderEntry.md "Binary Order Entry"
 
+[Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/Cme "CME Group"
 [Iex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/Iex "Investors Exchange"
 
+[CmeFutures.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Cme/Protocols/CmeFutures "Cme CmeFutures"
 [IexEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Iex/Protocols/IexEquities "Iex IexEquities"
+[IexOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Iex/Protocols/IexOptions "Iex IexOptions"
