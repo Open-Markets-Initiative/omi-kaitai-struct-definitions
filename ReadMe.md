@@ -1,10 +1,8 @@
 # Omi Kaitai Struct Definitions
 
-[![Omi](https://github.com/Open-Markets-Initiative/Directory/blob/main/About/Images/Logo.png)](https://github.com/Open-Markets-Initiative/Directory)
-
 Omi Kaitai Struct definitions provide declarative, cross language parsing of common binary exchange protocols.
 
-For more information on Kaitai Struct: [Kaitai Struct Documentation](https://doc.kaitai.io "Kaitai Struct Documentation")
+For more information on Kaitai Struct: [Kaitai Struct](https://kaitai.io/ "Kaitai Struct Website")
 ## Usage
 
 Each .ksy file is a complete declarative description of one protocol version. Compile a definition into a parser for your language with the kaitai struct compiler:
@@ -76,8 +74,8 @@ Enjoy.
 [Iex.IexOptions.MarketData]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexOptions/MarketData.md "Market Data"
 [Iex.IexOptions.BinaryOrderEntry]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexOptions/BinaryOrderEntry.md "Binary Order Entry"
 
-[Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/Cme "CME Group"
-[Iex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/Iex "Investors Exchange"
+[Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Group"
+[Iex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex "Investors Exchange"
 
 [CmeFutures.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Cme/Protocols/CmeFutures "Cme CmeFutures"
 [IexEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Iex/Protocols/IexEquities "Iex IexEquities"
