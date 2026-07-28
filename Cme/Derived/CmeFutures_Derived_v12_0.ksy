@@ -15,15 +15,15 @@ doc-ref: https://www.cmegroup.com/market-data/derived-data.html
 
 seq:
   - id: binary_packet_header
-    type: binary_packet_header
+    type: binary_packet_header_struct
     doc: 'Cme Mdp Packet Header'
   - id: message
-    type: message
+    type: message_struct
     repeat: eos
     doc: 'Cme Market Data Message'
 
 types:
-  binary_packet_header:
+  binary_packet_header_struct:
     seq:
       - id: packet_sequence_number
         type: u4
@@ -31,7 +31,7 @@ types:
       - id: sending_time
         type: u8
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
-  message:
+  message_struct:
     seq:
       - id: message_size
         type: u2

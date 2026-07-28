@@ -15,12 +15,12 @@ doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simpl
 
 seq:
   - id: simple_open_frame
-    type: simple_open_frame
+    type: simple_open_frame_struct
     repeat: eos
     doc: 'Simple Open Frame'
 
 types:
-  simple_open_frame:
+  simple_open_frame_struct:
     seq:
       - id: simple_open_framing_header
         type: simple_open_framing_header

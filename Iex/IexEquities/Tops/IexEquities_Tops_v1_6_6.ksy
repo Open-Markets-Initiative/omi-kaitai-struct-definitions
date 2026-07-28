@@ -15,7 +15,7 @@ doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
   - id: iextp_header
-    type: iextp_header
+    type: iextp_header_struct
     doc: 'IexTp packet header'
   - id: messages
     repeat: expr
@@ -26,7 +26,7 @@ seq:
         _: message
 
 types:
-  iextp_header:
+  iextp_header_struct:
     seq:
       - id: version
         type: u1

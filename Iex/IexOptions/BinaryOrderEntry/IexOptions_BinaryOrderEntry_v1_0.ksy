@@ -15,12 +15,12 @@ doc-ref: https://www.iexexchange.io/options
 
 seq:
   - id: sbe_message
-    type: sbe_message
+    type: sbe_message_struct
     repeat: eos
     doc: 'Iex Options length-framed Sbe Message'
 
 types:
-  sbe_message:
+  sbe_message_struct:
     seq:
       - id: packet_length
         type: u2
