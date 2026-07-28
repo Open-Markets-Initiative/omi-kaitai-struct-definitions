@@ -408,7 +408,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Strike price.  ASCII 0-9 with optional decimal point. EG: 51.75, 123'
+        doc: 'Strike price. ASCII 0-9 with optional decimal point. EG: 51.75, 123'
       - id: price_scale_code
         type: u1
         doc: 'Price Scale Code for price conversion of the symbol. See Price Formats'
@@ -424,7 +424,7 @@ types:
         doc: 'OCC root of option symbol'
       - id: group_id
         type: u4
-        doc: 'Used by Market Makers.  Predefined group of series within a given underlying symbol'
+        doc: 'Used by Market Makers. Predefined group of series within a given underlying symbol'
   stream_id_message:
     seq:
       - id: stream_id

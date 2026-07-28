@@ -129,7 +129,7 @@ types:
       - id: ipo_flag
         type: u1
         enum: ipo_flag
-        doc: 'Indicates if the NASDAQ security is set up for IPO release.   This field is intended to help NASDAQ market participant firms comply with FINRA Rule 5131(b)'
+        doc: 'Indicates if the NASDAQ security is set up for IPO release. This field is intended to help NASDAQ market participant firms comply with FINRA Rule 5131(b)'
       - id: luld_reference_price_tier
         type: u1
         enum: luld_reference_price_tier
@@ -140,7 +140,7 @@ types:
         doc: 'Indicates whether the security is an exchange traded product (ETP):'
       - id: etp_leverage_factor
         type: u4
-        doc: 'Tracks the integral relationship of the ETP to the underlying index.   Example: If the underlying Index increases by a value of 1 and the ETP’s Leverage factor is 3, indicates the ETF will increase/decrease (see Inverse) by 3. Note: Leverage Factor of 1 indicates the ETP is NOT leveraged. This field is used for LULD Tier I price band calculation purposes'
+        doc: 'Tracks the integral relationship of the ETP to the underlying index. Example: If the underlying Index increases by a value of 1 and the ETP’s Leverage factor is 3, indicates the ETF will increase/decrease (see Inverse) by 3. Note: Leverage Factor of 1 indicates the ETP is NOT leveraged. This field is used for LULD Tier I price band calculation purposes'
       - id: inverse_indicator
         type: u1
         enum: inverse_indicator

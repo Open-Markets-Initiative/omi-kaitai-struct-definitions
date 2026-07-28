@@ -1975,7 +1975,7 @@ types:
         doc: 'Full Repo Term Code'
       - id: broken_date_term_type
         type: u1
-        doc: 'Optionally used in tailor made repo contracts and defines the type of broken dates as requested by trader. Null = Not applicable, 0 = Custom, 1 = Quarterly,  2 = Monthly'
+        doc: 'Optionally used in tailor made repo contracts and defines the type of broken dates as requested by trader. Null = Not applicable, 0 = Custom, 1 = Quarterly, 2 = Monthly'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -2032,7 +2032,7 @@ types:
         type: str
         size: 35
         encoding: ASCII
-        doc: 'Long Name of the Underlying Instrument. For the instruments listed on Globex this value will be the same as of that contained in Security Definition Tag  2714-FinancialInstrumentFullName'
+        doc: 'Long Name of the Underlying Instrument. For the instruments listed on Globex this value will be the same as of that contained in Security Definition Tag 2714-FinancialInstrumentFullName'
       - id: underlying_security_type
         type: str
         size: 6

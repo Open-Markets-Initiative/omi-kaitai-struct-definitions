@@ -340,10 +340,7 @@ enums:
       doc: 'The system event message type is used to signal a market or data feed handler event.'
     0x52:
       id: 'complex_strategy_directory_message'
-      doc: 'Whenever a complex order is added in the system for an underlying, the order is
-      normalized and results in either the creation of a new complex strategy or is added to an
-      existing strategy. A Complex Strategy Message containing the strategy definition
-      will be sent.'
+      doc: 'Whenever a complex order is added in the system for an underlying, the order is normalized and results in either the creation of a new complex strategy or is added to an existing strategy. A Complex Strategy Message containing the strategy definition will be sent.'
     0x4f:
       id: 'strategy_open_closed_message'
       doc: 'The options system uses this administrative message to indicate when an strategy has completed the opening process and is now available for auto execution or when the option has closed and is no longer available for auto execution.'

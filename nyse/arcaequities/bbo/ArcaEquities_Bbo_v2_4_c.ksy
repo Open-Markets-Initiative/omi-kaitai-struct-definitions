@@ -96,7 +96,7 @@ types:
         doc: 'ID of the originating Matching Engine partition to which this message applies'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: source_time
         type: u4
         doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
@@ -104,7 +104,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol
         type: str
         size: 11
@@ -150,13 +150,13 @@ types:
         doc: 'Round Lots Accepted'
       - id: mpv
         type: u2
-        doc: 'The minimum increment for a trade price, in 100ths of a cent.  Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
+        doc: 'The minimum increment for a trade price, in 100ths of a cent. Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
       - id: unit_of_trade
         type: u2
-        doc: 'This field specifies the security Unit of Trade in shares.  Valid values are 1, 10, 50 and 100'
+        doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
       - id: reserved_2
         size: 2
-        doc: 'Reserved for future use.  Disregard any content'
+        doc: 'Reserved for future use. Disregard any content'
   retransmission_request_message:
     seq:
       - id: begin_seq_num
@@ -214,7 +214,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: source_id
         type: str
         size: 10
@@ -234,7 +234,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: source_id
         type: str
         size: 10
@@ -270,7 +270,7 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: next_source_seq_num
         type: u4
         doc: 'The sequence number in the next message for this symbol'
@@ -284,10 +284,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: trading_session
         type: u1
         doc: 'Trading session value'
@@ -301,10 +301,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: security_status
         type: u1
         enum: security_status
@@ -315,7 +315,7 @@ types:
         doc: 'Halt condition indicator'
       - id: reserved_4
         size: 4
-        doc: 'Future use.  Any field content should be ignored'
+        doc: 'Future use. Any field content should be ignored'
       - id: price_1
         type: u4
         doc: 'Default value is 0'
@@ -325,18 +325,18 @@ types:
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
-        doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange.  Otherwise it is defaulted to 0x20'
+        doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange. Otherwise it is defaulted to 0x20'
       - id: ssr_triggering_volume
         type: u4
         doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
         type: u4
-        doc: 'Format : HHMMSSmmm  (mmm = milliseconds)'
+        doc: 'Format : HHMMSSmmm (mmm = milliseconds)'
       - id: ssr_state
         type: str
         size: 1
         encoding: ASCII
-        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code.  Valid'
+        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code. Valid'
       - id: market_state
         type: str
         size: 1
@@ -368,10 +368,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: ask_price
         type: u4
         doc: 'The Ask price. Use the Price scale from the Symbol Index message'
@@ -394,7 +394,7 @@ types:
         doc: 'The side(s) where Retail Price Indication orders (RPI orders) exist'
       - id: reserved_4
         size: 4
-        doc: 'Future use.  Any field content should be ignored'
+        doc: 'Future use. Any field content should be ignored'
 
 enums:
   delivery_flag:
@@ -440,7 +440,7 @@ enums:
       doc: 'This message is sent at the start of every second during periods of active data publication.'
     3:
       id: 'symbol_index_mapping_message'
-      doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or XDP Publisher failover.  It provides referential data for a single specified symbol.'
+      doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or XDP Publisher failover. It provides referential data for a single specified symbol.'
     10:
       id: 'retransmission_request_message'
       doc: 'Clients who have experienced a sequence number gap and need a retransmission of the missed messages should send a Retransmission Request message via TCP to the Request Controller. A Request Response message will be sent over the TCP connection back to the client, and if the request was valid, the requested message(s) will be re-published over the relevant Retransmission multicast channel.'
@@ -449,7 +449,7 @@ enums:
       doc: 'This message will be sent immediately via TCP/IP in response to the client’s request for retransmission, refresh or Symbol Mapping messages.'
     12:
       id: 'heartbeat_response_message'
-      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds.  If no timely client response is received, the connection will be closed.'
+      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds. If no timely client response is received, the connection will be closed.'
     13:
       id: 'symbol_index_mapping_request_message'
       doc: 'This message is sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a specified channel.'
@@ -461,7 +461,7 @@ enums:
       doc: 'This message will be sent over the Retransmission multicast channels to inform clients of unavailability of a range of messages (or part of a range) for which they may have requested a retransmission.'
     32:
       id: 'symbol_clear_message'
-      doc: 'In case of a failure and recovery of a Matching Engine or an XDP Publisher, the publisher may send a full state refresh for every symbol affected.  This kind of unrequested refresh is preceded by a Symbol Clear message.  The client should react to receipt of a Symbol Clear message by clearing all state information for the specified symbol in anticipation of receiving a full state refresh.'
+      doc: 'In case of a failure and recovery of a Matching Engine or an XDP Publisher, the publisher may send a full state refresh for every symbol affected. This kind of unrequested refresh is preceded by a Symbol Clear message. The client should react to receipt of a Symbol Clear message by clearing all state information for the specified symbol in anticipation of receiving a full state refresh.'
     33:
       id: 'trading_session_change_message'
       doc: 'This message announces the start of a new trading session for a specified symbol.'

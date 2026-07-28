@@ -94,7 +94,7 @@ types:
         doc: 'Sequence number of messages for the outright options symbol'
       - id: ask_price
         type: s4
-        doc: 'Best Ask price.  To be used with the Price Scale Code from the Outright Index Mapping message'
+        doc: 'Best Ask price. To be used with the Price Scale Code from the Outright Index Mapping message'
       - id: bid_price
         type: s4
         doc: 'Best Bid price. To be used with the Price Scale Code from the Outright Index Mapping message'
@@ -331,10 +331,10 @@ types:
         doc: 'Exchange Low price of the symbol for the day. Use the Price Scale Code from the symbol index mapping message'
       - id: open
         type: s4
-        doc: 'Exchange Opening price of the symbol for the day.  Use the Price Scale Code from the symbol index mapping message'
+        doc: 'Exchange Opening price of the symbol for the day. Use the Price Scale Code from the symbol index mapping message'
       - id: close
         type: s4
-        doc: 'Exchange Closing price of the symbol for the day.  Use the Price Scale Code from the symbol index mapping message'
+        doc: 'Exchange Closing price of the symbol for the day. Use the Price Scale Code from the symbol index mapping message'
       - id: total_volume
         type: u4
         doc: 'Exchange cumulative volume for the symbol throughout the day'
@@ -406,7 +406,7 @@ types:
         doc: 'Sequence number of messages for the outright options symbol'
       - id: ask_price
         type: s4
-        doc: 'Best Ask price.  To be used with the Price Scale Code from the Outright Index Mapping message'
+        doc: 'Best Ask price. To be used with the Price Scale Code from the Outright Index Mapping message'
       - id: bid_price
         type: s4
         doc: 'Best Bid price. To be used with the Price Scale Code from the Outright Index Mapping message'
@@ -588,7 +588,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Strike price.  ASCII 0-9 with optional decimal point. EG: 51.75, 123'
+        doc: 'Strike price. ASCII 0-9 with optional decimal point. EG: 51.75, 123'
       - id: price_scale_code
         type: u1
         doc: 'Price Scale Code for price conversion of the symbol. See Price Formats'
@@ -604,7 +604,7 @@ types:
         doc: 'OCC root of option symbol'
       - id: group_id
         type: u4
-        doc: 'Used by Market Makers.  Predefined group of series within a given underlying symbol'
+        doc: 'Used by Market Makers. Predefined group of series within a given underlying symbol'
   stream_id_message:
     seq:
       - id: stream_id

@@ -10,7 +10,7 @@ meta:
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Unlisted Trading Privileges Plan  Utp v4.0'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Unlisted Trading Privileges Plan Utp v4.0'
 doc-ref: https://www.utpplan.com/technical
 
 seq:

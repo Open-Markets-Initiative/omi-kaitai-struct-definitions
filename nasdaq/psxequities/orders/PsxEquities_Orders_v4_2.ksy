@@ -721,7 +721,7 @@ enums:
       doc: 'Timeout. The Time In Force for this order has expired'
     0x53:
       id: 'supervisory'
-      doc: 'Supervisory. This order was manually canceled or reduced by a NASDAQ  supervisory terminal. This is usually in response to a participant request via telephone.'
+      doc: 'Supervisory. This order was manually canceled or reduced by a NASDAQ supervisory terminal. This is usually in response to a participant request via telephone.'
     0x44:
       id: 'this_order_cannot_be_executed_because_of_a_regulatory_restriction'
       doc: 'This order cannot be executed because of a regulatory restriction (e.g.: trade through restrictions).'

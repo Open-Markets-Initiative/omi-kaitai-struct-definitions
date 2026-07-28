@@ -107,7 +107,7 @@ types:
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'For NASDAQ-listed issues, this field indicates when a firm is not in compliance with NASDAQ continued listing requirements.  For NYSE, NYSE Amex and NYSE Arca issues, this field will also be space-filled'
+        doc: 'For NASDAQ-listed issues, this field indicates when a firm is not in compliance with NASDAQ continued listing requirements. For NYSE, NYSE Amex and NYSE Arca issues, this field will also be space-filled'
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
       - id: nanoseconds
@@ -175,7 +175,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   add_order_with_mpid_message:
     seq:
       - id: nanoseconds
@@ -199,7 +199,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
         size: 4
@@ -270,13 +270,13 @@ types:
         doc: 'The original reference number of the order being replaced'
       - id: new_order_reference_number
         type: u8
-        doc: 'The new reference number for this order at time of replacement.  Please note that the NASDAQ system will use this new order reference number for all subsequent updates'
+        doc: 'The new reference number for this order at time of replacement. Please note that the NASDAQ system will use this new order reference number for all subsequent updates'
       - id: shares
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   trade_message:
     seq:
       - id: nanoseconds
@@ -300,7 +300,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
         doc: 'The NASDAQ generated day-unique Match Number of this execution. The match number is also referenced in the Trade Break Message'
@@ -320,7 +320,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
         type: u4
-        doc: 'The price at which the cross occurred.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The price at which the cross occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
         doc: 'The NASDAQ generated day-unique Match Number of this execution. The match number is also referenced in the Trade Break Message'
@@ -365,7 +365,7 @@ types:
         doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: current_reference_price
         type: u4
-        doc: 'The price at which the NOII shares are being calculated.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The price at which the NOII shares are being calculated. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
         enum: cross_type
@@ -396,7 +396,7 @@ enums:
       doc: 'Reflects the number of seconds past midnight that the Timestamp message was generated.'
     0x53:
       id: 'system_event_message'
-      doc: 'The system event message type is used to signal a market or data feed handler event.  The format is as follows:'
+      doc: 'The system event message type is used to signal a market or data feed handler event. The format is as follows:'
     0x52:
       id: 'stock_directory_message'
       doc: 'Market data redistributors should process this message to populate the Financial Status Indicator (required display field) and the Market Category (recommended display field) for NASDAQ-listed issues.'

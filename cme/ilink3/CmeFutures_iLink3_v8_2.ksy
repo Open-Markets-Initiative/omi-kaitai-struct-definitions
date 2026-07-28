@@ -1052,7 +1052,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -1176,7 +1176,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -1298,7 +1298,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -1419,7 +1419,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -1448,7 +1448,7 @@ types:
         doc: 'Contains the workup ID; unique per instrument per day'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity open for further execution;  LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
+        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
         type: u2
         doc: 'Indicates date of trading day (expressed in local time at place of trade)'
@@ -1628,7 +1628,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -1654,7 +1654,7 @@ types:
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity open for further execution;  LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
+        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
         type: u2
         doc: 'Indicates date of trading day (expressed in local time at place of trade)'
@@ -2192,7 +2192,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -2209,7 +2209,7 @@ types:
         doc: 'Total quantity filled'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity open for further execution;  LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
+        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
         type: u4
         doc: 'Minimum quantity of an order to be executed'
@@ -2328,7 +2328,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -2345,7 +2345,7 @@ types:
         doc: 'Total quantity filled'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity open for further execution;  LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
+        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
         type: u4
         doc: 'Minimum quantity of an order to be executed'
@@ -2485,7 +2485,7 @@ types:
         doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
       - id: host_cross_id
         type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides +  strategy + legs. The HostCrossID will also be used to link together components of the  cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
       - id: location
         type: str
         size: 5
@@ -3792,7 +3792,7 @@ types:
         doc: 'Specifies the scope of the action'
       - id: total_affected_orders
         type: u1
-        doc: 'Total number of orders affected by the Order Mass  Action Request. Will be returned as zero for rejects or if request is accepted but no orders could be cancelled. If fragmented then this is the sum of NoAffectedOrders across all messages with the same MassActionReportID. Otherwise will have same value as NoAffectedOrders when one or more orders is cancelled'
+        doc: 'Total number of orders affected by the Order Mass Action Request. Will be returned as zero for rejects or if request is accepted but no orders could be cancelled. If fragmented then this is the sum of NoAffectedOrders across all messages with the same MassActionReportID. Otherwise will have same value as NoAffectedOrders when one or more orders is cancelled'
       - id: last_fragment
         type: u1
         enum: last_fragment
@@ -4034,7 +4034,7 @@ types:
       - id: expiration_cycle
         type: u1
         enum: expiration_cycle
-        doc: 'For tag 827-ExpirationCycle=2, instrument expires as indicated in market data Security Definition (tag 35-MsgType=d) repeating block:  Tag 865-EventType=7 (Last Eligible Trade Date) Tag 1145-EventTime'
+        doc: 'For tag 827-ExpirationCycle=2, instrument expires as indicated in market data Security Definition (tag 35-MsgType=d) repeating block: Tag 865-EventType=7 (Last Eligible Trade Date) Tag 1145-EventTime'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator

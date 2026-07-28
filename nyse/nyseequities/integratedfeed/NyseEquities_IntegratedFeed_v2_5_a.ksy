@@ -115,7 +115,7 @@ types:
         doc: 'ID of the originating Matching Engine partition to which this message applies'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: source_time
         type: u4
         doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
@@ -123,7 +123,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol
         type: str
         size: 11
@@ -169,13 +169,13 @@ types:
         doc: 'Round Lots Accepted'
       - id: mpv
         type: u2
-        doc: 'The minimum increment for a trade price, in 100ths of a cent.  Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
+        doc: 'The minimum increment for a trade price, in 100ths of a cent. Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
       - id: unit_of_trade
         type: u2
-        doc: 'This field specifies the security Unit of Trade in shares.  Valid values are 1, 10, 50 and 100'
+        doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
       - id: reserved_2
         size: 2
-        doc: 'Reserved for future use.  Disregard any content'
+        doc: 'Reserved for future use. Disregard any content'
   retransmission_request_message:
     seq:
       - id: begin_seq_num
@@ -232,7 +232,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: source_id
         type: str
         size: 10
@@ -252,7 +252,7 @@ types:
     seq:
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: source_id
         type: str
         size: 10
@@ -288,7 +288,7 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: next_source_seq_num
         type: u4
         doc: 'The sequence number in the next message for this symbol'
@@ -302,10 +302,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: security_status
         type: u1
         enum: security_status
@@ -316,7 +316,7 @@ types:
         doc: 'Halt condition indicator'
       - id: reserved_4
         size: 4
-        doc: 'Future use.  Any field content should be ignored'
+        doc: 'Future use. Any field content should be ignored'
       - id: price_1
         type: u4
         doc: 'Default value is 0'
@@ -326,17 +326,17 @@ types:
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
-        doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange.  Otherwise it is defaulted to 0x20'
+        doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange. Otherwise it is defaulted to 0x20'
       - id: ssr_triggering_volume
         type: u4
         doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
         type: u4
-        doc: 'Format : HHMMSSmmm  (mmm = milliseconds)'
+        doc: 'Format : HHMMSSmmm (mmm = milliseconds)'
       - id: ssr_state
         type: u1
         enum: ssr_state
-        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code.  Valid'
+        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code. Valid'
       - id: market_state
         type: u1
         enum: market_state
@@ -367,13 +367,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -388,7 +388,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
-        doc: 'The market participant’s firm ID.  Blank-filled if a firm ID was not specified'
+        doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
       - id: reserved_11
         size: 1
         doc: 'Future use only'
@@ -399,13 +399,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -430,13 +430,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: reserved_11
         size: 1
         doc: 'Future use only'
@@ -447,16 +447,16 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: trade_id
         type: u4
-        doc: 'Unique ID assigned by the matching engine to this execution.  Used by any subsequent Trade Cancel message to identify this execution'
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -493,13 +493,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: new_order_id
         type: u8
         doc: 'The new Order ID of the replacement order'
@@ -525,10 +525,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: reference_price
         type: u4
         doc: 'For Pillar-powered markets, the Reference Price is used to calculate the Indicative Match Price. For NYSE Tape A symbols, the Reference Price is the Last Sale if the last sale is at or between the current best quote'
@@ -537,7 +537,7 @@ types:
         doc: 'For Pillar-powered markets, the number of shares paired off at the Indicative Match Price. For NYSE, the number of shares paired off at the Reference Price, truncated to the nearest round lot quantity'
       - id: total_imbalance_qty
         type: u4
-        doc: 'For Pillar-powered markets, the total imbalance quantity at the Indicative Match Price.  For NYSE, the total imbalance quantity at the Reference Price, truncated to the round lot'
+        doc: 'For Pillar-powered markets, the total imbalance quantity at the Indicative Match Price. For NYSE, the total imbalance quantity at the Reference Price, truncated to the round lot'
       - id: market_imbalance_qty
         type: u4
         doc: 'For Pillar-powered markets, the total market order imbalance quantity at the Indicative Match Price'
@@ -557,7 +557,7 @@ types:
         doc: 'For Pillar-powered markets, the price at which all interest on the book can trade, including auction and imbalance offset interest, and disregarding auction collars. For NYSE, the indicative matching price, i.e. the price closest to the reference price where the imbalance is 0. If a continuous book clearing price is not reached, it is defaulted to 0'
       - id: auction_interest_clearing_price
         type: u4
-        doc: 'For Pillar-powered markets, the price at which all eligible auction-only interest would trade, subject to auction collars For NYSE, the price closest to the reference price where the imbalance of closing-only interest is 0.  If a closing-only clearing price is not reached, it is defaulted to 0'
+        doc: 'For Pillar-powered markets, the price at which all eligible auction-only interest would trade, subject to auction collars For NYSE, the price closest to the reference price where the imbalance of closing-only interest is 0. If a closing-only clearing price is not reached, it is defaulted to 0'
       - id: ssr_filing_price
         type: u4
         doc: 'For Pillar-powered markets, not supported and defaulted to 0. For NYSE, the price at which Sell Short interest in the opening auction will be filed if a Sell Short Restriction is in effect for the security'
@@ -566,10 +566,10 @@ types:
         doc: 'For Pillar-powered markets, the price that has the highest executable volume of auction-eligible shares, subject to auction collars. It includes the non-displayed quantity of Reserve Orders'
       - id: upper_collar
         type: u4
-        doc: 'If the IndicativeMatchPrice is not strictly between the UpperCollar and the LowerCollar, special auction rules apply.  See Rule 7.35P for details'
+        doc: 'If the IndicativeMatchPrice is not strictly between the UpperCollar and the LowerCollar, special auction rules apply. See Rule 7.35P for details'
       - id: lower_collar
         type: u4
-        doc: 'If the IndicativeMatchPrice is not strictly between the UpperCollar and the LowerCollar, special auction rules apply.  See Rule 7.35P for details'
+        doc: 'If the IndicativeMatchPrice is not strictly between the UpperCollar and the LowerCollar, special auction rules apply. See Rule 7.35P for details'
       - id: auction_status
         type: u1
         enum: auction_status
@@ -602,13 +602,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: order_id
         type: u8
-        doc: 'The unique ID assigned by the matching engine to this order .  Can be used to match this message to the gateway Order Report'
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -623,7 +623,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
-        doc: 'The market participant’s firm ID.  Blank-filled if a firm ID was not specified'
+        doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
       - id: reserved_11
         size: 1
         doc: 'Future use only'
@@ -634,13 +634,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: trade_id
         type: u4
-        doc: 'Unique ID assigned by the matching engine to this execution.  Used by any subsequent Trade Cancel message to identify this execution'
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -674,13 +674,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: cross_id
         type: u4
-        doc: 'Unique identifier for this Cross Trade.  Used in Cross Correction message to identify the Cross Trade to correct'
+        doc: 'Unique identifier for this Cross Trade. Used in Cross Correction message to identify the Cross Trade to correct'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
@@ -698,13 +698,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: trade_id
         type: u4
-        doc: 'Unique ID assigned by the matching engine to this execution.  Used by any subsequent Trade Cancel message to identify this execution'
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
   cross_correction_message:
     seq:
       - id: source_time_ns
@@ -712,13 +712,13 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: cross_id
         type: u4
-        doc: 'Unique identifier for this Cross Trade.  Used in Cross Correction message to identify the Cross Trade to correct'
+        doc: 'Unique identifier for this Cross Trade. Used in Cross Correction message to identify the Cross Trade to correct'
       - id: volume
         type: u4
         doc: 'The order quantity in shares'
@@ -729,10 +729,10 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: symbol_seq_num
         type: u4
-        doc: 'Reserved for future use.  Ignore any content.  This usage will become standard across all products in future releases'
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: rpi_indicator
         type: u1
         enum: rpi_indicator
@@ -747,7 +747,7 @@ types:
         doc: 'The nanosecond offset from the SourceTime'
       - id: symbol_index
         type: u4
-        doc: 'The unique ID of this symbol for all products within this market.  This ID cannot be used to cross reference a security between markets'
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
       - id: high_price
         type: u4
         doc: 'The exchange high price of this stock for the day. Use the Price Scale in the symbol index msg'
@@ -756,10 +756,10 @@ types:
         doc: 'The exchange Low price of this stock for the day. Use the Price Scale in the symbol index msg'
       - id: open
         type: u4
-        doc: 'The exchange Opening price of this stock for the day.  Use the Price Scale in the symbol index msg'
+        doc: 'The exchange Opening price of this stock for the day. Use the Price Scale in the symbol index msg'
       - id: close
         type: u4
-        doc: 'The exchange Closing price of this stock for the day.  Use the Price Scale in the symbol index msg'
+        doc: 'The exchange Closing price of this stock for the day. Use the Price Scale in the symbol index msg'
       - id: total_volume
         type: u4
         doc: 'The exchange cumulative volume for the stock throughout the day'
@@ -808,7 +808,7 @@ enums:
       doc: 'This message is sent at the start of every second during periods of active data publication.'
     3:
       id: 'symbol_index_mapping_message'
-      doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or XDP Publisher failover.  It provides referential data for a single specified symbol.'
+      doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or XDP Publisher failover. It provides referential data for a single specified symbol.'
     10:
       id: 'retransmission_request_message'
       doc: 'Clients who have experienced a sequence number gap and need a retransmission of the missed messages should send a Retransmission Request message via TCP to the Request Controller. A Request Response message will be sent over the TCP connection back to the client, and if the request was valid, the requested message(s) will be re-published over the relevant Retransmission multicast channel.'
@@ -817,7 +817,7 @@ enums:
       doc: 'This message will be sent immediately via TCP/IP in response to the client’s request for retransmission, refresh or Symbol Mapping messages.'
     12:
       id: 'heartbeat_response_message'
-      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds.  If no timely client response is received, the connection will be closed.'
+      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds. If no timely client response is received, the connection will be closed.'
     13:
       id: 'symbol_index_mapping_request_message'
       doc: 'This message is sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a specified channel.'
@@ -829,7 +829,7 @@ enums:
       doc: 'This message will be sent over the Retransmission multicast channels to inform clients of unavailability of a range of messages (or part of a range) for which they may have requested a retransmission.'
     32:
       id: 'symbol_clear_message'
-      doc: 'In case of a failure and recovery of a Matching Engine or an XDP Publisher, the publisher may send a full state refresh for every symbol affected.  This kind of unrequested refresh is preceded by a Symbol Clear message.  The client should react to receipt of a Symbol Clear message by clearing all state information for the specified symbol in anticipation of receiving a full state refresh.'
+      doc: 'In case of a failure and recovery of a Matching Engine or an XDP Publisher, the publisher may send a full state refresh for every symbol affected. This kind of unrequested refresh is preceded by a Symbol Clear message. The client should react to receipt of a Symbol Clear message by clearing all state information for the specified symbol in anticipation of receiving a full state refresh.'
     34:
       id: 'security_status_message'
       doc: 'This message informs clients of changes in the status of a specific security, such as Trading Halts, Short Sale Restriction state changes, etc.'
@@ -838,10 +838,10 @@ enums:
       doc: 'The first message in each packet of refresh messages published over the Refresh multicast channels is of this type.'
     100:
       id: 'add_order_message'
-      doc: 'An Add Order message is published when a new visible order has been received and added to the book.  The Order ID is assigned by the matching engine and is good for today only.  It is unique across all markets, except that for NYSE Tape A symbols, it is only unique per matching engine instance.'
+      doc: 'An Add Order message is published when a new visible order has been received and added to the book. The Order ID is assigned by the matching engine and is good for today only. It is unique across all markets, except that for NYSE Tape A symbols, it is only unique per matching engine instance.'
     101:
       id: 'modify_order_message'
-      doc: 'A Modify Order message is sent when the price or volume of an order is changed due to an event other than a cancel-replace, or full or partial execution.  The content of the price and volume fields represent the new values after modification.'
+      doc: 'A Modify Order message is sent when the price or volume of an order is changed due to an event other than a cancel-replace, or full or partial execution. The content of the price and volume fields represent the new values after modification.'
     102:
       id: 'delete_order_message'
       doc: 'A Delete Order message is published when an order is taken off of the book for any reason except for full execution, in which case an Order Execution message is sent.'
@@ -850,7 +850,7 @@ enums:
       doc: 'An Order Execution message is sent when an order is partially or fully executed.'
     104:
       id: 'replace_order_message'
-      doc: 'A Replace Order message is published when a cancel/replace order is received and executed.  The sitting order is replaced with a new one containing the same symbol, side and attribution, a new Order ID, and the price and size specified.  The sitting order must be removed from the book and replaced with the new order.'
+      doc: 'A Replace Order message is published when a cancel/replace order is received and executed. The sitting order is replaced with a new one containing the same symbol, side and attribution, a new Order ID, and the price and size specified. The sitting order must be removed from the book and replaced with the new order.'
     105:
       id: 'imbalance_message'
       doc: 'Imbalance messages are sent periodically during auctions to update price and volume information. If there is no change to the calculated fields, no message will be generated.'
@@ -862,19 +862,19 @@ enums:
       doc: 'An Non Displayed Trade message is sent as a result of a match between two non-displayed orders.'
     111:
       id: 'cross_trade_message'
-      doc: 'A Cross Trade message is published on completion of a crossing auction, and shows the bulk volume that traded in the auction.  The Reason Code field indicates the auction type.  Additionally, a non-printable Order Execution or Trade message will be published for each order that traded.'
+      doc: 'A Cross Trade message is published on completion of a crossing auction, and shows the bulk volume that traded in the auction. The Reason Code field indicates the auction type. Additionally, a non-printable Order Execution or Trade message will be published for each order that traded.'
     112:
       id: 'trade_cancel_message'
-      doc: 'In the event that an earlier trade has been reported in error, a Trade Cancel message is sent.  This occurs whether the initial report was an Order Execution or a Non-Displayed Trade message.'
+      doc: 'In the event that an earlier trade has been reported in error, a Trade Cancel message is sent. This occurs whether the initial report was an Order Execution or a Non-Displayed Trade message.'
     113:
       id: 'cross_correction_message'
       doc: 'In the event that an earlier Cross Trade has been reported in error, a Cross Correction message is sent.'
     114:
       id: 'retail_price_improvement_message'
-      doc: 'Published when RPI interest (hidden retail price improvement interest) is added or removed between the best bid and best offer price.  When all RPI interest for this security is removed from the book, An RPI message with RPIIndicator = '' '' (space character) is published.'
+      doc: 'Published when RPI interest (hidden retail price improvement interest) is added or removed between the best bid and best offer price. When all RPI interest for this security is removed from the book, An RPI message with RPIIndicator = '' '' (space character) is published.'
     223:
       id: 'stock_summary_message'
-      doc: 'On a separate channel from the main feed, the Stock Summary channel, a Stock Summary message per symbol is sent every 60 seconds.  The message is sent regardless of whether there has been a change to the symbol in the last 60 seconds or not.'
+      doc: 'On a separate channel from the main feed, the Stock Summary channel, a Stock Summary message per symbol is sent every 60 seconds. The message is sent regardless of whether there has been a change to the symbol in the last 60 seconds or not.'
   market_id:
     1:
       id: 'nyse_equities'

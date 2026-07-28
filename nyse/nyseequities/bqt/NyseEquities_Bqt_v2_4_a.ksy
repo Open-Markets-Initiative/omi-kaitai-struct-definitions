@@ -159,8 +159,7 @@ types:
         doc: 'Round Lots Accepted: Y - Yes, N - No'
       - id: mpv
         type: u2
-        doc: 'The minimum increment for a trade price, in 100ths of a cent. Typically 1, or $0.0001, but for
-            some Tick Pilot stocks, can be 500, or $0.05'
+        doc: 'The minimum increment for a trade price, in 100ths of a cent. Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
       - id: unit_of_trade
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
@@ -216,35 +215,28 @@ types:
         doc: 'Reserved for future use. Disregard any content'
       - id: price_1
         type: s4
-        doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this
-            field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low
-            Price. Implied decimal with scale 1e-8'
+        doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low Price. Implied decimal with scale 1e-8'
       - id: price_2
         type: s4
         doc: 'Default value is 0. If securityStatus = G or I, then this field is the Indication High Price. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
-        doc: 'This field is only populated when securityStatus = A and this security is listed on this
-            exchange. Otherwise it is defaulted to 0x20'
+        doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange. Otherwise it is defaulted to 0x20'
       - id: ssr_triggering_volume
         type: u4
-        doc: 'Default value is 0. This field is only populated when securityStatus = A and this security is
-            listed on this exchange'
+        doc: 'Default value is 0. This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
         type: u4
-        doc: 'Default value is 0. Format: HHMMSSmmm (mmm = milliseconds). If securityStatus = A and this
-            security is listed on this exchange, then this field is the SSR Trigger Time'
+        doc: 'Default value is 0. Format: HHMMSSmmm (mmm = milliseconds). If securityStatus = A and this security is listed on this exchange, then this field is the SSR Trigger Time'
       - id: ssr_state
         type: u1
         enum: ssr_state
-        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR
-            Code'
+        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code'
       - id: market_state
         type: u1
         enum: market_state
-        doc: 'The current Market State, which this msg updates if the Security Status field contains a Market
-            State Code'
+        doc: 'The current Market State, which this msg updates if the Security Status field contains a Market State Code'
       - id: session_state
         type: str
         size: 1
@@ -287,8 +279,7 @@ types:
         doc: 'The ID of the multicast channel over which the packet was sent'
       - id: retransmit_method
         type: u1
-        doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver
-            via UDP'
+        doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
   refresh_request_message:
     seq:
       - id: symbol_index
@@ -329,18 +320,15 @@ types:
         doc: 'The total number of refresh packets you should expect in the update'
       - id: last_seq_num
         type: u4
-        doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the
-            order book as of this sequence number'
+        doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the order book as of this sequence number'
       - id: last_symbol_seq_num
         type: u4
-        doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state of this
-            symbol as of this symbol sequence number'
+        doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state of this symbol as of this symbol sequence number'
   request_response_message:
     seq:
       - id: request_seq_num
         type: u4
-        doc: 'The sequence number of the request message sent by the client. This can be used by the client to
-            couple this response with the original request message'
+        doc: 'The sequence number of the request message sent by the client. This can be used by the client to couple this response with the original request message'
       - id: begin_seq_num
         type: u4
         doc: 'The beginning sequence number of the range of messages to be retransmitted'
@@ -846,57 +834,40 @@ enums:
   message_type:
     1:
       id: 'sequence_number_reset_message'
-      doc: 'This message is sent to reset the Message Sequence Number at start of day, or in response to
-        failures.'
+      doc: 'This message is sent to reset the Message Sequence Number at start of day, or in response to failures.'
     2:
       id: 'source_time_reference_message'
-      doc: 'For high-volume feeds, this message is sent at the start of every second during periods of active
-        data publication. The client can concatenate the SourceTime field with the SourceTimeNS field in subsequent
-        market data messages to get full 8-byte Matching Engine event timestamps.'
+      doc: 'For high-volume feeds, this message is sent at the start of every second during periods of active data publication. The client can concatenate the SourceTime field with the SourceTimeNS field in subsequent market data messages to get full 8-byte Matching Engine event timestamps.'
     3:
       id: 'symbol_index_mapping_message'
-      doc: 'This message is published over the real-time data channels at system startup or in the context of a
-        refresh sequence after a Matching Engine or Pillar Publisher failover. It provides referential data for a single
-        specified symbol.'
+      doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or Pillar Publisher failover. It provides referential data for a single specified symbol.'
     32:
       id: 'symbol_clear_message'
-      doc: 'In case of a failure and recovery of a Matching Engine or an Pillar Publisher, the publisher may send
-        a full state refresh for every symbol affected. This unrequested refresh is preceded by a Symbol Clear message.
-        The client should react to receipt of a Symbol Clear message by clearing all state information for the specified
-        symbol in anticipation of receiving a full state refresh.'
+      doc: 'In case of a failure and recovery of a Matching Engine or an Pillar Publisher, the publisher may send a full state refresh for every symbol affected. This unrequested refresh is preceded by a Symbol Clear message. The client should react to receipt of a Symbol Clear message by clearing all state information for the specified symbol in anticipation of receiving a full state refresh.'
     34:
       id: 'security_status_message'
-      doc: 'This message informs clients of changes in the status of a specific security, such as Trading Halts,
-        Short Sale Restriction state changes, etc.'
+      doc: 'This message informs clients of changes in the status of a specific security, such as Trading Halts, Short Sale Restriction state changes, etc.'
     10:
       id: 'retransmission_request_message'
-      doc: 'Clients who have experienced a sequence number gap and need a retransmission of the missed messages
-        should send a Retransmission Request message via TCP to the Request Controller.'
+      doc: 'Clients who have experienced a sequence number gap and need a retransmission of the missed messages should send a Retransmission Request message via TCP to the Request Controller.'
     13:
       id: 'symbol_index_mapping_request_message'
-      doc: 'This message is sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or
-        all symbols in a specified channel.'
+      doc: 'This message is sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a specified channel.'
     15:
       id: 'refresh_request_message'
-      doc: 'Clients who have experienced a failure and need a refresh of the state of one or all symbols in a
-        specific channel should send a Refresh Request message via TCP to the Request Controller.'
+      doc: 'Clients who have experienced a failure and need a refresh of the state of one or all symbols in a specific channel should send a Refresh Request message via TCP to the Request Controller.'
     31:
       id: 'message_unavailable_message'
-      doc: 'This message will be sent over the Retransmission multicast channels to inform clients of
-        unavailability of a range of messages (or part of a range) for which they may have requested a retransmission.'
+      doc: 'This message will be sent over the Retransmission multicast channels to inform clients of unavailability of a range of messages (or part of a range) for which they may have requested a retransmission.'
     35:
       id: 'refresh_header_message'
-      doc: 'The first message in each packet of refresh messages published over the Refresh multicast channels is
-        of this type.'
+      doc: 'The first message in each packet of refresh messages published over the Refresh multicast channels is of this type.'
     11:
       id: 'request_response_message'
-      doc: 'This message will be sent immediately via TCP/IP in response to the client''s request for
-        retransmission, refresh or Symbol Mapping messages.'
+      doc: 'This message will be sent immediately via TCP/IP in response to the client''s request for retransmission, refresh or Symbol Mapping messages.'
     12:
       id: 'heartbeat_response_message'
-      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a
-        Heartbeat Response message within 5 seconds. If no timely client response is received, the connection will be
-        closed.'
+      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds. If no timely client response is received, the connection will be closed.'
     142:
       id: 'best_quotes_message'
       doc: 'This message is sent when an event causes a change in one or both sides of the BBO.'

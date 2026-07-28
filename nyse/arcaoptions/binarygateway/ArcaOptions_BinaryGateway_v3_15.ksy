@@ -274,7 +274,7 @@ types:
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session.  Note: if the BOLD value is set on an individual Order'
+        doc: 'Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session. Note: if the BOLD value is set on an individual Order'
       - id: reserved_49
         size: 49
         doc: 'Bytes reserved for future use'
@@ -300,7 +300,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -520,7 +520,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: sub_id
         type: str
         size: 4
@@ -571,22 +571,22 @@ types:
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Clearing number of CMTA of the Exposed side of the Cross order.  For CUBEs, this is the CUBE order'
+        doc: 'Clearing number of CMTA of the Exposed side of the Cross order. For CUBEs, this is the CUBE order'
       - id: clearing_account_exposed
         type: str
         size: 5
         encoding: ASCII
-        doc: 'OCC number of the Exposed side of the Cross order if a non-default value is to be used.  For CUBEs, this is the CUBE order'
+        doc: 'OCC number of the Exposed side of the Cross order if a non-default value is to be used. For CUBEs, this is the CUBE order'
       - id: clearing_firm_covered
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Clearing number of CMTA of the Covered side of the Cross order.  For CUBEs, this is the CUBE Contra order'
+        doc: 'Clearing number of CMTA of the Covered side of the Cross order. For CUBEs, this is the CUBE Contra order'
       - id: clearing_account_covered
         type: str
         size: 5
         encoding: ASCII
-        doc: 'OCC number of the Covered side of the Cross order if a non-default value is to be used.  For CUBEs, this is the CUBE Contra order'
+        doc: 'OCC number of the Covered side of the Cross order if a non-default value is to be used. For CUBEs, this is the CUBE Contra order'
       - id: reserved_16
         size: 16
         doc: 'Bytes reserved for future use'
@@ -611,7 +611,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -663,7 +663,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -717,7 +717,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: cl_ord_id
         type: u8
         doc: 'Unique ID of the message as assigned by the firm'
@@ -766,7 +766,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -838,7 +838,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -1086,7 +1086,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mpid
         type: str
         size: 4
@@ -1167,7 +1167,7 @@ types:
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session.  Note: if the BOLD value is set on an individual Order'
+        doc: 'Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session. Note: if the BOLD value is set on an individual Order'
       - id: reserved_49
         size: 49
         doc: 'Bytes reserved for future use'
@@ -1188,7 +1188,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -1274,7 +1274,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: sub_id
         type: str
         size: 4
@@ -1390,7 +1390,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: target_cancel_username
         type: str
         size: 16
@@ -1531,7 +1531,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: contra_market_maker
         type: str
         size: 10
@@ -1688,7 +1688,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -1750,16 +1750,16 @@ types:
         doc: 'IOCAttribution'
       - id: usd_calculation_1
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_2
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_3
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_4
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: count_calculation
         type: u4
         doc: 'Integer count'
@@ -1799,7 +1799,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange.  These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
+        doc: 'This value represents a Market Maker (including LMM, Primary Specialist, Specialist and e-Specialist), agreed upon between the firm and the Exchange. These firms must provide their MMID along with its associated MPID on all orders intended to receive credit for satisfying their marking making/liquidity obligations'
       - id: mp_sub_id
         type: str
         size: 4
@@ -1846,16 +1846,16 @@ types:
         doc: 'IOCAttribution'
       - id: usd_calculation_1
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_2
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_3
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: usd_calculation_4
         type: s8
-        doc: 'Integer US Dollar calculation.  For the following RiskControlTypes – will be populated with the'
+        doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
       - id: count_calculation
         type: u4
         doc: 'Integer count'

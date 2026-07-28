@@ -147,7 +147,7 @@ types:
       - id: ipo_flag
         type: u1
         enum: ipo_flag
-        doc: 'Indicates if the NASDAQ security is set up for IPO release.   This field is intended to help NASDAQ market participant firms comply with FINRA Rule 5131(b)'
+        doc: 'Indicates if the NASDAQ security is set up for IPO release. This field is intended to help NASDAQ market participant firms comply with FINRA Rule 5131(b)'
       - id: luld_reference_price_tier
         type: u1
         enum: luld_reference_price_tier
@@ -158,7 +158,7 @@ types:
         doc: 'Indicates whether the security is an exchange traded product (ETP):'
       - id: etp_leverage_factor
         type: u4
-        doc: 'Tracks the integral relationship of the ETP to the underlying index.   Example: If the underlying Index increases by a value of 1 and the ETP’s Leverage factor is 3, indicates the ETF will increase/decrease (see Inverse) by 3. Note: Leverage Factor of 1 indicates the ETP is NOT leveraged. This field is used for LULD Tier I price band calculation purposes'
+        doc: 'Tracks the integral relationship of the ETP to the underlying index. Example: If the underlying Index increases by a value of 1 and the ETP’s Leverage factor is 3, indicates the ETF will increase/decrease (see Inverse) by 3. Note: Leverage Factor of 1 indicates the ETP is NOT leveraged. This field is used for LULD Tier I price band calculation purposes'
       - id: inverse_indicator
         type: u1
         enum: inverse_indicator
@@ -183,7 +183,7 @@ types:
       - id: trading_state
         type: u1
         enum: trading_state
-        doc: 'Indicates the current trading state for the stock.  Allowable values:'
+        doc: 'Indicates the current trading state for the stock. Allowable values:'
       - id: reserved
         type: str
         size: 1
@@ -343,7 +343,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   luld_auction_collar_message:
     seq:
       - id: stock_locate
@@ -402,7 +402,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
         size: 4
@@ -509,7 +509,7 @@ types:
         doc: 'The total number of shares associated with the order being added to the book'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   non_cross_trade_message:
     seq:
       - id: stock_locate
@@ -539,7 +539,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
         type: u4
-        doc: 'The display price of the new order.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
         doc: 'The NASDAQ generated day-unique Match Number of this execution. The match number is also referenced in the Trade Break Message'
@@ -565,7 +565,7 @@ types:
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
         type: u4
-        doc: 'The price at which the cross occurred.  Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The price at which the cross occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
         doc: 'The NASDAQ generated day-unique Match Number of this execution. The match number is also referenced in the Trade Break Message'
@@ -622,7 +622,7 @@ types:
         doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: current_reference_price
         type: u4
-        doc: 'The price at which the NOII shares are being calculated.   Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
+        doc: 'The price at which the NOII shares are being calculated. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
         enum: cross_type
@@ -693,25 +693,25 @@ enums:
       doc: 'This message is sent whenever an order on the book is executed in whole or in part. It is possible to receive several Order Executed Messages for the same order reference number if that order is executed in several parts. The multiple Order Executed Messages on the same order are cumulative.'
     0x43:
       id: 'order_executed_with_price_message'
-      doc: 'This message is sent whenever an order on the book is executed in whole or in part at a price different from the initial display price.  Since the execution price is different than the display price of the original Add Order, NASDAQ includes a price field within this execution message.'
+      doc: 'This message is sent whenever an order on the book is executed in whole or in part at a price different from the initial display price. Since the execution price is different than the display price of the original Add Order, NASDAQ includes a price field within this execution message.'
     0x58:
       id: 'order_cancel_message'
       doc: 'This message is sent whenever an order on the book is modified as a result of a partial cancellation.'
     0x44:
       id: 'order_delete_message'
-      doc: 'This message is sent whenever an order on the book is being cancelled.  All remaining shares are no longer accessible so the order must be removed from the book.'
+      doc: 'This message is sent whenever an order on the book is being cancelled. All remaining shares are no longer accessible so the order must be removed from the book.'
     0x55:
       id: 'order_replace_message'
-      doc: 'This message is sent whenever an order on the book has been cancel-replaced.  All remaining shares from the original order are no longer accessible, and must be removed.  The new order details are provided for the replacement, along with a new order reference number which will be used henceforth.  Since the side, stock symbol and attribution (if any) cannot be changed by an Order Replace event, these fields are not included in the message.  Firms should retain the side, stock symbol and MPID from the original Add Order message.'
+      doc: 'This message is sent whenever an order on the book has been cancel-replaced. All remaining shares from the original order are no longer accessible, and must be removed. The new order details are provided for the replacement, along with a new order reference number which will be used henceforth. Since the side, stock symbol and attribution (if any) cannot be changed by an Order Replace event, these fields are not included in the message. Firms should retain the side, stock symbol and MPID from the original Add Order message.'
     0x50:
       id: 'non_cross_trade_message'
-      doc: 'Trade Messages should be included in NASDAQ time-and-sales displays as well as volume and other market statistics.  Since Trade Messages do not affect the book, however, they may be ignored by firms just looking to build and track the NASDAQ execution system display.'
+      doc: 'Trade Messages should be included in NASDAQ time-and-sales displays as well as volume and other market statistics. Since Trade Messages do not affect the book, however, they may be ignored by firms just looking to build and track the NASDAQ execution system display.'
     0x51:
       id: 'cross_trade_message'
-      doc: 'Cross Trade message indicates that NASDAQ has completed its cross process for a specific security.  NASDAQ sends out a Cross Trade message for all active issues in the system following the Opening, Closing and EMC cross events.  Firms may use the Cross Trade message to determine when the cross for each security has been completed.  (Note:  For the halted / paused securities, firms should use the Trading Action message to determine when an issue has been released for trading.)'
+      doc: 'Cross Trade message indicates that NASDAQ has completed its cross process for a specific security. NASDAQ sends out a Cross Trade message for all active issues in the system following the Opening, Closing and EMC cross events. Firms may use the Cross Trade message to determine when the cross for each security has been completed. (Note: For the halted / paused securities, firms should use the Trading Action message to determine when an issue has been released for trading.)'
     0x42:
       id: 'broken_trade_message'
-      doc: 'Firms that use the ITCH feed to create time-and-sales displays or calculate market statistics should be prepared to process the broken trade message.   If a firm is only using the ITCH feed to build a book, however, it may ignore these messages as they have no impact on the current book.'
+      doc: 'Firms that use the ITCH feed to create time-and-sales displays or calculate market statistics should be prepared to process the broken trade message. If a firm is only using the ITCH feed to build a book, however, it may ignore these messages as they have no impact on the current book.'
     0x49:
       id: 'net_order_imbalance_indicator_message'
       doc: 'NASDAQ disseminates NOII data at 5-second intervals in the minutes leading up to the NASDAQ Opening Cross and NASDAQ Closing Cross'

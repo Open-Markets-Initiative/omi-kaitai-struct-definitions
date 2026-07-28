@@ -581,7 +581,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
-        doc: 'The headline of a News  message'
+        doc: 'The headline of a News message'
       - id: orig_time
         type: u8
         doc: 'Time of message origination expressed as number of nanoseconds since unix epoch. Nanoseconds since Unix epoch'
@@ -677,7 +677,7 @@ types:
         doc: 'The total number of real orders per instrument that participated in a match step within a match event'
       - id: trade_id
         type: s4
-        doc: 'Unique Trade Entry ID per Instrument  and Trading Date'
+        doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
         type: u1
         enum: aggressor_side
@@ -1249,7 +1249,7 @@ types:
         doc: 'The total number of real orders per instrument that participated in a match step within a match event'
       - id: trade_id
         type: s4
-        doc: 'Unique Trade Entry ID per Instrument  and Trading Date'
+        doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
         type: u1
         enum: aggressor_side
@@ -1416,7 +1416,7 @@ types:
         doc: 'The total number of real orders per instrument that participated in a match step within a match event'
       - id: trade_id
         type: s4
-        doc: 'Unique Trade Entry ID per Instrument  and Trading Date'
+        doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
         type: u1
         enum: aggressor_side
@@ -1522,7 +1522,7 @@ types:
         doc: 'The total number of real orders per instrument that participated in a match step within a match event'
       - id: trade_id
         type: s4
-        doc: 'Unique Trade Entry ID per Instrument  and Trading Date'
+        doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
         type: u1
         enum: aggressor_side
@@ -1842,7 +1842,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Rate type for the swap  and spread'
+        doc: 'Rate type for the swap and spread'
       - id: coupon_rate
         type: s4
         doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'

@@ -159,14 +159,7 @@ types:
         doc: 'Indicates whether the security is an exchange traded product (ETP):'
       - id: etp_leverage_factor
         type: u4
-        doc: 'Tracks the integral relationship of the ETP to the underlying
-            index.
-            Example: If the underlying Index increases by a value of 1 and
-            the ETP’s Leverage factor is 3, indicates the ETF will
-            increase/decrease (see Inverse) by 3. Leverage Factor is
-            rounded to the nearest integer below, e.g. leverage factor 1
-            would represent leverage factors of 1 to 1.99. This field is used
-            for LULD Tier I price band calculation purposes'
+        doc: 'Tracks the integral relationship of the ETP to the underlying index. Example: If the underlying Index increases by a value of 1 and the ETP’s Leverage factor is 3, indicates the ETF will increase/decrease (see Inverse) by 3. Leverage Factor is rounded to the nearest integer below, e.g. leverage factor 1 would represent leverage factors of 1 to 1.99. This field is used for LULD Tier I price band calculation purposes'
       - id: inverse_indicator
         type: u1
         enum: inverse_indicator
@@ -684,7 +677,7 @@ enums:
       doc: 'This message is sent whenever an order on the book is modified as a result of a partial cancellation.'
     0x44:
       id: 'order_delete_message'
-      doc: 'This message is sent whenever an order on the book is being cancelled.  All remaining shares are no longer accessible so the order must be removed from the book.'
+      doc: 'This message is sent whenever an order on the book is being cancelled. All remaining shares are no longer accessible so the order must be removed from the book.'
     0x55:
       id: 'order_replace_message'
       doc: 'This message is sent whenever an order on the book has been cancel-replaced. All remaining shares from the original order are no longer accessible, and must be removed. The new order details are provided for the replacement, along with a new order reference number which will be used henceforth. Since the side, stock symbol and attribution (if any) cannot be changed by an Order Replace event, these fields are not included in the message. Firms should retain the side, stock symbol and MPID from the original Add Order message.'

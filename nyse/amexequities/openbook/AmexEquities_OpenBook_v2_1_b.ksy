@@ -70,13 +70,13 @@ types:
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
       - id: source_time_micro_secs
         type: s2
-        doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field.  If the ME event occurred at 13:12:56, 170 millisecs and 30 microsecs, this field will contain 30'
+        doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field. If the ME event occurred at 13:12:56, 170 millisecs and 30 microsecs, this field will contain 30'
       - id: symbol_seq_num
         type: s4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
       - id: source_session_id
         type: s1
-        doc: 'Unused.  Ignore any content'
+        doc: 'Unused. Ignore any content'
       - id: symbol
         type: str
         size: 11
@@ -138,13 +138,13 @@ types:
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
       - id: source_time_micro_secs
         type: s2
-        doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field.  If the ME event occurred at 13:12:56, 170 millisecs and 30 microsecs, this field will contain 30'
+        doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field. If the ME event occurred at 13:12:56, 170 millisecs and 30 microsecs, this field will contain 30'
       - id: source_seq_num
         type: s4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
       - id: source_session_id
         type: s1
-        doc: 'Unused.  Ignore any content'
+        doc: 'Unused. Ignore any content'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -183,18 +183,18 @@ types:
         doc: 'This field identifies why the volume at the price point was modified'
       - id: link_id_1
         type: s4
-        doc: 'Unique ID for an execution. Correlates to  the Deal ID in the gateway Execution Report msg'
+        doc: 'Unique ID for an execution. Correlates to the Deal ID in the gateway Execution Report msg'
       - id: link_id_2
         type: s4
-        doc: 'Unused.  Ignore any content'
+        doc: 'Unused. Ignore any content'
       - id: link_id_3
         type: s4
-        doc: 'Unused.  Ignore any content'
+        doc: 'Unused. Ignore any content'
   sequence_number_reset_message:
     seq:
       - id: next_sequence_number
         type: s4
-        doc: 'The sequence number that will follow in the next packet.  Always = 2'
+        doc: 'The sequence number that will follow in the next packet. Always = 2'
 
 enums:
   message_type:

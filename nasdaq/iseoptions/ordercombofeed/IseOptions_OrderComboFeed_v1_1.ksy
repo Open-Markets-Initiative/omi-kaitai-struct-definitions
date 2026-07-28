@@ -193,7 +193,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '‘B’ = Bid ‘A’ = Offer (Ask) ‘  ’ (blank) = not set (hidden)'
+        doc: '‘B’ = Bid ‘A’ = Offer (Ask) ‘ ’ (blank) = not set (hidden)'
       - id: price
         type: s4
         doc: 'Price of the order in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
@@ -248,7 +248,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '‘B’ = Bid ‘A’ = Offer (Ask) ‘  ’ (blank) = not set (hidden)'
+        doc: '‘B’ = Bid ‘A’ = Offer (Ask) ‘ ’ (blank) = not set (hidden)'
       - id: price
         type: s4
         doc: 'Price of the order in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
@@ -317,10 +317,7 @@ enums:
       doc: 'The system event message type is used to signal a market or data feed handler event.'
     0x52:
       id: 'complex_strategy_directory_message'
-      doc: 'Whenever a complex order is added in the system for an underlying, the order is
-      normalized and results in either the creation of a new complex strategy or is added to an
-      existing strategy. A Complex Strategy Message containing the strategy definition
-      will be sent.'
+      doc: 'Whenever a complex order is added in the system for an underlying, the order is normalized and results in either the creation of a new complex strategy or is added to an existing strategy. A Complex Strategy Message containing the strategy definition will be sent.'
     0x48:
       id: 'strategy_trading_action_message'
       doc: 'ISE uses this administrative message to indicate the current trading status of a strategy within the ISE Options Market.'

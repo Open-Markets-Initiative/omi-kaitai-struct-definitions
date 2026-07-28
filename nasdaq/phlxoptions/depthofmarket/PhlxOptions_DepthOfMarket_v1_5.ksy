@@ -131,7 +131,7 @@ types:
         doc: 'Expiration Month (1-12)'
       - id: expiration_date
         type: u1
-        doc: 'Day of the Month of expiration  (1-31)'
+        doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
         type: s4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
@@ -170,7 +170,7 @@ types:
       - id: current_trading_state
         type: u1
         enum: current_trading_state
-        doc: 'Reflects the current trading state for the options security in the Options Market.  The allowable values are:'
+        doc: 'Reflects the current trading state for the options security in the Options Market. The allowable values are:'
   security_open_message:
     seq:
       - id: nanoseconds
@@ -273,7 +273,7 @@ types:
         doc: 'Option ID assigned daily, valid for trading day'
       - id: bid
         type: u4
-        doc: 'The display bid price of the new quote.  NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
       - id: bid_size
         type: u4
         doc: 'The bid contracts of the new quote'
@@ -299,7 +299,7 @@ types:
         doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
       - id: match_number
         type: u4
-        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day.  The match number is also referenced in the Trade Break Message'
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
   single_side_executed_with_price_message:
     seq:
       - id: nanoseconds
@@ -313,7 +313,7 @@ types:
         doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
       - id: match_number
         type: u4
-        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day.  The match number is also referenced in the Trade Break Message'
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
       - id: printable
         type: u1
         enum: printable
@@ -482,7 +482,7 @@ types:
         doc: 'The ask reference number delta associated with the new quote'
       - id: bid
         type: u4
-        doc: 'The display bid price of the new quote.  NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
+        doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits'
       - id: bid_size
         type: u4
         doc: 'The bid contracts of the new quote'
@@ -530,7 +530,7 @@ types:
         doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
       - id: match_number
         type: u4
-        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day.  The match number is also referenced in the Trade Break Message'
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
       - id: price
         type: s4
         doc: 'NOTE: When converted to a decimal format, this price is in fixed point format with 6 whole number places followed by 4 decimal digits. The display price of the new order being added to the book. Implied decimal with scale 1e-4'
@@ -550,7 +550,7 @@ types:
         doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
       - id: match_number
         type: u4
-        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day.  The match number is also referenced in the Trade Break Message'
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
       - id: cross_type
         type: u1
         enum: cross_type
@@ -571,7 +571,7 @@ types:
         doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
       - id: match_number
         type: u4
-        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day.  The match number is also referenced in the Trade Break Message'
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day. The match number is also referenced in the Trade Break Message'
   auction_notification_message:
     seq:
       - id: nanoseconds
@@ -614,7 +614,7 @@ enums:
       doc: 'The system event message type is used to signal a market or data feed handler event.'
     0x53:
       id: 'system_event_message'
-      doc: 'The system event message type is used to signal a market or data feed handler event.  The format is as follows:'
+      doc: 'The system event message type is used to signal a market or data feed handler event. The format is as follows:'
     0x4c:
       id: 'base_reference_message'
       doc: 'This message indicates the base reference number to which all the order/quote/trade reference number deltas must be added to obtain the absolute order/quote PHLX reference number.'
@@ -626,7 +626,7 @@ enums:
       doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the PHLX ® Options Market.'
     0x4f:
       id: 'security_open_message'
-      doc: 'The options system plans to disseminate the Option Open Message for each option as soon as the opening is completed.  Upon receipt of the open state message, firms should be advised that the option denoted in the message is now available for auto execution within the PHLX ® Options Market System.  Upon receipt of the closed state message, firms should be advised that the option is no longer eligible for auto-execution within the Options Market System.'
+      doc: 'The options system plans to disseminate the Option Open Message for each option as soon as the opening is completed. Upon receipt of the open state message, firms should be advised that the option denoted in the message is now available for auto execution within the PHLX ® Options Market System. Upon receipt of the closed state message, firms should be advised that the option is no longer eligible for auto-execution within the Options Market System.'
     0x61:
       id: 'add_order_message_short_form'
       doc: 'An Add Order Message indicates that a new order has been accepted by the options system and was added to the displayable book. The message includes a day-unique Order Reference Number used by options system to track the order.'

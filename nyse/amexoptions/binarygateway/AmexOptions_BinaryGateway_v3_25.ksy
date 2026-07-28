@@ -1901,8 +1901,7 @@ enums:
       doc: 'Request to update gateway session configuration settings'
     0x0282:
       id: 'sequenced_filler_message'
-      doc: 'This message type is used to increase the next expected sequence number of a TG stream by 1 on a given gateway
-        session.'
+      doc: 'This message type is used to increase the next expected sequence number of a TG stream by 1 on a given gateway session.'
     0x0248:
       id: 'new_order_message'
       doc: 'Used to submit new single-leg or complex option orders and cancel/replace requests'

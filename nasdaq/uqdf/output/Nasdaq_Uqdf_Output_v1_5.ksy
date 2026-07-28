@@ -89,10 +89,10 @@ types:
         doc: 'Bid Price Short. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
-        doc: 'Bid Size  short'
+        doc: 'Bid Size short'
       - id: ask_price_short
         type: u2
-        doc: 'Ask Price  short. Implied decimal with scale 1e-2'
+        doc: 'Ask Price short. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'Ask Size short'
@@ -641,7 +641,7 @@ enums:
       doc: 'Nasdaq'
     0x49:
       id: 'ise'
-      doc: 'Nasdaq  ISE'
+      doc: 'Nasdaq ISE'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'

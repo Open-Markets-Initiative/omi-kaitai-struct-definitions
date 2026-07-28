@@ -180,13 +180,13 @@ types:
         enum: quote_condition
       - id: bid_price
         type: s2
-        doc: 'Best bid price.  NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
+        doc: 'Best bid price. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
       - id: ask_price
         type: s2
-        doc: 'Best ask price.  NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
+        doc: 'Best ask price. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size
         type: u2
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'

@@ -271,9 +271,7 @@ types:
         doc: 'OrderPriorityUpdateAckSubscription enum'
       - id: bold_designation
         type: u1
-        doc: 'NYSE American Options - Session level default for the BOLD setting on all Order and
-            Cancel/Replace requests entered on the session. For all other markets - this field will be treated as
-            filler. Any value specified will not be processed'
+        doc: 'NYSE American Options - Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session. For all other markets - this field will be treated as filler. Any value specified will not be processed'
       - id: reserved_49
         size: 49
         doc: 'Bytes reserved for future use'
@@ -298,15 +296,13 @@ types:
         doc: 'Customer defined – identifies specific entity/trading desk of customer firm'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: orig_cl_ord_id
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
       - id: bitfield_order_instructions
         type: bitfield_order_instructions
-        doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes,
-        and modifiers'
+        doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes, and modifiers'
       - id: price
         type: s8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
@@ -320,9 +316,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
         doc: 'OptionalOrderAddOn'
@@ -337,9 +331,7 @@ types:
       - id: sub_id_indicator
         type: b1
         enum: sub_id_indicator
-        doc: 'When populating both MPSubID and SelfTradeType on an order, allows the firm to specify whether
-            the MPSubID should be used or ignored for Self-Trade Prevention (STP) evaluation. See “Self-Trade
-            Prevention” section of this spec for more details'
+        doc: 'When populating both MPSubID and SelfTradeType on an order, allows the firm to specify whether the MPSubID should be used or ignored for Self-Trade Prevention (STP) evaluation. See “Self-Trade Prevention” section of this spec for more details'
       - id: special_ord_type
         type: b4
         enum: special_ord_type
@@ -429,8 +421,7 @@ types:
         doc: 'Reserved for future use'
       - id: offset_price
         type: s8
-        doc: '0 = No OffsetPrice. Otherwise, value must be: - For Market Peg order - equal to or multiple of 0.01 - For Retail Price Improvement order
-            (optional modifier on NYSE only) - equal to or multiple of 0.001. Implied decimal with scale 1e-8'
+        doc: '0 = No OffsetPrice. Otherwise, value must be: - For Market Peg order - equal to or multiple of 0.01 - For Retail Price Improvement order (optional modifier on NYSE only) - equal to or multiple of 0.001. Implied decimal with scale 1e-8'
       - id: effective_time
         type: u8
         doc: 'Reserved for future use. Nanoseconds since Unix epoch'
@@ -466,8 +457,7 @@ types:
         doc: 'Firm Identifier – MPID'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: orig_cl_ord_id
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
@@ -483,8 +473,7 @@ types:
         doc: 'Firm Identifier – MPID'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: orig_cl_ord_id
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
@@ -513,8 +502,7 @@ types:
         doc: 'This value represents the integer representation of a Market Maker, LMM, SLP, SLMM or DMM, agreed upon between the firm and the Exchange'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: deliver_to_comp_id
         type: str
         size: 5
@@ -546,8 +534,7 @@ types:
         doc: 'Identification number assigned to the security'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: manual_action_id
         type: manual_action_id
         doc: 'ManualActionID'
@@ -573,9 +560,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: manual_response_type
         type: u1
         enum: manual_response_type
@@ -624,8 +609,7 @@ types:
         doc: 'Reserved for future use. Risk Entity – Clearing Number associated with the specified MPID. Populate if applicable'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: risk_user_crd
         type: u4
         doc: 'Risk User – CRD of the firm that owns the risk control represented by this message'
@@ -704,8 +688,7 @@ types:
         doc: 'Reserved for future use. Risk Entity – Clearing Number associated with the specified MPID. Populate if applicable'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: risk_user_crd
         type: u4
         doc: 'Risk User – CRD of the firm that owns the risk control represented by this message'
@@ -869,12 +852,10 @@ types:
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: quoting_mpv
         type: s8
-        doc: 'Numeric value of the Quoting Minimum Price Variation for the MPVLevel and Price defined in this
-            message. Implied decimal with scale 1e-8'
+        doc: 'Numeric value of the Quoting Minimum Price Variation for the MPVLevel and Price defined in this message. Implied decimal with scale 1e-8'
       - id: trading_mpv
         type: s8
-        doc: 'Numeric value of the Trading Minimum Price Variation for the MPVLevel and Price defined in this
-            message. Implied decimal with scale 1e-8'
+        doc: 'Numeric value of the Trading Minimum Price Variation for the MPVLevel and Price defined in this message. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
         doc: 'Identification number assigned to the MPV class'
@@ -984,9 +965,7 @@ types:
         doc: 'Acknowledgement status of the session configuration'
       - id: bold_designation
         type: u1
-        doc: 'NYSE American Options - Session level default for the BOLD setting on all Order and
-            Cancel/Replace requests entered on the session. For all other markets - this field will be treated as
-            filler. Any value specified will not be processed'
+        doc: 'NYSE American Options - Session level default for the BOLD setting on all Order and Cancel/Replace requests entered on the session. For all other markets - this field will be treated as filler. Any value specified will not be processed'
       - id: reserved_49
         size: 49
         doc: 'Bytes reserved for future use'
@@ -1014,15 +993,13 @@ types:
         doc: 'Customer defined – identifies specific entity/trading desk of customer firm'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: orig_cl_ord_id
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
       - id: bitfield_order_instructions
         type: bitfield_order_instructions
-        doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes,
-        and modifiers'
+        doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes, and modifiers'
       - id: price
         type: s8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
@@ -1065,9 +1042,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
         doc: 'OptionalOrderAddOn'
@@ -1133,9 +1108,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
   order_priority_update_acknowledgment_message:
     seq:
       - id: transact_time
@@ -1154,8 +1127,7 @@ types:
         doc: 'Unique order identifier assigned by the Exchange'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: working_price
         type: s8
         doc: 'Working price in the range 0.000001 to 999999.999999. Implied decimal with scale 1e-8'
@@ -1179,9 +1151,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
   execution_report_message:
     seq:
       - id: transact_time
@@ -1200,8 +1170,7 @@ types:
         doc: 'Unique order identifier assigned by the Exchange'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: deal_id
         type: u8
         doc: 'Unique identifier of a transaction assigned by the Exchange'
@@ -1242,9 +1211,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
         doc: 'OptionalOrderAddOn'
@@ -1269,8 +1236,7 @@ types:
         doc: 'Unique order identifier assigned by the Exchange'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: ref_seq_msg_id
         type: ref_seq_msg_id
         doc: 'Pillar reference sequenced message identifier'
@@ -1291,9 +1257,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
   ref_seq_msg_id:
     seq:
       - id: stream_id
@@ -1317,8 +1281,7 @@ types:
         doc: 'Firm Identifier – MPID'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: reason_code
         type: u2
         enum: reason_code
@@ -1331,9 +1294,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma,
-            semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double
-            quotation mark'
+        doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: reserved_4
         size: 4
         doc: 'Bytes reserved for future use'
@@ -1501,8 +1462,7 @@ types:
         doc: 'Reserved for future use. Risk Entity – Clearing Number associated with the specified MPID. Populate if applicable'
       - id: cl_ord_id
         type: u8
-        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by
-            the firm'
+        doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: risk_ack_type
         type: u1
         enum: risk_ack_type
@@ -1770,12 +1730,10 @@ enums:
   seq_msg_type:
     0x0220:
       id: 'session_configuration_request_message'
-      doc: 'This message may be sent by the firm to change their configuration settings for a given gateway session, as defined by its
-        Username). If accepted by the gateway, the updated settings will be applied on a go forward basis only.'
+      doc: 'This message may be sent by the firm to change their configuration settings for a given gateway session, as defined by its Username). If accepted by the gateway, the updated settings will be applied on a go forward basis only.'
     0x0282:
       id: 'sequenced_filler_message'
-      doc: 'This message type is used to increase the next expected sequence number of a TG stream by 1 on a given gateway
-        session.'
+      doc: 'This message type is used to increase the next expected sequence number of a TG stream by 1 on a given gateway session.'
     0x0240:
       id: 'new_order_single_and_cancel_replace_request_message'
       doc: 'This message type is used as both a New Order message or a Cancel/Replacement message'
@@ -1793,12 +1751,10 @@ enums:
       doc: 'This message is sent by a NYSE Designated Market Maker to designate a gateway session to receive auction price data, auction requests, manual action requests, and echo messages of DMM manual order activity for a specified symbol.'
     0x0343:
       id: 'tg_begin_message'
-      doc: 'This is used to define the beginning boundary of a multi-message originating from the firm, which is a sequence of
-        messages that is intended to be read and processed atomically by Pillar.'
+      doc: 'This is used to define the beginning boundary of a multi-message originating from the firm, which is a sequence of messages that is intended to be read and processed atomically by Pillar.'
     0x0344:
       id: 'tg_end_message'
-      doc: 'This is used to define the ending boundary of a multi-message, which is a set of messages originating from the firm that is
-        intended to be read and processed atomically by Pillar.'
+      doc: 'This is used to define the ending boundary of a multi-message, which is a set of messages originating from the firm that is intended to be read and processed atomically by Pillar.'
     0x0354:
       id: 'manual_action_response_message'
       doc: 'Response message used by a DMM to approve or reject a Manual Action Request. Depending on the ManualResponseType, this message may result in order creation or rejection with an optional reject reason.'

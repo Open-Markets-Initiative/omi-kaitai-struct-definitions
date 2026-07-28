@@ -2026,7 +2026,7 @@ types:
         type: str
         size: 35
         encoding: ASCII
-        doc: 'Long Name of the Underlying Instrument. For the instruments listed on Globex this value will be the same as of that contained in Security Definition Tag  2714-FinancialInstrumentFullName'
+        doc: 'Long Name of the Underlying Instrument. For the instruments listed on Globex this value will be the same as of that contained in Security Definition Tag 2714-FinancialInstrumentFullName'
       - id: underlying_security_type
         type: str
         size: 6

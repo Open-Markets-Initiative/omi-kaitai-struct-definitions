@@ -801,7 +801,7 @@ enums:
       doc: 'Nasdaq'
     0x49:
       id: 'ise'
-      doc: 'Nasdaq  ISE'
+      doc: 'Nasdaq ISE'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'

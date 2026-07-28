@@ -87,10 +87,10 @@ types:
         doc: 'Sequence number of messages for the complex symbol'
       - id: ask_price
         type: s4
-        doc: 'Best Ask price*.  Should be used with the Price Scale Code from the Underlying Index Mapping message'
+        doc: 'Best Ask price*. Should be used with the Price Scale Code from the Underlying Index Mapping message'
       - id: bid_price
         type: s4
-        doc: 'Best Bid price*.  Should be used with the Price Scale Code from the Underlying Index Mapping message'
+        doc: 'Best Bid price*. Should be used with the Price Scale Code from the Underlying Index Mapping message'
       - id: ask_volume
         type: u2
         doc: 'Total quantity available at the above Ask price'
@@ -243,10 +243,10 @@ types:
         doc: 'Sequence number of messages for the complex symbol'
       - id: ask_price
         type: s4
-        doc: 'Best Ask price*.  Should be used with the Price Scale Code from the Underlying Index Mapping message'
+        doc: 'Best Ask price*. Should be used with the Price Scale Code from the Underlying Index Mapping message'
       - id: bid_price
         type: s4
-        doc: 'Best Bid price*.  Should be used with the Price Scale Code from the Underlying Index Mapping message'
+        doc: 'Best Bid price*. Should be used with the Price Scale Code from the Underlying Index Mapping message'
       - id: ask_volume
         type: u2
         doc: 'Total quantity available at the above Ask price'

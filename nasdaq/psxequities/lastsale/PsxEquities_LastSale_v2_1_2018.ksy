@@ -432,7 +432,7 @@ types:
       - id: ipo_flag
         type: u1
         enum: ipo_flag
-        doc: 'Indicates if the Nasdaq security is set up for IPO release.  This field is intended to help Nasdaq market participant firms comply with FINRA Rule 5131(b)'
+        doc: 'Indicates if the Nasdaq security is set up for IPO release. This field is intended to help Nasdaq market participant firms comply with FINRA Rule 5131(b)'
       - id: luld_reference_price_tier
         type: u1
         enum: luld_reference_price_tier

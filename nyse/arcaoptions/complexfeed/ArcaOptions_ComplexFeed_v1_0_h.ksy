@@ -213,20 +213,17 @@ types:
         doc: 'Reserved for future use'
       - id: price_1
         type: s4
-        doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security
-            Status. Implied decimal with scale 1e-8'
+        doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security Status. Implied decimal with scale 1e-8'
       - id: price_2
         type: s4
         doc: 'Default value is 0. Indication High Price if securityStatus = G or I. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
-        doc: 'Only populated when securityStatus = A and this security is listed on this exchange. Otherwise
-            defaulted to space (0x20)'
+        doc: 'Only populated when securityStatus = A and this security is listed on this exchange. Otherwise defaulted to space (0x20)'
       - id: ssr_triggering_volume
         type: u4
-        doc: 'Default value is 0. Only populated when securityStatus = A and this security is listed on this
-            exchange'
+        doc: 'Default value is 0. Only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
         type: u4
         doc: 'Default value is 0. Format: HHMMSSmmm. SSR Trigger Time if securityStatus = A'
@@ -392,12 +389,10 @@ types:
         doc: 'The total number of refresh packets you should expect in the update'
       - id: last_seq_num
         type: u4
-        doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the
-            order book as of this sequence number'
+        doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the order book as of this sequence number'
       - id: last_symbol_seq_num
         type: u4
-        doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state as of this
-            symbol sequence number'
+        doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state as of this symbol sequence number'
   refresh_request_message:
     seq:
       - id: symbol_index
@@ -648,28 +643,22 @@ enums:
       doc: 'Sent at the start of every second during periods of active data publication.'
     3:
       id: 'symbol_index_mapping_message'
-      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence.
-        Provides referential data for a single specified symbol or underlying symbol.'
+      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence. Provides referential data for a single specified symbol or underlying symbol.'
     32:
       id: 'symbol_clear_message'
-      doc: 'In case of a failure and recovery, the publisher may send a full state refresh for every symbol or
-        series affected, preceded by a Symbol Clear message.'
+      doc: 'In case of a failure and recovery, the publisher may send a full state refresh for every symbol or series affected, preceded by a Symbol Clear message.'
     34:
       id: 'security_status_message'
-      doc: 'Informs clients of changes in the status of a specific security or underlying symbol, such as Trading
-        Halts, Short Sale Restriction state changes, etc.'
+      doc: 'Informs clients of changes in the status of a specific security or underlying symbol, such as Trading Halts, Short Sale Restriction state changes, etc.'
     50:
       id: 'outright_series_index_mapping_message'
-      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence.
-        Provides referential data for a single specified options outright series.'
+      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence. Provides referential data for a single specified options outright series.'
     51:
       id: 'options_status_message'
-      doc: 'Informs clients of changes in the status of a specific option outright series and complex series,
-        such as Trading Halts.'
+      doc: 'Informs clients of changes in the status of a specific option outright series and complex series, such as Trading Halts.'
     60:
       id: 'complex_series_index_mapping_message'
-      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence.
-        Provides referential data for a single specified options complex series.'
+      doc: 'Published over the real-time data channels at system startup or in the context of a refresh sequence. Provides referential data for a single specified options complex series.'
     10:
       id: 'retransmission_request_message'
       doc: 'Sent by clients via TCP/IP to request retransmission of missed messages.'
@@ -678,24 +667,19 @@ enums:
       doc: 'The first message in each packet of refresh messages published over the Refresh multicast channels.'
     15:
       id: 'refresh_request_message'
-      doc: 'Sent by clients via TCP/IP to request a refresh of the state of one or all symbols in a specific
-        channel.'
+      doc: 'Sent by clients via TCP/IP to request a refresh of the state of one or all symbols in a specific channel.'
     13:
       id: 'symbol_index_mapping_request_message'
-      doc: 'Sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a
-        specified channel.'
+      doc: 'Sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a specified channel.'
     31:
       id: 'message_unavailable_message'
-      doc: 'Sent over the Retransmission multicast channels to inform clients of unavailability of a range of
-        messages.'
+      doc: 'Sent over the Retransmission multicast channels to inform clients of unavailability of a range of messages.'
     11:
       id: 'request_response_message'
-      doc: 'Sent immediately via TCP/IP in response to the client''s request for retransmission, refresh or Symbol
-        Mapping messages.'
+      doc: 'Sent immediately via TCP/IP in response to the client''s request for retransmission, refresh or Symbol Mapping messages.'
     12:
       id: 'heartbeat_response_message'
-      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a
-        Heartbeat Response message within 5 seconds.'
+      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds.'
     340:
       id: 'options_quote_message'
       doc: 'Two-sided message providing best bid and offer limits of orders on complex symbols with aggregated volumes at each limit.'
