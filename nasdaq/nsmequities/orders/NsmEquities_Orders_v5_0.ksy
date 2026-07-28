@@ -1117,22 +1117,22 @@ enums:
     0x0009:
       id: 'invalid_side'
       doc: 'Invalid Side'
-    0x000A:
+    0x000a:
       id: 'processing_error'
       doc: 'Processing Error'
-    0x000B:
+    0x000b:
       id: 'cancel_pending'
       doc: 'Cancel Pending'
-    0x000C:
+    0x000c:
       id: 'firm_not_authorized'
       doc: 'Firm Not Authorized'
-    0x000D:
+    0x000d:
       id: 'invalid_min_quantity'
       doc: 'Invalid Min Quantity'
-    0x000E:
+    0x000e:
       id: 'no_closing_reference_price'
       doc: 'No Closing Reference Price'
-    0x000F:
+    0x000f:
       id: 'other'
       doc: 'Other'
     0x0010:
@@ -1165,22 +1165,22 @@ enums:
     0x0019:
       id: 'late_loc_too_aggressive'
       doc: 'Late Loc Too Aggressive'
-    0x001A:
+    0x001a:
       id: 'retail_not_allowed'
       doc: 'Retail Not Allowed'
-    0x001B:
+    0x001b:
       id: 'invalid_midpoint_post_only_price'
       doc: 'Invalid Midpoint Post Only Price'
-    0x001C:
+    0x001c:
       id: 'invalid_destination'
       doc: 'Invalid Destination'
-    0x001D:
+    0x001d:
       id: 'invalid_price'
       doc: 'Invalid Price'
-    0x001E:
+    0x001e:
       id: 'shares_exceed_threshold'
       doc: 'Shares Exceed Threshold'
-    0x001F:
+    0x001f:
       id: 'exceeds_maximum_allowed_notional_value'
       doc: 'Exceeds Maximum Allowed Notional Value'
   order_restated_reason:
