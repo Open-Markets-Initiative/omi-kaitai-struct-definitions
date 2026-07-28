@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 99 | 130,628 |
+| 165 | 499,759 |
 
 ## Testing
 
@@ -40,7 +40,7 @@ For a list of Omi Hft projects: [Omi Projects](https://github.com/Open-Markets-I
 For details of Omi rules and regulations: [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory")
 ## Protocols
 
-Definitions by Organization: [Cme][Cme.Directory], [Iex][Iex.Directory], [Nasdaq][Nasdaq.Directory]
+Definitions by Organization: [Cme][Cme.Directory], [Eurex][Eurex.Directory], [Iex][Iex.Directory], [Nasdaq][Nasdaq.Directory]
 
 Definitions by Exchange/Ats/Sip: [CmeFutures][CmeFutures.Directory], [GemxOptions][GemxOptions.Directory], [IexEquities][IexEquities.Directory], [IexOptions][IexOptions.Directory], [IseOptions][IseOptions.Directory], [MrxOptions][MrxOptions.Directory], [NomOptions][NomOptions.Directory], [NsmEquities][NsmEquities.Directory], [NtxEquities][NtxEquities.Directory], [NtxOptions][NtxOptions.Directory], [PhlxOptions][PhlxOptions.Directory], [PsxEquities][PsxEquities.Directory], [Uqdf][Uqdf.Directory], [Utdf][Utdf.Directory], [Utp][Utp.Directory]
 
@@ -61,6 +61,7 @@ Enjoy.
 [Omi.Encoding.Definitions]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/ReadMe.md "Encoding Directory"
 
 [Omi.Encoding.Sbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Sbe.md "Sbe Encoding"
+[Omi.Encoding.Fbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Fbe.md "Fbe Encoding"
 [Omi.Encoding.IexTp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/IexTp.md "IexTp Encoding"
 [Omi.Encoding.Itch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Itch.md "Itch Encoding"
 [Omi.Encoding.Ouch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Ouch.md "Ouch Encoding"
@@ -73,6 +74,10 @@ Enjoy.
 [Cme.CmeFutures.EbsSpectrum]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/EbsSpectrum.md "Ebs Spectrum Market Data"
 [Cme.CmeFutures.BrokerTecUst]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/BrokerTecUst.md "BrokerTec Us Treasuries"
 [Cme.CmeFutures.iLink3]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/CmeFutures/iLink3.md "iLink 3"
+[Eurex.T7.Eobi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Eobi.md "Enhanced Order Book Interface"
+[Eurex.T7.Eti]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Eti.md "Enhanced Trading Interface"
+[Eurex.T7.Xti]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Xti.md "Cash Enhanced Trading Interface"
+[Eurex.T7.Edci]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Edci.md "Extended Derivatives Clearing Interface"
 [Iex.IexEquities.Tops]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/Tops.md "Top Of Book"
 [Iex.IexEquities.Deep]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/Deep.md "Depth Of Book"
 [Iex.IexEquities.DeepPlus]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Iex/Protocols/IexEquities/DeepPlus.md "DeepPlus"
@@ -132,6 +137,7 @@ Enjoy.
 [Nasdaq.Utp.Snapshot]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nasdaq/Protocols/Utp/Snapshot.md "Snapshot"
 
 [Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Group"
+[Eurex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/eurex "Eurex Exchange"
 [Iex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex "Investors Exchange"
 [Nasdaq.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq "National Association of Securities Dealers Automated Quotations (Nasdaq)"
 

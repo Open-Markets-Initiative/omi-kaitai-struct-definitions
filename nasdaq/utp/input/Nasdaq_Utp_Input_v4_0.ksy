@@ -1240,6 +1240,7 @@ types:
         doc: 'Text Length'
       - id: text
         type: str
+        size-eos: true
         encoding: ASCII
         pad-right: 0x20
         doc: 'Text body (length contained in textLen, max 300)'
@@ -1606,6 +1607,7 @@ types:
         doc: 'Text Length'
       - id: text
         type: str
+        size-eos: true
         encoding: ASCII
         pad-right: 0x20
         doc: 'Text body (length contained in textLen, max 300)'
@@ -1836,6 +1838,7 @@ types:
     seq:
       - id: text
         type: str
+        size-eos: true
         encoding: ASCII
         pad-right: 0x20
         doc: 'Text body (length contained in textLen, max 300)'

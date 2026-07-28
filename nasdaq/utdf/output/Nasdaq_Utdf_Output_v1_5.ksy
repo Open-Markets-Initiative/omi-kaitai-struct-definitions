@@ -69,7 +69,7 @@ types:
         enum: trade_message_type
         doc: 'Trade Messages'
       - id: trade_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: trade_message_type
           cases:
@@ -424,7 +424,7 @@ types:
         enum: administrative_message_type
         doc: 'Administrative Messages'
       - id: administrative_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: administrative_message_type
           cases:
@@ -681,7 +681,7 @@ types:
         enum: volume_message_type
         doc: 'Volume Messages'
       - id: volume_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: volume_message_type
           cases:
@@ -717,7 +717,7 @@ types:
         enum: control_message_type
         doc: 'Control Messages'
       - id: control_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: control_message_type
           cases:

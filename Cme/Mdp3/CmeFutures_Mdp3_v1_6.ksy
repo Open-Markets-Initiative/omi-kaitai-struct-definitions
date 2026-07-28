@@ -327,7 +327,7 @@ types:
         doc: 'WW'
   settl_price_type:
     seq:
-      - id: final_
+      - id: final_field
         type: b1
         doc: 'Final'
       - id: actual

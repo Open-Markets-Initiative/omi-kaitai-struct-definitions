@@ -77,7 +77,7 @@ types:
         enum: sequenced_message_type
         doc: 'Value identifying sequenced message type'
       - id: sequenced_message
-        size: _root.soup_bin_tcp_packet.packet_header.packet_length - 2
+        size: _parent.packet_header.packet_length - 2
         type:
           switch-on: sequenced_message_type
           cases:
@@ -180,9 +180,6 @@ types:
         doc: 'Apendage Id'
       - id: order_accepted_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: order_accepted_optional_field
-          cases:
   replaced_message:
     seq:
       - id: timestamp
@@ -261,9 +258,6 @@ types:
         doc: 'Apendage Id'
       - id: replaced_message_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: replaced_message_optional_field
-          cases:
   canceled_message:
     seq:
       - id: timestamp
@@ -345,9 +339,6 @@ types:
         doc: 'Apendage Id'
       - id: order_executed_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: order_executed_optional_field
-          cases:
   broken_trade_message:
     seq:
       - id: timestamp
@@ -497,9 +488,6 @@ types:
         doc: 'Apendage Id'
       - id: order_restated_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: order_restated_optional_field
-          cases:
   account_query_response_message:
     seq:
       - id: timestamp
@@ -537,7 +525,7 @@ types:
         enum: unsequenced_message_type
         doc: 'Value identifying unsequenced message type'
       - id: unsequenced_message
-        size: _root.soup_bin_tcp_packet.packet_header.packet_length - 2
+        size: _parent.packet_header.packet_length - 2
         type:
           switch-on: unsequenced_message_type
           cases:
@@ -610,9 +598,6 @@ types:
         doc: 'Apendage Id'
       - id: enter_order_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: enter_order_optional_field
-          cases:
   replace_order_message:
     seq:
       - id: orig_user_ref_num
@@ -663,9 +648,6 @@ types:
         doc: 'Apendage Id'
       - id: replace_order_optional_value
         size: optional_field_length + 1 - 2
-        type:
-          switch-on: replace_order_optional_field
-          cases:
   cancel_order_message:
     seq:
       - id: user_ref_num

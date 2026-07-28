@@ -310,7 +310,7 @@ types:
         doc: 'exponent'
   settl_price_type:
     seq:
-      - id: final_
+      - id: final_field
         type: b1
         doc: 'Final'
       - id: actual
@@ -1132,8 +1132,8 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Type of yield'
-      - id: yield_
-        type: yield_
+      - id: yield_field
+        type: yield_field
         doc: 'Number of entries in Market Data message'
       - id: net_chg_prev_day
         type: net_chg_prev_day
@@ -1167,7 +1167,7 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
-  yield_:
+  yield_field:
     seq:
       - id: mantissa
         type: s8

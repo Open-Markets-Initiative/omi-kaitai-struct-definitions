@@ -1134,8 +1134,8 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Type of yield'
-      - id: yield_
-        type: yield_
+      - id: yield_field
+        type: yield_field
         doc: 'Number of entries in Market Data message'
       - id: net_chg_prev_day
         type: net_chg_prev_day
@@ -1169,7 +1169,7 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
-  yield_:
+  yield_field:
     seq:
       - id: mantissa
         type: s8

@@ -68,7 +68,7 @@ types:
         enum: quote_message_type
         doc: 'Quote Messages'
       - id: quote_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: quote_message_type
           cases:
@@ -309,7 +309,7 @@ types:
         enum: administrative_message_type
         doc: 'Administrative Messages'
       - id: administrative_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: administrative_message_type
           cases:
@@ -568,7 +568,7 @@ types:
         enum: control_message_type
         doc: 'Control Messages'
       - id: control_payload
-        size: _root.message.message_header.message_length - 2 - 1
+        size: _parent.message_header.message_length - 2 - 1
         type:
           switch-on: control_message_type
           cases:

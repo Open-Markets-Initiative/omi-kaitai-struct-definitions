@@ -77,7 +77,7 @@ types:
         enum: sequenced_message_type
         doc: 'Value identifying sequenced message type'
       - id: sequenced_message
-        size: _root.soup_bin_tcp_packet.packet_header.packet_length - 2
+        size: _parent.packet_header.packet_length - 2
         type:
           switch-on: sequenced_message_type
           cases:
@@ -423,7 +423,7 @@ types:
         enum: unsequenced_message_type
         doc: 'Value identifying unsequenced message type'
       - id: unsequenced_message
-        size: _root.soup_bin_tcp_packet.packet_header.packet_length - 2
+        size: _parent.packet_header.packet_length - 2
         type:
           switch-on: unsequenced_message_type
           cases:
