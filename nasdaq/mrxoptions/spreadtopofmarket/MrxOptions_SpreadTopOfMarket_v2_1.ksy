@@ -1,0 +1,608 @@
+# ---------------------------------------------------------------------
+# Omi Kaitai Struct Definition: Nasdaq MrxOptions SpreadTopOfMarket v2.1
+#
+# Please see end of file for rules and regulations
+# ---------------------------------------------------------------------
+
+meta:
+  id: mrxoptions_spreadtopofmarket_v2_1
+  title: Nasdaq MrxOptions SpreadTopOfMarket Itch v2.1
+  license: GPL-3.0
+  endian: be
+
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq MRX Phlx Options Spread Top Of Market Itch v2.1'
+doc-ref: https://data.nasdaq.com/market-data-specifications
+
+seq:
+  - id: soup_bin_tcp_packet
+    type: soup_bin_tcp_packet_struct
+    repeat: eos
+    doc: 'Soup Bin Tcp Packet'
+
+types:
+  soup_bin_tcp_packet_struct:
+    seq:
+      - id: tcp_packet_header
+        type: tcp_packet_header
+      - id: tcp_payload
+        size: tcp_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: tcp_packet_header.packet_type
+          cases:
+            'packet_type::debug_packet': debug_packet
+            'packet_type::login_accepted_packet': login_accepted_packet
+            'packet_type::login_rejected_packet': login_rejected_packet
+            'packet_type::sequenced_data_packet': sequenced_data_packet
+            'packet_type::login_request_packet': login_request_packet
+            'packet_type::unsequenced_data_packet': unsequenced_data_packet
+  tcp_packet_header:
+    seq:
+      - id: packet_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: packet_type
+        type: u1
+        enum: packet_type
+        doc: 'Code identifying this packet type'
+  debug_packet:
+    seq:
+      - id: text
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Free form human readable text'
+  login_accepted_packet:
+    seq:
+      - id: accepted_session
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'The session ID of the session that is now logged into. Left padded with spaces'
+      - id: accepted_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The sequence number in ASCII of the next Sequenced Message to be sent. Left padded with spaces'
+  login_rejected_packet:
+    seq:
+      - id: reject_reason_code
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Login Reject Codes'
+  sequenced_data_packet:
+    seq:
+      - id: sequenced_message_type
+        type: u1
+        enum: sequenced_message_type
+        doc: 'Value identifying sequenced message type'
+      - id: sequenced_message
+        size: _parent.tcp_packet_header.packet_length - 2
+        type:
+          switch-on: sequenced_message_type
+          cases:
+            'sequenced_message_type::system_event_message': system_event_message
+            'sequenced_message_type::complex_strategy_directory_message': complex_strategy_directory_message
+            'sequenced_message_type::strategy_trading_action_message': strategy_trading_action_message
+            'sequenced_message_type::strategy_best_bid_and_ask_update_message': strategy_best_bid_and_ask_update_message
+            'sequenced_message_type::strategy_best_bid_update_message': strategy_best_bid_update_message
+            'sequenced_message_type::strategy_best_ask_update_message': strategy_best_ask_update_message
+            'sequenced_message_type::end_of_replay_sequence_message': end_of_replay_sequence_message
+  system_event_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: event_code
+        type: u1
+        enum: event_code
+        doc: 'Refer to System Event Codes below'
+  complex_strategy_directory_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: strategy_type
+        type: u1
+        enum: strategy_type
+        doc: 'Strategy Type'
+      - id: underlying_symbol
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+      - id: number_of_legs
+        type: u1
+        doc: 'Number of legs in the strategy'
+      - id: leg_information
+        type: leg_information
+        repeat: expr
+        repeat-expr: number_of_legs
+        doc: 'Leg information'
+  leg_information:
+    seq:
+      - id: option_id
+        type: u4
+        doc: 'Option ID for this leg, valid for the trading day'
+      - id: security_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the option root symbol (security symbol)'
+      - id: expiration_year
+        type: u1
+        doc: 'Last two digits of the year of the option expiration'
+      - id: expiration_month
+        type: u1
+        doc: 'Expiration Month of the option (1-12)'
+      - id: expiration_day
+        type: u1
+        doc: 'Day of the Month of expiration (1-31)'
+      - id: explicit_strike_price
+        type: u4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
+      - id: option_type
+        type: u1
+        enum: option_type
+        doc: 'Option Type'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Indicates the side of the leg'
+      - id: leg_ratio
+        type: u4
+        doc: 'Leg Ratio'
+  strategy_trading_action_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: current_trading_state
+        type: u1
+        enum: current_trading_state
+        doc: 'Current Trading State'
+  strategy_best_bid_and_ask_update_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: quote_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Quote Condition'
+      - id: bid_market_size
+        type: u4
+        doc: 'The aggregate market size on Bid side'
+      - id: bid_price
+        type: u4
+        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits'
+      - id: bid_size
+        type: u4
+        doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
+      - id: bid_cust_size
+        type: u4
+        doc: 'Customer quantity on the bid side'
+      - id: bid_pro_cust_size
+        type: u4
+        doc: 'Customer professional quantity on the bid side'
+      - id: bid_dntt_size
+        type: u4
+        doc: 'Aggregated Bid DNTT (Do not Trade Through) Limit Size'
+      - id: bid_dntt_market_size
+        type: u4
+        doc: 'The aggregated DNTT (Do Not Trade Through) Market Size on Bid Size'
+      - id: ask_market_size
+        type: u4
+        doc: 'Aggregate market quantity on Ask side'
+      - id: ask_price
+        type: u4
+        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits'
+      - id: ask_size
+        type: u4
+        doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
+      - id: ask_cust_size
+        type: u4
+        doc: 'Customer quantity on the ask side'
+      - id: ask_pro_cust_size
+        type: u4
+        doc: 'Customer professional quantity on the ask side'
+      - id: ask_dntt_size
+        type: u4
+        doc: 'Aggregated Ask DNTT (Do not Trade Through) Limit Size'
+      - id: ask_dntt_market_size
+        type: u4
+        doc: 'The aggregated DNTT (Do Not Trade Through) Market Size on Ask Size'
+  strategy_best_bid_update_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: quote_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Quote Condition'
+      - id: market_size
+        type: u4
+        doc: 'The aggregate market size on Bid or Ask side'
+      - id: price
+        type: u4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
+      - id: size
+        type: u4
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size
+        type: u4
+        doc: 'Customer quantity on the bid or ask side'
+      - id: pro_cust_size
+        type: u4
+        doc: 'Customer professional quantity on the bid or ask side'
+      - id: dntt_size
+        type: u4
+        doc: 'Aggregated DNTT (Do Not Trade Through) Limit Size'
+      - id: dntt_market_size
+        type: u4
+        doc: 'The aggregated DNTT (Do Not Trade Through) Market Size on Bid or Ask Size'
+  strategy_best_ask_update_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: quote_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Quote Condition'
+      - id: market_size
+        type: u4
+        doc: 'The aggregate market size on Bid or Ask side'
+      - id: price
+        type: u4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
+      - id: size
+        type: u4
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size
+        type: u4
+        doc: 'Customer quantity on the bid or ask side'
+      - id: pro_cust_size
+        type: u4
+        doc: 'Customer professional quantity on the bid or ask side'
+      - id: dntt_size
+        type: u4
+        doc: 'Aggregated DNTT (Do Not Trade Through) Limit Size'
+      - id: dntt_market_size
+        type: u4
+        doc: 'The aggregated DNTT (Do Not Trade Through) Market Size on Bid or Ask Size'
+  end_of_replay_sequence_message:
+    seq:
+      - id: end_of_replay_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Sequence number once the replay is complete'
+  login_request_packet:
+    seq:
+      - id: username
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Session username'
+      - id: password
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Login password'
+      - id: requested_session
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Specifies the session the client would like to log into, or all blanks to log into the currently active session'
+      - id: requested_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Specifies the next sequence number in ASCII the client wants to receive upon connection, or 0 to start receiving the most recently generated message'
+  unsequenced_data_packet:
+    seq:
+      - id: unsequenced_message_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Value identifying unsequenced message type'
+  mold_udp_64_packet:
+    seq:
+      - id: udp_packet_header
+        type: udp_packet_header_struct
+        doc: 'Itch Mold Udp 64 Packet Header'
+      - id: messages
+        repeat: expr
+        repeat-expr: udp_packet_header.message_count
+        type:
+          switch-on: udp_packet_header.message_count
+          cases:
+            _: message
+  udp_packet_header_struct:
+    seq:
+      - id: udp_session
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Identity of the multicast session'
+      - id: udp_sequence_number
+        type: u8
+        doc: 'Sequence number of the first message to follow this header'
+      - id: message_count
+        type: u2
+        doc: 'Number of messages to follow this header'
+  message:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Mold Udp 64 Message Header'
+      - id: udp_payload
+        size: message_header.message_length - 1
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::system_event_message': system_event_message
+            'message_type::complex_strategy_directory_message': complex_strategy_directory_message
+            'message_type::strategy_trading_action_message': strategy_trading_action_message
+            'message_type::strategy_best_bid_and_ask_update_message': strategy_best_bid_and_ask_update_message
+            'message_type::strategy_best_bid_update_message': strategy_best_bid_update_message
+            'message_type::strategy_best_ask_update_message': strategy_best_ask_update_message
+  message_header:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying this message type'
+
+enums:
+  packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x41:
+      id: 'login_accepted_packet'
+      doc: 'SoupbinTcp Login Accepted Packet'
+    0x4a:
+      id: 'login_rejected_packet'
+      doc: 'SoupbinTcp Login Rejected Packet'
+    0x53:
+      id: 'sequenced_data_packet'
+      doc: 'Sequenced Data Packet'
+    0x48:
+      id: 'server_heartbeat_packet'
+      doc: 'SoupbinTcp Server Heartbeat Packet'
+    0x5a:
+      id: 'end_of_session_packet'
+      doc: 'SoupbinTcp Login End of Session Packet'
+    0x4c:
+      id: 'login_request_packet'
+      doc: 'SoupbinTcp Login Request Packet'
+    0x55:
+      id: 'unsequenced_data_packet'
+      doc: 'Soupbin Tcp Unsequenced Data Packet'
+    0x52:
+      id: 'client_heartbeat_packet'
+      doc: 'SoupbinTcp Client Heartbeat Packet'
+    0x4f:
+      id: 'logout_request_packet'
+      doc: 'SoupbinTcp Logout Request Packet'
+  sequenced_message_type:
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x73:
+      id: 'complex_strategy_directory_message'
+      doc: 'A Complex Strategy Directory Message containing the strategy definition will be sent whenever a complex order is added in the system.'
+    0x48:
+      id: 'strategy_trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the options market.'
+    0x45:
+      id: 'strategy_best_bid_and_ask_update_message'
+      doc: 'The options system will continuously calculate its best bid and ask position for active strategies on the options market during the trading day.'
+    0x63:
+      id: 'strategy_best_bid_update_message'
+      doc: 'Strategy Best bid OR ask update. Quote update bid side.'
+    0x64:
+      id: 'strategy_best_ask_update_message'
+      doc: 'Strategy Best bid OR ask update. Quote update ask side.'
+    0x4d:
+      id: 'end_of_replay_sequence_message'
+      doc: 'The End of replay Sequence message reflects the sequence number at the time replay of existing messages is complete.'
+  event_code:
+    0x4f:
+      id: 'start_of_messages'
+      doc: 'Start Of Messages'
+    0x53:
+      id: 'start_of_system_hours'
+      doc: 'Start Of System Hours'
+    0x51:
+      id: 'start_of_opening_process'
+      doc: 'Start Of Opening Process'
+    0x4e:
+      id: 'start_of_normal_hours_closing_process'
+      doc: 'Start Of Normal Hours Closing Process'
+    0x4c:
+      id: 'start_of_late_hours_closing_process'
+      doc: 'Start Of Late Hours Closing Process'
+    0x45:
+      id: 'end_of_system_hours'
+      doc: 'End Of System Hours'
+    0x43:
+      id: 'end_of_messages'
+      doc: 'End Of Messages'
+    0x57:
+      id: 'end_of_wco_early_closing'
+      doc: 'End Of Wco Early Closing'
+  strategy_type:
+    0x56:
+      id: 'vertical_spread'
+      doc: 'Vertical Spread'
+    0x54:
+      id: 'time_spread'
+      doc: 'Time Spread'
+    0x44:
+      id: 'diagonal_spread'
+      doc: 'Diagonal Spread'
+    0x53:
+      id: 'straddle'
+      doc: 'Straddle'
+    0x47:
+      id: 'strangle'
+      doc: 'Strangle'
+    0x43:
+      id: 'combo'
+      doc: 'Combo'
+    0x52:
+      id: 'risk_reversal'
+      doc: 'Risk Reversal'
+    0x41:
+      id: 'ratio_spread'
+      doc: 'Ratio Spread'
+    0x42:
+      id: 'box_spread'
+      doc: 'Box Spread'
+    0x46:
+      id: 'butterfly_spread'
+      doc: 'Butterfly Spread'
+    0x55:
+      id: 'custom'
+      doc: 'Custom'
+  option_type:
+    0x43:
+      id: 'call_option'
+      doc: 'Call Option'
+    0x50:
+      id: 'put_option'
+      doc: 'Put Option'
+    0x20:
+      id: 'stock_leg'
+      doc: 'Stock Leg'
+  side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+  current_trading_state:
+    0x48:
+      id: 'halt_in_effect'
+      doc: 'Halt In Effect'
+    0x54:
+      id: 'continuous_trading'
+      doc: 'Continuous Trading'
+    0x49:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    0x4f:
+      id: 'opening_auction'
+      doc: 'Opening Auction'
+    0x52:
+      id: 're_opening'
+      doc: 'Re Opening'
+    0x58:
+      id: 'closed'
+      doc: 'Closed'
+  message_type:
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x73:
+      id: 'complex_strategy_directory_message'
+      doc: 'A Complex Strategy Directory Message containing the strategy definition will be sent whenever a complex order is added in the system.'
+    0x48:
+      id: 'strategy_trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the options market.'
+    0x45:
+      id: 'strategy_best_bid_and_ask_update_message'
+      doc: 'The options system will continuously calculate its best bid and ask position for active strategies on the options market during the trading day.'
+    0x63:
+      id: 'strategy_best_bid_update_message'
+      doc: 'Strategy Best bid OR ask update. Quote update bid side.'
+    0x64:
+      id: 'strategy_best_ask_update_message'
+      doc: 'Strategy Best bid OR ask update. Quote update ask side.'
+
+# ---------------------------------------------------------------------
+# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
+# Feel free to modify. Enjoy.
+# ---------------------------------------------------------------------
+#
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Version: 2.1
+#   Date: 09/15/2025
+#   Specification: Options_Spread_Feed_2.1.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
+# ---------------------------------------------------------------------
