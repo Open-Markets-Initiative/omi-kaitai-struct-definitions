@@ -1838,13 +1838,13 @@ types:
       - id: side_u_81
         type: u1
         doc: 'Optional side change; zero indicates no change'
-      - id: repeating_groups
+      - id: num_leg_group
         type: u1
         doc: 'Number of repeating quote acknowledgement groups included'
       - id: leg_group
         type: leg_group
         repeat: expr
-        repeat-expr: repeating_groups
+        repeat-expr: num_leg_group
         doc: 'Complex Series Request Acknowledgement repeating groups'
   leg_group:
     seq:

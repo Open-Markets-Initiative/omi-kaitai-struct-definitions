@@ -161,13 +161,13 @@ types:
         type: u1
         enum: action
         doc: 'Defines the state of the strategy'
-      - id: number_of_legs
+      - id: num_complex_order_strategy_leg
         type: u1
         doc: 'Number of legs in the strategy'
       - id: complex_order_strategy_leg
         type: complex_order_strategy_leg
         repeat: expr
-        repeat-expr: number_of_legs
+        repeat-expr: num_complex_order_strategy_leg
         doc: 'Complex Order Strategy Leg Information'
   complex_order_strategy_leg:
     seq:
@@ -417,13 +417,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
-      - id: number_of_legs
+      - id: num_complex_order_leg
         type: u1
         doc: 'Number of legs in the strategy'
       - id: complex_order_leg
         type: complex_order_leg
         repeat: expr
-        repeat-expr: number_of_legs
+        repeat-expr: num_complex_order_leg
         doc: 'Complex Order Leg Information'
   complex_order_leg:
     seq:

@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures iLink3 v8.9
+# Omi Kaitai Struct Definition: Cme Globex iLink3 v8.9
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ilink3_v8_9
-  title: Cme CmeFutures iLink3 Sbe v8.9
+  id: cme_globex_ilink3_v8_9
+  title: Cme Globex iLink3 Sbe v8.9
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures iLink 3 Sbe v8.9'
+doc: 'CME Group CME Globex iLink 3 Sbe v8.9'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simple+Binary+Encoding
 
 seq:
@@ -139,11 +139,11 @@ types:
         doc: 'Not used and will be set to 0'
   credentials:
     seq:
-      - id: credentials_length
+      - id: len_credentials_data
         type: u2
         doc: 'Length Field'
       - id: credentials_data
-        size: credentials_length
+        size: len_credentials_data
         doc: 'Variable Length Data'
   negotiation_response:
     seq:

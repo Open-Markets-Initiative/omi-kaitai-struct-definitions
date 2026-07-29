@@ -195,21 +195,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (short form, 5 chars)'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_short_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_short_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_short_form_attachment
         type: odd_lot_bid_short_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_short_form_attachment
         doc: 'Short-form Odd Lot Quote Attachment for the bid side. Repeats olBidLevelCount times'
       - id: odd_lot_ask_short_form_attachment
         type: odd_lot_ask_short_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_short_form_attachment
         doc: 'Short-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   odd_lot_bid_short_form_attachment:
     seq:
@@ -250,21 +250,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_long_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_long_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_long_form_attachment
         type: odd_lot_bid_long_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_long_form_attachment
         doc: 'Long-form Odd Lot Quote Attachment for the bid side. Repeats olBidLevelCount times'
       - id: odd_lot_ask_long_form_attachment
         type: odd_lot_ask_long_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_long_form_attachment
         doc: 'Long-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   odd_lot_bid_long_form_attachment:
     seq:
@@ -325,21 +325,21 @@ types:
         type: u1
         enum: rii
         doc: 'Retail Interest Indicator code'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_short_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_short_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_short_form_attachment
         type: odd_lot_bid_short_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_short_form_attachment
         doc: 'Short-form Odd Lot Quote Attachment for the bid side. Repeats olBidLevelCount times'
       - id: odd_lot_ask_short_form_attachment
         type: odd_lot_ask_short_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_short_form_attachment
         doc: 'Short-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   exchange_combined_quote_message_long_form_message:
     seq:
@@ -384,21 +384,21 @@ types:
         type: u1
         enum: rii
         doc: 'Retail Interest Indicator code'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_long_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_long_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_long_form_attachment
         type: odd_lot_bid_long_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_long_form_attachment
         doc: 'Long-form Odd Lot Quote Attachment for the bid side. Repeats olBidLevelCount times'
       - id: odd_lot_ask_long_form_attachment
         type: odd_lot_ask_long_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_long_form_attachment
         doc: 'Long-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   finra_protected_quote_message_with_bbo_info_message:
     seq:
@@ -554,21 +554,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_adf_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_adf_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_adf_form_attachment
         type: odd_lot_bid_adf_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_adf_form_attachment
         doc: 'ADF-form Odd Lot Quote Attachment for the bid side, including FINRA mpid attribution. Repeats olBidLevelCount times'
       - id: odd_lot_ask_adf_form_attachment
         type: odd_lot_ask_adf_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_adf_form_attachment
         doc: 'ADF-form Odd Lot Quote Attachment for the ask side, including FINRA mpid attribution. Repeats olAskLevelCount times'
   odd_lot_bid_adf_form_attachment:
     seq:
@@ -678,21 +678,21 @@ types:
         type: u1
         enum: bbo_cond
         doc: 'BBO Quote Condition'
-      - id: ol_bid_level_count
+      - id: num_odd_lot_bid_adf_form_attachment
         type: u2
         doc: 'Number of Odd Lot Bid Levels Attached'
-      - id: ol_ask_level_count
+      - id: num_odd_lot_ask_adf_form_attachment
         type: u2
         doc: 'Number of Odd Lot Ask Levels Attached'
       - id: odd_lot_bid_adf_form_attachment
         type: odd_lot_bid_adf_form_attachment
         repeat: expr
-        repeat-expr: ol_bid_level_count
+        repeat-expr: num_odd_lot_bid_adf_form_attachment
         doc: 'ADF-form Odd Lot Quote Attachment for the bid side, including FINRA mpid attribution. Repeats olBidLevelCount times'
       - id: odd_lot_ask_adf_form_attachment
         type: odd_lot_ask_adf_form_attachment
         repeat: expr
-        repeat-expr: ol_ask_level_count
+        repeat-expr: num_odd_lot_ask_adf_form_attachment
         doc: 'ADF-form Odd Lot Quote Attachment for the ask side, including FINRA mpid attribution. Repeats olAskLevelCount times'
   inbound_trade_messages_message:
     seq:

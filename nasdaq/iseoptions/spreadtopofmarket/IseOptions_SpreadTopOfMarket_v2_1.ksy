@@ -127,13 +127,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved for future use'
-      - id: number_of_legs
+      - id: num_leg_information
         type: u1
         doc: 'Number of legs in the strategy'
       - id: leg_information
         type: leg_information
         repeat: expr
-        repeat-expr: number_of_legs
+        repeat-expr: num_leg_information
         doc: 'Leg information'
   leg_information:
     seq:

@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures Streamlined v5.8
+# Omi Kaitai Struct Definition: Cme Globex Streamlined v5.9
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_streamlined_v5_8
-  title: Cme CmeFutures Streamlined Sbe v5.8
+  id: cme_globex_streamlined_v5_9
+  title: Cme Globex Streamlined Sbe v5.9
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures Streamlined Market Data Sbe v5.8'
+doc: 'CME Group CME Globex Streamlined Market Data Sbe v5.9'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/SBE+-+Streamlined+Market+Data
 
 seq:
@@ -55,8 +55,10 @@ types:
             'template_id::md_incremental_refresh_trade_blocks_349': md_incremental_refresh_trade_blocks_349
             'template_id::md_incremental_refresh_eris_351': md_incremental_refresh_eris_351
             'template_id::md_incremental_refresh_eris_353': md_incremental_refresh_eris_353
-            'template_id::md_incremental_refresh_otc': md_incremental_refresh_otc
+            'template_id::md_incremental_refresh_ot_c_356': md_incremental_refresh_ot_c_356
             'template_id::md_instrument_definition_eris': md_instrument_definition_eris
+            'template_id::md_incremental_refresh_trade_blocks_365': md_incremental_refresh_trade_blocks_365
+            'template_id::md_incremental_refresh_ot_c_366': md_incremental_refresh_ot_c_366
   message_header:
     seq:
       - id: block_length
@@ -310,9 +312,9 @@ types:
         doc: 'exponent'
   settl_price_type:
     seq:
-      - id: final_field
+      - id: final_daily
         type: b1
-        doc: 'Final'
+        doc: 'FinalDaily'
       - id: actual
         type: b1
         doc: 'Actual'
@@ -901,7 +903,7 @@ types:
       - id: leg_maturity_date
         type: u2
         doc: 'Multileg instrument''s individual security''s leg MaturityDate'
-      - id: leg_strike_price
+      - id: leg_strike_price_pricenull
         type: s8
         doc: 'Multileg instrument''s individual security''s StrikePrice. Implied decimal with scale 1e-7'
       - id: leg_unit_of_measure
@@ -909,7 +911,7 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Multileg instrument''s individual security''s leg UnitOfMeasure'
-      - id: leg_unit_of_measure_qty
+      - id: leg_unit_of_measure_qty_pricenull
         type: s8
         doc: 'Multileg instrument''s individual security''s leg UnitOfMeasureQty. Implied decimal with scale 1e-7'
       - id: leg_security_exchange
@@ -1567,7 +1569,7 @@ types:
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
-  md_incremental_refresh_otc:
+  md_incremental_refresh_ot_c_356:
     seq:
       - id: transact_time
         type: u8
@@ -1978,6 +1980,425 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+  md_incremental_refresh_trade_blocks_365:
+    seq:
+      - id: transact_time_optional
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: batch_total_messages
+        type: u2
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+      - id: trade_date
+        type: u2
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+      - id: trade_blocks_groups
+        type: trade_blocks_groups
+        doc: 'NoMDEntries Block'
+  trade_blocks_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: trade_blocks_group
+        type: trade_blocks_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Number of entries in Market Data message'
+  trade_blocks_group:
+    seq:
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update Action'
+      - id: security_id
+        type: u8
+        doc: 'Unique security ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number per Index update'
+      - id: md_entry_px
+        type: s8
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9'
+      - id: md_entry_size
+        type: md_entry_size
+        doc: 'Number of entries in Market Data message'
+      - id: number_of_orders
+        type: s4
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+      - id: trade_id
+        type: s4
+        doc: 'Unique Trade Entry ID per Instrument and Trading Date'
+      - id: aggressor_side
+        type: u1
+        enum: aggressor_side
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+      - id: symbol
+        type: str
+        size: 50
+        encoding: ASCII
+        doc: 'Instrument Name or Symbol'
+      - id: security_group_12
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'Product code'
+      - id: security_type
+        type: str
+        size: 9
+        encoding: ASCII
+        doc: 'Indicates type of security'
+      - id: security_sub_type
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'SecuritySubType for CDS only'
+      - id: maturity_month_year
+        type: maturity_month_year
+        doc: 'Number of entries in Market Data message'
+      - id: security_exchange_4
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Market used to help identify an instrument'
+      - id: maturity_date
+        type: u2
+        doc: 'Maturity date of instrument'
+      - id: unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Unit of measure for the products'' original contract size'
+      - id: unit_of_measure_currency_3
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Indicates the ISO Currency code if it is a currency product'
+      - id: unit_of_measure_qty_decimal_optional
+        type: unit_of_measure_qty_decimal_optional
+        doc: 'Number of entries in Market Data message'
+      - id: coupon_rate
+        type: s4
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+      - id: price_type
+        type: u2
+        doc: 'Valid price types for intraday trade'
+      - id: trd_type
+        type: u1
+        doc: 'Valid trade types for intraday trade'
+      - id: md_entry_id
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Market data entry identifier to map multiple prices of a single trade'
+      - id: put_or_call
+        type: u1
+        doc: 'Indicates whether an option instrument is a put or call'
+      - id: strike_price_decimal_optional
+        type: strike_price_decimal_optional
+        doc: 'Number of entries in Market Data message'
+      - id: restructuring_type
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'A category of CDS credit event in which the underlying bond experiences a restructuring'
+      - id: seniority
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Specifies which issue (underlying bond) will receive payment priority in the event of a default'
+      - id: reference_id_100
+        type: str
+        size: 100
+        encoding: ASCII
+        doc: 'For future use'
+      - id: strategy_link_id
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Identifies the multileg strategy (e.g. spread) to which the trade belongs. This links together trade legs executed as part of a strategy during a single match event'
+      - id: leg_ref_id
+        type: str
+        size: 17
+        encoding: ASCII
+        doc: 'Used to correlate leg instrument definitions with their executions. Cross referenced to Tag 1788'
+      - id: trade_blocks_underlyings_groups
+        type: trade_blocks_underlyings_groups
+        doc: 'NoUnderlyings Block'
+      - id: trade_blocks_party_ids_groups
+        type: trade_blocks_party_ids_groups
+        doc: 'NoPartyIDs Block'
+      - id: trade_blocks_legs_groups
+        type: trade_blocks_legs_groups
+        doc: 'NoLegs Block'
+  unit_of_measure_qty_decimal_optional:
+    seq:
+      - id: mantissa
+        type: s8
+        doc: 'mantissa'
+      - id: exponent
+        type: s1
+        doc: 'exponent'
+  strike_price_decimal_optional:
+    seq:
+      - id: mantissa
+        type: s8
+        doc: 'mantissa'
+      - id: exponent
+        type: s1
+        doc: 'exponent'
+  trade_blocks_legs_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: trade_blocks_legs_group
+        type: trade_blocks_legs_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Number of legs (repeating groups)'
+  trade_blocks_legs_group:
+    seq:
+      - id: leg_symbol
+        type: str
+        size: 50
+        encoding: ASCII
+        doc: 'This tag contains the instrument group of the requested security definition. Must be present when tag 555-NoLegs is present. Also must be first tag in repeating group. Multileg instrument''s individual security''s Symbol'
+      - id: leg_security_id
+        type: u8
+        doc: 'Multileg instrument''s individual security''s SecurityID'
+      - id: leg_security_group
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'Leg equivalent of body tag 1151-SecurityGroup (i.e. leg ''product code'')'
+      - id: leg_id
+        type: str
+        size: 17
+        encoding: ASCII
+        doc: 'Used to correlate leg instrument definitions with their executions.Cross referenced in Tag 654'
+      - id: leg_security_type
+        type: str
+        size: 9
+        encoding: ASCII
+        doc: 'Identifies the type of leg instrument'
+      - id: leg_maturity_month_year
+        type: leg_maturity_month_year
+        doc: 'Number of legs (repeating groups)'
+      - id: leg_maturity_date
+        type: u2
+        doc: 'Multileg instrument''s individual security''s leg MaturityDate'
+      - id: leg_strike_price_decimal_64_null
+        type: leg_strike_price_decimal_64_null
+        doc: 'Number of legs (repeating groups)'
+      - id: leg_unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Multileg instrument''s individual security''s leg UnitOfMeasure'
+      - id: leg_unit_of_measure_qty_decimal_64_null
+        type: leg_unit_of_measure_qty_decimal_64_null
+        doc: 'Number of legs (repeating groups)'
+      - id: leg_security_exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Multileg instrument''s individual security''s leg SecurityExchange'
+      - id: leg_ratio_qty_u_int_16_null
+        type: u2
+        doc: 'The ratio of quantity for this individual leg relative to the entire multileg security'
+      - id: leg_side
+        type: u1
+        doc: 'The side of this individual leg (multileg security)'
+      - id: leg_put_or_call
+        type: u1
+        doc: 'Multileg instrument''s individual security''s leg option put or call'
+      - id: leg_unit_of_measure_currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Indicates the currency of the unit of measure. Conditionally required when LegUnitOfMeasure(999) = Ccy'
+  leg_strike_price_decimal_64_null:
+    seq:
+      - id: mantissa
+        type: s8
+        doc: 'mantissa'
+      - id: exponent
+        type: s1
+        doc: 'exponent'
+  leg_unit_of_measure_qty_decimal_64_null:
+    seq:
+      - id: mantissa
+        type: s8
+        doc: 'mantissa'
+      - id: exponent
+        type: s1
+        doc: 'exponent'
+  md_incremental_refresh_ot_c_366:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: trade_date
+        type: u2
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: batch_total_messages_optional
+        type: u2
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+      - id: otc_groups
+        type: otc_groups
+        doc: 'NoMDEntries Block'
+  otc_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: otc_group
+        type: otc_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group_8
+        doc: 'Number of entries in Market Data message'
+  otc_group:
+    seq:
+      - id: md_entry_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Indicates the type of Market Data entry'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number per Index update'
+      - id: md_entry_px
+        type: s8
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9'
+      - id: md_entry_size
+        type: md_entry_size
+        doc: 'Number of entries in Market Data message'
+      - id: symbol
+        type: str
+        size: 50
+        encoding: ASCII
+        doc: 'Instrument Name or Symbol'
+      - id: security_group_12
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'Product code'
+      - id: security_type
+        type: str
+        size: 9
+        encoding: ASCII
+        doc: 'Indicates type of security'
+      - id: maturity_month_year
+        type: maturity_month_year
+        doc: 'Number of entries in Market Data message'
+      - id: security_exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Market used to help identify an instrument'
+      - id: product_optional
+        type: u1
+        doc: 'Identifies the type of product'
+      - id: maturity_date
+        type: u2
+        doc: 'Maturity date of instrument'
+      - id: coupon_rate
+        type: s4
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+      - id: restructuring_type
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'A category of CDS credit event in which the underlying bond experiences a restructuring'
+      - id: seniority
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Specifies which issue (underlying bond) will receive payment priority in the event of a default'
+      - id: notional_percentage_outstanding
+        type: s4
+        doc: 'Indicates the notional percentage of the deal that is still outstanding based on the remaining components of the index. Implied decimal with scale 1e-4'
+      - id: put_or_call
+        type: u1
+        doc: 'Indicates whether an option instrument is a put or call'
+      - id: strike_price_decimal_optional
+        type: strike_price_decimal_optional
+        doc: 'Number of entries in Market Data message'
+      - id: unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Unit of measure for the products'' original contract size'
+      - id: unit_of_measure_currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Indicates the ISO Currency code if it is a currency product'
+      - id: unit_of_measure_qty_decimal_optional
+        type: unit_of_measure_qty_decimal_optional
+        doc: 'Number of entries in Market Data message'
+      - id: md_entry_date
+        type: s4
+        doc: 'Indicates Market Data Entry Date'
+      - id: open_close_settl_flag
+        type: s1
+        doc: 'Indicates whether the price is preliminary or previous day'
+      - id: price_type
+        type: u2
+        doc: 'Valid price types for intraday trade'
+      - id: settl_date
+        type: u2
+        doc: 'Indicates date of settlement'
+      - id: quote_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Condition describing a quote'
+      - id: market_sector
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Identifies the market in which a product trades. For e.g. CDS, Dairy'
+      - id: sector_group
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group of related products. For e.g. High Yield, Cheese'
+      - id: sector_sub_group
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'A further qualification of Sector Group For e.g. North American'
+      - id: product_complex
+        type: str
+        size: 26
+        encoding: ASCII
+        doc: 'Identifies an entire suite of products for a given market'
+      - id: security_sub_type
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'SecuritySubType for CDS only'
+      - id: vol_type
+        type: u2
+        doc: 'Volume types for end of day volume'
+      - id: reference_id_100
+        type: str
+        size: 100
+        encoding: ASCII
+        doc: 'For future use'
+      - id: otc_underlyings_groups
+        type: otc_underlyings_groups
+        doc: 'NoUnderlyings Block'
+      - id: otc_security_alt_id_groups
+        type: otc_security_alt_id_groups
+        doc: 'NoSecurityAltID Block'
 
 enums:
   template_id:
@@ -2018,11 +2439,17 @@ enums:
       id: 'md_incremental_refresh_eris_353'
       doc: 'MDIncrementalRefreshEris'
     356:
-      id: 'md_incremental_refresh_otc'
+      id: 'md_incremental_refresh_ot_c_356'
       doc: 'MDIncrementalRefreshOTC'
     363:
       id: 'md_instrument_definition_eris'
       doc: 'MDInstrumentDefinitionEris'
+    365:
+      id: 'md_incremental_refresh_trade_blocks_365'
+      doc: 'MDIncrementalRefreshTradeBlocks'
+    366:
+      id: 'md_incremental_refresh_ot_c_366'
+      doc: 'MDIncrementalRefreshOTC'
   md_update_action:
     0:
       id: 'new'
@@ -2117,8 +2544,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 5.8
-#   Date: 6/02/2017
+#   Version: 5.9
+#   Date: 4/04/2018
 #   Specification: Unknown
 #
 # Script:

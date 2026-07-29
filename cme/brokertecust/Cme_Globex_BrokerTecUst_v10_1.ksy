@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures BrokerTecUst v10.1
+# Omi Kaitai Struct Definition: Cme Globex BrokerTecUst v10.1
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_brokertecust_v10_1
-  title: Cme CmeFutures BrokerTecUst Sbe v10.1
+  id: cme_globex_brokertecust_v10_1
+  title: Cme Globex BrokerTecUst Sbe v10.1
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures BrokerTec Us Treasuries Sbe v10.1'
+doc: 'CME Group CME Globex BrokerTec Us Treasuries Sbe v10.1'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/BrokerTec+U.S.+Treasury+Market+Data
 
 seq:

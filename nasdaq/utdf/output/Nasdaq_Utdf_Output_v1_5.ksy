@@ -441,12 +441,12 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: text_length
+      - id: len_text
         type: u2
         doc: 'Text Length'
       - id: text
         type: str
-        size: text_length
+        size: len_text
         encoding: ASCII
         doc: 'Text'
   cross_sro_trading_action_message:
@@ -644,13 +644,13 @@ types:
         type: u1
         enum: trading_action_indicator
         doc: 'Trading Action Indicator'
-      - id: number_of_market_center_summaries
+      - id: num_market_center_closing_price_and_volume_summary
         type: u2
         doc: 'Number of Market Center Summaries'
       - id: market_center_closing_price_and_volume_summary
         type: market_center_closing_price_and_volume_summary
         repeat: expr
-        repeat-expr: number_of_market_center_summaries
+        repeat-expr: num_market_center_closing_price_and_volume_summary
   market_center_closing_price_and_volume_summary:
     seq:
       - id: market_center_identifier
@@ -693,13 +693,13 @@ types:
       - id: total_consolidated_volume
         type: u8
         doc: 'Total Consolidated Volume'
-      - id: number_of_market_center_volumes
+      - id: num_market_center_volume_attachment
         type: u2
         doc: 'Number of Market Center Volumes'
       - id: market_center_volume_attachment
         type: market_center_volume_attachment
         repeat: expr
-        repeat-expr: number_of_market_center_volumes
+        repeat-expr: num_market_center_volume_attachment
   market_center_volume_attachment:
     seq:
       - id: market_center_identifier

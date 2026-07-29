@@ -326,12 +326,12 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: text_length
+      - id: len_text
         type: u2
         doc: 'Text Length'
       - id: text
         type: str
-        size: text_length
+        size: len_text
         encoding: ASCII
         doc: 'Text'
   cross_sro_trading_action_message:
@@ -535,13 +535,13 @@ types:
         type: u1
         enum: special_condition
         doc: 'Special Condition'
-      - id: number_of_market_center_attachments
+      - id: num_market_center_close_recap
         type: u2
         doc: 'Number of Market Center Attachments'
       - id: market_center_close_recap
         type: market_center_close_recap
         repeat: expr
-        repeat-expr: number_of_market_center_attachments
+        repeat-expr: num_market_center_close_recap
   market_center_close_recap:
     seq:
       - id: market_center_identifier

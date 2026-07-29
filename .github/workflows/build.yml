@@ -38,14 +38,14 @@ jobs:
       - name: Clone Omi Data
         run: git clone --depth=1 https://github.com/Open-Markets-Initiative/omi-data-packets.git
 
-      - name: Run Cme CmeFutures Mdp3 Sbe v1.5 Definition Tests
-        run: python3 .github/tests/test_cmefutures_mdp3_v1_5.py
+      - name: Run Cme Globex Mdp3 Sbe v1.5 Definition Tests
+        run: python3 .github/tests/test_cme_globex_mdp3_v1_5.py
 
-      - name: Run Cme CmeFutures Mdp3 Sbe v1.8 Definition Tests
-        run: python3 .github/tests/test_cmefutures_mdp3_v1_8.py
+      - name: Run Cme Globex Mdp3 Sbe v1.8 Definition Tests
+        run: python3 .github/tests/test_cme_globex_mdp3_v1_8.py
 
-      - name: Run Cme CmeFutures Mdp3 Sbe v1.9 Definition Tests
-        run: python3 .github/tests/test_cmefutures_mdp3_v1_9.py
+      - name: Run Cme Globex Mdp3 Sbe v1.9 Definition Tests
+        run: python3 .github/tests/test_cme_globex_mdp3_v1_9.py
 
       - name: Run Iex IexEquities Tops IexTp v1.5.6 Definition Tests
         run: python3 .github/tests/test_iexequities_tops_v1_5_6.py

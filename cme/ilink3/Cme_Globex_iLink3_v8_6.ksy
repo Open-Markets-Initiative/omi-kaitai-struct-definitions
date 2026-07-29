@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures iLink3 v8.7
+# Omi Kaitai Struct Definition: Cme Globex iLink3 v8.6
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ilink3_v8_7
-  title: Cme CmeFutures iLink3 Sbe v8.7
+  id: cme_globex_ilink3_v8_6
+  title: Cme Globex iLink3 Sbe v8.6
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures iLink 3 Sbe v8.7'
+doc: 'CME Group CME Globex iLink 3 Sbe v8.6'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simple+Binary+Encoding
 
 seq:
@@ -133,11 +133,11 @@ types:
         doc: 'Not used and will be set to 0'
   credentials:
     seq:
-      - id: credentials_length
+      - id: len_credentials_data
         type: u2
         doc: 'Length Field'
       - id: credentials_data
-        size: credentials_length
+        size: len_credentials_data
         doc: 'Variable Length Data'
   negotiation_response:
     seq:
@@ -4721,6 +4721,9 @@ enums:
     99:
       id: 'good_for_session'
       doc: 'Good For Session'
+    255:
+      id: 'null'
+      doc: 'Null'
   manual_order_indicator:
     0:
       id: 'automated'
@@ -4884,6 +4887,9 @@ enums:
       id: 'manual'
       doc: 'Manual'
   ord_type_optional:
+    0x30:
+      id: 'null'
+      doc: 'Null'
     0x31:
       id: 'market_with_protection'
       doc: 'Market With Protection'
@@ -5245,8 +5251,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 8.7
-#   Date: 1/6/2021
+#   Version: 8.6
+#   Date: 10/13/2020
 #   Specification: Unknown
 #
 # Script:

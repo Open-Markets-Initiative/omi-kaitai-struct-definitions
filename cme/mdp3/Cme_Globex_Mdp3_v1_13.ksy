@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures Mdp3 v1.13
+# Omi Kaitai Struct Definition: Cme Globex Mdp3 v1.13
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_mdp3_v1_13
-  title: Cme CmeFutures Mdp3 Sbe v1.13
+  id: cme_globex_mdp3_v1_13
+  title: Cme Globex Mdp3 Sbe v1.13
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures Market Data Platform 3 Sbe v1.13'
+doc: 'CME Group CME Globex Market Data Platform 3 Sbe v1.13'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+MDP+3.0+Market+Data
 
 seq:

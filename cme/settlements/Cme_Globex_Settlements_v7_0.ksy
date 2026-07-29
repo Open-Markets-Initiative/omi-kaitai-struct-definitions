@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures Settlements v7.0
+# Omi Kaitai Struct Definition: Cme Globex Settlements v7.0
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_settlements_v7_0
-  title: Cme CmeFutures Settlements Sbe v7.0
+  id: cme_globex_settlements_v7_0
+  title: Cme Globex Settlements Sbe v7.0
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures Settlements Sbe v7.0'
+doc: 'CME Group CME Globex Settlements Sbe v7.0'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/SBE+-+Streamlined+Market+Data
 
 seq:

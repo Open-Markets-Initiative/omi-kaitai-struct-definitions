@@ -169,7 +169,7 @@ types:
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
   full_update_message:
     seq:
-      - id: update_size
+      - id: num_full_price_point
         type: u2le
         doc: 'The number of bytes in this message including this field'
       - id: symbol_index
@@ -212,7 +212,7 @@ types:
       - id: full_price_point
         type: full_price_point
         repeat: expr
-        repeat-expr: update_size
+        repeat-expr: num_full_price_point
         doc: 'Full Message Price Point'
   full_price_point:
     seq:
@@ -234,7 +234,7 @@ types:
         doc: 'Ignore any content'
   delta_update_message:
     seq:
-      - id: delta_size
+      - id: num_delta_price_point
         type: u2le
         doc: 'The number of bytes in this message including this field'
       - id: symbol_index
@@ -266,7 +266,7 @@ types:
       - id: delta_price_point
         type: delta_price_point
         repeat: expr
-        repeat-expr: delta_size
+        repeat-expr: num_delta_price_point
         doc: 'Delta Message Price Point'
   delta_price_point:
     seq:

@@ -122,14 +122,14 @@ types:
       - id: implied_market_indicator
         type: u1
         enum: implied_market_indicator
-      - id: no_legs
+      - id: num_instrmt_leg_grp_comp
         type: u1
       - id: pad_1
         size: 1
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_instrmt_leg_grp_comp
   instrmt_leg_grp_comp:
     seq:
       - id: leg_symbol
@@ -356,14 +356,14 @@ types:
       - id: sold_out_indicator
         type: u1
         enum: sold_out_indicator
-      - id: no_md_entries
+      - id: num_md_instrument_entry_grp_comp
         type: u1
       - id: pad_7
         size: 7
       - id: md_instrument_entry_grp_comp
         type: md_instrument_entry_grp_comp
         repeat: expr
-        repeat-expr: no_md_entries
+        repeat-expr: num_md_instrument_entry_grp_comp
   md_instrument_entry_grp_comp:
     seq:
       - id: md_entry_px
@@ -411,14 +411,14 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: no_related_sym
+      - id: num_sec_mass_stat_grp_comp
         type: u1
       - id: pad_6
         size: 6
       - id: sec_mass_stat_grp_comp
         type: sec_mass_stat_grp_comp
         repeat: expr
-        repeat-expr: no_related_sym
+        repeat-expr: num_sec_mass_stat_grp_comp
   sec_mass_stat_grp_comp:
     seq:
       - id: security_id
@@ -680,12 +680,12 @@ types:
         enum: trade_condition
       - id: pad_2
         size: 2
-      - id: no_md_entries
+      - id: num_md_trade_entry_grp_comp
         type: u1
       - id: md_trade_entry_grp_comp
         type: md_trade_entry_grp_comp
         repeat: expr
-        repeat-expr: no_md_entries
+        repeat-expr: num_md_trade_entry_grp_comp
   md_trade_entry_grp_comp:
     seq:
       - id: md_entry_px

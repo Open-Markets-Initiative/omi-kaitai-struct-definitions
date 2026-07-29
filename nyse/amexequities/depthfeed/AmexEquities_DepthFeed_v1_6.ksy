@@ -372,13 +372,13 @@ types:
       - id: symbol_seq_num
         type: u4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
-      - id: update_count
+      - id: num_price_point
         type: u1
         doc: 'Indicates the number of times the following group fields will be repeated in the message: Price, Side, Participants'
       - id: price_point
         type: price_point
         repeat: expr
-        repeat-expr: update_count
+        repeat-expr: num_price_point
         doc: 'Price point group repeating UpdateCount times'
   price_point:
     seq:
@@ -389,13 +389,13 @@ types:
         type: u1
         enum: side
         doc: 'The side of the book (Buy/Sell)'
-      - id: participants
+      - id: num_participant
         type: u1
         doc: 'Indicates the number of times the following fields will be repeated for a given price/side grouping: Market ID, Number of Orders, Volume'
       - id: participant
         type: participant
         repeat: expr
-        repeat-expr: participants
+        repeat-expr: num_participant
         doc: 'Exchange-specific information at a price point, repeating Participants times'
   participant:
     seq:

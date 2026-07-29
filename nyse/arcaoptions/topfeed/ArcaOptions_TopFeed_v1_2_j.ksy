@@ -341,13 +341,13 @@ types:
       - id: system_id
         type: u1
         doc: 'ID of the Originating matching engine server'
-      - id: no_of_legs
+      - id: num_complex_series_index_mapping_leg
         type: u2
         doc: 'Number of legs in complex symbol. 2 - 12'
       - id: complex_series_index_mapping_leg
         type: complex_series_index_mapping_leg
         repeat: expr
-        repeat-expr: no_of_legs
+        repeat-expr: num_complex_series_index_mapping_leg
   complex_series_index_mapping_leg:
     seq:
       - id: symbol_index

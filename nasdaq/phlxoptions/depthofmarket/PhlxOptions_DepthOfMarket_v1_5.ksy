@@ -508,7 +508,7 @@ types:
       - id: nanoseconds
         type: u4
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
-      - id: number_of_reference_number_deltas
+      - id: num_cancelled_reference_number_delta
         type: u2
         doc: 'The number of single side deletes in this block. Max possible value = 360'
       - id: cancelled_reference_number_delta

@@ -299,13 +299,13 @@ types:
         type: u1
         enum: auction_event
         doc: '‘S’ = Start ‘U’ = Auction Update ‘E’ = End of Auction'
-      - id: number_of_responses
+      - id: num_auction_response
         type: u1
         doc: 'Number of auction Responses. Next two fields repeat that number of times. Allowable values for this field are 0 or 1'
       - id: auction_response
         type: auction_response
         repeat: expr
-        repeat-expr: number_of_responses
+        repeat-expr: num_auction_response
         doc: 'Auction Response Information'
   auction_response:
     seq:

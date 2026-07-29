@@ -1,17 +1,17 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures EbsSpectrum v12.0
+# Omi Kaitai Struct Definition: Cme Globex Derived v12.0
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ebsspectrum_v12_0
-  title: Cme CmeFutures EbsSpectrum Sbe v12.0
+  id: cme_globex_derived_v12_0
+  title: Cme Globex Derived Sbe v12.0
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures Ebs Spectrum Market Data Sbe v12.0'
-doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/EBS+Spectrum+Market+Data
+doc: 'CME Group CME Globex Derived Market Data Sbe v12.0'
+doc-ref: https://www.cmegroup.com/market-data/derived-data.html
 
 seq:
   - id: binary_packet_header
@@ -406,7 +406,7 @@ enums:
 # Protocol:
 #   Organization: CME Group
 #   Version: 12.0
-#   Date: 4/8/2022
+#   Date: 1/04/2020
 #   Specification: Unknown
 #
 # Script:

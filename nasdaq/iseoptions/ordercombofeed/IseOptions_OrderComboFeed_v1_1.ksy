@@ -109,13 +109,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
-      - id: number_of_legs
+      - id: num_leg_information
         type: u1
         doc: 'Number of legs in the strategy NOTE: Leg field offsets below are an equation, where “n” is the zero based leg number (0, 1, …)'
       - id: leg_information
         type: leg_information
         repeat: expr
-        repeat-expr: number_of_legs
+        repeat-expr: num_leg_information
         doc: 'Leg information'
   leg_information:
     seq:
@@ -293,13 +293,13 @@ types:
         type: u1
         enum: auction_type
         doc: '‘E’ = Exposure ‘C’ = Facilitation ‘S’ = Solicitation ‘P’ = PIM'
-      - id: number_of_responses
+      - id: num_auction_response
         type: u1
         doc: 'Number of auction Responses. Next two fields repeat that number of times. Allowable values for this field are 0 or 1'
       - id: auction_response
         type: auction_response
         repeat: expr
-        repeat-expr: number_of_responses
+        repeat-expr: num_auction_response
         doc: 'Auction Response information'
   auction_response:
     seq:

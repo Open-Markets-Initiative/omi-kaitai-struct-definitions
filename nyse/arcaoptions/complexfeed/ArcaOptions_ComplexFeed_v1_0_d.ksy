@@ -437,13 +437,13 @@ types:
       - id: system_id
         type: u1
         doc: 'ID of the Originating matching engine server'
-      - id: no_of_legs
+      - id: num_leg_definition
         type: u2
         doc: 'Number of legs in complex symbol 2 - 12'
       - id: leg_definition
         type: leg_definition
         repeat: expr
-        repeat-expr: no_of_legs
+        repeat-expr: num_leg_definition
   leg_definition:
     seq:
       - id: symbol_index

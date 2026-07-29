@@ -61,14 +61,14 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
-      - id: no_affected_orders
+      - id: num_affected_ord_grp_comp
         type: u2
       - id: pad_2_2
         size: 2
       - id: affected_ord_grp_comp
         type: affected_ord_grp_comp
         repeat: expr
-        repeat-expr: no_affected_orders
+        repeat-expr: num_affected_ord_grp_comp
   rbc_header_comp:
     seq:
       - id: sending_time
@@ -122,11 +122,11 @@ types:
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -318,7 +318,7 @@ types:
       - id: executing_trader_qualifier
         type: u1
         enum: executing_trader_qualifier
-      - id: no_fills
+      - id: num_fills_grp_comp
         type: u1
       - id: crossed_indicator
         type: u1
@@ -361,7 +361,7 @@ types:
       - id: fills_grp_comp
         type: fills_grp_comp
         repeat: expr
-        repeat-expr: no_fills
+        repeat-expr: num_fills_grp_comp
   fills_grp_comp:
     seq:
       - id: fill_px
@@ -380,14 +380,14 @@ types:
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
-      - id: no_partitions
+      - id: num_partition_grp_comp
         type: u1
       - id: pad_7
         size: 7
       - id: partition_grp_comp
         type: partition_grp_comp
         repeat: expr
-        repeat-expr: no_partitions
+        repeat-expr: num_partition_grp_comp
   partition_grp_comp:
     seq:
       - id: partition_id
@@ -403,14 +403,14 @@ types:
       - id: session_reject_reason
         type: u4
         enum: session_reject_reason
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: session_status
         type: u1
         enum: session_status
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -422,14 +422,14 @@ types:
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
-      - id: no_sessions
+      - id: num_sessions_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: sessions_grp_comp
         type: sessions_grp_comp
         repeat: expr
-        repeat-expr: no_sessions
+        repeat-expr: num_sessions_grp_comp
   sessions_grp_comp:
     seq:
       - id: party_id_session_id

@@ -757,12 +757,12 @@ types:
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
-      - id: text_length
+      - id: len_text
         type: u2
         doc: 'Length of the variable Text field'
       - id: text
         type: str
-        size: text_length
+        size: len_text
         encoding: ASCII
         pad-right: 0x20
         doc: 'Administrative text; variable-length, sized by Text Length'
@@ -1121,13 +1121,13 @@ types:
         type: u1
         enum: special_condition
         doc: 'Special Condition'
-      - id: number_of_market_center_attachments
+      - id: num_market_center_close_recap
         type: u2
         doc: 'Number of Market Center Attachments'
       - id: market_center_close_recap
         type: market_center_close_recap
         repeat: expr
-        repeat-expr: number_of_market_center_attachments
+        repeat-expr: num_market_center_close_recap
         doc: 'Market Center Close Recap attachment following the Session Close Recap Message. Reflects each UTP participant''s most recent BBO quote at the market close. Repeats Number of Market Center Attachments times'
   market_center_close_recap:
     seq:

@@ -169,7 +169,7 @@ types:
       - id: product_complex
         type: u1
         enum: product_complex
-      - id: no_legs
+      - id: num_instrmt_leg_grp_comp
         type: u1
       - id: compliance_text
         type: str
@@ -181,7 +181,7 @@ types:
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_instrmt_leg_grp_comp
   request_header_comp:
     seq:
       - id: msg_seq_num
@@ -242,12 +242,12 @@ types:
       - id: product_complex
         type: u1
         enum: product_complex
-      - id: no_legs
+      - id: num_instrmt_leg_grp_comp
         type: u1
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_instrmt_leg_grp_comp
   nr_response_header_me_comp:
     seq:
       - id: request_time
@@ -483,7 +483,7 @@ types:
         enum: appl_id_status
       - id: ref_appl_sub_id
         type: u4
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: ref_appl_id
         type: u1
@@ -495,7 +495,7 @@ types:
         size: 4
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -561,7 +561,7 @@ types:
         type: u4
       - id: party_id_entering_trader
         type: u4
-      - id: no_not_affected_orders
+      - id: num_not_affected_orders_grp_comp
         type: u2
       - id: party_id_entering_firm
         type: u1
@@ -580,7 +580,7 @@ types:
       - id: not_affected_orders_grp_comp
         type: not_affected_orders_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_orders
+        repeat-expr: num_not_affected_orders_grp_comp
   rbc_header_me_comp:
     seq:
       - id: trd_reg_ts_time_out
@@ -691,14 +691,14 @@ types:
       - id: mass_action_report_id
         type: u8
         doc: 'Nanoseconds since Unix epoch'
-      - id: no_not_affected_orders
+      - id: num_not_affected_orders_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: not_affected_orders_grp_comp
         type: not_affected_orders_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_orders
+        repeat-expr: num_not_affected_orders_grp_comp
   response_header_me_comp:
     seq:
       - id: request_time
@@ -750,7 +750,7 @@ types:
         type: u4
       - id: target_party_id_executing_trader
         type: u4
-      - id: no_not_affected_securities
+      - id: num_not_affected_securities_grp_comp
         type: u2
       - id: mass_action_reason
         type: u1
@@ -768,7 +768,7 @@ types:
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_securities
+        repeat-expr: num_not_affected_securities_grp_comp
   not_affected_securities_grp_comp:
     seq:
       - id: not_affected_security_id
@@ -809,14 +809,14 @@ types:
       - id: mass_action_report_id
         type: u8
         doc: 'Nanoseconds since Unix epoch'
-      - id: no_not_affected_securities
+      - id: num_not_affected_securities_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_securities
+        repeat-expr: num_not_affected_securities_grp_comp
   delete_order_broadcast:
     seq:
       - id: pad_2
@@ -1100,15 +1100,15 @@ types:
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-      - id: no_side_allocs
+      - id: num_side_alloc_grp_comp
         type: u1
-      - id: no_events
+      - id: num_instrument_event_grp_comp
         type: u1
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
-      - id: no_instr_attrib
+      - id: num_instrument_attribute_grp_comp
         type: u1
-      - id: no_underlying_stips
+      - id: num_underlying_stip_grp_comp
         type: u1
       - id: party_id_settlement_location
         type: u1
@@ -1151,23 +1151,23 @@ types:
       - id: side_alloc_grp_comp
         type: side_alloc_grp_comp
         repeat: expr
-        repeat-expr: no_side_allocs
+        repeat-expr: num_side_alloc_grp_comp
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
       - id: instrument_event_grp_comp
         type: instrument_event_grp_comp
         repeat: expr
-        repeat-expr: no_events
+        repeat-expr: num_instrument_event_grp_comp
       - id: instrument_attribute_grp_comp
         type: instrument_attribute_grp_comp
         repeat: expr
-        repeat-expr: no_instr_attrib
+        repeat-expr: num_instrument_attribute_grp_comp
       - id: underlying_stip_grp_comp
         type: underlying_stip_grp_comp
         repeat: expr
-        repeat-expr: no_underlying_stips
+        repeat-expr: num_underlying_stip_grp_comp
   side_alloc_grp_comp:
     seq:
       - id: individual_alloc_id
@@ -1237,13 +1237,13 @@ types:
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: pad_6
         size: 6
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -1262,13 +1262,13 @@ types:
         size: 3
       - id: username
         type: u4
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: pad_6
         size: 6
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -1375,14 +1375,14 @@ types:
         type: response_header_comp
       - id: last_entity_processed
         size: 16
-      - id: no_enrichment_rules
+      - id: num_enrichment_rules_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: enrichment_rules_grp_comp
         type: enrichment_rules_grp_comp
         repeat: expr
-        repeat-expr: no_enrichment_rules
+        repeat-expr: num_enrichment_rules_grp_comp
   enrichment_rules_grp_comp:
     seq:
       - id: enrichment_rule_id
@@ -1456,14 +1456,14 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
-      - id: no_mm_parameters
+      - id: num_mm_parameter_grp_comp
         type: u1
       - id: pad_3
         size: 3
       - id: mm_parameter_grp_comp
         type: mm_parameter_grp_comp
         repeat: expr
-        repeat-expr: no_mm_parameters
+        repeat-expr: num_mm_parameter_grp_comp
   mm_parameter_grp_comp:
     seq:
       - id: exposure_duration
@@ -1498,14 +1498,14 @@ types:
         size: 2
       - id: response_header_comp
         type: response_header_comp
-      - id: no_sessions
+      - id: num_sessions_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: sessions_grp_comp
         type: sessions_grp_comp
         repeat: expr
-        repeat-expr: no_sessions
+        repeat-expr: num_sessions_grp_comp
   sessions_grp_comp:
     seq:
       - id: party_id_session_id
@@ -1539,14 +1539,14 @@ types:
         type: response_header_comp
       - id: last_entity_processed
         size: 16
-      - id: no_party_details
+      - id: num_party_details_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: party_details_grp_comp
         type: party_details_grp_comp
         repeat: expr
-        repeat-expr: no_party_details
+        repeat-expr: num_party_details_grp_comp
   party_details_grp_comp:
     seq:
       - id: party_detail_id_executing_trader
@@ -1578,7 +1578,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'Nanoseconds since Unix epoch'
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: user_status
         type: u1
@@ -1587,7 +1587,7 @@ types:
         size: 5
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -1797,7 +1797,7 @@ types:
       - id: order_attribute_liquidity_provision
         type: u1
         enum: order_attribute_liquidity_provision
-      - id: no_quote_entries
+      - id: num_quote_entry_grp_comp
         type: u1
       - id: party_id_investment_decision_maker_qualifier
         type: u1
@@ -1810,7 +1810,7 @@ types:
       - id: quote_entry_grp_comp
         type: quote_entry_grp_comp
         repeat: expr
-        repeat-expr: no_quote_entries
+        repeat-expr: num_quote_entry_grp_comp
   quote_entry_grp_comp:
     seq:
       - id: security_id
@@ -1838,14 +1838,14 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
-      - id: no_quote_entries
+      - id: num_quote_entry_ack_grp_comp
         type: u1
       - id: pad_3
         size: 3
       - id: quote_entry_ack_grp_comp
         type: quote_entry_ack_grp_comp
         repeat: expr
-        repeat-expr: no_quote_entries
+        repeat-expr: num_quote_entry_ack_grp_comp
   quote_entry_ack_grp_comp:
     seq:
       - id: security_id
@@ -1993,14 +1993,14 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: no_legs
+      - id: num_leg_ord_grp_comp
         type: u1
       - id: pad_2_2
         size: 2
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_leg_ord_grp_comp
   leg_ord_grp_comp:
     seq:
       - id: leg_account
@@ -2341,9 +2341,9 @@ types:
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-      - id: no_side_allocs
+      - id: num_side_alloc_grp_comp
         type: u1
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
       - id: trade_report_text
         type: str
@@ -2360,11 +2360,11 @@ types:
       - id: side_alloc_grp_comp
         type: side_alloc_grp_comp
         repeat: expr
-        repeat-expr: no_side_allocs
+        repeat-expr: num_side_alloc_grp_comp
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
   new_order_complex_request:
     seq:
       - id: network_msg_id
@@ -2490,14 +2490,14 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: no_legs
+      - id: num_leg_ord_grp_comp
         type: u1
       - id: pad_6
         size: 6
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_leg_ord_grp_comp
   new_order_nr_response:
     seq:
       - id: pad_2
@@ -2778,7 +2778,7 @@ types:
       - id: orig_time
         type: u8
         doc: 'Nanoseconds since Unix epoch'
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: headline
         type: str
@@ -2789,7 +2789,7 @@ types:
         size: 6
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -2820,7 +2820,7 @@ types:
         type: s4
       - id: cxl_qty
         type: s4
-      - id: no_leg_execs
+      - id: num_instrmnt_leg_exec_grp_comp
         type: u2
       - id: exec_restatement_reason
         type: u2
@@ -2848,18 +2848,18 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: no_fills
+      - id: num_fills_grp_comp
         type: u1
       - id: pad_1
         size: 1
       - id: fills_grp_comp
         type: fills_grp_comp
         repeat: expr
-        repeat-expr: no_fills
+        repeat-expr: num_fills_grp_comp
       - id: instrmnt_leg_exec_grp_comp
         type: instrmnt_leg_exec_grp_comp
         repeat: expr
-        repeat-expr: no_leg_execs
+        repeat-expr: num_instrmnt_leg_exec_grp_comp
   fills_grp_comp:
     seq:
       - id: fill_px
@@ -2945,7 +2945,7 @@ types:
         type: u4
       - id: party_id_entering_trader
         type: u4
-      - id: no_leg_execs
+      - id: num_instrmnt_leg_exec_grp_comp
         type: u2
       - id: exec_restatement_reason
         type: u2
@@ -3045,9 +3045,9 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: no_fills
+      - id: num_fills_grp_comp
         type: u1
-      - id: no_legs
+      - id: num_leg_ord_grp_comp
         type: u1
       - id: triggered
         type: u1
@@ -3060,15 +3060,15 @@ types:
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_leg_ord_grp_comp
       - id: fills_grp_comp
         type: fills_grp_comp
         repeat: expr
-        repeat-expr: no_fills
+        repeat-expr: num_fills_grp_comp
       - id: instrmnt_leg_exec_grp_comp
         type: instrmnt_leg_exec_grp_comp
         repeat: expr
-        repeat-expr: no_leg_execs
+        repeat-expr: num_instrmnt_leg_exec_grp_comp
   order_exec_response:
     seq:
       - id: pad_2
@@ -3100,7 +3100,7 @@ types:
         type: s4
       - id: cxl_qty
         type: s4
-      - id: no_leg_execs
+      - id: num_instrmnt_leg_exec_grp_comp
         type: u2
       - id: exec_restatement_reason
         type: u2
@@ -3123,18 +3123,18 @@ types:
       - id: crossed_indicator
         type: u1
         enum: crossed_indicator
-      - id: no_fills
+      - id: num_fills_grp_comp
         type: u1
       - id: pad_5
         size: 5
       - id: fills_grp_comp
         type: fills_grp_comp
         repeat: expr
-        repeat-expr: no_fills
+        repeat-expr: num_fills_grp_comp
       - id: instrmnt_leg_exec_grp_comp
         type: instrmnt_leg_exec_grp_comp
         repeat: expr
-        repeat-expr: no_leg_execs
+        repeat-expr: num_instrmnt_leg_exec_grp_comp
   party_action_report:
     seq:
       - id: pad_2
@@ -3214,7 +3214,7 @@ types:
         type: s4
       - id: party_id_entering_trader
         type: u4
-      - id: no_not_affected_securities
+      - id: num_not_affected_securities_grp_comp
         type: u2
       - id: party_id_entering_firm
         type: u1
@@ -3233,7 +3233,7 @@ types:
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_securities
+        repeat-expr: num_not_affected_securities_grp_comp
   quote_activation_request:
     seq:
       - id: network_msg_id
@@ -3276,14 +3276,14 @@ types:
       - id: mass_action_report_id
         type: u8
         doc: 'Nanoseconds since Unix epoch'
-      - id: no_not_affected_securities
+      - id: num_not_affected_securities_grp_comp
         type: u2
       - id: pad_6
         size: 6
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
         repeat: expr
-        repeat-expr: no_not_affected_securities
+        repeat-expr: num_not_affected_securities_grp_comp
   quote_execution_report:
     seq:
       - id: pad_2
@@ -3295,20 +3295,20 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
-      - id: no_leg_execs
+      - id: num_quote_leg_exec_grp_comp
         type: u2
-      - id: no_quote_events
+      - id: num_quote_event_grp_comp
         type: u1
       - id: pad_1
         size: 1
       - id: quote_event_grp_comp
         type: quote_event_grp_comp
         repeat: expr
-        repeat-expr: no_quote_events
+        repeat-expr: num_quote_event_grp_comp
       - id: quote_leg_exec_grp_comp
         type: quote_leg_exec_grp_comp
         repeat: expr
-        repeat-expr: no_leg_execs
+        repeat-expr: num_quote_leg_exec_grp_comp
   quote_event_grp_comp:
     seq:
       - id: security_id
@@ -3399,7 +3399,7 @@ types:
       - id: session_reject_reason
         type: u4
         enum: session_reject_reason
-      - id: var_text_len
+      - id: len_var_text
         type: u2
       - id: session_status
         type: u1
@@ -3408,7 +3408,7 @@ types:
         size: 1
       - id: var_text
         type: str
-        size: var_text_len
+        size: len_var_text
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
@@ -3559,7 +3559,7 @@ types:
       - id: side
         type: u1
         enum: side
-      - id: no_legs
+      - id: num_srqs_trd_instrmnt_leg_grp_comp
         type: u1
       - id: root_party_executing_firm
         type: str
@@ -3604,7 +3604,7 @@ types:
       - id: srqs_trd_instrmnt_leg_grp_comp
         type: srqs_trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_srqs_trd_instrmnt_leg_grp_comp
   srqs_trd_instrmnt_leg_grp_comp:
     seq:
       - id: leg_security_id
@@ -3894,7 +3894,7 @@ types:
       - id: quote_status
         type: u1
         enum: quote_status
-      - id: no_target_party_i_ds
+      - id: num_target_parties_comp
         type: u1
       - id: side
         type: u1
@@ -3927,7 +3927,7 @@ types:
       - id: target_parties_comp
         type: target_parties_comp
         repeat: expr
-        repeat-expr: no_target_party_i_ds
+        repeat-expr: num_target_parties_comp
   target_parties_comp:
     seq:
       - id: side_disclosure_instruction
@@ -4007,7 +4007,7 @@ types:
       - id: quote_status
         type: u1
         enum: quote_status
-      - id: no_legs
+      - id: num_quot_req_legs_grp_comp
         type: u1
       - id: side
         type: u1
@@ -4053,7 +4053,7 @@ types:
       - id: quot_req_legs_grp_comp
         type: quot_req_legs_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_quot_req_legs_grp_comp
   quot_req_legs_grp_comp:
     seq:
       - id: leg_security_id
@@ -4099,9 +4099,9 @@ types:
       - id: quote_type
         type: u1
         enum: quote_type
-      - id: no_legs
+      - id: num_quot_req_legs_grp_comp
         type: u1
-      - id: no_target_party_i_ds
+      - id: num_target_parties_comp
         type: u1
       - id: side
         type: u1
@@ -4132,11 +4132,11 @@ types:
       - id: quot_req_legs_grp_comp
         type: quot_req_legs_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_quot_req_legs_grp_comp
       - id: target_parties_comp
         type: target_parties_comp
         repeat: expr
-        repeat-expr: no_target_party_i_ds
+        repeat-expr: num_target_parties_comp
   srqs_open_negotiation_requester_notification:
     seq:
       - id: pad_2
@@ -4169,9 +4169,9 @@ types:
       - id: quote_status
         type: u1
         enum: quote_status
-      - id: no_legs
+      - id: num_quot_req_legs_grp_comp
         type: u1
-      - id: no_target_party_i_ds
+      - id: num_target_parties_comp
         type: u1
       - id: side
         type: u1
@@ -4205,11 +4205,11 @@ types:
       - id: quot_req_legs_grp_comp
         type: quot_req_legs_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_quot_req_legs_grp_comp
       - id: target_parties_comp
         type: target_parties_comp
         repeat: expr
-        repeat-expr: no_target_party_i_ds
+        repeat-expr: num_target_parties_comp
   srqs_quote_notification:
     seq:
       - id: pad_2
@@ -4346,7 +4346,7 @@ types:
         type: u4
       - id: order_qty
         type: s4
-      - id: no_target_party_i_ds
+      - id: num_target_parties_comp
         type: u1
       - id: side
         type: u1
@@ -4372,7 +4372,7 @@ types:
       - id: target_parties_comp
         type: target_parties_comp
         repeat: expr
-        repeat-expr: no_target_party_i_ds
+        repeat-expr: num_target_parties_comp
   service_availability_broadcast:
     seq:
       - id: pad_2
@@ -4536,13 +4536,13 @@ types:
       - id: hedge_type
         type: u1
         enum: hedge_type
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
-      - id: no_events
+      - id: num_instrument_event_grp_comp
         type: u1
-      - id: no_instr_attrib
+      - id: num_instrument_attribute_grp_comp
         type: u1
-      - id: no_underlying_stips
+      - id: num_underlying_stip_grp_comp
         type: u1
       - id: message_event_source
         type: u1
@@ -4662,19 +4662,19 @@ types:
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
       - id: instrument_event_grp_comp
         type: instrument_event_grp_comp
         repeat: expr
-        repeat-expr: no_events
+        repeat-expr: num_instrument_event_grp_comp
       - id: instrument_attribute_grp_comp
         type: instrument_attribute_grp_comp
         repeat: expr
-        repeat-expr: no_instr_attrib
+        repeat-expr: num_instrument_attribute_grp_comp
       - id: underlying_stip_grp_comp
         type: underlying_stip_grp_comp
         repeat: expr
-        repeat-expr: no_underlying_stips
+        repeat-expr: num_underlying_stip_grp_comp
   tes_broadcast:
     seq:
       - id: pad_2
@@ -4728,15 +4728,15 @@ types:
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-      - id: no_events
+      - id: num_instrument_event_grp_comp
         type: u1
-      - id: no_instr_attrib
+      - id: num_instrument_attribute_grp_comp
         type: u1
-      - id: no_underlying_stips
+      - id: num_underlying_stip_grp_comp
         type: u1
-      - id: no_side_allocs
+      - id: num_side_alloc_grp_bc_comp
         type: u1
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
       - id: party_id_settlement_location
         type: u1
@@ -4792,23 +4792,23 @@ types:
       - id: side_alloc_grp_bc_comp
         type: side_alloc_grp_bc_comp
         repeat: expr
-        repeat-expr: no_side_allocs
+        repeat-expr: num_side_alloc_grp_bc_comp
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
       - id: instrument_event_grp_comp
         type: instrument_event_grp_comp
         repeat: expr
-        repeat-expr: no_events
+        repeat-expr: num_instrument_event_grp_comp
       - id: instrument_attribute_grp_comp
         type: instrument_attribute_grp_comp
         repeat: expr
-        repeat-expr: no_instr_attrib
+        repeat-expr: num_instrument_attribute_grp_comp
       - id: underlying_stip_grp_comp
         type: underlying_stip_grp_comp
         repeat: expr
-        repeat-expr: no_underlying_stips
+        repeat-expr: num_underlying_stip_grp_comp
   side_alloc_grp_bc_comp:
     seq:
       - id: individual_alloc_id
@@ -5119,15 +5119,15 @@ types:
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-      - id: no_side_allocs
+      - id: num_side_alloc_ext_grp_comp
         type: u1
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
-      - id: no_events
+      - id: num_instrument_event_grp_comp
         type: u1
-      - id: no_instr_attrib
+      - id: num_instrument_attribute_grp_comp
         type: u1
-      - id: no_underlying_stips
+      - id: num_underlying_stip_grp_comp
         type: u1
       - id: hedge_type
         type: u1
@@ -5178,23 +5178,23 @@ types:
       - id: side_alloc_ext_grp_comp
         type: side_alloc_ext_grp_comp
         repeat: expr
-        repeat-expr: no_side_allocs
+        repeat-expr: num_side_alloc_ext_grp_comp
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
       - id: instrument_event_grp_comp
         type: instrument_event_grp_comp
         repeat: expr
-        repeat-expr: no_events
+        repeat-expr: num_instrument_event_grp_comp
       - id: instrument_attribute_grp_comp
         type: instrument_attribute_grp_comp
         repeat: expr
-        repeat-expr: no_instr_attrib
+        repeat-expr: num_instrument_attribute_grp_comp
       - id: underlying_stip_grp_comp
         type: underlying_stip_grp_comp
         repeat: expr
-        repeat-expr: no_underlying_stips
+        repeat-expr: num_underlying_stip_grp_comp
   side_alloc_ext_grp_comp:
     seq:
       - id: individual_alloc_id
@@ -5564,15 +5564,15 @@ types:
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-      - id: no_side_allocs
+      - id: num_side_alloc_ext_grp_comp
         type: u1
-      - id: no_legs
+      - id: num_trd_instrmnt_leg_grp_comp
         type: u1
-      - id: no_events
+      - id: num_instrument_event_grp_comp
         type: u1
-      - id: no_instr_attrib
+      - id: num_instrument_attribute_grp_comp
         type: u1
-      - id: no_underlying_stips
+      - id: num_underlying_stip_grp_comp
         type: u1
       - id: skip_validations
         type: u1
@@ -5616,23 +5616,23 @@ types:
       - id: side_alloc_ext_grp_comp
         type: side_alloc_ext_grp_comp
         repeat: expr
-        repeat-expr: no_side_allocs
+        repeat-expr: num_side_alloc_ext_grp_comp
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
         repeat: expr
-        repeat-expr: no_legs
+        repeat-expr: num_trd_instrmnt_leg_grp_comp
       - id: instrument_event_grp_comp
         type: instrument_event_grp_comp
         repeat: expr
-        repeat-expr: no_events
+        repeat-expr: num_instrument_event_grp_comp
       - id: instrument_attribute_grp_comp
         type: instrument_attribute_grp_comp
         repeat: expr
-        repeat-expr: no_instr_attrib
+        repeat-expr: num_instrument_attribute_grp_comp
       - id: underlying_stip_grp_comp
         type: underlying_stip_grp_comp
         repeat: expr
-        repeat-expr: no_underlying_stips
+        repeat-expr: num_underlying_stip_grp_comp
   user_login_request:
     seq:
       - id: network_msg_id

@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures iLink3 v8.4
+# Omi Kaitai Struct Definition: Cme Globex iLink3 v8.2
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ilink3_v8_4
-  title: Cme CmeFutures iLink3 Sbe v8.4
+  id: cme_globex_ilink3_v8_2
+  title: Cme Globex iLink3 Sbe v8.2
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures iLink 3 Sbe v8.4'
+doc: 'CME Group CME Globex iLink 3 Sbe v8.2'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simple+Binary+Encoding
 
 seq:
@@ -131,11 +131,11 @@ types:
         doc: 'Not used and will be set to 0'
   credentials:
     seq:
-      - id: credentials_length
+      - id: len_credentials_data
         type: u2
         doc: 'Length Field'
       - id: credentials_data
-        size: credentials_length
+        size: len_credentials_data
         doc: 'Variable Length Data'
   negotiation_response:
     seq:
@@ -812,6 +812,9 @@ types:
       - id: idm_short_code
         type: u8
         doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only'
+      - id: padding_272
+        size: 272
+        doc: '272 bytes padding'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -1012,7 +1015,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1119,9 +1122,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_reject:
     seq:
       - id: seq_num
@@ -1139,7 +1139,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1249,9 +1249,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_elimination:
     seq:
       - id: seq_num
@@ -1264,7 +1261,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1379,7 +1376,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1588,7 +1585,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1798,7 +1795,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1980,7 +1977,7 @@ types:
       - id: quote_cancel_type
         type: u1
         enum: quote_cancel_type
-        doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it''s instrument, instrument group or by cancelling all'
+        doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it�s instrument, instrument group or by cancelling all'
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
@@ -2158,7 +2155,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2271,9 +2268,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_status:
     seq:
       - id: seq_num
@@ -2291,7 +2285,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2454,7 +2448,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2568,9 +2562,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   order_cancel_reject:
     seq:
       - id: seq_num
@@ -2588,7 +2579,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2641,9 +2632,6 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   order_cancel_replace_reject:
     seq:
       - id: seq_num
@@ -2661,7 +2649,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2714,9 +2702,6 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   party_details_list_request:
     seq:
       - id: party_details_list_req_id
@@ -2908,11 +2893,6 @@ types:
         type: u1
         enum: side
         doc: 'Side of order'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
   request_for_quote:
     seq:
       - id: party_details_list_req_id
@@ -2965,11 +2945,11 @@ types:
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
       - id: order_qty_optional
         type: u4
-        doc: 'RFQ quantity'
+        doc: 'Order quantity. Mandatory for buy or sell but not required for cross'
       - id: rfq_side
         type: u1
         enum: rfq_side
-        doc: 'RFQ side'
+        doc: 'Order side'
   new_order_cross:
     seq:
       - id: cross_id
@@ -3114,14 +3094,11 @@ types:
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: tot_no_quote_entries_optional
         type: u1
-        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported � in practice this will always be equal to the value of NoQuoteEntries'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: quote_ack_entries_groups
         type: quote_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -3211,9 +3188,6 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   quote_cancel_ack:
     seq:
       - id: seq_num
@@ -3286,7 +3260,7 @@ types:
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
       - id: tot_no_quote_entries_optional
         type: u1
-        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported � in practice this will always be equal to the value of NoQuoteEntries'
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
@@ -3295,9 +3269,6 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: quote_cancel_ack_547_no_quote_entries_groups
         type: quote_cancel_ack_547_no_quote_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -3355,7 +3326,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3485,9 +3456,6 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
-      - id: original_order_event_exec_id
-        type: u4
-        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted'
   execution_report_trade_addendum_spread:
     seq:
       - id: seq_num
@@ -3500,7 +3468,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3680,9 +3648,6 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
-      - id: original_order_event_exec_id
-        type: u4
-        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted'
   execution_report_trade_addendum_spread_leg:
     seq:
       - id: seq_num
@@ -3695,7 +3660,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange � unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3866,9 +3831,6 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: order_mass_action_report_558_no_affected_orders_groups
         type: order_mass_action_report_558_no_affected_orders_groups
         doc: 'NoAffectedOrders Block'
@@ -4856,8 +4818,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 8.4
-#   Date: 02/11/2020
+#   Version: 8.2
+#   Date: 11/05/2019
 #   Specification: Unknown
 #
 # Script:

@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures iLink3 v8.8
+# Omi Kaitai Struct Definition: Cme Globex iLink3 v8.5
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ilink3_v8_8
-  title: Cme CmeFutures iLink3 Sbe v8.8
+  id: cme_globex_ilink3_v8_5
+  title: Cme Globex iLink3 Sbe v8.5
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures iLink 3 Sbe v8.8'
+doc: 'CME Group CME Globex iLink 3 Sbe v8.5'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simple+Binary+Encoding
 
 seq:
@@ -81,8 +81,6 @@ types:
             'template_id::security_definition_response': security_definition_response
             'template_id::order_mass_action_report': order_mass_action_report
             'template_id::quote_cancel_ack': quote_cancel_ack
-            'template_id::execution_report_pending_cancel': execution_report_pending_cancel
-            'template_id::execution_report_pending_replace': execution_report_pending_replace
   simple_open_framing_header:
     seq:
       - id: message_length
@@ -133,11 +131,11 @@ types:
         doc: 'Not used and will be set to 0'
   credentials:
     seq:
-      - id: credentials_length
+      - id: len_credentials_data
         type: u2
         doc: 'Length Field'
       - id: credentials_data
-        size: credentials_length
+        size: len_credentials_data
         doc: 'Variable Length Data'
   negotiation_response:
     seq:
@@ -487,7 +485,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -496,12 +494,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
   exec_inst:
     seq:
       - id: aon
@@ -559,7 +551,7 @@ types:
       - id: party_details_list_req_id
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: order_id_optional
+      - id: order_id
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: stop_px
@@ -611,7 +603,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -620,12 +612,9 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
   order_cancel_request:
     seq:
-      - id: order_id_optional
+      - id: order_id
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: party_details_list_req_id
@@ -669,12 +658,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
   mass_quote:
     seq:
       - id: party_details_list_req_id
@@ -716,7 +700,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: short_sale_type
         type: u1
         enum: short_sale_type
@@ -726,15 +710,6 @@ types:
         size: 30
         encoding: ASCII
         doc: 'Reserved for future use'
-      - id: future_30
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'Reserved for future use'
-      - id: quote_entry_open
-        type: u1
-        enum: quote_entry_open
-        doc: 'A boolean value indicating if new quotes should be rejected for the sender comp for whom quotes are being cancelled on behalf; also to be used to reset such a block on mass quotes being sent by the blocked sender comp'
       - id: quote_entries_groups
         type: quote_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -1025,7 +1000,7 @@ types:
       - id: manual_order_indicator_optional
         type: u1
         enum: manual_order_indicator_optional
-        doc: 'Indicates if order was sent manually or generated by automated trading logic'
+        doc: 'Indicates if order was sent manually or generated by automated trading logi'
       - id: split_msg
         type: u1
         enum: split_msg
@@ -1140,7 +1115,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -1152,15 +1127,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
   execution_report_reject:
     seq:
       - id: seq_num
@@ -1279,7 +1245,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -1291,12 +1257,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
   execution_report_elimination:
     seq:
       - id: seq_num
@@ -1403,7 +1363,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -1412,15 +1372,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
   execution_report_trade_outright:
     seq:
       - id: seq_num
@@ -1503,7 +1454,7 @@ types:
       - id: trade_link_id
         type: u4
         doc: 'Contains the workup ID; unique per instrument per day'
-      - id: leaves
+      - id: leaves_qty
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
@@ -1553,7 +1504,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -1565,62 +1516,12 @@ types:
       - id: ownership
         type: u1
         doc: 'Specifies the owner of the work up private phase'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: trd_type
-        type: u2
-        doc: 'Represents a trade at fixing price'
-      - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'Will be present when trade at fixing is assigned fixing price'
-      - id: settl_date
-        type: u2
-        doc: 'Specific date of trade settlement'
-      - id: maturity_date
-        type: u2
-        doc: 'Date of maturity'
-      - id: calculated_ccy_last_qty
-        type: calculated_ccy_last_qty
-        doc: 'ExecutionReportTradeOutright'
-      - id: gross_trade_amt
-        type: gross_trade_amt
-        doc: 'ExecutionReportTradeOutright'
-      - id: benchmark_price
-        type: s8
-        doc: 'The price assigned to an eFIX matched trade which is determined by an automated set market mid-price from a third party market data feed. The Fixing Price will be distributed as soon as practicable after the Fixing Time. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
-      - id: display_limit_price
-        type: s8
-        doc: 'The price at which opposite side orders are listed on the market. Sent only in fill messages for reservation price orders. Implied decimal with scale 1e-9'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
       - id: outright_order_events_groups
         type: outright_order_events_groups
         doc: 'NoOrderEvents Block'
-  calculated_ccy_last_qty:
-    seq:
-      - id: mantissa
-        type: s8
-        doc: 'mantissa'
-      - id: exponent
-        type: s1
-        doc: 'exponent'
-  gross_trade_amt:
-    seq:
-      - id: mantissa
-        type: s8
-        doc: 'mantissa'
-      - id: exponent
-        type: s1
-        doc: 'exponent'
   fills_groups:
     seq:
       - id: group_size
@@ -1680,28 +1581,6 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
-      - id: contra_gross_trade_amt
-        type: contra_gross_trade_amt
-        doc: 'Number of fills which comprise fill quantity'
-      - id: contra_calculated_ccy_last_qty
-        type: contra_calculated_ccy_last_qty
-        doc: 'Number of fills which comprise fill quantity'
-  contra_gross_trade_amt:
-    seq:
-      - id: mantissa
-        type: s8
-        doc: 'mantissa'
-      - id: exponent
-        type: s1
-        doc: 'exponent'
-  contra_calculated_ccy_last_qty:
-    seq:
-      - id: mantissa
-        type: s8
-        doc: 'mantissa'
-      - id: exponent
-        type: s1
-        doc: 'exponent'
   execution_report_trade_spread:
     seq:
       - id: seq_num
@@ -1781,7 +1660,7 @@ types:
       - id: side_trade_id
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
-      - id: leaves
+      - id: leaves_qty
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
@@ -1834,7 +1713,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: short_sale_type
         type: u1
         enum: short_sale_type
@@ -2004,15 +1883,6 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: settl_date
-        type: u2
-        doc: 'Specific date of trade settlement'
-      - id: calculated_ccy_last_qty
-        type: calculated_ccy_last_qty
-        doc: 'ExecutionReportTradeOutright'
-      - id: gross_trade_amt
-        type: gross_trade_amt
-        doc: 'ExecutionReportTradeOutright'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -2119,16 +1989,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: quote_entry_open
-        type: u1
-        enum: quote_entry_open
-        doc: 'A boolean value indicating if new quotes should be rejected for the sender comp for whom quotes are being cancelled on behalf; also to be used to reset such a block on mass quotes being sent by the blocked sender comp'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: quote_cancel_entries_groups
         type: quote_cancel_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -2238,12 +2099,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
   order_mass_status_request:
     seq:
       - id: party_details_list_req_id
@@ -2359,7 +2215,7 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity filled'
-      - id: leaves
+      - id: leaves_qty
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
@@ -2411,7 +2267,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -2423,12 +2279,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
   execution_report_status:
     seq:
       - id: seq_num
@@ -2504,7 +2354,7 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity filled'
-      - id: leaves
+      - id: leaves_qty
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
@@ -2557,7 +2407,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -2566,25 +2416,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
   order_status_request:
     seq:
       - id: party_details_list_req_id
@@ -2719,7 +2550,7 @@ types:
       - id: exec_restatement_reason
         type: u1
         enum: exec_restatement_reason
-        doc: 'Will be present when trade at fixing is assigned fixing price'
+        doc: 'Used to communicate unsolicited cancels'
       - id: cross_type
         type: u1
         doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
@@ -2733,7 +2564,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -2745,25 +2576,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
   order_cancel_reject:
     seq:
       - id: seq_num
@@ -2833,7 +2645,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
@@ -2906,7 +2718,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
@@ -3298,7 +3110,7 @@ types:
         type: u1
         enum: manual_order_indicator
         doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: no_processed_entries
+      - id: no_processed_quotes
         type: u1
         doc: 'Number of quotes that have been accepted from the corresponding inbound message'
       - id: mm_protection_reset
@@ -3312,7 +3124,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: short_sale_type
         type: u1
         enum: short_sale_type
@@ -3327,10 +3139,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: quote_entry_open
-        type: u1
-        enum: quote_entry_open
-        doc: 'A boolean value indicating if new quotes should be rejected for the sender comp for whom quotes are being cancelled on behalf; also to be used to reset such a block on mass quotes being sent by the blocked sender comp'
       - id: quote_ack_entries_groups
         type: quote_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -3517,7 +3325,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -3526,31 +3334,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: trd_type
-        type: u2
-        doc: 'Represents a trade at fixing price'
-      - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'Will be present when trade at fixing is assigned fixing price'
-      - id: settl_date
-        type: u2
-        doc: 'Specific date of trade settlement'
-      - id: maturity_date
-        type: u2
-        doc: 'Date of maturity'
-      - id: calculated_ccy_last_qty
-        type: calculated_ccy_last_qty
-        doc: 'ExecutionReportTradeOutright'
-      - id: gross_trade_amt
-        type: gross_trade_amt
-        doc: 'ExecutionReportTradeOutright'
-      - id: benchmark_price
-        type: s8
-        doc: 'The price assigned to an eFIX matched trade which is determined by an automated set market mid-price from a third party market data feed. The Fixing Price will be distributed as soon as practicable after the Fixing Time. Implied decimal with scale 1e-9'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -3593,12 +3376,6 @@ types:
       - id: original_order_event_exec_id
         type: u4
         doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted'
-      - id: contra_gross_trade_amt
-        type: contra_gross_trade_amt
-        doc: 'Number of fills which comprise fill quantity'
-      - id: contra_calculated_ccy_last_qty
-        type: contra_calculated_ccy_last_qty
-        doc: 'Number of fills which comprise fill quantity'
   execution_report_trade_addendum_spread:
     seq:
       - id: seq_num
@@ -3703,7 +3480,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: managed_order
         type: u1
         enum: managed_order
@@ -3878,15 +3655,6 @@ types:
         type: u1
         enum: side
         doc: 'Side of order'
-      - id: settl_date
-        type: u2
-        doc: 'Specific date of trade settlement'
-      - id: calculated_ccy_last_qty
-        type: calculated_ccy_last_qty
-        doc: 'ExecutionReportTradeOutright'
-      - id: gross_trade_amt
-        type: gross_trade_amt
-        doc: 'ExecutionReportTradeOutright'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -3938,15 +3706,9 @@ types:
       - id: source_repo_id
         type: s4
         doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on'
-      - id: broken_date_term_type
-        type: u1
-        doc: 'Defines how user defined tailor made repo contract is to be broken down into different broken dates'
       - id: request_legs_groups
         type: request_legs_groups
         doc: 'NoLegs Block'
-      - id: broken_dates_request_groups
-        type: broken_dates_request_groups
-        doc: 'NoBrokenDates Block'
   request_legs_groups:
     seq:
       - id: group_size
@@ -3983,24 +3745,6 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
-  broken_dates_request_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: broken_dates_request_group
-        type: broken_dates_request_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Used to indicate the number of custom bespoke broken dates for user defined tailor made repo'
-  broken_dates_request_group:
-    seq:
-      - id: broken_date_start
-        type: u2
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
-      - id: broken_date_end
-        type: u2
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral'
   security_definition_response:
     seq:
       - id: seq_num
@@ -4111,15 +3855,9 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: broken_date_term_type
-        type: u1
-        doc: 'Defines how user defined tailor made repo contract is to be broken down into different broken dates'
       - id: response_legs_groups
         type: response_legs_groups
         doc: 'NoLegs Block'
-      - id: broken_dates_response_groups
-        type: broken_dates_response_groups
-        doc: 'NoBrokenDates Block'
   maturity_month_year:
     seq:
       - id: year
@@ -4162,30 +3900,6 @@ types:
       - id: leg_ratio_qty
         type: u1
         doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg'
-  broken_dates_response_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: broken_dates_response_group
-        type: broken_dates_response_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Used to indicate the number of custom bespoke broken dates for user defined tailor made repo'
-  broken_dates_response_group:
-    seq:
-      - id: broken_date_guid
-        type: u8
-        doc: 'External unique REPO Instrument ID. CME assigned values'
-      - id: broken_date_security_id
-        type: s4
-        doc: 'REPO Instrument Security ID'
-      - id: broken_date_start
-        type: u2
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
-      - id: broken_date_end
-        type: u2
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral'
   order_mass_action_report:
     seq:
       - id: seq_num
@@ -4278,7 +3992,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -4286,16 +4000,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
       - id: affected_orders_groups
         type: affected_orders_groups
         doc: 'NoAffectedOrders Block'
@@ -4376,7 +4080,7 @@ types:
         type: u1
         enum: quote_cxl_status
         doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it''s instrument, quote set, product group, or by cancelling all'
-      - id: no_processed_entries_32
+      - id: no_processed_entries
         type: u4
         doc: 'Number of quotes successfully cancelled (if in response to a Quote Cancel message)'
       - id: mm_protection_reset
@@ -4398,7 +4102,7 @@ types:
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -4406,20 +4110,6 @@ types:
       - id: delay_to_time
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
-      - id: quote_entry_open
-        type: u1
-        enum: quote_entry_open
-        doc: 'A boolean value indicating if new quotes should be rejected for the sender comp for whom quotes are being cancelled on behalf; also to be used to reset such a block on mass quotes being sent by the blocked sender comp'
       - id: quote_cancel_ack_entries_groups
         type: quote_cancel_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -4465,231 +4155,6 @@ types:
       - id: quote_error_code
         type: u2
         doc: 'Reason (error code) quote set cancel has been rejected'
-  execution_report_pending_cancel:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: exec_id
-        type: str
-        size: 40
-        encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
-      - id: price
-        type: s8
-        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
-      - id: transact_time
-        type: u8
-        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
-      - id: sending_time_epoch
-        type: u8
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: order_request_id
-        type: u8
-        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: security_id
-        type: s4
-        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: order_qty
-        type: u4
-        doc: 'Number of shares or contracts ordered'
-      - id: cum_qty
-        type: u4
-        doc: 'Total quantity filled'
-      - id: leaves_qty_optional
-        type: u4
-        doc: 'Amount of shares open for further execution, or unexecuted. Will not be rolled back in case of trade cancel. Will not be returned in trade cancels and leg fills'
-      - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
-      - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
-      - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
-      - id: ord_type_optional
-        type: u1
-        enum: ord_type_optional
-        doc: 'Order type'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of order'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
-      - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: reservation_price
-        type: s8
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
-  execution_report_pending_replace:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: exec_id
-        type: str
-        size: 40
-        encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
-      - id: price
-        type: s8
-        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
-      - id: transact_time
-        type: u8
-        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
-      - id: sending_time_epoch
-        type: u8
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: order_request_id
-        type: u8
-        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: security_id
-        type: s4
-        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: order_qty
-        type: u4
-        doc: 'Number of shares or contracts ordered'
-      - id: cum_qty
-        type: u4
-        doc: 'Total quantity filled'
-      - id: leaves
-        type: u4
-        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
-      - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
-      - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
-      - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
-      - id: ord_type_optional
-        type: u1
-        enum: ord_type_optional
-        doc: 'Order type'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of order'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'Specifies how long the order remains in effect'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
-      - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments'
-      - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: discretion_price
-        type: s8
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
-      - id: priority_indicator
-        type: u1
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
 
 enums:
   template_id:
@@ -4837,12 +4302,6 @@ enums:
     563:
       id: 'quote_cancel_ack'
       doc: 'QuoteCancelAck'
-    564:
-      id: 'execution_report_pending_cancel'
-      doc: 'ExecutionReportPendingCancel'
-    565:
-      id: 'execution_report_pending_replace'
-      doc: 'ExecutionReportPendingReplace'
   fault_tolerance_indicator:
     0:
       id: 'backup'
@@ -4874,9 +4333,6 @@ enums:
     2:
       id: 'sell'
       doc: 'Sell'
-    7:
-      id: 'undisclosed'
-      doc: 'Undisclosed'
   ord_type:
     0x31:
       id: 'marketwith_protection'
@@ -4888,7 +4344,7 @@ enums:
       id: 'stopwith_protection'
       doc: 'Stop with Protection'
     0x34:
-      id: 'stop_limit'
+      id: 'stop_limitt'
       doc: 'Stop Limit'
     0x4b:
       id: 'market_with_leftover_as_limit'
@@ -4909,9 +4365,6 @@ enums:
     6:
       id: 'good_till_date'
       doc: 'Good Till Date'
-    99:
-      id: 'good_for_session'
-      doc: 'Good For Session'
   manual_order_indicator:
     0:
       id: 'automated'
@@ -4967,13 +4420,6 @@ enums:
     1:
       id: 'true'
       doc: 'True, Yes'
-  quote_entry_open:
-    0:
-      id: 'false'
-      doc: 'False, No'
-    1:
-      id: 'true'
-      doc: 'True, Yes'
   list_update_action:
     0x41:
       id: 'add'
@@ -4993,11 +4439,11 @@ enums:
       id: 'membertradingfortheirownaccount'
       doc: 'Member trading for their own account'
     2:
-      id: 'memberfirmtradingforitsproprietaryaccount'
-      doc: 'Member firm trading for its proprietary account'
+      id: 'clearingfirmtradingforitsproprietaryaccount'
+      doc: 'Clearing firm trading for its proprietary account'
     3:
-      id: 'membertradingforanothermemberornonmember'
-      doc: 'Member trading for another member or non member'
+      id: 'membertradingforanothermember'
+      doc: 'Member trading for anothermember'
     4:
       id: 'allother'
       doc: 'All other'
@@ -5040,7 +4486,7 @@ enums:
       id: 'otherprovidedscreen'
       doc: 'Other provided screen'
     0x47:
-      id: 'fcmap_ior_fix'
+      id: 'fcmapi_cta_ix'
       doc: 'FCM API or FIX'
     0x48:
       id: 'algo_engine'
@@ -5108,43 +4554,6 @@ enums:
     1:
       id: 'true'
       doc: 'True, Yes'
-  exec_restatement_reason:
-    8:
-      id: 'market_exchange_option'
-      doc: 'Market Exchange Option'
-    9:
-      id: 'cancelled_not_best'
-      doc: 'Cancelled Not Best'
-    100:
-      id: 'cancel_on_disconnect'
-      doc: 'Cancel On Disconnect'
-    103:
-      id: 'self_match_prevention_oldest_order_cancelled'
-      doc: 'Self Match Prevention Oldest Order Cancelled'
-    104:
-      id: 'cancel_on_globex_credit_controls_violation'
-      doc: 'Cancel On Globex Credit Controls Violation'
-    105:
-      id: 'cancel_from_firmsoft'
-      doc: 'Cancel From Firmsoft'
-    106:
-      id: 'cancel_from_risk_management_api'
-      doc: 'Cancel From Risk Management API'
-    107:
-      id: 'self_match_prevention_newest_order_cancelled'
-      doc: 'Self Match Prevention Newest Order Cancelled'
-    108:
-      id: 'cancelduetovolquotedoptionorderrestedqtylessthanminordersize'
-      doc: 'Cancel due to min qty violation'
-    109:
-      id: 'cancel_rfc_order'
-      doc: 'Cancel RFC Order'
-    110:
-      id: 'cancel_upon_contract_expiration'
-      doc: 'Cancel Upon Contract Expiration'
-    111:
-      id: 'system_cancel'
-      doc: 'System Cancel'
   order_event_type:
     4:
       id: 'partially_filled'
@@ -5159,9 +4568,6 @@ enums:
     2:
       id: 'sell'
       doc: 'Sell'
-    7:
-      id: 'undisclosed'
-      doc: 'Undisclosed'
   quote_cancel_type:
     1:
       id: 'cancelper_instrument'
@@ -5229,9 +4635,6 @@ enums:
     3:
       id: 'instrument_group'
       doc: 'Instrument Group'
-    7:
-      id: 'all_orders'
-      doc: 'All Orders'
     100:
       id: 'market_segment'
       doc: 'Market Segment'
@@ -5252,9 +4655,6 @@ enums:
     6:
       id: 'gtd'
       doc: 'GTD'
-    99:
-      id: 'gfs'
-      doc: 'GFS'
   ord_status:
     0x30:
       id: 'new'
@@ -5271,18 +4671,12 @@ enums:
     0x35:
       id: 'replaced'
       doc: 'Replaced'
-    0x36:
-      id: 'pending_cancel'
-      doc: 'Pending Cancel'
     0x38:
       id: 'rejected'
       doc: 'Rejected'
     0x43:
       id: 'expired'
       doc: 'Expired'
-    0x45:
-      id: 'pending_replace'
-      doc: 'Pending Replace'
     0x55:
       id: 'undefined'
       doc: 'Undefined'
@@ -5293,6 +4687,34 @@ enums:
     1:
       id: 'true'
       doc: 'True, Yes'
+  exec_restatement_reason:
+    8:
+      id: 'market_exchange_option'
+      doc: 'Market Exchange Option'
+    9:
+      id: 'cancelled_not_best'
+      doc: 'Cancelled Not Best'
+    100:
+      id: 'cancel_on_disconnect'
+      doc: 'Cancel On Disconnect'
+    103:
+      id: 'self_match_prevention_oldest_order_cancelled'
+      doc: 'Self Match Prevention Oldest Order Cancelled'
+    104:
+      id: 'cancel_on_globex_credit_controls_violation'
+      doc: 'Cancel On Globex Credit Controls Violation'
+    105:
+      id: 'cancel_from_firmsoft'
+      doc: 'Cancel From Firmsoft'
+    106:
+      id: 'cancel_from_risk_management_api'
+      doc: 'Cancel From Risk Management API'
+    107:
+      id: 'self_match_prevention_newest_order_cancelled'
+      doc: 'Self Match Prevention Newest Order Cancelled'
+    108:
+      id: 'cancelduetovolquotedoptionorderrestedqtylessthanminordersize'
+      doc: 'Cancel due to vol quoted option order rested qty less than min order size'
   request_result:
     0:
       id: 'valid_request'
@@ -5455,8 +4877,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 8.8
-#   Date: 5/31/2022
+#   Version: 8.5
+#   Date: 02/27/2020
 #   Specification: Unknown
 #
 # Script:

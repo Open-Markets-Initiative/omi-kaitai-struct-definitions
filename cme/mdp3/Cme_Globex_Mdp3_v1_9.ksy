@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures Mdp3 v1.5
+# Omi Kaitai Struct Definition: Cme Globex Mdp3 v1.9
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_mdp3_v1_5
-  title: Cme CmeFutures Mdp3 Sbe v1.5
+  id: cme_globex_mdp3_v1_9
+  title: Cme Globex Mdp3 Sbe v1.9
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures Market Data Platform 3 Sbe v1.5'
+doc: 'CME Group CME Globex Market Data Platform 3 Sbe v1.9'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+MDP+3.0+Market+Data
 
 seq:
@@ -38,7 +38,7 @@ types:
         doc: 'Message Size'
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message Root'
+        doc: 'Template ID and length of message root'
       - id: payload
         size: message_size - 10
         type:
@@ -47,19 +47,31 @@ types:
             'template_id::channel_reset': channel_reset
             'template_id::admin_login': admin_login
             'template_id::admin_logout': admin_logout
-            'template_id::md_instrument_definition_future': md_instrument_definition_future
-            'template_id::md_instrument_definition_spread': md_instrument_definition_spread
+            'template_id::md_instrument_definition_future_legacy': md_instrument_definition_future_legacy
+            'template_id::md_instrument_definition_spread_legacy': md_instrument_definition_spread_legacy
             'template_id::security_status': security_status
+            'template_id::md_incremental_refresh_book_legacy': md_incremental_refresh_book_legacy
+            'template_id::md_incremental_refresh_daily_statistics_legacy': md_incremental_refresh_daily_statistics_legacy
+            'template_id::md_incremental_refresh_limits_banding_legacy': md_incremental_refresh_limits_banding_legacy
+            'template_id::md_incremental_refresh_session_statistics_legacy': md_incremental_refresh_session_statistics_legacy
+            'template_id::md_incremental_refresh_volume': md_incremental_refresh_volume
+            'template_id::snapshot_full_refresh_legacy': snapshot_full_refresh_legacy
+            'template_id::quote_request': quote_request
+            'template_id::md_instrument_definition_option_legacy': md_instrument_definition_option_legacy
+            'template_id::md_incremental_refresh_trade_summary_legacy': md_incremental_refresh_trade_summary_legacy
+            'template_id::md_incremental_refresh_order_book_legacy': md_incremental_refresh_order_book_legacy
+            'template_id::snapshot_full_refresh_order_book_legacy': snapshot_full_refresh_order_book_legacy
             'template_id::md_incremental_refresh_book': md_incremental_refresh_book
+            'template_id::md_incremental_refresh_order_book': md_incremental_refresh_order_book
+            'template_id::md_incremental_refresh_trade_summary': md_incremental_refresh_trade_summary
             'template_id::md_incremental_refresh_daily_statistics': md_incremental_refresh_daily_statistics
             'template_id::md_incremental_refresh_limits_banding': md_incremental_refresh_limits_banding
             'template_id::md_incremental_refresh_session_statistics': md_incremental_refresh_session_statistics
-            'template_id::md_incremental_refresh_trade': md_incremental_refresh_trade
-            'template_id::md_incremental_refresh_volume': md_incremental_refresh_volume
             'template_id::snapshot_full_refresh': snapshot_full_refresh
-            'template_id::quote_request': quote_request
+            'template_id::snapshot_full_refresh_order_book': snapshot_full_refresh_order_book
+            'template_id::md_instrument_definition_future': md_instrument_definition_future
             'template_id::md_instrument_definition_option': md_instrument_definition_option
-            'template_id::md_incremental_refresh_trade_summary': md_incremental_refresh_trade_summary
+            'template_id::md_instrument_definition_spread': md_instrument_definition_spread
   message_header:
     seq:
       - id: block_length
@@ -141,7 +153,7 @@ types:
         size: 180
         encoding: ASCII
         doc: 'Free format text string. May include logout confirmation or reason for logout'
-  md_instrument_definition_future:
+  md_instrument_definition_future_legacy:
     seq:
       - id: match_event_indicator
         type: match_event_indicator
@@ -165,7 +177,7 @@ types:
         doc: 'The channel ID as defined in the XML Configuration file'
       - id: market_segment_id
         type: u1
-        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
       - id: underlying_product
         type: u1
         doc: 'Product complex'
@@ -296,6 +308,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
       - id: m_d_instrument_definition_future_27_no_events_groups
         type: m_d_instrument_definition_future_27_no_events_groups
         doc: 'NoEvents Block'
@@ -324,9 +339,9 @@ types:
         doc: 'WW'
   settl_price_type:
     seq:
-      - id: final_field
+      - id: final_daily
         type: b1
-        doc: 'Final'
+        doc: 'FinalDaily'
       - id: actual
         type: b1
         doc: 'Actual'
@@ -464,9 +479,15 @@ types:
       - id: implied_matching_eligibility
         type: b1
         doc: 'ImpliedMatchingEligibility'
-      - id: reserved_12
-        type: b12
-        doc: '12 reserved bits'
+      - id: triangulation_eligible
+        type: b1
+        doc: 'TriangulationEligible'
+      - id: variable_cab_eligible
+        type: b1
+        doc: 'VariableCabEligible'
+      - id: reserved_10
+        type: b10
+        doc: '10 reserved bits'
   m_d_instrument_definition_future_27_no_lot_type_rules_groups:
     seq:
       - id: group_size
@@ -485,7 +506,7 @@ types:
       - id: min_lot_size
         type: s4
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
-  md_instrument_definition_spread:
+  md_instrument_definition_spread_legacy:
     seq:
       - id: match_event_indicator
         type: match_event_indicator
@@ -509,7 +530,7 @@ types:
         doc: 'The channel ID as defined in the XML Configuration file'
       - id: market_segment_id
         type: u1
-        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
       - id: underlying_product_optional
         type: u1
         doc: 'Product complex'
@@ -622,6 +643,9 @@ types:
       - id: sub_fraction
         type: u1
         doc: 'Price Denominator of Sub Fraction'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
       - id: m_d_instrument_definition_spread_29_no_events_groups
         type: m_d_instrument_definition_spread_29_no_events_groups
         doc: 'NoEvents Block'
@@ -634,8 +658,8 @@ types:
       - id: m_d_instrument_definition_spread_29_no_lot_type_rules_groups
         type: m_d_instrument_definition_spread_29_no_lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
-      - id: m_d_instrument_definition_spread_29_no_legs_groups
-        type: m_d_instrument_definition_spread_29_no_legs_groups
+      - id: legs_groups
+        type: legs_groups
         doc: 'NoLegs Block'
   m_d_instrument_definition_spread_29_no_events_groups:
     seq:
@@ -709,17 +733,17 @@ types:
       - id: min_lot_size
         type: s4
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
-  m_d_instrument_definition_spread_29_no_legs_groups:
+  legs_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_legs_group
-        type: m_d_instrument_definition_spread_29_no_legs_group
+      - id: legs_group
+        type: legs_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Leg entries'
-  m_d_instrument_definition_spread_29_no_legs_group:
+  legs_group:
     seq:
       - id: leg_security_id
         type: s4
@@ -773,7 +797,7 @@ types:
         type: u1
         enum: security_trading_event
         doc: 'Identifies an additional event or a rule related to the status'
-  md_incremental_refresh_book:
+  md_incremental_refresh_book_legacy:
     seq:
       - id: transact_time
         type: u8
@@ -787,6 +811,9 @@ types:
       - id: m_d_incremental_refresh_book_32_no_m_d_entries_groups
         type: m_d_incremental_refresh_book_32_no_m_d_entries_groups
         doc: 'NoMDEntries Block'
+      - id: m_d_incremental_refresh_book_32_no_order_i_d_entries_groups
+        type: m_d_incremental_refresh_book_32_no_order_i_d_entries_groups
+        doc: 'NoOrderIDEntries Block'
   m_d_incremental_refresh_book_32_no_m_d_entries_groups:
     seq:
       - id: group_size
@@ -802,7 +829,7 @@ types:
       - id: md_entry_px_optional
         type: s8
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
-      - id: md_entry_size_optional
+      - id: md_entry_size_short_optional
         type: s4
         doc: 'Market Data entry size'
       - id: security_id
@@ -811,7 +838,7 @@ types:
       - id: rpt_seq
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
-      - id: number_of_orders
+      - id: number_of_orders_optional
         type: s4
         doc: 'In Book entry - aggregate number of orders at given price level'
       - id: md_price_level
@@ -828,7 +855,47 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
-  md_incremental_refresh_daily_statistics:
+  m_d_incremental_refresh_book_32_no_order_i_d_entries_groups:
+    seq:
+      - id: group_size_8_byte
+        type: group_size_8_byte
+        doc: '8 Byte aligned repeating group dimensions'
+      - id: m_d_incremental_refresh_book_32_no_order_i_d_entries_group
+        type: m_d_incremental_refresh_book_32_no_order_i_d_entries_group
+        repeat: expr
+        repeat-expr: group_size_8_byte.num_in_group
+        doc: 'Number of OrderID entries'
+  group_size_8_byte:
+    seq:
+      - id: block_length
+        type: u2
+      - id: padding_5
+        size: 5
+        doc: '5 bytes padding'
+      - id: num_in_group
+        type: u1
+  m_d_incremental_refresh_book_32_no_order_i_d_entries_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_display_qty_optional
+        type: s4
+        doc: 'Visible qty of order'
+      - id: reference_id
+        type: u1
+        doc: 'Reference to corresponding Price and Security ID, sequence of MD entry in the message'
+      - id: order_update_action
+        type: u1
+        enum: order_update_action
+        doc: 'Order book update action to be applied to the order referenced by OrderID'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+  md_incremental_refresh_daily_statistics_legacy:
     seq:
       - id: transact_time
         type: u8
@@ -857,7 +924,7 @@ types:
       - id: md_entry_px_optional
         type: s8
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
-      - id: md_entry_size_optional
+      - id: md_entry_size_short_optional
         type: s4
         doc: 'Market Data entry size'
       - id: security_id
@@ -868,7 +935,7 @@ types:
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: trading_reference_date
         type: u2
-        doc: 'Indicates trade session date corresponding to a statistic entry'
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -883,7 +950,7 @@ types:
       - id: padding_7
         size: 7
         doc: '7 bytes padding'
-  md_incremental_refresh_limits_banding:
+  md_incremental_refresh_limits_banding_legacy:
     seq:
       - id: transact_time
         type: u8
@@ -924,7 +991,7 @@ types:
       - id: rpt_seq
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
-  md_incremental_refresh_session_statistics:
+  md_incremental_refresh_session_statistics_legacy:
     seq:
       - id: transact_time
         type: u8
@@ -971,64 +1038,12 @@ types:
         type: u1
         enum: md_entry_type_statistics
         doc: 'Market Data entry type'
-      - id: padding_5
-        size: 5
-        doc: '5 bytes padding'
-  md_incremental_refresh_trade:
-    seq:
-      - id: transact_time
-        type: u8
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-      - id: match_event_indicator
-        type: match_event_indicator
-        doc: 'MatchEventIndicator bit set'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_trade_36_no_m_d_entries_groups
-        type: m_d_incremental_refresh_trade_36_no_m_d_entries_groups
-        doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_trade_36_no_m_d_entries_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_trade_36_no_m_d_entries_group
-        type: m_d_incremental_refresh_trade_36_no_m_d_entries_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_trade_36_no_m_d_entries_group:
-    seq:
-      - id: md_entry_px
-        type: s8
-        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
-      - id: md_entry_size
+      - id: md_entry_size_short_optional
         type: s4
-        doc: 'Trade quantity'
-      - id: security_id
-        type: s4
-        doc: 'Unique instrument ID'
-      - id: rpt_seq
-        type: u4
-        doc: 'Sequence number of the last Market Data entry processed for the instrument'
-      - id: number_of_orders
-        type: s4
-        doc: 'In Book entry - aggregate number of orders at given price level'
-      - id: trade_id
-        type: s4
-        doc: 'Unique Trade ID per instrument and Trading Date'
-      - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates aggressor side in the trade, if value is 0 then there is no aggressor'
-      - id: md_update_action
-        type: u1
-        enum: md_update_action
-        doc: 'Market Data update action'
-      - id: padding_2
-        size: 2
-        doc: '2 bytes padding'
+        doc: 'Market Data entry size'
+      - id: padding_1
+        size: 1
+        doc: '1 bytes padding'
   md_incremental_refresh_volume:
     seq:
       - id: transact_time
@@ -1055,9 +1070,9 @@ types:
         doc: 'Number of entries in Market Data message'
   incremental_refresh_volume_group:
     seq:
-      - id: md_entry_size
+      - id: md_entry_size_short
         type: s4
-        doc: 'Trade quantity'
+        doc: 'Cumulative traded volume'
       - id: security_id
         type: s4
         doc: 'Unique instrument ID'
@@ -1071,7 +1086,7 @@ types:
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
-  snapshot_full_refresh:
+  snapshot_full_refresh_legacy:
     seq:
       - id: last_msg_seq_num_processed
         type: u4
@@ -1125,10 +1140,10 @@ types:
       - id: md_entry_px_optional
         type: s8
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
-      - id: md_entry_size_optional
+      - id: md_entry_size_short_optional
         type: s4
         doc: 'Market Data entry size'
-      - id: number_of_orders
+      - id: number_of_orders_optional
         type: s4
         doc: 'In Book entry - aggregate number of orders at given price level'
       - id: md_price_level_optional
@@ -1136,7 +1151,7 @@ types:
         doc: 'Aggregate book position'
       - id: trading_reference_date
         type: u2
-        doc: 'Indicates trade session date corresponding to a statistic entry'
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
       - id: open_close_settl_flag
         type: u1
         enum: open_close_settl_flag
@@ -1199,7 +1214,7 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-  md_instrument_definition_option:
+  md_instrument_definition_option_legacy:
     seq:
       - id: match_event_indicator
         type: match_event_indicator
@@ -1223,7 +1238,7 @@ types:
         doc: 'The channel ID as defined in the XML Configuration file'
       - id: market_segment_id
         type: u1
-        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
       - id: underlying_product
         type: u1
         doc: 'Product complex'
@@ -1351,6 +1366,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
       - id: m_d_instrument_definition_option_41_no_events_groups
         type: m_d_instrument_definition_option_41_no_events_groups
         doc: 'NoEvents Block'
@@ -1366,6 +1384,9 @@ types:
       - id: m_d_instrument_definition_option_41_no_underlyings_groups
         type: m_d_instrument_definition_option_41_no_underlyings_groups
         doc: 'NoUnderlyings Block'
+      - id: m_d_instrument_definition_option_41_no_related_instruments_groups
+        type: m_d_instrument_definition_option_41_no_related_instruments_groups
+        doc: 'NoRelatedInstruments Block'
   m_d_instrument_definition_option_41_no_events_groups:
     seq:
       - id: group_size
@@ -1458,7 +1479,27 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Underlying Instrument Symbol (Contract Name)'
-  md_incremental_refresh_trade_summary:
+  m_d_instrument_definition_option_41_no_related_instruments_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: m_d_instrument_definition_option_41_no_related_instruments_group
+        type: m_d_instrument_definition_option_41_no_related_instruments_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of related instruments group'
+  m_d_instrument_definition_option_41_no_related_instruments_group:
+    seq:
+      - id: related_security_id
+        type: s4
+        doc: 'Related Security ID'
+      - id: related_symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Related instrument Symbol'
+  md_incremental_refresh_trade_summary_legacy:
     seq:
       - id: transact_time
         type: u8
@@ -1490,29 +1531,32 @@ types:
       - id: md_entry_px
         type: s8
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
-      - id: md_entry_size
+      - id: md_entry_size_short
         type: s4
-        doc: 'Trade quantity'
+        doc: 'Cumulative traded volume'
       - id: security_id
         type: s4
         doc: 'Unique instrument ID'
       - id: rpt_seq
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
-      - id: number_of_orders
+      - id: number_of_orders_optional
         type: s4
         doc: 'In Book entry - aggregate number of orders at given price level'
       - id: aggressor_side
         type: u1
         enum: aggressor_side
-        doc: 'Indicates aggressor side in the trade, if value is 0 then there is no aggressor'
+        doc: 'Indicates which side is the aggressor or if there is no aggressor'
       - id: md_update_action
         type: u1
         enum: md_update_action
         doc: 'Market Data update action'
-      - id: padding_6
-        size: 6
-        doc: '6 bytes padding'
+      - id: md_trade_entry_id
+        type: u4
+        doc: 'Market Data Trade entry ID'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
   m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_groups:
     seq:
       - id: group_size_8_byte
@@ -1523,26 +1567,1227 @@ types:
         repeat: expr
         repeat-expr: group_size_8_byte.num_in_group
         doc: 'Number of OrderID entries'
-  group_size_8_byte:
-    seq:
-      - id: block_length
-        type: u2
-      - id: padding_5
-        size: 5
-        doc: '5 bytes padding'
-      - id: num_in_group
-        type: u1
   m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_group:
     seq:
       - id: order_id
         type: u8
-        doc: 'Unique order identifier as assigned by the exchange'
+        doc: 'Unique Order ID'
       - id: last_qty
         type: s4
         doc: 'Quantity bought or sold on this last fill'
       - id: padding_4
         size: 4
         doc: '4 bytes padding'
+  md_incremental_refresh_order_book_legacy:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: m_d_incremental_refresh_order_book_43_no_m_d_entries_groups
+        type: m_d_incremental_refresh_order_book_43_no_m_d_entries_groups
+        doc: 'NoMDEntries Block'
+  m_d_incremental_refresh_order_book_43_no_m_d_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: m_d_incremental_refresh_order_book_43_no_m_d_entries_group
+        type: m_d_incremental_refresh_order_book_43_no_m_d_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  m_d_incremental_refresh_order_book_43_no_m_d_entries_group:
+    seq:
+      - id: order_id_optional
+        type: u8
+        doc: 'Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_entry_px_optional
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
+      - id: md_display_qty_optional
+        type: s4
+        doc: 'Visible qty of order'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: padding_6
+        size: 6
+        doc: '6 bytes padding'
+  snapshot_full_refresh_order_book_legacy:
+    seq:
+      - id: last_msg_seq_num_processed
+        type: u4
+        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
+      - id: tot_num_reports
+        type: u4
+        doc: 'Total number of messages replayed in the loop'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: no_chunks
+        type: u4
+        doc: 'Total number of packets that constitutes a single instrument order book'
+      - id: current_chunk
+        type: u4
+        doc: 'Chunk sequence'
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: snapshot_full_refresh_order_book_44_no_m_d_entries_groups
+        type: snapshot_full_refresh_order_book_44_no_m_d_entries_groups
+        doc: 'NoMDEntries Block'
+  snapshot_full_refresh_order_book_44_no_m_d_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: snapshot_full_refresh_order_book_44_no_m_d_entries_group
+        type: snapshot_full_refresh_order_book_44_no_m_d_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  snapshot_full_refresh_order_book_44_no_m_d_entries_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_entry_px
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-7'
+      - id: md_display_qty
+        type: s4
+        doc: 'Visible order qty'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+  md_incremental_refresh_book:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_book_groups
+        type: incremental_refresh_book_groups
+        doc: 'NoMDEntries Block'
+      - id: incremental_refresh_book_order_id_groups
+        type: incremental_refresh_book_order_id_groups
+        doc: 'NoOrderIDEntries Block'
+  incremental_refresh_book_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_book_group
+        type: incremental_refresh_book_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_book_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+      - id: md_entry_size_short_optional
+        type: s4
+        doc: 'Market Data entry size'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: number_of_orders_optional
+        type: s4
+        doc: 'In Book entry - aggregate number of orders at given price level'
+      - id: md_price_level
+        type: u1
+        doc: 'Aggregate book level'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: padding_5
+        size: 5
+        doc: '5 bytes padding'
+  incremental_refresh_book_order_id_groups:
+    seq:
+      - id: group_size_8_byte
+        type: group_size_8_byte
+        doc: '8 Byte aligned repeating group dimensions'
+      - id: incremental_refresh_book_order_id_group
+        type: incremental_refresh_book_order_id_group
+        repeat: expr
+        repeat-expr: group_size_8_byte.num_in_group
+        doc: 'Number of OrderID entries'
+  incremental_refresh_book_order_id_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_display_qty_optional
+        type: s4
+        doc: 'Visible qty of order'
+      - id: reference_id
+        type: u1
+        doc: 'Reference to corresponding Price and Security ID, sequence of MD entry in the message'
+      - id: order_update_action
+        type: u1
+        enum: order_update_action
+        doc: 'Order book update action to be applied to the order referenced by OrderID'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+  md_incremental_refresh_order_book:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_order_book_groups
+        type: incremental_refresh_order_book_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_order_book_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_order_book_group
+        type: incremental_refresh_order_book_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_order_book_group:
+    seq:
+      - id: order_id_optional
+        type: u8
+        doc: 'Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_entry_px_optional_ex
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+      - id: md_display_qty_optional
+        type: s4
+        doc: 'Visible qty of order'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+      - id: padding_6
+        size: 6
+        doc: '6 bytes padding'
+  md_incremental_refresh_trade_summary:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_trade_summary_groups
+        type: incremental_refresh_trade_summary_groups
+        doc: 'NoMDEntries Block'
+      - id: incremental_refresh_trade_summary_order_id_groups
+        type: incremental_refresh_trade_summary_order_id_groups
+        doc: 'NoOrderIDEntries Block'
+  incremental_refresh_trade_summary_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_trade_summary_group
+        type: incremental_refresh_trade_summary_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of Trade Summary entries'
+  incremental_refresh_trade_summary_group:
+    seq:
+      - id: md_entry_px_ex
+        type: s8
+        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: md_entry_size_short
+        type: s4
+        doc: 'Cumulative traded volume'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: number_of_orders
+        type: s4
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+      - id: aggressor_side
+        type: u1
+        enum: aggressor_side
+        doc: 'Indicates which side is the aggressor or if there is no aggressor'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_trade_entry_id
+        type: u4
+        doc: 'Market Data Trade entry ID'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+  incremental_refresh_trade_summary_order_id_groups:
+    seq:
+      - id: group_size_8_byte
+        type: group_size_8_byte
+        doc: '8 Byte aligned repeating group dimensions'
+      - id: incremental_refresh_trade_summary_order_id_group
+        type: incremental_refresh_trade_summary_order_id_group
+        repeat: expr
+        repeat-expr: group_size_8_byte.num_in_group
+        doc: 'Number of OrderID entries'
+  incremental_refresh_trade_summary_order_id_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: last_qty
+        type: s4
+        doc: 'Quantity bought or sold on this last fill'
+      - id: padding_4
+        size: 4
+        doc: '4 bytes padding'
+  md_incremental_refresh_daily_statistics:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_daily_statistics_groups
+        type: incremental_refresh_daily_statistics_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_daily_statistics_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_daily_statistics_group
+        type: incremental_refresh_daily_statistics_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_daily_statistics_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+      - id: md_entry_size_short_optional
+        type: s4
+        doc: 'Market Data entry size'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_daily_statistics
+        type: u1
+        enum: md_entry_type_daily_statistics
+        doc: 'Market Data entry type'
+      - id: padding_7
+        size: 7
+        doc: '7 bytes padding'
+  md_incremental_refresh_limits_banding:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_limits_banding_groups
+        type: incremental_refresh_limits_banding_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_limits_banding_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_limits_banding_group
+        type: incremental_refresh_limits_banding_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_limits_banding_group:
+    seq:
+      - id: high_limit_price_ex
+        type: s8
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: low_limit_price_ex
+        type: s8
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: max_price_variation_ex
+        type: s8
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+  md_incremental_refresh_session_statistics:
+    seq:
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: padding_2
+        size: 2
+        doc: '2 bytes padding'
+      - id: incremental_refresh_session_statistics_groups
+        type: incremental_refresh_session_statistics_groups
+        doc: 'NoMDEntries Block'
+  incremental_refresh_session_statistics_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: incremental_refresh_session_statistics_group
+        type: incremental_refresh_session_statistics_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  incremental_refresh_session_statistics_group:
+    seq:
+      - id: md_entry_px_ex
+        type: s8
+        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: open_close_settl_flag
+        type: u1
+        enum: open_close_settl_flag
+        doc: 'Flag describing IOP and Open Price entries'
+      - id: md_update_action
+        type: u1
+        enum: md_update_action
+        doc: 'Market Data update action'
+      - id: md_entry_type_statistics
+        type: u1
+        enum: md_entry_type_statistics
+        doc: 'Market Data entry type'
+      - id: md_entry_size_short_optional
+        type: s4
+        doc: 'Market Data entry size'
+      - id: padding_1
+        size: 1
+        doc: '1 bytes padding'
+  snapshot_full_refresh:
+    seq:
+      - id: last_msg_seq_num_processed
+        type: u4
+        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
+      - id: tot_num_reports
+        type: u4
+        doc: 'Total number of messages replayed in the loop'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: rpt_seq
+        type: u4
+        doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: last_update_time
+        type: u8
+        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
+      - id: trade_date
+        type: u2
+        doc: 'Trade Session Date'
+      - id: md_security_trading_status
+        type: u1
+        enum: md_security_trading_status
+        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only'
+      - id: high_limit_price_ex
+        type: s8
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: low_limit_price_ex
+        type: s8
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: max_price_variation_ex
+        type: s8
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+      - id: snapshot_full_refresh_groups
+        type: snapshot_full_refresh_groups
+        doc: 'NoMDEntries Block'
+  snapshot_full_refresh_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: snapshot_full_refresh_group
+        type: snapshot_full_refresh_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  snapshot_full_refresh_group:
+    seq:
+      - id: md_entry_px_optional_ex
+        type: s8
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+      - id: md_entry_size_short_optional
+        type: s4
+        doc: 'Market Data entry size'
+      - id: number_of_orders_optional
+        type: s4
+        doc: 'In Book entry - aggregate number of orders at given price level'
+      - id: md_price_level_optional
+        type: s1
+        doc: 'Aggregate book position'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+      - id: open_close_settl_flag
+        type: u1
+        enum: open_close_settl_flag
+        doc: 'Flag describing IOP and Open Price entries'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: md_entry_type
+        type: u1
+        enum: md_entry_type
+        doc: 'Market Data entry type'
+  snapshot_full_refresh_order_book:
+    seq:
+      - id: last_msg_seq_num_processed
+        type: u4
+        doc: 'Sequence number of the last Incremental feed packet processed. This value is used to synchronize the snapshot loop with the real-time feed'
+      - id: tot_num_reports
+        type: u4
+        doc: 'Total number of messages replayed in the loop'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: no_chunks
+        type: u4
+        doc: 'Total number of packets that constitutes a single instrument order book'
+      - id: current_chunk
+        type: u4
+        doc: 'Chunk sequence'
+      - id: transact_time
+        type: u8
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: snapshot_full_refresh_order_book_groups
+        type: snapshot_full_refresh_order_book_groups
+        doc: 'NoMDEntries Block'
+  snapshot_full_refresh_order_book_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: snapshot_full_refresh_order_book_group
+        type: snapshot_full_refresh_order_book_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries in Market Data message'
+  snapshot_full_refresh_order_book_group:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Unique Order ID'
+      - id: md_order_priority
+        type: u8
+        doc: 'Order priority for execution on the order book'
+      - id: md_entry_px_ex
+        type: s8
+        doc: 'Trade price. Implied decimal with scale 1e-9'
+      - id: md_display_qty
+        type: s4
+        doc: 'Visible order qty'
+      - id: md_entry_type_book
+        type: u1
+        enum: md_entry_type_book
+        doc: 'Market Data entry type'
+  md_instrument_definition_future:
+    seq:
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: tot_num_reports_optional
+        type: u4
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+      - id: security_update_action
+        type: u1
+        enum: security_update_action
+        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+      - id: last_update_time
+        type: u8
+        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
+      - id: md_security_trading_status
+        type: u1
+        enum: md_security_trading_status
+        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only'
+      - id: appl_id
+        type: s2
+        doc: 'The channel ID as defined in the XML Configuration file'
+      - id: market_segment_id
+        type: u1
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
+      - id: underlying_product
+        type: u1
+        doc: 'Product complex'
+      - id: security_exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Exchange used to identify a security'
+      - id: security_group
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Group Code'
+      - id: asset
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'The underlying asset code also known as Product Code'
+      - id: symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Instrument Name or Symbol'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: security_type
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Type'
+      - id: cfi_code
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'ISO standard instrument categorization code'
+      - id: maturity_month_year
+        type: maturity_month_year
+        doc: 'MDInstrumentDefinitionFuture'
+      - id: currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Identifies currency used for price'
+      - id: settl_currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Identifies currency used for settlement, if different from trading currency'
+      - id: match_algorithm
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Matching algorithm'
+      - id: min_trade_vol
+        type: u4
+        doc: 'The minimum trading volume for a security'
+      - id: max_trade_vol
+        type: u4
+        doc: 'The maximum trading volume for a security'
+      - id: min_price_increment
+        type: s8
+        doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-9'
+      - id: display_factor_ex
+        type: s8
+        doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
+      - id: main_fraction
+        type: u1
+        doc: 'Price Denominator of Main Fraction'
+      - id: sub_fraction
+        type: u1
+        doc: 'Price Denominator of Sub Fraction'
+      - id: price_display_format
+        type: u1
+        doc: 'Number of decimals in fractional display price'
+      - id: unit_of_measure
+        type: str
+        size: 30
+        encoding: ASCII
+        doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
+      - id: unit_of_measure_qty_ex
+        type: s8
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+      - id: trading_reference_price_ex
+        type: s8
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: open_interest_qty
+        type: s4
+        doc: 'The total open interest for the market at the close of the prior trading session'
+      - id: cleared_volume
+        type: s4
+        doc: 'The total cleared volume of instrument traded during the prior trading session'
+      - id: high_limit_price_ex
+        type: s8
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: low_limit_price_ex
+        type: s8
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: max_price_variation_ex
+        type: s8
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+      - id: decay_quantity
+        type: s4
+        doc: 'Indicates the quantity that a contract will decay daily by once the decay start date is reached'
+      - id: decay_start_date
+        type: u2
+        doc: 'Indicates the date at which a decaying contract will begin to decay'
+      - id: original_contract_size
+        type: s4
+        doc: 'Fixed contract value assigned to each product'
+      - id: contract_multiplier
+        type: s4
+        doc: 'Number of deliverable units per instrument, e.g., peak days in maturity month or number of calendar days in maturity month'
+      - id: contract_multiplier_unit
+        type: s1
+        doc: 'Indicates the type of multiplier being applied to the product. Optionally used in combination with tag 231-ContractMultiplier'
+      - id: flow_schedule_type
+        type: s1
+        doc: 'The schedule according to which the electricity is delivered in a physical contract, or priced in a financial contract. Specifies whether the contract is defined according to the Easter Peak, Eastern Off-Peak, Western Peak or Western Off-Peak'
+      - id: min_price_increment_amount_ex
+        type: s8
+        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9'
+      - id: user_defined_instrument
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'User-defined instruments flag'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+      - id: events_groups
+        type: events_groups
+        doc: 'NoEvents Block'
+      - id: feed_types_groups
+        type: feed_types_groups
+        doc: 'NoMDFeedTypes Block'
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
+        doc: 'NoInstAttrib Block'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
+  events_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: events_group
+        type: events_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of repeating EventType entries'
+  events_group:
+    seq:
+      - id: event_type
+        type: u1
+        enum: event_type
+        doc: 'Code to represent the type of event'
+      - id: event_time
+        type: u8
+        doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+  feed_types_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: feed_types_group
+        type: feed_types_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of repeating FeedType entries'
+  feed_types_group:
+    seq:
+      - id: md_feed_type
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Describes a class of service for a given data feed. GBX- Real Book, GBI-Implied Book'
+      - id: market_depth
+        type: s1
+        doc: 'Book depth'
+  inst_attrib_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: inst_attrib_group
+        type: inst_attrib_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of repeating InstrAttribType entries'
+  inst_attrib_group:
+    seq:
+      - id: inst_attrib_value
+        type: inst_attrib_value
+        doc: 'InstAttribValue bit set'
+  lot_type_rules_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: lot_type_rules_group
+        type: lot_type_rules_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries'
+  lot_type_rules_group:
+    seq:
+      - id: lot_type
+        type: s1
+        doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
+      - id: min_lot_size
+        type: s4
+        doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
+  md_instrument_definition_option:
+    seq:
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: tot_num_reports_optional
+        type: u4
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+      - id: security_update_action
+        type: u1
+        enum: security_update_action
+        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+      - id: last_update_time
+        type: u8
+        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
+      - id: md_security_trading_status
+        type: u1
+        enum: md_security_trading_status
+        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only'
+      - id: appl_id
+        type: s2
+        doc: 'The channel ID as defined in the XML Configuration file'
+      - id: market_segment_id
+        type: u1
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
+      - id: underlying_product
+        type: u1
+        doc: 'Product complex'
+      - id: security_exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Exchange used to identify a security'
+      - id: security_group
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Group Code'
+      - id: asset
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'The underlying asset code also known as Product Code'
+      - id: symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Instrument Name or Symbol'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: security_type
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Type'
+      - id: cfi_code
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'ISO standard instrument categorization code'
+      - id: put_or_call
+        type: u1
+        enum: put_or_call
+        doc: 'Indicates whether an option instrument is a put or call'
+      - id: maturity_month_year
+        type: maturity_month_year
+        doc: 'MDInstrumentDefinitionFuture'
+      - id: currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Identifies currency used for price'
+      - id: strike_price_ex
+        type: s8
+        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-9'
+      - id: strike_currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Currency in which the StrikePrice is denominated'
+      - id: settl_currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Identifies currency used for settlement, if different from trading currency'
+      - id: min_cab_price_ex
+        type: s8
+        doc: 'Defines cabinet price for outright options products. Implied decimal with scale 1e-9'
+      - id: match_algorithm
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Matching algorithm'
+      - id: min_trade_vol
+        type: u4
+        doc: 'The minimum trading volume for a security'
+      - id: max_trade_vol
+        type: u4
+        doc: 'The maximum trading volume for a security'
+      - id: min_price_increment_optional
+        type: s8
+        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9'
+      - id: min_price_increment_amount_ex
+        type: s8
+        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9'
+      - id: display_factor_ex
+        type: s8
+        doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
+      - id: tick_rule
+        type: s1
+        doc: 'Tick Rule'
+      - id: main_fraction
+        type: u1
+        doc: 'Price Denominator of Main Fraction'
+      - id: sub_fraction
+        type: u1
+        doc: 'Price Denominator of Sub Fraction'
+      - id: price_display_format
+        type: u1
+        doc: 'Number of decimals in fractional display price'
+      - id: unit_of_measure
+        type: str
+        size: 30
+        encoding: ASCII
+        doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
+      - id: unit_of_measure_qty_ex
+        type: s8
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+      - id: trading_reference_price_ex
+        type: s8
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: cleared_volume
+        type: s4
+        doc: 'The total cleared volume of instrument traded during the prior trading session'
+      - id: open_interest_qty
+        type: s4
+        doc: 'The total open interest for the market at the close of the prior trading session'
+      - id: low_limit_price_ex
+        type: s8
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: high_limit_price_ex
+        type: s8
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: user_defined_instrument
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'User-defined instruments flag'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+      - id: events_groups
+        type: events_groups
+        doc: 'NoEvents Block'
+      - id: feed_types_groups
+        type: feed_types_groups
+        doc: 'NoMDFeedTypes Block'
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
+        doc: 'NoInstAttrib Block'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
+      - id: option_underlyings_groups
+        type: option_underlyings_groups
+        doc: 'NoUnderlyings Block'
+      - id: option_related_instruments_groups
+        type: option_related_instruments_groups
+        doc: 'NoRelatedInstruments Block'
+  option_underlyings_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: option_underlyings_group
+        type: option_underlyings_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of underlying instruments'
+  option_underlyings_group:
+    seq:
+      - id: underlying_security_id
+        type: s4
+        doc: 'Unique Instrument ID as qualified by the exchange per tag 305-UnderlyingSecurityIDSource'
+      - id: underlying_symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Underlying Instrument Symbol (Contract Name)'
+  option_related_instruments_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: option_related_instruments_group
+        type: option_related_instruments_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of related instruments group'
+  option_related_instruments_group:
+    seq:
+      - id: related_security_id
+        type: s4
+        doc: 'Related Security ID'
+      - id: related_symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Related instrument Symbol'
+  md_instrument_definition_spread:
+    seq:
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'MatchEventIndicator bit set'
+      - id: tot_num_reports_optional
+        type: u4
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+      - id: security_update_action
+        type: u1
+        enum: security_update_action
+        doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
+      - id: last_update_time
+        type: u8
+        doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
+      - id: md_security_trading_status
+        type: u1
+        enum: md_security_trading_status
+        doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only'
+      - id: appl_id
+        type: s2
+        doc: 'The channel ID as defined in the XML Configuration file'
+      - id: market_segment_id
+        type: u1
+        doc: 'Identifies the market segment, populated for all CME Globex instruments'
+      - id: underlying_product_optional
+        type: u1
+        doc: 'Product complex'
+      - id: security_exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Exchange used to identify a security'
+      - id: security_group
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Group Code'
+      - id: asset
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'The underlying asset code also known as Product Code'
+      - id: symbol
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Instrument Name or Symbol'
+      - id: security_id
+        type: s4
+        doc: 'Unique instrument ID'
+      - id: security_type
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Security Type'
+      - id: cfi_code
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'ISO standard instrument categorization code'
+      - id: maturity_month_year
+        type: maturity_month_year
+        doc: 'MDInstrumentDefinitionFuture'
+      - id: currency
+        type: str
+        size: 3
+        encoding: ASCII
+        doc: 'Identifies currency used for price'
+      - id: security_sub_type
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Strategy type'
+      - id: user_defined_instrument
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'User-defined instruments flag'
+      - id: match_algorithm
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Matching algorithm'
+      - id: min_trade_vol
+        type: u4
+        doc: 'The minimum trading volume for a security'
+      - id: max_trade_vol
+        type: u4
+        doc: 'The maximum trading volume for a security'
+      - id: min_price_increment_optional
+        type: s8
+        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9'
+      - id: display_factor_ex
+        type: s8
+        doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
+      - id: price_display_format
+        type: u1
+        doc: 'Number of decimals in fractional display price'
+      - id: price_ratio_ex
+        type: s8
+        doc: 'Used for price calculation in spread and leg pricing. Implied decimal with scale 1e-9'
+      - id: tick_rule
+        type: s1
+        doc: 'Tick Rule'
+      - id: unit_of_measure
+        type: str
+        size: 30
+        encoding: ASCII
+        doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
+      - id: trading_reference_price_ex
+        type: s8
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+      - id: settl_price_type
+        type: settl_price_type
+        doc: 'SettlPriceType bit set'
+      - id: open_interest_qty
+        type: s4
+        doc: 'The total open interest for the market at the close of the prior trading session'
+      - id: cleared_volume
+        type: s4
+        doc: 'The total cleared volume of instrument traded during the prior trading session'
+      - id: high_limit_price_ex
+        type: s8
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: low_limit_price_ex
+        type: s8
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+      - id: max_price_variation_ex
+        type: s8
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+      - id: main_fraction
+        type: u1
+        doc: 'Price Denominator of Main Fraction'
+      - id: sub_fraction
+        type: u1
+        doc: 'Price Denominator of Sub Fraction'
+      - id: trading_reference_date
+        type: u2
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+      - id: events_groups
+        type: events_groups
+        doc: 'NoEvents Block'
+      - id: feed_types_groups
+        type: feed_types_groups
+        doc: 'NoMDFeedTypes Block'
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
+        doc: 'NoInstAttrib Block'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
+      - id: legs_groups
+        type: legs_groups
+        doc: 'NoLegs Block'
 
 enums:
   template_id:
@@ -1559,44 +2804,80 @@ enums:
       id: 'admin_logout'
       doc: 'AdminLogout'
     27:
-      id: 'md_instrument_definition_future'
+      id: 'md_instrument_definition_future_legacy'
       doc: 'MDInstrumentDefinitionFuture'
     29:
-      id: 'md_instrument_definition_spread'
+      id: 'md_instrument_definition_spread_legacy'
       doc: 'MDInstrumentDefinitionSpread'
     30:
       id: 'security_status'
       doc: 'SecurityStatus'
     32:
-      id: 'md_incremental_refresh_book'
+      id: 'md_incremental_refresh_book_legacy'
       doc: 'MDIncrementalRefreshBook'
     33:
-      id: 'md_incremental_refresh_daily_statistics'
+      id: 'md_incremental_refresh_daily_statistics_legacy'
       doc: 'MDIncrementalRefreshDailyStatistics'
     34:
-      id: 'md_incremental_refresh_limits_banding'
+      id: 'md_incremental_refresh_limits_banding_legacy'
       doc: 'MDIncrementalRefreshLimitsBanding'
     35:
-      id: 'md_incremental_refresh_session_statistics'
+      id: 'md_incremental_refresh_session_statistics_legacy'
       doc: 'MDIncrementalRefreshSessionStatistics'
-    36:
-      id: 'md_incremental_refresh_trade'
-      doc: 'MDIncrementalRefreshTrade'
     37:
       id: 'md_incremental_refresh_volume'
       doc: 'MDIncrementalRefreshVolume'
     38:
-      id: 'snapshot_full_refresh'
+      id: 'snapshot_full_refresh_legacy'
       doc: 'SnapshotFullRefresh'
     39:
       id: 'quote_request'
       doc: 'QuoteRequest'
     41:
-      id: 'md_instrument_definition_option'
+      id: 'md_instrument_definition_option_legacy'
       doc: 'MDInstrumentDefinitionOption'
     42:
+      id: 'md_incremental_refresh_trade_summary_legacy'
+      doc: 'MDIncrementalRefreshTradeSummary'
+    43:
+      id: 'md_incremental_refresh_order_book_legacy'
+      doc: 'MDIncrementalRefreshOrderBook'
+    44:
+      id: 'snapshot_full_refresh_order_book_legacy'
+      doc: 'SnapshotFullRefreshOrderBook'
+    46:
+      id: 'md_incremental_refresh_book'
+      doc: 'MDIncrementalRefreshBook'
+    47:
+      id: 'md_incremental_refresh_order_book'
+      doc: 'MDIncrementalRefreshOrderBook'
+    48:
       id: 'md_incremental_refresh_trade_summary'
       doc: 'MDIncrementalRefreshTradeSummary'
+    49:
+      id: 'md_incremental_refresh_daily_statistics'
+      doc: 'MDIncrementalRefreshDailyStatistics'
+    50:
+      id: 'md_incremental_refresh_limits_banding'
+      doc: 'MDIncrementalRefreshLimitsBanding'
+    51:
+      id: 'md_incremental_refresh_session_statistics'
+      doc: 'MDIncrementalRefreshSessionStatistics'
+    52:
+      id: 'snapshot_full_refresh'
+      doc: 'SnapshotFullRefresh'
+    53:
+      id: 'snapshot_full_refresh_order_book'
+      doc: 'SnapshotFullRefreshOrderBook'
+    54:
+      id: 'md_instrument_definition_future'
+      doc: 'MDInstrumentDefinitionFuture'
+    55:
+      id: 'md_instrument_definition_option'
+      doc: 'MDInstrumentDefinitionOption'
+    56:
+      id: 'md_instrument_definition_spread'
+      doc: 'MDInstrumentDefinitionSpread'
   security_update_action:
     0x41:
       id: 'add'
@@ -1762,6 +3043,16 @@ enums:
     0x4a:
       id: 'book_reset'
       doc: 'Book Reset'
+  order_update_action:
+    0:
+      id: 'new'
+      doc: 'New'
+    1:
+      id: 'update'
+      doc: 'Update'
+    2:
+      id: 'delete'
+      doc: 'Delete'
   md_entry_type_daily_statistics:
     0x36:
       id: 'settlement_price'
@@ -1798,16 +3089,6 @@ enums:
     0x4f:
       id: 'lowest_offer'
       doc: 'Lowest Offer'
-  aggressor_side:
-    0:
-      id: 'no_aggressor'
-      doc: 'No Aggressor'
-    1:
-      id: 'buy'
-      doc: 'Buy'
-    2:
-      id: 'sell'
-      doc: 'Sell'
   md_entry_type:
     0x30:
       id: 'bid'
@@ -1819,8 +3100,8 @@ enums:
       id: 'trade'
       doc: 'Trade'
     0x34:
-      id: 'opening_price'
-      doc: 'Opening Price'
+      id: 'open_price'
+      doc: 'Open Price'
     0x36:
       id: 'settlement_price'
       doc: 'Settlement Price'
@@ -1831,8 +3112,8 @@ enums:
       id: 'trading_session_low_price'
       doc: 'Trading Session Low Price'
     0x42:
-      id: 'trade_volume'
-      doc: 'Trade Volume'
+      id: 'cleared_volume'
+      doc: 'Cleared Volume'
     0x43:
       id: 'open_interest'
       doc: 'Open Interest'
@@ -1843,8 +3124,8 @@ enums:
       id: 'implied_offer'
       doc: 'Implied Offer'
     0x4a:
-      id: 'empty_book'
-      doc: 'Empty Book'
+      id: 'book_reset'
+      doc: 'Book Reset'
     0x4e:
       id: 'session_high_bid'
       doc: 'Session High Bid'
@@ -1858,7 +3139,7 @@ enums:
       id: 'electronic_volume'
       doc: 'Electronic Volume'
     0x67:
-      id: 'threshold_limitsand_price_band_variation'
+      id: 'threshold_limits_and_price_band_variation'
       doc: 'Threshold Limits and Price Band Variation'
   put_or_call:
     0:
@@ -1867,6 +3148,16 @@ enums:
     1:
       id: 'call'
       doc: 'Call Option'
+  aggressor_side:
+    0:
+      id: 'no_aggressor'
+      doc: 'No Aggressor'
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
 
 # ---------------------------------------------------------------------
 # Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
@@ -1875,8 +3166,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 1.5
-#   Date: 8/06/2014
+#   Version: 1.9
+#   Date: 3/08/2018
 #   Specification: Unknown
 #
 # Script:

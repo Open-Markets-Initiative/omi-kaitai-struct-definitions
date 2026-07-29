@@ -1,16 +1,16 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Cme CmeFutures iLink3 v8.5
+# Omi Kaitai Struct Definition: Cme Globex iLink3 v8.3
 #
 # Please see end of file for rules and regulations
 # ---------------------------------------------------------------------
 
 meta:
-  id: cmefutures_ilink3_v8_5
-  title: Cme CmeFutures iLink3 Sbe v8.5
+  id: cme_globex_ilink3_v8_3
+  title: Cme Globex iLink3 Sbe v8.3
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group Chicago Mercantile Exchange Futures iLink 3 Sbe v8.5'
+doc: 'CME Group CME Globex iLink 3 Sbe v8.3'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/iLink+3+-+Simple+Binary+Encoding
 
 seq:
@@ -74,13 +74,13 @@ types:
             'template_id::new_order_cross': new_order_cross
             'template_id::mass_quote_ack': mass_quote_ack
             'template_id::request_for_quote_ack': request_for_quote_ack
+            'template_id::quote_cancel_ack': quote_cancel_ack
             'template_id::execution_report_trade_addendum_outright': execution_report_trade_addendum_outright
             'template_id::execution_report_trade_addendum_spread': execution_report_trade_addendum_spread
             'template_id::execution_report_trade_addendum_spread_leg': execution_report_trade_addendum_spread_leg
+            'template_id::order_mass_action_report': order_mass_action_report
             'template_id::security_definition_request': security_definition_request
             'template_id::security_definition_response': security_definition_response
-            'template_id::order_mass_action_report': order_mass_action_report
-            'template_id::quote_cancel_ack': quote_cancel_ack
   simple_open_framing_header:
     seq:
       - id: message_length
@@ -131,11 +131,11 @@ types:
         doc: 'Not used and will be set to 0'
   credentials:
     seq:
-      - id: credentials_length
+      - id: len_credentials_data
         type: u2
         doc: 'Length Field'
       - id: credentials_data
-        size: credentials_length
+        size: len_credentials_data
         doc: 'Variable Length Data'
   negotiation_response:
     seq:
@@ -705,11 +705,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: reserved
-        type: str
-        size: 30
-        encoding: ASCII
-        doc: 'Reserved for future use'
       - id: quote_entries_groups
         type: quote_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -1017,7 +1012,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1077,7 +1072,7 @@ types:
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -1124,9 +1119,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_reject:
     seq:
       - id: seq_num
@@ -1144,7 +1136,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1207,7 +1199,7 @@ types:
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -1254,9 +1246,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_elimination:
     seq:
       - id: seq_num
@@ -1269,7 +1258,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1384,7 +1373,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1593,7 +1582,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -1803,7 +1792,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2163,7 +2152,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2229,7 +2218,7 @@ types:
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -2276,9 +2265,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   execution_report_status:
     seq:
       - id: seq_num
@@ -2296,7 +2282,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2459,7 +2445,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2522,7 +2508,7 @@ types:
         doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -2573,9 +2559,6 @@ types:
         type: u1
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   order_cancel_reject:
     seq:
       - id: seq_num
@@ -2593,7 +2576,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2629,7 +2612,7 @@ types:
         doc: 'Code to identify reason for cancel rejection'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -2646,9 +2629,6 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   order_cancel_replace_reject:
     seq:
       - id: seq_num
@@ -2666,7 +2646,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -2702,7 +2682,7 @@ types:
         doc: 'Code to identify reason for cancel rejection'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -2719,9 +2699,6 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
   party_details_list_request:
     seq:
       - id: party_details_list_req_id
@@ -2913,23 +2890,6 @@ types:
         type: u1
         enum: side
         doc: 'Side of order'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: sending_time_epoch
-        type: u8
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
   request_for_quote:
     seq:
       - id: party_details_list_req_id
@@ -2982,11 +2942,11 @@ types:
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
       - id: order_qty_optional
         type: u4
-        doc: 'RFQ quantity'
+        doc: 'Order quantity. Mandatory for buy or sell but not required for cross'
       - id: rfq_side
         type: u1
         enum: rfq_side
-        doc: 'RFQ side'
+        doc: 'Order side'
   new_order_cross:
     seq:
       - id: cross_id
@@ -3101,7 +3061,7 @@ types:
         doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: quote_ack_status
         type: u1
         enum: quote_ack_status
@@ -3110,7 +3070,7 @@ types:
         type: u1
         enum: manual_order_indicator
         doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: no_processed_quotes
+      - id: no_processed_entries
         type: u1
         doc: 'Number of quotes that have been accepted from the corresponding inbound message'
       - id: mm_protection_reset
@@ -3136,9 +3096,6 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: quote_ack_entries_groups
         type: quote_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -3211,7 +3168,7 @@ types:
         doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: quote_ack_status
         type: u1
         enum: quote_ack_status
@@ -3228,9 +3185,132 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
+  quote_cancel_ack:
+    seq:
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: uuid
         type: u8
+        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
+      - id: text
+        type: str
+        size: 256
+        encoding: ASCII
+        doc: 'Reject reason details. Will be used only for descriptive rejects'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: request_time
+        type: u8
+        doc: 'Information carried on a response to convey the time (UTC) when the request was received by the MSGW application. UTC timestamps are sent in number of nanoseconds since the UNIX epoch with microsecond precision'
+      - id: sending_time_epoch
+        type: u8
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: cancelled_symbol
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Instrument Group cancelled for a Quote Cancel acknowledgement'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: quote_id
+        type: u4
+        doc: 'Unique identifier for mass quote populated by the client system'
+      - id: quote_reject_reason
+        type: u2
+        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
+      - id: delay_duration
+        type: u2
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: quote_cxl_status
+        type: u1
+        enum: quote_cxl_status
+        doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it''s instrument, quote set, product group, or by cancelling all'
+      - id: no_processed_entries
+        type: u1
+        doc: 'Number of quotes that have been accepted from the corresponding inbound message'
+      - id: mm_protection_reset
+        type: u1
+        enum: mm_protection_reset
+        doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
+      - id: unsolicited_cancel_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Type of quote cancel generated by CME -- returned only for unsolicited quote cancels'
+      - id: split_msg
+        type: u1
+        enum: split_msg
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+      - id: tot_no_quote_entries_optional
+        type: u1
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+      - id: liquidity_flag
+        type: u1
+        enum: liquidity_flag
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+      - id: poss_retrans_flag
+        type: u1
+        enum: poss_retrans_flag
+        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
+      - id: quote_cancel_ack_547_no_quote_entries_groups
+        type: quote_cancel_ack_547_no_quote_entries_groups
+        doc: 'NoQuoteEntries Block'
+      - id: quote_cancel_ack_547_no_quote_sets_groups
+        type: quote_cancel_ack_547_no_quote_sets_groups
+        doc: 'NoQuoteSets Block'
+  quote_cancel_ack_547_no_quote_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: quote_cancel_ack_547_no_quote_entries_group
+        type: quote_cancel_ack_547_no_quote_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of quote entries for a quote set. Will be populated only for enumerated rejects for Cancel By Instrument'
+  quote_cancel_ack_547_no_quote_entries_group:
+    seq:
+      - id: quote_entry_id
+        type: u4
+        doc: 'Unique identifier for a quote. The QuoteEntryID stays with the quote as a static identifier even if the quote is updated. For fills this value is transposed into client order ID (tag 11)'
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: quote_entry_reject_reason
+        type: u1
+        doc: 'Reason (error code) quote has been rejected'
+  quote_cancel_ack_547_no_quote_sets_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: quote_cancel_ack_547_no_quote_sets_group
+        type: quote_cancel_ack_547_no_quote_sets_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of sets of quotes in the message. Will be populated only for enumerated rejects for Cancel By Quote Set'
+  quote_cancel_ack_547_no_quote_sets_group:
+    seq:
+      - id: quote_set_id
+        type: u2
+        doc: 'Unique id for the Quote Set'
+      - id: quote_error_code
+        type: u2
+        doc: 'Reason (error code) quote set cancel has been rejected'
   execution_report_trade_addendum_outright:
     seq:
       - id: seq_num
@@ -3243,7 +3323,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3388,7 +3468,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3583,7 +3663,7 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
+        doc: 'Unique identifier of execution message as assigned by the exchange unique per day across all instruments and across all good till orders'
       - id: sender_id
         type: str
         size: 20
@@ -3651,16 +3731,135 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of order'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
       - id: spread_trade_events_groups
         type: spread_trade_events_groups
         doc: 'NoOrderEvents Block'
+  order_mass_action_report:
+    seq:
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: uuid
+        type: u8
+        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: transact_time
+        type: u8
+        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
+      - id: sending_time_epoch
+        type: u8
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: order_request_id
+        type: u8
+        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
+      - id: mass_action_report_id
+        type: u8
+        doc: 'Unique ID of Order Mass Action Report as assigned by CME. If fragmented then all messages must have the same value'
+      - id: security_group
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=?Product Group? (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: security_id_optional
+        type: s4
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+      - id: delay_duration
+        type: u2
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+      - id: mass_action_response
+        type: u1
+        enum: mass_action_response
+        doc: 'Specifies the action taken by CME when it received the Order Mass Action Request'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: mass_action_scope
+        type: u1
+        enum: mass_action_scope
+        doc: 'Specifies the scope of the action'
+      - id: total_affected_orders
+        type: u1
+        doc: 'Total number of orders affected by the Order Mass Action Request. Will be returned as zero for rejects or if request is accepted but no orders could be cancelled. If fragmented then this is the sum of NoAffectedOrders across all messages with the same MassActionReportID. Otherwise will have same value as NoAffectedOrders when one or more orders is cancelled'
+      - id: last_fragment
+        type: u1
+        enum: last_fragment
+        doc: 'Indicates whether the message is the last message in a sequence of messages to support fragmentation'
+      - id: mass_action_reject_reason
+        type: u1
+        doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0'
+      - id: market_segment_id
+        type: u1
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment'
+      - id: mass_cancel_request_type
+        type: u1
+        enum: mass_cancel_request_type
+        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
+      - id: side_optional
+        type: u1
+        enum: side_optional
+        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled'
+      - id: mass_action_ord_typ
+        type: u1
+        enum: mass_action_ord_typ
+        doc: 'If provided then only orders of this type will be cancelled. If absent then all order types will be cancelled'
+      - id: mass_cancel_tif
+        type: u1
+        enum: mass_cancel_tif
+        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled'
+      - id: split_msg
+        type: u1
+        enum: split_msg
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+      - id: liquidity_flag
+        type: u1
+        enum: liquidity_flag
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+      - id: poss_retrans_flag
+        type: u1
+        enum: poss_retrans_flag
+        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
+      - id: order_mass_action_report_558_no_affected_orders_groups
+        type: order_mass_action_report_558_no_affected_orders_groups
+        doc: 'NoAffectedOrders Block'
+  order_mass_action_report_558_no_affected_orders_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: order_mass_action_report_558_no_affected_orders_group
+        type: order_mass_action_report_558_no_affected_orders_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Total number of order identifiers affected by the OrderMass Action Request. Only used if orders could actually be cancelled otherwise will be set to zero. Must be followed by OrigCIOrdID'
+  order_mass_action_report_558_no_affected_orders_group:
+    seq:
+      - id: origclordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Contains the ClOrd of the cancelled order'
+      - id: affected_order_id
+        type: u8
+        doc: 'Order ID of an order cancelled by a mass action request'
+      - id: cxl_quantity
+        type: u4
+        doc: 'Total quantity cancelled for this order'
   security_definition_request:
     seq:
       - id: party_details_list_req_id
@@ -3813,7 +4012,7 @@ types:
         doc: 'SecurityDefinitionResponse'
       - id: delay_duration
         type: u2
-        doc: 'Not being currently used'
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: start_date
         type: u2
         doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
@@ -3900,261 +4099,6 @@ types:
       - id: leg_ratio_qty
         type: u1
         doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg'
-  order_mass_action_report:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: transact_time
-        type: u8
-        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
-      - id: sending_time_epoch
-        type: u8
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: order_request_id
-        type: u8
-        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
-      - id: mass_action_report_id
-        type: u8
-        doc: 'Unique ID of Order Mass Action Report as assigned by CME. If fragmented then all messages must have the same value'
-      - id: security_group
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=?Product Group? (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
-      - id: delay_duration
-        type: u2
-        doc: 'Not being currently used'
-      - id: mass_action_response
-        type: u1
-        enum: mass_action_response
-        doc: 'Specifies the action taken by CME when it received the Order Mass Action Request'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: mass_action_scope
-        type: u1
-        enum: mass_action_scope
-        doc: 'Specifies the scope of the action'
-      - id: total_affected_orders
-        type: u4
-        doc: 'Total number of orders affected by the Order Mass Action Request. Will be returned as zero for rejects or if request is accepted but no orders could be cancelled. If fragmented then this is the sum of NoAffectedOrders across all messages with the same MassActionReportID. Otherwise will have same value as NoAffectedOrders when one or more orders is cancelled'
-      - id: last_fragment
-        type: u1
-        enum: last_fragment
-        doc: 'Indicates whether the message is the last message in a sequence of messages to support fragmentation'
-      - id: mass_action_reject_reason
-        type: u1
-        doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0'
-      - id: market_segment_id
-        type: u1
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment'
-      - id: mass_cancel_request_type
-        type: u1
-        enum: mass_cancel_request_type
-        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
-      - id: side_optional
-        type: u1
-        enum: side_optional
-        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled'
-      - id: mass_action_ord_typ
-        type: u1
-        enum: mass_action_ord_typ
-        doc: 'If provided then only orders of this type will be cancelled. If absent then all order types will be cancelled'
-      - id: mass_cancel_tif
-        type: u1
-        enum: mass_cancel_tif
-        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled'
-      - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
-      - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: affected_orders_groups
-        type: affected_orders_groups
-        doc: 'NoAffectedOrders Block'
-  affected_orders_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: affected_orders_group
-        type: affected_orders_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Total number of order identifiers affected by the OrderMass Action Request. Only used if orders could actually be cancelled otherwise will be set to zero. Must be followed by OrigCIOrdID'
-  affected_orders_group:
-    seq:
-      - id: origclordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Contains the ClOrd of the cancelled order'
-      - id: affected_order_id
-        type: u8
-        doc: 'Order ID of an order cancelled by a mass action request'
-      - id: cxl_quantity
-        type: u4
-        doc: 'Total quantity cancelled for this order'
-  quote_cancel_ack:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: text
-        type: str
-        size: 256
-        encoding: ASCII
-        doc: 'Reject reason details. Will be used only for descriptive rejects'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: request_time
-        type: u8
-        doc: 'Information carried on a response to convey the time (UTC) when the request was received by the MSGW application. UTC timestamps are sent in number of nanoseconds since the UNIX epoch with microsecond precision'
-      - id: sending_time_epoch
-        type: u8
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: cancelled_symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Instrument Group cancelled for a Quote Cancel acknowledgement'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: quote_id
-        type: u4
-        doc: 'Unique identifier for mass quote populated by the client system'
-      - id: quote_reject_reason
-        type: u2
-        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
-      - id: delay_duration
-        type: u2
-        doc: 'Not being currently used'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: quote_cxl_status
-        type: u1
-        enum: quote_cxl_status
-        doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it''s instrument, quote set, product group, or by cancelling all'
-      - id: no_processed_entries
-        type: u4
-        doc: 'Number of quotes successfully cancelled (if in response to a Quote Cancel message)'
-      - id: mm_protection_reset
-        type: u1
-        enum: mm_protection_reset
-        doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
-      - id: unsolicited_cancel_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Type of quote cancel generated by CME -- returned only for unsolicited quote cancels'
-      - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
-      - id: tot_no_quote_entries_optional
-        type: u1
-        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
-      - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: delay_to_time
-        type: u8
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
-      - id: quote_cancel_ack_entries_groups
-        type: quote_cancel_ack_entries_groups
-        doc: 'NoQuoteEntries Block'
-      - id: quote_cancel_ack_sets_groups
-        type: quote_cancel_ack_sets_groups
-        doc: 'NoQuoteSets Block'
-  quote_cancel_ack_entries_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_entries_group
-        type: quote_cancel_ack_entries_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'The number of quote entries for a quote set. Will be populated only for enumerated rejects for Cancel By Instrument'
-  quote_cancel_ack_entries_group:
-    seq:
-      - id: quote_entry_id
-        type: u4
-        doc: 'Unique identifier for a quote. The QuoteEntryID stays with the quote as a static identifier even if the quote is updated. For fills this value is transposed into client order ID (tag 11)'
-      - id: security_id
-        type: s4
-        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: quote_entry_reject_reason
-        type: u1
-        doc: 'Reason (error code) quote has been rejected'
-  quote_cancel_ack_sets_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_sets_group
-        type: quote_cancel_ack_sets_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'The number of sets of quotes in the message. Will be populated only for enumerated rejects for Cancel By Quote Set'
-  quote_cancel_ack_sets_group:
-    seq:
-      - id: quote_set_id
-        type: u2
-        doc: 'Unique id for the Quote Set'
-      - id: quote_error_code
-        type: u2
-        doc: 'Reason (error code) quote set cancel has been rejected'
 
 enums:
   template_id:
@@ -4281,6 +4225,9 @@ enums:
     546:
       id: 'request_for_quote_ack'
       doc: 'RequestForQuoteAck'
+    547:
+      id: 'quote_cancel_ack'
+      doc: 'QuoteCancelAck'
     548:
       id: 'execution_report_trade_addendum_outright'
       doc: 'ExecutionReportTradeAddendumOutright'
@@ -4290,18 +4237,15 @@ enums:
     550:
       id: 'execution_report_trade_addendum_spread_leg'
       doc: 'ExecutionReportTradeAddendumSpreadLeg'
+    558:
+      id: 'order_mass_action_report'
+      doc: 'OrderMassActionReport'
     560:
       id: 'security_definition_request'
       doc: 'SecurityDefinitionRequest'
     561:
       id: 'security_definition_response'
       doc: 'SecurityDefinitionResponse'
-    562:
-      id: 'order_mass_action_report'
-      doc: 'OrderMassActionReport'
-    563:
-      id: 'quote_cancel_ack'
-      doc: 'QuoteCancelAck'
   fault_tolerance_indicator:
     0:
       id: 'backup'
@@ -4344,7 +4288,7 @@ enums:
       id: 'stopwith_protection'
       doc: 'Stop with Protection'
     0x34:
-      id: 'stop_limitt'
+      id: 'stop_limit'
       doc: 'Stop Limit'
     0x4b:
       id: 'market_with_leftover_as_limit'
@@ -4795,6 +4739,22 @@ enums:
     5:
       id: 'rejected'
       doc: 'Rejected'
+  quote_cxl_status:
+    1:
+      id: 'cancelper_instrument'
+      doc: 'Cancel per Instrument'
+    3:
+      id: 'cancelper_instrumentgroup'
+      doc: 'Cancel per Instrument group'
+    4:
+      id: 'cancelallquotes'
+      doc: 'Cancel all quotes'
+    5:
+      id: 'rejected'
+      doc: 'Rejected'
+    100:
+      id: 'cancelper_quote_set'
+      doc: 'Cancel per Quote Set'
   ord_status_trd_cxl:
     0x47:
       id: 'trade_correction'
@@ -4822,6 +4782,13 @@ enums:
     101:
       id: 'trade_correction'
       doc: 'Trade Correction'
+  mass_action_response:
+    0:
+      id: 'rejected'
+      doc: 'Rejected'
+    1:
+      id: 'accepted'
+      doc: 'Accepted'
   security_response_type:
     1:
       id: 'accept_security_proposalasis'
@@ -4846,29 +4813,6 @@ enums:
     1:
       id: 'true'
       doc: 'True, Yes'
-  mass_action_response:
-    0:
-      id: 'rejected'
-      doc: 'Rejected'
-    1:
-      id: 'accepted'
-      doc: 'Accepted'
-  quote_cxl_status:
-    1:
-      id: 'cancelper_instrument'
-      doc: 'Cancel per Instrument'
-    3:
-      id: 'cancelper_instrumentgroup'
-      doc: 'Cancel per Instrument group'
-    4:
-      id: 'cancelallquotes'
-      doc: 'Cancel all quotes'
-    5:
-      id: 'rejected'
-      doc: 'Rejected'
-    100:
-      id: 'cancelper_quote_set'
-      doc: 'Cancel per Quote Set'
 
 # ---------------------------------------------------------------------
 # Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
@@ -4877,8 +4821,8 @@ enums:
 #
 # Protocol:
 #   Organization: CME Group
-#   Version: 8.5
-#   Date: 02/27/2020
+#   Version: 8.3
+#   Date: 01/09/2020
 #   Specification: Unknown
 #
 # Script:

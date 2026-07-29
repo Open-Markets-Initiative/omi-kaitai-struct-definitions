@@ -126,13 +126,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved for future use'
-      - id: number_of_legs
+      - id: num_leg_information
         type: u1
         doc: 'Number of legs in the strategy'
       - id: leg_information
         type: leg_information
         repeat: expr
-        repeat-expr: number_of_legs
+        repeat-expr: num_leg_information
         doc: 'Leg information'
   leg_information:
     seq:
@@ -329,13 +329,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved for future use'
-      - id: number_of_flex_dac_legs
+      - id: num_flex_dac_leg_information
         type: u1
         doc: 'Number of Flex DAC legs in the strategy Legs'
       - id: flex_dac_leg_information
         type: flex_dac_leg_information
         repeat: expr
-        repeat-expr: number_of_flex_dac_legs
+        repeat-expr: num_flex_dac_leg_information
         doc: 'Flex DAC leg information'
   flex_dac_leg_information:
     seq:
