@@ -4370,7 +4370,7 @@ types:
         size: 3
       - id: market_segment_id
         type: s4
-      - id: pad_41
+      - id: pad_4v_1
         size: 4
       - id: security_id
         type: s8
@@ -4393,7 +4393,7 @@ types:
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_23
+      - id: pad_2v_3
         size: 2
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -4523,7 +4523,7 @@ types:
         size: 3
       - id: market_segment_id
         type: s4
-      - id: pad_41
+      - id: pad_4v_1
         size: 4
       - id: security_id
         type: s8
@@ -4542,7 +4542,7 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
       - id: check_sum_correction
         type: u2
@@ -5263,7 +5263,7 @@ types:
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_22
+      - id: pad_2v_2
         size: 2
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -5389,7 +5389,7 @@ types:
         size: 3
       - id: market_segment_id
         type: s4
-      - id: pad_41
+      - id: pad_4v_1
         size: 4
       - id: security_id
         type: s8
@@ -5408,7 +5408,7 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
       - id: check_sum_correction
         type: u2

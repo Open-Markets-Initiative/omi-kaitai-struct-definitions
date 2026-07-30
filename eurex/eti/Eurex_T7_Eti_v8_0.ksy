@@ -7270,7 +7270,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
       - id: srqs_related_trade_id_grp_comp
         type: srqs_related_trade_id_grp_comp

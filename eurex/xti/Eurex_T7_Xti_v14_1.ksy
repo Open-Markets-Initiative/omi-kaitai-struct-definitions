@@ -2132,7 +2132,7 @@ types:
       - id: cross_match_instruction
         type: u1
         enum: cross_match_instruction
-      - id: pad_41
+      - id: pad_4v_1
         size: 4
       - id: security_id
         type: s8
@@ -2412,7 +2412,7 @@ types:
         enum: mid_point_type
       - id: check_sum_correction
         type: u2
-      - id: pad_21
+      - id: pad_2v_1
         size: 2
   new_order_response:
     seq:
@@ -2527,7 +2527,7 @@ types:
       - id: cross_match_instruction
         type: u1
         enum: cross_match_instruction
-      - id: pad_41
+      - id: pad_4v_1
         size: 4
       - id: security_id
         type: s8

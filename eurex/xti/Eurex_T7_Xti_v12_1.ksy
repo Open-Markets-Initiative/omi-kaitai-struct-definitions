@@ -1960,7 +1960,7 @@ types:
       - id: trading_capacity
         type: u1
         enum: trading_capacity
-      - id: pad_21
+      - id: pad_2v_1
         size: 2
       - id: market_segment_id
         type: s4
@@ -1985,7 +1985,7 @@ types:
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_22
+      - id: pad_2v_2
         size: 2
   modify_order_response:
     seq:
@@ -2128,7 +2128,7 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
       - id: check_sum_correction
         type: u2
@@ -2584,7 +2584,7 @@ types:
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_21
+      - id: pad_2v_1
         size: 2
   new_order_response:
     seq:
@@ -2717,7 +2717,7 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
       - id: check_sum_correction
         type: u2

@@ -5527,7 +5527,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_21
+      - id: pad_2v_1
         size: 2
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp

@@ -7454,7 +7454,7 @@ types:
         type: u4
       - id: num_srqs_related_trade_id_grp_comp
         type: u1
-      - id: pad_31
+      - id: pad_3v_1
         size: 3
       - id: basket_profile_id
         type: u4
@@ -7863,7 +7863,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_11
+      - id: pad_1v_1
         size: 1
   tm_trading_session_status_broadcast:
     seq:
