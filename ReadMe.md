@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 238 | 593,407 |
+| 254 | 611,850 |
 
 ## Testing
 
@@ -40,9 +40,13 @@ For a list of Omi Hft projects: [Omi Projects](https://github.com/Open-Markets-I
 For details of Omi rules and regulations: [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory")
 ## Protocols
 
-Definitions by Organization: [Cme][Cme.Directory], [Eurex][Eurex.Directory], [Iex][Iex.Directory], [Nasdaq][Nasdaq.Directory], [Nyse][Nyse.Directory]
+Definitions by Organization: [Cme][Cme.Directory], [Coinbase][Coinbase.Directory], [Eurex][Eurex.Directory], [Iex][Iex.Directory], [Nasdaq][Nasdaq.Directory], [Nyse][Nyse.Directory]
 
-Definitions by Exchange/Ats/Sip: [AmexEquities][AmexEquities.Directory], [AmexOptions][AmexOptions.Directory], [ArcaEquities][ArcaEquities.Directory], [ArcaOptions][ArcaOptions.Directory], [GemxOptions][GemxOptions.Directory], [IexEquities][IexEquities.Directory], [IexOptions][IexOptions.Directory], [IseOptions][IseOptions.Directory], [MrxOptions][MrxOptions.Directory], [NationalEquities][NationalEquities.Directory], [NomOptions][NomOptions.Directory], [NsmEquities][NsmEquities.Directory], [NtxEquities][NtxEquities.Directory], [NtxOptions][NtxOptions.Directory], [NyseEquities][NyseEquities.Directory], [NyseOptions][NyseOptions.Directory], [PhlxOptions][PhlxOptions.Directory], [PsxEquities][PsxEquities.Directory], [TexasEquities][TexasEquities.Directory], [Uqdf][Uqdf.Directory], [Utdf][Utdf.Directory], [Utp][Utp.Directory]
+Definitions by Exchange: [AmexEquities][AmexEquities.Exchange], [AmexOptions][AmexOptions.Exchange], [ArcaEquities][ArcaEquities.Exchange], [ArcaOptions][ArcaOptions.Exchange], [CoinbaseDerivatives][CoinbaseDerivatives.Exchange], [Deribit][Deribit.Exchange], [GemxOptions][GemxOptions.Exchange], [IexEquities][IexEquities.Exchange], [IexOptions][IexOptions.Exchange], [IseOptions][IseOptions.Exchange], [MrxOptions][MrxOptions.Exchange], [NationalEquities][NationalEquities.Exchange], [NomOptions][NomOptions.Exchange], [NsmEquities][NsmEquities.Exchange], [NtxEquities][NtxEquities.Exchange], [NtxOptions][NtxOptions.Exchange], [NyseEquities][NyseEquities.Exchange], [NyseOptions][NyseOptions.Exchange], [PhlxOptions][PhlxOptions.Exchange], [PsxEquities][PsxEquities.Exchange], [TexasEquities][TexasEquities.Exchange]
+
+Definitions by Sip: [NyseConsolidated][NyseConsolidated.Consolidator], [Uqdf][Uqdf.Consolidator], [Utdf][Utdf.Consolidator], [Utp][Utp.Consolidator]
+
+Definitions by Platform: [Cme Globex][Globex.Platform], [Eurex T7][T7.Platform]
 
 ## Disclaimer
 
@@ -61,6 +65,7 @@ Enjoy.
 [Omi.Encoding.Definitions]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/ReadMe.md "Encoding Directory"
 
 [Omi.Encoding.Sbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Sbe.md "Sbe Encoding"
+[Omi.Encoding.Tcp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Tcp.md "Tcp Encoding"
 [Omi.Encoding.Fbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Fbe.md "Fbe Encoding"
 [Omi.Encoding.IexTp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/IexTp.md "IexTp Encoding"
 [Omi.Encoding.Itch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Itch.md "Itch Encoding"
@@ -78,6 +83,11 @@ Enjoy.
 [Cme.Globex.EbsSpectrum]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/EbsSpectrum.md "Ebs Spectrum Market Data"
 [Cme.Globex.BrokerTecUst]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/BrokerTecUst.md "BrokerTec Us Treasuries"
 [Cme.Globex.iLink3]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/iLink3.md "iLink 3"
+[Coinbase.CoinbaseDerivatives.MarketDataApi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Coinbase/Protocols/CoinbaseDerivatives/MarketDataApi.md "Market Data Api"
+[Coinbase.CoinbaseDerivatives.OrdersApi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Coinbase/Protocols/CoinbaseDerivatives/OrdersApi.md "Orders Api"
+[Coinbase.CoinbaseDerivatives.Session]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Coinbase/Protocols/CoinbaseDerivatives/Session.md "Session Layer"
+[Coinbase.Deribit.MarketDataApi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Coinbase/Protocols/Deribit/MarketDataApi.md "Market Data Api"
+[Coinbase.Deribit.OrdersApi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Coinbase/Protocols/Deribit/OrdersApi.md "Orders Api"
 [Eurex.T7.Eobi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Eobi.md "Enhanced Order Book Interface"
 [Eurex.T7.Eti]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Eti.md "Enhanced Trading Interface"
 [Eurex.T7.Xti]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Eurex/Protocols/T7/Xti.md "Cash Enhanced Trading Interface"
@@ -191,30 +201,36 @@ Enjoy.
 [Nyse.TexasEquities.Trades]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nyse/Protocols/TexasEquities/Trades.md "Trades"
 
 [Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Group"
+[Coinbase.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase "Coinbase"
 [Eurex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/eurex "Eurex Exchange"
 [Iex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex "Investors Exchange"
 [Nasdaq.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq "National Association of Securities Dealers Automated Quotations (Nasdaq)"
 [Nyse.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse "New York Stock Exchange"
 
-[AmexEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/AmexEquities "Nyse AmexEquities"
-[AmexOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/AmexOptions "Nyse AmexOptions"
-[ArcaEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/ArcaEquities "Nyse ArcaEquities"
-[ArcaOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/ArcaOptions "Nyse ArcaOptions"
-[GemxOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/GemxOptions "Nasdaq GemxOptions"
-[IexEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Iex/Protocols/IexEquities "Iex IexEquities"
-[IexOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Iex/Protocols/IexOptions "Iex IexOptions"
-[IseOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/IseOptions "Nasdaq IseOptions"
-[MrxOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/MrxOptions "Nasdaq MrxOptions"
-[NationalEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/NationalEquities "Nyse NationalEquities"
-[NomOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/NomOptions "Nasdaq NomOptions"
-[NsmEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/NsmEquities "Nasdaq NsmEquities"
-[NtxEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/NtxEquities "Nasdaq NtxEquities"
-[NtxOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/NtxOptions "Nasdaq NtxOptions"
-[NyseEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/NyseEquities "Nyse NyseEquities"
-[NyseOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/NyseOptions "Nyse NyseOptions"
-[PhlxOptions.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/PhlxOptions "Nasdaq PhlxOptions"
-[PsxEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/PsxEquities "Nasdaq PsxEquities"
-[TexasEquities.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nyse/Protocols/TexasEquities "Nyse TexasEquities"
-[Uqdf.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/Uqdf "Nasdaq Uqdf"
-[Utdf.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/Utdf "Nasdaq Utdf"
-[Utp.Directory]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nasdaq/Protocols/Utp "Nasdaq Utp"
+[AmexEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/amexequities "Nyse Amex Equities"
+[AmexOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/amexoptions "Nyse Amex Options"
+[ArcaEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/arcaequities "Nyse Arca Equities"
+[ArcaOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/arcaoptions "Nyse Arca Options"
+[CoinbaseDerivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/coinbasederivatives "Coinbase Derivatives"
+[Deribit.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/deribit "Deribit"
+[GemxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/gemxoptions "Nasdaq GEMX"
+[Globex.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Globex"
+[IexEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex/iexequities "IEX Equities"
+[IexOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex/iexoptions "IEX Options"
+[IseOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/iseoptions "Nasdaq ISE"
+[MrxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/mrxoptions "Nasdaq MRX"
+[NationalEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nationalequities "Nyse National Equities"
+[NomOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/nomoptions "Nasdaq Options Market"
+[NsmEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/nsmequities "Nasdaq Stock Market"
+[NtxEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/ntxequities "Nasdaq Texas"
+[NtxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/ntxoptions "Nasdaq Texas Options"
+[NyseConsolidated.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseconsolidated "NYSE Consolidated"
+[NyseEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseequities "New York Stock Exchange Equities"
+[NyseOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseoptions "New York Stock Exchange Options"
+[PhlxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/phlxoptions "Nasdaq PHLX"
+[PsxEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/psxequities "Nasdaq PSX"
+[T7.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/eurex "T7"
+[TexasEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/texasequities "Nyse Texas Equities"
+[Uqdf.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/uqdf "Nasdaq UTP Quote Data Feed"
+[Utdf.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/utdf "Nasdaq UTP Trade Data Feed"
+[Utp.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/utp "Nasdaq Unlisted Trading Privileges Plan"

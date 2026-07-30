@@ -196,7 +196,7 @@ types:
       - id: sequenced_message
         size: msg_header.msg_length - 36
         type:
-          switch-on: sequenced_message.session_configuration_request_message.seq_msg_header.seq_msg_type
+          switch-on: seq_msg_header.seq_msg_type
           cases:
             'seq_msg_type::session_configuration_request_message': session_configuration_request_message
             'seq_msg_type::sequenced_filler': sequenced_filler
