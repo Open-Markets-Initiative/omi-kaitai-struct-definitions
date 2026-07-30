@@ -40,13 +40,13 @@ For a list of Omi Hft projects: [Omi Projects](https://github.com/Open-Markets-I
 For details of Omi rules and regulations: [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory")
 ## Protocols
 
-Definitions by Organization: [Cme][Cme.Directory], [Coinbase][Coinbase.Directory], [Eurex][Eurex.Directory], [Iex][Iex.Directory], [Nasdaq][Nasdaq.Directory], [Nyse][Nyse.Directory]
+Definitions by Organization: [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Iex][Iex.Directory] · [Nasdaq][Nasdaq.Directory] · [Nyse][Nyse.Directory]
 
-Definitions by Exchange: [AmexEquities][AmexEquities.Exchange], [AmexOptions][AmexOptions.Exchange], [ArcaEquities][ArcaEquities.Exchange], [ArcaOptions][ArcaOptions.Exchange], [CoinbaseDerivatives][CoinbaseDerivatives.Exchange], [Deribit][Deribit.Exchange], [GemxOptions][GemxOptions.Exchange], [IexEquities][IexEquities.Exchange], [IexOptions][IexOptions.Exchange], [IseOptions][IseOptions.Exchange], [MrxOptions][MrxOptions.Exchange], [NationalEquities][NationalEquities.Exchange], [NomOptions][NomOptions.Exchange], [NsmEquities][NsmEquities.Exchange], [NtxEquities][NtxEquities.Exchange], [NtxOptions][NtxOptions.Exchange], [NyseEquities][NyseEquities.Exchange], [NyseOptions][NyseOptions.Exchange], [PhlxOptions][PhlxOptions.Exchange], [PsxEquities][PsxEquities.Exchange], [TexasEquities][TexasEquities.Exchange]
+Definitions by Exchange: [AmexEquities][AmexEquities.Exchange] · [AmexOptions][AmexOptions.Exchange] · [ArcaEquities][ArcaEquities.Exchange] · [ArcaOptions][ArcaOptions.Exchange] · [CoinbaseDerivatives][CoinbaseDerivatives.Exchange] · [Deribit][Deribit.Exchange] · [GemxOptions][GemxOptions.Exchange] · [IexEquities][IexEquities.Exchange] · [IexOptions][IexOptions.Exchange] · [IseOptions][IseOptions.Exchange] · [MrxOptions][MrxOptions.Exchange] · [NationalEquities][NationalEquities.Exchange] · [NomOptions][NomOptions.Exchange] · [NsmEquities][NsmEquities.Exchange] · [NtxEquities][NtxEquities.Exchange] · [NtxOptions][NtxOptions.Exchange] · [NyseEquities][NyseEquities.Exchange] · [NyseOptions][NyseOptions.Exchange] · [PhlxOptions][PhlxOptions.Exchange] · [PsxEquities][PsxEquities.Exchange] · [TexasEquities][TexasEquities.Exchange]
 
-Definitions by Sip: [NyseConsolidated][NyseConsolidated.Consolidator], [Uqdf][Uqdf.Consolidator], [Utdf][Utdf.Consolidator], [Utp][Utp.Consolidator]
+Definitions by Sip: [NyseConsolidated][NyseConsolidated.Consolidator] · [Uqdf][Uqdf.Consolidator] · [Utdf][Utdf.Consolidator] · [Utp][Utp.Consolidator]
 
-Definitions by Platform: [Cme Globex][Globex.Platform], [Eurex T7][T7.Platform]
+Definitions by Platform: [Cme Globex][Globex.Platform] · [Eurex T7][T7.Platform]
 
 ## Disclaimer
 
