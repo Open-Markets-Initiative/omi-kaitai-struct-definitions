@@ -136,7 +136,7 @@ types:
         type: u4
       - id: num_instrmt_leg_grp_comp
         type: u1
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: last_fragment
         type: u1
@@ -149,7 +149,7 @@ types:
     seq:
       - id: leg_symbol
         type: s4
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: leg_security_id
         type: s8
@@ -164,7 +164,7 @@ types:
       - id: leg_side
         type: u1
         enum: leg_side
-      - id: pad_2
+      - id: pad2
         size: 2
   add_flexible_instrument:
     seq:
@@ -201,7 +201,7 @@ types:
         type: u4
       - id: security_reference_data_supplement
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   add_scaled_simple_instrument:
     seq:
@@ -218,11 +218,11 @@ types:
       - id: security_type
         type: u1
         enum: security_type
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: quantity_scaling_factor
         type: u2
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: related_instrument_grp_comp
         type: related_instrument_grp_comp
@@ -283,7 +283,7 @@ types:
       - id: potential_security_trading_event
         type: u1
         enum: potential_security_trading_event
-      - id: pad_6
+      - id: pad6
         size: 6
   cross_request:
     seq:
@@ -326,14 +326,14 @@ types:
       - id: aggressor_side
         type: u1
         enum: aggressor_side
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: trade_condition
         type: u2
         enum: trade_condition
       - id: trading_hhi_indicator
         type: u1
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: last_px
         type: u8
@@ -394,7 +394,7 @@ types:
     seq:
       - id: last_msg_seq_num_processed
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   instrument_state_change:
     seq:
@@ -418,7 +418,7 @@ types:
       - id: sold_out_indicator
         type: u1
         enum: sold_out_indicator
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: high_px
         type: u8
@@ -432,7 +432,7 @@ types:
       - id: tes_security_status
         type: u1
         enum: tes_security_status
-      - id: pad_7
+      - id: pad7
         size: 7
   instrument_summary:
     seq:
@@ -548,7 +548,7 @@ types:
         enum: last_fragment
       - id: num_sec_mass_stat_grp_comp
         type: u1
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: sec_mass_stat_grp_comp
         type: sec_mass_stat_grp_comp
@@ -582,7 +582,7 @@ types:
       - id: tes_security_status
         type: u1
         enum: tes_security_status
-      - id: pad_2
+      - id: pad2
         size: 2
   order_add:
     seq:
@@ -656,7 +656,7 @@ types:
       - id: prev_price_hhi_indicator
         type: s1
         enum: prev_price_hhi_indicator
-      - id: pad_7
+      - id: pad7
         size: 7
   order_modify_same_prio:
     seq:
@@ -723,7 +723,7 @@ types:
       - id: tes_trad_ses_status
         type: u1
         enum: tes_trad_ses_status
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: transact_time
         type: u8
@@ -750,7 +750,7 @@ types:
       - id: tes_trad_ses_status
         type: u1
         enum: tes_trad_ses_status
-      - id: pad_6
+      - id: pad6
         size: 6
   quote_request:
     seq:
@@ -762,7 +762,7 @@ types:
       - id: side
         type: u1
         enum: side
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: transact_time
         type: u8
@@ -798,7 +798,7 @@ types:
       - id: multi_leg_price_model
         type: u1
         enum: multi_leg_price_model
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: non_disclosed_trade_volume
         type: u8
@@ -810,7 +810,7 @@ types:
         type: u2
       - id: number_of_sell_sides
         type: u2
-      - id: pad_4
+      - id: pad4
         size: 4
   top_of_book:
     seq:
@@ -835,7 +835,7 @@ types:
         type: u2
       - id: number_of_sell_orders
         type: u2
-      - id: pad_4
+      - id: pad4
         size: 4
   trade_report:
     seq:
@@ -861,12 +861,12 @@ types:
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: trade_condition
         type: u2
         enum: trade_condition
-      - id: pad_6
+      - id: pad6
         size: 6
   trade_reversal:
     seq:
@@ -909,7 +909,7 @@ types:
       - id: md_entry_type
         type: u1
         enum: md_entry_type
-      - id: pad_7
+      - id: pad7
         size: 7
 
 enums:

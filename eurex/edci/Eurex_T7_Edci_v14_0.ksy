@@ -52,7 +52,7 @@ types:
         enum: template_id
   delete_order_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -63,7 +63,7 @@ types:
         type: s4
       - id: num_affected_ord_grp_comp
         type: u2
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: affected_ord_grp_comp
         type: affected_ord_grp_comp
@@ -114,11 +114,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   forced_logout_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -139,17 +139,17 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   heartbeat:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
   heartbeat_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
   logon_request:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -165,17 +165,17 @@ types:
         type: str
         size: 32
         encoding: ASCII
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   request_header_comp:
     seq:
       - id: msg_seq_num
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   logon_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -198,7 +198,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   response_header_comp:
     seq:
@@ -213,23 +213,23 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: pad_3
+      - id: pad3
         size: 3
   logout_request:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
   logout_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
   order_exec_report_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -356,7 +356,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: fills_grp_comp
         type: fills_grp_comp
@@ -376,13 +376,13 @@ types:
         type: s4
   partition_list_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
       - id: num_partition_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: partition_grp_comp
         type: partition_grp_comp
@@ -392,11 +392,11 @@ types:
     seq:
       - id: partition_id
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
   reject:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -418,13 +418,13 @@ types:
         doc: 'Alignment'
   session_list_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
       - id: num_sessions_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: sessions_grp_comp
         type: sessions_grp_comp
@@ -453,7 +453,7 @@ types:
         pad-right: 0x20
   session_status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -464,7 +464,7 @@ types:
       - id: trad_ses_event
         type: u1
         enum: trad_ses_event
-      - id: pad_7
+      - id: pad7
         size: 7
 
 enums:

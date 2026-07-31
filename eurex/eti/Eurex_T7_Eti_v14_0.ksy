@@ -205,7 +205,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -231,7 +231,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
@@ -260,11 +260,11 @@ types:
       - id: leg_security_type
         type: u1
         enum: leg_security_type
-      - id: pad_6
+      - id: pad6
         size: 6
   add_complex_instrument_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -304,7 +304,7 @@ types:
         enum: product_complex
       - id: num_instrmt_leg_grp_comp
         type: u1
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
@@ -332,7 +332,7 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: pad_3
+      - id: pad3
         size: 3
   add_flexible_instrument_request:
     seq:
@@ -341,7 +341,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -370,11 +370,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   add_flexible_instrument_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -406,7 +406,7 @@ types:
       - id: exercise_style
         type: u1
         enum: exercise_style
-      - id: pad_7
+      - id: pad7
         size: 7
   add_scaled_simple_instrument_request:
     seq:
@@ -415,7 +415,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -428,11 +428,11 @@ types:
       - id: multileg_model
         type: u1
         enum: multileg_model
-      - id: pad_1
+      - id: pad1
         size: 1
   add_scaled_simple_instrument_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -459,7 +459,7 @@ types:
       - id: product_complex
         type: u1
         enum: product_complex
-      - id: pad_7
+      - id: pad7
         size: 7
   amend_basket_trade_request:
     seq:
@@ -468,7 +468,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -539,7 +539,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   instrmt_match_side_grp_comp:
     seq:
@@ -580,7 +580,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   basket_side_alloc_grp_comp:
     seq:
@@ -610,7 +610,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   approve_basket_trade_request:
     seq:
@@ -619,7 +619,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -655,7 +655,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
       - id: basket_side_alloc_ext_grp_comp
         type: basket_side_alloc_ext_grp_comp
@@ -765,7 +765,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   approve_reverse_tes_trade_request:
     seq:
@@ -774,7 +774,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -796,7 +796,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   approve_tes_trade_request:
     seq:
@@ -805,7 +805,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -931,11 +931,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   basket_approve_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -989,7 +989,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: basket_root_party_grp_comp
         type: basket_root_party_grp_comp
@@ -1019,7 +1019,7 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: pad_7
+      - id: pad7
         size: 7
   basket_side_alloc_ext_bc_grp_comp:
     seq:
@@ -1133,11 +1133,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   basket_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -1188,7 +1188,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
       - id: basket_root_party_grp_comp
         type: basket_root_party_grp_comp
@@ -1204,7 +1204,7 @@ types:
         repeat-expr: num_basket_side_alloc_grp_comp
   basket_delete_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -1233,11 +1233,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   basket_execution_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -1273,7 +1273,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: basket_exec_grp_comp
         type: basket_exec_grp_comp
@@ -1290,11 +1290,11 @@ types:
       - id: side_trd_sub_typ
         type: u2
         enum: side_trd_sub_typ
-      - id: pad_2
+      - id: pad2
         size: 2
   basket_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -1315,11 +1315,11 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: msg_seq_num
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   basket_roll_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -1412,7 +1412,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
   new_basket_data_bc_grp_comp:
     seq:
@@ -1441,7 +1441,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
   old_basket_instrmt_match_side_grp_comp:
     seq:
@@ -1482,7 +1482,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   new_basket_instrmt_match_side_grp_comp:
     seq:
@@ -1523,7 +1523,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   old_basket_side_alloc_grp_comp:
     seq:
@@ -1556,7 +1556,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   new_basket_side_alloc_grp_comp:
     seq:
@@ -1589,7 +1589,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   basket_roll_request:
     seq:
@@ -1598,7 +1598,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -1627,7 +1627,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: old_basket_data_grp_comp
         type: old_basket_data_grp_comp
@@ -1674,7 +1674,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   new_basket_data_grp_comp:
     seq:
@@ -1693,11 +1693,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   broadcast_error_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -1729,7 +1729,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   clip_deletion_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -1764,7 +1764,7 @@ types:
       - id: exec_type
         type: u1
         enum: exec_type
-      - id: pad_6
+      - id: pad6
         size: 6
   rbc_header_me_comp:
     seq:
@@ -1792,11 +1792,11 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: pad_7
+      - id: pad7
         size: 7
   clip_execution_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -1844,7 +1844,7 @@ types:
         enum: match_type
       - id: num_fills_grp_comp
         type: u1
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: fills_grp_comp
         type: fills_grp_comp
@@ -1869,7 +1869,7 @@ types:
       - id: fill_liquidity_ind
         type: u1
         enum: fill_liquidity_ind
-      - id: pad_7
+      - id: pad7
         size: 7
   instrmnt_leg_exec_grp_comp:
     seq:
@@ -1888,11 +1888,11 @@ types:
         enum: leg_side
       - id: fill_ref_id
         type: u1
-      - id: pad_2
+      - id: pad2
         size: 2
   clip_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -1910,7 +1910,7 @@ types:
       - id: implied_check_price_indicator
         type: u1
         enum: implied_check_price_indicator
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: cross_request_ack_side_grp_comp
         type: cross_request_ack_side_grp_comp
@@ -1928,7 +1928,7 @@ types:
       - id: side
         type: u1
         enum: side
-      - id: pad_6
+      - id: pad6
         size: 6
   cross_request:
     seq:
@@ -1937,7 +1937,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -1955,7 +1955,7 @@ types:
         pad-right: 0x20
   cross_request_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -1964,7 +1964,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   delete_all_order_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -2018,11 +2018,11 @@ types:
     seq:
       - id: affected_order_request_id
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   delete_all_order_nr_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -2031,7 +2031,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   delete_all_order_quote_event_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -2048,7 +2048,7 @@ types:
       - id: exec_inst
         type: u1
         enum: exec_inst
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   delete_all_order_request:
     seq:
@@ -2057,7 +2057,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2090,7 +2090,7 @@ types:
         enum: executing_trader_qualifier
   delete_all_order_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_me_comp
         type: response_header_me_comp
@@ -2101,7 +2101,7 @@ types:
         type: u2
       - id: num_affected_order_requests_grp_comp
         type: u2
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: not_affected_orders_grp_comp
         type: not_affected_orders_grp_comp
@@ -2142,7 +2142,7 @@ types:
         enum: last_fragment
   delete_all_quote_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -2172,7 +2172,7 @@ types:
         size: 3
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
@@ -2189,7 +2189,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2207,11 +2207,11 @@ types:
       - id: executing_trader_qualifier
         type: u1
         enum: executing_trader_qualifier
-      - id: pad_6
+      - id: pad6
         size: 6
   delete_all_quote_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -2220,7 +2220,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: num_not_affected_securities_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
@@ -2233,7 +2233,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2254,7 +2254,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
   delete_clip_request:
     seq:
@@ -2263,7 +2263,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2287,11 +2287,11 @@ types:
       - id: party_id_investment_decision_maker_qualifier
         type: u1
         enum: party_id_investment_decision_maker_qualifier
-      - id: pad_6
+      - id: pad6
         size: 6
   delete_order_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -2341,7 +2341,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
   delete_order_complex_request:
     seq:
@@ -2350,7 +2350,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2389,11 +2389,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   delete_order_nr_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -2429,7 +2429,7 @@ types:
       - id: transaction_delay_indicator
         type: u1
         enum: transaction_delay_indicator
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   delete_order_request:
     seq:
@@ -2438,7 +2438,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2477,11 +2477,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   delete_order_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_me_comp
         type: response_header_me_comp
@@ -2517,7 +2517,7 @@ types:
       - id: transaction_delay_indicator
         type: u1
         enum: transaction_delay_indicator
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   delete_order_single_request:
     seq:
@@ -2526,7 +2526,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2565,7 +2565,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   delete_tes_trade_request:
     seq:
@@ -2574,7 +2574,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2597,7 +2597,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
   enter_basket_trade_request:
     seq:
@@ -2606,7 +2606,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2647,7 +2647,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: basket_root_party_grp_comp
         type: basket_root_party_grp_comp
@@ -2668,7 +2668,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2724,7 +2724,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: cross_request_side_grp_comp
         type: cross_request_side_grp_comp
@@ -2840,7 +2840,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   side_cross_leg_grp_comp:
     seq:
@@ -2855,7 +2855,7 @@ types:
         size: 2
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   enter_tes_trade_request:
     seq:
@@ -2864,7 +2864,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -2964,7 +2964,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: side_alloc_grp_comp
         type: side_alloc_grp_comp
@@ -3008,7 +3008,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   trd_instrmnt_leg_grp_comp:
     seq:
@@ -3027,7 +3027,7 @@ types:
       - id: event_type
         type: u1
         enum: event_type
-      - id: pad_3
+      - id: pad3
         size: 3
   instrument_attribute_grp_comp:
     seq:
@@ -3039,7 +3039,7 @@ types:
         size: 32
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   underlying_stip_grp_comp:
     seq:
@@ -3053,11 +3053,11 @@ types:
         size: 7
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
   forced_logout_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -3073,7 +3073,7 @@ types:
         doc: 'Alignment'
   forced_user_logout_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -3099,11 +3099,11 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
   heartbeat_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -3114,7 +3114,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3122,7 +3122,7 @@ types:
         size: 16
   inquire_enrichment_rule_id_list_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -3130,7 +3130,7 @@ types:
         size: 16
       - id: num_enrichment_rules_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: enrichment_rules_grp_comp
         type: enrichment_rules_grp_comp
@@ -3188,7 +3188,7 @@ types:
         size: 12
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   inquire_mm_parameter_request:
     seq:
@@ -3197,7 +3197,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3207,7 +3207,7 @@ types:
         type: u4
   inquire_mm_parameter_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -3218,7 +3218,7 @@ types:
         type: s4
       - id: num_mm_parameter_grp_comp
         type: u1
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: mm_parameter_grp_comp
         type: mm_parameter_grp_comp
@@ -3244,7 +3244,7 @@ types:
       - id: mm_risk_limit_action_type
         type: u1
         enum: mm_risk_limit_action_type
-      - id: pad_7
+      - id: pad7
         size: 7
   inquire_margin_based_risk_limit_request:
     seq:
@@ -3253,7 +3253,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3264,11 +3264,11 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
   inquire_margin_based_risk_limit_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -3285,7 +3285,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3304,7 +3304,7 @@ types:
         size: 3
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   inquire_session_list_request:
     seq:
@@ -3313,19 +3313,19 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
   inquire_session_list_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
       - id: num_sessions_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: sessions_grp_comp
         type: sessions_grp_comp
@@ -3355,7 +3355,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3363,7 +3363,7 @@ types:
         size: 16
   inquire_user_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -3371,7 +3371,7 @@ types:
         size: 16
       - id: num_party_details_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: party_details_grp_comp
         type: party_details_grp_comp
@@ -3404,11 +3404,11 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   legal_notification_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -3435,7 +3435,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3484,7 +3484,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
-      - id: pad_3
+      - id: pad3
         size: 3
   logon_request_encrypted:
     seq:
@@ -3493,7 +3493,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3543,11 +3543,11 @@ types:
         type: str
         size: 30
         encoding: ASCII
-      - id: pad_7
+      - id: pad7
         size: 7
   logon_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -3597,13 +3597,13 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
   logout_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -3614,7 +3614,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3632,7 +3632,7 @@ types:
       - id: mm_risk_limit_action_type
         type: u1
         enum: mm_risk_limit_action_type
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: market_segment_id
         type: s4
@@ -3642,7 +3642,7 @@ types:
         type: s4
   mm_parameter_definition_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -3656,7 +3656,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3758,7 +3758,7 @@ types:
         pad-right: 0x20
       - id: num_order_entry_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: order_entry_grp_comp
         type: order_entry_grp_comp
@@ -3774,7 +3774,7 @@ types:
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: security_id
         type: s8
@@ -3784,11 +3784,11 @@ types:
       - id: product_complex
         type: u1
         enum: product_complex
-      - id: pad_6
+      - id: pad6
         size: 6
   mass_order_ack:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -3796,7 +3796,7 @@ types:
         type: u8
       - id: mass_order_report_id
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   mass_quote_request:
     seq:
@@ -3805,7 +3805,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3850,7 +3850,7 @@ types:
       - id: executing_trader_qualifier
         type: u1
         enum: executing_trader_qualifier
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: quote_entry_grp_comp
         type: quote_entry_grp_comp
@@ -3874,7 +3874,7 @@ types:
         doc: 'Implied decimal with scale 1e-4'
   mass_quote_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -3887,7 +3887,7 @@ types:
         type: s4
       - id: num_quote_entry_ack_grp_comp
         type: u1
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: quote_entry_ack_grp_comp
         type: quote_entry_ack_grp_comp
@@ -3909,7 +3909,7 @@ types:
       - id: side
         type: u1
         enum: side
-      - id: pad_2
+      - id: pad2
         size: 2
   modify_basket_trade_request:
     seq:
@@ -3918,7 +3918,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -3976,7 +3976,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4116,7 +4116,7 @@ types:
         pad-right: 0x20
       - id: num_leg_ord_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -4132,7 +4132,7 @@ types:
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
-      - id: pad_5
+      - id: pad5
         size: 5
   modify_order_complex_short_request:
     seq:
@@ -4141,7 +4141,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4216,11 +4216,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   modify_order_nr_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -4267,7 +4267,7 @@ types:
         enum: transaction_delay_indicator
       - id: num_order_event_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: order_event_grp_comp
         type: order_event_grp_comp
@@ -4286,7 +4286,7 @@ types:
       - id: order_event_reason
         type: u1
         enum: order_event_reason
-      - id: pad_3
+      - id: pad3
         size: 3
   modify_order_request:
     seq:
@@ -4295,7 +4295,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4430,11 +4430,11 @@ types:
         enum: cross_match_instruction
       - id: num_leg_ord_grp_comp
         type: u1
-      - id: pad_2v_2
+      - id: pad2v2
         size: 2
       - id: market_segment_id
         type: s4
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: security_id
         type: s8
@@ -4453,11 +4453,11 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_1v_1
+      - id: pad1v1
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_2v_3
+      - id: pad2v3
         size: 2
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -4465,7 +4465,7 @@ types:
         repeat-expr: num_leg_ord_grp_comp
   modify_order_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_me_comp
         type: response_header_me_comp
@@ -4515,7 +4515,7 @@ types:
         enum: transaction_delay_indicator
       - id: num_order_event_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: order_event_grp_comp
         type: order_event_grp_comp
@@ -4528,7 +4528,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4568,7 +4568,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
         type: u8
@@ -4586,11 +4586,11 @@ types:
       - id: cross_match_instruction
         type: u1
         enum: cross_match_instruction
-      - id: pad_2v_1
+      - id: pad2v1
         size: 2
       - id: market_segment_id
         type: s4
-      - id: pad_4v_1
+      - id: pad4v1
         size: 4
       - id: security_id
         type: s8
@@ -4609,11 +4609,11 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_1v_1
+      - id: pad1v1
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   modify_order_single_request:
     seq:
@@ -4622,7 +4622,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4774,7 +4774,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   modify_order_single_short_request:
     seq:
@@ -4783,7 +4783,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4853,7 +4853,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   modify_tes_trade_request:
     seq:
@@ -4862,7 +4862,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -4912,7 +4912,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: side_alloc_grp_comp
         type: side_alloc_grp_comp
@@ -4929,7 +4929,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5063,7 +5063,7 @@ types:
         pad-right: 0x20
       - id: num_leg_ord_grp_comp
         type: u1
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -5076,7 +5076,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5149,11 +5149,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   new_order_nr_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -5195,7 +5195,7 @@ types:
         enum: transaction_delay_indicator
       - id: num_order_event_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: order_event_grp_comp
         type: order_event_grp_comp
@@ -5208,7 +5208,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5324,7 +5324,7 @@ types:
       - id: order_attribute_risk_reduction
         type: u1
         enum: order_attribute_risk_reduction
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: party_id_investment_decision_maker
         type: u8
@@ -5358,11 +5358,11 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_2v_3
+      - id: pad2v3
         size: 2
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -5370,7 +5370,7 @@ types:
         repeat-expr: num_leg_ord_grp_comp
   new_order_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_me_comp
         type: response_header_me_comp
@@ -5418,7 +5418,7 @@ types:
         enum: transaction_delay_indicator
       - id: num_order_event_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: order_event_grp_comp
         type: order_event_grp_comp
@@ -5431,7 +5431,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5469,7 +5469,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
         type: u8
@@ -5487,11 +5487,11 @@ types:
       - id: cross_match_instruction
         type: u1
         enum: cross_match_instruction
-      - id: pad_2v_1
+      - id: pad2v1
         size: 2
       - id: market_segment_id
         type: s4
-      - id: pad_4v_1
+      - id: pad4v1
         size: 4
       - id: security_id
         type: s8
@@ -5510,11 +5510,11 @@ types:
       - id: time_in_force
         type: u1
         enum: time_in_force
-      - id: pad_1v_1
+      - id: pad1v1
         size: 1
       - id: check_sum_correction
         type: u2
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   new_order_single_request:
     seq:
@@ -5523,7 +5523,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5676,7 +5676,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -5744,11 +5744,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   news_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -5772,7 +5772,7 @@ types:
         doc: 'Alignment'
   order_exec_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -5846,7 +5846,7 @@ types:
         repeat-expr: num_order_event_grp_comp
   order_exec_report_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -6015,7 +6015,7 @@ types:
       - id: crossed_indicator
         type: u1
         enum: crossed_indicator
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
@@ -6035,7 +6035,7 @@ types:
         repeat-expr: num_order_event_grp_comp
   order_exec_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_me_comp
         type: response_header_me_comp
@@ -6097,7 +6097,7 @@ types:
         type: u1
       - id: num_order_event_grp_comp
         type: u1
-      - id: pad_7
+      - id: pad7
         size: 7
       - id: fills_grp_comp
         type: fills_grp_comp
@@ -6113,7 +6113,7 @@ types:
         repeat-expr: num_order_event_grp_comp
   party_action_report:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -6142,7 +6142,7 @@ types:
         enum: requesting_party_id_entering_firm
   party_entitlements_update_report:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -6175,7 +6175,7 @@ types:
       - id: party_detail_status
         type: u1
         enum: party_detail_status
-      - id: pad_6
+      - id: pad6
         size: 6
   ping_request:
     seq:
@@ -6184,17 +6184,17 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
       - id: partition_id
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
   ping_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -6203,7 +6203,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   pre_trade_risk_limit_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -6224,7 +6224,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: risk_limits_rpt_grp_comp
         type: risk_limits_rpt_grp_comp
@@ -6260,7 +6260,7 @@ types:
         size: 3
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   pre_trade_risk_limits_definition_request:
     seq:
@@ -6269,7 +6269,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6296,7 +6296,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: risk_limit_qty_grp_comp
         type: risk_limit_qty_grp_comp
@@ -6310,11 +6310,11 @@ types:
       - id: risk_limit_type
         type: u1
         enum: risk_limit_type
-      - id: pad_7
+      - id: pad7
         size: 7
   quote_activation_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -6339,7 +6339,7 @@ types:
       - id: mass_action_reason
         type: u1
         enum: mass_action_reason
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
@@ -6352,7 +6352,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6376,11 +6376,11 @@ types:
       - id: executing_trader_qualifier
         type: u1
         enum: executing_trader_qualifier
-      - id: pad_4
+      - id: pad4
         size: 4
   quote_activation_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -6389,7 +6389,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
       - id: num_not_affected_securities_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: not_affected_securities_grp_comp
         type: not_affected_securities_grp_comp
@@ -6397,7 +6397,7 @@ types:
         repeat-expr: num_not_affected_securities_grp_comp
   quote_execution_report:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -6410,7 +6410,7 @@ types:
         type: u2
       - id: num_quote_event_grp_comp
         type: u1
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: quote_event_grp_comp
         type: quote_event_grp_comp
@@ -6448,7 +6448,7 @@ types:
       - id: quote_event_reason
         type: u1
         enum: quote_event_reason
-      - id: pad_4
+      - id: pad4
         size: 4
   quote_leg_exec_grp_comp:
     seq:
@@ -6467,7 +6467,7 @@ types:
         enum: leg_side
       - id: no_quote_events_index
         type: u1
-      - id: pad_2
+      - id: pad2
         size: 2
   rfq_request:
     seq:
@@ -6476,7 +6476,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6495,11 +6495,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   rfq_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -6508,7 +6508,7 @@ types:
         doc: 'Nanoseconds since Unix epoch'
   reject:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
@@ -6535,7 +6535,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6550,11 +6550,11 @@ types:
         size: 16
       - id: appl_end_msg_id
         size: 16
-      - id: pad_1
+      - id: pad1
         size: 1
   retransmit_me_message_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -6564,7 +6564,7 @@ types:
         size: 16
       - id: ref_appl_last_msg_id
         size: 16
-      - id: pad_6
+      - id: pad6
         size: 6
   retransmit_request:
     seq:
@@ -6573,7 +6573,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6586,11 +6586,11 @@ types:
       - id: ref_appl_id
         type: u1
         enum: ref_appl_id
-      - id: pad_5
+      - id: pad5
         size: 5
   retransmit_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -6600,7 +6600,7 @@ types:
         type: u8
       - id: appl_total_message_count
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
   reverse_tes_trade_request:
     seq:
@@ -6609,7 +6609,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -6634,11 +6634,11 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
   risk_notification_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -6674,11 +6674,11 @@ types:
         size: 9
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   srqs_create_deal_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -6828,7 +6828,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: order_book_item_grp_comp
         type: order_book_item_grp_comp
@@ -6860,7 +6860,7 @@ types:
       - id: md_sub_book_type
         type: u1
         enum: md_sub_book_type
-      - id: pad_6
+      - id: pad6
         size: 6
   srqs_target_party_trd_grp_comp:
     seq:
@@ -6886,11 +6886,11 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   srqs_deal_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -7016,7 +7016,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: srqs_target_party_trd_grp_comp
         type: srqs_target_party_trd_grp_comp
@@ -7024,7 +7024,7 @@ types:
         repeat-expr: num_srqs_target_party_trd_grp_comp
   srqs_deal_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -7048,7 +7048,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: srqs_quote_grp_comp
         type: srqs_quote_grp_comp
@@ -7065,7 +7065,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -7183,7 +7183,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   srqs_hit_quote_request:
     seq:
@@ -7192,7 +7192,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -7319,7 +7319,7 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: srqs_hit_quote_grp_comp
         type: srqs_hit_quote_grp_comp
@@ -7335,7 +7335,7 @@ types:
       - id: side
         type: u1
         enum: side
-      - id: pad_7
+      - id: pad7
         size: 7
   srqs_inquire_smart_respondent_request:
     seq:
@@ -7344,7 +7344,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -7364,7 +7364,7 @@ types:
         enum: trade_to_quote_ratio_ranking
   srqs_inquire_smart_respondent_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -7372,7 +7372,7 @@ types:
         type: s4
       - id: num_smart_party_detail_grp_comp
         type: u2
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: smart_party_detail_grp_comp
         type: smart_party_detail_grp_comp
@@ -7390,11 +7390,11 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   srqs_negotiation_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -7500,11 +7500,11 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   srqs_negotiation_requester_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -7612,7 +7612,7 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: target_parties_comp
         type: target_parties_comp
@@ -7665,11 +7665,11 @@ types:
       - id: party_detail_status_information
         type: u1
         enum: party_detail_status_information
-      - id: pad_6
+      - id: pad6
         size: 6
   srqs_negotiation_status_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -7689,11 +7689,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   srqs_open_negotiation_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -7813,7 +7813,7 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: quot_req_legs_grp_comp
         type: quot_req_legs_grp_comp
@@ -7833,7 +7833,7 @@ types:
       - id: leg_side
         type: u1
         enum: leg_side
-      - id: pad_6
+      - id: pad6
         size: 6
   srqs_open_negotiation_request:
     seq:
@@ -7842,7 +7842,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -7943,7 +7943,7 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: quot_req_legs_grp_comp
         type: quot_req_legs_grp_comp
@@ -7955,7 +7955,7 @@ types:
         repeat-expr: num_target_parties_comp
   srqs_open_negotiation_requester_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8087,7 +8087,7 @@ types:
         repeat-expr: num_target_parties_comp
   srqs_quote_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8218,7 +8218,7 @@ types:
         pad-right: 0x20
   srqs_quote_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -8233,7 +8233,7 @@ types:
         pad-right: 0x20
   srqs_quote_snapshot_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8242,7 +8242,7 @@ types:
       - id: message_event_source
         type: u1
         enum: message_event_source
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: srqs_quote_entry_grp_comp
         type: srqs_quote_entry_grp_comp
@@ -8308,7 +8308,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
   srqs_quote_snapshot_request:
     seq:
@@ -8317,7 +8317,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -8328,7 +8328,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -8356,13 +8356,13 @@ types:
         pad-right: 0x20
   srqs_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
   srqs_status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8371,7 +8371,7 @@ types:
       - id: trad_ses_event
         type: u1
         enum: trad_ses_event
-      - id: pad_3
+      - id: pad3
         size: 3
   srqs_update_deal_status_request:
     seq:
@@ -8380,7 +8380,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -8420,7 +8420,7 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   srqs_update_negotiation_request:
     seq:
@@ -8429,7 +8429,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -8509,7 +8509,7 @@ types:
         repeat-expr: num_target_parties_comp
   service_availability_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nrbc_header_comp
         type: nrbc_header_comp
@@ -8540,7 +8540,7 @@ types:
       - id: t_7_entry_service_rtm_status
         type: u1
         enum: t_7_entry_service_rtm_status
-      - id: pad_5
+      - id: pad5
         size: 5
   nrbc_header_comp:
     seq:
@@ -8555,11 +8555,11 @@ types:
       - id: last_fragment
         type: u1
         enum: last_fragment
-      - id: pad_2
+      - id: pad2
         size: 2
   service_availability_market_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nrbc_header_comp
         type: nrbc_header_comp
@@ -8579,7 +8579,7 @@ types:
         enum: risk_control_rtm_service_status
   status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8588,7 +8588,7 @@ types:
       - id: trad_ses_event
         type: u1
         enum: trad_ses_event
-      - id: pad_3
+      - id: pad3
         size: 3
   subscribe_request:
     seq:
@@ -8597,7 +8597,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -8606,21 +8606,21 @@ types:
       - id: ref_appl_id
         type: u1
         enum: ref_appl_id
-      - id: pad_3
+      - id: pad3
         size: 3
   subscribe_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
       - id: appl_sub_id
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   tes_approve_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -8829,7 +8829,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: trd_instrmnt_leg_grp_comp
         type: trd_instrmnt_leg_grp_comp
@@ -8857,7 +8857,7 @@ types:
         doc: 'Alignment'
   tes_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9046,7 +9046,7 @@ types:
       - id: trade_alloc_status
         type: u1
         enum: trade_alloc_status
-      - id: pad_3
+      - id: pad3
         size: 3
   trd_clearing_price_leg_grp_comp:
     seq:
@@ -9057,7 +9057,7 @@ types:
         doc: 'Implied decimal with scale 1e-8'
   tes_delete_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9090,11 +9090,11 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   tes_execution_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9124,11 +9124,11 @@ types:
       - id: message_event_source
         type: u1
         enum: message_event_source
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
   tes_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -9141,7 +9141,7 @@ types:
         pad-right: 0x20
   tes_reversal_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9177,7 +9177,7 @@ types:
         size: 132
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
       - id: side_alloc_grp_bc_comp
         type: side_alloc_grp_bc_comp
@@ -9185,7 +9185,7 @@ types:
         repeat-expr: num_side_alloc_grp_bc_comp
   tes_trade_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9408,11 +9408,11 @@ types:
         size: 15
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_4
+      - id: pad4
         size: 4
   tes_trading_session_status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9421,11 +9421,11 @@ types:
       - id: trad_ses_event
         type: u1
         enum: trad_ses_event
-      - id: pad_3
+      - id: pad3
         size: 3
   tes_upload_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9544,7 +9544,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2_2
+      - id: pad2v2
         size: 2
       - id: side_alloc_ext_grp_comp
         type: side_alloc_ext_grp_comp
@@ -9589,7 +9589,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: tes_enrichment_rule_id
         type: u4
@@ -9678,22 +9678,22 @@ types:
         size: 20
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_5
+      - id: pad5
         size: 5
   tm_trading_session_status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: trad_ses_event
         type: u1
         enum: trad_ses_event
-      - id: pad_7
+      - id: pad7
         size: 7
   throttle_update_notification:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: notif_header_comp
         type: notif_header_comp
@@ -9705,7 +9705,7 @@ types:
         type: u4
   trade_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_comp
         type: rbc_header_comp
@@ -9918,11 +9918,11 @@ types:
         size: 15
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_3
+      - id: pad3
         size: 3
   trading_session_status_broadcast:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
@@ -9935,7 +9935,7 @@ types:
         enum: trad_ses_event
       - id: ref_appl_last_msg_id
         size: 16
-      - id: pad_7
+      - id: pad7
         size: 7
   unsubscribe_request:
     seq:
@@ -9944,17 +9944,17 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
       - id: ref_appl_sub_id
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   unsubscribe_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -9965,7 +9965,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -9973,7 +9973,7 @@ types:
         type: u2
       - id: num_rra_update_base_party_grp_comp
         type: u2
-      - id: pad_4
+      - id: pad4
         size: 4
       - id: rra_update_base_party_grp_comp
         type: rra_update_base_party_grp_comp
@@ -9994,17 +9994,17 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_7
+      - id: pad7
         size: 7
   update_remaining_risk_allowance_base_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: num_rra_update_base_party_ack_grp_comp
         type: u2
-      - id: pad_6
+      - id: pad6
         size: 6
       - id: rra_update_base_party_ack_grp_comp
         type: rra_update_base_party_ack_grp_comp
@@ -10017,7 +10017,7 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_1
+      - id: pad1
         size: 1
       - id: risk_limit_result
         type: u2
@@ -10029,7 +10029,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -10168,7 +10168,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -10178,7 +10178,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-      - id: pad_4
+      - id: pad4
         size: 4
   user_login_request_encrypted:
     seq:
@@ -10187,7 +10187,7 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
@@ -10200,7 +10200,7 @@ types:
         pad-right: 0x20
   user_login_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
@@ -10211,17 +10211,17 @@ types:
         size: 8
         encoding: ASCII
         pad-right: 0x20
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: request_header_comp
         type: request_header_comp
       - id: username
         type: u4
-      - id: pad_4
+      - id: pad4
         size: 4
   user_logout_response:
     seq:
-      - id: pad_2
+      - id: pad2
         size: 2
       - id: response_header_comp
         type: response_header_comp
