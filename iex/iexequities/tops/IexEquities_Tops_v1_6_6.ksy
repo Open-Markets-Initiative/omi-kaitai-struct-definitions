@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Iex IexEquities Tops v1.6.6
+# Kaitai struct definition for: Iex IexEquities Tops IexTp v1.6.6
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: Investors Exchange
+#   Protocol: Top Of Book
+#   Encoding: Investors Exchange Transport Protocol
+#   Version: 1.6.6
+#   Date: 10/19/2021
+#   Specification: IEX TOPS Specification v1.66.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -532,33 +557,3 @@ enums:
       id: 'none'
       doc: 'No Imbalance'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: Investors Exchange
-#   Version: 1.6.6
-#   Date: 10/19/2021
-#   Specification: IEX TOPS Specification v1.66.pdf
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------

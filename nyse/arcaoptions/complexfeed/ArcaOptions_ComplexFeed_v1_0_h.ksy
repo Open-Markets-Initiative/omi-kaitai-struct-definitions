@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Nyse ArcaOptions ComplexFeed v1.0.h
+# Kaitai struct definition for: Nyse ArcaOptions ComplexFeed Pillar v1.0.h
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: New York Stock Exchange
+#   Protocol: Complex Feed
+#   Encoding: Pillar
+#   Version: 1.0.h
+#   Date: 11/18/2025
+#   Specification: PILLAR_COMPLEX_Client_Specification.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -1208,33 +1233,3 @@ enums:
       id: 'end_of_rfq_auction'
       doc: 'End Of Rfq Auction'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: New York Stock Exchange
-#   Version: 1.0.h
-#   Date: 11/18/2025
-#   Specification: PILLAR_COMPLEX_Client_Specification.pdf
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------

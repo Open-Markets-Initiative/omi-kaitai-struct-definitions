@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Coinbase Deribit MarketDataApi v1.0
+# Kaitai struct definition for: Coinbase Deribit MarketDataApi Sbe v1.0
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: Coinbase
+#   Protocol: Market Data Api
+#   Encoding: Simple Binary Encoding
+#   Version: 1.0
+#   Date: 6/8/2026
+#   Specification: Unknown
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -642,33 +667,3 @@ enums:
       id: 'other_error'
       doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: Coinbase
-#   Version: 1.0
-#   Date: 6/8/2026
-#   Specification: Unknown
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------

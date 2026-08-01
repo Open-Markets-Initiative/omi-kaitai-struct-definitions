@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Nasdaq NsmEquities Orders v5.0
+# Kaitai struct definition for: Nasdaq NsmEquities Orders Ouch v5.0
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: Orders
+#   Encoding: Ouch
+#   Version: 5.0
+#   Date: 4/1/2023
+#   Specification: OUCH5.0.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -99,7 +124,7 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: event_code
         type: u1
@@ -108,7 +133,7 @@ types:
   order_accepted_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -183,7 +208,7 @@ types:
   replaced_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: orig_user_ref_num
         type: u4
@@ -261,7 +286,7 @@ types:
   canceled_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -276,7 +301,7 @@ types:
   aiq_canceled_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -303,7 +328,7 @@ types:
   order_executed_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -342,7 +367,7 @@ types:
   broken_trade_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -363,7 +388,7 @@ types:
   trade_correction_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -394,7 +419,7 @@ types:
   rejected_order_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -412,7 +437,7 @@ types:
   cancel_pending_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -420,7 +445,7 @@ types:
   cancel_reject_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -428,7 +453,7 @@ types:
   order_priority_update_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -446,7 +471,7 @@ types:
   order_modified_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -461,7 +486,7 @@ types:
   order_restated_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -491,7 +516,7 @@ types:
   account_query_response_message:
     seq:
       - id: timestamp
-        type: u8
+        type: timestamp_type
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: next_user_ref_num
         type: u4
@@ -668,6 +693,19 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
+  timestamp_type:
+    seq:
+      - id: time
+        type: u8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:
@@ -1252,33 +1290,3 @@ enums:
       id: 'handleinst'
       doc: 'Replace Order Optional HandleInst Enum'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Version: 5.0
-#   Date: 4/1/2023
-#   Specification: OUCH5.0.pdf
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------

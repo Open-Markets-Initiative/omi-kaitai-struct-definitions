@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Nasdaq Utp Input v4.0
+# Kaitai struct definition for: Nasdaq Utp Input Utp v4.0
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: 
+#   Encoding: Utp
+#   Version: 4.0
+#   Date: 06/01/2026
+#   Specification: UtpBinaryInputSpec.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -95,7 +120,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -138,7 +163,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -181,7 +206,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -236,7 +261,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -291,7 +316,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -350,7 +375,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -409,7 +434,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -418,7 +443,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -485,7 +510,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -494,7 +519,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -537,7 +562,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -546,7 +571,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -607,7 +632,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -616,7 +641,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -722,7 +747,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -731,7 +756,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -774,7 +799,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -783,7 +808,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -832,7 +857,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -841,7 +866,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -908,7 +933,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -949,7 +974,7 @@ types:
         type: u4
         doc: 'Trade Volume'
       - id: trade_time
-        type: u8
+        type: timestamp_type
         doc: 'Time of trade (may be prior day, nanoseconds since Epoch). Nanoseconds since Unix epoch'
       - id: reversal
         type: u1
@@ -964,7 +989,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -973,7 +998,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1016,7 +1041,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1025,7 +1050,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1074,7 +1099,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1083,7 +1108,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: u8
+        type: timestamp_type
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1150,7 +1175,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1191,7 +1216,7 @@ types:
         type: u8
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: trade_time
-        type: u8
+        type: timestamp_type
         doc: 'Time of trade (may be prior day, nanoseconds since Epoch). Nanoseconds since Unix epoch'
       - id: reversal
         type: u1
@@ -1227,7 +1252,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1253,7 +1278,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1275,7 +1300,7 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number — per-symbol sequence'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
       - id: reason
         type: str
@@ -1292,7 +1317,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1311,7 +1336,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   market_center_mass_trading_action_message:
     seq:
@@ -1322,7 +1347,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1347,7 +1372,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
@@ -1358,7 +1383,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1385,7 +1410,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1411,7 +1436,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1437,7 +1462,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1454,7 +1479,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1471,7 +1496,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1525,7 +1550,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1542,7 +1567,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1565,7 +1590,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1600,7 +1625,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: text_len
         type: u2
@@ -1620,7 +1645,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1633,7 +1658,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   return_market_open_message:
     seq:
@@ -1644,7 +1669,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   return_market_closed_message:
     seq:
@@ -1655,7 +1680,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   reject_message:
     seq:
@@ -1666,7 +1691,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1691,7 +1716,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1708,7 +1733,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1757,7 +1782,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   end_of_day_message:
     seq:
@@ -1768,7 +1793,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   sequence_inquiry_response_message:
     seq:
@@ -1779,7 +1804,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1800,7 +1825,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1883,6 +1908,19 @@ types:
         size: 1
         encoding: ASCII
         doc: 'One-byte code indicating why the login was rejected'
+  timestamp_type:
+    seq:
+      - id: time
+        type: u8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:
@@ -2206,33 +2244,3 @@ enums:
       id: 'volatility_trading_pause'
       doc: 'Volatility Trading Pause'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Version: 4.0
-#   Date: 06/01/2026
-#   Specification: UtpBinaryInputSpec.pdf
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------

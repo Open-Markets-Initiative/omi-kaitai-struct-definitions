@@ -1,7 +1,32 @@
 # ---------------------------------------------------------------------
-# Omi Kaitai Struct Definition: Nasdaq Utp Snapshot v3.0
+# Kaitai struct definition for: Nasdaq Utp Snapshot Utp v3.0
 #
-# Please see end of file for rules and regulations
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: Snapshot
+#   Encoding: Utp
+#   Version: 3.0
+#   Date: 06/01/2026
+#   Specification: UTPSnapShotSpec.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The Binary Data Compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
 # ---------------------------------------------------------------------
 
 meta:
@@ -92,10 +117,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -158,10 +183,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -258,10 +283,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -287,10 +312,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -309,7 +334,7 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number (UTP SIP internal use only — data recipients should disregard)'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: reason_for_the_trading_action
         type: str
@@ -328,10 +353,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -347,7 +372,7 @@ types:
         enum: trading_action_code
         doc: 'Trading Action Code'
       - id: action_time
-        type: u8
+        type: timestamp_type
         doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: market_center_identifier
         type: str
@@ -365,10 +390,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -393,10 +418,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -412,7 +437,7 @@ types:
         enum: luld_price_band_indicator
         doc: 'LULD Price Band Indicator'
       - id: luld_price_band_effective_time
-        type: u8
+        type: timestamp_type
         doc: 'LULD Price Band Effective Time. Nanoseconds since Unix epoch'
       - id: limit_down_price
         type: u8
@@ -431,10 +456,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -473,10 +498,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -511,10 +536,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -530,10 +555,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -549,10 +574,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -568,10 +593,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -587,10 +612,10 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -619,16 +644,16 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: finra_adf_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'FINRA ADF Timestamp. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -786,16 +811,16 @@ types:
         enum: sub_market_center_id
         doc: 'Sub-Market Center ID'
       - id: sip_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: u8
+        type: timestamp_type
         doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: adf_timestamp
-        type: u8
+        type: timestamp_type
         doc: 'ADF Timestamp. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -869,6 +894,19 @@ types:
         size: 1
         encoding: ASCII
         doc: 'One-byte code indicating why the login was rejected'
+  timestamp_type:
+    seq:
+      - id: time
+        type: u8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:
@@ -1314,33 +1352,3 @@ enums:
       id: 'mpid_form_odd_lot_price_levels_attached'
       doc: 'Mpid Form Odd Lot Price Levels Attached'
 
-# ---------------------------------------------------------------------
-# Kaitai struct definitions are an easily edited and modified cross-platform parsing solution.
-# Feel free to modify. Enjoy.
-# ---------------------------------------------------------------------
-#
-# Protocol:
-#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Version: 3.0
-#   Date: 06/01/2026
-#   Specification: UTPSnapShotSpec.pdf
-#
-# Script:
-#   Generator: 1.0.0.0
-#   License: Public/GPLv3
-#   Authors: Omi Developers
-#
-# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
-#
-# This kaitai struct definition is contributed to The Open Markets Initiative under
-# the license noted above.
-#
-# The Binary Data Compiler technologies used to produce this file
-# are the subject of patents owned by Scaled Sources LLC.  Those patent
-# rights are retained and are not transferred by this contribution:
-#   https://patents.google.com/patent/US20240129382A1/en
-#   https://patents.google.com/patent/US20240419416A1/en
-#
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-# ---------------------------------------------------------------------
