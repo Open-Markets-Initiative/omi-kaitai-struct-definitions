@@ -27,6 +27,9 @@
 #
 # For full Omi information:
 #   https://github.com/Open-Markets-Initiative/Directory
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
@@ -538,10 +541,10 @@ enums:
       id: 'not_operationally_halted_on_iex'
       doc: 'Not Operationally Halted On Iex'
   short_sale_price_test_status:
-    0x30:
+    0:
       id: 'not_in_effect'
       doc: 'Not In Effect'
-    0x31:
+    1:
       id: 'in_effect'
       doc: 'In Effect'
   detail:

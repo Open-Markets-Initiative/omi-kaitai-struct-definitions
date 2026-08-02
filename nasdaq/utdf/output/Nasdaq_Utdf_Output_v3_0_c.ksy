@@ -27,6 +27,9 @@
 #
 # For full Omi information:
 #   https://github.com/Open-Markets-Initiative/Directory
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
@@ -1480,7 +1483,7 @@ types:
   timestamp_type:
     seq:
       - id: time
-        type: u8
+        type: s8
     instances:
       hour:
         value: time / 3600000000000 % 24

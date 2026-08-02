@@ -27,6 +27,9 @@
 #
 # For full Omi information:
 #   https://github.com/Open-Markets-Initiative/Directory
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
