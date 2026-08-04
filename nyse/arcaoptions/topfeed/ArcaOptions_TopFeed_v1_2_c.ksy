@@ -632,7 +632,7 @@ types:
       - id: auction_interest_clearing_price
         type: s4
         doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars'
-      - id: reserved_4_2
+      - id: second_reserved_4
         size: 4
         doc: 'Reserved for future use'
       - id: indicative_match_price

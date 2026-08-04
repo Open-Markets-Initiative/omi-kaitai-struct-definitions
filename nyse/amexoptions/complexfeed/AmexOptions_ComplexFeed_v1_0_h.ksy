@@ -194,10 +194,10 @@ types:
       - id: reserved_2
         type: u2
         doc: 'Reserved for future use'
-      - id: reserved_2_2
+      - id: second_reserved_2
         type: u2
         doc: 'Reserved for future use'
-      - id: reserved_2_3
+      - id: third_reserved_2
         type: u2
         doc: 'Reserved for future use'
   symbol_clear_message:
@@ -574,12 +574,12 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Reserved for future use'
-      - id: reserved_1_2
+      - id: second_reserved_1
         type: str
         size: 1
         encoding: ASCII
         doc: 'Reserved for future use'
-      - id: reserved_1_3
+      - id: third_reserved_1
         type: str
         size: 1
         encoding: ASCII

@@ -198,10 +198,10 @@ types:
       - id: reserved_2
         type: u2
         doc: 'Reserved for future use'
-      - id: reserved_2_2
+      - id: second_reserved_2
         type: u2
         doc: 'Reserved for future use'
-      - id: reserved_2_3
+      - id: third_reserved_2
         type: u2
         doc: 'Reserved for future use'
   symbol_clear_message:
@@ -638,12 +638,12 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Reserved for future use'
-      - id: reserved_1_2
+      - id: second_reserved_1
         type: str
         size: 1
         encoding: ASCII
         doc: 'Reserved for future use'
-      - id: reserved_1_3
+      - id: third_reserved_1
         type: str
         size: 1
         encoding: ASCII
@@ -691,7 +691,7 @@ types:
       - id: auction_interest_clearing_price
         type: s4
         doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars. Implied decimal with scale 1e-8'
-      - id: reserved_4_2
+      - id: second_reserved_4
         type: u4
         doc: 'Reserved for future use'
       - id: indicative_match_price

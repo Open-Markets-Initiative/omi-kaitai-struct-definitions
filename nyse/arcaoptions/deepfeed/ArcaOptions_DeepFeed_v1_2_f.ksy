@@ -104,10 +104,10 @@ types:
             'message_type::outright_series_index_mapping_51': outright_series_index_mapping
             'message_type::options_add_order_message': options_add_order_message
             'message_type::options_modify_order_message': options_modify_order_message
-            'message_type::options_delete_order_message_message': options_delete_order_message_message
-            'message_type::options_order_execution_message_message': options_order_execution_message_message
-            'message_type::options_replace_order_message_message': options_replace_order_message_message
-            'message_type::options_imbalance_message_message': options_imbalance_message_message
+            'message_type::options_delete_order_message': options_delete_order_message
+            'message_type::options_order_execution_message': options_order_execution_message
+            'message_type::options_replace_order_message': options_replace_order_message
+            'message_type::options_imbalance_message': options_imbalance_message
             'message_type::options_add_order_refresh_message': options_add_order_refresh_message
             'message_type::options_series_rfq_message': options_series_rfq_message
             'message_type::options_non_displayed_trade_message': options_non_displayed_trade_message
@@ -503,7 +503,7 @@ types:
         type: u1
         enum: cust_indicator
         doc: 'Capacity of the order:'
-  options_delete_order_message_message:
+  options_delete_order_message:
     seq:
       - id: source_time_ns
         type: u4
@@ -520,7 +520,7 @@ types:
       - id: reserved_1
         size: 1
         doc: 'This field is reserved for future use'
-  options_order_execution_message_message:
+  options_order_execution_message:
     seq:
       - id: series_index
         type: u4
@@ -534,7 +534,7 @@ types:
       - id: reserved_1
         size: 1
         doc: 'This field is reserved for future use'
-  options_replace_order_message_message:
+  options_replace_order_message:
     seq:
       - id: source_time_ns
         type: u4
@@ -568,7 +568,7 @@ types:
         type: u1
         enum: cust_indicator
         doc: 'Capacity of the order:'
-  options_imbalance_message_message:
+  options_imbalance_message:
     seq:
       - id: source_time_ns
         type: u4
@@ -608,7 +608,7 @@ types:
       - id: auction_interest_clearing_price
         type: s4
         doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars'
-      - id: reserved_4_2
+      - id: second_reserved_4
         size: 4
         doc: 'Reserved for future use'
       - id: indicative_match_price
@@ -882,16 +882,16 @@ enums:
       id: 'options_modify_order_message'
       doc: 'An Options Modify Order message is sent when the price or volume of an order is changed due to an event other than a cancel-replace, or full or partial execution.'
     302:
-      id: 'options_delete_order_message_message'
+      id: 'options_delete_order_message'
       doc: 'An Options Modify Order message is sent when the price or volume of an order is changed due to an event other than a cancel-replace, or full or partial execution.'
     303:
-      id: 'options_order_execution_message_message'
+      id: 'options_order_execution_message'
       doc: 'An Options Order Execution message is sent when an order is partially or fully executed.'
     304:
-      id: 'options_replace_order_message_message'
+      id: 'options_replace_order_message'
       doc: 'An Options Replace Order message is published when a cancel/replace order is received.'
     305:
-      id: 'options_imbalance_message_message'
+      id: 'options_imbalance_message'
       doc: 'Options Imbalance messages are published once a second during opening and re-opening auctions to update price and volume information.'
     306:
       id: 'options_add_order_refresh_message'
