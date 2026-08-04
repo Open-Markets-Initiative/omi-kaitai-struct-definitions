@@ -142,7 +142,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: session
         type: str
@@ -171,7 +171,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: secret_key_secure_id_expiration
         type: u2
@@ -204,7 +204,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: error_codes
         type: u2
@@ -246,7 +246,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: next_seq_no
         type: u4
@@ -273,7 +273,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: next_seq_no
         type: u4
@@ -309,7 +309,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: next_seq_no
         type: u4
@@ -352,7 +352,7 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: error_codes
         type: u2
@@ -370,7 +370,7 @@ types:
         type: u8
         doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: from_seq_no
         type: u4
@@ -387,7 +387,7 @@ types:
         type: u8
         doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: from_seq_no
         type: u4
@@ -413,7 +413,7 @@ types:
         type: u8
         doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
       - id: request_timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: error_codes
         type: u2
@@ -472,7 +472,7 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: stop_px
         type: s8
@@ -589,7 +589,7 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: location
         type: str
@@ -669,7 +669,7 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: location
         type: str
@@ -693,7 +693,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: manual_order_indicator
         type: u1
@@ -784,7 +784,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: list_update_action
         type: u1
@@ -910,7 +910,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: self_match_prevention_id
         type: u8
@@ -995,7 +995,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: business_reject_ref_id
         type: u8
@@ -1067,10 +1067,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -1191,10 +1191,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -1313,10 +1313,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -1431,10 +1431,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -1640,10 +1640,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -1850,10 +1850,10 @@ types:
         type: s8
         doc: 'Underlying price associated with a derivative instrument. Price for the future used in calculating the conversion of vol. to premium for the option. Only applicable for vol quoted option trades. Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: sec_exec_id
         type: u8
@@ -1980,7 +1980,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: manual_order_indicator
         type: u1
@@ -2078,7 +2078,7 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: security_group
         type: str
@@ -2141,7 +2141,7 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: security_group
         type: str
@@ -2207,10 +2207,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -2337,10 +2337,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -2457,7 +2457,7 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: location
         type: str
@@ -2500,10 +2500,10 @@ types:
         type: s8
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -2625,10 +2625,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -2695,10 +2695,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -2736,7 +2736,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: seq_num
         type: u4
@@ -2817,7 +2817,7 @@ types:
         type: u8
         doc: 'Refers to the unique identifier of the PartyDetailsListRequest(35=CF) message used to request this PartyDetailsListReport'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: self_match_prevention_id
         type: u8
@@ -2942,7 +2942,7 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: location
         type: str
@@ -3005,7 +3005,7 @@ types:
         type: u8
         doc: 'For derivatives a date and time stamp to indicate when this order was booked with the agent prior to submission to the exchange. Indicates the time at which the order was finalized between the buyer and seller prior to submission. Expressed as nanoseconds since epoch time'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: location
         type: str
@@ -3074,7 +3074,7 @@ types:
         type: u8
         doc: 'Information carried on a response to convey the time (UTC) when the request was received by the MSGW application. UTC timestamps are sent in number of nanoseconds since the UNIX epoch with microsecond precision'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: quote_req_id_optional
         type: u8
@@ -3184,7 +3184,7 @@ types:
         type: u8
         doc: 'Information carried on a response to convey the time (UTC) when the request was received by the MSGW application. UTC timestamps are sent in number of nanoseconds since the UNIX epoch with microsecond precision'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: quote_req_id
         type: u8
@@ -3241,7 +3241,7 @@ types:
         type: u8
         doc: 'Information carried on a response to convey the time (UTC) when the request was received by the MSGW application. UTC timestamps are sent in number of nanoseconds since the UNIX epoch with microsecond precision'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: cancelled_symbol
         type: str
@@ -3375,10 +3375,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: sec_exec_id
         type: u8
@@ -3517,10 +3517,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: sec_exec_id
         type: u8
@@ -3709,10 +3709,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: sec_exec_id
         type: u8
@@ -3779,10 +3779,10 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: order_request_id
         type: u8
@@ -3906,7 +3906,7 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: security_sub_type
         type: str
@@ -4007,7 +4007,7 @@ types:
         type: u8
         doc: 'Unique ID of a SecurityDefinition message'
       - id: sending_time_epoch
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: security_group
         type: str
@@ -4124,6 +4124,19 @@ types:
       - id: leg_ratio_qty
         type: u1
         doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

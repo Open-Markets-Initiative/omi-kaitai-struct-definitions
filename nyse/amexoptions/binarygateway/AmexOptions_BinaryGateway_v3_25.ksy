@@ -464,7 +464,7 @@ types:
         type: u4
         doc: 'User-defined takedown group applied to all quotes in the message'
       - id: mm_sent_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
   new_bulk_quote_type_259_message:
     seq:
@@ -493,7 +493,7 @@ types:
         type: u4
         doc: 'User-defined takedown group applied to all quotes in the message'
       - id: mm_sent_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
   new_order_cross_message:
     seq:
@@ -673,7 +673,7 @@ types:
         type: u8
         doc: 'Client order identifier unique per Username and MPID'
       - id: mm_sent_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: side_u_81
         type: u1
@@ -978,7 +978,7 @@ types:
   minimum_price_variant_class_reference_data_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpv_class_name
         type: str
@@ -991,7 +991,7 @@ types:
   minimum_price_variant_level_reference_data_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpv_level_definition
         type: mpv_level_definition
@@ -1020,7 +1020,7 @@ types:
   mpid_configuration_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpid_status
         type: u1
@@ -1043,7 +1043,7 @@ types:
   options_market_maker_symbol_appointment_reference_data_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1078,7 +1078,7 @@ types:
   session_configuration_acknowledgement_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: user_session_type
         type: u1
@@ -1184,7 +1184,7 @@ types:
         encoding: ASCII
         doc: 'Customer-defined free text with restricted ASCII characters'
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
@@ -1237,7 +1237,7 @@ types:
   bulk_quote_acknowledgment_type_294_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpid
         type: str
@@ -1272,7 +1272,7 @@ types:
   bulk_quote_acknowledgment_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpid
         type: str
@@ -1307,7 +1307,7 @@ types:
   order_single_complex_modify_cancel_request_acknowledgment_and_urout_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1387,7 +1387,7 @@ types:
   order_priority_update_acknowledgment_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1552,7 +1552,7 @@ types:
   trade_bust_correct_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1604,7 +1604,7 @@ types:
   application_layer_reject_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1851,7 +1851,7 @@ types:
   complex_series_request_acknowledgement_message:
     seq:
       - id: transact_time_timestamp_8
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: u8
@@ -1886,6 +1886,19 @@ types:
         type: u1
         enum: leg_side
         doc: 'Side of the leg'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   msg_type:

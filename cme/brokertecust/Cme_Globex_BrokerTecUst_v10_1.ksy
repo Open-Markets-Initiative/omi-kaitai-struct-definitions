@@ -57,7 +57,7 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
@@ -90,7 +90,7 @@ types:
         type: u2
         doc: 'Trade Date'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: incremental_refresh_btec_groups
         type: incremental_refresh_btec_groups
@@ -178,6 +178,19 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

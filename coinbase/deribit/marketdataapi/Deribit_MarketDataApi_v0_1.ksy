@@ -55,7 +55,7 @@ types:
   packet_header_struct:
     seq:
       - id: sending_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'UTC timestamp of when the packet was sent, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch'
       - id: seq_num
         type: s8
@@ -127,7 +127,7 @@ types:
         type: message_flags
         doc: 'Uint16 bit set carrying transaction boundary indicators'
       - id: transact_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'UTC timestamp of when the transaction occurred, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch'
   message_flags:
     seq:
@@ -187,7 +187,7 @@ types:
         type: s8
         doc: 'largeTickThreshold1. Implied decimal with scale 1e-9'
       - id: creation_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'creationTime. Nanoseconds since Unix epoch'
       - id: expiry_time
         type: s8
@@ -501,6 +501,19 @@ types:
         type: s1
         enum: reason
         doc: 'reason'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

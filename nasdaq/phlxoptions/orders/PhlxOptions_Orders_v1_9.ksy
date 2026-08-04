@@ -98,10 +98,10 @@ types:
   system_event_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
@@ -113,10 +113,10 @@ types:
   options_directory_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -168,10 +168,10 @@ types:
   complex_order_strategy_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: strategy_id
         type: u4
@@ -228,10 +228,10 @@ types:
   security_trading_action_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -259,10 +259,10 @@ types:
   complex_trading_action_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: strategy_id
         type: u4
@@ -274,10 +274,10 @@ types:
   security_open_closed_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -305,10 +305,10 @@ types:
   strategy_open_closed_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: strategy_id
         type: u4
@@ -320,10 +320,10 @@ types:
   simple_order_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -391,10 +391,10 @@ types:
   complex_order_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: strategy_id
         type: u4
@@ -488,10 +488,10 @@ types:
   auction_notification_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -538,10 +538,10 @@ types:
   complex_auction_notification_message:
     seq:
       - id: seconds
-        type: u4
+        type: second_timestamp
         doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: strategy_id
         type: u4
@@ -567,6 +567,28 @@ types:
       - id: volume
         type: u4
         doc: 'Total volume available in COLA/PIXL/Solicitation. This field will be 0 under certain conditions for COLA when the strategy is opening'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

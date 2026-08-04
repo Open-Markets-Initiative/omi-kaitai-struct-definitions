@@ -451,7 +451,7 @@ types:
         type: s8
         doc: '0 = No OffsetPrice. Otherwise, value must be: - For Market Peg order - equal to or multiple of 0.01 - For Retail Price Improvement order (optional modifier on NYSE only) - equal to or multiple of 0.001. Implied decimal with scale 1e-8'
       - id: effective_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Reserved for future use. Nanoseconds since Unix epoch'
   sub_msg_header:
     seq:
@@ -741,7 +741,7 @@ types:
   equities_symbol_reference_data_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -777,7 +777,7 @@ types:
   dmm_symbol_reference_data_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -841,7 +841,7 @@ types:
   minimum_price_variant_class_reference_data_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpv_class_name
         type: str
@@ -861,7 +861,7 @@ types:
   minimum_price_variant_level_reference_data_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpv_level_definition
         type: mpv_level_definition
@@ -890,7 +890,7 @@ types:
   mpid_configuration_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: mpid_status
         type: u1
@@ -913,7 +913,7 @@ types:
   mmid_configuration_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: market_maker
         type: str
@@ -936,7 +936,7 @@ types:
   session_configuration_acknowledgement_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: user_session_type
         type: u1
@@ -1000,7 +1000,7 @@ types:
   order_and_cancel_replace_acknowledgement_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1086,7 +1086,7 @@ types:
   order_modify_cancel_request_acknowledgment_and_urout_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1140,7 +1140,7 @@ types:
   order_priority_update_acknowledgment_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1183,7 +1183,7 @@ types:
   execution_report_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1249,7 +1249,7 @@ types:
   trade_bust_correct_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1297,7 +1297,7 @@ types:
   application_layer_reject_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1329,7 +1329,7 @@ types:
   symbol_subscription_acknowledgement_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1347,17 +1347,17 @@ types:
   gt_begin_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
   gt_end_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
   auction_price_data_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1391,7 +1391,7 @@ types:
   auction_request_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1406,7 +1406,7 @@ types:
   manual_action_request_message:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Exchange application time. Nanoseconds since Unix epoch'
       - id: symbol_id
         type: u4
@@ -1676,6 +1676,19 @@ types:
       - id: reserved_200
         size: 200
         doc: 'Reserved for future use'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   msg_type:

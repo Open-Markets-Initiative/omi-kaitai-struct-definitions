@@ -57,7 +57,7 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
@@ -91,7 +91,7 @@ types:
   md_incremental_refresh_spectrum:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: incremental_refresh_spectrum_groups
         type: incremental_refresh_spectrum_groups
@@ -141,12 +141,12 @@ types:
         type: u8
         doc: 'Market Data entry size'
       - id: md_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
   md_incremental_refresh_ticker:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: incremental_refresh_ticker_groups
         type: incremental_refresh_ticker_groups
@@ -190,7 +190,7 @@ types:
         type: u8
         doc: 'Market Data entry size'
       - id: md_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
       - id: open_close_settl_flag
         type: u1
@@ -207,7 +207,7 @@ types:
   md_snapshot_refresh_spectrum:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: financial_instrument_full_name
         type: str
@@ -251,12 +251,12 @@ types:
         type: u8
         doc: 'Market Data entry size'
       - id: md_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
   md_snapshot_refresh_ticker:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: financial_instrument_full_name
         type: str
@@ -300,7 +300,7 @@ types:
         type: u8
         doc: 'Market Data entry size'
       - id: md_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
       - id: open_close_settl_flag
         type: u1
@@ -317,12 +317,25 @@ types:
   global_day_roll:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_trading_event
         type: u1
         enum: security_trading_event
         doc: 'Signals the start of the next Global day or a Global day roll'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

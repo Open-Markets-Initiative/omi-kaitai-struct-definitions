@@ -77,7 +77,7 @@ types:
         size: 1
         doc: 'Padding to 8-byte alignment before TransactTime'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   eobi_header:
     seq:
@@ -140,7 +140,7 @@ types:
       - id: security_id
         type: s8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_sub_type
         type: s4
@@ -182,7 +182,7 @@ types:
   auction_bbo:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -213,7 +213,7 @@ types:
   auction_clearing_price:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -257,20 +257,20 @@ types:
         size: 1
         doc: 'Padding to 8-byte alignment before TransactTime'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   execution_summary:
     seq:
       - id: security_id
         type: s8
       - id: aggressor_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: request_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_qty
         type: u8
@@ -311,7 +311,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -352,17 +352,17 @@ types:
       - id: pad2
         size: 2
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   instrument_summary:
     seq:
       - id: security_id
         type: s8
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_execution_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: tot_no_orders
         type: u2
@@ -434,7 +434,7 @@ types:
       - id: pad1
         size: 1
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: last_fragment
         type: u1
@@ -471,7 +471,7 @@ types:
   order_add:
     seq:
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -480,7 +480,7 @@ types:
   order_details_comp:
     seq:
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: display_qty
         type: u8
@@ -499,10 +499,10 @@ types:
   order_delete:
     seq:
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -513,15 +513,15 @@ types:
       - id: security_id
         type: s8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   order_modify:
     seq:
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_prev_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: prev_price
         type: u8
@@ -536,10 +536,10 @@ types:
   order_modify_same_prio:
     seq:
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: prev_display_qty
         type: u8
@@ -567,7 +567,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -597,7 +597,7 @@ types:
       - id: pad3
         size: 3
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   product_summary:
     seq:
@@ -633,7 +633,7 @@ types:
       - id: pad7
         size: 7
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   snapshot_order:
     seq:
@@ -642,7 +642,7 @@ types:
   top_of_book:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -663,7 +663,7 @@ types:
       - id: security_id
         type: s8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: last_qty
         type: u8
@@ -690,7 +690,7 @@ types:
       - id: security_id
         type: s8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: last_qty
         type: u8
@@ -699,7 +699,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_execution_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_match_id
         type: u4
@@ -727,6 +727,19 @@ types:
         enum: md_entry_type
       - id: pad7
         size: 7
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

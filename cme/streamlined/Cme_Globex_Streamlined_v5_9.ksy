@@ -57,7 +57,7 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
@@ -113,7 +113,7 @@ types:
   md_incremental_refresh_eris_reference_data_and_daily_statistics:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -613,7 +613,7 @@ types:
         encoding: ASCII
         doc: 'The headline of a News message'
       - id: orig_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Time of message origination expressed as number of nanoseconds since unix epoch. Nanoseconds since Unix epoch'
       - id: md_feed_type
         type: str
@@ -663,7 +663,7 @@ types:
   md_incremental_refresh_trade_blocks_340:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -978,7 +978,7 @@ types:
   quote_request:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1108,7 +1108,7 @@ types:
   md_incremental_refresh_indices:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: md_feed_type
         type: str
@@ -1232,7 +1232,7 @@ types:
   md_incremental_refresh_trade_blocks_349:
     seq:
       - id: transact_time_optional
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1393,7 +1393,7 @@ types:
   md_incremental_refresh_eris_351:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1499,7 +1499,7 @@ types:
   md_incremental_refresh_eris_353:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1600,7 +1600,7 @@ types:
   md_incremental_refresh_ot_c_356:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: trade_date
         type: u2
@@ -2011,7 +2011,7 @@ types:
   md_incremental_refresh_trade_blocks_365:
     seq:
       - id: transact_time_optional
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -2267,7 +2267,7 @@ types:
   md_incremental_refresh_ot_c_366:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: trade_date
         type: u2
@@ -2427,6 +2427,19 @@ types:
       - id: otc_security_alt_id_groups
         type: otc_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

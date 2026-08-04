@@ -279,10 +279,10 @@ types:
       - id: security_id
         type: s8
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_response_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -308,19 +308,19 @@ types:
   nr_response_header_me_comp:
     seq:
       - id: request_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_out
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: response_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: msg_seq_num
         type: u4
@@ -370,7 +370,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: security_response_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -485,7 +485,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: related_close_price
         type: u8
@@ -870,7 +870,7 @@ types:
       - id: basket_trd_match_id
         type: u8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: basket_exec_id
         type: u4
@@ -925,7 +925,7 @@ types:
   rbc_header_comp:
     seq:
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: appl_seq_num
         type: u8
@@ -955,7 +955,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: related_close_price
         type: u8
@@ -1067,7 +1067,7 @@ types:
       - id: basket_trd_match_id
         type: u8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: basket_exec_id
         type: u4
@@ -1128,7 +1128,7 @@ types:
       - id: basket_trd_match_id
         type: u8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -1161,7 +1161,7 @@ types:
       - id: basket_trd_match_id
         type: u8
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: basket_exec_id
         type: u4
@@ -1220,10 +1220,10 @@ types:
   response_header_comp:
     seq:
       - id: request_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: msg_seq_num
         type: u4
@@ -1261,7 +1261,7 @@ types:
   notif_header_comp:
     seq:
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   clip_deletion_notification:
     seq:
@@ -1272,7 +1272,7 @@ types:
       - id: order_id
         type: u8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1301,13 +1301,13 @@ types:
   rbc_header_me_comp:
     seq:
       - id: trd_reg_ts_time_out
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: notification_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: appl_sub_id
         type: u4
@@ -1335,7 +1335,7 @@ types:
       - id: order_id
         type: u8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1425,7 +1425,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1483,7 +1483,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   delete_all_order_broadcast:
     seq:
@@ -1492,7 +1492,7 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1550,7 +1550,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   delete_all_order_quote_event_broadcast:
     seq:
@@ -1559,7 +1559,7 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1618,7 +1618,7 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: num_not_affected_orders_grp_comp
         type: u2
@@ -1637,19 +1637,19 @@ types:
   response_header_me_comp:
     seq:
       - id: request_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_out
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: response_in
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: msg_seq_num
         type: u4
@@ -1670,7 +1670,7 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -1739,7 +1739,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: num_not_affected_securities_grp_comp
         type: u2
@@ -1825,7 +1825,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
         type: u8
@@ -1922,7 +1922,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
         type: u8
@@ -1962,7 +1962,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
         type: u8
@@ -2297,7 +2297,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
@@ -2629,7 +2629,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mm_parameter_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -2781,7 +2781,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: len_var_text
         type: u2
@@ -2943,7 +2943,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   mass_quote_request:
     seq:
@@ -3022,7 +3022,7 @@ types:
       - id: quote_id
         type: u8
       - id: quote_response_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -3351,7 +3351,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
         type: u8
@@ -3398,7 +3398,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
         type: u8
@@ -3410,7 +3410,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: ord_status
         type: u1
@@ -3663,7 +3663,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: compression_id
         type: u8
@@ -3931,7 +3931,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: ord_status
         type: u1
@@ -3967,13 +3967,13 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: ord_status
         type: u1
@@ -4210,7 +4210,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: orig_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: len_var_text
         type: u2
@@ -4244,7 +4244,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
         type: u8
@@ -4312,13 +4312,13 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
         type: u8
@@ -4490,13 +4490,13 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_entry_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_time_priority
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
         type: u8
@@ -4552,7 +4552,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_date
         type: u4
@@ -4581,7 +4581,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_date
         type: u4
@@ -4633,7 +4633,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   pre_trade_risk_limit_response:
     seq:
@@ -4745,7 +4745,7 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -4811,7 +4811,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: num_not_affected_securities_grp_comp
         type: u2
@@ -4828,7 +4828,7 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -4930,7 +4930,7 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   reject:
     seq:
@@ -5071,7 +5071,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_date
         type: u4
@@ -5108,7 +5108,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_px
         type: u8
@@ -5121,7 +5121,7 @@ types:
       - id: security_id
         type: s8
       - id: expire_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
@@ -5302,7 +5302,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_price_stip_value
         type: u8
@@ -5609,7 +5609,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: valid_until_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_qty
         type: u8
@@ -5791,7 +5791,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: quote_ref_price
         type: u8
@@ -5815,10 +5815,10 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: effective_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_to_quote_ratio
         type: u8
@@ -5893,10 +5893,10 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trd_reg_ts_execution_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: quote_ref_price
         type: u8
@@ -5923,10 +5923,10 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: effective_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: negotiation_id
         type: u4
@@ -6041,10 +6041,10 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: effective_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: negotiation_id
         type: u4
@@ -6065,10 +6065,10 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: negotiation_start_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -6094,7 +6094,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: expire_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_to_request_ratio
         type: u8
@@ -6223,7 +6223,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: valid_until_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -6294,7 +6294,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: security_id
         type: s8
@@ -6320,7 +6320,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: expire_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_to_request_ratio
         type: u8
@@ -6408,7 +6408,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: quote_id
         type: u8
@@ -6741,7 +6741,7 @@ types:
   nrbc_header_comp:
     seq:
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: appl_sub_id
         type: u4
@@ -6809,13 +6809,13 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: related_close_price
         type: u8
@@ -7040,13 +7040,13 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: related_close_price
         type: u8
@@ -7190,7 +7190,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: reversal_approval_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: individual_alloc_id
         type: u4
@@ -7286,7 +7286,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: compression_id
         type: u8
@@ -7325,7 +7325,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: compression_id
         type: u8
@@ -7374,7 +7374,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: reversal_initiation_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -7432,7 +7432,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: related_security_id
         type: s8
@@ -7657,10 +7657,10 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
@@ -7948,7 +7948,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-4'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
@@ -8176,7 +8176,7 @@ types:
         type: u8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: underlying_px
         type: u8
@@ -8340,6 +8340,19 @@ types:
         size: 2
       - id: response_header_comp
         type: response_header_comp
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

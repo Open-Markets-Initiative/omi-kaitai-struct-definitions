@@ -106,12 +106,12 @@ types:
   timestamp_message:
     seq:
       - id: second
-        type: u4
+        type: second_timestamp
         doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
@@ -120,7 +120,7 @@ types:
   stock_directory_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
@@ -139,7 +139,7 @@ types:
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
@@ -154,7 +154,7 @@ types:
   market_participant_position_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: mpid
         type: str
@@ -183,7 +183,7 @@ types:
   add_order_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -207,7 +207,7 @@ types:
   add_order_with_mpid_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -237,7 +237,7 @@ types:
   order_executed_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -251,7 +251,7 @@ types:
   order_executed_with_price_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -272,7 +272,7 @@ types:
   order_cancel_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -283,7 +283,7 @@ types:
   order_delete_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -291,7 +291,7 @@ types:
   order_replace_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: original_order_reference_number
         type: u8
@@ -308,7 +308,7 @@ types:
   trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number
         type: u8
@@ -335,7 +335,7 @@ types:
   cross_trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: cross_shares
         type: u8
@@ -359,7 +359,7 @@ types:
   broken_trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: match_number
         type: u8
@@ -367,7 +367,7 @@ types:
   net_order_imbalance_indicator_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: paired_shares
         type: u8
@@ -405,7 +405,7 @@ types:
   retail_price_improvement_indicator_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: stock
         type: str
@@ -416,6 +416,28 @@ types:
       - id: interest_flag
         type: u1
         enum: interest_flag
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

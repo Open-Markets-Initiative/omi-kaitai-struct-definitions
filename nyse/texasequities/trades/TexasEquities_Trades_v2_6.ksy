@@ -690,6 +690,19 @@ types:
       - id: prior_day_time_ns
         type: u4
         doc: 'The nanosecond offset from the Prior Day Time'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   delivery_flag:

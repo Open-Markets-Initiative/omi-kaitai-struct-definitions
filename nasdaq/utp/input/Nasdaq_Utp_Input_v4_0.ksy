@@ -123,7 +123,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -166,7 +166,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -209,7 +209,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -264,7 +264,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -319,7 +319,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -378,7 +378,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -437,7 +437,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -446,7 +446,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -513,7 +513,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -522,7 +522,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -565,7 +565,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -574,7 +574,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -635,7 +635,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -644,7 +644,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -750,7 +750,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -759,7 +759,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -802,7 +802,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -811,7 +811,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -860,7 +860,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -869,7 +869,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -936,7 +936,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -977,7 +977,7 @@ types:
         type: u4
         doc: 'Trade Volume'
       - id: trade_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time of trade (may be prior day, nanoseconds since Epoch). Nanoseconds since Unix epoch'
       - id: reversal
         type: u1
@@ -992,7 +992,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1001,7 +1001,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1044,7 +1044,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1053,7 +1053,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1102,7 +1102,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1111,7 +1111,7 @@ types:
         type: u8
         doc: 'Participant Token, pass-through value'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1178,7 +1178,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1219,7 +1219,7 @@ types:
         type: u8
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: trade_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time of trade (may be prior day, nanoseconds since Epoch). Nanoseconds since Unix epoch'
       - id: reversal
         type: u1
@@ -1255,7 +1255,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1281,7 +1281,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1303,7 +1303,7 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number — per-symbol sequence'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
       - id: reason
         type: str
@@ -1320,7 +1320,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1339,7 +1339,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   market_center_mass_trading_action_message:
     seq:
@@ -1350,7 +1350,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1375,7 +1375,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
@@ -1386,7 +1386,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1413,7 +1413,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1439,7 +1439,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1465,7 +1465,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1482,7 +1482,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1499,7 +1499,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1553,7 +1553,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1570,7 +1570,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1593,7 +1593,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1628,7 +1628,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: text_len
         type: u2
@@ -1648,7 +1648,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1661,7 +1661,7 @@ types:
         enum: action
         doc: 'Trading Action Code (H/Q/T/P)'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time Action occurred (may be prior day). Nanoseconds since Unix epoch'
   return_market_open_message:
     seq:
@@ -1672,7 +1672,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   return_market_closed_message:
     seq:
@@ -1683,7 +1683,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   reject_message:
     seq:
@@ -1694,7 +1694,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1719,7 +1719,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1736,7 +1736,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1785,7 +1785,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   end_of_day_message:
     seq:
@@ -1796,7 +1796,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
   sequence_inquiry_response_message:
     seq:
@@ -1807,7 +1807,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: feed_sequence
         type: u8
@@ -1828,7 +1828,7 @@ types:
         pad-right: 0x20
         doc: 'Originating Participant'
       - id: sip_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: symbol_byte_11
         type: str
@@ -1911,7 +1911,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'One-byte code indicating why the login was rejected'
-  timestamp_type:
+  nanosecond_timestamp:
     seq:
       - id: time
         type: s8

@@ -116,7 +116,7 @@ types:
         type: u4
         doc: 'Reserved for future use'
       - id: send_time_epoch_nanos
-        type: s8
+        type: nanosecond_timestamp
         doc: 'UTC timestamp of when the message was sent, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch'
       - id: block_length
         type: u2
@@ -206,7 +206,7 @@ types:
         type: s8
         doc: 'correlationId'
       - id: request_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'requestTime. Nanoseconds since Unix epoch'
       - id: data
         type: data
@@ -223,10 +223,10 @@ types:
         type: s8
         doc: 'correlationId'
       - id: request_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'requestTime. Nanoseconds since Unix epoch'
       - id: server_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'serverTime. Nanoseconds since Unix epoch'
       - id: trading_instrument_status
         type: s1
@@ -317,7 +317,7 @@ types:
   order_entered_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -332,7 +332,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: receive_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'receiveTime. Nanoseconds since Unix epoch'
   replace_order_message:
     seq:
@@ -378,7 +378,7 @@ types:
   order_reject_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: client_order_id
         type: s8
@@ -401,7 +401,7 @@ types:
   order_replaced_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -416,7 +416,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: receive_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'receiveTime. Nanoseconds since Unix epoch'
       - id: total_filled
         type: s4
@@ -441,7 +441,7 @@ types:
   order_canceled_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -456,7 +456,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: receive_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'receiveTime. Nanoseconds since Unix epoch'
       - id: total_filled
         type: s4
@@ -471,7 +471,7 @@ types:
   cancel_order_reject_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: client_order_id
         type: s8
@@ -517,7 +517,7 @@ types:
   mass_cancel_order_ack_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -539,7 +539,7 @@ types:
   mass_cancel_order_reject_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
@@ -561,7 +561,7 @@ types:
   unlock_trading_ack_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
@@ -572,7 +572,7 @@ types:
   unlock_trading_reject_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
@@ -585,7 +585,7 @@ types:
   order_filled_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -627,7 +627,7 @@ types:
   spread_order_filled_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
@@ -680,7 +680,7 @@ types:
   last_exec_id_message:
     seq:
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: last_exec_id
         type: s8
@@ -721,6 +721,19 @@ types:
         size: 23
         encoding: ASCII
         doc: 'details'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

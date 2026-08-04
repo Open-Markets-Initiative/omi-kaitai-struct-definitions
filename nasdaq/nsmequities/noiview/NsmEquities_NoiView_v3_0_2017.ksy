@@ -99,7 +99,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -111,7 +111,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -179,7 +179,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -203,7 +203,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -221,7 +221,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: paired_shares
         type: u8
@@ -262,7 +262,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: shares
         type: u8
@@ -289,7 +289,7 @@ types:
         type: u2
         doc: 'NASDAQ internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the system event was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -307,6 +307,19 @@ types:
       - id: ipo_price
         type: u4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

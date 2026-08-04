@@ -127,7 +127,7 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: event_code
         type: u1
@@ -136,7 +136,7 @@ types:
   order_accepted_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -211,7 +211,7 @@ types:
   replaced_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: orig_user_ref_num
         type: u4
@@ -289,7 +289,7 @@ types:
   canceled_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -304,7 +304,7 @@ types:
   aiq_canceled_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -331,7 +331,7 @@ types:
   order_executed_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -370,7 +370,7 @@ types:
   broken_trade_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -391,7 +391,7 @@ types:
   trade_correction_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -422,7 +422,7 @@ types:
   rejected_order_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -440,7 +440,7 @@ types:
   cancel_pending_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -448,7 +448,7 @@ types:
   cancel_reject_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -456,7 +456,7 @@ types:
   order_priority_update_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -474,7 +474,7 @@ types:
   order_modified_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -489,7 +489,7 @@ types:
   order_restated_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: user_ref_num
         type: u4
@@ -519,7 +519,7 @@ types:
   account_query_response_message:
     seq:
       - id: timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: next_user_ref_num
         type: u4
@@ -696,7 +696,7 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
-  timestamp_type:
+  nanosecond_timestamp:
     seq:
       - id: time
         type: s8

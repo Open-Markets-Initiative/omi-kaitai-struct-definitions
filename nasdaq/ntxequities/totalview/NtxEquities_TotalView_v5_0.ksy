@@ -116,7 +116,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -131,7 +131,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -200,7 +200,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -233,7 +233,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -254,7 +254,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: mpid
         type: str
@@ -289,7 +289,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: level_1
         type: u8
@@ -309,7 +309,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: breached_level
         type: u1
@@ -324,7 +324,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -353,7 +353,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -378,7 +378,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -408,7 +408,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -444,7 +444,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -464,7 +464,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -491,7 +491,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -508,7 +508,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -522,7 +522,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: original_order_reference_number
         type: u8
@@ -545,7 +545,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: order_reference_number
         type: u8
@@ -578,7 +578,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: shares_long
         type: u8
@@ -608,7 +608,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: match_number
         type: u8
@@ -622,7 +622,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: paired_shares
         type: u8
@@ -666,7 +666,7 @@ types:
         type: u2
         doc: 'Nasdaq Texas internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -678,6 +678,19 @@ types:
         type: u1
         enum: interest_flag
         doc: 'Indicates the type of price improvement available'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

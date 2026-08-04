@@ -7,7 +7,7 @@
 #   Encoding: Itch
 #   Version: 1.1
 #   Date: 08/23/2017
-#   Specification: ISEOrderComboFeedSpecification_tcm5044-41354.pdf
+#   Specification: ISE-GEMX-MRX-Order-Feed-Specification_tcm5044-42717.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -96,7 +96,7 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -120,7 +120,7 @@ types:
   option_directory_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -182,7 +182,7 @@ types:
   trading_action_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -194,7 +194,7 @@ types:
   security_open_closed_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -206,7 +206,7 @@ types:
   opening_imbalance_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -227,7 +227,7 @@ types:
   order_on_book_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -275,7 +275,7 @@ types:
   auction_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
@@ -343,6 +343,19 @@ types:
       - id: response_size
         type: u4
         doc: 'Best size of the auction response (zero if not shown)'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

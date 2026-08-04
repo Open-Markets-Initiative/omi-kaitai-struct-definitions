@@ -98,7 +98,7 @@ types:
         type: u2
         doc: 'Internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
       - id: message_type
         type: u1
@@ -509,6 +509,19 @@ types:
         type: u1
         enum: operational_halt_action
         doc: 'Indicates the price of the Upper Auction Collar Threshold'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

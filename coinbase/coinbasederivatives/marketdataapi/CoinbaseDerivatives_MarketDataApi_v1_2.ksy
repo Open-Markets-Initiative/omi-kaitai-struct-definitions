@@ -53,7 +53,7 @@ types:
   packet_header_struct:
     seq:
       - id: sending_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: seq_num
         type: s8
@@ -210,7 +210,7 @@ types:
         type: s2
         doc: 'reserved'
       - id: transact_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
   definition_flags:
     seq:
@@ -632,7 +632,7 @@ types:
         type: s4
         doc: 'quantity'
       - id: transact_time
-        type: s8
+        type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: order_id
         type: s8
@@ -739,6 +739,19 @@ types:
         type: s1
         enum: reason
         doc: 'reason'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

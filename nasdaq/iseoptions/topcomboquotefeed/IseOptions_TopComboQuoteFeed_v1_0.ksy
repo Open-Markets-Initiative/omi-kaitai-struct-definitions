@@ -97,7 +97,7 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -121,7 +121,7 @@ types:
   complex_strategy_directory_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -187,7 +187,7 @@ types:
   strategy_open_closed_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -199,7 +199,7 @@ types:
   strategy_trading_action_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -211,7 +211,7 @@ types:
   strategy_best_bid_and_ask_update:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -265,7 +265,7 @@ types:
   strategy_best_bid_update:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -298,7 +298,7 @@ types:
   strategy_best_ask_update:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -331,7 +331,7 @@ types:
   complex_strategy_ticker_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -360,6 +360,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Same value as the Trade Condition sent to OPRA for this trade. To obtain a list of Trade Conditions, refer to the NOTES below'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

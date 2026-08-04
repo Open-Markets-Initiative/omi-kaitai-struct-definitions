@@ -565,7 +565,7 @@ types:
         type: u4
         doc: 'User-defined takedown group. Applies to all Quote messages in repeating group'
       - id: mm_sent_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Customer provided sending time. CAT compliance Number of nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: bulk_quote
         type: bulk_quote
@@ -750,7 +750,7 @@ types:
         type: u8
         doc: 'Unique ID of the message as assigned by the firm'
       - id: mm_sent_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Customer provided sending time. CAT compliance Number of nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: side_u_81
         type: u1
@@ -1953,6 +1953,19 @@ types:
         type: u1
         enum: leg_side
         doc: 'Side'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   msg_type:

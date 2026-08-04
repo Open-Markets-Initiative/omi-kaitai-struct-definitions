@@ -85,7 +85,7 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: market_segment_id
         type: s4
@@ -100,7 +100,7 @@ types:
   rbc_header_comp:
     seq:
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: party_id_executing_unit
         type: u4
@@ -163,7 +163,7 @@ types:
   notif_header_comp:
     seq:
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
   heartbeat:
     seq:
@@ -231,10 +231,10 @@ types:
   response_header_comp:
     seq:
       - id: request_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: msg_seq_num
         type: u4
@@ -270,7 +270,7 @@ types:
       - id: security_id
         type: s8
       - id: exec_id
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
         type: u8
@@ -487,6 +487,19 @@ types:
         enum: trad_ses_event
       - id: pad7
         size: 7
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

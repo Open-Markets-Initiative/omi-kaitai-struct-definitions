@@ -84,7 +84,7 @@ types:
         type: u8
         doc: 'Sequence of the first message in the segment'
       - id: send_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Send time of segment. Nanoseconds since Unix epoch'
   message:
     seq:
@@ -125,7 +125,7 @@ types:
         enum: system_event
         doc: 'System event identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
   security_directory_message:
     seq:
@@ -133,7 +133,7 @@ types:
         type: security_directory_flags
         doc: 'Security Directory Flags'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -172,7 +172,7 @@ types:
         enum: trading_status
         doc: 'Trading status identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -193,7 +193,7 @@ types:
         enum: retail_liquidity_indicator
         doc: 'Retail Liquidity Indicator identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -208,7 +208,7 @@ types:
         enum: operational_halt_status
         doc: 'Operational halt status identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -223,7 +223,7 @@ types:
         enum: short_sale_price_test_status
         doc: 'Reg. SHO short sale price test restriction status'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -242,7 +242,7 @@ types:
         enum: security_event
         doc: 'Security event identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -257,7 +257,7 @@ types:
         enum: event_flags
         doc: 'Identifies event processing by the System'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -278,7 +278,7 @@ types:
         enum: event_flags
         doc: 'Identifies event processing by the System'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -298,7 +298,7 @@ types:
         type: sale_condition_flags
         doc: 'Sale Condition Flags'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -342,7 +342,7 @@ types:
         enum: price_type
         doc: 'Price type identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -359,7 +359,7 @@ types:
         type: sale_condition_flags
         doc: 'Sale Condition Flags'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -383,7 +383,7 @@ types:
         enum: auction_type
         doc: 'Auction type identifier'
       - id: timestamp
-        type: s8
+        type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
@@ -413,7 +413,7 @@ types:
         encoding: ASCII
         doc: 'Number of extensions an auction received'
       - id: scheduled_auction_time
-        type: u4
+        type: second_timestamp
         doc: 'Projected time of the auction match. Seconds since Unix epoch'
       - id: auction_book_clearing_price
         type: s8
@@ -427,6 +427,30 @@ types:
       - id: upper_auction_collar
         type: s8
         doc: 'Upper threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
 
 enums:
   message_type:

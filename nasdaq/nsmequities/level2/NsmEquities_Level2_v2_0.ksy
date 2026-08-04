@@ -103,7 +103,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -115,7 +115,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -181,7 +181,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -205,7 +205,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -223,7 +223,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: mpid
         type: str
@@ -255,7 +255,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -277,7 +277,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: market_side
         type: u1
@@ -307,7 +307,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -325,7 +325,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: level_1
         type: u8
@@ -342,7 +342,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: breached_level
         type: u1
@@ -354,7 +354,7 @@ types:
         type: u2
         doc: 'Nasdaq internal tracking number'
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
@@ -372,6 +372,19 @@ types:
       - id: ipo_price
         type: u4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

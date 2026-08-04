@@ -57,7 +57,7 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: sending_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
@@ -104,7 +104,7 @@ types:
   channel_reset:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -184,7 +184,7 @@ types:
         enum: security_update_action
         doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
         type: u1
@@ -398,7 +398,7 @@ types:
         enum: event_type
         doc: 'Code to represent the type of event'
       - id: event_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   m_d_instrument_definition_future_27_no_m_d_feed_types_groups:
     seq:
@@ -531,7 +531,7 @@ types:
         enum: security_update_action
         doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
         type: u1
@@ -690,7 +690,7 @@ types:
         enum: event_type
         doc: 'Code to represent the type of event'
       - id: event_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   m_d_instrument_definition_spread_29_no_m_d_feed_types_groups:
     seq:
@@ -776,7 +776,7 @@ types:
   security_status:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: security_group
         type: str
@@ -812,7 +812,7 @@ types:
   md_incremental_refresh_book:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -910,7 +910,7 @@ types:
   md_incremental_refresh_daily_statistics:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -965,7 +965,7 @@ types:
   md_incremental_refresh_limits_banding:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1006,7 +1006,7 @@ types:
   md_incremental_refresh_session_statistics:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1059,7 +1059,7 @@ types:
   md_incremental_refresh_trade:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1114,7 +1114,7 @@ types:
   md_incremental_refresh_volume:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1168,10 +1168,10 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
       - id: trade_date
         type: u2
@@ -1233,7 +1233,7 @@ types:
   quote_request:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: quote_req_id
         type: str
@@ -1294,7 +1294,7 @@ types:
         enum: security_update_action
         doc: 'Last Security update action on Incremental feed, ''D'' or ''M'' is used when a mid-week deletion or modification (i.e. extension) occurs'
       - id: last_update_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the instrument was last added, modified or deleted. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
         type: u1
@@ -1471,7 +1471,7 @@ types:
         enum: event_type
         doc: 'Code to represent the type of event'
       - id: event_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
   m_d_instrument_definition_option_41_no_m_d_feed_types_groups:
     seq:
@@ -1569,7 +1569,7 @@ types:
   md_incremental_refresh_trade_summary:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1648,7 +1648,7 @@ types:
   md_incremental_refresh_order_book:
     seq:
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: match_event_indicator
         type: match_event_indicator
@@ -1715,7 +1715,7 @@ types:
         type: u4
         doc: 'Chunk sequence'
       - id: transact_time
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: snapshot_full_refresh_order_book_44_no_m_d_entries_groups
         type: snapshot_full_refresh_order_book_44_no_m_d_entries_groups
@@ -1748,6 +1748,19 @@ types:
         type: u1
         enum: md_entry_type_book
         doc: 'Market Data entry type'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   template_id:

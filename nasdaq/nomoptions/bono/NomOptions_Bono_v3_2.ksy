@@ -102,12 +102,12 @@ types:
   timestamp_message:
     seq:
       - id: second
-        type: u4
+        type: second_timestamp
         doc: 'Number of seconds since midnight (U.S. Eastern Time). Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
@@ -122,7 +122,7 @@ types:
   options_directory_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -173,7 +173,7 @@ types:
   trading_action_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -185,7 +185,7 @@ types:
   security_open_closed_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -197,7 +197,7 @@ types:
   short_best_bid_and_ask_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -221,7 +221,7 @@ types:
   long_best_bid_and_ask_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -245,7 +245,7 @@ types:
   short_best_ask_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -263,7 +263,7 @@ types:
   short_best_bid_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -281,7 +281,7 @@ types:
   long_best_ask_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -299,7 +299,7 @@ types:
   long_best_bid_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -317,7 +317,7 @@ types:
   trade_report_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -340,7 +340,7 @@ types:
   broken_trade_report_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'The sub-second portion of the time, in nanoseconds (0-999999999). The second portion of the time is obtained from the most recent timestamp message. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -354,6 +354,28 @@ types:
       - id: original_volume
         type: u4
         doc: 'Reported number of contracts in the original trade report message on this feed'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

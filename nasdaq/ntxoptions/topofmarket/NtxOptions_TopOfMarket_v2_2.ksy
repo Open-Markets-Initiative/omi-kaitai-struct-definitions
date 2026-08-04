@@ -101,7 +101,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -113,7 +113,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -212,7 +212,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -227,7 +227,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -272,7 +272,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -317,7 +317,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -347,7 +347,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -377,7 +377,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -403,7 +403,7 @@ types:
         type: u2
         doc: 'Internal system tracking number'
       - id: timestamp
-        type: u8
+        type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: instrument_id
         type: u4
@@ -417,6 +417,19 @@ types:
       - id: original_volume
         type: u4
         doc: 'The number of contracts of the original trade that is being broken'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:

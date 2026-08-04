@@ -124,10 +124,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -249,16 +249,16 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
       - id: symbol_long
         type: str
@@ -323,16 +323,16 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: timestamp_2
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
       - id: symbol_long
         type: str
@@ -373,10 +373,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -544,16 +544,16 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: adf_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'ADF Timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: symbol_long
         type: str
@@ -655,10 +655,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -704,16 +704,16 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: adf_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'ADF Timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: symbol_long
         type: str
@@ -777,10 +777,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -805,10 +805,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -827,7 +827,7 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number (UTP SIP internal use only)'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: reason_for_the_trading_action
         type: str
@@ -846,10 +846,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -865,7 +865,7 @@ types:
         enum: trading_action_code
         doc: 'Trading Action Code'
       - id: action_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: market_center_identifier
         type: str
@@ -883,10 +883,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -949,10 +949,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -978,10 +978,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -997,7 +997,7 @@ types:
         enum: luld_price_band_indicator
         doc: 'LULD Price Band Indicator'
       - id: luld_price_band_effective_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'LULD Price Band Effective Time. Nanoseconds since Unix epoch'
       - id: limit_down_price
         type: u8
@@ -1016,10 +1016,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1044,10 +1044,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1067,10 +1067,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1109,10 +1109,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1204,10 +1204,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1223,10 +1223,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1242,10 +1242,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1261,10 +1261,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1280,10 +1280,10 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
@@ -1299,15 +1299,15 @@ types:
         enum: sub_market_center_id
         doc: 'Used for reporting trades originated by FINRA ADF or a FINRA TRF'
       - id: sip_timestamp
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
-  timestamp_type:
+  nanosecond_timestamp:
     seq:
       - id: time
         type: s8

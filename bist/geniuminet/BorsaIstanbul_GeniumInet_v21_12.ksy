@@ -105,12 +105,12 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: u4
+        type: second_timestamp
         doc: 'Unix seconds. Seconds since Unix epoch'
   order_book_directory:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -187,7 +187,7 @@ types:
   combination_order_book_leg:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: combination_order_book_id
         type: u4
@@ -205,7 +205,7 @@ types:
   tick_size_table_entry:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -222,7 +222,7 @@ types:
   short_sell_status:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -234,7 +234,7 @@ types:
   system_event_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
@@ -243,7 +243,7 @@ types:
   order_book_state_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -257,7 +257,7 @@ types:
   add_order_no_mpid_attribution:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -286,7 +286,7 @@ types:
         enum: lot_type
         doc: 'Lot Type'
       - id: ranking_time
-        type: timestamp_type
+        type: nanosecond_timestamp
         doc: 'Ranking timestamp, in nanoseconds. Nanoseconds since Unix epoch'
   order_attributes:
     seq:
@@ -302,7 +302,7 @@ types:
   add_order_with_mpid_attribution:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -339,7 +339,7 @@ types:
   order_executed_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -366,7 +366,7 @@ types:
   order_executed_with_price_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -404,7 +404,7 @@ types:
   order_replace_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -431,7 +431,7 @@ types:
   order_delete_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_id
         type: u8
@@ -446,7 +446,7 @@ types:
   order_book_flush_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -454,7 +454,7 @@ types:
   trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: match_id
         type: u8
@@ -489,7 +489,7 @@ types:
   equilibrium_price_update:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: order_book_id
         type: u4
@@ -515,7 +515,29 @@ types:
       - id: best_ask_quantity
         type: u8
         doc: 'Best Ask Quantity'
-  timestamp_type:
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
+  nanosecond_timestamp:
     seq:
       - id: time
         type: s8

@@ -114,12 +114,12 @@ types:
   seconds_message:
     seq:
       - id: second
-        type: u4
+        type: second_timestamp
         doc: 'Number of seconds since midnight. Seconds since Midnight epoch'
   system_event_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: event_code
         type: u1
@@ -128,7 +128,7 @@ types:
   base_reference_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: base_reference_number
         type: u8
@@ -136,7 +136,7 @@ types:
   option_directory_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -187,7 +187,7 @@ types:
   trading_action_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -199,7 +199,7 @@ types:
   option_open_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -213,7 +213,7 @@ types:
   add_order_message_short_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number_delta
         type: u4
@@ -234,7 +234,7 @@ types:
   add_order_message_long_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number_delta
         type: u4
@@ -255,7 +255,7 @@ types:
   add_quote_message_short_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: bid_reference_number_delta
         type: u4
@@ -281,7 +281,7 @@ types:
   add_quote_message_long_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: bid_reference_number_delta
         type: u4
@@ -307,7 +307,7 @@ types:
   single_side_executed_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: reference_number_delta
         type: u4
@@ -324,7 +324,7 @@ types:
   single_side_order_executed_with_price_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: reference_number_delta
         type: u4
@@ -348,7 +348,7 @@ types:
   order_cancel_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: order_reference_number_delta
         type: u4
@@ -359,7 +359,7 @@ types:
   single_side_replace_message_short_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: original_reference_number_delta
         type: u4
@@ -376,7 +376,7 @@ types:
   single_side_replace_message_long_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: original_reference_number_delta
         type: u4
@@ -393,7 +393,7 @@ types:
   single_side_delete_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: reference_number_delta
         type: u4
@@ -401,7 +401,7 @@ types:
   single_side_update_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: reference_number_delta
         type: u4
@@ -418,7 +418,7 @@ types:
   quote_replace_message_short_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: original_bid_reference_number_delta
         type: u4
@@ -447,7 +447,7 @@ types:
   quote_replace_message_long_form:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: original_bid_reference_number_delta
         type: u4
@@ -476,7 +476,7 @@ types:
   quote_delete_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: bid_reference_number_delta
         type: u4
@@ -487,7 +487,7 @@ types:
   block_delete_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: total_number_of_reference_number_deltas
         type: u2
@@ -498,7 +498,7 @@ types:
   non_auction_options_trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: buy_sell_indicator
         type: u1
@@ -522,7 +522,7 @@ types:
   options_cross_trade_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: option_id
         type: u4
@@ -546,7 +546,7 @@ types:
   broken_trade_or_order_execution_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: cross_number
         type: u4
@@ -557,7 +557,7 @@ types:
   net_order_imbalance_indicator_message:
     seq:
       - id: nanoseconds
-        type: u4
+        type: nanosecond_offset
         doc: 'Nanoseconds portion of timestamp. Nanoseconds since Second epoch'
       - id: auction_id
         type: u4
@@ -589,6 +589,28 @@ types:
       - id: reserved
         size: 3
         doc: 'Reserved for future use'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   message_type:

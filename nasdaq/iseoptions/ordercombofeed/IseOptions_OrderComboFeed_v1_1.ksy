@@ -7,7 +7,7 @@
 #   Encoding: Itch
 #   Version: 1.1
 #   Date: 06/13/2017
-#   Specification: ISE-GEMX-MRX-Order-Feed-Specification_tcm5044-42717.pdf
+#   Specification: ISEOrderComboFeedSpecification_tcm5044-41354.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -95,7 +95,7 @@ types:
   system_event_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
@@ -119,7 +119,7 @@ types:
   complex_strategy_directory_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -185,7 +185,7 @@ types:
   strategy_trading_action_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -197,7 +197,7 @@ types:
   strategy_open_closed_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -209,7 +209,7 @@ types:
   complex_strategy_order_on_book_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -261,7 +261,7 @@ types:
   complex_strategy_auction_message:
     seq:
       - id: timestamp
-        size: 6
+        type: nanosecond_timestamp
         doc: 'The time, expressed as the number of nanoseconds after midnight. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
@@ -337,6 +337,19 @@ types:
       - id: response_size
         type: u4
         doc: 'Size of the auction response (zero if not shown)'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   message_type:
