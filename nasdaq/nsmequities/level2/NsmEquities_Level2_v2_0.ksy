@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -293,7 +293,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the Nasdaq execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reflects the price associated with the update. Implied decimal with scale 1e-4'
       - id: mpid
         type: str
@@ -328,13 +328,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Time at which the Operational Halt message was generated. Nanoseconds since Midnight epoch'
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   market_wide_circuit_breaker_status_message:
     seq:
@@ -370,7 +370,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'Indicates the status of the IPO quotation release'
       - id: ipo_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -385,6 +385,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

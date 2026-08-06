@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -145,7 +145,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: tick_size
-        type: s8
+        type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -167,16 +167,16 @@ types:
         type: s4
         doc: 'oldContractSize'
       - id: prior_settlement_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'settlementPrice. Implied decimal with scale 1e-9'
       - id: limit_down_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
       - id: limit_up_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitUpPrice. Implied decimal with scale 1e-9'
       - id: product_id
         type: s4
@@ -273,7 +273,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: tick_size
-        type: s8
+        type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -295,16 +295,16 @@ types:
         type: s4
         doc: 'oldContractSize'
       - id: prior_settlement_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'settlementPrice. Implied decimal with scale 1e-9'
       - id: limit_down_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
       - id: limit_up_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitUpPrice. Implied decimal with scale 1e-9'
       - id: product_id
         type: s4
@@ -354,7 +354,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: small_tick
-        type: s8
+        type: decimal_s8_9
         doc: 'smallTick. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -362,13 +362,13 @@ types:
         encoding: ASCII
         doc: 'cfiCode'
       - id: large_tick
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTick. Implied decimal with scale 1e-9'
       - id: large_tick_threshold
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickThreshold. Implied decimal with scale 1e-9'
       - id: strike_price
-        type: s8
+        type: decimal_s8_9
         doc: 'strikePrice. Implied decimal with scale 1e-9'
       - id: first_trading_session_date
         type: u2
@@ -377,10 +377,10 @@ types:
         type: u2
         doc: 'lastTradingSessionDate'
       - id: prior_settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'settlementPrice. Implied decimal with scale 1e-9'
       - id: product_id
         type: s4
@@ -412,10 +412,10 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: limit_down_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
       - id: limit_up_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitUpPrice. Implied decimal with scale 1e-9'
       - id: trading_status
         type: s1
@@ -430,7 +430,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -449,10 +449,10 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: best_price
-        type: s8
+        type: decimal_s8_9
         doc: 'bestPrice. Implied decimal with scale 1e-9'
       - id: next_price
-        type: s8
+        type: decimal_s8_9
         doc: 'nextPrice. Implied decimal with scale 1e-9'
       - id: best_qty
         type: s4
@@ -472,10 +472,10 @@ types:
         type: s8
         doc: 'aggressorReceiveTime'
       - id: vwap_price
-        type: s8
+        type: decimal_s8_9
         doc: 'vwapPrice. Implied decimal with scale 1e-9'
       - id: deepest_price
-        type: s8
+        type: decimal_s8_9
         doc: 'deepestPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -495,7 +495,7 @@ types:
         type: s8
         doc: 'sellOrderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -515,10 +515,10 @@ types:
         type: s8
         doc: 'sellOrderId'
       - id: old_price
-        type: s8
+        type: decimal_s8_9
         doc: 'oldPrice. Implied decimal with scale 1e-9'
       - id: new_price
-        type: s8
+        type: decimal_s8_9
         doc: 'newPrice. Implied decimal with scale 1e-9'
   spread_trade_amend_message:
     seq:
@@ -535,22 +535,22 @@ types:
         type: s8
         doc: 'sellOrderId'
       - id: old_price
-        type: s8
+        type: decimal_s8_9
         doc: 'oldPrice. Implied decimal with scale 1e-9'
       - id: new_price
-        type: s8
+        type: decimal_s8_9
         doc: 'newPrice. Implied decimal with scale 1e-9'
       - id: old_leg_1_price
-        type: s8
+        type: decimal_s8_9
         doc: 'oldLeg1Price. Implied decimal with scale 1e-9'
       - id: new_leg_1_price
-        type: s8
+        type: decimal_s8_9
         doc: 'newLeg1Price. Implied decimal with scale 1e-9'
       - id: old_leg_2_price
-        type: s8
+        type: decimal_s8_9
         doc: 'oldLeg2Price. Implied decimal with scale 1e-9'
       - id: new_leg_2_price
-        type: s8
+        type: decimal_s8_9
         doc: 'newLeg2Price. Implied decimal with scale 1e-9'
   trade_bust_message:
     seq:
@@ -572,7 +572,7 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: stat_type
         type: u1
@@ -584,7 +584,7 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: vwap_price
-        type: s8
+        type: decimal_s8_9
         doc: 'vwapPrice. Implied decimal with scale 1e-9'
       - id: trade_volume
         type: s4
@@ -621,7 +621,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: tick_size
-        type: s8
+        type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -689,7 +689,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: tick_size
-        type: s8
+        type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -764,7 +764,7 @@ types:
         encoding: ASCII
         doc: 'description'
       - id: small_tick
-        type: s8
+        type: decimal_s8_9
         doc: 'smallTick. Implied decimal with scale 1e-9'
       - id: cfi_code
         type: str
@@ -772,13 +772,13 @@ types:
         encoding: ASCII
         doc: 'cfiCode'
       - id: large_tick
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTick. Implied decimal with scale 1e-9'
       - id: large_tick_threshold
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickThreshold. Implied decimal with scale 1e-9'
       - id: strike_price
-        type: s8
+        type: decimal_s8_9
         doc: 'strikePrice. Implied decimal with scale 1e-9'
       - id: product_id
         type: s4
@@ -831,7 +831,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
   end_of_snapshot_message:
     seq:
@@ -842,49 +842,49 @@ types:
         type: s4
         doc: 'tradeVolume'
       - id: indicative_open_price
-        type: s8
+        type: decimal_s8_9
         doc: 'indicativeOpenPrice. Implied decimal with scale 1e-9'
       - id: day_open_price
-        type: s8
+        type: decimal_s8_9
         doc: 'dayOpenPrice. Implied decimal with scale 1e-9'
       - id: close_price
-        type: s8
+        type: decimal_s8_9
         doc: 'closePrice. Implied decimal with scale 1e-9'
       - id: low_price
-        type: s8
+        type: decimal_s8_9
         doc: 'lowPrice. Implied decimal with scale 1e-9'
       - id: high_price
-        type: s8
+        type: decimal_s8_9
         doc: 'highPrice. Implied decimal with scale 1e-9'
       - id: vwap_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'vwapPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'settlementPrice. Implied decimal with scale 1e-9'
       - id: last_trade_price
-        type: s8
+        type: decimal_s8_9
         doc: 'lastTradePrice. Implied decimal with scale 1e-9'
       - id: last_trade_time
         type: s8
         doc: 'lastTradeTime'
       - id: best_bid_implied_price
-        type: s8
+        type: decimal_s8_9
         doc: 'bestBidImpliedPrice. Implied decimal with scale 1e-9'
       - id: best_ask_implied_price
-        type: s8
+        type: decimal_s8_9
         doc: 'bestAskImpliedPrice. Implied decimal with scale 1e-9'
       - id: next_bid_implied_price
-        type: s8
+        type: decimal_s8_9
         doc: 'nextBidImpliedPrice. Implied decimal with scale 1e-9'
       - id: next_ask_implied_price
-        type: s8
+        type: decimal_s8_9
         doc: 'nextAskImpliedPrice. Implied decimal with scale 1e-9'
       - id: limit_down_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
       - id: limit_up_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitUpPrice. Implied decimal with scale 1e-9'
       - id: last_trade_qty
         type: s4
@@ -905,7 +905,7 @@ types:
         type: s4
         doc: 'nextAskImpliedQty'
       - id: prior_settlement_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
       - id: definition_flags
         type: definition_flags
@@ -950,6 +950,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:
@@ -1069,9 +1076,6 @@ enums:
   spread_buy_convention:
     1:
       id: 'use_far_bid'
-      doc: 'SpreadBuyConvention Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    -1:
-      id: 'use_near_bid'
       doc: 'SpreadBuyConvention Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   option_expiry_type:
     0:

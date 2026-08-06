@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -170,7 +170,7 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
       - id: prev_close_volume
         type: u4
@@ -231,10 +231,10 @@ types:
         type: u4
         doc: 'Future use. Any field content should be ignored'
       - id: price_1
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low Price. Implied decimal with scale 1e-8'
       - id: price_2
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. If securityStatus = G or I, then this field is the Indication High Price. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
@@ -244,7 +244,7 @@ types:
         type: u4
         doc: 'Default value is 0. This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
-        type: u4
+        type: hhmmssmmm_time
         doc: 'Default value is 0. Format: HHMMSSmmm (mmm = milliseconds). If securityStatus = A and this security is listed on this exchange, then this field is the SSR Trigger Time'
       - id: ssr_state
         type: u1
@@ -386,13 +386,13 @@ types:
         type: u4
         doc: 'The symbol sequence number'
       - id: ask_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Ask price. Use the Price scale from the Symbol Index message. Implied decimal with scale 1e-8'
       - id: ask_volume
         type: u4
         doc: 'The aggregate round lot size at the ask price, in shares'
       - id: bid_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Bid price. Use the Price scale from the Symbol Index message. Implied decimal with scale 1e-8'
       - id: bid_volume
         type: u4
@@ -418,6 +418,26 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  hhmmssmmm_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000000 % 100
+      minute:
+        value: time / 100000 % 100
+      second:
+        value: time / 1000 % 100
+      millisecond:
+        value: time % 1000
 
 enums:
   delivery_flag:

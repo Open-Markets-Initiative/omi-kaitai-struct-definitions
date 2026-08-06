@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -257,10 +257,10 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment
-        type: s8
+        type: decimal_s8_7
         doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-7'
       - id: display_factor
-        type: s8
+        type: decimal_s8_7
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-7'
       - id: main_fraction
         type: u1
@@ -277,10 +277,10 @@ types:
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: s8
+        type: decimal_s8_7
         doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-7'
       - id: trading_reference_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-7'
       - id: settl_price_type
         type: settl_price_type
@@ -292,13 +292,13 @@ types:
         type: s4
         doc: 'The total cleared volume of instrument traded during the prior trading session'
       - id: high_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7'
       - id: low_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7'
       - id: max_price_variation
-        type: s8
+        type: decimal_s8_7
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7'
       - id: decay_quantity
         type: s4
@@ -319,7 +319,7 @@ types:
         type: s1
         doc: 'The schedule according to which the electricity is delivered in a physical contract, or priced in a financial contract. Specifies whether the contract is defined according to the Easter Peak, Eastern Off-Peak, Western Peak or Western Off-Peak'
       - id: min_price_increment_amount
-        type: s8
+        type: decimal_s8_7
         doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-7'
       - id: user_defined_instrument
         type: str
@@ -516,7 +516,7 @@ types:
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
       - id: min_lot_size
-        type: s4
+        type: decimal_s4_4
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
   md_instrument_definition_spread:
     seq:
@@ -609,16 +609,16 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment
-        type: s8
+        type: decimal_s8_7
         doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-7'
       - id: display_factor
-        type: s8
+        type: decimal_s8_7
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-7'
       - id: price_display_format
         type: u1
         doc: 'Number of decimals in fractional display price'
       - id: price_ratio
-        type: s8
+        type: decimal_s8_7
         doc: 'Used for price calculation in spread and leg pricing. Implied decimal with scale 1e-7'
       - id: tick_rule
         type: s1
@@ -629,7 +629,7 @@ types:
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: trading_reference_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-7'
       - id: settl_price_type
         type: settl_price_type
@@ -641,13 +641,13 @@ types:
         type: s4
         doc: 'The total cleared volume of instrument traded during the prior trading session'
       - id: high_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7'
       - id: low_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7'
       - id: max_price_variation
-        type: s8
+        type: decimal_s8_7
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7'
       - id: main_fraction
         type: u1
@@ -743,7 +743,7 @@ types:
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
       - id: min_lot_size
-        type: s4
+        type: decimal_s4_4
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
   m_d_instrument_definition_spread_29_no_legs_groups:
     seq:
@@ -768,10 +768,10 @@ types:
         type: s1
         doc: 'Leg ratio of quantity for this individual leg relative to the entire multi-leg instrument'
       - id: leg_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Price for the future leg of a UDS Covered instrument. Implied decimal with scale 1e-7'
       - id: leg_option_delta
-        type: s4
+        type: decimal_s4_4
         doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4'
   security_status:
     seq:
@@ -839,7 +839,7 @@ types:
   m_d_incremental_refresh_book_32_no_m_d_entries_group:
     seq:
       - id: md_entry_px_optional
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size_optional
         type: s4
@@ -934,7 +934,7 @@ types:
   m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_group:
     seq:
       - id: md_entry_px_optional
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size_optional
         type: s4
@@ -989,13 +989,13 @@ types:
   m_d_incremental_refresh_limits_banding_34_no_m_d_entries_group:
     seq:
       - id: high_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7'
       - id: low_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7'
       - id: max_price_variation
-        type: s8
+        type: decimal_s8_7
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7'
       - id: security_id
         type: s4
@@ -1030,7 +1030,7 @@ types:
   m_d_incremental_refresh_session_statistics_35_no_m_d_entries_group:
     seq:
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: security_id
         type: s4
@@ -1083,7 +1083,7 @@ types:
   m_d_incremental_refresh_trade_36_no_m_d_entries_group:
     seq:
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size
         type: s4
@@ -1181,13 +1181,13 @@ types:
         enum: md_security_trading_status
         doc: 'Identifies the current state of the instrument. In Security Definition message this tag is available in the Instrument Replay feed only'
       - id: high_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7'
       - id: low_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7'
       - id: max_price_variation
-        type: s8
+        type: decimal_s8_7
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7'
       - id: snapshot_full_refresh_38_no_m_d_entries_groups
         type: snapshot_full_refresh_38_no_m_d_entries_groups
@@ -1205,7 +1205,7 @@ types:
   snapshot_full_refresh_38_no_m_d_entries_group:
     seq:
       - id: md_entry_px_optional
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size_optional
         type: s4
@@ -1355,7 +1355,7 @@ types:
         encoding: ASCII
         doc: 'Identifies currency used for price'
       - id: strike_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-7'
       - id: strike_currency
         type: str
@@ -1368,7 +1368,7 @@ types:
         encoding: ASCII
         doc: 'Identifies currency used for settlement, if different from trading currency'
       - id: min_cab_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Defines cabinet price for outright options products. Implied decimal with scale 1e-7'
       - id: match_algorithm
         type: str
@@ -1382,13 +1382,13 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment_optional
-        type: s8
+        type: decimal_s8_7
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-7'
       - id: min_price_increment_amount
-        type: s8
+        type: decimal_s8_7
         doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-7'
       - id: display_factor
-        type: s8
+        type: decimal_s8_7
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-7'
       - id: tick_rule
         type: s1
@@ -1408,10 +1408,10 @@ types:
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: s8
+        type: decimal_s8_7
         doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-7'
       - id: trading_reference_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-7'
       - id: settl_price_type
         type: settl_price_type
@@ -1423,10 +1423,10 @@ types:
         type: s4
         doc: 'The total open interest for the market at the close of the prior trading session'
       - id: low_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable low limit price for the trading day. Implied decimal with scale 1e-7'
       - id: high_limit_price
-        type: s8
+        type: decimal_s8_7
         doc: 'Allowable high limit price for the trading day. Implied decimal with scale 1e-7'
       - id: user_defined_instrument
         type: str
@@ -1524,7 +1524,7 @@ types:
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
       - id: min_lot_size
-        type: s4
+        type: decimal_s4_4
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
   m_d_instrument_definition_option_41_no_underlyings_groups:
     seq:
@@ -1596,7 +1596,7 @@ types:
   m_d_incremental_refresh_trade_summary_42_no_m_d_entries_group:
     seq:
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_entry_size
         type: s4
@@ -1678,7 +1678,7 @@ types:
         type: u8
         doc: 'Order priority for execution on the order book'
       - id: md_entry_px_optional
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_display_qty_optional
         type: s4
@@ -1739,7 +1739,7 @@ types:
         type: u8
         doc: 'Order priority for execution on the order book'
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_7
         doc: 'Market Data entry price. Implied decimal with scale 1e-7'
       - id: md_display_qty
         type: s4
@@ -1761,6 +1761,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_7:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 10000000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   template_id:

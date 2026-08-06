@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -270,10 +270,10 @@ types:
         enum: reg_sho_action
         doc: 'Reg SHO Action (SEC Rule 201)'
       - id: consolidated_prior_day_close_price
-        type: u8
+        type: decimal_u8_6
         doc: 'RESERVED. Consolidated prior day''s close, adjusted if needed. Populated beginning December 6, 2026 when supported by the Listing Market. Implied decimal with scale 1e-6'
       - id: listing_market_official_prior_day_close_price
-        type: u8
+        type: decimal_u8_6
         doc: 'RESERVED. Listing Market''s official prior day''s close, adjusted if needed. Populated beginning December 6, 2026 when supported by the Listing Market. Implied decimal with scale 1e-6'
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
@@ -443,10 +443,10 @@ types:
         type: nanosecond_timestamp
         doc: 'LULD Price Band Effective Time. Nanoseconds since Unix epoch'
       - id: limit_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Down Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: limit_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Up Price, 6 implied decimal places. Implied decimal with scale 1e-6'
   auction_collar_message:
     seq:
@@ -477,13 +477,13 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number (UTP SIP internal use only — data recipients should disregard)'
       - id: collar_reference_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Reference price used to set collar. Implied decimal with scale 1e-6'
       - id: collar_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Up Price. Implied decimal with scale 1e-6'
       - id: collar_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Down Price. Implied decimal with scale 1e-6'
       - id: collar_extension_indicator
         type: str
@@ -665,13 +665,13 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier'
       - id: bid_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Bid Size'
       - id: ask_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
@@ -737,7 +737,7 @@ types:
         encoding: ASCII
         doc: 'National Best Bid Market Center'
       - id: national_best_bid_price
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: national_best_bid_size
         type: u4
@@ -748,7 +748,7 @@ types:
         encoding: ASCII
         doc: 'National Best Ask Market Center'
       - id: national_best_ask_price
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: national_best_ask_size
         type: u4
@@ -775,7 +775,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Bid Market Center'
       - id: bolo_bid_price
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_bid_size
         type: u2
@@ -786,7 +786,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Ask Market Center'
       - id: bolo_ask_price
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_ask_size
         type: u2
@@ -910,6 +910,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   packet_type:

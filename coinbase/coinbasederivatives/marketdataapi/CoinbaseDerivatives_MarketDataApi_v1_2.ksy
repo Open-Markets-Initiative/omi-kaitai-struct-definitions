@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -322,7 +322,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -387,7 +387,7 @@ types:
         type: s8
         doc: 'sellOrderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -464,7 +464,7 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: stat_type
         type: u1
@@ -638,7 +638,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
   end_of_snapshot_message:
     seq:
@@ -752,6 +752,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:
@@ -859,9 +866,6 @@ enums:
   spread_buy_convention:
     1:
       id: 'use_far_bid'
-      doc: 'SpreadBuyConvention Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    -1:
-      id: 'use_near_bid'
       doc: 'SpreadBuyConvention Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   stat_type:
     0x34:

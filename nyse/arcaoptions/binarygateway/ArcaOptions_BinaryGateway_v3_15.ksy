@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -343,7 +343,7 @@ types:
       - id: order_instructions
         type: order_instructions
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -453,7 +453,7 @@ types:
         type: sub_msg_header
         doc: 'Pillar Stream Sub Message Item Header'
       - id: stop_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-8'
       - id: max_floor
         type: u4
@@ -579,7 +579,7 @@ types:
         type: u1
         doc: 'Bitfield (containing Side and Type)'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -654,7 +654,7 @@ types:
       - id: order_instructions
         type: order_instructions
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -706,7 +706,7 @@ types:
       - id: order_instructions
         type: order_instructions
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -956,7 +956,7 @@ types:
         enum: underlying_type
         doc: 'Identifies what type of security the underlying symbols is'
       - id: max_order_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Maximum allowable order entry price. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
@@ -996,7 +996,7 @@ types:
         enum: put_or_call
         doc: 'Call or Put indicator'
       - id: strike_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Strike price. Implied decimal with scale 1e-8'
       - id: maturity_date
         type: str
@@ -1031,10 +1031,10 @@ types:
         type: u2
         doc: 'Identification number assigned to the MPVClass'
       - id: rpimpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Numeric value of the Minimum Price Variation for Retail Price Improvement (RPI) orders for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
       - id: luldmpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Numeric value of the Minimum Price Variation for LULD bands for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
   minimum_price_variant_level_reference_data:
     seq:
@@ -1056,13 +1056,13 @@ types:
         pad-right: 0x20
         doc: 'Name of the Minimum Price Variant (MPV) Level. Naming'
       - id: price_u_price_8
-        type: u8
+        type: decimal_u8_8
         doc: 'Order entry Limit price range for the MPVLevel. Implied decimal with scale 1e-8'
       - id: quoting_mpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Numeric value of the Quoting Minimum Price Variation for the. Implied decimal with scale 1e-8'
       - id: trading_mpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Numeric value of the Trading Minimum Price Variation for the. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
@@ -1231,7 +1231,7 @@ types:
       - id: order_instructions
         type: order_instructions
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1254,7 +1254,7 @@ types:
         type: u4
         doc: '0 - 999,999'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: '0.01- 9,999.99. Implied decimal with scale 1e-8'
       - id: working_away_from_display
         type: u1
@@ -1341,7 +1341,7 @@ types:
         enum: ack_type
         doc: 'AckType'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: quantity
         type: u4
@@ -1379,7 +1379,7 @@ types:
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: '0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1461,7 +1461,7 @@ types:
         type: u8
         doc: 'Unique ID of the message as assigned by the firm'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: '0.01- 9,999.99. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1509,7 +1509,7 @@ types:
         type: u8
         doc: 'Unique identifier of a transaction, assigned by the Exchange to both Execution reports representing the two sides of a single trade. Published externally to market data feeds'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of current partial fill or fill message 0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: leaves_qty
         type: u4
@@ -1638,7 +1638,7 @@ types:
         type: u8
         doc: 'Unique identifier of a transaction, assigned by the Exchange to both Execution reports representing the two sides of a single trade. Published externally to market data feeds'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of current partial fill or fill message 0.01 - 9,999.99. Implied decimal with scale 1e-8'
       - id: last_qty
         type: u4
@@ -1953,6 +1953,13 @@ types:
         type: u1
         enum: leg_side
         doc: 'Side'
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1966,6 +1973,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   msg_type:

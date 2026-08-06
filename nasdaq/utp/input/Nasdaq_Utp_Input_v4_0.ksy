@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -242,7 +242,7 @@ types:
   odd_lot_bid_short_form_attachment:
     seq:
       - id: ol_price_short_2
-        type: u2
+        type: decimal_u2_2
         doc: 'olPrice. Implied decimal with scale 1e-2'
       - id: ol_size
         type: u2
@@ -250,7 +250,7 @@ types:
   odd_lot_ask_short_form_attachment:
     seq:
       - id: ol_price_short_2
-        type: u2
+        type: decimal_u2_2
         doc: 'olPrice. Implied decimal with scale 1e-2'
       - id: ol_size
         type: u2
@@ -297,7 +297,7 @@ types:
   odd_lot_bid_long_form_attachment:
     seq:
       - id: ol_price_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
         type: u2
@@ -305,7 +305,7 @@ types:
   odd_lot_ask_long_form_attachment:
     seq:
       - id: ol_price_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
         type: u2
@@ -601,7 +601,7 @@ types:
   odd_lot_bid_adf_form_attachment:
     seq:
       - id: ol_price_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
         type: u2
@@ -615,7 +615,7 @@ types:
   odd_lot_ask_adf_form_attachment:
     seq:
       - id: ol_price_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
         type: u2
@@ -679,7 +679,7 @@ types:
         enum: rii
         doc: 'Retail Interest Indicator code'
       - id: bbo_bid_price
-        type: u8
+        type: decimal_u8_6
         doc: 'ADF Best Protected Bid Price. Implied decimal with scale 1e-6'
       - id: bbo_bid_size
         type: u4
@@ -691,7 +691,7 @@ types:
         pad-right: 0x20
         doc: 'Best Bid Market Participant'
       - id: bbo_ask_price
-        type: u8
+        type: decimal_u8_6
         doc: 'ADF Best Protected Ask Price. Implied decimal with scale 1e-6'
       - id: bbo_ask_size
         type: u4
@@ -788,7 +788,7 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: volume_int_4
         type: u4
@@ -846,7 +846,7 @@ types:
         encoding: ASCII
         doc: 'Original Side of execution'
       - id: orig_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: orig_volume_int_4
         type: u4
@@ -902,7 +902,7 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: orig_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: orig_volume_int_4
         type: u4
@@ -922,7 +922,7 @@ types:
         type: u2
         doc: 'Seller Sales Day (new)'
       - id: new_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price (new). Implied decimal with scale 1e-6'
       - id: new_volume_int_4
         type: u4
@@ -971,7 +971,7 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: volume_int_4
         type: u4
@@ -1030,10 +1030,10 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: volume_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_trade_cancel_error_message:
     seq:
@@ -1088,10 +1088,10 @@ types:
         encoding: ASCII
         doc: 'Original Side of execution'
       - id: orig_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: orig_volume_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_trade_correction_message:
     seq:
@@ -1144,10 +1144,10 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: orig_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: orig_volume_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: new_tt_exempt
         type: str
@@ -1164,10 +1164,10 @@ types:
         type: u2
         doc: 'Seller Sales Day (new)'
       - id: new_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price (new). Implied decimal with scale 1e-6'
       - id: new_volume_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'Corrected Trade volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_as_of_trade_report_message:
     seq:
@@ -1213,10 +1213,10 @@ types:
         enum: side
         doc: 'Side of execution'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: volume_long_8
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: trade_time
         type: nanosecond_timestamp
@@ -1428,7 +1428,7 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
   t_1_adjusted_closing_price_message:
     seq:
@@ -1454,7 +1454,7 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
   market_open_message:
     seq:
@@ -1517,13 +1517,13 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number — per-symbol sequence'
       - id: collar_reference_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Reference price used to set collar. Implied decimal with scale 1e-6'
       - id: collar_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Up Price. Implied decimal with scale 1e-6'
       - id: collar_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Down Price. Implied decimal with scale 1e-6'
       - id: collar_extension
         type: str
@@ -1924,6 +1924,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   packet_type:

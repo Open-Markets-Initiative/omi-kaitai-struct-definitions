@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -155,7 +155,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
@@ -233,7 +233,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
@@ -322,7 +322,7 @@ types:
         type: u4
         doc: 'Shares that would have executed if the trade would have occurred'
       - id: execution_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Price at which the trade would have occurred. Implied decimal with scale 1e-4'
       - id: liquidity_flag
         type: u1
@@ -340,7 +340,7 @@ types:
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: liquidity_flag
         type: u1
@@ -400,7 +400,7 @@ types:
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: liquidity_flag
         type: u1
@@ -462,7 +462,7 @@ types:
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: display
         type: u1
@@ -580,7 +580,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
@@ -638,7 +638,7 @@ types:
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: price
-        type: u8
+        type: decimal_u8_4
         doc: 'The price of the order. Please refer to the Data Types section for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
@@ -709,6 +709,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_4:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   packet_type:

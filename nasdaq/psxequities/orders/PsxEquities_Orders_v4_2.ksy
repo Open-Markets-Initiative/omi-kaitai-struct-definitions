@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -154,7 +154,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -219,7 +219,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -396,7 +396,7 @@ types:
         encoding: ASCII
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: display
         type: u1
@@ -457,6 +457,7 @@ types:
           cases:
             'unsequenced_message_type::enter_order_message': enter_order_message
             'unsequenced_message_type::replace_order_message': replace_order_message
+            'unsequenced_message_type::cancel_order_message': cancel_order_message
             'unsequenced_message_type::modify_order_message': modify_order_message
   enter_order_message:
     seq:
@@ -479,7 +480,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -525,7 +526,7 @@ types:
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -565,6 +566,13 @@ types:
       - id: shares
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   packet_type:
@@ -898,6 +906,9 @@ enums:
     0x55:
       id: 'replace_order_message'
       doc: 'The Replace Order Message allows you to alter most of the attributes of an order in a single message. This is more efficient than canceling an existing order and immediately succeeding it with a new order. Replacing an order always gives it a new timestamp for its time priority on the book. If you wish you simply partially cancel an order and retain its time priority, send a Cancel Order Message instead.'
+    0x58:
+      id: 'cancel_order_message'
+      doc: 'The Cancel Order Message is used to request that an order be canceled or reduced. In the Cancel Order Message, you must specify the new "intended order size" for the order. The "intended order size" is the maximum number of shares that can be executed in total after the cancel is applied.'
     0x4d:
       id: 'modify_order_message'
       doc: 'The Modify Order Message is used to request modifications that don''t affect order priority on the book. Since priority of the order does not change allowed modifications are restricted to only the ones specified in the message details below.'

@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -194,7 +194,7 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: order_qty_quantity_non_zero
         type: u4
@@ -288,7 +288,7 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: order_qty_quantity_non_zero
         type: u4
@@ -374,7 +374,7 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_4_optional
-        type: s4
+        type: decimal_s4_4
         doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty_quantity_zero_optional
         type: u4
@@ -559,7 +559,7 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: order_qty_quantity_non_zero
         type: u4
@@ -568,10 +568,10 @@ types:
         type: u4
         doc: 'leavesQty'
       - id: effective_limit_price
-        type: s8
+        type: decimal_s8_8
         doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8'
       - id: display_price
-        type: s8
+        type: decimal_s8_8
         doc: 'displayPrice. Implied decimal with scale 1e-8'
       - id: reason_code
         type: u1
@@ -605,7 +605,7 @@ types:
         type: u8
         doc: 'orderId'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: order_qty_quantity_non_zero
         type: u4
@@ -614,10 +614,10 @@ types:
         type: u4
         doc: 'leavesQty'
       - id: effective_limit_price
-        type: s8
+        type: decimal_s8_8
         doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8'
       - id: display_price
-        type: s8
+        type: decimal_s8_8
         doc: 'displayPrice. Implied decimal with scale 1e-8'
       - id: restatement_reason
         type: s1
@@ -654,7 +654,7 @@ types:
         type: u8
         doc: 'orderId'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: leaves_qty
         type: u4
@@ -778,7 +778,7 @@ types:
         enum: ack_type
         doc: 'ackType'
       - id: price_price_4_optional
-        type: s4
+        type: decimal_s4_4
         doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty_quantity_zero_optional
         type: u4
@@ -825,7 +825,7 @@ types:
         enum: ack_type
         doc: 'ackType'
       - id: price_price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'price. Implied decimal with scale 1e-4'
       - id: order_qty_quantity_non_zero
         type: u4
@@ -862,7 +862,7 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_8
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: reason_code
         type: u1
@@ -998,7 +998,7 @@ types:
         type: u8
         doc: 'tradeId'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'lastPx. Implied decimal with scale 1e-8'
       - id: open_close
         type: s1
@@ -1116,7 +1116,7 @@ types:
         type: u8
         doc: 'tradeRefId'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'lastPx. Implied decimal with scale 1e-8'
       - id: account_account
         type: str
@@ -1279,7 +1279,7 @@ types:
         enum: option_type
         doc: 'optionType'
       - id: strike_price
-        type: s8
+        type: decimal_s8_8
         doc: 'strikePrice. Implied decimal with scale 1e-8'
       - id: closing_only
         type: u1
@@ -1318,7 +1318,7 @@ types:
         type: u4
         doc: 'maxQty'
       - id: max_notional
-        type: s8
+        type: decimal_s8_8
         doc: 'maxNotional. Implied decimal with scale 1e-8'
       - id: default_account
         type: str
@@ -1639,6 +1639,20 @@ types:
         type: u1
         enum: reason
         doc: 'reason'
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   template_id:

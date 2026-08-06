@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -191,7 +191,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -242,7 +242,7 @@ types:
         enum: depth_order_capacity
         doc: 'Indicates the order capacity'
       - id: price_short
-        type: u2
+        type: decimal_u2_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_short
         type: u2
@@ -280,7 +280,7 @@ types:
         enum: depth_order_capacity
         doc: 'Indicates the order capacity'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -354,7 +354,7 @@ types:
         pad-right: 0x20
         doc: 'Not applicable for complex, will be conveyed as space " "'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -386,7 +386,7 @@ types:
         type: u8
         doc: 'The new reference number associated with the new order'
       - id: price_short
-        type: u2
+        type: decimal_u2_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_short
         type: u2
@@ -423,7 +423,7 @@ types:
         type: u8
         doc: 'The new reference number associated with the new order'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -475,7 +475,7 @@ types:
         enum: change_reason
         doc: 'Change Reason'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -509,7 +509,7 @@ types:
         enum: cross_type
         doc: 'Cross Type'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
@@ -573,7 +573,7 @@ types:
         enum: side
         doc: 'Indicates the side of the order'
       - id: price_long
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -609,7 +609,7 @@ types:
         pad-right: 0x20
         doc: 'Attributable Order may provide CMTA to disseminate with order; Spaces when not set'
       - id: response_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Price of the aggregated auction responses in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: response_size
         type: u4
@@ -740,6 +740,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_4:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   packet_type:

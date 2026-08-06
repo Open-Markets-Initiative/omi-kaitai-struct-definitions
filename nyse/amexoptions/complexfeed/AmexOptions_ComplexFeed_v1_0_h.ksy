@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -178,7 +178,7 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
       - id: prev_close_volume
         type: u4
@@ -240,10 +240,10 @@ types:
         type: u4
         doc: 'Reserved for future use'
       - id: price_1
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security Status. Implied decimal with scale 1e-8'
       - id: price_2
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. Indication High Price if securityStatus = G or I. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
@@ -516,13 +516,13 @@ types:
         type: u4
         doc: 'The series sequence number'
       - id: ask_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Ask price. A positive value is implicit (no sign), a negative value is indicated by a negative sign. Use the Price scale from the Series Index message. Implied decimal with scale 1e-8'
       - id: ask_volume
         type: u4
         doc: 'Total quantity available at the above Ask price'
       - id: bid_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Bid price. A positive value is implicit (no sign), a negative value is indicated by a negative sign. Use the Price scale from the Series Index message. Implied decimal with scale 1e-8'
       - id: bid_volume
         type: u4
@@ -560,7 +560,7 @@ types:
         type: u4
         doc: 'Unique identifier for this trade'
       - id: trade_price
-        type: s4
+        type: decimal_s4_8
         doc: 'Trade price. A positive value is implicit (no sign), a negative value is indicated by a negative sign. Use the Price scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -614,7 +614,7 @@ types:
         type: u4
         doc: 'Total quantity'
       - id: working_price
-        type: s4
+        type: decimal_s4_8
         doc: 'RFQ Price for CUBE/COA. Implied decimal with scale 1e-8'
       - id: participant
         type: u4
@@ -639,6 +639,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

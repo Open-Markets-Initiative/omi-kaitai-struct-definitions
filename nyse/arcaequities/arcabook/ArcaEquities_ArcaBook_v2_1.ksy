@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -120,7 +120,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -152,7 +152,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -208,7 +208,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -238,7 +238,7 @@ types:
         type: u4
         doc: 'This field contains the symbol sequence number'
       - id: indicative_match_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars. Implied decimal with scale 1e-8'
       - id: paired_qty
         type: u4
@@ -262,13 +262,13 @@ types:
         encoding: ASCII
         doc: 'Not supported, defaulted to 0'
       - id: continuous_book_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
       - id: closing_only_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
       - id: ssr_filing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
   add_order_refresh_message:
     seq:
@@ -288,7 +288,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -320,7 +320,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -358,7 +358,7 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -391,6 +391,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

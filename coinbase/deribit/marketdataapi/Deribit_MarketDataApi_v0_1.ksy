@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -166,25 +166,25 @@ types:
         encoding: ASCII
         doc: 'quoteCurrency'
       - id: base_increment
-        type: s8
+        type: decimal_s8_9
         doc: 'baseIncrement. Implied decimal with scale 1e-9'
       - id: tick_size
-        type: s8
+        type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: strike_price
-        type: s8
+        type: decimal_s8_9
         doc: 'strikePrice. Implied decimal with scale 1e-9'
       - id: large_tick_size_0
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickSize0. Implied decimal with scale 1e-9'
       - id: large_tick_threshold_0
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickThreshold0. Implied decimal with scale 1e-9'
       - id: large_tick_size_1
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickSize1. Implied decimal with scale 1e-9'
       - id: large_tick_threshold_1
-        type: s8
+        type: decimal_s8_9
         doc: 'largeTickThreshold1. Implied decimal with scale 1e-9'
       - id: creation_time
         type: nanosecond_timestamp
@@ -252,16 +252,16 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: min_sell_price
-        type: s8
+        type: decimal_s8_9
         doc: 'minSellPrice. Implied decimal with scale 1e-9'
       - id: max_buy_price
-        type: s8
+        type: decimal_s8_9
         doc: 'maxBuyPrice. Implied decimal with scale 1e-9'
       - id: index_price
-        type: s8
+        type: decimal_s8_9
         doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: mark_price
-        type: s8
+        type: decimal_s8_9
         doc: 'markPrice. Implied decimal with scale 1e-9'
   instrument_ref_message:
     seq:
@@ -275,13 +275,13 @@ types:
         size: 8
         doc: 'funding8h'
       - id: estimated_delivery_price
-        type: s8
+        type: decimal_s8_9
         doc: 'estimatedDeliveryPrice. Implied decimal with scale 1e-9'
       - id: delivery_price
-        type: s8
+        type: decimal_s8_9
         doc: 'deliveryPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: s8
+        type: decimal_s8_9
         doc: 'settlementPrice. Implied decimal with scale 1e-9'
   bid_put_message:
     seq:
@@ -295,7 +295,7 @@ types:
         type: s8
         doc: 'quantityMantissa'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
   ask_put_message:
     seq:
@@ -309,7 +309,7 @@ types:
         type: s8
         doc: 'quantityMantissa'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
   bid_qty_reduced_message:
     seq:
@@ -361,13 +361,13 @@ types:
         type: s8
         doc: 'totalFilledMantissa'
       - id: deepest_price
-        type: s8
+        type: decimal_s8_9
         doc: 'deepestPrice. Implied decimal with scale 1e-9'
       - id: mark_price
-        type: s8
+        type: decimal_s8_9
         doc: 'markPrice. Implied decimal with scale 1e-9'
       - id: index_price
-        type: s8
+        type: decimal_s8_9
         doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: implied_volatility
         size: 8
@@ -401,7 +401,7 @@ types:
         type: s8
         doc: 'fillQtyMantissa'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: maker_flags
         type: maker_flags
@@ -435,13 +435,13 @@ types:
         type: s8
         doc: 'fillQtyMantissa'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: mark_price
-        type: s8
+        type: decimal_s8_9
         doc: 'markPrice. Implied decimal with scale 1e-9'
       - id: index_price
-        type: s8
+        type: decimal_s8_9
         doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: implied_volatility
         size: 8
@@ -514,6 +514,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:

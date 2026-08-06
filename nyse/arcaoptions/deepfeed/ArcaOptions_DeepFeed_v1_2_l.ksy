@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -187,7 +187,7 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
       - id: prev_close_volume
         type: u4
@@ -249,10 +249,10 @@ types:
         type: u4
         doc: 'Reserved for future use'
       - id: price_1
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security Status. Implied decimal with scale 1e-8'
       - id: price_2
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. Indication High Price if securityStatus = G or I. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
@@ -528,7 +528,7 @@ types:
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -566,7 +566,7 @@ types:
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -619,7 +619,7 @@ types:
         type: u4
         doc: 'Unique ID assigned by the matching engine to this execution'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -658,7 +658,7 @@ types:
         type: u8
         doc: 'The new Order ID of the replacement order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -714,16 +714,16 @@ types:
         enum: imbalance_side
         doc: 'The side of the TotalImbalanceQty'
       - id: continuous_book_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price at which all interest on the book can trade, including auction and imbalance offset interest, and disregarding auction collars. Implied decimal with scale 1e-8'
       - id: auction_interest_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars. Implied decimal with scale 1e-8'
       - id: second_reserved_4
         type: u4
         doc: 'Reserved for future use'
       - id: indicative_match_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price at which the highest number of contracts would trade, subject to auction collars. Implied decimal with scale 1e-8'
       - id: upper_collar
         type: s4
@@ -753,7 +753,7 @@ types:
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -806,7 +806,7 @@ types:
         type: u4
         doc: 'Total quantity'
       - id: working_price
-        type: s4
+        type: decimal_s4_8
         doc: 'RFQ Price. Implied decimal with scale 1e-8'
       - id: participant
         type: u4
@@ -833,7 +833,7 @@ types:
         type: u4
         doc: 'Unique ID assigned by the matching engine to this execution'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -868,7 +868,7 @@ types:
         type: u4
         doc: 'Unique identifier for this Cross Trade'
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: volume
         type: u4
@@ -903,10 +903,10 @@ types:
         type: u4
         doc: 'The unique ID of this series within this market'
       - id: high_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Highest price of the series for the day. Use the Price scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: low_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The Lowest price of the series for the day. Use the Price scale from the series index mapping. Implied decimal with scale 1e-8'
       - id: open
         type: s4
@@ -930,6 +930,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

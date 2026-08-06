@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -180,10 +180,10 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   auction_clearing_price:
     seq:
@@ -193,7 +193,7 @@ types:
       - id: security_id
         type: s8
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   cross_request:
     seq:
@@ -230,7 +230,7 @@ types:
       - id: pad2
         size: 2
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: resting_hidden_qty
         type: s4
@@ -244,7 +244,7 @@ types:
       - id: pad7
         size: 7
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp
@@ -256,7 +256,7 @@ types:
       - id: last_qty
         type: s4
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   heartbeat:
     seq:
@@ -315,7 +315,7 @@ types:
   md_instrument_entry_grp_comp:
     seq:
       - id: md_entry_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: md_entry_size
         type: s4
@@ -346,7 +346,7 @@ types:
       - id: pad3
         size: 3
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   order_delete:
     seq:
@@ -376,7 +376,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: prev_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: prev_display_qty
         type: s4
@@ -410,7 +410,7 @@ types:
       - id: pad7
         size: 7
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp
@@ -422,7 +422,7 @@ types:
       - id: last_qty
         type: s4
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   product_state_change:
     seq:
@@ -485,10 +485,10 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
   trade_report:
     seq:
@@ -502,7 +502,7 @@ types:
       - id: last_qty
         type: s4
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: match_type
         type: u1
@@ -524,7 +524,7 @@ types:
       - id: last_qty
         type: s4
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: trd_reg_ts_execution_time
         type: nanosecond_timestamp
@@ -540,7 +540,7 @@ types:
   md_trade_entry_grp_comp:
     seq:
       - id: md_entry_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: md_entry_size
         type: s4
@@ -562,6 +562,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   template_id:

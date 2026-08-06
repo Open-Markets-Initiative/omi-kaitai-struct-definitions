@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -101,7 +101,7 @@ types:
             'message_type::security_status_message': security_status_message
             'message_type::refresh_header_message': refresh_header_message
             'message_type::outright_series_index_mapping': outright_series_index_mapping
-            'message_type::outright_series_index_mapping_51': outright_series_index_mapping
+            'message_type::options_status_message': options_status_message
             'message_type::options_add_order_message': options_add_order_message
             'message_type::options_modify_order_message': options_modify_order_message
             'message_type::options_delete_order_message': options_delete_order_message
@@ -436,6 +436,32 @@ types:
       - id: reserved_1
         size: 1
         doc: 'This field is reserved for future use'
+  options_status_message:
+    seq:
+      - id: source_time
+        type: u4
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
+      - id: source_time_ns
+        type: u4
+        doc: 'The nanosecond offset from the SourceTime'
+      - id: series_index
+        type: u4
+        doc: 'The unique ID of this series for all products within this market'
+      - id: series_seq_num
+        type: u4
+        doc: 'The unique ID of this message in the sequence of messages published for this specific series'
+      - id: series_status
+        type: u1
+        enum: series_status
+        doc: 'The new status that this series is transitioning to'
+      - id: market_state
+        type: u1
+        enum: market_state
+        doc: 'The current Market State, which this msg updates if the Security Status field contains a Market State Code'
+      - id: halt_condition
+        type: u1
+        enum: halt_condition
+        doc: 'Halt condition indicator'
   options_add_order_message:
     seq:
       - id: source_time_ns
@@ -886,7 +912,7 @@ enums:
       id: 'outright_series_index_mapping'
       doc: 'This message is published over the real-time data channels at system startup or in the context of a refresh sequence after a Matching Engine or PILLAR Publisher failover.'
     51:
-      id: 'outright_series_index_mapping_51'
+      id: 'options_status_message'
       doc: 'This message informs clients of changes in the status of a specific option outright series and complex series'
     300:
       id: 'options_add_order_message'
@@ -1256,6 +1282,28 @@ enums:
     0x31:
       id: 'call'
       doc: 'Call'
+  series_status:
+    0x34:
+      id: 'trading_halt'
+      doc: 'Trading Halt'
+    0x35:
+      id: 'resume'
+      doc: 'Resume'
+    0x36:
+      id: 'suspend'
+      doc: 'Suspend'
+    0x50:
+      id: 'preopening'
+      doc: 'Preopening'
+    0x42:
+      id: 'begin_accepting_orders'
+      doc: 'Begin Accepting Orders'
+    0x4f:
+      id: 'core_session'
+      doc: 'Core Session'
+    0x58:
+      id: 'closed'
+      doc: 'Closed'
   side:
     0x42:
       id: 'buy'

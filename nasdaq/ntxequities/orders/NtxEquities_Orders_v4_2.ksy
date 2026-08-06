@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -154,7 +154,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -219,7 +219,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -396,7 +396,7 @@ types:
         encoding: ASCII
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: display
         type: u1
@@ -481,7 +481,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -527,7 +527,7 @@ types:
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price of the order. Please refer to the section in Data Types for more clarification. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u4
@@ -574,6 +574,13 @@ types:
         size: 14
         encoding: ASCII
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   packet_type:

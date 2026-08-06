@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -141,7 +141,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: strike_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Explicit strike price in fixed point format with 12 whole number places followed by 8 decimal digits. Implied decimal with scale 1e-8'
       - id: option_type
         type: u1
@@ -219,7 +219,7 @@ types:
         enum: imbalance_direction
         doc: 'Indicates the market side of the imbalance'
       - id: imbalance_price
-        type: s4
+        type: decimal_s4_4
         doc: 'The imbalance price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: imbalance_volume
         type: u4
@@ -241,7 +241,7 @@ types:
         enum: side
         doc: 'Side value'
       - id: price
-        type: s4
+        type: decimal_s4_4
         doc: 'Price of the order in fixed point format with 6 whole number places followed by 4 decimal digits. For market orders, the price is zero. Hidden prices are set to zero. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -292,7 +292,7 @@ types:
         enum: side
         doc: 'Side value'
       - id: price
-        type: s4
+        type: decimal_s4_4
         doc: 'Price of the order in fixed point format with 6 whole number places followed by 4 decimal digits. For market orders, the price is zero. Hidden prices are set to zero. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -338,7 +338,7 @@ types:
   auction_response:
     seq:
       - id: response_price
-        type: s4
+        type: decimal_s4_4
         doc: 'Best price of the auction response in fixed point format with 6 whole number places followed by 4 decimal digits. The response, if shown (zero if not shown) is the best response on the contra side. Implied decimal with scale 1e-4'
       - id: response_size
         type: u4
@@ -356,6 +356,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

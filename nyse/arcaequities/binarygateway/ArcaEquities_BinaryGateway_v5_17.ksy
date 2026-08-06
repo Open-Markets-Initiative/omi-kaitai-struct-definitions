@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -332,7 +332,7 @@ types:
         type: bitfield_order_instructions
         doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes, and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -429,7 +429,7 @@ types:
         type: sub_msg_header
         doc: 'Pillar Stream Sub Message Item Header'
       - id: stop_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-8'
       - id: deliver_to_comp_id
         type: str
@@ -448,7 +448,7 @@ types:
         size: 8
         doc: 'Reserved for future use'
       - id: offset_price
-        type: s8
+        type: decimal_s8_8
         doc: '0 = No OffsetPrice. Otherwise, value must be: - For Market Peg order - equal to or multiple of 0.01 - For Retail Price Improvement order (optional modifier on NYSE only) - equal to or multiple of 0.001. Implied decimal with scale 1e-8'
       - id: effective_time
         type: nanosecond_timestamp
@@ -818,16 +818,16 @@ types:
         type: u8
         doc: 'Depth Guidelines - the symbol’s Relevant Depth Sequence size for the trade date'
       - id: ridge_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Depth Guidelines - the symbol’s Relevant Individual Depth Guideline for the trade date. Implied decimal with scale 1e-8'
       - id: ppp_1
-        type: s8
+        type: decimal_s8_8
         doc: 'Depth Guidelines - the symbol’s Price Participation Point 1 for the trade date. Implied decimal with scale 1e-8'
       - id: ppp_2
-        type: s8
+        type: decimal_s8_8
         doc: 'Depth Guidelines - the symbol’s Price Participation Point 2 for the trade date. Implied decimal with scale 1e-8'
       - id: ppp_3
-        type: s8
+        type: decimal_s8_8
         doc: 'Depth Guidelines - the symbol’s Price Participation Point 3 for the trade date. Implied decimal with scale 1e-8'
       - id: open_on_trade_max_qty
         type: u8
@@ -836,7 +836,7 @@ types:
         type: u8
         doc: 'Maximum print quantity for electronic Closing Auction represented in number of shares'
       - id: lmocp
-        type: s8
+        type: decimal_s8_8
         doc: 'Listing Market Official Closing Price. Implied decimal with scale 1e-8'
   minimum_price_variant_class_reference_data_message:
     seq:
@@ -853,10 +853,10 @@ types:
         type: u2
         doc: 'Identification number assigned to the MPV class'
       - id: rpimpv
-        type: s8
+        type: decimal_s8_8
         doc: 'Numeric value of the Minimum Price Variation for Retail Price Improvement (RPI) orders for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
       - id: luldmpv
-        type: s8
+        type: decimal_s8_8
         doc: 'Numeric value of the Minimum Price Variation for LULD bands for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
   minimum_price_variant_level_reference_data_message:
     seq:
@@ -876,13 +876,13 @@ types:
         pad-right: 0x20
         doc: 'Name of the Minimum Price Variant (MPV) Level. Naming convention includes the MPVClassName'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: quoting_mpv
-        type: s8
+        type: decimal_s8_8
         doc: 'Numeric value of the Quoting Minimum Price Variation for the MPVLevel and Price defined in this message. Implied decimal with scale 1e-8'
       - id: trading_mpv
-        type: s8
+        type: decimal_s8_8
         doc: 'Numeric value of the Trading Minimum Price Variation for the MPVLevel and Price defined in this message. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
@@ -1029,7 +1029,7 @@ types:
         type: bitfield_order_instructions
         doc: 'BitfieldOrderInstructions is a data structure defining a number of order instructions, attributes, and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1044,7 +1044,7 @@ types:
         type: u4
         doc: 'Remaining quantity open on the order'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Working price in the range 0.000001 to 999999.999999. Implied decimal with scale 1e-8'
       - id: working_away_from_display
         type: u1
@@ -1106,7 +1106,7 @@ types:
         type: u8
         doc: 'Refers to the ClOrdID of a previously entered order'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1157,7 +1157,7 @@ types:
         type: u8
         doc: 'Unique ID of the new Order, Cancel/Replace, Cancel, Modify, or Bulk Cancel request as assigned by the firm'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Working price in the range 0.000001 to 999999.999999. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1203,7 +1203,7 @@ types:
         type: u8
         doc: 'Unique identifier of a transaction assigned by the Exchange'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of current partial fill or fill message. Implied decimal with scale 1e-8'
       - id: leaves_qty
         type: u4
@@ -1272,7 +1272,7 @@ types:
         type: u8
         doc: 'Unique identifier of a transaction assigned by the Exchange'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of current partial fill or fill message. Implied decimal with scale 1e-8'
       - id: last_qty
         type: u4
@@ -1374,7 +1374,7 @@ types:
         type: u4
         doc: 'Unpaired better-priced shares relative to Price, excluding DMM'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: paired_qty
         type: u4
@@ -1401,7 +1401,7 @@ types:
         enum: auction_type
         doc: 'AuctionType enum'
       - id: ssr_filing_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Sell Short Restriction Filing Price used for the auction; set to 0 if not available. Implied decimal with scale 1e-8'
   manual_action_request_message:
     seq:
@@ -1432,7 +1432,7 @@ types:
         enum: side
         doc: 'Side'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: '0.000001-999999.999999. Implied decimal with scale 1e-8'
       - id: dmm_requested_qty
         type: u4
@@ -1444,7 +1444,7 @@ types:
         type: u4
         doc: 'Allocated quantity for the auction trade'
       - id: ssr_filing_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Sell Short Restriction Filing Price used for the auction; set to 0 if not available. Implied decimal with scale 1e-8'
       - id: manual_override
         type: u1
@@ -1676,6 +1676,13 @@ types:
       - id: reserved_200
         size: 200
         doc: 'Reserved for future use'
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   nanosecond_timestamp:
     seq:
       - id: time

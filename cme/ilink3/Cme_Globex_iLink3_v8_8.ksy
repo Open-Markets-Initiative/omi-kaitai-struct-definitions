@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -442,7 +442,7 @@ types:
   new_order_single:
     seq:
       - id: price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
       - id: order_qty
         type: u4
@@ -477,7 +477,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: location
         type: str
@@ -525,10 +525,10 @@ types:
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
   exec_inst:
     seq:
@@ -559,7 +559,7 @@ types:
   order_cancel_replace_request:
     seq:
       - id: price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
       - id: order_qty
         type: u4
@@ -591,7 +591,7 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: order_request_id
         type: u8
@@ -649,7 +649,7 @@ types:
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
   order_cancel_request:
     seq:
@@ -785,10 +785,10 @@ types:
   quote_entries_group:
     seq:
       - id: bid_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Bid price/rate. This goes together with bid size (tag 134). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9'
       - id: offer_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Offer price/rate. This goes together with offer size (tag 135). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9'
       - id: quote_entry_id
         type: u4
@@ -1088,10 +1088,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -1181,10 +1181,10 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -1224,10 +1224,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -1320,10 +1320,10 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
   execution_report_elimination:
     seq:
@@ -1355,10 +1355,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -1441,10 +1441,10 @@ types:
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -1476,16 +1476,16 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -1594,7 +1594,7 @@ types:
         type: u1
         doc: 'Specifies the owner of the work up private phase'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: trd_type
         type: u2
@@ -1616,16 +1616,16 @@ types:
         type: gross_trade_amt
         doc: 'ExecutionReportTradeOutright'
       - id: benchmark_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The price assigned to an eFIX matched trade which is determined by an automated set market mid-price from a third party market data feed. The Fixing Price will be distributed as soon as practicable after the Fixing Time. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
         doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority'
       - id: display_limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The price at which opposite side orders are listed on the market. Sent only in fill messages for reservation price orders. Implied decimal with scale 1e-9'
       - id: fills_groups
         type: fills_groups
@@ -1641,6 +1641,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   gross_trade_amt:
     seq:
       - id: mantissa
@@ -1649,6 +1652,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   fills_groups:
     seq:
       - id: group_size
@@ -1662,7 +1668,7 @@ types:
   fills_group:
     seq:
       - id: fill_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this fill reason or allocation. Required if NoFills(1362) > 0. Same as LastPx(31). Implied decimal with scale 1e-9'
       - id: fill_qty
         type: u4
@@ -1688,7 +1694,7 @@ types:
   outright_order_events_group:
     seq:
       - id: order_event_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
       - id: order_event_text
         type: str
@@ -1722,6 +1728,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   contra_calculated_ccy_last_qty:
     seq:
       - id: mantissa
@@ -1730,6 +1739,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   execution_report_trade_spread:
     seq:
       - id: seq_num
@@ -1757,16 +1769,16 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -1892,7 +1904,7 @@ types:
         type: u8
         doc: 'The ExecID (17) value corresponding to a trade leg'
       - id: leg_last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Execution price assigned to a leg of a multileg instrument. Implied decimal with scale 1e-9'
       - id: leg_security_id
         type: s4
@@ -1920,7 +1932,7 @@ types:
   spread_order_events_group:
     seq:
       - id: order_event_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
       - id: order_event_text
         type: str
@@ -1970,13 +1982,13 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: underlying_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Underlying price associated with a derivative instrument. Price for the future used in calculating the conversion of vol. to premium for the option. Only applicable for vol quoted option trades. Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -2055,6 +2067,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   option_delta:
     seq:
       - id: mantissa_32
@@ -2063,6 +2078,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   time_to_expiration:
     seq:
       - id: mantissa_32
@@ -2071,6 +2089,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   risk_free_rate:
     seq:
       - id: mantissa_32
@@ -2079,6 +2100,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   spread_leg_order_events_groups:
     seq:
       - id: group_size
@@ -2092,7 +2116,7 @@ types:
   spread_leg_order_events_group:
     seq:
       - id: order_event_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
       - id: order_event_text
         type: str
@@ -2353,10 +2377,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -2452,7 +2476,7 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -2492,10 +2516,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -2595,10 +2619,10 @@ types:
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -2674,10 +2698,10 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: s8
+        type: decimal_s8_9
         doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -2774,10 +2798,10 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -3113,7 +3137,7 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: security_id
         type: s4
@@ -3224,7 +3248,7 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: trans_bkd_time
         type: u8
@@ -3478,7 +3502,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
@@ -3555,7 +3579,7 @@ types:
         enum: short_sale_type
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: trd_type
         type: u2
@@ -3577,7 +3601,7 @@ types:
         type: gross_trade_amt
         doc: 'ExecutionReportTradeOutright'
       - id: benchmark_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The price assigned to an eFIX matched trade which is determined by an automated set market mid-price from a third party market data feed. The Fixing Price will be distributed as soon as practicable after the Fixing Time. Implied decimal with scale 1e-9'
       - id: fills_groups
         type: fills_groups
@@ -3598,7 +3622,7 @@ types:
   outright_trade_events_group:
     seq:
       - id: order_event_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
       - id: order_event_text
         type: str
@@ -3654,7 +3678,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
@@ -3765,7 +3789,7 @@ types:
         type: u8
         doc: 'The ExecID (17) value corresponding to a trade leg'
       - id: leg_last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Execution price assigned to a leg of a multileg instrument. Implied decimal with scale 1e-9'
       - id: leg_exec_ref_id
         type: u8
@@ -3799,7 +3823,7 @@ types:
   spread_trade_events_group:
     seq:
       - id: order_event_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
       - id: order_event_text
         type: str
@@ -3849,7 +3873,7 @@ types:
         type: u8
         doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
       - id: last_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
       - id: order_id
         type: u8
@@ -3988,7 +4012,7 @@ types:
   request_legs_group:
     seq:
       - id: leg_price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9'
       - id: leg_security_id
         type: s4
@@ -4011,6 +4035,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   broken_dates_request_groups:
     seq:
       - id: group_size
@@ -4175,7 +4202,7 @@ types:
   response_legs_group:
     seq:
       - id: leg_price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9'
       - id: leg_option_delta
         type: leg_option_delta
@@ -4523,7 +4550,7 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -4592,10 +4619,10 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: reservation_price
-        type: s8
+        type: decimal_s8_9
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -4640,7 +4667,7 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: transact_time
         type: nanosecond_timestamp
@@ -4713,7 +4740,7 @@ types:
         type: u8
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
       - id: discretion_price
-        type: s8
+        type: decimal_s8_9
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9'
       - id: priority_indicator
         type: u1
@@ -4731,6 +4758,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:

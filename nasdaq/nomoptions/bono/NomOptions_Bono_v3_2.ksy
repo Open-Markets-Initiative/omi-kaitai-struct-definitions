@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -143,7 +143,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: strike_price
-        type: s4
+        type: decimal_s4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -207,13 +207,13 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: bid_price_2
-        type: s2
+        type: decimal_s2_2
         doc: 'Best bid price. NOTE: When converted to a decimal format, the price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size_2
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
       - id: ask_price_2
-        type: s2
+        type: decimal_s2_2
         doc: 'Best ask price. NOTE: When converted to a decimal format, the price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size_2
         type: u2
@@ -231,13 +231,13 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: bid_price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'Best bid price. Implied decimal with scale 1e-4'
       - id: bid_size_4
         type: u4
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
       - id: ask_price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'Best ask price. Implied decimal with scale 1e-4'
       - id: ask_size_4
         type: u4
@@ -255,7 +255,7 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: price_2
-        type: s2
+        type: decimal_s2_2
         doc: 'Best bid or ask price, the side determined by the Message Type. NOTE: When converted to a decimal format, the price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size_2
         type: u2
@@ -273,7 +273,7 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: price_2
-        type: s2
+        type: decimal_s2_2
         doc: 'Best bid or ask price, the side determined by the Message Type. NOTE: When converted to a decimal format, the price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size_2
         type: u2
@@ -291,7 +291,7 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'Best bid or ask price, the side determined by the Message Type. Implied decimal with scale 1e-4'
       - id: size_4
         type: u4
@@ -309,7 +309,7 @@ types:
         enum: quote_condition
         doc: 'Quote Condition value'
       - id: price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'Best bid or ask price, the side determined by the Message Type. Implied decimal with scale 1e-4'
       - id: size_4
         type: u4
@@ -332,7 +332,7 @@ types:
         pad-right: 0x20
         doc: 'To obtain a list of Trade Conditions, refer to the NOTE below'
       - id: price_4
-        type: s4
+        type: decimal_s4_4
         doc: 'Best bid or ask price, the side determined by the Message Type. Implied decimal with scale 1e-4'
       - id: volume
         type: u4
@@ -349,7 +349,7 @@ types:
         type: u4
         doc: 'Indicates the internal control number (cross id) associated with the given trade transaction in the options market system'
       - id: original_price
-        type: s4
+        type: decimal_s4_4
         doc: 'Reported Premium Price of an option contract in the original trade report message on this feed. Implied decimal with scale 1e-4'
       - id: original_volume
         type: u4
@@ -376,6 +376,20 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_s2_2:
+    seq:
+      - id: mantissa
+        type: s2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   message_type:

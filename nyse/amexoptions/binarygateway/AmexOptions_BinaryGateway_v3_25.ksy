@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -334,7 +334,7 @@ types:
         size: 16
         doc: 'Bitfield containing order attributes and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -363,7 +363,7 @@ types:
         type: sub_msg_header
         doc: 'Pillar Stream Sub Message Item Header'
       - id: stop_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Trigger price for stop and stop limit orders; must be zero for complex orders. Implied decimal with scale 1e-8'
       - id: max_floor
         type: u4
@@ -575,7 +575,7 @@ types:
         size: 16
         doc: 'Bitfield containing order attributes and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -631,7 +631,7 @@ types:
         size: 16
         doc: 'Bitfield containing order attributes and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -920,7 +920,7 @@ types:
         enum: underlying_type
         doc: 'Type of the underlying security'
       - id: max_order_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Maximum allowable order entry price. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
@@ -957,7 +957,7 @@ types:
         enum: put_or_call
         doc: 'Indicates whether the option is a put or a call'
       - id: strike_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Strike price of the option series. Implied decimal with scale 1e-8'
       - id: maturity_date
         type: str
@@ -1006,13 +1006,13 @@ types:
         pad-right: 0x20
         doc: 'Name of the minimum price variant level'
       - id: order_entry_limit_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Order entry limit price range for this MPV level. Implied decimal with scale 1e-8'
       - id: quoting_mpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Quoting minimum price variation for this MPV level. Implied decimal with scale 1e-8'
       - id: trading_mpv
-        type: u8
+        type: decimal_u8_8
         doc: 'Trading minimum price variation for this MPV level. Implied decimal with scale 1e-8'
       - id: mpv_class_id
         type: u2
@@ -1170,7 +1170,7 @@ types:
         size: 16
         doc: 'Bitfield containing order attributes and modifiers'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1193,7 +1193,7 @@ types:
         type: u4
         doc: 'Remaining quantity open on the order'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Current working price, which may differ from display price. Implied decimal with scale 1e-8'
       - id: working_away_from_display
         type: u1
@@ -1327,7 +1327,7 @@ types:
         type: u8
         doc: 'Original client order ID for cancel/replace; zero for new orders'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1404,7 +1404,7 @@ types:
         type: u8
         doc: 'Client order identifier unique per Username and MPID'
       - id: working_price
-        type: s8
+        type: decimal_s8_8
         doc: 'Current working price, which may differ from display price. Implied decimal with scale 1e-8'
       - id: order_qty
         type: u4
@@ -1450,7 +1450,7 @@ types:
         type: u8
         doc: 'Exchange-assigned transaction identifier for both sides of a trade'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of the current fill or partial fill. Implied decimal with scale 1e-8'
       - id: leaves_qty
         type: u4
@@ -1575,7 +1575,7 @@ types:
         type: u8
         doc: 'Exchange-assigned transaction identifier for both sides of a trade'
       - id: last_px
-        type: s8
+        type: decimal_s8_8
         doc: 'Price of the current fill or partial fill. Implied decimal with scale 1e-8'
       - id: last_qty
         type: u4
@@ -1886,6 +1886,13 @@ types:
         type: u1
         enum: leg_side
         doc: 'Side of the leg'
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1899,6 +1906,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   msg_type:

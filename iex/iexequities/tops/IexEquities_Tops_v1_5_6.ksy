@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -143,7 +143,7 @@ types:
         type: u4
         doc: 'Number of shares that represent a round lot'
       - id: adjusted_poc_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Corporate action adjusted previous official closing price. Implied decimal with scale 1e-4'
       - id: luld_tier
         type: u1
@@ -251,10 +251,10 @@ types:
         type: u4
         doc: 'Aggregate quoted best bid size'
       - id: bid_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Best quoted bid price. Implied decimal with scale 1e-4'
       - id: ask_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Best quoted ask price. Implied decimal with scale 1e-4'
       - id: ask_size
         type: u4
@@ -288,7 +288,7 @@ types:
         type: u4
         doc: 'Trade volume'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Trade price. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
@@ -326,7 +326,7 @@ types:
         pad-right: 0x20
         doc: 'Security identifier'
       - id: official_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Official opening or closing price, as specified. Implied decimal with scale 1e-4'
   trade_break_message:
     seq:
@@ -346,7 +346,7 @@ types:
         type: u4
         doc: 'Trade volume'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Trade price. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
@@ -370,10 +370,10 @@ types:
         type: u4
         doc: 'Number of shares paired at the Reference Price using orders on the Auction Book'
       - id: reference_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Clearing price at or within the Reference Price Range using orders on the Auction Book. Implied decimal with scale 1e-4'
       - id: indicative_clearing_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Clearing price using Eligible Auction Orders. Implied decimal with scale 1e-4'
       - id: imbalance_shares
         type: u4
@@ -391,16 +391,16 @@ types:
         type: second_timestamp
         doc: 'Projected time of the auction match. Seconds since Unix epoch'
       - id: auction_book_clearing_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Clearing price using orders on the Auction Book. Implied decimal with scale 1e-4'
       - id: collar_reference_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Reference priced used for the auction collar, if any. Implied decimal with scale 1e-4'
       - id: lower_auction_collar
-        type: s8
+        type: decimal_s8_4
         doc: 'Lower threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
       - id: upper_auction_collar
-        type: s8
+        type: decimal_s8_4
         doc: 'Upper threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -415,6 +415,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_4:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 10000.0
   second_timestamp:
     seq:
       - id: time

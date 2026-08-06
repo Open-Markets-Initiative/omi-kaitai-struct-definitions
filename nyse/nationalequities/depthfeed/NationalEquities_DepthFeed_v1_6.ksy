@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -173,7 +173,7 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
       - id: prev_close_volume
         type: u4
@@ -243,10 +243,10 @@ types:
         type: u2
         doc: 'Reserved for future use. Disregard any content'
       - id: price_1
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low Price. Implied decimal with scale 1e-8'
       - id: price_2
-        type: s4
+        type: decimal_s4_8
         doc: 'Default value is 0. If securityStatus = G or I, then this field is the Indication High Price. Implied decimal with scale 1e-8'
       - id: ssr_triggering_exchange_id
         type: u1
@@ -411,7 +411,7 @@ types:
   price_point:
     seq:
       - id: price
-        type: s4
+        type: decimal_s4_8
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index. Implied decimal with scale 1e-8'
       - id: side
         type: u1
@@ -452,7 +452,7 @@ types:
         type: u4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
       - id: reference_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price at which imbalances are calculated. Implied decimal with scale 1e-8'
       - id: paired_qty
         type: u4
@@ -475,16 +475,16 @@ types:
         enum: imbalance_side
         doc: 'The side of the TotalImbalanceQty'
       - id: continuous_book_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price closest to the reference price where the imbalance is 0. Implied decimal with scale 1e-8'
       - id: auction_interest_clearing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The price at which auction only interest would trade. Implied decimal with scale 1e-8'
       - id: ssr_filing_price
-        type: s4
+        type: decimal_s4_8
         doc: 'For NYSE non-Significant imbalances, if a Sell Short Restriction is in effect, the price at which Sell Short interest will be filed. Implied decimal with scale 1e-8'
       - id: indicative_match_price
-        type: s4
+        type: decimal_s4_8
         doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars. Implied decimal with scale 1e-8'
       - id: upper_collar
         type: u4
@@ -532,6 +532,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

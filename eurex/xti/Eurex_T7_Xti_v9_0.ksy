@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -199,7 +199,7 @@ types:
       - id: executing_trader
         type: u8
       - id: alloc_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: package_id
         type: u4
@@ -325,7 +325,7 @@ types:
       - id: security_id
         type: s8
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -376,7 +376,7 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: market_segment_id
         type: s4
@@ -508,7 +508,7 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: party_id_investment_decision_maker
         type: u8
@@ -694,10 +694,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -762,10 +762,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_id_sfx
         type: u4
@@ -801,10 +801,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_id_sfx
         type: u4
@@ -919,13 +919,13 @@ types:
       - id: security_id
         type: s8
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: market_segment_id
         type: s4
@@ -958,7 +958,7 @@ types:
   side_alloc_grp_comp:
     seq:
       - id: alloc_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: individual_alloc_id
         type: u4
@@ -1000,40 +1000,40 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_low_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_high_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: volume_discovery_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_abs
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_pct
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -1346,16 +1346,16 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: potential_exec_volume
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: imbalance_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -1401,7 +1401,7 @@ types:
   security_status_event_grp_comp:
     seq:
       - id: event_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: event_date
         type: u4
@@ -1636,16 +1636,16 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
   mass_quote_response:
     seq:
@@ -1673,7 +1673,7 @@ types:
       - id: security_id
         type: s8
       - id: cxl_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_entry_reject_reason
         type: u4
@@ -1704,19 +1704,19 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_id_sfx
         type: u4
@@ -1758,19 +1758,19 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp
@@ -1817,31 +1817,31 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_low_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_high_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: volume_discovery_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_abs
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_pct
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: party_id_client_id
         type: u8
@@ -1955,10 +1955,10 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: party_id_client_id
         type: u8
@@ -2020,7 +2020,7 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: trans_bkd_time
         type: nanosecond_timestamp
@@ -2149,31 +2149,31 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_low_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_high_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: volume_discovery_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_abs
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_pct
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cl_ord_id
         type: u8
@@ -2286,10 +2286,10 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cl_ord_id
         type: u8
@@ -2385,16 +2385,16 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -2440,10 +2440,10 @@ types:
   fills_grp_comp:
     seq:
       - id: fill_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: fill_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: fill_match_id
         type: u4
@@ -2478,40 +2478,40 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_low_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_high_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: volume_discovery_price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_abs
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: peg_offset_value_pct
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -2651,16 +2651,16 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: display_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -2865,10 +2865,10 @@ types:
       - id: security_id
         type: s8
       - id: quote_event_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: quote_event_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_msg_id
         type: u8
@@ -2902,7 +2902,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -2955,7 +2955,7 @@ types:
       - id: security_id
         type: s8
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -2993,7 +2993,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -3190,19 +3190,19 @@ types:
       - id: executing_trader
         type: u8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: market_segment_id
         type: s4
@@ -3327,22 +3327,22 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: quote_id
         type: u8
@@ -3479,16 +3479,16 @@ types:
       - id: quote_id
         type: u8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -3515,16 +3515,16 @@ types:
       - id: quote_id
         type: u8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -3610,10 +3610,10 @@ types:
       - id: security_id
         type: s8
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: alloc_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transact_time
         type: nanosecond_timestamp
@@ -3622,7 +3622,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: market_segment_id
         type: s4
@@ -3729,7 +3729,7 @@ types:
       - id: security_id
         type: s8
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: transact_time
         type: nanosecond_timestamp
@@ -3738,7 +3738,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: market_segment_id
         type: s4
@@ -3800,7 +3800,7 @@ types:
   side_alloc_grp_bc_comp:
     seq:
       - id: alloc_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: individual_alloc_id
         type: u4
@@ -3911,28 +3911,28 @@ types:
       - id: security_id
         type: s8
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: settl_curr_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: side_gross_trade_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: accrued_interes_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: coupon_rate
-        type: u8
+        type: decimal_u8_7
         doc: 'Implied decimal with scale 1e-7'
       - id: root_party_id_client_id
         type: u8
@@ -4161,19 +4161,19 @@ types:
       - id: security_id
         type: s8
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: settl_curr_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: settl_curr_fx_rate
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: transact_time
         type: nanosecond_timestamp
@@ -4183,19 +4183,19 @@ types:
       - id: cl_ord_id
         type: u8
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: side_gross_trade_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: accrued_interes_amt
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: coupon_rate
-        type: u8
+        type: decimal_u8_7
         doc: 'Implied decimal with scale 1e-7'
       - id: root_party_id_client_id
         type: u8
@@ -4442,10 +4442,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_id_sfx
         type: u4
@@ -4547,10 +4547,10 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: quote_id
         type: u8
@@ -4653,16 +4653,16 @@ types:
   order_book_item_grp_comp:
     seq:
       - id: best_bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: best_bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: best_offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: best_offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: md_book_type
         type: u1
@@ -4712,16 +4712,16 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: party_id_client_id
         type: u8
@@ -4792,10 +4792,10 @@ types:
       - id: quote_id
         type: u8
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: party_id_client_id
         type: u8
@@ -4874,13 +4874,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: negotiation_id
         type: u4
@@ -4944,22 +4944,22 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: negotiation_id
         type: u4
@@ -5061,13 +5061,13 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: expire_time
         type: nanosecond_timestamp
@@ -5140,13 +5140,13 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: valid_until_time
         type: nanosecond_timestamp
@@ -5210,19 +5210,19 @@ types:
       - id: security_id
         type: s8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: last_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: last_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: expire_time
         type: nanosecond_timestamp
@@ -5294,16 +5294,16 @@ types:
       - id: secondary_quote_id
         type: u8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: negotiation_id
         type: u4
@@ -5389,16 +5389,16 @@ types:
       - id: secondary_quote_id
         type: u8
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: bid_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_size
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: party_id_executing_trader
         type: u4
@@ -5492,13 +5492,13 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: bid_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: offer_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: market_segment_id
         type: s4
@@ -5538,6 +5538,13 @@ types:
         type: xetra_en_light_target_parties_comp
         repeat: expr
         repeat-expr: num_xetra_en_light_target_parties_comp
+  decimal_u8_4:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -5551,6 +5558,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u8_7:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000000.0
 
 enums:
   template_id:

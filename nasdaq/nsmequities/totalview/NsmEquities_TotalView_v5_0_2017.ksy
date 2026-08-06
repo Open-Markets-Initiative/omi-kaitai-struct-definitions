@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -292,13 +292,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   mwcb_status_level_message:
     seq:
@@ -340,7 +340,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'Anticipated quotation release time. This value would be used when NASDAQ Market Operations initially enters the IPO instrument for release.IPO release canceled/postponed.This value would be used when NASDAQ Market Operations cancels or postpones the release of the IPO instrument'
       - id: ipo_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Prices are given in decimal format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
   add_order_no_mpid_attribution_message:
     seq:
@@ -370,7 +370,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   luld_auction_collar_message:
     seq:
@@ -390,13 +390,13 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: auction_collar_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reference price used to set the Auction Collars. Implied decimal with scale 1e-4'
       - id: upper_auction_collar_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the Upper Auction Collar Threshold. Implied decimal with scale 1e-4'
       - id: lower_auction_collar_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the Lower Auction Collar Threshold. Implied decimal with scale 1e-4'
       - id: auction_collar_extension
         type: u4
@@ -429,7 +429,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
@@ -482,7 +482,7 @@ types:
         enum: printable
         doc: 'Indicates if the execution should be reflected on time and sale displays and volume calculations'
       - id: execution_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the order execution occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   order_cancel_message:
     seq:
@@ -536,7 +536,7 @@ types:
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
   non_cross_trade_message:
     seq:
@@ -566,7 +566,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -592,7 +592,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the cross occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -643,13 +643,13 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: far_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders only. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: near_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: current_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the NOII shares are being calculated. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
@@ -693,6 +693,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

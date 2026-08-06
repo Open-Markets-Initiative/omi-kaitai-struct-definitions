@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -161,7 +161,7 @@ types:
         enum: option_type
         doc: 'optionType'
       - id: strike_price
-        type: s8
+        type: decimal_s8_8
         doc: 'strikePrice. Implied decimal with scale 1e-8'
       - id: orp_enablement
         type: s1
@@ -200,7 +200,7 @@ types:
         enum: auction_summary_type
         doc: 'auctionSummaryType'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -236,7 +236,7 @@ types:
         enum: side
         doc: 'side'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -268,7 +268,7 @@ types:
         type: u8
         doc: 'tradeId'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -300,7 +300,7 @@ types:
         enum: side
         doc: 'side'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -321,7 +321,7 @@ types:
         enum: side
         doc: 'side'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -342,7 +342,7 @@ types:
         type: u8
         doc: 'orderId'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -377,7 +377,7 @@ types:
         type: u8
         doc: 'tradeId'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: executed_contracts
         type: u4
@@ -413,13 +413,13 @@ types:
         type: u4
         doc: 'bidSize'
       - id: bid_price
-        type: s8
+        type: decimal_s8_8
         doc: 'bidPrice. Implied decimal with scale 1e-8'
       - id: ask_size
         type: u4
         doc: 'askSize'
       - id: ask_price
-        type: s8
+        type: decimal_s8_8
         doc: 'askPrice. Implied decimal with scale 1e-8'
       - id: status_status_type
         type: s1
@@ -440,7 +440,7 @@ types:
         type: u4
         doc: 'bidCustomerSize'
       - id: bid_price
-        type: s8
+        type: decimal_s8_8
         doc: 'bidPrice. Implied decimal with scale 1e-8'
       - id: ask_size
         type: u4
@@ -449,7 +449,7 @@ types:
         type: u4
         doc: 'askCustomerSize'
       - id: ask_price
-        type: s8
+        type: decimal_s8_8
         doc: 'askPrice. Implied decimal with scale 1e-8'
       - id: status_status_type
         type: s1
@@ -467,7 +467,7 @@ types:
         type: u8
         doc: 'tradeId'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -492,7 +492,7 @@ types:
         type: u8
         doc: 'tradeId'
       - id: price
-        type: s8
+        type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
       - id: contracts
         type: u4
@@ -616,6 +616,13 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'asOfSequenceNumber'
+  decimal_s8_8:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   template_id:

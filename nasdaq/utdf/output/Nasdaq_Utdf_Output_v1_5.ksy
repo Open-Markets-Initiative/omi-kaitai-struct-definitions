@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -122,7 +122,7 @@ types:
         type: u8
         doc: 'Trade Id'
       - id: trade_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'Trade Price Short. Implied decimal with scale 1e-2'
       - id: trade_volume_short
         type: u2
@@ -196,7 +196,7 @@ types:
         type: u8
         doc: 'Trade Id'
       - id: trade_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
@@ -240,7 +240,7 @@ types:
         type: u8
         doc: 'Original Trade Id'
       - id: original_trade_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: original_volume
         type: u4
@@ -256,13 +256,13 @@ types:
         type: u2
         doc: 'Original Seller’s Sale Days'
       - id: consolidated_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated High Price. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated Low Price. Implied decimal with scale 1e-6'
       - id: consolidated_last_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated Last Price. Implied decimal with scale 1e-6'
       - id: consolidated_volume
         type: u8
@@ -276,13 +276,13 @@ types:
         enum: market_center_originator_id
         doc: 'Market Center Originator ID'
       - id: market_participant_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant High Price. Implied decimal with scale 1e-6'
       - id: market_participant_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant Low Price. Implied decimal with scale 1e-6'
       - id: market_participant_last_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant Last Price. Implied decimal with scale 1e-6'
       - id: market_participant_volume
         type: u8
@@ -322,7 +322,7 @@ types:
         type: u8
         doc: 'Original Trade Id'
       - id: original_trade_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
       - id: original_volume
         type: u4
@@ -341,7 +341,7 @@ types:
         type: u8
         doc: 'Corrected Trade Id'
       - id: corrected_trade_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Corrected Trade Price. Implied decimal with scale 1e-6'
       - id: corrected_volume
         type: u4
@@ -357,13 +357,13 @@ types:
         type: u2
         doc: 'Corrected Seller’s Sale Days'
       - id: consolidated_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated High Price. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated Low Price. Implied decimal with scale 1e-6'
       - id: consolidated_last_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Consolidated Last Price. Implied decimal with scale 1e-6'
       - id: consolidated_volume
         type: u8
@@ -377,13 +377,13 @@ types:
         enum: market_center_originator_id
         doc: 'Market Center Originator ID'
       - id: market_participant_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant High Price. Implied decimal with scale 1e-6'
       - id: market_participant_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant Low Price. Implied decimal with scale 1e-6'
       - id: market_participant_last_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant Last Price. Implied decimal with scale 1e-6'
       - id: market_participant_volume
         type: u8
@@ -423,7 +423,7 @@ types:
         type: u8
         doc: 'Trade Id'
       - id: trade_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
@@ -462,7 +462,7 @@ types:
             'administrative_message_type::regulation_sho_short_sale_price_test_restricted_indicator_message': regulation_sho_short_sale_price_test_restricted_indicator_message
             'administrative_message_type::limit_up_limit_down_price_band_message': limit_up_limit_down_price_band_message
             'administrative_message_type::market_wide_circuit_breaker_decline_level_message': market_wide_circuit_breaker_decline_level_message
-            'administrative_message_type::market_wide_circuit_breaker_decline_level_message_x44': market_wide_circuit_breaker_decline_level_message
+            'administrative_message_type::market_wide_circuit_breaker_status_message': market_wide_circuit_breaker_status_message
             'administrative_message_type::auction_collar_message': auction_collar_message
             'administrative_message_type::closing_trade_summary_report_message': closing_trade_summary_report_message
   general_administrative_message:
@@ -599,10 +599,10 @@ types:
         type: u8
         doc: 'LULD Price Band Effective Time'
       - id: limit_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Down Price. Implied decimal with scale 1e-6'
       - id: limit_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Up Price. Implied decimal with scale 1e-6'
   market_wide_circuit_breaker_decline_level_message:
     seq:
@@ -617,6 +617,14 @@ types:
       - id: mwcb_level_3
         type: u8
         doc: 'MWCB Level 3'
+  market_wide_circuit_breaker_status_message:
+    seq:
+      - id: message_info
+        type: message_info
+      - id: mwcb_status_level_indicator
+        type: u1
+        enum: mwcb_status_level_indicator
+        doc: 'MWCB Status Level Indicator'
   auction_collar_message:
     seq:
       - id: message_info
@@ -630,13 +638,13 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number'
       - id: collar_reference_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Reference price used to set collar. Implied decimal with scale 1e-6'
       - id: collar_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Up Price. Implied decimal with scale 1e-6'
       - id: collar_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Down Price. Implied decimal with scale 1e-6'
       - id: collar_extension_indicator
         type: str
@@ -653,13 +661,13 @@ types:
         encoding: ASCII
         doc: 'Security Identifier'
       - id: daily_consolidated_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Daily Consolidated High Price. Implied decimal with scale 1e-6'
       - id: daily_consolidated_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Daily Consolidated Low Price. Implied decimal with scale 1e-6'
       - id: daily_consolidated_closing_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Daily Consolidated Closing Price. Implied decimal with scale 1e-6'
       - id: market_center_originator_id
         type: u1
@@ -687,7 +695,7 @@ types:
         encoding: ASCII
         doc: 'Market Center Identifier'
       - id: market_center_closing_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Center Closing Price. Implied decimal with scale 1e-6'
       - id: market_center_volume
         type: u8
@@ -697,10 +705,10 @@ types:
         enum: market_center_close_indicator
         doc: 'Market Center Close Indicator'
       - id: market_participant_high_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant High Price. Implied decimal with scale 1e-6'
       - id: market_participant_low_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Participant Low Price. Implied decimal with scale 1e-6'
   volume:
     seq:
@@ -784,6 +792,20 @@ types:
     seq:
       - id: message_info
         type: message_info
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   trade_message_type:
@@ -1064,7 +1086,7 @@ enums:
       id: 'market_wide_circuit_breaker_decline_level_message'
       doc: 'A Market Wide Circuit Breaker (MWCB) Level message will inform participants and the UTP data recipients what the daily MWCB breach points are set to for the current trading day'
     0x44:
-      id: 'market_wide_circuit_breaker_decline_level_message_x44'
+      id: 'market_wide_circuit_breaker_status_message'
       doc: 'A Market Wide Circuit Breaker (MWCB) Status message will inform participants and the UTP data recipients when a MWCB has breached one of the established levels.'
     0x45:
       id: 'auction_collar_message'
@@ -1224,6 +1246,16 @@ enums:
     0x20:
       id: 'none_provided'
       doc: 'None provided'
+  mwcb_status_level_indicator:
+    0x31:
+      id: 'level_1_breached'
+      doc: 'Level 1 Breached'
+    0x32:
+      id: 'level_2_breached'
+      doc: 'Level 2 Breached'
+    0x33:
+      id: 'level_3_breached'
+      doc: 'Level 3 Breached'
   trading_action_indicator:
     0x48:
       id: 'trading_halt'

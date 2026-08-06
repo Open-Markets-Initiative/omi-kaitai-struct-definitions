@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -241,13 +241,13 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol right padded with spaces'
       - id: far_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Hypothetical clearing price for cross orders only. Implied decimal with scale 1e-4'
       - id: near_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Hypothetical clearing price for cross and continuous orders. Implied decimal with scale 1e-4'
       - id: current_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Price at which NOII shares are calculated. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
@@ -275,7 +275,7 @@ types:
         pad-right: 0x20
         doc: 'Stock symbol right padded with spaces'
       - id: cross_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Price at which the cross occurred. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -306,7 +306,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'Indicates anticipated release or cancellation/postponement'
       - id: ipo_price
-        type: u4
+        type: decimal_u4_4
         doc: 'IPO price for intraday net change calculations. Implied decimal with scale 1e-4'
   direct_listing_with_capital_raise_price_discovery_message:
     seq:
@@ -329,22 +329,22 @@ types:
         pad-right: 0x20
         doc: 'Indicates if security is eligible for trading release'
       - id: minimum_allowable_price
-        type: u4
+        type: decimal_u4_4
         doc: '20% below Registration Statement Lower Price. Implied decimal with scale 1e-4'
       - id: maximum_allowable_price
-        type: u4
+        type: decimal_u4_4
         doc: '80% above Registration Statement Highest Price. Implied decimal with scale 1e-4'
       - id: near_execution_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reference price when DLCR volatility test has passed. Implied decimal with scale 1e-4'
       - id: near_execution_time
         type: u8
         doc: 'Time at which near execution price was set'
       - id: lower_price_range_collar
-        type: u4
+        type: decimal_u4_4
         doc: 'Lower Auction Collar Threshold (10% below Near Execution Price). Implied decimal with scale 1e-4'
       - id: upper_price_range_collar
-        type: u4
+        type: decimal_u4_4
         doc: 'Upper Auction Collar Threshold (10% above Near Execution Price). Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -359,6 +359,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

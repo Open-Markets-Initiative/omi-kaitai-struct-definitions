@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -223,7 +223,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -256,6 +256,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   show_qty:
     seq:
       - id: mantissa
@@ -264,6 +267,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   flags_order_flags:
     seq:
       - id: unused_order_flags_0
@@ -299,7 +305,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -387,10 +393,10 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: bid_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'bidPrice. Implied decimal with scale 1e-9'
       - id: ask_price_optional
-        type: s8
+        type: decimal_s8_9
         doc: 'askPrice. Implied decimal with scale 1e-9'
       - id: bid_qty
         type: bid_qty
@@ -412,6 +418,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   ask_qty:
     seq:
       - id: mantissa
@@ -420,6 +429,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   bid_flags:
     seq:
       - id: unused_order_flags_0
@@ -518,7 +530,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -558,6 +570,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   visible_qty:
     seq:
       - id: mantissa
@@ -566,6 +581,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   new_order_response_message_fills_groups:
     seq:
       - id: group_size_encoding
@@ -582,7 +600,7 @@ types:
         type: s8
         doc: 'matchId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -595,6 +613,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   new_order_response_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -614,7 +635,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -671,7 +692,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -715,7 +736,7 @@ types:
         type: s8
         doc: 'matchId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -739,7 +760,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -879,10 +900,10 @@ types:
         type: s8
         doc: 'askOrderId'
       - id: bid_price
-        type: s8
+        type: decimal_s8_9
         doc: 'bidPrice. Implied decimal with scale 1e-9'
       - id: ask_price
-        type: s8
+        type: decimal_s8_9
         doc: 'askPrice. Implied decimal with scale 1e-9'
       - id: bid_qty
         type: bid_qty
@@ -920,6 +941,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   ask_filled_qty:
     seq:
       - id: mantissa
@@ -928,6 +952,9 @@ types:
       - id: exponent
         type: s1
         doc: 'exponent'
+    instances:
+      real:
+        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   mass_quote_response_message_bid_fills_groups:
     seq:
       - id: group_size_encoding
@@ -947,7 +974,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -971,7 +998,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -995,7 +1022,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1102,7 +1129,7 @@ types:
         type: s8
         doc: 'matchId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1147,7 +1174,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1235,7 +1262,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -1276,7 +1303,7 @@ types:
         type: s8
         doc: 'matchId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1300,7 +1327,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1351,7 +1378,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: price
-        type: s8
+        type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
       - id: quantity
         type: quantity
@@ -1393,7 +1420,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1417,7 +1444,7 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: fill_qty
@@ -1521,6 +1548,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:
@@ -1650,9 +1684,6 @@ enums:
     0:
       id: 'both'
       doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    -1:
-      id: 'sell'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   self_trading_mode:
     0:
       id: 'cancel_taker'
@@ -1750,9 +1781,6 @@ enums:
       doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0:
       id: 'both'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    -1:
-      id: 'sell'
       doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reason_order_reject_reason:
     0:

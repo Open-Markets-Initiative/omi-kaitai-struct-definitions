@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -139,13 +139,13 @@ types:
         pad-right: 0x20
         doc: 'Security symbol'
       - id: bid_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'Bid Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'Bid Size, in number of actual shares'
       - id: ask_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'Ask Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
@@ -193,7 +193,7 @@ types:
         encoding: ASCII
         doc: 'National Best Bid Market Center'
       - id: national_best_bid_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'National Best Bid Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: national_best_bid_size_short
         type: u2
@@ -204,7 +204,7 @@ types:
         encoding: ASCII
         doc: 'National Best Ask Market Center'
       - id: national_best_ask_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'National Best Ask Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: national_best_ask_size_short
         type: u2
@@ -222,7 +222,7 @@ types:
         encoding: ASCII
         doc: 'National Best Bid Market Center'
       - id: national_best_bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Bid Price. Implied decimal with scale 1e-6'
       - id: national_best_bid_size_long
         type: u4
@@ -233,7 +233,7 @@ types:
         encoding: ASCII
         doc: 'National Best Ask Market Center'
       - id: national_best_ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Ask Price. Implied decimal with scale 1e-6'
       - id: national_best_ask_size_long
         type: u4
@@ -267,13 +267,13 @@ types:
         pad-right: 0x20
         doc: 'Security symbol'
       - id: bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size, in number of actual shares'
       - id: ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
@@ -341,13 +341,13 @@ types:
         pad-right: 0x20
         doc: 'Security symbol'
       - id: bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size, in number of actual shares'
       - id: ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
@@ -388,13 +388,13 @@ types:
         pad-right: 0x20
         doc: 'Security symbol'
       - id: protected_bid_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'Protected Bid Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: protected_bid_size_short
         type: u2
         doc: 'Protected Bid Size'
       - id: protected_ask_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'Protected Ask Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: protected_ask_size_short
         type: u2
@@ -457,7 +457,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Bid Market Center'
       - id: bolo_bid_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'BOLO Bid Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: bolo_bid_size
         type: u2
@@ -468,7 +468,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Ask Market Center'
       - id: bolo_ask_price_short
-        type: u2
+        type: decimal_u2_2
         doc: 'BOLO Ask Price, 2 implied decimal places. Implied decimal with scale 1e-2'
       - id: bolo_ask_size
         type: u2
@@ -481,7 +481,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Bid Market Center'
       - id: bolo_bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_bid_size
         type: u2
@@ -492,7 +492,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Ask Market Center'
       - id: bolo_ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_ask_size
         type: u2
@@ -505,7 +505,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Bid Market Center'
       - id: bolo_bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_bid_size
         type: u2
@@ -516,7 +516,7 @@ types:
         encoding: ASCII
         doc: 'BOLO Best Ask Market Center'
       - id: bolo_ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'BOLO Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: bolo_ask_size
         type: u2
@@ -562,13 +562,13 @@ types:
         pad-right: 0x20
         doc: 'Security symbol'
       - id: protected_bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Protected Bid Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: protected_bid_size_long
         type: u4
         doc: 'Protected Bid Size'
       - id: protected_ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'Protected Ask Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: protected_ask_size_long
         type: u4
@@ -1000,10 +1000,10 @@ types:
         type: nanosecond_timestamp
         doc: 'LULD Price Band Effective Time. Nanoseconds since Unix epoch'
       - id: limit_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Down Price, 6 implied decimal places. Implied decimal with scale 1e-6'
       - id: limit_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Limit Up Price, 6 implied decimal places. Implied decimal with scale 1e-6'
   market_wide_circuit_breaker_decline_level_message:
     seq:
@@ -1085,13 +1085,13 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number (UTP SIP internal use only)'
       - id: collar_reference_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Reference price used to set collar. Implied decimal with scale 1e-6'
       - id: collar_up_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Up Price. Implied decimal with scale 1e-6'
       - id: collar_down_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Collar Down Price. Implied decimal with scale 1e-6'
       - id: collar_extension_indicator
         type: str
@@ -1129,7 +1129,7 @@ types:
         encoding: ASCII
         doc: 'National Best Bid Market Center'
       - id: national_best_bid_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Bid Price. Implied decimal with scale 1e-6'
       - id: national_best_bid_size
         type: u8
@@ -1140,7 +1140,7 @@ types:
         encoding: ASCII
         doc: 'National Best Ask Market Center'
       - id: national_best_ask_price_long
-        type: u8
+        type: decimal_u8_6
         doc: 'National Best Ask Price. Implied decimal with scale 1e-6'
       - id: national_best_ask_size
         type: u8
@@ -1165,13 +1165,13 @@ types:
         encoding: ASCII
         doc: 'Market Center Identifier'
       - id: market_center_bid_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Center Bid Price. Implied decimal with scale 1e-6'
       - id: market_center_bid_size
         type: u8
         doc: 'Market Center Bid Size'
       - id: market_center_ask_price
-        type: u8
+        type: decimal_u8_6
         doc: 'Market Center Ask Price. Implied decimal with scale 1e-6'
       - id: market_center_ask_size
         type: u8
@@ -1320,6 +1320,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   market_center_originator:

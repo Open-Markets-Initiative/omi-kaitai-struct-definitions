@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -221,7 +221,7 @@ types:
         encoding: ASCII
         doc: 'The stock symbol in NYSE Symbology, right-padded with NULLs'
       - id: price_scale_code
-        type: s1
+        type: decimal_s1_8
         doc: 'The number of digits after the decimal place in all prices for this symbol. Implied decimal with scale 1e-8'
       - id: quote_condition
         type: u1
@@ -245,7 +245,7 @@ types:
   full_price_point:
     seq:
       - id: price_numerator
-        type: s4le
+        type: decimal_s4_8
         doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point. Implied decimal with scale 1e-8'
       - id: volume
         type: u4le
@@ -289,7 +289,7 @@ types:
         enum: trading_status
         doc: 'The current trading status of the equity'
       - id: price_scale_code
-        type: s1
+        type: decimal_s1_8
         doc: 'The number of digits after the decimal place in all prices for this symbol. Implied decimal with scale 1e-8'
       - id: delta_price_point
         type: delta_price_point
@@ -299,7 +299,7 @@ types:
   delta_price_point:
     seq:
       - id: price_numerator
-        type: s4le
+        type: decimal_s4_8
         doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point. Implied decimal with scale 1e-8'
       - id: volume
         type: u4le
@@ -327,6 +327,20 @@ types:
       - id: link_id_3
         type: u4le
         doc: 'Unused. Ignore any content'
+  decimal_s1_8:
+    seq:
+      - id: mantissa
+        type: s1
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_s4_8:
+    seq:
+      - id: mantissa
+        type: s4le
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

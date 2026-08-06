@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -54,7 +54,7 @@ types:
         type: message_header
         doc: 'Coinbase Orders Api Sbe message header — FIX session fields plus standard SBE header'
       - id: payload
-        size: message_header.message_length - 37
+        size: message_header.message_length - 36
         type:
           switch-on: message_header.template_id
           cases:
@@ -76,9 +76,6 @@ types:
         type: u1
         doc: 'Coinbase protocol identifier'
       - id: flags
-        type: flags
-        doc: 'Uint8 bit set carrying the isResend indicator'
-      - id: flags_2
         type: flags
         doc: 'Uint8 bit set carrying the isResend indicator'
       - id: message_length

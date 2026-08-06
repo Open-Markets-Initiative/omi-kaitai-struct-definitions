@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -135,7 +135,7 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Market Data entry price. Implied decimal with scale 1e-9'
       - id: md_entry_size
         type: u8
@@ -184,7 +184,7 @@ types:
         encoding: ASCII
         doc: 'Financial instrument long name'
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Market Data entry price. Implied decimal with scale 1e-9'
       - id: md_entry_size
         type: u8
@@ -245,7 +245,7 @@ types:
         enum: md_entry_type_spectrum_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Market Data entry price. Implied decimal with scale 1e-9'
       - id: md_entry_size
         type: u8
@@ -294,7 +294,7 @@ types:
         enum: md_entry_type_ticker_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
-        type: s8
+        type: decimal_s8_9
         doc: 'Market Data entry price. Implied decimal with scale 1e-9'
       - id: md_entry_size
         type: u8
@@ -336,6 +336,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:

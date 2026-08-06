@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -146,7 +146,7 @@ types:
         type: u4
         doc: 'Number of shares that represent a round lot'
       - id: adjusted_poc_price
-        type: s8
+        type: decimal_s8_4
         doc: 'Corporate action adjusted previous official closing price. Implied decimal with scale 1e-4'
       - id: luld_tier
         type: u1
@@ -273,7 +273,7 @@ types:
         type: u4
         doc: 'Quoted size'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
   order_modify_message:
     seq:
@@ -296,7 +296,7 @@ types:
         type: u4
         doc: 'Quoted size'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
   modify_flags:
     seq:
@@ -346,7 +346,7 @@ types:
         type: u4
         doc: 'Quoted size'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
@@ -389,7 +389,7 @@ types:
         type: u4
         doc: 'Quoted size'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
@@ -412,7 +412,7 @@ types:
         type: u4
         doc: 'Quoted size'
       - id: price
-        type: s8
+        type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
@@ -446,6 +446,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_4:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

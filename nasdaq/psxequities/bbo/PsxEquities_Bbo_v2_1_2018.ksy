@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -230,13 +230,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   mwcb_status_message:
     seq:
@@ -291,13 +291,13 @@ types:
         enum: security_class
         doc: 'Indicates the primary listing market for the issue'
       - id: psx_best_bid_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The highest price for market buy order(s) in the PSX system. Implied decimal with scale 1e-4'
       - id: psx_best_bid_size
         type: u4
         doc: 'Denotes the aggregated number of shares available for display within the PSX market center system at the PSX best bid Price'
       - id: psx_best_offer_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The lowest price for market sell order(s) in the PSX system. Implied decimal with scale 1e-4'
       - id: psx_best_offer_size
         type: u4
@@ -321,7 +321,7 @@ types:
         enum: security_class
         doc: 'Indicates the primary listing market for the issue'
       - id: nasdaq_best_bid
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the Nasdaq best bid. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -336,6 +336,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

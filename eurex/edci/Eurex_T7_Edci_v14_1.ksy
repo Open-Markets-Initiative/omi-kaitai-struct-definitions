@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -273,22 +273,22 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since Unix epoch'
       - id: price
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: stop_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: leaves_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cum_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: cxl_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: order_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: party_id_client_id
         type: u8
@@ -402,10 +402,10 @@ types:
   fills_grp_comp:
     seq:
       - id: fill_px
-        type: u8
+        type: decimal_u8_8
         doc: 'Implied decimal with scale 1e-8'
       - id: fill_qty
-        type: u8
+        type: decimal_u8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: fill_match_id
         type: u4
@@ -516,6 +516,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u8_4:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   template_id:

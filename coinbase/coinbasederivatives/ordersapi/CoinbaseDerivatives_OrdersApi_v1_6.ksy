@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -304,7 +304,7 @@ types:
         type: s8
         doc: 'correlationId'
       - id: limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -331,7 +331,7 @@ types:
         type: s8
         doc: 'correlationId'
       - id: limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -375,7 +375,7 @@ types:
         type: s8
         doc: 'correlationId'
       - id: new_limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'newLimitPrice. Implied decimal with scale 1e-9'
       - id: new_quantity
         type: s4
@@ -402,7 +402,7 @@ types:
         type: s8
         doc: 'lastProcessedFillId'
       - id: limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
@@ -536,7 +536,7 @@ types:
         type: s8
         doc: 'correlationId'
       - id: limit_price
-        type: s8
+        type: decimal_s8_9
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: instrument_id
         type: s4
@@ -642,7 +642,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: filled_vwap
-        type: s8
+        type: decimal_s8_9
         doc: 'filledVwap. Implied decimal with scale 1e-9'
       - id: total_filled
         type: s4
@@ -651,7 +651,7 @@ types:
         type: s4
         doc: 'availableQty'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: s4
@@ -684,7 +684,7 @@ types:
         type: s8
         doc: 'orderId'
       - id: filled_vwap
-        type: s8
+        type: decimal_s8_9
         doc: 'filledVwap. Implied decimal with scale 1e-9'
       - id: total_filled
         type: s4
@@ -693,13 +693,13 @@ types:
         type: s4
         doc: 'availableQty'
       - id: fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'fillPrice. Implied decimal with scale 1e-9'
       - id: leg_1_fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'leg1FillPrice. Implied decimal with scale 1e-9'
       - id: leg_2_fill_price
-        type: s8
+        type: decimal_s8_9
         doc: 'leg2FillPrice. Implied decimal with scale 1e-9'
       - id: fill_qty
         type: s4
@@ -773,6 +773,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
 
 enums:
   template_id:
@@ -937,9 +944,6 @@ enums:
   side:
     1:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    -1:
-      id: 'sell'
       doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   time_in_force:
     0:

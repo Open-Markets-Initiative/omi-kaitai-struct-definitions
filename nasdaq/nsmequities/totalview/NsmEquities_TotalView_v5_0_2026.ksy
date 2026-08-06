@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -294,13 +294,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   mwcb_status_level_message:
     seq:
@@ -342,7 +342,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'IPO Quotation Release Qualifier'
       - id: ipo_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
   luld_auction_collar_message:
     seq:
@@ -362,13 +362,13 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: auction_collar_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reference price used to set the auction collars. Implied decimal with scale 1e-4'
       - id: upper_auction_collar_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the upper auction collar threshold. Implied decimal with scale 1e-4'
       - id: lower_auction_collar_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the lower auction collar threshold. Implied decimal with scale 1e-4'
       - id: auction_collar_extension
         type: u4
@@ -426,7 +426,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Implied decimal with scale 1e-4'
   add_order_with_mpid_attribution_message:
     seq:
@@ -456,7 +456,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: attribution
         type: str
@@ -509,7 +509,7 @@ types:
         enum: printable
         doc: 'Indicates if the execution should be reflected on time and sale displays and volume calculations'
       - id: execution_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the order execution occurred. Implied decimal with scale 1e-4'
   order_cancel_message:
     seq:
@@ -563,7 +563,7 @@ types:
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Implied decimal with scale 1e-4'
   non_cross_trade_message:
     seq:
@@ -593,7 +593,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -619,7 +619,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the cross occurred. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -670,13 +670,13 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: far_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders only. Implied decimal with scale 1e-4'
       - id: near_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Implied decimal with scale 1e-4'
       - id: current_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the NOII shares are being calculated. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
@@ -729,22 +729,22 @@ types:
         enum: open_eligibility_status
         doc: 'Indicates if the security is eligible to be released for trading'
       - id: minimum_allowable_price
-        type: u4
+        type: decimal_u4_4
         doc: '20% below Registration Statement Lower Price. Implied decimal with scale 1e-4'
       - id: maximum_allowable_price
-        type: u4
+        type: decimal_u4_4
         doc: '80% above Registration Statement Highest Price. Implied decimal with scale 1e-4'
       - id: near_execution_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The current reference price when the DLCR volatility test has successfully passed. Implied decimal with scale 1e-4'
       - id: near_execution_time
         type: u8
         doc: 'The time at which the Near Execution Price was determined'
       - id: lower_price_range_collar
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the Lower Auction Collar Threshold. Implied decimal with scale 1e-4'
       - id: upper_price_range_collar
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price of the Upper Auction Collar Threshold. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -759,6 +759,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:

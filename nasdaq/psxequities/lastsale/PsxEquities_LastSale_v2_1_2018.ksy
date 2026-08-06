@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -133,7 +133,7 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the report price on the trade transaction. Implied decimal with scale 1e-4'
       - id: trade_size
         type: u4
@@ -177,13 +177,13 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: proxy_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the proxy price on the NextShares trade transaction. Implied decimal with scale 1e-4'
       - id: trade_size
         type: u4
         doc: 'Indicates the reported number of shares on the trade transaction'
       - id: nav_premium_discount_amount
-        type: u4
+        type: decimal_u4_4
         doc: 'The NAV premium or discount that should be applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: sale_condition_modifier_level_1
         type: u1
@@ -224,7 +224,7 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -258,10 +258,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_nav_premium_discount_amount
-        type: u4
+        type: decimal_u4_4
         doc: 'Original NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -295,7 +295,7 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -313,7 +313,7 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX internal control number associated with the adjusted trade transaction'
       - id: corrected_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price for the corrected trade transaction. Implied decimal with scale 1e-4'
       - id: corrected_trade_size
         type: u4
@@ -347,10 +347,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX system internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_nav_premium_discount_amount
-        type: u4
+        type: decimal_u4_4
         doc: 'Original NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: original_trade_size
         type: u4
@@ -368,10 +368,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the PSX internal control number associated with the adjusted trade transaction'
       - id: corrected_trade_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the price for the corrected trade transaction. Implied decimal with scale 1e-4'
       - id: corrected_nav_premium_discount_amount
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates the corrected NAV premium or discount originally applied to the Proxy Price. Implied decimal with scale 1e-4'
       - id: corrected_trade_size
         type: u4
@@ -479,13 +479,13 @@ types:
   mwcb_decline_level_message:
     seq:
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   mwcb_breach_message:
     seq:
@@ -522,6 +522,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -184,7 +184,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -292,7 +292,7 @@ types:
         type: u4
         doc: 'The aggregate market size on Bid or Ask side'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -330,7 +330,7 @@ types:
         type: u4
         doc: 'The aggregate market size on Bid or Ask side'
       - id: price
-        type: u4
+        type: decimal_u4_4
         doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -447,6 +447,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   packet_type:

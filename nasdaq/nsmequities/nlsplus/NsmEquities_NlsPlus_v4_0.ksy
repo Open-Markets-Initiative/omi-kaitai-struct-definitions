@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -144,10 +144,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the source''s internal control number associated with the given trade transaction'
       - id: trade_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Denotes the report price on the trade transaction. Implied decimal with scale 1e-4'
       - id: trade_size
-        type: u8
+        type: decimal_u8_6
         doc: 'Indicates the reported number of shares on the trade transaction. Implied decimal with scale 1e-6'
       - id: sale_condition_modifier
         type: str
@@ -156,7 +156,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the settlement type of the transaction'
       - id: consolidated_volume
-        type: u8
+        type: decimal_u8_6
         doc: 'Reflects the volume for the Issue Symbol as reported on the consolidated market data feed at the time that the trade message was generated. Implied decimal with scale 1e-6'
   trade_cancel_error_message:
     seq:
@@ -190,10 +190,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the source''s internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_trade_size
-        type: u8
+        type: decimal_u8_6
         doc: 'Reported number of shares for transaction. Implied decimal with scale 1e-6'
       - id: original_sale_condition_modifier
         type: str
@@ -202,7 +202,7 @@ types:
         pad-right: 0x20
         doc: 'Defines the sale condition modifiers as reported on the original trade transaction'
       - id: consolidated_volume
-        type: u8
+        type: decimal_u8_6
         doc: 'Reflects the volume for the Issue Symbol as reported on the consolidated market data feed at the time that the trade message was generated. Implied decimal with scale 1e-6'
   trade_correction_message:
     seq:
@@ -236,10 +236,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the source''s internal control number associated with the given trade transaction'
       - id: original_trade_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Reported price for the transaction. Implied decimal with scale 1e-4'
       - id: original_trade_size
-        type: u8
+        type: decimal_u8_6
         doc: 'Reported number of shares for transaction. Implied decimal with scale 1e-6'
       - id: original_sale_condition_modifier
         type: str
@@ -254,10 +254,10 @@ types:
         pad-right: 0x20
         doc: 'Indicates the Nasdaq internal control number associated with the adjusted trade transaction'
       - id: corrected_trade_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Indicates the price for the corrected trade transaction. Implied decimal with scale 1e-4'
       - id: corrected_trade_size
-        type: u8
+        type: decimal_u8_6
         doc: 'Indicates the number of shares for the corrected trade transaction. Implied decimal with scale 1e-6'
       - id: corrected_sale_condition_modifier
         type: str
@@ -266,7 +266,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the sale condition modifiers associated with the corrected trade transaction'
       - id: consolidated_volume
-        type: u8
+        type: decimal_u8_6
         doc: 'Reflects the volume for the Issue Symbol as reported on the consolidated market data feed at the time that the trade message was generated. Implied decimal with scale 1e-6'
   stock_trading_action_message:
     seq:
@@ -405,7 +405,7 @@ types:
         enum: security_class
         doc: 'Indicates the primary listing market for the issue'
       - id: adjusted_closing_price
-        type: u8
+        type: decimal_u8_4
         doc: 'The previous trading day''s official closing price adjusted for any applicable corporate actions. Implied decimal with scale 1e-4'
   end_of_day_trade_summary_message:
     seq:
@@ -426,19 +426,19 @@ types:
         enum: security_class
         doc: 'Indicates the primary listing market for the issue'
       - id: consolidated_high_price
-        type: u8
+        type: decimal_u8_4
         doc: 'The highest price of any high/low eligible transaction on Tapes A, B or C received on the trading day. Implied decimal with scale 1e-4'
       - id: consolidated_low_price
-        type: u8
+        type: decimal_u8_4
         doc: 'The lowest price of any high/low eligible transaction on Tapes A, B or C received on the trading day. Implied decimal with scale 1e-4'
       - id: consolidated_closing_price
-        type: u8
+        type: decimal_u8_4
         doc: 'The final last sale eligible transaction on Tapes A, B or C received on the trading day. Implied decimal with scale 1e-4'
       - id: consolidated_volume
-        type: u8
+        type: decimal_u8_6
         doc: 'Reflects the volume for the Issue Symbol as reported on the consolidated market data feed at the time that the trade message was generated. Implied decimal with scale 1e-6'
       - id: consolidated_open_price
-        type: u8
+        type: decimal_u8_4
         doc: 'The first last sale eligible transactions received on the trading day for Tapes A, B or C. Implied decimal with scale 1e-4'
   ipo_information_message:
     seq:
@@ -463,7 +463,7 @@ types:
         enum: reference_for_net_change
         doc: 'Reflects the current trading state for the issue'
       - id: reference_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Reference Price. Implied decimal with scale 1e-4'
   mwcb_decline_level_message:
     seq:
@@ -474,13 +474,13 @@ types:
         type: nanosecond_timestamp
         doc: 'Timestamp. Nanoseconds since Midnight epoch'
       - id: level_1
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 1 Value. Implied decimal with scale 1e-8'
       - id: level_2
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 2 Value. Implied decimal with scale 1e-8'
       - id: level_3
-        type: u8
+        type: decimal_u8_8
         doc: 'Denotes the MWCB Level 3 Value. Implied decimal with scale 1e-8'
   mwcb_status_message:
     seq:
@@ -516,7 +516,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'IPO Quotation Release Qualifier'
       - id: ipo_price
-        type: u8
+        type: decimal_u8_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
   operational_halt_message:
     seq:
@@ -553,6 +553,27 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u8_4:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

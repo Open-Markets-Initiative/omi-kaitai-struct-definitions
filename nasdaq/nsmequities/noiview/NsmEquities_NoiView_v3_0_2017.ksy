@@ -19,7 +19,7 @@
 # This kaitai struct definition is contributed to The Open Markets Initiative under
 # the license noted above.
 #
-# The Binary Data Compiler technologies used to produce this file
+# The protocol compiler technologies used to produce this file
 # are the subject of patents owned by Scaled Sources LLC.  Those patent
 # rights are retained and are not transferred by this contribution:
 #   https://patents.google.com/patent/US20240129382A1/en
@@ -240,13 +240,13 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: far_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders only. Implied decimal with scale 1e-4'
       - id: near_price
-        type: u4
+        type: decimal_u4_4
         doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Implied decimal with scale 1e-4'
       - id: current_reference_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Indicates price at which the NOII shares are being calculated. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
@@ -274,7 +274,7 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: cross_price
-        type: u4
+        type: decimal_u4_4
         doc: 'The price at which the cross occurred. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: match_number
         type: u8
@@ -305,7 +305,7 @@ types:
         enum: ipo_quotation_release_qualifier
         doc: 'IPO Quotation Release Qualifier Code'
       - id: ipo_price
-        type: u4
+        type: decimal_u4_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
@@ -320,6 +320,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:
