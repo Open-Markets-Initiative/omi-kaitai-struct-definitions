@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nationalequities_integratedfeed_v2_5_g
+  id: nyse_nationalequities_integratedfeed_pillar_v2_5_g
   title: Nyse NationalEquities IntegratedFeed Pillar v2.5.g
   license: GPL-3.0
   endian: le

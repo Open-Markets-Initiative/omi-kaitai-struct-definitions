@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_aggregated_v2_0
+  id: nasdaq_nsmequities_aggregated_itch_v2_0
   title: Nasdaq NsmEquities Aggregated Itch v2.0
   license: GPL-3.0
   endian: be

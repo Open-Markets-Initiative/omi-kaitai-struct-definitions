@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: phlxoptions_topo_v3_3
+  id: nasdaq_phlxoptions_topo_itch_v3_3
   title: Nasdaq PhlxOptions Topo Itch v3.3
   license: GPL-3.0
   endian: be

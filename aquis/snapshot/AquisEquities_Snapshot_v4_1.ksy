@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: aquisequities_snapshot_v4_1
+  id: aquis_aquisequities_snapshot_amd_v4_1
   title: Aquis AquisEquities Snapshot Amd v4.1
   license: GPL-3.0
   endian: be

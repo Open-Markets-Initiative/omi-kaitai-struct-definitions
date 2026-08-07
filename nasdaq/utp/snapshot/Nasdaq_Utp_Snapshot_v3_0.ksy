@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_utp_snapshot_v3_0
+  id: nasdaq_utp_snapshot_utp_v3_0
   title: Nasdaq Utp Snapshot Utp v3.0
   license: GPL-3.0
   endian: be

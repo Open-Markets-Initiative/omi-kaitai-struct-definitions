@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: texasequities_trades_v2_6
+  id: nyse_texasequities_trades_pillar_v2_6
   title: Nyse TexasEquities Trades Pillar v2.6
   license: GPL-3.0
   endian: le

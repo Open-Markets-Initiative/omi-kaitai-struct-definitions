@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nomoptions_itto_v4_0
+  id: nasdaq_nomoptions_itto_itch_v4_0
   title: Nasdaq NomOptions Itto Itch v4.0
   license: GPL-3.0
   endian: be

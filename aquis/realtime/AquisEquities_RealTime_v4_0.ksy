@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: aquisequities_realtime_v4_0
+  id: aquis_aquisequities_realtime_amd_v4_0
   title: Aquis AquisEquities RealTime Amd v4.0
   license: GPL-3.0
   endian: be

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: coinbasederivatives_ordersapi_v1_8
+  id: coinbase_coinbasederivatives_ordersapi_sbe_v1_8
   title: Coinbase CoinbaseDerivatives OrdersApi Sbe v1.8
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: deribit_marketdataapi_v0_1
+  id: coinbase_deribit_marketdataapi_sbe_v0_1
   title: Coinbase Deribit MarketDataApi Sbe v0.1
   license: GPL-3.0
   endian: le

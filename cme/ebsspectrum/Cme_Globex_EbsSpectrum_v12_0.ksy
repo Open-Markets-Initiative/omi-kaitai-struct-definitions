@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_ebsspectrum_v12_0
+  id: cme_globex_ebsspectrum_sbe_v12_0
   title: Cme Globex EbsSpectrum Sbe v12.0
   license: GPL-3.0
   endian: le

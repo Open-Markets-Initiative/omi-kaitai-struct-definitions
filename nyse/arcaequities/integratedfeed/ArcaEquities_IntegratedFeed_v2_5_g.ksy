@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaequities_integratedfeed_v2_5_g
+  id: nyse_arcaequities_integratedfeed_pillar_v2_5_g
   title: Nyse ArcaEquities IntegratedFeed Pillar v2.5.g
   license: GPL-3.0
   endian: le

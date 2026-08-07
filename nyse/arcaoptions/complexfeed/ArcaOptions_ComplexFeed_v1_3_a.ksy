@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_complexfeed_v1_3_a
+  id: nyse_arcaoptions_complexfeed_xdp_v1_3_a
   title: Nyse ArcaOptions ComplexFeed Xdp v1.3.a
   license: GPL-3.0
   endian: le

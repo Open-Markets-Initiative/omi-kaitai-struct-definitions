@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: eurex_t7_xti_v6_1
+  id: eurex_t7_xti_fbe_v6_1
   title: Eurex T7 Xti Fbe v6.1
   license: GPL-3.0
   endian: le

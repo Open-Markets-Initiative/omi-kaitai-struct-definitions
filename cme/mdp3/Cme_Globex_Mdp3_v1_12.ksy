@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_mdp3_v1_12
+  id: cme_globex_mdp3_sbe_v1_12
   title: Cme Globex Mdp3 Sbe v1.12
   license: GPL-3.0
   endian: le

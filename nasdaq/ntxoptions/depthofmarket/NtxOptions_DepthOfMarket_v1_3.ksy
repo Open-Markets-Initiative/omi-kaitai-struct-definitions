@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: ntxoptions_depthofmarket_v1_3
+  id: nasdaq_ntxoptions_depthofmarket_itch_v1_3
   title: Nasdaq NtxOptions DepthOfMarket Itch v1.3
   license: GPL-3.0
   endian: be

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: mrxoptions_topofmarket_v2_1
+  id: nasdaq_mrxoptions_topofmarket_itch_v2_1
   title: Nasdaq MrxOptions TopOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

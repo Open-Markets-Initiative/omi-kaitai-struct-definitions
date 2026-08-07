@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iseoptions_spreaddepthofmarket_v2_1
+  id: nasdaq_iseoptions_spreaddepthofmarket_itch_v2_1
   title: Nasdaq IseOptions SpreadDepthOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

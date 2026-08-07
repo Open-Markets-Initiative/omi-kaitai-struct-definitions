@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexoptions_topfeed_v1_3_a
+  id: nyse_amexoptions_topfeed_xdp_v1_3_a
   title: Nyse AmexOptions TopFeed Xdp v1.3.a
   license: GPL-3.0
   endian: le

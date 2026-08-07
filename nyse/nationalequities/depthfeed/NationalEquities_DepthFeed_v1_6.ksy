@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nationalequities_depthfeed_v1_6
+  id: nyse_nationalequities_depthfeed_pillar_v1_6
   title: Nyse NationalEquities DepthFeed Pillar v1.6
   license: GPL-3.0
   endian: le

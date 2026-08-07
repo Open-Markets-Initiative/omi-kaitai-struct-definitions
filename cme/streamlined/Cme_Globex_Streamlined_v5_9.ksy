@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_streamlined_v5_9
+  id: cme_globex_streamlined_sbe_v5_9
   title: Cme Globex Streamlined Sbe v5.9
   license: GPL-3.0
   endian: le

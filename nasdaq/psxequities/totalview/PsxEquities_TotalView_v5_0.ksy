@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: psxequities_totalview_v5_0
+  id: nasdaq_psxequities_totalview_itch_v5_0
   title: Nasdaq PsxEquities TotalView Itch v5.0
   license: GPL-3.0
   endian: be

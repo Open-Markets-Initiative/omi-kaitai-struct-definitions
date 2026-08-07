@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: aquisequities_tradingprotocol_v4_0
+  id: aquis_aquisequities_tradingprotocol_atp_v4_0
   title: Aquis AquisEquities TradingProtocol Atp v4.0
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iexoptions_marketdata_v1_0
+  id: iex_iexoptions_marketdata_sbe_v1_0
   title: Iex IexOptions MarketData Sbe v1.0
   license: GPL-3.0
   endian: le

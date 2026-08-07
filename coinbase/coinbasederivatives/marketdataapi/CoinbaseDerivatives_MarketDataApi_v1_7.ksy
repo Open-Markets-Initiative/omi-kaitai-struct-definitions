@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: coinbasederivatives_marketdataapi_v1_7
+  id: coinbase_coinbasederivatives_marketdataapi_sbe_v1_7
   title: Coinbase CoinbaseDerivatives MarketDataApi Sbe v1.7
   license: GPL-3.0
   endian: le

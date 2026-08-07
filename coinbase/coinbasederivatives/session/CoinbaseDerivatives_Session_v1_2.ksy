@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: coinbasederivatives_session_v1_2
+  id: coinbase_coinbasederivatives_session_tcp_v1_2
   title: Coinbase CoinbaseDerivatives Session Tcp v1.2
   license: GPL-3.0
   endian: le

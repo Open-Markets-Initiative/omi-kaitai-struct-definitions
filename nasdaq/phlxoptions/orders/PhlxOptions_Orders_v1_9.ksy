@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: phlxoptions_orders_v1_9
+  id: nasdaq_phlxoptions_orders_itch_v1_9
   title: Nasdaq PhlxOptions Orders Itch v1.9
   license: GPL-3.0
   endian: be

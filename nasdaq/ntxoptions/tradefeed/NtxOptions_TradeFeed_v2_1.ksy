@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: ntxoptions_tradefeed_v2_1
+  id: nasdaq_ntxoptions_tradefeed_itch_v2_1
   title: Nasdaq NtxOptions TradeFeed Itch v2.1
   license: GPL-3.0
   endian: be

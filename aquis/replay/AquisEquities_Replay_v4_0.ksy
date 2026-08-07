@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: aquisequities_replay_v4_0
+  id: aquis_aquisequities_replay_amd_v4_0
   title: Aquis AquisEquities Replay Amd v4.0
   license: GPL-3.0
   endian: be

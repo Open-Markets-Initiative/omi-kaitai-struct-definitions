@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_integratedfeed_v2_1_g
+  id: nyse_amexequities_integratedfeed_xdp_v2_1_g
   title: Nyse AmexEquities IntegratedFeed Xdp v2.1.g
   license: GPL-3.0
   endian: le

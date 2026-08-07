@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexoptions_topfeed_v1_2_j
+  id: nyse_amexoptions_topfeed_pillar_v1_2_j
   title: Nyse AmexOptions TopFeed Pillar v1.2.j
   license: GPL-3.0
   endian: le

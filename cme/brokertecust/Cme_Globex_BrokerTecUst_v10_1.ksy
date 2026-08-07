@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_brokertecust_v10_1
+  id: cme_globex_brokertecust_sbe_v10_1
   title: Cme Globex BrokerTecUst Sbe v10.1
   license: GPL-3.0
   endian: le

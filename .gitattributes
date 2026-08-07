@@ -1,21 +1,3 @@
-# Default: treat everything as text and normalize to LF on commit/checkout
+# Generated repository: normalize all text to LF in the repo and on checkout, so the
+# LF output of the generator matches the working tree and full regens diff cleanly.
 * text=auto eol=lf
-
-# Lua dissectors (the bulk of this repo) — LF
-*.lua text eol=lf
-
-# Documentation / metadata — LF
-*.md text eol=lf
-*.txt text eol=lf
-
-# Windows-only scripts — keep CRLF
-*.bat text eol=crlf
-*.cmd text eol=crlf
-*.ps1 text eol=crlf
-
-# Binary fixtures — never touch
-*.pcap binary
-*.pcapng binary
-*.png binary
-*.jpg binary
-*.gif binary

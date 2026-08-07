@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: psxequities_bbo_v2_1_2018
+  id: nasdaq_psxequities_bbo_itch_v2_1_2018
   title: Nasdaq PsxEquities Bbo Itch v2.1.2018
   license: GPL-3.0
   endian: be

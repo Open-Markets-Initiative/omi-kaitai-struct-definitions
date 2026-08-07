@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iseoptions_ordercombofeed_v1_1
+  id: nasdaq_iseoptions_ordercombofeed_itch_v1_1
   title: Nasdaq IseOptions OrderComboFeed Itch v1.1
   license: GPL-3.0
   endian: be

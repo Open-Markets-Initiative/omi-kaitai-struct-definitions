@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_ilink3_v8_4
+  id: cme_globex_ilink3_sbe_v8_4
   title: Cme Globex iLink3 Sbe v8.4
   license: GPL-3.0
   endian: le

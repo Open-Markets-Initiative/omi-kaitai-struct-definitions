@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: texasequities_depthfeed_v1_6
+  id: nyse_texasequities_depthfeed_pillar_v1_6
   title: Nyse TexasEquities DepthFeed Pillar v1.6
   license: GPL-3.0
   endian: le

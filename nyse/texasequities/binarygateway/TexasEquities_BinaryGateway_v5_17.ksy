@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: texasequities_binarygateway_v5_17
+  id: nyse_texasequities_binarygateway_pillarstream_v5_17
   title: Nyse TexasEquities BinaryGateway PillarStream v5.17
   license: GPL-3.0
   endian: le

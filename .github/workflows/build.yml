@@ -42,30 +42,30 @@ jobs:
         run: git clone --depth=1 https://github.com/Open-Markets-Initiative/omi-data-packets.git
 
       - name: Run Cme Globex Mdp3 Sbe v1.5 Definition Tests
-        run: python3 .github/tests/test_cme_globex_mdp3_v1_5.py
+        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_5.py
 
       - name: Run Cme Globex Mdp3 Sbe v1.8 Definition Tests
-        run: python3 .github/tests/test_cme_globex_mdp3_v1_8.py
+        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_8.py
 
       - name: Run Cme Globex Mdp3 Sbe v1.9 Definition Tests
-        run: python3 .github/tests/test_cme_globex_mdp3_v1_9.py
+        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_9.py
 
       - name: Run Iex IexEquities Tops IexTp v1.5.6 Definition Tests
-        run: python3 .github/tests/test_iexequities_tops_v1_5_6.py
+        run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_5_6.py
 
       - name: Run Iex IexEquities Tops IexTp v1.6.4 Definition Tests
-        run: python3 .github/tests/test_iexequities_tops_v1_6_4.py
+        run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_6_4.py
 
       - name: Run Iex IexEquities Tops IexTp v1.6.6 Definition Tests
-        run: python3 .github/tests/test_iexequities_tops_v1_6_6.py
+        run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_6_6.py
 
       - name: Run Iex IexEquities Deep IexTp v1.0.6 Definition Tests
-        run: python3 .github/tests/test_iexequities_deep_v1_0_6.py
+        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_0_6.py
 
       - name: Run Iex IexEquities Deep IexTp v1.0.8 Definition Tests
-        run: python3 .github/tests/test_iexequities_deep_v1_0_8.py
+        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_0_8.py
 
       - name: Run Iex IexEquities DeepPlus IexTp v1.0.2 Definition Tests
-        run: python3 .github/tests/test_iexequities_deepplus_v1_0_2.py
+        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_0_2.py
 
 

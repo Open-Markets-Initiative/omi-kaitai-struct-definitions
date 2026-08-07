@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_bqt_v2_4_a
+  id: nyse_amexequities_bqt_xdp_v2_4_a
   title: Nyse AmexEquities Bqt Xdp v2.4.a
   license: GPL-3.0
   endian: le

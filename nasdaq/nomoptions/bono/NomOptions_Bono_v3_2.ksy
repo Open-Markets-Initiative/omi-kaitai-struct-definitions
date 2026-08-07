@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nomoptions_bono_v3_2
+  id: nasdaq_nomoptions_bono_itch_v3_2
   title: Nasdaq NomOptions Bono Itch v3.2
   license: GPL-3.0
   endian: be

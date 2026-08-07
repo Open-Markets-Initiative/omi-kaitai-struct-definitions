@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_complexfeed_v1_0_d
+  id: nyse_arcaoptions_complexfeed_pillar_v1_0_d
   title: Nyse ArcaOptions ComplexFeed Pillar v1.0.d
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: ntxoptions_topofmarket_v2_2
+  id: nasdaq_ntxoptions_topofmarket_itch_v2_2
   title: Nasdaq NtxOptions TopOfMarket Itch v2.2
   license: GPL-3.0
   endian: be

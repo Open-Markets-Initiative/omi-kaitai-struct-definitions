@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_topfeed_v1_2_c
+  id: nyse_arcaoptions_topfeed_pillar_v1_2_c
   title: Nyse ArcaOptions TopFeed Pillar v1.2.c
   license: GPL-3.0
   endian: le

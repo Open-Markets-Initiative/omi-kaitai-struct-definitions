@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_imbalancesfeed_v2_2_a
+  id: nyse_nyseequities_imbalancesfeed_xdp_v2_2_a
   title: Nyse NyseEquities ImbalancesFeed Xdp v2.2.a
   license: GPL-3.0
   endian: le

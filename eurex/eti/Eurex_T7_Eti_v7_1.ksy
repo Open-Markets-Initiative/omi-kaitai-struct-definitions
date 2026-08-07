@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: eurex_t7_eti_v7_1
+  id: eurex_t7_eti_fbe_v7_1
   title: Eurex T7 Eti Fbe v7.1
   license: GPL-3.0
   endian: le

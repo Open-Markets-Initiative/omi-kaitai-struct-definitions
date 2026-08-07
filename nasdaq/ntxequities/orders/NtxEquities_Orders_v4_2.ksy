@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: ntxequities_orders_v4_2
+  id: nasdaq_ntxequities_orders_ouch_v4_2
   title: Nasdaq NtxEquities Orders Ouch v4.2
   license: GPL-3.0
   endian: be

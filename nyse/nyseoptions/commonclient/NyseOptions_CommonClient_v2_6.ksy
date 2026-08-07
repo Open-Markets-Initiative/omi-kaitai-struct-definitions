@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseoptions_commonclient_v2_6
+  id: nyse_nyseoptions_commonclient_pillar_v2_6
   title: Nyse NyseOptions CommonClient Pillar v2.6
   license: GPL-3.0
   endian: le

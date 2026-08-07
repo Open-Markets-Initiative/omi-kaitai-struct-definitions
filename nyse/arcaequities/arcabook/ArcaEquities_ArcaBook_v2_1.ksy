@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaequities_arcabook_v2_1
+  id: nyse_arcaequities_arcabook_pillar_v2_1
   title: Nyse ArcaEquities ArcaBook Pillar v2.1
   license: GPL-3.0
   endian: le

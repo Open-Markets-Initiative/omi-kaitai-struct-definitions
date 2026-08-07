@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: phlxoptions_spreadtradefeed_v2_1
+  id: nasdaq_phlxoptions_spreadtradefeed_itch_v2_1
   title: Nasdaq PhlxOptions SpreadTradeFeed Itch v2.1
   license: GPL-3.0
   endian: be

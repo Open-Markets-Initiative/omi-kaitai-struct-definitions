@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_nois_v2_2_2022
+  id: nasdaq_nsmequities_nois_itch_v2_2_2022
   title: Nasdaq NsmEquities Nois Itch v2.2.2022
   license: GPL-3.0
   endian: be

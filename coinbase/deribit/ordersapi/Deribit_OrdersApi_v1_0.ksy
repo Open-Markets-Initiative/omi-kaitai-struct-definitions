@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: deribit_ordersapi_v1_0
+  id: coinbase_deribit_ordersapi_sbe_v1_0
   title: Coinbase Deribit OrdersApi Sbe v1.0
   license: GPL-3.0
   endian: le

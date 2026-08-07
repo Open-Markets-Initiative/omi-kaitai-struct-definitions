@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iseoptions_spreadorders_v2_1
+  id: nasdaq_iseoptions_spreadorders_itch_v2_1
   title: Nasdaq IseOptions SpreadOrders Itch v2.1
   license: GPL-3.0
   endian: be

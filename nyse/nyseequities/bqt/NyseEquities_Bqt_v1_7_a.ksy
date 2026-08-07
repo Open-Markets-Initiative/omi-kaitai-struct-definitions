@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_bqt_v1_7_a
+  id: nyse_nyseequities_bqt_xdp_v1_7_a
   title: Nyse NyseEquities Bqt Xdp v1.7.a
   license: GPL-3.0
   endian: le

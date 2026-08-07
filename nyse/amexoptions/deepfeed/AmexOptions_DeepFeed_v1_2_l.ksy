@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexoptions_deepfeed_v1_2_l
+  id: nyse_amexoptions_deepfeed_pillar_v1_2_l
   title: Nyse AmexOptions DeepFeed Pillar v1.2.l
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: psxequities_orders_v4_2
+  id: nasdaq_psxequities_orders_ouch_v4_2
   title: Nasdaq PsxEquities Orders Ouch v4.2
   license: GPL-3.0
   endian: be

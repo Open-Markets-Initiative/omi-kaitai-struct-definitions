@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_deepfeed_v1_2_f
+  id: nyse_arcaoptions_deepfeed_pillar_v1_2_f
   title: Nyse ArcaOptions DeepFeed Pillar v1.2.f
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iexoptions_binaryorderentry_v1_0
+  id: iex_iexoptions_binaryorderentry_sbe_v1_0
   title: Iex IexOptions BinaryOrderEntry Sbe v1.0
   license: GPL-3.0
   endian: le

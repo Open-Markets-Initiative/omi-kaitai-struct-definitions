@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_binarygateway_v5_17
+  id: nyse_amexequities_binarygateway_pillarstream_v5_17
   title: Nyse AmexEquities BinaryGateway PillarStream v5.17
   license: GPL-3.0
   endian: le

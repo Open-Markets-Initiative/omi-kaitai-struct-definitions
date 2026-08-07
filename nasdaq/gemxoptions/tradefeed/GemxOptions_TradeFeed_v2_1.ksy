@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: gemxoptions_tradefeed_v2_1
+  id: nasdaq_gemxoptions_tradefeed_itch_v2_1
   title: Nasdaq GemxOptions TradeFeed Itch v2.1
   license: GPL-3.0
   endian: be

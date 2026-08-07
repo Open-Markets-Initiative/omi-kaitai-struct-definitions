@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_trades_v2_6
+  id: nyse_nyseequities_trades_pillar_v2_6
   title: Nyse NyseEquities Trades Pillar v2.6
   license: GPL-3.0
   endian: le

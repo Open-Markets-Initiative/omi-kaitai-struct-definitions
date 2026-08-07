@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_imbalancesfeed_v2_2_n
+  id: nyse_amexequities_imbalancesfeed_pillar_v2_2_n
   title: Nyse AmexEquities ImbalancesFeed Pillar v2.2.n
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: gemxoptions_depthofmarket_v2_1
+  id: nasdaq_gemxoptions_depthofmarket_itch_v2_1
   title: Nasdaq GemxOptions DepthOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

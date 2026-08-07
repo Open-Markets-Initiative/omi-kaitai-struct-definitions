@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_binarygateway_v5_17
+  id: nyse_nyseequities_binarygateway_pillarstream_v5_17
   title: Nyse NyseEquities BinaryGateway PillarStream v5.17
   license: GPL-3.0
   endian: le

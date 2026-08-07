@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_noiview_v3_0_2017
+  id: nasdaq_nsmequities_noiview_itch_v3_0_2017
   title: Nasdaq NsmEquities NoiView Itch v3.0.2017
   license: GPL-3.0
   endian: be

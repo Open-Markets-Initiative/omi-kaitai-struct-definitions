@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_level2_v2_0
+  id: nasdaq_nsmequities_level2_itch_v2_0
   title: Nasdaq NsmEquities Level2 Itch v2.0
   license: GPL-3.0
   endian: be

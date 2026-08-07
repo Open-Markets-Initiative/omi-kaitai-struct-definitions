@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iexequities_deepplus_v1_0_2
+  id: iex_iexequities_deepplus_iextp_v1_0_2
   title: Iex IexEquities DeepPlus IexTp v1.0.2
   license: GPL-3.0
   endian: le
@@ -46,6 +46,7 @@ seq:
     type: iextp_header_struct
     doc: 'IexTp packet header'
   - id: messages
+    size: iextp_header.payload_length
     repeat: expr
     repeat-expr: iextp_header.message_count
     type:

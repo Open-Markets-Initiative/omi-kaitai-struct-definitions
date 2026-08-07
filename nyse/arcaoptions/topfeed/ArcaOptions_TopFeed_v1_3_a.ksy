@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_topfeed_v1_3_a
+  id: nyse_arcaoptions_topfeed_xdp_v1_3_a
   title: Nyse ArcaOptions TopFeed Xdp v1.3.a
   license: GPL-3.0
   endian: le

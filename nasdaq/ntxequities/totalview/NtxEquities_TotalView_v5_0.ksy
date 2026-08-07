@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: ntxequities_totalview_v5_0
+  id: nasdaq_ntxequities_totalview_itch_v5_0
   title: Nasdaq NtxEquities TotalView Itch v5.0
   license: GPL-3.0
   endian: be

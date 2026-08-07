@@ -7,14 +7,14 @@ sys.path.insert(0, "generated/python")
 
 import payloads
 
-from iexequities_tops_v1_6_6 import IexequitiesTopsV166
+from iex_iexequities_tops_iextp_v1_6_6 import IexIexequitiesTopsIextpV166
 
 
-class IexequitiesTopsV166Tests(unittest.TestCase):
+class IexIexequitiesTopsIextpV166Tests(unittest.TestCase):
 
     def test_quoteupdatemessage(self):
         for payload in payloads.of("omi-data-packets/Iex/Tops.IexTp.v1.6/QuoteUpdateMessage.pcap"):
-            parsed = IexequitiesTopsV166.from_bytes(payload)
+            parsed = IexIexequitiesTopsIextpV166.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
 

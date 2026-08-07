@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaequities_bbo_v2_4_c
+  id: nyse_arcaequities_bbo_xdp_v2_4_c
   title: Nyse ArcaEquities Bbo Xdp v2.4.c
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexoptions_binarygateway_v3_25
+  id: nyse_amexoptions_binarygateway_pillarstream_v3_25
   title: Nyse AmexOptions BinaryGateway PillarStream v3.25
   license: GPL-3.0
   endian: le

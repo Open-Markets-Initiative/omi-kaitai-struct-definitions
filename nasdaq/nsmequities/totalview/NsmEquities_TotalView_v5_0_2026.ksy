@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_totalview_v5_0_2026
+  id: nasdaq_nsmequities_totalview_itch_v5_0_2026
   title: Nasdaq NsmEquities TotalView Itch v5.0.2026
   license: GPL-3.0
   endian: be

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: borsaistanbul_geniuminet_v21_12
+  id: bist_borsaistanbul_geniuminet_itch_v21_12
   title: Bist BorsaIstanbul GeniumInet Itch v21.12
   license: GPL-3.0
   endian: be

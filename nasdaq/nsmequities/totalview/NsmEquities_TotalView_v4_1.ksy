@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nsmequities_totalview_v4_1
+  id: nasdaq_nsmequities_totalview_itch_v4_1
   title: Nasdaq NsmEquities TotalView Itch v4.1
   license: GPL-3.0
   endian: be

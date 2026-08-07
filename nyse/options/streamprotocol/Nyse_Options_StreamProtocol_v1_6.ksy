@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyse_options_streamprotocol_v1_6
+  id: nyse_options_streamprotocol_pillarstream_v1_6
   title: Nyse Options StreamProtocol PillarStream v1.6
   license: GPL-3.0
   endian: le

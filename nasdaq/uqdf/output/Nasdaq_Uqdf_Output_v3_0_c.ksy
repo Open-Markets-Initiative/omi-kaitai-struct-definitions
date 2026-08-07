@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_uqdf_output_v3_0_c
+  id: nasdaq_uqdf_output_utp_v3_0_c
   title: Nasdaq Uqdf Output Utp v3.0.c
   license: GPL-3.0
   endian: be

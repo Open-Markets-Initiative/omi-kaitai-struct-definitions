@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: mrxoptions_tradefeed_v2_1
+  id: nasdaq_mrxoptions_tradefeed_itch_v2_1
   title: Nasdaq MrxOptions TradeFeed Itch v2.1
   license: GPL-3.0
   endian: be

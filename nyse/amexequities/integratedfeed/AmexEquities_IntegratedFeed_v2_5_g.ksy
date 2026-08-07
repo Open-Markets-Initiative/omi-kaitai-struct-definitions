@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_integratedfeed_v2_5_g
+  id: nyse_amexequities_integratedfeed_pillar_v2_5_g
   title: Nyse AmexEquities IntegratedFeed Pillar v2.5.g
   license: GPL-3.0
   endian: le

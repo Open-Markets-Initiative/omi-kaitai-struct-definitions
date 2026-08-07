@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_bbo_v2_5_b
+  id: nyse_nyseequities_bbo_pillar_v2_5_b
   title: Nyse NyseEquities Bbo Pillar v2.5.b
   license: GPL-3.0
   endian: le

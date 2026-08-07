@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_openbook_aggregated_v2_1_d
+  id: nyse_amexequities_openbookaggregated_xdp_v2_1_d
   title: Nyse AmexEquities OpenBook.Aggregated Xdp v2.1.d
   license: GPL-3.0
   endian: le

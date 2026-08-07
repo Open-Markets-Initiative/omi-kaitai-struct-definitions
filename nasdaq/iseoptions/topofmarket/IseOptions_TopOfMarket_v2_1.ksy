@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iseoptions_topofmarket_v2_1
+  id: nasdaq_iseoptions_topofmarket_itch_v2_1
   title: Nasdaq IseOptions TopOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

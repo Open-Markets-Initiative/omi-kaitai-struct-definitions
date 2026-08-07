@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: gemxoptions_topofmarket_v2_1
+  id: nasdaq_gemxoptions_topofmarket_itch_v2_1
   title: Nasdaq GemxOptions TopOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

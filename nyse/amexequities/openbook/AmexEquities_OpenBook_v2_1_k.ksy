@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_openbook_v2_1_k
+  id: nyse_amexequities_openbook_ultra_v2_1_k
   title: Nyse AmexEquities OpenBook Ultra v2.1.k
   license: GPL-3.0
   endian: be

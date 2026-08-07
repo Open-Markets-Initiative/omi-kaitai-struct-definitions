@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaoptions_binarygateway_v3_15
+  id: nyse_arcaoptions_binarygateway_pillarstream_v3_15
   title: Nyse ArcaOptions BinaryGateway PillarStream v3.15
   license: GPL-3.0
   endian: le

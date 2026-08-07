@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_utp_input_v4_0
+  id: nasdaq_utp_input_utp_v4_0
   title: Nasdaq Utp Input Utp v4.0
   license: GPL-3.0
   endian: be

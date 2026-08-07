@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nationalequities_bbo_v2_5_d
+  id: nyse_nationalequities_bbo_pillar_v2_5_d
   title: Nyse NationalEquities Bbo Pillar v2.5.d
   license: GPL-3.0
   endian: le

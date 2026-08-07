@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: texasequities_imbalancesfeed_v2_2_n
+  id: nyse_texasequities_imbalancesfeed_pillar_v2_2_n
   title: Nyse TexasEquities ImbalancesFeed Pillar v2.2.n
   license: GPL-3.0
   endian: le

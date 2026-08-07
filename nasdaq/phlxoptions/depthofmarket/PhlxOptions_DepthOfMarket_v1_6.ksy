@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: phlxoptions_depthofmarket_v1_6
+  id: nasdaq_phlxoptions_depthofmarket_itch_v1_6
   title: Nasdaq PhlxOptions DepthOfMarket Itch v1.6
   license: GPL-3.0
   endian: be

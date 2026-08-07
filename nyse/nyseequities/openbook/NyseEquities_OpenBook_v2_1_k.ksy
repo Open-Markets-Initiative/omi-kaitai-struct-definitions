@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_openbook_v2_1_k
+  id: nyse_nyseequities_openbook_ultra_v2_1_k
   title: Nyse NyseEquities OpenBook Ultra v2.1.k
   license: GPL-3.0
   endian: be

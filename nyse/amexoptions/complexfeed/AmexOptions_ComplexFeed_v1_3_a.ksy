@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexoptions_complexfeed_v1_3_a
+  id: nyse_amexoptions_complexfeed_xdp_v1_3_a
   title: Nyse AmexOptions ComplexFeed Xdp v1.3.a
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: psxequities_lastsale_v2_1_2018
+  id: nasdaq_psxequities_lastsale_itch_v2_1_2018
   title: Nasdaq PsxEquities LastSale Itch v2.1.2018
   license: GPL-3.0
   endian: be

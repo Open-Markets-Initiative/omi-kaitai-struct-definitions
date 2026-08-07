@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_settlements_v7_0
+  id: cme_globex_settlements_sbe_v7_0
   title: Cme Globex Settlements Sbe v7.0
   license: GPL-3.0
   endian: le

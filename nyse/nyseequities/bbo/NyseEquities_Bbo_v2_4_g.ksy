@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_bbo_v2_4_g
+  id: nyse_nyseequities_bbo_xdp_v2_4_g
   title: Nyse NyseEquities Bbo Xdp v2.4.g
   license: GPL-3.0
   endian: le

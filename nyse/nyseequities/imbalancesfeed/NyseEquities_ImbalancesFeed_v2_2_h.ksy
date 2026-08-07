@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_imbalancesfeed_v2_2_h
+  id: nyse_nyseequities_imbalancesfeed_pillar_v2_2_h
   title: Nyse NyseEquities ImbalancesFeed Pillar v2.2.h
   license: GPL-3.0
   endian: le

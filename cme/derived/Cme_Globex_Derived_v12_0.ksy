@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_derived_v12_0
+  id: cme_globex_derived_sbe_v12_0
   title: Cme Globex Derived Sbe v12.0
   license: GPL-3.0
   endian: le

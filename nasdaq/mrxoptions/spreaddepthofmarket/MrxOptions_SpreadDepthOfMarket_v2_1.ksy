@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: mrxoptions_spreaddepthofmarket_v2_1
+  id: nasdaq_mrxoptions_spreaddepthofmarket_itch_v2_1
   title: Nasdaq MrxOptions SpreadDepthOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

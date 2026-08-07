@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: mrxoptions_spreadorders_v2_1
+  id: nasdaq_mrxoptions_spreadorders_itch_v2_1
   title: Nasdaq MrxOptions SpreadOrders Itch v2.1
   license: GPL-3.0
   endian: be

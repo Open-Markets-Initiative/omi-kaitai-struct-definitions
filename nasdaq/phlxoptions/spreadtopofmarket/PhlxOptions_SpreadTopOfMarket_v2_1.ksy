@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: phlxoptions_spreadtopofmarket_v2_1
+  id: nasdaq_phlxoptions_spreadtopofmarket_itch_v2_1
   title: Nasdaq PhlxOptions SpreadTopOfMarket Itch v2.1
   license: GPL-3.0
   endian: be

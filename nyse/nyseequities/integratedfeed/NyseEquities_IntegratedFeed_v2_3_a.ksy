@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyseequities_integratedfeed_v2_3_a
+  id: nyse_nyseequities_integratedfeed_xdp_v2_3_a
   title: Nyse NyseEquities IntegratedFeed Xdp v2.3.a
   license: GPL-3.0
   endian: le

@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: eurex_t7_eobi_v3_0
+  id: eurex_t7_eobi_fbe_v3_0
   title: Eurex T7 Eobi Fbe v3.0
   license: GPL-3.0
   endian: le

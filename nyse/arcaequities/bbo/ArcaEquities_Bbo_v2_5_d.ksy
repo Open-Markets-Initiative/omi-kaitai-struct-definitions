@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: arcaequities_bbo_v2_5_d
+  id: nyse_arcaequities_bbo_pillar_v2_5_d
   title: Nyse ArcaEquities Bbo Pillar v2.5.d
   license: GPL-3.0
   endian: le

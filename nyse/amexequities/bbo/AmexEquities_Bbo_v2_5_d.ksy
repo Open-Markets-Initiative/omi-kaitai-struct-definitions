@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: amexequities_bbo_v2_5_d
+  id: nyse_amexequities_bbo_pillar_v2_5_d
   title: Nyse AmexEquities Bbo Pillar v2.5.d
   license: GPL-3.0
   endian: le

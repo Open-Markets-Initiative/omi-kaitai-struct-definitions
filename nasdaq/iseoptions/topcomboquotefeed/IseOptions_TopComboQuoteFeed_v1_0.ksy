@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iseoptions_topcomboquotefeed_v1_0
+  id: nasdaq_iseoptions_topcomboquotefeed_itch_v1_0
   title: Nasdaq IseOptions TopComboQuoteFeed Itch v1.0
   license: GPL-3.0
   endian: be

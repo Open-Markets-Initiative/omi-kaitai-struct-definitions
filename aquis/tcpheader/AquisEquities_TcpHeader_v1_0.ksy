@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: aquisequities_tcpheader_v1_0
+  id: aquis_aquisequities_tcpheader_atp_v1_0
   title: Aquis AquisEquities TcpHeader Atp v1.0
   license: GPL-3.0
   endian: le
