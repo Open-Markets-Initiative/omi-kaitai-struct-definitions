@@ -46,7 +46,6 @@ seq:
     type: iextp_header_struct
     doc: 'IexTp packet header'
   - id: messages
-    size: iextp_header.payload_length
     repeat: expr
     repeat-expr: iextp_header.message_count
     type:
