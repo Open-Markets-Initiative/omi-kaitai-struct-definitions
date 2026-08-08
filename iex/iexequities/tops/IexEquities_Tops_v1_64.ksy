@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities Tops IexTp v1.6.6
+# Kaitai struct definition for: Iex IexEquities Tops IexTp v1.64
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: Top Of Book
 #   Encoding: Investors Exchange Transport Protocol
-#   Version: 1.6.6
-#   Date: 10/19/2021
-#   Specification: IEX TOPS Specification v1.66.pdf
+#   Version: 1.64
+#   Date: 2/27/2018
+#   Specification: IEX TOPS Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_tops_iextp_v1_6_6
-  title: Iex IexEquities Tops IexTp v1.6.6
+  id: iex_iexequities_tops_iextp_v1_64
+  title: Iex IexEquities Tops IexTp v1.64
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities Top Of Book IexTp v1.6.6'
+doc: 'Investors Exchange IEX Equities Top Of Book IexTp v1.64'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
@@ -99,9 +99,9 @@ types:
             'message_type::system_event_message': system_event_message
             'message_type::security_directory_message': security_directory_message
             'message_type::trading_status_message': trading_status_message
-            'message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
             'message_type::operational_halt_status_message': operational_halt_status_message
             'message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
+            'message_type::security_event_message': security_event_message
             'message_type::quote_update_message': quote_update_message
             'message_type::trade_report_message': trade_report_message
             'message_type::official_price_message': official_price_message
@@ -184,21 +184,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reason for the trading status change'
-  retail_liquidity_indicator_message:
-    seq:
-      - id: retail_liquidity_indicator
-        type: u1
-        enum: retail_liquidity_indicator
-        doc: 'Retail Liquidity Indicator identifier'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
-      - id: symbol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Security identifier'
   operational_halt_status_message:
     seq:
       - id: operational_halt_status
@@ -233,6 +218,21 @@ types:
         type: u1
         enum: detail
         doc: 'Detail of the Reg. SHO short sale price test restriction status'
+  security_event_message:
+    seq:
+      - id: security_event
+        type: u1
+        enum: security_event
+        doc: 'Security event identifier'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
   quote_update_message:
     seq:
       - id: quote_update_flags
@@ -292,7 +292,7 @@ types:
         doc: 'Trade price. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'IEX Generated Identifier. Trade ID is also'
   sale_condition_flags:
     seq:
       - id: unused_3
@@ -353,7 +353,7 @@ types:
         doc: 'Trade price. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'IEX Generated Identifier. Trade ID is also'
   auction_information_message:
     seq:
       - id: auction_type
@@ -441,22 +441,22 @@ enums:
   message_type:
     0x53:
       id: 'system_event_message'
-      doc: 'The System Event Message is used to indicate events that apply to the market or the data feed'
+      doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
     0x44:
       id: 'security_directory_message'
       doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
     0x48:
       id: 'trading_status_message'
       doc: 'The Trading Status Message is used to indicate the current trading status of a security.'
-    0x49:
-      id: 'retail_liquidity_indicator_message'
-      doc: 'broadcasts a real-time Retail Liquidity Indicator Message each time there is an update to IEX''s eligible retail liquidity interest during the trading day'
     0x4f:
       id: 'operational_halt_status_message'
       doc: 'The Exchange may suspend trading of one or more securities on IEX for operational reasons and indicates such operational halt using the Operational Halt Status Message.'
     0x50:
       id: 'short_sale_price_test_status_message'
       doc: 'The Short Sale Price Test Message is used to indicate when a short sale price test restriction is in effect for a security.'
+    0x45:
+      id: 'security_event_message'
+      doc: 'The Security Event Message is used to indicate events that apply to a security'
     0x51:
       id: 'quote_update_message'
       doc: 'Tops broadcasts a real-time Quote Update Message each time IEX''s best bid or offer quotation is updated during the trading day'
@@ -473,9 +473,6 @@ enums:
       id: 'auction_information_message'
       doc: 'Broadcasts an Auction Information Message every one second between the Lock-in Time and the auction match for Opening and Closing Auctions, and during the Display Only Period for IPO, Halt, and Volatility Auctions.'
   system_event:
-    0x4f:
-      id: 'start_of_messages'
-      doc: 'Outside Of Heartbeat Messages On The Lower Level Protocol The Start Of Day Message Is The First Message Sent In Any Trading Session'
     0x53:
       id: 'start_of_system_hours'
       doc: 'This Message Indicates That Iex Is Open And Ready To Start Accepting Orders'
@@ -505,28 +502,12 @@ enums:
     0x48:
       id: 'trading_halted_across_all_us_equity_markets'
       doc: 'Trading Halted Across All Us Equity Markets'
-    0x4f:
-      id: 'trading_halt_released_into_an_order_acceptance_period_on_iex'
-      doc: 'Trading Halt Released Into An Order Acceptance Period On Iex'
     0x50:
       id: 'trading_paused_and_order_acceptance_period_on_iex'
       doc: 'Trading Paused And Order Acceptance Period On Iex'
     0x54:
       id: 'trading_on_iex'
       doc: 'Trading On Iex'
-  retail_liquidity_indicator:
-    0x20:
-      id: 'not_applicable'
-      doc: 'Not Applicable'
-    0x41:
-      id: 'buy_interest'
-      doc: 'Buy Interest'
-    0x42:
-      id: 'sell_interest'
-      doc: 'Sell Interest'
-    0x43:
-      id: 'buy_and_sell_interest'
-      doc: 'Buy And Sell Interest'
   operational_halt_status:
     0x4f:
       id: 'iex_specific_operational_trading_halt'
@@ -546,17 +527,24 @@ enums:
       id: 'no_price_test_in_place'
       doc: 'No Price Test In Place'
     0x41:
-      id: 'activated'
+      id: 'short_sale_price_test_restriction_in_effect_due_to_an_intraday_price_drop_in_the_security'
       doc: 'Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In The Security'
     0x43:
-      id: 'continued'
+      id: 'short_sale_price_test_restriction_remains_in_effect_from_prior_day'
       doc: 'Short Sale Price Test Restriction Remains In Effect From Prior Day'
     0x44:
-      id: 'deactivated'
+      id: 'short_sale_price_test_restriction_deactivated'
       doc: 'Short Sale Price Test Restriction Deactivated'
     0x4e:
-      id: 'not_available'
-      doc: 'Not Available'
+      id: 'detail_not_available'
+      doc: 'Detail Not Available'
+  security_event:
+    0x4f:
+      id: 'opening_process_complete'
+      doc: 'Opening Process Complete'
+    0x43:
+      id: 'closing_process_complete'
+      doc: 'Closing Process Complete'
   price_type:
     0x51:
       id: 'iex_official_opening_price'
@@ -589,5 +577,5 @@ enums:
       doc: 'Sell'
     0x4e:
       id: 'none'
-      doc: 'No Imbalance'
+      doc: 'None'
 

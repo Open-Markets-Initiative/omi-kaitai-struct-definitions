@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexOptions MarketData Sbe v1.0
+# Kaitai struct definition for: Iex IexOptions MarketData Sbe v1.03
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: Market Data
 #   Encoding: Simple Binary Encoding
-#   Version: 1.0
+#   Version: 1.03
 #   Date: 6/1/2026
 #   Specification: IEX Options Market Data Transport Protocol Specification
 #
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexoptions_marketdata_sbe_v1_0
-  title: Iex IexOptions MarketData Sbe v1.0
+  id: iex_iexoptions_marketdata_sbe_v1_03
+  title: Iex IexOptions MarketData Sbe v1.03
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Options Market Data Sbe v1.0'
+doc: 'Investors Exchange IEX Options Market Data Sbe v1.03'
 doc-ref: https://www.iexexchange.io/options
 
 seq:

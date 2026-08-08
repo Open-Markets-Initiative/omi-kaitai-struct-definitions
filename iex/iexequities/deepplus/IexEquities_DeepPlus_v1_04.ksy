@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities Tops IexTp v1.6.4
+# Kaitai struct definition for: Iex IexEquities DeepPlus IexTp v1.04
 #
 # Protocol:
 #   Organization: Investors Exchange
-#   Protocol: Top Of Book
+#   Protocol: DeepPlus
 #   Encoding: Investors Exchange Transport Protocol
-#   Version: 1.6.4
-#   Date: 2/27/2018
-#   Specification: IEX TOPS Specification.pdf
+#   Version: 1.04
+#   Date: 6/4/2026
+#   Specification: IEX DEEP+ Specification (v1.04).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_tops_iextp_v1_6_4
-  title: Iex IexEquities Tops IexTp v1.6.4
+  id: iex_iexequities_deepplus_iextp_v1_04
+  title: Iex IexEquities DeepPlus IexTp v1.04
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities Top Of Book IexTp v1.6.4'
+doc: 'Investors Exchange IEX Equities DeepPlus IexTp v1.04'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
@@ -99,14 +99,17 @@ types:
             'message_type::system_event_message': system_event_message
             'message_type::security_directory_message': security_directory_message
             'message_type::trading_status_message': trading_status_message
+            'message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
             'message_type::operational_halt_status_message': operational_halt_status_message
             'message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
             'message_type::security_event_message': security_event_message
-            'message_type::quote_update_message': quote_update_message
-            'message_type::trade_report_message': trade_report_message
-            'message_type::official_price_message': official_price_message
+            'message_type::add_order_message': add_order_message
+            'message_type::order_modify_message': order_modify_message
+            'message_type::order_delete_message': order_delete_message
+            'message_type::order_executed_message': order_executed_message
+            'message_type::trade_message': trade_message
             'message_type::trade_break_message': trade_break_message
-            'message_type::auction_information_message': auction_information_message
+            'message_type::clear_book_message': clear_book_message
   message_header:
     seq:
       - id: message_length
@@ -184,6 +187,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reason for the trading status change'
+  retail_liquidity_indicator_message:
+    seq:
+      - id: retail_liquidity_indicator
+        type: u1
+        enum: retail_liquidity_indicator
+        doc: 'Retail Liquidity Indicator identifier'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
   operational_halt_status_message:
     seq:
       - id: operational_halt_status
@@ -233,11 +251,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-  quote_update_message:
+  add_order_message:
     seq:
-      - id: quote_update_flags
-        type: quote_update_flags
-        doc: 'Quote Update Flags'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of order'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -247,30 +266,66 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: bid_size
+      - id: order_id
+        type: u8
+        doc: 'Order ID of new order'
+      - id: size
         type: u4
-        doc: 'Aggregate quoted best bid size'
-      - id: bid_price
+        doc: 'Quoted size'
+      - id: price
         type: decimal_s8_4
-        doc: 'Best quoted bid price. Implied decimal with scale 1e-4'
-      - id: ask_price
-        type: decimal_s8_4
-        doc: 'Best quoted ask price. Implied decimal with scale 1e-4'
-      - id: ask_size
-        type: u4
-        doc: 'Aggregate quoted best ask size'
-  quote_update_flags:
+        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
+  order_modify_message:
     seq:
-      - id: unused_6
-        type: b6
+      - id: modify_flags
+        type: modify_flags
+        doc: 'Modify Flags'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
+      - id: order_id_reference
+        type: u8
+        doc: 'Order ID of the referenced order'
+      - id: size
+        type: u4
+        doc: 'Quoted size'
+      - id: price
+        type: decimal_s8_4
+        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
+  modify_flags:
+    seq:
+      - id: unused_7
+        type: b7
         doc: 'Unused'
-      - id: market_session
+      - id: priority
         type: b1
-        doc: 'Market Session Flag'
-      - id: symbol_availability
-        type: b1
-        doc: 'Symbol is halted, paused, or otherwise not available for trading on IEX'
-  trade_report_message:
+        doc: 'Order Priority'
+  order_delete_message:
+    seq:
+      - id: reserved_1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Reserved for future use'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Security identifier'
+      - id: order_id_reference
+        type: u8
+        doc: 'Order ID of the referenced order'
+  order_executed_message:
     seq:
       - id: sale_condition_flags
         type: sale_condition_flags
@@ -284,15 +339,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
+      - id: order_id_reference
+        type: u8
+        doc: 'Order ID of the referenced order'
       - id: size
         type: u4
-        doc: 'Trade volume'
+        doc: 'Quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Trade price. Implied decimal with scale 1e-4'
+        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier. Trade ID is also'
+        doc: 'IEX Generated Identifier'
   sale_condition_flags:
     seq:
       - id: unused_3
@@ -313,12 +371,11 @@ types:
       - id: intermarket_sweep
         type: b1
         doc: 'Intermarket Sweep Order'
-  official_price_message:
+  trade_message:
     seq:
-      - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'Price type identifier'
+      - id: sale_condition_flags
+        type: sale_condition_flags
+        doc: 'Sale Condition Flags'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -328,9 +385,15 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: official_price
+      - id: size
+        type: u4
+        doc: 'Quoted size'
+      - id: price
         type: decimal_s8_4
-        doc: 'Official opening or closing price, as specified. Implied decimal with scale 1e-4'
+        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
+      - id: trade_id
+        type: u8
+        doc: 'IEX Generated Identifier'
   trade_break_message:
     seq:
       - id: sale_condition_flags
@@ -347,19 +410,20 @@ types:
         doc: 'Security identifier'
       - id: size
         type: u4
-        doc: 'Trade volume'
+        doc: 'Quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Trade price. Implied decimal with scale 1e-4'
+        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier. Trade ID is also'
-  auction_information_message:
+        doc: 'IEX Generated Identifier'
+  clear_book_message:
     seq:
-      - id: auction_type
-        type: u1
-        enum: auction_type
-        doc: 'Auction type identifier'
+      - id: reserved_1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Reserved for future use'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -369,42 +433,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: paired_shares
-        type: u4
-        doc: 'Number of shares paired at the Reference Price using orders on the Auction Book'
-      - id: reference_price
-        type: decimal_s8_4
-        doc: 'Clearing price at or within the Reference Price Range using orders on the Auction Book. Implied decimal with scale 1e-4'
-      - id: indicative_clearing_price
-        type: decimal_s8_4
-        doc: 'Clearing price using Eligible Auction Orders. Implied decimal with scale 1e-4'
-      - id: imbalance_shares
-        type: u4
-        doc: 'Number of unpaired shares at the Reference Price using orders on the Auction Book'
-      - id: imbalance_side
-        type: u1
-        enum: imbalance_side
-        doc: 'Side of the unpaired shares at the Reference Price using orders on the Auction Book'
-      - id: extension_number
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Number of extensions an auction received'
-      - id: scheduled_auction_time
-        type: second_timestamp
-        doc: 'Projected time of the auction match. Seconds since Unix epoch'
-      - id: auction_book_clearing_price
-        type: decimal_s8_4
-        doc: 'Clearing price using orders on the Auction Book. Implied decimal with scale 1e-4'
-      - id: collar_reference_price
-        type: decimal_s8_4
-        doc: 'Reference priced used for the auction collar, if any. Implied decimal with scale 1e-4'
-      - id: lower_auction_collar
-        type: decimal_s8_4
-        doc: 'Lower threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
-      - id: upper_auction_collar
-        type: decimal_s8_4
-        doc: 'Upper threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -425,17 +453,6 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
-  second_timestamp:
-    seq:
-      - id: time
-        type: s4
-    instances:
-      hour:
-        value: time / 3600 % 24
-      minute:
-        value: time / 60 % 60
-      second:
-        value: time % 60
 
 enums:
   message_type:
@@ -448,6 +465,9 @@ enums:
     0x48:
       id: 'trading_status_message'
       doc: 'The Trading Status Message is used to indicate the current trading status of a security.'
+    0x49:
+      id: 'retail_liquidity_indicator_message'
+      doc: 'broadcasts a real-time Retail Liquidity Indicator Message each time there is an update to IEX''s eligible retail liquidity interest during the trading day'
     0x4f:
       id: 'operational_halt_status_message'
       doc: 'The Exchange may suspend trading of one or more securities on IEX for operational reasons and indicates such operational halt using the Operational Halt Status Message.'
@@ -457,22 +477,31 @@ enums:
     0x45:
       id: 'security_event_message'
       doc: 'The Security Event Message is used to indicate events that apply to a security'
-    0x51:
-      id: 'quote_update_message'
-      doc: 'Tops broadcasts a real-time Quote Update Message each time IEX''s best bid or offer quotation is updated during the trading day'
+    0x61:
+      id: 'add_order_message'
+      doc: 'A displayed order that has been added to the IEX Book'
+    0x4d:
+      id: 'order_modify_message'
+      doc: 'A displayed order that had its Price, Size, or Priority component changed as a result of user or system action'
+    0x52:
+      id: 'order_delete_message'
+      doc: 'A displayed order that was removed from the IEX Book'
+    0x4c:
+      id: 'order_executed_message'
+      doc: 'A displayed order that was executed against'
     0x54:
-      id: 'trade_report_message'
-      doc: 'Trade Report Messages are sent when an order on the IEX Order Book is executed in whole or in part'
-    0x58:
-      id: 'official_price_message'
-      doc: 'Official Price Messages are sent for each IEX-listed security to indicate the IEX Official Opening Price and IEX Official Closing Price.'
+      id: 'trade_message'
+      doc: 'A non-displayed order on the book that executed against another non-displayed order on the book'
     0x42:
       id: 'trade_break_message'
       doc: 'Trade Break Messages are sent when an execution on IEX is broken on that same trading day'
-    0x41:
-      id: 'auction_information_message'
-      doc: 'Broadcasts an Auction Information Message every one second between the Lock-in Time and the auction match for Opening and Closing Auctions, and during the Display Only Period for IPO, Halt, and Volatility Auctions.'
+    0x43:
+      id: 'clear_book_message'
+      doc: 'This message is used to indicate that the IEX Book for a symbol has been cleared of all orders'
   system_event:
+    0x4f:
+      id: 'start_of_messages'
+      doc: 'Outside Of Heartbeat Messages On The Lower Level Protocol The Start Of Day Message Is The First Message Sent In Any Trading Session'
     0x53:
       id: 'start_of_system_hours'
       doc: 'This Message Indicates That Iex Is Open And Ready To Start Accepting Orders'
@@ -502,12 +531,28 @@ enums:
     0x48:
       id: 'trading_halted_across_all_us_equity_markets'
       doc: 'Trading Halted Across All Us Equity Markets'
+    0x4f:
+      id: 'trading_halt_released_into_an_order_acceptance_period_on_iex'
+      doc: 'Trading Halt Released Into An Order Acceptance Period On Iex'
     0x50:
       id: 'trading_paused_and_order_acceptance_period_on_iex'
       doc: 'Trading Paused And Order Acceptance Period On Iex'
     0x54:
       id: 'trading_on_iex'
       doc: 'Trading On Iex'
+  retail_liquidity_indicator:
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
+    0x41:
+      id: 'buy_interest'
+      doc: 'Buy Interest'
+    0x42:
+      id: 'sell_interest'
+      doc: 'Sell Interest'
+    0x43:
+      id: 'buy_and_sell_interest'
+      doc: 'Buy And Sell Interest'
   operational_halt_status:
     0x4f:
       id: 'iex_specific_operational_trading_halt'
@@ -536,8 +581,8 @@ enums:
       id: 'short_sale_price_test_restriction_deactivated'
       doc: 'Short Sale Price Test Restriction Deactivated'
     0x4e:
-      id: 'detail_not_available'
-      doc: 'Detail Not Available'
+      id: 'not_available'
+      doc: 'Not Available'
   security_event:
     0x4f:
       id: 'opening_process_complete'
@@ -545,37 +590,11 @@ enums:
     0x43:
       id: 'closing_process_complete'
       doc: 'Closing Process Complete'
-  price_type:
-    0x51:
-      id: 'iex_official_opening_price'
-      doc: 'Iex Official Opening Price'
-    0x4d:
-      id: 'iex_official_closing_price'
-      doc: 'Iex Official Closing Price'
-  auction_type:
-    0x4f:
-      id: 'opening_auction'
-      doc: 'Opening Auction'
-    0x43:
-      id: 'closing_auction'
-      doc: 'Closing Auction'
-    0x49:
-      id: 'ipo_auction'
-      doc: 'Ipo Auction'
-    0x48:
-      id: 'halt_auction'
-      doc: 'Halt Auction'
-    0x56:
-      id: 'volatility_auction'
-      doc: 'Volatility Auction'
-  imbalance_side:
-    0x42:
+  side:
+    0x38:
       id: 'buy'
       doc: 'Buy'
-    0x53:
+    0x35:
       id: 'sell'
       doc: 'Sell'
-    0x4e:
-      id: 'none'
-      doc: 'None'
 

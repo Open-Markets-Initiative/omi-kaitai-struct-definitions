@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities DeepPlus IexTp v1.0.2
+# Kaitai struct definition for: Iex IexEquities DeepPlus IexTp v1.01
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: DeepPlus
 #   Encoding: Investors Exchange Transport Protocol
-#   Version: 1.0.2
-#   Date: 1/14/2025
-#   Specification: IEX_DEEP+ Specification v1.02.pdf
+#   Version: 1.01
+#   Date: 9/30/2024
+#   Specification: IEX_DEEP+ Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_deepplus_iextp_v1_0_2
-  title: Iex IexEquities DeepPlus IexTp v1.0.2
+  id: iex_iexequities_deepplus_iextp_v1_01
+  title: Iex IexEquities DeepPlus IexTp v1.01
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities DeepPlus IexTp v1.0.2'
+doc: 'Investors Exchange IEX Equities DeepPlus IexTp v1.01'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:

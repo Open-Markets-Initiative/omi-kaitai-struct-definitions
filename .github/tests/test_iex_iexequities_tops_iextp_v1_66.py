@@ -7,7 +7,7 @@ sys.path.insert(0, "generated/python")
 
 import payloads
 
-from iex_iexequities_tops_iextp_v1_6_6 import IexIexequitiesTopsIextpV166
+from iex_iexequities_tops_iextp_v1_66 import IexIexequitiesTopsIextpV166
 
 
 class IexIexequitiesTopsIextpV166Tests(unittest.TestCase):

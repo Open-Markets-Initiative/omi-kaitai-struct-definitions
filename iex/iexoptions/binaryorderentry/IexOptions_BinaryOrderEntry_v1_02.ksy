@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexOptions BinaryOrderEntry Sbe v1.0
+# Kaitai struct definition for: Iex IexOptions BinaryOrderEntry Sbe v1.02
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: Binary Order Entry
 #   Encoding: Simple Binary Encoding
-#   Version: 1.0
+#   Version: 1.02
 #   Date: 6/1/2026
 #   Specification: IEX Binary Options Protocol Specification
 #
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexoptions_binaryorderentry_sbe_v1_0
-  title: Iex IexOptions BinaryOrderEntry Sbe v1.0
+  id: iex_iexoptions_binaryorderentry_sbe_v1_02
+  title: Iex IexOptions BinaryOrderEntry Sbe v1.02
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Options Binary Order Entry Sbe v1.0'
+doc: 'Investors Exchange IEX Options Binary Order Entry Sbe v1.02'
 doc-ref: https://www.iexexchange.io/options
 
 seq:

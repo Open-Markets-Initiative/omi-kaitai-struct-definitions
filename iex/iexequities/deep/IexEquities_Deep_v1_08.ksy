@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities DeepPlus Snap v1.0.5
+# Kaitai struct definition for: Iex IexEquities Deep IexTp v1.08
 #
 # Protocol:
 #   Organization: Investors Exchange
-#   Protocol: DeepPlus
-#   Encoding: Investors Exchange Snapshot Protocol
-#   Version: 1.0.5
-#   Date: 6/4/2026
-#   Specification: IEX DEEP+ SNAP Specification.pdf
+#   Protocol: Depth Of Book
+#   Encoding: Investors Exchange Transport Protocol
+#   Version: 1.08
+#   Date: 2/27/2018
+#   Specification: IEX DEEP Specification v1.08.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -33,108 +33,91 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_deepplus_snap_v1_0_5
-  title: Iex IexEquities DeepPlus Snap v1.0.5
+  id: iex_iexequities_deep_iextp_v1_08
+  title: Iex IexEquities Deep IexTp v1.08
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities DeepPlus Snap v1.0.5'
+doc: 'Investors Exchange IEX Equities Depth Of Book IexTp v1.08'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
-  - id: message
-    type: message_struct
-    repeat: eos
-    doc: 'Snap message'
+  - id: iextp_header
+    type: iextp_header_struct
+    doc: 'IexTp packet header'
+  - id: messages
+    repeat: expr
+    repeat-expr: iextp_header.message_count
+    type:
+      switch-on: iextp_header.message_count
+      cases:
+        _: message
 
 types:
-  message_struct:
+  iextp_header_struct:
+    seq:
+      - id: version
+        type: u1
+        doc: 'Version of transport specification'
+      - id: reserved
+        size: 1
+        doc: 'Reserved byte'
+      - id: message_protocol_id
+        type: u2
+        doc: 'Unique identifier of the higher layer protocol'
+      - id: channel_id
+        type: u4
+        doc: 'Identifies the stream of bytes sequenced messages'
+      - id: session_id
+        type: u4
+        doc: 'Identifies the session'
+      - id: payload_length
+        type: u2
+        doc: 'Byte length of the payload'
+      - id: message_count
+        type: u2
+        doc: 'Number of messages in the payload'
+      - id: stream_offset
+        type: u8
+        doc: 'Byte offset of the data stream'
+      - id: first_message_sequence_number
+        type: u8
+        doc: 'Sequence of the first message in the segment'
+      - id: send_time
+        type: nanosecond_timestamp
+        doc: 'Send time of segment. Nanoseconds since Unix epoch'
+  message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Snap message header'
+        doc: 'IexTp message header'
       - id: message_data
         size: message_header.message_length + 2 - 3
         type:
           switch-on: message_header.message_type
           cases:
-            'message_type::snapshot_request_message': snapshot_request_message
-            'message_type::error_response_message': error_response_message
-            'message_type::snapshot_start_message': snapshot_start_message
-            'message_type::snapshot_data_message': snapshot_data_message
-            'message_type::snapshot_end_message': snapshot_end_message
+            'message_type::system_event_message': system_event_message
+            'message_type::security_directory_message': security_directory_message
+            'message_type::trading_status_message': trading_status_message
+            'message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
+            'message_type::operational_halt_status_message': operational_halt_status_message
+            'message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
+            'message_type::security_event_message': security_event_message
+            'message_type::price_level_buy_update_message': price_level_buy_update_message
+            'message_type::price_level_sell_update_message': price_level_sell_update_message
+            'message_type::trade_report_message': trade_report_message
+            'message_type::official_price_message': official_price_message
+            'message_type::trade_break_message': trade_break_message
+            'message_type::auction_information_message': auction_information_message
   message_header:
     seq:
       - id: message_length
         type: u2
-        doc: 'Length of message in bytes not including this field'
+        doc: 'Length of the message'
       - id: message_type
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
-  snapshot_request_message:
-    seq:
-      - id: authentication_token
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Token supplied by Iex Market Ops, left justified and space padded on the right'
-      - id: channel_id
-        type: u4
-        doc: 'Channel identifier from the Deep Plus feed IexTp header'
-      - id: session_id
-        type: u4
-        doc: 'Session identifier from the Deep Plus feed IexTp header'
-      - id: minimum_sequence_number
-        type: u8
-        doc: 'Minimum sequence number useable by the client, zero returns the latest snapshot available'
-  error_response_message:
-    seq:
-      - id: reject_reason_code
-        type: u1
-        enum: reject_reason_code
-        doc: 'Reason the Snapshot Request was rejected'
-  snapshot_start_message:
-    seq:
-      - id: snapshot_length
-        type: u8
-        doc: 'Length in bytes of the complete Snapshot Response including the Snapshot Start message, all Snapshot Data messages, and the Snapshot End message'
-  snapshot_data_message:
-    seq:
-      - id: iex_tp_header
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'IexTp header for the wrapped Deep Plus feed message, see the Iex Transport specification'
-      - id: iex_tp_message_block_length
-        type: u2
-        doc: 'Length of the IexTp message block, see the Iex Transport specification'
-      - id: iex_tp_message_length
-        type: u2
-        doc: 'Length of the wrapped Deep Plus message in bytes not including this field'
-      - id: iex_tp_message_type
-        type: u1
-        enum: iex_tp_message_type
-        doc: 'Code identifying the wrapped Deep Plus message type'
-      - id: iex_tp_message_data
-        type:
-          switch-on: iex_tp_message_type
-          cases:
-            'iex_tp_message_type::system_event_message': system_event_message
-            'iex_tp_message_type::security_directory_message': security_directory_message
-            'iex_tp_message_type::trading_status_message': trading_status_message
-            'iex_tp_message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
-            'iex_tp_message_type::operational_halt_status_message': operational_halt_status_message
-            'iex_tp_message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
-            'iex_tp_message_type::security_event_message': security_event_message
-            'iex_tp_message_type::add_order_message': add_order_message
-            'iex_tp_message_type::order_modify_message': order_modify_message
-            'iex_tp_message_type::order_delete_message': order_delete_message
-            'iex_tp_message_type::order_executed_message': order_executed_message
-            'iex_tp_message_type::trade_message': trade_message
-            'iex_tp_message_type::trade_break_message': trade_break_message
-            'iex_tp_message_type::clear_book_message': clear_book_message
   system_event_message:
     seq:
       - id: system_event
@@ -267,12 +250,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-  add_order_message:
+  price_level_buy_update_message:
     seq:
-      - id: side
+      - id: event_flags
         type: u1
-        enum: side
-        doc: 'Side of order'
+        enum: event_flags
+        doc: 'Identifies event processing by the System'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -282,20 +265,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: order_id
-        type: u8
-        doc: 'Order ID of new order'
       - id: size
         type: u4
-        doc: 'Quoted size'
+        doc: 'Aggregate quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
-  order_modify_message:
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
+  price_level_sell_update_message:
     seq:
-      - id: modify_flags
-        type: modify_flags
-        doc: 'Modify Flags'
+      - id: event_flags
+        type: u1
+        enum: event_flags
+        doc: 'Identifies event processing by the System'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -305,43 +286,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: order_id_reference
-        type: u8
-        doc: 'Order ID of the referenced order'
       - id: size
         type: u4
-        doc: 'Quoted size'
+        doc: 'Aggregate quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
-  modify_flags:
-    seq:
-      - id: unused_7
-        type: b7
-        doc: 'Unused'
-      - id: priority
-        type: b1
-        doc: 'Order Priority'
-  order_delete_message:
-    seq:
-      - id: reserved_1
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Reserved for future use'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
-      - id: symbol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Security identifier'
-      - id: order_id_reference
-        type: u8
-        doc: 'Order ID of the referenced order'
-  order_executed_message:
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
+  trade_report_message:
     seq:
       - id: sale_condition_flags
         type: sale_condition_flags
@@ -355,18 +306,15 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: order_id_reference
-        type: u8
-        doc: 'Order ID of the referenced order'
       - id: size
         type: u4
-        doc: 'Quoted size'
+        doc: 'Aggregate quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'IEX Generated Identifier. Trade ID is also'
   sale_condition_flags:
     seq:
       - id: unused_3
@@ -387,11 +335,12 @@ types:
       - id: intermarket_sweep
         type: b1
         doc: 'Intermarket Sweep Order'
-  trade_message:
+  official_price_message:
     seq:
-      - id: sale_condition_flags
-        type: sale_condition_flags
-        doc: 'Sale Condition Flags'
+      - id: price_type
+        type: u1
+        enum: price_type
+        doc: 'Price type identifier'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -401,15 +350,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-      - id: size
-        type: u4
-        doc: 'Quoted size'
-      - id: price
+      - id: official_price
         type: decimal_s8_4
-        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
-      - id: trade_id
-        type: u8
-        doc: 'IEX Generated Identifier'
+        doc: 'Official opening or closing price, as specified. Implied decimal with scale 1e-4'
   trade_break_message:
     seq:
       - id: sale_condition_flags
@@ -426,20 +369,19 @@ types:
         doc: 'Security identifier'
       - id: size
         type: u4
-        doc: 'Quoted size'
+        doc: 'Aggregate quoted size'
       - id: price
         type: decimal_s8_4
-        doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
+        doc: 'Price level to add/update in the IEX Order Book. Implied decimal with scale 1e-4'
       - id: trade_id
         type: u8
-        doc: 'IEX Generated Identifier'
-  clear_book_message:
+        doc: 'IEX Generated Identifier. Trade ID is also'
+  auction_information_message:
     seq:
-      - id: reserved_1
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Reserved for future use'
+      - id: auction_type
+        type: u1
+        enum: auction_type
+        doc: 'Auction type identifier'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time stamp of the system event. Nanoseconds since Unix epoch'
@@ -449,11 +391,42 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-  snapshot_end_message:
-    seq:
-      - id: snapshot_sequence_number
-        type: u8
-        doc: 'Sequence at which the snapshot was created'
+      - id: paired_shares
+        type: u4
+        doc: 'Number of shares paired at the Reference Price using orders on the Auction Book'
+      - id: reference_price
+        type: decimal_s8_4
+        doc: 'Clearing price at or within the Reference Price Range using orders on the Auction Book. Implied decimal with scale 1e-4'
+      - id: indicative_clearing_price
+        type: decimal_s8_4
+        doc: 'Clearing price using Eligible Auction Orders. Implied decimal with scale 1e-4'
+      - id: imbalance_shares
+        type: u4
+        doc: 'Number of unpaired shares at the Reference Price using orders on the Auction Book'
+      - id: imbalance_side
+        type: u1
+        enum: imbalance_side
+        doc: 'Side of the unpaired shares at the Reference Price using orders on the Auction Book'
+      - id: extension_number
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Number of extensions an auction received'
+      - id: scheduled_auction_time
+        type: second_timestamp
+        doc: 'Projected time of the auction match. Seconds since Unix epoch'
+      - id: auction_book_clearing_price
+        type: decimal_s8_4
+        doc: 'Clearing price using orders on the Auction Book. Implied decimal with scale 1e-4'
+      - id: collar_reference_price
+        type: decimal_s8_4
+        doc: 'Reference priced used for the auction collar, if any. Implied decimal with scale 1e-4'
+      - id: lower_auction_collar
+        type: decimal_s8_4
+        doc: 'Lower threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
+      - id: upper_auction_collar
+        type: decimal_s8_4
+        doc: 'Upper threshold price of the auction collar, if any. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -474,47 +447,20 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
 
 enums:
   message_type:
-    0x72:
-      id: 'snapshot_request_message'
-      doc: 'The Snapshot Request message is sent from the client to the Deep Plus Snap server to authenticate and request a Snapshot Response'
-    0x65:
-      id: 'error_response_message'
-      doc: 'Sent by the Deep Plus Snap server to the client when a Snapshot Request is rejected'
-    0x73:
-      id: 'snapshot_start_message'
-      doc: 'First message of a Snapshot Response sent from the Deep Plus Snap server when a Snapshot Request is successful'
-    0x64:
-      id: 'snapshot_data_message'
-      doc: 'Carries one complete Deep Plus feed message wrapped with an IexTp header providing Deep Plus feed sequencing and timing information'
-    0x78:
-      id: 'snapshot_end_message'
-      doc: 'Final message of a Snapshot Response, carries the sequence number at which the snapshot was created'
-  reject_reason_code:
-    0x41:
-      id: 'authentication_failure'
-      doc: 'The Authentication Token Was Not Valid'
-    0x43:
-      id: 'incorrect_channel_id'
-      doc: 'Incorrect Channel Id In The Snapshot Request'
-    0x45:
-      id: 'snapshot_request_already_active'
-      doc: 'A Snapshot Request Is Already Active On This Connection'
-    0x51:
-      id: 'quota_exceeded'
-      doc: 'The Per Channel Daily Snapshot Request Quota Has Been Exceeded'
-    0x52:
-      id: 'snapshot_not_yet_available'
-      doc: 'No Snapshot At Or Above The Requested Minimum Sequence Number Is Available'
-    0x53:
-      id: 'incorrect_session_id'
-      doc: 'Incorrect Session Id In The Snapshot Request'
-    0x55:
-      id: 'unknown_message'
-      doc: 'The Message Was Not Recognized By The Server'
-  iex_tp_message_type:
     0x53:
       id: 'system_event_message'
       doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
@@ -536,27 +482,24 @@ enums:
     0x45:
       id: 'security_event_message'
       doc: 'The Security Event Message is used to indicate events that apply to a security'
-    0x61:
-      id: 'add_order_message'
-      doc: 'A displayed order that has been added to the IEX Book'
-    0x4d:
-      id: 'order_modify_message'
-      doc: 'A displayed order that had its Price, Size, or Priority component changed as a result of user or system action'
-    0x52:
-      id: 'order_delete_message'
-      doc: 'A displayed order that was removed from the IEX Book'
-    0x4c:
-      id: 'order_executed_message'
-      doc: 'A displayed order that was executed against'
+    0x38:
+      id: 'price_level_buy_update_message'
+      doc: 'Deep broadcasts a real-time Price Level Update Message each time a displayed price level on IEX is updated during the trading day'
+    0x35:
+      id: 'price_level_sell_update_message'
+      doc: 'Deep broadcasts a real-time Price Level Update Message each time a displayed price level on IEX is updated during the trading day'
     0x54:
-      id: 'trade_message'
-      doc: 'A non-displayed order on the book that executed against another non-displayed order on the book'
+      id: 'trade_report_message'
+      doc: 'Trade Report Messages are sent when an order on the IEX Order Book is executed in whole or in part'
+    0x58:
+      id: 'official_price_message'
+      doc: 'Official Price Messages are sent for each IEX-listed security to indicate the IEX Official Opening Price and IEX Official Closing Price.'
     0x42:
       id: 'trade_break_message'
       doc: 'Trade Break Messages are sent when an execution on IEX is broken on that same trading day'
-    0x43:
-      id: 'clear_book_message'
-      doc: 'This message is used to indicate that the IEX Book for a symbol has been cleared of all orders'
+    0x41:
+      id: 'auction_information_message'
+      doc: 'Broadcasts an Auction Information Message every one second between the Lock-in Time and the auction match for Opening and Closing Auctions, and during the Display Only Period for IPO, Halt, and Volatility Auctions.'
   system_event:
     0x4f:
       id: 'start_of_messages'
@@ -649,11 +592,44 @@ enums:
     0x43:
       id: 'closing_process_complete'
       doc: 'Closing Process Complete'
-  side:
-    0x38:
+  event_flags:
+    0:
+      id: 'order_book_is_processing_an_event'
+      doc: 'Order Book Is Processing An Event'
+    1:
+      id: 'event_processing_complete'
+      doc: 'Event Processing Complete'
+  price_type:
+    0x51:
+      id: 'iex_official_opening_price'
+      doc: 'Iex Official Opening Price'
+    0x4d:
+      id: 'iex_official_closing_price'
+      doc: 'Iex Official Closing Price'
+  auction_type:
+    0x4f:
+      id: 'opening_auction'
+      doc: 'Opening Auction'
+    0x43:
+      id: 'closing_auction'
+      doc: 'Closing Auction'
+    0x49:
+      id: 'ipo_auction'
+      doc: 'Ipo Auction'
+    0x48:
+      id: 'halt_auction'
+      doc: 'Halt Auction'
+    0x56:
+      id: 'volatility_auction'
+      doc: 'Volatility Auction'
+  imbalance_side:
+    0x42:
       id: 'buy'
       doc: 'Buy'
-    0x35:
+    0x53:
       id: 'sell'
       doc: 'Sell'
+    0x4e:
+      id: 'none'
+      doc: 'None'
 

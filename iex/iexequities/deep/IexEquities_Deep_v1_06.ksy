@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities Deep IexTp v1.0.6
+# Kaitai struct definition for: Iex IexEquities Deep IexTp v1.06
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: Depth Of Book
 #   Encoding: Investors Exchange Transport Protocol
-#   Version: 1.0.6
+#   Version: 1.06
 #   Date: 2/27/2018
 #   Specification: IEX DEEP Specification.pdf
 #
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_deep_iextp_v1_0_6
-  title: Iex IexEquities Deep IexTp v1.0.6
+  id: iex_iexequities_deep_iextp_v1_06
+  title: Iex IexEquities Deep IexTp v1.06
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities Depth Of Book IexTp v1.0.6'
+doc: 'Investors Exchange IEX Equities Depth Of Book IexTp v1.06'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
