@@ -62,14 +62,28 @@ types:
         type: u2
         doc: 'Channel identifier for product/instrument set'
       - id: packet_flags
-        type: u1
-        doc: 'Packet Flags'
+        type: packet_flags
+        doc: 'Uint8 bit set carrying the packet type (INCREMENTAL_UPDATE / SNAPSHOT / RETRANSMIT)'
       - id: message_count
         type: u1
         doc: 'messageCount'
       - id: snapshot_instrument_id
         type: s4
         doc: 'Instrument id of messages in snapshot packet (not used for incrementals)'
+  packet_flags:
+    seq:
+      - id: incremental_update
+        type: b1
+        doc: 'Incremental update packet indicator (Bit 0)'
+      - id: snapshot
+        type: b1
+        doc: 'Snapshot packet indicator (Bit 1)'
+      - id: retransmit
+        type: b1
+        doc: 'Retransmit packet indicator (Bit 2)'
+      - id: reserved_bits
+        type: b5
+        doc: 'Bits reserved for future use'
   sbe_message_struct:
     seq:
       - id: message_header
@@ -866,8 +880,8 @@ types:
         type: decimal_s8_9
         doc: 'lastTradePrice. Implied decimal with scale 1e-9'
       - id: last_trade_time
-        type: s8
-        doc: 'lastTradeTime'
+        type: nanosecond_timestamp
+        doc: 'lastTradeTime. Nanoseconds since Unix epoch'
       - id: best_bid_implied_price
         type: decimal_s8_9
         doc: 'bestBidImpliedPrice. Implied decimal with scale 1e-9'
