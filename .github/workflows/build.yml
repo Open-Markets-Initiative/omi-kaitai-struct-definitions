@@ -18,7 +18,7 @@ jobs:
           java-version: '21'
 
       - name: Install Kaitai Struct Compiler
-        run: curl -sL https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.11/kaitai-struct-compiler-0.11.zip -o "$RUNNER_TEMP/ksc.zip" && unzip -q "$RUNNER_TEMP/ksc.zip" -d "$RUNNER_TEMP"
+        run: curl -sSL --fail --retry 5 --retry-delay 5 --retry-all-errors https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.11/kaitai-struct-compiler-0.11.zip -o "$RUNNER_TEMP/ksc.zip" && unzip -q "$RUNNER_TEMP/ksc.zip" -d "$RUNNER_TEMP"
 
       - name: Compile Definitions
         run: find . -name '*.ksy' | xargs "$RUNNER_TEMP/kaitai-struct-compiler-0.11/bin/kaitai-struct-compiler" -t python -t csharp -t java -t cpp_stl --cpp-standard 11 --outdir generated
@@ -30,7 +30,7 @@ jobs:
         run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers
 
       - name: Build Java Parsers
-        run: curl -sL https://repo1.maven.org/maven2/io/kaitai/kaitai-struct-runtime/0.11/kaitai-struct-runtime-0.11.jar -o "$RUNNER_TEMP/kaitai-runtime.jar" && find generated/java -name '*.java' | xargs javac -cp "$RUNNER_TEMP/kaitai-runtime.jar" -d "$RUNNER_TEMP/java-out"
+        run: curl -sSL --fail --retry 5 --retry-delay 5 --retry-all-errors https://repo1.maven.org/maven2/io/kaitai/kaitai-struct-runtime/0.11/kaitai-struct-runtime-0.11.jar -o "$RUNNER_TEMP/kaitai-runtime.jar" && find generated/java -name '*.java' | xargs javac -cp "$RUNNER_TEMP/kaitai-runtime.jar" -d "$RUNNER_TEMP/java-out"
 
       - name: Build C++ Parsers
         run: git clone --depth=1 https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime.git "$RUNNER_TEMP/kaitai-cpp" && find generated/cpp_stl -name '*.cpp' | xargs g++ -std=c++11 -fsyntax-only -I "$RUNNER_TEMP/kaitai-cpp" -I generated/cpp_stl
