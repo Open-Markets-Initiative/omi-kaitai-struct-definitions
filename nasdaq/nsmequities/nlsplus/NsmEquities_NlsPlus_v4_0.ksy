@@ -839,10 +839,10 @@ enums:
       doc: 'Threshold Indicator Not Available'
   ipo_flag:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Nasdaq Listed Instrument Is Set Up As A New Ipo Security'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Nasdaq Listed Instrument Is Not Set Up As A New Ipo Security'
     0x5a:
       id: 'non_ipo_new_listed'

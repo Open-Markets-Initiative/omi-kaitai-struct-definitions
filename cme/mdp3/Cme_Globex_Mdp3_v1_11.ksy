@@ -192,18 +192,17 @@ types:
         encoding: ASCII
         doc: 'Product Code within Security Group specified'
       - id: security_id_optional
-        type: s4
-        doc: 'If this tag is present, 35=f message is sent for the instrument'
+        type: s4_nullable
+        doc: 'If this tag is present, 35=f message is sent for the instrument. Nullable, No Value = 2147483647'
       - id: trade_date
-        type: u2
-        doc: 'Trade Session Date'
+        type: u2_nullable
+        doc: 'Trade Session Date. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: security_trading_status
-        type: u1
-        enum: security_trading_status
-        doc: 'Identifies the trading status applicable to the instrument or Security Group'
+        type: u1_nullable
+        doc: 'Identifies the trading status applicable to the instrument or Security Group. Nullable, No Value = 255'
       - id: halt_reason
         type: u1
         enum: halt_reason
@@ -294,14 +293,14 @@ types:
         type: s4
         doc: 'Security ID'
       - id: order_qty
-        type: s4
-        doc: 'Quantity requested'
+        type: s4_nullable
+        doc: 'Quantity requested. Nullable, No Value = 2147483647'
       - id: quote_type
         type: s1
         doc: 'Type of quote requested'
       - id: side_optional
-        type: s1
-        doc: 'Side requested'
+        type: s1_nullable
+        doc: 'Side requested. Nullable, No Value = 127'
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
@@ -335,11 +334,11 @@ types:
   incremental_refresh_book_group:
     seq:
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
-        type: s4
-        doc: 'Market Data entry size'
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
       - id: security_id
         type: s4
         doc: 'Security ID'
@@ -347,8 +346,8 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: number_of_orders_optional
-        type: s4
-        doc: 'In Book entry - aggregate number of orders at given price level'
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
       - id: md_price_level
         type: u1
         doc: 'Aggregate book level'
@@ -361,8 +360,8 @@ types:
         enum: md_entry_type_book
         doc: 'Market Data entry type'
       - id: tradeable_size
-        type: s4
-        doc: 'Tradeable qty'
+        type: s4_nullable
+        doc: 'Tradeable qty. Nullable, No Value = 2147483647'
       - id: padding_1
         size: 1
         doc: '1 bytes padding'
@@ -391,14 +390,14 @@ types:
         type: u8
         doc: 'Unique Order ID'
       - id: md_order_priority_optional
-        type: u8
-        doc: 'Order priority for execution on the order book'
+        type: u8_nullable
+        doc: 'Order priority for execution on the order book. Nullable, No Value = 18446744073709551615'
       - id: md_display_qty_optional
-        type: s4
-        doc: 'Visible qty of order'
+        type: s4_nullable
+        doc: 'Visible qty of order. Nullable, No Value = 2147483647'
       - id: reference_id
-        type: u1
-        doc: 'Reference to corresponding Price and Security ID, sequence of MD entry in the message'
+        type: u1_nullable
+        doc: 'Reference to corresponding Price and Security ID, sequence of MD entry in the message. Nullable, No Value = 255'
       - id: order_update_action
         type: u1
         enum: order_update_action
@@ -433,17 +432,17 @@ types:
   incremental_refresh_order_book_group:
     seq:
       - id: order_id_optional
-        type: u8
-        doc: 'Order ID'
+        type: u8_nullable
+        doc: 'Order ID. Nullable, No Value = 18446744073709551615'
       - id: md_order_priority_optional
-        type: u8
-        doc: 'Order priority for execution on the order book'
+        type: u8_nullable
+        doc: 'Order priority for execution on the order book. Nullable, No Value = 18446744073709551615'
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_display_qty_optional
-        type: s4
-        doc: 'Visible qty of order'
+        type: s4_nullable
+        doc: 'Visible qty of order. Nullable, No Value = 2147483647'
       - id: security_id
         type: s4
         doc: 'Security ID'
@@ -503,16 +502,15 @@ types:
         type: s4
         doc: 'The total number of real orders per instrument that participated in a match step within a match event'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is the aggressor or if there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is the aggressor or if there is no aggressor. Nullable, No Value = 255'
       - id: md_update_action
         type: u1
         enum: md_update_action
         doc: 'Market Data update action'
       - id: md_trade_entry_id
-        type: u4
-        doc: 'Market Data Trade entry ID'
+        type: u4_nullable
+        doc: 'Market Data Trade entry ID. Nullable, No Value = 4294967295'
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
@@ -564,11 +562,11 @@ types:
   incremental_refresh_daily_statistics_group:
     seq:
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
-        type: s4
-        doc: 'Market Data entry size'
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
       - id: security_id
         type: s4
         doc: 'Security ID'
@@ -576,8 +574,8 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -645,14 +643,14 @@ types:
   incremental_refresh_limits_banding_group:
     seq:
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: security_id
         type: s4
         doc: 'Security ID'
@@ -695,9 +693,8 @@ types:
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
       - id: open_close_settl_flag
-        type: u1
-        enum: open_close_settl_flag
-        doc: 'Flag describing IOP and Open Price entries'
+        type: u1_nullable
+        doc: 'Flag describing IOP and Open Price entries. Nullable, No Value = 255'
       - id: md_update_action
         type: u1
         enum: md_update_action
@@ -707,8 +704,8 @@ types:
         enum: md_entry_type_statistics
         doc: 'Market Data entry type'
       - id: md_entry_size_short_optional
-        type: s4
-        doc: 'Market Data entry size'
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
       - id: padding_1
         size: 1
         doc: '1 bytes padding'
@@ -733,21 +730,20 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Trade Session Date'
+        type: u2_nullable
+        doc: 'Trade Session Date. Nullable, No Value = 65535'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: snapshot_full_refresh_groups
         type: snapshot_full_refresh_groups
         doc: 'NoMDEntries Block'
@@ -764,24 +760,23 @@ types:
   snapshot_full_refresh_group:
     seq:
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
-        type: s4
-        doc: 'Market Data entry size'
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
       - id: number_of_orders_optional
-        type: s4
-        doc: 'In Book entry - aggregate number of orders at given price level'
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
       - id: md_price_level_optional
-        type: s1
-        doc: 'Aggregate book position'
+        type: s1_nullable
+        doc: 'Aggregate book position. Nullable, No Value = 127'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: open_close_settl_flag
-        type: u1
-        enum: open_close_settl_flag
-        doc: 'Flag describing IOP and Open Price entries'
+        type: u1_nullable
+        doc: 'Flag describing IOP and Open Price entries. Nullable, No Value = 255'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -828,8 +823,8 @@ types:
         type: u8
         doc: 'Unique Order ID'
       - id: md_order_priority_optional
-        type: u8
-        doc: 'Order priority for execution on the order book'
+        type: u8_nullable
+        doc: 'Order priority for execution on the order book. Nullable, No Value = 18446744073709551615'
       - id: md_entry_px_ex
         type: decimal_s8_9
         doc: 'Trade price. Implied decimal with scale 1e-9'
@@ -846,8 +841,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: tot_num_reports_optional
-        type: u4
-        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+        type: u4_nullable
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only. Nullable, No Value = 4294967295'
       - id: security_update_action
         type: u1
         enum: security_update_action
@@ -856,9 +851,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
@@ -932,75 +926,75 @@ types:
         type: decimal_s8_9
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
       - id: main_fraction
-        type: u1
-        doc: 'Price Denominator of Main Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Main Fraction. Nullable, No Value = 255'
       - id: sub_fraction
-        type: u1
-        doc: 'Price Denominator of Sub Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: price_display_format
-        type: u1
-        doc: 'Number of decimals in fractional display price'
+        type: u1_nullable
+        doc: 'Number of decimals in fractional display price. Nullable, No Value = 255'
       - id: unit_of_measure
         type: str
         size: 30
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: decimal_s8_9
-        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
       - id: open_interest_qty
-        type: s4
-        doc: 'The total open interest for the market at the close of the prior trading session'
+        type: s4_nullable
+        doc: 'The total open interest for the market at the close of the prior trading session. Nullable, No Value = 2147483647'
       - id: cleared_volume
-        type: s4
-        doc: 'The total cleared volume of instrument traded during the prior trading session'
+        type: s4_nullable
+        doc: 'The total cleared volume of instrument traded during the prior trading session. Nullable, No Value = 2147483647'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: decay_quantity
-        type: s4
-        doc: 'Indicates the quantity that a contract will decay daily by once the decay start date is reached'
+        type: s4_nullable
+        doc: 'Indicates the quantity that a contract will decay daily by once the decay start date is reached. Nullable, No Value = 2147483647'
       - id: decay_start_date
-        type: u2
-        doc: 'Indicates the date at which a decaying contract will begin to decay'
+        type: u2_nullable
+        doc: 'Indicates the date at which a decaying contract will begin to decay. Nullable, No Value = 65535'
       - id: original_contract_size
-        type: s4
-        doc: 'Fixed contract value assigned to each product'
+        type: s4_nullable
+        doc: 'Fixed contract value assigned to each product. Nullable, No Value = 2147483647'
       - id: contract_multiplier
-        type: s4
-        doc: 'Number of deliverable units per instrument, e.g., peak days in maturity month or number of calendar days in maturity month'
+        type: s4_nullable
+        doc: 'Number of deliverable units per instrument, e.g., peak days in maturity month or number of calendar days in maturity month. Nullable, No Value = 2147483647'
       - id: contract_multiplier_unit
-        type: s1
-        doc: 'Indicates the type of multiplier being applied to the product. Optionally used in combination with tag 231-ContractMultiplier'
+        type: s1_nullable
+        doc: 'Indicates the type of multiplier being applied to the product. Optionally used in combination with tag 231-ContractMultiplier. Nullable, No Value = 127'
       - id: flow_schedule_type
-        type: s1
-        doc: 'The schedule according to which the electricity is delivered in a physical contract, or priced in a financial contract. Specifies whether the contract is defined according to the Easter Peak, Eastern Off-Peak, Western Peak or Western Off-Peak'
+        type: s1_nullable
+        doc: 'The schedule according to which the electricity is delivered in a physical contract, or priced in a financial contract. Specifies whether the contract is defined according to the Easter Peak, Eastern Off-Peak, Western Peak or Western Off-Peak. Nullable, No Value = 127'
       - id: min_price_increment_amount
-        type: decimal_s8_9
-        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: user_defined_instrument
         type: str
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1018,17 +1012,17 @@ types:
   maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   events_groups:
     seq:
       - id: group_size
@@ -1166,16 +1160,16 @@ types:
         type: s1
         doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
       - id: min_lot_size
-        type: decimal_s4_4
-        doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
   md_instrument_definition_option:
     seq:
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: tot_num_reports_optional
-        type: u4
-        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+        type: u4_nullable
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only. Nullable, No Value = 4294967295'
       - id: security_update_action
         type: u1
         enum: security_update_action
@@ -1184,9 +1178,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
@@ -1242,8 +1235,8 @@ types:
         encoding: ASCII
         doc: 'Identifies currency used for price'
       - id: strike_price
-        type: decimal_s8_9
-        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: strike_currency
         type: str
         size: 3
@@ -1255,8 +1248,8 @@ types:
         encoding: ASCII
         doc: 'Identifies currency used for settlement, if different from trading currency'
       - id: min_cab_price
-        type: decimal_s8_9
-        doc: 'Defines cabinet price for outright options products. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Defines cabinet price for outright options products. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: match_algorithm
         type: str
         size: 1
@@ -1269,63 +1262,63 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment_optional
-        type: decimal_s8_9
-        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: min_price_increment_amount
-        type: decimal_s8_9
-        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor
         type: decimal_s8_9
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
       - id: tick_rule
-        type: s1
-        doc: 'VTT code referencing variable tick table'
+        type: s1_nullable
+        doc: 'VTT code referencing variable tick table. Nullable, No Value = 127'
       - id: main_fraction
-        type: u1
-        doc: 'Price Denominator of Main Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Main Fraction. Nullable, No Value = 255'
       - id: sub_fraction
-        type: u1
-        doc: 'Price Denominator of Sub Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: price_display_format
-        type: u1
-        doc: 'Number of decimals in fractional display price'
+        type: u1_nullable
+        doc: 'Number of decimals in fractional display price. Nullable, No Value = 255'
       - id: unit_of_measure
         type: str
         size: 30
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: decimal_s8_9
-        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
       - id: cleared_volume
-        type: s4
-        doc: 'The total cleared volume of instrument traded during the prior trading session'
+        type: s4_nullable
+        doc: 'The total cleared volume of instrument traded during the prior trading session. Nullable, No Value = 2147483647'
       - id: open_interest_qty
-        type: s4
-        doc: 'The total open interest for the market at the close of the prior trading session'
+        type: s4_nullable
+        doc: 'The total open interest for the market at the close of the prior trading session. Nullable, No Value = 2147483647'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: user_defined_instrument
         type: str
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1392,8 +1385,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: tot_num_reports_optional
-        type: u4
-        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+        type: u4_nullable
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only. Nullable, No Value = 4294967295'
       - id: security_update_action
         type: u1
         enum: security_update_action
@@ -1402,9 +1395,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
@@ -1412,8 +1404,8 @@ types:
         type: u1
         doc: 'Identifies the market segment, populated for all CME Globex instruments'
       - id: underlying_product_optional
-        type: u1
-        doc: 'Product complex'
+        type: u1_nullable
+        doc: 'Product complex. Nullable, No Value = 255'
       - id: security_exchange
         type: str
         size: 4
@@ -1477,55 +1469,55 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment_optional
-        type: decimal_s8_9
-        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor
         type: decimal_s8_9
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
       - id: price_display_format
-        type: u1
-        doc: 'Number of decimals in fractional display price'
+        type: u1_nullable
+        doc: 'Number of decimals in fractional display price. Nullable, No Value = 255'
       - id: price_ratio
-        type: decimal_s8_9
-        doc: 'Used for price calculation in spread and leg pricing. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Used for price calculation in spread and leg pricing. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: tick_rule
-        type: s1
-        doc: 'VTT code referencing variable tick table'
+        type: s1_nullable
+        doc: 'VTT code referencing variable tick table. Nullable, No Value = 127'
       - id: unit_of_measure
         type: str
         size: 30
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
       - id: open_interest_qty
-        type: s4
-        doc: 'The total open interest for the market at the close of the prior trading session'
+        type: s4_nullable
+        doc: 'The total open interest for the market at the close of the prior trading session. Nullable, No Value = 2147483647'
       - id: cleared_volume
-        type: s4
-        doc: 'The total cleared volume of instrument traded during the prior trading session'
+        type: s4_nullable
+        doc: 'The total cleared volume of instrument traded during the prior trading session. Nullable, No Value = 2147483647'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: main_fraction
-        type: u1
-        doc: 'Price Denominator of Main Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Main Fraction. Nullable, No Value = 255'
       - id: sub_fraction
-        type: u1
-        doc: 'Price Denominator of Sub Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: price_quote_method
         type: str
         size: 5
@@ -1542,8 +1534,8 @@ types:
         encoding: ASCII
         doc: 'Market Set defines the bilateral relationship and Self Match Prevention configuration for eligible markets'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: financial_instrument_full_name
         type: str
         size: 35
@@ -1589,19 +1581,19 @@ types:
         type: s1
         doc: 'Leg ratio of quantity for this individual leg relative to the entire multi-leg instrument'
       - id: leg_price
-        type: decimal_s8_9
-        doc: 'Price for the future leg of a UDS Covered instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price for the future leg of a UDS Covered instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: leg_option_delta
-        type: decimal_s4_4
-        doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
   md_instrument_definition_fixed_income:
     seq:
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: tot_num_reports_optional
-        type: u4
-        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+        type: u4_nullable
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only. Nullable, No Value = 4294967295'
       - id: security_update_action
         type: u1
         enum: security_update_action
@@ -1610,9 +1602,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
@@ -1677,69 +1668,69 @@ types:
         type: u4
         doc: 'The maximum trading volume for a security'
       - id: min_price_increment_optional
-        type: decimal_s8_9
-        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor
         type: decimal_s8_9
         doc: 'Contains the multiplier to convert the CME Globex display price to the conventional price. Implied decimal with scale 1e-9'
       - id: main_fraction
-        type: u1
-        doc: 'Price Denominator of Main Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Main Fraction. Nullable, No Value = 255'
       - id: sub_fraction
-        type: u1
-        doc: 'Price Denominator of Sub Fraction'
+        type: u1_nullable
+        doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
       - id: price_display_format
-        type: u1
-        doc: 'Number of decimals in fractional display price'
+        type: u1_nullable
+        doc: 'Number of decimals in fractional display price. Nullable, No Value = 255'
       - id: unit_of_measure
         type: str
         size: 30
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: decimal_s8_9
-        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: min_price_increment_amount
-        type: decimal_s8_9
-        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Monetary value equivalent to the minimum price fluctuation. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: issue_date
-        type: u2
-        doc: 'Issue Date'
+        type: u2_nullable
+        doc: 'Issue Date. Nullable, No Value = 65535'
       - id: dated_date
-        type: u2
-        doc: 'Dated Date'
+        type: u2_nullable
+        doc: 'Dated Date. Nullable, No Value = 65535'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity Date'
+        type: u2_nullable
+        doc: 'Maturity Date. Nullable, No Value = 65535'
       - id: coupon_rate
-        type: decimal_s8_9
-        doc: 'The rate of interest that, when multiplied by the principal, par value, or face value of a bond, provides the currency amount of the periodic interest payment. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The rate of interest that, when multiplied by the principal, par value, or face value of a bond, provides the currency amount of the periodic interest payment. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: par_value
-        type: decimal_s8_9
-        doc: 'Par value. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Par value. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: coupon_frequency_unit
         type: str
         size: 3
         encoding: ASCII
         doc: 'Time unit associated with the frequency of the bond''s coupon payment'
       - id: coupon_frequency_period
-        type: u2
-        doc: 'Time unit multiplier for the frequency of the bond''s coupon payment'
+        type: u2_nullable
+        doc: 'Time unit multiplier for the frequency of the bond''s coupon payment. Nullable, No Value = 65535'
       - id: coupon_day_count
         type: str
         size: 20
@@ -1766,9 +1757,8 @@ types:
         encoding: ASCII
         doc: 'Expanded instrument description. Will contain either ISIN or CUSIP'
       - id: security_alt_id_source
-        type: u1
-        enum: security_alt_id_source
-        doc: 'Identifies class or source of the SecurityAltID (455) value'
+        type: u1_nullable
+        doc: 'Identifies class or source of the SecurityAltID (455) value. Nullable, No Value = 255'
       - id: price_quote_method
         type: str
         size: 5
@@ -1795,8 +1785,8 @@ types:
         encoding: ASCII
         doc: 'Market Set defines the bilateral relationship and Self Match Prevention configuration for eligible markets'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1817,8 +1807,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: tot_num_reports_optional
-        type: u4
-        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only'
+        type: u4_nullable
+        doc: 'Total number of instruments in the Replay loop. Used on Replay Feed only. Nullable, No Value = 4294967295'
       - id: security_update_action
         type: u1
         enum: security_update_action
@@ -1827,9 +1817,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC Date and time of last Security Definition add, update or delete on a given Market Data channel. Nanoseconds since Unix epoch'
       - id: md_security_trading_status
-        type: u1
-        enum: md_security_trading_status
-        doc: 'Identifies the current trading state of the instrument'
+        type: u1_nullable
+        doc: 'Identifies the current trading state of the instrument. Nullable, No Value = 255'
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
@@ -1905,23 +1894,23 @@ types:
         encoding: ASCII
         doc: 'Unit of measure for the products'' original contract size. This will be populated for all products listed on CME Globex'
       - id: unit_of_measure_qty
-        type: decimal_s8_9
-        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'This field contains the contract size for each instrument. Used in combination with tag 996-UnitofMeasure. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Reference price for prelisted instruments or the last calculated Settlement whether it be Theoretical, Preliminary or a Final Settle of the session. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: financial_instrument_full_name
         type: str
         size: 35
@@ -1933,11 +1922,11 @@ types:
         encoding: ASCII
         doc: 'Clearing organization'
       - id: start_date
-        type: u2
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
+        type: u2_nullable
+        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Nullable, No Value = 65535'
       - id: end_date
-        type: u2
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral'
+        type: u2_nullable
+        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Nullable, No Value = 65535'
       - id: termination_type
         type: str
         size: 8
@@ -1948,9 +1937,8 @@ types:
         enum: repo_sub_type
         doc: 'Repo Sub Security Type'
       - id: money_or_par
-        type: u1
-        enum: money_or_par
-        doc: 'Money or Par indicates if the GC is filled by par amount or by money amount'
+        type: u1_nullable
+        doc: 'Money or Par indicates if the GC is filled by par amount or by money amount. Nullable, No Value = 255'
       - id: max_no_of_substitutions
         type: u1
         doc: 'Max number of substitutions allowed. The value of 0 indicates that substitutions are not allowed'
@@ -1975,8 +1963,8 @@ types:
         encoding: ASCII
         doc: 'Market Set defines the bilateral relationship and Self Match Prevention configuration for eligible markets'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: term_code
         type: str
         size: 20
@@ -2020,17 +2008,16 @@ types:
         encoding: ASCII
         doc: 'Underlying Instrument Symbol (Contract Name)'
       - id: underlying_security_id_optional
-        type: s4
-        doc: 'Underlying Security ID as qualified by tag 305-UnderlyingSecurityIDSource. Provided only if the underlying is a Globex listed instrument, this value will be the same as that contained in Security Definition Tag 48-SecurityID'
+        type: s4_nullable
+        doc: 'Underlying Security ID as qualified by tag 305-UnderlyingSecurityIDSource. Provided only if the underlying is a Globex listed instrument, this value will be the same as that contained in Security Definition Tag 48-SecurityID. Nullable, No Value = 2147483647'
       - id: underlying_security_alt_id
         type: str
         size: 12
         encoding: ASCII
         doc: 'Underlying Alternate Security identifier value as qualified by Tag 305-UnderlyingSecuityAltIDSource (e.g. CUSIP, ISIN, etc). For Repo special will contain underlying CUSIP or ISIN. For GC Repo may contain a synthetic CUSIP or ISIN representing a basket'
       - id: underlying_security_alt_id_source
-        type: u1
-        enum: underlying_security_alt_id_source
-        doc: 'Identifies class or source of the UnderlyingSecurityAltID (458) value'
+        type: u1_nullable
+        doc: 'Identifies class or source of the UnderlyingSecurityAltID (458) value. Nullable, No Value = 255'
       - id: underlying_financial_instrument_full_name
         type: str
         size: 35
@@ -2052,17 +2039,17 @@ types:
         encoding: ASCII
         doc: 'Underlying Security''s Issuer. See Tag 106-Issuer field for description'
       - id: underlying_max_life_time
-        type: u1
-        doc: 'Max life time of the underlying instruments qualifying for the GC basket in number of year. Will contain null value for Repo specials'
+        type: u1_nullable
+        doc: 'Max life time of the underlying instruments qualifying for the GC basket in number of year. Will contain null value for Repo specials. Nullable, No Value = 255'
       - id: underlying_min_days_to_maturity
-        type: u2
-        doc: 'Minimum days to maturity remaining of the underlying instruments to qualify for GC basket. Will contain null value for Repo specials'
+        type: u2_nullable
+        doc: 'Minimum days to maturity remaining of the underlying instruments to qualify for GC basket. Will contain null value for Repo specials. Nullable, No Value = 65535'
       - id: underlying_instrument_guid_optional
-        type: u8
-        doc: 'Underlying GUID. For Repo specials populated with individual instrument GUID of the underlying security'
+        type: u8_nullable
+        doc: 'Underlying GUID. For Repo specials populated with individual instrument GUID of the underlying security. Nullable, No Value = 18446744073709551615'
       - id: underlying_maturity_date
-        type: u2
-        doc: 'Underlying Security''s Maturity Date. Will be populated with Maturity Date of the underlying security instrument for Repo Specials only'
+        type: u2_nullable
+        doc: 'Underlying Security''s Maturity Date. Will be populated with Maturity Date of the underlying security instrument for Repo Specials only. Nullable, No Value = 65535'
   repo_related_instruments_groups:
     seq:
       - id: group_size
@@ -2084,8 +2071,8 @@ types:
         encoding: ASCII
         doc: 'Related instrument Symbol'
       - id: related_instrument_guid
-        type: u8
-        doc: 'Related Instrument GUID'
+        type: u8_nullable
+        doc: 'Related Instrument GUID. Nullable, No Value = 18446744073709551615'
   snapshot_refresh_top_orders:
     seq:
       - id: transact_time
@@ -2134,8 +2121,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: security_id
         type: s4
         doc: 'Security ID'
@@ -2143,8 +2130,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trade_date
-        type: u2
-        doc: 'Trade Session Date'
+        type: u2_nullable
+        doc: 'Trade Session Date. Nullable, No Value = 65535'
       - id: trade_link_id
         type: u4
         doc: 'Contains the workup ID; unique per instrument per day'
@@ -2183,9 +2170,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: aggressor_indicator
-        type: u1
-        enum: aggressor_indicator
-        doc: 'Aggressor Indicator 1=Aggressor Order 0=Passive Order'
+        type: u1_nullable
+        doc: 'Aggressor Indicator 1=Aggressor Order 0=Passive Order. Nullable, No Value = 255'
   snapshot_full_refresh_tcp:
     seq:
       - id: transact_time
@@ -2198,14 +2184,14 @@ types:
         type: s4
         doc: 'Security ID'
       - id: high_limit_price
-        type: decimal_s8_9
-        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Upper price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: low_limit_price
-        type: decimal_s8_9
-        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Lower price threshold for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: max_price_variation
-        type: decimal_s8_9
-        doc: 'Differential value for price banding. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: snapshot_full_refresh_tcp_groups
         type: snapshot_full_refresh_tcp_groups
         doc: 'NoMDEntries Block'
@@ -2222,31 +2208,30 @@ types:
   snapshot_full_refresh_tcp_group:
     seq:
       - id: md_entry_px_optional_ex
-        type: decimal_s8_9
-        doc: 'Workup price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Workup price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_short_optional
-        type: s4
-        doc: 'Market Data entry size'
+        type: s4_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 2147483647'
       - id: tradeable_size
-        type: s4
-        doc: 'Tradeable qty'
+        type: s4_nullable
+        doc: 'Tradeable qty. Nullable, No Value = 2147483647'
       - id: number_of_orders_optional
-        type: s4
-        doc: 'In Book entry - aggregate number of orders at given price level'
+        type: s4_nullable
+        doc: 'In Book entry - aggregate number of orders at given price level. Nullable, No Value = 2147483647'
       - id: md_price_level_optional
-        type: s1
-        doc: 'Aggregate book position'
+        type: s1_nullable
+        doc: 'Aggregate book position. Nullable, No Value = 127'
       - id: open_close_settl_flag
-        type: u1
-        enum: open_close_settl_flag
-        doc: 'Flag describing IOP and Open Price entries'
+        type: u1_nullable
+        doc: 'Flag describing IOP and Open Price entries. Nullable, No Value = 255'
       - id: md_entry_type
         type: u1
         enum: md_entry_type
         doc: 'Market Data entry type'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice'
+        type: u2_nullable
+        doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -2282,9 +2267,8 @@ types:
         encoding: ASCII
         doc: 'Underlying Alternate Security identifier value as qualified by Tag 305-UnderlyingSecuityAltIDSource (e.g. CUSIP, ISIN, etc). For Repo special will contain underlying CUSIP or ISIN. For GC Repo may contain a synthetic CUSIP or ISIN representing a basket'
       - id: underlying_security_alt_id_source
-        type: u1
-        enum: underlying_security_alt_id_source
-        doc: 'Identifies class or source of the UnderlyingSecurityAltID (458) value'
+        type: u1_nullable
+        doc: 'Identifies class or source of the UnderlyingSecurityAltID (458) value. Nullable, No Value = 255'
       - id: collateral_market_price
         type: decimal_s8_9
         doc: 'Market price of the collateral, either from external market sources or a result of trading activity on the platform. Clean price. Implied decimal with scale 1e-9'
@@ -2295,9 +2279,8 @@ types:
         type: u8
         doc: 'Underlying Instrument GUID. Collateral security identifier in REF Data API services'
       - id: md_stream_id
-        type: u1
-        enum: md_stream_id
-        doc: 'Source of the Clean Price'
+        type: u1_nullable
+        doc: 'Source of the Clean Price. Nullable, No Value = 255'
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
@@ -2314,6 +2297,34 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 2147483647
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == 127
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -2321,6 +2332,27 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   decimal_s4_4:
     seq:
       - id: mantissa
@@ -2328,6 +2360,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s4_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s4_4
+    instances:
+      is_null:
+        value: value.mantissa == 2147483647
 
 enums:
   template_id:
@@ -2486,13 +2525,13 @@ enums:
       doc: 'End Of Workup'
   md_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     1:
       id: 'change'
       doc: 'Change'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
     3:
       id: 'delete_thru'
@@ -2521,13 +2560,13 @@ enums:
       doc: 'Book Reset'
   order_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     1:
       id: 'update'
       doc: 'Update'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
   aggressor_side:
     0:
@@ -2690,7 +2729,7 @@ enums:
       id: 'add'
       doc: 'Add'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
     0x4d:
       id: 'modify'

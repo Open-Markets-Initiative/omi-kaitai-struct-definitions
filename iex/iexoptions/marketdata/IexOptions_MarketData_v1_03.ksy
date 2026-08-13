@@ -722,17 +722,17 @@ enums:
       doc: 'MPVType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   close_indicator:
     0:
-      id: 'default'
+      id: 'default_field'
       doc: 'CloseIndicatorType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
       id: 'underlying_closed'
       doc: 'CloseIndicatorType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   closing_only_series:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   option_type:
     0:

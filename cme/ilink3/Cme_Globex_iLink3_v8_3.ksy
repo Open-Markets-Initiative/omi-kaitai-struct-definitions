@@ -174,16 +174,14 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
       - id: secret_key_secure_id_expiration
-        type: u2
-        doc: 'This indicates in how many days the HMAC secret key will expire'
+        type: u2_nullable
+        doc: 'This indicates in how many days the HMAC secret key will expire. Nullable, No Value = 65535'
       - id: fault_tolerance_indicator
-        type: u1
-        enum: fault_tolerance_indicator
-        doc: 'Indicates whether the connection is primary or backup'
+        type: u1_nullable
+        doc: 'Indicates whether the connection is primary or backup. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: previous_seq_no
         type: u4
         doc: 'Refers to the SeqNum sent in the previous message before this one from CME'
@@ -210,13 +208,11 @@ types:
         type: u2
         doc: 'Error code for reject reason'
       - id: fault_tolerance_indicator
-        type: u1
-        enum: fault_tolerance_indicator
-        doc: 'Indicates whether the connection is primary or backup'
+        type: u1_nullable
+        doc: 'Indicates whether the connection is primary or backup. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   establish:
     seq:
       - id: hmac_signature
@@ -288,16 +284,14 @@ types:
         type: u2
         doc: 'The longest time in milliseconds the customer or CME could remain silent before sending a keep alive message'
       - id: secret_key_secure_id_expiration
-        type: u2
-        doc: 'This indicates in how many days the HMAC secret key will expire'
+        type: u2_nullable
+        doc: 'This indicates in how many days the HMAC secret key will expire. Nullable, No Value = 65535'
       - id: fault_tolerance_indicator
-        type: u1
-        enum: fault_tolerance_indicator
-        doc: 'Indicates whether the connection is primary or backup'
+        type: u1_nullable
+        doc: 'Indicates whether the connection is primary or backup. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   establishment_reject:
     seq:
       - id: reason
@@ -318,13 +312,11 @@ types:
         type: u2
         doc: 'Error code for reject reason'
       - id: fault_tolerance_indicator
-        type: u1
-        enum: fault_tolerance_indicator
-        doc: 'Indicates whether the connection is primary or backup'
+        type: u1_nullable
+        doc: 'Indicates whether the connection is primary or backup. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   sequence:
     seq:
       - id: uuid
@@ -334,9 +326,8 @@ types:
         type: u4
         doc: 'Next expected message sequence number'
       - id: fault_tolerance_indicator
-        type: u1
-        enum: fault_tolerance_indicator
-        doc: 'Indicates whether the connection is primary or backup'
+        type: u1_nullable
+        doc: 'Indicates whether the connection is primary or backup. Nullable, No Value = 255'
       - id: keep_alive_interval_lapsed
         type: u1
         enum: keep_alive_interval_lapsed
@@ -358,17 +349,16 @@ types:
         type: u2
         doc: 'Error code for reject reason'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   retransmit_request:
     seq:
       - id: uuid
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: last_uuid
-        type: u8
-        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
+        type: u8_nullable
+        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value. Nullable, No Value = 18446744073709551615'
       - id: request_timestamp
         type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
@@ -384,8 +374,8 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: last_uuid
-        type: u8
-        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
+        type: u8_nullable
+        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value. Nullable, No Value = 18446744073709551615'
       - id: request_timestamp
         type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
@@ -396,9 +386,8 @@ types:
         type: u2
         doc: 'Count of business messages requested'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   retransmit_reject:
     seq:
       - id: reason
@@ -410,8 +399,8 @@ types:
         type: u8
         doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
       - id: last_uuid
-        type: u8
-        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value'
+        type: u8_nullable
+        doc: 'If RetransmitRequest is for a previous UUID then put that here otherwise put default null value. Nullable, No Value = 18446744073709551615'
       - id: request_timestamp
         type: nanosecond_timestamp
         doc: 'Time of request; recommended to use timestamp as number of nanoseconds since epoch (Jan 1, 1970). Nanoseconds since Unix epoch'
@@ -419,9 +408,8 @@ types:
         type: u2
         doc: 'Error code for reject reason'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   not_applied:
     seq:
       - id: uuid
@@ -434,14 +422,13 @@ types:
         type: u4
         doc: 'Count of how many messages have not been applied'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   new_order_single:
     seq:
       - id: price_optional
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: order_qty
         type: u4
         doc: 'Number of shares or contracts ordered'
@@ -475,22 +462,22 @@ types:
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: location
         type: str
         size: 5
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_type
         type: u1
         enum: ord_type
@@ -511,17 +498,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   exec_inst:
     seq:
       - id: aon
@@ -551,8 +535,8 @@ types:
   order_cancel_replace_request:
     seq:
       - id: price_optional
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: order_qty
         type: u4
         doc: 'Number of shares or contracts ordered'
@@ -583,8 +567,8 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: order_request_id
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
@@ -597,14 +581,14 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_type
         type: u1
         enum: ord_type
@@ -629,17 +613,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   order_cancel_request:
     seq:
       - id: order_id
@@ -684,9 +665,8 @@ types:
         enum: side
         doc: 'Side of order'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
   mass_quote:
     seq:
       - id: party_details_list_req_id
@@ -708,8 +688,8 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: quote_req_id_optional
-        type: u8
-        doc: 'Unique identifier for quote request being responded to'
+        type: u8_nullable
+        doc: 'Unique identifier for quote request being responded to. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -726,13 +706,11 @@ types:
         enum: mm_protection_reset
         doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: quote_entries_groups
         type: quote_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -755,11 +733,11 @@ types:
   quote_entries_group:
     seq:
       - id: bid_px
-        type: decimal_s8_9
-        doc: 'Bid price/rate. This goes together with bid size (tag 134). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Bid price/rate. This goes together with bid size (tag 134). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: offer_px
-        type: decimal_s8_9
-        doc: 'Offer price/rate. This goes together with offer size (tag 135). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Offer price/rate. This goes together with offer size (tag 135). Note that either BidPx, OfferPx or both must be specified for a new quote. Resting quote can be cancelled by not providing either of these four parameters. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: quote_entry_id
         type: u4
         doc: 'Unique identifier for a quote. The QuoteEntryID stays with the quote as a static identifier even if the quote is updated. For fills this value is transposed into client order ID (tag 11)'
@@ -767,14 +745,14 @@ types:
         type: s4
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
       - id: bid_size
-        type: u4
-        doc: 'Quantity of bid. This goes together with bid price (tag 132)'
+        type: u4_nullable
+        doc: 'Quantity of bid. This goes together with bid price (tag 132). Nullable, No Value = 4294967295'
       - id: offer_size
-        type: u4
-        doc: 'Quantity of offer. This goes together with offer price (tag 133)'
+        type: u4_nullable
+        doc: 'Quantity of offer. This goes together with offer price (tag 133). Nullable, No Value = 4294967295'
       - id: underlying_security_id
-        type: s4
-        doc: 'Underlying Security ID. This value will be the same as that contained in Security Definition Tag 48-SecurityID of the underlying instrument'
+        type: s4_nullable
+        doc: 'Underlying Security ID. This value will be the same as that contained in Security Definition Tag 48-SecurityID of the underlying instrument. Nullable, No Value = 2147483647'
       - id: quote_set_id
         type: u2
         doc: 'Unique id for the Quote Set'
@@ -804,42 +782,38 @@ types:
         encoding: ASCII
         doc: 'Used by submitting firm to group trades being allocated into an average price group. The trades in average price group will be used to calculate an average price for the group'
       - id: self_match_prevention_id
-        type: u8
-        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm'
+        type: u8_nullable
+        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm. Nullable, No Value = 18446744073709551615'
       - id: cmta_giveup_cd
         type: u1
         enum: cmta_giveup_cd
         doc: 'Indicates if the order is a give-up or SGX offset. Reject if greater than max length or not containing valid value'
       - id: cust_order_capacity
-        type: u1
-        enum: cust_order_capacity
-        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission)'
+        type: u1_nullable
+        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission). Nullable, No Value = 255'
       - id: clearing_account_type
-        type: u1
-        enum: clearing_account_type
-        doc: 'Designates the account type to be used for the order when submitted to clearing'
+        type: u1_nullable
+        doc: 'Designates the account type to be used for the order when submitted to clearing. Nullable, No Value = 255'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
         doc: 'Used to act upon the outcome when a self-match is detected and an order is prevented from trading against another order with the same SelfMatchPreventionID (Tag 2362). 1=Cancel newest signifies that incoming order is cancelled. 2=Cancel Oldest signifies that the resting order is cancelled. Absence of this field (with Tag 2362) is interpreted as cancel oldest'
       - id: avg_px_indicator
-        type: u1
-        enum: avg_px_indicator
-        doc: 'Average pricing indicator'
+        type: u1_nullable
+        doc: 'Average pricing indicator. Nullable, No Value = 255'
       - id: clearing_trade_price_type
-        type: u1
-        enum: clearing_trade_price_type
-        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price)'
+        type: u1_nullable
+        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price). Nullable, No Value = 255'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
         doc: 'Codes that apply special information that the Broker / Dealer needs to report, as specified by the customer. Defines source of the order'
       - id: executor
-        type: u8
-        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: idm_short_code
-        type: u8
-        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -910,31 +884,27 @@ types:
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: self_match_prevention_id
-        type: u8
-        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm'
+        type: u8_nullable
+        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm. Nullable, No Value = 18446744073709551615'
       - id: party_detail_request_status
         type: u1
         doc: 'Status of party details definition request'
       - id: cust_order_capacity
-        type: u1
-        enum: cust_order_capacity
-        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission)'
+        type: u1_nullable
+        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission). Nullable, No Value = 255'
       - id: clearing_account_type
-        type: u1
-        enum: clearing_account_type
-        doc: 'Designates the account type to be used for the order when submitted to clearing'
+        type: u1_nullable
+        doc: 'Designates the account type to be used for the order when submitted to clearing. Nullable, No Value = 255'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
         doc: 'Used to act upon the outcome when a self-match is detected and an order is prevented from trading against another order with the same SelfMatchPreventionID (Tag 2362). 1=Cancel newest signifies that incoming order is cancelled. 2=Cancel Oldest signifies that the resting order is cancelled. Absence of this field (with Tag 2362) is interpreted as cancel oldest'
       - id: avg_px_indicator
-        type: u1
-        enum: avg_px_indicator
-        doc: 'Average pricing indicator'
+        type: u1_nullable
+        doc: 'Average pricing indicator. Nullable, No Value = 255'
       - id: clearing_trade_price_type
-        type: u1
-        enum: clearing_trade_price_type
-        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price)'
+        type: u1_nullable
+        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price). Nullable, No Value = 255'
       - id: cmta_giveup_cd
         type: u1
         enum: cmta_giveup_cd
@@ -951,19 +921,18 @@ types:
         type: u1
         doc: 'Status of party detail definition for one party'
       - id: executor
-        type: u8
-        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: idm_short_code
-        type: u8
-        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -989,25 +958,25 @@ types:
         encoding: ASCII
         doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
       - id: party_details_list_req_id_optional
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+        type: u8_nullable
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message. Nullable, No Value = 18446744073709551615'
       - id: sending_time_epoch
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: business_reject_ref_id
-        type: u8
-        doc: 'The value of the business-level ID field on the message being referenced. Required unless the corresponding ID field was not specified'
+        type: u8_nullable
+        doc: 'The value of the business-level ID field on the message being referenced. Required unless the corresponding ID field was not specified. Nullable, No Value = 18446744073709551615'
       - id: location_optional
         type: str
         size: 5
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: ref_seq_num
-        type: u4
-        doc: 'Tag 9726 - SeqNum of the rejected message'
+        type: u4_nullable
+        doc: 'Tag 9726 - SeqNum of the rejected message. Nullable, No Value = 4294967295'
       - id: ref_tag_id
-        type: u2
-        doc: 'The tag number of the FIX/FIXP field being referenced which is invalid'
+        type: u2_nullable
+        doc: 'The tag number of the FIX/FIXP field being referenced which is invalid. Nullable, No Value = 65535'
       - id: business_reject_reason
         type: u2
         doc: 'Code to identify reason for a Business Message Reject message'
@@ -1021,13 +990,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: manual_order_indicator_optional
-        type: u1
-        enum: manual_order_indicator_optional
-        doc: 'Indicates if order was sent manually or generated by automated trading logi'
+        type: u1_nullable
+        doc: 'Indicates if order was sent manually or generated by automated trading logi. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
   execution_report_new:
     seq:
       - id: seq_num
@@ -1061,8 +1028,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1073,11 +1040,11 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -1090,17 +1057,17 @@ types:
         type: u4
         doc: 'Number of shares or contracts ordered'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -1122,12 +1089,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -1136,17 +1102,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   execution_report_reject:
     seq:
       - id: seq_num
@@ -1182,11 +1145,11 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price_optional
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1197,11 +1160,11 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -1214,20 +1177,20 @@ types:
         type: u4
         doc: 'Number of shares or contracts ordered'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: ord_rej_reason
         type: u2
         doc: 'Code to identify reason for order rejection'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -1249,12 +1212,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -1263,17 +1225,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   execution_report_elimination:
     seq:
       - id: seq_num
@@ -1307,8 +1266,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1319,11 +1278,11 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -1339,14 +1298,14 @@ types:
         type: u4
         doc: 'Number of shares or contracts ordered'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -1368,8 +1327,8 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -1378,17 +1337,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   execution_report_trade_outright:
     seq:
       - id: seq_num
@@ -1425,8 +1381,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1440,11 +1396,11 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -1469,17 +1425,17 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: trade_link_id
-        type: u4
-        doc: 'Contains the workup ID; unique per instrument per day'
+        type: u4_nullable
+        doc: 'Contains the workup ID; unique per instrument per day. Nullable, No Value = 4294967295'
       - id: leaves_qty
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
         enum: ord_status_trd
@@ -1509,8 +1465,8 @@ types:
         enum: aggressor_indicator
         doc: 'Indicates if order was incoming or resting for the match event'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -1519,17 +1475,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: ownership
         type: u1
         doc: 'Specifies the owner of the work up private phase'
@@ -1592,9 +1545,8 @@ types:
         type: u4
         doc: 'Refers to the specific fill quantity between this order and the opposite order'
       - id: order_event_type
-        type: u1
-        enum: order_event_type
-        doc: 'The type of event affecting an order'
+        type: u1_nullable
+        doc: 'The type of event affecting an order. Nullable, No Value = 255'
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
@@ -1634,8 +1586,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1649,11 +1601,11 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -1681,11 +1633,11 @@ types:
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
         enum: ord_status_trd
@@ -1715,8 +1667,8 @@ types:
         enum: aggressor_indicator
         doc: 'Indicates if order was incoming or resting for the match event'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: total_num_securities
         type: u1
         doc: 'Indicates total number of leg fills for the spread; Will represent total number of ExecutionReportTradeSpreadLeg messages sent for the spread and will be set to 0 when spread leg fills are consolidated with spread fill'
@@ -1728,13 +1680,11 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -1802,9 +1752,8 @@ types:
         type: u4
         doc: 'Refers to the specific fill quantity between this order and the opposite order'
       - id: order_event_type
-        type: u1
-        enum: order_event_type
-        doc: 'The type of event affecting an order'
+        type: u1_nullable
+        doc: 'The type of event affecting an order. Nullable, No Value = 255'
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
@@ -1844,8 +1793,8 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: underlying_px
-        type: decimal_s8_9
-        doc: 'Underlying price associated with a derivative instrument. Price for the future used in calculating the conversion of vol. to premium for the option. Only applicable for vol quoted option trades. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Underlying price associated with a derivative instrument. Price for the future used in calculating the conversion of vol. to premium for the option. Only applicable for vol quoted option trades. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -1882,8 +1831,8 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: ord_status_trd
         type: u1
         enum: ord_status_trd
@@ -1910,10 +1859,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1921,10 +1870,10 @@ types:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1932,10 +1881,10 @@ types:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1943,10 +1892,10 @@ types:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1977,9 +1926,8 @@ types:
         type: u4
         doc: 'Refers to the specific fill quantity between this order and the opposite order'
       - id: order_event_type
-        type: u1
-        enum: order_event_type
-        doc: 'The type of event affecting an order'
+        type: u1_nullable
+        doc: 'The type of event affecting an order. Nullable, No Value = 255'
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
@@ -2016,9 +1964,8 @@ types:
         enum: quote_cancel_type
         doc: 'Identifies the type of Quote Cancel. A working quote can be cancelled by providing either it''s instrument, instrument group or by cancelling all'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: quote_cancel_entries_groups
         type: quote_cancel_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -2043,8 +1990,8 @@ types:
         encoding: ASCII
         doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=?Product Group? (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
       - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+        type: s4_nullable
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
   quote_cancel_sets_groups:
     seq:
       - id: group_size
@@ -2058,11 +2005,11 @@ types:
   quote_cancel_sets_group:
     seq:
       - id: bid_size
-        type: u4
-        doc: 'Quantity of bid. This goes together with bid price (tag 132)'
+        type: u4_nullable
+        doc: 'Quantity of bid. This goes together with bid price (tag 132). Nullable, No Value = 4294967295'
       - id: offer_size
-        type: u4
-        doc: 'Quantity of offer. This goes together with offer price (tag 133)'
+        type: u4_nullable
+        doc: 'Quantity of offer. This goes together with offer price (tag 133). Nullable, No Value = 4294967295'
       - id: quote_set_id
         type: u2
         doc: 'Unique id for the Quote Set'
@@ -2100,35 +2047,31 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+        type: s4_nullable
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: mass_action_scope
         type: u1
         enum: mass_action_scope
         doc: 'Specifies the scope of the action'
       - id: market_segment_id
-        type: u1
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment'
+        type: u1_nullable
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
       - id: mass_cancel_request_type
-        type: u1
-        enum: mass_cancel_request_type
-        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
+        type: u1_nullable
+        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
       - id: side_optional
-        type: u1
-        enum: side_optional
-        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled'
+        type: u1_nullable
+        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled. Nullable, No Value = 255'
       - id: mass_action_ord_typ
         type: u1
         enum: mass_action_ord_typ
         doc: 'If provided then only orders of this type will be cancelled. If absent then all order types will be cancelled'
       - id: mass_cancel_tif
-        type: u1
-        enum: mass_cancel_tif
-        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled'
+        type: u1_nullable
+        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
   order_mass_status_request:
     seq:
       - id: party_details_list_req_id
@@ -2163,23 +2106,21 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+        type: s4_nullable
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: mass_status_req_type
         type: u1
         enum: mass_status_req_type
         doc: 'Specifies the scope of the OrderMassStatusRequest within the context of working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm'
       - id: ord_status_req_type
-        type: u1
-        enum: ord_status_req_type
-        doc: 'If present ? specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination'
+        type: u1_nullable
+        doc: 'If present ? specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination. Nullable, No Value = 255'
       - id: mass_status_tif
-        type: u1
-        enum: mass_status_tif
-        doc: 'Specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) if present. Absence of this field is interpreted as Day & GTC & GTD. FAK is excluded since scope is limited to working orders only'
+        type: u1_nullable
+        doc: 'Specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) if present. Absence of this field is interpreted as Day & GTC & GTD. FAK is excluded since scope is limited to working orders only. Nullable, No Value = 255'
       - id: market_segment_id
-        type: u1
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment'
+        type: u1_nullable
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
   execution_report_modify:
     seq:
       - id: seq_num
@@ -2213,8 +2154,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -2225,11 +2166,11 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -2248,17 +2189,17 @@ types:
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -2280,12 +2221,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -2294,17 +2234,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   execution_report_status:
     seq:
       - id: seq_num
@@ -2340,11 +2277,11 @@ types:
         type: u8
         doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
       - id: price_optional
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price per share or contract. Conditionally required if the order type requires a price (not market orders). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -2355,17 +2292,17 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: ord_status_req_id_optional
-        type: u8
-        doc: 'Used to uniquely identify a specific Order Status Request message'
+        type: u8_nullable
+        doc: 'Used to uniquely identify a specific Order Status Request message. Nullable, No Value = 18446744073709551615'
       - id: mass_status_req_id_optional
-        type: u8
-        doc: 'Unique ID of Order Mass Status Request as assigned by the client system'
+        type: u8_nullable
+        doc: 'Unique ID of Order Mass Status Request as assigned by the client system. Nullable, No Value = 18446744073709551615'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -2384,14 +2321,14 @@ types:
         type: u4
         doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -2417,12 +2354,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: last_rpt_requested
-        type: u1
-        enum: last_rpt_requested
-        doc: 'Indicates whether this message is the last report message in response to an Order Mass Status Request. Required if responding to a Order Mass Status Request'
+        type: u1_nullable
+        doc: 'Indicates whether this message is the last report message in response to an Order Mass Status Request. Required if responding to a Order Mass Status Request. Nullable, No Value = 255'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -2431,17 +2367,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   order_status_request:
     seq:
       - id: party_details_list_req_id
@@ -2506,8 +2439,8 @@ types:
         type: decimal_s8_9
         doc: 'Price per share or contract. Implied decimal with scale 1e-9'
       - id: stop_px
-        type: decimal_s8_9
-        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The stop price of a stop protect or stop limit order. (Conditionally required if OrdType = 3 or 4). Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
@@ -2518,11 +2451,11 @@ types:
         type: u8
         doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
       - id: cross_id_optional
-        type: u8
-        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order'
+        type: u8_nullable
+        doc: 'Identifier for a cross order. Will be present if execution report is in response to a cross order. Nullable, No Value = 18446744073709551615'
       - id: host_cross_id
-        type: u8
-        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order'
+        type: u8_nullable
+        doc: 'Host assigned entity ID that can be used to reference all components of a cross; sides + strategy + legs. The HostCrossID will also be used to link together components of the cross order. For example, each individual execution report associated with the order will carry HostCrossID in order to tie them back together to the original cross order. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -2538,17 +2471,17 @@ types:
         type: u4
         doc: 'Total quantity filled'
       - id: min_qty
-        type: u4
-        doc: 'Minimum quantity of an order to be executed'
+        type: u4_nullable
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity'
+        type: u4_nullable
+        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
       - id: expire_date
-        type: u2
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past'
+        type: u2_nullable
+        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: ord_type_optional
         type: u1
         enum: ord_type_optional
@@ -2570,16 +2503,14 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'Used to communicate unsolicited cancels'
+        type: u1_nullable
+        doc: 'Used to communicate unsolicited cancels. Nullable, No Value = 255'
       - id: cross_type
-        type: u1
-        doc: 'ype of cross being submitted to a market. (if in response to a cross order)'
+        type: u1_nullable
+        doc: 'ype of cross being submitted to a market. (if in response to a cross order). Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInst bit set'
@@ -2588,17 +2519,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   order_cancel_reject:
     seq:
       - id: seq_num
@@ -2651,8 +2579,8 @@ types:
         type: u2
         doc: 'Code to identify reason for cancel rejection'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -2662,13 +2590,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
   order_cancel_replace_reject:
     seq:
       - id: seq_num
@@ -2721,8 +2647,8 @@ types:
         type: u2
         doc: 'Code to identify reason for cancel rejection'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -2732,13 +2658,11 @@ types:
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
   party_details_list_request:
     seq:
       - id: party_details_list_req_id
@@ -2829,8 +2753,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: self_match_prevention_id
-        type: u8
-        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm'
+        type: u8_nullable
+        doc: 'Identifies an order or trade that should not be matched to an opposite order or trade if both buy and sell orders for the same asset contain the same SelfMatchPreventionID (2362) and submitted by the same firm. Nullable, No Value = 18446744073709551615'
       - id: tot_num_parties
         type: u2
         doc: 'Indicates total number of PartyDetailsListReports being returned in response to PartyDetailsListRequest'
@@ -2843,25 +2767,21 @@ types:
         enum: last_fragment
         doc: 'Indicates whether the message is the last message in a sequence of messages to support fragmentation'
       - id: cust_order_capacity
-        type: u1
-        enum: cust_order_capacity
-        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission)'
+        type: u1_nullable
+        doc: 'Capacity of customer placing the order. Used by futures exchanges to indicate the CTICode (customer type indicator) as required by the US CFTC (Commodity Futures Trading Commission). Nullable, No Value = 255'
       - id: clearing_account_type
-        type: u1
-        enum: clearing_account_type
-        doc: 'Designates the account type to be used for the order when submitted to clearing'
+        type: u1_nullable
+        doc: 'Designates the account type to be used for the order when submitted to clearing. Nullable, No Value = 255'
       - id: self_match_prevention_instruction
         type: u1
         enum: self_match_prevention_instruction
         doc: 'Used to act upon the outcome when a self-match is detected and an order is prevented from trading against another order with the same SelfMatchPreventionID (Tag 2362). 1=Cancel newest signifies that incoming order is cancelled. 2=Cancel Oldest signifies that the resting order is cancelled. Absence of this field (with Tag 2362) is interpreted as cancel oldest'
       - id: avg_px_indicator
-        type: u1
-        enum: avg_px_indicator
-        doc: 'Average pricing indicator'
+        type: u1_nullable
+        doc: 'Average pricing indicator. Nullable, No Value = 255'
       - id: clearing_trade_price_type
-        type: u1
-        enum: clearing_trade_price_type
-        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price)'
+        type: u1_nullable
+        doc: 'Indicates to recipient whether trade is clearing at execution prices LastPx (tag 31) or alternate clearing price (prior day settlement price). Nullable, No Value = 255'
       - id: cmta_giveup_cd
         type: u1
         enum: cmta_giveup_cd
@@ -2871,19 +2791,18 @@ types:
         enum: cust_order_handling_inst
         doc: 'Codes that apply special information that the Broker / Dealer needs to report, as specified by the customer. Defines source of the order'
       - id: executor
-        type: u8
-        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Will be populated with a short code for the person or algo identified in FIX tag 5392 which will be mapped to National ID or Algo at reporting time. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: idm_short_code
-        type: u8
-        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only'
+        type: u8_nullable
+        doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -2959,9 +2878,8 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: quote_type
-        type: u1
-        enum: quote_type
-        doc: 'Type of quote requested'
+        type: u1_nullable
+        doc: 'Type of quote requested. Nullable, No Value = 255'
       - id: related_sym_groups
         type: related_sym_groups
         doc: 'NoRelatedSym Block'
@@ -2981,8 +2899,8 @@ types:
         type: s4
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
       - id: order_qty_optional
-        type: u4
-        doc: 'Order quantity. Mandatory for buy or sell but not required for cross'
+        type: u4_nullable
+        doc: 'Order quantity. Mandatory for buy or sell but not required for cross. Nullable, No Value = 4294967295'
       - id: rfq_side
         type: u1
         enum: rfq_side
@@ -3086,8 +3004,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
       - id: quote_req_id_optional
-        type: u8
-        doc: 'Unique identifier for quote request being responded to'
+        type: u8_nullable
+        doc: 'Unique identifier for quote request being responded to. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -3097,11 +3015,11 @@ types:
         type: u4
         doc: 'Unique identifier for mass quote populated by the client system'
       - id: quote_reject_reason
-        type: u2
-        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
+        type: u2_nullable
+        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: quote_ack_status
         type: u1
         enum: quote_ack_status
@@ -3118,20 +3036,17 @@ types:
         enum: mm_protection_reset
         doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: tot_no_quote_entries_optional
-        type: u1
-        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+        type: u1_nullable
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries. Nullable, No Value = 255'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -3204,11 +3119,11 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: quote_reject_reason
-        type: u2
-        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
+        type: u2_nullable
+        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: quote_ack_status
         type: u1
         enum: quote_ack_status
@@ -3218,9 +3133,8 @@ types:
         enum: manual_order_indicator
         doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -3266,11 +3180,11 @@ types:
         type: u4
         doc: 'Unique identifier for mass quote populated by the client system'
       - id: quote_reject_reason
-        type: u2
-        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected'
+        type: u2_nullable
+        doc: 'Contains reason (error code) the corresponding MassQuote message has been rejected. When this tag is returned, all quotes in the corresponding Mass Quote message are rejected. Nullable, No Value = 65535'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
@@ -3287,21 +3201,17 @@ types:
         enum: mm_protection_reset
         doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
       - id: unsolicited_cancel_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Type of quote cancel generated by CME -- returned only for unsolicited quote cancels'
+        type: str_1_nullable
+        doc: 'Type of quote cancel generated by CME -- returned only for unsolicited quote cancels. Nullable, No Value = 0'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: tot_no_quote_entries_optional
-        type: u1
-        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+        type: u1_nullable
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries > 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -3393,8 +3303,8 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: orig_secondary_execution_id
-        type: u8
-        doc: 'Unique identifier of the fill which is being corrected'
+        type: u8_nullable
+        doc: 'Unique identifier of the fill which is being corrected. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -3410,11 +3320,11 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: orig_side_trade_id
-        type: u4
-        doc: 'Refers back to the unique ID assigned to the corrected trade'
+        type: u4_nullable
+        doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
         enum: ord_status_trd_cxl
@@ -3443,17 +3353,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -3494,8 +3401,8 @@ types:
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
       - id: original_order_event_exec_id
-        type: u4
-        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted'
+        type: u4_nullable
+        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
   execution_report_trade_addendum_spread:
     seq:
       - id: seq_num
@@ -3538,8 +3445,8 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: orig_secondary_execution_id
-        type: u8
-        doc: 'Unique identifier of the fill which is being corrected'
+        type: u8_nullable
+        doc: 'Unique identifier of the fill which is being corrected. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -3558,11 +3465,11 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: orig_side_trade_id
-        type: u4
-        doc: 'Refers back to the unique ID assigned to the corrected trade'
+        type: u4_nullable
+        doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
         enum: ord_status_trd_cxl
@@ -3598,17 +3505,14 @@ types:
         enum: execution_mode
         doc: 'Identifies whether the order should be treated as passive (will not match when entered) or aggressive (could match when entered); default behavior when absent is aggressive'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: managed_order
-        type: u1
-        enum: managed_order
-        doc: 'Boolean: flags a managed order'
+        type: u1_nullable
+        doc: 'Boolean: flags a managed order. Nullable, No Value = 255'
       - id: short_sale_type
-        type: u1
-        enum: short_sale_type
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID'
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -3637,14 +3541,14 @@ types:
         type: decimal_s8_9
         doc: 'Execution price assigned to a leg of a multileg instrument. Implied decimal with scale 1e-9'
       - id: leg_exec_ref_id
-        type: u8
-        doc: 'The original ExecID(17) value corresponding to trade leg which is being corrected'
+        type: u8_nullable
+        doc: 'The original ExecID(17) value corresponding to trade leg which is being corrected. Nullable, No Value = 18446744073709551615'
       - id: leg_trade_id
         type: u4
         doc: 'The TradeID value corresponding to a trade leg'
       - id: leg_trade_ref_id
-        type: u4
-        doc: 'Refers to the original LegTradeID of the leg trade being corrected'
+        type: u4_nullable
+        doc: 'Refers to the original LegTradeID of the leg trade being corrected. Nullable, No Value = 4294967295'
       - id: leg_security_id
         type: s4
         doc: 'Multileg instrument''s individual security''s SecurityID'
@@ -3689,8 +3593,8 @@ types:
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
       - id: original_order_event_exec_id
-        type: u4
-        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted'
+        type: u4_nullable
+        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
   execution_report_trade_addendum_spread_leg:
     seq:
       - id: seq_num
@@ -3733,8 +3637,8 @@ types:
         type: u8
         doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
       - id: orig_secondary_execution_id
-        type: u8
-        doc: 'Unique identifier of the fill which is being corrected'
+        type: u8_nullable
+        doc: 'Unique identifier of the fill which is being corrected. Nullable, No Value = 18446744073709551615'
       - id: location
         type: str
         size: 5
@@ -3750,11 +3654,11 @@ types:
         type: u4
         doc: 'The unique ID assigned to the trade once it is received or matched by the exchange'
       - id: orig_side_trade_id
-        type: u4
-        doc: 'Refers back to the unique ID assigned to the corrected trade'
+        type: u4_nullable
+        doc: 'Refers back to the unique ID assigned to the corrected trade. Nullable, No Value = 4294967295'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trading day (expressed in local time at place of trade)'
+        type: u2_nullable
+        doc: 'Indicates date of trading day (expressed in local time at place of trade). Nullable, No Value = 65535'
       - id: ord_status_trd_cxl
         type: u1
         enum: ord_status_trd_cxl
@@ -3816,11 +3720,11 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+        type: s4_nullable
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: mass_action_response
         type: u1
         enum: mass_action_response
@@ -3841,35 +3745,30 @@ types:
         enum: last_fragment
         doc: 'Indicates whether the message is the last message in a sequence of messages to support fragmentation'
       - id: mass_action_reject_reason
-        type: u1
-        doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0'
+        type: u1_nullable
+        doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0. Nullable, No Value = 255'
       - id: market_segment_id
-        type: u1
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment'
+        type: u1_nullable
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
       - id: mass_cancel_request_type
-        type: u1
-        enum: mass_cancel_request_type
-        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
+        type: u1_nullable
+        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
       - id: side_optional
-        type: u1
-        enum: side_optional
-        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled'
+        type: u1_nullable
+        doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled. Nullable, No Value = 255'
       - id: mass_action_ord_typ
         type: u1
         enum: mass_action_ord_typ
         doc: 'If provided then only orders of this type will be cancelled. If absent then all order types will be cancelled'
       - id: mass_cancel_tif
-        type: u1
-        enum: mass_cancel_tif
-        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled'
+        type: u1_nullable
+        doc: 'If provided then only orders with this qualifier will be cancelled. If absent then all Day & GT orders will be cancelled. Nullable, No Value = 255'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: liquidity_flag
-        type: u1
-        enum: liquidity_flag
-        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets'
+        type: u1_nullable
+        doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
       - id: poss_retrans_flag
         type: u1
         enum: poss_retrans_flag
@@ -3934,17 +3833,17 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: start_date
-        type: u2
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
+        type: u2_nullable
+        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Nullable, No Value = 65535'
       - id: end_date
-        type: u2
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral'
+        type: u2_nullable
+        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Nullable, No Value = 65535'
       - id: max_no_of_substitutions
-        type: u1
-        doc: 'Max number of substitutions allowed. The value of 0 indicates that substitutions are not allowed'
+        type: u1_nullable
+        doc: 'Max number of substitutions allowed. The value of 0 indicates that substitutions are not allowed. Nullable, No Value = 255'
       - id: source_repo_id
-        type: s4
-        doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on'
+        type: s4_nullable
+        doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on. Nullable, No Value = 2147483647'
       - id: request_legs_groups
         type: request_legs_groups
         doc: 'NoLegs Block'
@@ -3961,8 +3860,8 @@ types:
   request_legs_group:
     seq:
       - id: leg_price
-        type: decimal_s8_9
-        doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: leg_security_id
         type: s4
         doc: 'Multileg instrument''s individual security''s SecurityID'
@@ -3974,16 +3873,16 @@ types:
         enum: leg_side
         doc: 'The side of this individual leg of a multileg security'
       - id: leg_ratio_qty
-        type: u1
-        doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg'
+        type: u1_nullable
+        doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg. Nullable, No Value = 255'
   leg_option_delta:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -4043,8 +3942,8 @@ types:
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
-        type: s4
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument'
+        type: s4_nullable
+        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: currency
         type: str
         size: 3
@@ -4054,20 +3953,20 @@ types:
         type: maturity_month_year
         doc: 'SecurityDefinitionResponse'
       - id: delay_duration
-        type: u2
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message'
+        type: u2_nullable
+        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 65535'
       - id: start_date
-        type: u2
-        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral'
+        type: u2_nullable
+        doc: 'Start date of a financing deal, i.e. the date the buyer pays the seller cash and takes control of the collateral. Nullable, No Value = 65535'
       - id: end_date
-        type: u2
-        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral'
+        type: u2_nullable
+        doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Nullable, No Value = 65535'
       - id: max_no_of_substitutions
-        type: u1
-        doc: 'Max number of substitutions allowed. The value of 0 indicates that substitutions are not allowed'
+        type: u1_nullable
+        doc: 'Max number of substitutions allowed. The value of 0 indicates that substitutions are not allowed. Nullable, No Value = 255'
       - id: source_repo_id
-        type: s4
-        doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on'
+        type: s4_nullable
+        doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on. Nullable, No Value = 2147483647'
       - id: termination_type
         type: str
         size: 8
@@ -4078,17 +3977,15 @@ types:
         enum: security_response_type
         doc: 'Type of security definition message response'
       - id: expiration_cycle
-        type: u1
-        enum: expiration_cycle
-        doc: 'For tag 827-ExpirationCycle=2, instrument expires as indicated in market data Security Definition (tag 35-MsgType=d) repeating block: Tag 865-EventType=7 (Last Eligible Trade Date) Tag 1145-EventTime'
+        type: u1_nullable
+        doc: 'For tag 827-ExpirationCycle=2, instrument expires as indicated in market data Security Definition (tag 35-MsgType=d) repeating block: Tag 865-EventType=7 (Last Eligible Trade Date) Tag 1145-EventTime. Nullable, No Value = 255'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
         doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
       - id: split_msg
-        type: u1
-        enum: split_msg
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order'
+        type: u1_nullable
+        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
       - id: auto_quote_request
         type: u1
         enum: auto_quote_request
@@ -4103,17 +4000,17 @@ types:
   maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   response_legs_groups:
     seq:
       - id: group_size
@@ -4127,8 +4024,8 @@ types:
   response_legs_group:
     seq:
       - id: leg_price
-        type: decimal_s8_9
-        doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price of the futures contract as part of UDS Covered. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: leg_option_delta
         type: leg_option_delta
         doc: 'Up to 26 legs (i.e., repeating groups) supported for UDS for options. Up to 40 legs (i.e., repeating groups) supported for UDS for futures. Will be set to 0 for REPO'
@@ -4140,8 +4037,8 @@ types:
         enum: leg_side
         doc: 'The side of this individual leg of a multileg security'
       - id: leg_ratio_qty
-        type: u1
-        doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg'
+        type: u1_nullable
+        doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg. Nullable, No Value = 255'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -4155,6 +4052,27 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -4162,6 +4080,36 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 2147483647
+  str_1_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 1
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
 
 enums:
   template_id:
@@ -4388,17 +4336,17 @@ enums:
       doc: 'Passive'
   liquidity_flag:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   managed_order:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   short_sale_type:
     0:
@@ -4422,17 +4370,17 @@ enums:
       doc: 'Enabled'
   mm_protection_reset:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   list_update_action:
     0x41:
       id: 'add'
       doc: 'Add'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
   cmta_giveup_cd:
     0x47:
@@ -4515,17 +4463,17 @@ enums:
       id: 'take_up_firm'
       doc: 'Take Up Firm'
     118:
-      id: 'operator'
+      id: 'operator_field'
       doc: 'Operator'
     1000:
       id: 'take_up_account'
       doc: 'Take Up Account'
   poss_retrans_flag:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   manual_order_indicator_optional:
     0:
@@ -4556,10 +4504,10 @@ enums:
       doc: 'Filled'
   aggressor_indicator:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   order_event_type:
     4:
@@ -4664,7 +4612,7 @@ enums:
       doc: 'GTD'
   ord_status:
     0x30:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     0x31:
       id: 'partially_filled'
@@ -4689,10 +4637,10 @@ enums:
       doc: 'Undefined'
   last_rpt_requested:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   exec_restatement_reason:
     8:
@@ -4737,10 +4685,10 @@ enums:
       doc: 'Data Temporarily Unavailable'
   last_fragment:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
   exec_ack_status:
     1:
@@ -4871,9 +4819,9 @@ enums:
       doc: 'Expiration at given date'
   auto_quote_request:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False, No'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True, Yes'
 

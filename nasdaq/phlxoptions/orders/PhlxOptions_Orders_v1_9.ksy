@@ -689,7 +689,7 @@ enums:
       id: 'add'
       doc: 'Add'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
   side:
     0x42:

@@ -734,16 +734,16 @@ enums:
       doc: 'All Or None Lot'
   occurred_at_cross:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Order Executed In An Auction'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Order Executed In Continuous Matching'
   printable:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Include In Trade Tickers And Volume Calculations'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Do Not Include In Trade Tickers And Volume Calculations'
 

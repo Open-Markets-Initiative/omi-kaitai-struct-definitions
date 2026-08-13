@@ -931,10 +931,10 @@ enums:
       doc: 'Firms Should Refer To Siac Feeds For Code If Needed'
   round_lots_only:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Nasdaq System Only Accepts Round Lot Orders For This Security'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Nasdaq System Does Not Have Any Order Size Restrictions For This Security'
   issue_classification:
     0x41:
@@ -1147,10 +1147,10 @@ enums:
       doc: 'Sell Order'
   printable:
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Nonprintable'
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Printable'
   cross_type:
     0x4f:

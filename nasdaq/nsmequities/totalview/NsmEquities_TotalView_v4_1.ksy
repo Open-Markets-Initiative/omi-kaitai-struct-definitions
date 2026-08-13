@@ -655,7 +655,7 @@ enums:
       id: 'sell'
       doc: 'Sell Imbalance'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No Imbalance'
     0x4f:
       id: 'insufficient_orders'

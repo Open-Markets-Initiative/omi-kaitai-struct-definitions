@@ -373,14 +373,13 @@ types:
       - id: security_type
         type: b5
         enum: security_type
-        doc: 'SecurityType'
+        doc: 'SecurityType. Nullable, Not Applicable = 0'
       - id: capacity
         type: b5
         doc: 'Indicates sender’s capacity'
       - id: open_close
-        type: u1
-        enum: open_close
-        doc: 'Indicates sender’s position'
+        type: u1_nullable
+        doc: 'Indicates sender’s position. Nullable, Not Applicable = 0'
       - id: sub_id_indicator
         type: b5
         doc: 'When using Pillar Pre-trade Risk Controls and specifying both MPSubID and SelfTradeType on an order, allows the firm to specify whether it should be used for both Risk and STP purposes, or for Risk purposes only. See “Self-Trade Prevention” section of this spec for more details'
@@ -403,7 +402,7 @@ types:
       - id: order_capacity
         type: b5
         enum: order_capacity
-        doc: 'OrderCapacity'
+        doc: 'OrderCapacity. Nullable, Not Applicable = 0'
       - id: interest_type
         type: b5
         enum: interest_type
@@ -427,7 +426,7 @@ types:
       - id: cancel_instead_of_reprice
         type: b5
         enum: cancel_instead_of_reprice
-        doc: 'CancelInsteadOfReprice'
+        doc: 'CancelInsteadOfReprice. Nullable, Not Applicable Follow Default Order Behavior = 0'
       - id: routing_inst
         type: b5
         enum: routing_inst
@@ -765,9 +764,8 @@ types:
         pad-right: 0x20
         doc: 'Optional - either TargetCancelUsername or TargetCancelMPID must be specified for cancel only'
       - id: bulk_action
-        type: u1
-        enum: bulk_action
-        doc: 'For all sessions'
+        type: u1_nullable
+        doc: 'For all sessions. Nullable, Not Applicable = 0'
       - id: cancel_scope
         type: u1
         enum: cancel_scope
@@ -819,9 +817,8 @@ types:
         enum: risk_user_type
         doc: 'Risk User – type of firm that owns the risk control represented by this message'
       - id: risk_control_type
-        type: u1
-        enum: risk_control_type
-        doc: 'RiskControlType'
+        type: u1_nullable
+        doc: 'RiskControlType. Nullable, Not Applicable = 0'
       - id: risk_control_activation
         type: u1
         enum: risk_control_activation
@@ -839,13 +836,11 @@ types:
         type: s4
         doc: 'Integer count'
       - id: breach_action_request
-        type: u1
-        enum: breach_action_request
-        doc: 'BreachActionRequest'
+        type: u1_nullable
+        doc: 'BreachActionRequest. Nullable, Not Applicable = 0'
       - id: ioc_attribution
-        type: u1
-        enum: ioc_attribution
-        doc: 'IOCAttribution'
+        type: u1_nullable
+        doc: 'IOCAttribution. Nullable, Not Applicable = 0'
       - id: reserved_200
         size: 200
         doc: 'Bytes reserved for future use'
@@ -891,13 +886,11 @@ types:
         enum: risk_user_type
         doc: 'Risk User – type of firm that owns the risk control represented by this message'
       - id: risk_control_type
-        type: u1
-        enum: risk_control_type
-        doc: 'RiskControlType'
+        type: u1_nullable
+        doc: 'RiskControlType. Nullable, Not Applicable = 0'
       - id: risk_action_type
-        type: u1
-        enum: risk_action_type
-        doc: '0 = Not Applicable'
+        type: u1_nullable
+        doc: '0 = Not Applicable. Nullable, Not Applicable = 0'
       - id: reserved_200
         size: 200
         doc: 'Bytes reserved for future use'
@@ -1431,9 +1424,8 @@ types:
         encoding: ASCII
         doc: 'Firm Identifier – MPID'
       - id: bulk_action
-        type: u1
-        enum: bulk_action
-        doc: 'For all sessions'
+        type: u1_nullable
+        doc: 'For all sessions. Nullable, Not Applicable = 0'
       - id: cancel_scope
         type: u1
         enum: cancel_scope
@@ -1526,9 +1518,8 @@ types:
         encoding: ASCII
         doc: 'On Partial Fills and Fills:'
       - id: multileg_reporting_type
-        type: u1
-        enum: multileg_reporting_type
-        doc: 'Indicates the type of Execution Report. (e.g.: used with multi-leg securities, such as option strategies, spreads, etc.)'
+        type: u1_nullable
+        doc: 'Indicates the type of Execution Report. (e.g.: used with multi-leg securities, such as option strategies, spreads, etc.). Nullable, Not Applicable = 0'
       - id: reserved_1
         size: 1
         doc: 'Reserved for future use'
@@ -1540,9 +1531,8 @@ types:
         enum: locate_reqd
         doc: '0 = No LocateReqd, or Not Applicable 1 = LocateReq for SSH orders'
       - id: participant_type
-        type: u1
-        enum: participant_type
-        doc: 'ParticipantType'
+        type: u1_nullable
+        doc: 'ParticipantType. Nullable, Not Applicable = 0'
       - id: reason_code
         type: u2
         enum: reason_code
@@ -1576,37 +1566,31 @@ types:
         encoding: ASCII
         doc: 'Contra party Firm Identifier - MPID'
       - id: contra_open_close
-        type: u1
-        enum: contra_open_close
-        doc: 'Indicates sender’s position'
+        type: u1_nullable
+        doc: 'Indicates sender’s position. Nullable, Not Applicable = 0'
       - id: contra_customer_or_firm
-        type: u1
-        enum: contra_customer_or_firm
-        doc: 'Capacity of the order'
+        type: u1_nullable
+        doc: 'Capacity of the order. Nullable, Not Applicable = 0'
       - id: contra_clearing_account
         type: str
         size: 5
         encoding: ASCII
         doc: 'Contra party clearing number - 5 digits'
       - id: contra_cross_type
-        type: u2
-        enum: contra_cross_type
-        doc: '0 = Not Applicable'
+        type: u2_nullable
+        doc: '0 = Not Applicable. Nullable, Not Applicable = 0'
       - id: contra_covered_or_uncovered
-        type: u1
-        enum: contra_covered_or_uncovered
-        doc: 'Identifies the Exposed or Covered Side when the contra side was Cross'
+        type: u1_nullable
+        doc: 'Identifies the Exposed or Covered Side when the contra side was Cross. Nullable, Not Applicable = 0'
       - id: covered_or_uncovered
-        type: u1
-        enum: covered_or_uncovered
-        doc: 'Identifies the Exposed and Covered Side of each order in the Cross'
+        type: u1_nullable
+        doc: 'Identifies the Exposed and Covered Side of each order in the Cross. Nullable, Not Applicable = 0'
       - id: cross_id
         type: u8
         doc: 'Unique ID of the Cross as assigned by the firm'
       - id: open_close
-        type: u1
-        enum: open_close
-        doc: 'Indicates sender’s position'
+        type: u1_nullable
+        doc: 'Indicates sender’s position. Nullable, Not Applicable = 0'
       - id: optional_order_add_on
         type: optional_order_add_on
   trade_bust_or_correct:
@@ -1745,17 +1729,15 @@ types:
         enum: risk_user_type
         doc: 'Risk User – type of firm that owns the risk control represented by this message'
       - id: risk_control_type
-        type: u1
-        enum: risk_control_type
-        doc: 'RiskControlType'
+        type: u1_nullable
+        doc: 'RiskControlType. Nullable, Not Applicable = 0'
       - id: risk_control_activation
         type: u1
         enum: risk_control_activation
         doc: 'Risk Control'
       - id: risk_action_type
-        type: u1
-        enum: risk_action_type
-        doc: '0 = Not Applicable'
+        type: u1_nullable
+        doc: '0 = Not Applicable. Nullable, Not Applicable = 0'
       - id: usd_limit
         type: s8
         doc: 'Integer US Dollar limit'
@@ -1769,13 +1751,11 @@ types:
         type: s4
         doc: 'Integer count'
       - id: breach_action_response
-        type: u1
-        enum: breach_action_response
-        doc: 'BreachActionResponse'
+        type: u1_nullable
+        doc: 'BreachActionResponse. Nullable, Not Applicable = 0'
       - id: ioc_attribution
-        type: u1
-        enum: ioc_attribution
-        doc: 'IOCAttribution'
+        type: u1_nullable
+        doc: 'IOCAttribution. Nullable, Not Applicable = 0'
       - id: usd_calculation_1
         type: s8
         doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
@@ -1849,9 +1829,8 @@ types:
         enum: risk_user_type
         doc: 'Risk User – type of firm that owns the risk control represented by this message'
       - id: risk_control_type
-        type: u1
-        enum: risk_control_type
-        doc: 'RiskControlType'
+        type: u1_nullable
+        doc: 'RiskControlType. Nullable, Not Applicable = 0'
       - id: usd_limit
         type: s8
         doc: 'Integer US Dollar limit'
@@ -1865,13 +1844,11 @@ types:
         type: s4
         doc: 'Integer count'
       - id: breach_action_response
-        type: u1
-        enum: breach_action_response
-        doc: 'BreachActionResponse'
+        type: u1_nullable
+        doc: 'BreachActionResponse. Nullable, Not Applicable = 0'
       - id: ioc_attribution
-        type: u1
-        enum: ioc_attribution
-        doc: 'IOCAttribution'
+        type: u1_nullable
+        doc: 'IOCAttribution. Nullable, Not Applicable = 0'
       - id: usd_calculation_1
         type: s8
         doc: 'Integer US Dollar calculation. For the following RiskControlTypes – will be populated with the'
@@ -1888,13 +1865,11 @@ types:
         type: u4
         doc: 'Integer count'
       - id: risk_action_type
-        type: u1
-        enum: risk_action_type
-        doc: '0 = Not Applicable'
+        type: u1_nullable
+        doc: '0 = Not Applicable. Nullable, Not Applicable = 0'
       - id: threshold_breach_level
-        type: u1
-        enum: threshold_breach_level
-        doc: 'ThresholdBreachLevel'
+        type: u1_nullable
+        doc: 'ThresholdBreachLevel. Nullable, Not Applicable = 0'
       - id: blocked_by_breach_indicator
         type: u1
         enum: blocked_by_breach_indicator
@@ -1953,6 +1928,13 @@ types:
         type: u1
         enum: leg_side
         doc: 'Side'
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 0
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -1980,6 +1962,13 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
 
 enums:
   msg_type:

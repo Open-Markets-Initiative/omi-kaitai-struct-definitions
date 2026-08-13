@@ -93,7 +93,7 @@ types:
             'template_id::orders_mmp_unfrozen_message': orders_mmp_unfrozen_message
       - id: padding
         size: message_header.message_length - _io.pos
-        doc: 'Udp sbe alignment padding'
+        doc: 'Tcp sbe alignment padding'
   message_header:
     seq:
       - id: protocol_id
@@ -232,8 +232,8 @@ types:
         type: show_qty
         doc: 'NewOrderRequestMessage'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionId'
+        type: s8_nullable
+        doc: 'selfMatchPreventionId. Nullable, No Value = -9223372036854775808'
       - id: side
         type: s1
         enum: side
@@ -353,8 +353,8 @@ types:
         type: s8
         doc: 'mmpGroupId'
       - id: self_match_prevention_id
-        type: s8
-        doc: 'selfMatchPreventionId'
+        type: s8_nullable
+        doc: 'selfMatchPreventionId. Nullable, No Value = -9223372036854775808'
       - id: flags_mass_quote_flags
         type: flags_mass_quote_flags
         doc: 'MassQuoteFlags bit set'
@@ -393,11 +393,11 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: bid_price_optional
-        type: decimal_s8_9
-        doc: 'bidPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'bidPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: ask_price_optional
-        type: decimal_s8_9
-        doc: 'askPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'askPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: bid_qty
         type: bid_qty
         doc: 'quotes'
@@ -487,8 +487,8 @@ types:
         type: s8
         doc: 'currencyPairId'
       - id: instrument_id_optional
-        type: s8
-        doc: 'instrumentId'
+        type: s8_nullable
+        doc: 'instrumentId. Nullable, No Value = -9223372036854775808'
       - id: product_type
         type: s1
         enum: product_type
@@ -515,8 +515,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -650,8 +650,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -677,8 +677,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -775,8 +775,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -802,8 +802,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -825,8 +825,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -834,8 +834,8 @@ types:
         type: s8
         doc: 'correlationId'
       - id: order_id_optional
-        type: s8
-        doc: 'orderId'
+        type: s8_nullable
+        doc: 'orderId. Nullable, No Value = -9223372036854775808'
       - id: instrument_id
         type: s8
         doc: 'instrumentId'
@@ -852,8 +852,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: quote_id
         type: s8
         doc: 'quoteId'
@@ -1037,8 +1037,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: quote_id
         type: s8
         doc: 'quoteId'
@@ -1061,8 +1061,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -1078,8 +1078,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -1096,8 +1096,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: order_filled_message_fills_groups
         type: order_filled_message_fills_groups
         doc: 'fills Block'
@@ -1189,8 +1189,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: flags_multi_part_event_flags
         type: flags_multi_part_event_flags
         doc: 'MultiPartEventFlags bit set'
@@ -1250,8 +1250,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -1342,8 +1342,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: mmp_group_id
         type: s8
         doc: 'mmpGroupId'
@@ -1459,8 +1459,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: mmp_group_id
         type: s8
         doc: 'mmpGroupId'
@@ -1486,8 +1486,8 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: currency_pair_id
         type: s8
         doc: 'currencyPairId'
@@ -1513,28 +1513,28 @@ types:
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: mmp_group_id
         type: s8
         doc: 'mmpGroupId'
       - id: correlation_id_optional
-        type: s8
-        doc: 'correlationId'
+        type: s8_nullable
+        doc: 'correlationId. Nullable, No Value = -9223372036854775808'
   orders_mmp_unfrozen_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: exec_id
-        type: s8
-        doc: 'execId'
+        type: s8_nullable
+        doc: 'execId. Nullable, No Value = -9223372036854775808'
       - id: currency_pair_id
         type: s8
         doc: 'currencyPairId'
       - id: correlation_id_optional
-        type: s8
-        doc: 'correlationId'
+        type: s8_nullable
+        doc: 'correlationId. Nullable, No Value = -9223372036854775808'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1555,6 +1555,20 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
 
 enums:
   template_id:
@@ -1659,10 +1673,10 @@ enums:
       doc: 'OrdersMmpUnfrozenMessage'
   reset_seq_num:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reason_reject_reason:
     1:

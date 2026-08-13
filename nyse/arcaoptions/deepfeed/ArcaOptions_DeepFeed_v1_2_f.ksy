@@ -701,9 +701,9 @@ types:
         type: u1
         enum: side
         doc: 'The side of the order'
-      - id: type
+      - id: type_field
         type: u1
-        enum: type
+        enum: type_field
         doc: 'Order Type of CUBE/Bold/COA'
       - id: capacity
         type: u1
@@ -1046,10 +1046,10 @@ enums:
       doc: 'Nickel Dime'
   round_lot:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
   status:
     0x30:
@@ -1348,7 +1348,7 @@ enums:
     5:
       id: 'auction_will_not_run_because_market_maker_quote_is_not_received'
       doc: 'Auction Will Not Run Because Market Maker Quote Is Not Received'
-  type:
+  type_field:
     0x50:
       id: 'price_improvement'
       doc: 'Price Improvement'

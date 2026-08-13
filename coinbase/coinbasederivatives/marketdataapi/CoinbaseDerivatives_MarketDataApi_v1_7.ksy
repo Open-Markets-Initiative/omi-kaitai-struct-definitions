@@ -172,20 +172,20 @@ types:
         encoding: ASCII
         doc: 'currency'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: old_contract_size
         type: s4
         doc: 'oldContractSize'
       - id: prior_settlement_price_optional
-        type: decimal_s8_9
-        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: settlement_price
-        type: decimal_s8_9
-        doc: 'settlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: limit_down_price
         type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
@@ -227,7 +227,7 @@ types:
         type: u4
         doc: 'instrSeqNum'
       - id: trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'tradingSessionDate'
       - id: reserved
         type: s2
@@ -300,20 +300,20 @@ types:
         encoding: ASCII
         doc: 'currency'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: old_contract_size
         type: s4
         doc: 'oldContractSize'
       - id: prior_settlement_price_optional
-        type: decimal_s8_9
-        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: settlement_price
-        type: decimal_s8_9
-        doc: 'settlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: limit_down_price
         type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
@@ -385,17 +385,17 @@ types:
         type: decimal_s8_9
         doc: 'strikePrice. Implied decimal with scale 1e-9'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: prior_settlement_price
         type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
       - id: settlement_price
-        type: decimal_s8_9
-        doc: 'settlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: product_id
         type: s4
         doc: 'productId'
@@ -463,11 +463,11 @@ types:
         type: instr_header
         doc: 'Instrument Header'
       - id: best_price
-        type: decimal_s8_9
-        doc: 'bestPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'bestPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: next_price
-        type: decimal_s8_9
-        doc: 'nextPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'nextPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: best_qty
         type: s4
         doc: 'bestQty'
@@ -503,11 +503,11 @@ types:
         type: s8
         doc: 'matchId'
       - id: buy_order_id
-        type: s8
-        doc: 'buyOrderId'
+        type: s8_nullable
+        doc: 'buyOrderId. Nullable, No Value = -9223372036854775808'
       - id: sell_order_id
-        type: s8
-        doc: 'sellOrderId'
+        type: s8_nullable
+        doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
       - id: price
         type: decimal_s8_9
         doc: 'price. Implied decimal with scale 1e-9'
@@ -523,11 +523,11 @@ types:
         type: s8
         doc: 'matchId'
       - id: buy_order_id
-        type: s8
-        doc: 'buyOrderId'
+        type: s8_nullable
+        doc: 'buyOrderId. Nullable, No Value = -9223372036854775808'
       - id: sell_order_id
-        type: s8
-        doc: 'sellOrderId'
+        type: s8_nullable
+        doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
       - id: old_price
         type: decimal_s8_9
         doc: 'oldPrice. Implied decimal with scale 1e-9'
@@ -543,11 +543,11 @@ types:
         type: s8
         doc: 'matchId'
       - id: buy_order_id
-        type: s8
-        doc: 'buyOrderId'
+        type: s8_nullable
+        doc: 'buyOrderId. Nullable, No Value = -9223372036854775808'
       - id: sell_order_id
-        type: s8
-        doc: 'sellOrderId'
+        type: s8_nullable
+        doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
       - id: old_price
         type: decimal_s8_9
         doc: 'oldPrice. Implied decimal with scale 1e-9'
@@ -575,11 +575,11 @@ types:
         type: s8
         doc: 'matchId'
       - id: buy_order_id
-        type: s8
-        doc: 'buyOrderId'
+        type: s8_nullable
+        doc: 'buyOrderId. Nullable, No Value = -9223372036854775808'
       - id: sell_order_id
-        type: s8
-        doc: 'sellOrderId'
+        type: s8_nullable
+        doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
   market_stat_message:
     seq:
       - id: instr_header
@@ -657,13 +657,13 @@ types:
         type: s4
         doc: 'orderCount'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'tradingSessionDate'
       - id: product_group
         type: s1
@@ -725,13 +725,13 @@ types:
         type: s4
         doc: 'orderCount'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'tradingSessionDate'
       - id: product_group
         type: s1
@@ -804,13 +804,13 @@ types:
         type: s4
         doc: 'orderCount'
       - id: first_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'firstTradingSessionDate'
       - id: last_trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'lastTradingSessionDate'
       - id: trading_session_date
-        type: u2
+        type: epoch_date
         doc: 'tradingSessionDate'
       - id: product_group
         type: s1
@@ -856,44 +856,44 @@ types:
         type: s4
         doc: 'tradeVolume'
       - id: indicative_open_price
-        type: decimal_s8_9
-        doc: 'indicativeOpenPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'indicativeOpenPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: day_open_price
-        type: decimal_s8_9
-        doc: 'dayOpenPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'dayOpenPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: close_price
-        type: decimal_s8_9
-        doc: 'closePrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'closePrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: low_price
-        type: decimal_s8_9
-        doc: 'lowPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'lowPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: high_price
-        type: decimal_s8_9
-        doc: 'highPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'highPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: vwap_price_optional
-        type: decimal_s8_9
-        doc: 'vwapPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'vwapPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: settlement_price
-        type: decimal_s8_9
-        doc: 'settlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: last_trade_price
-        type: decimal_s8_9
-        doc: 'lastTradePrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'lastTradePrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: last_trade_time
-        type: nanosecond_timestamp
-        doc: 'lastTradeTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'lastTradeTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: best_bid_implied_price
-        type: decimal_s8_9
-        doc: 'bestBidImpliedPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'bestBidImpliedPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: best_ask_implied_price
-        type: decimal_s8_9
-        doc: 'bestAskImpliedPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'bestAskImpliedPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: next_bid_implied_price
-        type: decimal_s8_9
-        doc: 'nextBidImpliedPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'nextBidImpliedPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: next_ask_implied_price
-        type: decimal_s8_9
-        doc: 'nextAskImpliedPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'nextAskImpliedPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: limit_down_price
         type: decimal_s8_9
         doc: 'limitDownPrice. Implied decimal with scale 1e-9'
@@ -901,26 +901,26 @@ types:
         type: decimal_s8_9
         doc: 'limitUpPrice. Implied decimal with scale 1e-9'
       - id: last_trade_qty
-        type: s4
-        doc: 'lastTradeQty'
+        type: s4_nullable
+        doc: 'lastTradeQty. Nullable, No Value = -2147483648'
       - id: open_interest
-        type: s4
-        doc: 'openInterest'
+        type: s4_nullable
+        doc: 'openInterest. Nullable, No Value = -2147483648'
       - id: best_bid_implied_qty
-        type: s4
-        doc: 'bestBidImpliedQty'
+        type: s4_nullable
+        doc: 'bestBidImpliedQty. Nullable, No Value = -2147483648'
       - id: best_ask_implied_qty
-        type: s4
-        doc: 'bestAskImpliedQty'
+        type: s4_nullable
+        doc: 'bestAskImpliedQty. Nullable, No Value = -2147483648'
       - id: next_bid_implied_qty
-        type: s4
-        doc: 'nextBidImpliedQty'
+        type: s4_nullable
+        doc: 'nextBidImpliedQty. Nullable, No Value = -2147483648'
       - id: next_ask_implied_qty
-        type: s4
-        doc: 'nextAskImpliedQty'
+        type: s4_nullable
+        doc: 'nextAskImpliedQty. Nullable, No Value = -2147483648'
       - id: prior_settlement_price_optional
-        type: decimal_s8_9
-        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'priorSettlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
@@ -964,6 +964,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -971,6 +978,34 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == -9223372036854775808
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
 
 enums:
   template_id:

@@ -204,9 +204,8 @@ types:
         enum: security_trading_status
         doc: 'securityTradingStatus'
       - id: security_trading_event
-        type: u1
-        enum: security_trading_event
-        doc: 'securityTradingEvent'
+        type: u1_nullable
+        doc: 'securityTradingEvent. Nullable, No Value = 255'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -214,8 +213,8 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: trad_ses_open_time
-        type: nanosecond_timestamp
-        doc: 'tradSesOpenTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'tradSesOpenTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: transact_time
         type: u8
         doc: 'transactTime'
@@ -244,9 +243,8 @@ types:
         enum: trading_session_sub_id
         doc: 'tradingSessionSubID'
       - id: security_trading_event
-        type: u1
-        enum: security_trading_event
-        doc: 'securityTradingEvent'
+        type: u1_nullable
+        doc: 'securityTradingEvent. Nullable, No Value = 255'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -254,8 +252,8 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: trad_ses_open_time
-        type: nanosecond_timestamp
-        doc: 'tradSesOpenTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'tradSesOpenTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: transact_time
         type: u8
         doc: 'transactTime'
@@ -298,17 +296,17 @@ types:
         type: u4
         doc: 'totNoRelatedSym'
       - id: min_price_increment_legacy
-        type: decimal_s8_4
-        doc: 'minPriceIncrement. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'minPriceIncrement. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: strike_price
-        type: decimal_s8_4
-        doc: 'strikePrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'strikePrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: contract_multiplier
-        type: decimal_s8_8
-        doc: 'contractMultiplier. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'contractMultiplier. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: price_divisor
-        type: decimal_s8_8
-        doc: 'priceDivisor. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'priceDivisor. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: security_validity_timestamp
         type: s8
         doc: 'securityValidityTimestamp'
@@ -337,33 +335,29 @@ types:
         type: s4
         doc: 'issueDate'
       - id: maturity_date
-        type: s4
-        doc: 'maturityDate'
+        type: s4_nullable
+        doc: 'maturityDate. Nullable, No Value = 0'
       - id: country_of_issue
-        type: str
-        size: 2
-        encoding: ASCII
-        doc: 'countryOfIssue'
+        type: str_2_nullable
+        doc: 'countryOfIssue. Nullable, No Value = 0'
       - id: start_date
-        type: s4
-        doc: 'startDate'
+        type: s4_nullable
+        doc: 'startDate. Nullable, No Value = 0'
       - id: end_date
-        type: s4
-        doc: 'endDate'
+        type: s4_nullable
+        doc: 'endDate. Nullable, No Value = 0'
       - id: settl_type
-        type: u2
-        doc: 'settlType'
+        type: u2_nullable
+        doc: 'settlType. Nullable, No Value = 65535'
       - id: settl_date
-        type: s4
-        doc: 'settlDate'
+        type: s4_nullable
+        doc: 'settlDate. Nullable, No Value = 0'
       - id: dated_date
-        type: s4
-        doc: 'datedDate'
+        type: s4_nullable
+        doc: 'datedDate. Nullable, No Value = 0'
       - id: isin_number
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'isinNumber'
+        type: str_12_nullable
+        doc: 'isinNumber. Nullable, No Value = 0'
       - id: asset
         type: str
         size: 6
@@ -386,66 +380,53 @@ types:
         encoding: ASCII
         doc: 'currency'
       - id: strike_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'strikeCurrency'
+        type: str_3_nullable
+        doc: 'strikeCurrency. Nullable, No Value = 0'
       - id: settl_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'settlCurrency'
+        type: str_3_nullable
+        doc: 'settlCurrency. Nullable, No Value = 0'
       - id: security_strategy_type
         type: str
         size: 3
         encoding: ASCII
         doc: 'securityStrategyType'
       - id: lot_type
-        type: u1
-        enum: lot_type
-        doc: 'lotType'
+        type: u1_nullable
+        doc: 'lotType. Nullable, No Value = 255'
       - id: tick_size_denominator
-        type: u1
-        doc: 'tickSizeDenominator'
+        type: u1_nullable
+        doc: 'tickSizeDenominator. Nullable, No Value = 255'
       - id: product
         type: u1
         enum: product
         doc: 'product'
       - id: exercise_style
-        type: u1
-        enum: exercise_style
-        doc: 'exerciseStyle'
+        type: u1_nullable
+        doc: 'exerciseStyle. Nullable, No Value = 255'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'putOrCall'
+        type: u1_nullable
+        doc: 'putOrCall. Nullable, No Value = 255'
       - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'priceType'
+        type: u1_nullable
+        doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
         type: u1
         doc: 'marketSegmentID'
       - id: governance_indicator
-        type: u1
-        enum: governance_indicator
-        doc: 'governanceIndicator'
+        type: u1_nullable
+        doc: 'governanceIndicator. Nullable, No Value = 255'
       - id: security_match_type
-        type: u1
-        enum: security_match_type
-        doc: 'securityMatchType'
+        type: u1_nullable
+        doc: 'securityMatchType. Nullable, No Value = 255'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
-        doc: 'lastFragment'
+        type: u1_nullable
+        doc: 'lastFragment. Nullable, No Value = 255'
       - id: multi_leg_model
-        type: u1
-        enum: multi_leg_model
-        doc: 'multiLegModel'
+        type: u1_nullable
+        doc: 'multiLegModel. Nullable, No Value = 255'
       - id: multi_leg_price_method
-        type: u1
-        enum: multi_leg_price_method
-        doc: 'multiLegPriceMethod'
+        type: u1_nullable
+        doc: 'multiLegPriceMethod. Nullable, No Value = 255'
       - id: min_cross_qty
         type: s8
         doc: 'minCrossQty'
@@ -513,11 +494,11 @@ types:
         type: u8
         doc: 'Underlying instrument''s security ID'
       - id: index_pct
-        type: decimal_s8_9
-        doc: 'Required if this is an equity index instrument. Indicates the percentage that this underlying composes the index. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Required if this is an equity index instrument. Indicates the percentage that this underlying composes the index. Implied decimal with scale 1e-9. Nullable, No Value = 0'
       - id: index_theoretical_qty
-        type: decimal_s8_8
-        doc: 'The theoretical quantity of this underlying composing the index. This tag is only used for index instruments. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'The theoretical quantity of this underlying composing the index. This tag is only used for index instruments. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: underlying_symbol
         type: str
         size: 20
@@ -621,17 +602,17 @@ types:
         type: u4
         doc: 'totNoRelatedSym'
       - id: min_price_increment_optional
-        type: decimal_s8_8
-        doc: 'minPriceIncrement. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'minPriceIncrement. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: strike_price
-        type: decimal_s8_4
-        doc: 'strikePrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'strikePrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: contract_multiplier
-        type: decimal_s8_8
-        doc: 'contractMultiplier. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'contractMultiplier. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: price_divisor
-        type: decimal_s8_8
-        doc: 'priceDivisor. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'priceDivisor. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: security_validity_timestamp
         type: s8
         doc: 'securityValidityTimestamp'
@@ -660,33 +641,29 @@ types:
         type: s4
         doc: 'issueDate'
       - id: maturity_date
-        type: s4
-        doc: 'maturityDate'
+        type: s4_nullable
+        doc: 'maturityDate. Nullable, No Value = 0'
       - id: country_of_issue
-        type: str
-        size: 2
-        encoding: ASCII
-        doc: 'countryOfIssue'
+        type: str_2_nullable
+        doc: 'countryOfIssue. Nullable, No Value = 0'
       - id: start_date
-        type: s4
-        doc: 'startDate'
+        type: s4_nullable
+        doc: 'startDate. Nullable, No Value = 0'
       - id: end_date
-        type: s4
-        doc: 'endDate'
+        type: s4_nullable
+        doc: 'endDate. Nullable, No Value = 0'
       - id: settl_type
-        type: u2
-        doc: 'settlType'
+        type: u2_nullable
+        doc: 'settlType. Nullable, No Value = 65535'
       - id: settl_date
-        type: s4
-        doc: 'settlDate'
+        type: s4_nullable
+        doc: 'settlDate. Nullable, No Value = 0'
       - id: dated_date
-        type: s4
-        doc: 'datedDate'
+        type: s4_nullable
+        doc: 'datedDate. Nullable, No Value = 0'
       - id: isin_number
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'isinNumber'
+        type: str_12_nullable
+        doc: 'isinNumber. Nullable, No Value = 0'
       - id: asset
         type: str
         size: 6
@@ -709,66 +686,53 @@ types:
         encoding: ASCII
         doc: 'currency'
       - id: strike_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'strikeCurrency'
+        type: str_3_nullable
+        doc: 'strikeCurrency. Nullable, No Value = 0'
       - id: settl_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'settlCurrency'
+        type: str_3_nullable
+        doc: 'settlCurrency. Nullable, No Value = 0'
       - id: security_strategy_type
         type: str
         size: 3
         encoding: ASCII
         doc: 'securityStrategyType'
       - id: lot_type
-        type: u1
-        enum: lot_type
-        doc: 'lotType'
+        type: u1_nullable
+        doc: 'lotType. Nullable, No Value = 255'
       - id: tick_size_denominator
-        type: u1
-        doc: 'tickSizeDenominator'
+        type: u1_nullable
+        doc: 'tickSizeDenominator. Nullable, No Value = 255'
       - id: product
         type: u1
         enum: product
         doc: 'product'
       - id: exercise_style
-        type: u1
-        enum: exercise_style
-        doc: 'exerciseStyle'
+        type: u1_nullable
+        doc: 'exerciseStyle. Nullable, No Value = 255'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'putOrCall'
+        type: u1_nullable
+        doc: 'putOrCall. Nullable, No Value = 255'
       - id: price_type
-        type: u1
-        enum: price_type
-        doc: 'priceType'
+        type: u1_nullable
+        doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
         type: u1
         doc: 'marketSegmentID'
       - id: governance_indicator
-        type: u1
-        enum: governance_indicator
-        doc: 'governanceIndicator'
+        type: u1_nullable
+        doc: 'governanceIndicator. Nullable, No Value = 255'
       - id: security_match_type
-        type: u1
-        enum: security_match_type
-        doc: 'securityMatchType'
+        type: u1_nullable
+        doc: 'securityMatchType. Nullable, No Value = 255'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
-        doc: 'lastFragment'
+        type: u1_nullable
+        doc: 'lastFragment. Nullable, No Value = 255'
       - id: multi_leg_model
-        type: u1
-        enum: multi_leg_model
-        doc: 'multiLegModel'
+        type: u1_nullable
+        doc: 'multiLegModel. Nullable, No Value = 255'
       - id: multi_leg_price_method
-        type: u1
-        enum: multi_leg_price_method
-        doc: 'multiLegPriceMethod'
+        type: u1_nullable
+        doc: 'multiLegPriceMethod. Nullable, No Value = 255'
       - id: min_cross_qty
         type: s8
         doc: 'minCrossQty'
@@ -868,10 +832,8 @@ types:
         enum: news_source
         doc: 'newsSource'
       - id: language_code
-        type: str
-        size: 2
-        encoding: ASCII
-        doc: 'languageCode'
+        type: str_2_nullable
+        doc: 'languageCode. Nullable, No Value = 0'
       - id: part_count
         type: u2
         doc: 'partCount'
@@ -882,8 +844,8 @@ types:
         type: u8
         doc: 'newsID'
       - id: orig_time
-        type: nanosecond_timestamp
-        doc: 'origTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'origTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: total_text_length
         type: u4
         doc: 'totalTextLength'
@@ -943,8 +905,8 @@ types:
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
       - id: net_chg_prev_day
-        type: decimal_s8_8
-        doc: 'netChgPrevDay. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'netChgPrevDay. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -973,8 +935,8 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: md_corporate_offset_price_optional
-        type: decimal_s8_4
-        doc: 'mDEntryPx. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_size_quantity_optional
         type: s8
         doc: 'mDEntrySize'
@@ -1003,8 +965,8 @@ types:
         type: decimal_s8_8
         doc: 'mDEntryPx. Implied decimal with scale 1e-8'
       - id: last_trade_date
-        type: u2
-        doc: 'lastTradeDate'
+        type: u2_nullable
+        doc: 'lastTradeDate. Nullable, No Value = 0'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -1082,26 +1044,23 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: price_band_type
-        type: u1
-        enum: price_band_type
-        doc: 'priceBandType'
+        type: u1_nullable
+        doc: 'priceBandType. Nullable, No Value = 255'
       - id: price_limit_type
-        type: u1
-        enum: price_limit_type
-        doc: 'priceLimitType'
+        type: u1_nullable
+        doc: 'priceLimitType. Nullable, No Value = 255'
       - id: price_band_midpoint_price_type
-        type: u1
-        enum: price_band_midpoint_price_type
-        doc: 'priceBandMidpointPriceType'
+        type: u1_nullable
+        doc: 'priceBandMidpointPriceType. Nullable, No Value = 255'
       - id: low_limit_price
-        type: decimal_s8_4
-        doc: 'lowLimitPrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'lowLimitPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: high_limit_price
-        type: decimal_s8_4
-        doc: 'highLimitPrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'highLimitPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: trading_reference_price_legacy
-        type: decimal_s8_4
-        doc: 'tradingReferencePrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'tradingReferencePrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
         type: nanosecond_timestamp
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
@@ -1140,26 +1099,23 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: price_band_type
-        type: u1
-        enum: price_band_type
-        doc: 'priceBandType'
+        type: u1_nullable
+        doc: 'priceBandType. Nullable, No Value = 255'
       - id: price_limit_type
-        type: u1
-        enum: price_limit_type
-        doc: 'priceLimitType'
+        type: u1_nullable
+        doc: 'priceLimitType. Nullable, No Value = 255'
       - id: price_band_midpoint_price_type
-        type: u1
-        enum: price_band_midpoint_price_type
-        doc: 'priceBandMidpointPriceType'
+        type: u1_nullable
+        doc: 'priceBandMidpointPriceType. Nullable, No Value = 255'
       - id: low_limit_price
-        type: decimal_s8_4
-        doc: 'lowLimitPrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'lowLimitPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: high_limit_price
-        type: decimal_s8_4
-        doc: 'highLimitPrice. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'highLimitPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: trading_reference_price_optional
-        type: decimal_s8_8
-        doc: 'tradingReferencePrice. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'tradingReferencePrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
         type: nanosecond_timestamp
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
@@ -1257,12 +1213,11 @@ types:
         type: u2
         doc: 'sellerDays'
       - id: md_entry_interest_rate
-        type: decimal_s8_4
-        doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4. Nullable, No Value = 0'
       - id: trd_sub_type
-        type: u1
-        enum: trd_sub_type
-        doc: 'trdSubType'
+        type: u1_nullable
+        doc: 'trdSubType. Nullable, No Value = 0'
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
@@ -1362,8 +1317,8 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: md_corporate_offset_price_optional
-        type: decimal_s8_4
-        doc: 'mDEntryPx. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_size_quantity
         type: s8
         doc: 'mDEntrySize'
@@ -1480,9 +1435,8 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: trd_sub_type
-        type: u1
-        enum: trd_sub_type
-        doc: 'trdSubType'
+        type: u1_nullable
+        doc: 'trdSubType. Nullable, No Value = 0'
       - id: offset_43_padding_1
         size: 1
         doc: '1 bytes padding'
@@ -1535,12 +1489,11 @@ types:
         type: u2
         doc: 'sellerDays'
       - id: md_entry_interest_rate
-        type: decimal_s8_4
-        doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4. Nullable, No Value = 0'
       - id: trd_sub_type
-        type: u1
-        enum: trd_sub_type
-        doc: 'trdSubType'
+        type: u1_nullable
+        doc: 'trdSubType. Nullable, No Value = 0'
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
@@ -1599,11 +1552,11 @@ types:
         type: s8
         doc: 'tradeVolume'
       - id: vwap_px
-        type: decimal_s8_4
-        doc: 'vwapPx. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'vwapPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: net_chg_prev_day
-        type: decimal_s8_8
-        doc: 'netChgPrevDay. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'netChgPrevDay. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: number_of_trades
         type: u4
         doc: 'numberOfTrades'
@@ -1670,8 +1623,8 @@ types:
   snapshot_full_refresh_orders_mb_o_71_message_no_m_d_entries_group:
     seq:
       - id: md_corporate_offset_price_optional
-        type: decimal_s8_4
-        doc: 'mDEntryPx. Implied decimal with scale 1e-4'
+        type: decimal_s8_4_nullable
+        doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_size_quantity
         type: s8
         doc: 'mDEntrySize'
@@ -1704,6 +1657,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1711,6 +1678,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s8_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_4
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -1718,6 +1692,54 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  decimal_s8_8_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_8
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 0
+  str_2_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 2
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  str_12_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 12
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  str_3_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 3
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -1725,6 +1747,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 0
   decimal_s8_7:
     seq:
       - id: mantissa
@@ -1895,7 +1924,7 @@ enums:
       id: 'add'
       doc: 'SecurityUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'SecurityUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x4d:
       id: 'modify'
@@ -2013,7 +2042,7 @@ enums:
       doc: 'PriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   governance_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'GovernanceIndicator Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
       id: 'n_1'
@@ -2200,13 +2229,13 @@ enums:
       doc: 'NewsSource Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   md_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'MDUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
       id: 'change'
       doc: 'MDUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'MDUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     3:
       id: 'delete_thru'

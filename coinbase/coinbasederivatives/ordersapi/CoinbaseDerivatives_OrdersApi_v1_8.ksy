@@ -99,7 +99,7 @@ types:
             'template_id::reset_options_fill_protection_reject_message': reset_options_fill_protection_reject_message
       - id: padding
         size: message_header.message_length - _io.pos
-        doc: 'Udp sbe alignment padding'
+        doc: 'Tcp sbe alignment padding'
   message_header:
     seq:
       - id: protocol_id
@@ -323,8 +323,8 @@ types:
         type: flags
         doc: 'NewOrderFlags bit set'
       - id: good_til_date
-        type: u2
-        doc: 'goodTilDate'
+        type: u2_nullable
+        doc: 'goodTilDate. Nullable, No Value = 0'
   new_ioc_order_message:
     seq:
       - id: client_order_id
@@ -340,8 +340,8 @@ types:
         type: s4
         doc: 'quantity'
       - id: min_qty
-        type: s4
-        doc: 'minQty'
+        type: s4_nullable
+        doc: 'minQty. Nullable, No Value = -2147483648'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
@@ -378,21 +378,20 @@ types:
         type: s8
         doc: 'correlationId'
       - id: new_limit_price
-        type: decimal_s8_9
-        doc: 'newLimitPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'newLimitPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: new_quantity
-        type: s4
-        doc: 'newQuantity'
+        type: s4_nullable
+        doc: 'newQuantity. Nullable, No Value = -2147483648'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
       - id: good_til_date
-        type: u2
-        doc: 'goodTilDate'
+        type: u2_nullable
+        doc: 'goodTilDate. Nullable, No Value = 0'
       - id: time_in_force
-        type: s1
-        enum: time_in_force
-        doc: 'timeInForce'
+        type: s1_nullable
+        doc: 'timeInForce. Nullable, No Value = 128'
   obsolete_stream_order_message:
     seq:
       - id: client_order_id
@@ -402,8 +401,8 @@ types:
         type: s8
         doc: 'correlationId'
       - id: last_processed_fill_id
-        type: s8
-        doc: 'lastProcessedFillId'
+        type: s8_nullable
+        doc: 'lastProcessedFillId. Nullable, No Value = -9223372036854775808'
       - id: limit_price
         type: decimal_s8_9
         doc: 'limitPrice. Implied decimal with scale 1e-9'
@@ -429,8 +428,8 @@ types:
         type: s8
         doc: 'correlationId'
       - id: order_id_optional
-        type: s8
-        doc: 'orderId'
+        type: s8_nullable
+        doc: 'orderId. Nullable, No Value = -9223372036854775808'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
@@ -522,8 +521,8 @@ types:
         type: s8
         doc: 'correlationId'
       - id: order_id_optional
-        type: s8
-        doc: 'orderId'
+        type: s8_nullable
+        doc: 'orderId. Nullable, No Value = -9223372036854775808'
       - id: cancel_order_reject_reason
         type: u1
         enum: cancel_order_reject_reason
@@ -815,6 +814,41 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == 128
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
 
 enums:
   template_id:
@@ -937,10 +971,10 @@ enums:
       doc: 'ResetOptionsFillProtectionRejectMessage'
   reset_seq_num:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   trading_instrument_status:
     0:
@@ -980,10 +1014,10 @@ enums:
       doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   is_last_message:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   side:
     1:
@@ -1052,38 +1086,38 @@ enums:
       doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   current_session_only:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   request_trading_lock:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   only_current_session:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   trading_lock_applied:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   is_aggressor:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   resend_reject_reason:
     1:

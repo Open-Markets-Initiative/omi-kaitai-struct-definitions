@@ -573,6 +573,6 @@ enums:
       id: 'not_applicable'
       doc: 'Not Applicable'
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
 

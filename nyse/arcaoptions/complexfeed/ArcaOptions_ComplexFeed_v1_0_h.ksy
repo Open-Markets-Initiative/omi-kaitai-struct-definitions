@@ -602,9 +602,9 @@ types:
         type: u1
         enum: side
         doc: 'Side of the RFQ'
-      - id: type
+      - id: type_field
         type: u1
-        enum: type
+        enum: type_field
         doc: 'Order Type of CUBE/COA/BOLD'
       - id: capacity
         type: u1
@@ -858,10 +858,10 @@ enums:
       doc: 'Nickel Dime'
   round_lot:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
   security_status:
     0x34:
@@ -1210,7 +1210,7 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
-  type:
+  type_field:
     0x42:
       id: 'bold_outright_only'
       doc: 'Bold Outright Only'

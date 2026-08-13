@@ -1270,10 +1270,10 @@ enums:
       doc: 'Call Option'
   activated:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Strike Is Active'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Strike Is Inactive'
   trading_status:
     0x70:
@@ -1367,9 +1367,9 @@ enums:
       doc: 'Crossing Customto Custom Trade'
   printable:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Printable'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Non Printable'
 

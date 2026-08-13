@@ -127,8 +127,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -252,14 +252,14 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -326,14 +326,14 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -376,8 +376,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -547,8 +547,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -658,8 +658,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -707,8 +707,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -780,8 +780,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -808,8 +808,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -849,8 +849,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -886,8 +886,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -952,8 +952,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -981,8 +981,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1019,8 +1019,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1047,8 +1047,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1070,8 +1070,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1112,8 +1112,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1207,8 +1207,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1226,8 +1226,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1245,8 +1245,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1264,8 +1264,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1283,8 +1283,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1302,8 +1302,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time the outbound message is produced by the SIP, nanoseconds since Epoch. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant-provided timestamp, nanoseconds since Epoch. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token. Intended for UTP SIP internal use only'
@@ -1320,6 +1320,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_u2_2:
     seq:
       - id: mantissa

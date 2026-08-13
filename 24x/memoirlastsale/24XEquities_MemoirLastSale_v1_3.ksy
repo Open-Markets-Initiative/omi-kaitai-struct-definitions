@@ -359,17 +359,17 @@ enums:
       doc: 'TradeCorrectMessage'
   is_test_symbol:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   short_sale_restriction:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   security_trading_status:
     0x48:

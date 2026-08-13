@@ -242,9 +242,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: cancel_instead_of_slide_cancel_instead_of_slide_optional
-        type: s1
-        enum: cancel_instead_of_slide_cancel_instead_of_slide_optional
-        doc: 'cancelInsteadOfSlide'
+        type: s1_nullable
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
       - id: display_inst
         type: s1
         enum: display_inst
@@ -328,9 +327,8 @@ types:
         encoding: ASCII
         doc: 'clearingAccount'
       - id: cancel_instead_of_slide_cancel_instead_of_slide_optional
-        type: s1
-        enum: cancel_instead_of_slide_cancel_instead_of_slide_optional
-        doc: 'cancelInsteadOfSlide'
+        type: s1_nullable
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
       - id: send_time
         type: u8
         doc: 'sendTime'
@@ -374,11 +372,11 @@ types:
         enum: side
         doc: 'side'
       - id: price_price_4_optional
-        type: decimal_s4_4
-        doc: 'Order price. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Order price. Implied decimal with scale 1e-4. Nullable, No Value = -2147483648'
       - id: order_qty_quantity_zero_optional
-        type: u4
-        doc: 'Order quantity'
+        type: u4_nullable
+        doc: 'Order quantity. Nullable, No Value = 4294967295'
       - id: quote_type
         type: s1
         enum: quote_type
@@ -389,8 +387,8 @@ types:
   mass_cancel_request_message:
     seq:
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -568,11 +566,11 @@ types:
         type: u4
         doc: 'leavesQty'
       - id: effective_limit_price
-        type: decimal_s8_8
-        doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: display_price
-        type: decimal_s8_8
-        doc: 'displayPrice. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'displayPrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: reason_code
         type: u1
         enum: reason_code
@@ -614,11 +612,11 @@ types:
         type: u4
         doc: 'leavesQty'
       - id: effective_limit_price
-        type: decimal_s8_8
-        doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'effectiveLimitPrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: display_price
-        type: decimal_s8_8
-        doc: 'displayPrice. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'displayPrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: restatement_reason
         type: s1
         enum: restatement_reason
@@ -677,8 +675,8 @@ types:
         type: u8
         doc: 'transactTime'
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -778,11 +776,11 @@ types:
         enum: ack_type
         doc: 'ackType'
       - id: price_price_4_optional
-        type: decimal_s4_4
-        doc: 'Order price. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Order price. Implied decimal with scale 1e-4. Nullable, No Value = -2147483648'
       - id: order_qty_quantity_zero_optional
-        type: u4
-        doc: 'Order quantity'
+        type: u4_nullable
+        doc: 'Order quantity. Nullable, No Value = 4294967295'
       - id: reason_code
         type: u1
         enum: reason_code
@@ -1173,8 +1171,8 @@ types:
   risk_limit_update_request_message:
     seq:
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -1184,34 +1182,31 @@ types:
         type: u8
         doc: 'clOrdId'
       - id: risk_control_risk_control_optional
-        type: s1
-        enum: risk_control_risk_control_optional
-        doc: 'riskControl'
+        type: s1_nullable
+        doc: 'riskControl. Nullable, No Value = 128'
       - id: risk_control_status_risk_control_status_optional
-        type: s1
-        enum: risk_control_status_risk_control_status_optional
-        doc: 'riskControlStatus'
+        type: s1_nullable
+        doc: 'riskControlStatus. Nullable, No Value = 128'
       - id: time_limit
-        type: u8
-        doc: 'timeLimit'
+        type: u8_nullable
+        doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
       - id: percentage_limit
-        type: u4
-        doc: 'percentageLimit'
+        type: u4_nullable
+        doc: 'percentageLimit. Nullable, No Value = 4294967295'
       - id: count_limit
-        type: u4
-        doc: 'countLimit'
+        type: u4_nullable
+        doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
-        type: s1
-        enum: ioc_attribution
-        doc: 'iocAttribution'
+        type: s1_nullable
+        doc: 'iocAttribution. Nullable, No Value = 128'
       - id: cust_capacity_weight_uint_8_optional
-        type: u1
-        doc: 'custCapacityWeight'
+        type: u1_nullable
+        doc: 'custCapacityWeight. Nullable, No Value = 255'
   risk_action_request_message:
     seq:
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -1229,8 +1224,8 @@ types:
         enum: risk_action
         doc: 'riskAction'
       - id: custom_group_id_uint_16_optional
-        type: u2
-        doc: 'customGroupId'
+        type: u2_nullable
+        doc: 'customGroupId. Nullable, No Value = 65535'
   underlying_ref_data_message:
     seq:
       - id: transact_time
@@ -1315,41 +1310,32 @@ types:
         encoding: ASCII
         doc: 'member'
       - id: max_qty
-        type: u4
-        doc: 'maxQty'
+        type: u4_nullable
+        doc: 'maxQty. Nullable, No Value = 4294967295'
       - id: max_notional
-        type: decimal_s8_8
-        doc: 'maxNotional. Implied decimal with scale 1e-8'
+        type: decimal_s8_8_nullable
+        doc: 'maxNotional. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: default_account
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'defaultAccount'
+        type: str_16_nullable
+        doc: 'defaultAccount. Nullable, No Value = 0'
       - id: default_optional_data
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'defaultOptionalData'
+        type: str_16_nullable
+        doc: 'defaultOptionalData. Nullable, No Value = 0'
       - id: default_clearing_account
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'defaultClearingAccount'
+        type: str_4_nullable
+        doc: 'defaultClearingAccount. Nullable, No Value = 0'
       - id: allow_market_orders
-        type: u1
-        enum: allow_market_orders
-        doc: 'allowMarketOrders'
+        type: u1_nullable
+        doc: 'allowMarketOrders. Nullable, No Value = 255'
       - id: allow_isoioc
-        type: u1
-        enum: allow_isoioc
-        doc: 'allowISOIOC'
+        type: u1_nullable
+        doc: 'allowISOIOC. Nullable, No Value = 255'
       - id: allow_iso_day
-        type: u1
-        enum: allow_iso_day
-        doc: 'allowISODay'
+        type: u1_nullable
+        doc: 'allowISODay. Nullable, No Value = 255'
       - id: max_duplicative
-        type: u4
-        doc: 'maxDuplicative'
+        type: u4_nullable
+        doc: 'maxDuplicative. Nullable, No Value = 4294967295'
   market_maker_symbol_appointment_message:
     seq:
       - id: transact_time
@@ -1372,11 +1358,11 @@ types:
         enum: appointment_status
         doc: 'appointmentStatus'
       - id: max_allowable_width
-        type: u4
-        doc: 'maxAllowableWidth'
+        type: u4_nullable
+        doc: 'maxAllowableWidth. Nullable, No Value = 4294967295'
       - id: quote_relief_mult
-        type: u4
-        doc: 'quoteReliefMult'
+        type: u4_nullable
+        doc: 'quoteReliefMult. Nullable, No Value = 4294967295'
   session_configuration_acknowledgement_message:
     seq:
       - id: transact_time
@@ -1396,24 +1382,19 @@ types:
         encoding: ASCII
         doc: 'member'
       - id: default_mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'defaultMpid'
+        type: str_4_nullable
+        doc: 'defaultMpid. Nullable, No Value = 0'
       - id: mic
         type: str
         size: 4
         encoding: ASCII
         doc: 'mic'
       - id: cancel_on_disconnect
-        type: s1
-        enum: cancel_on_disconnect
-        doc: 'cancelOnDisconnect'
+        type: s1_nullable
+        doc: 'cancelOnDisconnect. Nullable, No Value = 128'
       - id: aiq_default
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'aiqDefault'
+        type: str_3_nullable
+        doc: 'aiqDefault. Nullable, No Value = 0'
       - id: order_unsolicited_ack_subscription
         type: u1
         enum: order_unsolicited_ack_subscription
@@ -1423,13 +1404,11 @@ types:
         enum: quote_unsolicited_ack_subscription
         doc: 'quoteUnsolicitedAckSubscription'
       - id: default_attributed_quote
-        type: s1
-        enum: default_attributed_quote
-        doc: 'defaultAttributedQuote'
+        type: s1_nullable
+        doc: 'defaultAttributedQuote. Nullable, No Value = 128'
       - id: default_cancel_instead_of_slide
-        type: u1
-        enum: default_cancel_instead_of_slide
-        doc: 'defaultCancelInsteadOfSlide'
+        type: u1_nullable
+        doc: 'defaultCancelInsteadOfSlide. Nullable, No Value = 255'
       - id: trading_ring
         type: s1
         doc: 'tradingRing'
@@ -1439,8 +1418,8 @@ types:
         type: u8
         doc: 'transactTime'
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -1450,8 +1429,8 @@ types:
         type: u8
         doc: 'clOrdId'
       - id: custom_group_id_uint_16_optional
-        type: u2
-        doc: 'customGroupId'
+        type: u2_nullable
+        doc: 'customGroupId. Nullable, No Value = 65535'
       - id: risk_ack_type
         type: s1
         enum: risk_ack_type
@@ -1469,22 +1448,20 @@ types:
         enum: risk_action
         doc: 'riskAction'
       - id: time_limit
-        type: u8
-        doc: 'timeLimit'
+        type: u8_nullable
+        doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
       - id: percentage_limit
-        type: u4
-        doc: 'percentageLimit'
+        type: u4_nullable
+        doc: 'percentageLimit. Nullable, No Value = 4294967295'
       - id: count_limit
-        type: u4
-        doc: 'countLimit'
+        type: u4_nullable
+        doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
-        type: s1
-        enum: ioc_attribution
-        doc: 'iocAttribution'
+        type: s1_nullable
+        doc: 'iocAttribution. Nullable, No Value = 128'
       - id: blocked_by_breach_indicator
-        type: s1
-        enum: blocked_by_breach_indicator
-        doc: 'blockedByBreachIndicator'
+        type: s1_nullable
+        doc: 'blockedByBreachIndicator. Nullable, No Value = 128'
       - id: cust_capacity_weight_uint_8
         type: u1
         doc: 'custCapacityWeight'
@@ -1498,8 +1475,8 @@ types:
         type: u8
         doc: 'transactTime'
       - id: underlying_id_instrument_id_optional
-        type: u4
-        doc: 'underlyingId'
+        type: u4_nullable
+        doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
         type: str
         size: 4
@@ -1510,14 +1487,14 @@ types:
         enum: risk_control_risk_control
         doc: 'riskControl'
       - id: time_limit
-        type: u8
-        doc: 'timeLimit'
+        type: u8_nullable
+        doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
       - id: percentage_limit
-        type: u4
-        doc: 'percentageLimit'
+        type: u4_nullable
+        doc: 'percentageLimit. Nullable, No Value = 4294967295'
       - id: count_limit
-        type: u4
-        doc: 'countLimit'
+        type: u4_nullable
+        doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: notification_reason
         type: s1
         enum: notification_reason
@@ -1646,6 +1623,13 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == 128
   decimal_s4_4:
     seq:
       - id: mantissa
@@ -1653,6 +1637,75 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s4_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s4_4
+    instances:
+      is_null:
+        value: value.mantissa == -2147483648
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  decimal_s8_8_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_8
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  str_16_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 16
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  str_4_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 4
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  str_3_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 3
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
 
 enums:
   template_id:
@@ -2433,17 +2486,17 @@ enums:
       doc: 'OptionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   closing_only:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   orp_enabled:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   mpid_status:
     1:
@@ -2454,24 +2507,24 @@ enums:
       doc: 'MPIDStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   allow_market_orders:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   allow_isoioc:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   allow_iso_day:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   appointment_type:
     1:
@@ -2509,24 +2562,24 @@ enums:
       doc: 'UserSessionStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cancel_on_disconnect:
     0:
-      id: 'off'
+      id: 'off_field'
       doc: 'CancelOnDisconnect Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'on'
+      id: 'on_field'
       doc: 'CancelOnDisconnect Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   order_unsolicited_ack_subscription:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   quote_unsolicited_ack_subscription:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   default_attributed_quote:
     1:
@@ -2546,10 +2599,10 @@ enums:
       doc: 'AttributedQuote Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   default_cancel_instead_of_slide:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   risk_ack_type:
     0:
@@ -2636,10 +2689,10 @@ enums:
       doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   keep_alive:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   subsession_type:
     0:
@@ -2653,10 +2706,10 @@ enums:
       doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   joined:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reason:
     0:

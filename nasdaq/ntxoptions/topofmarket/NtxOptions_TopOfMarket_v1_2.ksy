@@ -455,10 +455,10 @@ enums:
       doc: 'Put Option'
   tradable:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Option Is Tradable'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Option Is Not Tradable'
   minimum_price_variation:
     0x45:

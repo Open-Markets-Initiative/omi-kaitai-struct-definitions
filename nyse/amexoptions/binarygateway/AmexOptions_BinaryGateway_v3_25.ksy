@@ -2206,10 +2206,10 @@ enums:
       doc: 'Reject Iso Day Orders'
   risk_control_activation:
     0:
-      id: 'off'
+      id: 'off_field'
       doc: 'Risk Control Turned Off'
     1:
-      id: 'on'
+      id: 'on_field'
       doc: 'Risk Control Turned On'
   breach_action_request:
     0:

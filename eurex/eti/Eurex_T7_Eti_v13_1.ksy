@@ -223,9 +223,11 @@ types:
     seq:
       - id: body_len
         type: u4
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: template_id
         type: u2
         enum: template_id
+        doc: 'Nullable, No Value = 0xFFFF'
   add_complex_instrument_request:
     seq:
       - id: network_msg_id
@@ -238,22 +240,26 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quantity_scaling_factor
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: multileg_model
-        type: u1
-        enum: multileg_model
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -268,26 +274,31 @@ types:
   request_header_comp:
     seq:
       - id: msg_seq_num
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: sender_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
   instrmt_leg_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leg_symbol
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: leg_ratio_qty
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: leg_side
-        type: u1
-        enum: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: leg_security_type
-        type: u1
-        enum: leg_security_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   add_complex_instrument_response:
@@ -297,41 +308,47 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: low_limit_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: high_limit_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_response_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: number_of_securities
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quantity_scaling_factor
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: multileg_model
-        type: u1
-        enum: multileg_model
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: implied_market_indicator
-        type: u1
-        enum: implied_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
       - id: instrmt_leg_grp_comp
@@ -341,25 +358,26 @@ types:
   nr_response_header_me_comp:
     seq:
       - id: request_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_out
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: response_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: msg_seq_num
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   add_flexible_instrument_request:
@@ -374,25 +392,29 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: strike_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: contract_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: settl_method
         type: u1
         enum: settl_method
       - id: opt_attribute
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exercise_style
-        type: u1
-        enum: exercise_style
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -407,33 +429,38 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: security_response_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: strike_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: contract_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: settl_method
         type: u1
         enum: settl_method
       - id: opt_attribute
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exercise_style
-        type: u1
-        enum: exercise_style
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   add_scaled_simple_instrument_request:
@@ -448,14 +475,17 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quantity_scaling_factor
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: multileg_model
-        type: u1
-        enum: multileg_model
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1
         size: 1
   add_scaled_simple_instrument_response:
@@ -465,28 +495,32 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_response_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quantity_scaling_factor
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: multileg_model
-        type: u1
-        enum: multileg_model
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: implied_market_indicator
-        type: u1
-        enum: implied_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   amend_basket_trade_request:
@@ -501,30 +535,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -550,8 +592,8 @@ types:
   basket_root_party_grp_comp:
     seq:
       - id: root_party_sub_id_type
-        type: u2
-        enum: root_party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: root_party_contra_firm
         type: str
         size: 5
@@ -572,37 +614,41 @@ types:
   instrmt_match_side_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side_trd_sub_typ
-        type: u2
-        enum: side_trd_sub_typ
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: effect_on_basket
-        type: u1
-        enum: effect_on_basket
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
         type: str
         size: 20
@@ -613,21 +659,23 @@ types:
   basket_side_alloc_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_sub_id_type
-        type: u2
-        enum: party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -652,22 +700,26 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: root_party_sub_id_type
-        type: u2
-        enum: root_party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_basket_side_alloc_ext_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -692,44 +744,50 @@ types:
   basket_side_alloc_ext_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -807,18 +865,23 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -838,51 +901,59 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -968,40 +1039,47 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_basket_side_alloc_ext_bc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_entering_trader
         type: str
         size: 6
@@ -1030,74 +1108,81 @@ types:
   rbc_header_comp:
     seq:
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_seq_num
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_resend_flag
-        type: u1
-        enum: appl_resend_flag
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_id
-        type: u1
-        enum: appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   basket_side_alloc_ext_bc_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_trd_sub_typ
-        type: u2
-        enum: side_trd_sub_typ
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_sub_id_type
-        type: u2
-        enum: party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: effect_on_basket
-        type: u1
-        enum: effect_on_basket
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -1170,42 +1255,50 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_anonymity
-        type: u1
-        enum: basket_anonymity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -1237,22 +1330,26 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: delete_reason
-        type: u1
-        enum: delete_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -1270,29 +1367,35 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_basket_exec_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -1310,14 +1413,17 @@ types:
   basket_exec_grp_comp:
     seq:
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_trd_sub_typ
-        type: u2
-        enum: side_trd_sub_typ
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2
         size: 2
   basket_response:
@@ -1327,7 +1433,8 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -1336,13 +1443,14 @@ types:
   response_header_comp:
     seq:
       - id: request_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: msg_seq_num
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   basket_roll_broadcast:
@@ -1352,33 +1460,41 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_old_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_new_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_old_basket_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_new_basket_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_anonymity
-        type: u1
-        enum: basket_anonymity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -1416,20 +1532,23 @@ types:
   old_basket_data_bc_grp_comp:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -1445,20 +1564,23 @@ types:
   new_basket_data_bc_grp_comp:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -1474,37 +1596,41 @@ types:
   old_basket_instrmt_match_side_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side_trd_sub_typ
-        type: u2
-        enum: side_trd_sub_typ
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: effect_on_basket
-        type: u1
-        enum: effect_on_basket
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
         type: str
         size: 20
@@ -1515,37 +1641,41 @@ types:
   new_basket_instrmt_match_side_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side_trd_sub_typ
-        type: u2
-        enum: side_trd_sub_typ
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: effect_on_basket
-        type: u1
-        enum: effect_on_basket
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
         type: str
         size: 20
@@ -1556,24 +1686,26 @@ types:
   old_basket_side_alloc_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_sub_id_type
-        type: u2
-        enum: party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -1589,24 +1721,26 @@ types:
   new_basket_side_alloc_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_sub_id_type
-        type: u2
-        enum: party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: instrmt_match_side_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -1631,25 +1765,32 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_old_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_new_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_old_basket_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_new_basket_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -1684,19 +1825,22 @@ types:
   old_basket_data_grp_comp:
     seq:
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_report_id
         type: str
         size: 20
         encoding: ASCII
         pad-right: 0x20
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -1712,10 +1856,11 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -1730,18 +1875,20 @@ types:
       - id: notif_header_comp
         type: notif_header_comp
       - id: appl_id_status
-        type: u4
-        enum: appl_id_status
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: ref_appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: ref_appl_id
-        type: u1
-        enum: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: session_status
-        type: u1
-        enum: session_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: var_text
         type: str
         size: len_var_text
@@ -1753,8 +1900,8 @@ types:
   notif_header_comp:
     seq:
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   clip_deletion_notification:
     seq:
       - id: pad2
@@ -1762,30 +1909,35 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -1797,29 +1949,32 @@ types:
   rbc_header_me_comp:
     seq:
       - id: trd_reg_ts_time_out
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: notification_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: appl_id
-        type: u1
-        enum: appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_resend_flag
-        type: u1
-        enum: appl_resend_flag
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   clip_execution_notification:
@@ -1829,38 +1984,44 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_instrmnt_leg_exec_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -1868,10 +2029,11 @@ types:
         type: u1
         enum: exec_type
       - id: match_type
-        type: u1
-        enum: match_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_fills_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2v2
         size: 2
       - id: fills_grp_comp
@@ -1885,37 +2047,42 @@ types:
   fills_grp_comp:
     seq:
       - id: fill_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: fill_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: fill_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: fill_exec_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: fill_liquidity_ind
-        type: u1
-        enum: fill_liquidity_ind
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   instrmnt_leg_exec_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leg_last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: leg_exec_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: leg_side
-        type: u1
-        enum: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: fill_ref_id
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
   clip_response:
@@ -1925,19 +2092,23 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: cross_request_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_cross_request_ack_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: implied_check_price_indicator
-        type: u1
-        enum: implied_check_price_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
       - id: cross_request_ack_side_grp_comp
@@ -1947,15 +2118,17 @@ types:
   cross_request_ack_side_grp_comp:
     seq:
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: input_source
-        type: u1
-        enum: input_source
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   cross_request:
@@ -1970,12 +2143,14 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: compliance_text
         type: str
         size: 20
@@ -1988,8 +2163,8 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   delete_all_order_broadcast:
     seq:
       - id: pad2
@@ -1997,37 +2172,44 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_entering_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_not_affected_orders_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_affected_order_requests_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: mass_action_reason
-        type: u1
-        enum: mass_action_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: not_affected_orders_grp_comp
         type: not_affected_orders_grp_comp
         repeat: expr
@@ -2039,13 +2221,16 @@ types:
   not_affected_orders_grp_comp:
     seq:
       - id: not_affected_order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: not_aff_orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   affected_order_requests_grp_comp:
     seq:
       - id: affected_order_request_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   delete_all_order_nr_response:
@@ -2055,8 +2240,8 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   delete_all_order_quote_event_broadcast:
     seq:
       - id: pad2
@@ -2064,18 +2249,20 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: mass_action_reason
-        type: u1
-        enum: mass_action_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2v2
         size: 2
   delete_all_order_request:
@@ -2090,32 +2277,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   delete_all_order_response:
     seq:
       - id: pad2
@@ -2123,12 +2316,14 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: num_not_affected_orders_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_affected_order_requests_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad4
         size: 4
       - id: not_affected_orders_grp_comp
@@ -2142,32 +2337,35 @@ types:
   response_header_me_comp:
     seq:
       - id: request_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_out
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: response_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: msg_seq_num
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_id
-        type: u1
-        enum: appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   delete_all_quote_broadcast:
     seq:
       - id: pad2
@@ -2175,26 +2373,32 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_entering_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_not_affected_securities_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: mass_action_reason
-        type: u1
-        enum: mass_action_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: target_party_id_desk_id
         type: str
         size: 3
@@ -2209,7 +2413,8 @@ types:
   not_affected_securities_grp_comp:
     seq:
       - id: not_affected_security_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   delete_all_quote_request:
     seq:
       - id: network_msg_id
@@ -2222,19 +2427,23 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   delete_all_quote_response:
@@ -2244,10 +2453,11 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: num_not_affected_securities_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: not_affected_securities_grp_comp
@@ -2266,17 +2476,20 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -2296,25 +2509,32 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: cross_request_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   delete_order_broadcast:
@@ -2324,34 +2544,41 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: party_id_entering_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -2359,11 +2586,11 @@ types:
         type: u1
         enum: exec_type
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad5
         size: 5
   delete_order_complex_request:
@@ -2378,30 +2605,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -2416,22 +2651,26 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -2439,14 +2678,14 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2v2
         size: 2
   delete_order_request:
@@ -2461,30 +2700,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -2499,22 +2746,26 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -2522,14 +2773,14 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2v2
         size: 2
   delete_order_single_request:
@@ -2544,30 +2795,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -2587,19 +2846,23 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -2619,32 +2882,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_type
-        type: u1
-        enum: basket_trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_anonymity
-        type: u1
-        enum: basket_anonymity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -2681,47 +2950,53 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: cross_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: cross_request_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_cross_request_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_cross_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: cross_request_type
-        type: u1
-        enum: cross_request_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: cross_type
-        type: u1
-        enum: cross_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: cross_prioritization
-        type: u1
-        enum: cross_prioritization
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side_disclosure_instruction
-        type: u1
-        enum: side_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_disclosure_instruction
-        type: u1
-        enum: price_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_qty_disclosure_instruction
-        type: u1
-        enum: order_qty_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_contra_firm
         type: str
         size: 5
@@ -2745,45 +3020,50 @@ types:
   cross_request_side_grp_comp:
     seq:
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: maximum_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: input_source
-        type: u1
-        enum: input_source
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
@@ -2850,8 +3130,8 @@ types:
   side_cross_leg_grp_comp:
     seq:
       - id: leg_input_source
-        type: u1
-        enum: leg_input_source
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
@@ -2874,71 +3154,83 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_trade_quantity
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: underlying_settlement_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_attribute_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_underlying_stip_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_settlement_location
-        type: u1
-        enum: party_id_settlement_location
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedge_type
-        type: u1
-        enum: hedge_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: swap_clearer
-        type: u1
-        enum: swap_clearer
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
         type: str
         size: 20
@@ -2994,15 +3286,17 @@ types:
   side_alloc_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_enrichment_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -3018,27 +3312,29 @@ types:
   trd_instrmnt_leg_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leg_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
   instrument_event_grp_comp:
     seq:
       - id: event_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: event_type
-        type: u1
-        enum: event_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   instrument_attribute_grp_comp:
     seq:
       - id: instr_attrib_type
-        type: u1
-        enum: instr_attrib_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: instr_attrib_value
         type: str
         size: 32
@@ -3068,6 +3364,7 @@ types:
         type: notif_header_comp
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: var_text
         type: str
         size: len_var_text
@@ -3083,12 +3380,14 @@ types:
       - id: notif_header_comp
         type: notif_header_comp
       - id: username
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: user_status
-        type: u1
-        enum: user_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: var_text
         type: str
         size: len_var_text
@@ -3125,6 +3424,7 @@ types:
         type: request_header_comp
       - id: last_entity_processed
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
   inquire_enrichment_rule_id_list_response:
     seq:
       - id: pad2
@@ -3133,8 +3433,10 @@ types:
         type: response_header_comp
       - id: last_entity_processed
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: num_enrichment_rules_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: enrichment_rules_grp_comp
@@ -3144,10 +3446,11 @@ types:
   enrichment_rules_grp_comp:
     seq:
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_id_origination_market
-        type: u1
-        enum: party_id_origination_market
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -3200,9 +3503,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
   inquire_mm_parameter_response:
     seq:
       - id: pad2
@@ -3210,12 +3515,14 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mm_parameter_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_mm_parameter_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: mm_parameter_grp_comp
@@ -3225,23 +3532,26 @@ types:
   mm_parameter_grp_comp:
     seq:
       - id: exposure_duration
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: delta
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: vega
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: pct_count
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: mm_risk_limit_action_type
-        type: u1
-        enum: mm_risk_limit_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   inquire_margin_based_risk_limit_request:
@@ -3256,7 +3566,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_detail_executing_unit
         type: str
         size: 5
@@ -3271,11 +3582,11 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: margin_based_risk_limit_long
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: margin_based_risk_limit_short
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   inquire_pre_trade_risk_limits_request:
     seq:
       - id: network_msg_id
@@ -3288,10 +3599,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: risk_limit_platform
-        type: u1
-        enum: risk_limit_platform
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_unit
         type: str
         size: 5
@@ -3323,6 +3635,7 @@ types:
         type: response_header_comp
       - id: num_sessions_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: sessions_grp_comp
@@ -3332,13 +3645,14 @@ types:
   sessions_grp_comp:
     seq:
       - id: party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: session_mode
-        type: u1
-        enum: session_mode
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: session_sub_mode
-        type: u1
-        enum: session_sub_mode
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
   inquire_user_request:
@@ -3354,6 +3668,7 @@ types:
         type: request_header_comp
       - id: last_entity_processed
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
   inquire_user_response:
     seq:
       - id: pad2
@@ -3362,8 +3677,10 @@ types:
         type: response_header_comp
       - id: last_entity_processed
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: num_party_details_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: party_details_grp_comp
@@ -3373,18 +3690,19 @@ types:
   party_details_grp_comp:
     seq:
       - id: party_detail_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_detail_executing_trader
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
       - id: party_detail_role_qualifier
-        type: u1
-        enum: party_detail_role_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_status
-        type: u1
-        enum: party_detail_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_desk_id
         type: str
         size: 3
@@ -3399,13 +3717,14 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: user_status
-        type: u1
-        enum: user_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: var_text
         type: str
         size: len_var_text
@@ -3426,9 +3745,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: heart_bt_int
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: default_cstm_appl_ver_id
         type: str
         size: 30
@@ -3484,9 +3805,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: heart_bt_int
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: default_cstm_appl_ver_id
         type: str
         size: 30
@@ -3538,25 +3861,32 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: throttle_time_interval
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: throttle_no_msgs
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: throttle_disconnect_limit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: heart_bt_int
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: session_instance_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: latest_public_key_seq_no
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: len_public_key
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: market_id
-        type: u2
-        enum: market_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trad_ses_mode
-        type: u1
-        enum: trad_ses_mode
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: default_cstm_appl_ver_id
         type: str
         size: 30
@@ -3603,27 +3933,31 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: exposure_duration
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: delta
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: vega
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: mm_risk_limit_action_type
-        type: u1
-        enum: mm_risk_limit_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pct_count
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
   mm_parameter_definition_response:
     seq:
       - id: pad2
@@ -3631,8 +3965,8 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   mass_order:
     seq:
       - id: network_msg_id
@@ -3645,13 +3979,17 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: mass_order_request_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -3668,32 +4006,32 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -3742,6 +4080,7 @@ types:
         pad-right: 0x20
       - id: num_order_entry_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: order_entry_grp_comp
@@ -3751,23 +4090,25 @@ types:
   order_entry_grp_comp:
     seq:
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   mass_order_ack:
@@ -3777,9 +4118,11 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_order_request_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: mass_order_report_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   mass_quote_request:
@@ -3794,43 +4137,50 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_size_type
-        type: u1
-        enum: quote_size_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_quote_entry_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad5
         size: 5
       - id: quote_entry_grp_comp
@@ -3840,19 +4190,20 @@ types:
   quote_entry_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: bid_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
   mass_quote_response:
     seq:
       - id: pad2
@@ -3860,14 +4211,17 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_response_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_quote_entry_ack_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: quote_entry_ack_grp_comp
@@ -3877,19 +4231,20 @@ types:
   quote_entry_ack_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: cxl_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_entry_reject_reason
-        type: u4
-        enum: quote_entry_reject_reason
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_entry_status
-        type: u1
-        enum: quote_entry_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
   modify_basket_trade_request:
@@ -3904,30 +4259,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: maturity_month_year
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_basket_side_alloc_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_basket_root_party_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_match_side_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
         type: str
         size: 20
@@ -3962,33 +4325,44 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -4005,50 +4379,50 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ownership_indicator
-        type: u1
-        enum: ownership_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
         type: str
         size: 2
@@ -4089,6 +4463,7 @@ types:
         pad-right: 0x20
       - id: num_leg_ord_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
       - id: leg_ord_grp_comp
@@ -4119,68 +4494,77 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -4195,25 +4579,29 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -4221,22 +4609,23 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: order_event_grp_comp
@@ -4246,16 +4635,17 @@ types:
   order_event_grp_comp:
     seq:
       - id: order_event_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_event_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_event_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_event_reason
-        type: u1
-        enum: order_event_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   modify_order_request:
@@ -4270,45 +4660,53 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: stop_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ownership_indicator
-        type: u1
-        enum: ownership_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -4371,56 +4769,61 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_leg_ord_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4v1
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1
         size: 1
       - id: check_sum_correction
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2v3
         size: 2
       - id: leg_ord_grp_comp
@@ -4434,28 +4837,32 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -4463,22 +4870,23 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: order_event_grp_comp
@@ -4497,36 +4905,41 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -4535,45 +4948,50 @@ types:
       - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4v1
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1v1
         size: 1
       - id: check_sum_correction
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2v2
         size: 2
   modify_order_single_request:
@@ -4588,39 +5006,50 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -4637,47 +5066,47 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -4692,8 +5121,8 @@ types:
         type: u1
         enum: position_effect
       - id: ownership_indicator
-        type: u1
-        enum: ownership_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
         type: str
         size: 2
@@ -4741,63 +5170,71 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: simple_security_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -4817,41 +5254,47 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: swap_clearer
-        type: u1
-        enum: swap_clearer
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
         type: str
         size: 20
@@ -4884,27 +5327,35 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -4921,50 +5372,50 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
         type: str
         size: 2
@@ -5005,6 +5456,7 @@ types:
         pad-right: 0x20
       - id: num_leg_ord_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
         repeat: expr
@@ -5021,66 +5473,74 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -5095,20 +5555,23 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -5116,22 +5579,23 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: order_event_grp_comp
@@ -5150,39 +5614,44 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: stop_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -5245,52 +5714,57 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_leg_ord_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1
         size: 1
       - id: check_sum_correction
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2v2
         size: 2
       - id: leg_ord_grp_comp
@@ -5304,26 +5778,29 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_entry_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -5331,22 +5808,23 @@ types:
         type: u1
         enum: exec_type
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: order_event_grp_comp
@@ -5365,34 +5843,38 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -5401,45 +5883,50 @@ types:
       - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4v1
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1v1
         size: 1
       - id: check_sum_correction
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2v2
         size: 2
   new_order_single_request:
@@ -5454,33 +5941,41 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
         type: str
         size: 5
@@ -5497,50 +5992,50 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -5601,61 +6096,68 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: simple_security_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: enrichment_rule_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_validity_check_type
-        type: u1
-        enum: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_value
-        type: u1
-        enum: value_check_type_value
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -5670,10 +6172,11 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: orig_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: headline
         type: str
         size: 256
@@ -5694,40 +6197,47 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: mass_order_report_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_instrmnt_leg_exec_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -5735,15 +6245,17 @@ types:
         type: u1
         enum: exec_type
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_fills_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
       - id: fills_grp_comp
@@ -5765,70 +6277,83 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_entry_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: mass_order_report_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: expire_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_inst_cross_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_entering_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_instrmnt_leg_exec_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: self_match_prevention_instruction
-        type: u1
-        enum: self_match_prevention_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -5836,26 +6361,26 @@ types:
         type: u1
         enum: exec_type
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: time_in_force
-        type: u1
-        enum: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: exec_inst
-        type: u1
-        enum: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_indicator
-        type: u1
-        enum: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -5914,16 +6439,19 @@ types:
         pad-right: 0x20
       - id: num_fills_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_leg_ord_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: leg_ord_grp_comp
         type: leg_ord_grp_comp
         repeat: expr
@@ -5947,44 +6475,50 @@ types:
       - id: response_header_me_comp
         type: response_header_me_comp
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_entry_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_instrmnt_leg_exec_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: exec_restatement_reason
-        type: u2
-        enum: exec_restatement_reason
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -5992,18 +6526,20 @@ types:
         type: u1
         enum: exec_type
       - id: triggered
-        type: u1
-        enum: triggered
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: crossed_indicator
-        type: u1
-        enum: crossed_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transaction_delay_indicator
-        type: u1
-        enum: transaction_delay_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_fills_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: fills_grp_comp
@@ -6025,28 +6561,32 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: requesting_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: requesting_party_id_executing_system
-        type: u4
-        enum: requesting_party_id_executing_system
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_id
-        type: u2
-        enum: market_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_action_type
-        type: u1
-        enum: party_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: requesting_party_id_entering_firm
-        type: u1
-        enum: requesting_party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   party_entitlements_update_report:
     seq:
       - id: pad2
@@ -6054,18 +6594,20 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_detail_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: requesting_party_id_executing_system
-        type: u4
-        enum: requesting_party_id_executing_system
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_id
-        type: u2
-        enum: market_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: list_update_action
         type: u1
         enum: list_update_action
@@ -6080,8 +6622,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: party_detail_status
-        type: u1
-        enum: party_detail_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   ping_request:
@@ -6096,7 +6638,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
   ping_response:
@@ -6106,8 +6649,8 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   pre_trade_risk_limit_response:
     seq:
       - id: pad2
@@ -6115,17 +6658,20 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: risk_limit_report_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_risk_limits_rpt_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_status
-        type: u1
-        enum: party_detail_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_platform
-        type: u1
-        enum: risk_limit_platform
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_executing_unit
         type: str
         size: 5
@@ -6140,28 +6686,29 @@ types:
   risk_limits_rpt_grp_comp:
     seq:
       - id: risk_limit_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: risk_limit_open_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: risk_limit_net_position_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: netting_coefficient
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: activation_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: risk_limit_type
-        type: u1
-        enum: risk_limit_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_requesting_party_role
-        type: u1
-        enum: risk_limit_requesting_party_role
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_violation_indicator
-        type: u1
-        enum: risk_limit_violation_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_group
         type: str
         size: 3
@@ -6181,18 +6728,20 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: netting_coefficient
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: risk_limit_platform
-        type: u1
-        enum: risk_limit_platform
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_risk_limit_qty_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_status
-        type: u1
-        enum: party_detail_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_group
         type: str
         size: 3
@@ -6212,11 +6761,11 @@ types:
   risk_limit_qty_grp_comp:
     seq:
       - id: risk_limit_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: risk_limit_type
-        type: u1
-        enum: risk_limit_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   quote_activation_notification:
@@ -6226,26 +6775,29 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: party_id_entering_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_not_affected_securities_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: mass_action_type
-        type: u1
-        enum: mass_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: mass_action_sub_type
-        type: u1
-        enum: mass_action_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: mass_action_reason
-        type: u1
-        enum: mass_action_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2v2
         size: 2
       - id: not_affected_securities_grp_comp
@@ -6264,25 +6816,29 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: target_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: mass_action_type
-        type: u1
-        enum: mass_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: mass_action_sub_type
-        type: u1
-        enum: mass_action_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
   quote_activation_response:
@@ -6292,10 +6848,11 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: mass_action_report_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: num_not_affected_securities_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: not_affected_securities_grp_comp
@@ -6309,14 +6866,17 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_quote_leg_exec_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_quote_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1
         size: 1
       - id: quote_event_grp_comp
@@ -6330,50 +6890,57 @@ types:
   quote_event_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: quote_event_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: quote_event_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_msg_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_event_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_event_exec_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quote_event_type
-        type: u1
-        enum: quote_event_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_event_side
-        type: u1
-        enum: quote_event_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_event_liquidity_ind
-        type: u1
-        enum: quote_event_liquidity_ind
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_event_reason
-        type: u1
-        enum: quote_event_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
   quote_leg_exec_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leg_last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: leg_exec_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: leg_side
-        type: u1
-        enum: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: no_quote_events_index
-        type: u1
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
   rfq_request:
@@ -6388,15 +6955,17 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
         type: str
         size: 20
@@ -6411,8 +6980,8 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   reject:
     seq:
       - id: pad2
@@ -6420,13 +6989,14 @@ types:
       - id: nr_response_header_me_comp
         type: nr_response_header_me_comp
       - id: session_reject_reason
-        type: u4
-        enum: session_reject_reason
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: session_status
-        type: u1
-        enum: session_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: var_text
         type: str
         size: len_var_text
@@ -6447,16 +7017,20 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: subscription_scope
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: ref_appl_id
-        type: u1
-        enum: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_beg_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: appl_end_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: pad1
         size: 1
   retransmit_me_message_response:
@@ -6466,11 +7040,14 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: appl_total_message_count
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: appl_end_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: ref_appl_last_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: pad6
         size: 6
   retransmit_request:
@@ -6485,14 +7062,17 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: appl_beg_seq_num
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_end_seq_num
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: ref_appl_id
-        type: u1
-        enum: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad5
         size: 5
   retransmit_response:
@@ -6502,11 +7082,14 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: appl_end_seq_num
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: ref_appl_last_seq_num
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_total_message_count
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
   reverse_tes_trade_request:
@@ -6521,16 +7104,20 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -6550,27 +7137,29 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_detail_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: requesting_party_id_executing_system
-        type: u4
-        enum: requesting_party_id_executing_system
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_id
-        type: u2
-        enum: market_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: inventory_check_type
-        type: u1
-        enum: inventory_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: list_update_action
         type: u1
         enum: list_update_action
       - id: risk_limit_action
-        type: u1
-        enum: risk_limit_action
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: requesting_party_entering_firm
         type: str
         size: 9
@@ -6590,65 +7179,71 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: expire_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_effective_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_price_stip_value
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: orig_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_order_book_item_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedging_instruction
-        type: u1
-        enum: hedging_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_srqs_target_party_trd_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_executing_firm
         type: str
         size: 5
@@ -6748,36 +7343,39 @@ types:
   order_book_item_grp_comp:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: best_bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: best_bid_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: best_offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: best_offer_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: md_book_type
-        type: u1
-        enum: md_book_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: md_sub_book_type
-        type: u1
-        enum: md_sub_book_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   srqs_target_party_trd_grp_comp:
     seq:
       - id: side_last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: target_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: target_party_executing_firm
         type: str
         size: 5
@@ -6802,41 +7400,44 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_price_stip_value
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: requesting_party_sub_id_type
-        type: u2
-        enum: requesting_party_sub_id_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_request_result
-        type: u1
-        enum: trade_request_result
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_srqs_target_party_trd_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_executing_firm
         type: str
         size: 5
@@ -6936,15 +7537,20 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: secondary_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_srqs_quote_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: firm_trade_id
         type: str
         size: 20
@@ -6964,7 +7570,8 @@ types:
   srqs_quote_grp_comp:
     seq:
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   srqs_enter_quote_request:
     seq:
       - id: network_msg_id
@@ -6977,48 +7584,53 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: bid_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: valid_until_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -7104,47 +7716,53 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: valid_until_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_price_stip_value
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedging_instruction
-        type: u1
-        enum: hedging_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_srqs_hit_quote_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -7235,13 +7853,14 @@ types:
   srqs_hit_quote_grp_comp:
     seq:
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   srqs_inquire_smart_respondent_request:
@@ -7256,19 +7875,20 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: eurex_volume_ranking
-        type: u1
-        enum: eurex_volume_ranking
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: enlight_rfq_avg_resp_time_ranking
-        type: u1
-        enum: enlight_rfq_avg_resp_time_ranking
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: enlight_rfq_avg_resp_rate_ranking
-        type: u1
-        enum: enlight_rfq_avg_resp_rate_ranking
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_to_quote_ratio_ranking
-        type: u1
-        enum: trade_to_quote_ratio_ranking
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   srqs_inquire_smart_respondent_response:
     seq:
       - id: pad2
@@ -7276,9 +7896,11 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: num_smart_party_detail_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad2v2
         size: 2
       - id: smart_party_detail_grp_comp
@@ -7306,59 +7928,62 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: effective_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_to_quote_ratio
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: number_of_respondents
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_to_quote_ratio_position
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_instruction
-        type: u1
-        enum: quote_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7416,71 +8041,74 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_execution_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: effective_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_to_request_ratio
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: number_of_respondents
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: respondent_type
-        type: u1
-        enum: respondent_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_target_parties_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: number_of_resp_disclosure_instruction
-        type: u1
-        enum: number_of_resp_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: show_last_deal_on_closure
-        type: u1
-        enum: show_last_deal_on_closure
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7528,34 +8156,35 @@ types:
   target_parties_comp:
     seq:
       - id: target_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_disclosure_instruction
-        type: u1
-        enum: side_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: price_disclosure_instruction
-        type: u1
-        enum: price_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: leaves_qty_disclosure_instruction
-        type: u1
-        enum: leaves_qty_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: last_px_disclosure_instruction
-        type: u1
-        enum: last_px_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: last_qty_disclosure_instruction
-        type: u1
-        enum: last_qty_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: free_text_5_disclosure_instruction
-        type: u1
-        enum: free_text_5_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_order_origination_disclosure_instruction
-        type: u1
-        enum: party_order_origination_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_instruction
-        type: u1
-        enum: quote_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: charge_id_disclosure_instruction
-        type: u1
-        enum: charge_id_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: target_party_executing_firm
         type: str
         size: 5
@@ -7567,11 +8196,11 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: party_detail_status
-        type: u1
-        enum: party_detail_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_detail_status_information
-        type: u1
-        enum: party_detail_status_information
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   srqs_negotiation_status_notification:
@@ -7581,13 +8210,14 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: effective_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7605,73 +8235,80 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: negotiation_start_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: expire_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_to_request_ratio
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: trade_to_quote_ratio
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: number_of_respondents
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_to_quote_ratio_position
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_quot_req_legs_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: respondent_type
-        type: u1
-        enum: respondent_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7729,17 +8366,20 @@ types:
   quot_req_legs_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_ratio_qty
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: leg_symbol
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: leg_security_type
-        type: u1
-        enum: leg_security_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: leg_side
-        type: u1
-        enum: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   srqs_open_negotiation_request:
@@ -7754,69 +8394,74 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: valid_until_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_quot_req_legs_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_target_parties_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: number_of_resp_disclosure_instruction
-        type: u1
-        enum: number_of_resp_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: respondent_type
-        type: u1
-        enum: respondent_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: show_last_deal_on_closure
-        type: u1
-        enum: show_last_deal_on_closure
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: bid_px_is_locked
-        type: u1
-        enum: bid_px_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: offer_px_is_locked
-        type: u1
-        enum: offer_px_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side_is_locked
-        type: u1
-        enum: side_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_qty_is_locked
-        type: u1
-        enum: order_qty_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7867,85 +8512,92 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: expire_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trade_to_request_ratio
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: number_of_respondents
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_quot_req_legs_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_target_parties_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: number_of_resp_disclosure_instruction
-        type: u1
-        enum: number_of_resp_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: respondent_type
-        type: u1
-        enum: respondent_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: show_last_deal_on_closure
-        type: u1
-        enum: show_last_deal_on_closure
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: bid_px_is_locked
-        type: u1
-        enum: bid_px_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: offer_px_is_locked
-        type: u1
-        enum: offer_px_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side_is_locked
-        type: u1
-        enum: side_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_qty_is_locked
-        type: u1
-        enum: order_qty_is_locked
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -7999,49 +8651,53 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: secondary_quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: bid_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: expire_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quoting_status
-        type: u1
-        enum: quoting_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_cancel_reason
-        type: u1
-        enum: quote_cancel_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -8130,9 +8786,11 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quote_req_id
         type: str
         size: 20
@@ -8146,6 +8804,7 @@ types:
         type: rbc_header_comp
       - id: num_srqs_quote_entry_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -8158,43 +8817,47 @@ types:
   srqs_quote_entry_grp_comp:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: expire_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: secondary_quote_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: bid_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_size
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quoting_status
-        type: u1
-        enum: quoting_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: firm_negotiation_id
         type: str
         size: 20
@@ -8240,12 +8903,14 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: quoting_status
-        type: u1
-        enum: quoting_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -8274,10 +8939,11 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trad_ses_event
-        type: u1
-        enum: trad_ses_event
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   srqs_update_deal_status_request:
@@ -8292,26 +8958,29 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: underlying_price_stip_value
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -8341,47 +9010,50 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: quote_ref_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_delta_percentage
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: num_target_parties_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: number_of_resp_disclosure_instruction
-        type: u1
-        enum: number_of_resp_disclosure_instruction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: show_last_deal_on_closure
-        type: u1
-        enum: show_last_deal_on_closure
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_type
-        type: u1
-        enum: quote_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_sub_type
-        type: u1
-        enum: quote_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: respondent_type
-        type: u1
-        enum: respondent_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -8421,47 +9093,54 @@ types:
       - id: nrbc_header_comp
         type: nrbc_header_comp
       - id: matching_engine_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_manager_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: appl_seq_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: t_7_entry_service_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: t_7_entry_service_rtm_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: matching_engine_status
-        type: u1
-        enum: matching_engine_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_manager_status
-        type: u1
-        enum: trade_manager_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: appl_seq_status
-        type: u1
-        enum: appl_seq_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: t_7_entry_service_status
-        type: u1
-        enum: t_7_entry_service_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: t_7_entry_service_rtm_status
-        type: u1
-        enum: t_7_entry_service_rtm_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad5
         size: 5
   nrbc_header_comp:
     seq:
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: appl_id
-        type: u1
-        enum: appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: last_fragment
-        type: u1
-        enum: last_fragment
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
   service_availability_market_broadcast:
@@ -8471,19 +9150,20 @@ types:
       - id: nrbc_header_comp
         type: nrbc_header_comp
       - id: selective_request_for_quote_service_trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: selective_request_for_quote_service_status
-        type: u1
-        enum: selective_request_for_quote_service_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: selective_request_for_quote_rtm_service_status
-        type: u1
-        enum: selective_request_for_quote_rtm_service_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: news_rtm_service_status
-        type: u1
-        enum: news_rtm_service_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: risk_control_rtm_service_status
-        type: u1
-        enum: risk_control_rtm_service_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   status_broadcast:
     seq:
       - id: pad2
@@ -8491,10 +9171,11 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trad_ses_event
-        type: u1
-        enum: trad_ses_event
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   subscribe_request:
@@ -8509,10 +9190,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: subscription_scope
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: ref_appl_id
-        type: u1
-        enum: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   subscribe_response:
@@ -8522,7 +9204,8 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   tes_approve_broadcast:
@@ -8532,98 +9215,116 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_trade_quantity
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_settlement_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_enrichment_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: auto_approval_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_settlement_location
-        type: u1
-        enum: party_id_settlement_location
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedge_type
-        type: u1
-        enum: hedge_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_attribute_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_underlying_stip_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -8643,8 +9344,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: party_id_entering_firm
-        type: u1
-        enum: party_id_entering_firm
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_entering_trader
         type: str
         size: 6
@@ -8769,87 +9470,104 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_trade_quantity
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_settlement_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: auto_approval_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: len_var_text
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_attribute_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_underlying_stip_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_grp_bc_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_clearing_price_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_settlement_location
-        type: u1
-        enum: party_id_settlement_location
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedge_type
-        type: u1
-        enum: hedge_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: swap_clearer
-        type: u1
-        enum: swap_clearer
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -8928,15 +9646,17 @@ types:
   side_alloc_grp_bc_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: reversal_approval_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_enrichment_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -8948,20 +9668,21 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   trd_clearing_price_leg_grp_comp:
     seq:
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   tes_delete_broadcast:
     seq:
       - id: pad2
@@ -8969,26 +9690,29 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: delete_reason
-        type: u1
-        enum: delete_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -9006,28 +9730,32 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -9040,7 +9768,8 @@ types:
       - id: response_header_comp
         type: response_header_comp
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -9053,27 +9782,32 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: reversal_initiation_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: reversal_cancellation_reason
-        type: u1
-        enum: reversal_cancellation_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_grp_bc_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -9097,136 +9831,161 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: root_party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: root_party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: orig_basket_trd_match_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: side_last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side_last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: orig_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_clearing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: strategy_link_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_symbol
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: tot_num_trade_reports
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: negotiation_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: srqs_related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: basket_profile_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: related_product_complex
-        type: u1
-        enum: related_product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transfer_reason
-        type: u1
-        enum: transfer_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: optional_early_termination_indicator
-        type: u1
-        enum: optional_early_termination_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: multi_leg_reporting_type
-        type: u1
-        enum: multi_leg_reporting_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: multileg_price_model
-        type: u1
-        enum: multileg_price_model
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: root_party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: reversal_indicator
-        type: u1
-        enum: reversal_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_aggregation_trans_type
-        type: u1
-        enum: trade_aggregation_trans_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -9324,10 +10083,11 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trad_ses_event
-        type: u1
-        enum: trad_ses_event
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   tes_upload_broadcast:
@@ -9337,82 +10097,95 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_trade_quantity
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: package_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tes_exec_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_settlement_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_platform
-        type: u1
-        enum: trade_platform
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_ext_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_attribute_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_underlying_stip_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedge_type
-        type: u1
-        enum: hedge_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_settlement_location
-        type: u1
-        enum: party_id_settlement_location
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: swap_clearer
-        type: u1
-        enum: swap_clearer
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: message_event_source
         type: u1
         enum: message_event_source
@@ -9476,16 +10249,20 @@ types:
   side_alloc_ext_grp_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: individual_alloc_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_executing_firm
         type: str
         size: 5
@@ -9499,34 +10276,35 @@ types:
       - id: pad1
         size: 1
       - id: tes_enrichment_rule_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_alloc_status
-        type: u1
-        enum: trade_alloc_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: position_effect
         type: u1
         enum: position_effect
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -9594,8 +10372,8 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: trad_ses_event
-        type: u1
-        enum: trad_ses_event
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
   throttle_update_notification:
@@ -9605,11 +10383,14 @@ types:
       - id: notif_header_comp
         type: notif_header_comp
       - id: throttle_time_interval
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: throttle_no_msgs
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: throttle_disconnect_limit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
   trade_broadcast:
     seq:
       - id: pad2
@@ -9617,91 +10398,113 @@ types:
       - id: rbc_header_comp
         type: rbc_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: side_last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side_last_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: clearing_trade_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cl_ord_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: root_party_id_client_id
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: executing_trader
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: root_party_id_investment_decision_maker
-        type: u8
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: orig_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: mass_order_report_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_executing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_session_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_executing_trader
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: root_party_id_clearing_unit
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: related_symbol
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: match_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trd_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: strategy_link_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: tot_num_trade_reports
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: multi_leg_reporting_type
-        type: u1
-        enum: multi_leg_reporting_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: transfer_reason
-        type: u1
-        enum: transfer_reason
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_id_beneficiary
         type: str
         size: 9
@@ -9718,35 +10521,35 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: match_type
-        type: u1
-        enum: match_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: match_sub_type
-        type: u1
-        enum: match_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side_liquidity_ind
-        type: u1
-        enum: side_liquidity_ind
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_capacity
-        type: u1
-        enum: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_origination
-        type: u1
-        enum: order_origination
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_liquidity_provision
-        type: u1
-        enum: order_attribute_liquidity_provision
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_attribute_risk_reduction
-        type: u1
-        enum: order_attribute_risk_reduction
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: executing_trader_qualifier
-        type: u1
-        enum: executing_trader_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_id_investment_decision_maker_qualifier
-        type: u1
-        enum: root_party_id_investment_decision_maker_qualifier
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: account
         type: str
         size: 2
@@ -9782,14 +10585,14 @@ types:
         type: u1
         enum: order_category
       - id: ord_type
-        type: u1
-        enum: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: related_product_complex
-        type: u1
-        enum: related_product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: order_side
-        type: u1
-        enum: order_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: root_party_clearing_organization
         type: str
         size: 4
@@ -9834,14 +10637,17 @@ types:
       - id: rbc_header_me_comp
         type: rbc_header_me_comp
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trade_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trad_ses_event
-        type: u1
-        enum: trad_ses_event
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: ref_appl_last_msg_id
         size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
       - id: pad7
         size: 7
   unsubscribe_request:
@@ -9856,7 +10662,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: ref_appl_sub_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   unsubscribe_response:
@@ -9877,9 +10684,11 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: partition_id
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: num_rra_update_base_party_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad4
         size: 4
       - id: rra_update_base_party_grp_comp
@@ -9889,13 +10698,14 @@ types:
   rra_update_base_party_grp_comp:
     seq:
       - id: remaining_risk_allowance_base_long
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: remaining_risk_allowance_base_short
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: risk_limit_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_detail_executing_unit
         type: str
         size: 5
@@ -9911,6 +10721,7 @@ types:
         type: nr_response_header_me_comp
       - id: num_rra_update_base_party_ack_grp_comp
         type: u2
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: pad6
         size: 6
       - id: rra_update_base_party_ack_grp_comp
@@ -9927,8 +10738,8 @@ types:
       - id: pad1
         size: 1
       - id: risk_limit_result
-        type: u2
-        enum: risk_limit_result
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
   upload_tes_trade_request:
     seq:
       - id: network_msg_id
@@ -9941,80 +10752,92 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trans_bkd_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: underlying_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: related_close_price
-        type: decimal_u8_6
-        doc: 'Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: related_trade_quantity
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: related_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: related_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: underlying_qty
-        type: decimal_u8_4
-        doc: 'Implied decimal with scale 1e-4'
+        type: decimal_u8_4_nullable
+        doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: underlying_settlement_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: underlying_maturity_date
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_trade_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: related_market_segment_id
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: trd_type
-        type: u2
-        enum: trd_type
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_type
-        type: u1
-        enum: trade_report_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_publish_indicator
-        type: u1
-        enum: trade_publish_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_side_alloc_ext_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_trd_instrmnt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_event_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrument_attribute_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_underlying_stip_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: skip_validations
-        type: u1
-        enum: skip_validations
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trd_rpt_status
-        type: u1
-        enum: trd_rpt_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_platform
-        type: u1
-        enum: trade_platform
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: hedge_type
-        type: u1
-        enum: hedge_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: party_id_settlement_location
-        type: u1
-        enum: party_id_settlement_location
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: value_check_type_min_lot_size
-        type: u1
-        enum: value_check_type_min_lot_size
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
         type: str
         size: 20
@@ -10046,8 +10869,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: swap_clearer
-        type: u1
-        enum: swap_clearer
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: side_alloc_ext_grp_comp
         type: side_alloc_ext_grp_comp
         repeat: expr
@@ -10080,7 +10903,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: username
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: password
         type: str
         size: 32
@@ -10099,7 +10923,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: username
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: encrypted_password
         type: str
         size: 684
@@ -10123,7 +10948,8 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: username
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   user_logout_response:
@@ -10132,6 +10958,13 @@ types:
         size: 2
       - id: response_header_comp
         type: response_header_comp
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0xFFFFFFFF
   decimal_u8_8:
     seq:
       - id: mantissa
@@ -10139,6 +10972,41 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  decimal_u8_8_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_8
+    instances:
+      is_null:
+        value: value.mantissa == 0x8000000000000000
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 0x80000000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0xFFFF
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 0xFF
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == 0x8000000000000000
   nanosecond_timestamp:
     seq:
       - id: time
@@ -10152,6 +11020,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0xFFFFFFFFFFFFFFFF
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0xFFFFFFFFFFFFFFFF
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -10159,6 +11041,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  decimal_u8_6_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_6
+    instances:
+      is_null:
+        value: value.mantissa == 0x8000000000000000
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -10166,6 +11055,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_u8_4_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_4
+    instances:
+      is_null:
+        value: value.mantissa == 0x8000000000000000
 
 enums:
   template_id:
@@ -10975,10 +11871,10 @@ enums:
       doc: 'Other, including Other-provided Screen'
   appl_resend_flag:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True'
   appl_id:
     1:
@@ -11013,10 +11909,10 @@ enums:
       doc: 'Service Availability Market'
   optional_early_termination_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   message_event_source:
     0x49:
@@ -11040,10 +11936,10 @@ enums:
       doc: 'Market Supervision'
   basket_anonymity:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   delete_reason:
     100:
@@ -11211,7 +12107,7 @@ enums:
       doc: 'Cross order cancelled'
   ord_status:
     0x30:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     0x31:
       id: 'partiallyfilled'
@@ -11230,7 +12126,7 @@ enums:
       doc: 'Suspended'
   exec_type:
     0x30:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     0x34:
       id: 'canceled'
@@ -11293,10 +12189,10 @@ enums:
       doc: 'Triggered Market Order'
   implied_check_price_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   input_source:
     1:
@@ -11400,24 +12296,24 @@ enums:
       doc: 'Sell side is prioritized'
   side_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   price_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   order_qty_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   price_validity_check_type:
     0:
@@ -11615,10 +12511,10 @@ enums:
       doc: 'None'
   order_routing_indicator:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
   market_id:
     1:
@@ -11876,7 +12772,7 @@ enums:
       id: 'add'
       doc: 'Add (Invocation)'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete (Release)'
   risk_limit_type:
     4:
@@ -11897,10 +12793,10 @@ enums:
       doc: 'requested by Executing firm'
   risk_limit_violation_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   mass_action_type:
     1:
@@ -12213,7 +13109,7 @@ enums:
       doc: '(Re-)Quote'
   trade_aggregation_trans_type:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
   quote_condition:
     0x41:
@@ -12237,59 +13133,59 @@ enums:
       doc: 'Respondents are anonymized after negotiation start, Requester will remain anonymous from start'
   number_of_resp_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   show_last_deal_on_closure:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   leaves_qty_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   last_px_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   last_qty_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   free_text_5_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   party_order_origination_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   charge_id_disclosure_instruction:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   party_detail_status_information:
     1:
@@ -12300,31 +13196,31 @@ enums:
       doc: 'Anonymous negotiation blocked by responder'
   bid_px_is_locked:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   offer_px_is_locked:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   side_is_locked:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   order_qty_is_locked:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   quoting_status:
     1:
@@ -12499,10 +13395,10 @@ enums:
       doc: 'Human/Natural person'
   reversal_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   trade_platform:
     0:
@@ -12563,10 +13459,10 @@ enums:
       doc: 'Received Remaining Risk Allowance event ID exceeds last entry in Temporary Transaction List'
   skip_validations:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'False'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'True'
   value_check_type_min_lot_size:
     0:

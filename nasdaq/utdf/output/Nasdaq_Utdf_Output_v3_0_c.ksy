@@ -131,14 +131,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_short
         type: str
         size: 5
@@ -186,14 +186,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -244,14 +244,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -332,14 +332,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -439,14 +439,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -496,14 +496,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_short
         type: str
         size: 5
@@ -551,14 +551,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -609,14 +609,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -697,14 +697,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -804,14 +804,14 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
       - id: timestamp_2
-        type: nanosecond_timestamp
-        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'FINRA Timestamp, nanoseconds since Epoch. Set to 0 if from an exchange. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: symbol_long
         type: str
         size: 11
@@ -882,8 +882,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -910,8 +910,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -951,8 +951,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -988,8 +988,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1054,8 +1054,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1083,8 +1083,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1121,8 +1121,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1149,8 +1149,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1172,8 +1172,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1214,8 +1214,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1303,8 +1303,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1361,8 +1361,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1380,8 +1380,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1399,8 +1399,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1418,8 +1418,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1437,8 +1437,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1456,8 +1456,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1475,8 +1475,8 @@ types:
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: timestamp_1
-        type: nanosecond_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -1493,6 +1493,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_u2_2:
     seq:
       - id: mantissa

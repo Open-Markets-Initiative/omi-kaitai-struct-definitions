@@ -573,10 +573,10 @@ enums:
       doc: 'Ilqd And Size'
   crossing_trade:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   modification_indicator:
     1:
@@ -600,10 +600,10 @@ enums:
       doc: 'No Benchmark Or Reference Price'
   dividend:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   off_book_automation:
     1:
@@ -630,10 +630,10 @@ enums:
       doc: 'Price Not Currently Available But Pending'
   algorithmic_indicator:
     0:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
     1:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
   publication_mode_post_trade_deferral:
     1:

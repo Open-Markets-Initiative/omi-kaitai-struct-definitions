@@ -234,10 +234,10 @@ enums:
       doc: 'RejectMessage'
   reset_seq_num:
     0:
-      id: 'false'
+      id: 'false_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'true'
+      id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reason_reject_reason:
     1:

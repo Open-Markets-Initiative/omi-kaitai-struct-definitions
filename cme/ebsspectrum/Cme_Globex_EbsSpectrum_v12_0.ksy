@@ -135,11 +135,11 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
-        type: u8
-        doc: 'Market Data entry size'
+        type: u8_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 18446744073709551615'
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
@@ -184,11 +184,11 @@ types:
         encoding: ASCII
         doc: 'Financial instrument long name'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
-        type: u8
-        doc: 'Market Data entry size'
+        type: u8_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 18446744073709551615'
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
@@ -197,13 +197,11 @@ types:
         enum: open_close_settl_flag
         doc: 'Previous day elements, Global or Regional, will contain the value 4 - entry from previous business date'
       - id: trading_session_id
-        type: u1
-        enum: trading_session_id
-        doc: 'The associated region market hours considered for the calculation of the element. The element is calculated from market events occurring during the region''s open-close hours'
+        type: u1_nullable
+        doc: 'The associated region market hours considered for the calculation of the element. The element is calculated from market events occurring during the region''s open-close hours. Nullable, No Value = 255'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. Nullable, No Value = 255'
   md_snapshot_refresh_spectrum:
     seq:
       - id: transact_time
@@ -245,11 +243,11 @@ types:
         enum: md_entry_type_spectrum_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
-        type: u8
-        doc: 'Market Data entry size'
+        type: u8_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 18446744073709551615'
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
@@ -294,11 +292,11 @@ types:
         enum: md_entry_type_ticker_entry_type
         doc: 'Market Data entry type, identifies the element'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Market Data entry price. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Market Data entry price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
-        type: u8
-        doc: 'Market Data entry size'
+        type: u8_nullable
+        doc: 'Market Data entry size. Nullable, No Value = 18446744073709551615'
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
@@ -307,13 +305,11 @@ types:
         enum: open_close_settl_flag
         doc: 'Previous day elements, Global or Regional, will contain the value 4 - entry from previous business date'
       - id: trading_session_id
-        type: u1
-        enum: trading_session_id
-        doc: 'The associated region market hours considered for the calculation of the element. The element is calculated from market events occurring during the region''s open-close hours'
+        type: u1_nullable
+        doc: 'The associated region market hours considered for the calculation of the element. The element is calculated from market events occurring during the region''s open-close hours. Nullable, No Value = 255'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. Nullable, No Value = 255'
   global_day_roll:
     seq:
       - id: transact_time
@@ -343,6 +339,27 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
 
 enums:
   template_id:

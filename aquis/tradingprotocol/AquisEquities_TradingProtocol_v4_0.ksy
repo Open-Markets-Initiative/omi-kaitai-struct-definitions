@@ -1106,7 +1106,7 @@ enums:
       doc: 'Targeted Aquis Vwap Match'
   optim_x_universe:
     0:
-      id: 'off'
+      id: 'off_field'
       doc: 'Off'
     1:
       id: 'show_to_all_optim_x_clients'

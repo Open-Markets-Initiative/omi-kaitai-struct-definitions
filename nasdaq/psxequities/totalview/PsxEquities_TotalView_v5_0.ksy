@@ -834,10 +834,10 @@ enums:
       doc: 'Not Available Firms Should Refer To Siac Feeds For Code If Needed'
   round_lots_only:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Nasdaq System Only Accepts Round Lots'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Nasdaq System Does Not Have Any Order Size Restrictions For This Security Odd And Mixed Lot Orders Are Allowed'
   authenticity:
     0x50:
@@ -858,10 +858,10 @@ enums:
       doc: 'Threshold Indicator Not Available'
   ipo_flag:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Set Up For Ipo Release'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Not Set Up For Ipo Release'
     0x20:
       id: 'na'

@@ -173,10 +173,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -189,8 +187,8 @@ types:
         enum: ord_type
         doc: 'OrdType'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -200,75 +198,63 @@ types:
         enum: order_capacity
         doc: 'OrderCapacity'
       - id: cust_order_capacity_cust_order_capacity_type_optional
-        type: u1
-        enum: cust_order_capacity_cust_order_capacity_type_optional
-        doc: 'CustOrderCapacity'
+        type: u1_nullable
+        doc: 'CustOrderCapacity. Nullable, No Value = 255'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInstType bit set'
       - id: peg_offset_value
-        type: decimal_s8_6
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
-        type: u1
-        enum: peg_price_type
-        doc: 'PegPriceType'
+        type: u1_nullable
+        doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8
-        doc: 'ExpireTime'
+        type: u8_nullable
+        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
       - id: min_qty
-        type: u4
-        doc: 'MinQty'
+        type: u4_nullable
+        doc: 'MinQty. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod'
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
-        type: u1
-        enum: reserve_replenish_timing
-        doc: 'ReserveReplenishTiming'
+        type: u1_nullable
+        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
       - id: display_min_incr
-        type: u4
-        doc: 'DisplayMinIncr'
+        type: u4_nullable
+        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: reprice_frequency
-        type: u1
-        enum: reprice_frequency
-        doc: 'RepriceFrequency'
+        type: u1_nullable
+        doc: 'RepriceFrequency. Nullable, No Value = 255'
       - id: reprice_behavior
-        type: u1
-        enum: reprice_behavior
-        doc: 'RepriceBehavior'
+        type: u1_nullable
+        doc: 'RepriceBehavior. Nullable, No Value = 255'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
       - id: stp_group_id
-        type: u2
-        doc: 'StpGroupId'
+        type: u2_nullable
+        doc: 'StpGroupId. Nullable, No Value = 65535'
       - id: self_trade_prevention
-        type: u1
-        enum: self_trade_prevention
-        doc: 'SelfTradePrevention'
+        type: u1_nullable
+        doc: 'SelfTradePrevention. Nullable, No Value = 255'
       - id: risk_group_id
-        type: u2
-        doc: 'RiskGroupId'
+        type: u2_nullable
+        doc: 'RiskGroupId. Nullable, No Value = 65535'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -338,10 +324,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -354,36 +338,28 @@ types:
         enum: ord_type
         doc: 'OrdType'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
   order_cancel_request_message:
     seq:
       - id: origclordid_optional
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: order_id_optional
-        type: u8
-        doc: 'OrderID'
+        type: u8_nullable
+        doc: 'OrderID. Nullable, No Value = 18446744073709551615'
       - id: clordid
         type: str
         size: 16
@@ -395,10 +371,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -412,23 +386,21 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side'
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
-        type: decimal_s8_6
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
-        type: decimal_s8_6
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
   execution_report_pending_new_message:
     seq:
       - id: sending_time
@@ -455,10 +427,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -471,8 +441,8 @@ types:
         type: u4
         doc: 'OrderQty'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -489,58 +459,51 @@ types:
         type: exec_inst
         doc: 'ExecInstType bit set'
       - id: peg_offset_value
-        type: decimal_s8_6
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
-        type: u1
-        enum: peg_price_type
-        doc: 'PegPriceType'
+        type: u1_nullable
+        doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8
-        doc: 'ExpireTime'
+        type: u8_nullable
+        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
       - id: min_qty
-        type: u4
-        doc: 'MinQty'
+        type: u4_nullable
+        doc: 'MinQty. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod'
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
-        type: u1
-        enum: reserve_replenish_timing
-        doc: 'ReserveReplenishTiming'
+        type: u1_nullable
+        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
       - id: display_min_incr
-        type: u4
-        doc: 'DisplayMinIncr'
+        type: u4_nullable
+        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: reprice_frequency
-        type: u1
-        enum: reprice_frequency
-        doc: 'RepriceFrequency'
+        type: u1_nullable
+        doc: 'RepriceFrequency. Nullable, No Value = 255'
       - id: reprice_behavior
-        type: u1
-        enum: reprice_behavior
-        doc: 'RepriceBehavior'
+        type: u1_nullable
+        doc: 'RepriceBehavior. Nullable, No Value = 255'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
       - id: stp_group_id
-        type: u2
-        doc: 'StpGroupId'
+        type: u2_nullable
+        doc: 'StpGroupId. Nullable, No Value = 65535'
       - id: self_trade_prevention
-        type: u1
-        enum: self_trade_prevention
-        doc: 'SelfTradePrevention'
+        type: u1_nullable
+        doc: 'SelfTradePrevention. Nullable, No Value = 255'
       - id: risk_group_id
-        type: u2
-        doc: 'RiskGroupId'
+        type: u2_nullable
+        doc: 'RiskGroupId. Nullable, No Value = 65535'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -548,15 +511,11 @@ types:
         type: u4
         doc: 'CumQty'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -586,10 +545,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -602,8 +559,8 @@ types:
         type: u4
         doc: 'OrderQty'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -620,58 +577,51 @@ types:
         type: exec_inst
         doc: 'ExecInstType bit set'
       - id: peg_offset_value
-        type: decimal_s8_6
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
-        type: u1
-        enum: peg_price_type
-        doc: 'PegPriceType'
+        type: u1_nullable
+        doc: 'PegPriceType. Nullable, No Value = 255'
       - id: expire_time
-        type: u8
-        doc: 'ExpireTime'
+        type: u8_nullable
+        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
       - id: min_qty
-        type: u4
-        doc: 'MinQty'
+        type: u4_nullable
+        doc: 'MinQty. Nullable, No Value = 4294967295'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod'
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
-        type: u1
-        enum: reserve_replenish_timing
-        doc: 'ReserveReplenishTiming'
+        type: u1_nullable
+        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
       - id: display_min_incr
-        type: u4
-        doc: 'DisplayMinIncr'
+        type: u4_nullable
+        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: reprice_frequency
-        type: u1
-        enum: reprice_frequency
-        doc: 'RepriceFrequency'
+        type: u1_nullable
+        doc: 'RepriceFrequency. Nullable, No Value = 255'
       - id: reprice_behavior
-        type: u1
-        enum: reprice_behavior
-        doc: 'RepriceBehavior'
+        type: u1_nullable
+        doc: 'RepriceBehavior. Nullable, No Value = 255'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
       - id: stp_group_id
-        type: u2
-        doc: 'StpGroupId'
+        type: u2_nullable
+        doc: 'StpGroupId. Nullable, No Value = 65535'
       - id: self_trade_prevention
-        type: u1
-        enum: self_trade_prevention
-        doc: 'SelfTradePrevention'
+        type: u1_nullable
+        doc: 'SelfTradePrevention. Nullable, No Value = 255'
       - id: risk_group_id
-        type: u2
-        doc: 'RiskGroupId'
+        type: u2_nullable
+        doc: 'RiskGroupId. Nullable, No Value = 65535'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -682,15 +632,11 @@ types:
         type: u8
         doc: 'TransactTime'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -717,10 +663,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -732,10 +676,8 @@ types:
         enum: order_reject_reason
         doc: 'RejectReason'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -787,10 +729,8 @@ types:
         type: u8
         doc: 'TrdMatchingID'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
@@ -813,10 +753,8 @@ types:
         encoding: ASCII
         doc: 'ClOrdID'
       - id: origclordid_optional
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -826,10 +764,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -841,10 +777,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -864,23 +798,21 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side'
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
-        type: decimal_s8_6
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
-        type: decimal_s8_6
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
   execution_report_canceled_message:
     seq:
       - id: sending_time
@@ -892,10 +824,8 @@ types:
         encoding: ASCII
         doc: 'ClOrdID'
       - id: origclordid_optional
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: order_id
         type: u8
         doc: 'OrderID'
@@ -913,17 +843,14 @@ types:
         type: u4
         doc: 'CumQty'
       - id: cancel_reason
-        type: u1
-        enum: cancel_reason
-        doc: 'CancelReason'
+        type: u1_nullable
+        doc: 'CancelReason. Nullable, No Value = 255'
       - id: transact_time
         type: u8
         doc: 'TransactTime'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -951,10 +878,8 @@ types:
         encoding: ASCII
         doc: 'ClOrdID'
       - id: origclordid_optional
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -964,10 +889,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -980,16 +903,14 @@ types:
         enum: ord_type
         doc: 'OrdType'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -1001,15 +922,11 @@ types:
         type: u4
         doc: 'CumQty'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -1027,10 +944,8 @@ types:
         encoding: ASCII
         doc: 'ClOrdID'
       - id: origclordid_optional
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -1040,10 +955,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -1056,16 +969,14 @@ types:
         enum: ord_type
         doc: 'OrdType'
       - id: price
-        type: decimal_s8_6
-        doc: 'Price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
-        type: u4
-        doc: 'DisplayQty'
+        type: u4_nullable
+        doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: locate_reqd
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'LocateReqd'
+        type: str_1_nullable
+        doc: 'LocateReqd. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -1080,15 +991,11 @@ types:
         type: u8
         doc: 'TransactTime'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: locate_broker_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LocateBroker'
+        type: str_4_nullable
+        doc: 'LocateBroker. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -1122,8 +1029,8 @@ types:
         type: decimal_s8_6
         doc: 'LastPx. Implied decimal with scale 1e-6'
       - id: last_qty_optional
-        type: u4
-        doc: 'LastQty'
+        type: u4_nullable
+        doc: 'LastQty. Nullable, No Value = 4294967295'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -1131,10 +1038,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
@@ -1176,10 +1081,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
@@ -1209,8 +1112,8 @@ types:
         enum: ord_status
         doc: 'OrdStatus'
       - id: last_px_optional
-        type: decimal_s8_6
-        doc: 'LastPx. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'LastPx. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -1218,8 +1121,8 @@ types:
         type: u4
         doc: 'CumQty'
       - id: last_shares
-        type: u4
-        doc: 'LastShares'
+        type: u4_nullable
+        doc: 'LastShares. Nullable, No Value = 4294967295'
       - id: exec_restatement_reason
         type: u1
         enum: exec_restatement_reason
@@ -1228,14 +1131,11 @@ types:
         type: u8
         doc: 'TransactTime'
       - id: extended_restatement_reason
-        type: u1
-        enum: extended_restatement_reason
-        doc: 'ExtendedRestatementReason'
+        type: u1_nullable
+        doc: 'ExtendedRestatementReason. Nullable, No Value = 255'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -1258,10 +1158,8 @@ types:
         enum: cxl_rej_reason
         doc: 'CxlRejReason'
       - id: link_id_optional
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -1278,23 +1176,21 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side'
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
-        type: decimal_s8_6
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
-        type: decimal_s8_6
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
-        type: u2
-        doc: 'CancelGroupId'
+        type: u2_nullable
+        doc: 'CancelGroupId. Nullable, No Value = 65535'
       - id: mass_cancel_reject_reason
         type: u1
         enum: mass_cancel_reject_reason
@@ -1359,6 +1255,15 @@ types:
       - id: sbe_message
         type: sbe_message
         doc: 'Sbe Message'
+  str_6_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1366,6 +1271,68 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  decimal_s8_6_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_6
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  str_1_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 1
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  str_4_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 4
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  str_16_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 16
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1635,7 +1602,7 @@ enums:
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_status:
     0x30:
-      id: 'new'
+      id: 'new_field'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x31:
       id: 'partial_filled'

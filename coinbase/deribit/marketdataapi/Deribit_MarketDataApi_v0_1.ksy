@@ -127,8 +127,8 @@ types:
         type: message_flags
         doc: 'Uint16 bit set carrying transaction boundary indicators'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'UTC timestamp of when the transaction occurred, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'UTC timestamp of when the transaction occurred, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch. Nullable, No Value = 0'
   message_flags:
     seq:
       - id: start_of_transaction
@@ -172,35 +172,35 @@ types:
         type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
       - id: strike_price
-        type: decimal_s8_9
-        doc: 'strikePrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'strikePrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: large_tick_size_0
-        type: decimal_s8_9
-        doc: 'largeTickSize0. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'largeTickSize0. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: large_tick_threshold_0
-        type: decimal_s8_9
-        doc: 'largeTickThreshold0. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'largeTickThreshold0. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: large_tick_size_1
-        type: decimal_s8_9
-        doc: 'largeTickSize1. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'largeTickSize1. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: large_tick_threshold_1
-        type: decimal_s8_9
-        doc: 'largeTickThreshold1. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'largeTickThreshold1. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: creation_time
-        type: nanosecond_timestamp
-        doc: 'creationTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'creationTime. Nanoseconds since Unix epoch. Nullable, No Value = -9223372036854775808'
       - id: expiry_time
-        type: s8
-        doc: 'expiryTime'
+        type: s8_nullable
+        doc: 'expiryTime. Nullable, No Value = -9223372036854775808'
       - id: logical_expiry
         type: logical_expiry
         doc: 'InstrumentMessage'
       - id: flags
         type: flags
         doc: 'InstrumentFlags bit set'
-      - id: type
+      - id: type_field
         type: s1
-        enum: type
+        enum: type_field
         doc: 'type'
       - id: status
         type: s1
@@ -270,19 +270,19 @@ types:
         doc: 'instrumentId'
       - id: current_funding
         size: 8
-        doc: 'currentFunding'
+        doc: 'currentFunding. Nullable, No Value = NaN'
       - id: funding_8h
         size: 8
-        doc: 'funding8h'
+        doc: 'funding8h. Nullable, No Value = NaN'
       - id: estimated_delivery_price
-        type: decimal_s8_9
-        doc: 'estimatedDeliveryPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'estimatedDeliveryPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: delivery_price
-        type: decimal_s8_9
-        doc: 'deliveryPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'deliveryPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: settlement_price
-        type: decimal_s8_9
-        doc: 'settlementPrice. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'settlementPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
   bid_put_message:
     seq:
       - id: order_id
@@ -371,7 +371,7 @@ types:
         doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: implied_volatility
         size: 8
-        doc: 'impliedVolatility'
+        doc: 'impliedVolatility. Nullable, No Value = NaN'
       - id: taker_flags
         type: taker_flags
         doc: 'TradeFlags bit set'
@@ -395,8 +395,8 @@ types:
         type: s8
         doc: 'instrumentId'
       - id: maker_order_id
-        type: s8
-        doc: 'makerOrderId'
+        type: s8_nullable
+        doc: 'makerOrderId. Nullable, No Value = -9223372036854775808'
       - id: fill_qty_mantissa
         type: s8
         doc: 'fillQtyMantissa'
@@ -429,8 +429,8 @@ types:
         type: s8
         doc: 'blockTradeId'
       - id: block_rfq_id
-        type: s8
-        doc: 'blockRfqId'
+        type: s8_nullable
+        doc: 'blockRfqId. Nullable, No Value = -9223372036854775808'
       - id: fill_qty_mantissa
         type: s8
         doc: 'fillQtyMantissa'
@@ -445,7 +445,7 @@ types:
         doc: 'indexPrice. Implied decimal with scale 1e-9'
       - id: implied_volatility
         size: 8
-        doc: 'impliedVolatility'
+        doc: 'impliedVolatility. Nullable, No Value = NaN'
       - id: taker_flags
         type: taker_flags
         doc: 'TradeFlags bit set'
@@ -514,6 +514,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -521,6 +528,20 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
 
 enums:
   template_id:
@@ -578,7 +599,7 @@ enums:
     202:
       id: 'retransmit_reject_message'
       doc: 'RetransmitRejectMessage'
-  type:
+  type_field:
     0:
       id: 'perp_future'
       doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

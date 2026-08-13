@@ -119,8 +119,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: eris_reference_data_groups
         type: eris_reference_data_groups
         doc: 'NoMDEntries Block'
@@ -185,8 +185,8 @@ types:
         type: md_entry_px_decimal_optional
         doc: 'Number of entries in Market Data message'
       - id: open_close_settl_flag
-        type: s1
-        doc: 'Indicates whether the price is preliminary or previous day'
+        type: s1_nullable
+        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
@@ -199,8 +199,8 @@ types:
         encoding: ASCII
         doc: 'For future use'
       - id: md_entry_size_optional
-        type: u8
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u8_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 18446744073709551615'
       - id: symbol
         type: str
         size: 50
@@ -212,8 +212,8 @@ types:
         encoding: ASCII
         doc: 'Indicates the product code for the instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: security_type
         type: str
         size: 9
@@ -225,14 +225,14 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: coupon_rate_optional
         type: coupon_rate_optional
         doc: 'Number of entries in Market Data message'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+        type: u2_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: fair_coupon_pct
         type: fair_coupon_pct
         doc: 'Number of entries in Market Data message'
@@ -270,8 +270,8 @@ types:
         type: floating_payment
         doc: 'Number of entries in Market Data message'
       - id: next_fixed_payment_date
-        type: u2
-        doc: 'The date the next fixed payment will be made'
+        type: u2_nullable
+        doc: 'The date the next fixed payment will be made. Nullable, No Value = 65535'
       - id: next_fixed_payment_amount
         type: next_fixed_payment_amount
         doc: 'Number of entries in Market Data message'
@@ -279,20 +279,20 @@ types:
         type: next_floating_payment_amount
         doc: 'Number of entries in Market Data message'
       - id: trading_reference_date
-        type: u2
-        doc: 'Indicates the business date for previous settlement price'
+        type: u2_nullable
+        doc: 'Indicates the business date for previous settlement price. Nullable, No Value = 65535'
       - id: previous_eris_pai
         type: previous_eris_pai
         doc: 'Number of entries in Market Data message'
       - id: fed_funds_date
-        type: u2
-        doc: 'The date that the for which the fed funds date was published'
+        type: u2_nullable
+        doc: 'The date that the for which the fed funds date was published. Nullable, No Value = 65535'
       - id: accrual_days
-        type: u4
-        doc: 'How many days have passed since settlement price was last calculated'
+        type: u4_nullable
+        doc: 'How many days have passed since settlement price was last calculated. Nullable, No Value = 4294967295'
       - id: nominal
-        type: u8
-        doc: 'This is the notional value used to calculate NPV and Fixed and Floating Payment amounts'
+        type: u8_nullable
+        doc: 'This is the notional value used to calculate NPV and Fixed and Floating Payment amounts. Nullable, No Value = 18446744073709551615'
       - id: leg_credit_rating
         type: str
         size: 6
@@ -302,8 +302,8 @@ types:
         type: leg_contract_multiplier
         doc: 'Number of entries in Market Data message'
       - id: next_floating_payment_date
-        type: u2
-        doc: 'The date the next floating payment will be made'
+        type: u2_nullable
+        doc: 'The date the next floating payment will be made. Nullable, No Value = 65535'
       - id: p_v_01
         type: p_v_01
         doc: 'Number of entries in Market Data message'
@@ -334,10 +334,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -371,10 +371,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -382,10 +382,10 @@ types:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -393,10 +393,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -404,10 +404,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -415,10 +415,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -426,10 +426,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -437,10 +437,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -448,10 +448,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -459,10 +459,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -470,10 +470,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -481,10 +481,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -492,10 +492,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -503,10 +503,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -514,10 +514,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -525,10 +525,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -536,10 +536,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -547,10 +547,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -558,10 +558,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -569,10 +569,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -580,10 +580,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -591,10 +591,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -602,10 +602,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -627,10 +627,8 @@ types:
         encoding: ASCII
         doc: 'Expanded instrument description'
       - id: security_alt_id_source_optional
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies class or source of the SecurityAltID (455) value'
+        type: str_1_nullable
+        doc: 'Identifies class or source of the SecurityAltID (455) value. Nullable, No Value = 0'
   incremental_refresh_eris_related_instruments_groups:
     seq:
       - id: group_size
@@ -644,8 +642,8 @@ types:
   incremental_refresh_eris_related_instruments_group:
     seq:
       - id: related_instrument_type
-        type: u1
-        doc: 'The type of instrument relationship'
+        type: u1_nullable
+        doc: 'The type of instrument relationship. Nullable, No Value = 255'
       - id: related_symbol
         type: str
         size: 50
@@ -669,11 +667,11 @@ types:
   events_group:
     seq:
       - id: event_type_optional
-        type: u1
-        doc: 'Code to represent the type of event'
+        type: u1_nullable
+        doc: 'Code to represent the type of event. Nullable, No Value = 255'
       - id: event_time_optional
-        type: u8
-        doc: 'Time of event. This is number of days since unix epoch'
+        type: u8_nullable
+        doc: 'Time of event. This is number of days since unix epoch. Nullable, No Value = 18446744073709551615'
   md_news_indices:
     seq:
       - id: headline
@@ -682,8 +680,8 @@ types:
         encoding: ASCII
         doc: 'The headline of a News message'
       - id: orig_time
-        type: nanosecond_timestamp
-        doc: 'Time of message origination expressed as number of nanoseconds since unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Time of message origination expressed as number of nanoseconds since unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: md_feed_type
         type: str
         size: 2
@@ -760,27 +758,26 @@ types:
         enum: md_update_action
         doc: 'Market Data update Action'
       - id: security_id
-        type: u8
-        doc: 'Unique security ID'
+        type: u8_nullable
+        doc: 'Unique security ID. Nullable, No Value = 18446744073709551615'
       - id: rpt_seq
         type: u4
         doc: 'Sequence number per Index update'
       - id: md_entry_px_optional
-        type: decimal_s8_7
-        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size_optional
-        type: u8
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u8_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 18446744073709551615'
       - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+        type: s4_nullable
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event. Nullable, No Value = 2147483647'
       - id: trade_id
         type: s4
         doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor. Nullable, No Value = 255'
       - id: symbol
         type: str
         size: 50
@@ -810,8 +807,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: unit_of_measure
         type: str
         size: 5
@@ -823,28 +820,28 @@ types:
         encoding: ASCII
         doc: 'Indicates the ISO Currency code if it is a currency product'
       - id: unit_of_measure_qty_optional
-        type: decimal_s8_7
-        doc: 'This field contains the notional value for each instrument. The notional value is equivalent to the corresponding premium-quoted contract. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'This field contains the notional value for each instrument. The notional value is equivalent to the corresponding premium-quoted contract. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: price_type
-        type: u2
-        doc: 'Valid price types for intraday trade'
+        type: u2_nullable
+        doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: trd_type
-        type: u1
-        doc: 'Valid trade types for intraday trade'
+        type: u1_nullable
+        doc: 'Valid trade types for intraday trade. Nullable, No Value = 255'
       - id: md_entry_id
         type: str
         size: 26
         encoding: ASCII
         doc: 'Market data entry identifier to map multiple prices of a single trade'
       - id: put_or_call
-        type: u1
-        doc: 'Indicates whether an option instrument is a put or call'
+        type: u1_nullable
+        doc: 'Indicates whether an option instrument is a put or call. Nullable, No Value = 255'
       - id: strike_price
-        type: decimal_s8_7
-        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: restructuring_type
         type: str
         size: 2
@@ -882,17 +879,17 @@ types:
   maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   trade_blocks_underlyings_groups:
     seq:
       - id: group_size
@@ -926,17 +923,17 @@ types:
   underlying_maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   trade_blocks_party_ids_groups:
     seq:
       - id: group_size
@@ -977,8 +974,8 @@ types:
         encoding: ASCII
         doc: 'This tag contains the instrument group of the requested security definition. Must be present when tag 555-NoLegs is present. Also must be first tag in repeating group. Multileg instrument''s individual security''s Symbol'
       - id: leg_security_id
-        type: u8
-        doc: 'Multileg instrument''s individual security''s SecurityID'
+        type: u8_nullable
+        doc: 'Multileg instrument''s individual security''s SecurityID. Nullable, No Value = 18446744073709551615'
       - id: leg_security_group
         type: str
         size: 12
@@ -998,33 +995,33 @@ types:
         type: leg_maturity_month_year
         doc: 'Number of legs (repeating groups)'
       - id: leg_maturity_date
-        type: u2
-        doc: 'Multileg instrument''s individual security''s leg MaturityDate'
+        type: u2_nullable
+        doc: 'Multileg instrument''s individual security''s leg MaturityDate. Nullable, No Value = 65535'
       - id: leg_strike_price_pricenull
-        type: decimal_s8_7
-        doc: 'Multileg instrument''s individual security''s StrikePrice. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Multileg instrument''s individual security''s StrikePrice. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: leg_unit_of_measure
         type: str
         size: 5
         encoding: ASCII
         doc: 'Multileg instrument''s individual security''s leg UnitOfMeasure'
       - id: leg_unit_of_measure_qty_pricenull
-        type: decimal_s8_7
-        doc: 'Multileg instrument''s individual security''s leg UnitOfMeasureQty. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Multileg instrument''s individual security''s leg UnitOfMeasureQty. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: leg_security_exchange
         type: str
         size: 4
         encoding: ASCII
         doc: 'Multileg instrument''s individual security''s leg SecurityExchange'
       - id: leg_ratio_qty_u_int_16_null
-        type: u2
-        doc: 'The ratio of quantity for this individual leg relative to the entire multileg security'
+        type: u2_nullable
+        doc: 'The ratio of quantity for this individual leg relative to the entire multileg security. Nullable, No Value = 65535'
       - id: leg_side
-        type: u1
-        doc: 'The side of this individual leg (multileg security)'
+        type: u1_nullable
+        doc: 'The side of this individual leg (multileg security). Nullable, No Value = 255'
       - id: leg_put_or_call
-        type: u1
-        doc: 'Multileg instrument''s individual security''s leg option put or call'
+        type: u1_nullable
+        doc: 'Multileg instrument''s individual security''s leg option put or call. Nullable, No Value = 255'
       - id: leg_unit_of_measure_currency
         type: str
         size: 3
@@ -1033,17 +1030,17 @@ types:
   leg_maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   quote_request:
     seq:
       - id: transact_time
@@ -1078,35 +1075,35 @@ types:
         encoding: ASCII
         doc: 'Instrument Name or Symbol'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: order_qty
-        type: u8
-        doc: 'Quantity Requested'
+        type: u8_nullable
+        doc: 'Quantity Requested. Nullable, No Value = 18446744073709551615'
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: security_group_26
         type: str
         size: 26
         encoding: ASCII
         doc: 'Indicates the product code for the instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: security_type_4
         type: str
         size: 4
         encoding: ASCII
         doc: 'Identifies the type of instrument'
       - id: quote_type
-        type: u1
-        doc: 'Type of quote requested. A tradable quote can trade against other orders and quotes upon acceptance'
+        type: u1_nullable
+        doc: 'Type of quote requested. A tradable quote can trade against other orders and quotes upon acceptance. Nullable, No Value = 255'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1140,8 +1137,8 @@ types:
         encoding: ASCII
         doc: 'Describes a class of service for a given data feed'
       - id: appl_id
-        type: u2
-        doc: 'This value indicates the channel ID as defined in the XML configuration file'
+        type: u2_nullable
+        doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
@@ -1188,8 +1185,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: incremental_refresh_indices_groups
         type: incremental_refresh_indices_groups
         doc: 'NoMDEntries Block'
@@ -1216,16 +1213,16 @@ types:
         type: md_entry_px_decimal
         doc: 'Number of entries in Market Data message'
       - id: md_entry_size_optional
-        type: u8
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u8_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 18446744073709551615'
       - id: symbol
         type: str
         size: 50
         encoding: ASCII
         doc: 'Instrument Name or Symbol'
       - id: open_close_settl_flag
-        type: s1
-        doc: 'Indicates whether the price is preliminary or previous day'
+        type: s1_nullable
+        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
       - id: yield_type
         type: str
         size: 8
@@ -1244,15 +1241,14 @@ types:
         type: percent_trading
         doc: 'Number of entries in Market Data message'
       - id: md_entry_code
-        type: u1
-        enum: md_entry_code
-        doc: 'List of conditions describing a index value'
+        type: u1_nullable
+        doc: 'List of conditions describing a index value. Nullable, No Value = 255'
       - id: md_entry_date
-        type: s4
-        doc: 'Indicates Market Data Entry Date'
+        type: s4_nullable
+        doc: 'Indicates Market Data Entry Date. Nullable, No Value = 2147483647'
       - id: md_entry_time
-        type: s4
-        doc: 'Indicates Market Data Entry Timestamp'
+        type: s4_nullable
+        doc: 'Indicates Market Data Entry Timestamp. Nullable, No Value = 2147483647'
       - id: reference_id_50
         type: str
         size: 50
@@ -1262,10 +1258,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1273,10 +1269,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1284,10 +1280,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1295,10 +1291,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1306,18 +1302,18 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   md_incremental_refresh_trade_blocks_349:
     seq:
       - id: transact_time_optional
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
@@ -1325,8 +1321,8 @@ types:
         type: u2
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+        type: u2_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: trade_blocks_legacy_groups
         type: trade_blocks_legacy_groups
         doc: 'NoMDEntries Block'
@@ -1347,27 +1343,26 @@ types:
         enum: md_update_action
         doc: 'Market Data update Action'
       - id: security_id
-        type: u8
-        doc: 'Unique security ID'
+        type: u8_nullable
+        doc: 'Unique security ID. Nullable, No Value = 18446744073709551615'
       - id: rpt_seq
         type: u4
         doc: 'Sequence number per Index update'
       - id: md_entry_px_optional
-        type: decimal_s8_7
-        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
         type: md_entry_size
         doc: 'Number of entries in Market Data message'
       - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+        type: s4_nullable
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event. Nullable, No Value = 2147483647'
       - id: trade_id
         type: s4
         doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor. Nullable, No Value = 255'
       - id: symbol
         type: str
         size: 50
@@ -1397,8 +1392,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: unit_of_measure
         type: str
         size: 5
@@ -1410,28 +1405,28 @@ types:
         encoding: ASCII
         doc: 'Indicates the ISO Currency code if it is a currency product'
       - id: unit_of_measure_qty_optional
-        type: decimal_s8_7
-        doc: 'This field contains the notional value for each instrument. The notional value is equivalent to the corresponding premium-quoted contract. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'This field contains the notional value for each instrument. The notional value is equivalent to the corresponding premium-quoted contract. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: price_type
-        type: u2
-        doc: 'Valid price types for intraday trade'
+        type: u2_nullable
+        doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: trd_type
-        type: u1
-        doc: 'Valid trade types for intraday trade'
+        type: u1_nullable
+        doc: 'Valid trade types for intraday trade. Nullable, No Value = 255'
       - id: md_entry_id
         type: str
         size: 26
         encoding: ASCII
         doc: 'Market data entry identifier to map multiple prices of a single trade'
       - id: put_or_call
-        type: u1
-        doc: 'Indicates whether an option instrument is a put or call'
+        type: u1_nullable
+        doc: 'Indicates whether an option instrument is a put or call. Nullable, No Value = 255'
       - id: strike_price
-        type: decimal_s8_7
-        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Strike Price for an option instrument. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: restructuring_type
         type: str
         size: 2
@@ -1470,10 +1465,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1486,8 +1481,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: eris_original_groups
         type: eris_original_groups
         doc: 'NoMDEntries Block'
@@ -1520,24 +1515,23 @@ types:
         type: md_entry_px_decimal
         doc: 'Number of entries in Market Data message'
       - id: md_entry_size_optional
-        type: u8
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u8_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 18446744073709551615'
       - id: cal_fut_px
         type: cal_fut_px
         doc: 'Number of entries in Market Data message'
       - id: md_entry_position_no
-        type: s4
-        doc: 'Position in the book'
+        type: s4_nullable
+        doc: 'Position in the book. Nullable, No Value = 2147483647'
       - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+        type: s4_nullable
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event. Nullable, No Value = 2147483647'
       - id: trade_id
         type: s4
         doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor. Nullable, No Value = 255'
       - id: symbol
         type: str
         size: 50
@@ -1559,11 +1553,11 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: reference_id_50
         type: str
         size: 50
@@ -1579,10 +1573,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1595,8 +1589,8 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: eris_groups
         type: eris_groups
         doc: 'NoMDEntries Block'
@@ -1629,24 +1623,23 @@ types:
         type: md_entry_px_decimal
         doc: 'Number of entries in Market Data message'
       - id: md_entry_size_optional
-        type: u8
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u8_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 18446744073709551615'
       - id: cal_fut_px
         type: cal_fut_px
         doc: 'Number of entries in Market Data message'
       - id: md_entry_position_no
-        type: s4
-        doc: 'Position in the book'
+        type: s4_nullable
+        doc: 'Position in the book. Nullable, No Value = 2147483647'
       - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+        type: s4_nullable
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event. Nullable, No Value = 2147483647'
       - id: trade_id
         type: s4
         doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor. Nullable, No Value = 255'
       - id: symbol
         type: str
         size: 50
@@ -1668,19 +1661,19 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: reference_id_50
         type: str
         size: 50
         encoding: ASCII
         doc: 'For future use'
       - id: md_quote_type
-        type: u1
-        doc: 'Identifies the type of quote. 0=Indicative, 1=Tradeable'
+        type: u1_nullable
+        doc: 'Identifies the type of quote. 0=Indicative, 1=Tradeable. Nullable, No Value = 255'
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
@@ -1693,14 +1686,14 @@ types:
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+        type: u2_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: otc_original_groups
         type: otc_original_groups
         doc: 'NoMDEntries Block'
@@ -1725,8 +1718,8 @@ types:
         type: u4
         doc: 'Sequence number per Index update'
       - id: md_entry_px_optional
-        type: decimal_s8_7
-        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
         type: md_entry_size
         doc: 'Number of entries in Market Data message'
@@ -1754,14 +1747,14 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: restructuring_type
         type: str
         size: 2
@@ -1773,11 +1766,11 @@ types:
         encoding: ASCII
         doc: 'Specifies which issue (underlying bond) will receive payment priority in the event of a default'
       - id: notional_percentage_outstanding
-        type: decimal_s4_4
-        doc: 'Indicates the notional percentage of the deal that is still outstanding based on the remaining components of the index. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Indicates the notional percentage of the deal that is still outstanding based on the remaining components of the index. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: put_or_call
-        type: u1
-        doc: 'Indicates whether an option instrument is a put or call'
+        type: u1_nullable
+        doc: 'Indicates whether an option instrument is a put or call. Nullable, No Value = 255'
       - id: strike_price_decimal
         type: strike_price_decimal
         doc: 'Number of entries in Market Data message'
@@ -1795,17 +1788,17 @@ types:
         type: unit_of_measure_qty_decimal
         doc: 'Number of entries in Market Data message'
       - id: md_entry_date
-        type: s4
-        doc: 'Indicates Market Data Entry Date'
+        type: s4_nullable
+        doc: 'Indicates Market Data Entry Date. Nullable, No Value = 2147483647'
       - id: open_close_settl_flag
-        type: s1
-        doc: 'Indicates whether the price is preliminary or previous day'
+        type: s1_nullable
+        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
       - id: price_type
-        type: u2
-        doc: 'Valid price types for intraday trade'
+        type: u2_nullable
+        doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: settl_date
-        type: u2
-        doc: 'Indicates date of settlement'
+        type: u2_nullable
+        doc: 'Indicates date of settlement. Nullable, No Value = 65535'
       - id: quote_condition
         type: str
         size: 1
@@ -1837,8 +1830,8 @@ types:
         encoding: ASCII
         doc: 'SecuritySubType for CDS only'
       - id: vol_type
-        type: u2
-        doc: 'Volume types for end of day volume'
+        type: u2_nullable
+        doc: 'Volume types for end of day volume. Nullable, No Value = 65535'
       - id: reference_id_100
         type: str
         size: 100
@@ -1854,10 +1847,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1865,10 +1858,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1942,16 +1935,16 @@ types:
         encoding: ASCII
         doc: 'Identifies the type of instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: currency
         type: str
         size: 3
@@ -1970,16 +1963,16 @@ types:
         encoding: ASCII
         doc: 'Rate type for the swap and spread'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: user_defined_instrument
         type: str
         size: 1
         encoding: ASCII
         doc: 'Identifies user-defined instruments. If the tag is not present, the instrument is not user-defined'
       - id: appl_id
-        type: u2
-        doc: 'This value indicates the channel ID as defined in the XML configuration file'
+        type: u2_nullable
+        doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
       - id: eris_feed_types_groups
         type: eris_feed_types_groups
         doc: 'NoMDFeedTypes Block'
@@ -1996,10 +1989,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2021,8 +2014,8 @@ types:
         encoding: ASCII
         doc: 'Describes a class of service for a given data feed. This value will always be EBX for Eris'
       - id: market_depth
-        type: u1
-        doc: 'Indicated the level on the book traded'
+        type: u1_nullable
+        doc: 'Indicated the level on the book traded. Nullable, No Value = 255'
   eris_legs_groups:
     seq:
       - id: group_size
@@ -2046,8 +2039,8 @@ types:
         encoding: ASCII
         doc: 'Rate Descriptor'
       - id: previous_fixing_date
-        type: u2
-        doc: 'Issue date for one leg of a multi-issue trade. It is the previous fixing date on the float leg'
+        type: u2_nullable
+        doc: 'Issue date for one leg of a multi-issue trade. It is the previous fixing date on the float leg. Nullable, No Value = 65535'
       - id: leg_pay_frequencey
         type: str
         size: 3
@@ -2062,11 +2055,11 @@ types:
         encoding: ASCII
         doc: 'This tag contains the instrument group of the requested security definition. Must be present when tag 555-NoLegs is present. Also must be first tag in repeating group. Multileg instrument''s individual security''s Symbol'
       - id: leg_ratio_qty_int_32_null
-        type: s4
-        doc: 'The ratio of quantity for this individual leg relative to the entire multi-leg instrument'
+        type: s4_nullable
+        doc: 'The ratio of quantity for this individual leg relative to the entire multi-leg instrument. Nullable, No Value = 2147483647'
       - id: leg_side
-        type: u1
-        doc: 'The side of this individual leg (multileg security)'
+        type: u1_nullable
+        doc: 'The side of this individual leg (multileg security). Nullable, No Value = 255'
       - id: leg_currency
         type: str
         size: 3
@@ -2083,8 +2076,8 @@ types:
         encoding: ASCII
         doc: 'Leg equivalent of body tag 1151-SecurityGroup (i.e. leg ''product code'')'
       - id: leg_date_offset
-        type: s1
-        doc: 'Float reset date offset, specified when LegType = FLOAT'
+        type: s1_nullable
+        doc: 'Float reset date offset, specified when LegType = FLOAT. Nullable, No Value = 127'
       - id: interpolation_factor
         type: interpolation_factor
         doc: 'Number of legs (repeating groups)'
@@ -2095,10 +2088,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2106,18 +2099,18 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   md_incremental_refresh_trade_blocks_365:
     seq:
       - id: transact_time_optional
-        type: nanosecond_timestamp
-        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Not present for EFP (828=2) and EFR (828=11) transactions. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
@@ -2125,8 +2118,8 @@ types:
         type: u2
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+        type: u2_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: trade_blocks_groups
         type: trade_blocks_groups
         doc: 'NoMDEntries Block'
@@ -2147,27 +2140,26 @@ types:
         enum: md_update_action
         doc: 'Market Data update Action'
       - id: security_id
-        type: u8
-        doc: 'Unique security ID'
+        type: u8_nullable
+        doc: 'Unique security ID. Nullable, No Value = 18446744073709551615'
       - id: rpt_seq
         type: u4
         doc: 'Sequence number per Index update'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
         type: md_entry_size
         doc: 'Number of entries in Market Data message'
       - id: number_of_orders
-        type: s4
-        doc: 'The total number of real orders per instrument that participated in a match step within a match event'
+        type: s4_nullable
+        doc: 'The total number of real orders per instrument that participated in a match step within a match event. Nullable, No Value = 2147483647'
       - id: trade_id
         type: s4
         doc: 'Unique Trade Entry ID per Instrument and Trading Date'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
-        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor'
+        type: u1_nullable
+        doc: 'Indicates which side is aggressor of the trade. If there is no value present, then there is no aggressor. Nullable, No Value = 255'
       - id: symbol
         type: str
         size: 50
@@ -2197,8 +2189,8 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: unit_of_measure
         type: str
         size: 5
@@ -2213,22 +2205,22 @@ types:
         type: unit_of_measure_qty_decimal_optional
         doc: 'Number of entries in Market Data message'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: price_type
-        type: u2
-        doc: 'Valid price types for intraday trade'
+        type: u2_nullable
+        doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: trd_type
-        type: u1
-        doc: 'Valid trade types for intraday trade'
+        type: u1_nullable
+        doc: 'Valid trade types for intraday trade. Nullable, No Value = 255'
       - id: md_entry_id
         type: str
         size: 26
         encoding: ASCII
         doc: 'Market data entry identifier to map multiple prices of a single trade'
       - id: put_or_call
-        type: u1
-        doc: 'Indicates whether an option instrument is a put or call'
+        type: u1_nullable
+        doc: 'Indicates whether an option instrument is a put or call. Nullable, No Value = 255'
       - id: strike_price_decimal_optional
         type: strike_price_decimal_optional
         doc: 'Number of entries in Market Data message'
@@ -2270,10 +2262,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2281,10 +2273,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2306,8 +2298,8 @@ types:
         encoding: ASCII
         doc: 'This tag contains the instrument group of the requested security definition. Must be present when tag 555-NoLegs is present. Also must be first tag in repeating group. Multileg instrument''s individual security''s Symbol'
       - id: leg_security_id
-        type: u8
-        doc: 'Multileg instrument''s individual security''s SecurityID'
+        type: u8_nullable
+        doc: 'Multileg instrument''s individual security''s SecurityID. Nullable, No Value = 18446744073709551615'
       - id: leg_security_group
         type: str
         size: 12
@@ -2327,8 +2319,8 @@ types:
         type: leg_maturity_month_year
         doc: 'Number of legs (repeating groups)'
       - id: leg_maturity_date
-        type: u2
-        doc: 'Multileg instrument''s individual security''s leg MaturityDate'
+        type: u2_nullable
+        doc: 'Multileg instrument''s individual security''s leg MaturityDate. Nullable, No Value = 65535'
       - id: leg_strike_price_decimal_64_null
         type: leg_strike_price_decimal_64_null
         doc: 'Number of legs (repeating groups)'
@@ -2346,14 +2338,14 @@ types:
         encoding: ASCII
         doc: 'Multileg instrument''s individual security''s leg SecurityExchange'
       - id: leg_ratio_qty_u_int_16_null
-        type: u2
-        doc: 'The ratio of quantity for this individual leg relative to the entire multileg security'
+        type: u2_nullable
+        doc: 'The ratio of quantity for this individual leg relative to the entire multileg security. Nullable, No Value = 65535'
       - id: leg_side
-        type: u1
-        doc: 'The side of this individual leg (multileg security)'
+        type: u1_nullable
+        doc: 'The side of this individual leg (multileg security). Nullable, No Value = 255'
       - id: leg_put_or_call
-        type: u1
-        doc: 'Multileg instrument''s individual security''s leg option put or call'
+        type: u1_nullable
+        doc: 'Multileg instrument''s individual security''s leg option put or call. Nullable, No Value = 255'
       - id: leg_unit_of_measure_currency
         type: str
         size: 3
@@ -2363,10 +2355,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2374,10 +2366,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2387,14 +2379,14 @@ types:
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: trade_date
-        type: u2
-        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports'
+        type: u2_nullable
+        doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: batch_total_messages_optional
-        type: u2
-        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+        type: u2_nullable
+        doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: otc_groups
         type: otc_groups
         doc: 'NoMDEntries Block'
@@ -2419,8 +2411,8 @@ types:
         type: u4
         doc: 'Sequence number per Index update'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price of the Market Data Entry. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: md_entry_size
         type: md_entry_size
         doc: 'Number of entries in Market Data message'
@@ -2448,14 +2440,14 @@ types:
         encoding: ASCII
         doc: 'Market used to help identify an instrument'
       - id: product_optional
-        type: u1
-        doc: 'Identifies the type of product'
+        type: u1_nullable
+        doc: 'Identifies the type of product. Nullable, No Value = 255'
       - id: maturity_date
-        type: u2
-        doc: 'Maturity date of instrument'
+        type: u2_nullable
+        doc: 'Maturity date of instrument. Nullable, No Value = 65535'
       - id: coupon_rate
-        type: decimal_s4_4
-        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Coupon Rate of the Swap. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: restructuring_type
         type: str
         size: 2
@@ -2467,11 +2459,11 @@ types:
         encoding: ASCII
         doc: 'Specifies which issue (underlying bond) will receive payment priority in the event of a default'
       - id: notional_percentage_outstanding
-        type: decimal_s4_4
-        doc: 'Indicates the notional percentage of the deal that is still outstanding based on the remaining components of the index. Implied decimal with scale 1e-4'
+        type: decimal_s4_4_nullable
+        doc: 'Indicates the notional percentage of the deal that is still outstanding based on the remaining components of the index. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
       - id: put_or_call
-        type: u1
-        doc: 'Indicates whether an option instrument is a put or call'
+        type: u1_nullable
+        doc: 'Indicates whether an option instrument is a put or call. Nullable, No Value = 255'
       - id: strike_price_decimal_optional
         type: strike_price_decimal_optional
         doc: 'Number of entries in Market Data message'
@@ -2489,17 +2481,17 @@ types:
         type: unit_of_measure_qty_decimal_optional
         doc: 'Number of entries in Market Data message'
       - id: md_entry_date
-        type: s4
-        doc: 'Indicates Market Data Entry Date'
+        type: s4_nullable
+        doc: 'Indicates Market Data Entry Date. Nullable, No Value = 2147483647'
       - id: open_close_settl_flag
-        type: s1
-        doc: 'Indicates whether the price is preliminary or previous day'
+        type: s1_nullable
+        doc: 'Indicates whether the price is preliminary or previous day. Nullable, No Value = 127'
       - id: price_type
-        type: u2
-        doc: 'Valid price types for intraday trade'
+        type: u2_nullable
+        doc: 'Valid price types for intraday trade. Nullable, No Value = 65535'
       - id: settl_date
-        type: u2
-        doc: 'Indicates date of settlement'
+        type: u2_nullable
+        doc: 'Indicates date of settlement. Nullable, No Value = 65535'
       - id: quote_condition
         type: str
         size: 1
@@ -2531,8 +2523,8 @@ types:
         encoding: ASCII
         doc: 'SecuritySubType for CDS only'
       - id: vol_type
-        type: u2
-        doc: 'Volume types for end of day volume'
+        type: u2_nullable
+        doc: 'Volume types for end of day volume. Nullable, No Value = 65535'
       - id: reference_id_100
         type: str
         size: 100
@@ -2557,6 +2549,57 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  s1_nullable:
+    seq:
+      - id: value
+        type: s1
+    instances:
+      is_null:
+        value: value == 127
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  str_1_nullable:
+    seq:
+      - id: value
+        type: str
+        size: 1
+        encoding: ASCII
+    instances:
+      is_null:
+        value: value == "0"
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 18446744073709551615
   decimal_s8_7:
     seq:
       - id: mantissa
@@ -2564,6 +2607,20 @@ types:
     instances:
       real:
         value: mantissa / 10000000.0
+  decimal_s8_7_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_7
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 2147483647
   decimal_s4_4:
     seq:
       - id: mantissa
@@ -2571,6 +2628,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s4_4_nullable:
+    seq:
+      - id: value
+        type: decimal_s4_4
+    instances:
+      is_null:
+        value: value.mantissa == 2147483647
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -2578,6 +2642,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
 
 enums:
   template_id:
@@ -2631,13 +2702,13 @@ enums:
       doc: 'MDIncrementalRefreshOTC'
   md_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     1:
       id: 'change'
       doc: 'Change'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
     3:
       id: 'delete_thru'
@@ -2663,7 +2734,7 @@ enums:
       id: 'add'
       doc: 'Add'
     0x44:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
     0x4d:
       id: 'modify'

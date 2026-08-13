@@ -862,10 +862,10 @@ enums:
       doc: 'Nickel Dime'
   round_lot:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
   status:
     0x30:

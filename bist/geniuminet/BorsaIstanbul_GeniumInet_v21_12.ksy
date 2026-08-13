@@ -701,10 +701,10 @@ enums:
       doc: 'Round Lot'
   occurred_at_cross:
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'Trade Occurred At Continuous Market'
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Trade Occurred At The Cross'
   printable:
     0x4e:

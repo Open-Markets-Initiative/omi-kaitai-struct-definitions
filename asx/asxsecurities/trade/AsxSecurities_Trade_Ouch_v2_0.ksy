@@ -746,7 +746,7 @@ enums:
       doc: 'Mixed Agency And Principal'
   directed_wholesale:
     0x59:
-      id: 'true'
+      id: 'true_field'
       doc: 'True'
     0x4e:
       id: 'false_default'

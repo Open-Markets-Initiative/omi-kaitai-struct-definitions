@@ -122,8 +122,8 @@ types:
         encoding: ASCII
         doc: 'Indicates the type of price'
       - id: product_guid
-        type: u8
-        doc: 'Product GUID'
+        type: u8_nullable
+        doc: 'Product GUID. Nullable, No Value = 18446744073709551615'
       - id: clearing_product_code
         type: str
         size: 12
@@ -143,15 +143,14 @@ types:
         type: maturity_month_year
         doc: 'Number of data blocks'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'Put or call indicator'
+        type: u1_nullable
+        doc: 'Put or call indicator. Nullable, No Value = 255'
       - id: strike_price
         type: strike_price
         doc: 'Number of data blocks'
       - id: underlying_product_guid
-        type: u8
-        doc: 'Underlying Product GUID'
+        type: u8_nullable
+        doc: 'Underlying Product GUID. Nullable, No Value = 18446744073709551615'
       - id: underlying_clearing_product_code
         type: str
         size: 12
@@ -176,23 +175,23 @@ types:
         encoding: ASCII
         doc: 'Contract name, symbol'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: security_id
-        type: u4
-        doc: 'Security ID'
+        type: u4_nullable
+        doc: 'Security ID. Nullable, No Value = 4294967295'
       - id: formatted_last_px
         type: formatted_last_px
         doc: 'Number of data blocks'
       - id: md_entry_px
-        type: decimal_s8_9
-        doc: 'Price in Globex decimal format. Sent only for the instruments listed on Globex. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'Price in Globex decimal format. Sent only for the instruments listed on Globex. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: settl_price_type
         type: settl_price_type
         doc: 'SettlPriceType bit set'
       - id: trading_reference_date
-        type: u2
-        doc: 'Business date corresponding to a statistic entry'
+        type: u2_nullable
+        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
       - id: md_statistic_desc
         type: str
         size: 40
@@ -201,50 +200,50 @@ types:
   maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   strike_price:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   underlying_maturity_month_year:
     seq:
       - id: year
-        type: u2
-        doc: 'YYYY'
+        type: u2_nullable
+        doc: 'YYYY. Nullable, No Value = 65535'
       - id: month
-        type: u1
-        doc: 'MM'
+        type: u1_nullable
+        doc: 'MM. Nullable, No Value = 255'
       - id: day
-        type: u1
-        doc: 'DD'
+        type: u1_nullable
+        doc: 'DD. Nullable, No Value = 255'
       - id: week
-        type: u1
-        doc: 'WW'
+        type: u1_nullable
+        doc: 'WW. Nullable, No Value = 255'
   formatted_last_px:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -295,8 +294,8 @@ types:
   incremental_refresh_voi_group:
     seq:
       - id: product_guid
-        type: u8
-        doc: 'Product GUID'
+        type: u8_nullable
+        doc: 'Product GUID. Nullable, No Value = 18446744073709551615'
       - id: clearing_product_code
         type: str
         size: 12
@@ -316,15 +315,14 @@ types:
         type: maturity_month_year
         doc: 'Number of data blocks'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'Put or call indicator'
+        type: u1_nullable
+        doc: 'Put or call indicator. Nullable, No Value = 255'
       - id: strike_price
         type: strike_price
         doc: 'Number of data blocks'
       - id: underlying_product_guid
-        type: u8
-        doc: 'Underlying Product GUID'
+        type: u8_nullable
+        doc: 'Underlying Product GUID. Nullable, No Value = 18446744073709551615'
       - id: underlying_clearing_product_code
         type: str
         size: 12
@@ -349,24 +347,24 @@ types:
         encoding: ASCII
         doc: 'Contract name, symbol'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: security_id
-        type: u4
-        doc: 'Security ID'
+        type: u4_nullable
+        doc: 'Security ID. Nullable, No Value = 4294967295'
       - id: cleared_volume
-        type: u4
-        doc: 'Cleared volume reported for prior trading session referenced in Tag 5796 TradingReferenceDate'
+        type: u4_nullable
+        doc: 'Cleared volume reported for prior trading session referenced in Tag 5796 TradingReferenceDate. Nullable, No Value = 4294967295'
       - id: open_interest_qty
-        type: u4
-        doc: 'Open interest reported for prior trading session referenced in Tag 5796 TradingReferenceDate'
+        type: u4_nullable
+        doc: 'Open interest reported for prior trading session referenced in Tag 5796 TradingReferenceDate. Nullable, No Value = 4294967295'
       - id: open_close_settl_flag
         type: u1
         enum: open_close_settl_flag
         doc: 'Estimated vs Actual flag'
       - id: trading_reference_date
-        type: u2
-        doc: 'Business date corresponding to a statistic entry'
+        type: u2_nullable
+        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
   md_incremental_refresh_high_low:
     seq:
       - id: transact_time
@@ -388,8 +386,8 @@ types:
   incremental_refresh_high_low_group:
     seq:
       - id: product_guid
-        type: u8
-        doc: 'Product GUID'
+        type: u8_nullable
+        doc: 'Product GUID. Nullable, No Value = 18446744073709551615'
       - id: clearing_product_code
         type: str
         size: 12
@@ -409,15 +407,14 @@ types:
         type: maturity_month_year
         doc: 'Number of data blocks'
       - id: put_or_call
-        type: u1
-        enum: put_or_call
-        doc: 'Put or call indicator'
+        type: u1_nullable
+        doc: 'Put or call indicator. Nullable, No Value = 255'
       - id: strike_price
         type: strike_price
         doc: 'Number of data blocks'
       - id: underlying_product_guid
-        type: u8
-        doc: 'Underlying Product GUID'
+        type: u8_nullable
+        doc: 'Underlying Product GUID. Nullable, No Value = 18446744073709551615'
       - id: underlying_clearing_product_code
         type: str
         size: 12
@@ -442,11 +439,11 @@ types:
         encoding: ASCII
         doc: 'Contract name, symbol'
       - id: instrument_guid
-        type: u8
-        doc: 'External unique instrument ID'
+        type: u8_nullable
+        doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: security_id
-        type: u4
-        doc: 'Security ID'
+        type: u4_nullable
+        doc: 'Security ID. Nullable, No Value = 4294967295'
       - id: low_px
         type: low_px
         doc: 'Number of data blocks'
@@ -462,16 +459,16 @@ types:
         enum: high_px_ind
         doc: 'High price origin indicator'
       - id: trading_reference_date
-        type: u2
-        doc: 'Business date corresponding to a statistic entry'
+        type: u2_nullable
+        doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
   low_px:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -479,10 +476,10 @@ types:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -499,6 +496,34 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   decimal_s8_9:
     seq:
       - id: mantissa
@@ -506,6 +531,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775807
 
 enums:
   template_id:
@@ -523,13 +555,13 @@ enums:
       doc: 'AdminHeartbeat'
   md_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     1:
       id: 'change'
       doc: 'Change'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
   put_or_call:
     0:

@@ -57,40 +57,37 @@ types:
         type: eobi_header
         doc: 'EOBI PacketHeader MessageHeaderComp (BodyLen + TemplateID + MsgSeqNum) — first 8 bytes of every Eurex T7 EOBI packet'
       - id: appl_seq_num
-        type: u8
-        doc: 'Application sequence number per Market Segment / Partition'
+        type: u8_nullable
+        doc: 'Application sequence number per Market Segment / Partition. Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
-        type: s4
-        doc: 'Market Segment identifier for the partition'
+        type: s4_nullable
+        doc: 'Market Segment identifier for the partition. Nullable, No Value = 0x80000000'
       - id: partition_id
-        type: u1
-        doc: 'Partition identifier within the market segment'
+        type: u1_nullable
+        doc: 'Partition identifier within the market segment. Nullable, No Value = 0xFF'
       - id: completion_indicator
-        type: u1
-        enum: completion_indicator
-        doc: 'End-of-event marker (0 = more to follow, 1 = last packet of event)'
+        type: u1_nullable
+        doc: 'End-of-event marker (0 = more to follow, 1 = last packet of event). Nullable, No Value = 0xFF'
       - id: appl_seq_reset_indicator
-        type: u1
-        enum: appl_seq_reset_indicator
-        doc: 'Indicates whether Application Sequence Number was reset for this Market Segment'
+        type: u1_nullable
+        doc: 'Indicates whether Application Sequence Number was reset for this Market Segment. Nullable, No Value = 0xFF'
       - id: pad_1
         size: 1
         doc: 'Padding to 8-byte alignment before TransactTime'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   eobi_header:
     seq:
       - id: body_len
-        type: u2
-        doc: 'Total packet body length in bytes (header + messages)'
+        type: u2_nullable
+        doc: 'Total packet body length in bytes (header + messages). Nullable, No Value = 0xFFFF'
       - id: template_id
-        type: u2
-        enum: template_id
-        doc: 'SBE template identifier of the packet header (e.g., 13004 RefreshHeader / 13005 BeaconMessage)'
+        type: u2_nullable
+        doc: 'SBE template identifier of the packet header (e.g., 13004 RefreshHeader / 13005 BeaconMessage). Nullable, No Value = 0xFFFF'
       - id: msg_seq_num
-        type: u4
-        doc: 'Per-packet sequence number; 0xFFFFFFFF for unsequenced packets (heartbeats)'
+        type: u4_nullable
+        doc: 'Per-packet sequence number; 0xFFFFFFFF for unsequenced packets (heartbeats). Nullable, No Value = 0xFFFFFFFF'
   message_struct:
     seq:
       - id: message_header_comp
@@ -126,31 +123,34 @@ types:
     seq:
       - id: body_len
         type: u2
-        doc: 'Total packet body length in bytes (header + messages)'
+        doc: 'Total packet body length in bytes (header + messages). Nullable, No Value = 0xFFFF'
       - id: template_id
         type: u2
         enum: template_id
-        doc: 'SBE template identifier of the packet header (e.g., 13004 RefreshHeader / 13005 BeaconMessage)'
+        doc: 'SBE template identifier of the packet header (e.g., 13004 RefreshHeader / 13005 BeaconMessage). Nullable, No Value = 0xFFFF'
       - id: msg_seq_num
-        type: u4
-        doc: 'Per-packet sequence number; 0xFFFFFFFF for unsequenced packets (heartbeats)'
+        type: u4_nullable
+        doc: 'Per-packet sequence number; 0xFFFFFFFF for unsequenced packets (heartbeats). Nullable, No Value = 0xFFFFFFFF'
   add_complex_instrument:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_sub_type
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: product_complex
-        type: u1
-        enum: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: implied_market_indicator
-        type: u1
-        enum: implied_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_instrmt_leg_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad1
         size: 1
       - id: instrmt_leg_grp_comp
@@ -160,152 +160,170 @@ types:
   instrmt_leg_grp_comp:
     seq:
       - id: leg_symbol
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: leg_security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: leg_ratio_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: leg_side
-        type: u1
-        enum: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   auction_bbo:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   auction_clearing_price:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   cross_request:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   execution_summary:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: aggressor_timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: request_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: exec_id
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: aggressor_side
-        type: u1
-        enum: aggressor_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trade_condition
-        type: u1
-        enum: trade_condition
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: resting_hidden_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
   full_order_execution:
     seq:
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: trd_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   heartbeat:
     seq:
       - id: last_msg_seq_num_processed
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
   instrument_state_change:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: security_status
-        type: u1
-        enum: security_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: security_trading_status
-        type: u1
-        enum: security_trading_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: fast_market_indicator
-        type: u1
-        enum: fast_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad_1
         size: 1
         doc: 'Padding to 8-byte alignment before TransactTime'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   instrument_summary:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_update_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_execution_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: tot_no_orders
-        type: u2
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
       - id: security_status
-        type: u1
-        enum: security_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: security_trading_status
-        type: u1
-        enum: security_trading_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: fast_market_indicator
-        type: u1
-        enum: fast_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: num_md_instrument_entry_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
       - id: md_instrument_entry_grp_comp
@@ -315,164 +333,179 @@ types:
   md_instrument_entry_grp_comp:
     seq:
       - id: md_entry_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: md_entry_size
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: md_entry_type
-        type: u1
-        enum: md_entry_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
   order_add:
     seq:
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_details_comp:
     seq:
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: display_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   order_delete:
     seq:
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_mass_delete:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   order_modify:
     seq:
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_reg_ts_prev_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: prev_price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: prev_display_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   order_modify_same_prio:
     seq:
       - id: trd_reg_ts_time_in
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: prev_display_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: pad4
         size: 4
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: order_details_comp
         type: order_details_comp
   partial_order_execution:
     seq:
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: price
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_time_priority
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: trd_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   product_state_change:
     seq:
       - id: trading_session_id
-        type: u1
-        enum: trading_session_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trad_ses_status
-        type: u1
-        enum: trad_ses_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: fast_market_indicator
-        type: u1
-        enum: fast_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad4
         size: 4
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   product_summary:
     seq:
       - id: last_msg_seq_num_processed
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: trading_session_id
-        type: u1
-        enum: trading_session_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trading_session_sub_id
-        type: u1
-        enum: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: trad_ses_status
-        type: u1
-        enum: trad_ses_status
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: fast_market_indicator
-        type: u1
-        enum: fast_market_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
   quote_request:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: side
-        type: u1
-        enum: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
   snapshot_order:
     seq:
       - id: order_details_comp
@@ -480,57 +513,65 @@ types:
   top_of_book:
     seq:
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
   trade_report:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: match_type
-        type: u1
-        enum: match_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: match_sub_type
-        type: u1
-        enum: match_sub_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad6
         size: 6
   trade_reversal:
     seq:
       - id: security_id
-        type: s8
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
       - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: trd_match_id
-        type: u4
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: last_qty
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: last_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_execution_time
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: num_md_trade_entry_grp_comp
         type: u1
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: md_trade_entry_grp_comp
@@ -540,15 +581,51 @@ types:
   md_trade_entry_grp_comp:
     seq:
       - id: md_entry_px
-        type: decimal_u8_8
-        doc: 'Implied decimal with scale 1e-8'
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: md_entry_size
-        type: s4
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
       - id: md_entry_type
-        type: u1
-        enum: md_entry_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
       - id: pad3
         size: 3
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0xFFFF
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0xFFFFFFFF
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0xFFFFFFFF
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == 0x80000000
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 0xFF
   nanosecond_timestamp:
     seq:
       - id: time
@@ -562,6 +639,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0xFFFFFFFFFFFFFFFF
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == 0x8000000000000000
   decimal_u8_8:
     seq:
       - id: mantissa
@@ -569,6 +660,13 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  decimal_u8_8_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_8
+    instances:
+      is_null:
+        value: value.mantissa == 0x8000000000000000
 
 enums:
   template_id:
@@ -690,8 +788,8 @@ enums:
     210: 'closing_auction'
     211: 'closing_auction_freeze'
   fast_market_indicator:
-    0: 'no'
-    1: 'yes'
+    0: 'no_field'
+    1: 'yes_field'
   md_entry_type:
     2: 'trade'
     4: 'opening_price'

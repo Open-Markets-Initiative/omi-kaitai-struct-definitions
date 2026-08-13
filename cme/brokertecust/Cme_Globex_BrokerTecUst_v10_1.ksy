@@ -87,8 +87,8 @@ types:
   md_incremental_refresh_btec:
     seq:
       - id: trade_date
-        type: u2
-        doc: 'Trade Date'
+        type: u2_nullable
+        doc: 'Trade Date. Nullable, No Value = 65535'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
@@ -125,22 +125,22 @@ types:
         type: md_entry_px
         doc: 'Number of data blocks'
       - id: md_entry_size
-        type: u4
-        doc: 'Quantity or volume represented by the Market Data Entry'
+        type: u4_nullable
+        doc: 'Quantity or volume represented by the Market Data Entry. Nullable, No Value = 4294967295'
       - id: md_price_level
-        type: u1
-        doc: 'Price level in the book'
+        type: u1_nullable
+        doc: 'Price level in the book. Nullable, No Value = 255'
       - id: trade_volume
-        type: u4
-        doc: 'Total traded volume since the beginning of the session. If this tag is not present, then there is no volume'
+        type: u4_nullable
+        doc: 'Total traded volume since the beginning of the session. If this tag is not present, then there is no volume. Nullable, No Value = 4294967295'
       - id: symbol
         type: str
         size: 20
         encoding: ASCII
         doc: 'Contract symbol, name'
       - id: maturity_date
-        type: u2
-        doc: 'Instrument Maturity Date'
+        type: u2_nullable
+        doc: 'Instrument Maturity Date. Nullable, No Value = 65535'
       - id: security_alt_id
         type: str
         size: 12
@@ -160,16 +160,16 @@ types:
         encoding: ASCII
         doc: 'List of conditions describing a trade. H= Hit, T=Take'
       - id: price_type
-        type: u1
-        doc: 'Price type condition. 9=Yield'
+        type: u1_nullable
+        doc: 'Price type condition. 9=Yield. Nullable, No Value = 255'
   md_entry_px:
     seq:
       - id: mantissa
         type: s8
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = -9223372036854775808'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -177,10 +177,10 @@ types:
     seq:
       - id: mantissa_32
         type: s4
-        doc: 'mantissa'
+        doc: 'mantissa. Nullable, No Value = 2147483647'
       - id: exponent
         type: s1
-        doc: 'exponent'
+        doc: 'exponent. Nullable, No Value = 127. Nullable, No Value = -128'
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -197,6 +197,27 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
 
 enums:
   template_id:
@@ -208,13 +229,13 @@ enums:
       doc: 'AdminHeartbeat'
   md_update_action:
     0:
-      id: 'new'
+      id: 'new_field'
       doc: 'New'
     1:
       id: 'update'
       doc: 'Update'
     2:
-      id: 'delete'
+      id: 'delete_field'
       doc: 'Delete'
   md_entry_type:
     0x30:

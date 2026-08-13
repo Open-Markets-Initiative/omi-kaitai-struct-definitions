@@ -1015,6 +1015,6 @@ enums:
       id: 'not_a_retail_designated'
       doc: 'Not a retail designated order'
     0x20:
-      id: 'default'
+      id: 'default_field'
       doc: 'Default'
 

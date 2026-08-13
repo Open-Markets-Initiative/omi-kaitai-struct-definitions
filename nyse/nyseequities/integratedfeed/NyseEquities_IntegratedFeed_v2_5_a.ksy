@@ -1024,10 +1024,10 @@ enums:
       doc: 'Nickel Dime'
   round_lot:
     0x59:
-      id: 'yes'
+      id: 'yes_field'
       doc: 'Yes'
     0x4e:
-      id: 'no'
+      id: 'no_field'
       doc: 'No'
   status:
     0x30:
@@ -1362,7 +1362,7 @@ enums:
       doc: 'Sell Side'
   significant_imbalance:
     0x20:
-      id: 'default'
+      id: 'default_field'
       doc: 'Default'
     0x59:
       id: 'the_current_imbalance_is_significant'

@@ -295,8 +295,8 @@ types:
         enum: auction_type
         doc: 'Type of Auction'
       - id: auction_duration
-        type: u4
-        doc: 'User defined for Auction Duration. In milliseconds between 3,000 and 300,000'
+        type: u4_nullable
+        doc: 'User defined for Auction Duration. In milliseconds between 3,000 and 300,000. Nullable, Not Applicable = 0'
       - id: auction_event
         type: u1
         enum: auction_event
@@ -479,6 +479,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
 
 enums:
   packet_type:
