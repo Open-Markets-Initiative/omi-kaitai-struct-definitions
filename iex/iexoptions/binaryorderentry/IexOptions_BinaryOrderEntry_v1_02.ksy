@@ -1629,7 +1629,7 @@ types:
         type: s1
     instances:
       is_null:
-        value: value == 128
+        value: value == -128
   decimal_s4_4:
     seq:
       - id: mantissa

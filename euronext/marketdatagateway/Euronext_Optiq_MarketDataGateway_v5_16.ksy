@@ -2300,7 +2300,7 @@ types:
         type: nanosecond_timestamp
     instances:
       is_null:
-        value: value.time == 18446744073709551615
+        value: value.time == -1
   u4_nullable:
     seq:
       - id: value

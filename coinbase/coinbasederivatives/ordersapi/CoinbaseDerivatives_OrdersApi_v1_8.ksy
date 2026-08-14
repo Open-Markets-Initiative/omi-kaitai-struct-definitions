@@ -841,7 +841,7 @@ types:
         type: s1
     instances:
       is_null:
-        value: value == 128
+        value: value == -128
   s8_nullable:
     seq:
       - id: value

@@ -1202,8 +1202,11 @@ enums:
     0x51:
       id: 'bankrupt'
       doc: 'Issuer Has Filed for Bankruptcy'
+    0x4e:
+      id: 'normal'
+      doc: 'Issuer Is NOT Deficient, Delinquent, or Bankrupt.'
     0x47:
-      id: 'normal_x47'
+      id: 'deficient_and_bankrupt'
       doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'

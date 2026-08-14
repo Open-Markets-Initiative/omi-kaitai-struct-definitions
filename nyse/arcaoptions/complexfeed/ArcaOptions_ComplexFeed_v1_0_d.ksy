@@ -155,6 +155,7 @@ types:
         doc: 'This field is reserved for future use'
       - id: market_id
         type: u2
+        enum: market_id
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
@@ -383,6 +384,7 @@ types:
         doc: 'Identifies series type'
       - id: market_id
         type: u2
+        enum: market_id
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
@@ -461,6 +463,7 @@ types:
         doc: 'The unique ID of this series for all products within this market'
       - id: market_id
         type: u2
+        enum: market_id
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
@@ -705,6 +708,28 @@ enums:
     307:
       id: 'series_rfq_message'
       doc: 'The Request for Series RFQ message is published for outright series.'
+  market_id:
+    1:
+      id: 'nyse_equities'
+      doc: 'Nyse Equities'
+    3:
+      id: 'nyse_arca_equities'
+      doc: 'Nyse Arca Equities'
+    4:
+      id: 'nyse_arca_options'
+      doc: 'Nyse Arca Options'
+    8:
+      id: 'nyse_american_options'
+      doc: 'Nyse American Options'
+    9:
+      id: 'nyse_american_equities'
+      doc: 'Nyse American Equities'
+    10:
+      id: 'nyse_national_equities'
+      doc: 'Nyse National Equities'
+    11:
+      id: 'nyse_chicago'
+      doc: 'Nyse Chicago'
   exchange_code:
     0x41:
       id: 'nyse_american'
@@ -1068,29 +1093,14 @@ enums:
       doc: 'Sell'
   quote_condition:
     0x31:
-      id: 'nyse_equities'
-      doc: 'Nyse Equities'
-    0x33:
-      id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
-    0x34:
-      id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
-    0x38:
-      id: 'nyse_american_options'
-      doc: 'Nyse American Options'
-    0x39:
-      id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
-    10:
-      id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
-    11:
-      id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      id: 'regular_trading'
+      doc: 'Regular Trading'
     0x32:
       id: 'rotation'
       doc: 'Rotation'
+    0x33:
+      id: 'trading_halted'
+      doc: 'Trading Halted'
   series:
     0x61:
       id: 'cube'

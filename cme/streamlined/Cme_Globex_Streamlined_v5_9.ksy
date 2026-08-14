@@ -2599,7 +2599,7 @@ types:
         type: nanosecond_timestamp
     instances:
       is_null:
-        value: value.time == 18446744073709551615
+        value: value.time == -1
   decimal_s8_7:
     seq:
       - id: mantissa

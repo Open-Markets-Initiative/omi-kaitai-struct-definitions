@@ -815,9 +815,12 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
-    0x41:
+    0x58:
       id: 'buy_aon'
       doc: 'Buy Aon'
+    0x59:
+      id: 'sell_aon'
+      doc: 'Sell Aon'
     0x4d:
       id: 'buy_implied'
       doc: 'Buy Implied'

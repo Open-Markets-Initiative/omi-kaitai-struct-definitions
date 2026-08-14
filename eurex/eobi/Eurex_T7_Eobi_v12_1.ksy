@@ -976,35 +976,35 @@ types:
         type: u2
     instances:
       is_null:
-        value: value == 0xFFFF
+        value: value == 65535
   u4_nullable:
     seq:
       - id: value
         type: u4
     instances:
       is_null:
-        value: value == 0xFFFFFFFF
+        value: value == 4294967295
   u8_nullable:
     seq:
       - id: value
         type: u8
     instances:
       is_null:
-        value: value == 0xFFFFFFFF
+        value: value == 4294967295
   s4_nullable:
     seq:
       - id: value
         type: s4
     instances:
       is_null:
-        value: value == 0x80000000
+        value: value == -2147483648
   u1_nullable:
     seq:
       - id: value
         type: u1
     instances:
       is_null:
-        value: value == 0xFF
+        value: value == 255
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1024,14 +1024,14 @@ types:
         type: nanosecond_timestamp
     instances:
       is_null:
-        value: value.time == 0xFFFFFFFFFFFFFFFF
+        value: value.time == -1
   s8_nullable:
     seq:
       - id: value
         type: s8
     instances:
       is_null:
-        value: value == 0x8000000000000000
+        value: value == -9223372036854775808
   decimal_u8_8:
     seq:
       - id: mantissa
@@ -1045,7 +1045,7 @@ types:
         type: decimal_u8_8
     instances:
       is_null:
-        value: value.mantissa == 0x8000000000000000
+        value: value.mantissa == 9223372036854775808
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -1059,14 +1059,14 @@ types:
         type: decimal_u8_4
     instances:
       is_null:
-        value: value.mantissa == 0x8000000000000000
+        value: value.mantissa == 9223372036854775808
   s1_nullable:
     seq:
       - id: value
         type: s1
     instances:
       is_null:
-        value: value == 0x80
+        value: value == -128
 
 enums:
   template_id:
