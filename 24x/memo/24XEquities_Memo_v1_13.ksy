@@ -1258,12 +1258,12 @@ types:
   str_6_nullable:
     seq:
       - id: value
-        type: str
         size: 6
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1302,12 +1302,12 @@ types:
   str_1_nullable:
     seq:
       - id: value
-        type: str
         size: 1
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: text == "0"
   u2_nullable:
     seq:
       - id: value
@@ -1318,21 +1318,21 @@ types:
   str_4_nullable:
     seq:
       - id: value
-        type: str
         size: 4
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_16_nullable:
     seq:
       - id: value
-        type: str
         size: 16
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   nanosecond_timestamp:
     seq:
       - id: time

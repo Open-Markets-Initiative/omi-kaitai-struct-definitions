@@ -1509,12 +1509,12 @@ types:
   str_2_nullable:
     seq:
       - id: value
-        type: str
         size: 2
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   u2_nullable:
     seq:
       - id: value
@@ -1525,21 +1525,21 @@ types:
   str_12_nullable:
     seq:
       - id: value
-        type: str
         size: 12
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_3_nullable:
     seq:
       - id: value
-        type: str
         size: 3
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   decimal_s8_7:
     seq:
       - id: mantissa

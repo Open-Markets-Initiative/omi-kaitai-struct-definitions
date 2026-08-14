@@ -2309,174 +2309,174 @@ types:
   str_27_nullable:
     seq:
       - id: value
-        type: str
         size: 27
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_4_nullable:
     seq:
       - id: value
-        type: str
         size: 4
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_12_nullable:
     seq:
       - id: value
-        type: str
         size: 12
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_20_nullable:
     seq:
       - id: value
-        type: str
         size: 20
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_3_nullable:
     seq:
       - id: value
-        type: str
         size: 3
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_25_nullable:
     seq:
       - id: value
-        type: str
         size: 25
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_5_nullable:
     seq:
       - id: value
-        type: str
         size: 5
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_30_nullable:
     seq:
       - id: value
-        type: str
         size: 30
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_102_nullable:
     seq:
       - id: value
-        type: str
         size: 102
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_15_nullable:
     seq:
       - id: value
-        type: str
         size: 15
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_16_nullable:
     seq:
       - id: value
-        type: str
         size: 16
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_8_nullable:
     seq:
       - id: value
-        type: str
         size: 8
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_2_nullable:
     seq:
       - id: value
-        type: str
         size: 2
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_6_nullable:
     seq:
       - id: value
-        type: str
         size: 6
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_1_nullable:
     seq:
       - id: value
-        type: str
         size: 1
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: text == "0"
   str_18_nullable:
     seq:
       - id: value
-        type: str
         size: 18
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_52_nullable:
     seq:
       - id: value
-        type: str
         size: 52
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_7_nullable:
     seq:
       - id: value
-        type: str
         size: 7
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_250_nullable:
     seq:
       - id: value
-        type: str
         size: 250
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
 
 enums:
   template_id:

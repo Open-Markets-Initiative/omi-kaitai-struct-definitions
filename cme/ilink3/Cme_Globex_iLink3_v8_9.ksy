@@ -5134,12 +5134,12 @@ types:
   str_1_nullable:
     seq:
       - id: value
-        type: str
         size: 1
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: text == "0"
 
 enums:
   template_id:

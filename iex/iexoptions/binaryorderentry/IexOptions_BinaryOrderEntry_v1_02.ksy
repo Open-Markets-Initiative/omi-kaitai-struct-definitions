@@ -1682,30 +1682,30 @@ types:
   str_16_nullable:
     seq:
       - id: value
-        type: str
         size: 16
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_4_nullable:
     seq:
       - id: value
-        type: str
         size: 4
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_3_nullable:
     seq:
       - id: value
-        type: str
         size: 3
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
 
 enums:
   template_id:

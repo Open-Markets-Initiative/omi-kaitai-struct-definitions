@@ -2770,30 +2770,30 @@ types:
   str_8_nullable:
     seq:
       - id: value
-        type: str
         size: 8
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_16_nullable:
     seq:
       - id: value
-        type: str
         size: 16
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   str_18_nullable:
     seq:
       - id: value
-        type: str
         size: 18
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   s1_nullable:
     seq:
       - id: value
@@ -2804,12 +2804,12 @@ types:
   str_12_nullable:
     seq:
       - id: value
-        type: str
         size: 12
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
   s4_nullable:
     seq:
       - id: value
@@ -2820,12 +2820,12 @@ types:
   str_11_nullable:
     seq:
       - id: value
-        type: str
         size: 11
-        encoding: ASCII
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == "0"
+        value: value[0] == 0
 
 enums:
   template_id:
