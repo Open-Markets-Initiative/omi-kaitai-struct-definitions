@@ -163,6 +163,7 @@ types:
         doc: 'This field is reserved for future use'
       - id: market_id
         type: u2
+        enum: market_id
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
@@ -391,6 +392,7 @@ types:
         doc: 'Identifies series type'
       - id: market_id
         type: u2
+        enum: market_id
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
@@ -950,6 +952,28 @@ enums:
     323:
       id: 'options_outright_series_summary_message'
       doc: 'The outright series summary message is published every 60 seconds, on a separate multicast channel from the main feed.'
+  market_id:
+    1:
+      id: 'nyse_equities'
+      doc: 'Nyse Equities'
+    3:
+      id: 'nyse_arca_equities'
+      doc: 'Nyse Arca Equities'
+    4:
+      id: 'nyse_arca_options'
+      doc: 'Nyse Arca Options'
+    8:
+      id: 'nyse_american_options'
+      doc: 'Nyse American Options'
+    9:
+      id: 'nyse_american_equities'
+      doc: 'Nyse American Equities'
+    10:
+      id: 'nyse_national_equities'
+      doc: 'Nyse National Equities'
+    11:
+      id: 'nyse_chicago'
+      doc: 'Nyse Chicago'
   exchange_code:
     0x41:
       id: 'nyse_american'

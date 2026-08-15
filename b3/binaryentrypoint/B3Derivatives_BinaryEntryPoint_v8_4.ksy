@@ -3269,9 +3269,6 @@ enums:
       id: 'replace'
       doc: 'CxlRejResponseTo Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_rej_reason:
-    009999:
-      id: 'unable_to_create_fix_from_volatilityupdate_message'
-      doc: 'Unable To Create Fix From Volatility Update Message'
     000908:
       id: 'unable_to_send_fix_from_volatilityupdate_message'
       doc: 'Unable To Send Fix From Volatility Update Message'
@@ -3947,6 +3944,9 @@ enums:
     007149:
       id: 'fix_session_doesnt_belong_to_the_actiontargetgroupid'
       doc: 'Fix Session Doesnt Belong To The Action Target Group Id'
+    009999:
+      id: 'technical_error_function_not_performed'
+      doc: 'Technical Error Function Not Performed'
     008006:
       id: 'exercise_price_not_allowed'
       doc: 'Exercise Price Not Allowed'
