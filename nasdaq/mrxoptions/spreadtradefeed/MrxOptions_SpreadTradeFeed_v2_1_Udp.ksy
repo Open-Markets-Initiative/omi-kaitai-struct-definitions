@@ -1,0 +1,310 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Nasdaq MrxOptions SpreadTradeFeed Itch v2.1
+#
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: Phlx Options Spread Trade Feed
+#   Encoding: Itch
+#   Version: 2.1
+#   Date: 02/13/2026
+#   Specification: Options_Spread_Feed_2.1.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# For full Omi information:
+#   https://github.com/Open-Markets-Initiative/Directory
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: nasdaq_mrxoptions_spreadtradefeed_itch_v2_1_udp
+  title: Nasdaq MrxOptions SpreadTradeFeed Itch v2.1
+  license: GPL-3.0
+  endian: be
+
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq MRX Phlx Options Spread Trade Feed Itch v2.1'
+doc-ref: https://data.nasdaq.com/market-data-specifications
+
+seq:
+  - id: udp_packet_header
+    type: udp_packet_header_struct
+    doc: 'Itch Mold Udp 64 Packet Header'
+  - id: messages
+    repeat: expr
+    repeat-expr: udp_packet_header.message_count
+    type:
+      switch-on: udp_packet_header.message_count
+      cases:
+        _: message
+
+types:
+  udp_packet_header_struct:
+    seq:
+      - id: udp_session
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Identity of the multicast session'
+      - id: udp_sequence_number
+        type: u8
+        doc: 'Sequence number of the first message to follow this header'
+      - id: message_count
+        type: u2
+        doc: 'Number of messages to follow this header'
+  message:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Mold Udp 64 Message Header'
+      - id: udp_payload
+        size: message_header.message_length - 1
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::system_event_message': system_event_message
+            'message_type::complex_strategy_directory_message': complex_strategy_directory_message
+            'message_type::strategy_trading_action_message': strategy_trading_action_message
+            'message_type::complex_strategy_trade_report': complex_strategy_trade_report
+  message_header:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying this message type'
+  system_event_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: event_code
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Refer to System Event Codes below'
+  complex_strategy_directory_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: strategy_type
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Strategy Type'
+      - id: underlying_symbol
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+      - id: num_leg_information
+        type: u1
+        doc: 'Number of legs in the strategy Legs NOTE: Leg field offsets below are an equation, where "n" is the zero based leg number (0, 1, ...)'
+      - id: leg_information
+        type: leg_information
+        repeat: expr
+        repeat-expr: num_leg_information
+        doc: 'Leg information'
+  leg_information:
+    seq:
+      - id: option_id
+        type: u4
+        doc: 'Option ID for this leg, valid for the trading day'
+      - id: security_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the option root symbol (security symbol)'
+      - id: expiration_year
+        type: u1
+        doc: 'Last two digits of the year of the option expiration'
+      - id: expiration_month
+        type: u1
+        doc: 'Expiration Month of the option (1-12)'
+      - id: expiration_day
+        type: u1
+        doc: 'Day of the Month of expiration (1-31)'
+      - id: explicit_strike_price
+        type: decimal_u4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
+      - id: option_type
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Option Type'
+      - id: side
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Indicates the side of the leg'
+      - id: leg_ratio
+        type: u4
+        doc: 'Leg Ratio'
+  strategy_trading_action_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: current_trading_state
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Current Trading State'
+  complex_strategy_trade_report:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: strategy_id
+        type: u4
+        doc: 'Option ID assigned daily. Valid for trading day'
+      - id: cross_id
+        type: u4
+        doc: 'Indicates the internal control number (cross id) associated with the given options trade transaction'
+      - id: trade_condition
+        type: u1
+        doc: 'The Trade Condition is the same as defined in the OPRA specification (OPRA terminology is either "Last Sale" or "Transaction"). Always refer to the www.opraplan.com website to ensure the possible Trade Conditions sent out by this feed, which are consistent with the Trade Conditions defined by OPRA'
+      - id: price
+        type: decimal_u4_4
+        doc: 'Reflects the transaction (premium) price on the execution. Implied decimal with scale 1e-4'
+      - id: volume
+        type: u4
+        doc: 'Current number of contracts traded for an option in one trade'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+
+enums:
+  packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x41:
+      id: 'login_accepted_packet'
+      doc: 'SoupbinTcp Login Accepted Packet'
+    0x4a:
+      id: 'login_rejected_packet'
+      doc: 'SoupbinTcp Login Rejected Packet'
+    0x53:
+      id: 'sequenced_data_packet'
+      doc: 'Sequenced Data Packet'
+    0x48:
+      id: 'server_heartbeat_packet'
+      doc: 'SoupbinTcp Server Heartbeat Packet'
+    0x5a:
+      id: 'end_of_session_packet'
+      doc: 'SoupbinTcp Login End of Session Packet'
+    0x4c:
+      id: 'login_request_packet'
+      doc: 'SoupbinTcp Login Request Packet'
+    0x55:
+      id: 'unsequenced_data_packet'
+      doc: 'Soupbin Tcp Unsequenced Data Packet'
+    0x52:
+      id: 'client_heartbeat_packet'
+      doc: 'SoupbinTcp Client Heartbeat Packet'
+    0x4f:
+      id: 'logout_request_packet'
+      doc: 'SoupbinTcp Logout Request Packet'
+  sequenced_message_type:
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x73:
+      id: 'complex_strategy_directory_message'
+      doc: 'A Complex Order Strategy Message containing the strategy definition will be sent whenever a complex order is added in the system for an underlying.'
+    0x48:
+      id: 'strategy_trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the options market.'
+    0x52:
+      id: 'complex_strategy_trade_report'
+      doc: 'The Complex Strategy Trade Report message is used to publish real-time trade information for complex strategies.'
+    0x4d:
+      id: 'end_of_replay_sequence_message'
+      doc: 'The End of replay Sequence message reflects the sequence number at the time replay of existing messages is complete.'
+  message_type:
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x73:
+      id: 'complex_strategy_directory_message'
+      doc: 'A Complex Order Strategy Message containing the strategy definition will be sent whenever a complex order is added in the system for an underlying.'
+    0x48:
+      id: 'strategy_trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the options market.'
+    0x52:
+      id: 'complex_strategy_trade_report'
+      doc: 'The Complex Strategy Trade Report message is used to publish real-time trade information for complex strategies.'
+
