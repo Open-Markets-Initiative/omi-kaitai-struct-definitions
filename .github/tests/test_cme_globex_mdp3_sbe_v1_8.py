@@ -7,14 +7,14 @@ sys.path.insert(0, "generated/python")
 
 import payloads
 
-from cme_globex_mdp3_sbe_v1_8 import CmeGlobexMdp3SbeV18
+from cme_globex_mdp3_sbe_v1_8_udp import CmeGlobexMdp3SbeV18Udp
 
 
-class CmeGlobexMdp3SbeV18Tests(unittest.TestCase):
+class CmeGlobexMdp3SbeV18UdpTests(unittest.TestCase):
 
     def test_mdincrementalrefreshtradesummary(self):
         for payload in payloads.of("omi-data-packets/Cme/Mdp3.Sbe.v1.8/MdIncrementalRefreshTradeSummary.pcap"):
-            parsed = CmeGlobexMdp3SbeV18.from_bytes(payload)
+            parsed = CmeGlobexMdp3SbeV18Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
 
