@@ -1048,6 +1048,9 @@ enums:
     1:
       id: 'flex'
       doc: 'Flex'
+    2:
+      id: 'flex_percentage'
+      doc: 'Flex Percentage'
   put_or_call:
     0:
       id: 'put'
@@ -1121,7 +1124,7 @@ enums:
       id: 'after_90_seconds'
       doc: 'Any Of The Above Published After 90 Seconds Of Occurring'
     0x66:
-      id: 'complex_orders'
+      id: 'other_complex_orders'
       doc: 'Complex Order Trades That Were Not Part Of The Following Transactions'
     0x67:
       id: 'complex_cube'

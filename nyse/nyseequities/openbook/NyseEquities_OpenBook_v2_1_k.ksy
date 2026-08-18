@@ -49,17 +49,17 @@ seq:
     type:
       switch-on: packet_header.message_type
       cases:
-        'message_type::sequence_number_reset': sequence_number_reset_message
-        'message_type::message_unavailable': unavailable_message
+        'message_type::sequence_number_reset_message': sequence_number_reset_message
+        'message_type::unavailable_message': unavailable_message
         'message_type::request_response_message': request_response_message
         'message_type::retransmission_request_message': retransmission_request_message
-        'message_type::refresh_request_message': book_refresh_request_message
+        'message_type::book_refresh_request_message': book_refresh_request_message
         'message_type::heartbeat_response_message': heartbeat_response_message
-        'message_type::extended_refresh_request': extended_book_refresh_request_message
-        'message_type::symbol_index_mapping_request': symbol_index_mapping_request_message
-        'message_type::symbol_index_mapping_refresh_message': symbol_index_mapping_response_message
-        'message_type::openbook_full_update_message': full_update_message
-        'message_type::openbook_delta_update_message': delta_update_message
+        'message_type::extended_book_refresh_request_message': extended_book_refresh_request_message
+        'message_type::symbol_index_mapping_request_message': symbol_index_mapping_request_message
+        'message_type::symbol_index_mapping_response_message': symbol_index_mapping_response_message
+        'message_type::full_update_message': full_update_message
+        'message_type::delta_update_message': delta_update_message
 
 types:
   packet_header_struct:
@@ -345,14 +345,14 @@ types:
 enums:
   message_type:
     1:
-      id: 'sequence_number_reset'
-      doc: 'Sequence Number Reset'
+      id: 'sequence_number_reset_message'
+      doc: 'This message is sent to reset the Packet Sequence Number.'
     2:
       id: 'heartbeat_message'
       doc: 'Ultra heartbeat message.'
     5:
-      id: 'message_unavailable'
-      doc: 'Message Unavailable'
+      id: 'unavailable_message'
+      doc: 'This message will be sent over the Retransmission multicast channels to inform the clients of unavailability of a range of messages for which they have requested a retransmission.'
     10:
       id: 'request_response_message'
       doc: 'This message will be sent immediately via TCP/IP in response to the client''s request for a retransmission, refresh, or Symbol Index information.'
@@ -363,26 +363,26 @@ enums:
       id: 'retransmission_request_message'
       doc: 'This message is sent by clients to request a retransmission of missed packets.'
     22:
-      id: 'refresh_request_message'
-      doc: 'Refresh Request Message'
+      id: 'book_refresh_request_message'
+      doc: 'This message is sent by clients requesting a full book refresh.'
     24:
       id: 'heartbeat_response_message'
       doc: 'Clients that remain connected to the Request server intraday must respond within 120 seconds to any heartbeat received with a single message of this type in its own packet.'
     27:
-      id: 'extended_refresh_request'
-      doc: 'Extended Refresh Request'
+      id: 'extended_book_refresh_request_message'
+      doc: 'The Extended Book Refresh Request message allows the client to request a refresh by symbol index as opposed to symbol, and to request a refresh of all symbols in a channel.'
     34:
-      id: 'symbol_index_mapping_request'
-      doc: 'Symbol Index Mapping Request'
+      id: 'symbol_index_mapping_request_message'
+      doc: 'This message is sent by clients requesting a refresh of Symbol Index mapping information only.'
     35:
-      id: 'symbol_index_mapping_refresh_message'
-      doc: 'Symbol Index Mapping Refresh Message'
+      id: 'symbol_index_mapping_response_message'
+      doc: 'This message is sent by the NYSE in response to a Symbol Index Request.'
     230:
-      id: 'openbook_full_update_message'
-      doc: 'OpenBook Full Update Message'
+      id: 'full_update_message'
+      doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information.'
     231:
-      id: 'openbook_delta_update_message'
-      doc: 'OpenBook Delta Update Message'
+      id: 'delta_update_message'
+      doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market.'
   product_id:
     12:
       id: 'nyse_openbook_ultra'

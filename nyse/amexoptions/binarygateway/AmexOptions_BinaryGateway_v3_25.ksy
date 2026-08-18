@@ -2371,11 +2371,11 @@ enums:
       doc: 'Mpid Is In Prospect Status'
   mm_type:
     1:
-      id: 'nyse_arca_options_lead_market_maker'
-      doc: 'Nyse Arca Options Lead Market Maker'
+      id: 'nyse_american_options_market_maker'
+      doc: 'Nyse American Options Market Maker'
     2:
-      id: 'nyse_arca_options_market_maker'
-      doc: 'Nyse Arca Options Market Maker'
+      id: 'nyse_american_options_specialist'
+      doc: 'Nyse American Options Specialist'
     3:
       id: 'nyse_american_optionse_specialist'
       doc: 'Nyse American Options E Specialist'

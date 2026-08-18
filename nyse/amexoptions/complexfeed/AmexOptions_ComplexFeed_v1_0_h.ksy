@@ -975,8 +975,8 @@ enums:
       id: 'finra'
       doc: 'Finra'
     0x47:
-      id: 'value_x47'
-      doc: '24 X'
+      id: 'n_24_x'
+      doc: 'N 24 X'
     0x49:
       id: 'ise'
       doc: 'Ise'

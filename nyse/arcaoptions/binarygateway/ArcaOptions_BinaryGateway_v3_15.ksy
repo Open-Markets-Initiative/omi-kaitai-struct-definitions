@@ -230,6 +230,7 @@ types:
             'seq_msg_type::sequenced_filler': sequenced_filler
             'seq_msg_type::order_request': order_request
             'seq_msg_type::order_cancel_request': order_cancel_request
+            'seq_msg_type::order_modify_request': order_modify_request
             'seq_msg_type::new_bulk_quote': new_bulk_quote
             'seq_msg_type::new_order_cross': new_order_cross
             'seq_msg_type::bulk_cancel_request': bulk_cancel_request
@@ -2012,13 +2013,16 @@ enums:
       doc: 'This message may be sent by the firm to change their configuration settings for a given gateway session, as defined by its Username'
     0x0282:
       id: 'sequenced_filler'
-      doc: 'This message may be sent by the firm to change their configuration settings for a given gateway session, as defined by its Username'
+      doc: 'This message type is used to increase the next expected sequence number of a TG stream by 1 on a given gateway session'
     0x0248:
       id: 'order_request'
       doc: 'This message type is used as both a New Order message or a Cancel/Replacement message, as well as in conjunction with the New Order Cross message'
     0x0250:
       id: 'order_cancel_request'
       doc: 'This message is used to cancel a single targeted order including complex orders'
+    0x0251:
+      id: 'order_modify_request'
+      doc: 'This message is used to reduce order quantity while preserving the order''s ranking in the Exchange order book as well as its original OrderID'
     0x0243:
       id: 'new_bulk_quote'
       doc: 'This message may be sent by an Options Market Maker to enter up to 20 Quote messages at once'
@@ -2449,18 +2453,6 @@ enums:
     1:
       id: 'close'
       doc: 'Close'
-    2:
-      id: 'cancel_newest'
-      doc: 'Cancel Newest'
-    3:
-      id: 'cancel_oldest'
-      doc: 'Cancel Oldest'
-    4:
-      id: 'cancel_both'
-      doc: 'Cancel Both'
-    5:
-      id: 'cancel_decrement'
-      doc: 'Cancel Decrement'
   bulk_action:
     1:
       id: 'cancel_single_leg_only'

@@ -877,7 +877,7 @@ enums:
       id: 'invalid_product_id'
       doc: 'Rejected Due To An Invalid Product Id'
     0x39:
-      id: 'value_x39'
+      id: 'invalid_msg_type_or_mismatch_between_msg_type_and_msg_size'
       doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
   retransmit_method:
     0:

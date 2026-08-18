@@ -938,10 +938,10 @@ enums:
       doc: 'Consolidated Fractional Volume Message'
   market_id:
     1:
-      id: 'nyse_equities'
+      id: 'nyse'
       doc: 'Nyse Equities'
     3:
-      id: 'nyse_arca_equities'
+      id: 'nyse_arca'
       doc: 'Nyse Arca Equities'
     4:
       id: 'nyse_arca_options'
@@ -953,13 +953,13 @@ enums:
       id: 'nyse_american_options'
       doc: 'Nyse American Options'
     9:
-      id: 'nyse_american_equities'
+      id: 'nyse_american'
       doc: 'Nyse American Equities'
     10:
-      id: 'nyse_national_equities'
+      id: 'nyse_national'
       doc: 'Nyse National Equities'
     11:
-      id: 'nyse_texas_equities'
+      id: 'nyse_texas'
       doc: 'Nyse Texas Equities'
     0:
       id: 'nyse_group_bqt'
@@ -1167,8 +1167,8 @@ enums:
       id: 'finra'
       doc: 'Finra'
     0x47:
-      id: 'value_x47'
-      doc: '24 X'
+      id: 'n_24_x'
+      doc: 'N 24 X'
     0x48:
       id: 'miami_pearl'
       doc: 'Miami Pearl'

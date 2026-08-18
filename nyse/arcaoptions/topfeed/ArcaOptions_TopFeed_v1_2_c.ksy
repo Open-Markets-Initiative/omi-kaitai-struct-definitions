@@ -105,6 +105,7 @@ types:
             'message_type::options_quote_message': options_quote_message
             'message_type::options_trade_message': options_trade_message
             'message_type::options_trade_cancel_message': options_trade_cancel_message
+            'message_type::options_trade_correction_message': options_trade_correction_message
             'message_type::options_imbalance_message': options_imbalance_message
             'message_type::series_rfq_message': series_rfq_message
             'message_type::outright_series_summary_message': outright_series_summary_message
@@ -816,9 +817,12 @@ enums:
     320:
       id: 'options_trade_message'
       doc: 'An Options Trade message is sent when there is an execution on the order book.'
-    322:
+    321:
       id: 'options_trade_cancel_message'
-      doc: 'In the event that an earlier trade has been reported with one or multiple fields in error, an Options Trade Correction message is sent'
+      doc: 'In the event that an earlier trade has been reported in error, an Options Trade Cancel message is sent'
+    322:
+      id: 'options_trade_correction_message'
+      doc: 'In the event that an earlier trade has been reported with one or multiple fields in error'
     305:
       id: 'options_imbalance_message'
       doc: 'Options Imbalance messages are published once a second during opening and reopening auctions to update price and volume information'
@@ -1168,6 +1172,9 @@ enums:
     1:
       id: 'flex'
       doc: 'Flex'
+    2:
+      id: 'flex_percentage'
+      doc: 'Flex Percentage'
   put_or_call:
     0:
       id: 'put'
@@ -1234,7 +1241,7 @@ enums:
       id: 'after_90_seconds'
       doc: 'Any Of The Above Published After 90 Seconds Of Occurring'
     0x66:
-      id: 'complex_orders'
+      id: 'other_complex_orders'
       doc: 'Complex Order Trades That Were Not Part Of The Following Transactions'
     0x67:
       id: 'complex_cube'

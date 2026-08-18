@@ -1292,6 +1292,9 @@ enums:
     1:
       id: 'flex'
       doc: 'Flex'
+    2:
+      id: 'flex_percentage'
+      doc: 'Flex Percentage'
   put_or_call:
     0:
       id: 'put'
