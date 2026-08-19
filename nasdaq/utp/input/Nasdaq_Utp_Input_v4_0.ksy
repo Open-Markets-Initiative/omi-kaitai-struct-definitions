@@ -2064,11 +2064,11 @@ enums:
       doc: 'No Finra Bbo Exists'
   tt_exempt:
     0x58:
-      id: 'value_x58'
-      doc: '611 Trade Through Exempt'
+      id: 'rule_611_trade_through_exempt'
+      doc: 'Rule 611 Trade Through Exempt'
     0x20:
-      id: 'not_611_trade_through_exempt'
-      doc: 'Not 611 Trade Through Exempt'
+      id: 'not_rule_611_trade_through_exempt'
+      doc: 'Not Rule 611 Trade Through Exempt'
   side:
     0x42:
       id: 'buy'

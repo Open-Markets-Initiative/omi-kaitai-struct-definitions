@@ -72,6 +72,16 @@ types:
       - id: message_header
         type: message_header
         doc: 'Mold Udp 64 Message Header'
+      - id: udp_payload
+        size: message_header.message_length - 1
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::system_event_message': system_event_message
+            'message_type::derivative_directory_message': derivative_directory_message
+            'message_type::trading_action_message': trading_action_message
+            'message_type::add_order_message': add_order_message
+            'message_type::auction_message': auction_message
   message_header:
     seq:
       - id: message_length
@@ -81,6 +91,246 @@ types:
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
+  system_event_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: event_code
+        type: u1
+        enum: event_code
+        doc: 'Refer to System Event Codes below'
+  derivative_directory_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: security_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the option root symbol (security symbol)'
+      - id: expiration_year
+        type: u1
+        doc: 'Last two digits of the year of the option expiration'
+      - id: expiration_month
+        type: u1
+        doc: 'Expiration Month of the option (1-12)'
+      - id: expiration_day
+        type: u1
+        doc: 'Day of the Month of expiration (1-31)'
+      - id: explicit_strike_price
+        type: u4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+      - id: option_type
+        type: u1
+        enum: option_type
+        doc: 'Option Type'
+      - id: underlying_symbol
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the unique symbol assigned to the underlying security within the Exchange System'
+      - id: closing_type
+        type: u1
+        enum: closing_type
+        doc: 'Closing Type'
+      - id: tradable
+        type: u1
+        enum: tradable
+        doc: 'Tradable'
+      - id: mpv
+        type: u1
+        enum: mpv
+        doc: 'Minimum Price Variation'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  trading_action_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: current_trading_state
+        type: u1
+        enum: current_trading_state
+        doc: 'Current Trading State'
+  add_order_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: original_order_volume
+        type: u4
+        doc: 'Original Order Volume for this order'
+      - id: executable_order_volume
+        type: u4
+        doc: 'Volume available for execution at the venue'
+      - id: order_status
+        type: u1
+        enum: order_status
+        doc: 'Order Status'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type'
+      - id: order_qualifier
+        type: u1
+        enum: order_qualifier
+        doc: 'Order Qualifier'
+      - id: limit_price
+        type: u4
+        doc: 'Original Limit Price of Limit or Stop Order, will not include repricing updates. Otherwise field is zero'
+      - id: all_or_none
+        type: u1
+        enum: all_or_none
+        doc: 'All or None'
+      - id: time_in_force
+        type: u1
+        enum: time_in_force
+        doc: 'Time in Force'
+      - id: order_capacity
+        type: u1
+        enum: order_capacity
+        doc: 'Order Capacity'
+      - id: open_close_indicator
+        type: u1
+        enum: open_close_indicator
+        doc: 'Open Close Indicator'
+      - id: owner_id
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide Firm ID to disseminate with order; Spaces when not set'
+      - id: giveup
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide Give-up to disseminate with order; Spaces when not set'
+      - id: cmta
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide CMTA to disseminate with order; Spaces when not set'
+  auction_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: auction_id
+        type: u4
+        doc: 'Uniquely identifies the Auction for the trading day'
+      - id: auction_type
+        type: u1
+        enum: auction_type
+        doc: 'Auction Type'
+      - id: auction_duration
+        type: u4
+        doc: 'User defined for Auction Duration. In milliseconds between 3,000 and 300,000'
+      - id: auction_event
+        type: u1
+        enum: auction_event
+        doc: 'AuctionEvent'
+      - id: quantity
+        type: u4
+        doc: 'Auction Quantity. Opening auction will present paired quantity in this field'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: price
+        type: u4
+        doc: 'Price for the auction; hidden prices are set to zero'
+      - id: imbalance_volume
+        type: u4
+        doc: 'Imbalance volume for opening auction. Will be 0 for other auctions'
+      - id: exec_flag
+        type: u1
+        enum: exec_flag
+        doc: 'Exec Flag'
+      - id: order_capacity
+        type: u1
+        enum: order_capacity
+        doc: 'Order Capacity'
+      - id: owner_id
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide Firm ID to disseminate with order; Spaces when not set'
+      - id: giveup
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide Give-up to disseminate with order; Spaces when not set'
+      - id: cmta
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributable Order may provide CMTA to disseminate with order; Spaces when not set'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:

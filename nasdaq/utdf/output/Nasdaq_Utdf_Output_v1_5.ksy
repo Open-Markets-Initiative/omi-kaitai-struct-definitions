@@ -458,6 +458,7 @@ types:
           cases:
             'administrative_message_type::general_administrative_message': general_administrative_message
             'administrative_message_type::cross_sro_trading_action_message': cross_sro_trading_action_message
+            'administrative_message_type::market_center_trading_action_message': market_center_trading_action_message
             'administrative_message_type::issue_symbol_directory_message': issue_symbol_directory_message
             'administrative_message_type::regulation_sho_short_sale_price_test_restricted_indicator_message': regulation_sho_short_sale_price_test_restricted_indicator_message
             'administrative_message_type::limit_up_limit_down_price_band_message': limit_up_limit_down_price_band_message
@@ -1073,6 +1074,9 @@ enums:
     0x48:
       id: 'cross_sro_trading_action_message'
       doc: 'This fixed format message will be used to inform subscribers of trading actions – such as halts, pauses, quotation resumptions and trading resumptions'
+    0x4b:
+      id: 'market_center_trading_action_message'
+      doc: 'This fixed format message will inform UTP data feed subscribers of when a UTP participant invokes or releases a market center-specific trading halt for a NASDAQ-listed security.'
     0x42:
       id: 'issue_symbol_directory_message'
       doc: 'General Administrative'

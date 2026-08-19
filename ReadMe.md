@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 434 | 1,204,787 |
+| 434 | 1,211,244 |
 
 ## Testing
 
@@ -60,6 +60,7 @@ The Open Markets Initiative provides protocol definitions in several formats:
 
 - [DFDL Definitions][Dfdl.Definitions.Repository] — declarative DFDL schemas for cross language parsing
 - [P4 Definitions][P4.Definitions.Repository] — P4 programs for software and hardware data planes
+- [Spicy Definitions][Spicy.Definitions.Repository] — declarative Spicy grammars for the zeek network security monitor
 ## Disclaimer
 
 Any similarities between existing people, places and/or protocols is purely incidental.
@@ -299,3 +300,4 @@ Enjoy.
 
 [Dfdl.Definitions.Repository]: https://github.com/Open-Markets-Initiative/omi-dfdl-definitions "Omi DFDL Definitions"
 [P4.Definitions.Repository]: https://github.com/Open-Markets-Initiative/omi-p4-definitions "Omi P4 Definitions"
+[Spicy.Definitions.Repository]: https://github.com/Open-Markets-Initiative/omi-spicy-definitions "Omi Spicy Definitions"

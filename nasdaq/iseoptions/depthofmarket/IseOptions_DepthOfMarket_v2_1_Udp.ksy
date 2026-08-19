@@ -72,6 +72,30 @@ types:
       - id: message_header
         type: message_header
         doc: 'Mold Udp 64 Message Header'
+      - id: udp_payload
+        size: message_header.message_length - 1
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::system_event_message': system_event_message
+            'message_type::derivative_directory_message': derivative_directory_message
+            'message_type::trading_action_message': trading_action_message
+            'message_type::add_order_short_form_message': add_order_short_form_message
+            'message_type::add_order_long_form_message': add_order_long_form_message
+            'message_type::add_quote_short_form_message': add_quote_short_form_message
+            'message_type::add_quote_long_form_message': add_quote_long_form_message
+            'message_type::single_side_executed_message': single_side_executed_message
+            'message_type::single_side_executed_with_price_message': single_side_executed_with_price_message
+            'message_type::order_cancel_message': order_cancel_message
+            'message_type::single_side_replace_short_form_message': single_side_replace_short_form_message
+            'message_type::single_side_replace_long_form_message': single_side_replace_long_form_message
+            'message_type::single_side_delete_message': single_side_delete_message
+            'message_type::single_side_update_message': single_side_update_message
+            'message_type::quote_replace_short_form_message': quote_replace_short_form_message
+            'message_type::quote_replace_long_form_message': quote_replace_long_form_message
+            'message_type::quote_delete_message': quote_delete_message
+            'message_type::trade_message': trade_message
+            'message_type::net_order_imbalance_message': net_order_imbalance_message
   message_header:
     seq:
       - id: message_length
@@ -81,6 +105,582 @@ types:
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
+  system_event_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: event_code
+        type: u1
+        enum: event_code
+        doc: 'Refer to System Event Codes below'
+  derivative_directory_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: security_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the option root symbol (security symbol)'
+      - id: expiration_year
+        type: u1
+        doc: 'Last two digits of the year of the option expiration'
+      - id: expiration_month
+        type: u1
+        doc: 'Expiration Month of the option (1-12)'
+      - id: expiration_day
+        type: u1
+        doc: 'Day of the Month of expiration (1-31)'
+      - id: explicit_strike_price
+        type: u4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+      - id: option_type
+        type: u1
+        enum: option_type
+        doc: 'Option Type'
+      - id: underlying_symbol
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the unique symbol assigned to the underlying security within the Exchange System'
+      - id: closing_type
+        type: u1
+        enum: closing_type
+        doc: 'Closing Type'
+      - id: tradable
+        type: u1
+        enum: tradable
+        doc: 'Tradable'
+      - id: mpv
+        type: u1
+        enum: mpv
+        doc: 'Minimum Price Variation'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  trading_action_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: current_trading_state
+        type: u1
+        enum: current_trading_state
+        doc: 'Current Trading State'
+  add_order_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: order_capacity
+        type: u1
+        enum: order_capacity
+        doc: 'Order Capacity'
+      - id: price_short
+        type: u2
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_short
+        type: u2
+        doc: 'The total quantity of the new order being added to the book'
+      - id: reserved_4
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  add_order_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: order_capacity
+        type: u1
+        enum: order_capacity
+        doc: 'Order Capacity'
+      - id: price_long
+        type: u4
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_long
+        type: u4
+        doc: 'The total quantity of the new order being added to the book'
+      - id: reserved_4
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  add_quote_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: bid_reference_number
+        type: u8
+        doc: 'The bid reference number associated with the new quote'
+      - id: ask_reference_number
+        type: u8
+        doc: 'The ask reference number associated with the new quote'
+      - id: bid_price_short
+        type: u2
+        doc: 'The display bid price of the new quote'
+      - id: bid_size_short
+        type: u2
+        doc: 'The bid quantity of the new quote'
+      - id: ask_price_short
+        type: u2
+        doc: 'The display ask price of the new quote'
+      - id: ask_size_short
+        type: u2
+        doc: 'The ask quantity of the new quote'
+  add_quote_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: bid_reference_number
+        type: u8
+        doc: 'The bid reference number associated with the new quote'
+      - id: ask_reference_number
+        type: u8
+        doc: 'The ask reference number associated with the new quote'
+      - id: bid_price_long
+        type: u4
+        doc: 'The display bid price of the new quote'
+      - id: bid_size_long
+        type: u4
+        doc: 'The bid quantity of the new quote'
+      - id: ask_price_long
+        type: u4
+        doc: 'The display ask price of the new quote'
+      - id: ask_size_long
+        type: u4
+        doc: 'The ask quantity of the new quote'
+  single_side_executed_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: strategy_id
+        type: u4
+        doc: 'Complex Strategy ID in case of a leg execution. Not supported on ISE or MRX Options at this time. Always set to ''0'''
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: executed_volume
+        type: u4
+        doc: 'The total quantity executed'
+      - id: trade_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Trade Condition as defined in the OPRA specification'
+      - id: auction_id
+        type: u4
+        doc: 'Uniquely identifies the Auction for the trading day'
+      - id: cross_number
+        type: u4
+        doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
+      - id: match_number
+        type: u4
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day'
+  single_side_executed_with_price_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: strategy_id
+        type: u4
+        doc: 'Complex Strategy ID in case of a leg execution. Not supported on ISE or MRX Options at this time. Always set to ''0'''
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: cross_number
+        type: u4
+        doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
+      - id: match_number
+        type: u4
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day'
+      - id: printable
+        type: u1
+        enum: printable
+        doc: 'Printable'
+      - id: price_long
+        type: u4
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_long
+        type: u4
+        doc: 'The total quantity of the new order being added to the book'
+      - id: trade_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Trade Condition as defined in the OPRA specification'
+      - id: auction_id
+        type: u4
+        doc: 'Uniquely identifies the Auction for the trading day'
+  order_cancel_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: cancelled_volume
+        type: u4
+        doc: 'Volume to be removed from the display size of the order as the result of a cancellation'
+  single_side_replace_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: new_reference_number
+        type: u8
+        doc: 'The new reference number associated with the new order'
+      - id: price_short
+        type: u2
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_short
+        type: u2
+        doc: 'The total quantity of the new order being added to the book'
+  single_side_replace_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: new_reference_number
+        type: u8
+        doc: 'The new reference number associated with the new order'
+      - id: price_long
+        type: u4
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_long
+        type: u4
+        doc: 'The total quantity of the new order being added to the book'
+  single_side_delete_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+  single_side_update_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: order_reference_number
+        type: u8
+        doc: 'The unique reference number assigned to the new order'
+      - id: change_reason
+        type: u1
+        enum: change_reason
+        doc: 'Change Reason'
+      - id: price_long
+        type: u4
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_long
+        type: u4
+        doc: 'The total quantity of the new order being added to the book'
+  quote_replace_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: original_bid_reference_number
+        type: u8
+        doc: 'The original bid reference number associated with the order being replaced'
+      - id: bid_reference_number
+        type: u8
+        doc: 'The bid reference number associated with the new quote'
+      - id: original_ask_reference_number
+        type: u8
+        doc: 'The original ask reference number that is replaced'
+      - id: ask_reference_number
+        type: u8
+        doc: 'The ask reference number associated with the new quote'
+      - id: bid_price_short
+        type: u2
+        doc: 'The display bid price of the new quote'
+      - id: bid_size_short
+        type: u2
+        doc: 'The bid quantity of the new quote'
+      - id: ask_price_short
+        type: u2
+        doc: 'The display ask price of the new quote'
+      - id: ask_size_short
+        type: u2
+        doc: 'The ask quantity of the new quote'
+  quote_replace_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: original_bid_reference_number
+        type: u8
+        doc: 'The original bid reference number associated with the order being replaced'
+      - id: bid_reference_number
+        type: u8
+        doc: 'The bid reference number associated with the new quote'
+      - id: original_ask_reference_number
+        type: u8
+        doc: 'The original ask reference number that is replaced'
+      - id: ask_reference_number
+        type: u8
+        doc: 'The ask reference number associated with the new quote'
+      - id: bid_price_long
+        type: u4
+        doc: 'The display bid price of the new quote'
+      - id: bid_size_long
+        type: u4
+        doc: 'The bid quantity of the new quote'
+      - id: ask_price_long
+        type: u4
+        doc: 'The display ask price of the new quote'
+      - id: ask_size_long
+        type: u4
+        doc: 'The ask quantity of the new quote'
+  quote_delete_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: bid_reference_number
+        type: u8
+        doc: 'The bid reference number associated with the new quote'
+      - id: ask_reference_number
+        type: u8
+        doc: 'The ask reference number associated with the new quote'
+  trade_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: cross_number
+        type: u4
+        doc: 'Trade Group Id. Ties together all trades of a given atomic transaction in the matching engine'
+      - id: match_number
+        type: u4
+        doc: 'Execution Id. Identifies the component of an execution. Unique for a given day'
+      - id: strategy_id
+        type: u4
+        doc: 'Complex Strategy ID in case of a leg execution. Not supported on ISE or MRX Options at this time. Always set to ''0'''
+      - id: cross_type
+        type: u1
+        enum: cross_type
+        doc: 'Cross Type'
+      - id: price_long
+        type: u4
+        doc: 'The display price of the new order being added to the book'
+      - id: volume_long
+        type: u4
+        doc: 'The total quantity of the new order being added to the book'
+      - id: trade_condition
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The Trade Condition as defined in the OPRA specification'
+      - id: auction_id
+        type: u4
+        doc: 'Uniquely identifies the Auction for the trading day'
+      - id: printable
+        type: u1
+        enum: printable
+        doc: 'Printable'
+      - id: trade_type
+        type: u1
+        enum: trade_type
+        doc: 'Trade Type'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  net_order_imbalance_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: auction_id
+        type: u4
+        doc: 'Uniquely identifies the Auction for the trading day'
+      - id: auction_type
+        type: u1
+        enum: auction_type
+        doc: 'Auction Type'
+      - id: paired_quantity
+        type: u4
+        doc: 'The total amount that are eligible to be matched at the Current Reference Price'
+      - id: side_imbalance_direction
+        type: u1
+        enum: side_imbalance_direction
+        doc: 'Indicates the market side of the imbalance in case of Opening or the direction of the auction in case of Auction'
+      - id: price_imbalance_price
+        type: u4
+        doc: 'Price in fixed point format with 6 whole number places followed by 4 decimal digits'
+      - id: imbalance_volume
+        type: u4
+        doc: 'Imbalance volume for opening auction. Will be 0 for other auctions'
+      - id: order_capacity
+        type: u1
+        enum: order_capacity
+        doc: 'Order Capacity'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:

@@ -1390,8 +1390,8 @@ enums:
       id: 'texas_stock_exchange_llc'
       doc: 'Texas Stock Exchange Llc'
     0x47:
-      id: 'value_x47'
-      doc: '24 X National Exchange Llc'
+      id: 'n_24_x_national_exchange_llc'
+      doc: 'N 24 X National Exchange Llc'
     0x44:
       id: 'financial_industry_regulatory_authority'
       doc: 'Financial Industry Regulatory Authority'
@@ -1615,8 +1615,8 @@ enums:
       id: 'depository_receipt'
       doc: 'Depository Receipt'
     0x49:
-      id: 'value_x49'
-      doc: '144 A'
+      id: 'sec_144_a'
+      doc: 'Sec 144 A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'

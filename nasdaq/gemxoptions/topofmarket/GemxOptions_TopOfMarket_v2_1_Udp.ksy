@@ -72,6 +72,20 @@ types:
       - id: message_header
         type: message_header
         doc: 'Mold Udp 64 Message Header'
+      - id: udp_payload
+        size: message_header.message_length - 1
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::system_event_message': system_event_message
+            'message_type::derivative_directory_message': derivative_directory_message
+            'message_type::trading_action_message': trading_action_message
+            'message_type::best_bid_and_ask_update_short_form_message': best_bid_and_ask_update_short_form_message
+            'message_type::best_bid_and_ask_update_long_form_message': best_bid_and_ask_update_long_form_message
+            'message_type::best_bid_update_short_form_message': best_bid_update_short_form_message
+            'message_type::best_ask_update_short_form_message': best_ask_update_short_form_message
+            'message_type::best_bid_update_long_form_message': best_bid_update_long_form_message
+            'message_type::best_ask_update_long_form_message': best_ask_update_long_form_message
   message_header:
     seq:
       - id: message_length
@@ -81,6 +95,313 @@ types:
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
+  system_event_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: event_code
+        type: u1
+        enum: event_code
+        doc: 'Refer to System Event Codes below'
+  derivative_directory_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: security_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the option root symbol (security symbol)'
+      - id: expiration_year
+        type: u1
+        doc: 'Last two digits of the year of the option expiration'
+      - id: expiration_month
+        type: u1
+        doc: 'Expiration Month of the option (1-12)'
+      - id: expiration_day
+        type: u1
+        doc: 'Day of the Month of expiration (1-31)'
+      - id: explicit_strike_price
+        type: u4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+      - id: option_type
+        type: u1
+        enum: option_type
+        doc: '"C" = Call option, "P" = Put option, "N" = Not Applicable'
+      - id: underlying_symbol
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the unique symbol assigned to the underlying security within the Exchange System'
+      - id: closing_type
+        type: u1
+        enum: closing_type
+        doc: 'Denotes which System Event is used to determine when trading ceases in this symbol'
+      - id: tradable
+        type: u1
+        enum: tradable
+        doc: 'Denotes whether or not this option is tradable at the exchange'
+      - id: mpv
+        type: u1
+        enum: mpv
+        doc: 'Minimum Price Variation for this option'
+      - id: reserved_16
+        type: str
+        size: 16
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved for future use'
+  trading_action_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: current_trading_state
+        type: u1
+        enum: current_trading_state
+        doc: 'Reflects the current trading state for the options security in the options market'
+  best_bid_and_ask_update_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: bid_market_order_size_short
+        type: u2
+        doc: 'Number of market order contracts on the bid side'
+      - id: bid_price_short
+        type: u2
+        doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits'
+      - id: bid_size_short
+        type: u2
+        doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
+      - id: bid_cust_size_short
+        type: u2
+        doc: 'Customer quantity on the bid side'
+      - id: bid_procust_size_short
+        type: u2
+        doc: 'Customer professional quantity on the bid side'
+      - id: ask_market_order_size_short
+        type: u2
+        doc: 'Number of market order contracts on the ask side'
+      - id: ask_price_short
+        type: u2
+        doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+      - id: ask_size_short
+        type: u2
+        doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
+      - id: ask_cust_size_short
+        type: u2
+        doc: 'Customer quantity on the ask side'
+      - id: ask_procust_size_short
+        type: u2
+        doc: 'Customer professional quantity on the ask side'
+  best_bid_and_ask_update_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: bid_market_order_size_long
+        type: u4
+        doc: 'Number of market order contracts on the bid side'
+      - id: bid_price_long
+        type: u4
+        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits'
+      - id: bid_size_long
+        type: u4
+        doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
+      - id: bid_cust_size_long
+        type: u4
+        doc: 'Customer quantity on the bid side'
+      - id: bid_procust_size_long
+        type: u4
+        doc: 'Customer professional quantity on the bid side'
+      - id: ask_market_order_size_long
+        type: u4
+        doc: 'Number of market order contracts on the ask side'
+      - id: ask_price_long
+        type: u4
+        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits'
+      - id: ask_size_long
+        type: u4
+        doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
+      - id: ask_cust_size_long
+        type: u4
+        doc: 'Customer quantity on the ask side'
+      - id: ask_procust_size_long
+        type: u4
+        doc: 'Customer professional quantity on the ask side'
+  best_bid_update_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: market_order_size_short
+        type: u2
+        doc: 'Number of market order contracts on the bid or ask side'
+      - id: price_short
+        type: u2
+        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+      - id: size_short
+        type: u2
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size_short
+        type: u2
+        doc: 'Customer quantity on the bid or ask side'
+      - id: procust_size_short
+        type: u2
+        doc: 'Customer professional quantity on the bid or ask side'
+  best_ask_update_short_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: market_order_size_short
+        type: u2
+        doc: 'Number of market order contracts on the bid or ask side'
+      - id: price_short
+        type: u2
+        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+      - id: size_short
+        type: u2
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size_short
+        type: u2
+        doc: 'Customer quantity on the bid or ask side'
+      - id: procust_size_short
+        type: u2
+        doc: 'Customer professional quantity on the bid or ask side'
+  best_bid_update_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: market_order_size_long
+        type: u4
+        doc: 'Number of market order contracts on the bid or ask side'
+      - id: price_long
+        type: u4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+      - id: size_long
+        type: u4
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size_long
+        type: u4
+        doc: 'Customer quantity on the bid and ask side'
+      - id: procust_size_long
+        type: u4
+        doc: 'Customer professional quantity on the bid or ask side'
+  best_ask_update_long_form_message:
+    seq:
+      - id: tracking_number
+        type: u2
+        doc: 'Internal system tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Integer ID of the option, as defined in the Options Directory Message'
+      - id: quote_condition
+        type: u1
+        enum: quote_condition
+        doc: 'Quote condition'
+      - id: market_order_size_long
+        type: u4
+        doc: 'Number of market order contracts on the bid or ask side'
+      - id: price_long
+        type: u4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+      - id: size_long
+        type: u4
+        doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
+      - id: cust_size_long
+        type: u4
+        doc: 'Customer quantity on the bid and ask side'
+      - id: procust_size_long
+        type: u4
+        doc: 'Customer professional quantity on the bid or ask side'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   packet_type:

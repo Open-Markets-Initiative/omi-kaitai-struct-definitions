@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: A2X A2XEquities UdpHeader Amd v1.0
+# Kaitai struct definition for: Eurex T7 Edci Fbe v1
 #
 # Protocol:
-#   Organization: A2X Markets
-#   Protocol: Udp Headers
-#   Encoding: Aquis Market Data Protocol
-#   Version: 1.0
-#   Date: 9/1/2017
+#   Organization: Eurex Exchange
+#   Protocol: Extended Derivatives Clearing Interface
+#   Encoding: Flat Binary Encoding
+#   Version: 1
+#   Date: 01/1/2015
 #   Specification: Unknown
 #
 # Script:
@@ -33,40 +33,35 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: a2x_a2xequities_udpheader_amd_v1_0
-  title: A2X A2XEquities UdpHeader Amd v1.0
+  id: eurex_t7_edci_fbe_v1
+  title: Eurex T7 Edci Fbe v1
   license: GPL-3.0
-  endian: be
+  endian: le
 
-doc: 'A2X Markets A2X Equities Udp Headers Amd v1.0'
-doc-ref: https://www.a2x.co.za/?page_id=734/#a2xtech
+doc: 'Eurex Exchange T7 Extended Derivatives Clearing Interface Fbe v1'
+doc-ref: https://www.eurex.com/ex-en/technology/t7
 
 seq:
-  - id: num_message
-    type: u1
-    doc: 'number of messages in this packet'
   - id: message
     type: message_struct
-    repeat: expr
-    repeat-expr: num_message
+    repeat: eos
+    doc: 'Eurex T7 Edci Message'
 
 types:
   message_struct:
     seq:
       - id: message_header
         type: message_header
-        doc: 'A2X message header'
+        doc: 'Edci Message'
       - id: payload
-        size-eos: true
+        size: message_header.body_len - 6
+        doc: 'Raw message bytes'
   message_header:
     seq:
-      - id: msg_type
-        type: u1
-        doc: 'Message type identifier'
-      - id: msg_length
-        type: u1
-        doc: 'Length of market data message, including header'
-      - id: seq_no
+      - id: body_len
         type: u4
-        doc: 'Sequence number of this message in the market data stream for the current trading day'
+        doc: 'body length field'
+      - id: template_id
+        type: u2
+        doc: 'Template Id'
 

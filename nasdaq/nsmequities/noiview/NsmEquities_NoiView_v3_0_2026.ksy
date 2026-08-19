@@ -476,8 +476,8 @@ enums:
       id: 'depository_receipt'
       doc: 'Depository Receipt'
     0x49:
-      id: 'value_x49'
-      doc: '144 A'
+      id: 'sec_144_a'
+      doc: 'Sec 144 A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -625,41 +625,41 @@ enums:
       id: 'less_than_1'
       doc: 'Less Than 1'
     0x31:
-      id: 'value_x31'
-      doc: '1 To 199'
+      id: 'one_to_one_point_nine_nine_percent'
+      doc: 'One To One Point Nine Nine Percent'
     0x32:
-      id: 'value_x32'
-      doc: '2 To 299'
+      id: 'two_to_two_point_nine_nine_percent'
+      doc: 'Two To Two Point Nine Nine Percent'
     0x33:
-      id: 'value_x33'
-      doc: '3 To 399'
+      id: 'three_to_three_point_nine_nine_percent'
+      doc: 'Three To Three Point Nine Nine Percent'
     0x34:
-      id: 'value_x34'
-      doc: '4 To 499'
+      id: 'four_to_four_point_nine_nine_percent'
+      doc: 'Four To Four Point Nine Nine Percent'
     0x35:
-      id: 'value_x35'
-      doc: '5 To 599'
+      id: 'five_to_five_point_nine_nine_percent'
+      doc: 'Five To Five Point Nine Nine Percent'
     0x36:
-      id: 'value_x36'
-      doc: '6 To 699'
+      id: 'six_to_six_point_nine_nine_percent'
+      doc: 'Six To Six Point Nine Nine Percent'
     0x37:
-      id: 'value_x37'
-      doc: '7 To 799'
+      id: 'seven_to_seven_point_nine_nine_percent'
+      doc: 'Seven To Seven Point Nine Nine Percent'
     0x38:
-      id: 'value_x38'
-      doc: '8 To 899'
+      id: 'eight_to_eight_point_nine_nine_percent'
+      doc: 'Eight To Eight Point Nine Nine Percent'
     0x39:
-      id: 'value_x39'
-      doc: '9 To 999'
+      id: 'nine_to_nine_point_nine_nine_percent'
+      doc: 'Nine To Nine Point Nine Nine Percent'
     0x41:
-      id: 'value_x41'
-      doc: '10 To 1999'
+      id: 'ten_to_nineteen_point_nine_nine_percent'
+      doc: 'Ten To Nineteen Point Nine Nine Percent'
     0x42:
-      id: 'value_x42'
-      doc: '20 To 2999'
+      id: 'twenty_to_twenty_nine_point_nine_nine_percent'
+      doc: 'Twenty To Twenty Nine Point Nine Nine Percent'
     0x43:
-      id: 'value_x43'
-      doc: '30 Or Greater'
+      id: 'thirty_percent_or_greater'
+      doc: 'Thirty Percent Or Greater'
     0x20:
       id: 'cannot_be_calculated'
       doc: 'Cannot Be Calculated'

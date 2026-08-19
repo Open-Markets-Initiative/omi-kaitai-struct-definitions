@@ -728,17 +728,17 @@ enums:
       doc: 'Order Dead'
   bbo_weight_indicator:
     0x30:
-      id: 'value_x30'
-      doc: '0-0.2%'
+      id: 'less_than_point_two_percent'
+      doc: 'Less Than Point Two Percent'
     0x31:
-      id: 'value_x31'
-      doc: '0.2-1%'
+      id: 'less_than_one_percent'
+      doc: 'Less Than One Percent'
     0x32:
-      id: 'value_x32'
-      doc: '1-2%'
+      id: 'less_than_two_percent'
+      doc: 'Less Than Two Percent'
     0x33:
-      id: 'greater_than_2'
-      doc: 'greater than 2%'
+      id: 'greater_than_two_percent'
+      doc: 'Greater Than Two Percent'
     0x53:
       id: 'sets_the_qbbo'
       doc: 'Sets the QBBO while joining the NBBO'

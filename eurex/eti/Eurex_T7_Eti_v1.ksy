@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Eurex T7 Eti Fbe v1.0
+# Kaitai struct definition for: Eurex T7 Eti Fbe v1
 #
 # Protocol:
 #   Organization: Eurex Exchange
 #   Protocol: Enhanced Trading Interface
 #   Encoding: Flat Binary Encoding
-#   Version: 1.0
+#   Version: 1
 #   Date: 01/1/2015
 #   Specification: Unknown
 #
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: eurex_t7_eti_fbe_v1_0
-  title: Eurex T7 Eti Fbe v1.0
+  id: eurex_t7_eti_fbe_v1
+  title: Eurex T7 Eti Fbe v1
   license: GPL-3.0
   endian: le
 
-doc: 'Eurex Exchange T7 Enhanced Trading Interface Fbe v1.0'
+doc: 'Eurex Exchange T7 Enhanced Trading Interface Fbe v1'
 doc-ref: https://www.eurex.com/ex-en/technology/t7
 
 seq:
