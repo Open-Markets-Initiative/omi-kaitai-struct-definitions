@@ -544,40 +544,40 @@ enums:
       id: 'less'
       doc: 'Less Than 1'
     0x31:
-      id: 'value_x31'
+      id: 'one_to_one_point_nine_nine_percent'
       doc: '1 To 199'
     0x32:
-      id: 'value_x32'
+      id: 'two_to_two_point_nine_nine_percent'
       doc: '2 To 299'
     0x33:
-      id: 'value_x33'
+      id: 'three_to_three_point_nine_nine_percent'
       doc: '3 To 399'
     0x34:
-      id: 'value_x34'
+      id: 'four_to_four_point_nine_nine_percent'
       doc: '4 To 499'
     0x35:
-      id: 'value_x35'
+      id: 'five_to_five_point_nine_nine_percent'
       doc: '5 To 599'
     0x36:
-      id: 'value_x36'
+      id: 'six_to_six_point_nine_nine_percent'
       doc: '6 To 699'
     0x37:
-      id: 'value_x37'
+      id: 'seven_to_seven_point_nine_nine_percent'
       doc: '7 To 799'
     0x38:
-      id: 'value_x38'
+      id: 'eight_to_eight_point_nine_nine_percent'
       doc: '8 To 899'
     0x39:
-      id: 'value_x39'
+      id: 'nine_to_nine_point_nine_nine_percent'
       doc: '9 To 999'
     0x41:
-      id: 'value_x41'
+      id: 'ten_to_nineteen_point_nine_nine_percent'
       doc: '10 To 1999'
     0x42:
-      id: 'value_x42'
+      id: 'twenty_to_twenty_nine_point_nine_nine_percent'
       doc: '20 To 2999'
     0x43:
-      id: 'value_x43'
+      id: 'thirty_percent_or_greater'
       doc: '30 Or Greater'
   ipo_quotation_release_qualifier:
     0x41:

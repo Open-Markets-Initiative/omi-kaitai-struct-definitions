@@ -818,7 +818,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
-      doc: 'Sec 144 A'
+      doc: '144 A'
     0x4c:
       id: 'limited'
       doc: 'Limited Partnership'

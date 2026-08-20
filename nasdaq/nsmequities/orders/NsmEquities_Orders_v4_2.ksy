@@ -853,16 +853,16 @@ enums:
   bbo_weight_indicator:
     0x30:
       id: 'less_than_point_two_percent'
-      doc: 'Less Than Point Two Percent'
+      doc: '0-0.2%'
     0x31:
       id: 'less_than_one_percent'
-      doc: 'Less Than One Percent'
+      doc: '0.2-1%'
     0x32:
       id: 'less_than_two_percent'
-      doc: 'Less Than Two Percent'
+      doc: '1-2%'
     0x33:
       id: 'greater_than_two_percent'
-      doc: 'Greater Than Two Percent'
+      doc: 'greater than 2%'
     0x53:
       id: 'sets_the_qbbo'
       doc: 'Sets the QBBO while joining the NBBO'
