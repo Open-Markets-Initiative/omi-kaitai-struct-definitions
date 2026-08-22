@@ -1003,11 +1003,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
   maturity_month_year:
     seq:
       - id: year
@@ -1153,6 +1151,16 @@ types:
       - id: reserved_8
         type: b8
         doc: '8 reserved bits'
+  lot_type_rules_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: lot_type_rules_group
+        type: lot_type_rules_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries'
   lot_type_rules_group:
     seq:
       - id: lot_type
@@ -1327,11 +1335,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: option_underlyings_groups
         type: option_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -1549,11 +1555,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: legs_groups
         type: legs_groups
         doc: 'NoLegs Block'
@@ -1795,11 +1799,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
   md_instrument_definition_repo:
     seq:
       - id: match_event_indicator
@@ -1973,11 +1975,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: repo_underlyings_groups
         type: repo_underlyings_groups
         doc: 'NoUnderlyings Block'

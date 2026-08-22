@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq PhlxOptions Topo Itch v3.3
+# Kaitai struct definition for: Nasdaq PhlxOptions TopOfMarket Itch v3.3
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Phlx Top Order Market Data
+#   Protocol: Top Of Market
 #   Encoding: Itch
 #   Version: 3.3
 #   Date: 11/02/2017
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_phlxoptions_topo_itch_v3_3
-  title: Nasdaq PhlxOptions Topo Itch v3.3
+  id: nasdaq_phlxoptions_topofmarket_itch_v3_3
+  title: Nasdaq PhlxOptions TopOfMarket Itch v3.3
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Phlx Top Order Market Data Itch v3.3'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Top Of Market Itch v3.3'
 doc-ref: http://www.phlx.com/Trader.aspx?id=DPSpecs_USDerivatives#topo
 
 seq:

@@ -56,44 +56,10 @@ types:
       - id: payload
         size: message_header.message_length - 32
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.schema_id
           cases:
-            'template_id::logon_message': logon_message
-            'template_id::logon_conf_message': logon_conf_message
-            'template_id::logout_message': logout_message
-            'template_id::logged_out_message': logged_out_message
-            'template_id::heartbeat_message': heartbeat_message
-            'template_id::test_request_message': test_request_message
-            'template_id::resend_request_message': resend_request_message
-            'template_id::gap_fill_message': gap_fill_message
-            'template_id::instrument_info_request_message': instrument_info_request_message
-            'template_id::instrument_info_message': instrument_info_message
-            'template_id::set_account_message': set_account_message
-            'template_id::set_trader_message': set_trader_message
-            'template_id::set_ack_message': set_ack_message
-            'template_id::new_order_message': new_order_message
-            'template_id::new_ioc_order_message': new_ioc_order_message
-            'template_id::order_entered_message': order_entered_message
-            'template_id::replace_order_message': replace_order_message
-            'template_id::obsolete_stream_order_message': obsolete_stream_order_message
-            'template_id::order_reject_message': order_reject_message
-            'template_id::order_replaced_message': order_replaced_message
-            'template_id::cancel_order_message': cancel_order_message
-            'template_id::order_canceled_message': order_canceled_message
-            'template_id::cancel_order_reject_message': cancel_order_reject_message
-            'template_id::mass_cancel_order_message': mass_cancel_order_message
-            'template_id::mass_cancel_order_ack_message': mass_cancel_order_ack_message
-            'template_id::mass_cancel_order_reject_message': mass_cancel_order_reject_message
-            'template_id::unlock_trading_message': unlock_trading_message
-            'template_id::unlock_trading_ack_message': unlock_trading_ack_message
-            'template_id::unlock_trading_reject_message': unlock_trading_reject_message
-            'template_id::order_filled_message': order_filled_message
-            'template_id::spread_order_filled_message': spread_order_filled_message
-            'template_id::last_exec_id_request_message': last_exec_id_request_message
-            'template_id::last_exec_id_message': last_exec_id_message
-            'template_id::event_resend_request_message': event_resend_request_message
-            'template_id::event_resend_complete_message': event_resend_complete_message
-            'template_id::event_resend_reject_message': event_resend_reject_message
+            'schema_id::session': session_message
+            'schema_id::order': order_message
       - id: padding
         size: message_header.message_length - _io.pos
         doc: 'Tcp sbe alignment padding'
@@ -129,6 +95,7 @@ types:
         doc: 'Template ID used to encode the message'
       - id: schema_id
         type: u2
+        enum: schema_id
         doc: 'Identifier of the schema publishing the message'
       - id: version
         type: u2
@@ -141,6 +108,20 @@ types:
       - id: reserved_7
         type: b7
         doc: '7 reserved bits'
+  session_message:
+    seq:
+      - id: session_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::session_logon_message': logon_message
+            'template_id::session_logon_conf_message': logon_conf_message
+            'template_id::session_logout_message': logout_message
+            'template_id::session_logged_out_message': logged_out_message
+            'template_id::session_heartbeat_message': heartbeat_message
+            'template_id::session_test_request_message': test_request_message
+            'template_id::session_resend_request_message': resend_request_message
+            'template_id::session_gap_fill_message': gap_fill_message
   logon_message:
     seq:
       - id: username
@@ -202,6 +183,42 @@ types:
       - id: gap_fill_padding
         type: u4
         doc: 'padding'
+  order_message:
+    seq:
+      - id: order_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::session_resend_request_message': ping_message
+            'template_id::session_gap_fill_message': pong_message
+            'template_id::instrument_info_request_message': instrument_info_request_message
+            'template_id::instrument_info_message': instrument_info_message
+            'template_id::set_account_message': set_account_message
+            'template_id::set_trader_message': set_trader_message
+            'template_id::set_ack_message': set_ack_message
+            'template_id::new_order_message': new_order_message
+            'template_id::new_ioc_order_message': new_ioc_order_message
+            'template_id::order_entered_message': order_entered_message
+            'template_id::replace_order_message': replace_order_message
+            'template_id::obsolete_stream_order_message': obsolete_stream_order_message
+            'template_id::order_reject_message': order_reject_message
+            'template_id::order_replaced_message': order_replaced_message
+            'template_id::cancel_order_message': cancel_order_message
+            'template_id::order_canceled_message': order_canceled_message
+            'template_id::cancel_order_reject_message': cancel_order_reject_message
+            'template_id::mass_cancel_order_message': mass_cancel_order_message
+            'template_id::mass_cancel_order_ack_message': mass_cancel_order_ack_message
+            'template_id::mass_cancel_order_reject_message': mass_cancel_order_reject_message
+            'template_id::unlock_trading_message': unlock_trading_message
+            'template_id::unlock_trading_ack_message': unlock_trading_ack_message
+            'template_id::unlock_trading_reject_message': unlock_trading_reject_message
+            'template_id::order_filled_message': order_filled_message
+            'template_id::spread_order_filled_message': spread_order_filled_message
+            'template_id::last_exec_id_request_message': last_exec_id_request_message
+            'template_id::last_exec_id_message': last_exec_id_message
+            'template_id::event_resend_request_message': event_resend_request_message
+            'template_id::event_resend_complete_message': event_resend_complete_message
+            'template_id::event_resend_reject_message': event_resend_reject_message
   ping_message:
     seq:
       - id: correlation_id
@@ -818,28 +835,28 @@ types:
 enums:
   template_id:
     100:
-      id: 'logon_message'
+      id: 'session_logon_message'
       doc: 'LogonMessage'
     200:
-      id: 'logon_conf_message'
+      id: 'session_logon_conf_message'
       doc: 'LogonConfMessage'
     101:
-      id: 'logout_message'
+      id: 'session_logout_message'
       doc: 'LogoutMessage'
     201:
-      id: 'logged_out_message'
+      id: 'session_logged_out_message'
       doc: 'LoggedOutMessage'
     10:
-      id: 'heartbeat_message'
+      id: 'session_heartbeat_message'
       doc: 'HeartbeatMessage'
     11:
-      id: 'test_request_message'
+      id: 'session_test_request_message'
       doc: 'TestRequestMessage'
     102:
-      id: 'resend_request_message'
+      id: 'session_resend_request_message'
       doc: 'ResendRequestMessage'
     202:
-      id: 'gap_fill_message'
+      id: 'session_gap_fill_message'
       doc: 'GapFillMessage'
     103:
       id: 'instrument_info_request_message'
@@ -925,6 +942,13 @@ enums:
     253:
       id: 'event_resend_reject_message'
       doc: 'EventResendRejectMessage'
+  schema_id:
+    1100:
+      id: 'session'
+      doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.session'
+    1101:
+      id: 'order'
+      doc: 'Sbe Schema Id for fairx.gateway.sbe.codec.order'
   reset_seq_num:
     0:
       id: 'false_field'

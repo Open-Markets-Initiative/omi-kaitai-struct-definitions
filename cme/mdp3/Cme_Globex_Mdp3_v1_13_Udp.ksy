@@ -1011,11 +1011,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
   maturity_month_year:
     seq:
       - id: year
@@ -1173,6 +1171,16 @@ types:
       - id: reserved_4
         type: b4
         doc: '4 reserved bits'
+  lot_type_rules_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: lot_type_rules_group
+        type: lot_type_rules_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of entries'
   lot_type_rules_group:
     seq:
       - id: lot_type
@@ -1347,11 +1355,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: option_underlyings_groups
         type: option_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -1569,11 +1575,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: legs_groups
         type: legs_groups
         doc: 'NoLegs Block'
@@ -1815,11 +1819,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
   md_instrument_definition_repo:
     seq:
       - id: match_event_indicator
@@ -2001,11 +2003,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: repo_underlyings_groups
         type: repo_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -2526,11 +2526,9 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_group
-        type: lot_type_rules_group
-        repeat: expr
-        repeat-expr: inst_attrib_groups.group_size.num_in_group
-        doc: 'Number of entries'
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
+        doc: 'NoLotTypeRules Block'
       - id: trading_sessions_groups
         type: trading_sessions_groups
         doc: 'NoTradingSessions Block'
@@ -2576,9 +2574,7 @@ types:
         doc: 'NoMDEntries Block'
       - id: incremental_refresh_book_long_order_id_groups
         type: incremental_refresh_book_long_order_id_groups
-        repeat: expr
-        repeat-expr: incremental_refresh_book_long_groups.group_size.num_in_group
-        doc: 'Number of OrderID entries'
+        doc: 'NoOrderIDEntries Block'
   incremental_refresh_book_long_groups:
     seq:
       - id: group_size
@@ -2621,6 +2617,16 @@ types:
         size: 1
         doc: '1 bytes padding'
   incremental_refresh_book_long_order_id_groups:
+    seq:
+      - id: group_size_8_byte
+        type: group_size_8_byte
+        doc: '8 Byte aligned repeating group dimensions'
+      - id: incremental_refresh_book_long_order_id_group
+        type: incremental_refresh_book_long_order_id_group
+        repeat: expr
+        repeat-expr: group_size_8_byte.num_in_group
+        doc: 'Number of OrderID entries'
+  incremental_refresh_book_long_order_id_group:
     seq:
       - id: order_id
         type: u8

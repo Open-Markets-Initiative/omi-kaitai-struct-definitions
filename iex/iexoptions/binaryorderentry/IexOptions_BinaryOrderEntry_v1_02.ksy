@@ -59,14 +59,170 @@ types:
       - id: payload
         size: packet_length - 10
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.schema_id
           cases:
-            'template_id::new_order_single_message': new_order_single_message
-            'template_id::order_cancel_replace_request_message': order_cancel_replace_request_message
-            'template_id::order_cancel_request_message': order_cancel_request_message
-            'template_id::new_bulk_quote_message': new_bulk_quote_message
-            'template_id::mass_cancel_request_message': mass_cancel_request_message
-            'template_id::purge_request_message': purge_request_message
+            'schema_id::session': session_message
+            'schema_id::business': business_message
+  message_header:
+    seq:
+      - id: block_length
+        type: u2
+        doc: 'Length of the message root before repeating groups or variable-length fields'
+      - id: template_id
+        type: u2
+        enum: template_id
+        doc: 'Template ID used to encode the message'
+      - id: schema_id
+        type: u2
+        enum: schema_id
+        doc: 'Identifier of the schema publishing the message (10000 market data, 20000 session, 20001 order entry business)'
+      - id: version
+        type: u2
+        doc: 'Schema version'
+  session_message:
+    seq:
+      - id: session_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::login_request_message': login_request_message
+            'template_id::login_response_message': login_response_message
+            'template_id::gateway_heartbeat_message': gateway_heartbeat_message
+            'template_id::terminate_message': terminate_message
+            'template_id::sequenced_message_header_message': sequenced_message_header_message
+            'template_id::subsession_join_message': subsession_join_message
+            'template_id::subsession_join_response_message': subsession_join_response_message
+            'template_id::subsession_leave_message': subsession_leave_message
+            'template_id::subsession_leave_response_message': subsession_leave_response_message
+  login_request_message:
+    seq:
+      - id: logon_id
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'logonId'
+      - id: token
+        type: str
+        size: 32
+        encoding: ASCII
+        doc: 'token'
+  login_response_message:
+    seq:
+      - id: logon_id
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'logonId'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'status'
+  gateway_heartbeat_message:
+    seq:
+      - id: keep_alive
+        type: u1
+        enum: keep_alive
+        doc: 'keepAlive'
+      - id: gateway_heartbeat_message_sub_sessions_groups
+        type: gateway_heartbeat_message_sub_sessions_groups
+        doc: 'SubSessions Block'
+  gateway_heartbeat_message_sub_sessions_groups:
+    seq:
+      - id: session_info_group_encoding
+        type: session_info_group_encoding
+        doc: 'sessionInfoGroupEncoding'
+      - id: gateway_heartbeat_message_sub_sessions_group
+        type: gateway_heartbeat_message_sub_sessions_group
+        repeat: expr
+        repeat-expr: session_info_group_encoding.num_in_group
+        doc: 'SubSessions'
+  session_info_group_encoding:
+    seq:
+      - id: block_length_uint_8
+        type: u1
+        doc: 'blockLength'
+      - id: num_in_group
+        type: u1
+        doc: 'numInGroup'
+  gateway_heartbeat_message_sub_sessions_group:
+    seq:
+      - id: subsession_type
+        type: s1
+        enum: subsession_type
+        doc: 'subsessionType'
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+      - id: joined
+        type: u1
+        enum: joined
+        doc: 'joined'
+      - id: next_seq_no
+        type: u4
+        doc: 'nextSeqNo'
+  terminate_message:
+    seq:
+      - id: reason
+        type: u1
+        enum: reason
+        doc: 'reason'
+  sequenced_message_header_message:
+    seq:
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+      - id: sequence
+        type: u4
+        doc: 'sequence'
+      - id: timestamp
+        type: u8
+        doc: 'timestamp'
+  subsession_join_message:
+    seq:
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+      - id: start_sequence
+        type: u4
+        doc: 'startSequence'
+      - id: end_sequence
+        type: u4
+        doc: 'endSequence'
+  subsession_join_response_message:
+    seq:
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'status'
+  subsession_leave_message:
+    seq:
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+  subsession_leave_response_message:
+    seq:
+      - id: subsession_id
+        type: u8
+        doc: 'subsessionId'
+      - id: reason
+        type: u1
+        enum: reason
+        doc: 'reason'
+  business_message:
+    seq:
+      - id: business_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::login_request_message': new_order_single_message
+            'template_id::login_response_message': order_cancel_replace_request_message
+            'template_id::gateway_heartbeat_message': order_cancel_request_message
+            'template_id::client_heartbeat_message': new_bulk_quote_message
+            'template_id::logout_request_message': mass_cancel_request_message
+            'template_id::terminate_message': purge_request_message
             'template_id::order_ack_message': order_ack_message
             'template_id::unsolicited_modify_ack_message': unsolicited_modify_ack_message
             'template_id::order_cancel_ack_message': order_cancel_ack_message
@@ -88,26 +244,6 @@ types:
             'template_id::session_configuration_acknowledgement_message': session_configuration_acknowledgement_message
             'template_id::risk_control_acknowledgment_message': risk_control_acknowledgment_message
             'template_id::risk_control_alert_message': risk_control_alert_message
-            'template_id::sequenced_message_header_message': sequenced_message_header_message
-            'template_id::subsession_join_message': subsession_join_message
-            'template_id::subsession_join_response_message': subsession_join_response_message
-            'template_id::subsession_leave_message': subsession_leave_message
-            'template_id::subsession_leave_response_message': subsession_leave_response_message
-  message_header:
-    seq:
-      - id: block_length
-        type: u2
-        doc: 'Length of the message root before repeating groups or variable-length fields'
-      - id: template_id
-        type: u2
-        enum: template_id
-        doc: 'Template ID used to encode the message'
-      - id: schema_id
-        type: u2
-        doc: 'Identifier of the schema publishing the message (10000 market data, 20000 session, 20001 order entry business)'
-      - id: version
-        type: u2
-        doc: 'Schema version'
   new_order_single_message:
     seq:
       - id: account_account
@@ -1499,123 +1635,6 @@ types:
         type: s1
         enum: notification_reason
         doc: 'notificationReason'
-  login_request_message:
-    seq:
-      - id: logon_id
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'logonId'
-      - id: token
-        type: str
-        size: 32
-        encoding: ASCII
-        doc: 'token'
-  login_response_message:
-    seq:
-      - id: logon_id
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'logonId'
-      - id: status
-        type: u1
-        enum: status
-        doc: 'status'
-  gateway_heartbeat_message:
-    seq:
-      - id: keep_alive
-        type: u1
-        enum: keep_alive
-        doc: 'keepAlive'
-      - id: gateway_heartbeat_message_sub_sessions_groups
-        type: gateway_heartbeat_message_sub_sessions_groups
-        doc: 'SubSessions Block'
-  gateway_heartbeat_message_sub_sessions_groups:
-    seq:
-      - id: session_info_group_encoding
-        type: session_info_group_encoding
-        doc: 'sessionInfoGroupEncoding'
-      - id: gateway_heartbeat_message_sub_sessions_group
-        type: gateway_heartbeat_message_sub_sessions_group
-        repeat: expr
-        repeat-expr: session_info_group_encoding.num_in_group
-        doc: 'SubSessions'
-  session_info_group_encoding:
-    seq:
-      - id: block_length_uint_8
-        type: u1
-        doc: 'blockLength'
-      - id: num_in_group
-        type: u1
-        doc: 'numInGroup'
-  gateway_heartbeat_message_sub_sessions_group:
-    seq:
-      - id: subsession_type
-        type: s1
-        enum: subsession_type
-        doc: 'subsessionType'
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: joined
-        type: u1
-        enum: joined
-        doc: 'joined'
-      - id: next_seq_no
-        type: u4
-        doc: 'nextSeqNo'
-  terminate_message:
-    seq:
-      - id: reason
-        type: u1
-        enum: reason
-        doc: 'reason'
-  sequenced_message_header_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: sequence
-        type: u4
-        doc: 'sequence'
-      - id: timestamp
-        type: u8
-        doc: 'timestamp'
-  subsession_join_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: start_sequence
-        type: u4
-        doc: 'startSequence'
-      - id: end_sequence
-        type: u4
-        doc: 'endSequence'
-  subsession_join_response_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: status
-        type: u1
-        enum: status
-        doc: 'status'
-  subsession_leave_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-  subsession_leave_response_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: reason
-        type: u1
-        enum: reason
-        doc: 'reason'
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -1710,23 +1729,38 @@ types:
 enums:
   template_id:
     1:
-      id: 'new_order_single_message'
-      doc: 'NewOrderSingleMessage'
+      id: 'login_request_message'
+      doc: 'LoginRequestMessage'
     2:
-      id: 'order_cancel_replace_request_message'
-      doc: 'OrderCancelReplaceRequestMessage'
+      id: 'login_response_message'
+      doc: 'LoginResponseMessage'
     3:
-      id: 'order_cancel_request_message'
-      doc: 'OrderCancelRequestMessage'
+      id: 'gateway_heartbeat_message'
+      doc: 'GatewayHeartbeatMessage'
     4:
-      id: 'new_bulk_quote_message'
-      doc: 'NewBulkQuoteMessage'
+      id: 'client_heartbeat_message'
+      doc: 'ClientHeartbeatMessage'
     5:
-      id: 'mass_cancel_request_message'
-      doc: 'MassCancelRequestMessage'
+      id: 'logout_request_message'
+      doc: 'LogoutRequestMessage'
     6:
-      id: 'purge_request_message'
-      doc: 'PurgeRequestMessage'
+      id: 'terminate_message'
+      doc: 'TerminateMessage'
+    7:
+      id: 'sequenced_message_header_message'
+      doc: 'SequencedMessageHeaderMessage'
+    8:
+      id: 'subsession_join_message'
+      doc: 'SubsessionJoinMessage'
+    9:
+      id: 'subsession_join_response_message'
+      doc: 'SubsessionJoinResponseMessage'
+    10:
+      id: 'subsession_leave_message'
+      doc: 'SubsessionLeaveMessage'
+    11:
+      id: 'subsession_leave_response_message'
+      doc: 'SubsessionLeaveResponseMessage'
     101:
       id: 'order_ack_message'
       doc: 'OrderAckMessage'
@@ -1790,21 +1824,147 @@ enums:
     157:
       id: 'risk_control_alert_message'
       doc: 'RiskControlAlertMessage'
+  schema_id:
+    20000:
+      id: 'session'
+      doc: 'Sbe Schema Id for iex.options.boe.session'
+    20001:
+      id: 'business'
+      doc: 'Sbe Schema Id for iex.options.boe.business'
+  status:
+    0:
+      id: 'success'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'session_level_reject'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'logout_requested'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'unknown'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'invalid_logon_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'invalid_token'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'already_logged_in'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     7:
-      id: 'sequenced_message_header_message'
-      doc: 'SequencedMessageHeaderMessage'
+      id: 'login_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     8:
-      id: 'subsession_join_message'
-      doc: 'SubsessionJoinMessage'
+      id: 'invalid_packet_length'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     9:
-      id: 'subsession_join_response_message'
-      doc: 'SubsessionJoinResponseMessage'
+      id: 'invalid_message'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     10:
-      id: 'subsession_leave_message'
-      doc: 'SubsessionLeaveMessage'
+      id: 'join_revoked'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     11:
-      id: 'subsession_leave_response_message'
-      doc: 'SubsessionLeaveResponseMessage'
+      id: 'heartbeat_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    12:
+      id: 'message_out_of_sequence'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    13:
+      id: 'invalid_subsession_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    14:
+      id: 'subsession_not_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    15:
+      id: 'denial_of_service'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    16:
+      id: 'invalid_argument'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    17:
+      id: 'already_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  keep_alive:
+    0:
+      id: 'false_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'true_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  subsession_type:
+    0:
+      id: 'client_to_gateway'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'gateway_to_client'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'reference_data'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  joined:
+    0:
+      id: 'false_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'true_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  reason:
+    0:
+      id: 'success'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'session_level_reject'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'logout_requested'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'unknown'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'invalid_logon_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'invalid_token'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'already_logged_in'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'login_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    8:
+      id: 'invalid_packet_length'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    9:
+      id: 'invalid_message'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    10:
+      id: 'join_revoked'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    11:
+      id: 'heartbeat_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    12:
+      id: 'message_out_of_sequence'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    13:
+      id: 'invalid_subsession_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    14:
+      id: 'subsession_not_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    15:
+      id: 'denial_of_service'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    16:
+      id: 'invalid_argument'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    17:
+      id: 'already_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   customer_or_firm:
     0:
       id: 'customer'
@@ -2632,138 +2792,4 @@ enums:
     1:
       id: 'check_failure'
       doc: 'NotificationReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  status:
-    0:
-      id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  keep_alive:
-    0:
-      id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  subsession_type:
-    0:
-      id: 'client_to_gateway'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'gateway_to_client'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'reference_data'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  joined:
-    0:
-      id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  reason:
-    0:
-      id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
 

@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq PhlxOptions Topo Itch v2.1
+# Kaitai struct definition for: Nasdaq PhlxOptions TopOfMarket Itch v2.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Phlx Top Order Market Data
+#   Protocol: Top Of Market
 #   Encoding: Itch
 #   Version: 2.1
 #   Date: 02/13/2026
@@ -33,68 +33,92 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_phlxoptions_topo_itch_v2_1_udp
-  title: Nasdaq PhlxOptions Topo Itch v2.1
+  id: nasdaq_phlxoptions_topofmarket_itch_v2_1_tcp
+  title: Nasdaq PhlxOptions TopOfMarket Itch v2.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Phlx Top Order Market Data Itch v2.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Top Of Market Itch v2.1'
 doc-ref: https://data.nasdaq.com/market-data-specifications
 
 seq:
-  - id: udp_packet_header
-    type: udp_packet_header_struct
-    doc: 'Itch Mold Udp 64 Packet Header'
-  - id: messages
-    repeat: expr
-    repeat-expr: udp_packet_header.message_count
-    type:
-      switch-on: udp_packet_header.message_count
-      cases:
-        _: message
+  - id: soup_bin_tcp_packet
+    type: soup_bin_tcp_packet_struct
+    repeat: eos
+    doc: 'Soup Bin Tcp Packet'
 
 types:
-  udp_packet_header_struct:
+  soup_bin_tcp_packet_struct:
     seq:
-      - id: udp_session
+      - id: tcp_packet_header
+        type: tcp_packet_header
+      - id: tcp_payload
+        size: tcp_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: tcp_packet_header.packet_type
+          cases:
+            'packet_type::debug_packet': debug_packet
+            'packet_type::login_accepted_packet': login_accepted_packet
+            'packet_type::login_rejected_packet': login_rejected_packet
+            'packet_type::sequenced_data_packet': sequenced_data_packet
+            'packet_type::login_request_packet': login_request_packet
+            'packet_type::unsequenced_data_packet': unsequenced_data_packet
+  tcp_packet_header:
+    seq:
+      - id: packet_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: packet_type
+        type: u1
+        enum: packet_type
+        doc: 'Code identifying this packet type'
+  debug_packet:
+    seq:
+      - id: text
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Free form human readable text'
+  login_accepted_packet:
+    seq:
+      - id: accepted_session
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Identity of the multicast session'
-      - id: udp_sequence_number
-        type: u8
-        doc: 'Sequence number of the first message to follow this header'
-      - id: message_count
-        type: u2
-        doc: 'Number of messages to follow this header'
-  message:
+        doc: 'The session ID of the session that is now logged into. Left padded with spaces'
+      - id: accepted_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The sequence number in ASCII of the next Sequenced Message to be sent. Left padded with spaces'
+  login_rejected_packet:
     seq:
-      - id: message_header
-        type: message_header
-        doc: 'Mold Udp 64 Message Header'
-      - id: udp_payload
-        size: message_header.message_length - 1
-        type:
-          switch-on: message_header.message_type
-          cases:
-            'message_type::system_event_message': system_event_message
-            'message_type::derivative_directory_message': derivative_directory_message
-            'message_type::trading_action_message': trading_action_message
-            'message_type::best_bid_and_ask_update_short_form_message': best_bid_and_ask_update_short_form_message
-            'message_type::best_bid_and_ask_update_long_form_message': best_bid_and_ask_update_long_form_message
-            'message_type::best_bid_update_short_form_message': best_bid_update_short_form_message
-            'message_type::best_ask_update_short_form_message': best_ask_update_short_form_message
-            'message_type::best_bid_update_long_form_message': best_bid_update_long_form_message
-            'message_type::best_ask_update_long_form_message': best_ask_update_long_form_message
-  message_header:
+      - id: reject_reason_code
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Login Reject Codes'
+  sequenced_data_packet:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
-      - id: message_type
+      - id: sequenced_message_type
         type: u1
-        enum: message_type
-        doc: 'Code identifying this message type'
+        enum: sequenced_message_type
+        doc: 'Value identifying sequenced message type'
+      - id: sequenced_message
+        size: _parent.tcp_packet_header.packet_length - 2
+        type:
+          switch-on: sequenced_message_type
+          cases:
+            'sequenced_message_type::system_event_message': system_event_message
+            'sequenced_message_type::derivative_directory_message': derivative_directory_message
+            'sequenced_message_type::trading_action_message': trading_action_message
+            'sequenced_message_type::best_bid_and_ask_update_short_form_message': best_bid_and_ask_update_short_form_message
+            'sequenced_message_type::best_bid_and_ask_update_long_form_message': best_bid_and_ask_update_long_form_message
+            'sequenced_message_type::best_bid_update_short_form_message': best_bid_update_short_form_message
+            'sequenced_message_type::best_ask_update_short_form_message': best_ask_update_short_form_message
+            'sequenced_message_type::best_bid_update_long_form_message': best_bid_update_long_form_message
+            'sequenced_message_type::best_ask_update_long_form_message': best_ask_update_long_form_message
+            'sequenced_message_type::end_of_replay_sequence_message': end_of_replay_sequence_message
   system_event_message:
     seq:
       - id: tracking_number
@@ -389,6 +413,43 @@ types:
       - id: procust_size_long
         type: u4
         doc: 'Customer professional quantity on the bid or ask side'
+  end_of_replay_sequence_message:
+    seq:
+      - id: end_of_replay_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Sequence number once the replay is complete'
+  login_request_packet:
+    seq:
+      - id: username
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Session username'
+      - id: password
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Login password'
+      - id: requested_session
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Specifies the session the client would like to log into, or all blanks to log into the currently active session'
+      - id: requested_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Specifies the next sequence number in ASCII the client wants to receive upon connection, or 0 to start receiving the most recently generated message'
+  unsequenced_data_packet:
+    seq:
+      - id: unsequenced_message_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Value identifying unsequenced message type'
   nanosecond_timestamp:
     seq:
       - id: time
