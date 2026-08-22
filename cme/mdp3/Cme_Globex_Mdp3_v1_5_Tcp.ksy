@@ -326,17 +326,17 @@ types:
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
-      - id: m_d_instrument_definition_future_27_no_events_groups
-        type: m_d_instrument_definition_future_27_no_events_groups
+      - id: events_groups
+        type: events_groups
         doc: 'NoEvents Block'
-      - id: m_d_instrument_definition_future_27_no_m_d_feed_types_groups
-        type: m_d_instrument_definition_future_27_no_m_d_feed_types_groups
+      - id: feed_types_groups
+        type: feed_types_groups
         doc: 'NoMDFeedTypes Block'
-      - id: m_d_instrument_definition_future_27_no_inst_attrib_groups
-        type: m_d_instrument_definition_future_27_no_inst_attrib_groups
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: m_d_instrument_definition_future_27_no_lot_type_rules_groups
-        type: m_d_instrument_definition_future_27_no_lot_type_rules_groups
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
   maturity_month_year:
     seq:
@@ -378,17 +378,17 @@ types:
       - id: null_value
         type: b1
         doc: 'NullValue'
-  m_d_instrument_definition_future_27_no_events_groups:
+  events_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_future_27_no_events_group
-        type: m_d_instrument_definition_future_27_no_events_group
+      - id: events_group
+        type: events_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of repeating EventType entries'
-  m_d_instrument_definition_future_27_no_events_group:
+  events_group:
     seq:
       - id: event_type
         type: u1
@@ -397,17 +397,17 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-  m_d_instrument_definition_future_27_no_m_d_feed_types_groups:
+  feed_types_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_future_27_no_m_d_feed_types_group
-        type: m_d_instrument_definition_future_27_no_m_d_feed_types_group
+      - id: feed_types_group
+        type: feed_types_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of repeating FeedType entries'
-  m_d_instrument_definition_future_27_no_m_d_feed_types_group:
+  feed_types_group:
     seq:
       - id: md_feed_type
         type: str
@@ -417,17 +417,17 @@ types:
       - id: market_depth
         type: s1
         doc: 'Book depth'
-  m_d_instrument_definition_future_27_no_inst_attrib_groups:
+  inst_attrib_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_future_27_no_inst_attrib_group
-        type: m_d_instrument_definition_future_27_no_inst_attrib_group
+      - id: inst_attrib_group
+        type: inst_attrib_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of repeating InstrAttribType entries'
-  m_d_instrument_definition_future_27_no_inst_attrib_group:
+  inst_attrib_group:
     seq:
       - id: inst_attrib_value
         type: inst_attrib_value
@@ -497,17 +497,17 @@ types:
       - id: reserved_12
         type: b12
         doc: '12 reserved bits'
-  m_d_instrument_definition_future_27_no_lot_type_rules_groups:
+  lot_type_rules_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_future_27_no_lot_type_rules_group
-        type: m_d_instrument_definition_future_27_no_lot_type_rules_group
+      - id: lot_type_rules_group
+        type: lot_type_rules_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries'
-  m_d_instrument_definition_future_27_no_lot_type_rules_group:
+  lot_type_rules_group:
     seq:
       - id: lot_type
         type: s1
@@ -651,104 +651,32 @@ types:
       - id: sub_fraction
         type: u1_nullable
         doc: 'Price Denominator of Sub Fraction. Nullable, No Value = 255'
-      - id: m_d_instrument_definition_spread_29_no_events_groups
-        type: m_d_instrument_definition_spread_29_no_events_groups
+      - id: events_groups
+        type: events_groups
         doc: 'NoEvents Block'
-      - id: m_d_instrument_definition_spread_29_no_m_d_feed_types_groups
-        type: m_d_instrument_definition_spread_29_no_m_d_feed_types_groups
+      - id: feed_types_groups
+        type: feed_types_groups
         doc: 'NoMDFeedTypes Block'
-      - id: m_d_instrument_definition_spread_29_no_inst_attrib_groups
-        type: m_d_instrument_definition_spread_29_no_inst_attrib_groups
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: m_d_instrument_definition_spread_29_no_lot_type_rules_groups
-        type: m_d_instrument_definition_spread_29_no_lot_type_rules_groups
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
-      - id: m_d_instrument_definition_spread_29_no_legs_groups
-        type: m_d_instrument_definition_spread_29_no_legs_groups
+      - id: legs_groups
+        type: legs_groups
         doc: 'NoLegs Block'
-  m_d_instrument_definition_spread_29_no_events_groups:
+  legs_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_events_group
-        type: m_d_instrument_definition_spread_29_no_events_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of repeating EventType entries'
-  m_d_instrument_definition_spread_29_no_events_group:
-    seq:
-      - id: event_type
-        type: u1
-        enum: event_type
-        doc: 'Code to represent the type of event'
-      - id: event_time
-        type: nanosecond_timestamp
-        doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-  m_d_instrument_definition_spread_29_no_m_d_feed_types_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_m_d_feed_types_group
-        type: m_d_instrument_definition_spread_29_no_m_d_feed_types_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of FeedType entries'
-  m_d_instrument_definition_spread_29_no_m_d_feed_types_group:
-    seq:
-      - id: md_feed_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'Describes a class of service for a given data feed. GBX- Real Book, GBI-Implied Book'
-      - id: market_depth
-        type: s1
-        doc: 'Book depth'
-  m_d_instrument_definition_spread_29_no_inst_attrib_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_inst_attrib_group
-        type: m_d_instrument_definition_spread_29_no_inst_attrib_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of InstrAttribType entries'
-  m_d_instrument_definition_spread_29_no_inst_attrib_group:
-    seq:
-      - id: inst_attrib_value
-        type: inst_attrib_value
-        doc: 'InstAttribValue bit set'
-  m_d_instrument_definition_spread_29_no_lot_type_rules_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_lot_type_rules_group
-        type: m_d_instrument_definition_spread_29_no_lot_type_rules_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of entries'
-  m_d_instrument_definition_spread_29_no_lot_type_rules_group:
-    seq:
-      - id: lot_type
-        type: s1
-        doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
-      - id: min_lot_size
-        type: decimal_s4_4_nullable
-        doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
-  m_d_instrument_definition_spread_29_no_legs_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_spread_29_no_legs_group
-        type: m_d_instrument_definition_spread_29_no_legs_group
+      - id: legs_group
+        type: legs_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Leg entries'
-  m_d_instrument_definition_spread_29_no_legs_group:
+  legs_group:
     seq:
       - id: leg_security_id
         type: s4
@@ -812,20 +740,20 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_book_32_no_m_d_entries_groups
-        type: m_d_incremental_refresh_book_32_no_m_d_entries_groups
+      - id: incremental_refresh_book_groups
+        type: incremental_refresh_book_groups
         doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_book_32_no_m_d_entries_groups:
+  incremental_refresh_book_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_book_32_no_m_d_entries_group
-        type: m_d_incremental_refresh_book_32_no_m_d_entries_group
+      - id: incremental_refresh_book_group
+        type: incremental_refresh_book_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_book_32_no_m_d_entries_group:
+  incremental_refresh_book_group:
     seq:
       - id: md_entry_px_optional
         type: decimal_s8_7_nullable
@@ -867,20 +795,20 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_groups
-        type: m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_groups
+      - id: incremental_refresh_daily_statistics_groups
+        type: incremental_refresh_daily_statistics_groups
         doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_groups:
+  incremental_refresh_daily_statistics_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_group
-        type: m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_group
+      - id: incremental_refresh_daily_statistics_group
+        type: incremental_refresh_daily_statistics_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_daily_statistics_33_no_m_d_entries_group:
+  incremental_refresh_daily_statistics_group:
     seq:
       - id: md_entry_px_optional
         type: decimal_s8_7_nullable
@@ -922,20 +850,20 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_limits_banding_34_no_m_d_entries_groups
-        type: m_d_incremental_refresh_limits_banding_34_no_m_d_entries_groups
+      - id: incremental_refresh_limits_banding_groups
+        type: incremental_refresh_limits_banding_groups
         doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_limits_banding_34_no_m_d_entries_groups:
+  incremental_refresh_limits_banding_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_limits_banding_34_no_m_d_entries_group
-        type: m_d_incremental_refresh_limits_banding_34_no_m_d_entries_group
+      - id: incremental_refresh_limits_banding_group
+        type: incremental_refresh_limits_banding_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_limits_banding_34_no_m_d_entries_group:
+  incremental_refresh_limits_banding_group:
     seq:
       - id: high_limit_price
         type: decimal_s8_7_nullable
@@ -963,20 +891,20 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_session_statistics_35_no_m_d_entries_groups
-        type: m_d_incremental_refresh_session_statistics_35_no_m_d_entries_groups
+      - id: incremental_refresh_session_statistics_groups
+        type: incremental_refresh_session_statistics_groups
         doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_session_statistics_35_no_m_d_entries_groups:
+  incremental_refresh_session_statistics_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_session_statistics_35_no_m_d_entries_group
-        type: m_d_incremental_refresh_session_statistics_35_no_m_d_entries_group
+      - id: incremental_refresh_session_statistics_group
+        type: incremental_refresh_session_statistics_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_session_statistics_35_no_m_d_entries_group:
+  incremental_refresh_session_statistics_group:
     seq:
       - id: md_entry_px
         type: decimal_s8_7
@@ -1012,20 +940,20 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_trade_36_no_m_d_entries_groups
-        type: m_d_incremental_refresh_trade_36_no_m_d_entries_groups
+      - id: incremental_refresh_trade_groups
+        type: incremental_refresh_trade_groups
         doc: 'NoMDEntries Block'
-  m_d_incremental_refresh_trade_36_no_m_d_entries_groups:
+  incremental_refresh_trade_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_trade_36_no_m_d_entries_group
-        type: m_d_incremental_refresh_trade_36_no_m_d_entries_group
+      - id: incremental_refresh_trade_group
+        type: incremental_refresh_trade_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  m_d_incremental_refresh_trade_36_no_m_d_entries_group:
+  incremental_refresh_trade_group:
     seq:
       - id: md_entry_px
         type: decimal_s8_7
@@ -1132,20 +1060,20 @@ types:
       - id: max_price_variation
         type: decimal_s8_7_nullable
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
-      - id: snapshot_full_refresh_38_no_m_d_entries_groups
-        type: snapshot_full_refresh_38_no_m_d_entries_groups
+      - id: snapshot_full_refresh_groups
+        type: snapshot_full_refresh_groups
         doc: 'NoMDEntries Block'
-  snapshot_full_refresh_38_no_m_d_entries_groups:
+  snapshot_full_refresh_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: snapshot_full_refresh_38_no_m_d_entries_group
-        type: snapshot_full_refresh_38_no_m_d_entries_group
+      - id: snapshot_full_refresh_group
+        type: snapshot_full_refresh_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of entries in Market Data message'
-  snapshot_full_refresh_38_no_m_d_entries_group:
+  snapshot_full_refresh_group:
     seq:
       - id: md_entry_px_optional
         type: decimal_s8_7_nullable
@@ -1374,104 +1302,32 @@ types:
         size: 1
         encoding: ASCII
         doc: 'User-defined instruments flag'
-      - id: m_d_instrument_definition_option_41_no_events_groups
-        type: m_d_instrument_definition_option_41_no_events_groups
+      - id: events_groups
+        type: events_groups
         doc: 'NoEvents Block'
-      - id: m_d_instrument_definition_option_41_no_m_d_feed_types_groups
-        type: m_d_instrument_definition_option_41_no_m_d_feed_types_groups
+      - id: feed_types_groups
+        type: feed_types_groups
         doc: 'NoMDFeedTypes Block'
-      - id: m_d_instrument_definition_option_41_no_inst_attrib_groups
-        type: m_d_instrument_definition_option_41_no_inst_attrib_groups
+      - id: inst_attrib_groups
+        type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: m_d_instrument_definition_option_41_no_lot_type_rules_groups
-        type: m_d_instrument_definition_option_41_no_lot_type_rules_groups
+      - id: lot_type_rules_groups
+        type: lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
-      - id: m_d_instrument_definition_option_41_no_underlyings_groups
-        type: m_d_instrument_definition_option_41_no_underlyings_groups
+      - id: option_underlyings_groups
+        type: option_underlyings_groups
         doc: 'NoUnderlyings Block'
-  m_d_instrument_definition_option_41_no_events_groups:
+  option_underlyings_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_option_41_no_events_group
-        type: m_d_instrument_definition_option_41_no_events_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of EventType entries'
-  m_d_instrument_definition_option_41_no_events_group:
-    seq:
-      - id: event_type
-        type: u1
-        enum: event_type
-        doc: 'Code to represent the type of event'
-      - id: event_time
-        type: nanosecond_timestamp
-        doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
-  m_d_instrument_definition_option_41_no_m_d_feed_types_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_option_41_no_m_d_feed_types_group
-        type: m_d_instrument_definition_option_41_no_m_d_feed_types_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of FeedType entries'
-  m_d_instrument_definition_option_41_no_m_d_feed_types_group:
-    seq:
-      - id: md_feed_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'Describes a class of service for a given data feed. GBX- Real Book, GBI-Implied Book'
-      - id: market_depth
-        type: s1
-        doc: 'Book depth'
-  m_d_instrument_definition_option_41_no_inst_attrib_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_option_41_no_inst_attrib_group
-        type: m_d_instrument_definition_option_41_no_inst_attrib_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of InstrAttribType entries'
-  m_d_instrument_definition_option_41_no_inst_attrib_group:
-    seq:
-      - id: inst_attrib_value
-        type: inst_attrib_value
-        doc: 'InstAttribValue bit set'
-  m_d_instrument_definition_option_41_no_lot_type_rules_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_option_41_no_lot_type_rules_group
-        type: m_d_instrument_definition_option_41_no_lot_type_rules_group
-        repeat: expr
-        repeat-expr: group_size.num_in_group
-        doc: 'Number of entries'
-  m_d_instrument_definition_option_41_no_lot_type_rules_group:
-    seq:
-      - id: lot_type
-        type: s1
-        doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
-      - id: min_lot_size
-        type: decimal_s4_4_nullable
-        doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
-  m_d_instrument_definition_option_41_no_underlyings_groups:
-    seq:
-      - id: group_size
-        type: group_size
-        doc: 'Repeating group dimensions'
-      - id: m_d_instrument_definition_option_41_no_underlyings_group
-        type: m_d_instrument_definition_option_41_no_underlyings_group
+      - id: option_underlyings_group
+        type: option_underlyings_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of underlying instruments'
-  m_d_instrument_definition_option_41_no_underlyings_group:
+  option_underlyings_group:
     seq:
       - id: underlying_security_id
         type: s4
@@ -1492,23 +1348,23 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
-      - id: m_d_incremental_refresh_trade_summary_42_no_m_d_entries_groups
-        type: m_d_incremental_refresh_trade_summary_42_no_m_d_entries_groups
+      - id: incremental_refresh_trade_summary_groups
+        type: incremental_refresh_trade_summary_groups
         doc: 'NoMDEntries Block'
-      - id: m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_groups
-        type: m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_groups
+      - id: incremental_refresh_trade_summary_order_id_groups
+        type: incremental_refresh_trade_summary_order_id_groups
         doc: 'NoOrderIDEntries Block'
-  m_d_incremental_refresh_trade_summary_42_no_m_d_entries_groups:
+  incremental_refresh_trade_summary_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: m_d_incremental_refresh_trade_summary_42_no_m_d_entries_group
-        type: m_d_incremental_refresh_trade_summary_42_no_m_d_entries_group
+      - id: incremental_refresh_trade_summary_group
+        type: incremental_refresh_trade_summary_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Trade Summary entries'
-  m_d_incremental_refresh_trade_summary_42_no_m_d_entries_group:
+  incremental_refresh_trade_summary_group:
     seq:
       - id: md_entry_px
         type: decimal_s8_7
@@ -1535,13 +1391,13 @@ types:
       - id: padding_6
         size: 6
         doc: '6 bytes padding'
-  m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_groups:
+  incremental_refresh_trade_summary_order_id_groups:
     seq:
       - id: group_size_8_byte
         type: group_size_8_byte
         doc: '8 Byte aligned repeating group dimensions'
-      - id: m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_group
-        type: m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_group
+      - id: incremental_refresh_trade_summary_order_id_group
+        type: incremental_refresh_trade_summary_order_id_group
         repeat: expr
         repeat-expr: group_size_8_byte.num_in_group
         doc: 'Number of OrderID entries'
@@ -1554,7 +1410,7 @@ types:
         doc: '5 bytes padding'
       - id: num_in_group
         type: u1
-  m_d_incremental_refresh_trade_summary_42_no_order_i_d_entries_group:
+  incremental_refresh_trade_summary_order_id_group:
     seq:
       - id: order_id
         type: u8
