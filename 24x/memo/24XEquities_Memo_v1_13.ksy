@@ -1373,6 +1373,9 @@ enums:
     3:
       id: 'start_of_session'
       doc: 'Memx Tcp Start of Session Message'
+    4:
+      id: 'end_of_session'
+      doc: 'Memx Tcp End of Session Message'
     5:
       id: 'replay_begin'
       doc: 'Memx Tcp Replay Begin Message'

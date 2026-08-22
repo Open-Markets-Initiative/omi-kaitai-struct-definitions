@@ -1374,6 +1374,9 @@ enums:
     3:
       id: 'start_of_session'
       doc: 'Blue Ocean Tcp Start of Session Message'
+    4:
+      id: 'end_of_session'
+      doc: 'Blue Ocean Tcp End of Session Message'
     5:
       id: 'replay_begin'
       doc: 'Blue Ocean Tcp Replay Begin Message'
