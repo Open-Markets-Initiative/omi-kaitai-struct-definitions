@@ -2323,40 +2323,40 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
-      - id: market_data_request_205_no_security_groups_groups
-        type: market_data_request_205_no_security_groups_groups
+      - id: market_data_request_security_groups
+        type: market_data_request_security_groups
         doc: 'NoSecurityGroups Block'
-      - id: market_data_request_205_no_related_sym_groups
-        type: market_data_request_205_no_related_sym_groups
+      - id: market_data_request_related_symbol_groups
+        type: market_data_request_related_symbol_groups
         doc: 'NoRelatedSym Block'
-  market_data_request_205_no_security_groups_groups:
+  market_data_request_security_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: market_data_request_205_no_security_groups_group
-        type: market_data_request_205_no_security_groups_group
+      - id: market_data_request_security_group
+        type: market_data_request_security_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of SecurityGroups specified in subscription request. Should be equal 0, when subscription is requested for all groups on the segment or individual Security IDs are listed in the criteria for subscription'
-  market_data_request_205_no_security_groups_group:
+  market_data_request_security_group:
     seq:
       - id: security_group
         type: str
         size: 6
         encoding: ASCII
         doc: 'Security Group'
-  market_data_request_205_no_related_sym_groups:
+  market_data_request_related_symbol_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: market_data_request_205_no_related_sym_group
-        type: market_data_request_205_no_related_sym_group
+      - id: market_data_request_related_symbol_group
+        type: market_data_request_related_symbol_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of instruments requested. When NoSecurityGroups > 0 specified in the request, the NoRelatedSym should be equal 0'
-  market_data_request_205_no_related_sym_group:
+  market_data_request_related_symbol_group:
     seq:
       - id: security_id
         type: s4
@@ -2374,40 +2374,40 @@ types:
         type: u1
         enum: md_req_id_status
         doc: 'Status of the request acknowledgement'
-      - id: request_ack_206_no_security_groups_groups
-        type: request_ack_206_no_security_groups_groups
+      - id: request_ack_security_groups
+        type: request_ack_security_groups
         doc: 'NoSecurityGroups Block'
-      - id: request_ack_206_no_related_sym_groups
-        type: request_ack_206_no_related_sym_groups
+      - id: request_ack_related_symbol_groups
+        type: request_ack_related_symbol_groups
         doc: 'NoRelatedSym Block'
-  request_ack_206_no_security_groups_groups:
+  request_ack_security_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: request_ack_206_no_security_groups_group
-        type: request_ack_206_no_security_groups_group
+      - id: request_ack_security_group
+        type: request_ack_security_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of SecurityGroups acknowledged'
-  request_ack_206_no_security_groups_group:
+  request_ack_security_group:
     seq:
       - id: security_group
         type: str
         size: 6
         encoding: ASCII
         doc: 'Security Group'
-  request_ack_206_no_related_sym_groups:
+  request_ack_related_symbol_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: request_ack_206_no_related_sym_group
-        type: request_ack_206_no_related_sym_group
+      - id: request_ack_related_symbol_group
+        type: request_ack_related_symbol_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of securities acknowledged'
-  request_ack_206_no_related_sym_group:
+  request_ack_related_symbol_group:
     seq:
       - id: security_id
         type: s4
@@ -2435,40 +2435,40 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
-      - id: security_list_request_208_no_security_groups_groups
-        type: security_list_request_208_no_security_groups_groups
+      - id: security_list_request_security_groups
+        type: security_list_request_security_groups
         doc: 'NoSecurityGroups Block'
-      - id: security_list_request_208_no_related_sym_groups
-        type: security_list_request_208_no_related_sym_groups
+      - id: security_list_request_related_symbol_groups
+        type: security_list_request_related_symbol_groups
         doc: 'NoRelatedSym Block'
-  security_list_request_208_no_security_groups_groups:
+  security_list_request_security_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: security_list_request_208_no_security_groups_group
-        type: security_list_request_208_no_security_groups_group
+      - id: security_list_request_security_group
+        type: security_list_request_security_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of SecurityGroups specified in subscription request. Should be equal 0, when subscription is requested for all groups on the segment or individual Security IDs are listed in the criteria for subscription'
-  security_list_request_208_no_security_groups_group:
+  security_list_request_security_group:
     seq:
       - id: security_group
         type: str
         size: 6
         encoding: ASCII
         doc: 'Security Group'
-  security_list_request_208_no_related_sym_groups:
+  security_list_request_related_symbol_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: security_list_request_208_no_related_sym_group
-        type: security_list_request_208_no_related_sym_group
+      - id: security_list_request_related_symbol_group
+        type: security_list_request_related_symbol_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of instruments requested. When NoSecurityGroups > 0 specified in the request, the NoRelatedSym should be equal 0'
-  security_list_request_208_no_related_sym_group:
+  security_list_request_related_symbol_group:
     seq:
       - id: security_id
         type: s4
@@ -2482,40 +2482,40 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
-      - id: security_status_request_209_no_security_groups_groups
-        type: security_status_request_209_no_security_groups_groups
+      - id: security_status_request_security_groups
+        type: security_status_request_security_groups
         doc: 'NoSecurityGroups Block'
-      - id: security_status_request_209_no_related_sym_groups
-        type: security_status_request_209_no_related_sym_groups
+      - id: security_status_request_related_symbol_groups
+        type: security_status_request_related_symbol_groups
         doc: 'NoRelatedSym Block'
-  security_status_request_209_no_security_groups_groups:
+  security_status_request_security_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: security_status_request_209_no_security_groups_group
-        type: security_status_request_209_no_security_groups_group
+      - id: security_status_request_security_group
+        type: security_status_request_security_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of SecurityGroups specified in subscription request. Should be equal 0, when subscription is requested for all groups on the segment or individual Security IDs are listed in the criteria for subscription'
-  security_status_request_209_no_security_groups_group:
+  security_status_request_security_group:
     seq:
       - id: security_group
         type: str
         size: 6
         encoding: ASCII
         doc: 'Security Group'
-  security_status_request_209_no_related_sym_groups:
+  security_status_request_related_symbol_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: security_status_request_209_no_related_sym_group
-        type: security_status_request_209_no_related_sym_group
+      - id: security_status_request_related_symbol_group
+        type: security_status_request_related_symbol_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of instruments requested. When NoSecurityGroups > 0 specified in the request, the NoRelatedSym should be equal 0'
-  security_status_request_209_no_related_sym_group:
+  security_status_request_related_symbol_group:
     seq:
       - id: security_id
         type: s4

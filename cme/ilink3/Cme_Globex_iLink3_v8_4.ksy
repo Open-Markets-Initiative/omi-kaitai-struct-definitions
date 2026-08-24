@@ -3247,23 +3247,23 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
-      - id: quote_cancel_ack_547_no_quote_entries_groups
-        type: quote_cancel_ack_547_no_quote_entries_groups
+      - id: quote_cancel_ack_entries_groups
+        type: quote_cancel_ack_entries_groups
         doc: 'NoQuoteEntries Block'
-      - id: quote_cancel_ack_547_no_quote_sets_groups
-        type: quote_cancel_ack_547_no_quote_sets_groups
+      - id: quote_cancel_ack_sets_groups
+        type: quote_cancel_ack_sets_groups
         doc: 'NoQuoteSets Block'
-  quote_cancel_ack_547_no_quote_entries_groups:
+  quote_cancel_ack_entries_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_547_no_quote_entries_group
-        type: quote_cancel_ack_547_no_quote_entries_group
+      - id: quote_cancel_ack_entries_group
+        type: quote_cancel_ack_entries_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'The number of quote entries for a quote set. Will be populated only for enumerated rejects for Cancel By Instrument'
-  quote_cancel_ack_547_no_quote_entries_group:
+  quote_cancel_ack_entries_group:
     seq:
       - id: quote_entry_id
         type: u4
@@ -3274,17 +3274,17 @@ types:
       - id: quote_entry_reject_reason
         type: u1
         doc: 'Reason (error code) quote has been rejected'
-  quote_cancel_ack_547_no_quote_sets_groups:
+  quote_cancel_ack_sets_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_547_no_quote_sets_group
-        type: quote_cancel_ack_547_no_quote_sets_group
+      - id: quote_cancel_ack_sets_group
+        type: quote_cancel_ack_sets_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'The number of sets of quotes in the message. Will be populated only for enumerated rejects for Cancel By Quote Set'
-  quote_cancel_ack_547_no_quote_sets_group:
+  quote_cancel_ack_sets_group:
     seq:
       - id: quote_set_id
         type: u2
@@ -3807,20 +3807,20 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
-      - id: order_mass_action_report_558_no_affected_orders_groups
-        type: order_mass_action_report_558_no_affected_orders_groups
+      - id: affected_orders_groups
+        type: affected_orders_groups
         doc: 'NoAffectedOrders Block'
-  order_mass_action_report_558_no_affected_orders_groups:
+  affected_orders_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: order_mass_action_report_558_no_affected_orders_group
-        type: order_mass_action_report_558_no_affected_orders_group
+      - id: affected_orders_group
+        type: affected_orders_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Total number of order identifiers affected by the OrderMass Action Request. Only used if orders could actually be cancelled otherwise will be set to zero. Must be followed by OrigCIOrdID'
-  order_mass_action_report_558_no_affected_orders_group:
+  affected_orders_group:
     seq:
       - id: origclordid
         type: str

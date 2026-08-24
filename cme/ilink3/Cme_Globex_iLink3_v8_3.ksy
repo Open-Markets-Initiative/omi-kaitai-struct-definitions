@@ -3216,23 +3216,23 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: quote_cancel_ack_547_no_quote_entries_groups
-        type: quote_cancel_ack_547_no_quote_entries_groups
+      - id: quote_cancel_ack_entries_groups
+        type: quote_cancel_ack_entries_groups
         doc: 'NoQuoteEntries Block'
-      - id: quote_cancel_ack_547_no_quote_sets_groups
-        type: quote_cancel_ack_547_no_quote_sets_groups
+      - id: quote_cancel_ack_sets_groups
+        type: quote_cancel_ack_sets_groups
         doc: 'NoQuoteSets Block'
-  quote_cancel_ack_547_no_quote_entries_groups:
+  quote_cancel_ack_entries_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_547_no_quote_entries_group
-        type: quote_cancel_ack_547_no_quote_entries_group
+      - id: quote_cancel_ack_entries_group
+        type: quote_cancel_ack_entries_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'The number of quote entries for a quote set. Will be populated only for enumerated rejects for Cancel By Instrument'
-  quote_cancel_ack_547_no_quote_entries_group:
+  quote_cancel_ack_entries_group:
     seq:
       - id: quote_entry_id
         type: u4
@@ -3243,17 +3243,17 @@ types:
       - id: quote_entry_reject_reason
         type: u1
         doc: 'Reason (error code) quote has been rejected'
-  quote_cancel_ack_547_no_quote_sets_groups:
+  quote_cancel_ack_sets_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: quote_cancel_ack_547_no_quote_sets_group
-        type: quote_cancel_ack_547_no_quote_sets_group
+      - id: quote_cancel_ack_sets_group
+        type: quote_cancel_ack_sets_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'The number of sets of quotes in the message. Will be populated only for enumerated rejects for Cancel By Quote Set'
-  quote_cancel_ack_547_no_quote_sets_group:
+  quote_cancel_ack_sets_group:
     seq:
       - id: quote_set_id
         type: u2
@@ -3773,20 +3773,20 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: order_mass_action_report_558_no_affected_orders_groups
-        type: order_mass_action_report_558_no_affected_orders_groups
+      - id: affected_orders_groups
+        type: affected_orders_groups
         doc: 'NoAffectedOrders Block'
-  order_mass_action_report_558_no_affected_orders_groups:
+  affected_orders_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: order_mass_action_report_558_no_affected_orders_group
-        type: order_mass_action_report_558_no_affected_orders_group
+      - id: affected_orders_group
+        type: affected_orders_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Total number of order identifiers affected by the OrderMass Action Request. Only used if orders could actually be cancelled otherwise will be set to zero. Must be followed by OrigCIOrdID'
-  order_mass_action_report_558_no_affected_orders_group:
+  affected_orders_group:
     seq:
       - id: origclordid
         type: str
