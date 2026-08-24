@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 474 | 1,225,046 |
+| 475 | 1,225,556 |
 
 ## Testing
 
@@ -38,7 +38,7 @@ Production packet captures are required for protocol verification.  If your orga
 Other generated code can be found at [Omi Projects](https://github.com/Open-Markets-Initiative/Directory/tree/main/Projects "Open Markets Initiative Projects"); for Omi rules and regulations, see [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory").
 ## Organizations
 
-> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Iex][Iex.Directory] · [Nasdaq][Nasdaq.Directory] · [Nyse][Nyse.Directory]
+> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [CixAts][CixAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Iex][Iex.Directory] · [Nasdaq][Nasdaq.Directory] · [Nyse][Nyse.Directory]
 
 ## Exchanges
 
@@ -46,7 +46,7 @@ Other generated code can be found at [Omi Projects](https://github.com/Open-Mark
 
 ## Platforms
 
-> [Cme Globex][Globex.Platform] · [Euronext Optiq][Optiq.Platform] · [Eurex T7][T7.Platform]
+> [CixAts CixAspen][CixAspen.Platform] · [Cme Globex][Globex.Platform] · [Euronext Optiq][Optiq.Platform] · [Eurex T7][T7.Platform]
 
 ## Consolidators
 
@@ -84,6 +84,7 @@ Enjoy.
 [Omi.Encoding.Itch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Itch.md "Itch Encoding"
 [Omi.Encoding.Ouch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Ouch.md "Ouch Encoding"
 [Omi.Encoding.Udp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Udp.md "Udp Encoding"
+[Omi.Encoding.Aspen]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Aspen.md "Aspen Encoding"
 [Omi.Encoding.Tcp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Tcp.md "Tcp Encoding"
 [Omi.Encoding.Fbe]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Fbe.md "Fbe Encoding"
 [Omi.Encoding.IexTp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/IexTp.md "IexTp Encoding"
@@ -118,6 +119,7 @@ Enjoy.
 [BlueOceanAts.BlueEquities.MemoirLastSale]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/BlueOceanAts/Protocols/BlueEquities/MemoirLastSale.md "Member Order Information Record Last Sale"
 [BlueOceanAts.BlueEquities.MemoirTopOfBook]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/BlueOceanAts/Protocols/BlueEquities/MemoirTopOfBook.md "Member Order Information Record Top Of Book"
 [BlueOceanAts.CommonHeader]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/BlueOceanAts/Protocols/CommonHeader.md "Common Header"
+[CixAts.CixAspen.MarketDataFeed]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/CixAts/Protocols/CixAspen/MarketDataFeed.md "CIX Market Data Feed"
 [Cme.Globex.Mdp3]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/Mdp3.md "Market Data Platform 3"
 [Cme.Globex.Streamlined]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/Streamlined.md "Streamlined Market Data"
 [Cme.Globex.Settlements]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Cme/Protocols/Globex/Settlements.md "Settlements"
@@ -254,6 +256,7 @@ Enjoy.
 [B3.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/b3 "Brasil, Bolsa, Balcão"
 [Bist.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/bist "Borsa İstanbul A.Ş."
 [BlueOceanAts.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/blueoceanats "Blue Ocean Technologies"
+[CixAts.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cixats "CIX Trading Inc."
 [Cme.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Group"
 [Coinbase.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase "Coinbase"
 [Eurex.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/eurex "Eurex Exchange"
@@ -273,6 +276,7 @@ Enjoy.
 [B3Derivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/b3 "B3 Derivatives"
 [BlueEquities.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/blueoceanats/blueequities "Blue Equities"
 [BorsaIstanbul.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/bist "Borsa Istanbul"
+[CixAspen.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cixats "CIX Aspen"
 [CoinbaseDerivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/coinbasederivatives "Coinbase Derivatives"
 [Deribit.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/deribit "Deribit"
 [GemxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/gemxoptions "Nasdaq GEMX"
