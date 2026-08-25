@@ -59,6 +59,9 @@ jobs:
       - name: Run Cme Globex Mdp3 Sbe v1.9 Definition Tests
         run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_9.py
 
+      - name: Run Cme Globex Mdp3 Sbe v1.12 Definition Tests
+        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_12.py
+
       - name: Run Iex IexEquities Tops IexTp v1.56 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_56.py
 

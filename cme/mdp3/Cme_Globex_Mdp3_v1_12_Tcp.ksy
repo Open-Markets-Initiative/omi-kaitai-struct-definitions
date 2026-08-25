@@ -2496,12 +2496,30 @@ types:
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
-      - id: lot_type_rules_groups
-        type: lot_type_rules_groups
+      - id: fx_lot_type_rules_groups
+        type: fx_lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
       - id: trading_sessions_groups
         type: trading_sessions_groups
         doc: 'NoTradingSessions Block'
+  fx_lot_type_rules_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: fx_lot_type_rules_group
+        type: fx_lot_type_rules_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of LotTypeRules entries'
+  fx_lot_type_rules_group:
+    seq:
+      - id: lot_type
+        type: s1
+        doc: 'This tag is required to interpret the value in tag 1231-MinLotSize'
+      - id: min_lot_size_u_int_64
+        type: u8
+        doc: 'For FX instruments in the repeating group with Tag 1093-LotType=2, Tag 1231-MinLotSize provides a Regular Amount - a default order size on the Workstation screen. With tag 1093-LotType= 5, Tag 1231-MinLotSize value represents standard min order qty increment'
   trading_sessions_groups:
     seq:
       - id: group_size
