@@ -76,7 +76,7 @@ types:
         type: message_header
         doc: 'B3 Sbe message header — message identifiers and length of message root'
       - id: payload
-        size: framing_header.message_length - 16
+        size: framing_header.message_length - 12
         type:
           switch-on: message_header.template_id
           cases:
