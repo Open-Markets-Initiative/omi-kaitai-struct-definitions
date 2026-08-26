@@ -44,7 +44,7 @@ doc-ref: https://blueocean-tech.io/trading-updates
 seq:
   - id: common_header
     type: common_header_struct
-    doc: 'Blue Ocean Udp Common Header'
+    doc: 'The header every datagram opens with, naming the message type, the data session and the sequence the payload starts at'
   - id: sequenced_messages
     type:
       switch-on: common_header.message_type
@@ -57,16 +57,16 @@ types:
       - id: message_type
         type: u1
         enum: message_type
-        doc: 'Blue Ocean Udp Message Type'
+        doc: 'The kind of datagram that follows the header, a heartbeat, a session shutdown or a sequenced message'
       - id: header_length
         type: u1
         doc: 'Total bytes in this header'
       - id: session_id
         type: u8
-        doc: 'session identifier'
+        doc: 'Identifier of the data session the datagram belongs to; heartbeats on the session report it as active'
       - id: sequence_number
         type: u8
-        doc: 'Sequence Number'
+        doc: 'Sequence number of the first message in the datagram; on a heartbeat or a session shutdown it is instead the highest sequence published so far, zero before any message is published'
   sequenced_message:
     seq:
       - id: num_message
@@ -76,7 +76,7 @@ types:
         type: message
         repeat: expr
         repeat-expr: num_message
-        doc: 'Blue Ocean Udp Message'
+        doc: 'One element of the message list, its length followed by that many bytes of payload'
   message:
     seq:
       - id: message_length
@@ -112,11 +112,11 @@ enums:
   message_type:
     0:
       id: 'heartbeat_message'
-      doc: 'Blue Ocean Udp Heartbeat Message'
+      doc: 'Sent periodically to say the data session is active and connectivity is unbroken, and to expose loss when traffic is quiet; it carries no payload and does not advance the sequence'
     1:
       id: 'session_shutdown_message'
-      doc: 'Blue Ocean Udp Session Shutdown Message'
+      doc: 'Replaces the heartbeat once no further sequenced messages will be sent for the session; repeated so every client sees it, carries no payload and does not advance the sequence'
     2:
       id: 'sequenced_message'
-      doc: 'Blue Ocean Udp Sequenced Message'
+      doc: 'Carries one or more business messages, the message count followed by that many length prefixed payloads'
 

@@ -93,13 +93,6 @@ types:
             'message_type::symbol_index_mapping_message': symbol_index_mapping_message
             'message_type::symbol_clear_message': symbol_clear_message
             'message_type::security_status_message': security_status_message
-            'message_type::retransmission_request_message': retransmission_request_message
-            'message_type::symbol_index_mapping_request_message': symbol_index_mapping_request_message
-            'message_type::refresh_request_message': refresh_request_message
-            'message_type::message_unavailable_message': message_unavailable_message
-            'message_type::refresh_header_message': refresh_header_message
-            'message_type::request_response_message': request_response_message
-            'message_type::heartbeat_response_message': heartbeat_response_message
             'message_type::add_order_message': add_order_message
             'message_type::modify_order_message': modify_order_message
             'message_type::delete_order_message': delete_order_message
@@ -112,7 +105,6 @@ types:
             'message_type::trade_cancel_message': trade_cancel_message
             'message_type::cross_correction_message': cross_correction_message
             'message_type::retail_price_improvement_message': retail_price_improvement_message
-            'message_type::stock_summary_message': stock_summary_message
   message_header:
     seq:
       - id: message_size
@@ -200,9 +192,14 @@ types:
       - id: unit_of_trade
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
-      - id: reserved_2
-        type: u2
-        doc: 'Reserved for future use. Disregard any content'
+      - id: late_close_eligible
+        type: u1
+        enum: late_close_eligible
+        doc: 'The Outright series for the underlying symbol is eligible for a later Core session close'
+      - id: eth_eligible
+        type: u1
+        enum: eth_eligible
+        doc: 'The Outright series for the underlying symbol is eligible for Extended Trading Sessions'
   symbol_clear_message:
     seq:
       - id: source_time
@@ -271,121 +268,6 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Unused. Defaulted to 0x00'
-  retransmission_request_message:
-    seq:
-      - id: begin_seq_num
-        type: u4
-        doc: 'The beginning sequence number of the range of messages to be retransmitted'
-      - id: end_seq_num
-        type: u4
-        doc: 'The end sequence number of the range of messages to be retransmitted'
-      - id: source_id
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'The ID of the client requesting this retransmission. All trailing characters should be NULL'
-      - id: product_id
-        type: u1
-        doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
-      - id: channel_id
-        type: u1
-        doc: 'The ID of the multicast channel over which the packet was sent'
-  symbol_index_mapping_request_message:
-    seq:
-      - id: symbol_index
-        type: u4
-        doc: 'The ID of the symbol in the Symbol Index msg'
-      - id: source_id
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'The ID of the client requesting this retransmission. All trailing characters should be NULL'
-      - id: product_id
-        type: u1
-        doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
-      - id: channel_id
-        type: u1
-        doc: 'The ID of the multicast channel over which the packet was sent'
-      - id: retransmit_method
-        type: u1
-        doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
-  refresh_request_message:
-    seq:
-      - id: symbol_index
-        type: u4
-        doc: 'The ID of the symbol in the Symbol Index msg'
-      - id: source_id
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'The ID of the client requesting this retransmission. All trailing characters should be NULL'
-      - id: product_id
-        type: u1
-        doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
-      - id: channel_id
-        type: u1
-        doc: 'The ID of the multicast channel over which the packet was sent'
-  message_unavailable_message:
-    seq:
-      - id: begin_seq_num
-        type: u4
-        doc: 'The beginning sequence number of the range of messages to be retransmitted'
-      - id: end_seq_num
-        type: u4
-        doc: 'The end sequence number of the range of messages to be retransmitted'
-      - id: product_id
-        type: u1
-        doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
-      - id: channel_id
-        type: u1
-        doc: 'The ID of the multicast channel over which the packet was sent'
-  refresh_header_message:
-    seq:
-      - id: current_refresh_pkt
-        type: u2
-        doc: 'The current refresh packet in the update'
-      - id: total_refresh_pkts
-        type: u2
-        doc: 'The total number of refresh packets you should expect in the update'
-      - id: last_seq_num
-        type: u4
-        doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the order book as of this sequence number'
-      - id: last_symbol_seq_num
-        type: u4
-        doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state of this symbol as of this symbol sequence number'
-  request_response_message:
-    seq:
-      - id: request_seq_num
-        type: u4
-        doc: 'The sequence number of the request message sent by the client. This can be used by the client to couple this response with the original request message'
-      - id: begin_seq_num
-        type: u4
-        doc: 'The beginning sequence number of the range of messages to be retransmitted'
-      - id: end_seq_num
-        type: u4
-        doc: 'The end sequence number of the range of messages to be retransmitted'
-      - id: source_id
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'The ID of the client requesting this retransmission. All trailing characters should be NULL'
-      - id: product_id
-        type: u1
-        doc: 'The unique ID for this NYSE feed listed in the feed''s client specification'
-      - id: channel_id
-        type: u1
-        doc: 'The ID of the multicast channel over which the packet was sent'
-      - id: status
-        type: u1
-        enum: status
-        doc: 'The reason why the request was rejected'
-  heartbeat_response_message:
-    seq:
-      - id: source_id
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'The ID of the client requesting this retransmission. All trailing characters should be NULL'
   add_order_message:
     seq:
       - id: source_time_ns
@@ -591,10 +473,10 @@ types:
         type: decimal_s4_8
         doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars. Implied decimal with scale 1e-8'
       - id: upper_collar
-        type: u4
+        type: s4
         doc: 'Upper boundary for the Indicative Match Price'
       - id: lower_collar
-        type: u4
+        type: s4
         doc: 'Lower boundary for the Indicative Match Price'
       - id: auction_status
         type: u1
@@ -762,32 +644,6 @@ types:
         type: u1
         enum: rpi_indicator
         doc: 'The side(s) where Retail Price Improvement orders (RPI orders) exist'
-  stock_summary_message:
-    seq:
-      - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in secs since 1/1/1970 00:00:00 UTC'
-      - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the Time Reference second'
-      - id: symbol_index
-        type: u4
-        doc: 'The ID of the symbol in the Symbol Index msg'
-      - id: high_price
-        type: decimal_s4_8
-        doc: 'The exchange high price of this stock for the day. Use the Price Scale in the symbol index msg. Implied decimal with scale 1e-8'
-      - id: low_price
-        type: decimal_s4_8
-        doc: 'The exchange Low price of this stock for the day. Use the Price Scale in the symbol index msg. Implied decimal with scale 1e-8'
-      - id: open
-        type: u4
-        doc: 'The exchange Opening price of this stock for the day. Use the Price Scale in the symbol index msg'
-      - id: close
-        type: u4
-        doc: 'The exchange Closing price of this stock for the day. Use the Price Scale in the symbol index msg'
-      - id: total_volume
-        type: u4
-        doc: 'The exchange cumulative volume for the stock throughout the day'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -860,27 +716,6 @@ enums:
     34:
       id: 'security_status_message'
       doc: 'This message informs clients of changes in the status of a specific security, such as Trading Halts, Short Sale Restriction state changes, etc.'
-    10:
-      id: 'retransmission_request_message'
-      doc: 'Clients who have experienced a sequence number gap and need a retransmission of the missed messages should send a Retransmission Request message via TCP to the Request Controller.'
-    13:
-      id: 'symbol_index_mapping_request_message'
-      doc: 'This message is sent by clients via TCP/IP requesting the Symbol Index Mapping messages for one or all symbols in a specified channel.'
-    15:
-      id: 'refresh_request_message'
-      doc: 'Clients who have experienced a failure and need a refresh of the state of one or all symbols in a specific channel should send a Refresh Request message via TCP to the Request Controller.'
-    31:
-      id: 'message_unavailable_message'
-      doc: 'This message will be sent over the Retransmission multicast channels to inform clients of unavailability of a range of messages (or part of a range) for which they may have requested a retransmission.'
-    35:
-      id: 'refresh_header_message'
-      doc: 'The first message in each packet of refresh messages published over the Refresh multicast channels is of this type.'
-    11:
-      id: 'request_response_message'
-      doc: 'This message will be sent immediately via TCP/IP in response to the client''s request for retransmission, refresh or Symbol Mapping messages.'
-    12:
-      id: 'heartbeat_response_message'
-      doc: 'Clients who remain connected to the Retransmission Server intraday must respond to a Heartbeat with a Heartbeat Response message within 5 seconds. If no timely client response is received, the connection will be closed.'
     100:
       id: 'add_order_message'
       doc: 'An Add Order message is published when a new visible order has been received and added to the book.'
@@ -917,9 +752,6 @@ enums:
     114:
       id: 'retail_price_improvement_message'
       doc: 'Published when RPI interest is added or removed between the best bid and best offer price.'
-    223:
-      id: 'stock_summary_message'
-      doc: 'A Stock Summary message per symbol is sent every 60 seconds, on a separate Stock Summary channel from the main feed.'
   market_id:
     1:
       id: 'nyse_equities'
@@ -927,15 +759,6 @@ enums:
     3:
       id: 'nyse_arca_equities'
       doc: 'Nyse Arca Equities'
-    4:
-      id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
-    5:
-      id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
-    8:
-      id: 'nyse_american_options'
-      doc: 'Nyse American Options'
     9:
       id: 'nyse_american_equities'
       doc: 'Nyse American Equities'
@@ -946,6 +769,9 @@ enums:
       id: 'nyse_texas_equities'
       doc: 'Nyse Texas Equities'
   exchange_code:
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
@@ -1026,6 +852,20 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
+  late_close_eligible:
+    0:
+      id: 'not_eligible'
+      doc: 'Not Eligible'
+    1:
+      id: 'eligible'
+      doc: 'Eligible'
+  eth_eligible:
+    0:
+      id: 'not_eligible'
+      doc: 'Not Eligible'
+    1:
+      id: 'eligible'
+      doc: 'Eligible'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -1034,8 +874,8 @@ enums:
       id: 'resume'
       doc: 'Resume'
     0x36:
-      id: 'suspend'
-      doc: 'Suspend'
+      id: 'suspend_operational_halt'
+      doc: 'Suspend Operational Halt'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
       doc: 'Short Sale Restriction Activated Day 1'
@@ -1089,8 +929,8 @@ enums:
       id: 'equipment_changeover'
       doc: 'Equipment Changeover'
     0x41:
-      id: 'additional_information_requested'
-      doc: 'Additional Information Requested'
+      id: 'sip_outage_material_sip_latency_or_extraordinary_market_activity'
+      doc: 'Sip Outage Material Sip Latency Or Extraordinary Market Activity'
     0x43:
       id: 'regulatory_concern'
       doc: 'Regulatory Concern'
@@ -1098,8 +938,8 @@ enums:
       id: 'merger_effective'
       doc: 'Merger Effective'
     0x46:
-      id: 'etf_component_prices_not_available'
-      doc: 'Etf Component Prices Not Available'
+      id: 'etf_iiv_etf_component_prices_not_available'
+      doc: 'Etf Iiv Etf Component Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -1107,11 +947,11 @@ enums:
       id: 'new_security_offering'
       doc: 'New Security Offering'
     0x56:
-      id: 'intraday_indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available'
+      id: 'primary_listing_exchange_discretionary_halt'
+      doc: 'Primary Listing Exchange Discretionary Halt'
     0x36:
-      id: 'suspend'
-      doc: 'Suspend'
+      id: 'suspend_operational_halt'
+      doc: 'Suspend Operational Halt'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -1126,8 +966,8 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx'
+      id: 'nasdaq_oms_tx'
+      doc: 'Nasdaq Oms Tx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
@@ -1208,34 +1048,6 @@ enums:
     0x58:
       id: 'closed'
       doc: 'Closed'
-  status:
-    0x30:
-      id: 'message_was_accepted'
-      doc: 'Message Was Accepted'
-    0x31:
-      id: 'rejected_due_to_an_invalid_source_id'
-      doc: 'Rejected Due To An Invalid Source Id'
-    0x33:
-      id: 'rejected_due_to_maximum_sequence_range_see_threshold_limits'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
-    0x34:
-      id: 'rejected_due_to_maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
-    0x35:
-      id: 'rejected_due_to_maximum_number_of_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
-    0x36:
-      id: 'rejected_request_message_seq_num_ttl_time_to_live_is_too_old_use_refresh_to_recover_current_state_if_necessary'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
-    0x37:
-      id: 'rejected_due_to_an_invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
-    0x38:
-      id: 'rejected_due_to_an_invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
-    0x39:
-      id: 'rejected_due_to_1_invalid_msg_type_or_2_mismatch_between_msg_type_and_msg_size'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
   side:
     0x42:
       id: 'buy'

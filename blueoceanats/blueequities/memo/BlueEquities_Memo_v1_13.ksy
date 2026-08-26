@@ -44,7 +44,7 @@ doc-ref: https://blueocean-tech.io/trading-updates
 seq:
   - id: common_header
     type: common_header_struct
-    doc: 'Tcp Common Header'
+    doc: 'The header every frame opens with, the message type and the length of the body following it'
   - id: data
     type:
       switch-on: common_header.message_type
@@ -71,30 +71,30 @@ types:
       - id: message_type
         type: u1
         enum: message_type
-        doc: 'Code identifying this message type'
+        doc: 'The kind of frame that follows the header; the client sends types 100 and above, the server sends the rest'
       - id: message_length
         type: u2
-        doc: 'Total bytes following the header (does not include this header)'
+        doc: 'Total bytes following the header (does not include this header); zero on a heartbeat'
   login_request_message:
     seq:
       - id: token_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Login Token type'
+        doc: 'The kind of login token supplied, P for a static password'
       - id: token
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Login Token'
+        doc: 'The login token, formatted user:password for a static password token'
   replay_request_message:
     seq:
       - id: session_id
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'Identifier of the session, as named by Start of Session and as copied onto a replay or stream request'
       - id: next_sequence_number
         type: u8
-        doc: 'The first requested sequence number'
+        doc: 'The first requested sequence number on a request, and the sequence of the next message in the stream on a begin'
       - id: count
         type: u4
         doc: 'Total number of messages to include in the replay'
@@ -102,15 +102,15 @@ types:
     seq:
       - id: session_id
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'Identifier of the session, as named by Start of Session and as copied onto a replay or stream request'
   stream_request_message:
     seq:
       - id: session_id
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'Identifier of the session, as named by Start of Session and as copied onto a replay or stream request'
       - id: next_sequence_number
         type: u8
-        doc: 'The first requested sequence number'
+        doc: 'The first requested sequence number on a request, and the sequence of the next message in the stream on a begin'
   unsequenced_message:
     seq:
       - id: sbe_message
@@ -166,110 +166,110 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: order_capacity
         type: u1
         enum: order_capacity
-        doc: 'OrderCapacity'
+        doc: 'Designates the capacity of the firm placing the order'
       - id: cust_order_capacity
         type: u1
         enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
+        doc: 'Capacity of the customer placing the order; defaults to MemberTradingOnTheirOwnAccount when unspecified'
       - id: exec_inst
         type: exec_inst
-        doc: 'ExecInstType bit set'
+        doc: 'Instructions for order handling on exchange; a bit set where setting a bit enables its instruction and bit 0 is the least significant'
       - id: peg_offset_value
         type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Signed amount added to the peg for a pegged order. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
         type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
+        doc: 'Defines the type of peg used in a peg order. Nullable, No Value = 255'
       - id: expire_time
         type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        doc: 'Expiration time of a GoodForTime order, at least one millisecond in the future; defaults to the end of the post market session, nanoseconds since the unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod. Nullable, No Value = 0'
+        doc: 'The method used when refreshing displayed quantity of a reserve order; null for a fully displayed order. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
+        doc: 'Defines the replenishment timing behavior for a reserve order. Nullable, No Value = 255'
       - id: display_min_incr
         type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
+        doc: 'The minimum increment used when calculating a random refresh of the display quantity. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: reprice_frequency
         type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
+        doc: 'Defines the frequency of a reprice; an order is not repriced when this is absent. Nullable, No Value = 255'
       - id: reprice_behavior
         type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
+        doc: 'Defines the reprice behavior when the market is locked or crossed. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
       - id: stp_group_id
         type: u2_nullable
-        doc: 'StpGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom self trade prevention group. Nullable, No Value = 65535'
       - id: self_trade_prevention
         type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
+        doc: 'The desired behavior in the event of a wash; the null value disables self trade prevention. Nullable, No Value = 255'
       - id: risk_group_id
         type: u2_nullable
-        doc: 'RiskGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom risk control set applied to this order; the null value disables custom risk controls. Nullable, No Value = 65535'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   exec_inst:
     seq:
       - id: participate_do_not_initiate
         type: b1
-        doc: 'ParticipateDoNotInitiate'
+        doc: 'Post only, the order does not initiate an execution'
       - id: intermarket_sweep
         type: b1
-        doc: 'IntermarketSweep'
+        doc: 'Intermarket sweep order'
       - id: external_routing_not_allowed
         type: b1
-        doc: 'ExternalRoutingNotAllowed'
+        doc: 'Book only, the order is not externally routable'
       - id: reserved_13
         type: b13
         doc: '13 reserved bits'
@@ -277,956 +277,956 @@ types:
     seq:
       - id: repeating_group_dimensions
         type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
+        doc: 'Block preceding each repeating group, the space reserved for a single entry and the number of entries'
       - id: parties_group
         type: parties_group
         repeat: expr
         repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'Parties'
+        doc: 'One party identifier associated with the order'
   repeating_group_dimensions:
     seq:
       - id: block_length_uint_8
         type: u1
-        doc: 'blockLength'
+        doc: 'The total space reserved for a single repeating group entry'
       - id: num_in_group
         type: u1
-        doc: 'numInGroup'
+        doc: 'A counter representing the number of entries in the repeating group'
   parties_group:
     seq:
       - id: party_i_d_new_order_single_party_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'PartyID'
+        doc: 'The Mpid as stated in the order, or the default Mpid for the account when the order did not specify one'
       - id: party_id_source
         type: str
         size: 1
         encoding: ASCII
-        doc: 'PartyIDSource'
+        doc: 'Identifies the class or source of the Party Id; the exchange currently accepts C for a generally accepted Mpid'
       - id: party_role
         type: u1
         enum: party_role
-        doc: 'PartyRole'
+        doc: 'Identifies the type or role of the Party Id specified'
   order_cancel_replace_request_message:
     seq:
       - id: origclordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'OrigClOrdID'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
   order_cancel_request_message:
     seq:
       - id: origclordid_optional
         type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day. Nullable, No Value = 0'
       - id: order_id_optional
         type: u8_nullable
-        doc: 'OrderID. Nullable, No Value = 18446744073709551615'
+        doc: 'Order Id as assigned by the exchange. Nullable, No Value = 18446744073709551615'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
   mass_cancel_request_message:
     seq:
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
+        doc: 'Side of order; null when side is not used as a cancel filter. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a lower or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
         type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a higher or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
   execution_report_pending_new_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: order_capacity
         type: u1
         enum: order_capacity
-        doc: 'OrderCapacity'
+        doc: 'Designates the capacity of the firm placing the order'
       - id: cust_order_capacity
         type: u1
         enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
+        doc: 'Capacity of the customer placing the order; defaults to MemberTradingOnTheirOwnAccount when unspecified'
       - id: exec_inst
         type: exec_inst
-        doc: 'ExecInstType bit set'
+        doc: 'Instructions for order handling on exchange; a bit set where setting a bit enables its instruction and bit 0 is the least significant'
       - id: peg_offset_value
         type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Signed amount added to the peg for a pegged order. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
         type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
+        doc: 'Defines the type of peg used in a peg order. Nullable, No Value = 255'
       - id: expire_time
         type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        doc: 'Expiration time of a GoodForTime order, at least one millisecond in the future; defaults to the end of the post market session, nanoseconds since the unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod. Nullable, No Value = 0'
+        doc: 'The method used when refreshing displayed quantity of a reserve order; null for a fully displayed order. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
+        doc: 'Defines the replenishment timing behavior for a reserve order. Nullable, No Value = 255'
       - id: display_min_incr
         type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
+        doc: 'The minimum increment used when calculating a random refresh of the display quantity. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: reprice_frequency
         type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
+        doc: 'Defines the frequency of a reprice; an order is not repriced when this is absent. Nullable, No Value = 255'
       - id: reprice_behavior
         type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
+        doc: 'Defines the reprice behavior when the market is locked or crossed. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
       - id: stp_group_id
         type: u2_nullable
-        doc: 'StpGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom self trade prevention group. Nullable, No Value = 65535'
       - id: self_trade_prevention
         type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
+        doc: 'The desired behavior in the event of a wash; the null value disables self trade prevention. Nullable, No Value = 255'
       - id: risk_group_id
         type: u2_nullable
-        doc: 'RiskGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom risk control set applied to this order; the null value disables custom risk controls. Nullable, No Value = 65535'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_new_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: order_capacity
         type: u1
         enum: order_capacity
-        doc: 'OrderCapacity'
+        doc: 'Designates the capacity of the firm placing the order'
       - id: cust_order_capacity
         type: u1
         enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
+        doc: 'Capacity of the customer placing the order; defaults to MemberTradingOnTheirOwnAccount when unspecified'
       - id: exec_inst
         type: exec_inst
-        doc: 'ExecInstType bit set'
+        doc: 'Instructions for order handling on exchange; a bit set where setting a bit enables its instruction and bit 0 is the least significant'
       - id: peg_offset_value
         type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Signed amount added to the peg for a pegged order. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
         type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
+        doc: 'Defines the type of peg used in a peg order. Nullable, No Value = 255'
       - id: expire_time
         type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        doc: 'Expiration time of a GoodForTime order, at least one millisecond in the future; defaults to the end of the post market session, nanoseconds since the unix epoch. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1
         enum: display_method
-        doc: 'DisplayMethod. Nullable, No Value = 0'
+        doc: 'The method used when refreshing displayed quantity of a reserve order; null for a fully displayed order. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
+        doc: 'Defines the replenishment timing behavior for a reserve order. Nullable, No Value = 255'
       - id: display_min_incr
         type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
+        doc: 'The minimum increment used when calculating a random refresh of the display quantity. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: reprice_frequency
         type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
+        doc: 'Defines the frequency of a reprice; an order is not repriced when this is absent. Nullable, No Value = 255'
       - id: reprice_behavior
         type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
+        doc: 'Defines the reprice behavior when the market is locked or crossed. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
       - id: stp_group_id
         type: u2_nullable
-        doc: 'StpGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom self trade prevention group. Nullable, No Value = 65535'
       - id: self_trade_prevention
         type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
+        doc: 'The desired behavior in the event of a wash; the null value disables self trade prevention. Nullable, No Value = 255'
       - id: risk_group_id
         type: u2_nullable
-        doc: 'RiskGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom risk control set applied to this order; the null value disables custom risk controls. Nullable, No Value = 65535'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: transact_time
         type: u8
-        doc: 'TransactTime'
+        doc: 'The time at which the transaction occurred, nanoseconds since the unix epoch'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_rejected_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'RejectReason'
+        doc: 'Code identifying the reason an order was rejected'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_trade_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: last_qty
         type: u4
-        doc: 'LastQty'
+        doc: 'Quantity bought or sold on this last fill'
       - id: last_px
         type: decimal_s8_6
-        doc: 'LastPx. Implied decimal with scale 1e-6'
+        doc: 'Price of this last fill, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: transact_time
         type: u8
-        doc: 'TransactTime'
+        doc: 'The time at which the transaction occurred, nanoseconds since the unix epoch'
       - id: last_liquidity_ind
         type: u1
         enum: last_liquidity_ind
-        doc: 'LastLiquidityInd'
+        doc: 'Indicator denoting whether the referenced order removed liquidity from or added liquidity to the book'
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        doc: 'LastMkt'
+        doc: 'Market of execution for the last fill, or the market an order was routed to, as an Iso 10383 Mic'
       - id: trd_matching_id
         type: u8
-        doc: 'TrdMatchingID'
+        doc: 'Identifier assigned to the trade by the matching system; filled on a best effort basis for executions routed to another exchange'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
         encoding: ASCII
-        doc: 'SecurityGroup'
+        doc: 'Security listing tape indicator, A, B or C'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_pending_cancel_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: origclordid_optional
         type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day. Nullable, No Value = 0'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   pending_mass_cancel_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
+        doc: 'Side of order; null when side is not used as a cancel filter. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a lower or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
         type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a higher or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
   execution_report_canceled_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: origclordid_optional
         type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day. Nullable, No Value = 0'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: cancel_reason
         type: u1_nullable
-        doc: 'CancelReason. Nullable, No Value = 255'
+        doc: 'Reason code for the order cancellation. Nullable, No Value = 255'
       - id: transact_time
         type: u8
-        doc: 'TransactTime'
+        doc: 'The time at which the transaction occurred, nanoseconds since the unix epoch'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   mass_cancel_done_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
   execution_report_pending_replace_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: origclordid_optional
         type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day. Nullable, No Value = 0'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_replaced_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: origclordid_optional
         type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+        doc: 'The ClOrdID of the previous order, not the initial order of the day. Nullable, No Value = 0'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered, the number of shares; may not exceed 1MM shares or 30MM notional'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity, per share, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders; the only acceptable value N indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: transact_time
         type: u8
-        doc: 'TransactTime'
+        doc: 'The time at which the transaction occurred, nanoseconds since the unix epoch'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: locate_broker_optional
         type: str_4_nullable
-        doc: 'LocateBroker. Nullable, No Value = 0'
+        doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_trade_correction_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: exec_ref_id
         type: u8
-        doc: 'ExecRefID'
+        doc: 'The Exec Id of the execution being corrected or broken'
       - id: trd_match_id
         type: u8
-        doc: 'TrdMatchID'
+        doc: 'Identifier assigned to the trade by the matching system; filled on a best effort basis for executions routed to another exchange'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: last_px
         type: decimal_s8_6
-        doc: 'LastPx. Implied decimal with scale 1e-6'
+        doc: 'Price of this last fill, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
       - id: last_qty_optional
         type: u4_nullable
-        doc: 'LastQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity bought or sold on this last fill. Nullable, No Value = 4294967295'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
         encoding: ASCII
-        doc: 'SecurityGroup'
+        doc: 'Security listing tape indicator, A, B or C'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_trade_break_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: exec_ref_id
         type: u8
-        doc: 'ExecRefID'
+        doc: 'The Exec Id of the execution being corrected or broken'
       - id: trd_match_id
         type: u8
-        doc: 'TrdMatchID'
+        doc: 'Identifier assigned to the trade by the matching system; filled on a best effort basis for executions routed to another exchange'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: security_group
         type: str
         size: 1
         encoding: ASCII
-        doc: 'SecurityGroup'
+        doc: 'Security listing tape indicator, A, B or C'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   execution_report_restatement_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'OrderID'
+        doc: 'Order Id as assigned by the exchange'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: exec_id
         type: u8
-        doc: 'ExecID'
+        doc: 'Unique identifier of the execution message as assigned by the exchange, unique within a single trading day'
       - id: ord_status
         type: u1
         enum: ord_status
-        doc: 'OrdStatus'
+        doc: 'The status of the order'
       - id: last_px_optional
         type: decimal_s8_6_nullable
-        doc: 'LastPx. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price of this last fill, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: leaves_qty
         type: u4
-        doc: 'LeavesQty'
+        doc: 'Quantity open for further execution'
       - id: cum_qty
         type: u4
-        doc: 'CumQty'
+        doc: 'Total quantity filled'
       - id: last_shares
         type: u4_nullable
-        doc: 'LastShares. Nullable, No Value = 4294967295'
+        doc: 'Quantity bought or sold on this last fill. Nullable, No Value = 4294967295'
       - id: exec_restatement_reason
         type: u1
         enum: exec_restatement_reason
-        doc: 'ExecRestatementReason'
+        doc: 'Defines the reason for a restatement'
       - id: transact_time
         type: u8
-        doc: 'TransactTime'
+        doc: 'The time at which the transaction occurred, nanoseconds since the unix epoch'
       - id: extended_restatement_reason
         type: u1_nullable
-        doc: 'ExtendedRestatementReason. Nullable, No Value = 255'
+        doc: 'Defines the extended reason for a restatement. Nullable, No Value = 255'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
       - id: parties_groups
         type: parties_groups
-        doc: 'Parties Block'
+        doc: 'The parties associated with the order, a repeating group of party identifiers'
   order_cancel_reject_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: cxl_rej_response_to
         type: u1
         enum: cxl_rej_response_to
-        doc: 'CxlRejResponseTo'
+        doc: 'Identifies the request type the cancel reject was issued for'
       - id: cxl_rej_reason
         type: u1
         enum: cxl_rej_reason
-        doc: 'CxlRejReason'
+        doc: 'Code identifying the reason a cancel request was rejected'
       - id: link_id_optional
         type: str_4_nullable
-        doc: 'LnkId. Nullable, No Value = 0'
+        doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'The time the message was sent, nanoseconds since the unix epoch. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'Cms symbol tradable instrument'
       - id: symbol_sfx
         type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        doc: 'Cms symbol suffix, additional information about the security such as preferred or warrants. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
+        doc: 'Side of order; null when side is not used as a cancel filter. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a lower or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
         type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Mass cancel filter including any order with a higher or equal limit price; usable only with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
       - id: mass_cancel_reject_reason
         type: u1
         enum: mass_cancel_reject_reason
-        doc: 'RejectReason'
+        doc: 'Code identifying the reason a mass cancellation request was rejected'
   login_accepted_message:
     seq:
       - id: supported_request_mode
         type: u1
         enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
+        doc: 'The request mode this connection supports, stream, replay or snapshot; a request of any other mode is rejected'
   login_rejected_message:
     seq:
       - id: login_reject_code
         type: u1
         enum: login_reject_code
-        doc: 'The code for the rejection type'
+        doc: 'Why the login was rejected; none of the reasons are retryable'
   start_of_session_message:
     seq:
       - id: session_id
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'Identifier of the session, as named by Start of Session and as copied onto a replay or stream request'
   replay_begin_message:
     seq:
       - id: next_sequence_number
         type: u8
-        doc: 'The first requested sequence number'
+        doc: 'The first requested sequence number on a request, and the sequence of the next message in the stream on a begin'
       - id: pending_message_count
         type: u4
-        doc: 'The number of messages to be delivered in this replay'
+        doc: 'The number of messages to be delivered in this replay, which may be fewer than requested when the server caps a replay'
   replay_rejected_message:
     seq:
       - id: replay_reject_code
         type: u1
         enum: replay_reject_code
-        doc: 'The code for the rejection type'
+        doc: 'Why the replay request was rejected; only a start sequence out of range is retryable'
   replay_complete_message:
     seq:
       - id: message_count
@@ -1236,16 +1236,16 @@ types:
     seq:
       - id: next_sequence_number
         type: u8
-        doc: 'The first requested sequence number'
+        doc: 'The first requested sequence number on a request, and the sequence of the next message in the stream on a begin'
       - id: max_sequence_number
         type: u8
-        doc: 'The maximum sequence number currently published on this stream'
+        doc: 'The maximum sequence number published on the stream when the request was made; it may still grow while the client catches up'
   stream_rejected_message:
     seq:
       - id: stream_reject_code
         type: u1
         enum: stream_reject_code
-        doc: 'The code for the rejection type'
+        doc: 'Why the stream request was rejected; only a start sequence out of range is retryable'
   stream_complete_message:
     seq:
       - id: total_sequence_count
@@ -1352,52 +1352,52 @@ enums:
   message_type:
     100:
       id: 'login_request'
-      doc: 'Blue Ocean Tcp Login Request'
+      doc: 'Login Request, authorizing the session'
     101:
       id: 'replay_request'
-      doc: 'Blue Ocean Tcp Replay Request'
+      doc: 'Replay Request, asking for a count of messages from a sequence number'
     102:
       id: 'replay_all_request'
-      doc: 'Blue Ocean Tcp Replay All Request'
+      doc: 'Replay All Request, asking for every message from sequence one'
     103:
       id: 'stream_request'
-      doc: 'Blue Ocean Tcp Stream Request'
+      doc: 'Stream Request, asking for a continuous stream from a sequence number'
     104:
       id: 'unsequenced_message'
-      doc: 'Blue Ocean Tcp Unsequenced Message'
+      doc: 'Unsequenced Message, one business message from the client while streaming; it applies to the session of the stream in progress'
     1:
       id: 'login_accepted'
-      doc: 'Blue Ocean Tcp Login Accepted Message'
+      doc: 'Login Accepted, naming the request mode the connection allows'
     2:
       id: 'login_rejected'
-      doc: 'Blue Ocean Tcp Login Rejected Message'
+      doc: 'Login Rejected, the connection closes after it is sent'
     3:
       id: 'start_of_session'
-      doc: 'Blue Ocean Tcp Start of Session Message'
+      doc: 'Start of Session, naming the session now available on the connection'
     4:
       id: 'end_of_session'
-      doc: 'Blue Ocean Tcp End of Session Message'
+      doc: 'End of Session, no further messages arrive on the session that was active'
     5:
       id: 'replay_begin'
-      doc: 'Blue Ocean Tcp Replay Begin Message'
+      doc: 'Replay Begin, the replay request was accepted'
     6:
       id: 'replay_rejected'
-      doc: 'Blue Ocean Tcp Replay Rejected Message'
+      doc: 'Replay Rejected, the replay request was refused'
     7:
       id: 'replay_complete'
-      doc: 'Blue Ocean Tcp Replay Complete Message'
+      doc: 'Replay Complete, the replay in progress finished'
     8:
       id: 'stream_begin'
-      doc: 'Blue Ocean Tcp Stream Begin Message'
+      doc: 'Stream Begin, the stream request was accepted'
     9:
       id: 'stream_rejected'
-      doc: 'Blue Ocean Tcp Stream Rejected Message'
+      doc: 'Stream Rejected, the stream request was refused'
     10:
       id: 'stream_complete'
-      doc: 'Blue Ocean Tcp Stream Complete Message'
+      doc: 'Stream Complete, the stream in progress finished'
     11:
       id: 'sequenced_message'
-      doc: 'Blue Ocean Tcp Sequenced Message'
+      doc: 'Sequenced Message, one business message from the server; it does advance the stream sequence and its payload is defined by the protocol this session wraps'
   template_id:
     1:
       id: 'new_order_single_message'
@@ -2261,47 +2261,47 @@ enums:
   supported_request_mode:
     0x53:
       id: 'stream'
-      doc: 'Stream Mode'
+      doc: 'Stream mode, the server accepts stream requests and rejects replay requests'
     0x52:
       id: 'replay'
-      doc: 'Replay Mode'
+      doc: 'Replay mode, the server accepts ranged replay requests and rejects stream requests'
     0x54:
       id: 'snapshot_mode'
-      doc: 'Snapshot Mode'
+      doc: 'Snapshot mode, the server accepts replay all requests'
   login_reject_code:
     0x54:
       id: 'malformed_token'
-      doc: 'Malformed Token'
+      doc: 'Malformed token; not retryable'
     0x55:
       id: 'token_type_unsupported'
-      doc: 'Token type unsupported by this server'
+      doc: 'Token type unsupported by this server; not retryable'
     0x56:
       id: 'token_type_invalid'
-      doc: 'Token type invalid on any server'
+      doc: 'Token type invalid on any server; not retryable'
     0x41:
       id: 'authorization_failed'
-      doc: 'Authorization failed'
+      doc: 'Authorization failed; not retryable'
   replay_reject_code:
     0x52:
       id: 'replay_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+      doc: 'Replay requests are not allowed by this server, stream requests must be used; not retryable'
     0x41:
       id: 'replay_all_requests_are_not_allowed'
-      doc: 'Replay all requests are not allowed by this server'
+      doc: 'Replay all requests are not allowed by this server, ranged replay requests must be used; not retryable'
     0x50:
       id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
+      doc: 'The session on the request is not the active session; not retryable'
     0x53:
       id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
+      doc: 'The start sequence number is out of range; retryable'
   stream_reject_code:
     0x52:
       id: 'stream_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+      doc: 'Stream requests are not allowed by this server, replay requests must be used; not retryable'
     0x50:
       id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
+      doc: 'The session on the request is not the active session; not retryable'
     0x53:
       id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
+      doc: 'The start sequence number is out of range; retryable'
 

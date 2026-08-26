@@ -487,10 +487,10 @@ types:
         type: decimal_s4_8
         doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars. Implied decimal with scale 1e-8'
       - id: upper_collar
-        type: u4
+        type: s4
         doc: 'Upper boundary for the Indicative Match Price'
       - id: lower_collar
-        type: u4
+        type: s4
         doc: 'Lower boundary for the Indicative Match Price'
       - id: auction_status
         type: u1

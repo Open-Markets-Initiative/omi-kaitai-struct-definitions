@@ -44,7 +44,7 @@ doc-ref: https://blueocean-tech.io/trading-updates
 seq:
   - id: common_header
     type: common_header_struct
-    doc: 'Blue Ocean Udp Common Header'
+    doc: 'The header every datagram opens with, naming the message type, the data session and the sequence the payload starts at'
   - id: sequenced_messages
     type:
       switch-on: common_header.message_type
@@ -57,16 +57,16 @@ types:
       - id: message_type
         type: u1
         enum: message_type
-        doc: 'Blue Ocean Udp Message Type'
+        doc: 'The kind of datagram that follows the header, a heartbeat, a session shutdown or a sequenced message'
       - id: header_length
         type: u1
         doc: 'Total bytes in this header'
       - id: session_id
         type: u8
-        doc: 'session identifier'
+        doc: 'Identifier of the data session the datagram belongs to; heartbeats on the session report it as active'
       - id: sequence_number
         type: u8
-        doc: 'Sequence Number'
+        doc: 'Sequence number of the first message in the datagram; on a heartbeat or a session shutdown it is instead the highest sequence published so far, zero before any message is published'
   sequenced_message:
     seq:
       - id: num_message
@@ -76,7 +76,7 @@ types:
         type: message
         repeat: expr
         repeat-expr: num_message
-        doc: 'Blue Ocean Udp Message'
+        doc: 'One element of the message list, its length followed by that many bytes of payload'
   message:
     seq:
       - id: message_length
@@ -125,159 +125,159 @@ types:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'The Cms root for the tradable instrument'
       - id: symbol_sfx
         type: str
         size: 6
         encoding: ASCII
-        doc: 'SymbolSfx'
+        doc: 'The Cms suffix for the tradable instrument'
       - id: round_lot
         type: u4
-        doc: 'RoundLot'
+        doc: 'The number of shares in a round lot for the instrument'
       - id: is_test_symbol
         type: u1
         enum: is_test_symbol
-        doc: 'IsTestSymbol'
+        doc: 'Determines if this security is a test instrument'
       - id: mpv
         type: decimal_s8_6
-        doc: 'MPV. Implied decimal with scale 1e-6'
+        doc: 'The minimum price variation for an instrument, the smallest price increment of the stock. Implied decimal with scale 1e-6'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: short_sale_restriction
         type: u1
         enum: short_sale_restriction
-        doc: 'ShortSaleRestriction'
+        doc: 'Identifies if this security is subject to the Regulation SHO short sales restrictions'
   security_trading_status_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: security_trading_status
         type: u1
         enum: security_trading_status
-        doc: 'SecurityTradingStatus'
+        doc: 'The current trading state'
       - id: security_trading_status_reason
         type: u1
         enum: security_trading_status_reason
-        doc: 'SecurityTradingStatusReason'
+        doc: 'The source of the trading status change'
   snapshot_complete_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: as_of_sequence_number
         type: u8
-        doc: 'AsOfSequenceNumber'
+        doc: 'The sequence number on the real time multicast channel the snapshot is based upon; discard buffered messages at or below it and apply those above it'
   trading_session_status_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: trading_session
         type: u1
         enum: trading_session
-        doc: 'TradingSession'
+        doc: 'The trading session which was entered'
   best_bid_offer_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: bid_size
         type: u4
-        doc: 'BidSize'
+        doc: 'The best bid size'
       - id: bid_price
         type: decimal_s8_6
-        doc: 'BidPrice. Implied decimal with scale 1e-6'
+        doc: 'The best bid price, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
       - id: offer_size
         type: u4
-        doc: 'OfferSize'
+        doc: 'The best offer size'
       - id: offer_price
         type: decimal_s8_6
-        doc: 'OfferPrice. Implied decimal with scale 1e-6'
+        doc: 'The best offer price, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
   best_bid_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: bid_size
         type: u4
-        doc: 'BidSize'
+        doc: 'The best bid size'
       - id: bid_price
         type: decimal_s8_6
-        doc: 'BidPrice. Implied decimal with scale 1e-6'
+        doc: 'The best bid price, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
   best_offer_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: offer_size
         type: u4
-        doc: 'OfferSize'
+        doc: 'The best offer size'
       - id: offer_price
         type: decimal_s8_6
-        doc: 'OfferPrice. Implied decimal with scale 1e-6'
+        doc: 'The best offer price, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
   best_bid_short_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
       - id: bid_size_short
         type: u2
-        doc: 'BidSize'
+        doc: 'The best bid size, in the short form carried by Best Bid Short'
       - id: bid_price_short
         type: decimal_s2_2
-        doc: 'BidPrice. Implied decimal with scale 1e-2'
+        doc: 'The best bid price, a signed mantissa scaled by a constant exponent of -2. Implied decimal with scale 1e-2'
   best_offer_short_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
-      - id: offer_size_uint_16
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
+      - id: offer_size_short
         type: u2
-        doc: 'OfferSize'
+        doc: 'The best offer size, in the short form carried by Best Offer Short'
       - id: offer_price_short
         type: decimal_s2_2
-        doc: 'OfferPrice. Implied decimal with scale 1e-2'
+        doc: 'The best offer price, a signed mantissa scaled by a constant exponent of -2. Implied decimal with scale 1e-2'
   clear_book_message:
     seq:
       - id: timestamp
         type: u8
-        doc: 'Timestamp'
+        doc: 'The timestamp when the event occurred, nanoseconds since the unix epoch'
       - id: security_id
         type: u2
-        doc: 'SecurityID'
+        doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -297,13 +297,13 @@ enums:
   message_type:
     0:
       id: 'heartbeat_message'
-      doc: 'Blue Ocean Udp Heartbeat Message'
+      doc: 'Sent periodically to say the data session is active and connectivity is unbroken, and to expose loss when traffic is quiet; it carries no payload and does not advance the sequence'
     1:
       id: 'session_shutdown_message'
-      doc: 'Blue Ocean Udp Session Shutdown Message'
+      doc: 'Replaces the heartbeat once no further sequenced messages will be sent for the session; repeated so every client sees it, carries no payload and does not advance the sequence'
     2:
       id: 'sequenced_message'
-      doc: 'Blue Ocean Udp Sequenced Message'
+      doc: 'Carries one or more business messages, the message count followed by that many length prefixed payloads'
   template_id:
     1:
       id: 'instrument_directory_message'
