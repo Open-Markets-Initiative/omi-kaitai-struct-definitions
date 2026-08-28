@@ -122,6 +122,7 @@ types:
             'template_id::session_test_request_message': test_request_message
             'template_id::session_resend_request_message': resend_request_message
             'template_id::session_gap_fill_message': gap_fill_message
+            'template_id::reject_message': reject_message
   logon_message:
     seq:
       - id: username
@@ -145,14 +146,14 @@ types:
         doc: 'heartbeatIntervalSeconds'
   logout_message:
     seq:
-      - id: reason
+      - id: reason_string_64
         type: str
         size: 64
         encoding: ASCII
         doc: 'reason'
   logged_out_message:
     seq:
-      - id: reason
+      - id: reason_string_64
         type: str
         size: 64
         encoding: ASCII
@@ -183,6 +184,20 @@ types:
       - id: gap_fill_padding
         type: u4
         doc: 'padding'
+  reject_message:
+    seq:
+      - id: ref_sequence_number
+        type: u4
+        doc: 'refSequenceNumber'
+      - id: reject_reason
+        type: s4
+        enum: reject_reason
+        doc: 'reason'
+      - id: details
+        type: str
+        size: 64
+        encoding: ASCII
+        doc: 'details'
   order_message:
     seq:
       - id: order_payload
@@ -198,7 +213,7 @@ types:
             'template_id::set_ack_message': set_ack_message
             'template_id::new_order_message': new_order_message
             'template_id::new_ioc_order_message': new_ioc_order_message
-            'template_id::order_entered_message': order_entered_message
+            'template_id::reject_message': order_entered_message
             'template_id::replace_order_message': replace_order_message
             'template_id::obsolete_stream_order_message': obsolete_stream_order_message
             'template_id::order_reject_message': order_reject_message
@@ -893,6 +908,9 @@ enums:
     202:
       id: 'session_gap_fill_message'
       doc: 'GapFillMessage'
+    210:
+      id: 'reject_message'
+      doc: 'RejectMessage'
     103:
       id: 'instrument_info_request_message'
       doc: 'InstrumentInfoRequestMessage'
@@ -914,9 +932,6 @@ enums:
     111:
       id: 'new_ioc_order_message'
       doc: 'NewIocOrderMessage'
-    210:
-      id: 'order_entered_message'
-      doc: 'OrderEnteredMessage'
     120:
       id: 'replace_order_message'
       doc: 'ReplaceOrderMessage'
@@ -1000,6 +1015,19 @@ enums:
     1:
       id: 'true_field'
       doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  reject_reason:
+    1:
+      id: 'invalid_schema_id'
+      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'invalid_template_id'
+      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'invalid_block_length'
+      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'invalid_field_value'
+      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   trading_instrument_status:
     0:
       id: 'ok'
