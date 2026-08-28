@@ -13,72 +13,72 @@ from iex_iexequities_deepplus_iextp_v1_04 import IexIexequitiesDeepplusIextpV104
 class IexIexequitiesDeepplusIextpV104Tests(unittest.TestCase):
 
     def test_addorder(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/a_AddOrder.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/a_AddOrder.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_tradebreak(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/B_TradeBreak.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/B_TradeBreak.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_securitydirectory(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/D_SecurityDirectory.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/D_SecurityDirectory.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_securityevent(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/E_SecurityEvent.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/E_SecurityEvent.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_tradingstatus(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/H_TradingStatus.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/H_TradingStatus.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_retailliquidityindicator(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/I_RetailLiquidityIndicator.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/I_RetailLiquidityIndicator.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_orderexecuted(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/L_OrderExecuted.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/L_OrderExecuted.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_ordermodify(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/M_OrderModify.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/M_OrderModify.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_operationalhaltstatus(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/O_OperationalHaltStatus.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/O_OperationalHaltStatus.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_shortsalepriceteststatus(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/P_ShortSalePriceTestStatus.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/P_ShortSalePriceTestStatus.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_orderdelete(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/R_OrderDelete.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/R_OrderDelete.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_systemevent(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/S_SystemEvent.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/S_SystemEvent.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_trade(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/T_Trade.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/T_Trade.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_allmessagetypes(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.v1.0.2/all_message_types.pcap"):
+        for payload in payloads.of("omi-data-packets/Iex/IexEquities.DeepPlus.IexTp.v1.0.2/all_message_types.pcap"):
             parsed = IexIexequitiesDeepplusIextpV104.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

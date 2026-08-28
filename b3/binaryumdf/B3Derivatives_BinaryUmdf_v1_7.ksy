@@ -559,10 +559,12 @@ types:
     seq:
       - id: len_security_desc_data
         type: u1
+        doc: 'Length in bytes of the security description text'
       - id: security_desc_data
         type: str
         size: len_security_desc_data
         encoding: ASCII
+        doc: 'textual description for the financial instrument'
   security_definition_message:
     seq:
       - id: security_id
@@ -822,8 +824,8 @@ types:
   news_5_message:
     seq:
       - id: security_id_optional
-        type: u8
-        doc: 'securityID'
+        type: u8_nullable
+        doc: 'Security Id as defined by B3. For the Security Id list, see the Security Definition message in the market data feed. Nullable, No Value = 0'
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
@@ -938,8 +940,8 @@ types:
         type: decimal_s8_4_nullable
         doc: 'mDEntryPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_size_quantity_optional
-        type: s8
-        doc: 'mDEntrySize'
+        type: s8_nullable
+        doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
         type: nanosecond_timestamp
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
@@ -992,8 +994,8 @@ types:
         type: imbalance_condition
         doc: 'ImbalanceCondition bit set'
       - id: md_entry_size_quantity_optional
-        type: s8
-        doc: 'mDEntrySize'
+        type: s8_nullable
+        doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
         type: nanosecond_timestamp
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
@@ -1362,8 +1364,8 @@ types:
         type: u4
         doc: 'mDEntryPositionNo'
       - id: md_entry_size_quantity_optional
-        type: s8
-        doc: 'mDEntrySize'
+        type: s8_nullable
+        doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: secondary_order_id
         type: u8
         doc: 'secondaryOrderID'
@@ -1761,6 +1763,20 @@ types:
     instances:
       real:
         value: mantissa / 10000000.0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
 
 enums:
   template_id:

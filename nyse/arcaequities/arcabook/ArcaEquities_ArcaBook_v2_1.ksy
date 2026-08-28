@@ -120,8 +120,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -152,8 +152,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -208,8 +208,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -238,8 +238,8 @@ types:
         type: u4
         doc: 'This field contains the symbol sequence number'
       - id: indicative_match_price
-        type: decimal_s4_8
-        doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'The best price at which the maximum volume of shares is executable in the applicable auction, subject to Auction Collars'
       - id: paired_qty
         type: u4
         doc: 'The number of shares paired off at the Indicative Match Price'
@@ -262,14 +262,14 @@ types:
         encoding: ASCII
         doc: 'Not supported, defaulted to 0'
       - id: continuous_book_clearing_price
-        type: decimal_s4_8
-        doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Not supported, defaulted to 0'
       - id: closing_only_clearing_price
-        type: decimal_s4_8
-        doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Not supported, defaulted to 0'
       - id: ssr_filing_price
-        type: decimal_s4_8
-        doc: 'Not supported, defaulted to 0. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Not supported, defaulted to 0'
   add_order_refresh_message:
     seq:
       - id: source_time
@@ -288,8 +288,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -320,8 +320,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -358,8 +358,8 @@ types:
         type: u4
         doc: 'The Order ID identifies a unique order'
       - id: price
-        type: decimal_s4_8
-        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'This field contains the price point. Use the Price scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'This field contains the order quantity in shares'
@@ -391,13 +391,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_s4_8:
-    seq:
-      - id: mantissa
-        type: s4
-    instances:
-      real:
-        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

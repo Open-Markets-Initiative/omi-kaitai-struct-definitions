@@ -170,8 +170,8 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: decimal_s4_8
-        doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'The previous day''s closing price for this security'
       - id: prev_close_volume
         type: u4
         doc: 'The previous day''s closing volume for the security'
@@ -231,11 +231,11 @@ types:
         type: u4
         doc: 'Future use. Any field content should be ignored'
       - id: price_1
-        type: decimal_s4_8
-        doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low Price. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Default value is 0. If securityStatus = A and this security is listed on this exchange, then this field is the SSR Triggering Trade Price. If securityStatus = G or I, then this field is the Indication Low Price'
       - id: price_2
-        type: decimal_s4_8
-        doc: 'Default value is 0. If securityStatus = G or I, then this field is the Indication High Price. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Default value is 0. If securityStatus = G or I, then this field is the Indication High Price'
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
@@ -386,14 +386,14 @@ types:
         type: u4
         doc: 'The symbol sequence number'
       - id: ask_price
-        type: decimal_s4_8
-        doc: 'The Ask price. Use the Price scale from the Symbol Index message. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Ask price. Use the Price scale from the Symbol Index message'
       - id: ask_volume
         type: u4
         doc: 'The aggregate round lot size at the ask price, in shares'
       - id: bid_price
-        type: decimal_s4_8
-        doc: 'The Bid price. Use the Price scale from the Symbol Index message. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Bid price. Use the Price scale from the Symbol Index message'
       - id: bid_volume
         type: u4
         doc: 'The aggregate round lot size at the bid price, in shares'
@@ -418,13 +418,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_s4_8:
-    seq:
-      - id: mantissa
-        type: s4
-    instances:
-      real:
-        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:

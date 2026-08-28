@@ -182,8 +182,8 @@ types:
         type: u2
         doc: 'Round lot size in shares'
       - id: prev_close_price
-        type: decimal_s4_8
-        doc: 'The previous day''s closing price for this security. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'The previous day''s closing price for this security'
       - id: prev_close_volume
         type: u4
         doc: 'The previous day''s closing volume for the security'
@@ -244,11 +244,11 @@ types:
         type: u4
         doc: 'Reserved for future use'
       - id: price_1
-        type: decimal_s4_8
-        doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security Status. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Default value is 0. SSR Triggering Trade Price or Indication Low Price depending on Security Status'
       - id: price_2
-        type: decimal_s4_8
-        doc: 'Default value is 0. Indication High Price if securityStatus = G or I. Implied decimal with scale 1e-8'
+        type: u4
+        doc: 'Default value is 0. Indication High Price if securityStatus = G or I'
       - id: ssr_triggering_exchange_id
         type: u1
         enum: ssr_triggering_exchange_id
@@ -520,14 +520,14 @@ types:
         type: u4
         doc: 'The series sequence number'
       - id: ask_price
-        type: decimal_s4_8
-        doc: 'The Ask price. Use the Price scale from the Series Index message. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Ask price. Use the Price scale from the Series Index message'
       - id: ask_volume
         type: u4
         doc: 'Total quantity available at the above Ask price'
       - id: bid_price
-        type: decimal_s4_8
-        doc: 'The Bid price. Use the Price scale from the Series Index message. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Bid price. Use the Price scale from the Series Index message'
       - id: bid_volume
         type: u4
         doc: 'Total quantity available at the above Bid price'
@@ -564,8 +564,8 @@ types:
         type: u4
         doc: 'Unique identifier for this trade'
       - id: price
-        type: decimal_s4_8
-        doc: 'The price of the Trade. Use the Price scale from the series index mapping. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price of the Trade. Use the Price scale from the series index mapping'
       - id: volume
         type: u4
         doc: 'The volume of the trade in contracts'
@@ -624,8 +624,8 @@ types:
         type: u4
         doc: 'Unique identifier for this trade'
       - id: price
-        type: decimal_s4_8
-        doc: 'The price of the Trade. Use the Price scale from the series index mapping. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price of the Trade. Use the Price scale from the series index mapping'
       - id: volume
         type: u4
         doc: 'The volume of the trade in contracts'
@@ -686,17 +686,17 @@ types:
         enum: imbalance_side
         doc: 'The side of the TotalImbalanceQty'
       - id: continuous_book_clearing_price
-        type: decimal_s4_8
-        doc: 'The price at which all interest on the book can trade, including auction and imbalance offset interest, and disregarding auction collars. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price at which all interest on the book can trade, including auction and imbalance offset interest, and disregarding auction collars'
       - id: auction_interest_clearing_price
-        type: decimal_s4_8
-        doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars'
       - id: second_reserved_4
         type: u4
         doc: 'Reserved for future use'
       - id: indicative_match_price
-        type: decimal_s4_8
-        doc: 'The price at which the highest number of contracts would trade, subject to auction collars. It includes the non-displayed quantity of Reserve Orders. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price at which the highest number of contracts would trade, subject to auction collars. It includes the non-displayed quantity of Reserve Orders'
       - id: upper_collar
         type: s4
         doc: 'Legal width bid for option'
@@ -737,8 +737,8 @@ types:
         type: u4
         doc: 'Total quantity'
       - id: working_price
-        type: decimal_s4_8
-        doc: 'RFQ Price. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'RFQ Price'
       - id: participant
         type: u4
         doc: 'OCC Number for the Clearing firm specified with the order. 0 when no OCC Number was specified. This field is only used for BOLD (Type = B)'
@@ -761,11 +761,11 @@ types:
         type: u4
         doc: 'The unique ID of this series within this market'
       - id: high_price
-        type: decimal_s4_8
-        doc: 'The Highest price of the series for the day. Use the Price scale from the series mapping index. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Highest price of the series for the day. Use the Price scale from the series mapping index'
       - id: low_price
-        type: decimal_s4_8
-        doc: 'The Lowest price of the series for the day. Use the Price scale from the series mapping index. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The Lowest price of the series for the day. Use the Price scale from the series mapping index'
       - id: open
         type: s4
         doc: 'The First price of the series for the day. Use the Price scale from the series mapping index'
@@ -788,13 +788,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_s4_8:
-    seq:
-      - id: mantissa
-        type: s4
-    instances:
-      real:
-        value: mantissa / 100000000.0
 
 enums:
   delivery_flag:
