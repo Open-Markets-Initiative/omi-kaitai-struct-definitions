@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities TotalView Itch v5.0.2026
+# Kaitai struct definition for: Nasdaq NsmEquities TotalView Itch v5.0.2023
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: TotalView Itch
 #   Encoding: Itch
-#   Version: 5.0.2026
-#   Date: 2/19/2026
+#   Version: 5.0.2023
+#   Date: 4/28/2023
 #   Specification: NQTVITCHSpecification.pdf
 #
 # Script:
@@ -33,12 +33,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_totalview_itch_v5_0_2026
-  title: Nasdaq NsmEquities TotalView Itch v5.0.2026
+  id: nasdaq_nsmequities_totalview_itch_v5_0_2023
+  title: Nasdaq NsmEquities TotalView Itch v5.0.2023
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch Itch v5.0.2026'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch Itch v5.0.2023'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
