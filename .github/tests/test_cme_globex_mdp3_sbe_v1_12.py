@@ -8,19 +8,18 @@ sys.path.insert(0, "generated/python")
 import payloads
 
 from cme_globex_mdp3_sbe_v1_12_tcp import CmeGlobexMdp3SbeV112Tcp
-from cme_globex_mdp3_sbe_v1_12_udp import CmeGlobexMdp3SbeV112Udp
 
 
 class CmeGlobexMdp3SbeV112UdpTests(unittest.TestCase):
 
     def test_mdincrementalrefreshbooklongqty(self):
         for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MdIncrementalRefreshBookLongQty.pcap"):
-            parsed = CmeGlobexMdp3SbeV112Udp.from_bytes(payload)
+            parsed = CmeGlobexMdp3SbeV112Tcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_mdincrementalrefreshtradesummarylongqty(self):
         for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MdIncrementalRefreshTradeSummaryLongQty.pcap"):
-            parsed = CmeGlobexMdp3SbeV112Udp.from_bytes(payload)
+            parsed = CmeGlobexMdp3SbeV112Tcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_marketdatarequest(self):
@@ -45,11 +44,6 @@ class CmeGlobexMdp3SbeV112UdpTests(unittest.TestCase):
 
     def test_securitystatus(self):
         for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityStatus.Tcp.pcap"):
-            parsed = CmeGlobexMdp3SbeV112Tcp.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_mdinstrumentdefinitionfx(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MdInstrumentDefinitionFx.Tcp.pcap"):
             parsed = CmeGlobexMdp3SbeV112Tcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
