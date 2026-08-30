@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.8
+# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.6
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.8
-#   Date: 11/17/22
-#   Specification: MEMO SBE-v1_8-revC.pdf
+#   Version: 1.6
+#   Date: 7/12/21
+#   Specification: MEMO SBE-v1_6.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,35 +25,27 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxequities_memo_sbe_v1_8
-  title: Memx MemxEquities Memo Sbe v1.8
+  id: memx_memxequities_memo_sbe_v1_6_server
+  title: Memx MemxEquities Memo Sbe v1.6
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.8'
+doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.6'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: server_data
     type:
       switch-on: common_header.message_type
       cases:
-        'message_type::login_request': login_request_message
-        'message_type::replay_request': replay_request_message
-        'message_type::replay_all_request': replay_all_request_message
-        'message_type::stream_request': stream_request_message
-        'message_type::unsequenced_message': unsequenced_message
         'message_type::login_accepted': login_accepted_message
         'message_type::login_rejected': login_rejected_message
         'message_type::start_of_session': start_of_session_message
@@ -75,43 +67,62 @@ types:
       - id: message_length
         type: u2
         doc: 'Total bytes following the header (does not include this header)'
-  login_request_message:
+  login_accepted_message:
     seq:
-      - id: token_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token type'
-      - id: token
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token'
-  replay_request_message:
+      - id: supported_request_mode
+        type: u1
+        enum: supported_request_mode
+        doc: 'The request mode that this connection supports'
+  login_rejected_message:
+    seq:
+      - id: login_reject_code
+        type: u1
+        enum: login_reject_code
+        doc: 'The code for the rejection type'
+  start_of_session_message:
     seq:
       - id: session_id
         type: u8
         doc: 'The identifier for the session for which data is desired'
+  replay_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-      - id: count
+      - id: pending_message_count
         type: u4
-        doc: 'Total number of messages to include in the replay'
-  replay_all_request_message:
+        doc: 'The number of messages to be delivered in this replay'
+  replay_rejected_message:
     seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  stream_request_message:
+      - id: replay_reject_code
+        type: u1
+        enum: replay_reject_code
+        doc: 'The code for the rejection type'
+  replay_complete_message:
     seq:
-      - id: session_id
+      - id: message_count
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'The number of messages which were sent in the replay'
+  stream_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-  unsequenced_message:
+      - id: max_sequence_number
+        type: u8
+        doc: 'The maximum sequence number currently published on this stream'
+  stream_rejected_message:
+    seq:
+      - id: stream_reject_code
+        type: u1
+        enum: stream_reject_code
+        doc: 'The code for the rejection type'
+  stream_complete_message:
+    seq:
+      - id: total_sequence_count
+        type: u8
+        doc: 'The count of messages that were sent on this stream'
+  sequenced_message:
     seq:
       - id: sbe_message
         type: sbe_message
@@ -166,17 +177,21 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: mpid_optional
-        type: str_4_nullable
-        doc: 'MPID. Nullable, No Value = 0'
+      - id: mpid
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'MPID'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -283,8 +298,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -307,9 +324,11 @@ types:
         doc: 'LocateReqd. Nullable, No Value = 0'
   order_cancel_request_message:
     seq:
-      - id: origclordid_optional
-        type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+      - id: origclordid
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'OrigClOrdID'
       - id: order_id_optional
         type: u8_nullable
         doc: 'OrderID. Nullable, No Value = 18446744073709551615'
@@ -324,8 +343,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -339,8 +360,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side_optional
         type: u1_nullable
         doc: 'Side. Nullable, No Value = 255'
@@ -369,9 +392,11 @@ types:
       - id: exec_id
         type: u8
         doc: 'ExecID'
-      - id: mpid_optional
-        type: str_4_nullable
-        doc: 'MPID. Nullable, No Value = 0'
+      - id: mpid
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'MPID'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -382,8 +407,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -480,9 +507,11 @@ types:
       - id: exec_id
         type: u8
         doc: 'ExecID'
-      - id: mpid_optional
-        type: str_4_nullable
-        doc: 'MPID. Nullable, No Value = 0'
+      - id: mpid
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'MPID'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -493,8 +522,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -601,8 +632,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -672,9 +705,11 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid_optional
-        type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+      - id: origclordid
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'OrigClOrdID'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -684,8 +719,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -712,8 +749,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side_optional
         type: u1_nullable
         doc: 'Side. Nullable, No Value = 255'
@@ -736,9 +775,11 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid_optional
-        type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+      - id: origclordid
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'OrigClOrdID'
       - id: order_id
         type: u8
         doc: 'OrderID'
@@ -784,9 +825,11 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid_optional
-        type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+      - id: origclordid
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'OrigClOrdID'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -796,8 +839,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -841,9 +886,11 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid_optional
-        type: str_16_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
+      - id: origclordid
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'OrigClOrdID'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -853,8 +900,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side
         type: u1
         enum: side
@@ -1031,8 +1080,10 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str_6_nullable
-        doc: 'SymbolSfx. Nullable, No Value = 0'
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'SymbolSfx'
       - id: side_optional
         type: u1_nullable
         doc: 'Side. Nullable, No Value = 255'
@@ -1049,84 +1100,6 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'RejectReason'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
-  str_4_nullable:
-    seq:
-      - id: value
-        size: 4
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: value[0] == 0
-  str_6_nullable:
-    seq:
-      - id: value
-        size: 6
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: value[0] == 0
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1178,15 +1151,6 @@ types:
     instances:
       is_null:
         value: value == 65535
-  str_16_nullable:
-    seq:
-      - id: value
-        size: 16
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: value[0] == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1203,6 +1167,9 @@ types:
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1773,9 +1740,6 @@ enums:
     89:
       id: 'invalid_stp_group_id'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    90:
-      id: 'invalid_cl_ord_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1804,15 +1768,6 @@ enums:
     8:
       id: 'add_displayed_nbbo_join'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'immediate_midpoint_remove_on_entry'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'add_displayed_price_improvement'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'add_hidden_price_improvement'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     101:
       id: 'retail_add_displayed'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1836,18 +1791,6 @@ enums:
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     108:
       id: 'retail_add_displayed_nbbo_join'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    109:
-      id: 'retail_removed_on_entry'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    110:
-      id: 'retail_immediate_midpoint_remove_on_entry'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    111:
-      id: 'retail_add_displayed_price_improvement'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    112:
-      id: 'retail_add_hidden_price_improvement'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
@@ -2088,9 +2031,6 @@ enums:
     33:
       id: 'invalid_ord_type'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    34:
-      id: 'invalid_cl_ord_id'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2121,15 +2061,6 @@ enums:
       doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     8:
       id: 'invalid_cancel_group_id'
-      doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_cl_ord_id'
-      doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'invalid_lower_price'
-      doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'invalid_higher_price'
       doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'

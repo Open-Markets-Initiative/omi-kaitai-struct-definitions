@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.6.b
+# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.6.a
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.6.b
-#   Date: 2/2/2024
+#   Version: 1.6.a
+#   Date: 11/13/2023
 #   Specification: MEMO for US Options - SBE-v1_6b
 #
 # Script:
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_memo_sbe_v1_6_b
-  title: Memx MemxOptions Memo Sbe v1.6.b
+  id: memx_memxoptions_memo_sbe_v1_6_a_client
+  title: Memx MemxOptions Memo Sbe v1.6.a
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Members Orders Sbe v1.6.b'
+doc: 'The Members Exchange Memx Options Members Orders Sbe v1.6.a'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -584,14 +571,11 @@ types:
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: underlying_or_series
-        type: u1
-        enum: underlying_or_series
-        doc: 'UnderlyingOrSeries'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
+        type: u1_nullable
+        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
       - id: options_security_id_optional
         type: str_8_nullable
         doc: 'OptionsSecurityID. Nullable, No Value = 0'
@@ -1381,14 +1365,11 @@ types:
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: underlying_or_series
-        type: u1
-        enum: underlying_or_series
-        doc: 'UnderlyingOrSeries'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
+        type: u1_nullable
+        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
       - id: options_security_id_optional
         type: str_8_nullable
         doc: 'OptionsSecurityID. Nullable, No Value = 0'
@@ -1412,7 +1393,7 @@ types:
       - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
-      - id: underlying_or_series_optional
+      - id: underlying_or_series
         type: u1_nullable
         doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
       - id: underlier_optional
@@ -1617,66 +1598,6 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1750,6 +1671,15 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   str_8_nullable:
     seq:
       - id: value
@@ -1766,18 +1696,12 @@ types:
     instances:
       is_null:
         value: value == 4294967295
-  str_6_nullable:
-    seq:
-      - id: value
-        size: 6
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: value[0] == 0
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -2691,22 +2615,9 @@ enums:
     19:
       id: 'invalid_sending_time'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    20:
-      id: 'invalid_options_security_id_for_underlier'
-      doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  underlying_or_series_optional:
-    0:
-      id: 'cancel_all_on_underlying'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'cancel_all_on_series'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cxl_rej_response_to:
     0x31:
       id: 'order_cancel_request'

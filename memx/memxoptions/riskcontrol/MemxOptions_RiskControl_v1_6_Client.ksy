@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions RiskControl Sbe v1.3
+# Kaitai struct definition for: Memx MemxOptions RiskControl Sbe v1.6
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Risk Control
 #   Encoding: Simple Binary Encoding
-#   Version: 1.3
-#   Date: 6/29/23
-#   Specification: Risk Control for US Options SBE-v1_3.pdf
+#   Version: 1.6
+#   Date: 11/15/23
+#   Specification: Risk Control for US Options SBE-v1_6.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_riskcontrol_sbe_v1_3
-  title: Memx MemxOptions RiskControl Sbe v1.3
+  id: memx_memxoptions_riskcontrol_sbe_v1_6_client
+  title: Memx MemxOptions RiskControl Sbe v1.6
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Risk Control Sbe v1.3'
+doc: 'The Members Exchange Memx Options Risk Control Sbe v1.6'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -203,16 +190,12 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_req_underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
-      - id: efi_d_active_risk_threshold_change_req_efid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'EFID'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
+      - id: efid_optional
+        type: str_4_nullable
+        doc: 'EFID. Nullable, No Value = 0'
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
@@ -275,7 +258,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
       - id: period_in_milli_seconds
         type: u4
@@ -369,9 +352,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: breach_id
-        type: u8
-        doc: 'BreachID'
+      - id: breach_id_optional
+        type: u8_nullable
+        doc: 'BreachID. Nullable, No Value = 18446744073709551615'
   single_order_allow_iso_orders_change_req_message:
     seq:
       - id: clordid
@@ -429,7 +412,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: max_notional_in_dollars
-        type: u4
+        type: u8
         doc: 'MaxNotionalInDollars'
   single_order_max_contracts_change_req_message:
     seq:
@@ -467,7 +450,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_market_order_gross_notional_threshold_change_req_message:
     seq:
@@ -486,7 +469,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_net_notional_threshold_change_req_message:
     seq:
@@ -505,7 +488,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_market_order_net_notional_threshold_change_req_message:
     seq:
@@ -524,7 +507,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_duplicate_order_threshold_change_req_message:
     seq:
@@ -591,6 +574,9 @@ types:
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
+      - id: unacked_quantity
+        type: u4
+        doc: 'UnackedQuantity'
   active_risk_threshold_change_rej_message:
     seq:
       - id: clordid
@@ -598,16 +584,12 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_rej_underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
-      - id: efi_d_active_risk_threshold_change_rej_efid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'EFID'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
+      - id: efid_optional
+        type: str_4_nullable
+        doc: 'EFID. Nullable, No Value = 0'
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
@@ -635,9 +617,9 @@ types:
       - id: quantity
         type: u4
         doc: 'Quantity'
-      - id: un_acked_quantity
+      - id: unacked_quantity
         type: u4
-        doc: 'UnAckedQuantity'
+        doc: 'UnackedQuantity'
   active_risk_acknowledge_rej_message:
     seq:
       - id: clordid
@@ -701,9 +683,9 @@ types:
       - id: last_qty
         type: u4
         doc: 'LastQty'
-      - id: un_acked_quantity
+      - id: unacked_quantity
         type: u4
-        doc: 'UnAckedQuantity'
+        doc: 'UnackedQuantity'
   cp_volume_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -739,7 +721,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
       - id: period_in_milli_seconds
         type: u4
@@ -932,7 +914,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: max_notional_in_dollars
-        type: u4
+        type: u8
         doc: 'MaxNotionalInDollars'
   single_order_max_contracts_threshold_state_message:
     seq:
@@ -999,9 +981,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: breach_id
-        type: u8
-        doc: 'BreachID'
+      - id: breach_id_optional
+        type: u8_nullable
+        doc: 'BreachID. Nullable, No Value = 18446744073709551615'
       - id: reject_reason
         type: u2
         enum: reject_reason
@@ -1011,9 +993,9 @@ types:
       - id: clordid_optional
         type: str_20_nullable
         doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: breach_id
-        type: u8
-        doc: 'BreachID'
+      - id: breach_id_optional
+        type: u8_nullable
+        doc: 'BreachID. Nullable, No Value = 18446744073709551615'
   cp_gross_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -1029,7 +1011,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_market_order_gross_notional_threshold_state_message:
     seq:
@@ -1046,7 +1028,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_net_notional_threshold_state_message:
     seq:
@@ -1063,7 +1045,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_market_order_net_notional_threshold_state_message:
     seq:
@@ -1080,7 +1062,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u4
+        type: u8
         doc: 'PriceInDollars'
   cp_duplicate_order_threshold_state_message:
     seq:
@@ -1126,66 +1108,6 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   str_6_nullable:
     seq:
       - id: value
@@ -1218,6 +1140,13 @@ types:
     instances:
       is_null:
         value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   str_20_nullable:
     seq:
       - id: value
@@ -1234,16 +1163,12 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1606,6 +1531,12 @@ enums:
       doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     45:
       id: 'breach_in_progress'
+      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    46:
+      id: 'number_of_breaches_forbid_clearing'
+      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    47:
+      id: 'no_active_breaches'
       doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     100:
       id: 'exchange_closed'

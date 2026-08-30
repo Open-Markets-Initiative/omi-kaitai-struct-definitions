@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.2
+# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.1
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.2
-#   Date: 9/23/2020
+#   Version: 1.1
+#   Date: 7/27/2020
 #   Specification: MEMO SBE-v1_1.pdf
 #
 # Script:
@@ -25,38 +25,29 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxequities_memo_sbe_v1_2
-  title: Memx MemxEquities Memo Sbe v1.2
+  id: memx_memxequities_memo_sbe_v1_1_server
+  title: Memx MemxEquities Memo Sbe v1.1
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.2'
+doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.1'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: server_data
     type:
       switch-on: common_header.message_type
       cases:
-        'message_type::login_request': login_request_message
-        'message_type::replay_request': replay_request_message
-        'message_type::replay_all_request': replay_all_request_message
-        'message_type::stream_request': stream_request_message
-        'message_type::unsequenced_message': unsequenced_message
         'message_type::login_accepted': login_accepted_message
         'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
         'message_type::replay_begin': replay_begin_message
         'message_type::replay_rejected': replay_rejected_message
         'message_type::replay_complete': replay_complete_message
@@ -75,43 +66,57 @@ types:
       - id: message_length
         type: u2
         doc: 'Total bytes following the header (does not include this header)'
-  login_request_message:
+  login_accepted_message:
     seq:
-      - id: token_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token type'
-      - id: token
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token'
-  replay_request_message:
+      - id: supported_request_mode
+        type: u1
+        enum: supported_request_mode
+        doc: 'The request mode that this connection supports'
+  login_rejected_message:
     seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
+      - id: login_reject_code
+        type: u1
+        enum: login_reject_code
+        doc: 'The code for the rejection type'
+  replay_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-      - id: count
+      - id: pending_message_count
         type: u4
-        doc: 'Total number of messages to include in the replay'
-  replay_all_request_message:
+        doc: 'The number of messages to be delivered in this replay'
+  replay_rejected_message:
     seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  stream_request_message:
+      - id: replay_reject_code
+        type: u1
+        enum: replay_reject_code
+        doc: 'The code for the rejection type'
+  replay_complete_message:
     seq:
-      - id: session_id
+      - id: message_count
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'The number of messages which were sent in the replay'
+  stream_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-  unsequenced_message:
+      - id: max_sequence_number
+        type: u8
+        doc: 'The maximum sequence number currently published on this stream'
+  stream_rejected_message:
+    seq:
+      - id: stream_reject_code
+        type: u1
+        enum: stream_reject_code
+        doc: 'The code for the rejection type'
+  stream_complete_message:
+    seq:
+      - id: total_sequence_count
+        type: u8
+        doc: 'The count of messages that were sent on this stream'
+  sequenced_message:
     seq:
       - id: sbe_message
         type: sbe_message
@@ -353,9 +358,10 @@ types:
         size: 6
         encoding: ASCII
         doc: 'SymbolSfx'
-      - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -742,9 +748,10 @@ types:
         size: 6
         encoding: ASCII
         doc: 'SymbolSfx'
-      - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -1073,9 +1080,10 @@ types:
         size: 6
         encoding: ASCII
         doc: 'SymbolSfx'
-      - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -1089,66 +1097,6 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'RejectReason'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1216,6 +1164,9 @@ types:
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1465,22 +1416,6 @@ enums:
     255:
       id: 'null_value'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  side_optional:
-    1:
-      id: 'buy'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'sell'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'sell_short'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'sell_short_exempt'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_status:
     1:
       id: 'new_field'
@@ -1759,15 +1694,6 @@ enums:
     81:
       id: 'missing_disp_method_type'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    82:
-      id: 'missing_firm_risk_setting'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    83:
-      id: 'invalid_account_mpid_to_firm'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    84:
-      id: 'invalid_peg_offset_value'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1987,33 +1913,6 @@ enums:
     22:
       id: 'order_in_pending_state'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    23:
-      id: 'block_session_risk_rule_violated'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    24:
-      id: 'block_sell_short_risk_rule_violated'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    25:
-      id: 'max_shares_per_order_risk_rule_breach'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    26:
-      id: 'no_nbbo_available'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    27:
-      id: 'max_notional_value_per_order_risk_rule_breach'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    28:
-      id: 'max_adv_percent_per_order_risk_rule_breach'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    29:
-      id: 'price_percent_collar_risk_rule_violated'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    30:
-      id: 'price_value_collar_risk_rule_violated'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    31:
-      id: 'hard_to_borrow_security_risk_rule_violated'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2052,6 +1951,9 @@ enums:
     0x52:
       id: 'replay'
       doc: 'Replay Mode'
+    0x54:
+      id: 'snapshot_mode'
+      doc: 'Snapshot Mode'
   login_reject_code:
     0x54:
       id: 'malformed_token'

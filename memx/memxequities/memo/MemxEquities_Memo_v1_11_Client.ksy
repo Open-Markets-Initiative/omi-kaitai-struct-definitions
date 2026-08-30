@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.9
+# Kaitai struct definition for: Memx MemxEquities Memo Sbe v1.11
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.9
-#   Date: 5/25/22
-#   Specification: MEMO SBE-v1_9.pdf
+#   Version: 1.11
+#   Date: 1/13/23
+#   Specification: MEMO SBE-v1_11.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxequities_memo_sbe_v1_9
-  title: Memx MemxEquities Memo Sbe v1.9
+  id: memx_memxequities_memo_sbe_v1_11_client
+  title: Memx MemxEquities Memo Sbe v1.11
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.9'
+doc: 'The Members Exchange Memx Equities Members Orders Sbe v1.11'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -166,21 +153,17 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'MPID'
+      - id: mpid_optional
+        type: str_4_nullable
+        doc: 'MPID. Nullable, No Value = 0'
       - id: symbol
         type: str
         size: 6
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -226,8 +209,9 @@ types:
         type: u4_nullable
         doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
-        type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
+        type: u1
+        enum: display_method
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
         doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
@@ -255,11 +239,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupId. Nullable, No Value = 65535'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   exec_inst:
     seq:
       - id: participate_do_not_initiate
@@ -292,10 +274,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -316,18 +296,14 @@ types:
       - id: locate_reqd
         type: str_1_nullable
         doc: 'LocateReqd. Nullable, No Value = 0'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   order_cancel_request_message:
     seq:
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+      - id: origclordid_optional
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: order_id_optional
         type: u8_nullable
         doc: 'OrderID. Nullable, No Value = 18446744073709551615'
@@ -342,10 +318,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -359,13 +333,12 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+        type: u1
+        enum: side_optional
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -391,11 +364,9 @@ types:
       - id: exec_id
         type: u8
         doc: 'ExecID'
-      - id: mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'MPID'
+      - id: mpid_optional
+        type: str_4_nullable
+        doc: 'MPID. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -406,10 +377,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -455,8 +424,9 @@ types:
         type: u4_nullable
         doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
-        type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
+        type: u1
+        enum: display_method
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
         doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
@@ -490,11 +460,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'CumQty'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   execution_report_new_message:
     seq:
       - id: sending_time
@@ -511,11 +479,9 @@ types:
       - id: exec_id
         type: u8
         doc: 'ExecID'
-      - id: mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'MPID'
+      - id: mpid_optional
+        type: str_4_nullable
+        doc: 'MPID. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -526,10 +492,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -575,8 +539,9 @@ types:
         type: u4_nullable
         doc: 'DisplayQty. Nullable, No Value = 4294967295'
       - id: display_method
-        type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
+        type: u1
+        enum: display_method
+        doc: 'DisplayMethod. Nullable, No Value = 0'
       - id: reserve_replenish_timing
         type: u1_nullable
         doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
@@ -613,11 +578,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   execution_report_rejected_message:
     seq:
       - id: sending_time
@@ -641,10 +604,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -655,11 +616,9 @@ types:
         type: u1
         enum: order_reject_reason
         doc: 'RejectReason'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   execution_report_trade_message:
     seq:
       - id: sending_time
@@ -706,11 +665,14 @@ types:
       - id: trd_matching_id
         type: u8
         doc: 'TrdMatchingID'
-      - id: link_id
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
+      - id: security_group
         type: str
-        size: 4
+        size: 1
         encoding: ASCII
-        doc: 'LnkId'
+        doc: 'SecurityGroup'
   execution_report_pending_cancel_message:
     seq:
       - id: sending_time
@@ -724,11 +686,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+      - id: origclordid_optional
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -738,10 +698,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: ord_status
         type: u1
         enum: ord_status
@@ -752,11 +710,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'CumQty'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   pending_mass_cancel_message:
     seq:
       - id: sending_time
@@ -773,13 +729,12 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+        type: u1
+        enum: side_optional
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -799,11 +754,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+      - id: origclordid_optional
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: order_id
         type: u8
         doc: 'OrderID'
@@ -826,11 +779,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   mass_cancel_done_message:
     seq:
       - id: sending_time
@@ -854,11 +805,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+      - id: origclordid_optional
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -868,10 +817,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -902,11 +849,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'CumQty'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   execution_report_replaced_message:
     seq:
       - id: sending_time
@@ -920,11 +865,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
+      - id: origclordid_optional
+        type: str_16_nullable
+        doc: 'OrigClOrdID. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'ExecID'
@@ -934,10 +877,8 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -971,11 +912,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   execution_report_trade_correction_message:
     seq:
       - id: sending_time
@@ -1014,11 +953,14 @@ types:
       - id: cum_qty
         type: u4
         doc: 'CumQty'
-      - id: link_id
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
+      - id: security_group
         type: str
-        size: 4
+        size: 1
         encoding: ASCII
-        doc: 'LnkId'
+        doc: 'SecurityGroup'
   execution_report_trade_break_message:
     seq:
       - id: sending_time
@@ -1051,11 +993,14 @@ types:
       - id: cum_qty
         type: u4
         doc: 'CumQty'
-      - id: link_id
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
+      - id: security_group
         type: str
-        size: 4
+        size: 1
         encoding: ASCII
-        doc: 'LnkId'
+        doc: 'SecurityGroup'
   execution_report_restatement_message:
     seq:
       - id: sending_time
@@ -1098,11 +1043,9 @@ types:
       - id: extended_restatement_reason
         type: u1_nullable
         doc: 'ExtendedRestatementReason. Nullable, No Value = 255'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   order_cancel_reject_message:
     seq:
       - id: sending_time
@@ -1121,11 +1064,9 @@ types:
         type: u1
         enum: cxl_rej_reason
         doc: 'CxlRejReason'
-      - id: link_id
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LnkId'
+      - id: link_id_optional
+        type: str_4_nullable
+        doc: 'LnkId. Nullable, No Value = 0'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -1142,13 +1083,12 @@ types:
         encoding: ASCII
         doc: 'Symbol'
       - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
+        type: str_6_nullable
+        doc: 'SymbolSfx. Nullable, No Value = 0'
       - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+        type: u1
+        enum: side_optional
+        doc: 'Side. Nullable, No Value = 0'
       - id: lower_than_price
         type: decimal_s8_6_nullable
         doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
@@ -1162,66 +1102,24 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'RejectReason'
-  login_accepted_message:
+  str_4_nullable:
     seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_6_nullable:
     seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1273,6 +1171,15 @@ types:
     instances:
       is_null:
         value: value == 65535
+  str_16_nullable:
+    seq:
+      - id: value
+        size: 16
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1289,6 +1196,9 @@ types:
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1396,65 +1306,53 @@ enums:
       id: 'mass_cancel_reject_message'
       doc: 'MassCancelRejectMessage'
   side:
-    1:
+    0x31:
       id: 'buy'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x32:
       id: 'sell'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x35:
       id: 'sell_short'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
+    0x36:
       id: 'sell_short_exempt'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_type:
-    1:
+    0x31:
       id: 'market'
       doc: 'OrdType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x32:
       id: 'limit'
       doc: 'OrdType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x50:
       id: 'pegged'
       doc: 'OrdType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'OrdType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   time_in_force:
-    1:
+    0x30:
       id: 'day'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x33:
       id: 'immediate_or_cancel'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x34:
       id: 'fill_or_kill'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
+    0x41:
       id: 'good_for_time'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
+    0x46:
       id: 'regular_hours_only'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   order_capacity:
-    1:
+    0x41:
       id: 'agency'
       doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x50:
       id: 'principal'
       doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x52:
       id: 'riskless_principal'
-      doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
       doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cust_order_capacity:
     1:
@@ -1467,27 +1365,24 @@ enums:
       id: 'null_value'
       doc: 'CustOrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   peg_price_type:
-    1:
+    2:
       id: 'mid_price_peg'
       doc: 'PegType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    5:
       id: 'primary_peg'
       doc: 'PegType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'PegType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   display_method:
-    1:
+    0x31:
       id: 'initial'
       doc: 'DispMethodType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x33:
       id: 'random'
       doc: 'DispMethodType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x34:
       id: 'undisclosed'
-      doc: 'DispMethodType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
       doc: 'DispMethodType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reserve_replenish_timing:
     1:
@@ -1500,13 +1395,13 @@ enums:
       id: 'null_value'
       doc: 'ReserveReplenishTimingType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   reprice_frequency:
-    1:
+    0:
       id: 'single_reprice'
       doc: 'RepriceFrequencyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    1:
       id: 'continuous_reprice'
       doc: 'RepriceFrequencyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    2:
       id: 'none'
       doc: 'RepriceFrequencyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
@@ -1523,346 +1418,340 @@ enums:
       id: 'null_value'
       doc: 'RepriceBehaviorType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   self_trade_prevention:
-    1:
+    0:
       id: 'cancel_newest'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    1:
       id: 'cancel_oldest'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    2:
       id: 'decrement_and_cancel'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
+    3:
       id: 'cancel_both'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
+    4:
       id: 'cancel_smallest'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'SelfTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   side_optional:
-    1:
+    0x31:
       id: 'buy'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x32:
       id: 'sell'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x35:
       id: 'sell_short'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
+    0x36:
       id: 'sell_short_exempt'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_status:
-    1:
+    0x30:
       id: 'new_field'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x31:
       id: 'partial_filled'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
+    0x32:
       id: 'filled'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
+    0x34:
       id: 'canceled'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
+    0x36:
       id: 'pending_cancel'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
+    0x38:
       id: 'rejected'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
+    0x41:
       id: 'pending_new'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
+    0x45:
       id: 'pending_replace'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
+    0x43:
       id: 'expired'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   order_reject_reason:
-    0:
-      id: 'other'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'missing_symbol'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'missing_locate'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'missing_cl_ord_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'missing_side'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'missing_order_quantity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'missing_order_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'missing_time_in_force'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'missing_order_capacity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'missing_exec_inst'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'missing_limit_price'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'missing_max_floor'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'missing_reserve_replenish_amount_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'missing_reserve_replenish_time_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'missing_random_replenish_value'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'missing_reprice_frequency_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'missing_reprice_behavior_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'missing_customer_capacity_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    18:
-      id: 'missing_expire_time'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    19:
-      id: 'missing_peg_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    20:
-      id: 'invalid_modifier_for_order_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    21:
-      id: 'invalid_modifiers_combination'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    22:
-      id: 'invalid_trading_session_for_order_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    23:
-      id: 'invalid_time_in_force_for_order_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    24:
-      id: 'invalid_min_quantity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    25:
-      id: 'invalid_order_quantity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    26:
-      id: 'invalid_side'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    27:
-      id: 'invalid_order_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    28:
-      id: 'invalid_time_in_force'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    29:
-      id: 'invalid_order_capacity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    30:
-      id: 'invalid_customer_capacity'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    31:
       id: 'invalid_symbol'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    32:
-      id: 'invalid_expire_time'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    33:
-      id: 'invalid_limit_price'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    34:
-      id: 'invalid_limit_price_increment'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    35:
-      id: 'invalid_max_floor'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    36:
-      id: 'invalid_random_replenish_value'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    37:
-      id: 'invalid_random_replenish_value_for_reserve_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    38:
-      id: 'invalid_reserve_replenish_amount_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    39:
-      id: 'invalid_reserve_replenish_time_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    40:
-      id: 'invalid_reprice_frequency_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    41:
-      id: 'invalid_reprice_behavior_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    42:
-      id: 'invalid_reprice_behavior_for_reprice_frequency'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    43:
-      id: 'invalid_mpid_value'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    44:
-      id: 'invalid_peg_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    45:
-      id: 'invalid_modifier_for_peg_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    46:
-      id: 'invalid_locate'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    47:
-      id: 'symbol_halted_or_paused'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    48:
+    2:
       id: 'exchange_closed'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    49:
-      id: 'duplicate_cl_ord_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    50:
+    3:
       id: 'order_size_exceeds_limit'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    51:
-      id: 'order_notional_exceeds_limit'
+    6:
+      id: 'duplicate_cl_ord_id'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    52:
-      id: 'block_iso_risk_rule_violated'
+    18:
+      id: 'invalid_limit_price_increment'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    53:
-      id: 'block_session_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    54:
-      id: 'block_sell_short_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    55:
-      id: 'block_non_test_symbols_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    56:
-      id: 'max_shares_per_order_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    57:
-      id: 'max_notional_value_per_order_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    58:
-      id: 'price_percent_collar_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    59:
-      id: 'price_value_collar_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    60:
-      id: 'max_adv_percent_per_order_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    61:
-      id: 'daily_gross_notional_exposure_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    62:
-      id: 'daily_net_notional_exposure_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    63:
-      id: 'max_num_duplicate_orders_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    64:
-      id: 'max_order_rate_risk_rule_breach'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    65:
-      id: 'restricted_security_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    66:
-      id: 'hard_to_borrow_security_risk_rule_violated'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    67:
-      id: 'invalid_self_trade_prevention_configuration'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    68:
-      id: 'invalid_self_trade_prevention_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    69:
-      id: 'invalid_risk_group_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    70:
-      id: 'firm_disabled'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    71:
-      id: 'mpid_disabled'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    72:
-      id: 'account_disabled'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    73:
+    19:
       id: 'no_nbbo_available'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    74:
-      id: 'cannot_trade_non_test_symbol'
+    20:
+      id: 'order_notional_exceeds_limit'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    75:
-      id: 'missing_firm'
+    22:
+      id: 'block_sell_short_risk_rule_violated'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    76:
-      id: 'missing_account'
+    23:
+      id: 'hard_to_borrow_security_risk_rule_violated'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    77:
-      id: 'missing_mpid'
+    27:
+      id: 'max_notional_value_per_order_risk_rule_breach'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    78:
-      id: 'missing_risk_group'
+    99:
+      id: 'other'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    79:
-      id: 'daily_market_order_gross_notional_exposure_risk_rule_breach'
+    100:
+      id: 'missing_symbol'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    80:
-      id: 'daily_market_order_net_notional_exposure_risk_rule_breach'
+    101:
+      id: 'missing_locate'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    81:
-      id: 'missing_disp_method_type'
+    102:
+      id: 'invalid_locate'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    82:
-      id: 'missing_firm_risk_setting'
+    103:
+      id: 'missing_cl_ord_id'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    83:
-      id: 'invalid_account_mpid_to_firm'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    84:
-      id: 'invalid_peg_offset_value'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    85:
-      id: 'invalid_disp_method_type'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    86:
-      id: 'missing_cancel_group_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    87:
-      id: 'invalid_cancel_group_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    88:
-      id: 'missing_stp_group_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    89:
-      id: 'invalid_stp_group_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    90:
+    104:
       id: 'invalid_cl_ord_id'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    91:
+    105:
+      id: 'missing_side'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    106:
+      id: 'invalid_side'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    107:
+      id: 'missing_order_quantity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    108:
+      id: 'invalid_order_quantity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    109:
+      id: 'missing_order_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    110:
+      id: 'invalid_order_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    111:
+      id: 'missing_time_in_force'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    112:
+      id: 'invalid_time_in_force'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    113:
+      id: 'missing_order_capacity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    114:
+      id: 'invalid_order_capacity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    115:
+      id: 'missing_exec_inst'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    116:
+      id: 'missing_limit_price'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    117:
+      id: 'invalid_limit_price'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    118:
+      id: 'missing_max_floor'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    119:
+      id: 'invalid_max_floor'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    120:
+      id: 'missing_reserve_replenish_amount_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    121:
+      id: 'invalid_reserve_replenish_amount_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    122:
+      id: 'missing_reserve_replenish_time_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    123:
+      id: 'invalid_reserve_replenish_time_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    124:
+      id: 'missing_random_replenish_value'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    125:
+      id: 'invalid_random_replenish_value'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    126:
+      id: 'invalid_random_replenish_value_for_reserve_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    127:
+      id: 'missing_reprice_frequency_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    128:
+      id: 'invalid_reprice_frequency_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    129:
+      id: 'missing_reprice_behavior_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    130:
+      id: 'invalid_reprice_behavior_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    131:
+      id: 'invalid_reprice_behavior_for_reprice_frequency'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    132:
+      id: 'missing_customer_capacity_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    133:
+      id: 'invalid_customer_capacity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    134:
+      id: 'missing_expire_time'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    135:
+      id: 'invalid_expire_time'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    136:
+      id: 'missing_peg_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    137:
+      id: 'invalid_peg_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    138:
+      id: 'invalid_modifier_for_order_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    139:
+      id: 'invalid_modifiers_combination'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    140:
+      id: 'invalid_trading_session_for_order_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    141:
+      id: 'invalid_time_in_force_for_order_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    142:
+      id: 'invalid_modifier_for_peg_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    143:
+      id: 'invalid_min_quantity'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    145:
+      id: 'invalid_mpid_value'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    146:
+      id: 'symbol_halted_or_paused'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    147:
+      id: 'block_iso_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    148:
+      id: 'block_session_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    149:
+      id: 'block_non_test_symbols_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    150:
+      id: 'max_shares_per_order_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    151:
+      id: 'price_percent_collar_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    152:
+      id: 'price_value_collar_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    153:
+      id: 'max_adv_percent_per_order_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    154:
+      id: 'daily_gross_notional_exposure_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    155:
+      id: 'daily_net_notional_exposure_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    156:
+      id: 'max_num_duplicate_orders_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    157:
+      id: 'max_order_rate_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    158:
+      id: 'restricted_security_risk_rule_violated'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    159:
+      id: 'invalid_self_trade_prevention_configuration'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    160:
+      id: 'invalid_self_trade_prevention_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    161:
+      id: 'invalid_risk_group_id'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    162:
+      id: 'firm_disabled'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    163:
+      id: 'mpid_disabled'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    164:
+      id: 'account_disabled'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    165:
+      id: 'cannot_trade_non_test_symbol'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    166:
+      id: 'missing_firm'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    167:
+      id: 'missing_account'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    168:
+      id: 'missing_mpid'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    169:
+      id: 'missing_risk_group'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    170:
+      id: 'daily_market_order_gross_notional_exposure_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    171:
+      id: 'daily_market_order_net_notional_exposure_risk_rule_breach'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    172:
+      id: 'missing_disp_method_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    173:
+      id: 'missing_firm_risk_setting'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    174:
+      id: 'invalid_account_mpid_to_firm'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    175:
+      id: 'invalid_peg_offset_value'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    176:
+      id: 'invalid_disp_method_type'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    177:
+      id: 'missing_cancel_group_id'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    178:
+      id: 'invalid_cancel_group_id'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    179:
+      id: 'missing_stp_group_id'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    180:
+      id: 'invalid_stp_group_id'
+      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    181:
       id: 'invalid_lnk_id'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
@@ -1881,17 +1770,26 @@ enums:
     4:
       id: 'cross'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
+    51:
       id: 'add_hidden'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
+    52:
       id: 'add_midpoint_peg'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
+    53:
       id: 'add_displayed_nbbo_improve'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
+    54:
       id: 'add_displayed_nbbo_join'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    61:
+      id: 'immediate_midpoint_remove_on_entry'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    62:
+      id: 'add_displayed_price_improvement'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    63:
+      id: 'add_hidden_price_improvement'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     101:
       id: 'retail_add_displayed'
@@ -1905,20 +1803,29 @@ enums:
     104:
       id: 'retail_cross'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    105:
+    151:
       id: 'retail_add_hidden'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    106:
+    152:
       id: 'retail_add_midpoint_peg'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    107:
+    153:
       id: 'retail_add_displayed_nbbo_improve'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    108:
+    154:
       id: 'retail_add_displayed_nbbo_join'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    109:
+    160:
       id: 'retail_removed_on_entry'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    161:
+      id: 'retail_immediate_midpoint_remove_on_entry'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    162:
+      id: 'retail_add_displayed_price_improvement'
+      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    163:
+      id: 'retail_add_hidden_price_improvement'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
@@ -1971,9 +1878,6 @@ enums:
       doc: 'ExchangeCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x48:
       id: 'eprl'
-      doc: 'ExchangeCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    0x20:
-      id: 'null_value'
       doc: 'ExchangeCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cancel_reason:
     0:
@@ -2037,10 +1941,10 @@ enums:
       id: 'null_value'
       doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   exec_restatement_reason:
-    1:
+    3:
       id: 'order_reprice'
       doc: 'ExecRestatementType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    5:
       id: 'self_trade_prevention'
       doc: 'ExecRestatementType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     99:
@@ -2059,126 +1963,138 @@ enums:
     2:
       id: 'joined_nbbo'
       doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'self_trade_cancel_newest'
+      doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'self_trade_cancel_oldest'
+      doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'self_trade_decrement_and_cancel'
+      doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'self_trade_cancel_both'
+      doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'self_trade_cancel_smallest'
+      doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'ExtendedRestatementReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cxl_rej_response_to:
-    1:
+    0x31:
       id: 'order_cancel_request'
       doc: 'CxlRejResponseToType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
+    0x32:
       id: 'order_cancel_replace_request'
       doc: 'CxlRejResponseToType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'CxlRejResponseToType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cxl_rej_reason:
-    0:
-      id: 'other'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     1:
-      id: 'missing_symbol'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'missing_cl_ord_id'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'missing_orig_order_identifiers'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'ambiguous_orig_order_identifiers'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
       id: 'unknown_orig_order'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'orig_order_symbol_not_matching_request_symbol'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'missing_locate'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_order_quantity'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_symbol'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'invalid_limit_price'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'invalid_limit_price_increment'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'invalid_locate'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'symbol_halted_or_paused'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'exchange_closed'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'duplicate_cl_ord_id'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'order_size_exceeds_limit'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'exceeded_max_notional_order_amt'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    18:
-      id: 'unsupported_display_quantity_change'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    19:
-      id: 'unsupported_ord_type_change'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    20:
-      id: 'unsupported_side_change'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    21:
-      id: 'unsupported_quantity_change'
-      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    22:
+    3:
       id: 'order_in_pending_state'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    23:
+    6:
+      id: 'duplicate_cl_ord_id'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    18:
+      id: 'invalid_limit_price_increment'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    99:
+      id: 'other'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    100:
+      id: 'missing_symbol'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    101:
+      id: 'missing_locate'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    102:
+      id: 'missing_cl_ord_id'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    103:
+      id: 'invalid_order_quantity'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    104:
+      id: 'invalid_symbol'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    105:
+      id: 'invalid_limit_price'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    107:
+      id: 'symbol_halted_or_paused'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    108:
+      id: 'order_size_exceeds_limit'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    109:
+      id: 'exceeded_max_notional_order_amt'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    110:
+      id: 'missing_orig_order_identifiers'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    111:
+      id: 'ambiguous_orig_order_identifiers'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    112:
+      id: 'orig_order_symbol_not_matching_request_symbol'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    113:
+      id: 'unsupported_display_quantity_change'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    114:
+      id: 'unsupported_ord_type_change'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    115:
+      id: 'unsupported_side_change'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    116:
+      id: 'unsupported_quantity_change'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    117:
+      id: 'invalid_locate'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    118:
+      id: 'exchange_closed'
+      doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    119:
       id: 'block_session_risk_rule_violated'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    24:
+    120:
       id: 'block_sell_short_risk_rule_violated'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    25:
+    121:
       id: 'max_shares_per_order_risk_rule_breach'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    26:
+    122:
       id: 'no_nbbo_available'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    27:
+    123:
       id: 'max_notional_value_per_order_risk_rule_breach'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    28:
+    124:
       id: 'max_adv_percent_per_order_risk_rule_breach'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    29:
+    125:
       id: 'price_percent_collar_risk_rule_violated'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    30:
+    126:
       id: 'price_value_collar_risk_rule_violated'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    31:
+    127:
       id: 'hard_to_borrow_security_risk_rule_violated'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    32:
+    128:
       id: 'invalid_side'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    33:
+    129:
       id: 'invalid_ord_type'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    34:
+    130:
       id: 'invalid_cl_ord_id'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    35:
+    131:
       id: 'invalid_lnk_id'
       doc: 'CancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:

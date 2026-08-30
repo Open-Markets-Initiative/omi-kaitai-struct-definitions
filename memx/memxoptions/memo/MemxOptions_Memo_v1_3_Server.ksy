@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.5.b
+# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.3
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.5.b
-#   Date: 2/2/2024
-#   Specification: MEMO SBE for Options-v1_5b
+#   Version: 1.3
+#   Date: 6/29/2023
+#   Specification: MEMO SBE for Options-v1_3
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,35 +25,27 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_memo_sbe_v1_5_b
-  title: Memx MemxOptions Memo Sbe v1.5.b
+  id: memx_memxoptions_memo_sbe_v1_3_server
+  title: Memx MemxOptions Memo Sbe v1.3
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Members Orders Sbe v1.5.b'
+doc: 'The Members Exchange Memx Options Members Orders Sbe v1.3'
 doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: server_data
     type:
       switch-on: common_header.message_type
       cases:
-        'message_type::login_request': login_request_message
-        'message_type::replay_request': replay_request_message
-        'message_type::replay_all_request': replay_all_request_message
-        'message_type::stream_request': stream_request_message
-        'message_type::unsequenced_message': unsequenced_message
         'message_type::login_accepted': login_accepted_message
         'message_type::login_rejected': login_rejected_message
         'message_type::start_of_session': start_of_session_message
@@ -75,43 +67,62 @@ types:
       - id: message_length
         type: u2
         doc: 'Total bytes following the header (does not include this header)'
-  login_request_message:
+  login_accepted_message:
     seq:
-      - id: token_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token type'
-      - id: token
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Login Token'
-  replay_request_message:
+      - id: supported_request_mode
+        type: u1
+        enum: supported_request_mode
+        doc: 'The request mode that this connection supports'
+  login_rejected_message:
+    seq:
+      - id: login_reject_code
+        type: u1
+        enum: login_reject_code
+        doc: 'The code for the rejection type'
+  start_of_session_message:
     seq:
       - id: session_id
         type: u8
         doc: 'The identifier for the session for which data is desired'
+  replay_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-      - id: count
+      - id: pending_message_count
         type: u4
-        doc: 'Total number of messages to include in the replay'
-  replay_all_request_message:
+        doc: 'The number of messages to be delivered in this replay'
+  replay_rejected_message:
     seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  stream_request_message:
+      - id: replay_reject_code
+        type: u1
+        enum: replay_reject_code
+        doc: 'The code for the rejection type'
+  replay_complete_message:
     seq:
-      - id: session_id
+      - id: message_count
         type: u8
-        doc: 'The identifier for the session for which data is desired'
+        doc: 'The number of messages which were sent in the replay'
+  stream_begin_message:
+    seq:
       - id: next_sequence_number
         type: u8
         doc: 'The first requested sequence number'
-  unsequenced_message:
+      - id: max_sequence_number
+        type: u8
+        doc: 'The maximum sequence number currently published on this stream'
+  stream_rejected_message:
+    seq:
+      - id: stream_reject_code
+        type: u1
+        enum: stream_reject_code
+        doc: 'The code for the rejection type'
+  stream_complete_message:
+    seq:
+      - id: total_sequence_count
+        type: u8
+        doc: 'The count of messages that were sent on this stream'
+  sequenced_message:
     seq:
       - id: sbe_message
         type: sbe_message
@@ -152,7 +163,7 @@ types:
             'template_id::mass_cancel_done_message': mass_cancel_done_message
             'template_id::order_cancel_reject_message': order_cancel_reject_message
             'template_id::allocation_instruction_ack_message': allocation_instruction_ack_message
-            'template_id::allocation_instruction_alert_message': allocation_instruction_alert_message
+            'template_id::allocation_report_message': allocation_report_message
             'template_id::user_notification_message': user_notification_message
             'template_id::mass_cancel_clear_lockout_reject_message': mass_cancel_clear_lockout_reject_message
             'template_id::mass_cancel_clear_lockout_done_message': mass_cancel_clear_lockout_done_message
@@ -204,10 +215,10 @@ types:
         type: u1
         enum: time_in_force
         doc: 'TimeInForce'
-      - id: position_effect_optional
+      - id: open_or_close_optional
         type: u1
-        enum: position_effect_optional
-        doc: 'PositionEffect. Nullable, No Value = 0'
+        enum: open_or_close_optional
+        doc: 'OpenOrClose. Nullable, No Value = 0'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInstType bit set'
@@ -280,9 +291,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'PartyIDSource'
-      - id: party_role
+      - id: party_role_party_role_type
         type: u1
-        enum: party_role
+        enum: party_role_party_role_type
         doc: 'PartyRole'
   short_two_sided_bulk_quote_message:
     seq:
@@ -584,14 +595,11 @@ types:
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: underlying_or_series
-        type: u1
-        enum: underlying_or_series
-        doc: 'UnderlyingOrSeries'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
+        type: u1_nullable
+        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
       - id: options_security_id_optional
         type: str_8_nullable
         doc: 'OptionsSecurityID. Nullable, No Value = 0'
@@ -638,17 +646,23 @@ types:
         size: 20
         encoding: ASCII
         doc: 'AllocID'
-      - id: alloc_type
-        type: u1
-        enum: alloc_type
-        doc: 'AllocType'
       - id: alloc_trans_type
         type: u1
         enum: alloc_trans_type
         doc: 'AllocTransType'
-      - id: ref_alloc_id_optional
-        type: str_20_nullable
-        doc: 'RefAllocID. Nullable, No Value = 0'
+      - id: alloc_type
+        type: u1
+        enum: alloc_type
+        doc: 'AllocType'
+      - id: ref_alloc_report_id
+        type: u8_nullable
+        doc: 'RefAllocReportID. Nullable, No Value = 18446744073709551615'
+      - id: exec_ref_id_optional
+        type: u8_nullable
+        doc: 'ExecRefID. Nullable, No Value = 18446744073709551615'
+      - id: trd_match_id
+        type: u8
+        doc: 'TrdMatchID'
       - id: security_id
         type: str
         size: 8
@@ -658,52 +672,40 @@ types:
         type: u1
         enum: side
         doc: 'Side'
-      - id: execution_allocations_groups
-        type: execution_allocations_groups
-        doc: 'ExecutionAllocations Block'
-      - id: requested_allocations_groups
-        type: requested_allocations_groups
-        doc: 'RequestedAllocations Block'
-  execution_allocations_groups:
-    seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: execution_allocations_group
-        type: execution_allocations_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'ExecutionAllocations'
-  execution_allocations_group:
-    seq:
-      - id: trade_id
-        type: u8
-        doc: 'TradeId'
-      - id: last_qty
+      - id: quantity_uint_32
         type: u4
-        doc: 'LastQty'
-      - id: last_px
-        type: decimal_u8_8
-        doc: 'LastPx. Implied decimal with scale 1e-8'
-  requested_allocations_groups:
+        doc: 'Quantity'
+      - id: trade_date
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'TradeDate'
+      - id: allocation_instruction_message_allocations_groups
+        type: allocation_instruction_message_allocations_groups
+        doc: 'Allocations Block'
+  allocation_instruction_message_allocations_groups:
     seq:
       - id: repeating_group_dimensions
         type: repeating_group_dimensions
         doc: 'RepeatingGroupDimensions'
-      - id: requested_allocations_group
-        type: requested_allocations_group
+      - id: allocation_instruction_message_allocations_group
+        type: allocation_instruction_message_allocations_group
         repeat: expr
         repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'RequestedAllocations'
-  requested_allocations_group:
+        doc: 'Allocations'
+  allocation_instruction_message_allocations_group:
     seq:
       - id: alloc_qty
         type: u4
         doc: 'AllocQty'
-      - id: alloc_position_effect
+      - id: trading_capacity
         type: u1
-        enum: alloc_position_effect
-        doc: 'AllocPositionEffect'
+        enum: trading_capacity
+        doc: 'TradingCapacity'
+      - id: open_or_close
+        type: u1
+        enum: open_or_close
+        doc: 'OpenOrClose'
       - id: nested_parties_groups
         type: nested_parties_groups
         doc: 'Parties Block'
@@ -719,20 +721,19 @@ types:
         doc: 'Parties'
   nested_parties_group:
     seq:
-      - id: nested_party_id
+      - id: party_i_d_execution_report_new_party_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'NestedPartyID'
-      - id: nested_party_id_source
+        doc: 'PartyID'
+      - id: party_id_source
         type: str
         size: 1
         encoding: ASCII
-        doc: 'NestedPartyIDSource'
-      - id: nested_party_role
+        doc: 'PartyIDSource'
+      - id: party_role_uint_8
         type: u1
-        enum: nested_party_role
-        doc: 'NestedPartyRole'
+        doc: 'PartyRole'
   execution_report_new_message:
     seq:
       - id: order_id
@@ -776,10 +777,10 @@ types:
         type: u1
         enum: time_in_force
         doc: 'TimeInForce'
-      - id: position_effect_optional
+      - id: open_or_close_optional
         type: u1
-        enum: position_effect_optional
-        doc: 'PositionEffect. Nullable, No Value = 0'
+        enum: open_or_close_optional
+        doc: 'OpenOrClose. Nullable, No Value = 0'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInstType bit set'
@@ -1012,10 +1013,10 @@ types:
         size: 4
         encoding: ASCII
         doc: 'LastMkt'
-      - id: position_effect
+      - id: open_or_close
         type: u1
-        enum: position_effect
-        doc: 'PositionEffect'
+        enum: open_or_close
+        doc: 'OpenOrClose'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
@@ -1290,11 +1291,6 @@ types:
         type: u1
         enum: ord_status
         doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -1375,14 +1371,11 @@ types:
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: underlying_or_series
-        type: u1
-        enum: underlying_or_series
-        doc: 'UnderlyingOrSeries'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
+        type: u1_nullable
+        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'Underlier. Nullable, No Value = 0'
       - id: options_security_id_optional
         type: str_8_nullable
         doc: 'OptionsSecurityID. Nullable, No Value = 0'
@@ -1406,7 +1399,7 @@ types:
       - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
-      - id: underlying_or_series_optional
+      - id: underlying_or_series
         type: u1_nullable
         doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
       - id: underlier_optional
@@ -1467,111 +1460,127 @@ types:
         doc: 'SendingTime. Nanoseconds since Unix epoch'
   allocation_instruction_ack_message:
     seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+      - id: alloc_report_id
+        type: u8
+        doc: 'AllocReportID'
       - id: alloc_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'AllocID'
-      - id: alloc_type
-        type: u1
-        enum: alloc_type
-        doc: 'AllocType'
-      - id: alloc_trans_type
-        type: u1
-        enum: alloc_trans_type
-        doc: 'AllocTransType'
-      - id: secondary_alloc_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'SecondaryAllocID'
-      - id: ref_alloc_id_optional
-        type: str_20_nullable
-        doc: 'RefAllocID. Nullable, No Value = 0'
       - id: alloc_status
         type: u1
         enum: alloc_status
         doc: 'AllocStatus'
       - id: alloc_rej_code
-        type: u2_nullable
-        doc: 'AllocRejCode. Nullable, No Value = 65535'
-      - id: reported_allocations_groups
-        type: reported_allocations_groups
-        doc: 'ReportedAllocations Block'
-  reported_allocations_groups:
-    seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: reported_allocations_group
-        type: reported_allocations_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'ReportedAllocations'
-  reported_allocations_group:
-    seq:
-      - id: alloc_qty
-        type: u4
-        doc: 'AllocQty'
-      - id: alloc_position_effect
-        type: u1
-        enum: alloc_position_effect
-        doc: 'AllocPositionEffect'
-      - id: alloc_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'AllocID'
-      - id: nested_parties_groups
-        type: nested_parties_groups
-        doc: 'Parties Block'
-  allocation_instruction_alert_message:
-    seq:
+        type: u2
+        enum: alloc_rej_code
+        doc: 'AllocRejCode'
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
+  allocation_report_message:
+    seq:
+      - id: alloc_report_id
+        type: u8
+        doc: 'AllocReportID'
       - id: alloc_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'AllocID'
-      - id: alloc_type
-        type: u1
-        enum: alloc_type
-        doc: 'AllocType'
       - id: alloc_trans_type
         type: u1
         enum: alloc_trans_type
         doc: 'AllocTransType'
-      - id: ref_alloc_id_optional
-        type: str_20_nullable
-        doc: 'RefAllocID. Nullable, No Value = 0'
-      - id: alloc_canc_replace_reason
-        type: u2_nullable
-        doc: 'AllocCancReplaceReason. Nullable, No Value = 65535'
-      - id: side
+      - id: alloc_type
         type: u1
-        enum: side
-        doc: 'Side'
+        enum: alloc_type
+        doc: 'AllocType'
+      - id: alloc_status
+        type: u1
+        enum: alloc_status
+        doc: 'AllocStatus'
+      - id: exec_ref_id
+        type: u8
+        doc: 'ExecRefID'
+      - id: trd_match_id
+        type: u8
+        doc: 'TrdMatchID'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'OptionsSecurityID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: quantity_uint_32
+        type: u4
+        doc: 'Quantity'
       - id: trade_date
         type: str
         size: 8
         encoding: ASCII
         doc: 'TradeDate'
-      - id: execution_allocations_groups
-        type: execution_allocations_groups
-        doc: 'ExecutionAllocations Block'
-      - id: reported_allocations_groups
-        type: reported_allocations_groups
-        doc: 'ReportedAllocations Block'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'SendingTime. Nanoseconds since Unix epoch'
+      - id: allocation_report_message_allocations_groups
+        type: allocation_report_message_allocations_groups
+        doc: 'Allocations Block'
+  allocation_report_message_allocations_groups:
+    seq:
+      - id: repeating_group_dimensions
+        type: repeating_group_dimensions
+        doc: 'RepeatingGroupDimensions'
+      - id: allocation_report_message_allocations_group
+        type: allocation_report_message_allocations_group
+        repeat: expr
+        repeat-expr: repeating_group_dimensions.num_in_group
+        doc: 'Allocations'
+  allocation_report_message_allocations_group:
+    seq:
+      - id: alloc_qty
+        type: u4
+        doc: 'AllocQty'
+      - id: trading_capacity
+        type: u1
+        enum: trading_capacity
+        doc: 'TradingCapacity'
+      - id: open_or_close
+        type: u1
+        enum: open_or_close
+        doc: 'OpenOrClose'
+      - id: allocation_report_message_parties_groups
+        type: allocation_report_message_parties_groups
+        doc: 'Parties Block'
+  allocation_report_message_parties_groups:
+    seq:
+      - id: repeating_group_dimensions
+        type: repeating_group_dimensions
+        doc: 'RepeatingGroupDimensions'
+      - id: allocation_report_message_parties_group
+        type: allocation_report_message_parties_group
+        repeat: expr
+        repeat-expr: repeating_group_dimensions.num_in_group
+        doc: 'Parties'
+  allocation_report_message_parties_group:
+    seq:
+      - id: party_i_d_execution_report_new_party_id
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'PartyID'
+      - id: party_id_source
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'PartyIDSource'
+      - id: party_role_uint_8
+        type: u1
+        doc: 'PartyRole'
   user_notification_message:
     seq:
       - id: sending_time
@@ -1611,66 +1620,6 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1744,6 +1693,15 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   str_8_nullable:
     seq:
       - id: value
@@ -1760,18 +1718,12 @@ types:
     instances:
       is_null:
         value: value == 4294967295
-  str_6_nullable:
-    seq:
-      - id: value
-        size: 6
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: value[0] == 0
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1903,8 +1855,8 @@ enums:
       id: 'allocation_instruction_ack_message'
       doc: 'AllocationInstructionAckMessage'
     28:
-      id: 'allocation_instruction_alert_message'
-      doc: 'AllocationInstructionAlertMessage'
+      id: 'allocation_report_message'
+      doc: 'AllocationReportMessage'
     29:
       id: 'user_notification_message'
       doc: 'UserNotificationMessage'
@@ -1938,13 +1890,16 @@ enums:
     0x33:
       id: 'immediate_or_cancel'
       doc: 'TimeInForceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  position_effect_optional:
+  open_or_close_optional:
     0x4f:
       id: 'open'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x43:
       id: 'close'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    0x30:
+      id: 'null_value'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   trading_capacity:
     1:
       id: 'customer'
@@ -2006,7 +1961,7 @@ enums:
     255:
       id: 'null_value'
       doc: 'MatchTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  party_role:
+  party_role_party_role_type:
     1:
       id: 'executing_firm_id'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2057,13 +2012,6 @@ enums:
     255:
       id: 'null_value'
       doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  alloc_type:
-    100:
-      id: 'post_trade_edit'
-      doc: 'AllocType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'AllocType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   alloc_trans_type:
     0:
       id: 'new_field'
@@ -2071,50 +2019,26 @@ enums:
     1:
       id: 'replace'
       doc: 'AllocTransType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'cancel'
-      doc: 'AllocTransType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'AllocTransType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  alloc_position_effect:
+  alloc_type:
+    100:
+      id: 'post_trade_edit'
+      doc: 'AllocType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    255:
+      id: 'null_value'
+      doc: 'AllocType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  open_or_close:
     0x4f:
       id: 'open'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     0x43:
       id: 'close'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  nested_party_role:
-    1:
-      id: 'executing_firm_id'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'actionable_identifier'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'give_up_clearing_firm'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'contra_efid'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    18:
-      id: 'contra_give_up'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    24:
-      id: 'optional_occ_data'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    37:
-      id: 'contra_mm_sub_account'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    40:
-      id: 'cmta'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    41:
-      id: 'contra_cmta'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    66:
-      id: 'market_maker_sub_account'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    0x30:
+      id: 'null_value'
+      doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   ord_status:
     0x30:
       id: 'new_field'
@@ -2259,10 +2183,10 @@ enums:
       id: 'two_sided_quotes_cross'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     142:
-      id: 'missing_position_effect'
+      id: 'missing_open_or_close'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     143:
-      id: 'invalid_position_effect'
+      id: 'invalid_open_or_close'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     144:
       id: 'missing_reprice_behavior_type'
@@ -2293,45 +2217,6 @@ enums:
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     153:
       id: 'invalid_party_id_source'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    154:
-      id: 'underlying_symbol_not_open'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    155:
-      id: 'missing_sending_time'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    156:
-      id: 'invalid_sending_time'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    157:
-      id: 'missing_sub_account'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    158:
-      id: 'invalid_sub_account'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    159:
-      id: 'missing_give_up'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    160:
-      id: 'invalid_give_up'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    161:
-      id: 'missing_cmta'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    162:
-      id: 'invalid_cmta'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    163:
-      id: 'missing_actionable_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    164:
-      id: 'invalid_actionable_id'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    165:
-      id: 'missing_optional_occ_data'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    166:
-      id: 'invalid_optional_occ_data'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     200:
       id: 'halted'
@@ -2444,12 +2329,6 @@ enums:
     327:
       id: 'market_order_net_notional_value_exceeds_threshold'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    328:
-      id: 'limit_order_fat_finger_check'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    329:
-      id: 'bulk_quote_fat_finger_check'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2463,13 +2342,6 @@ enums:
     255:
       id: 'null_value'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  position_effect:
-    0x4f:
-      id: 'open'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    0x43:
-      id: 'close'
-      doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   contra_trading_capacity:
     1:
       id: 'customer'
@@ -2574,27 +2446,6 @@ enums:
     35:
       id: 'market_order_net_notional_value_exceeds_threshold'
       doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    36:
-      id: 'market_order_nbbo_width_exceeded'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    37:
-      id: 'market_order_no_national_best_bid'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    38:
-      id: 'market_order_no_national_best_offer'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    39:
-      id: 'drill_through_price_exceeded'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    40:
-      id: 'order_would_lock_or_cross'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    41:
-      id: 'mass_cancel_request'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    42:
-      id: 'locked_or_crossed_market'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2679,25 +2530,9 @@ enums:
     17:
       id: 'mass_cancel_in_progress'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    18:
-      id: 'missing_sending_time'
-      doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    19:
-      id: 'invalid_sending_time'
-      doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  underlying_or_series_optional:
-    0:
-      id: 'cancel_all_on_underlying'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'cancel_all_on_series'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'UnderlyingOrSeriesType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   cxl_rej_response_to:
     0x31:
       id: 'order_cancel_request'
@@ -2780,12 +2615,6 @@ enums:
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     119:
       id: 'invalid_order_id'
-      doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    120:
-      id: 'missing_sending_time'
-      doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    121:
-      id: 'invalid_sending_time'
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     200:
       id: 'halted'
@@ -2892,12 +2721,6 @@ enums:
     327:
       id: 'market_order_net_notional_value_exceeds_threshold'
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    328:
-      id: 'limit_order_fat_finger_check'
-      doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    329:
-      id: 'bulk_quote_fat_finger_check'
-      doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2917,59 +2740,55 @@ enums:
   alloc_rej_code:
     1:
       id: 'incorrect_quantity'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     8:
       id: 'incorrect_allocated_quantity'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     10:
       id: 'unknown_or_stale_exec_id'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     11:
       id: 'mismatched_data'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     14:
       id: 'duplicate_or_missing_individual_alloc_id'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     15:
       id: 'trade_not_recognized'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     16:
       id: 'duplicate_trade'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     17:
       id: 'incorrect_or_missing_instrument'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     23:
       id: 'unknown_or_missing_party'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     24:
       id: 'incorrect_or_missing_side'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    26:
+      id: 'incorrect_or_missing_trade_date'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     27:
       id: 'missing_trading_capacity'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     28:
       id: 'invalid_trading_capacity'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     29:
-      id: 'missing_position_effect_type'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      id: 'missing_open_or_close_type'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     30:
-      id: 'invalid_position_effect_type'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      id: 'invalid_open_or_close_type'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     99:
       id: 'other'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  alloc_canc_replace_reason:
-    2:
-      id: 'change_in_underlying_order_details'
-      doc: 'AllocCancReplaceReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    65535:
-      id: 'null_value'
-      doc: 'AllocCancReplaceReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllocRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   user_status:
     8:
       id: 'session_shutdown_warning'
@@ -2995,9 +2814,6 @@ enums:
       doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     4:
       id: 'invalid_lockout_id'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'unknown_lockout_id'
       doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'

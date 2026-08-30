@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.9
+# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.5.b
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.9
-#   Date: 9/27/2024
-#   Specification: MEMO for US Options - SBE-v1_9.pdf
+#   Version: 1.5.b
+#   Date: 2/2/2024
+#   Specification: MEMO SBE for Options-v1_5b
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_memo_sbe_v1_9
-  title: Memx MemxOptions Memo Sbe v1.9
+  id: memx_memxoptions_memo_sbe_v1_5_b_client
+  title: Memx MemxOptions Memo Sbe v1.5.b
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Members Orders Sbe v1.9'
-doc-ref: https://memxtrading.com
+doc: 'The Members Exchange Memx Options Members Orders Sbe v1.5.b'
+doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -134,8 +121,6 @@ types:
             'template_id::order_cancel_request_message': order_cancel_request_message
             'template_id::mass_cancel_request_message': mass_cancel_request_message
             'template_id::mass_cancel_clear_lockout_request_message': mass_cancel_clear_lockout_request_message
-            'template_id::mass_cancel_bulk_clear_all_lockouts_request_message': mass_cancel_bulk_clear_all_lockouts_request_message
-            'template_id::mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message': mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message
             'template_id::allocation_instruction_message': allocation_instruction_message
             'template_id::execution_report_new_message': execution_report_new_message
             'template_id::execution_report_bulk_quote_pending_new_message': execution_report_bulk_quote_pending_new_message
@@ -158,8 +143,6 @@ types:
             'template_id::user_notification_message': user_notification_message
             'template_id::mass_cancel_clear_lockout_reject_message': mass_cancel_clear_lockout_reject_message
             'template_id::mass_cancel_clear_lockout_done_message': mass_cancel_clear_lockout_done_message
-            'template_id::mass_cancel_bulk_clear_lockout_reject_message': mass_cancel_bulk_clear_lockout_reject_message
-            'template_id::mass_cancel_bulk_clear_lockout_accepted_message': mass_cancel_bulk_clear_lockout_accepted_message
   sbe_header:
     seq:
       - id: block_length
@@ -629,40 +612,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
       - id: lockout_id
         type: u8
         doc: 'LockoutID'
-  mass_cancel_bulk_clear_all_lockouts_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-  mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: efid_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
   allocation_instruction_message:
     seq:
       - id: sending_time
@@ -739,9 +691,6 @@ types:
         type: u1
         enum: alloc_position_effect
         doc: 'AllocPositionEffect'
-      - id: trading_capacity_optional
-        type: u1_nullable
-        doc: 'TradingCapacity. Nullable, No Value = 255'
       - id: nested_parties_groups
         type: nested_parties_groups
         doc: 'Parties Block'
@@ -1153,9 +1102,6 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
-      - id: orig_list_seq_no
-        type: u1
-        doc: 'OrigListSeqNo'
   execution_report_pending_replace_message:
     seq:
       - id: order_id
@@ -1265,9 +1211,6 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
-      - id: orig_list_seq_no
-        type: u1
-        doc: 'OrigListSeqNo'
   execution_report_trade_correction_message:
     seq:
       - id: order_id
@@ -1291,18 +1234,11 @@ types:
         type: u1
         enum: ord_status
         doc: 'OrdStatus'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
       - id: last_qty
         type: u4
         doc: 'LastQty'
@@ -1328,9 +1264,6 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
       - id: trd_match_id
         type: u8
         doc: 'TrdMatchID'
@@ -1349,10 +1282,6 @@ types:
         size: 8
         encoding: ASCII
         doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
       - id: leaves_qty
         type: u4
         doc: 'LeavesQty'
@@ -1495,9 +1424,6 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
   order_cancel_reject_message:
     seq:
       - id: clordid
@@ -1581,9 +1507,6 @@ types:
         type: u1
         enum: alloc_position_effect
         doc: 'AllocPositionEffect'
-      - id: trading_capacity_optional
-        type: u1_nullable
-        doc: 'TradingCapacity. Nullable, No Value = 255'
       - id: alloc_id
         type: str
         size: 20
@@ -1652,11 +1575,6 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
       - id: lockout_id
         type: u8
         doc: 'LockoutID'
@@ -1674,104 +1592,12 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
       - id: lockout_id
         type: u8
         doc: 'LockoutID'
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  mass_cancel_bulk_clear_lockout_reject_message:
-    seq:
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: rej_reason
-        type: u2
-        enum: rej_reason
-        doc: 'RejReason'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  mass_cancel_bulk_clear_lockout_accepted_message:
-    seq:
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1854,6 +1680,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   str_6_nullable:
     seq:
       - id: value
@@ -1863,16 +1696,12 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1949,12 +1778,6 @@ enums:
     9:
       id: 'mass_cancel_clear_lockout_request_message'
       doc: 'MassCancelClearLockoutRequestMessage'
-    32:
-      id: 'mass_cancel_bulk_clear_all_lockouts_request_message'
-      doc: 'MassCancelBulkClearAllLockoutsRequestMessage'
-    33:
-      id: 'mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message'
-      doc: 'MassCancelBulkClearLockoutsByEFIDOrUnderlierRequestMessage'
     10:
       id: 'allocation_instruction_message'
       doc: 'AllocationInstructionMessage'
@@ -2021,12 +1844,6 @@ enums:
     31:
       id: 'mass_cancel_clear_lockout_done_message'
       doc: 'MassCancelClearLockoutDoneMessage'
-    35:
-      id: 'mass_cancel_bulk_clear_lockout_reject_message'
-      doc: 'MassCancelBulkClearLockoutRejectMessage'
-    36:
-      id: 'mass_cancel_bulk_clear_lockout_accepted_message'
-      doc: 'MassCancelBulkClearLockoutAcceptedMessage'
   side:
     0x31:
       id: 'buy'
@@ -2126,9 +1943,6 @@ enums:
     3:
       id: 'actionable_identifier'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'clearing_firm'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     14:
       id: 'give_up_clearing_firm'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2136,7 +1950,7 @@ enums:
       id: 'contra_efid'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     18:
-      id: 'contra_clearing_firm'
+      id: 'contra_give_up'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     24:
       id: 'optional_occ_data'
@@ -2200,40 +2014,12 @@ enums:
     0x43:
       id: 'close'
       doc: 'PositionEffectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  trading_capacity_optional:
-    1:
-      id: 'customer'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'professional_customer'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'broker_dealer'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'broker_dealer_customer'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'firm'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'market_maker'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'away_market_maker'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    255:
-      id: 'null_value'
-      doc: 'TradingCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   nested_party_role:
     1:
       id: 'executing_firm_id'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     3:
       id: 'actionable_identifier'
-      doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'clearing_firm'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     14:
       id: 'give_up_clearing_firm'
@@ -2242,7 +2028,7 @@ enums:
       id: 'contra_efid'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     18:
-      id: 'contra_clearing_firm'
+      id: 'contra_give_up'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     24:
       id: 'optional_occ_data'
@@ -2594,12 +2380,6 @@ enums:
     329:
       id: 'bulk_quote_fat_finger_check'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    330:
-      id: 'market_orders_not_allowed'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    331:
-      id: 'underlier_on_restricted_list'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2835,9 +2615,6 @@ enums:
     19:
       id: 'invalid_sending_time'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    20:
-      id: 'invalid_options_security_id_for_underlier'
-      doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'
       doc: 'MassCxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2963,9 +2740,6 @@ enums:
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     207:
       id: 'orig_order_id_mismatch'
-      doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    208:
-      id: 'unsupported_order_property_change'
       doc: 'CxlRejReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     300:
       id: 'non_test_symbols_blocked'
@@ -3101,17 +2875,17 @@ enums:
     24:
       id: 'incorrect_or_missing_side'
       doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    27:
+      id: 'missing_trading_capacity'
+      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    28:
+      id: 'invalid_trading_capacity'
+      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     29:
       id: 'missing_position_effect_type'
       doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     30:
       id: 'invalid_position_effect_type'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    113:
-      id: 'invalid_trading_capacity'
-      doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    150:
-      id: 'missing_party_id'
       doc: 'AllocRejCodeType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     99:
       id: 'other'
@@ -3154,27 +2928,6 @@ enums:
       doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     5:
       id: 'unknown_lockout_id'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'no_lockouts_active'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'missing_efid'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_efid'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'missing_underlier'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'invalid_underlier'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'missing_efid_or_underlier'
-      doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'invalid_underlier_for_lockout_id'
       doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     65535:
       id: 'null_value'

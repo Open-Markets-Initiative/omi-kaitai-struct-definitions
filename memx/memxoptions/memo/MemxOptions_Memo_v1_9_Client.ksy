@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.10
+# Kaitai struct definition for: Memx MemxOptions Memo Sbe v1.9
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Members Orders
 #   Encoding: Simple Binary Encoding
-#   Version: 1.10
-#   Date: 5/23/2025
-#   Specification: MEMO for US Options - SBE-v1_10.pdf
+#   Version: 1.9
+#   Date: 9/27/2024
+#   Specification: MEMO for US Options - SBE-v1_9.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_memo_sbe_v1_10
-  title: Memx MemxOptions Memo Sbe v1.10
+  id: memx_memxoptions_memo_sbe_v1_9_client
+  title: Memx MemxOptions Memo Sbe v1.9
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Members Orders Sbe v1.10'
+doc: 'The Members Exchange Memx Options Members Orders Sbe v1.9'
 doc-ref: https://memxtrading.com
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -1059,8 +1046,9 @@ types:
         enum: trading_capacity
         doc: 'TradingCapacity'
       - id: contra_trading_capacity
-        type: u1_nullable
-        doc: 'ContraTradingCapacity. Nullable, No Value = 255'
+        type: u1
+        enum: contra_trading_capacity
+        doc: 'ContraTradingCapacity'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -1277,9 +1265,6 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
       - id: trd_match_id
         type: u8
         doc: 'TrdMatchID'
@@ -1293,6 +1278,9 @@ types:
         type: u1
         enum: ord_status
         doc: 'OrdStatus'
+      - id: list_seq_no
+        type: u1
+        doc: 'ListSeqNo'
       - id: security_id
         type: str
         size: 8
@@ -1711,66 +1699,6 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'SendingTime. Nanoseconds since Unix epoch'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1872,6 +1800,9 @@ types:
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -2494,9 +2425,6 @@ enums:
     205:
       id: 'invalid_time_in_force_for_order_type'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    206:
-      id: 'invalid_modifiers_combination'
-      doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     207:
       id: 'post_only_not_allowed'
       doc: 'OrderRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2612,9 +2540,6 @@ enums:
     2:
       id: 'removed'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'routed'
-      doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     255:
       id: 'null_value'
       doc: 'LastLiquidityIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2677,9 +2602,6 @@ enums:
       doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     14:
       id: 'order_not_bookable'
-      doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'unable_to_route'
       doc: 'CancelReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     17:
       id: 'firm_disabled'

@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Memx MemxOptions RiskControl Sbe v1.7
+# Kaitai struct definition for: Memx MemxOptions RiskControl Sbe v1.3
 #
 # Protocol:
 #   Organization: The Members Exchange
 #   Protocol: Risk Control
 #   Encoding: Simple Binary Encoding
-#   Version: 1.7
-#   Date: 4/17/24
-#   Specification: Risk Control for US Options SBE-v1_7a.pdf
+#   Version: 1.3
+#   Date: 6/29/23
+#   Specification: Risk Control for US Options SBE-v1_3.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -25,27 +25,24 @@
 #   https://patents.google.com/patent/US20240129382A1/en
 #   https://patents.google.com/patent/US20240419416A1/en
 #
-# For full Omi information:
-#   https://github.com/Open-Markets-Initiative/Directory
-#
 # Open Markets Initiative website:
 #   https://openmarketsinitiative.com
 # ---------------------------------------------------------------------
 
 meta:
-  id: memx_memxoptions_riskcontrol_sbe_v1_7
-  title: Memx MemxOptions RiskControl Sbe v1.7
+  id: memx_memxoptions_riskcontrol_sbe_v1_3_client
+  title: Memx MemxOptions RiskControl Sbe v1.3
   license: GPL-3.0
   endian: be
 
-doc: 'The Members Exchange Memx Options Risk Control Sbe v1.7'
-doc-ref: https://memxtrading.com
+doc: 'The Members Exchange Memx Options Risk Control Sbe v1.3'
+doc-ref: https://memxtrading.com/
 
 seq:
   - id: common_header
     type: common_header_struct
     doc: 'Tcp Common Header'
-  - id: data
+  - id: client_data
     type:
       switch-on: common_header.message_type
       cases:
@@ -54,16 +51,6 @@ seq:
         'message_type::replay_all_request': replay_all_request_message
         'message_type::stream_request': stream_request_message
         'message_type::unsequenced_message': unsequenced_message
-        'message_type::login_accepted': login_accepted_message
-        'message_type::login_rejected': login_rejected_message
-        'message_type::start_of_session': start_of_session_message
-        'message_type::replay_begin': replay_begin_message
-        'message_type::replay_rejected': replay_rejected_message
-        'message_type::replay_complete': replay_complete_message
-        'message_type::stream_begin': stream_begin_message
-        'message_type::stream_rejected': stream_rejected_message
-        'message_type::stream_complete': stream_complete_message
-        'message_type::sequenced_message': sequenced_message
 
 types:
   common_header_struct:
@@ -126,34 +113,29 @@ types:
           switch-on: sbe_header.template_id
           cases:
             'template_id::risk_settings_query_message': risk_settings_query_message
-            'template_id::active_risk_threshold_change_request_message': active_risk_threshold_change_request_message
-            'template_id::active_risk_acknowledgement_request_message': active_risk_acknowledgement_request_message
-            'template_id::cp_volume_threshold_change_request_message': cp_volume_threshold_change_request_message
-            'template_id::cp_executed_notional_threshold_change_request_message': cp_executed_notional_threshold_change_request_message
-            'template_id::cp_total_executions_threshold_change_request_message': cp_total_executions_threshold_change_request_message
-            'template_id::cp_percent_outstanding_contracts_threshold_change_request_message': cp_percent_outstanding_contracts_threshold_change_request_message
-            'template_id::cp_breach_count_threshold_change_request_message': cp_breach_count_threshold_change_request_message
-            'template_id::manual_cp_breach_trigger_request_message': manual_cp_breach_trigger_request_message
-            'template_id::cp_clear_breach_request_message': cp_clear_breach_request_message
-            'template_id::single_order_allow_iso_orders_change_request_message': single_order_allow_iso_orders_change_request_message
-            'template_id::single_order_allow_orders_in_crossed_market_change_request_message': single_order_allow_orders_in_crossed_market_change_request_message
-            'template_id::single_order_max_notional_change_request_message': single_order_max_notional_change_request_message
-            'template_id::single_order_max_contracts_change_request_message': single_order_max_contracts_change_request_message
-            'template_id::single_order_allow_market_orders_change_request_message': single_order_allow_market_orders_change_request_message
-            'template_id::single_order_restricted_underlier_change_request_message': single_order_restricted_underlier_change_request_message
-            'template_id::cp_gross_notional_threshold_change_request_message': cp_gross_notional_threshold_change_request_message
-            'template_id::cp_market_order_gross_notional_threshold_change_request_message': cp_market_order_gross_notional_threshold_change_request_message
-            'template_id::cp_net_notional_threshold_change_request_message': cp_net_notional_threshold_change_request_message
-            'template_id::cp_market_order_net_notional_threshold_change_request_message': cp_market_order_net_notional_threshold_change_request_message
-            'template_id::cp_duplicate_order_threshold_change_request_message': cp_duplicate_order_threshold_change_request_message
-            'template_id::cp_order_rate_threshold_change_request_message': cp_order_rate_threshold_change_request_message
-            'template_id::cp_clear_all_breaches_request_message': cp_clear_all_breaches_request_message
-            'template_id::cp_clear_all_breaches_by_efid_or_underlier_request_message': cp_clear_all_breaches_by_efid_or_underlier_request_message
-            'template_id::active_risk_acknowledge_all_request_message': active_risk_acknowledge_all_request_message
+            'template_id::active_risk_threshold_change_req_message': active_risk_threshold_change_req_message
+            'template_id::active_risk_acknowledgement_req_message': active_risk_acknowledgement_req_message
+            'template_id::cp_volume_threshold_change_req_message': cp_volume_threshold_change_req_message
+            'template_id::cp_executed_notional_threshold_change_req_message': cp_executed_notional_threshold_change_req_message
+            'template_id::cp_total_executions_threshold_change_req_message': cp_total_executions_threshold_change_req_message
+            'template_id::cp_percent_outstanding_contracts_threshold_change_req_message': cp_percent_outstanding_contracts_threshold_change_req_message
+            'template_id::cp_breach_count_threshold_change_req_message': cp_breach_count_threshold_change_req_message
+            'template_id::manual_cp_breach_trigger_req_message': manual_cp_breach_trigger_req_message
+            'template_id::cp_clear_breach_req_message': cp_clear_breach_req_message
+            'template_id::single_order_allow_iso_orders_change_req_message': single_order_allow_iso_orders_change_req_message
+            'template_id::single_order_allow_orders_in_crossed_market_change_req_message': single_order_allow_orders_in_crossed_market_change_req_message
+            'template_id::single_order_max_notional_change_req_message': single_order_max_notional_change_req_message
+            'template_id::single_order_max_contracts_change_req_message': single_order_max_contracts_change_req_message
+            'template_id::cp_gross_notional_threshold_change_req_message': cp_gross_notional_threshold_change_req_message
+            'template_id::cp_market_order_gross_notional_threshold_change_req_message': cp_market_order_gross_notional_threshold_change_req_message
+            'template_id::cp_net_notional_threshold_change_req_message': cp_net_notional_threshold_change_req_message
+            'template_id::cp_market_order_net_notional_threshold_change_req_message': cp_market_order_net_notional_threshold_change_req_message
+            'template_id::cp_duplicate_order_threshold_change_req_message': cp_duplicate_order_threshold_change_req_message
+            'template_id::cp_order_rate_threshold_change_req_message': cp_order_rate_threshold_change_req_message
             'template_id::active_risk_threshold_state_message': active_risk_threshold_state_message
-            'template_id::active_risk_threshold_change_rejected_message': active_risk_threshold_change_rejected_message
+            'template_id::active_risk_threshold_change_rej_message': active_risk_threshold_change_rej_message
             'template_id::active_risk_acknowledged_message': active_risk_acknowledged_message
-            'template_id::active_risk_acknowledge_rejected_message': active_risk_acknowledge_rejected_message
+            'template_id::active_risk_acknowledge_rej_message': active_risk_acknowledge_rej_message
             'template_id::active_risk_quantity_update_notification_message': active_risk_quantity_update_notification_message
             'template_id::cp_volume_threshold_state_message': cp_volume_threshold_state_message
             'template_id::cp_executed_notional_threshold_state_message': cp_executed_notional_threshold_state_message
@@ -162,23 +144,17 @@ types:
             'template_id::cp_breach_count_threshold_state_message': cp_breach_count_threshold_state_message
             'template_id::manual_cp_breach_trigger_pending_message': manual_cp_breach_trigger_pending_message
             'template_id::manual_cp_breach_trigger_done_message': manual_cp_breach_trigger_done_message
-            'template_id::risk_threshold_update_rejected_message': risk_threshold_update_rejected_message
+            'template_id::risk_threshold_update_rej_message': risk_threshold_update_rej_message
             'template_id::passive_risk_threshold_notification_message': passive_risk_threshold_notification_message
             'template_id::single_order_allow_iso_orders_state_message': single_order_allow_iso_orders_state_message
             'template_id::single_order_allow_orders_in_crossed_market_state_message': single_order_allow_orders_in_crossed_market_state_message
             'template_id::single_order_max_notional_threshold_state_message': single_order_max_notional_threshold_state_message
             'template_id::single_order_max_contracts_threshold_state_message': single_order_max_contracts_threshold_state_message
-            'template_id::single_order_allow_market_orders_state_message': single_order_allow_market_orders_state_message
-            'template_id::single_order_restricted_underlier_state_message': single_order_restricted_underlier_state_message
             'template_id::risk_settings_query_done_message': risk_settings_query_done_message
-            'template_id::risk_settings_query_rejected_message': risk_settings_query_rejected_message
-            'template_id::manual_cp_breach_trigger_rejected_message': manual_cp_breach_trigger_rejected_message
-            'template_id::breach_clear_rejected_message': breach_clear_rejected_message
+            'template_id::risk_settings_query_rej_message': risk_settings_query_rej_message
+            'template_id::manual_cp_breach_trigger_rej_message': manual_cp_breach_trigger_rej_message
+            'template_id::breach_clear_rej_message': breach_clear_rej_message
             'template_id::breach_cleared_message': breach_cleared_message
-            'template_id::breach_clear_all_accepted_message': breach_clear_all_accepted_message
-            'template_id::breach_clear_all_rejected_message': breach_clear_all_rejected_message
-            'template_id::breach_clear_all_by_efid_or_underlier_accepted_message': breach_clear_all_by_efid_or_underlier_accepted_message
-            'template_id::breach_clear_all_by_efid_or_underlier_rejected_message': breach_clear_all_by_efid_or_underlier_rejected_message
             'template_id::cp_gross_notional_threshold_state_message': cp_gross_notional_threshold_state_message
             'template_id::cp_market_order_gross_notional_threshold_state_message': cp_market_order_gross_notional_threshold_state_message
             'template_id::cp_net_notional_threshold_state_message': cp_net_notional_threshold_state_message
@@ -207,35 +183,39 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-  active_risk_threshold_change_request_message:
+  active_risk_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_active_risk_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_request_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_active_risk_threshold_change_request_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: threshold_quantity
-        type: u4
-        doc: 'ThresholdQuantity'
-  active_risk_acknowledgement_request_message:
-    seq:
-      - id: cl_ord_i_d_active_risk_acknowledgement_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledgement_request_underlier
+      - id: underlier_active_risk_threshold_change_req_underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efi_d_active_risk_acknowledgement_request_efid
+      - id: efi_d_active_risk_threshold_change_req_efid
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'EFID'
+      - id: threshold_quantity
+        type: u4
+        doc: 'ThresholdQuantity'
+  active_risk_acknowledgement_req_message:
+    seq:
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'ClOrdID'
+      - id: underlier
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Underlier'
+      - id: efid
         type: str
         size: 4
         encoding: ASCII
@@ -243,17 +223,17 @@ types:
       - id: quantity
         type: u4
         doc: 'Quantity'
-  cp_volume_threshold_change_request_message:
+  cp_volume_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_volume_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_volume_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_volume_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -265,39 +245,39 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_executed_notional_threshold_change_request_message:
+  cp_executed_notional_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_executed_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_executed_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_executed_notional_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_total_executions_threshold_change_request_message:
+  cp_total_executions_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_total_executions_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_total_executions_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_total_executions_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -309,17 +289,17 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_percent_outstanding_contracts_threshold_change_request_message:
+  cp_percent_outstanding_contracts_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_percent_outstanding_contracts_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_percent_outstanding_contracts_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_percent_outstanding_contracts_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: percent
@@ -328,17 +308,17 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_breach_count_threshold_change_request_message:
+  cp_breach_count_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_breach_count_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_breach_count_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_breach_count_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -350,17 +330,17 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  manual_cp_breach_trigger_request_message:
+  manual_cp_breach_trigger_req_message:
     seq:
-      - id: cl_ord_i_d_manual_cp_breach_trigger_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_manual_cp_breach_trigger_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_manual_cp_breach_trigger_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -369,9 +349,9 @@ types:
       - id: send_cancels
         type: u1_nullable
         doc: 'SendCancels. Nullable, No Value = 255'
-  cp_clear_breach_request_message:
+  cp_clear_breach_req_message:
     seq:
-      - id: cl_ord_i_d_cp_clear_breach_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -379,17 +359,17 @@ types:
       - id: breach_id
         type: u8
         doc: 'BreachID'
-  single_order_allow_iso_orders_change_request_message:
+  single_order_allow_iso_orders_change_req_message:
     seq:
-      - id: cl_ord_i_d_single_order_allow_iso_orders_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_iso_orders_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_allow_iso_orders_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -399,17 +379,17 @@ types:
         type: u1
         enum: allow_iso_orders
         doc: 'AllowISOOrders'
-  single_order_allow_orders_in_crossed_market_change_request_message:
+  single_order_allow_orders_in_crossed_market_change_req_message:
     seq:
-      - id: cl_ord_i_d_single_order_allow_orders_in_crossed_market_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_orders_in_crossed_market_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_allow_orders_in_crossed_market_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -419,36 +399,36 @@ types:
         type: u1
         enum: allow_orders
         doc: 'AllowOrders'
-  single_order_max_notional_change_request_message:
+  single_order_max_notional_change_req_message:
     seq:
-      - id: cl_ord_i_d_single_order_max_notional_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_max_notional_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_max_notional_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: max_notional_in_dollars
-        type: u8
+        type: u4
         doc: 'MaxNotionalInDollars'
-  single_order_max_contracts_change_request_message:
+  single_order_max_contracts_change_req_message:
     seq:
-      - id: cl_ord_i_d_single_order_max_contracts_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_max_contracts_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_max_contracts_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -457,135 +437,93 @@ types:
       - id: max_contracts
         type: u4
         doc: 'MaxContracts'
-  single_order_allow_market_orders_change_request_message:
+  cp_gross_notional_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_single_order_allow_market_orders_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_single_order_allow_market_orders_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_allow_market_orders_change_request_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: allow_market_orders
-        type: u1
-        enum: allow_market_orders
-        doc: 'AllowMarketOrders'
-  single_order_restricted_underlier_change_request_message:
-    seq:
-      - id: cl_ord_i_d_single_order_restricted_underlier_change_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_single_order_restricted_underlier_change_request_underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
-      - id: efi_d_single_order_restricted_underlier_change_request_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: restricted
-        type: u1
-        enum: restricted
-        doc: 'Restricted'
-  cp_gross_notional_threshold_change_request_message:
-    seq:
-      - id: cl_ord_i_d_cp_gross_notional_threshold_change_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_cp_gross_notional_threshold_change_request_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_gross_notional_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
-  cp_market_order_gross_notional_threshold_change_request_message:
+  cp_market_order_gross_notional_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_market_order_gross_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_market_order_gross_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_market_order_gross_notional_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
-  cp_net_notional_threshold_change_request_message:
+  cp_net_notional_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_net_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_net_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_net_notional_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
-  cp_market_order_net_notional_threshold_change_request_message:
+  cp_market_order_net_notional_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_market_order_net_notional_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_market_order_net_notional_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_market_order_net_notional_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
-  cp_duplicate_order_threshold_change_request_message:
+  cp_duplicate_order_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_duplicate_order_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_duplicate_order_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_duplicate_order_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -600,17 +538,17 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_order_rate_threshold_change_request_message:
+  cp_order_rate_threshold_change_req_message:
     seq:
-      - id: cl_ord_i_d_cp_order_rate_threshold_change_request_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_cp_order_rate_threshold_change_request_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_order_rate_threshold_change_request_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -622,43 +560,6 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  cp_clear_all_breaches_request_message:
-    seq:
-      - id: cl_ord_i_d_cp_clear_all_breaches_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-  cp_clear_all_breaches_by_efid_or_underlier_request_message:
-    seq:
-      - id: cl_ord_i_d_cp_clear_all_breaches_by_efid_or_underlier_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_cp_clear_all_breaches_by_efid_or_underlier_request_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_cp_clear_all_breaches_by_efid_or_underlier_request_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-  active_risk_acknowledge_all_request_message:
-    seq:
-      - id: cl_ord_i_d_active_risk_acknowledge_all_request_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledge_all_request_underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
-      - id: efi_d_active_risk_acknowledge_all_request_efid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'EFID'
   active_risk_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -677,22 +578,23 @@ types:
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
-      - id: unacked_quantity
-        type: u4
-        doc: 'UnackedQuantity'
-  active_risk_threshold_change_rejected_message:
+  active_risk_threshold_change_rej_message:
     seq:
-      - id: cl_ord_i_d_active_risk_threshold_change_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_threshold_change_rejected_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_active_risk_threshold_change_rejected_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
+      - id: underlier_active_risk_threshold_change_rej_underlier
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Underlier'
+      - id: efi_d_active_risk_threshold_change_rej_efid
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'EFID'
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
@@ -720,22 +622,22 @@ types:
       - id: quantity
         type: u4
         doc: 'Quantity'
-      - id: unacked_quantity
+      - id: un_acked_quantity
         type: u4
-        doc: 'UnackedQuantity'
-  active_risk_acknowledge_rejected_message:
+        doc: 'UnAckedQuantity'
+  active_risk_acknowledge_rej_message:
     seq:
-      - id: cl_ord_i_d_active_risk_acknowledge_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_active_risk_acknowledge_rejected_underlier
+      - id: underlier
         type: str
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efi_d_active_risk_acknowledge_rejected_efid
+      - id: efid
         type: str
         size: 4
         encoding: ASCII
@@ -786,9 +688,9 @@ types:
       - id: last_qty
         type: u4
         doc: 'LastQty'
-      - id: unacked_quantity
+      - id: un_acked_quantity
         type: u4
-        doc: 'UnackedQuantity'
+        doc: 'UnAckedQuantity'
   cp_volume_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -824,7 +726,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
       - id: period_in_milli_seconds
         type: u4
@@ -902,6 +804,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
+      - id: breach_id
+        type: u8
+        doc: 'BreachID'
   manual_cp_breach_trigger_done_message:
     seq:
       - id: clordid
@@ -924,9 +829,9 @@ types:
       - id: total_affected_orders
         type: u4
         doc: 'TotalAffectedOrders'
-  risk_threshold_update_rejected_message:
+  risk_threshold_update_rej_message:
     seq:
-      - id: cl_ord_i_d_risk_threshold_update_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -1014,7 +919,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: max_notional_in_dollars
-        type: u8
+        type: u4
         doc: 'MaxNotionalInDollars'
   single_order_max_contracts_threshold_state_message:
     seq:
@@ -1033,44 +938,6 @@ types:
       - id: max_contracts
         type: u4
         doc: 'MaxContracts'
-  single_order_allow_market_orders_state_message:
-    seq:
-      - id: cl_ord_i_d_single_order_allow_market_orders_state_cl_ord_i_d_optional
-        type: str_20_nullable
-        doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: underlier_single_order_allow_market_orders_state_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_single_order_allow_market_orders_state_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: market_orders
-        type: u1
-        enum: market_orders
-        doc: 'MarketOrders'
-  single_order_restricted_underlier_state_message:
-    seq:
-      - id: cl_ord_i_d_single_order_restricted_underlier_state_cl_ord_i_d_optional
-        type: str_20_nullable
-        doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: underlier_single_order_restricted_underlier_state_underlier
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Underlier'
-      - id: efi_d_single_order_restricted_underlier_state_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: restricted
-        type: u1
-        enum: restricted
-        doc: 'Restricted'
   risk_settings_query_done_message:
     seq:
       - id: clordid
@@ -1081,9 +948,9 @@ types:
       - id: number_msgs_sent
         type: u4
         doc: 'NumberMsgsSent'
-  risk_settings_query_rejected_message:
+  risk_settings_query_rej_message:
     seq:
-      - id: cl_ord_i_d_risk_settings_query_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
@@ -1092,17 +959,17 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
-  manual_cp_breach_trigger_rejected_message:
+  manual_cp_breach_trigger_rej_message:
     seq:
-      - id: cl_ord_i_d_manual_cp_breach_trigger_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: underlier_manual_cp_breach_trigger_rejected_underlier_optional
+      - id: underlier_optional
         type: str_6_nullable
         doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_manual_cp_breach_trigger_rejected_efi_d_optional
+      - id: efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
       - id: risk_group_id
@@ -1112,16 +979,16 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
-  breach_clear_rejected_message:
+  breach_clear_rej_message:
     seq:
-      - id: cl_ord_i_d_breach_clear_rejected_cl_ord_id
+      - id: clordid
         type: str
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
-      - id: breach_id_optional
-        type: u8_nullable
-        doc: 'BreachID. Nullable, No Value = 18446744073709551615'
+      - id: breach_id
+        type: u8
+        doc: 'BreachID'
       - id: reject_reason
         type: u2
         enum: reject_reason
@@ -1131,57 +998,9 @@ types:
       - id: clordid_optional
         type: str_20_nullable
         doc: 'ClOrdID. Nullable, No Value = 0'
-      - id: breach_id_optional
-        type: u8_nullable
-        doc: 'BreachID. Nullable, No Value = 18446744073709551615'
-  breach_clear_all_accepted_message:
-    seq:
-      - id: cl_ord_i_d_breach_clear_all_accepted_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-  breach_clear_all_rejected_message:
-    seq:
-      - id: cl_ord_i_d_breach_clear_all_rejected_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: reject_reason
-        type: u2
-        enum: reject_reason
-        doc: 'RejectReason'
-  breach_clear_all_by_efid_or_underlier_accepted_message:
-    seq:
-      - id: cl_ord_i_d_breach_clear_all_by_efid_or_underlier_accepted_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_breach_clear_all_by_efid_or_underlier_accepted_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_breach_clear_all_by_efid_or_underlier_accepted_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-  breach_clear_all_by_efid_or_underlier_rejected_message:
-    seq:
-      - id: cl_ord_i_d_breach_clear_all_by_efid_or_underlier_rejected_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: underlier_breach_clear_all_by_efid_or_underlier_rejected_underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: efi_d_breach_clear_all_by_efid_or_underlier_rejected_efi_d_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: reject_reason
-        type: u2
-        enum: reject_reason
-        doc: 'RejectReason'
+      - id: breach_id
+        type: u8
+        doc: 'BreachID'
   cp_gross_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -1197,7 +1016,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
   cp_market_order_gross_notional_threshold_state_message:
     seq:
@@ -1214,7 +1033,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
   cp_net_notional_threshold_state_message:
     seq:
@@ -1231,7 +1050,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
   cp_market_order_net_notional_threshold_state_message:
     seq:
@@ -1248,7 +1067,7 @@ types:
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
       - id: price_in_dollars
-        type: u8
+        type: u4
         doc: 'PriceInDollars'
   cp_duplicate_order_threshold_state_message:
     seq:
@@ -1294,66 +1113,6 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
-  login_accepted_message:
-    seq:
-      - id: supported_request_mode
-        type: u1
-        enum: supported_request_mode
-        doc: 'The request mode that this connection supports'
-  login_rejected_message:
-    seq:
-      - id: login_reject_code
-        type: u1
-        enum: login_reject_code
-        doc: 'The code for the rejection type'
-  start_of_session_message:
-    seq:
-      - id: session_id
-        type: u8
-        doc: 'The identifier for the session for which data is desired'
-  replay_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: pending_message_count
-        type: u4
-        doc: 'The number of messages to be delivered in this replay'
-  replay_rejected_message:
-    seq:
-      - id: replay_reject_code
-        type: u1
-        enum: replay_reject_code
-        doc: 'The code for the rejection type'
-  replay_complete_message:
-    seq:
-      - id: message_count
-        type: u8
-        doc: 'The number of messages which were sent in the replay'
-  stream_begin_message:
-    seq:
-      - id: next_sequence_number
-        type: u8
-        doc: 'The first requested sequence number'
-      - id: max_sequence_number
-        type: u8
-        doc: 'The maximum sequence number currently published on this stream'
-  stream_rejected_message:
-    seq:
-      - id: stream_reject_code
-        type: u1
-        enum: stream_reject_code
-        doc: 'The code for the rejection type'
-  stream_complete_message:
-    seq:
-      - id: total_sequence_count
-        type: u8
-        doc: 'The count of messages that were sent on this stream'
-  sequenced_message:
-    seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
   str_6_nullable:
     seq:
       - id: value
@@ -1412,6 +1171,9 @@ types:
 
 enums:
   message_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Memx Tcp Heartbeat'
     100:
       id: 'login_request'
       doc: 'Memx Tcp Login Request'
@@ -1465,89 +1227,74 @@ enums:
       id: 'risk_settings_query_message'
       doc: 'RiskSettingsQueryMessage'
     2:
-      id: 'active_risk_threshold_change_request_message'
-      doc: 'ActiveRiskThresholdChangeRequestMessage'
+      id: 'active_risk_threshold_change_req_message'
+      doc: 'ActiveRiskThresholdChangeReqMessage'
     3:
-      id: 'active_risk_acknowledgement_request_message'
-      doc: 'ActiveRiskAcknowledgementRequestMessage'
+      id: 'active_risk_acknowledgement_req_message'
+      doc: 'ActiveRiskAcknowledgementReqMessage'
     4:
-      id: 'cp_volume_threshold_change_request_message'
-      doc: 'CPVolumeThresholdChangeRequestMessage'
+      id: 'cp_volume_threshold_change_req_message'
+      doc: 'CPVolumeThresholdChangeReqMessage'
     5:
-      id: 'cp_executed_notional_threshold_change_request_message'
-      doc: 'CPExecutedNotionalThresholdChangeRequestMessage'
+      id: 'cp_executed_notional_threshold_change_req_message'
+      doc: 'CPExecutedNotionalThresholdChangeReqMessage'
     6:
-      id: 'cp_total_executions_threshold_change_request_message'
-      doc: 'CPTotalExecutionsThresholdChangeRequestMessage'
+      id: 'cp_total_executions_threshold_change_req_message'
+      doc: 'CPTotalExecutionsThresholdChangeReqMessage'
     7:
-      id: 'cp_percent_outstanding_contracts_threshold_change_request_message'
-      doc: 'CPPercentOutstandingContractsThresholdChangeRequestMessage'
+      id: 'cp_percent_outstanding_contracts_threshold_change_req_message'
+      doc: 'CPPercentOutstandingContractsThresholdChangeReqMessage'
     8:
-      id: 'cp_breach_count_threshold_change_request_message'
-      doc: 'CPBreachCountThresholdChangeRequestMessage'
+      id: 'cp_breach_count_threshold_change_req_message'
+      doc: 'CPBreachCountThresholdChangeReqMessage'
     9:
-      id: 'manual_cp_breach_trigger_request_message'
-      doc: 'ManualCPBreachTriggerRequestMessage'
+      id: 'manual_cp_breach_trigger_req_message'
+      doc: 'ManualCPBreachTriggerReqMessage'
     10:
-      id: 'cp_clear_breach_request_message'
-      doc: 'CPClearBreachRequestMessage'
+      id: 'cp_clear_breach_req_message'
+      doc: 'CPClearBreachReqMessage'
     11:
-      id: 'single_order_allow_iso_orders_change_request_message'
-      doc: 'SingleOrderAllowISOOrdersChangeRequestMessage'
+      id: 'single_order_allow_iso_orders_change_req_message'
+      doc: 'SingleOrderAllowISOOrdersChangeReqMessage'
     12:
-      id: 'single_order_allow_orders_in_crossed_market_change_request_message'
-      doc: 'SingleOrderAllowOrdersInCrossedMarketChangeRequestMessage'
+      id: 'single_order_allow_orders_in_crossed_market_change_req_message'
+      doc: 'SingleOrderAllowOrdersInCrossedMarketChangeReqMessage'
     13:
-      id: 'single_order_max_notional_change_request_message'
-      doc: 'SingleOrderMaxNotionalChangeRequestMessage'
+      id: 'single_order_max_notional_change_req_message'
+      doc: 'SingleOrderMaxNotionalChangeReqMessage'
     14:
-      id: 'single_order_max_contracts_change_request_message'
-      doc: 'SingleOrderMaxContractsChangeRequestMessage'
-    15:
-      id: 'single_order_allow_market_orders_change_request_message'
-      doc: 'SingleOrderAllowMarketOrdersChangeRequestMessage'
-    16:
-      id: 'single_order_restricted_underlier_change_request_message'
-      doc: 'SingleOrderRestrictedUnderlierChangeRequestMessage'
+      id: 'single_order_max_contracts_change_req_message'
+      doc: 'SingleOrderMaxContractsChangeReqMessage'
     18:
-      id: 'cp_gross_notional_threshold_change_request_message'
-      doc: 'CPGrossNotionalThresholdChangeRequestMessage'
+      id: 'cp_gross_notional_threshold_change_req_message'
+      doc: 'CPGrossNotionalThresholdChangeReqMessage'
     19:
-      id: 'cp_market_order_gross_notional_threshold_change_request_message'
-      doc: 'CPMarketOrderGrossNotionalThresholdChangeRequestMessage'
+      id: 'cp_market_order_gross_notional_threshold_change_req_message'
+      doc: 'CPMarketOrderGrossNotionalThresholdChangeReqMessage'
     20:
-      id: 'cp_net_notional_threshold_change_request_message'
-      doc: 'CPNetNotionalThresholdChangeRequestMessage'
+      id: 'cp_net_notional_threshold_change_req_message'
+      doc: 'CPNetNotionalThresholdChangeReqMessage'
     21:
-      id: 'cp_market_order_net_notional_threshold_change_request_message'
-      doc: 'CPMarketOrderNetNotionalThresholdChangeRequestMessage'
+      id: 'cp_market_order_net_notional_threshold_change_req_message'
+      doc: 'CPMarketOrderNetNotionalThresholdChangeReqMessage'
     22:
-      id: 'cp_duplicate_order_threshold_change_request_message'
-      doc: 'CPDuplicateOrderThresholdChangeRequestMessage'
+      id: 'cp_duplicate_order_threshold_change_req_message'
+      doc: 'CPDuplicateOrderThresholdChangeReqMessage'
     23:
-      id: 'cp_order_rate_threshold_change_request_message'
-      doc: 'CPOrderRateThresholdChangeRequestMessage'
-    24:
-      id: 'cp_clear_all_breaches_request_message'
-      doc: 'CPClearAllBreachesRequestMessage'
-    25:
-      id: 'cp_clear_all_breaches_by_efid_or_underlier_request_message'
-      doc: 'CPClearAllBreachesByEFIDOrUnderlierRequestMessage'
-    26:
-      id: 'active_risk_acknowledge_all_request_message'
-      doc: 'ActiveRiskAcknowledgeAllRequestMessage'
+      id: 'cp_order_rate_threshold_change_req_message'
+      doc: 'CPOrderRateThresholdChangeReqMessage'
     30:
       id: 'active_risk_threshold_state_message'
       doc: 'ActiveRiskThresholdStateMessage'
     31:
-      id: 'active_risk_threshold_change_rejected_message'
-      doc: 'ActiveRiskThresholdChangeRejectedMessage'
+      id: 'active_risk_threshold_change_rej_message'
+      doc: 'ActiveRiskThresholdChangeRejMessage'
     32:
       id: 'active_risk_acknowledged_message'
       doc: 'ActiveRiskAcknowledgedMessage'
     33:
-      id: 'active_risk_acknowledge_rejected_message'
-      doc: 'ActiveRiskAcknowledgeRejectedMessage'
+      id: 'active_risk_acknowledge_rej_message'
+      doc: 'ActiveRiskAcknowledgeRejMessage'
     34:
       id: 'active_risk_quantity_update_notification_message'
       doc: 'ActiveRiskQuantityUpdateNotificationMessage'
@@ -1573,8 +1320,8 @@ enums:
       id: 'manual_cp_breach_trigger_done_message'
       doc: 'ManualCPBreachTriggerDoneMessage'
     42:
-      id: 'risk_threshold_update_rejected_message'
-      doc: 'RiskThresholdUpdateRejectedMessage'
+      id: 'risk_threshold_update_rej_message'
+      doc: 'RiskThresholdUpdateRejMessage'
     43:
       id: 'passive_risk_threshold_notification_message'
       doc: 'PassiveRiskThresholdNotificationMessage'
@@ -1590,39 +1337,21 @@ enums:
     47:
       id: 'single_order_max_contracts_threshold_state_message'
       doc: 'SingleOrderMaxContractsThresholdStateMessage'
-    66:
-      id: 'single_order_allow_market_orders_state_message'
-      doc: 'SingleOrderAllowMarketOrdersStateMessage'
-    67:
-      id: 'single_order_restricted_underlier_state_message'
-      doc: 'SingleOrderRestrictedUnderlierStateMessage'
     48:
       id: 'risk_settings_query_done_message'
       doc: 'RiskSettingsQueryDoneMessage'
     49:
-      id: 'risk_settings_query_rejected_message'
-      doc: 'RiskSettingsQueryRejectedMessage'
+      id: 'risk_settings_query_rej_message'
+      doc: 'RiskSettingsQueryRejMessage'
     50:
-      id: 'manual_cp_breach_trigger_rejected_message'
-      doc: 'ManualCPBreachTriggerRejectedMessage'
+      id: 'manual_cp_breach_trigger_rej_message'
+      doc: 'ManualCPBreachTriggerRejMessage'
     51:
-      id: 'breach_clear_rejected_message'
-      doc: 'BreachClearRejectedMessage'
+      id: 'breach_clear_rej_message'
+      doc: 'BreachClearRejMessage'
     52:
       id: 'breach_cleared_message'
       doc: 'BreachClearedMessage'
-    53:
-      id: 'breach_clear_all_accepted_message'
-      doc: 'BreachClearAllAcceptedMessage'
-    69:
-      id: 'breach_clear_all_rejected_message'
-      doc: 'BreachClearAllRejectedMessage'
-    54:
-      id: 'breach_clear_all_by_efid_or_underlier_accepted_message'
-      doc: 'BreachClearAllByEFIDOrUnderlierAcceptedMessage'
-    68:
-      id: 'breach_clear_all_by_efid_or_underlier_rejected_message'
-      doc: 'BreachClearAllByEFIDOrUnderlierRejectedMessage'
     60:
       id: 'cp_gross_notional_threshold_state_message'
       doc: 'CPGrossNotionalThresholdStateMessage'
@@ -1656,20 +1385,6 @@ enums:
       id: 'true_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   allow_orders:
-    0:
-      id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  allow_market_orders:
-    0:
-      id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  restricted:
     0:
       id: 'false_field'
       doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1822,27 +1537,6 @@ enums:
     45:
       id: 'breach_in_progress'
       doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    46:
-      id: 'number_of_breaches_forbid_clearing'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    47:
-      id: 'no_active_breaches'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    48:
-      id: 'missing_allow_market_orders'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    49:
-      id: 'invalid_allow_market_orders'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    50:
-      id: 'missing_restricted'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    51:
-      id: 'invalid_restricted'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    52:
-      id: 'missing_efid_or_underlier'
-      doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     100:
       id: 'exchange_closed'
       doc: 'RiskRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1902,12 +1596,6 @@ enums:
     15:
       id: 'order_rate'
       doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'allow_market_orders'
-      doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'restricted_underlier'
-      doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     254:
       id: 'triggered_breach'
       doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1957,22 +1645,9 @@ enums:
     15:
       id: 'order_rate'
       doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'allow_market_orders'
-      doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'restricted_underlier'
-      doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
     254:
       id: 'triggered_breach'
       doc: 'RuleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  market_orders:
-    0:
-      id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   use_order_price_in_dup_check:
     0:
       id: 'false_field'
