@@ -80,6 +80,9 @@ jobs:
       - name: Run Iex IexEquities DeepPlus IexTp v1.04 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_04.py
 
+      - name: Run Memx MemxEquities MemoirDepthFeed Sbe v1.3 Definition Tests
+        run: python3 .github/tests/test_memx_memxequities_memoirdepthfeed_sbe_v1_3.py
+
       - name: Run OtcMarkets LinkAts Multicast Link v4.3 Definition Tests
         run: python3 .github/tests/test_otcmarkets_linkats_multicast_link_v4_3.py
 
