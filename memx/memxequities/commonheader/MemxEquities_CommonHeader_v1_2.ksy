@@ -112,7 +112,7 @@ types:
         type: u8
         doc: 'The first requested sequence number'
   unsequenced_message:
-    seq:
+    seq: []
   login_accepted_message:
     seq:
       - id: supported_request_mode
@@ -169,7 +169,7 @@ types:
         type: u8
         doc: 'The count of messages that were sent on this stream'
   sequenced_message:
-    seq:
+    seq: []
 
 enums:
   message_type:
