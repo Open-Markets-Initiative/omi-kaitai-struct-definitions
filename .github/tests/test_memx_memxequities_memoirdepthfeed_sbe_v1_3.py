@@ -12,6 +12,11 @@ from memx_memxequities_memoirdepthfeed_sbe_v1_3 import MemxMemxequitiesMemoirdep
 
 class MemxMemxequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
 
+    def test_heartbeat(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/Heartbeat.pcap"):
+            parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderaddedmessage(self):
         for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/OrderAddedMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
@@ -32,7 +37,7 @@ class MemxMemxequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_regshorestrictionmessage(self):
+    def test_regshowrestrictionmessage(self):
         for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/RegShowRestrictionMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
@@ -42,13 +47,13 @@ class MemxMemxequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_tradingsessionstatusmessage(self):
-        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/TradingSessionStatusMessage.pcap"):
+    def test_stocktradingactionmessage(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/StockTradingActionMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_multiplemessages(self):
-        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/MultipleMessages.pcap"):
+    def test_tradingsessionstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/TradingSessionStatusMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

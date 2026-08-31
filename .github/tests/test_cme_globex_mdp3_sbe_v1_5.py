@@ -32,6 +32,11 @@ class CmeGlobexMdp3SbeV15UdpTests(unittest.TestCase):
             parsed = CmeGlobexMdp3SbeV15Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_mdinstrumentdefinitionspread(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.5/MdInstrumentDefinitionSpread.pcap"):
+            parsed = CmeGlobexMdp3SbeV15Udp.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
 
 if __name__ == "__main__":
     unittest.main()

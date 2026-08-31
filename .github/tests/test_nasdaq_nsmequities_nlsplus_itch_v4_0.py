@@ -12,27 +12,27 @@ from nasdaq_nsmequities_nlsplus_itch_v4_0 import NasdaqNsmequitiesNlsplusItchV40
 
 class NasdaqNsmequitiesNlsplusItchV40Tests(unittest.TestCase):
 
-    def test_regshoshortsalepricetestrestrictedindicatormessage(self):
+    def test_nlsplusregshoshortsalepricetestrestrictedindicatormessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.NlsPlus.Itch.v4.0/NlsPlus.RegShoShortSalePriceTestRestrictedIndicatorMessage.pcap"):
             parsed = NasdaqNsmequitiesNlsplusItchV40.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_stocktradingactionmessage(self):
+    def test_nlsplusstocktradingactionmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.NlsPlus.Itch.v4.0/NlsPlus.StockTradingActionMessage.pcap"):
             parsed = NasdaqNsmequitiesNlsplusItchV40.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_systemeventmessage(self):
+    def test_nlsplussystemeventmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.NlsPlus.Itch.v4.0/NlsPlus.SystemEventMessage.pcap"):
             parsed = NasdaqNsmequitiesNlsplusItchV40.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_message(self):
+    def test_nlsplustradereportlongpricemessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.NlsPlus.Itch.v4.0/NlsPlus.TradeReportLongPriceMessage.pcap"):
             parsed = NasdaqNsmequitiesNlsplusItchV40.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_tradereportmessage(self):
+    def test_nlsplustradereportmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.NlsPlus.Itch.v4.0/NlsPlus.TradeReportMessage.pcap"):
             parsed = NasdaqNsmequitiesNlsplusItchV40.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

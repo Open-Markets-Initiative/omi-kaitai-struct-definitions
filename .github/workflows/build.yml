@@ -44,9 +44,6 @@ jobs:
       - name: Run Asx AsxDerivatives Ntp Itch v1.05 Definition Tests
         run: python3 .github/tests/test_asx_asxderivatives_ntp_itch_v1_05.py
 
-      - name: Run B3 B3Derivatives BinaryUmdf Sbe v1.8 Definition Tests
-        run: python3 .github/tests/test_b3_b3derivatives_binaryumdf_sbe_v1_8.py
-
       - name: Run B3 B3Derivatives BinaryEntryPoint Sbe v8.0 Definition Tests
         run: python3 .github/tests/test_b3_b3derivatives_binaryentrypoint_sbe_v8_0.py
 
@@ -56,11 +53,20 @@ jobs:
       - name: Run B3 B3Derivatives BinaryEntryPoint Sbe v8.3 Definition Tests
         run: python3 .github/tests/test_b3_b3derivatives_binaryentrypoint_sbe_v8_3.py
 
+      - name: Run B3 B3Derivatives BinaryUmdf Sbe v1.8 Definition Tests
+        run: python3 .github/tests/test_b3_b3derivatives_binaryumdf_sbe_v1_8.py
+
       - name: Run BlueOceanAts BlueEquities MemoirDepthFeed Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_blueoceanats_blueequities_memoirdepthfeed_sbe_v1_3.py
 
       - name: Run BlueOceanAts BlueEquities MemoirLastSale Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_blueoceanats_blueequities_memoirlastsale_sbe_v1_3.py
+
+      - name: Run Cme Globex iLink3 Sbe v8.5 Definition Tests
+        run: python3 .github/tests/test_cme_globex_ilink3_sbe_v8_5.py
+
+      - name: Run Cme Globex Mdp3 Sbe v1.12 Definition Tests
+        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_12.py
 
       - name: Run Cme Globex Mdp3 Sbe v1.5 Definition Tests
         run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_5.py
@@ -70,12 +76,6 @@ jobs:
 
       - name: Run Cme Globex Mdp3 Sbe v1.9 Definition Tests
         run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_9.py
-
-      - name: Run Cme Globex Mdp3 Sbe v1.12 Definition Tests
-        run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_12.py
-
-      - name: Run Cme Globex iLink3 Sbe v8.5 Definition Tests
-        run: python3 .github/tests/test_cme_globex_ilink3_sbe_v8_5.py
 
       - name: Run Coinbase CoinbaseDerivatives MarketDataApi Sbe v1.2 Definition Tests
         run: python3 .github/tests/test_coinbase_coinbasederivatives_marketdataapi_sbe_v1_2.py
@@ -110,26 +110,17 @@ jobs:
       - name: Run Eurex T7 Xti Fbe v10.0 Definition Tests
         run: python3 .github/tests/test_eurex_t7_xti_fbe_v10_0.py
 
+      - name: Run Iex IexEquities Deep IexTp v1.06 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_06.py
+
+      - name: Run Iex IexEquities DeepPlus IexTp v1.01 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_01.py
+
       - name: Run Iex IexEquities Tops IexTp v1.56 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_56.py
 
       - name: Run Iex IexEquities Tops IexTp v1.64 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_64.py
-
-      - name: Run Iex IexEquities Tops IexTp v1.66 Definition Tests
-        run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_66.py
-
-      - name: Run Iex IexEquities Deep IexTp v1.06 Definition Tests
-        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_06.py
-
-      - name: Run Iex IexEquities Deep IexTp v1.08 Definition Tests
-        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_08.py
-
-      - name: Run Iex IexEquities DeepPlus IexTp v1.04 Definition Tests
-        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_04.py
-
-      - name: Run Iex IexEquities DeepPlus IexTp v1.01 Definition Tests
-        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_01.py
 
       - name: Run Memx MemxEquities MemoirDepthFeed Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_memx_memxequities_memoirdepthfeed_sbe_v1_3.py
@@ -151,6 +142,9 @@ jobs:
 
       - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2023 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2023.py
+
+      - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py
 
       - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
         run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py

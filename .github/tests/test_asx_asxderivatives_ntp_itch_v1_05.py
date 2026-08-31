@@ -102,7 +102,7 @@ class AsxAsxderivativesNtpItchV105Tests(unittest.TestCase):
             parsed = AsxAsxderivativesNtpItchV105.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_secondsmessage(self):
+    def test_seconds(self):
         for payload in payloads.of("omi-data-packets/Asx/AsxDerivatives.Ntp.Itch.v1.05/Seconds.pcap"):
             parsed = AsxAsxderivativesNtpItchV105.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

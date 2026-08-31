@@ -12,7 +12,7 @@ from nyse_arcaoptions_topfeed_pillar_v1_2_c import NyseArcaoptionsTopfeedPillarV
 
 class NyseArcaoptionsTopfeedPillarV12CTests(unittest.TestCase):
 
-    def test_message(self):
+    def test_heartbeat(self):
         for payload in payloads.of("omi-data-packets/Nyse/ArcaOptions.TopFeed.Pillar.v1.2.c/HeartBeat.pcap"):
             parsed = NyseArcaoptionsTopfeedPillarV12C.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

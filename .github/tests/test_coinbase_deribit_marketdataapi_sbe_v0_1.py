@@ -57,6 +57,11 @@ class CoinbaseDeribitMarketdataapiSbeV01Tests(unittest.TestCase):
             parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_starbasemarketdata(self):
+        for payload in payloads.of("omi-data-packets/Coinbase/Deribit.MarketDataApi.Sbe.v0.1/StarbaseMarketData.pcap"):
+            parsed = CoinbaseDeribitMarketdataapiSbeV01.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
 
 if __name__ == "__main__":
     unittest.main()
