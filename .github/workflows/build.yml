@@ -41,6 +41,9 @@ jobs:
       - name: Clone Omi Data
         run: git clone --depth=1 https://github.com/Open-Markets-Initiative/omi-data-packets.git
 
+      - name: Run Asx AsxDerivatives Ntp Itch v1.05 Definition Tests
+        run: python3 .github/tests/test_asx_asxderivatives_ntp_itch_v1_05.py
+
       - name: Run B3 B3Derivatives BinaryUmdf Sbe v1.8 Definition Tests
         run: python3 .github/tests/test_b3_b3derivatives_binaryumdf_sbe_v1_8.py
 
@@ -49,6 +52,15 @@ jobs:
 
       - name: Run B3 B3Derivatives BinaryEntryPoint Sbe v8.1 Definition Tests
         run: python3 .github/tests/test_b3_b3derivatives_binaryentrypoint_sbe_v8_1.py
+
+      - name: Run B3 B3Derivatives BinaryEntryPoint Sbe v8.3 Definition Tests
+        run: python3 .github/tests/test_b3_b3derivatives_binaryentrypoint_sbe_v8_3.py
+
+      - name: Run BlueOceanAts BlueEquities MemoirDepthFeed Sbe v1.3 Definition Tests
+        run: python3 .github/tests/test_blueoceanats_blueequities_memoirdepthfeed_sbe_v1_3.py
+
+      - name: Run BlueOceanAts BlueEquities MemoirLastSale Sbe v1.3 Definition Tests
+        run: python3 .github/tests/test_blueoceanats_blueequities_memoirlastsale_sbe_v1_3.py
 
       - name: Run Cme Globex Mdp3 Sbe v1.5 Definition Tests
         run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_5.py
@@ -61,6 +73,42 @@ jobs:
 
       - name: Run Cme Globex Mdp3 Sbe v1.12 Definition Tests
         run: python3 .github/tests/test_cme_globex_mdp3_sbe_v1_12.py
+
+      - name: Run Cme Globex iLink3 Sbe v8.5 Definition Tests
+        run: python3 .github/tests/test_cme_globex_ilink3_sbe_v8_5.py
+
+      - name: Run Coinbase CoinbaseDerivatives MarketDataApi Sbe v1.2 Definition Tests
+        run: python3 .github/tests/test_coinbase_coinbasederivatives_marketdataapi_sbe_v1_2.py
+
+      - name: Run Coinbase CoinbaseDerivatives OrdersApi Sbe v1.3 Definition Tests
+        run: python3 .github/tests/test_coinbase_coinbasederivatives_ordersapi_sbe_v1_3.py
+
+      - name: Run Coinbase CoinbaseDerivatives OrdersApi Sbe v1.4 Definition Tests
+        run: python3 .github/tests/test_coinbase_coinbasederivatives_ordersapi_sbe_v1_4.py
+
+      - name: Run Coinbase CoinbaseDerivatives OrdersApi Sbe v1.8 Definition Tests
+        run: python3 .github/tests/test_coinbase_coinbasederivatives_ordersapi_sbe_v1_8.py
+
+      - name: Run Coinbase Deribit MarketDataApi Sbe v0.1 Definition Tests
+        run: python3 .github/tests/test_coinbase_deribit_marketdataapi_sbe_v0_1.py
+
+      - name: Run Coinbase Deribit OrdersApi Sbe v0.1 Definition Tests
+        run: python3 .github/tests/test_coinbase_deribit_ordersapi_sbe_v0_1.py
+
+      - name: Run Eurex T7 Eobi Fbe v13.0 Definition Tests
+        run: python3 .github/tests/test_eurex_t7_eobi_fbe_v13_0.py
+
+      - name: Run Eurex T7 Eobi Fbe v3.0 Definition Tests
+        run: python3 .github/tests/test_eurex_t7_eobi_fbe_v3_0.py
+
+      - name: Run Eurex T7 Eobi Fbe v6.0 Definition Tests
+        run: python3 .github/tests/test_eurex_t7_eobi_fbe_v6_0.py
+
+      - name: Run Eurex T7 Eti Fbe v6.1 Definition Tests
+        run: python3 .github/tests/test_eurex_t7_eti_fbe_v6_1.py
+
+      - name: Run Eurex T7 Xti Fbe v10.0 Definition Tests
+        run: python3 .github/tests/test_eurex_t7_xti_fbe_v10_0.py
 
       - name: Run Iex IexEquities Tops IexTp v1.56 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_56.py
@@ -80,8 +128,86 @@ jobs:
       - name: Run Iex IexEquities DeepPlus IexTp v1.04 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_04.py
 
+      - name: Run Iex IexEquities DeepPlus IexTp v1.01 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_01.py
+
       - name: Run Memx MemxEquities MemoirDepthFeed Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_memx_memxequities_memoirdepthfeed_sbe_v1_3.py
+
+      - name: Run Nasdaq IseOptions OrderComboFeed Itch v1.1 Definition Tests
+        run: python3 .github/tests/test_nasdaq_iseoptions_ordercombofeed_itch_v1_1.py
+
+      - name: Run Nasdaq IseOptions TopComboQuoteFeed Itch v1.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_iseoptions_topcomboquotefeed_itch_v1_0.py
+
+      - name: Run Nasdaq NsmEquities NlsPlus Itch v4.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_nlsplus_itch_v4_0.py
+
+      - name: Run Nasdaq NsmEquities Orders Ouch v5.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_orders_ouch_v5_0.py
+
+      - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2017 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2017.py
+
+      - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2023 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2023.py
+
+      - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py
+
+      - name: Run Nasdaq PsxEquities TotalView Itch v5.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_psxequities_totalview_itch_v5_0.py
+
+      - name: Run Nasdaq Uqdf Output Utp v1.5 Definition Tests
+        run: python3 .github/tests/test_nasdaq_uqdf_output_utp_v1_5.py
+
+      - name: Run Nyse AmexEquities IntegratedFeed Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_amexequities_integratedfeed_pillar_v2_5_g.py
+
+      - name: Run Nyse AmexEquities IntegratedFeed Xdp v2.1.g Definition Tests
+        run: python3 .github/tests/test_nyse_amexequities_integratedfeed_xdp_v2_1_g.py
+
+      - name: Run Nyse AmexOptions ComplexFeed Xdp v1.3.a Definition Tests
+        run: python3 .github/tests/test_nyse_amexoptions_complexfeed_xdp_v1_3_a.py
+
+      - name: Run Nyse AmexOptions DeepFeed Xdp v1.3.a Definition Tests
+        run: python3 .github/tests/test_nyse_amexoptions_deepfeed_xdp_v1_3_a.py
+
+      - name: Run Nyse ArcaEquities Bbo Xdp v2.4.c Definition Tests
+        run: python3 .github/tests/test_nyse_arcaequities_bbo_xdp_v2_4_c.py
+
+      - name: Run Nyse ArcaOptions TopFeed Pillar v1.2.c Definition Tests
+        run: python3 .github/tests/test_nyse_arcaoptions_topfeed_pillar_v1_2_c.py
+
+      - name: Run Nyse NyseEquities Bbo Pillar v2.5.b Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_bbo_pillar_v2_5_b.py
+
+      - name: Run Nyse NyseEquities Bbo Xdp v2.4.g Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_bbo_xdp_v2_4_g.py
+
+      - name: Run Nyse NyseEquities BinaryGateway PillarStream v5.17 Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_binarygateway_pillarstream_v5_17.py
+
+      - name: Run Nyse NyseEquities ImbalancesFeed Xdp v2.1.f Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_imbalancesfeed_xdp_v2_1_f.py
+
+      - name: Run Nyse NyseEquities ImbalancesFeed Xdp v2.2.a Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_imbalancesfeed_xdp_v2_2_a.py
+
+      - name: Run Nyse NyseEquities IntegratedFeed Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_integratedfeed_pillar_v2_5_g.py
+
+      - name: Run Nyse NyseEquities IntegratedFeed Xdp v2.1.g Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_integratedfeed_xdp_v2_1_g.py
+
+      - name: Run Nyse NyseEquities IntegratedFeed Xdp v2.3.a Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_integratedfeed_xdp_v2_3_a.py
+
+      - name: Run Nyse NyseEquities OpenBook Ultra v2.1.b Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_openbook_ultra_v2_1_b.py
+
+      - name: Run Nyse TexasEquities IntegratedFeed Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_texasequities_integratedfeed_pillar_v2_5_g.py
 
       - name: Run OtcMarkets LinkAts Multicast Link v4.3 Definition Tests
         run: python3 .github/tests/test_otcmarkets_linkats_multicast_link_v4_3.py

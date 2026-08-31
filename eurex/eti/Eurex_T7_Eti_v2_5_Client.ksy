@@ -1,0 +1,2474 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Eurex T7 Eti Fbe v2.5
+#
+# Protocol:
+#   Organization: Eurex Exchange
+#   Protocol: Enhanced Trading Interface
+#   Encoding: Flat Binary Encoding
+#   Version: 2.5
+#   Date: 11/07/2014
+#   Specification: eurex_eti_manual_V251.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: eurex_t7_eti_fbe_v2_5_client
+  title: Eurex T7 Eti Fbe v2.5
+  license: GPL-3.0
+  endian: le
+
+doc: 'Eurex Exchange T7 Enhanced Trading Interface Fbe v2.5'
+doc-ref: https://www.eurex.com/ex-en/technology/t7
+
+seq:
+  - id: client_message
+    type: client_message_struct
+    repeat: eos
+    doc: 'Eurex T7 Eti Message sent by the participant to Eurex'
+
+types:
+  client_message_struct:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Eurex T7 Eti message header'
+      - id: client_payload
+        size: message_header.body_len - 6
+        type:
+          switch-on: message_header.template_id
+          cases:
+            'template_id::add_complex_instrument_request': add_complex_instrument_request
+            'template_id::cross_request': cross_request
+            'template_id::delete_all_order_request': delete_all_order_request
+            'template_id::delete_all_quote_request': delete_all_quote_request
+            'template_id::delete_order_complex_request': delete_order_complex_request
+            'template_id::delete_order_single_request': delete_order_single_request
+            'template_id::gateway_request': gateway_request
+            'template_id::heartbeat': heartbeat
+            'template_id::inquire_enrichment_rule_id_list_request': inquire_enrichment_rule_id_list_request
+            'template_id::inquire_mm_parameter_request': inquire_mm_parameter_request
+            'template_id::inquire_session_list_request': inquire_session_list_request
+            'template_id::inquire_user_request': inquire_user_request
+            'template_id::logon_request': logon_request
+            'template_id::logout_request': logout_request
+            'template_id::mm_parameter_definition_request': mm_parameter_definition_request
+            'template_id::mass_quote_request': mass_quote_request
+            'template_id::modify_order_complex_request': modify_order_complex_request
+            'template_id::modify_order_single_request': modify_order_single_request
+            'template_id::modify_order_single_short_request': modify_order_single_short_request
+            'template_id::new_order_complex_request': new_order_complex_request
+            'template_id::new_order_single_request': new_order_single_request
+            'template_id::new_order_single_short_request': new_order_single_short_request
+            'template_id::quote_activation_request': quote_activation_request
+            'template_id::rfq_request': rfq_request
+            'template_id::retransmit_me_message_request': retransmit_me_message_request
+            'template_id::retransmit_request': retransmit_request
+            'template_id::subscribe_request': subscribe_request
+            'template_id::unsubscribe_request': unsubscribe_request
+            'template_id::user_login_request': user_login_request
+            'template_id::user_logout_request': user_logout_request
+  message_header:
+    seq:
+      - id: body_len
+        type: u4
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: template_id
+        type: u2
+        enum: template_id
+        doc: 'Nullable, No Value = 0xFFFF'
+  add_complex_instrument_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: security_sub_type
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: num_instrmt_leg_grp_comp
+        type: u1
+        doc: 'Nullable, No Value = 0xFF'
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2v2
+        size: 2
+      - id: instrmt_leg_grp_comp
+        type: instrmt_leg_grp_comp
+        repeat: expr
+        repeat-expr: num_instrmt_leg_grp_comp
+  request_header_comp:
+    seq:
+      - id: msg_seq_num
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: sender_sub_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+  instrmt_leg_grp_comp:
+    seq:
+      - id: leg_security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: leg_price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: leg_symbol
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: leg_ratio_qty
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: leg_side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: leg_security_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad6
+        size: 6
+  cross_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad4
+        size: 4
+  delete_all_order_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: target_party_id_executing_trader
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: pad4
+        size: 4
+  delete_all_quote_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+  delete_order_complex_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: order_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: orig_cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+  delete_order_single_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: order_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: orig_cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: simple_security_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: pad4
+        size: 4
+  gateway_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: default_cstm_appl_ver_id
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: password
+        type: str
+        size: 32
+        encoding: ASCII
+      - id: pad6
+        size: 6
+  heartbeat:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+  inquire_enrichment_rule_id_list_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: last_entity_processed
+        size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
+  inquire_mm_parameter_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+  inquire_session_list_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+  inquire_user_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: last_entity_processed
+        size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
+  logon_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: heart_bt_int
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: default_cstm_appl_ver_id
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: password
+        type: str
+        size: 32
+        encoding: ASCII
+      - id: appl_usage_orders
+        type: u1
+        enum: appl_usage_orders
+      - id: appl_usage_quotes
+        type: u1
+        enum: appl_usage_quotes
+      - id: order_routing_indicator
+        type: u1
+        enum: order_routing_indicator
+      - id: fix_engine_name
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: fix_engine_version
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: fix_engine_vendor
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: application_system_name
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: application_system_version
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: application_system_vendor
+        type: str
+        size: 30
+        encoding: ASCII
+      - id: pad3
+        size: 3
+  logout_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+  mm_parameter_definition_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: exposure_duration
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: cum_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: pct_count
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: delta
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: vega
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad7
+        size: 7
+  mass_quote_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: quote_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: enrichment_rule_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: quote_size_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: num_quote_entry_grp_comp
+        type: u1
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad7
+        size: 7
+      - id: quote_entry_grp_comp
+        type: quote_entry_grp_comp
+        repeat: expr
+        repeat-expr: num_quote_entry_grp_comp
+  quote_entry_grp_comp:
+    seq:
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: bid_px
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: offer_px
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: bid_size
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: offer_size
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+  modify_order_complex_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: order_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: orig_cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: expire_date
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: party_id_take_up_trading_firm
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_order_origination_firm
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_beneficiary
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+      - id: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: ownership_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: party_id_location_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: cust_order_handling_inst
+        type: str
+        size: 1
+        encoding: ASCII
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_position_account
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_1
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_2
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_3
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: num_leg_ord_grp_comp
+        type: u1
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad2v2
+        size: 2
+      - id: leg_ord_grp_comp
+        type: leg_ord_grp_comp
+        repeat: expr
+        repeat-expr: num_leg_ord_grp_comp
+  leg_ord_grp_comp:
+    seq:
+      - id: leg_account
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: leg_position_effect
+        type: u1
+        enum: leg_position_effect
+      - id: pad5
+        size: 5
+  modify_order_single_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: order_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: orig_cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: stop_px
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: expire_date
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: simple_security_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: party_id_take_up_trading_firm
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_order_origination_firm
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_beneficiary
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+      - id: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: account
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_position_account
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: position_effect
+        type: u1
+        enum: position_effect
+      - id: ownership_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: party_id_location_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: cust_order_handling_inst
+        type: str
+        size: 1
+        encoding: ASCII
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_1
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_2
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_3
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad4
+        size: 4
+  modify_order_single_short_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: orig_cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: simple_security_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: enrichment_rule_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad1
+        size: 1
+  new_order_complex_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: expire_date
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: party_id_take_up_trading_firm
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_order_origination_firm
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_beneficiary
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+      - id: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: party_id_location_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: cust_order_handling_inst
+        type: str
+        size: 1
+        encoding: ASCII
+      - id: party_id_position_account
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_1
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_2
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_3
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: num_leg_ord_grp_comp
+        type: u1
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad7
+        size: 7
+      - id: leg_ord_grp_comp
+        type: leg_ord_grp_comp
+        repeat: expr
+        repeat-expr: num_leg_ord_grp_comp
+  new_order_single_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: stop_px
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: expire_date
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: simple_security_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: party_id_take_up_trading_firm
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_order_origination_firm
+        type: str
+        size: 7
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_beneficiary
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+      - id: appl_seq_indicator
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: ord_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_session_sub_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: account
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: party_id_position_account
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: position_effect
+        type: u1
+        enum: position_effect
+      - id: party_id_location_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+      - id: cust_order_handling_inst
+        type: str
+        size: 1
+        encoding: ASCII
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_1
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_2
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: free_text_3
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad1
+        size: 1
+  new_order_single_short_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: price
+        type: decimal_u8_8_nullable
+        doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+      - id: cl_ord_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: simple_security_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: enrichment_rule_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: price_validity_check_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: time_in_force
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: exec_inst
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: trading_capacity
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad1
+        size: 1
+  quote_activation_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: target_party_id_session_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: mass_action_type
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: product_complex
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad6
+        size: 6
+  rfq_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: security_id
+        type: s8_nullable
+        doc: 'Nullable, No Value = 0x8000000000000000'
+      - id: compliance_id
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: market_segment_id
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: order_qty
+        type: s4_nullable
+        doc: 'Nullable, No Value = 0x80000000'
+      - id: side
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: compliance_text
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad3
+        size: 3
+  retransmit_me_message_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: subscription_scope
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: partition_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
+      - id: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: appl_beg_msg_id
+        size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
+      - id: appl_end_msg_id
+        size: 16
+        doc: 'Nullable, No Value = 0x00000000000000000000000000000000'
+      - id: pad1
+        size: 1
+  retransmit_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: appl_beg_seq_num
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: appl_end_seq_num
+        type: u8_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
+      - id: subscription_scope
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: partition_id
+        type: u2_nullable
+        doc: 'Nullable, No Value = 0xFFFF'
+      - id: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad1
+        size: 1
+  subscribe_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: subscription_scope
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: ref_appl_id
+        type: u1_nullable
+        doc: 'Nullable, No Value = 0xFF'
+      - id: pad3
+        size: 3
+  unsubscribe_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: ref_appl_sub_id
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: pad4
+        size: 4
+  user_login_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: username
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: password
+        type: str
+        size: 32
+        encoding: ASCII
+      - id: pad4
+        size: 4
+  user_logout_request:
+    seq:
+      - id: network_msg_id
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+      - id: pad2
+        size: 2
+      - id: request_header_comp
+        type: request_header_comp
+      - id: username
+        type: u4_nullable
+        doc: 'Nullable, No Value = 0xFFFFFFFF'
+      - id: pad4
+        size: 4
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
+  decimal_u8_8_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_8
+    instances:
+      is_null:
+        value: value.mantissa == 9223372036854775808
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
+
+enums:
+  template_id:
+    10301:
+      id: 'add_complex_instrument_request'
+      doc: 'Add Complex Instrument Request TemplateId'
+    10302:
+      id: 'add_complex_instrument_response'
+      doc: 'Add Complex Instrument Response TemplateId'
+    10032:
+      id: 'broadcast_error_notification'
+      doc: 'Broadcast Error Notification TemplateId'
+    10118:
+      id: 'cross_request'
+      doc: 'Cross Request TemplateId'
+    10119:
+      id: 'cross_request_response'
+      doc: 'Cross Request Response TemplateId'
+    10122:
+      id: 'delete_all_order_broadcast'
+      doc: 'Delete All Order Broadcast TemplateId'
+    10124:
+      id: 'delete_all_order_nr_response'
+      doc: 'Delete All Order Nr Response TemplateId'
+    10308:
+      id: 'delete_all_order_quote_event_broadcast'
+      doc: 'Delete All Order Quote Event Broadcast TemplateId'
+    10120:
+      id: 'delete_all_order_request'
+      doc: 'Delete All Order Request TemplateId'
+    10121:
+      id: 'delete_all_order_response'
+      doc: 'Delete All Order Response TemplateId'
+    10410:
+      id: 'delete_all_quote_broadcast'
+      doc: 'Delete All Quote Broadcast TemplateId'
+    10408:
+      id: 'delete_all_quote_request'
+      doc: 'Delete All Quote Request TemplateId'
+    10409:
+      id: 'delete_all_quote_response'
+      doc: 'Delete All Quote Response TemplateId'
+    10112:
+      id: 'delete_order_broadcast'
+      doc: 'Delete Order Broadcast TemplateId'
+    10123:
+      id: 'delete_order_complex_request'
+      doc: 'Delete Order Complex Request TemplateId'
+    10111:
+      id: 'delete_order_nr_response'
+      doc: 'Delete Order Nr Response TemplateId'
+    10110:
+      id: 'delete_order_response'
+      doc: 'Delete Order Response TemplateId'
+    10109:
+      id: 'delete_order_single_request'
+      doc: 'Delete Order Single Request TemplateId'
+    10012:
+      id: 'forced_logout_notification'
+      doc: 'Forced Logout Notification TemplateId'
+    10020:
+      id: 'gateway_request'
+      doc: 'Gateway Request TemplateId'
+    10021:
+      id: 'gateway_response'
+      doc: 'Gateway Response TemplateId'
+    10011:
+      id: 'heartbeat'
+      doc: 'Heartbeat TemplateId'
+    10023:
+      id: 'heartbeat_notification'
+      doc: 'Heartbeat Notification TemplateId'
+    10040:
+      id: 'inquire_enrichment_rule_id_list_request'
+      doc: 'Inquire Enrichment Rule Id List Request TemplateId'
+    10041:
+      id: 'inquire_enrichment_rule_id_list_response'
+      doc: 'Inquire Enrichment Rule Id List Response TemplateId'
+    10305:
+      id: 'inquire_mm_parameter_request'
+      doc: 'Inquire Mm Parameter Request TemplateId'
+    10306:
+      id: 'inquire_mm_parameter_response'
+      doc: 'Inquire Mm Parameter Response TemplateId'
+    10035:
+      id: 'inquire_session_list_request'
+      doc: 'Inquire Session List Request TemplateId'
+    10036:
+      id: 'inquire_session_list_response'
+      doc: 'Inquire Session List Response TemplateId'
+    10038:
+      id: 'inquire_user_request'
+      doc: 'Inquire User Request TemplateId'
+    10039:
+      id: 'inquire_user_response'
+      doc: 'Inquire User Response TemplateId'
+    10037:
+      id: 'legal_notification_broadcast'
+      doc: 'Legal Notification Broadcast TemplateId'
+    10000:
+      id: 'logon_request'
+      doc: 'Logon Request TemplateId'
+    10001:
+      id: 'logon_response'
+      doc: 'Logon Response TemplateId'
+    10002:
+      id: 'logout_request'
+      doc: 'Logout Request TemplateId'
+    10003:
+      id: 'logout_response'
+      doc: 'Logout Response TemplateId'
+    10303:
+      id: 'mm_parameter_definition_request'
+      doc: 'Mm Parameter Definition Request TemplateId'
+    10304:
+      id: 'mm_parameter_definition_response'
+      doc: 'Mm Parameter Definition Response TemplateId'
+    10405:
+      id: 'mass_quote_request'
+      doc: 'Mass Quote Request TemplateId'
+    10406:
+      id: 'mass_quote_response'
+      doc: 'Mass Quote Response TemplateId'
+    10114:
+      id: 'modify_order_complex_request'
+      doc: 'Modify Order Complex Request TemplateId'
+    10108:
+      id: 'modify_order_nr_response'
+      doc: 'Modify Order Nr Response TemplateId'
+    10107:
+      id: 'modify_order_response'
+      doc: 'Modify Order Response TemplateId'
+    10106:
+      id: 'modify_order_single_request'
+      doc: 'Modify Order Single Request TemplateId'
+    10126:
+      id: 'modify_order_single_short_request'
+      doc: 'Modify Order Single Short Request TemplateId'
+    10113:
+      id: 'new_order_complex_request'
+      doc: 'New Order Complex Request TemplateId'
+    10102:
+      id: 'new_order_nr_response'
+      doc: 'New Order Nr Response TemplateId'
+    10101:
+      id: 'new_order_response'
+      doc: 'New Order Response TemplateId'
+    10100:
+      id: 'new_order_single_request'
+      doc: 'New Order Single Request TemplateId'
+    10125:
+      id: 'new_order_single_short_request'
+      doc: 'New Order Single Short Request TemplateId'
+    10031:
+      id: 'news_broadcast'
+      doc: 'News Broadcast TemplateId'
+    10104:
+      id: 'order_exec_notification'
+      doc: 'Order Exec Notification TemplateId'
+    10117:
+      id: 'order_exec_report_broadcast'
+      doc: 'Order Exec Report Broadcast TemplateId'
+    10103:
+      id: 'order_exec_response'
+      doc: 'Order Exec Response TemplateId'
+    10042:
+      id: 'party_action_report'
+      doc: 'Party Action Report TemplateId'
+    10034:
+      id: 'party_entitlements_update_report'
+      doc: 'Party Entitlements Update Report TemplateId'
+    10411:
+      id: 'quote_activation_notification'
+      doc: 'Quote Activation Notification TemplateId'
+    10403:
+      id: 'quote_activation_request'
+      doc: 'Quote Activation Request TemplateId'
+    10404:
+      id: 'quote_activation_response'
+      doc: 'Quote Activation Response TemplateId'
+    10407:
+      id: 'quote_execution_report'
+      doc: 'Quote Execution Report TemplateId'
+    10401:
+      id: 'rfq_request'
+      doc: 'Rfq Request TemplateId'
+    10402:
+      id: 'rfq_response'
+      doc: 'Rfq Response TemplateId'
+    10010:
+      id: 'reject'
+      doc: 'Reject TemplateId'
+    10026:
+      id: 'retransmit_me_message_request'
+      doc: 'Retransmit Me Message Request TemplateId'
+    10027:
+      id: 'retransmit_me_message_response'
+      doc: 'Retransmit Me Message Response TemplateId'
+    10008:
+      id: 'retransmit_request'
+      doc: 'Retransmit Request TemplateId'
+    10009:
+      id: 'retransmit_response'
+      doc: 'Retransmit Response TemplateId'
+    10033:
+      id: 'risk_notification_broadcast'
+      doc: 'Risk Notification Broadcast TemplateId'
+    10030:
+      id: 'service_availability_broadcast'
+      doc: 'Service Availability Broadcast TemplateId'
+    10025:
+      id: 'subscribe_request'
+      doc: 'Subscribe Request TemplateId'
+    10005:
+      id: 'subscribe_response'
+      doc: 'Subscribe Response TemplateId'
+    10501:
+      id: 'tm_trading_session_status_broadcast'
+      doc: 'Tm Trading Session Status Broadcast TemplateId'
+    10028:
+      id: 'throttle_update_notification'
+      doc: 'Throttle Update Notification TemplateId'
+    10500:
+      id: 'trade_broadcast'
+      doc: 'Trade Broadcast TemplateId'
+    10307:
+      id: 'trading_session_status_broadcast'
+      doc: 'Trading Session Status Broadcast TemplateId'
+    10006:
+      id: 'unsubscribe_request'
+      doc: 'Unsubscribe Request TemplateId'
+    10007:
+      id: 'unsubscribe_response'
+      doc: 'Unsubscribe Response TemplateId'
+    10018:
+      id: 'user_login_request'
+      doc: 'User Login Request TemplateId'
+    10019:
+      id: 'user_login_response'
+      doc: 'User Login Response TemplateId'
+    10029:
+      id: 'user_logout_request'
+      doc: 'User Logout Request TemplateId'
+    10024:
+      id: 'user_logout_response'
+      doc: 'User Logout Response TemplateId'
+  product_complex:
+    1:
+      id: 'simpleinstrument'
+      doc: 'Simple instrument'
+    2:
+      id: 'standardoptionstrategy'
+      doc: 'Standard Option Strategy'
+    3:
+      id: 'nonstandardoptionstrategy'
+      doc: 'Non-Standard Option Strategy'
+    4:
+      id: 'volatilitystrategy'
+      doc: 'Volatility Strategy'
+    5:
+      id: 'futures_spread'
+      doc: 'Futures Spread'
+    6:
+      id: 'interproductspread'
+      doc: 'Inter-Product Spread'
+    7:
+      id: 'standardfuturestrategy'
+      doc: 'Standard Future Strategy'
+    8:
+      id: 'packandbundle'
+      doc: 'Pack and Bundle'
+    9:
+      id: 'strip'
+      doc: 'Strip'
+  leg_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+  leg_security_type:
+    1:
+      id: 'multileg_instrument'
+      doc: 'Multileg Instrument'
+    2:
+      id: 'underlying_leg'
+      doc: 'Underlying Leg'
+  appl_usage_orders:
+    0x41:
+      id: 'automated'
+      doc: 'Automated'
+    0x4d:
+      id: 'manual'
+      doc: 'Manual'
+    0x42:
+      id: 'auto_select'
+      doc: 'Both (Automated and Manual)'
+    0x4e:
+      id: 'none'
+      doc: 'None'
+  appl_usage_quotes:
+    0x41:
+      id: 'automated'
+      doc: 'Automated'
+    0x4d:
+      id: 'manual'
+      doc: 'Manual'
+    0x42:
+      id: 'auto_select'
+      doc: 'Both (Automated and Manual)'
+    0x4e:
+      id: 'none'
+      doc: 'None'
+  order_routing_indicator:
+    0x59:
+      id: 'yes_field'
+      doc: 'Yes'
+    0x4e:
+      id: 'no_field'
+      doc: 'No'
+  price_validity_check_type:
+    0:
+      id: 'none'
+      doc: 'None'
+    1:
+      id: 'optional'
+      doc: 'Optional'
+    2:
+      id: 'mandatory'
+      doc: 'Mandatory'
+  quote_size_type:
+    1:
+      id: 'total_size'
+      doc: 'Total Size (Quote Modification)'
+    2:
+      id: 'open_size'
+      doc: 'Open Size(Quote Entry)'
+  appl_seq_indicator:
+    0: 'no_recovery_required'
+    1: 'recovery_required'
+  side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+  ord_type:
+    1:
+      id: 'market'
+      doc: 'Market'
+    2:
+      id: 'limit'
+      doc: 'Limit'
+    3:
+      id: 'stop'
+      doc: 'Stop'
+    4:
+      id: 'stop_limit'
+      doc: 'Stop Limit'
+  exec_inst:
+    1:
+      id: 'h'
+      doc: 'Persistent Order (FIX value ''H'')'
+    2:
+      id: 'q'
+      doc: 'Non-persistent Order (FIX value ''Q'')'
+    3:
+      id: 'hq'
+      doc: 'Persistent and non-persistent orders affected (FIX value ''H Q'')'
+    5:
+      id: 'h_6'
+      doc: 'Persistent and Book or Cancel order (FIX value ''H 6'')'
+    6:
+      id: 'q_6'
+      doc: 'Non-persistent and Book or Cancel order (FIX value ''Q 6'')'
+  time_in_force:
+    0:
+      id: 'day'
+      doc: 'Day (GFD)'
+    1:
+      id: 'gtc'
+      doc: 'Good Till Cancelled (GTC) - Standard Orders only'
+    3:
+      id: 'ioc'
+      doc: 'Immediate or Cancel (IOC)'
+    6:
+      id: 'gtd'
+      doc: 'Good Till Date (GTD) - Standard Orders only'
+  trading_capacity:
+    1:
+      id: 'customer'
+      doc: 'Customer (Agency)'
+    5:
+      id: 'principal'
+      doc: 'Principal (Proprietary)'
+    6:
+      id: 'market_maker'
+      doc: 'MarketMaker'
+  ownership_indicator:
+    0:
+      id: 'no_changeof_ownership'
+      doc: 'Do not change ownership'
+    1:
+      id: 'changeto_executing_trader'
+      doc: 'Change ownership to executing party (User ID)'
+  leg_position_effect:
+    0x43:
+      id: 'close'
+      doc: 'Close'
+    0x4f:
+      id: 'open'
+      doc: 'Open'
+  trading_session_sub_id:
+    4:
+      id: 'closingauction'
+      doc: 'Closing or closing auction'
+  position_effect:
+    0x43:
+      id: 'close'
+      doc: 'Close'
+    0x4f:
+      id: 'open'
+      doc: 'Open'
+  mass_action_type:
+    1:
+      id: 'suspendquotes'
+      doc: 'Suspend quotes'
+    2:
+      id: 'releasequotes'
+      doc: 'Release quotes from suspension'
+  ref_appl_id:
+    1:
+      id: 'trade'
+      doc: 'Trade'
+    2:
+      id: 'news'
+      doc: 'News'
+    3:
+      id: 'serviceavailability'
+      doc: 'Service Availability'
+    4:
+      id: 'sessiondata'
+      doc: 'Session Data'
+    5:
+      id: 'listenerdata'
+      doc: 'Listener Data'
+    6:
+      id: 'risk_control'
+      doc: 'Risk Control'
+  last_fragment:
+    0:
+      id: 'not_last_message'
+      doc: 'Not Last Message'
+    1:
+      id: 'last_message'
+      doc: 'Last Message'
+  multileg_model:
+    0:
+      id: 'predefined_multileg_security'
+      doc: 'Predefined Multileg Security'
+    1:
+      id: 'userdefined_multleg'
+      doc: 'User-defined Multleg Security'
+  implied_market_indicator:
+    0:
+      id: 'notimplied'
+      doc: 'Not implied'
+    3:
+      id: 'impliedinout'
+      doc: 'Both Implied-in and Implied-out'
+  appl_id_status:
+    105:
+      id: 'outboundconversionerror'
+      doc: 'Error converting response or broadcast'
+  session_status:
+    0:
+      id: 'active'
+      doc: 'Session active'
+    4:
+      id: 'logout'
+      doc: 'Session logout complete'
+  appl_id:
+    1:
+      id: 'trade'
+      doc: 'Trade'
+    2:
+      id: 'news'
+      doc: 'News'
+    3:
+      id: 'serviceavailability'
+      doc: 'Service Availability'
+    4:
+      id: 'sessiondata'
+      doc: 'Session Data'
+    5:
+      id: 'listenerdata'
+      doc: 'Listener Data'
+    6:
+      id: 'risk_control'
+      doc: 'Risk Control'
+  appl_resend_flag:
+    0:
+      id: 'false_field'
+      doc: 'False'
+    1:
+      id: 'true_field'
+      doc: 'True'
+  party_id_entering_firm:
+    1:
+      id: 'participant'
+      doc: 'Participant'
+    2:
+      id: 'market_supervision'
+      doc: 'Market Supervision'
+  mass_action_reason:
+    0:
+      id: 'no_special_reason'
+      doc: 'No special reason'
+    1:
+      id: 'stop_trading'
+      doc: 'Trading was stopped'
+    2:
+      id: 'emergency'
+      doc: 'Emergency'
+    3:
+      id: 'market_maker_protection'
+      doc: 'Market Maker Protection'
+    6:
+      id: 'session_loss'
+      doc: 'Session loss or logout'
+    7:
+      id: 'duplicate_session_login'
+      doc: 'Duplicate Session Login'
+    8:
+      id: 'clearing_risk_control'
+      doc: 'Clearing Risk Control'
+    105:
+      id: 'product_state_halt'
+      doc: 'Product State Halt'
+    106:
+      id: 'product_state_holiday'
+      doc: 'Product State Holiday'
+    107:
+      id: 'instrument_suspended'
+      doc: 'Instrument Suspended'
+    109:
+      id: 'complex_instrument_deletion'
+      doc: 'Complex Instrument Deletion'
+    110:
+      id: 'volatility_interruption'
+      doc: 'Volatility Interruption'
+    111:
+      id: 'producttemporarilynottradeable'
+      doc: 'Product temporarily not tradeable'
+  exec_restatement_reason:
+    001:
+      id: 'order_book_restatement'
+      doc: 'Order book restatement'
+    101:
+      id: 'order_added'
+      doc: 'Order add accepted'
+    102:
+      id: 'order_modified'
+      doc: 'Order modify accepted'
+    103:
+      id: 'order_cancelled'
+      doc: 'Order delete accepted'
+    105:
+      id: 'ioc_order_cancelled'
+      doc: 'IOC Order accepted'
+    108:
+      id: 'book_order_executed'
+      doc: 'Book Order executed'
+    135:
+      id: 'market_order_triggered'
+      doc: 'Market Order triggered and executed'
+    149:
+      id: 'cao_order_activated'
+      doc: 'Closing Auction Order has been activated'
+    150:
+      id: 'cao_order_inactivated'
+      doc: 'Closing Auction Order has been inactivated'
+    164:
+      id: 'oco_order_triggered'
+      doc: 'One-cancels-the-other Order has been triggered'
+    172:
+      id: 'stop_order_triggered'
+      doc: 'Stop Order has been triggered'
+    181:
+      id: 'ownership_changed'
+      doc: 'Ownership Changed'
+    197:
+      id: 'order_cancellation_pending'
+      doc: 'Pending order deletion finally completed (end of FREEZE state)'
+    199:
+      id: 'pending_cancellation_executed'
+      doc: 'Pending order cancellation executed (end of FREEZE state)'
+    212:
+      id: 'boc_order_cancelled'
+      doc: 'Book or Cancel Order accepted'
+  ord_status:
+    0x30:
+      id: 'new_field'
+      doc: 'New'
+    0x31:
+      id: 'partiallyfilled'
+      doc: 'Partially filled'
+    0x32:
+      id: 'filled'
+      doc: 'Filled'
+    0x34:
+      id: 'canceled'
+      doc: 'Cancelled'
+    0x36:
+      id: 'pending_cancel'
+      doc: 'Pending Cancel (i.e. result of Order Cancel Request)'
+    0x39:
+      id: 'suspended'
+      doc: 'Suspended'
+  exec_type:
+    0x30:
+      id: 'new_field'
+      doc: 'New'
+    0x34:
+      id: 'canceled'
+      doc: 'Cancelled'
+    0x35:
+      id: 'replaced'
+      doc: 'Replaced'
+    0x36:
+      id: 'pending_cancele'
+      doc: 'Pending Cancel (e.g. result of Order Cancel Request)'
+    0x39:
+      id: 'suspended'
+      doc: 'Suspended'
+    0x44:
+      id: 'restated'
+      doc: 'Restated'
+    0x4c:
+      id: 'triggered'
+      doc: 'Triggered'
+    0x46:
+      id: 'trade'
+      doc: 'Trade'
+  session_mode:
+    1:
+      id: 'hf'
+      doc: 'HF'
+    2:
+      id: 'lf'
+      doc: 'LF'
+    3:
+      id: 'gui'
+      doc: 'GUI'
+  trad_ses_mode:
+    1:
+      id: 'testing'
+      doc: 'Development'
+    2:
+      id: 'simulated'
+      doc: 'Simulation'
+    3:
+      id: 'production'
+      doc: 'Production'
+    4:
+      id: 'acceptance'
+      doc: 'Acceptance'
+  party_id_origination_market:
+    1:
+      id: 'xkfe'
+      doc: 'Korea Exchange'
+    2:
+      id: 'xtaf'
+      doc: 'Taiwan Futures Exchange'
+  session_sub_mode:
+    0:
+      id: 'regulartradingsession'
+      doc: 'Regular Trading Session'
+    1:
+      id: 'fi_xtradingsession'
+      doc: 'FIX Trading Session'
+    2:
+      id: 'regular_back_officesession'
+      doc: 'Regular Back Office Session'
+  party_detail_role_qualifier:
+    10:
+      id: 'trader'
+      doc: 'Trader'
+    11:
+      id: 'head_trader'
+      doc: 'Head Trader'
+    12:
+      id: 'supervisor'
+      doc: 'Supervisor'
+  party_detail_status:
+    0:
+      id: 'active'
+      doc: 'Active'
+    1:
+      id: 'suspend'
+      doc: 'Suspend'
+  user_status:
+    10:
+      id: 'userstopped'
+      doc: 'Admission to trading suspended'
+    11:
+      id: 'userreleased'
+      doc: 'Suspension revoked'
+  quote_entry_reject_reason:
+    1:
+      id: 'unknown_security'
+      doc: 'Unknown security'
+    6:
+      id: 'duplicate_quote'
+      doc: 'Duplicate quote'
+    8:
+      id: 'invalid_price'
+      doc: 'Invalid price'
+    16:
+      id: 'no_reference_price_available'
+      doc: 'Reference price not available'
+    100:
+      id: 'no_single_sided_quotes'
+      doc: 'Single sided quotes not allowed'
+    103:
+      id: 'invalid_quoting_model'
+      doc: 'Invalid usage of quoting model'
+    106:
+      id: 'invalid_size'
+      doc: 'Invalid size'
+    107:
+      id: 'invalid_underlying_price'
+      doc: 'Invalid underlying leg price'
+    108:
+      id: 'bid_price_not_reasonable'
+      doc: 'Bid price not reasonable'
+    109:
+      id: 'ask_price_not_reasonable'
+      doc: 'Ask price not reasonable'
+    110:
+      id: 'bid_price_exceeds_range'
+      doc: 'Bid price exceeds extended price range'
+    111:
+      id: 'ask_price_exceeds_range'
+      doc: 'Ask price exceeds extended price range'
+    115:
+      id: 'instrument_state_freeze'
+      doc: 'Instrument state freeze'
+    116:
+      id: 'deletion_already_pending'
+      doc: 'Deletion already pending'
+    117:
+      id: 'pre_trade_risk_session_limit_exceeded'
+      doc: 'Fuse Box violation on session level'
+    118:
+      id: 'pre_trade_risk_bu_limit_exceeded'
+      doc: 'Fuse Box violation on BU level'
+    119:
+      id: 'entitlement_not_assigned_for_underlying'
+      doc: 'Entitlement not assigned for underlying'
+    131:
+      id: 'cant_proc_in_curr_instr_state'
+      doc: 'Instrument state does not allow processing'
+  quote_entry_status:
+    0:
+      id: 'accepted'
+      doc: 'Accepted with warning'
+    5:
+      id: 'rejected'
+      doc: 'Rejected'
+    6:
+      id: 'removedand_rejected'
+      doc: 'Removed from Market'
+    10:
+      id: 'pending'
+      doc: 'Pending'
+  triggered:
+    0: 'nottriggered'
+    1: 'triggered_stop'
+    2: 'triggered_oco'
+  fill_liquidity_ind:
+    1:
+      id: 'added_liquidity'
+      doc: 'Added Liquidity'
+    2:
+      id: 'removed_liquidity'
+      doc: 'Removed Liquidity'
+    5:
+      id: 'triggered_stop_order'
+      doc: 'Triggered Stop Order'
+    6:
+      id: 'triggered_oco_order'
+      doc: 'Triggered OCO Order'
+    7:
+      id: 'triggered_market_order'
+      doc: 'Triggered Market Order'
+  requesting_party_id_executing_system:
+    1:
+      id: 'eurex_clearing'
+      doc: 'Eurex Clearing'
+    2:
+      id: 'eurex_trading'
+      doc: 'Eurex Trading'
+  market_id:
+    1:
+      id: 'xeur'
+      doc: 'XEUR'
+    2:
+      id: 'xeee'
+      doc: 'XEEE'
+  party_action_type:
+    1:
+      id: 'halt_trading'
+      doc: 'Halt trading'
+    2:
+      id: 'reinstate'
+      doc: 'Reinstate'
+  requesting_party_id_entering_firm:
+    1:
+      id: 'participant'
+      doc: 'Participant'
+    2:
+      id: 'market_supervision'
+      doc: 'Market Supervision'
+  list_update_action:
+    0x41:
+      id: 'add'
+      doc: 'Add (Invocation)'
+    0x44:
+      id: 'delete_field'
+      doc: 'Delete (Release)'
+  quote_event_type:
+    3: 'removedquoteside'
+    4: 'partiallyfilled'
+    5:
+      id: 'filled'
+      doc: 'Filled'
+  quote_event_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+  quote_event_liquidity_ind:
+    1:
+      id: 'added_liquidity'
+      doc: 'Added Liquidity'
+    2:
+      id: 'removed_liquidity'
+      doc: 'Removed Liquidity'
+  quote_event_reason:
+    14: 'pendingcancellationexecuted'
+    15: 'invalidprice'
+  session_reject_reason:
+    1:
+      id: 'required_tag_missing'
+      doc: 'Required Tag Missing'
+    5:
+      id: 'valueisincorrect'
+      doc: 'Value is incorrect (out of range) for this tag'
+    7:
+      id: 'decryptionproblem'
+      doc: 'Decryption problem'
+    11:
+      id: 'invalid_msg_id'
+      doc: 'Invalid TemplateID'
+    16:
+      id: 'incorrect_num_in_groupcount'
+      doc: 'Incorrect NumInGroup count for repeating group'
+    99:
+      id: 'other'
+      doc: 'Other'
+    100:
+      id: 'throttle_limit_exceeded'
+      doc: 'Throttle limit exceeded'
+    101:
+      id: 'exposure_limit_exceeded'
+      doc: 'Exposure limit exceeded'
+    102:
+      id: 'service_temporarily_not_available'
+      doc: 'Service temporarily not available'
+    103:
+      id: 'service_not_available'
+      doc: 'Service not available'
+    104:
+      id: 'result_of_transaction_unknown'
+      doc: 'Result of transaction unknown'
+    105:
+      id: 'outboundconversionerror'
+      doc: 'Error converting response or broadcast'
+    152:
+      id: 'heartbeat_violation'
+      doc: 'Heartbeat violation error'
+    200:
+      id: 'internaltechnicalerror'
+      doc: 'Internal technical error'
+    210:
+      id: 'validation_error'
+      doc: 'Validation Error'
+    211:
+      id: 'user_already_logged_in'
+      doc: 'User already logged in'
+    10000:
+      id: 'order_not_found'
+      doc: 'Order not found'
+    10001:
+      id: 'price_not_reasonable'
+      doc: 'Price not reasonable'
+    10002:
+      id: 'client_order_id_not_unique'
+      doc: 'Duplicate Order (ClOrdID)'
+    10003:
+      id: 'quote_activation_in_progress'
+      doc: 'another quote activation request is pending for the same Product / Instrument Type / SessionID'
+    10004:
+      id: 'bu_book_order_limit_exceeded'
+      doc: 'Book Order limit exceeded on BU level'
+    10005:
+      id: 'session_book_order_limit_exceeded'
+      doc: 'Book Order limit exceeded on Session level'
+    10010:
+      id: 'create_ci_throttle_exceeded'
+      doc: 'Throttle limit for creation of complex instrument exceeded'
+  risk_limit_action:
+    4:
+      id: 'warning'
+      doc: 'Warning'
+    0:
+      id: 'queue_inbound'
+      doc: 'Queue Inbound'
+    2:
+      id: 'reject'
+      doc: 'Reject'
+  matching_engine_status:
+    0:
+      id: 'unavailable'
+      doc: 'Unavailable'
+    1:
+      id: 'available'
+      doc: 'Available'
+  trade_manager_status:
+    0:
+      id: 'unavailable'
+      doc: 'Unavailable'
+    1:
+      id: 'available'
+      doc: 'Available'
+  appl_seq_status:
+    0:
+      id: 'unavailable'
+      doc: 'Unavailable'
+    1:
+      id: 'available'
+      doc: 'Available'
+  trad_ses_event:
+    101:
+      id: 'startof_service'
+      doc: 'Start of Service'
+    102:
+      id: 'market_reset'
+      doc: 'Market Reset'
+    103:
+      id: 'endof_restatement'
+      doc: 'End of Restatement'
+    104:
+      id: 'endof_day_service'
+      doc: 'End of Service'
+    105:
+      id: 'service_resumed'
+      doc: 'Service Resumed'
+  multi_leg_reporting_type:
+    1:
+      id: 'singlesecurity'
+      doc: 'Single instrument'
+    2:
+      id: 'individuallegofamultilegsecurity'
+      doc: 'Complex instrument'
+  trade_report_type:
+    0:
+      id: 'submit'
+      doc: 'Trade'
+    1:
+      id: 'alleged'
+      doc: 'Alleged'
+    5:
+      id: 'no_was_replaced'
+      doc: 'No/Was (Replaced)'
+    7:
+      id: 'trade_break'
+      doc: '(Locked-In) Trade Break'
+  transfer_reason:
+    1:
+      id: 'owner'
+      doc: 'Owner'
+    2:
+      id: 'clearer'
+      doc: 'Clearer'
+  match_type:
+    3:
+      id: 'confirmed_trade_report'
+      doc: 'Confirmed Trade Report (reporting from recognized markets)'
+    4:
+      id: 'automatchincoming'
+      doc: 'Auto-match incoming order'
+    5:
+      id: 'cross_auction'
+      doc: 'Cross Auction'
+    7:
+      id: 'call_auction'
+      doc: 'Call Auction'
+    11:
+      id: 'automatchresting'
+      doc: 'Auto match resting order'
+  match_sub_type:
+    1:
+      id: 'opening_auction'
+      doc: 'Opening auction'
+    2:
+      id: 'closing_auction'
+      doc: 'Closing auction'
+    3:
+      id: 'intraday_auction'
+      doc: 'Intraday auction'
+    4:
+      id: 'circuit_breaker_auction'
+      doc: 'Circuit Breaker auction'
+  aggressor_indicator:
+    0:
+      id: 'passive'
+      doc: 'Passive'
+    1:
+      id: 'agressor'
+      doc: 'Aggressive'
+  order_category:
+    0x31:
+      id: 'order'
+      doc: 'Order'
+    0x32:
+      id: 'quote'
+      doc: 'Quote'
+  related_product_complex:
+    2:
+      id: 'standardoptionstrategy'
+      doc: 'Standard Option Strategy'
+    3:
+      id: 'nonstandardoptionstrategy'
+      doc: 'Non-Standard Option Strategy'
+    4:
+      id: 'volatilitystrategy'
+      doc: 'Volatility Strategy'
+    5:
+      id: 'futures_spread'
+      doc: 'Futures Spread'
+    6:
+      id: 'interproductspread'
+      doc: 'Inter-Product Spread'
+    7:
+      id: 'standardfuturestrategy'
+      doc: 'Standard Future Strategy'
+    8:
+      id: 'packandbundle'
+      doc: 'Pack and Bundle'
+    9:
+      id: 'strip'
+      doc: 'Strip'
+  order_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+
