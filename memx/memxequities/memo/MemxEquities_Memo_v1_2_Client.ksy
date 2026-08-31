@@ -100,15 +100,15 @@ types:
         doc: 'The first requested sequence number'
   unsequenced_message:
     seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
-  sbe_message:
+      - id: client_sbe_message
+        type: client_sbe_message
+        doc: 'Sbe message sent by the firm to Memx'
+  client_sbe_message:
     seq:
       - id: sbe_header
         type: sbe_header
         doc: 'Sbe Header'
-      - id: payload
+      - id: client_payload
         type:
           switch-on: sbe_header.template_id
           cases:
@@ -116,21 +116,6 @@ types:
             'template_id::order_cancel_replace_request_message': order_cancel_replace_request_message
             'template_id::order_cancel_request_message': order_cancel_request_message
             'template_id::mass_cancel_request_message': mass_cancel_request_message
-            'template_id::execution_report_pending_new_message': execution_report_pending_new_message
-            'template_id::execution_report_new_message': execution_report_new_message
-            'template_id::execution_report_rejected_message': execution_report_rejected_message
-            'template_id::execution_report_trade_message': execution_report_trade_message
-            'template_id::execution_report_pending_cancel_message': execution_report_pending_cancel_message
-            'template_id::pending_mass_cancel_message': pending_mass_cancel_message
-            'template_id::execution_report_canceled_message': execution_report_canceled_message
-            'template_id::mass_cancel_done_message': mass_cancel_done_message
-            'template_id::execution_report_pending_replace_message': execution_report_pending_replace_message
-            'template_id::execution_report_replaced_message': execution_report_replaced_message
-            'template_id::execution_report_trade_correction_message': execution_report_trade_correction_message
-            'template_id::execution_report_trade_break_message': execution_report_trade_break_message
-            'template_id::execution_report_restatement_message': execution_report_restatement_message
-            'template_id::order_cancel_reject_message': order_cancel_reject_message
-            'template_id::mass_cancel_reject_message': mass_cancel_reject_message
   sbe_header:
     seq:
       - id: block_length
@@ -162,74 +147,74 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'CMS symbol tradable instrument'
       - id: symbol_sfx
         type: str
         size: 6
         encoding: ASCII
-        doc: 'SymbolSfx'
+        doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.)'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered. This represents the number of shares. Number of shares may not exceed 1MM. The notional value of an order may not exceed $30MM'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order. MEMO SBE v1.12 COPYRIGHT MEMX LLC 2023. ALL RIGHTS RESERVED. 25 Field Offset Length Type Tag Ref Num Req''d Description'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity (e.g. per share). Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: order_capacity
         type: u1
         enum: order_capacity
-        doc: 'OrderCapacity'
+        doc: 'Designates the capacity of the firm placing the order'
       - id: cust_order_capacity
         type: u1
         enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
+        doc: 'Capacity of the customer placing the order'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInstType bit set'
       - id: peg_offset_value
         type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Amount(signed) added to the peg for a pegged order. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: peg_price_type
         type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
+        doc: 'Defines the type of peg. Nullable, No Value = 255'
       - id: expire_time
         type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
+        doc: 'The expiration time of a GoodForTime TimeInForce order. Expiration time must be at least a 1 millisecond in the future. If omitted, expiration time will be set to the end of the MEMX post-market trading session. Specified in UTC timestamp since unix epoch in nanoseconds. Nullable, No Value = 18446744073709551615'
       - id: min_qty
         type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
+        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: display_method
         type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
+        doc: 'Defines the replenishment size behavior for a reserve order. This should be MEMO SBE v1.12 COPYRIGHT MEMX LLC 2023. ALL RIGHTS RESERVED. 26 Field Offset Length Type Tag Ref Num Req''d Description null for a fully displayed order. Nullable, No Value = 255'
       - id: reserve_replenish_timing
         type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
+        doc: 'Defines the replenishment timing behavior for a reserve order. Nullable, No Value = 255'
       - id: display_min_incr
         type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
+        doc: 'Defines the minimum increment to be used when calculating a random refresh of DisplayQty. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders only. Only acceptable value is ''N'' which indicates the member has secured the required locate. Nullable, No Value = 0'
       - id: reprice_frequency
         type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
+        doc: 'Defines the frequency of a reprice. If this tag is not sent then the order will not be repriced. Nullable, No Value = 255'
       - id: reprice_behavior
         type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
+        doc: 'Defines the reprice behavior when market is locked or crossed. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
@@ -238,7 +223,7 @@ types:
         doc: 'StpGroupId. Nullable, No Value = 65535'
       - id: self_trade_prevention
         type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
+        doc: 'Defines the desired behavior in the event of a wash. The UINT8 Null (0xFF) value disables self trade prevention. Nullable, No Value = 255'
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupId. Nullable, No Value = 65535'
@@ -262,7 +247,7 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'OrigClOrdID'
+        doc: 'ClOrdID (11) of the previous order (NOT the initial order of the day)'
       - id: clordid
         type: str
         size: 16
@@ -272,42 +257,42 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'CMS symbol tradable instrument'
       - id: symbol_sfx
         type: str
         size: 6
         encoding: ASCII
-        doc: 'SymbolSfx'
+        doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.)'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of order'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered. This represents the number of shares. Number of shares may not exceed 1MM. The notional value of an order may not exceed $30MM'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order. MEMO SBE v1.12 COPYRIGHT MEMX LLC 2023. ALL RIGHTS RESERVED. 25 Field Offset Length Type Tag Ref Num Req''d Description'
       - id: price
         type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'Price per unit of quantity (e.g. per share). Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: display_qty
         type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
+        doc: 'Quantity of the order to be displayed. Nullable, No Value = 4294967295'
       - id: locate_reqd
         type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
+        doc: 'Required on Short Sell and Short Sell Exempt orders only. Only acceptable value is ''N'' which indicates the member has secured the required locate. Nullable, No Value = 0'
   order_cancel_request_message:
     seq:
       - id: origclordid
         type: str
         size: 16
         encoding: ASCII
-        doc: 'OrigClOrdID'
+        doc: 'ClOrdID (11) of the previous order (NOT the initial order of the day)'
       - id: order_id_optional
         type: u8_nullable
-        doc: 'OrderID. Nullable, No Value = 18446744073709551615'
+        doc: 'OrderID as assigned by the exchange. Nullable, No Value = 18446744073709551615'
       - id: clordid
         type: str
         size: 16
@@ -317,12 +302,12 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'CMS symbol tradable instrument'
       - id: symbol_sfx
         type: str
         size: 6
         encoding: ASCII
-        doc: 'SymbolSfx'
+        doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.)'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -334,748 +319,24 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Symbol'
+        doc: 'CMS symbol tradable instrument'
       - id: symbol_sfx
         type: str
         size: 6
         encoding: ASCII
-        doc: 'SymbolSfx'
+        doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.)'
       - id: side_optional
         type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
+        doc: 'Side of order. Nullable, No Value = 255'
       - id: lower_than_price
         type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'For Mass Cancel scenario, Any order with a lower or equal limit price would be included in the cancel filter. This filter can only be used in conjunction with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: higher_than_price
         type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
+        doc: 'For Mass Cancel scenario, Any order with a higher or equal limit price would be included in the cancel filter. This filter can only be used in conjunction with a specific symbol. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
-  execution_report_pending_new_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'MPID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: price
-        type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: order_capacity
-        type: u1
-        enum: order_capacity
-        doc: 'OrderCapacity'
-      - id: cust_order_capacity
-        type: u1
-        enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: peg_offset_value
-        type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: peg_price_type
-        type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
-      - id: expire_time
-        type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
-      - id: min_qty
-        type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
-      - id: display_method
-        type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
-      - id: reserve_replenish_timing
-        type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
-      - id: display_min_incr
-        type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
-      - id: locate_reqd
-        type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
-      - id: reprice_frequency
-        type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
-      - id: reprice_behavior
-        type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
-      - id: stp_group_id
-        type: u2_nullable
-        doc: 'StpGroupId. Nullable, No Value = 65535'
-      - id: self_trade_prevention
-        type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupId. Nullable, No Value = 65535'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-  execution_report_new_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: mpid
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'MPID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: price
-        type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: order_capacity
-        type: u1
-        enum: order_capacity
-        doc: 'OrderCapacity'
-      - id: cust_order_capacity
-        type: u1
-        enum: cust_order_capacity
-        doc: 'CustOrderCapacity'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: peg_offset_value
-        type: decimal_s8_6_nullable
-        doc: 'PegOffsetValue. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: peg_price_type
-        type: u1_nullable
-        doc: 'PegPriceType. Nullable, No Value = 255'
-      - id: expire_time
-        type: u8_nullable
-        doc: 'ExpireTime. Nullable, No Value = 18446744073709551615'
-      - id: min_qty
-        type: u4_nullable
-        doc: 'MinQty. Nullable, No Value = 4294967295'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
-      - id: display_method
-        type: u1_nullable
-        doc: 'DisplayMethod. Nullable, No Value = 255'
-      - id: reserve_replenish_timing
-        type: u1_nullable
-        doc: 'ReserveReplenishTiming. Nullable, No Value = 255'
-      - id: display_min_incr
-        type: u4_nullable
-        doc: 'DisplayMinIncr. Nullable, No Value = 4294967295'
-      - id: locate_reqd
-        type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
-      - id: reprice_frequency
-        type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
-      - id: reprice_behavior
-        type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
-      - id: stp_group_id
-        type: u2_nullable
-        doc: 'StpGroupId. Nullable, No Value = 65535'
-      - id: self_trade_prevention
-        type: u1_nullable
-        doc: 'SelfTradePrevention. Nullable, No Value = 255'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupId. Nullable, No Value = 65535'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  execution_report_rejected_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: order_reject_reason
-        type: u1
-        enum: order_reject_reason
-        doc: 'RejectReason'
-  execution_report_trade_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: last_qty
-        type: u4
-        doc: 'LastQty'
-      - id: last_px
-        type: decimal_s8_6
-        doc: 'LastPx. Implied decimal with scale 1e-6'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-      - id: last_liquidity_ind
-        type: u1
-        enum: last_liquidity_ind
-        doc: 'LastLiquidityInd'
-      - id: last_mkt
-        type: u1
-        enum: last_mkt
-        doc: 'LastMkt'
-      - id: trd_matching_id
-        type: u8
-        doc: 'TrdMatchingID'
-  execution_report_pending_cancel_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-  pending_mass_cancel_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
-      - id: lower_than_price
-        type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: higher_than_price
-        type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
-  execution_report_canceled_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: cancel_reason
-        type: u1_nullable
-        doc: 'CancelReason. Nullable, No Value = 255'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  mass_cancel_done_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-  execution_report_pending_replace_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price
-        type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
-      - id: locate_reqd
-        type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-  execution_report_replaced_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: origclordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price
-        type: decimal_s8_6_nullable
-        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'DisplayQty. Nullable, No Value = 4294967295'
-      - id: locate_reqd
-        type: str_1_nullable
-        doc: 'LocateReqd. Nullable, No Value = 0'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  execution_report_trade_correction_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: exec_ref_id
-        type: u8
-        doc: 'ExecRefID'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: last_px
-        type: decimal_s8_6
-        doc: 'LastPx. Implied decimal with scale 1e-6'
-      - id: last_qty_optional
-        type: u4_nullable
-        doc: 'LastQty. Nullable, No Value = 4294967295'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-  execution_report_trade_break_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: exec_ref_id
-        type: u8
-        doc: 'ExecRefID'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-  execution_report_restatement_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: last_px_optional
-        type: decimal_s8_6_nullable
-        doc: 'LastPx. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: last_shares
-        type: u4
-        doc: 'LastShares'
-      - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'ExecRestatementReason'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  order_cancel_reject_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: cxl_rej_response_to
-        type: u1
-        enum: cxl_rej_response_to
-        doc: 'CxlRejResponseTo'
-      - id: cxl_rej_reason
-        type: u1
-        enum: cxl_rej_reason
-        doc: 'CxlRejReason'
-  mass_cancel_reject_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: symbol_sfx
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'SymbolSfx'
-      - id: side_optional
-        type: u1_nullable
-        doc: 'Side. Nullable, No Value = 255'
-      - id: lower_than_price
-        type: decimal_s8_6_nullable
-        doc: 'LowerThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: higher_than_price
-        type: decimal_s8_6_nullable
-        doc: 'HigherThanPrice. Implied decimal with scale 1e-6. Nullable, No Value = -9223372036854775808'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupId. Nullable, No Value = 65535'
-      - id: mass_cancel_reject_reason
-        type: u1
-        enum: mass_cancel_reject_reason
-        doc: 'RejectReason'
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1127,19 +388,6 @@ types:
     instances:
       is_null:
         value: value == 65535
-  nanosecond_timestamp:
-    seq:
-      - id: time
-        type: s8
-    instances:
-      hour:
-        value: time / 3600000000000 % 24
-      minute:
-        value: time / 60000000000 % 60
-      second:
-        value: time / 1000000000 % 60
-      millisecond:
-        value: time / 1000000 % 1000
 
 enums:
   message_type:
@@ -1411,6 +659,52 @@ enums:
     255:
       id: 'null_value'
       doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  supported_request_mode:
+    0x53:
+      id: 'stream'
+      doc: 'Stream Mode'
+    0x52:
+      id: 'replay'
+      doc: 'Replay Mode'
+    0x54:
+      id: 'snapshot_mode'
+      doc: 'Snapshot Mode'
+  login_reject_code:
+    0x54:
+      id: 'malformed_token'
+      doc: 'Malformed Token'
+    0x55:
+      id: 'token_type_unsupported'
+      doc: 'Token type unsupported by this server'
+    0x56:
+      id: 'token_type_invalid'
+      doc: 'Token type invalid on any server'
+    0x41:
+      id: 'authorization_failed'
+      doc: 'Authorization failed'
+  replay_reject_code:
+    0x52:
+      id: 'replay_requests_are_not_allowed'
+      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+    0x41:
+      id: 'replay_all_requests_are_not_allowed'
+      doc: 'Replay all requests are not allowed by this server'
+    0x50:
+      id: 'not_the_active_session'
+      doc: 'The session ID on the request is not the active session'
+    0x53:
+      id: 'sequence_number_out_of_range'
+      doc: 'Start sequence number out of range'
+  stream_reject_code:
+    0x52:
+      id: 'stream_requests_are_not_allowed'
+      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+    0x50:
+      id: 'not_the_active_session'
+      doc: 'The session ID on the request is not the active session'
+    0x53:
+      id: 'sequence_number_out_of_range'
+      doc: 'Start sequence number out of range'
   ord_status:
     1:
       id: 'new_field'
@@ -1975,50 +1269,4 @@ enums:
     255:
       id: 'null_value'
       doc: 'MassCancelRejectReasonCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  supported_request_mode:
-    0x53:
-      id: 'stream'
-      doc: 'Stream Mode'
-    0x52:
-      id: 'replay'
-      doc: 'Replay Mode'
-    0x54:
-      id: 'snapshot_mode'
-      doc: 'Snapshot Mode'
-  login_reject_code:
-    0x54:
-      id: 'malformed_token'
-      doc: 'Malformed Token'
-    0x55:
-      id: 'token_type_unsupported'
-      doc: 'Token type unsupported by this server'
-    0x56:
-      id: 'token_type_invalid'
-      doc: 'Token type invalid on any server'
-    0x41:
-      id: 'authorization_failed'
-      doc: 'Authorization failed'
-  replay_reject_code:
-    0x52:
-      id: 'replay_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
-    0x41:
-      id: 'replay_all_requests_are_not_allowed'
-      doc: 'Replay all requests are not allowed by this server'
-    0x50:
-      id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
-    0x53:
-      id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
-  stream_reject_code:
-    0x52:
-      id: 'stream_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
-    0x50:
-      id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
-    0x53:
-      id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
 

@@ -124,28 +124,18 @@ types:
         doc: 'The count of messages that were sent on this stream'
   sequenced_message:
     seq:
-      - id: sbe_message
-        type: sbe_message
-        doc: 'Sbe Message'
-  sbe_message:
+      - id: server_sbe_message
+        type: server_sbe_message
+        doc: 'Sbe message sent by Memx to the firm'
+  server_sbe_message:
     seq:
       - id: sbe_header
         type: sbe_header
         doc: 'Sbe Header'
-      - id: payload
+      - id: server_payload
         type:
           switch-on: sbe_header.template_id
           cases:
-            'template_id::new_order_single_message': new_order_single_message
-            'template_id::short_two_sided_bulk_quote_message': short_two_sided_bulk_quote_message
-            'template_id::long_two_sided_bulk_quote_message': long_two_sided_bulk_quote_message
-            'template_id::short_one_sided_bulk_quote_message': short_one_sided_bulk_quote_message
-            'template_id::long_one_sided_bulk_quote_message': long_one_sided_bulk_quote_message
-            'template_id::order_cancel_replace_request_message': order_cancel_replace_request_message
-            'template_id::order_cancel_request_message': order_cancel_request_message
-            'template_id::mass_cancel_request_message': mass_cancel_request_message
-            'template_id::mass_cancel_clear_lockout_request_message': mass_cancel_clear_lockout_request_message
-            'template_id::allocation_instruction_message': allocation_instruction_message
             'template_id::execution_report_new_message': execution_report_new_message
             'template_id::execution_report_bulk_quote_pending_new_message': execution_report_bulk_quote_pending_new_message
             'template_id::execution_report_bulk_quote_component_new_message': execution_report_bulk_quote_component_new_message
@@ -182,39 +172,49 @@ types:
       - id: version
         type: u2
         doc: 'The version number of the message schema that was used to encode a message'
-  new_order_single_message:
+  execution_report_new_message:
     seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'OptionsSecurityID'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of the quote'
       - id: order_qty
         type: u4
-        doc: 'OrderQty'
+        doc: 'Quantity ordered. This represents the number of options contracts'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'OrdType'
+        doc: 'Type of the order'
       - id: price_optional
         type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
+        doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: open_or_close_optional
         type: u1
         enum: open_or_close_optional
@@ -225,25 +225,37 @@ types:
       - id: trading_capacity
         type: u1
         enum: trading_capacity
-        doc: 'TradingCapacity'
+        doc: 'Trading Capacity of allocation'
       - id: reprice_frequency
         type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
+        doc: 'Defines the frequency of a MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 38 Field Offset Length Type Tag Ref Num Req''d Description reprice. If this tag is not sent then the order will not be repriced. Nullable, No Value = 255'
       - id: reprice_behavior
         type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
+        doc: 'Defines the reprice behavior when market is locked or crossed. Nullable, No Value = 255'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
       - id: mtp_group_id
         type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
       - id: match_trade_prevention
         type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
+        doc: 'Defines the desired behavior in the event of a wash. The UINT8 Null (0xFF) value disables match trade prevention. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of custom cancel group. Nullable, No Value = 65535'
       - id: risk_group_id
         type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -285,330 +297,580 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'PartyID'
+        doc: 'Party identifier/code. Printable characters only (ascii HEX 0x20 to 0x7E), with the exception of &, <, >, ” and ’'
       - id: party_id_source
         type: str
         size: 1
         encoding: ASCII
-        doc: 'PartyIDSource'
+        doc: 'Identifies class or source of the PartyID (448) value. The exchange currently accepts the following values for this field: - ''D'' for Proprietary/Custom Code'
       - id: party_role_party_role_type
         type: u1
         enum: party_role_party_role_type
         doc: 'PartyRole'
-  short_two_sided_bulk_quote_message:
+  execution_report_bulk_quote_pending_new_message:
     seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: symbol
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Symbol'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'TimeInForce'
+        doc: 'Defines the time during which an order is eligible for execution'
       - id: exec_inst
         type: exec_inst
         doc: 'ExecInstType bit set'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
-        doc: 'TradingCapacity'
+        doc: 'Trading Capacity of allocation'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
       - id: mtp_group_id
         type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of custom match-trade prevention group. Nullable, No Value = 65535'
       - id: match_trade_prevention
         type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
+        doc: 'Defines the desired behavior in the event of a wash. The UINT8 Null (0xFF) value disables match trade prevention. Nullable, No Value = 255'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of custom cancel group. Nullable, No Value = 65535'
       - id: risk_group_id
         type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: number_of_orders
+        type: u1
+        doc: 'The number of orders/quote entries in the request. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A Y The parties associated with the quotes. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 55 5.2.1.3 ExecutionReport_BulkQuote_ComponentNew The ExecutionReport_BulkQuote_ComponentNew is a response to bulk quote requests (ShortTwoSidedBulkQuote, LongTwoSidedBulkQuote, ShortOneSidedBulkQuote, LongOneSidedBulkQuote). This message gives state information about an individual single sided quote within the bulk quote request. The requester will receive a component new message for each side of a two-sided entry. This message echos back to the requester fields configured on the individual single sided quote with additional information about the state of the individual quote handling. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 13'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
-      - id: two_sided_quotes_groups
-        type: two_sided_quotes_groups
-        doc: 'Quotes Block'
-  two_sided_quotes_groups:
+  execution_report_bulk_quote_component_new_message:
     seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: two_sided_quotes_group
-        type: two_sided_quotes_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'Quotes'
-  two_sided_quotes_group:
-    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: list_seq_no
         type: u1
-        doc: 'ListSeqNo'
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: bid_size
-        type: u2
-        doc: 'BidSize'
-      - id: bid_px
-        type: decimal_u2_2
-        doc: 'BidPx. Implied decimal with scale 1e-2'
-      - id: offer_size
-        type: u2
-        doc: 'OfferSize'
-      - id: offer_px
-        type: decimal_u2_2
-        doc: 'OfferPx. Implied decimal with scale 1e-2'
-  long_two_sided_bulk_quote_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: mtp_group_id
-        type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
-      - id: match_trade_prevention
-        type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: parties_groups
-        type: parties_groups
-        doc: 'Parties Block'
-      - id: two_sided_quotes_groups
-        type: two_sided_quotes_groups
-        doc: 'Quotes Block'
-  short_one_sided_bulk_quote_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: mtp_group_id
-        type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
-      - id: match_trade_prevention
-        type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: parties_groups
-        type: parties_groups
-        doc: 'Parties Block'
-      - id: one_sided_quotes_groups
-        type: one_sided_quotes_groups
-        doc: 'Quotes Block'
-  one_sided_quotes_groups:
-    seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: one_sided_quotes_group
-        type: one_sided_quotes_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'Quotes'
-  one_sided_quotes_group:
-    seq:
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
-      - id: quantity
-        type: u2
-        doc: 'Quantity'
-      - id: price_short
-        type: decimal_u2_2
-        doc: 'Price. Implied decimal with scale 1e-2'
-  long_one_sided_bulk_quote_message:
-    seq:
+        doc: 'Side of the quote'
+      - id: order_qty
+        type: u4
+        doc: 'Quantity ordered. This represents the number of options contracts'
+      - id: price_optional
+        type: decimal_u8_8_nullable
+        doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+  execution_report_rejected_message:
+    seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
-      - id: time_in_force
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
         type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: order_reject_reason
+        type: u2
+        enum: order_reject_reason
+        doc: 'Reason code for order rejection'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+  execution_report_trade_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: trd_match_id
+        type: u8
+        doc: 'Identifier assigned to the Trade by the matching system'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: last_qty
+        type: u4
+        doc: 'Qty of original Trade'
+      - id: last_px
+        type: decimal_u8_8
+        doc: 'Price of original Trade 3.3.8 Nested Parties Group (Repeating Group 539) The Nested Parties Group repeating group allows for multiple party identifiers to be supplied inside a Allocation Group entry in post trade allocation messages. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: last_liquidity_ind
+        type: u1
+        enum: last_liquidity_ind
+        doc: 'Indicator denoting whether the MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 59 Field Offset Length Type Tag Ref Num Req''d Description referenced order removed liquidity from or added liquidity to the MEMX book'
+      - id: last_mkt
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Market of execution for last fill, or an indication of the market where an order was routed'
+      - id: open_or_close
+        type: u1
+        enum: open_or_close
+        doc: 'OpenOrClose'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: mtp_group_id
-        type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
-      - id: match_trade_prevention
-        type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
+        doc: 'Trading Capacity of allocation'
+      - id: contra_trading_capacity
+        type: u1
+        enum: contra_trading_capacity
+        doc: 'TradingCapacity of the contra order. This field is provided for MEMX exchange executions. This field will not be provided for executions on remote exchanges. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.2.1.6 ExecutionReport_PendingCancel The ExecutionReport_PendingCancel is a response to OrderCancelRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 16 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 60 Field Offset Length Type Tag Ref Num Req''d Description'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
-      - id: one_sided_quotes_groups
-        type: one_sided_quotes_groups
-        doc: 'Quotes Block'
-  order_cancel_replace_request_message:
+  execution_report_pending_cancel_message:
     seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id_optional
-        type: u8_nullable
-        doc: 'OrderID. Nullable, No Value = 18446744073709551615'
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: list_seq_no
         type: u1
-        doc: 'ListSeqNo'
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
       - id: origclordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'OrigClOrdID'
+        doc: 'ClOrdID (11) of the previous order MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 45 Field Offset Length Type Tag Ref Num Req''d Description (NOT the initial order of the day)'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price_optional
-        type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
-  order_cancel_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: order_id_optional
-        type: u8_nullable
-        doc: 'OrderID. Nullable, No Value = 18446744073709551615'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: origclordid_optional
-        type: str_20_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
-  mass_cancel_request_message:
-    seq:
+        doc: 'Side of the quote. Nullable, No Value = 0'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+  execution_report_canceled_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
-      - id: efid_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: underlying_or_series
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: origclordid_optional
+        type: str_20_nullable
+        doc: 'ClOrdID (11) of the previous order MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 45 Field Offset Length Type Tag Ref Num Req''d Description (NOT the initial order of the day). Nullable, No Value = 0'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: cancel_reason
+        type: u1
+        enum: cancel_reason
+        doc: 'Reason code for order cancellation'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: side_optional
+        type: u1
+        enum: side_optional
+        doc: 'Side of the quote. Nullable, No Value = 0'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+  execution_report_pending_replace_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: origclordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'ClOrdID (11) of the previous order MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 45 Field Offset Length Type Tag Ref Num Req''d Description (NOT the initial order of the day)'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: order_qty
+        type: u4
+        doc: 'Quantity ordered. This represents the number of options contracts'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        doc: 'Type of the order'
+      - id: price_optional
+        type: decimal_u8_8_nullable
+        doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+  execution_report_replaced_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: origclordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'ClOrdID (11) of the previous order MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 45 Field Offset Length Type Tag Ref Num Req''d Description (NOT the initial order of the day)'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: order_qty
+        type: u4
+        doc: 'Quantity ordered. This represents the number of options contracts'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        doc: 'Type of the order'
+      - id: price_optional
+        type: decimal_u8_8_nullable
+        doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+  execution_report_trade_correction_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: trd_match_id
+        type: u8
+        doc: 'Identifier assigned to the Trade by the matching system'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: exec_ref_id
+        type: u8
+        doc: 'The ExecID of the trade being corrected'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: last_qty
+        type: u4
+        doc: 'Qty of original Trade'
+      - id: last_px
+        type: decimal_u8_8
+        doc: 'Price of original Trade 3.3.8 Nested Parties Group (Repeating Group 539) The Nested Parties Group repeating group allows for multiple party identifiers to be supplied inside a Allocation Group entry in post trade allocation messages. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+  execution_report_trade_break_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: trd_match_id
+        type: u8
+        doc: 'Identifier assigned to the Trade by the matching system'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: exec_ref_id
+        type: u8
+        doc: 'The ExecID of the trade being corrected'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+  execution_report_restatement_message:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'OrderID as assigned by the exchange'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: list_seq_no
+        type: u1
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
+      - id: exec_id
+        type: u8
+        doc: 'Identifier of execution message as assigned by the exchange. The ExecID can be correlated with the Memoir OrderID value'
+      - id: ord_status
+        type: u1
+        enum: ord_status
+        doc: 'The status of the order'
+      - id: security_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
+      - id: exec_restatement_reason
+        type: u1
+        enum: exec_restatement_reason
+        doc: 'The reason for the restatement'
+      - id: extended_restatement_reason
         type: u1_nullable
-        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
-      - id: underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: options_security_id_optional
-        type: str_8_nullable
-        doc: 'OptionsSecurityID. Nullable, No Value = 0'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
+        doc: 'This field provides more RestatementReason info when applicable/available. Nullable, No Value = 255'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the quote'
+      - id: last_px
+        type: decimal_u8_8
+        doc: 'Price of original Trade 3.3.8 Nested Parties Group (Repeating Group 539) The Nested Parties Group repeating group allows for multiple party identifiers to be supplied inside a Allocation Group entry in post trade allocation messages. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8'
+      - id: last_qty_optional
+        type: u4_nullable
+        doc: 'Qty of original Trade. Nullable, No Value = 4294967295'
+      - id: leaves_qty
+        type: u4
+        doc: 'Quantity open for further execution'
+      - id: cum_qty
+        type: u4
+        doc: 'Total quantity (e.g. number of contracts) filled'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: transact_time
+        type: u8
+        doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+  pending_mass_cancel_message:
+    seq:
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: mass_cancel_inst
         type: mass_cancel_inst
         doc: 'MassCancelInstType bit set'
+      - id: lockout_id_optional
+        type: u8_nullable
+        doc: 'The LockoutID of a previous lockout, returned in a PendingMassCancel message. 5.1.10 MassCancelBulkClearAllLockoutsRequest The mass cancel clear all lockouts request message requests the clearing of previously placed lockouts. A lockout can be requested as part of a MassCancelRequest using the MassCancelInst field. The MassCancelBulkClearAllLockoutsRequest will clear all existing lockouts for the FIRM associated with the port. A MassCancelBulkClearLockoutAccepted message will be sent on the requesting port if the request is deemed valid else a MassCancelBulkClearLockoutReject will be sent instead with the appropriate reject reason code. note: Lockouts initiated via a different port sent in parallel to this request may be cleared as part of this operation as well. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 49 Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 32. Nullable, No Value = 18446744073709551615'
+      - id: efid_optional
+        type: str_4_nullable
+        doc: 'Cancel all orders on this EFID. Nullable, No Value = 0'
+      - id: underlying_or_series
+        type: u1_nullable
+        doc: 'If UnderlyingOrSeries is set to CancelAllOnSeries then OptionsSecurityID must be provided to denote the specific option series (root, put/call, expiration, and strike price) to cancel orders on. This option must be a series of the provided underlying symbol. If UnderlyingOrSeries is set to CancelAllOnUnderlying then all orders on that underlying that match the rest of the filter will be canceled. Nullable, No Value = 255'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'The Underlying symbol on which to cancel orders. If UnderlyingOrSeries is set to CancelAllOnSeries, cancels will be limited in scope for the OptionsSecurityID provided on this message. Nullable, No Value = 0'
+      - id: options_security_id_optional
+        type: str_8_nullable
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group. Nullable, No Value = 0'
+      - id: cancel_group_id
+        type: u2_nullable
+        doc: 'Unique identifier of custom cancel group. Nullable, No Value = 65535'
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   mass_cancel_inst:
     seq:
       - id: lockout
@@ -623,841 +885,79 @@ types:
       - id: reserved_5
         type: b5
         doc: '5 reserved bits'
-  mass_cancel_clear_lockout_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: lockout_id
-        type: u8
-        doc: 'LockoutID'
-  allocation_instruction_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: alloc_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'AllocID'
-      - id: alloc_trans_type
-        type: u1
-        enum: alloc_trans_type
-        doc: 'AllocTransType'
-      - id: alloc_type
-        type: u1
-        enum: alloc_type
-        doc: 'AllocType'
-      - id: ref_alloc_report_id
-        type: u8_nullable
-        doc: 'RefAllocReportID. Nullable, No Value = 18446744073709551615'
-      - id: exec_ref_id_optional
-        type: u8_nullable
-        doc: 'ExecRefID. Nullable, No Value = 18446744073709551615'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: quantity_uint_32
-        type: u4
-        doc: 'Quantity'
-      - id: trade_date
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'TradeDate'
-      - id: allocation_instruction_message_allocations_groups
-        type: allocation_instruction_message_allocations_groups
-        doc: 'Allocations Block'
-  allocation_instruction_message_allocations_groups:
-    seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: allocation_instruction_message_allocations_group
-        type: allocation_instruction_message_allocations_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'Allocations'
-  allocation_instruction_message_allocations_group:
-    seq:
-      - id: alloc_qty
-        type: u4
-        doc: 'AllocQty'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: open_or_close
-        type: u1
-        enum: open_or_close
-        doc: 'OpenOrClose'
-      - id: nested_parties_groups
-        type: nested_parties_groups
-        doc: 'Parties Block'
-  nested_parties_groups:
-    seq:
-      - id: repeating_group_dimensions
-        type: repeating_group_dimensions
-        doc: 'RepeatingGroupDimensions'
-      - id: nested_parties_group
-        type: nested_parties_group
-        repeat: expr
-        repeat-expr: repeating_group_dimensions.num_in_group
-        doc: 'Parties'
-  nested_parties_group:
-    seq:
-      - id: party_i_d_execution_report_new_party_id
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'PartyID'
-      - id: party_id_source
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'PartyIDSource'
-      - id: party_role_uint_8
-        type: u1
-        doc: 'PartyRole'
-  execution_report_new_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price_optional
-        type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: open_or_close_optional
-        type: u1
-        enum: open_or_close_optional
-        doc: 'OpenOrClose. Nullable, No Value = 0'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: reprice_frequency
-        type: u1_nullable
-        doc: 'RepriceFrequency. Nullable, No Value = 255'
-      - id: reprice_behavior
-        type: u1_nullable
-        doc: 'RepriceBehavior. Nullable, No Value = 255'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-      - id: mtp_group_id
-        type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
-      - id: match_trade_prevention
-        type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: parties_groups
-        type: parties_groups
-        doc: 'Parties Block'
-  execution_report_bulk_quote_pending_new_message:
-    seq:
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Symbol'
-      - id: time_in_force
-        type: u1
-        enum: time_in_force
-        doc: 'TimeInForce'
-      - id: exec_inst
-        type: exec_inst
-        doc: 'ExecInstType bit set'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-      - id: mtp_group_id
-        type: u2_nullable
-        doc: 'MtpGroupID. Nullable, No Value = 65535'
-      - id: match_trade_prevention
-        type: u1_nullable
-        doc: 'MatchTradePrevention. Nullable, No Value = 255'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: risk_group_id
-        type: u2_nullable
-        doc: 'RiskGroupID. Nullable, No Value = 65535'
-      - id: number_of_orders
-        type: u1
-        doc: 'NumberOfOrders'
-      - id: parties_groups
-        type: parties_groups
-        doc: 'Parties Block'
-  execution_report_bulk_quote_component_new_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: price_optional
-        type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  execution_report_rejected_message:
-    seq:
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: order_reject_reason
-        type: u2
-        enum: order_reject_reason
-        doc: 'RejectReason'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  execution_report_trade_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: last_qty
-        type: u4
-        doc: 'LastQty'
-      - id: last_px
-        type: decimal_u8_8
-        doc: 'LastPx. Implied decimal with scale 1e-8'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-      - id: last_liquidity_ind
-        type: u1
-        enum: last_liquidity_ind
-        doc: 'LastLiquidityInd'
-      - id: last_mkt
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'LastMkt'
-      - id: open_or_close
-        type: u1
-        enum: open_or_close
-        doc: 'OpenOrClose'
-      - id: trading_capacity
-        type: u1
-        enum: trading_capacity
-        doc: 'TradingCapacity'
-      - id: contra_trading_capacity
-        type: u1
-        enum: contra_trading_capacity
-        doc: 'ContraTradingCapacity'
-      - id: parties_groups
-        type: parties_groups
-        doc: 'Parties Block'
-  execution_report_pending_cancel_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: origclordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side_optional
-        type: u1
-        enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  execution_report_canceled_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: origclordid_optional
-        type: str_20_nullable
-        doc: 'OrigClOrdID. Nullable, No Value = 0'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: cancel_reason
-        type: u1
-        enum: cancel_reason
-        doc: 'CancelReason'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side_optional
-        type: u1
-        enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  execution_report_pending_replace_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: origclordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price_optional
-        type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  execution_report_replaced_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: origclordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'OrigClOrdID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: order_qty
-        type: u4
-        doc: 'OrderQty'
-      - id: ord_type
-        type: u1
-        enum: ord_type
-        doc: 'OrdType'
-      - id: price_optional
-        type: decimal_u8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  execution_report_trade_correction_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: exec_ref_id
-        type: u8
-        doc: 'ExecRefID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: last_qty
-        type: u4
-        doc: 'LastQty'
-      - id: last_px
-        type: decimal_u8_8
-        doc: 'LastPx. Implied decimal with scale 1e-8'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  execution_report_trade_break_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: trd_match_id
-        type: u8
-        doc: 'TrdMatchID'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: exec_ref_id
-        type: u8
-        doc: 'ExecRefID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  execution_report_restatement_message:
-    seq:
-      - id: order_id
-        type: u8
-        doc: 'OrderID'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: list_seq_no
-        type: u1
-        doc: 'ListSeqNo'
-      - id: exec_id
-        type: u8
-        doc: 'ExecID'
-      - id: ord_status
-        type: u1
-        enum: ord_status
-        doc: 'OrdStatus'
-      - id: security_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'OptionsSecurityID'
-      - id: exec_restatement_reason
-        type: u1
-        enum: exec_restatement_reason
-        doc: 'ExecRestatementReason'
-      - id: extended_restatement_reason
-        type: u1_nullable
-        doc: 'ExtendedRestatementReason. Nullable, No Value = 255'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side'
-      - id: last_px
-        type: decimal_u8_8
-        doc: 'LastPx. Implied decimal with scale 1e-8'
-      - id: last_qty_optional
-        type: u4_nullable
-        doc: 'LastQty. Nullable, No Value = 4294967295'
-      - id: leaves_qty
-        type: u4
-        doc: 'LeavesQty'
-      - id: cum_qty
-        type: u4
-        doc: 'CumQty'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-      - id: transact_time
-        type: u8
-        doc: 'TransactTime'
-  pending_mass_cancel_message:
-    seq:
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'ClOrdID'
-      - id: mass_cancel_inst
-        type: mass_cancel_inst
-        doc: 'MassCancelInstType bit set'
-      - id: lockout_id_optional
-        type: u8_nullable
-        doc: 'LockoutID. Nullable, No Value = 18446744073709551615'
-      - id: efid_optional
-        type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
-      - id: underlying_or_series
-        type: u1_nullable
-        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
-      - id: underlier_optional
-        type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
-      - id: options_security_id_optional
-        type: str_8_nullable
-        doc: 'OptionsSecurityID. Nullable, No Value = 0'
-      - id: cancel_group_id
-        type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
   mass_cancel_reject_message:
     seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: mass_cancel_reject_reason
         type: u2
         enum: mass_cancel_reject_reason
-        doc: 'RejectReason'
+        doc: 'Reason code for order rejection'
       - id: efid_optional
         type: str_4_nullable
-        doc: 'EFID. Nullable, No Value = 0'
+        doc: 'Cancel all orders on this EFID. Nullable, No Value = 0'
       - id: underlying_or_series
         type: u1_nullable
-        doc: 'UnderlyingOrSeries. Nullable, No Value = 255'
+        doc: 'If UnderlyingOrSeries is set to CancelAllOnSeries then OptionsSecurityID must be provided to denote the specific option series (root, put/call, expiration, and strike price) to cancel orders on. This option must be a series of the provided underlying symbol. If UnderlyingOrSeries is set to CancelAllOnUnderlying then all orders on that underlying that match the rest of the filter will be canceled. Nullable, No Value = 255'
       - id: underlier_optional
         type: str_6_nullable
-        doc: 'Underlier. Nullable, No Value = 0'
+        doc: 'The Underlying symbol on which to cancel orders. If UnderlyingOrSeries is set to CancelAllOnSeries, cancels will be limited in scope for the OptionsSecurityID provided on this message. Nullable, No Value = 0'
       - id: options_security_id_optional
         type: str_8_nullable
-        doc: 'OptionsSecurityID. Nullable, No Value = 0'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group. Nullable, No Value = 0'
       - id: cancel_group_id
         type: u2_nullable
-        doc: 'CancelGroupID. Nullable, No Value = 65535'
+        doc: 'Unique identifier of custom cancel group. Nullable, No Value = 65535'
       - id: mass_cancel_inst
         type: mass_cancel_inst
         doc: 'MassCancelInstType bit set'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   mass_cancel_done_message:
     seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: total_affected_orders
         type: u4
-        doc: 'TotalAffectedOrders'
+        doc: 'The number or orders cancelled'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   order_cancel_reject_message:
     seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: list_seq_no
         type: u1
-        doc: 'ListSeqNo'
+        doc: 'Unique identifier for a single Quote within the collection. Note the ListSeqNo must be continuous starting with a value of 1 for the quote group'
       - id: cxl_rej_response_to
         type: u1
         enum: cxl_rej_response_to
-        doc: 'CxlRejResponseTo'
+        doc: 'Identifies the request that this cancel reject is responding to'
       - id: cxl_rej_reason
         type: u2
         enum: cxl_rej_reason
-        doc: 'CxlRejReason'
+        doc: 'Code to identify reason for cancel rejection'
       - id: options_security_id_optional
         type: str_8_nullable
-        doc: 'OptionsSecurityID. Nullable, No Value = 0'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
-        doc: 'Side. Nullable, No Value = 0'
+        doc: 'Side of the quote. Nullable, No Value = 0'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   allocation_instruction_ack_message:
     seq:
       - id: alloc_report_id
@@ -1467,18 +967,18 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'AllocID'
+        doc: 'Unique identifier for this allocation instruction message - supplied by customer, similar to ClOrdId. Printable characters only (ascii HEX 0x20 to 0x7E), with the exception of &, <, >, ” and ’'
       - id: alloc_status
         type: u1
         enum: alloc_status
-        doc: 'AllocStatus'
+        doc: 'Status of request (Accepted or Rejected) AllocRejCode 78 2 AllocRejCodeType 88 C Populated when AllocStatus is not set to ‘Accepted’ NoAllocs - - RepeatingGroupDimensions 78 Y The dimensions of the Allocations Repeating Group. ReportedAllocations - - ReportAllocationsGroup N/A Y The allocations assigned to the trade - NOTE: this group contains IndividualAllocIDs for each unit of allocation, used to make further changes on those units. 5.2.11 AllocationInstructionAlert The AllocationInstructionAlert message provides an unsolicited notification of allocations applied to a previously reported Trade or Allocation. It contains the new state of the allocations with any modified fields updated and cleared fields removed. This message is sent to a customer when the contra party has applied a new Allocation Instruction to a Trade or Allocation. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 28'
       - id: alloc_rej_code
         type: u2
         enum: alloc_rej_code
         doc: 'AllocRejCode'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   allocation_report_message:
     seq:
       - id: alloc_report_id
@@ -1488,34 +988,34 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'AllocID'
+        doc: 'Unique identifier for this allocation instruction message - supplied by customer, similar to ClOrdId. Printable characters only (ascii HEX 0x20 to 0x7E), with the exception of &, <, >, ” and ’'
       - id: alloc_trans_type
         type: u1
         enum: alloc_trans_type
-        doc: 'AllocTransType'
+        doc: 'Identifies allocation transaction type being requested (New or Replace) RefAllocID 37 20 CHAR 72 C Required when AllocTransType = Replace, contains the IndividualAllocID of the MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 51 Field Offset Length Type Tag Ref Num Req''d Description allocation unit being changed'
       - id: alloc_type
         type: u1
         enum: alloc_type
-        doc: 'AllocType'
+        doc: 'Specifies the purpose or type of Allocation message'
       - id: alloc_status
         type: u1
         enum: alloc_status
-        doc: 'AllocStatus'
+        doc: 'Status of request (Accepted or Rejected) AllocRejCode 78 2 AllocRejCodeType 88 C Populated when AllocStatus is not set to ‘Accepted’ NoAllocs - - RepeatingGroupDimensions 78 Y The dimensions of the Allocations Repeating Group. ReportedAllocations - - ReportAllocationsGroup N/A Y The allocations assigned to the trade - NOTE: this group contains IndividualAllocIDs for each unit of allocation, used to make further changes on those units. 5.2.11 AllocationInstructionAlert The AllocationInstructionAlert message provides an unsolicited notification of allocations applied to a previously reported Trade or Allocation. It contains the new state of the allocations with any modified fields updated and cleared fields removed. This message is sent to a customer when the contra party has applied a new Allocation Instruction to a Trade or Allocation. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 28'
       - id: exec_ref_id
         type: u8
-        doc: 'ExecRefID'
+        doc: 'The ExecID of the trade being corrected'
       - id: trd_match_id
         type: u8
-        doc: 'TrdMatchID'
+        doc: 'Identifier assigned to the Trade by the matching system'
       - id: security_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'OptionsSecurityID'
+        doc: 'The OptionsSecurityID of the tradable options product for the quote. The Underlier for all quotes in the repeating group must match the Underlier of the first quote in the repeating group'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side of the quote'
       - id: quantity_uint_32
         type: u4
         doc: 'Quantity'
@@ -1523,10 +1023,10 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'TradeDate'
+        doc: 'YYYYMMDD NoExecs - - RepeatingGroupDimensions 124 Y Number of Trades being allocated (always 1) MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 77 Field Offset Length Type Tag Ref Num Req''d Description ExecutionAllocations - - ExecutionAllocationsGroup N/A Y Specifies the Trade being allocated NoAllocs - - RepeatingGroupDimensions 78 Y The dimensions of the Allocations Repeating Group. ReportedAllocations - - ReportAllocationsGroup N/A Y The allocations assigned to the trade - NOTE: this group contains IndividualAllocIDs for each unit of allocation, used to make further changes on those units. 5.2.12 UserNotification The UserNotification message is used to notify the user of an event or information about the exchange. This message will be used to provide a logical session shutdown warning. This message corresponds to FIX message type CB Field Offset Length Type Tag Ref Num Req’d Meaning SBE Header 0 7 SBE Header Y SBE Header templateID = 29'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: allocation_report_message_allocations_groups
         type: allocation_report_message_allocations_groups
         doc: 'Allocations Block'
@@ -1544,11 +1044,11 @@ types:
     seq:
       - id: alloc_qty
         type: u4
-        doc: 'AllocQty'
+        doc: 'Quantity of allocation'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
-        doc: 'TradingCapacity'
+        doc: 'Trading Capacity of allocation'
       - id: open_or_close
         type: u1
         enum: open_or_close
@@ -1577,7 +1077,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'PartyIDSource'
+        doc: 'Identifies class or source of the PartyID (448) value. The exchange currently accepts the following values for this field: - ''D'' for Proprietary/Custom Code'
       - id: party_role_uint_8
         type: u1
         doc: 'PartyRole'
@@ -1585,54 +1085,41 @@ types:
     seq:
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
       - id: user_status
         type: u1
         enum: user_status
-        doc: 'UserStatus'
+        doc: 'Reason for notification'
   mass_cancel_clear_lockout_reject_message:
     seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: lockout_id
         type: u8
-        doc: 'LockoutID'
+        doc: 'The LockoutID of a previous lockout, returned in a PendingMassCancel message. 5.1.10 MassCancelBulkClearAllLockoutsRequest The mass cancel clear all lockouts request message requests the clearing of previously placed lockouts. A lockout can be requested as part of a MassCancelRequest using the MassCancelInst field. The MassCancelBulkClearAllLockoutsRequest will clear all existing lockouts for the FIRM associated with the port. A MassCancelBulkClearLockoutAccepted message will be sent on the requesting port if the request is deemed valid else a MassCancelBulkClearLockoutReject will be sent instead with the appropriate reject reason code. note: Lockouts initiated via a different port sent in parallel to this request may be cleared as part of this operation as well. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 49 Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 32'
       - id: rej_reason
         type: u2
         enum: rej_reason
-        doc: 'RejReason'
+        doc: 'Code to identify reason for cancel rejection'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   mass_cancel_clear_lockout_done_message:
     seq:
       - id: clordid
         type: str
         size: 20
         encoding: ASCII
-        doc: 'ClOrdID'
+        doc: 'Unique identifier of the order as assigned by the client'
       - id: lockout_id
         type: u8
-        doc: 'LockoutID'
+        doc: 'The LockoutID of a previous lockout, returned in a PendingMassCancel message. 5.1.10 MassCancelBulkClearAllLockoutsRequest The mass cancel clear all lockouts request message requests the clearing of previously placed lockouts. A lockout can be requested as part of a MassCancelRequest using the MassCancelInst field. The MassCancelBulkClearAllLockoutsRequest will clear all existing lockouts for the FIRM associated with the port. A MassCancelBulkClearLockoutAccepted message will be sent on the requesting port if the request is deemed valid else a MassCancelBulkClearLockoutReject will be sent instead with the appropriate reject reason code. note: Lockouts initiated via a different port sent in parallel to this request may be cleared as part of this operation as well. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 49 Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 32'
       - id: sending_time
         type: nanosecond_timestamp
-        doc: 'SendingTime. Nanoseconds since Unix epoch'
-  nanosecond_timestamp:
-    seq:
-      - id: time
-        type: s8
-    instances:
-      hour:
-        value: time / 3600000000000 % 24
-      minute:
-        value: time / 60000000000 % 60
-      second:
-        value: time / 1000000000 % 60
-      millisecond:
-        value: time / 1000000 % 1000
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   decimal_u8_8:
     seq:
       - id: mantissa
@@ -1654,6 +1141,19 @@ types:
     instances:
       is_null:
         value: value == 255
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   u2_nullable:
     seq:
       - id: value
@@ -1661,20 +1161,6 @@ types:
     instances:
       is_null:
         value: value == 65535
-  decimal_u2_2:
-    seq:
-      - id: mantissa
-        type: u2
-    instances:
-      real:
-        value: mantissa / 100.0
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
   str_20_nullable:
     seq:
       - id: value
@@ -1684,6 +1170,20 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   str_4_nullable:
     seq:
       - id: value
@@ -1711,13 +1211,6 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
 
 enums:
   message_type:
@@ -2039,6 +1532,52 @@ enums:
     0x30:
       id: 'null_value'
       doc: 'OpenOrCloseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  supported_request_mode:
+    0x53:
+      id: 'stream'
+      doc: 'Stream Mode'
+    0x52:
+      id: 'replay'
+      doc: 'Replay Mode'
+    0x54:
+      id: 'snapshot_mode'
+      doc: 'Snapshot Mode'
+  login_reject_code:
+    0x54:
+      id: 'malformed_token'
+      doc: 'Malformed Token'
+    0x55:
+      id: 'token_type_unsupported'
+      doc: 'Token type unsupported by this server'
+    0x56:
+      id: 'token_type_invalid'
+      doc: 'Token type invalid on any server'
+    0x41:
+      id: 'authorization_failed'
+      doc: 'Authorization failed'
+  replay_reject_code:
+    0x52:
+      id: 'replay_requests_are_not_allowed'
+      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+    0x41:
+      id: 'replay_all_requests_are_not_allowed'
+      doc: 'Replay all requests are not allowed by this server'
+    0x50:
+      id: 'not_the_active_session'
+      doc: 'The session ID on the request is not the active session'
+    0x53:
+      id: 'sequence_number_out_of_range'
+      doc: 'Start sequence number out of range'
+  stream_reject_code:
+    0x52:
+      id: 'stream_requests_are_not_allowed'
+      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
+    0x50:
+      id: 'not_the_active_session'
+      doc: 'The session ID on the request is not the active session'
+    0x53:
+      id: 'sequence_number_out_of_range'
+      doc: 'Start sequence number out of range'
   ord_status:
     0x30:
       id: 'new_field'
@@ -2818,50 +2357,4 @@ enums:
     65535:
       id: 'null_value'
       doc: 'MassCancelClearLockoutRejCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  supported_request_mode:
-    0x53:
-      id: 'stream'
-      doc: 'Stream Mode'
-    0x52:
-      id: 'replay'
-      doc: 'Replay Mode'
-    0x54:
-      id: 'snapshot_mode'
-      doc: 'Snapshot Mode'
-  login_reject_code:
-    0x54:
-      id: 'malformed_token'
-      doc: 'Malformed Token'
-    0x55:
-      id: 'token_type_unsupported'
-      doc: 'Token type unsupported by this server'
-    0x56:
-      id: 'token_type_invalid'
-      doc: 'Token type invalid on any server'
-    0x41:
-      id: 'authorization_failed'
-      doc: 'Authorization failed'
-  replay_reject_code:
-    0x52:
-      id: 'replay_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
-    0x41:
-      id: 'replay_all_requests_are_not_allowed'
-      doc: 'Replay all requests are not allowed by this server'
-    0x50:
-      id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
-    0x53:
-      id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
-  stream_reject_code:
-    0x52:
-      id: 'stream_requests_are_not_allowed'
-      doc: 'Stream requests are not allowed by this server. Must use replay requests to receive data'
-    0x50:
-      id: 'not_the_active_session'
-      doc: 'The session ID on the request is not the active session'
-    0x53:
-      id: 'sequence_number_out_of_range'
-      doc: 'Start sequence number out of range'
 
