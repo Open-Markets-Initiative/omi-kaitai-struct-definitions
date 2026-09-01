@@ -58,7 +58,8 @@ types:
             'schema_id::session': session_message
             'schema_id::order': order_message
       - id: padding
-        size: message_header.message_length - _io.pos
+        size: 0
+        if: message_header.message_length - _io.pos > 0
         doc: 'Tcp sbe alignment padding'
   message_header:
     seq:
@@ -251,6 +252,7 @@ types:
         type: u1
       - id: data_value
         size: len_data_value
+        if: len_data_value > 0
   pong_message:
     seq:
       - id: correlation_id

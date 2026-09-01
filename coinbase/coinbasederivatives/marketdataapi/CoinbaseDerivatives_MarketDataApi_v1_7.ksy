@@ -115,7 +115,7 @@ types:
             'template_id::retransmit_request_message': retransmit_request_message
             'template_id::retransmit_reject_message': retransmit_reject_message
       - id: padding
-        size: message_header.frame_length - _io.pos
+        size: 0
         doc: 'Udp sbe alignment padding'
   message_header:
     seq:

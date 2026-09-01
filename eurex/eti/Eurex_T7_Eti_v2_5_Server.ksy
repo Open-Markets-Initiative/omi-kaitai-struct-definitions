@@ -241,6 +241,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   notif_header_comp:
     seq:
@@ -642,6 +643,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   gateway_response:
     seq:
@@ -890,6 +892,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   rbc_header_comp:
     seq:
@@ -1191,6 +1194,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   order_exec_notification:
     seq:
@@ -1802,6 +1806,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   retransmit_me_message_response:
     seq:

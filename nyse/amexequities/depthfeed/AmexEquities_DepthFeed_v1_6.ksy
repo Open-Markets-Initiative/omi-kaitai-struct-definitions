@@ -270,6 +270,7 @@ types:
         type: price_point
         repeat: expr
         repeat-expr: num_price_point
+        if: num_price_point > 0
         doc: 'Price point group repeating UpdateCount times'
   price_point:
     seq:
@@ -287,6 +288,7 @@ types:
         type: participant
         repeat: expr
         repeat-expr: num_participant
+        if: num_participant > 0
         doc: 'Exchange-specific information at a price point, repeating Participants times'
   participant:
     seq:

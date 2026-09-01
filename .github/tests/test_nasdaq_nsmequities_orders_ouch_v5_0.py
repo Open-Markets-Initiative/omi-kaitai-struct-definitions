@@ -8,6 +8,7 @@ sys.path.insert(0, "generated/python")
 import payloads
 
 from nasdaq_nsmequities_orders_ouch_v5_0_client import NasdaqNsmequitiesOrdersOuchV50Client
+from nasdaq_nsmequities_orders_ouch_v5_0_server import NasdaqNsmequitiesOrdersOuchV50Server
 
 
 class NasdaqNsmequitiesOrdersOuchV50ServerTests(unittest.TestCase):
@@ -16,7 +17,7 @@ class NasdaqNsmequitiesOrdersOuchV50ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Orders.Ouch.v5.0/CanceledMessage.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = NasdaqNsmequitiesOrdersOuchV50Client.from_bytes(payload)
+            parsed = NasdaqNsmequitiesOrdersOuchV50Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_cancelordermessage(self):
@@ -44,14 +45,14 @@ class NasdaqNsmequitiesOrdersOuchV50ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Orders.Ouch.v5.0/OrderAcceptedMessage.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = NasdaqNsmequitiesOrdersOuchV50Client.from_bytes(payload)
+            parsed = NasdaqNsmequitiesOrdersOuchV50Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_serverheartbeatpacket(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Orders.Ouch.v5.0/ServerHeartbeatPacket.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = NasdaqNsmequitiesOrdersOuchV50Client.from_bytes(payload)
+            parsed = NasdaqNsmequitiesOrdersOuchV50Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
 

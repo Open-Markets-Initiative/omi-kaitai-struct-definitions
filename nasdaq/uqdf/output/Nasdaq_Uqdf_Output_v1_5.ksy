@@ -66,7 +66,7 @@ types:
         type: message_header
         doc: 'Mold Udp Message Header'
       - id: payload
-        size: message_header.message_length - 4
+        size: message_header.message_length - 2
         type:
           switch-on: message_header.message_category
           cases:
@@ -147,8 +147,10 @@ types:
         doc: 'LULD National BBO Indicator'
       - id: short_form_national_bbo_appendage
         type: short_form_national_bbo_appendage
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage
       - id: long_form_national_bbo_appendage
         type: long_form_national_bbo_appendage
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage
   message_info:
     seq:
       - id: market_center_originator_id
@@ -278,10 +280,13 @@ types:
         doc: 'FINRA ADF MPID Appendage Indicator'
       - id: short_form_national_bbo_appendage
         type: short_form_national_bbo_appendage
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage
       - id: long_form_national_bbo_appendage
         type: long_form_national_bbo_appendage
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage
       - id: finra_adf_mpid_appendage
         type: finra_adf_mpid_appendage
+        if: finra_adf_mpid_appendage_indicator == finra_adf_mpid_appendage_indicator::adf_mpi_ds_attached
   finra_adf_mpid_appendage:
     seq:
       - id: bid_adf_mpid

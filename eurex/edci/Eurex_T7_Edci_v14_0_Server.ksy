@@ -166,6 +166,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   notif_header_comp:
     seq:
@@ -434,6 +435,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   session_list_notification:
     seq:

@@ -8,6 +8,7 @@ sys.path.insert(0, "generated/python")
 import payloads
 
 from cme_globex_ilink3_sbe_v8_5_client import CmeGlobexIlink3SbeV85Client
+from cme_globex_ilink3_sbe_v8_5_server import CmeGlobexIlink3SbeV85Server
 
 
 class CmeGlobexIlink3SbeV85ServerTests(unittest.TestCase):
@@ -16,7 +17,7 @@ class CmeGlobexIlink3SbeV85ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Cme/Globex.iLink3.Sbe.v8.5/ExecutionReportStatus.pcap"):
             if payloads.partial(payload, 0, 2, "little", True):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = CmeGlobexIlink3SbeV85Client.from_bytes(payload)
+            parsed = CmeGlobexIlink3SbeV85Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_quotecancel(self):
@@ -30,7 +31,7 @@ class CmeGlobexIlink3SbeV85ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Cme/Globex.iLink3.Sbe.v8.5/QuoteCancelAck.pcap"):
             if payloads.partial(payload, 0, 2, "little", True):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = CmeGlobexIlink3SbeV85Client.from_bytes(payload)
+            parsed = CmeGlobexIlink3SbeV85Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_sequence(self):

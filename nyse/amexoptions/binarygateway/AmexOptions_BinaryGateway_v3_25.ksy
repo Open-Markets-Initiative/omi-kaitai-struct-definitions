@@ -353,6 +353,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   optional_order_add_on:
     seq:
@@ -594,6 +595,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent._parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   covered:
     seq:
@@ -650,6 +652,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent._parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   bulk_cancel_request_type_223_message:
     seq:
@@ -1221,6 +1224,7 @@ types:
         doc: 'CUBE auction identifier for GTX responses; zero if not used'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   bitfield_flow_indicator:
     seq:
@@ -1545,6 +1549,7 @@ types:
         doc: 'Sender’s open/close position'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   trade_bust_correct_message:
     seq:

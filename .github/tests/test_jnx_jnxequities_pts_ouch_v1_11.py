@@ -24,7 +24,7 @@ class JnxJnxequitiesPtsOuchV111ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Ouch.v1.11/LoginAcceptedPacket.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = JnxJnxequitiesPtsOuchV111Client.from_bytes(payload)
+            parsed = JnxJnxequitiesPtsOuchV111Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_loginrequestpacket(self):
@@ -38,7 +38,7 @@ class JnxJnxequitiesPtsOuchV111ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Ouch.v1.11/OrderAcceptedMessage.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = JnxJnxequitiesPtsOuchV111Client.from_bytes(payload)
+            parsed = JnxJnxequitiesPtsOuchV111Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_replaceordermessage(self):
@@ -52,7 +52,7 @@ class JnxJnxequitiesPtsOuchV111ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Ouch.v1.12/CancelOrderMessage.pcap"):
             if payloads.partial(payload, 0, 2, "big", False):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = JnxJnxequitiesPtsOuchV111Server.from_bytes(payload)
+            parsed = JnxJnxequitiesPtsOuchV111Client.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_ordercanceledmessage(self):

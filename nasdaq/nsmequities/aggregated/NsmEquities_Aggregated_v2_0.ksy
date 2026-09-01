@@ -481,7 +481,7 @@ types:
   nanosecond_timestamp:
     seq:
       - id: time
-        type: s8
+        type: b48
     instances:
       hour:
         value: time / 3600000000000 % 24

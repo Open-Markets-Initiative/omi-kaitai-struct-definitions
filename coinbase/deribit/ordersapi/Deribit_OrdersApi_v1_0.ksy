@@ -89,7 +89,8 @@ types:
             'template_id::mass_quote_mmp_unfrozen_message': mass_quote_mmp_unfrozen_message
             'template_id::orders_mmp_unfrozen_message': orders_mmp_unfrozen_message
       - id: padding
-        size: message_header.message_length - _io.pos
+        size: 0
+        if: message_header.message_length - _io.pos > 0
         doc: 'Tcp sbe alignment padding'
   message_header:
     seq:
@@ -160,6 +161,7 @@ types:
         type: str
         size: len_reason_data
         encoding: ASCII
+        if: len_reason_data > 0
   logged_out_message:
     seq:
       - id: reason
@@ -208,6 +210,7 @@ types:
         type: str
         size: len_details_data
         encoding: ASCII
+        if: len_details_data > 0
   new_order_request_message:
     seq:
       - id: client_order_id

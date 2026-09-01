@@ -623,6 +623,7 @@ types:
         type: str
         size: len_security_detail_name
         encoding: ASCII
+        if: len_security_detail_name > 0
         doc: 'Security detail name'
   issuer:
     seq:
@@ -633,6 +634,7 @@ types:
         type: str
         size: len_issuer_name
         encoding: ASCII
+        if: len_issuer_name > 0
         doc: 'Issuer name'
   extended_security_no_cusip_message:
     seq:

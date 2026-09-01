@@ -217,6 +217,7 @@ types:
         doc: 'Pillar Stream Sequenced Message Header'
       - id: sequenced_message
         type: sequenced_message
+        size: seq_msg_header.seq_msg_length - 32
         doc: 'Pillar sequenced message'
   seq_msg_id:
     seq:

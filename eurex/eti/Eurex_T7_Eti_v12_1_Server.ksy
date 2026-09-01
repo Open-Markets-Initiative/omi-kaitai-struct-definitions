@@ -862,6 +862,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   notif_header_comp:
     seq:
@@ -1480,6 +1481,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   forced_user_logout_notification:
     seq:
@@ -1503,6 +1505,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   heartbeat_notification:
     seq:
@@ -1720,6 +1723,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   logon_response:
     seq:
@@ -1770,6 +1774,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   logout_response:
     seq:
@@ -2120,6 +2125,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   order_exec_notification:
     seq:
@@ -2825,6 +2831,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   retransmit_me_message_response:
     seq:
@@ -4546,6 +4553,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   trd_instrmnt_leg_grp_comp:
     seq:
@@ -4773,6 +4781,7 @@ types:
         pad-right: 0x20
       - id: alignment_padding
         size: _parent.message_header.body_len - _io.pos
+        if: _parent.message_header.body_len != _io.pos
         doc: 'Alignment'
   side_alloc_grp_bc_comp:
     seq:

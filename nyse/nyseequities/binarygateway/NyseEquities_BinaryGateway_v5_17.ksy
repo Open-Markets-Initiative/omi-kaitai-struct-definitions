@@ -344,9 +344,11 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
         doc: 'OptionalOrderAddOn'
       - id: optional_routing_strategy_add_on
         type: optional_routing_strategy_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130 or _parent.seq_msg_header.seq_msg_length == 112
         doc: 'OptionalRoutingStrategyAddOn'
   bitfield_order_instructions:
     seq:
@@ -1070,6 +1072,7 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
         doc: 'OptionalOrderAddOn'
   bitfield_flow_indicator:
     seq:
@@ -1239,9 +1242,11 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
         doc: 'OptionalOrderAddOn'
       - id: optional_routing_strategy_add_on
         type: optional_routing_strategy_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130 or _parent.seq_msg_header.seq_msg_length == 112
         doc: 'OptionalRoutingStrategyAddOn'
   trade_bust_correct_message:
     seq:

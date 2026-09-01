@@ -8,6 +8,7 @@ sys.path.insert(0, "generated/python")
 import payloads
 
 from eurex_t7_eti_fbe_v6_1_client import EurexT7EtiFbeV61Client
+from eurex_t7_eti_fbe_v6_1_server import EurexT7EtiFbeV61Server
 
 
 class EurexT7EtiFbeV61ServerTests(unittest.TestCase):
@@ -30,7 +31,7 @@ class EurexT7EtiFbeV61ServerTests(unittest.TestCase):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eti.Fbe.v6.1/UserLoginResponse.pcap"):
             if payloads.partial(payload, 0, 4, "little", True):
                 self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = EurexT7EtiFbeV61Client.from_bytes(payload)
+            parsed = EurexT7EtiFbeV61Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
 

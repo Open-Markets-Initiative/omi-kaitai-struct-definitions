@@ -173,9 +173,11 @@ types:
         doc: 'LULD National BBO Indicator'
       - id: national_bbo_appendage_shortform
         type: national_bbo_appendage_shortform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
       - id: national_bbo_appendage_longform
         type: national_bbo_appendage_longform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
   national_bbo_appendage_shortform:
     seq:
@@ -305,9 +307,11 @@ types:
         doc: 'FINRA ADF MPID Appendage Indicator'
       - id: national_bbo_appendage_shortform
         type: national_bbo_appendage_shortform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
       - id: national_bbo_appendage_longform
         type: national_bbo_appendage_longform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
   finra_adf_market_participant_quotation_message:
     seq:
@@ -433,18 +437,23 @@ types:
         doc: 'Number of odd lot price levels included in the attachment'
       - id: national_bbo_appendage_shortform
         type: national_bbo_appendage_shortform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
       - id: national_bbo_appendage_longform
         type: national_bbo_appendage_longform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: bolo_appendage_short_form
         type: bolo_appendage_short_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::short_form_bolo_appendage_attached
         doc: 'BOLO Appendage Short Form'
       - id: bolo_appendage_long_form
         type: bolo_appendage_long_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::long_form_bolo_appendage_attached
         doc: 'BOLO Appendage Long Form'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
   bolo_appendage_short_form:
     seq:
@@ -611,21 +620,27 @@ types:
         doc: 'Number of odd lot price levels included in the attachment'
       - id: national_bbo_appendage_shortform
         type: national_bbo_appendage_shortform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
       - id: national_bbo_appendage_longform
         type: national_bbo_appendage_longform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: finra_adf_mpid_appendage
         type: finra_adf_mpid_appendage
+        if: finra_adf_mpid_appendage_indicator == finra_adf_mpid_appendage_indicator::adf_mpi_ds_attached_finra_mpid_was_generated
         doc: 'FINRA ADF MPID Appendage'
       - id: bolo_appendage_short_form
         type: bolo_appendage_short_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::short_form_bolo_appendage_attached
         doc: 'BOLO Appendage Short Form'
       - id: bolo_appendage_long_form
         type: bolo_appendage_long_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::long_form_bolo_appendage_attached
         doc: 'BOLO Appendage Long Form'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
   finra_adf_mpid_appendage:
     seq:
@@ -683,12 +698,15 @@ types:
         doc: 'Number of odd lot price levels included in the attachment'
       - id: bolo_appendage_short_form
         type: bolo_appendage_short_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::short_form_bolo_appendage_attached
         doc: 'BOLO Appendage Short Form'
       - id: bolo_appendage_long_form
         type: bolo_appendage_long_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::long_form_bolo_appendage_attached
         doc: 'BOLO Appendage Long Form'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
   odd_lot_quote_message_long_form_message:
     seq:
@@ -735,12 +753,15 @@ types:
         doc: 'Number of odd lot price levels included in the attachment'
       - id: bolo_appendage_short_form
         type: bolo_appendage_short_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::short_form_bolo_appendage_attached
         doc: 'BOLO Appendage Short Form'
       - id: bolo_appendage_long_form
         type: bolo_appendage_long_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::long_form_bolo_appendage_attached
         doc: 'BOLO Appendage Long Form'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
   administrative_message:
     seq:

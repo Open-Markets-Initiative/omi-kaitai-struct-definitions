@@ -144,6 +144,7 @@ types:
         doc: 'Length Field'
       - id: credentials_data
         size: len_credentials_data
+        if: len_credentials_data > 0
         doc: 'Variable Length Data'
   negotiation_reject:
     seq:

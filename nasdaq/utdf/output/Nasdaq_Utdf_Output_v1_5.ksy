@@ -66,7 +66,7 @@ types:
         type: message_header
         doc: 'Mold Udp Message Header'
       - id: payload
-        size: message_header.message_length - 4
+        size: message_header.message_length - 2
         type:
           switch-on: message_header.message_category
           cases:

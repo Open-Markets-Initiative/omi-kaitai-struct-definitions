@@ -66,6 +66,7 @@ types:
             'template_id::reject_message': reject_message
       - id: padding
         type: u4
+        if: message_header.message_length - _io.pos > 0
         doc: 'padding'
   message_header:
     seq:
@@ -171,6 +172,7 @@ types:
         doc: 'newSequenceNumber'
       - id: padding
         type: u4
+        if: _parent.message_header.message_length - _io.pos > 0
         doc: 'padding'
   reject_message:
     seq:
