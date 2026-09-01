@@ -155,9 +155,6 @@ jobs:
       - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
         run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py
 
-      - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
-        run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py
-
       - name: Run Nasdaq PsxEquities TotalView Itch v5.0 Definition Tests
         run: python3 .github/tests/test_nasdaq_psxequities_totalview_itch_v5_0.py
 
