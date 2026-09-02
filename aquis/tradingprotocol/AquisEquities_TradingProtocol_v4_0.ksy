@@ -201,31 +201,25 @@ types:
     seq:
       - id: party_role
         type: b4
-        enum: party_role
         doc: 'Party role'
       - id: party_role_qualifier
         type: b4
-        enum: party_role_qualifier
         doc: 'Party role qualifier'
   table_select_2:
     seq:
       - id: party_role
         type: b4
-        enum: party_role
         doc: 'Party role'
       - id: party_role_qualifier
         type: b4
-        enum: party_role_qualifier
         doc: 'Party role qualifier'
   table_select_3:
     seq:
       - id: party_role
         type: b4
-        enum: party_role
         doc: 'Party role'
       - id: party_role_qualifier
         type: b4
-        enum: party_role_qualifier
         doc: 'Party role qualifier'
   order_add_extended_message:
     seq:
@@ -317,7 +311,6 @@ types:
         doc: 'Route to Lit; 0 = Order is not routed, 1 = Route to Lit'
       - id: routing
         type: b3
-        enum: routing
         doc: 'Behaviour of the Lit portion of a Dark-to-Lit sweep order. ignored when Routetolit = 0'
       - id: reserved_2
         type: b2
@@ -477,7 +470,6 @@ types:
         doc: 'Reason code if rejected or cancelled; otherwise zero'
       - id: order_status
         type: b3
-        enum: order_status
         doc: 'Order status'
   order_add_response_flags:
     seq:
@@ -486,7 +478,6 @@ types:
         doc: 'Reserved'
       - id: lis
         type: b1
-        enum: lis
         doc: 'LIS indicator set by the system'
       - id: dark_flag
         type: b1
@@ -634,7 +625,6 @@ types:
         doc: 'Reserved'
       - id: lis
         type: b1
-        enum: lis
         doc: 'LIS indicator set by the system'
       - id: dark_flag
         type: b1

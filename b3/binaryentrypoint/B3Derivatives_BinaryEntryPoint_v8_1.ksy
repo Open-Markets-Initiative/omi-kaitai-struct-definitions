@@ -735,6 +735,9 @@ types:
       - id: strategy_id
         type: s4_nullable
         doc: 'strategyID. Nullable, No Value = 0'
+      - id: block_padding
+        size: 2
+        doc: 'Padding to the block length the message header states'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1232,6 +1235,9 @@ types:
       - id: action_requested_from_session_id
         type: u4
         doc: 'actionRequestedFromSessionID'
+      - id: block_padding
+        size: 2
+        doc: 'Padding to the block length the message header states'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'

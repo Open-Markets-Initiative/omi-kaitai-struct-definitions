@@ -1230,7 +1230,6 @@ types:
     seq:
       - id: throttled
         type: b1
-        enum: throttled
         doc: 'Indicates if inbound message was throttled'
       - id: unused_7
         type: b7

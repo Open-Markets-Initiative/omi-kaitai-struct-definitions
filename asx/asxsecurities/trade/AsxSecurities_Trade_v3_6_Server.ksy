@@ -382,7 +382,6 @@ types:
         doc: 'Last Traded Price'
       - id: crossing_dealing_capacity
         type: b2
-        enum: crossing_dealing_capacity
         doc: 'Crossing Dealing Capacity'
       - id: reserved
         type: b5

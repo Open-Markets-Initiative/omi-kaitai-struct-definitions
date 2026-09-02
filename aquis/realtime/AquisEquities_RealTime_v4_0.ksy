@@ -186,58 +186,45 @@ types:
     seq:
       - id: market_mechanism
         type: b3
-        enum: market_mechanism
         doc: 'Market mechanism'
       - id: trading_mode
         type: b4
-        enum: trading_mode
         doc: 'Trading mode'
       - id: transaction_category
         type: b3
-        enum: transaction_category
         doc: 'Transaction category'
       - id: negotiation_indicator_or_pre_trade_transparency_waiver
         type: b3
-        enum: negotiation_indicator_or_pre_trade_transparency_waiver
         doc: 'Negotiation indicator or pre-trade transparency waiver'
       - id: crossing_trade
         type: b1
-        enum: crossing_trade
         doc: 'Crossing trade'
       - id: modification_indicator
         type: b2
-        enum: modification_indicator
         doc: 'Modification indicator'
       - id: benchmark_reference_price_indicator
         type: b2
-        enum: benchmark_reference_price_indicator
         doc: 'Benchmark or reference price indicator'
       - id: dividend
         type: b1
-        enum: dividend
         doc: 'Dividend'
       - id: off_book_automation
         type: b2
-        enum: off_book_automation
         doc: 'Off book automation'
       - id: price_formation_discovery_process
         type: b3
-        enum: price_formation_discovery_process
         doc: 'Price formation or discovery process'
       - id: algorithmic_indicator
         type: b1
-        enum: algorithmic_indicator
         doc: 'Algorithmic indicator'
       - id: publication_mode_post_trade_deferral
         type: b3
-        enum: publication_mode_post_trade_deferral
         doc: 'Publication mode or post-trade deferral'
       - id: deferral_type
         type: b1
         doc: 'Deferral type'
       - id: duplicative_indicator
         type: b1
-        enum: duplicative_indicator
         doc: 'Duplicative indicator'
       - id: spare
         type: b2

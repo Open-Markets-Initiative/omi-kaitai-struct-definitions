@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 633 | 1,476,135 |
+| 654 | 1,508,516 |
 
 ## Testing
 
@@ -38,7 +38,7 @@ Production packet captures are required for protocol verification.  If your orga
 Other generated code can be found at [Omi Projects](https://github.com/Open-Markets-Initiative/Directory/tree/main/Projects "Open Markets Initiative Projects"); for Omi rules and regulations, see [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory").
 ## Organizations
 
-> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [CixAts][CixAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Iex][Iex.Directory] · [Jnx][Jnx.Directory] · [Memx][Memx.Directory] · [Nasdaq][Nasdaq.Directory] · [Nyse][Nyse.Directory] · [OtcMarkets][OtcMarkets.Directory]
+> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [CixAts][CixAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Iex][Iex.Directory] · [Jnx][Jnx.Directory] · [Memx][Memx.Directory] · [Nasdaq][Nasdaq.Directory] · [Nyse][Nyse.Directory] · [OtcMarkets][OtcMarkets.Directory] · [Siac][Siac.Directory]
 
 ## Exchanges
 
@@ -50,7 +50,7 @@ Other generated code can be found at [Omi Projects](https://github.com/Open-Mark
 
 ## Consolidators
 
-> [NyseConsolidated][NyseConsolidated.Consolidator] · [Uqdf][Uqdf.Consolidator] · [Utdf][Utdf.Consolidator] · [Utp][Utp.Consolidator]
+> [Cqs][Cqs.Consolidator] · [Cts][Cts.Consolidator] · [NyseConsolidated][NyseConsolidated.Consolidator] · [Opra][Opra.Consolidator] · [Uqdf][Uqdf.Consolidator] · [Utdf][Utdf.Consolidator] · [Utp][Utp.Consolidator]
 
 ## Related Definitions
 
@@ -95,6 +95,8 @@ Enjoy.
 [Omi.Encoding.Xdp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Xdp.md "Xdp Encoding"
 [Omi.Encoding.Ultra]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Ultra.md "Ultra Encoding"
 [Omi.Encoding.Link]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Link.md "Link Encoding"
+[Omi.Encoding.Cta]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Cta.md "Cta Encoding"
+[Omi.Encoding.Obi]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Obi.md "Obi Encoding"
 
 [24X.24XEquities.Memo]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/24X/Protocols/24XEquities/Memo.md "Members Orders"
 [24X.24XEquities.MemoirDepthFeed]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/24X/Protocols/24XEquities/MemoirDepthFeed.md "Member Order Information Record Depth Feed"
@@ -280,6 +282,14 @@ Enjoy.
 [OtcMarkets.Overnight.DepthOfBook]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/OtcMarkets/Protocols/Overnight/DepthOfBook.md "OTC Depth of Book"
 [OtcMarkets.Overnight.Retransmission]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/OtcMarkets/Protocols/Overnight/Retransmission.md "OTC Retransmission"
 [OtcMarkets.LinkAts.Headers]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/OtcMarkets/Protocols/LinkAts/Headers.md ""
+[Siac.Cqs.Input]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Cqs/Input.md ""
+[Siac.Cqs.Output]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Cqs/Output.md "Output"
+[Siac.Cqs.Snapshot]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Cqs/Snapshot.md "Snapshot"
+[Siac.Cts.Input]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Cts/Input.md ""
+[Siac.Cts.Output]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Cts/Output.md "Output"
+[Siac.Opra.Headers]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Opra/Headers.md "Headers"
+[Siac.Opra.Input]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Opra/Input.md "Input"
+[Siac.Opra.Output]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Siac/Protocols/Opra/Output.md "Output"
 
 [24X.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/24x "24 National Exchange"
 [A2X.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/a2x "A2X Markets"
@@ -299,6 +309,7 @@ Enjoy.
 [Nasdaq.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq "National Association of Securities Dealers Automated Quotations (Nasdaq)"
 [Nyse.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse "New York Stock Exchange"
 [OtcMarkets.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/otcmarkets "OTC Markets Group"
+[Siac.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac "The Securities Industry Automation Corporation"
 
 [24XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/24x "24X Equities"
 [AmexEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/amexequities "Nyse Amex Equities"
@@ -313,6 +324,8 @@ Enjoy.
 [BorsaIstanbul.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/bist "Borsa Istanbul"
 [CixAspen.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cixats "CIX Aspen"
 [CoinbaseDerivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/coinbasederivatives "Coinbase Derivatives"
+[Cqs.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac/cqs "Consolidated Quotation System"
+[Cts.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac/cts "Consolidated Tape System"
 [Deribit.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/coinbase/deribit "Deribit"
 [GemxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/gemxoptions "Nasdaq GEMX"
 [Globex.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme "CME Globex"
@@ -336,6 +349,7 @@ Enjoy.
 [NyseConsolidated.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseconsolidated "NYSE Consolidated"
 [NyseEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseequities "New York Stock Exchange Equities"
 [NyseOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseoptions "New York Stock Exchange Options"
+[Opra.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac/opra "Options Price Reporting Authority"
 [Optiq.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/euronext "Euronext Optiq"
 [Overnight.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/otcmarkets/overnight "OTC Link Overnight OTC"
 [PhlxOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/phlxoptions "Nasdaq PHLX"

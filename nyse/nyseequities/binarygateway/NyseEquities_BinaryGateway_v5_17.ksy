@@ -357,67 +357,51 @@ types:
         doc: 'Bits reserved for future use'
       - id: sub_id_indicator
         type: b1
-        enum: sub_id_indicator
         doc: 'When populating both MPSubID and SelfTradeType on an order, allows the firm to specify whether the MPSubID should be used or ignored for Self-Trade Prevention (STP) evaluation. See “Self-Trade Prevention” section of this spec for more details'
       - id: special_ord_type
         type: b4
-        enum: special_ord_type
         doc: 'SpecialOrdType'
       - id: locate_reqd
         type: b1
-        enum: locate_reqd
         doc: '0 = No LocateReqd'
       - id: retail_indicator
         type: b1
-        enum: retail_indicator
         doc: 'RetailIndicator'
       - id: attributed_quote
         type: b3
-        enum: attributed_quote
         doc: '0 = Not Attributed'
       - id: order_capacity
         type: b3
-        enum: order_capacity
         doc: 'OrderCapacity'
       - id: interest_type
         type: b3
-        enum: interest_type
         doc: 'InterestType'
       - id: trading_session_id
         type: b3
-        enum: trading_session_id
         doc: 'TradingSessionID'
       - id: time_in_force
         type: b3
-        enum: time_in_force
         doc: 'TimeInForce'
       - id: proactive_if_locked
         type: b3
-        enum: proactive_if_locked
         doc: 'ProactiveIfLocked'
       - id: self_trade_type
         type: b3
-        enum: self_trade_type
         doc: 'SelfTradeType'
       - id: cancel_instead_of_reprice
         type: b4
-        enum: cancel_instead_of_reprice
         doc: 'CancelInsteadOfReprice'
       - id: routing_inst
         type: b4
-        enum: routing_inst
         doc: 'RoutingInst'
       - id: extended_exec_inst
         type: b4
-        enum: extended_exec_inst
         doc: 'ExtendedExecInst'
       - id: exec_inst
         type: b4
-        enum: exec_inst
         doc: 'ExecInst'
       - id: ord_type
         type: b4
-        enum: ord_type
         doc: 'OrdType'
       - id: side_bits
         type: b4
@@ -1078,7 +1062,6 @@ types:
     seq:
       - id: throttled
         type: b1
-        enum: throttled
         doc: 'Throttled'
       - id: unused_7
         type: b7

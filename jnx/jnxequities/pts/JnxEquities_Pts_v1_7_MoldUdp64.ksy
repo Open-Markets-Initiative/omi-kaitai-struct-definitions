@@ -136,10 +136,7 @@ types:
         type: nanosecond_offset
         doc: 'Number of nanoseconds since last Timestamp Seconds Message. Nanoseconds since Second epoch'
       - id: orderbook_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: u4
         doc: '4 digit Quick code'
       - id: orderbook_code
         type: str
@@ -174,10 +171,7 @@ types:
         type: nanosecond_offset
         doc: 'Number of nanoseconds since last Timestamp Seconds Message. Nanoseconds since Second epoch'
       - id: orderbook_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: u4
         doc: '4 digit Quick code'
       - id: group
         type: str
@@ -195,10 +189,7 @@ types:
         type: nanosecond_offset
         doc: 'Number of nanoseconds since last Timestamp Seconds Message. Nanoseconds since Second epoch'
       - id: orderbook_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: u4
         doc: '4 digit Quick code'
       - id: group
         type: str
@@ -226,10 +217,7 @@ types:
         type: u4
         doc: 'Total number of shares added to the book'
       - id: orderbook_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: u4
         doc: '4 digit Quick code'
       - id: group
         type: str
@@ -256,10 +244,7 @@ types:
         type: u4
         doc: 'Total number of shares added to the book'
       - id: orderbook_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: u4
         doc: '4 digit Quick code'
       - id: group
         type: str

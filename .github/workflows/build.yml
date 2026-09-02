@@ -212,4 +212,25 @@ jobs:
       - name: Run OtcMarkets LinkAts Multicast Link v4.3 Definition Tests
         run: python3 .github/tests/test_otcmarkets_linkats_multicast_link_v4_3.py
 
+      - name: Run Siac Cqs Output Cta v1.91 Definition Tests
+        run: python3 .github/tests/test_siac_cqs_output_cta_v1_91.py
+
+      - name: Run Siac Cqs Output Cta v2.10.a Definition Tests
+        run: python3 .github/tests/test_siac_cqs_output_cta_v2_10_a.py
+
+      - name: Run Siac Cts Output Cta v1.91 Definition Tests
+        run: python3 .github/tests/test_siac_cts_output_cta_v1_91.py
+
+      - name: Run Siac Cts Output Cta v2.10 Definition Tests
+        run: python3 .github/tests/test_siac_cts_output_cta_v2_10.py
+
+      - name: Run Siac Cts Output Cta v2.11.b Definition Tests
+        run: python3 .github/tests/test_siac_cts_output_cta_v2_11_b.py
+
+      - name: Run Siac Cts Output Cta v2.9 Definition Tests
+        run: python3 .github/tests/test_siac_cts_output_cta_v2_9.py
+
+      - name: Run Siac Opra Output Obi v6.2 Definition Tests
+        run: python3 .github/tests/test_siac_opra_output_obi_v6_2.py
+
 
