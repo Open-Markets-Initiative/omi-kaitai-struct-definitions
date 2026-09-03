@@ -122,6 +122,9 @@ jobs:
       - name: Run Iex IexEquities Tops IexTp v1.64 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_64.py
 
+      - name: Run Jnx JnxEquities Pts Glimpse v1.3 Definition Tests
+        run: python3 .github/tests/test_jnx_jnxequities_pts_glimpse_v1_3.py
+
       - name: Run Jnx JnxEquities Pts Itch v1.6 Definition Tests
         run: python3 .github/tests/test_jnx_jnxequities_pts_itch_v1_6.py
 

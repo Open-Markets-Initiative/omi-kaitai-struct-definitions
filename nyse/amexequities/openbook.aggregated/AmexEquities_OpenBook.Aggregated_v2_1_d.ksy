@@ -234,8 +234,8 @@ types:
         type: u4
         doc: 'Default value is 0. This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
-        type: u4
-        doc: 'Default value is 0. Format: HHMMSSmmm (mmm = milliseconds). If securityStatus = A and this security is listed on this exchange, then this field is the SSR Trigger Time'
+        type: hhmmssmmm_time_nullable
+        doc: 'Default value is 0. Format: HHMMSSmmm (mmm = milliseconds). If securityStatus = A and this security is listed on this exchange, then this field is the SSR Trigger Time. Nullable, Not Applicable = 0'
       - id: ssr_state
         type: u1
         enum: ssr_state
@@ -471,6 +471,26 @@ types:
       - id: num_orders
         type: u2
         doc: 'This field contains the number of orders at the current price point'
+  hhmmssmmm_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000000 % 100
+      minute:
+        value: time / 100000 % 100
+      second:
+        value: time / 1000 % 100
+      millisecond:
+        value: time % 1000
+  hhmmssmmm_time_nullable:
+    seq:
+      - id: value
+        type: hhmmssmmm_time
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   delivery_flag:

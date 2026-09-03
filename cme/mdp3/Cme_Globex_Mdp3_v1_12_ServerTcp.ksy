@@ -39,16 +39,21 @@ doc: 'CME Group CME Globex Market Data Platform 3 Sbe v1.12'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+MDP+3.0+Market+Data
 
 seq:
-  - id: server_technical_header
-    type: server_technical_header_struct
-    doc: 'Cme Technical Header sent by Cme to the firm'
-  - id: server_tcp_message
-    type: server_tcp_message_struct
+  - id: server_tcp_frame
+    type: server_tcp_frame_struct
     repeat: eos
-    doc: 'Cme Tcp Message sent by Cme to the firm'
+    doc: 'One technical header and the message it carries: the unit the wire repeats'
 
 types:
-  server_technical_header_struct:
+  server_tcp_frame_struct:
+    seq:
+      - id: server_technical_header
+        type: server_technical_header
+        doc: 'Cme Technical Header sent by Cme to the firm'
+      - id: server_tcp_message
+        type: server_tcp_message
+        doc: 'Cme Tcp Message sent by Cme to the firm'
+  server_technical_header:
     seq:
       - id: encoding_type
         type: u2
@@ -59,7 +64,7 @@ types:
       - id: tcp_sending_time
         type: u8
         doc: 'Packet Sending Time'
-  server_tcp_message_struct:
+  server_tcp_message:
     seq:
       - id: tcp_message_size
         type: u2

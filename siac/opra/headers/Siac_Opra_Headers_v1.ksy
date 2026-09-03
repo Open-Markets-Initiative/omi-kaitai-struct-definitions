@@ -72,7 +72,6 @@ types:
         doc: 'Retransmission Indicator'
       - id: session_indicator
         type: u1
-        enum: session_indicator
         doc: 'Session Indicator'
       - id: block_sequence_number
         type: u4
@@ -173,13 +172,6 @@ enums:
     0x56:
       id: 'retransmitted'
       doc: 'Retransmission of the block'
-  session_indicator:
-    0:
-      id: 'regular'
-      doc: 'Regular Trading Session'
-    88:
-      id: 'pre_market'
-      doc: 'Pre Market Extended Hours Trading Session'
   participant_id:
     0x41:
       id: 'amex'

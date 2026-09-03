@@ -10,6 +10,8 @@
 | [JnxBonds][JnxBonds.Exchange] | [Pts][Jnx.JnxBonds.Pts] | [Ouch][Omi.Encoding.Ouch] | [2.01][Jnx.JnxBonds.Pts.Ouch.v2.01.Definition] | 1/16/2026 | 558 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxBonds.Pts.Ouch.v2.01.Url] - [pdf][Jnx.JnxBonds.Pts.Ouch.v2.01.Pdf] |
 | [JnxBonds][JnxBonds.Exchange] | [Pts][Jnx.JnxBonds.Pts] | [Ouch][Omi.Encoding.Ouch] | [1.4][Jnx.JnxBonds.Pts.Ouch.v1.4.Definition] | 4/1/2020 | 430 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxBonds.Pts.Ouch.v1.4.Url] - [pdf][Jnx.JnxBonds.Pts.Ouch.v1.4.Pdf] |
 | [JnxBonds][JnxBonds.Exchange] | [Pts][Jnx.JnxBonds.Pts] | [Ouch][Omi.Encoding.Ouch] | [1.4][Jnx.JnxBonds.Pts.Ouch.v1.4.Definition] | 4/1/2020 | 558 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxBonds.Pts.Ouch.v1.4.Url] - [pdf][Jnx.JnxBonds.Pts.Ouch.v1.4.Pdf] |
+| [JnxEquities][JnxEquities.Exchange] | [Pts][Jnx.JnxEquities.Pts] | [Glimpse][Omi.Encoding.Glimpse] | [1.3][Jnx.JnxEquities.Pts.Glimpse.v1.3.Definition] | 11/1/2023 | 205 | [Pending][Omi.Glossary.Status.Pending] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxEquities.Pts.Glimpse.v1.3.Url] |
+| [JnxEquities][JnxEquities.Exchange] | [Pts][Jnx.JnxEquities.Pts] | [Glimpse][Omi.Encoding.Glimpse] | [1.3][Jnx.JnxEquities.Pts.Glimpse.v1.3.Definition] | 11/1/2023 | 454 | [Pending][Omi.Glossary.Status.Pending] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxEquities.Pts.Glimpse.v1.3.Url] |
 | [JnxEquities][JnxEquities.Exchange] | [Pts][Jnx.JnxEquities.Pts] | [Itch][Omi.Encoding.Itch] | [2.0][Jnx.JnxEquities.Pts.Itch.v2.0.Definition] | 9/17/2025 | 429 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Jnx.JnxEquities.Pts.Itch.v2.0.Url] - [pdf][Jnx.JnxEquities.Pts.Itch.v2.0.Pdf] |
 | [JnxEquities][JnxEquities.Exchange] | [Pts][Jnx.JnxEquities.Pts] | [Itch][Omi.Encoding.Itch] | [1.7][Jnx.JnxEquities.Pts.Itch.v1.7.Definition] | 11/1/2023 | 239 | [Pending][Omi.Glossary.Status.Pending] | [Verified][Omi.Glossary.Testing.Verified] | [url][Jnx.JnxEquities.Pts.Itch.v1.7.Url] - [pdf][Jnx.JnxEquities.Pts.Itch.v1.7.Pdf] |
 | [JnxEquities][JnxEquities.Exchange] | [Pts][Jnx.JnxEquities.Pts] | [Itch][Omi.Encoding.Itch] | [1.7][Jnx.JnxEquities.Pts.Itch.v1.7.Definition] | 11/1/2023 | 488 | [Pending][Omi.Glossary.Status.Pending] | [Verified][Omi.Glossary.Testing.Verified] | [url][Jnx.JnxEquities.Pts.Itch.v1.7.Url] - [pdf][Jnx.JnxEquities.Pts.Itch.v1.7.Pdf] |
@@ -41,6 +43,7 @@ Jnx: [website](https://www.japannext.co.jp/en "Go to Japannext Securities")
 [Omi.Jnx.Specifications]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Jnx/Specifications "Jnx Specifications Directory"
 [Omi.Encoding.Itch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Itch.md "Itch Encoding"
 [Omi.Encoding.Ouch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Ouch.md "Ouch Encoding"
+[Omi.Encoding.Glimpse]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Glimpse.md "Glimpse Encoding"
 [JnxBonds.Exchange]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Jnx/Protocols/JnxBonds "Jnx JnxBonds"
 [JnxEquities.Exchange]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Jnx/Protocols/JnxEquities "Jnx JnxEquities"
 [Jnx.JnxBonds.Pts]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Jnx/Protocols/JnxBonds/Pts.md "Proprietary Trading System"
@@ -61,6 +64,10 @@ Jnx: [website](https://www.japannext.co.jp/en "Go to Japannext Securities")
 [Jnx.JnxBonds.Pts.Ouch.v2.01.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/jnx/jnxbonds/pts/JnxBonds_Pts_v2_01_Server.ksy "Jnx JnxBonds Pts Ouch v2.01 Kaitai Struct Definition"
 [Jnx.JnxBonds.Pts.Ouch.v2.01.Url]: https://www.japannext.co.jp/library "Japannext Securities 2.01 Url"
 [Jnx.JnxBonds.Pts.Ouch.v2.01.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Jnx/Specifications/JnxBonds/Jnx.JnxBonds.Pts.Ouch.v2.01.pdf "Japannext Securities 2.01 Pdf"
+[Jnx.JnxEquities.Pts.Glimpse.v1.3.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/jnx/jnxequities/pts/JnxEquities_Pts_v1_3_ClientTcp.ksy "Jnx JnxEquities Pts Glimpse v1.3 Kaitai Struct Definition"
+[Jnx.JnxEquities.Pts.Glimpse.v1.3.Url]: https://www.japannext.co.jp/library "Japannext Securities 1.3 Url"
+[Jnx.JnxEquities.Pts.Glimpse.v1.3.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/jnx/jnxequities/pts/JnxEquities_Pts_v1_3_ServerTcp.ksy "Jnx JnxEquities Pts Glimpse v1.3 Kaitai Struct Definition"
+[Jnx.JnxEquities.Pts.Glimpse.v1.3.Url]: https://www.japannext.co.jp/library "Japannext Securities 1.3 Url"
 [Jnx.JnxEquities.Pts.Itch.v1.6.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/jnx/jnxequities/pts/JnxEquities_Pts_v1_6.ksy "Jnx JnxEquities Pts Itch v1.6 Kaitai Struct Definition"
 [Jnx.JnxEquities.Pts.Itch.v1.6.Url]: https://www.japannext.co.jp/library "Japannext Securities 1.6 Url"
 [Jnx.JnxEquities.Pts.Itch.v1.6.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Jnx/Specifications/JnxEquities/Jnx.JnxEquities.Pts.Itch.v1.6.pdf "Japannext Securities 1.6 Pdf"

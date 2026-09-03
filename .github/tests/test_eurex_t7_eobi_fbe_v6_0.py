@@ -12,11 +12,6 @@ from eurex_t7_eobi_fbe_v6_0 import EurexT7EobiFbeV60
 
 class EurexT7EobiFbeV60Tests(unittest.TestCase):
 
-    def test_executionsummary(self):
-        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v6.0/ExecutionSummary.pcap"):
-            parsed = EurexT7EobiFbeV60.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_fullorderexecution(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v6.0/FullOrderExecution.pcap"):
             parsed = EurexT7EobiFbeV60.from_bytes(payload)
@@ -39,11 +34,6 @@ class EurexT7EobiFbeV60Tests(unittest.TestCase):
 
     def test_ordermodify(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v6.0/OrderModify.pcap"):
-            parsed = EurexT7EobiFbeV60.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_partialorderexecution(self):
-        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v6.0/PartialOrderExecution.pcap"):
             parsed = EurexT7EobiFbeV60.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

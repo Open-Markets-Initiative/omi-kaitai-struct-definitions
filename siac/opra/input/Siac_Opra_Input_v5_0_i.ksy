@@ -807,22 +807,22 @@ enums:
   session_indicator:
     0:
       id: 'regular'
-      doc: 'Regular trading session'
+      doc: 'Regular trading session (only used for Regular OPRA Session)'
     1:
       id: 'gth_monday'
-      doc: 'Global Trading Hours session ending on Monday'
+      doc: 'Pre-Market trading session (Global Trading Hours): trade day Monday'
     2:
       id: 'gth_tuesday'
-      doc: 'Global Trading Hours session ending on Tuesday'
+      doc: 'Pre-Market trading session (Global Trading Hours): trade day Tuesday'
     3:
       id: 'gth_wednesday'
-      doc: 'Global Trading Hours session ending on Wednesday'
+      doc: 'Pre-Market trading session (Global Trading Hours): trade day Wednesday'
     4:
       id: 'gth_thursday'
-      doc: 'Global Trading Hours session ending on Thursday'
+      doc: 'Pre-Market trading session (Global Trading Hours): trade day Thursday'
     5:
       id: 'gth_friday'
-      doc: 'Global Trading Hours session ending on Friday'
+      doc: 'Pre-Market trading session (Global Trading Hours): trade day Friday'
   expiration_month:
     0x41:
       id: 'call_january'

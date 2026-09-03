@@ -705,9 +705,9 @@ enums:
     0:
       id: 'regular'
       doc: 'Regular Trading Session'
-    88:
+    0x58:
       id: 'pre_market'
-      doc: 'Pre Market Extended Hours Trading Session'
+      doc: 'Ascii X For Pre Market Extended Hours Trading Session Only Used During Pre Market Extended Session'
   participant_id:
     0x41:
       id: 'nyse_american'

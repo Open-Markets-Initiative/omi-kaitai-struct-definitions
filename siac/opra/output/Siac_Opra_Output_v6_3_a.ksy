@@ -784,9 +784,6 @@ enums:
     0:
       id: 'regular'
       doc: 'Regular Trading Session'
-    88:
-      id: 'pre_market'
-      doc: 'Pre Market Extended Hours Trading Session'
     1:
       id: 'sunday_into_monday'
       doc: 'Global Trading Hours Session Sunday Into Monday'
