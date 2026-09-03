@@ -87,6 +87,11 @@ types:
       - id: update_size
         type: s2
         doc: 'The number of bytes in this message including this field'
+      - id: full_update_message_body
+        type: full_update_message_body
+        size: update_size - 2
+  full_update_message_body:
+    seq:
       - id: symbol_index
         type: s4
         doc: 'The ID of this symbol used in other message types'
@@ -155,6 +160,11 @@ types:
       - id: delta_size
         type: s2
         doc: 'The number of bytes in this message including this field'
+      - id: delta_update_message_body
+        type: delta_update_message_body
+        size: delta_size - 2
+  delta_update_message_body:
+    seq:
       - id: symbol_index
         type: s4
         doc: 'The ID of this symbol used in other message types'

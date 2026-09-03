@@ -111,6 +111,7 @@ types:
             'unsequenced_message_type::replace_order_message': replace_order_message
             'unsequenced_message_type::cancel_order_message': cancel_order_message
             'unsequenced_message_type::modify_order_message': modify_order_message
+            'unsequenced_message_type::account_query_message': account_query_message
   enter_order_message:
     seq:
       - id: user_ref_num
@@ -246,6 +247,27 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
+  account_query_message:
+    seq:
+      - id: appendage_length
+        type: u2
+        if: not _io.eof
+        doc: 'The length of the remaining Optional Appendage field'
+      - id: account_query_appendage
+        type: account_query_appendage
+        repeat: eos
+        doc: 'Account Query Appendage'
+  account_query_appendage:
+    seq:
+      - id: optional_field_length
+        type: s1
+        doc: 'Apendage Length Type'
+      - id: account_query_optional_field
+        type: s1
+        enum: account_query_optional_field
+        doc: 'Apendage Id'
+      - id: account_query_optional_value
+        size: optional_field_length + 1 - 2
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -439,6 +461,10 @@ enums:
     17:
       id: 'handleinst'
       doc: 'Replace Order Optional HandleInst Enum'
+  account_query_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Account Query Optional UserRefIdx Enum'
   server_packet_type:
     0x2b:
       id: 'debug_packet'

@@ -2785,9 +2785,45 @@ types:
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
-      - id: spread_trade_events_groups
-        type: spread_trade_events_groups
+      - id: spread_leg_trade_events_groups
+        type: spread_leg_trade_events_groups
         doc: 'NoOrderEvents Block'
+  spread_leg_trade_events_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: spread_leg_trade_events_group
+        type: spread_leg_trade_events_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of fills which comprise fill quantity'
+  spread_leg_trade_events_group:
+    seq:
+      - id: order_event_px
+        type: decimal_s8_9
+        doc: 'Refers to the fill price; same as LastPx (Tag 31). Implied decimal with scale 1e-9'
+      - id: order_event_text
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Will not be present for BrokerTec US; Will be populated with the firm ID of the opposite order for BrokerTec EU bilateral trades'
+      - id: order_event_exec_id
+        type: u4
+        doc: 'This is a unique ID which ties together a specific fill between two orders; It will be unique per instrument per day'
+      - id: order_event_qty
+        type: u4
+        doc: 'Refers to the specific fill quantity between this order and the opposite order'
+      - id: trade_addendum
+        type: u1
+        enum: trade_addendum
+        doc: 'The type of event affecting an order'
+      - id: order_event_reason
+        type: u1
+        doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
+      - id: original_order_event_exec_id
+        type: u4_nullable
+        doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
   order_mass_action_report:
     seq:
       - id: seq_num

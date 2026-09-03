@@ -355,8 +355,8 @@ types:
         type: u4
         doc: 'This field is only populated when securityStatus = A and this security is listed on this exchange'
       - id: time
-        type: u4
-        doc: 'Format : HHMMSSmmm (mmm = milliseconds)'
+        type: hhmmssmmm_time_nullable
+        doc: 'Format : HHMMSSmmm (mmm = milliseconds). Nullable, Not Applicable = 0'
       - id: ssr_state
         type: str
         size: 1
@@ -417,6 +417,26 @@ types:
         type: u1
         enum: rpi_indicator
         doc: 'The side(s) where Retail Price Indication orders (RPI orders) exist'
+  hhmmssmmm_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000000 % 100
+      minute:
+        value: time / 100000 % 100
+      second:
+        value: time / 1000 % 100
+      millisecond:
+        value: time % 1000
+  hhmmssmmm_time_nullable:
+    seq:
+      - id: value
+        type: hhmmssmmm_time
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   delivery_flag:

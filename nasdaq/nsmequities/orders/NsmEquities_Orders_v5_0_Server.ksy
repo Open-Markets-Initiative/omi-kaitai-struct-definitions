@@ -733,6 +733,10 @@ enums:
     17:
       id: 'handleinst'
       doc: 'Replace Order Optional HandleInst Enum'
+  account_query_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Account Query Optional UserRefIdx Enum'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
