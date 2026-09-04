@@ -45,9 +45,9 @@ seq:
     type:
       switch-on: packet_header.message_type
       cases:
+        'message_type::sequence_number_reset_message': sequence_number_reset_message
         'message_type::full_update_message': full_update_messages
         'message_type::delta_update_message': delta_update_messages
-        'message_type::sequence_number_reset_message': sequence_number_reset_message
 
 types:
   packet_header_struct:
@@ -77,11 +77,17 @@ types:
       - id: link_flag
         type: u1
         doc: 'A flag that indicates whether this is an original, retransmitted, or ‘replayed’ message'
+  sequence_number_reset_message:
+    seq:
+      - id: next_sequence_number
+        type: s4
+        doc: 'The sequence number that will follow in the next packet. Always = 2'
   full_update_messages:
     seq:
       - id: full_update_message
         type: full_update_message
         repeat: eos
+        doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information'
   full_update_message:
     seq:
       - id: update_size
@@ -90,6 +96,7 @@ types:
       - id: full_update_message_body
         type: full_update_message_body
         size: update_size - 2
+        doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information'
   full_update_message_body:
     seq:
       - id: symbol_index
@@ -111,7 +118,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
-        doc: 'The stock symbol in NYSE Symbology the root, optionally followed by a space and a suffix), right-padded with NULLs'
+        doc: 'The stock symbol in NYSE Symbology (the root, optionally followed by a space and a suffix), right-padded with NULLs'
       - id: price_scale_code
         type: s1
         doc: 'The number of digits after the decimal place in all prices for this symbol'
@@ -132,6 +139,7 @@ types:
       - id: full_price_point
         type: full_price_point
         repeat: eos
+        doc: 'Full Message Price Point'
   full_price_point:
     seq:
       - id: price_numerator
@@ -155,6 +163,7 @@ types:
       - id: delta_update_message
         type: delta_update_message
         repeat: eos
+        doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market'
   delta_update_message:
     seq:
       - id: delta_size
@@ -163,6 +172,7 @@ types:
       - id: delta_update_message_body
         type: delta_update_message_body
         size: delta_size - 2
+        doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market'
   delta_update_message_body:
     seq:
       - id: symbol_index
@@ -194,6 +204,7 @@ types:
       - id: delta_price_point
         type: delta_price_point
         repeat: eos
+        doc: 'Delta Message Price Point'
   delta_price_point:
     seq:
       - id: price_numerator
@@ -204,7 +215,7 @@ types:
         doc: 'The total interest quantity at this price point'
       - id: chg_qty
         type: s4
-        doc: 'The volume of the event taking place (i.e size of the order, cancel or execution)'
+        doc: 'The volume of the event taking place (i.e. size of the order, cancel or execution)'
       - id: num_orders
         type: s2
         doc: 'The number of orders at this price point'
@@ -225,33 +236,28 @@ types:
       - id: link_id_3
         type: s4
         doc: 'Unused. Ignore any content'
-  sequence_number_reset_message:
-    seq:
-      - id: next_sequence_number
-        type: s4
-        doc: 'The sequence number that will follow in the next packet. Always = 2'
 
 enums:
   message_type:
+    1:
+      id: 'sequence_number_reset_message'
+      doc: 'This message is sent to reset the Packet Sequence Number.'
+    2:
+      id: 'heartbeat_message'
+      doc: 'Ultra heartbeat message.'
     230:
       id: 'full_update_message'
       doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information.'
     231:
       id: 'delta_update_message'
       doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market.'
-    1:
-      id: 'sequence_number_reset_message'
-      doc: 'This message is sent to reset the Packet Sequence Number.'
-    2:
-      id: 'heartbeat_message'
-      doc: 'Ultra heartbeat message'
   quote_condition:
     0x20:
       id: 'no_special_quote_condition'
       doc: 'No Special Quote Condition'
     0x57:
       id: 'slow_quote'
-      doc: 'Slow Quote Due To A Set Slow List'
+      doc: 'Slow Quote'
   trading_status:
     0x50:
       id: 'pre_opening'

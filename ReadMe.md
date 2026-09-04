@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 656 | 1,510,550 |
+| 656 | 1,510,726 |
 
 ## Testing
 

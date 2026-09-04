@@ -55,8 +55,8 @@ seq:
         'message_type::extended_book_refresh_request_message': extended_book_refresh_request_message
         'message_type::symbol_index_mapping_request_message': symbol_index_mapping_request_message
         'message_type::symbol_index_mapping_response_message': symbol_index_mapping_response_message
-        'message_type::full_update_message': full_update_message
-        'message_type::delta_update_message': delta_update_message
+        'message_type::full_update_message': full_update_messages
+        'message_type::delta_update_message': delta_update_messages
 
 types:
   packet_header_struct:
@@ -91,20 +91,20 @@ types:
   sequence_number_reset_message:
     seq:
       - id: next_seq_number
-        type: u4le
+        type: s4
         doc: 'The sequence number that will follow in the next packet. Always = 2'
   unavailable_message:
     seq:
       - id: begin_seq_num
-        type: u4le
+        type: s4
         doc: 'The beginning sequence number of the requested range of packets to be retransmitted'
       - id: end_seq_num
-        type: u4le
+        type: s4
         doc: 'The ending sequence number of the requested range of packets to be retransmitted'
   request_response_message:
     seq:
       - id: source_seq_num
-        type: u4le
+        type: s4
         doc: 'The sequence number assigned by the client to the original request. It is returned by NYSE in this message for the client''s identification purposes'
       - id: source_id
         type: str
@@ -120,17 +120,15 @@ types:
         enum: reject_reason
         doc: 'The reason why the request was rejected'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
         doc: 'Reserved for future use'
   retransmission_request_message:
     seq:
       - id: begin_seq_num
-        type: u4le
+        type: s4
         doc: 'The beginning sequence number of the requested range of packets to be retransmitted'
       - id: end_seq_num
-        type: u4le
+        type: s4
         doc: 'The ending sequence number of the requested range of packets to be retransmitted'
       - id: source_id
         type: str
@@ -164,10 +162,10 @@ types:
         encoding: ASCII
         doc: 'The ID of the client that sent the request, left justified and null padded'
       - id: symbol_index
-        type: u4le
+        type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: msg_type
-        type: u2le
+        type: s2
         doc: 'Unused. Any content will be ignored'
   symbol_index_mapping_request_message:
     seq:
@@ -177,7 +175,7 @@ types:
         encoding: ASCII
         doc: 'The ID of the client that sent the request, left justified and null padded'
       - id: symbol_index
-        type: u4le
+        type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
   symbol_index_mapping_response_message:
     seq:
@@ -187,30 +185,42 @@ types:
         encoding: ASCII
         doc: 'The stock symbol in NYSE Symbology, right-padded with NULLs'
       - id: filler_1
-        type: u1
+        size: 1
         doc: 'Ignore any content'
       - id: symbol_index
-        type: u4le
+        type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
+  full_update_messages:
+    seq:
+      - id: full_update_message
+        type: full_update_message
+        repeat: eos
+        doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information'
   full_update_message:
     seq:
-      - id: num_full_price_point
-        type: u2le
+      - id: update_size
+        type: s2
         doc: 'The number of bytes in this message including this field'
+      - id: full_update_message_body
+        type: full_update_message_body
+        size: update_size - 2
+        doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information'
+  full_update_message_body:
+    seq:
       - id: symbol_index
-        type: u4le
+        type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
-        type: u4le
+        type: s4
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
       - id: source_time_micro_secs
-        type: u2le
+        type: s2
         doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field'
       - id: symbol_seq_num
-        type: u4le
+        type: s4
         doc: 'The sequence number of this message in the set of all messages for this symbol'
       - id: source_session_id
-        type: u1
+        type: s1
         doc: 'Unused. Ignore any content'
       - id: symbol_11
         type: str
@@ -218,8 +228,8 @@ types:
         encoding: ASCII
         doc: 'The stock symbol in NYSE Symbology, right-padded with NULLs'
       - id: price_scale_code
-        type: decimal_s1_8
-        doc: 'The number of digits after the decimal place in all prices for this symbol. Implied decimal with scale 1e-8'
+        type: s1
+        doc: 'The number of digits after the decimal place in all prices for this symbol'
       - id: quote_condition
         type: u1
         enum: quote_condition
@@ -229,53 +239,64 @@ types:
         enum: trading_status
         doc: 'The current trading status of the equity'
       - id: filler_1
-        type: u1
+        size: 1
         doc: 'Ignore any content'
       - id: mpv
-        type: u2le
+        type: s2
         doc: 'The minimum price variation, also known as Tick, the minimum amount by which prices can differ'
       - id: full_price_point
         type: full_price_point
-        repeat: expr
-        repeat-expr: num_full_price_point
+        repeat: eos
         doc: 'Full Message Price Point'
   full_price_point:
     seq:
       - id: price_numerator
-        type: decimal_s4_8
-        doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point'
       - id: volume
-        type: u4le
+        type: s4
         doc: 'The total interest quantity at this price point'
       - id: num_orders
-        type: u2le
+        type: s2
         doc: 'The number of orders at this price point'
       - id: side
         type: u1
         enum: side
         doc: 'The side of the order, Buy vs Sell'
       - id: filler_1
-        type: u1
+        size: 1
         doc: 'Ignore any content'
+  delta_update_messages:
+    seq:
+      - id: delta_update_message
+        type: delta_update_message
+        repeat: eos
+        doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market'
   delta_update_message:
     seq:
-      - id: num_delta_price_point
-        type: u2le
+      - id: delta_size
+        type: s2
         doc: 'The number of bytes in this message including this field'
+      - id: delta_update_message_body
+        type: delta_update_message_body
+        size: delta_size - 2
+        doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market'
+  delta_update_message_body:
+    seq:
       - id: symbol_index
-        type: u4le
+        type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
-        type: u4le
+        type: s4
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
       - id: source_time_micro_secs
-        type: u2le
+        type: s2
         doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field'
       - id: source_seq_num
-        type: u4le
+        type: s4
         doc: 'The sequence number assigned by the client to the original request. It is returned by NYSE in this message for the client''s identification purposes'
       - id: source_session_id
-        type: u1
+        type: s1
         doc: 'Unused. Ignore any content'
       - id: quote_condition
         type: u1
@@ -286,26 +307,25 @@ types:
         enum: trading_status
         doc: 'The current trading status of the equity'
       - id: price_scale_code
-        type: decimal_s1_8
-        doc: 'The number of digits after the decimal place in all prices for this symbol. Implied decimal with scale 1e-8'
+        type: s1
+        doc: 'The number of digits after the decimal place in all prices for this symbol'
       - id: delta_price_point
         type: delta_price_point
-        repeat: expr
-        repeat-expr: num_delta_price_point
+        repeat: eos
         doc: 'Delta Message Price Point'
   delta_price_point:
     seq:
       - id: price_numerator
-        type: decimal_s4_8
-        doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point. Implied decimal with scale 1e-8'
+        type: s4
+        doc: 'The price (numerator) of this price point. Use the PriceScaleCode to determine the true dollar value of the price point'
       - id: volume
-        type: u4le
+        type: s4
         doc: 'The total interest quantity at this price point'
       - id: chg_qty
-        type: u4le
+        type: s4
         doc: 'The volume of the event taking place (i.e size of the order, cancel or execution)'
       - id: num_orders
-        type: u2le
+        type: s2
         doc: 'The number of orders at this price point'
       - id: side
         type: u1
@@ -316,28 +336,14 @@ types:
         enum: reason_code
         doc: 'This field identifies why the volume at the price point was modified'
       - id: link_id_1
-        type: u4le
+        type: s4
         doc: 'Unique ID for an execution. Correlates to the Deal ID in the gateway Execution Report msg'
       - id: link_id_2
-        type: u4le
+        type: s4
         doc: 'Unused. Ignore any content'
       - id: link_id_3
-        type: u4le
+        type: s4
         doc: 'Unused. Ignore any content'
-  decimal_s1_8:
-    seq:
-      - id: mantissa
-        type: s1
-    instances:
-      real:
-        value: mantissa / 100000000.0
-  decimal_s4_8:
-    seq:
-      - id: mantissa
-        type: s4le
-    instances:
-      real:
-        value: mantissa / 100000000.0
 
 enums:
   message_type:
