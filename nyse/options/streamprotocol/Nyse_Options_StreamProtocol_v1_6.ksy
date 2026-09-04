@@ -39,33 +39,25 @@ doc: 'New York Stock Exchange Options Stream Protocol PillarStream v1.6'
 doc-ref: https://www.nyse.com/connectivity/specs
 
 seq:
-  - id: login_message
-    type: login_message_struct
-    doc: 'Client must send Login before any other message'
-  - id: login_response
-    type: login_response_struct
-    doc: 'Pillar Stream Login Response Message Branch'
-  - id: stream_avail
-    type: stream_avail_struct
-    doc: 'The message contains stream ID and sequence of next message on stream'
-  - id: heartbeat
-    type: heartbeat_struct
-    doc: 'Heartbeat must be sent once a second'
-  - id: open
-    type: open_struct
-    doc: 'Request open a stream for reading or writing'
-  - id: open_response
-    type: open_response_struct
-    doc: 'Response to Open'
-  - id: close
-    type: close_struct
-    doc: 'Request close stream'
-  - id: close_response
-    type: close_response_struct
-    doc: 'Response to Close Message'
-  - id: seq_msg
-    type: seq_msg_struct
-    doc: 'Used to transmit a stream message'
+  - id: pillar_stream_message
+    type:
+      switch-on: msg_type
+      cases:
+        'msg_type::login': login_message_struct
+        'msg_type::login_response': login_response_struct
+        'msg_type::stream_avail': stream_avail_struct
+        'msg_type::heartbeat': heartbeat_struct
+        'msg_type::open': open_struct
+        'msg_type::open_response': open_response_struct
+        'msg_type::close': close_struct
+        'msg_type::close_response': close_response_struct
+        'msg_type::seq_msg': seq_msg_struct
+
+instances:
+  msg_type:
+    pos: 0
+    type: u2
+    enum: msg_type
 
 types:
   login_message_struct:

@@ -774,12 +774,12 @@ enums:
       id: 'opra'
       doc: 'Opra'
   retransmission_indicator:
-    0x56:
-      id: 'retransmitted'
-      doc: 'Retransmission Of The Block'
     0x20:
       id: 'not_retransmitted'
       doc: 'Not A Retransmitted Message'
+    0x56:
+      id: 'retransmitted'
+      doc: 'Retransmission Of The Block'
   session_indicator:
     0:
       id: 'regular'

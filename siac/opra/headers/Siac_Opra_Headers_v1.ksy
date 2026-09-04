@@ -169,6 +169,9 @@ types:
 
 enums:
   retransmission_indicator:
+    0x20:
+      id: 'not_retransmitted'
+      doc: 'Not a retransmitted message'
     0x56:
       id: 'retransmitted'
       doc: 'Retransmission of the block'
