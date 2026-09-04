@@ -458,7 +458,7 @@ enums:
     0x4c:
       id: 'late_session'
       doc: 'Late Session'
-    0x43:
+    0x58:
       id: 'closed'
       doc: 'Closed'
     0x48:

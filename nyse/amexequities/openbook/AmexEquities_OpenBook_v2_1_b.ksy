@@ -46,6 +46,14 @@ seq:
       switch-on: packet_header.message_type
       cases:
         'message_type::sequence_number_reset_message': sequence_number_reset_message
+        'message_type::unavailable_message': unavailable_message
+        'message_type::request_response_message': request_response_message
+        'message_type::retransmission_request_message': retransmission_request_message
+        'message_type::book_refresh_request_message': book_refresh_request_message
+        'message_type::heartbeat_response_message': heartbeat_response_message
+        'message_type::extended_book_refresh_request_message': extended_book_refresh_request_message
+        'message_type::symbol_index_mapping_request_message': symbol_index_mapping_request_message
+        'message_type::symbol_index_mapping_response_message': symbol_index_mapping_response_message
         'message_type::full_update_message': full_update_messages
         'message_type::delta_update_message': delta_update_messages
 
@@ -82,6 +90,103 @@ types:
       - id: next_sequence_number
         type: s4
         doc: 'The sequence number that will follow in the next packet. Always = 2'
+  unavailable_message:
+    seq:
+      - id: begin_seq_num
+        type: s4
+        doc: 'The beginning sequence number of the requested range of packets to be retransmitted'
+      - id: end_seq_num
+        type: s4
+        doc: 'The ending sequence number of the requested range of packets to be retransmitted'
+  request_response_message:
+    seq:
+      - id: source_seq_num
+        type: s4
+        doc: 'The sequence number assigned by the client to the original request. It is returned by NYSE in this message for the client''s identification purposes'
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'Status of the request'
+      - id: reject_reason
+        type: u1
+        enum: reject_reason
+        doc: 'The reason why the request was rejected'
+      - id: filler_2
+        size: 2
+        doc: 'Reserved for future use'
+  retransmission_request_message:
+    seq:
+      - id: begin_seq_num
+        type: s4
+        doc: 'The beginning sequence number of the requested range of packets to be retransmitted'
+      - id: end_seq_num
+        type: s4
+        doc: 'The ending sequence number of the requested range of packets to be retransmitted'
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+  book_refresh_request_message:
+    seq:
+      - id: symbol_16
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'A sequence of characters representing the symbol, padded with NULLs. The symbol contains the root, optionally followed by a space and an optional suffix in host format, for example "IBM PRA"'
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+  heartbeat_response_message:
+    seq:
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+  extended_book_refresh_request_message:
+    seq:
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+      - id: symbol_index
+        type: s4
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
+      - id: msg_type
+        type: s2
+        doc: 'Unused. Any content will be ignored'
+  symbol_index_mapping_request_message:
+    seq:
+      - id: source_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'The ID of the client that sent the request, left justified and null padded'
+      - id: symbol_index
+        type: s4
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
+  symbol_index_mapping_response_message:
+    seq:
+      - id: symbol_11
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The stock symbol in NYSE Symbology (the root, optionally followed by a space and a suffix), right-padded with NULLs'
+      - id: filler_1
+        size: 1
+        doc: 'Ignore any content'
+      - id: symbol_index
+        type: s4
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
   full_update_messages:
     seq:
       - id: full_update_message
@@ -101,7 +206,7 @@ types:
     seq:
       - id: symbol_index
         type: s4
-        doc: 'The ID of this symbol used in other message types'
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
         type: s4
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
@@ -114,7 +219,7 @@ types:
       - id: source_session_id
         type: s1
         doc: 'Unused. Ignore any content'
-      - id: symbol
+      - id: symbol_11
         type: str
         size: 11
         encoding: ASCII
@@ -177,7 +282,7 @@ types:
     seq:
       - id: symbol_index
         type: s4
-        doc: 'The ID of this symbol used in other message types'
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
       - id: source_time
         type: s4
         doc: 'The time the event occurred in the matching engine, in milliseconds since midnight'
@@ -186,7 +291,7 @@ types:
         doc: 'The number of microseconds that have elapsed within the millisecond published in the SourceTime field. If the ME event occurred at 13:12:56, 170 millisecs and 30 microsecs, this field will contain 30'
       - id: source_seq_num
         type: s4
-        doc: 'The sequence number of this message in the set of all messages for this symbol'
+        doc: 'The sequence number assigned by the client to the original request. It is returned by NYSE in this message for the client''s identification purposes'
       - id: source_session_id
         type: s1
         doc: 'Unused. Ignore any content'
@@ -245,12 +350,68 @@ enums:
     2:
       id: 'heartbeat_message'
       doc: 'Ultra heartbeat message.'
+    5:
+      id: 'unavailable_message'
+      doc: 'This message will be sent over the Retransmission multicast channels to inform the clients of unavailability of a range of messages for which they have requested a retransmission.'
+    10:
+      id: 'request_response_message'
+      doc: 'This message will be sent immediately via TCP/IP in response to the client''s request for a retransmission, refresh, or Symbol Index information. The requested information will follow in the appropriate retransmission or refresh channel.'
+    19:
+      id: 'heartbeat_subscription_message'
+      doc: 'Heartbeat Subscription message.'
+    20:
+      id: 'retransmission_request_message'
+      doc: 'This message is sent by clients to request a retransmission of missed packets. In response, a Request Response message (type 10) will be sent back over the Request TCP connection, and the retransmitted packets will be delivered over the Retransmission channels.'
+    22:
+      id: 'book_refresh_request_message'
+      doc: 'This message is sent by clients requesting a full book refresh.'
+    24:
+      id: 'heartbeat_response_message'
+      doc: 'Clients that remain connected to the Request server intraday must respond within 120 seconds to any heartbeat received with a single message of this type in its own packet. This response demonstrates that the TCP connection is still alive and prevents the Request Server from closing the connection.'
+    27:
+      id: 'extended_book_refresh_request_message'
+      doc: 'The Extended Book Refresh Request message allows the client to request a refresh by symbol index as opposed to symbol, and to request a refresh of all symbols in a channel.'
+    34:
+      id: 'symbol_index_mapping_request_message'
+      doc: 'This message is sent by clients requesting a refresh of Symbol Index mapping information only.'
+    35:
+      id: 'symbol_index_mapping_response_message'
+      doc: 'This message is sent by the NYSE in response to a Symbol Index Request. When requesting Symbol Index Mapping, the request must be sent to the symbol''s corresponding channel, otherwise it will not be honored.'
     230:
       id: 'full_update_message'
       doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information.'
     231:
       id: 'delta_update_message'
       doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market.'
+  status:
+    0x41:
+      id: 'accepted'
+      doc: 'Accepted'
+    0x52:
+      id: 'rejected'
+      doc: 'Rejected'
+  reject_reason:
+    0x30:
+      id: 'request_accepted'
+      doc: 'Request Accepted'
+    0x31:
+      id: 'rejected_due_to_permissions'
+      doc: 'Rejected Due To Permissions'
+    0x32:
+      id: 'invalid_sequence_range_eg_low_high'
+      doc: 'Invalid Sequence Range Eg Low High'
+    0x33:
+      id: 'exceeded_max_sequence_range_1000'
+      doc: 'Exceeded Max Sequence Range 1000'
+    0x34:
+      id: 'exceeded_max_retrans_requests_in_a_day'
+      doc: 'Exceeded Max Retrans Requests In A Day'
+    0x35:
+      id: 'exceeded_max_refresh_requests_in_a_day'
+      doc: 'Exceeded Max Refresh Requests In A Day'
+    0x36:
+      id: 'rejected_requested_seqnum_1000000_packets_in_the_past_use_refresh_to_recover_current_state_if_necessary'
+      doc: 'Rejected Requested Seqnum 1000000 Packets In The Past Use Refresh To Recover Current State If Necessary'
   quote_condition:
     0x20:
       id: 'no_special_quote_condition'
@@ -265,6 +426,9 @@ enums:
     0x45:
       id: 'early_session'
       doc: 'Early Session'
+    0x42:
+      id: 'begin_accepting_orders'
+      doc: 'Begin Accepting Orders'
     0x4f:
       id: 'core_session'
       doc: 'Core Session'
@@ -277,6 +441,9 @@ enums:
     0x48:
       id: 'halted'
       doc: 'Halted'
+    0x36:
+      id: 'suspended'
+      doc: 'Suspended'
   side:
     0x42:
       id: 'buy'
