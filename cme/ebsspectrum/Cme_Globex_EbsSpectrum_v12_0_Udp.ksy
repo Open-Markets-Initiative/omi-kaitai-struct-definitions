@@ -90,9 +90,38 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'EventIndicator bit set'
       - id: incremental_refresh_spectrum_groups
         type: incremental_refresh_spectrum_groups
         doc: 'NoMDEntries Block'
+  match_event_indicator:
+    seq:
+      - id: unused_event_indicator_0
+        type: b1
+        doc: 'Unused EventIndicator 0'
+      - id: unused_event_indicator_1
+        type: b1
+        doc: 'Unused EventIndicator 1'
+      - id: unused_event_indicator_2
+        type: b1
+        doc: 'Unused EventIndicator 2'
+      - id: unused_event_indicator_3
+        type: b1
+        doc: 'Unused EventIndicator 3'
+      - id: unused_event_indicator_4
+        type: b1
+        doc: 'Unused EventIndicator 4'
+      - id: unused_event_indicator_5
+        type: b1
+        doc: 'Unused EventIndicator 5'
+      - id: recovery_message
+        type: b1
+        doc: 'RecoveryMessage'
+      - id: end_of_event
+        type: b1
+        doc: 'EndOfEvent'
   incremental_refresh_spectrum_groups:
     seq:
       - id: group_size
@@ -145,6 +174,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'EventIndicator bit set'
       - id: incremental_refresh_ticker_groups
         type: incremental_refresh_ticker_groups
         doc: 'NoMDEntries Block'
@@ -204,6 +236,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'EventIndicator bit set'
       - id: financial_instrument_full_name
         type: str
         size: 35
@@ -253,6 +288,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Publication event time, sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: match_event_indicator
+        type: match_event_indicator
+        doc: 'EventIndicator bit set'
       - id: financial_instrument_full_name
         type: str
         size: 35
