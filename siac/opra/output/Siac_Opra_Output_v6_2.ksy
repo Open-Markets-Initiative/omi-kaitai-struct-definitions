@@ -128,7 +128,7 @@ types:
         doc: 'Message Type'
       - id: administrative_message_payload
         type:
-          switch-on: administrative_message_type.to_i
+          switch-on: administrative_message_type
           cases:
             _: administrative_message
   administrative_message:
@@ -241,7 +241,8 @@ types:
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
       - id: strike_price
         type: u4
@@ -250,7 +251,8 @@ types:
         type: u4
         doc: 'Represents The Total Number Of Contracts Traded For An Option In One Trade Or The Total Number Of Contracts Traded For An Option For The Entire Trading Day'
       - id: premium_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: premium_price_denominator_code
         doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
       - id: premium_price
         type: s4
@@ -281,7 +283,7 @@ types:
         doc: 'Open Interest Message Type'
       - id: open_interest_message_payload
         type:
-          switch-on: open_interest_message_type.to_i
+          switch-on: open_interest_message_type
           cases:
             _: open_interest_message
   open_interest_message:
@@ -309,7 +311,8 @@ types:
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
       - id: strike_price
         type: u4
@@ -325,7 +328,7 @@ types:
         doc: 'Equity And Index End Of Day Summary Message Type'
       - id: equity_and_index_end_of_day_summary_message_payload
         type:
-          switch-on: equity_and_index_end_of_day_summary_message_type.to_i
+          switch-on: equity_and_index_end_of_day_summary_message_type
           cases:
             _: equity_and_index_end_of_day_summary_message
   equity_and_index_end_of_day_summary_message:
@@ -353,7 +356,8 @@ types:
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
       - id: strike_price
         type: u4
@@ -365,7 +369,8 @@ types:
         type: u4
         doc: 'Represents The Total Number Of Outstanding Option Contracts That Have Not Been Exercised And Have Not Yet Reached Expiration'
       - id: premium_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: premium_price_denominator_code
         doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
       - id: open_price
         type: s4
@@ -383,7 +388,8 @@ types:
         type: s4
         doc: 'Represents The Change In The Price Of An Option From The Closing Price Of One Day To The Closing Price On The Next Day On Which The Option Is Traded'
       - id: underlying_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: underlying_price_denominator_code
         doc: 'The Underlying Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Underlying Price Field. Implied decimal with scale 1e-1'
       - id: underlying_price
         type: s8
@@ -402,18 +408,18 @@ types:
         doc: 'Long Equity And Index Quote Message Type'
       - id: long_equity_and_index_quote_message_payload
         type:
-          switch-on: long_equity_and_index_quote_message_type.to_i
+          switch-on: long_equity_and_index_quote_message_type
           cases:
-            70: long_equity_and_index_quote_message
-            73: long_equity_and_index_quote_message
-            82: long_equity_and_index_quote_message
-            84: long_equity_and_index_quote_message
-            65: long_equity_and_index_quote_message
-            66: long_equity_and_index_quote_message
-            79: long_equity_and_index_quote_message
-            67: long_equity_and_index_quote_message
-            88: long_equity_and_index_quote_message
-            89: long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::non_firm_quote': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::indicative_value': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::rotation': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::trading_halted': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::eligible_for_automatic_execution': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::bid_contains_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::offer_contains_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': long_equity_and_index_quote_message
             _: long_equity_and_index_quote_message
   long_equity_and_index_quote_message:
     seq:
@@ -439,13 +445,15 @@ types:
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
       - id: strike_price
         type: u4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: premium_price_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: premium_price_denominator_code
         doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
       - id: bid_price
         type: s4
@@ -478,7 +486,8 @@ types:
         enum: best_bid_participant_id
         doc: 'Identifies The Participant That Entered The Best Bid'
       - id: best_bid_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: best_bid_denominator_code
         doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field. Implied decimal with scale 1e-1'
       - id: best_bid_price
         type: s4
@@ -493,7 +502,8 @@ types:
         enum: best_offer_participant_id
         doc: 'Identifies The Participant That Entered The Best Bid'
       - id: best_offer_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: best_offer_denominator_code
         doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field. Implied decimal with scale 1e-1'
       - id: best_offer_price
         type: s4
@@ -508,7 +518,8 @@ types:
         enum: best_bid_participant_id
         doc: 'Identifies The Participant That Entered The Best Bid'
       - id: best_bid_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: best_bid_denominator_code
         doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field. Implied decimal with scale 1e-1'
       - id: best_bid_price
         type: s4
@@ -521,7 +532,8 @@ types:
         enum: best_offer_participant_id
         doc: 'Identifies The Participant That Entered The Best Bid'
       - id: best_offer_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: best_offer_denominator_code
         doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field. Implied decimal with scale 1e-1'
       - id: best_offer_price
         type: s4
@@ -537,18 +549,18 @@ types:
         doc: 'Short Equity And Index Quote Message Type'
       - id: short_equity_and_index_quote_message_payload
         type:
-          switch-on: short_equity_and_index_quote_message_type.to_i
+          switch-on: short_equity_and_index_quote_message_type
           cases:
-            70: short_equity_and_index_quote_message
-            73: short_equity_and_index_quote_message
-            82: short_equity_and_index_quote_message
-            84: short_equity_and_index_quote_message
-            65: short_equity_and_index_quote_message
-            66: short_equity_and_index_quote_message
-            79: short_equity_and_index_quote_message
-            67: short_equity_and_index_quote_message
-            88: short_equity_and_index_quote_message
-            89: short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::non_firm_quote': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::indicative_value': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::rotation': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::trading_halted': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::eligible_for_automatic_execution': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::bid_contains_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::offer_contains_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': short_equity_and_index_quote_message
             _: short_equity_and_index_quote_message
   short_equity_and_index_quote_message:
     seq:
@@ -605,9 +617,9 @@ types:
         doc: 'Underlying Value Message Type'
       - id: underlying_value_message_payload
         type:
-          switch-on: underlying_value_message_type.to_i
+          switch-on: underlying_value_message_type
           cases:
-            73: underlying_value_bid_and_offer_message
+            'underlying_value_message_type::index_based_on_bid_and_offer': underlying_value_bid_and_offer_message
             _: underlying_value_last_sale_message
   underlying_value_last_sale_message:
     seq:
@@ -631,7 +643,8 @@ types:
         type: u1
         doc: 'One Reserved Byte'
       - id: index_value_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: index_value_denominator_code
         doc: 'Contains The Index Value Using Last Sale Values Of Index Components. Implied decimal with scale 1e-1'
       - id: index_value
         type: s4
@@ -661,7 +674,8 @@ types:
         type: u1
         doc: 'One Reserved Byte'
       - id: index_value_denominator_code
-        type: decimal_u1_1
+        type: u1
+        enum: index_value_denominator_code
         doc: 'Contains The Index Value Using Last Sale Values Of Index Components. Implied decimal with scale 1e-1'
       - id: bid_index_value
         type: s4
@@ -682,13 +696,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_u1_1:
-    seq:
-      - id: mantissa
-        type: u1
-    instances:
-      real:
-        value: mantissa / 10.0
   decimal_u2_1:
     seq:
       - id: mantissa

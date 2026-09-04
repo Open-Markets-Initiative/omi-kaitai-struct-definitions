@@ -578,7 +578,7 @@ types:
         doc: 'Prior Day message type'
       - id: prior_day_message_payload
         type:
-          switch-on: prior_day_message_type.to_i
+          switch-on: prior_day_message_type.to_i.as<s4>
           cases:
             67: prior_day_trade_correction_message
             79: fractional_prior_day_trade_correction_message

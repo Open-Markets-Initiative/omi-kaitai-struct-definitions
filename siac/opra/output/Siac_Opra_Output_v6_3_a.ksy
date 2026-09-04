@@ -129,7 +129,7 @@ types:
         doc: 'Message Type'
       - id: administrative_message_payload
         type:
-          switch-on: administrative_message_type.to_i
+          switch-on: administrative_message_type
           cases:
             _: administrative_message
   administrative_message:
@@ -306,7 +306,7 @@ types:
         doc: 'Open Interest Message Type'
       - id: open_interest_message_payload
         type:
-          switch-on: open_interest_message_type.to_i
+          switch-on: open_interest_message_type
           cases:
             _: open_interest_message
   open_interest_message:
@@ -351,7 +351,7 @@ types:
         doc: 'Equity And Index End Of Day Summary Message Type'
       - id: equity_and_index_end_of_day_summary_message_payload
         type:
-          switch-on: equity_and_index_end_of_day_summary_message_type.to_i
+          switch-on: equity_and_index_end_of_day_summary_message_type
           cases:
             _: equity_and_index_end_of_day_summary_message
   equity_and_index_end_of_day_summary_message:
@@ -431,18 +431,18 @@ types:
         doc: 'Long Equity And Index Quote Message Type'
       - id: long_equity_and_index_quote_message_payload
         type:
-          switch-on: long_equity_and_index_quote_message_type.to_i
+          switch-on: long_equity_and_index_quote_message_type
           cases:
-            70: long_equity_and_index_quote_message
-            73: long_equity_and_index_quote_message
-            82: long_equity_and_index_quote_message
-            84: long_equity_and_index_quote_message
-            65: long_equity_and_index_quote_message
-            66: long_equity_and_index_quote_message
-            79: long_equity_and_index_quote_message
-            67: long_equity_and_index_quote_message
-            88: long_equity_and_index_quote_message
-            89: long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::non_firm_quote': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::indicative_value': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::rotation': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::trading_halted': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::eligible_for_automatic_execution': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::bid_contains_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::offer_contains_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': long_equity_and_index_quote_message
+            'long_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': long_equity_and_index_quote_message
             _: long_equity_and_index_quote_message
   long_equity_and_index_quote_message:
     seq:
@@ -572,18 +572,18 @@ types:
         doc: 'Short Equity And Index Quote Message Type'
       - id: short_equity_and_index_quote_message_payload
         type:
-          switch-on: short_equity_and_index_quote_message_type.to_i
+          switch-on: short_equity_and_index_quote_message_type
           cases:
-            70: short_equity_and_index_quote_message
-            73: short_equity_and_index_quote_message
-            82: short_equity_and_index_quote_message
-            84: short_equity_and_index_quote_message
-            65: short_equity_and_index_quote_message
-            66: short_equity_and_index_quote_message
-            79: short_equity_and_index_quote_message
-            67: short_equity_and_index_quote_message
-            88: short_equity_and_index_quote_message
-            89: short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::non_firm_quote': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::indicative_value': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::rotation': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::trading_halted': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::eligible_for_automatic_execution': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::bid_contains_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::offer_contains_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': short_equity_and_index_quote_message
+            'short_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': short_equity_and_index_quote_message
             _: short_equity_and_index_quote_message
   short_equity_and_index_quote_message:
     seq:
@@ -640,7 +640,7 @@ types:
         doc: 'Series Mapping Message Type'
       - id: series_mapping_message_payload
         type:
-          switch-on: series_mapping_message_type.to_i
+          switch-on: series_mapping_message_type
           cases:
             _: series_mapping_message
   series_mapping_message:

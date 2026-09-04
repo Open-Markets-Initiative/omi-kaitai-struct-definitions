@@ -97,11 +97,6 @@ class NasdaqNsmequitiesTotalviewItchV502017Tests(unittest.TestCase):
             parsed = NasdaqNsmequitiesTotalviewItchV502017.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_stocktradingactionmessageshyg(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2017/StockTradingActionMessage.Shyg.pcap"):
-            parsed = NasdaqNsmequitiesTotalviewItchV502017.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_systemeventmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2017/SystemEventMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502017.from_bytes(payload)

@@ -27,7 +27,7 @@ jobs:
         run: python3 -m compileall -q generated/python
 
       - name: Build CSharp Parsers
-        run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers
+        run: dotnet new classlib -n Omi.Kaitai.Parsers -o parsers && rm parsers/Class1.cs && dotnet add parsers package KaitaiStruct.Runtime.CSharp && cp generated/csharp/*.cs parsers/ && dotnet build parsers -p:Nullable=disable
 
       - name: Build Java Parsers
         run: curl -sSL --fail --retry 5 --retry-delay 5 --retry-all-errors https://repo1.maven.org/maven2/io/kaitai/kaitai-struct-runtime/0.11/kaitai-struct-runtime-0.11.jar -o "$RUNNER_TEMP/kaitai-runtime.jar" && find generated/java -name '*.java' | xargs javac -cp "$RUNNER_TEMP/kaitai-runtime.jar" -d "$RUNNER_TEMP/java-out"
