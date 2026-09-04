@@ -543,13 +543,13 @@ types:
         type: b48
     instances:
       hour:
-        value: time / 3600000000000 % 24
+        value: time.as<s8> / 3600000000000 % 24
       minute:
-        value: time / 60000000000 % 60
+        value: time.as<s8> / 60000000000 % 60
       second:
-        value: time / 1000000000 % 60
+        value: time.as<s8> / 1000000000 % 60
       millisecond:
-        value: time / 1000000 % 1000
+        value: time.as<s8> / 1000000 % 1000
   decimal_u8_4:
     seq:
       - id: mantissa

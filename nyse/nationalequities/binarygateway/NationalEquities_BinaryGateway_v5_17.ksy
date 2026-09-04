@@ -41,7 +41,7 @@ doc-ref: https://www.nyse.com/connectivity/specs
 seq:
   - id: pillar_stream_message
     type:
-      switch-on: msg_type
+      switch-on: peek_msg_type
       cases:
         'msg_type::login': login_message_struct
         'msg_type::login_response': login_response_struct
@@ -54,7 +54,7 @@ seq:
         'msg_type::seq_msg': seq_msg_struct
 
 instances:
-  msg_type:
+  peek_msg_type:
     pos: 0
     type: u2
     enum: msg_type
