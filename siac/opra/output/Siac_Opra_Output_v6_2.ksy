@@ -243,7 +243,7 @@ types:
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
         type: u4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
@@ -253,7 +253,7 @@ types:
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
+        doc: 'Represents The First Price Paid For An Option During The Trading Day'
       - id: premium_price
         type: s4
         doc: 'Represents The Price Of An Option Contract Determined In The Competitive Marketplace Which The Buyer Of The Option Pays To The Option Writer For The Rights Conveyed By The Option Contract'
@@ -313,7 +313,7 @@ types:
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
         type: u4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
@@ -358,7 +358,7 @@ types:
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
         type: u4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
@@ -371,7 +371,7 @@ types:
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
+        doc: 'Represents The First Price Paid For An Option During The Trading Day'
       - id: open_price
         type: s4
         doc: 'Represents The First Price Paid For An Option During The Trading Day'
@@ -390,7 +390,7 @@ types:
       - id: underlying_price_denominator_code
         type: u1
         enum: underlying_price_denominator_code
-        doc: 'The Underlying Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Underlying Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Underlying Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Underlying Price Field'
       - id: underlying_price
         type: s8
         doc: 'Represents The Price Of The Underlying Security'
@@ -447,14 +447,14 @@ types:
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
         type: u4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day. Implied decimal with scale 1e-1'
+        doc: 'Represents The First Price Paid For An Option During The Trading Day'
       - id: bid_price
         type: s4
         doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
@@ -488,7 +488,7 @@ types:
       - id: best_bid_denominator_code
         type: u1
         enum: best_bid_denominator_code
-        doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field'
       - id: best_bid_price
         type: s4
         doc: 'Represents The Best Price At Which A Buyer Is Willing To Buy An Option'
@@ -504,7 +504,7 @@ types:
       - id: best_offer_denominator_code
         type: u1
         enum: best_offer_denominator_code
-        doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field'
       - id: best_offer_price
         type: s4
         doc: 'Represents The Best Price At Which A Seller Is Offering To Sell An Option'
@@ -520,7 +520,7 @@ types:
       - id: best_bid_denominator_code
         type: u1
         enum: best_bid_denominator_code
-        doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field'
       - id: best_bid_price
         type: s4
         doc: 'Represents The Best Price At Which A Buyer Is Willing To Buy An Option'
@@ -534,7 +534,7 @@ types:
       - id: best_offer_denominator_code
         type: u1
         enum: best_offer_denominator_code
-        doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field. Implied decimal with scale 1e-1'
+        doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field'
       - id: best_offer_price
         type: s4
         doc: 'Represents The Best Price At Which A Seller Is Offering To Sell An Option'
@@ -645,7 +645,7 @@ types:
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Contains The Index Value Using Last Sale Values Of Index Components. Implied decimal with scale 1e-1'
+        doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
       - id: index_value
         type: s4
         doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
@@ -676,7 +676,7 @@ types:
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Contains The Index Value Using Last Sale Values Of Index Components. Implied decimal with scale 1e-1'
+        doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
       - id: bid_index_value
         type: s4
         doc: 'The Bid Index Value Represents The Value Of The Indexs Calculation Formula Using The Current Bid Values Of The Component Securities'
