@@ -112,6 +112,9 @@ types:
             'unsequenced_message_type::cancel_order_message': cancel_order_message
             'unsequenced_message_type::modify_order_message': modify_order_message
             'unsequenced_message_type::account_query_message': account_query_message
+            'unsequenced_message_type::mass_cancel_request_message': mass_cancel_request_message
+            'unsequenced_message_type::disable_order_entry_request_message': disable_order_entry_request_message
+            'unsequenced_message_type::enable_order_entry_request_message': enable_order_entry_request_message
   enter_order_message:
     seq:
       - id: user_ref_num
@@ -268,6 +271,99 @@ types:
         doc: 'Apendage Id'
       - id: account_query_optional_value
         size: optional_field_length + 1 - 2
+  mass_cancel_request_message:
+    seq:
+      - id: user_ref_num
+        type: u4
+        doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
+      - id: firm
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical Ouch account can potentially enter orders for multiple firms in a Service Bureau configuration'
+      - id: symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Stock Symbol'
+      - id: appendage_length
+        type: u2
+        doc: 'The length of the remaining Optional Appendage field'
+      - id: mass_cancel_request_appendage
+        type: mass_cancel_request_appendage
+        repeat: eos
+        doc: 'Mass Cancel Request Appendage'
+  mass_cancel_request_appendage:
+    seq:
+      - id: optional_field_length
+        type: s1
+        doc: 'Apendage Length Type'
+      - id: mass_cancel_request_optional_field
+        type: s1
+        enum: mass_cancel_request_optional_field
+        doc: 'Apendage Id'
+      - id: mass_cancel_request_optional_value
+        size: optional_field_length + 1 - 2
+  disable_order_entry_request_message:
+    seq:
+      - id: user_ref_num
+        type: u4
+        doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
+      - id: firm
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical Ouch account can potentially enter orders for multiple firms in a Service Bureau configuration'
+      - id: appendage_length
+        type: u2
+        doc: 'The length of the remaining Optional Appendage field'
+      - id: disable_order_entry_request_appendage
+        type: disable_order_entry_request_appendage
+        repeat: eos
+        doc: 'Disable Order Entry Request Appendage'
+  disable_order_entry_request_appendage:
+    seq:
+      - id: optional_field_length
+        type: s1
+        doc: 'Apendage Length Type'
+      - id: disable_order_entry_request_optional_field
+        type: s1
+        enum: disable_order_entry_request_optional_field
+        doc: 'Apendage Id'
+      - id: disable_order_entry_request_optional_value
+        size: optional_field_length + 1 - 2
+  enable_order_entry_request_message:
+    seq:
+      - id: user_ref_num
+        type: u4
+        doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
+      - id: firm
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical Ouch account can potentially enter orders for multiple firms in a Service Bureau configuration'
+      - id: appendage_length
+        type: u2
+        doc: 'The length of the remaining Optional Appendage field'
+      - id: enable_order_entry_request_appendage
+        type: enable_order_entry_request_appendage
+        repeat: eos
+        doc: 'Enable Order Entry Request Appendage'
+  enable_order_entry_request_appendage:
+    seq:
+      - id: optional_field_length
+        type: s1
+        doc: 'Apendage Length Type'
+      - id: enable_order_entry_request_optional_field
+        type: s1
+        enum: enable_order_entry_request_optional_field
+        doc: 'Apendage Id'
+      - id: enable_order_entry_request_optional_value
+        size: optional_field_length + 1 - 2
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -309,6 +405,15 @@ enums:
     0x51:
       id: 'account_query_message'
       doc: 'The Account Query Request message can be used when recovering state to request the next available UserRefNum that can be used for identifying new transactions.'
+    0x43:
+      id: 'mass_cancel_request_message'
+      doc: 'The Mass Cancel Request message allows firms to initiate the cancellation of one or more orders currently booked at the exchange that match the criteria specified in the request. If no optional criteria are specified then all orders for the specified firm on the account are cancelled.'
+    0x44:
+      id: 'disable_order_entry_request_message'
+      doc: 'The Disable Order Entry Request allows firms to block submission of new orders on a particular account.'
+    0x45:
+      id: 'enable_order_entry_request_message'
+      doc: 'The Enable Order Entry Request allows firms to unblock submission of new orders on a particular account.'
   side:
     0x42:
       id: 'buy'
@@ -465,6 +570,24 @@ enums:
     28:
       id: 'userrefidx'
       doc: 'Account Query Optional UserRefIdx Enum'
+  mass_cancel_request_optional_field:
+    27:
+      id: 'side'
+      doc: 'Mass Cancel Request Optional Side Enum'
+    24:
+      id: 'group_id'
+      doc: 'Mass Cancel Request Optional Group ID Enum'
+    28:
+      id: 'userrefidx'
+      doc: 'Mass Cancel Request Optional UserRefIdx Enum'
+  disable_order_entry_request_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Disable Order Entry Request Optional UserRefIdx Enum'
+  enable_order_entry_request_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Enable Order Entry Request Optional UserRefIdx Enum'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
@@ -530,6 +653,15 @@ enums:
     0x51:
       id: 'account_query_response_message'
       doc: 'The Account Query Response message in sent in response to an Account Query Request to indicate the next available UserRefNum that can be used to identify new transactions.'
+    0x58:
+      id: 'mass_cancel_response_message'
+      doc: 'Acknowledges the receipt of a valid Mass Cancel Request message. The data fields from the Mass Cancel Request message are echoed back in this message.'
+    0x47:
+      id: 'disable_order_entry_response_message'
+      doc: 'Acknowledges the receipt of the Disable Order Entry Request message. The data fields from the request are echoed back in this message.'
+    0x4b:
+      id: 'enable_order_entry_response_message'
+      doc: 'Acknowledges the receipt of the Enable Order Entry Request message. The data fields from the request are echoed back in this message.'
   event_code:
     0x53:
       id: 'start_of_day'
@@ -866,4 +998,22 @@ enums:
     1:
       id: 'secondaryordrefnum'
       doc: 'Order Restated Optional SecondaryOrdRefNum Enum'
+  mass_cancel_response_optional_field:
+    27:
+      id: 'side'
+      doc: 'Mass Cancel Response Optional Side Enum'
+    24:
+      id: 'group_id'
+      doc: 'Mass Cancel Response Optional Group ID Enum'
+    28:
+      id: 'userrefidx'
+      doc: 'Mass Cancel Response Optional UserRefIdx Enum'
+  disable_order_entry_response_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Disable Order Entry Response Optional UserRefIdx Enum'
+  enable_order_entry_response_optional_field:
+    28:
+      id: 'userrefidx'
+      doc: 'Enable Order Entry Response Optional UserRefIdx Enum'
 
