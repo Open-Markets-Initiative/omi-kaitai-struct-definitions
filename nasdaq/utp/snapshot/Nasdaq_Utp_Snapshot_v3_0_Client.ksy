@@ -73,21 +73,25 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The SoupBinTCP login username, left padded with spaces'
       - id: password
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The SoupBinTCP login password, left padded with spaces'
       - id: requested_session
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The requested session ID, space-padded; spaces request the currently active session'
       - id: requested_sequence_number
         type: str
         size: 20
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The first sequenced message number the client wishes to receive. For Snap-Shot, must be 1 to receive a full spin'
 
 enums:

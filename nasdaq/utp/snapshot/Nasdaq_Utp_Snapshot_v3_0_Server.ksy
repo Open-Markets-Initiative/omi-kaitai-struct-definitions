@@ -858,11 +858,13 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Session ID accepted by the SIP for this client, left padded with spaces'
       - id: accepted_sequence_number
         type: str
         size: 20
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Next sequenced message number the SIP will deliver, space-padded'
   login_rejected_packet:
     seq:

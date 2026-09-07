@@ -66,6 +66,7 @@ types:
         type: str
         size: 3
         encoding: ASCII
+        pad-right: 0x20
         doc: 'T24 identifies the ASX Trade24 Trading System'
       - id: session_year
         type: str

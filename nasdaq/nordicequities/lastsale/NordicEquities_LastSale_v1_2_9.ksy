@@ -126,9 +126,9 @@ types:
       - id: price_price_68
         type: decimal_u8_6
         doc: 'Execution price. Implied decimal with scale 1e-6'
-      - id: quantity_integer_8
+      - id: quantity
         type: u8
-        doc: 'Execution quantity'
+        doc: 'Execution quantity with runtime decimal places'
       - id: venue_of_execution
         type: str
         size: 4
@@ -211,7 +211,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Iso currency code of the price'
-      - id: quantity_integer_18_n_8
+      - id: quantity
         type: u8
         doc: 'Execution quantity with runtime decimal places'
       - id: quantity_fraction

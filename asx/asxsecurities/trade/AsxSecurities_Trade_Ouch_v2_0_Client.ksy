@@ -79,21 +79,25 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Session username'
       - id: password
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Login password'
       - id: requested_session
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Specifies the session the client would like to log into, or all blanks to log into the currently active session'
       - id: requested_sequence_number
         type: str
         size: 20
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Specifies the next sequence number in ASCII the client wants to receive upon connection, or 0 to start receiving the most recently generated message'
   unsequenced_data_packet:
     seq:

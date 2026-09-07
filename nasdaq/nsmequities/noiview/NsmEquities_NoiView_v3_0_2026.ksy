@@ -96,9 +96,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: event_code
         type: str
         size: 1
@@ -110,7 +110,7 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_integer_6
+      - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: stock
@@ -176,9 +176,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
         size: 8
@@ -200,9 +200,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
         size: 8
@@ -218,9 +218,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: paired_shares
         type: u8
         doc: 'Total shares eligible to match at Current Reference Price'
@@ -259,9 +259,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: shares
         type: u8
         doc: 'Number of shares matched in the Nasdaq Cross'
@@ -286,9 +286,9 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_timestamp_6
+      - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Time of system event generation. Nanoseconds since Midnight epoch'
+        doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: stock
         type: str
         size: 8
@@ -310,7 +310,7 @@ types:
       - id: tracking_number
         type: u2
         doc: 'Nasdaq internal tracking number'
-      - id: timestamp_integer_6
+      - id: timestamp
         type: nanosecond_timestamp
         doc: 'Time Stamp. Nanoseconds since Midnight epoch'
       - id: stock

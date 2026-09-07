@@ -81,11 +81,13 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The session ID of the session that is now logged into. Left padded with spaces'
       - id: sequence_number
         type: str
         size: 20
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The sequence number in ASCII of the next Sequenced Message to be sent. Left padded with spaces'
   login_rejected_packet:
     seq:

@@ -56,6 +56,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
       - id: sequence
         type: u4

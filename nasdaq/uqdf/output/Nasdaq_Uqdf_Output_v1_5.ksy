@@ -53,6 +53,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
       - id: sequence
         type: u8
@@ -108,6 +109,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: bid_price_short
         type: decimal_u2_2
@@ -237,6 +239,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: bid_price
         type: decimal_u8_6
@@ -293,11 +296,13 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Bid ADF MPID'
       - id: ask_adf_mpid
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Ask ADF MPID'
   finra_adf_market_participant_quotation_message:
     seq:
@@ -310,6 +315,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: bid_price
         type: decimal_u8_6
@@ -331,6 +337,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'FINRA Market Participant'
   administrative:
     seq:
@@ -373,6 +380,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: trading_action_code
         type: u1
@@ -388,6 +396,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Reason for the Trading Action'
   market_center_trading_action_message:
     seq:
@@ -397,6 +406,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: trading_action_code
         type: u1
@@ -418,16 +428,19 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: old_symbol
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Old Security Identifier'
       - id: issue_name
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Issue Name'
       - id: issue_type
         type: u1
@@ -437,6 +450,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Issue Subtype'
       - id: market_tier
         type: u1
@@ -465,6 +479,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: reg_sho_action
         type: u1
@@ -478,6 +493,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: luld_price_band_indicator
         type: u1
@@ -521,6 +537,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: trading_action_sequence_number
         type: u4
@@ -547,6 +564,7 @@ types:
         type: str
         size: 11
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Identifier'
       - id: national_best_bid_market_center
         type: str
