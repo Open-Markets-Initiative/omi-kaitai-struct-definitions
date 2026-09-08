@@ -268,13 +268,13 @@ types:
       - id: bid_price_short
         type: decimal_u2_4
         doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
-      - id: bid_size_integer_2
+      - id: bid_size_short
         type: u2
         doc: 'The bid contracts of the new quote'
       - id: ask_price_short
         type: decimal_u2_4
         doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
-      - id: ask_size_integer_2
+      - id: ask_size_short
         type: u2
         doc: 'The ask contracts of the new quote'
   add_quote_message_long_form_message:
@@ -297,13 +297,13 @@ types:
       - id: bid
         type: u4
         doc: 'The display bid price of the new quote'
-      - id: bid_size_integer_4
+      - id: bid_size_long
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask
         type: u4
         doc: 'The display ask price of the new quote'
-      - id: ask_size_integer_4
+      - id: ask_size_long
         type: u4
         doc: 'The ask contracts of the new quote'
   single_side_executed_message:
@@ -461,13 +461,13 @@ types:
       - id: bid_price_short
         type: decimal_u2_4
         doc: 'The display bid price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
-      - id: bid_size_integer_2
+      - id: bid_size_short
         type: u2
         doc: 'The bid contracts of the new quote'
       - id: ask_price_short
         type: decimal_u2_4
         doc: 'The display ask price of the new quote. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-4'
-      - id: ask_size_integer_2
+      - id: ask_size_short
         type: u2
         doc: 'The ask contracts of the new quote'
   quote_replace_message_long_form:
@@ -493,13 +493,13 @@ types:
       - id: bid_price_long
         type: decimal_u4_4
         doc: 'The display bid price of the replaced quote. Implied decimal with scale 1e-4'
-      - id: bid_size_integer_4
+      - id: bid_size_long
         type: u4
         doc: 'The bid contracts of the new quote'
       - id: ask_price_long
         type: decimal_u4_4
         doc: 'The display ask price of the replaced quote. Implied decimal with scale 1e-4'
-      - id: ask_size_integer_4
+      - id: ask_size_long
         type: u4
         doc: 'The ask contracts of the new quote'
   quote_delete_message:

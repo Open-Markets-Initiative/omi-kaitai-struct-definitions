@@ -216,34 +216,34 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: bid_market_order_size_integer_2
+      - id: bid_market_order_size_short
         type: u2
         doc: 'Number of market order contracts on the bid side'
-      - id: bid_price_integer_2
+      - id: bid_price_short
         type: u2
         doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits'
-      - id: bid_size_integer_2
+      - id: bid_size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
-      - id: bid_cust_size_integer_2
+      - id: bid_cust_size_short
         type: u2
         doc: 'Customer quantity on the bid side'
-      - id: bid_pro_cust_size_integer_2
+      - id: bid_procust_size_short
         type: u2
         doc: 'Customer professional quantity on the bid side'
-      - id: ask_market_order_size_integer_2
+      - id: ask_market_order_size_short
         type: u2
         doc: 'Number of market order contracts on the ask side'
-      - id: ask_price_integer_2
+      - id: ask_price_short
         type: u2
         doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
-      - id: ask_size_integer_2
+      - id: ask_size_short
         type: u2
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
-      - id: ask_cust_size_integer_2
+      - id: ask_cust_size_short
         type: u2
         doc: 'Customer quantity on the ask side'
-      - id: ask_pro_cust_size_integer_2
+      - id: ask_procust_size_short
         type: u2
         doc: 'Customer professional quantity on the ask side'
   best_bid_and_ask_update_long_form_message:
@@ -261,34 +261,34 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: bid_market_order_size_integer_4
+      - id: bid_market_order_size_long
         type: u4
         doc: 'Number of market order contracts on the bid side'
-      - id: bid_price_integer_4
+      - id: bid_price_long
         type: u4
         doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits'
-      - id: bid_size_integer_4
+      - id: bid_size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
-      - id: bid_cust_size_integer_4
+      - id: bid_cust_size_long
         type: u4
         doc: 'Customer quantity on the bid side'
-      - id: bid_pro_cust_size_integer_4
+      - id: bid_procust_size_long
         type: u4
         doc: 'Customer professional quantity on the bid side'
-      - id: ask_market_order_size_integer_4
+      - id: ask_market_order_size_long
         type: u4
         doc: 'Number of market order contracts on the ask side'
-      - id: ask_price_integer_4
+      - id: ask_price_long
         type: u4
         doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits'
-      - id: ask_size_integer_4
+      - id: ask_size_long
         type: u4
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
-      - id: ask_cust_size_integer_4
+      - id: ask_cust_size_long
         type: u4
         doc: 'Customer quantity on the ask side'
-      - id: ask_pro_cust_size_integer_4
+      - id: ask_procust_size_long
         type: u4
         doc: 'Customer professional quantity on the ask side'
   best_bid_update_short_form_message:
@@ -306,19 +306,19 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: market_order_size_integer_2
+      - id: market_order_size_short
         type: u2
         doc: 'Number of market order contracts on the bid or ask side'
-      - id: price_integer_2
+      - id: price_short
         type: u2
         doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
-      - id: size_integer_2
+      - id: size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
-      - id: cust_size_integer_2
+      - id: cust_size_short
         type: u2
         doc: 'Customer quantity on the bid or ask side'
-      - id: pro_cust_size_integer_2
+      - id: procust_size_short
         type: u2
         doc: 'Customer professional quantity on the bid or ask side'
   best_ask_update_short_form_message:
@@ -336,19 +336,19 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: market_order_size_integer_2
+      - id: market_order_size_short
         type: u2
         doc: 'Number of market order contracts on the bid or ask side'
-      - id: price_integer_2
+      - id: price_short
         type: u2
         doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
-      - id: size_integer_2
+      - id: size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
-      - id: cust_size_integer_2
+      - id: cust_size_short
         type: u2
         doc: 'Customer quantity on the bid or ask side'
-      - id: pro_cust_size_integer_2
+      - id: procust_size_short
         type: u2
         doc: 'Customer professional quantity on the bid or ask side'
   best_bid_update_long_form_message:
@@ -366,19 +366,19 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: market_order_size_integer_4
+      - id: market_order_size_long
         type: u4
         doc: 'Number of market order contracts on the bid or ask side'
-      - id: price_integer_4
+      - id: price_long
         type: u4
         doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
-      - id: size_integer_4
+      - id: size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
-      - id: cust_size_integer_4
+      - id: cust_size_long
         type: u4
         doc: 'Customer quantity on the bid and ask side'
-      - id: pro_cust_size_integer_4
+      - id: procust_size_long
         type: u4
         doc: 'Customer professional quantity on the bid or ask side'
   best_ask_update_long_form_message:
@@ -396,19 +396,19 @@ types:
         type: u1
         enum: quote_condition
         doc: 'Quote condition'
-      - id: market_order_size_integer_4
+      - id: market_order_size_long
         type: u4
         doc: 'Number of market order contracts on the bid or ask side'
-      - id: price_integer_4
+      - id: price_long
         type: u4
         doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
-      - id: size_integer_4
+      - id: size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
-      - id: cust_size_integer_4
+      - id: cust_size_long
         type: u4
         doc: 'Customer quantity on the bid and ask side'
-      - id: pro_cust_size_integer_4
+      - id: procust_size_long
         type: u4
         doc: 'Customer professional quantity on the bid or ask side'
   end_of_replay_sequence_message:
