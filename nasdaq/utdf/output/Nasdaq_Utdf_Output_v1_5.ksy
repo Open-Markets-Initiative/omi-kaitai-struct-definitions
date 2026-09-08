@@ -71,10 +71,10 @@ types:
         type:
           switch-on: message_header.message_category
           cases:
-            '"T"': trade
-            '"A"': administrative
-            '"V"': volume
-            '"C"': control
+            '"T"': trade_message
+            '"A"': administrative_message
+            '"V"': volume_message
+            '"C"': control_message
   message_header:
     seq:
       - id: message_length
@@ -88,30 +88,31 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Code identifying this message type'
-  trade:
+  trade_message:
     seq:
       - id: trade_message_type
-        type: u1
-        enum: trade_message_type
-        doc: 'Trade Messages'
-      - id: trade_payload
-        size: _parent.message_header.message_length - 2 - 1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Trade message type'
+      - id: trade_message_payload
         type:
           switch-on: trade_message_type
           cases:
-            'trade_message_type::trade_report_message_short_form_message': trade_report_message_short_form_message
-            'trade_message_type::trade_report_message_long_form_message': trade_report_message_long_form_message
-            'trade_message_type::trade_cancel_error_message': trade_cancel_error_message
-            'trade_message_type::trade_correction_message': trade_correction_message
-            'trade_message_type::prior_day_as_of_trade_message': prior_day_as_of_trade_message
+            '"A"': trade_report_message_short_form_message
+            '"W"': trade_report_message_long_form_message
+            '"Z"': trade_cancel_error_message
+            '"Y"': trade_correction_message
+            '"H"': prior_day_as_of_trade_message
   trade_report_message_short_form_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: finra_timestamp
-        type: u8
-        doc: 'FINRA Timestamp'
-      - id: symbol
+        type: nanosecond_timestamp
+        doc: 'FINRA Timestamp. Nanoseconds since Unix epoch'
+      - id: symbol_short
         type: str
         size: 5
         encoding: ASCII
@@ -128,6 +129,7 @@ types:
         doc: 'Trade Volume Short'
       - id: sale_condition
         type: sale_condition
+        doc: 'Sale Condition'
       - id: trade_through_exempt_flag
         type: str
         size: 1
@@ -152,11 +154,11 @@ types:
         enum: sub_market_center_id
         doc: 'Sub Market Center ID'
       - id: sip_timestamp
-        type: u8
-        doc: 'SIP Timestamp'
+        type: nanosecond_timestamp
+        doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
       - id: participant_timestamp
-        type: u8
-        doc: 'Participant Timestamp'
+        type: nanosecond_timestamp
+        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
       - id: participant_token
         type: u8
         doc: 'Participant Token'
@@ -183,12 +185,13 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: finra_timestamp
-        type: u8
-        doc: 'FINRA Timestamp'
-      - id: symbol
+        type: nanosecond_timestamp
+        doc: 'FINRA Timestamp. Nanoseconds since Unix epoch'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -203,6 +206,7 @@ types:
         doc: 'Trade Volume'
       - id: sale_condition
         type: sale_condition
+        doc: 'Sale Condition'
       - id: trade_through_exempt_flag
         type: str
         size: 1
@@ -223,12 +227,13 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: finra_timestamp
-        type: u8
-        doc: 'FINRA Timestamp'
-      - id: symbol
+        type: nanosecond_timestamp
+        doc: 'FINRA Timestamp. Nanoseconds since Unix epoch'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -248,6 +253,7 @@ types:
         doc: 'Original Volume'
       - id: original_sale_condition
         type: original_sale_condition
+        doc: 'Original Sale Condition'
       - id: original_trade_through_exempt_flag
         type: str
         size: 1
@@ -266,8 +272,8 @@ types:
         type: decimal_u8_6
         doc: 'Consolidated Last Price. Implied decimal with scale 1e-6'
       - id: consolidated_volume
-        type: u8
-        doc: 'Consolidated Volume'
+        type: decimal_u8_6
+        doc: 'Consolidated Volume. Implied decimal with scale 1e-6'
       - id: consolidated_price_change_indicator
         type: u1
         enum: consolidated_price_change_indicator
@@ -286,8 +292,8 @@ types:
         type: decimal_u8_6
         doc: 'Market Participant Last Price. Implied decimal with scale 1e-6'
       - id: market_participant_volume
-        type: u8
-        doc: 'Market Participant Volume'
+        type: decimal_u8_6
+        doc: 'Market Participant Volume. Implied decimal with scale 1e-6'
   original_sale_condition:
     seq:
       - id: level_1
@@ -311,12 +317,13 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: finra_timestamp
-        type: u8
-        doc: 'FINRA Timestamp'
-      - id: symbol
+        type: nanosecond_timestamp
+        doc: 'FINRA Timestamp. Nanoseconds since Unix epoch'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -331,6 +338,7 @@ types:
         doc: 'Original Volume'
       - id: original_sale_condition
         type: original_sale_condition
+        doc: 'Original Sale Condition'
       - id: original_trade_through_exempt_flag
         type: str
         size: 1
@@ -350,6 +358,7 @@ types:
         doc: 'Corrected Volume'
       - id: corrected_sale_condition
         type: corrected_sale_condition
+        doc: 'Corrected Sale Condition'
       - id: corrected_trade_through_exempt_flag
         type: str
         size: 1
@@ -368,8 +377,8 @@ types:
         type: decimal_u8_6
         doc: 'Consolidated Last Price. Implied decimal with scale 1e-6'
       - id: consolidated_volume
-        type: u8
-        doc: 'Consolidated Volume'
+        type: decimal_u8_6
+        doc: 'Consolidated Volume. Implied decimal with scale 1e-6'
       - id: consolidated_price_change_indicator
         type: u1
         enum: consolidated_price_change_indicator
@@ -388,8 +397,8 @@ types:
         type: decimal_u8_6
         doc: 'Market Participant Last Price. Implied decimal with scale 1e-6'
       - id: market_participant_volume
-        type: u8
-        doc: 'Market Participant Volume'
+        type: decimal_u8_6
+        doc: 'Market Participant Volume. Implied decimal with scale 1e-6'
   corrected_sale_condition:
     seq:
       - id: level_1
@@ -413,12 +422,13 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: finra_timestamp
-        type: u8
-        doc: 'FINRA Timestamp'
-      - id: symbol
+        type: nanosecond_timestamp
+        doc: 'FINRA Timestamp. Nanoseconds since Unix epoch'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -433,6 +443,7 @@ types:
         doc: 'Trade Volume'
       - id: sale_condition
         type: sale_condition
+        doc: 'Sale Condition'
       - id: trade_through_exempt_flag
         type: str
         size: 1
@@ -446,33 +457,34 @@ types:
         enum: as_of_action
         doc: 'As Of Action'
       - id: timestamp_of_trade
-        type: u8
-        doc: 'Timestamp of Trade'
-  administrative:
+        type: nanosecond_timestamp
+        doc: 'Timestamp of Trade. Nanoseconds since Unix epoch'
+  administrative_message:
     seq:
       - id: administrative_message_type
-        type: u1
-        enum: administrative_message_type
-        doc: 'Administrative Messages'
-      - id: administrative_payload
-        size: _parent.message_header.message_length - 2 - 1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Administrative message type'
+      - id: administrative_message_payload
         type:
           switch-on: administrative_message_type
           cases:
-            'administrative_message_type::general_administrative_message': general_administrative_message
-            'administrative_message_type::cross_sro_trading_action_message': cross_sro_trading_action_message
-            'administrative_message_type::market_center_trading_action_message': market_center_trading_action_message
-            'administrative_message_type::issue_symbol_directory_message': issue_symbol_directory_message
-            'administrative_message_type::regulation_sho_short_sale_price_test_restricted_indicator_message': regulation_sho_short_sale_price_test_restricted_indicator_message
-            'administrative_message_type::limit_up_limit_down_price_band_message': limit_up_limit_down_price_band_message
-            'administrative_message_type::market_wide_circuit_breaker_decline_level_message': market_wide_circuit_breaker_decline_level_message
-            'administrative_message_type::market_wide_circuit_breaker_status_message': market_wide_circuit_breaker_status_message
-            'administrative_message_type::auction_collar_message': auction_collar_message
-            'administrative_message_type::closing_trade_summary_report_message': closing_trade_summary_report_message
+            '"A"': general_administrative_message
+            '"H"': cross_sro_trading_action_message
+            '"K"': market_center_trading_action_message
+            '"B"': issue_symbol_directory_message
+            '"V"': regulation_sho_short_sale_price_test_restricted_indicator_message
+            '"P"': limit_up_limit_down_price_band_message
+            '"C"': market_wide_circuit_breaker_decline_level_message
+            '"D"': market_wide_circuit_breaker_status_message
+            '"E"': auction_collar_message
+            '"Z"': closing_trade_summary_report_message
   general_administrative_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: len_text
         type: u2
         doc: 'Text Length'
@@ -480,14 +492,16 @@ types:
         type: str
         size: len_text
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Text'
   cross_sro_trading_action_message:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -499,8 +513,8 @@ types:
         type: u4
         doc: 'Trading Action Sequence Number'
       - id: action_timestamp
-        type: u8
-        doc: 'Timestamp of when the action occurred'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: trading_action_reason
         type: str
         size: 6
@@ -511,9 +525,10 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -522,8 +537,8 @@ types:
         enum: trading_action_code
         doc: 'Trading Action Code'
       - id: action_timestamp
-        type: u8
-        doc: 'Timestamp of when the action occurred'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of when the action occurred. Nanoseconds since Unix epoch'
       - id: market_center_identifier
         type: str
         size: 1
@@ -533,9 +548,10 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -584,7 +600,8 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_short
         type: str
         size: 5
         encoding: ASCII
@@ -598,9 +615,10 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -609,8 +627,8 @@ types:
         enum: luld_price_band_indicator
         doc: 'LULD Price Band Indicator'
       - id: luld_timestamp
-        type: u8
-        doc: 'LULD Price Band Effective Time'
+        type: nanosecond_timestamp
+        doc: 'LULD Price Band Effective Time. Nanoseconds since Unix epoch'
       - id: limit_down_price
         type: decimal_u8_6
         doc: 'Limit Down Price. Implied decimal with scale 1e-6'
@@ -621,6 +639,7 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: mwcb_level_1
         type: u8
         doc: 'MWCB Level 1'
@@ -634,6 +653,7 @@ types:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: mwcb_status_level_indicator
         type: u1
         enum: mwcb_status_level_indicator
@@ -642,9 +662,10 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -669,9 +690,10 @@ types:
     seq:
       - id: message_info
         type: message_info
-      - id: symbol
+        doc: 'Message Info'
+      - id: symbol_long
         type: str
-        size: 5
+        size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier'
@@ -689,8 +711,8 @@ types:
         enum: market_center_originator_id
         doc: 'Market Center Originator ID'
       - id: consolidated_volume
-        type: u8
-        doc: 'Consolidated Volume'
+        type: decimal_u8_6
+        doc: 'Consolidated Volume. Implied decimal with scale 1e-6'
       - id: trading_action_indicator
         type: u1
         enum: trading_action_indicator
@@ -702,6 +724,7 @@ types:
         type: market_center_closing_price_and_volume_summary
         repeat: expr
         repeat-expr: num_market_center_closing_price_and_volume_summary
+        doc: 'Market Center Closing Price And Volume Summary'
   market_center_closing_price_and_volume_summary:
     seq:
       - id: market_center_identifier
@@ -713,8 +736,8 @@ types:
         type: decimal_u8_6
         doc: 'Market Center Closing Price. Implied decimal with scale 1e-6'
       - id: market_center_volume
-        type: u8
-        doc: 'Market Center Volume'
+        type: decimal_u8_6
+        doc: 'Market Center Volume. Implied decimal with scale 1e-6'
       - id: market_center_close_indicator
         type: u1
         enum: market_center_close_indicator
@@ -725,25 +748,26 @@ types:
       - id: market_participant_low_price
         type: decimal_u8_6
         doc: 'Market Participant Low Price. Implied decimal with scale 1e-6'
-  volume:
+  volume_message:
     seq:
       - id: volume_message_type
-        type: u1
-        enum: volume_message_type
-        doc: 'Volume Messages'
-      - id: volume_payload
-        size: _parent.message_header.message_length - 2 - 1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Volume message type'
+      - id: volume_message_payload
         type:
           switch-on: volume_message_type
           cases:
-            'volume_message_type::total_consolidated_and_market_center_volume_message': total_consolidated_and_market_center_volume_message
+            '"M"': total_consolidated_and_market_center_volume_message
   total_consolidated_and_market_center_volume_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
       - id: total_consolidated_volume
-        type: u8
-        doc: 'Total Consolidated Volume'
+        type: decimal_u8_6
+        doc: 'Total Consolidated Volume. Implied decimal with scale 1e-6'
       - id: num_market_center_volume_attachment
         type: u2
         doc: 'Number of Market Center Volumes'
@@ -751,6 +775,7 @@ types:
         type: market_center_volume_attachment
         repeat: expr
         repeat-expr: num_market_center_volume_attachment
+        doc: 'Market Center Volume Attachment'
   market_center_volume_attachment:
     seq:
       - id: market_center_identifier
@@ -759,54 +784,74 @@ types:
         encoding: ASCII
         doc: 'Market Center Identifier'
       - id: current_market_center_volume
-        type: u8
-        doc: 'Current Market Center Volume'
-  control:
+        type: decimal_u8_6
+        doc: 'Current Market Center Volume. Implied decimal with scale 1e-6'
+  control_message:
     seq:
       - id: control_message_type
-        type: u1
-        enum: control_message_type
-        doc: 'Control Messages'
-      - id: control_payload
-        size: _parent.message_header.message_length - 2 - 1
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Control message type'
+      - id: control_message_payload
         type:
           switch-on: control_message_type
           cases:
-            'control_message_type::start_of_day_message': start_of_day_message
-            'control_message_type::end_of_day_message': end_of_day_message
-            'control_message_type::market_session_open_message': market_session_open_message
-            'control_message_type::market_session_close_message': market_session_close_message
-            'control_message_type::end_of_transmissions_message': end_of_transmissions_message
-            'control_message_type::end_of_trade_reporting_message': end_of_trade_reporting_message
-            'control_message_type::end_of_consolidated_last_sale_eligibility': end_of_consolidated_last_sale_eligibility
+            '"I"': start_of_day_message
+            '"J"': end_of_day_message
+            '"O"': market_session_open_message
+            '"C"': market_session_close_message
+            '"Z"': end_of_transmissions_message
+            '"X"': end_of_trade_reporting_message
+            '"S"': end_of_consolidated_last_sale_eligibility
   start_of_day_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   end_of_day_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   market_session_open_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   market_session_close_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   end_of_transmissions_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   end_of_trade_reporting_message:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
   end_of_consolidated_last_sale_eligibility:
     seq:
       - id: message_info
         type: message_info
+        doc: 'Message Info'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   decimal_u2_2:
     seq:
       - id: mantissa
@@ -823,35 +868,19 @@ types:
         value: mantissa / 1000000.0
 
 enums:
-  trade_message_type:
-    0x41:
-      id: 'trade_report_message_short_form_message'
-      doc: 'Used to disseminate Trade Reports'
-    0x57:
-      id: 'trade_report_message_long_form_message'
-      doc: 'Used to disseminate Trade Reports'
-    0x5a:
-      id: 'trade_cancel_error_message'
-      doc: 'Used to disseminate trade cancels or errors'
-    0x59:
-      id: 'trade_correction_message'
-      doc: 'Used to disseminate trade corrections'
-    0x48:
-      id: 'prior_day_as_of_trade_message'
-      doc: 'Used to disseminate trade prior day as of action'
   market_center_originator_id:
     0x59:
       id: 'byx'
-      doc: 'Cboe BYX'
+      doc: 'Cboe Byx'
     0x5a:
       id: 'bzx'
-      doc: 'Cboe BZX'
+      doc: 'Cboe Bzx'
     0x4a:
       id: 'edga'
-      doc: 'Cboe EDGA'
+      doc: 'Cboe Edga'
     0x4b:
       id: 'edgx'
-      doc: 'Cboe EDGX'
+      doc: 'Cboe Edgx'
     0x57:
       id: 'cboe'
       doc: 'Cboe'
@@ -866,22 +895,22 @@ enums:
       doc: 'Nasdaq'
     0x49:
       id: 'ise'
-      doc: 'Nasdaq ISE'
+      doc: 'Nasdaq Ise'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'arca'
-      doc: 'NYSE Arca'
+      doc: 'Nyse Arca'
     0x41:
       id: 'american'
-      doc: 'NYSE American'
+      doc: 'Nyse American'
     0x43:
       id: 'national'
-      doc: 'NYSE National'
+      doc: 'Nyse National'
     0x4d:
       id: 'chicago'
-      doc: 'NYSE Chicago'
+      doc: 'Nyse Chicago'
     0x44:
       id: 'finra'
       doc: 'Financial Industry Regulatory Authority'
@@ -893,26 +922,26 @@ enums:
       doc: 'Long Term Stock Exchange'
     0x48:
       id: 'pearl'
-      doc: 'MIAX Pearl'
+      doc: 'Miax Pearl'
     0x55:
       id: 'memx'
-      doc: 'MEMX'
+      doc: 'Memx'
     0x45:
       id: 'market_independent'
       doc: 'Market Independent'
   sub_market_center_id:
     0x4e:
       id: 'nyse_trf'
-      doc: 'NYSE TRF'
+      doc: 'Nyse Trf'
     0x51:
       id: 'nasdaq_trf_carteret'
-      doc: 'Nasdaq TRF Carteret'
+      doc: 'Nasdaq Trf Carteret'
     0x42:
       id: 'nasdaq_trf_chicago'
-      doc: 'Nasdaq TRF Chicago'
+      doc: 'Nasdaq Trf Chicago'
     0x20:
       id: 'finra_alternative_display_facility'
-      doc: 'FINRA Alternative Display Facility'
+      doc: 'Finra Alternative Display Facility'
   level_1:
     0x40:
       id: 'regular_trade'
@@ -944,7 +973,7 @@ enums:
       doc: 'Derivatively Priced'
     0x35:
       id: 're_opening_prints'
-      doc: 'Re-Opening Prints'
+      doc: 'Re Opening Prints'
     0x36:
       id: 'closing_prints'
       doc: 'Closing Prints'
@@ -1027,53 +1056,53 @@ enums:
   consolidated_price_change_indicator:
     0x30:
       id: 'no_prices_changed'
-      doc: 'No prices changed'
+      doc: 'No Prices Changed'
     0x31:
       id: 'consolidated_last_price_changed'
-      doc: 'Consolidated Last price changed'
+      doc: 'Consolidated Last Price Changed'
     0x32:
       id: 'consolidated_low_price_changed'
-      doc: 'Consolidated Low price changed'
+      doc: 'Consolidated Low Price Changed'
     0x33:
       id: 'consolidated_last_and_consolidated_low_prices_changed'
-      doc: 'Consolidated Last and Consolidated Low prices changed'
+      doc: 'Consolidated Last And Consolidated Low Prices Changed'
     0x34:
       id: 'consolidated_high_price_changed'
-      doc: 'Consolidated High price changed'
+      doc: 'Consolidated High Price Changed'
     0x35:
       id: 'consolidated_last_and_consolidated_high_prices_changed'
-      doc: 'Consolidated Last and Consolidated High prices changed'
+      doc: 'Consolidated Last And Consolidated High Prices Changed'
     0x36:
       id: 'consolidated_high_and_consolidated_low_prices_changed'
-      doc: 'Consolidated High and Consolidated Low prices changed'
+      doc: 'Consolidated High And Consolidated Low Prices Changed'
     0x37:
       id: 'all_consolidated_prices_changed'
-      doc: 'All Consolidated prices changed'
+      doc: 'All Consolidated Prices Changed'
   participant_price_change_indicator:
     0x30:
       id: 'no_prices_changed'
-      doc: 'No prices changed'
+      doc: 'No Prices Changed'
     0x31:
       id: 'participant_last_price_changed'
-      doc: 'Participant Last price changed'
+      doc: 'Participant Last Price Changed'
     0x32:
       id: 'participant_low_price_changed'
-      doc: 'Participant Low price changed'
+      doc: 'Participant Low Price Changed'
     0x33:
       id: 'participant_last_and_low_prices_changed'
-      doc: 'Participant Last and Low prices changed'
+      doc: 'Participant Last And Low Prices Changed'
     0x34:
       id: 'participant_high_price_changed'
-      doc: 'Participant High price changed'
+      doc: 'Participant High Price Changed'
     0x35:
       id: 'participant_last_and_high_prices_changed'
-      doc: 'Participant Last and High prices changed'
+      doc: 'Participant Last And High Prices Changed'
     0x36:
       id: 'participant_high_and_low_prices_changed'
-      doc: 'Participant High and Low prices changed'
+      doc: 'Participant High And Low Prices Changed'
     0x37:
       id: 'all_participant_prices_changed'
-      doc: 'All Participant prices changed'
+      doc: 'All Participant Prices Changed'
   as_of_action:
     0x41:
       id: 'trade_addition'
@@ -1081,44 +1110,13 @@ enums:
     0x43:
       id: 'trade_cancel'
       doc: 'Trade Cancel'
-  administrative_message_type:
-    0x41:
-      id: 'general_administrative_message'
-      doc: 'General Administrative'
-    0x48:
-      id: 'cross_sro_trading_action_message'
-      doc: 'This fixed format message will be used to inform subscribers of trading actions – such as halts, pauses, quotation resumptions and trading resumptions'
-    0x4b:
-      id: 'market_center_trading_action_message'
-      doc: 'This fixed format message will inform UTP data feed subscribers of when a UTP participant invokes or releases a market center-specific trading halt for a NASDAQ-listed security.'
-    0x42:
-      id: 'issue_symbol_directory_message'
-      doc: 'General Administrative'
-    0x56:
-      id: 'regulation_sho_short_sale_price_test_restricted_indicator_message'
-      doc: 'Used to disseminate quotation data for NASDAQ listed securities'
-    0x50:
-      id: 'limit_up_limit_down_price_band_message'
-      doc: 'Designed to prevent trades in individual NMS Stocks from occurring outside of specified Upper and Lower Limit Price Bands'
-    0x43:
-      id: 'market_wide_circuit_breaker_decline_level_message'
-      doc: 'A Market Wide Circuit Breaker (MWCB) Level message will inform participants and the UTP data recipients what the daily MWCB breach points are set to for the current trading day'
-    0x44:
-      id: 'market_wide_circuit_breaker_status_message'
-      doc: 'A Market Wide Circuit Breaker (MWCB) Status message will inform participants and the UTP data recipients when a MWCB has breached one of the established levels.'
-    0x45:
-      id: 'auction_collar_message'
-      doc: 'Primary markets using an automated reopening will calculate new Auction Collars, in compliance with rules around prices for re-opening, when applicable and publish this new Auction Collar Message'
-    0x5a:
-      id: 'closing_trade_summary_report_message'
-      doc: 'The Closing Trade Summary Report will be disseminated three times daily'
   trading_action_code:
     0x48:
       id: 'trading_halt'
       doc: 'Trading Halt'
     0x51:
       id: 'quotation_resumption_including_after_ema'
-      doc: 'Quotation Resumption, including after EMA'
+      doc: 'Quotation Resumption Including After Ema'
     0x54:
       id: 'trading_resumption'
       doc: 'Trading Resumption'
@@ -1140,7 +1138,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'rule_144a'
-      doc: 'Rule144A'
+      doc: 'Rule 144a'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -1161,7 +1159,7 @@ enums:
       doc: 'Rights'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares of Beneficial Interest'
+      doc: 'Shares Of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -1170,7 +1168,7 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_of_beneficial_interest'
-      doc: 'Units of Beneficial Interest'
+      doc: 'Units Of Beneficial Interest'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
@@ -1200,51 +1198,51 @@ enums:
   short_sale_threshold_indicator:
     0x59:
       id: 'issue_is_restricted'
-      doc: 'Issue is restricted'
+      doc: 'Issue Is Restricted'
     0x4e:
       id: 'issue_is_not_restricted'
-      doc: 'Issue is not restricted'
+      doc: 'Issue Is Not Restricted'
     0x20:
       id: 'not_available'
-      doc: 'not available'
+      doc: 'Not Available'
   financial_status_indicator:
     0x43:
       id: 'creations_and_or_redemptions_suspended'
-      doc: 'Creations and or Redemptions Suspended for Exchange Traded Product'
+      doc: 'Creations And Or Redemptions Suspended For Exchange Traded Product'
     0x44:
       id: 'deficient'
-      doc: 'Deficient Issuer Failed to Meet NASDAQ Continued Listing Requirements'
+      doc: 'Deficient Issuer Failed To Meet Nasdaq Continued Listing Requirements'
     0x45:
       id: 'delinquent'
       doc: 'Issuer Missed Regulatory Filing Deadline'
     0x51:
       id: 'bankrupt'
-      doc: 'Issuer Has Filed for Bankruptcy'
+      doc: 'Issuer Has Filed For Bankruptcy'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is NOT Deficient, Delinquent, or Bankrupt.'
+      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient and Bankrupt'
+      doc: 'Deficient And Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient and Delinquent'
+      doc: 'Deficient And Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent and Bankrupt'
+      doc: 'Delinquent And Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient, Delinquent, and Bankrupt'
+      doc: 'Deficient Delinquent And Bankrupt'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_effect'
-      doc: 'No price test in effect'
+      doc: 'No Price Test In Effect'
     0x31:
       id: 'reg_sho_in_effect_due_to_an_intra_day_price_drop'
-      doc: 'Reg SHO in effect due to an intra day price drop'
+      doc: 'Reg Sho In Effect Due To An Intra Day Price Drop'
     0x32:
       id: 'reg_sho_restriction_remains_in_effect'
-      doc: 'Reg SHO Restriction remains in effect'
+      doc: 'Reg Sho Restriction Remains In Effect'
   luld_price_band_indicator:
     0x41:
       id: 'opening_update'
@@ -1257,16 +1255,16 @@ enums:
       doc: 'Restated Value'
     0x44:
       id: 'suspended_during_trading_halt_or_trading_pause'
-      doc: 'Suspended during trading halt or trading pause'
+      doc: 'Suspended During Trading Halt Or Trading Pause'
     0x45:
       id: 're_opening_update'
-      doc: 'Re-Opening Update'
+      doc: 'Re Opening Update'
     0x46:
       id: 'outside_price_band_rule_hours'
-      doc: 'Outside price band rule hours'
+      doc: 'Outside Price Band Rule Hours'
     0x20:
       id: 'none_provided'
-      doc: 'None provided'
+      doc: 'None Provided'
   mwcb_status_level_indicator:
     0x31:
       id: 'level_1_breached'
@@ -1287,34 +1285,8 @@ enums:
   market_center_close_indicator:
     0x4d:
       id: 'based_on_m_sale_condition'
-      doc: 'Based on M sale Condition'
+      doc: 'Based On M Sale Condition'
     0x20:
       id: 'not_based_on_m_sale_condition'
-      doc: 'Not Based on M sale Condition'
-  volume_message_type:
-    0x4d:
-      id: 'total_consolidated_and_market_center_volume_message'
-      doc: 'The Total Consolidated Market Center Volume message will be used to relay intraday values for the current total cumulative consolidated share volume and each active market center current cumulative volume activity as reported by all UTP participants in all NASDAQ issues'
-  control_message_type:
-    0x49:
-      id: 'start_of_day_message'
-      doc: 'The Start of Day control message signifies the beginning of each operational cycle for SIP Processing'
-    0x4a:
-      id: 'end_of_day_message'
-      doc: 'The End of Day control message signals the end of active message dissemination for the UTP SIP operational cycle'
-    0x4f:
-      id: 'market_session_open_message'
-      doc: 'The Market Session Open Control Message signifies the opening of market systems for the session indicated in the Message Header'
-    0x43:
-      id: 'market_session_close_message'
-      doc: 'The Session Close Control Message signals the closing of market systems for the session indicated in the Message Header'
-    0x5a:
-      id: 'end_of_transmissions_message'
-      doc: 'The End of Transmissions Message signals that there will be no further transmissions of data sent through the UTP SIP line'
-    0x58:
-      id: 'end_of_trade_reporting_message'
-      doc: 'The End of Trade Reporting Control Message signals that SIP has completed its trade entry eligibility and that no further data will be accepted by the UTP SIP for the market session'
-    0x53:
-      id: 'end_of_consolidated_last_sale_eligibility'
-      doc: 'The End of Consolidated Last Sale Eligibility control message signals the closing of the trade-reporting window for consolidated last sale calculation eligibility'
+      doc: 'Not Based On M Sale Condition'
 

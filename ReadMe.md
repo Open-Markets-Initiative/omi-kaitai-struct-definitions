@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 665 | 1,529,772 |
+| 665 | 1,529,891 |
 
 ## Testing
 
@@ -220,8 +220,8 @@ Enjoy.
 [Nasdaq.Utdf.Output]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nasdaq/Protocols/Utdf/Output.md "Output"
 [Nasdaq.Utp.Input]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nasdaq/Protocols/Utp/Input.md ""
 [Nasdaq.Utp.Snapshot]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nasdaq/Protocols/Utp/Snapshot.md "Snapshot"
-[Nse.NseCd.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCd/Mtbt.md "Multicast Tick By Tick"
-[Nse.NseCm.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCm/Mtbt.md "Multicast Tick By Tick"
+[Nse.NseCd.MtbtNdal]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCd/MtbtNdal.md "Multicast Tick By Tick Data Feed"
+[Nse.NseCm.MtbtNdal]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCm/MtbtNdal.md "Multicast Tick By Tick Data Feed"
 [Nse.NseFo.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseFo/Mtbt.md "Multicast Tick By Tick"
 [Nse.NseFo.OrderEntry]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseFo/OrderEntry.md "Order Entry"
 [Nyse.AmexEquities.Bbo]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nyse/Protocols/AmexEquities/Bbo.md "Best Bid And Offer"

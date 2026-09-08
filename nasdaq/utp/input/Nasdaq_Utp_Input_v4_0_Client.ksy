@@ -125,22 +125,22 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_5
+      - id: symbol_short
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (short form, 5 chars)'
-      - id: bid_short_2
+      - id: bid_short
         type: u2
         doc: 'Bid Price (short form, implied 2 decimal precision)'
-      - id: bid_size_short_2
+      - id: bid_size_short
         type: u2
         doc: 'Bid Size (short form)'
-      - id: ask_short_2
+      - id: ask_short
         type: u2
         doc: 'Ask Price (short form, implied 2 decimal precision)'
-      - id: ask_size_short_2
+      - id: ask_size_short
         type: u2
         doc: 'Ask Size (short form)'
       - id: cond
@@ -168,22 +168,22 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: bid_long_8
+      - id: bid_long
         type: u8
         doc: 'Bid Price (long form, implied 6 decimal precision)'
-      - id: bid_size_int_4
+      - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
-      - id: ask_long_8
+      - id: ask_long
         type: u8
         doc: 'Ask Price (long form, implied 6 decimal precision)'
-      - id: ask_size_int_4
+      - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
       - id: cond
@@ -211,7 +211,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_5
+      - id: symbol_short
         type: str
         size: 5
         encoding: ASCII
@@ -235,7 +235,7 @@ types:
         doc: 'Short-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   odd_lot_bid_short_form_attachment:
     seq:
-      - id: ol_price_short_2
+      - id: ol_price_short
         type: decimal_u2_2
         doc: 'olPrice. Implied decimal with scale 1e-2'
       - id: ol_size
@@ -243,7 +243,7 @@ types:
         doc: 'olSize'
   odd_lot_ask_short_form_attachment:
     seq:
-      - id: ol_price_short_2
+      - id: ol_price_short
         type: decimal_u2_2
         doc: 'olPrice. Implied decimal with scale 1e-2'
       - id: ol_size
@@ -266,7 +266,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -290,7 +290,7 @@ types:
         doc: 'Long-form Odd Lot Quote Attachment for the ask side. Repeats olAskLevelCount times'
   odd_lot_bid_long_form_attachment:
     seq:
-      - id: ol_price_long_8
+      - id: ol_price_long
         type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
@@ -298,7 +298,7 @@ types:
         doc: 'olSize'
   odd_lot_ask_long_form_attachment:
     seq:
-      - id: ol_price_long_8
+      - id: ol_price_long
         type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
@@ -321,22 +321,22 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_5
+      - id: symbol_short
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (short form, 5 chars)'
-      - id: bid_short_2
+      - id: bid_short
         type: u2
         doc: 'Bid Price (short form, implied 2 decimal precision)'
-      - id: bid_size_short_2
+      - id: bid_size_short
         type: u2
         doc: 'Bid Size (short form)'
-      - id: ask_short_2
+      - id: ask_short
         type: u2
         doc: 'Ask Price (short form, implied 2 decimal precision)'
-      - id: ask_size_short_2
+      - id: ask_size_short
         type: u2
         doc: 'Ask Size (short form)'
       - id: cond
@@ -380,22 +380,22 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: bid_long_8
+      - id: bid_long
         type: u8
         doc: 'Bid Price (long form, implied 6 decimal precision)'
-      - id: bid_size_int_4
+      - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
-      - id: ask_long_8
+      - id: ask_long
         type: u8
         doc: 'Ask Price (long form, implied 6 decimal precision)'
-      - id: ask_size_int_4
+      - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
       - id: cond
@@ -442,22 +442,22 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: bid_long_8
+      - id: bid_long
         type: u8
         doc: 'Bid Price (long form, implied 6 decimal precision)'
-      - id: bid_size_int_4
+      - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
-      - id: ask_long_8
+      - id: ask_long
         type: u8
         doc: 'Ask Price (long form, implied 6 decimal precision)'
-      - id: ask_size_int_4
+      - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
       - id: cond
@@ -518,22 +518,22 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: bid_long_8
+      - id: bid_long
         type: u8
         doc: 'Bid Price (long form, implied 6 decimal precision)'
-      - id: bid_size_int_4
+      - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
-      - id: ask_long_8
+      - id: ask_long
         type: u8
         doc: 'Ask Price (long form, implied 6 decimal precision)'
-      - id: ask_size_int_4
+      - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
       - id: cond
@@ -570,7 +570,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -594,7 +594,7 @@ types:
         doc: 'ADF-form Odd Lot Quote Attachment for the ask side, including FINRA mpid attribution. Repeats olAskLevelCount times'
   odd_lot_bid_adf_form_attachment:
     seq:
-      - id: ol_price_long_8
+      - id: ol_price_long
         type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
@@ -608,7 +608,7 @@ types:
         doc: 'FINRA Market Participant identifier'
   odd_lot_ask_adf_form_attachment:
     seq:
-      - id: ol_price_long_8
+      - id: ol_price_long
         type: decimal_u8_6
         doc: 'olPrice. Implied decimal with scale 1e-6'
       - id: ol_size
@@ -640,22 +640,22 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
-      - id: bid_long_8
+      - id: bid_long
         type: u8
         doc: 'Bid Price (long form, implied 6 decimal precision)'
-      - id: bid_size_int_4
+      - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
-      - id: ask_long_8
+      - id: ask_long
         type: u8
         doc: 'Ask Price (long form, implied 6 decimal precision)'
-      - id: ask_size_int_4
+      - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
       - id: cond
@@ -755,7 +755,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -784,7 +784,7 @@ types:
       - id: price
         type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
-      - id: volume_int_4
+      - id: volume
         type: u4
         doc: 'Trade Volume'
   trade_cancel_error_message:
@@ -807,7 +807,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -842,7 +842,7 @@ types:
       - id: orig_price
         type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
-      - id: orig_volume_int_4
+      - id: orig_volume
         type: u4
         doc: 'Original Trade Volume'
   trade_correction_message:
@@ -865,7 +865,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -898,7 +898,7 @@ types:
       - id: orig_price
         type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
-      - id: orig_volume_int_4
+      - id: orig_volume
         type: u4
         doc: 'Original Trade Volume'
       - id: new_tt_exempt
@@ -918,7 +918,7 @@ types:
       - id: new_price
         type: decimal_u8_6
         doc: 'Trade Price (new). Implied decimal with scale 1e-6'
-      - id: new_volume_int_4
+      - id: new_volume
         type: u4
         doc: 'Trade volume (new)'
   as_of_trade_report_message:
@@ -938,7 +938,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -967,7 +967,7 @@ types:
       - id: price
         type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
-      - id: volume_int_4
+      - id: volume
         type: u4
         doc: 'Trade Volume'
       - id: trade_time
@@ -997,7 +997,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1026,7 +1026,7 @@ types:
       - id: price
         type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
-      - id: volume_long_8
+      - id: volume_fractional
         type: decimal_u8_6
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_trade_cancel_error_message:
@@ -1049,7 +1049,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1084,7 +1084,7 @@ types:
       - id: orig_price
         type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
-      - id: orig_volume_long_8
+      - id: orig_volume_fractional
         type: decimal_u8_6
         doc: 'Original Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_trade_correction_message:
@@ -1107,7 +1107,7 @@ types:
       - id: timestamp_2
         type: nanosecond_timestamp
         doc: 'FINRA-provided timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1140,7 +1140,7 @@ types:
       - id: orig_price
         type: decimal_u8_6
         doc: 'Original Trade Price. Implied decimal with scale 1e-6'
-      - id: orig_volume_long_8
+      - id: orig_volume_fractional
         type: decimal_u8_6
         doc: 'Original Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: new_tt_exempt
@@ -1160,7 +1160,7 @@ types:
       - id: new_price
         type: decimal_u8_6
         doc: 'Trade Price (new). Implied decimal with scale 1e-6'
-      - id: new_volume_long_8
+      - id: new_volume_fractional
         type: decimal_u8_6
         doc: 'Corrected Trade volume (implied 6 decimals). Implied decimal with scale 1e-6'
   fractional_as_of_trade_report_message:
@@ -1180,7 +1180,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1209,7 +1209,7 @@ types:
       - id: price
         type: decimal_u8_6
         doc: 'Trade Price. Implied decimal with scale 1e-6'
-      - id: volume_long_8
+      - id: volume_fractional
         type: decimal_u8_6
         doc: 'Trade Volume (implied 6 decimals). Implied decimal with scale 1e-6'
       - id: trade_time
@@ -1283,7 +1283,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1322,7 +1322,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1388,7 +1388,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1415,7 +1415,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1441,7 +1441,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1501,7 +1501,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1572,7 +1572,7 @@ types:
       - id: part_token
         type: u8
         doc: 'Participant Token, pass-through value'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1644,7 +1644,7 @@ types:
       - id: sip_time
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1741,7 +1741,7 @@ types:
       - id: warning_code
         type: u2
         doc: 'Warning Code (typically 101 for excess odd-lot levels)'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
@@ -1824,7 +1824,7 @@ types:
       - id: sip_time
         type: nanosecond_timestamp
         doc: 'SIP Timestamp. Nanoseconds since Unix epoch'
-      - id: symbol_byte_11
+      - id: symbol_long
         type: str
         size: 11
         encoding: ASCII
