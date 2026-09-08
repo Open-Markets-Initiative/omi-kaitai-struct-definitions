@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseCm Mtbt Binary v6.5
+# Kaitai struct definition for: Nse NseCm MtbtNdal Binary v6.5
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
-#   Protocol: Multicast Tick By Tick
+#   Protocol: Multicast Tick By Tick Data Feed
 #   Encoding: Binary
 #   Version: 6.5
 #   Date: 8/3/2026
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsecm_mtbt_binary_v6_5
-  title: Nse NseCm Mtbt Binary v6.5
+  id: nse_nsecm_mtbtndal_binary_v6_5
+  title: Nse NseCm MtbtNdal Binary v6.5
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Capital Market Multicast Tick By Tick Binary v6.5'
+doc: 'National Stock Exchange of India Ltd NSE Capital Market Multicast Tick By Tick Data Feed Binary v6.5'
 doc-ref: https://www.nseindia.com/static/market-data/real-time-data-subscription
 
 seq:
@@ -68,17 +68,59 @@ types:
         type:
           switch-on: message_type
           cases:
-            'message_type::order_message': order_message
-            'message_type::order_message_x4d': order_message
-            'message_type::order_message_x58': order_message
+            'message_type::new_order_message': new_order_message
+            'message_type::order_modification_message': order_modification_message
+            'message_type::order_cancellation_message': order_cancellation_message
             'message_type::trade_message': trade_message
-            'message_type::spread_order_message': spread_order_message
-            'message_type::spread_order_message_x48': spread_order_message
-            'message_type::spread_order_message_x4a': spread_order_message
+            'message_type::new_spread_order_message': new_spread_order_message
+            'message_type::spread_order_modification_message': spread_order_modification_message
+            'message_type::spread_order_cancellation_message': spread_order_cancellation_message
             'message_type::spread_trade_message': spread_trade_message
             'message_type::trade_cancel_message': trade_cancel_message
             'message_type::heartbeat_message': heartbeat_message
-  order_message:
+  new_order_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  order_modification_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  order_cancellation_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
@@ -119,7 +161,49 @@ types:
       - id: trade_quantity
         type: s4
         doc: 'Trade Quantity'
-  spread_order_message:
+  new_spread_order_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  spread_order_modification_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  spread_order_cancellation_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
@@ -216,26 +300,26 @@ types:
 enums:
   message_type:
     0x4e:
-      id: 'order_message'
-      doc: 'Sent for every new order request, modification request, and cancellation request. All new order requests are sent, including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order ID and not on Price.'
+      id: 'new_order_message'
+      doc: 'For every new order request, this message is sent.'
     0x4d:
-      id: 'order_message_x4d'
-      doc: 'Sent for every new order request, modification request, and cancellation request. All new order requests are sent, including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order ID and not on Price.'
+      id: 'order_modification_message'
+      doc: 'For every order modification request, this message is sent.'
     0x58:
-      id: 'order_message_x58'
-      doc: 'Sent for every new order request, modification request, and cancellation request. All new order requests are sent, including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order ID and not on Price.'
+      id: 'order_cancellation_message'
+      doc: 'For every order cancellation request, this message is sent.'
     0x54:
       id: 'trade_message'
       doc: 'Sent whenever an order in the order book gets executed fully or partially. Either Buy Order ID or Sell Order ID can be zero, in which case that Order ID should be ignored.'
     0x47:
-      id: 'spread_order_message'
-      doc: 'CD segment only. Sent for every new spread order request, modification request, and cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'new_spread_order_message'
+      doc: 'CD segment only. For every new spread order request, this message is sent.'
     0x48:
-      id: 'spread_order_message_x48'
-      doc: 'CD segment only. Sent for every new spread order request, modification request, and cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'spread_order_modification_message'
+      doc: 'CD segment only. For every spread order modification request, this message is sent.'
     0x4a:
-      id: 'spread_order_message_x4a'
-      doc: 'CD segment only. Sent for every new spread order request, modification request, and cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'spread_order_cancellation_message'
+      doc: 'CD segment only. For every spread order cancellation request, this message is sent.'
     0x4b:
       id: 'spread_trade_message'
       doc: 'CD segment only. Sent whenever a spread order in the order book gets executed fully or partially. Either Buy Order ID or Sell Order ID can be zero, in which case that Order ID should be ignored.'

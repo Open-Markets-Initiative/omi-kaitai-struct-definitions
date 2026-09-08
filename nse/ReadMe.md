@@ -5,8 +5,8 @@
 
 | Division | [Protocol][Omi.Nse.Protocol.Definitions] | [Encoding][Omi.Encoding.Definitions] | Version | Date | Size | [Status][Omi.Glossary.Status] | [Testing][Omi.Glossary.Testing] | [Documentation][Omi.Nse.Specifications] |
 | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
-| [NseCd][NseCd.Exchange] | [Mtbt][Nse.NseCd.Mtbt] | [Binary][Omi.Encoding.Binary] | [6.5][Nse.NseCd.Mtbt.Binary.v6.5.Definition] | 8/3/2026 | 255 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Nse.NseCd.Mtbt.Binary.v6.5.Url] - [pdf][Nse.NseCd.Mtbt.Binary.v6.5.Pdf] |
-| [NseCm][NseCm.Exchange] | [Mtbt][Nse.NseCm.Mtbt] | [Binary][Omi.Encoding.Binary] | [6.5][Nse.NseCm.Mtbt.Binary.v6.5.Definition] | 8/3/2026 | 255 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Nse.NseCm.Mtbt.Binary.v6.5.Url] - [pdf][Nse.NseCm.Mtbt.Binary.v6.5.Pdf] |
+| [NseCd][NseCd.Exchange] | [MtbtNdal][Nse.NseCd.MtbtNdal] | [Binary][Omi.Encoding.Binary] | [6.5][Nse.NseCd.MtbtNdal.Binary.v6.5.Definition] | 8/3/2026 | 339 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Nse.NseCd.MtbtNdal.Binary.v6.5.Url] - [pdf][Nse.NseCd.MtbtNdal.Binary.v6.5.Pdf] |
+| [NseCm][NseCm.Exchange] | [MtbtNdal][Nse.NseCm.MtbtNdal] | [Binary][Omi.Encoding.Binary] | [6.5][Nse.NseCm.MtbtNdal.Binary.v6.5.Definition] | 8/3/2026 | 339 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Nse.NseCm.MtbtNdal.Binary.v6.5.Url] - [pdf][Nse.NseCm.MtbtNdal.Binary.v6.5.Pdf] |
 | [NseFo][NseFo.Exchange] | [Mtbt][Nse.NseFo.Mtbt] | [Binary][Omi.Encoding.Binary] | [6.9][Nse.NseFo.Mtbt.Binary.v6.9.Definition] | 4/1/2026 | 339 | [Active][Omi.Glossary.Status.Active] | [Verified][Omi.Glossary.Testing.Verified] | [url][Nse.NseFo.Mtbt.Binary.v6.9.Url] - [pdf][Nse.NseFo.Mtbt.Binary.v6.9.Pdf] |
 | [NseFo][NseFo.Exchange] | [OrderEntry][Nse.NseFo.OrderEntry] | [Nnf][Omi.Encoding.Nnf] | [9.50][Nse.NseFo.OrderEntry.Nnf.v9.50.Definition] | 7/27/2026 | 4342 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Nse.NseFo.OrderEntry.Nnf.v9.50.Url] - [pdf][Nse.NseFo.OrderEntry.Nnf.v9.50.Pdf] |
 | [NseFo][NseFo.Exchange] | [OrderEntry][Nse.NseFo.OrderEntry] | [NnfDirect][Omi.Encoding.NnfDirect] | [9.50][Nse.NseFo.OrderEntry.NnfDirect.v9.50.Definition] | 7/27/2026 | 4356 | [Active][Omi.Glossary.Status.Active] | [Verified][Omi.Glossary.Testing.Verified] | [url][Nse.NseFo.OrderEntry.NnfDirect.v9.50.Url] - [pdf][Nse.NseFo.OrderEntry.NnfDirect.v9.50.Pdf] |
@@ -38,17 +38,17 @@ Nse: [website](https://www.nseindia.com "Go to National Stock Exchange of India 
 [NseCd.Exchange]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nse/Protocols/NseCd "Nse NseCd"
 [NseCm.Exchange]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nse/Protocols/NseCm "Nse NseCm"
 [NseFo.Exchange]: https://github.com/Open-Markets-Initiative/Directory/tree/main/Organizations/Nse/Protocols/NseFo "Nse NseFo"
-[Nse.NseCd.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCd/Mtbt.md "Multicast Tick By Tick"
-[Nse.NseCm.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCm/Mtbt.md "Multicast Tick By Tick"
+[Nse.NseCd.MtbtNdal]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCd/MtbtNdal.md "Multicast Tick By Tick Data Feed"
+[Nse.NseCm.MtbtNdal]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseCm/MtbtNdal.md "Multicast Tick By Tick Data Feed"
 [Nse.NseFo.Mtbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseFo/Mtbt.md "Multicast Tick By Tick"
 [Nse.NseFo.OrderEntry]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Protocols/NseFo/OrderEntry.md "Order Entry"
 
-[Nse.NseCd.Mtbt.Binary.v6.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/nse/nsecd/mtbt/NseCd_Mtbt_v6_5.ksy "Nse NseCd Mtbt Binary v6.5 Kaitai Struct Definition"
-[Nse.NseCd.Mtbt.Binary.v6.5.Url]: https://www.nseindia.com/static/market-data/real-time-data-subscription "National Stock Exchange of India Ltd 6.5 Url"
-[Nse.NseCd.Mtbt.Binary.v6.5.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Specifications/Common/Mtbt/Nse.Mtbt.Binary.v6.5.pdf "National Stock Exchange of India Ltd 6.5 Pdf"
-[Nse.NseCm.Mtbt.Binary.v6.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/nse/nsecm/mtbt/NseCm_Mtbt_v6_5.ksy "Nse NseCm Mtbt Binary v6.5 Kaitai Struct Definition"
-[Nse.NseCm.Mtbt.Binary.v6.5.Url]: https://www.nseindia.com/static/market-data/real-time-data-subscription "National Stock Exchange of India Ltd 6.5 Url"
-[Nse.NseCm.Mtbt.Binary.v6.5.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Specifications/Common/Mtbt/Nse.Mtbt.Binary.v6.5.pdf "National Stock Exchange of India Ltd 6.5 Pdf"
+[Nse.NseCd.MtbtNdal.Binary.v6.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/nse/nsecd/mtbtndal/NseCd_MtbtNdal_v6_5.ksy "Nse NseCd MtbtNdal Binary v6.5 Kaitai Struct Definition"
+[Nse.NseCd.MtbtNdal.Binary.v6.5.Url]: https://www.nseindia.com/static/market-data/real-time-data-subscription "National Stock Exchange of India Ltd 6.5 Url"
+[Nse.NseCd.MtbtNdal.Binary.v6.5.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Specifications/Common/Mtbt/Nse.MtbtNdal.Binary.v6.5.pdf "National Stock Exchange of India Ltd 6.5 Pdf"
+[Nse.NseCm.MtbtNdal.Binary.v6.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/nse/nsecm/mtbtndal/NseCm_MtbtNdal_v6_5.ksy "Nse NseCm MtbtNdal Binary v6.5 Kaitai Struct Definition"
+[Nse.NseCm.MtbtNdal.Binary.v6.5.Url]: https://www.nseindia.com/static/market-data/real-time-data-subscription "National Stock Exchange of India Ltd 6.5 Url"
+[Nse.NseCm.MtbtNdal.Binary.v6.5.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Specifications/Common/Mtbt/Nse.MtbtNdal.Binary.v6.5.pdf "National Stock Exchange of India Ltd 6.5 Pdf"
 [Nse.NseFo.Mtbt.Binary.v6.9.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/nse/nsefo/mtbt/NseFo_Mtbt_v6_9.ksy "Nse NseFo Mtbt Binary v6.9 Kaitai Struct Definition"
 [Nse.NseFo.Mtbt.Binary.v6.9.Url]: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols "National Stock Exchange of India Ltd 6.9 Url"
 [Nse.NseFo.Mtbt.Binary.v6.9.Pdf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Organizations/Nse/Specifications/NseFo/Mtbt/Nse.NseFo.Mtbt.Binary.v6.9.pdf "National Stock Exchange of India Ltd 6.9 Pdf"
