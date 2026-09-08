@@ -122,6 +122,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: buy_sell_indicator
         type: u1
@@ -177,11 +178,13 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'This must be filled out with the exact Order Token sent on the Enter Order Message or last Replace Order Message'
       - id: replacement_order_token_token_14
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: shares
         type: u4
@@ -209,6 +212,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: shares
         type: u4
@@ -219,6 +223,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: buy_sell_indicator
         type: u1
@@ -233,6 +238,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
   decimal_u4_4:
     seq:

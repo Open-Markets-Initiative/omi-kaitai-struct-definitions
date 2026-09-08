@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'National Stock Exchange of India Ltd NSE Futures & Options Multicast Tick By Tick Binary v6.9'
-doc-ref: https://www.nseindia.com/market-data/market-data-fo
+doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:
   - id: stream_header
@@ -68,17 +68,17 @@ types:
         type:
           switch-on: message_type
           cases:
-            'message_type::order_message': order_message
-            'message_type::order_message_x4d': order_message
-            'message_type::order_message_x58': order_message
+            'message_type::new_order_message': new_order_message
+            'message_type::order_modification_message': order_modification_message
+            'message_type::order_cancellation_message': order_cancellation_message
             'message_type::trade_message': trade_message
-            'message_type::spread_order_message': spread_order_message
-            'message_type::spread_order_message_x48': spread_order_message
-            'message_type::spread_order_message_x4a': spread_order_message
+            'message_type::new_spread_order_message': new_spread_order_message
+            'message_type::spread_order_modification_message': spread_order_modification_message
+            'message_type::spread_order_cancellation_message': spread_order_cancellation_message
             'message_type::spread_trade_message': spread_trade_message
             'message_type::trade_cancel_message': trade_cancel_message
             'message_type::heartbeat_message': heartbeat_message
-  order_message:
+  new_order_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
@@ -95,7 +95,49 @@ types:
         doc: 'Order Type Values'
       - id: price
         type: decimal_s4_2
-        doc: 'Price of the order (In Paise), in multiples of the tick size. Divide by 100 to convert into Rupees. Implied decimal with scale 1e-2'
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  order_modification_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  order_cancellation_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
       - id: quantity
         type: s4
         doc: 'Quantity of the order'
@@ -115,11 +157,11 @@ types:
         doc: 'Unique Contract Identifier'
       - id: trade_price
         type: decimal_s4_2
-        doc: 'Trade Price (In Paise), in multiples of the tick size. Divide by 100 to convert into Rupees. Implied decimal with scale 1e-2'
+        doc: 'Trade Price (In Paise). Implied decimal with scale 1e-2'
       - id: trade_quantity
         type: s4
         doc: 'Trade Quantity'
-  spread_order_message:
+  new_spread_order_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
@@ -136,7 +178,49 @@ types:
         doc: 'Order Type Values'
       - id: price
         type: decimal_s4_2
-        doc: 'Price of the order (In Paise), in multiples of the tick size. Divide by 100 to convert into Rupees. Implied decimal with scale 1e-2'
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  spread_order_modification_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
+        type: s4
+        doc: 'Quantity of the order'
+  spread_order_cancellation_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
+      - id: order_id
+        type: floating_point_integer
+        doc: 'Day Unique Order Reference Number'
+      - id: token
+        type: s4
+        doc: 'Unique Contract Identifier'
+      - id: order_type
+        type: u1
+        enum: order_type
+        doc: 'Order Type Values'
+      - id: price
+        type: decimal_s4_2
+        doc: 'Price of the order (In Paise). Implied decimal with scale 1e-2'
       - id: quantity
         type: s4
         doc: 'Quantity of the order'
@@ -156,10 +240,10 @@ types:
         doc: 'Unique Contract Identifier'
       - id: trade_price
         type: decimal_s4_2
-        doc: 'Trade Price (In Paise), in multiples of the tick size. Divide by 100 to convert into Rupees. Implied decimal with scale 1e-2'
-      - id: trade_quantity
+        doc: 'Trade Price (In Paise). Implied decimal with scale 1e-2'
+      - id: quantity
         type: s4
-        doc: 'Trade Quantity'
+        doc: 'Quantity of the order'
   trade_cancel_message:
     seq:
       - id: timestamp
@@ -176,7 +260,7 @@ types:
         doc: 'Unique Contract Identifier'
       - id: trade_price
         type: decimal_s4_2
-        doc: 'Trade Price (In Paise), in multiples of the tick size. Divide by 100 to convert into Rupees. Implied decimal with scale 1e-2'
+        doc: 'Trade Price (In Paise). Implied decimal with scale 1e-2'
       - id: trade_quantity
         type: s4
         doc: 'Trade Quantity'
@@ -184,7 +268,7 @@ types:
     seq:
       - id: last_sequence_no
         type: u4
-        doc: 'Last sent data sequence number of the Stream'
+        doc: 'Last sent data sequence no. of the Stream'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -216,35 +300,35 @@ types:
 enums:
   message_type:
     0x4e:
-      id: 'order_message'
-      doc: 'Sent for every new order request, modification request, or cancellation request. All new order requests are sent including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order Id and not on Price.'
+      id: 'new_order_message'
+      doc: 'For every new order request, this message is sent.'
     0x4d:
-      id: 'order_message_x4d'
-      doc: 'Sent for every new order request, modification request, or cancellation request. All new order requests are sent including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order Id and not on Price.'
+      id: 'order_modification_message'
+      doc: 'For every order modification request, this message is sent.'
     0x58:
-      id: 'order_message_x58'
-      doc: 'Sent for every new order request, modification request, or cancellation request. All new order requests are sent including the active orders. Modifications and cancellations must be handled at the client end on the basis of Order Id and not on Price.'
+      id: 'order_cancellation_message'
+      doc: 'For every order cancellation request, this message is sent.'
     0x54:
       id: 'trade_message'
-      doc: 'Sent whenever an order in the order book gets executed fully or partially. Either Buy Order Id or Sell Order Id can be zero, in which case that Order Id should be ignored.'
+      doc: 'This message is sent whenever an order in the order book gets executed fully or partially.'
     0x47:
-      id: 'spread_order_message'
-      doc: 'FO and CD segments only. Sent for every new spread order request, modification request, or cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'new_spread_order_message'
+      doc: 'FO and CD segments only. For every new spread order request, this message is sent.'
     0x48:
-      id: 'spread_order_message_x48'
-      doc: 'FO and CD segments only. Sent for every new spread order request, modification request, or cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'spread_order_modification_message'
+      doc: 'FO and CD segments only. For every spread order modification request, this message is sent.'
     0x4a:
-      id: 'spread_order_message_x4a'
-      doc: 'FO and CD segments only. Sent for every new spread order request, modification request, or cancellation request. All new spread order requests are sent including the active orders.'
+      id: 'spread_order_cancellation_message'
+      doc: 'FO and CD segments only. For every spread order cancellation request, this message is sent.'
     0x4b:
       id: 'spread_trade_message'
-      doc: 'FO and CD segments only. Sent whenever a spread order in the order book gets executed fully or partially. Either Buy Order Id or Sell Order Id can be zero, in which case that Order Id should be ignored.'
+      doc: 'FO and CD segments only. This message is sent whenever a spread order in the order book gets executed fully or partially.'
     0x43:
       id: 'trade_cancel_message'
-      doc: 'CM and FO segments only. Sent whenever a Trade gets cancelled.'
+      doc: 'For CM and FO segments only. This message is sent whenever a Trade gets cancelled.'
     0x5a:
       id: 'heartbeat_message'
-      doc: 'Sent when there is no data available for a few seconds, on all Streams. The sequence number field in the Global Header will have the value 0 (zero) for this message.'
+      doc: 'Heartbeat message will be sent when there is no data available for a few seconds. Only applicable for UDP TBT multicast channels.'
   order_type:
     0x42:
       id: 'buy_order'

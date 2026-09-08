@@ -140,6 +140,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: buy_sell_indicator
         type: u1
@@ -205,6 +206,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Replacement Order Token field as entered'
       - id: buy_sell_indicator
         type: u1
@@ -261,6 +263,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Order Token of the order that was replaced'
       - id: bbo_weight_indicator
         type: u1
@@ -275,6 +278,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: decrement_shares
         type: u4
@@ -292,6 +296,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: decrement_shares
         type: u4
@@ -319,6 +324,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: executed_shares
         type: u4
@@ -342,6 +348,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: match_number
         type: u8
@@ -361,6 +368,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: executed_shares
         type: u4
@@ -393,6 +401,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: executed_shares
         type: u4
@@ -422,6 +431,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: rejected_order_reason
         type: str
@@ -438,6 +448,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
   cancel_reject_message:
     seq:
@@ -448,6 +459,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
   order_priority_update_message:
     seq:
@@ -458,6 +470,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: price
         type: decimal_u4_4
@@ -478,6 +491,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
       - id: buy_sell_indicator
         type: u1
@@ -495,6 +509,7 @@ types:
         type: str
         size: 14
         encoding: ASCII
+        pad-right: 0x20
         doc: 'As described above in Data Types. You can put any information you like. Token must be day-unique for each OUCH account'
   decimal_u4_4:
     seq:
