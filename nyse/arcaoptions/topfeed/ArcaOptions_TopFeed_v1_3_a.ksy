@@ -333,6 +333,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'OCC code for the Clearing firm specified with the order'
   outright_summary_message:
     seq:

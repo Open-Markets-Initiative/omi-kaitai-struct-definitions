@@ -405,6 +405,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
       - id: num_parity_splits
         type: u1
@@ -586,6 +587,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
       - id: num_parity_splits
         type: u1

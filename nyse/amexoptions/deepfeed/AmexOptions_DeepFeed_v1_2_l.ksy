@@ -538,6 +538,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant''s firm ID (always space). '' '' - (space or 0x20)'
       - id: reserved_1
         type: str
@@ -763,6 +764,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant''s firm ID (always space). '' '' - (space or 0x20)'
       - id: reserved_1
         type: str

@@ -123,7 +123,7 @@ types:
       - id: agreement_time
         type: hhmmssnnnnnnnnn_time
         doc: 'Time of agreement'
-      - id: price_price_68
+      - id: price_on_exchange
         type: decimal_u8_6
         doc: 'Execution price. Implied decimal with scale 1e-6'
       - id: quantity
@@ -193,7 +193,7 @@ types:
       - id: agreement_time
         type: hhmmssnnnnnnnnn_time
         doc: 'Time of agreement'
-      - id: price_integer_18_n_8
+      - id: price_otc
         type: u8
         doc: 'Execution price with runtime decimal places'
       - id: price_fraction

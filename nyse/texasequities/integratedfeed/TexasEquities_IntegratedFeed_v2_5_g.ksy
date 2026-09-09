@@ -293,6 +293,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant''s firm ID'
       - id: reserved_1
         type: u1
@@ -527,6 +528,7 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant''s firm ID'
       - id: reserved_1
         type: u1

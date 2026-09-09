@@ -151,6 +151,7 @@ types:
         type: str
         size: message_data_length
         encoding: ASCII
+        pad-right: 0x20
         if: message_data_length > 0
         doc: 'Represents The Message Data Field'
   control_category:
@@ -233,9 +234,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: expiration_block
         type: expiration_block
@@ -261,7 +263,7 @@ types:
         type: u4
         doc: 'For Future Use Filled With Hex 0 X 00'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Four Reserved Bytes'
   expiration_block:
     seq:
@@ -303,9 +305,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: expiration_block
         type: expiration_block
@@ -348,9 +351,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: expiration_block
         type: expiration_block
@@ -437,9 +441,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: expiration_block
         type: expiration_block
@@ -578,6 +583,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: expiration_block
         type: expiration_block
@@ -638,9 +644,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: index_value_denominator_code
         type: u1
@@ -650,7 +657,7 @@ types:
         type: s4
         doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Four Reserved Bytes'
   underlying_value_bid_and_offer_message:
     seq:
@@ -669,9 +676,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'One Reserved Byte'
       - id: index_value_denominator_code
         type: u1

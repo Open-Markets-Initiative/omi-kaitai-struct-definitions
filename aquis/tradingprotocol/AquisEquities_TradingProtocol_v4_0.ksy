@@ -129,7 +129,7 @@ types:
         doc: 'Text describing reason for logout'
   order_add_message:
     seq:
-      - id: security_id_u_162
+      - id: security_id_short
         type: u2
         doc: 'Numeric security identifier'
       - id: order_type
@@ -223,7 +223,7 @@ types:
         doc: 'Party role qualifier'
   order_add_extended_message:
     seq:
-      - id: security_id_u_162
+      - id: security_id_short
         type: u2
         doc: 'Numeric security identifier'
       - id: order_type
@@ -286,13 +286,13 @@ types:
       - id: extended_order_flags
         type: extended_order_flags
         doc: 'Extended order flags'
-      - id: reserved_u_648
+      - id: reserved_long
         type: u8
         doc: 'Reserved'
       - id: designated_order_id
         type: u8
         doc: 'The order ID of the contra as provided by OptimX; set to 0 if not applicable'
-      - id: reserved_u_162
+      - id: reserved_short
         type: u2
         doc: 'Reserved'
       - id: peg_difference
@@ -437,7 +437,7 @@ types:
       - id: min_qty
         type: u4
         doc: 'Minimum quantity of an order to be executed; 0 = no minimum quantity'
-      - id: reserved_u_648
+      - id: reserved_long
         type: u8
         doc: 'Reserved'
   order_add_response_message:
@@ -541,7 +541,7 @@ types:
       - id: price
         type: u8
         doc: 'Limit price of the order; 0 for MaC orders'
-      - id: security_id_u_324
+      - id: security_id_long
         type: u4
         doc: 'Numeric security identifier'
       - id: trade_capture_type
@@ -606,7 +606,7 @@ types:
         type: u1
         enum: liq_indicator
         doc: 'Liquidity indicator'
-      - id: security_id_u_162
+      - id: security_id_short
         type: u2
         doc: 'Numeric security identifier'
       - id: timestamp
@@ -651,7 +651,7 @@ types:
         doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
   ioi_add_message:
     seq:
-      - id: security_id_u_162
+      - id: security_id_short
         type: u2
         doc: 'Numeric security identifier'
       - id: ioi_order_type

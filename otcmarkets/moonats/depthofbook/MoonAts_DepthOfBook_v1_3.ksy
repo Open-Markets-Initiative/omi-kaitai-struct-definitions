@@ -228,7 +228,7 @@ types:
         doc: 'Ticker symbol'
       - id: price
         type: decimal_u8_6
-        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: firm_id
         type: str
         size: 4
@@ -256,7 +256,7 @@ types:
         doc: 'Number of shares being added to the book'
       - id: price
         type: decimal_u8_6
-        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: order_flags
         type: u2
         doc: 'TBD'
@@ -310,7 +310,7 @@ types:
         doc: 'System generated day-unique execution identifier of this execution'
       - id: price
         type: decimal_u8_6
-        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
   trade_message:
     seq:
       - id: time
@@ -330,7 +330,7 @@ types:
         doc: 'Ticker symbol'
       - id: price
         type: decimal_u8_6
-        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The limit order price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: execution_id
         type: u8
         doc: 'System generated day-unique execution identifier of this execution'
@@ -352,7 +352,7 @@ types:
         doc: 'Number of OC and IO shares that would be matched at the Current Inside Closing Price'
       - id: current_inside_closing_price
         type: decimal_u8_6
-        doc: 'The calculated closing price without Day / extended Day orders, bounded by the inside. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The calculated closing price without Day / extended Day orders, bounded by the inside. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: current_inside_imbalance_quantity
         type: u4
         doc: 'Number of marketable OC and IO shares that would be left unmatched at the Current Inside Closing Price'
@@ -362,10 +362,10 @@ types:
         doc: 'Buy or sell side of the Current Inside Imbalance Quantity'
       - id: full_closing_price
         type: decimal_u8_6
-        doc: 'The calculated closing price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The calculated closing price. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: ocio_only_closing_price
         type: decimal_u8_6
-        doc: 'The calculated closing price without Day / extended Day orders. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e6'
+        doc: 'The calculated closing price without Day / extended Day orders. The long value represents the price scaled by 1,000,000 (6 decimal places). Implied decimal with scale 1e-6'
       - id: moc_shares_unmatched
         type: u1
         enum: moc_shares_unmatched

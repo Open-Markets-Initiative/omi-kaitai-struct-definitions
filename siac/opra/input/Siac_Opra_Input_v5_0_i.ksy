@@ -176,9 +176,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: expiration_block
         type: expiration_block
@@ -204,7 +205,7 @@ types:
         type: u4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
   expiration_block:
     seq:
@@ -242,9 +243,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: expiration_block
         type: expiration_block
@@ -328,9 +330,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: expiration_block
         type: expiration_block
@@ -392,6 +395,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Security Symbol Restricted To Four Characters For Short Quote Messages Category Q Left Justified Space Filled'
       - id: expiration_block
         type: expiration_block
@@ -438,6 +442,7 @@ types:
         type: str
         size: message_data_length
         encoding: ASCII
+        pad-right: 0x20
         if: message_data_length > 0
         doc: 'Variable Length Printable Ascii Text Up To 200 Characters'
   control_category:
@@ -489,10 +494,10 @@ types:
         type: u4
         doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: second_reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
   block_sequence_number_status_response_message:
     seq:
@@ -507,7 +512,7 @@ types:
         type: u4
         doc: 'Last Block Sequence Number Received On The Input Line'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
   message_count_status_inquiry_request_message:
     seq:
@@ -519,7 +524,7 @@ types:
         type: u4
         doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
       - id: reserved_8
-        type: u8
+        size: 8
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
   message_count_status_response_message:
     seq:
@@ -559,9 +564,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: index_value_denominator_code
         type: u1
@@ -571,7 +577,7 @@ types:
         type: s4
         doc: 'Last Sale Index Value'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
   underlying_value_bid_and_offer_message:
     seq:
@@ -586,9 +592,10 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Reserved For Future Use Filled With Hex 0 X 00'
       - id: index_value_denominator_code
         type: u1
