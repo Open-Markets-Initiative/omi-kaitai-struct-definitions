@@ -301,7 +301,7 @@ types:
       - id: security_definition_flags
         type: security_definition_flags
         doc: 'Security definition flags'
-      - id: reserved_char_2020
+      - id: reserved
         type: str
         size: 20
         encoding: ASCII
