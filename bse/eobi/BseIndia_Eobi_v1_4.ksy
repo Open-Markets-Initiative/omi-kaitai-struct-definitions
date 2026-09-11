@@ -179,8 +179,8 @@ types:
         size: 7
         doc: 'not used'
       - id: price
-        type: decimal_s8_8
-        doc: 'Reserved for future use. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Reserved for future use. Implied decimal with scale 1e-6'
   instrument_summary_message:
     seq:
       - id: security_id
@@ -227,8 +227,8 @@ types:
   md_instrument_entry_grp:
     seq:
       - id: md_entry_px
-        type: decimal_s8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: md_entry_size
         type: s8_nullable
         doc: 'Quantity. Nullable, No Value = 0x8000000000000000'
@@ -248,11 +248,11 @@ types:
         type: s8
         doc: 'Unique instrument identifier'
       - id: bid_px
-        type: decimal_s8_8_nullable
-        doc: 'Bid price/rate. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Bid price/rate. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_s8_8_nullable
-        doc: 'Offer price/rate. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Offer price/rate. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
   auction_clearing_price_message:
     seq:
       - id: transact_time
@@ -262,8 +262,8 @@ types:
         type: s8
         doc: 'Unique instrument identifier'
       - id: last_px
-        type: decimal_s8_8
-        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-6'
       - id: last_qty
         type: s8
         doc: 'The potential matchable quantity for the auction'
@@ -276,11 +276,11 @@ types:
         type: s8
         doc: 'Unique instrument identifier'
       - id: bid_px
-        type: decimal_s8_8_nullable
-        doc: 'Bid price/rate. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Bid price/rate. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_s8_8_nullable
-        doc: 'Offer price/rate. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Offer price/rate. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
   order_add_message:
     seq:
       - id: trd_reg_ts_time_in
@@ -301,8 +301,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Previous order priority timestamp. Nanoseconds since Unix epoch'
       - id: prev_price
-        type: decimal_s8_8
-        doc: 'Previous order price. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Previous order price. Implied decimal with scale 1e-6'
       - id: prev_display_qty
         type: s8
         doc: 'Previous display quantity'
@@ -361,8 +361,8 @@ types:
         size: 7
         doc: 'not used'
       - id: price
-        type: decimal_s8_8
-        doc: 'Reserved for future use. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Reserved for future use. Implied decimal with scale 1e-6'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp
         doc: 'Priority timestamp. Nanoseconds since Unix epoch'
@@ -379,8 +379,8 @@ types:
         type: s8
         doc: 'The potential matchable quantity for the auction'
       - id: last_px
-        type: decimal_s8_8
-        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-6'
   full_order_execution_message:
     seq:
       - id: side
@@ -391,8 +391,8 @@ types:
         size: 7
         doc: 'not used'
       - id: price
-        type: decimal_s8_8
-        doc: 'Reserved for future use. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Reserved for future use. Implied decimal with scale 1e-6'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp
         doc: 'Priority timestamp. Nanoseconds since Unix epoch'
@@ -409,8 +409,8 @@ types:
         type: s8
         doc: 'The potential matchable quantity for the auction'
       - id: last_px
-        type: decimal_s8_8
-        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-6'
   trade_reversal_message:
     seq:
       - id: security_id
@@ -429,8 +429,8 @@ types:
         type: s8
         doc: 'The potential matchable quantity for the auction'
       - id: last_px
-        type: decimal_s8_8
-        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-6'
       - id: trd_reg_ts_execution_time
         type: nanosecond_timestamp_nullable
         doc: 'Last matching execution timestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -448,8 +448,8 @@ types:
   md_trade_entry_grp:
     seq:
       - id: md_entry_px
-        type: decimal_s8_8_nullable
-        doc: 'Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: md_entry_size
         type: s8_nullable
         doc: 'Quantity. Nullable, No Value = 0x8000000000000000'
@@ -485,8 +485,8 @@ types:
         size: 6
         doc: 'not used'
       - id: last_px
-        type: decimal_s8_8
-        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Indicating the potential Auction price for a crossed order book. Implied decimal with scale 1e-6'
       - id: resting_hidden_qty
         type: s8_nullable
         doc: 'Quantity of matched passive orders that is not displayed to the market. Nullable, No Value = 0x8000000000000000'
@@ -496,28 +496,28 @@ types:
         type: s8
         doc: 'Unique instrument identifier'
       - id: close_price
-        type: decimal_s8_8_nullable
-        doc: 'Close Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Close Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: prev_close_price
-        type: decimal_s8_8_nullable
-        doc: 'Previous Close Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Previous Close Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: upper_ckt_limit
-        type: decimal_s8_8_nullable
-        doc: 'Upper Circuit Limit Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Upper Circuit Limit Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
       - id: lower_ckt_limit
-        type: decimal_s8_8_nullable
-        doc: 'Lower Circuit Limit Price. Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
+        type: decimal_s8_6_nullable
+        doc: 'Lower Circuit Limit Price. Implied decimal with scale 1e-6. Nullable, No Value = 0x8000000000000000'
   lpp_range_message:
     seq:
       - id: security_id
         type: s8
         doc: 'Unique instrument identifier'
       - id: upper_exec_limit
-        type: decimal_s8_8
-        doc: 'Upper Limit Execution Price. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Upper Limit Execution Price. Implied decimal with scale 1e-6'
       - id: lower_exec_limit
-        type: decimal_s8_8
-        doc: 'Lower Limit Execution Price. Implied decimal with scale 1e-8'
+        type: decimal_s8_6
+        doc: 'Lower Limit Execution Price. Implied decimal with scale 1e-6'
   product_state_change_message:
     seq:
       - id: trading_session_id
@@ -623,13 +623,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_s8_8:
+  decimal_s8_6:
     seq:
       - id: mantissa
         type: s8
     instances:
       real:
-        value: mantissa / 100000000.0
+        value: mantissa / 1000000.0
   nanosecond_timestamp_nullable:
     seq:
       - id: value
@@ -637,10 +637,10 @@ types:
     instances:
       is_null:
         value: value.time == -1
-  decimal_s8_8_nullable:
+  decimal_s8_6_nullable:
     seq:
       - id: value
-        type: decimal_s8_8
+        type: decimal_s8_6
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808

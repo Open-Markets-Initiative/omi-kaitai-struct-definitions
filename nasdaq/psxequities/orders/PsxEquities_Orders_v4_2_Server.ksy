@@ -308,8 +308,8 @@ types:
         type: u4
         doc: 'Shares that would have executed if the trade would have occurred'
       - id: execution_price
-        type: u4
-        doc: 'Price at which the trade would have occurred'
+        type: decimal_u4_4
+        doc: 'Price at which the trade would have occurred. Implied decimal with scale 1e-4'
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag
@@ -329,8 +329,8 @@ types:
         type: u4
         doc: 'Incremental number of shares executed'
       - id: execution_price
-        type: u4
-        doc: 'Price at which the trade would have occurred'
+        type: decimal_u4_4
+        doc: 'Price at which the trade would have occurred. Implied decimal with scale 1e-4'
       - id: liquidity_flag
         type: u1
         enum: liquidity_flag

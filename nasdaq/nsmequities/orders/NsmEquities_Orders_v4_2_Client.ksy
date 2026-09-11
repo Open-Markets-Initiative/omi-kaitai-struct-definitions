@@ -274,7 +274,7 @@ enums:
       doc: 'The Replace Order Message allows you to alter most of the attributes of an order in a single message. This is more efficient than canceling an existing order and immediately succeeding it with a new order. Replacing an order always gives it a new timestamp for its time priority on the book. If you wish you simply partially cancel an order and retain its time priority, send a Cancel Order Message instead.'
     0x58:
       id: 'cancel_order_message'
-      doc: 'The Cancel Order Message is used to request that an order be canceled or reduced. In the Cancel Order Message, you must specify the new "intended order size" for the order. The "intended order size" is the maximum number of shares that can be executed in total after the cancel is applied.'
+      doc: 'The Cancel Order Message is used to request that an order be canceled or reduced. In the Cancel Order Message, you must specify the new &quot;intended order size&quot; for the order. The &quot;intended order size&quot; is the maximum number of shares that can be executed in total after the cancel is applied.'
     0x4d:
       id: 'modify_order_message'
       doc: 'The Modify Order Message is used to request modifications that will not affect order priority on the book unless the share amount is increased. Since priority of the order does not change (exception noted), allowed modifications are restricted to only the ones specified in the message details below.'

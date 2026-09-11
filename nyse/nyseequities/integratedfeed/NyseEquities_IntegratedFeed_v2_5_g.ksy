@@ -42,11 +42,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Pillar common client udp packet header'
-  - id: message
-    type: message_struct
+  - id: messages
     repeat: expr
     repeat-expr: packet_header.number_msgs
-    doc: 'Pillar message'
+    type:
+      switch-on: packet_header.delivery_flag
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -75,7 +77,7 @@ types:
       - id: nanoseconds
         type: u4
         doc: 'The nanosecond offset from the Send Time'
-  message_struct:
+  message:
     seq:
       - id: message_header
         type: message_header
@@ -147,7 +149,7 @@ types:
         encoding: ASCII
         doc: 'Null-terminated ASCII symbol in NYSE Symbology'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
       - id: market_id
         type: u2
@@ -234,7 +236,7 @@ types:
         enum: halt_condition
         doc: 'The halt or other condition associated with the security status change'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Future use. Any field content should be ignored'
       - id: price_1
         type: u4
@@ -296,7 +298,7 @@ types:
         pad-right: 0x20
         doc: 'The market participant''s firm ID'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   modify_order_message:
     seq:
@@ -326,7 +328,7 @@ types:
         enum: side
         doc: 'The side of the order (Buy/Sell)'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   delete_order_message:
     seq:
@@ -343,7 +345,7 @@ types:
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   order_execution_message:
     seq:
@@ -373,7 +375,7 @@ types:
         enum: printable_flag
         doc: '0 = Not Printed to the SIP. 1 = Printed to the SIP'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
       - id: trade_cond_1
         type: u1
@@ -419,7 +421,7 @@ types:
         enum: side
         doc: 'The side of the order (Buy/Sell)'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   imbalance_message:
     seq:
@@ -495,7 +497,7 @@ types:
         enum: unpaired_side
         doc: 'The side of the Unpaired Qty'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   add_order_refresh_message:
     seq:
@@ -531,7 +533,7 @@ types:
         pad-right: 0x20
         doc: 'The market participant''s firm ID'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'Defaulted to 0. Future use only'
   non_displayed_trade_message:
     seq:

@@ -41,10 +41,13 @@ doc-ref: https://www.otcmarkets.com/market-data/technical-and-user-documentation
 seq:
   - id: packet_header
     type: packet_header_struct
-  - id: message
-    type: message_struct
+  - id: message_block
     repeat: expr
     repeat-expr: packet_header.messages
+    type:
+      switch-on: packet_header.packet_flag.heartbeat
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -66,22 +69,22 @@ types:
         doc: 'Milliseconds since local time midnight (EST/EDT). Milliseconds since Midnight epoch'
   packet_flag:
     seq:
-      - id: heartbeat
-        type: b1
-        doc: 'A Heartbeat is sent if no business level message has been published for more than a second'
-      - id: seq_num_reset
-        type: b1
-        doc: 'indicates that the channel sequence numbers are being reset to 1'
-      - id: reserved_4
-        type: b4
-        doc: 'Reserved 4'
-      - id: replay
-        type: b1
-        doc: 'Packet contains replay messages'
       - id: test
         type: b1
         doc: 'Packet contains test messages'
-  message_struct:
+      - id: replay
+        type: b1
+        doc: 'Packet contains replay messages'
+      - id: reserved_4
+        type: b4
+        doc: 'Reserved 4'
+      - id: seq_num_reset
+        type: b1
+        doc: 'indicates that the channel sequence numbers are being reset to 1'
+      - id: heartbeat
+        type: b1
+        doc: 'A Heartbeat is sent if no business level message has been published for more than a second'
+  message:
     seq:
       - id: message_header
         type: message_header

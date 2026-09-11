@@ -136,7 +136,7 @@ types:
         encoding: ASCII
         doc: 'This field contains the full symbol in NYSE Symbology. A sequence of characters representing the symbol, padded with NULLs'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'This field is reserved for future use'
       - id: market_id
         type: u2
@@ -179,7 +179,7 @@ types:
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use. Disregard any content'
   symbol_clear_message:
     seq:
@@ -218,7 +218,7 @@ types:
         enum: halt_condition
         doc: 'The halt or other condition associated with the security status change'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Future use. Any field content should be ignored'
       - id: price_1
         type: u4

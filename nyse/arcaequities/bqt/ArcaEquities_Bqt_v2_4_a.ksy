@@ -145,7 +145,7 @@ types:
         encoding: ASCII
         doc: 'Null-terminated ASCII symbol in NYSE Symbology'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'This field is reserved for future use'
       - id: market_id
         type: u2
@@ -189,7 +189,7 @@ types:
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use. Disregard any content'
   symbol_clear_message:
     seq:
@@ -236,7 +236,7 @@ types:
         enum: market_id
         doc: 'The ID of the Originating Market'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use. Disregard any content'
       - id: price_1
         type: u4

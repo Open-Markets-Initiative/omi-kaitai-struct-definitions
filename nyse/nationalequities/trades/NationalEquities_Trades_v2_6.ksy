@@ -42,11 +42,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Pillar common client udp packet header'
-  - id: message
-    type: message_struct
+  - id: messages
     repeat: expr
     repeat-expr: packet_header.number_msgs
-    doc: 'Pillar message'
+    type:
+      switch-on: packet_header.delivery_flag
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -75,7 +77,7 @@ types:
       - id: nanoseconds
         type: u4
         doc: 'The nanosecond offset from the Send Time'
-  message_struct:
+  message:
     seq:
       - id: message_header
         type: message_header
@@ -151,7 +153,7 @@ types:
         encoding: ASCII
         doc: 'Null-terminated ASCII symbol in NYSE Symbology'
       - id: reserved_1
-        type: u1
+        size: 1
         doc: 'This field is reserved for future use'
       - id: market_id
         type: u2
@@ -194,7 +196,7 @@ types:
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use. Disregard any content'
   symbol_clear_message:
     seq:
@@ -233,7 +235,7 @@ types:
         enum: halt_condition
         doc: 'The halt or other condition associated with the security status change'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Future use. Any field content should be ignored'
       - id: price_1
         type: u4

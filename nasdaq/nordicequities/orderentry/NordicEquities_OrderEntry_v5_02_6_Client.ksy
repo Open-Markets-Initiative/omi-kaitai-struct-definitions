@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NordicEquities PureStream Ouch v5.02.6
+# Kaitai struct definition for: Nasdaq NordicEquities OrderEntry Ouch v5.02.6
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Nordic Ouch 5 PureStream
+#   Protocol: Nordic Ouch 5 Order Entry
 #   Encoding: Ouch
 #   Version: 5.02.6
 #   Date: 11/12/2025
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nordicequities_purestream_ouch_v5_02_6_client
-  title: Nasdaq NordicEquities PureStream Ouch v5.02.6
+  id: nasdaq_nordicequities_orderentry_ouch_v5_02_6_client
+  title: Nasdaq NordicEquities OrderEntry Ouch v5.02.6
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Ouch 5 PureStream Ouch v5.02.6'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Ouch 5 Order Entry Ouch v5.02.6'
 doc-ref: https://www.nasdaq.com/solutions/technical-information-inet-nordic-trading-platform
 
 seq:

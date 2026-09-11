@@ -42,11 +42,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Pillar common client udp packet header'
-  - id: message
-    type: message_struct
+  - id: messages
     repeat: expr
     repeat-expr: packet_header.number_msgs
-    doc: 'Pillar message'
+    type:
+      switch-on: packet_header.delivery_flag
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -75,7 +77,7 @@ types:
       - id: nanoseconds
         type: u4
         doc: 'The nanosecond offset from the Send Time'
-  message_struct:
+  message:
     seq:
       - id: message_header
         type: message_header
@@ -157,9 +159,7 @@ types:
         encoding: ASCII
         doc: 'Null-terminated ASCII symbol in NYSE Symbology'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: market_id
         type: u2
@@ -198,13 +198,13 @@ types:
         enum: round_lot
         doc: 'Round Lots Accepted'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for Future use'
       - id: second_reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use'
       - id: third_reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for future use'
   symbol_clear_message:
     seq:
@@ -243,7 +243,7 @@ types:
         enum: halt_condition
         doc: 'Halt condition'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved for future use'
       - id: price_1
         type: u4
@@ -329,9 +329,7 @@ types:
         enum: closing_only_indicator
         doc: 'Closing Only Indicator'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
   options_status_message:
     seq:
@@ -541,9 +539,7 @@ types:
         pad-right: 0x20
         doc: 'The market participant''s firm ID (always space). '' '' - (space or 0x20)'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: cust_indicator
         type: u1
@@ -595,9 +591,7 @@ types:
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
   options_order_execution_message:
     seq:
@@ -627,9 +621,7 @@ types:
         enum: printable_flag
         doc: 'Indicates whether trade is included in total volume'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: trade_cond_1
         type: u1
@@ -666,9 +658,7 @@ types:
         enum: side
         doc: 'The side of the order (Buy/Sell)'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: cust_indicator
         type: u1
@@ -689,7 +679,7 @@ types:
         type: u4
         doc: 'The sequence number of this message in the set of all messages for this series'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved for future use'
       - id: paired_qty
         type: u4
@@ -701,7 +691,7 @@ types:
         type: u4
         doc: 'The total market order imbalance quantity at the Indicative Match Price'
       - id: reserved_2
-        type: u2
+        size: 2
         doc: 'Reserved for Future use'
       - id: auction_type
         type: u1
@@ -718,7 +708,7 @@ types:
         type: s4
         doc: 'The price at which all eligible auction-only interest would trade, subject to auction collars'
       - id: second_reserved_4
-        type: u4
+        size: 4
         doc: 'Reserved for future use'
       - id: indicative_match_price
         type: s4
@@ -767,9 +757,7 @@ types:
         pad-right: 0x20
         doc: 'The market participant''s firm ID (always space). '' '' - (space or 0x20)'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved for future use'
       - id: cust_indicator
         type: u1

@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NordicEquities PureStream Itch v3.04.X
+# Kaitai struct definition for: Nasdaq NordicEquities TotalView Itch v3.04.X
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Nordic Ouch 5 PureStream
+#   Protocol: Nordic Equity TotalView
 #   Encoding: Itch
 #   Version: 3.04.X
 #   Date: 11/12/2025
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nordicequities_purestream_itch_v3_04_x
-  title: Nasdaq NordicEquities PureStream Itch v3.04.X
+  id: nasdaq_nordicequities_totalview_itch_v3_04_x
+  title: Nasdaq NordicEquities TotalView Itch v3.04.X
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Ouch 5 PureStream Itch v3.04.X'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Equity TotalView Itch v3.04.X'
 doc-ref: https://www.nasdaq.com/solutions/technical-information-inet-nordic-trading-platform
 
 seq:

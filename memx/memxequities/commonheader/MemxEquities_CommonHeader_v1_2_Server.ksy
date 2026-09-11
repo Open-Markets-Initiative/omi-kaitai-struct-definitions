@@ -123,7 +123,10 @@ types:
         type: u8
         doc: 'The count of messages that were sent on this stream'
   sequenced_message:
-    seq: []
+    seq:
+      - id: sbe_message
+        size: 
+        doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 
 enums:
   message_type:

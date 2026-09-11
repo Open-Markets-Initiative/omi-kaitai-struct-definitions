@@ -99,7 +99,10 @@ types:
         type: u8
         doc: 'The first requested sequence number'
   unsequenced_message:
-    seq: []
+    seq:
+      - id: sbe_message
+        size: 
+        doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 
 enums:
   message_type:

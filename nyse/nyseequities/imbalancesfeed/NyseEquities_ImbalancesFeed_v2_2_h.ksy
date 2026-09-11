@@ -42,11 +42,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Pillar common client udp packet header'
-  - id: message
-    type: message_struct
+  - id: messages
     repeat: expr
     repeat-expr: packet_header.number_msgs
-    doc: 'Pillar message'
+    type:
+      switch-on: packet_header.delivery_flag
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -75,7 +77,7 @@ types:
       - id: nanoseconds
         type: u4
         doc: 'The nanosecond offset from the Send Time'
-  message_struct:
+  message:
     seq:
       - id: message_header
         type: message_header

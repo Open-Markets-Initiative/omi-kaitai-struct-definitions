@@ -42,11 +42,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'Coinbase Deribit Market Data packet header — 24 bytes, common to all multicast channels'
-  - id: md_message
-    type: md_message_struct
+  - id: md_messages
     repeat: expr
     repeat-expr: packet_header.message_count
-    doc: 'Coinbase Deribit Market Data per-message wrapper — Md Message Header plus payload'
+    type:
+      switch-on: packet_header.message_count
+      cases:
+        _: md_message
 
 types:
   packet_header_struct:
@@ -80,7 +82,7 @@ types:
       - id: reserved_bits
         type: b13
         doc: 'Bits reserved for future use'
-  md_message_struct:
+  md_message:
     seq:
       - id: md_message_header
         type: md_message_header
