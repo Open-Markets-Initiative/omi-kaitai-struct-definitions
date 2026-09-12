@@ -150,6 +150,8 @@ types:
         enum: luld_tier
         doc: 'Indicates which Limit Up-Limit Down price band calculation parameter is to be used'
   security_directory_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_5
         type: b5
@@ -296,6 +298,8 @@ types:
         type: decimal_s8_4
         doc: 'Booking price on the IEX Order Book. Implied decimal with scale 1e-4'
   modify_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_7
         type: b7
@@ -349,6 +353,8 @@ types:
         type: u8
         doc: 'IEX Generated Identifier'
   sale_condition_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_3
         type: b3

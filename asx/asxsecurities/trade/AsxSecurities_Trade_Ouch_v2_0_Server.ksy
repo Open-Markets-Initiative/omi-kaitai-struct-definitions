@@ -400,6 +400,8 @@ types:
         type: match_attributes
         doc: 'Match attributes of the executed order'
   match_attributes:
+    meta:
+      bit-endian: le
     seq:
       - id: passive_aggressive_indicator
         type: b1

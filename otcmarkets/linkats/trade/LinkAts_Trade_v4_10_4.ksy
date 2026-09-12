@@ -205,12 +205,12 @@ types:
         doc: 'Milliseconds from UTC epoch'
   trade_status:
     seq:
-      - id: irregular
-        type: b1
-        doc: 'Indicates irregular trade'
       - id: reserved_7
         type: b7
         doc: 'Reserved Trade Flag bits'
+      - id: irregular
+        type: b1
+        doc: 'Indicates irregular trade'
   millisecond_timestamp:
     seq:
       - id: time

@@ -317,6 +317,8 @@ types:
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: aon
         type: b1

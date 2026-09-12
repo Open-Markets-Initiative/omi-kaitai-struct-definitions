@@ -615,6 +615,8 @@ types:
         type: decimal_s8_9_nullable
         doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: aon
         type: b1

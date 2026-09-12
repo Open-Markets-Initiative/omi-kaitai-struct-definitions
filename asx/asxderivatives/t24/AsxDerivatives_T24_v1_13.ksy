@@ -951,6 +951,8 @@ types:
         type: market_updates
         doc: 'Bitwise flags indicating which fields have been adjusted'
   market_updates:
+    meta:
+      bit-endian: le
     seq:
       - id: opening_trade_price
         type: b1

@@ -206,30 +206,30 @@ types:
         doc: 'Current security status'
   security_flags:
     seq:
-      - id: proprietary_quote_eligible
-        type: b1
-        doc: 'Security is eligible for proprietary quoting under SEC Rule 15c-211'
-      - id: caveat_emptor_warning
-        type: b1
-        doc: 'Indicates whether a Caveat Emptor warning has been applied'
-      - id: qualified_institutional_buyers_only
-        type: b1
-        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
-      - id: unsolicited_only
-        type: b1
-        doc: 'Indicates if the security may only be quoted unsolicited'
-      - id: bb_quoted
-        type: b1
-        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
-      - id: otc_link_ecn_eligible
-        type: b1
-        doc: 'OTC Link ECN eligible'
-      - id: otc_link_messaging_disabled
-        type: b1
-        doc: 'OTC Link Messaging Disabled'
       - id: saturation_eligible
         type: b1
         doc: 'Indicates if a security is eligible to have their quotes saturated'
+      - id: otc_link_messaging_disabled
+        type: b1
+        doc: 'OTC Link Messaging Disabled'
+      - id: otc_link_ecn_eligible
+        type: b1
+        doc: 'OTC Link ECN eligible'
+      - id: bb_quoted
+        type: b1
+        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
+      - id: unsolicited_only
+        type: b1
+        doc: 'Indicates if the security may only be quoted unsolicited'
+      - id: qualified_institutional_buyers_only
+        type: b1
+        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
+      - id: caveat_emptor_warning
+        type: b1
+        doc: 'Indicates whether a Caveat Emptor warning has been applied'
+      - id: proprietary_quote_eligible
+        type: b1
+        doc: 'Security is eligible for proprietary quoting under SEC Rule 15c-211'
   reference_price_message:
     seq:
       - id: channel_seq_num
@@ -268,30 +268,30 @@ types:
         doc: 'Bid timestamp in milliseconds since UTC epoch'
   quote_flags:
     seq:
-      - id: update_side
-        type: b1
-        doc: 'Ask or Bid'
-      - id: state
-        type: b1
-        doc: 'Open or Closed'
-      - id: reserved_1
-        type: b1
-        doc: 'Reserved'
-      - id: ask_priced
-        type: b1
-        doc: 'Ask Priced'
-      - id: second_reserved_1
-        type: b1
-        doc: 'Reserved'
-      - id: third_reserved_1
+      - id: fourth_reserved_1
         type: b1
         doc: 'Reserved'
       - id: bid_priced
         type: b1
         doc: 'Bid Priced Actual'
-      - id: fourth_reserved_1
+      - id: third_reserved_1
         type: b1
         doc: 'Reserved'
+      - id: second_reserved_1
+        type: b1
+        doc: 'Reserved'
+      - id: ask_priced
+        type: b1
+        doc: 'Ask Priced'
+      - id: reserved_1
+        type: b1
+        doc: 'Reserved'
+      - id: state
+        type: b1
+        doc: 'Open or Closed'
+      - id: update_side
+        type: b1
+        doc: 'Ask or Bid'
   reference_price_update_message:
     seq:
       - id: channel_seq_num

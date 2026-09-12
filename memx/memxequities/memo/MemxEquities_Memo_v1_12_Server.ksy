@@ -285,6 +285,8 @@ types:
         type: str_4_nullable
         doc: 'For a short sell order, the broker (MPID) that the member shall borrow shares from. Customer ports can be configured to require this field to be set on short sale orders, otherwise it is optional. 5.1.2 OrderCancelReplaceRequest The order cancel/replace request is used to change the parameters of an existing order. This message corresponds to FIX message type G Field Offset Length Type Tag Ref Num Req''d Description SBE. Nullable, No Value = 0'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1

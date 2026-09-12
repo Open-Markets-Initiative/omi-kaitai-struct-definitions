@@ -420,6 +420,8 @@ types:
         type: u2
         doc: 'The ID of the Originating Market for the Best Bid'
   retail_pricing_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: retail_interest_on_the_bid_side
         type: b1

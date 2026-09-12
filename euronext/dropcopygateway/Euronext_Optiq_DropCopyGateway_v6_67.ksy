@@ -183,6 +183,8 @@ types:
         type: u1_nullable
         doc: 'priceLimitStyle. Nullable, No Value = 255'
   phase_qualifier:
+    meta:
+      bit-endian: le
     seq:
       - id: no_qualifier
         type: b1
@@ -490,6 +492,8 @@ types:
         type: long_order_short_codes_details_modifiable_groups
         doc: 'ShortCodesDetailsModifiable Block'
   ack_qualifiers:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -516,6 +520,8 @@ types:
         type: b1
         doc: 'ExecutedUponEntryFlag'
   dark_execution_instruction:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -542,6 +548,8 @@ types:
         type: b1
         doc: 'Unused DarkExecutionInstruction_set 7'
   execution_instruction_execution_instructionset:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_resting_order
         type: b1
@@ -568,6 +576,8 @@ types:
         type: b1
         doc: 'STPBothOrders'
   mi_fid_indicators_mi_fid_indicatorsset:
+    meta:
+      bit-endian: le
     seq:
       - id: dea_indicator
         type: b1
@@ -591,6 +601,8 @@ types:
         type: b2
         doc: '2 reserved bits'
   trade_qualifier_trade_qualifierset_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: uncrossing_trade
         type: b1
@@ -679,6 +691,8 @@ types:
         type: u1_nullable
         doc: 'undisclosedIcebergType. Nullable, No Value = 255'
   trading_session:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_trading_session_validityset_0
         type: b1
@@ -729,6 +743,8 @@ types:
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
   open_close:
+    meta:
+      bit-endian: le
     seq:
       - id: field_actively_used
         type: b1
@@ -1091,6 +1107,8 @@ types:
         type: d_c_short_order_reject_message_short_codes_details_modifiable_groups
         doc: 'ShortCodesDetailsModifiable Block'
   mi_fid_indicators_mi_fid_indicatorsset_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: dea_indicator
         type: b1
@@ -1373,6 +1391,8 @@ types:
         type: trade_bust_notification_short_codes_details_modifiable_groups
         doc: 'ShortCodesDetailsModifiable Block'
   trade_qualifier_trade_qualifierset:
+    meta:
+      bit-endian: le
     seq:
       - id: uncrossing_trade
         type: b1
@@ -1515,6 +1535,8 @@ types:
         type: d_c_quote_message_modifiable_short_codes_groups
         doc: 'ModifiableShortCodes Block'
   execution_instruction_execution_instructionset_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_resting_order
         type: b1

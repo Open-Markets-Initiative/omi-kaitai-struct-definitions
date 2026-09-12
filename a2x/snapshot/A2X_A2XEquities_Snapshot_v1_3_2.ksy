@@ -109,6 +109,8 @@ types:
         type: u8le
         doc: 'Indicative auction price'
   market_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused
         type: b5

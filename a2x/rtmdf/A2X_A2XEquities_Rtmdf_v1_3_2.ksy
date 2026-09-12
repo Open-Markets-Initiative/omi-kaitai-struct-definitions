@@ -218,6 +218,8 @@ types:
         type: security_flags
         doc: 'Security Flags'
   security_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_10
         type: b10
@@ -253,6 +255,8 @@ types:
         type: u8le
         doc: 'Timestamp of this market data event'
   market_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_5
         type: b5

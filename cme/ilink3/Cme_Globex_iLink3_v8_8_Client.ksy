@@ -322,6 +322,8 @@ types:
         type: decimal_s8_9_nullable
         doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: aon
         type: b1

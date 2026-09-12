@@ -318,6 +318,8 @@ types:
         enum: market_id
         doc: 'ID of the Originating Market'
   trade_session:
+    meta:
+      bit-endian: le
     seq:
       - id: ok_for_morning_hours
         type: b1

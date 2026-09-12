@@ -189,24 +189,24 @@ types:
         doc: 'Security trading status'
   security_flags:
     seq:
-      - id: piggyback_flag
-        type: b1
-        doc: '15c2-11 "PiggyBack" exempt security status flag'
-      - id: caveat_flag
-        type: b1
-        doc: 'Indicates whether a Caveat Emptor warning has been applied to the security'
-      - id: qib_only_144_a
-        type: b1
-        doc: '"144A QIB Only" in the PDF. Indicates that the security may only be purchased or sold by Qualified Institutional Buyers (QIBs) or agents acting on behalf of QIBs'
-      - id: unsolicited_only_flag
-        type: b1
-        doc: 'Indicates if a security may only be quoted Unsolicited'
-      - id: closing_cross_auction
-        type: b1
-        doc: 'Indicates if security participates in the OTC Link Closing Cross Auction'
       - id: reserved_11
         type: b11
         doc: 'Reserved'
+      - id: closing_cross_auction
+        type: b1
+        doc: 'Indicates if security participates in the OTC Link Closing Cross Auction'
+      - id: unsolicited_only_flag
+        type: b1
+        doc: 'Indicates if a security may only be quoted Unsolicited'
+      - id: qib_only_144_a
+        type: b1
+        doc: '"144A QIB Only" in the PDF. Indicates that the security may only be purchased or sold by Qualified Institutional Buyers (QIBs) or agents acting on behalf of QIBs'
+      - id: caveat_flag
+        type: b1
+        doc: 'Indicates whether a Caveat Emptor warning has been applied to the security'
+      - id: piggyback_flag
+        type: b1
+        doc: '15c2-11 "PiggyBack" exempt security status flag'
   order_add_message:
     seq:
       - id: time

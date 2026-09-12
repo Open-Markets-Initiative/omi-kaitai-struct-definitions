@@ -633,6 +633,8 @@ types:
         type: u1_nullable
         doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority. Nullable, No Value = 255'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: aon
         type: b1

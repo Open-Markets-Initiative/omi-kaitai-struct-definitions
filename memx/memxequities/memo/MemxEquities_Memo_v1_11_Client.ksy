@@ -228,6 +228,8 @@ types:
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1

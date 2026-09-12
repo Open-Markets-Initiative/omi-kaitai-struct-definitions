@@ -69,6 +69,8 @@ types:
         type: u2
         doc: 'Count of messages contained within the packet'
   packet_type:
+    meta:
+      bit-endian: le
     seq:
       - id: incremental_update
         type: b1
@@ -130,6 +132,8 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'UTC timestamp of when the transaction occurred, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch. Nullable, No Value = 0'
   message_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: start_of_transaction
         type: b1
@@ -201,6 +205,8 @@ types:
         type: instrument_definition_message_legs_groups
         doc: 'legs Block'
   flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_reversed
         type: b1
@@ -413,6 +419,8 @@ types:
         type: taker_flags
         doc: 'TradeFlags bit set'
   taker_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_sell
         type: b1
@@ -444,6 +452,8 @@ types:
         type: maker_flags
         doc: 'TradeFlags bit set'
   maker_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_sell
         type: b1

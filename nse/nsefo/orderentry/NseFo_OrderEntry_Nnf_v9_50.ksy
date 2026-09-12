@@ -324,6 +324,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved'
   st_broker_eligibility_per_mkt:
+    meta:
+      bit-endian: le
     seq:
       - id: pre_open
         type: b1
@@ -619,6 +621,8 @@ types:
         enum: pl_market_status_auction
         doc: 'Status of the auction market'
   st_stock_eligible_indicators:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_113
         type: b13
@@ -1094,6 +1098,8 @@ types:
         type: s2
         doc: 'Corporate action level'
   st_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_12
         type: b2
@@ -1141,6 +1147,8 @@ types:
         type: b1
         doc: 'At the open order'
   additional_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: boc
         type: b1

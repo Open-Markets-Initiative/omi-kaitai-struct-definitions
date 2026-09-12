@@ -99,6 +99,8 @@ types:
         type: u2
         doc: 'Schema version'
   flags:
+    meta:
+      bit-endian: le
     seq:
       - id: post_only
         type: b1

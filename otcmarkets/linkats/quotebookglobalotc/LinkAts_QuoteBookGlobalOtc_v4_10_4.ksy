@@ -206,30 +206,30 @@ types:
         doc: 'Current security status'
   security_flags:
     seq:
-      - id: proprietary_quote_eligible
-        type: b1
-        doc: 'Security is eligible for proprietary quoting under SEC Rule 15c-211'
-      - id: caveat_emptor_warning
-        type: b1
-        doc: 'Indicates whether a Caveat Emptor warning has been applied'
-      - id: qualified_institutional_buyers_only
-        type: b1
-        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
-      - id: unsolicited_only
-        type: b1
-        doc: 'Indicates if the security may only be quoted unsolicited'
-      - id: bb_quoted
-        type: b1
-        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
-      - id: otc_link_ecn_eligible
-        type: b1
-        doc: 'OTC Link ECN eligible'
-      - id: otc_link_messaging_disabled
-        type: b1
-        doc: 'OTC Link Messaging Disabled'
       - id: saturation_eligible
         type: b1
         doc: 'Indicates if a security is eligible to have their quotes saturated'
+      - id: otc_link_messaging_disabled
+        type: b1
+        doc: 'OTC Link Messaging Disabled'
+      - id: otc_link_ecn_eligible
+        type: b1
+        doc: 'OTC Link ECN eligible'
+      - id: bb_quoted
+        type: b1
+        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
+      - id: unsolicited_only
+        type: b1
+        doc: 'Indicates if the security may only be quoted unsolicited'
+      - id: qualified_institutional_buyers_only
+        type: b1
+        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
+      - id: caveat_emptor_warning
+        type: b1
+        doc: 'Indicates whether a Caveat Emptor warning has been applied'
+      - id: proprietary_quote_eligible
+        type: b1
+        doc: 'Security is eligible for proprietary quoting under SEC Rule 15c-211'
   quote_message:
     seq:
       - id: channel_seq_num
@@ -284,47 +284,47 @@ types:
         doc: 'Extended Quote Information'
   quote_flags:
     seq:
-      - id: update_side
-        type: b1
-        doc: 'Ask or Bid'
-      - id: state
-        type: b1
-        doc: 'Open or Closed'
-      - id: ask_unsolicited
-        type: b1
-        doc: 'Ask Unsolicited'
-      - id: ask_priced
-        type: b1
-        doc: 'Ask Priced'
-      - id: ask_bid_wanted
-        type: b1
-        doc: 'Ask Bid Wanted'
-      - id: bid_unsolicited
-        type: b1
-        doc: 'Bid Unsolicited'
-      - id: bid_priced
-        type: b1
-        doc: 'Bid Priced'
       - id: bid_ask_wanted
         type: b1
         doc: 'Bid Ask Wanted'
+      - id: bid_priced
+        type: b1
+        doc: 'Bid Priced'
+      - id: bid_unsolicited
+        type: b1
+        doc: 'Bid Unsolicited'
+      - id: ask_bid_wanted
+        type: b1
+        doc: 'Ask Bid Wanted'
+      - id: ask_priced
+        type: b1
+        doc: 'Ask Priced'
+      - id: ask_unsolicited
+        type: b1
+        doc: 'Ask Unsolicited'
+      - id: state
+        type: b1
+        doc: 'Open or Closed'
+      - id: update_side
+        type: b1
+        doc: 'Ask or Bid'
   extended_quote_flags:
     seq:
-      - id: quote_saturated
-        type: b1
-        doc: 'Determines whether the quote should be considered for the inside price'
-      - id: bid_auto_ex
-        type: b1
-        doc: 'If the AutoEx flag is set for the bid side, responses to OTC Link trade messages are immediate'
-      - id: offer_auto_ex
-        type: b1
-        doc: 'If the AutoEx flag is set for the offer side, responses to OTC Link trade messages are immediate'
-      - id: nms_conditional_quote
-        type: b1
-        doc: 'The displayed quote size is a round lot at least two times greater than the minimum round lot size and cannot be partially filled'
       - id: reserved_4
         type: b4
         doc: 'Reserved Extended Quote Flag Bits'
+      - id: nms_conditional_quote
+        type: b1
+        doc: 'The displayed quote size is a round lot at least two times greater than the minimum round lot size and cannot be partially filled'
+      - id: offer_auto_ex
+        type: b1
+        doc: 'If the AutoEx flag is set for the offer side, responses to OTC Link trade messages are immediate'
+      - id: bid_auto_ex
+        type: b1
+        doc: 'If the AutoEx flag is set for the bid side, responses to OTC Link trade messages are immediate'
+      - id: quote_saturated
+        type: b1
+        doc: 'Determines whether the quote should be considered for the inside price'
   quote_update_message:
     seq:
       - id: channel_seq_num

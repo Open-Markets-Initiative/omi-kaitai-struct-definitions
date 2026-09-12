@@ -203,6 +203,8 @@ types:
         pad-right: 0x20
         doc: 'Whether the option is a call or a put'
   st_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_12
         type: b2
@@ -250,6 +252,8 @@ types:
         type: b1
         doc: 'At the open order'
   additional_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: boc
         type: b1

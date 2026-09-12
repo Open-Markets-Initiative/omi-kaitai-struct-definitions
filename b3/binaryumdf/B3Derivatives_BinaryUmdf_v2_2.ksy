@@ -149,6 +149,8 @@ types:
         type: nanosecond_timestamp
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
   match_event_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_match_event_indicator_0
         type: b1
@@ -749,6 +751,8 @@ types:
         type: u4
         doc: 'rptSeq'
   imbalance_condition:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_imbalance_condition_0
         type: b1
@@ -938,6 +942,8 @@ types:
         size: 3
         doc: '3 bytes padding'
   trade_condition:
+    meta:
+      bit-endian: le
     seq:
       - id: opening_price
         type: b1

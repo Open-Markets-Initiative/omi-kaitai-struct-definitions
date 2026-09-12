@@ -257,6 +257,8 @@ types:
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1

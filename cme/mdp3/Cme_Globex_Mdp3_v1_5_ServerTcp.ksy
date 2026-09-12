@@ -116,6 +116,8 @@ types:
         type: channel_reset_groups
         doc: 'NoMDEntries Block'
   match_event_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: last_trade_msg
         type: b1
@@ -355,6 +357,8 @@ types:
         type: u1_nullable
         doc: 'WW. Nullable, No Value = 255'
   settl_price_type:
+    meta:
+      bit-endian: le
     seq:
       - id: final_field
         type: b1
@@ -435,6 +439,8 @@ types:
         type: inst_attrib_value
         doc: 'InstAttribValue bit set'
   inst_attrib_value:
+    meta:
+      bit-endian: le
     seq:
       - id: electronic_match_eligible
         type: b1

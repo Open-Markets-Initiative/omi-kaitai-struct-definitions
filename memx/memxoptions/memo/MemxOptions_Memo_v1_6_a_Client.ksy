@@ -203,6 +203,8 @@ types:
         type: parties_groups
         doc: 'Parties Block'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1
@@ -565,6 +567,8 @@ types:
         type: mass_cancel_inst
         doc: 'MassCancelInstType bit set'
   mass_cancel_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: lockout
         type: b1

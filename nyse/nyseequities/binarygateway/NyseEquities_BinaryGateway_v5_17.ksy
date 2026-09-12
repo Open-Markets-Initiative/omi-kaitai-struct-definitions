@@ -343,6 +343,8 @@ types:
         if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130 or _parent.seq_msg_header.seq_msg_length == 112
         doc: 'OptionalRoutingStrategyAddOn'
   bitfield_order_instructions:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_12
         type: b12
@@ -1051,6 +1053,8 @@ types:
         if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
         doc: 'OptionalOrderAddOn'
   bitfield_flow_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: throttled
         type: b1

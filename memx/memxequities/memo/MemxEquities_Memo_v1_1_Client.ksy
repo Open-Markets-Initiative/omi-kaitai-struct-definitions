@@ -228,6 +228,8 @@ types:
         type: u2_nullable
         doc: 'RiskGroupId. Nullable, No Value = 65535'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1

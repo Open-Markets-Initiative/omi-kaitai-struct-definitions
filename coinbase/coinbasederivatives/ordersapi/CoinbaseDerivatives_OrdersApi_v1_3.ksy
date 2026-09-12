@@ -98,6 +98,8 @@ types:
         type: u2
         doc: 'Schema version'
   flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_resend
         type: b1

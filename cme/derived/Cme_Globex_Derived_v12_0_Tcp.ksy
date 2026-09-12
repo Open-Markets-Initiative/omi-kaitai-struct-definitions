@@ -100,6 +100,8 @@ types:
         type: incremental_refresh_spectrum_groups
         doc: 'NoMDEntries Block'
   match_event_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_event_indicator_0
         type: b1

@@ -127,6 +127,8 @@ types:
         type: nanosecond_timestamp
         doc: 'UTC timestamp of when the message was sent from the gateway, nanoseconds since Unix epoch (January 1st, 1970, 00:00:00 GMT). Nanoseconds since Unix epoch'
   session_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_resend
         type: b1
@@ -278,6 +280,8 @@ types:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   flags_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: cancel_on_disconnect
         type: b1
@@ -324,6 +328,8 @@ types:
         type: flags_replace_order_flags
         doc: 'ReplaceOrderFlags bit set'
   flags_replace_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_replace_order_flags_0
         type: b1
@@ -380,6 +386,8 @@ types:
         type: mass_quote_request_message_quotes_groups
         doc: 'quotes Block'
   flags_mass_quote_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reset_mmp
         type: b1
@@ -451,6 +459,8 @@ types:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
   bid_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: cancel_on_disconnect
         type: b1
@@ -474,6 +484,8 @@ types:
         type: b10
         doc: '10 reserved bits'
   ask_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: cancel_on_disconnect
         type: b1
@@ -1231,6 +1243,8 @@ types:
         type: flags_fill_flags
         doc: 'FillFlags bit set'
   flags_fill_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_quote
         type: b1
@@ -1284,6 +1298,8 @@ types:
         type: orders_canceled_message_orders_groups
         doc: 'orders Block'
   flags_multi_part_event_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_last_message
         type: b1
@@ -1323,6 +1339,8 @@ types:
         type: flags_cancel_flags
         doc: 'CancelFlags bit set'
   flags_cancel_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_quote
         type: b1

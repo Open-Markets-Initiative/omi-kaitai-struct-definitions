@@ -154,15 +154,15 @@ types:
         doc: 'Denotes whether or not this option is tradable at the PHLX exchange'
   expiration:
     seq:
-      - id: day
-        type: b5
-        doc: 'Day bits'
-      - id: month
-        type: b4
-        doc: 'Month bits'
       - id: year
         type: b7
         doc: 'Year bits'
+      - id: month
+        type: b4
+        doc: 'Month bits'
+      - id: day
+        type: b5
+        doc: 'Day bits'
   complex_order_strategy_message:
     seq:
       - id: seconds

@@ -260,6 +260,8 @@ types:
         type: parties_groups
         doc: 'Parties Block'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1
@@ -883,6 +885,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
   mass_cancel_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: lockout
         type: b1

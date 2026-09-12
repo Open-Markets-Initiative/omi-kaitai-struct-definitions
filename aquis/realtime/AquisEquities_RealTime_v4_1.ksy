@@ -111,6 +111,8 @@ types:
         type: md_flags
         doc: 'Market data flags'
   md_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unrestricted_liquidity_indicator
         type: b1
@@ -188,6 +190,8 @@ types:
         type: md_flags
         doc: 'Market data flags'
   binary_mmt:
+    meta:
+      bit-endian: le
     seq:
       - id: market_mechanism
         type: b3
@@ -313,6 +317,8 @@ types:
         type: u1
         doc: 'Number of decimals implied in lotSize; always set to 9'
   security_definition_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: mac_enabled
         type: b1
@@ -358,6 +364,8 @@ types:
         enum: trading_phase
         doc: 'Trading phase of the security'
   market_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: trading
         type: b1

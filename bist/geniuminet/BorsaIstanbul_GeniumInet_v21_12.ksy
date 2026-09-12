@@ -286,6 +286,8 @@ types:
         type: nanosecond_timestamp
         doc: 'Ranking timestamp, in nanoseconds. Nanoseconds since Unix epoch'
   order_attributes:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_13
         type: b13

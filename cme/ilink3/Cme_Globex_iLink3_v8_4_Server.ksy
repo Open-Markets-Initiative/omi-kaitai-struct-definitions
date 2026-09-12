@@ -610,6 +610,8 @@ types:
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: aon
         type: b1

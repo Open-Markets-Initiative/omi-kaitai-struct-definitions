@@ -404,6 +404,8 @@ types:
         type: decimal_u8_8
         doc: 'Price. Implied decimal with scale 1e-8'
   trade_conditions:
+    meta:
+      bit-endian: le
     seq:
       - id: intermarket_sweep
         type: b1

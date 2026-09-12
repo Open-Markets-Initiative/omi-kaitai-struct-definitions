@@ -167,6 +167,8 @@ types:
         repeat: eos
         doc: 'Additional appendage tag value'
   party_role_qualifier:
+    meta:
+      bit-endian: le
     seq:
       - id: client_identification
         type: b2

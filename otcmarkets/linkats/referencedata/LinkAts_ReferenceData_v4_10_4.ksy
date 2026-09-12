@@ -262,42 +262,42 @@ types:
         doc: 'CUSIP identifier'
   extended_security_flags:
     seq:
-      - id: piggyback
-        type: b1
-        doc: 'Rule 15c2-11 Piggyback exemption'
-      - id: caveat_emptor_warning
-        type: b1
-        doc: 'Caveat Emptor warning applied'
-      - id: qualified_institutional_buyers_only
-        type: b1
-        doc: 'Qualified Institutional Buyers only'
-      - id: unsolicited_only
-        type: b1
-        doc: 'Unsolicited quotes only'
-      - id: sponsored_status
-        type: b1
-        doc: 'Security is sponsored'
-      - id: otc_link_ecn_eligible
-        type: b1
-        doc: 'OTC Link ECN eligible'
-      - id: otc_link_messaging_disabled
-        type: b1
-        doc: 'OTC Link messaging disabled'
-      - id: saturation_eligible
-        type: b1
-        doc: 'Indicates if a security is eligible to have their quotes saturated'
-      - id: investment_grade
-        type: b1
-        doc: 'Indicates if the security is investment grade'
-      - id: trading_flat
-        type: b1
-        doc: 'Indicates if the security is trading flat (no coupon)'
-      - id: callable
-        type: b1
-        doc: 'Indicates if the security is callable'
       - id: reserved_5
         type: b5
         doc: 'Reserved'
+      - id: callable
+        type: b1
+        doc: 'Indicates if the security is callable'
+      - id: trading_flat
+        type: b1
+        doc: 'Indicates if the security is trading flat (no coupon)'
+      - id: investment_grade
+        type: b1
+        doc: 'Indicates if the security is investment grade'
+      - id: saturation_eligible
+        type: b1
+        doc: 'Indicates if a security is eligible to have their quotes saturated'
+      - id: otc_link_messaging_disabled
+        type: b1
+        doc: 'OTC Link messaging disabled'
+      - id: otc_link_ecn_eligible
+        type: b1
+        doc: 'OTC Link ECN eligible'
+      - id: sponsored_status
+        type: b1
+        doc: 'Security is sponsored'
+      - id: unsolicited_only
+        type: b1
+        doc: 'Unsolicited quotes only'
+      - id: qualified_institutional_buyers_only
+        type: b1
+        doc: 'Qualified Institutional Buyers only'
+      - id: caveat_emptor_warning
+        type: b1
+        doc: 'Caveat Emptor warning applied'
+      - id: piggyback
+        type: b1
+        doc: 'Rule 15c2-11 Piggyback exemption'
   security_detail:
     seq:
       - id: len_security_detail_name

@@ -149,6 +149,8 @@ types:
         enum: luld_tier
         doc: 'Indicates which Limit Up-Limit Down price band calculation parameter is to be used'
   security_directory_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_5
         type: b5
@@ -313,6 +315,8 @@ types:
         type: u8
         doc: 'IEX Generated Identifier. Trade ID is also'
   sale_condition_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_3
         type: b3

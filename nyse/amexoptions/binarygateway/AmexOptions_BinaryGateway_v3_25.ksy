@@ -1219,6 +1219,8 @@ types:
         if: _parent.seq_msg_header.seq_msg_length != 100
         doc: 'OptionalOrderAddOn'
   bitfield_flow_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: throttled
         type: b1

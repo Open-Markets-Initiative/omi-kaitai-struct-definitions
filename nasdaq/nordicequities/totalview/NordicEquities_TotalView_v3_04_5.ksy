@@ -241,6 +241,8 @@ types:
         type: decimal_u8_6
         doc: 'Multiplier to calculate quantity in measurement units. Implied decimal with scale 1e-6'
   note_codes_bit_field_1:
+    meta:
+      bit-endian: le
     seq:
       - id: nm_new_market_company
         type: b1
@@ -259,6 +261,8 @@ types:
       - id: wi_when_issued
         type: b1
   note_codes_bit_field_2:
+    meta:
+      bit-endian: le
     seq:
       - id: br_company_bankruptcy
         type: b1
@@ -277,6 +281,8 @@ types:
       - id: bs_excluding_comb_bonus_split
         type: b1
   note_codes_bit_field_3:
+    meta:
+      bit-endian: le
     seq:
       - id: ss_excluding_comb_split_redemption_share
         type: b1
@@ -295,6 +301,8 @@ types:
       - id: kb_knock_out_buy_back
         type: b1
   note_codes_bit_field_4:
+    meta:
+      bit-endian: le
     seq:
       - id: bb_buy_back
         type: b1
@@ -311,6 +319,8 @@ types:
       - id: ew_marketwide_exceptional_circumstance
         type: b1
   note_codes_bit_field_5:
+    meta:
+      bit-endian: le
     seq:
       - id: em_exceptional_circumstances_related_to_market_maker
         type: b1
@@ -323,14 +333,20 @@ types:
       - id: reserved_58
         type: b4
   note_codes_bit_field_6:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_18
         type: b8
   note_codes_bit_field_7:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_18
         type: b8
   note_codes_bit_field_8:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_18
         type: b8

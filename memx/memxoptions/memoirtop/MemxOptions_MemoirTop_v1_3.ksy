@@ -383,6 +383,8 @@ types:
         enum: capacity
         doc: 'Capacity'
   trade_conditions:
+    meta:
+      bit-endian: le
     seq:
       - id: intermarket_sweep
         type: b1

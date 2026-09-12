@@ -220,6 +220,8 @@ types:
         type: additional_infos_groups
         doc: 'AdditionalInfos Block'
   execution_instruction:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_resting_order
         type: b1
@@ -246,6 +248,8 @@ types:
         type: b1
         doc: 'STPBothOrders'
   dark_execution_instruction:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -266,6 +270,8 @@ types:
         type: b3
         doc: '3 reserved bits'
   mifid_indicators:
+    meta:
+      bit-endian: le
     seq:
       - id: dea_indicator
         type: b1
@@ -378,6 +384,8 @@ types:
         type: u1_nullable
         doc: 'stopTriggeredTimeInForce. Nullable, No Value = 255'
   trading_session:
+    meta:
+      bit-endian: le
     seq:
       - id: unused_trading_session_validityset_0
         type: b1
@@ -434,6 +442,8 @@ types:
         type: u1_nullable
         doc: 'tradingCapacityCross. Nullable, No Value = 255'
   open_close:
+    meta:
+      bit-endian: le
     seq:
       - id: field_actively_used
         type: b1
@@ -566,6 +576,8 @@ types:
         type: mifid_fields_groups
         doc: 'MiFIDFields Block'
   ack_qualifiers:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -613,6 +625,8 @@ types:
         type: mifid_indicators_optional
         doc: 'MiFIDIndicators_set bit set. Nullable, No Value = 255'
   execution_instruction_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_resting_order
         type: b1
@@ -639,6 +653,8 @@ types:
         type: b1
         doc: 'STPBothOrders'
   mifid_indicators_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: dea_indicator
         type: b1
@@ -745,6 +761,8 @@ types:
         type: fill_derivatives_field_groups
         doc: 'OptionalFieldsDerivatives Block'
   trade_qualifier:
+    meta:
+      bit-endian: le
     seq:
       - id: uncrossing_trade
         type: b1
@@ -906,6 +924,8 @@ types:
         type: mifid_fields_groups
         doc: 'MiFIDFields Block'
   ack_qualifiers_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -2487,6 +2507,8 @@ types:
         type: mmp_ack_groups
         doc: 'MMPSection2 Block'
   mmp_execution_type:
+    meta:
+      bit-endian: le
     seq:
       - id: notification
         type: b1
@@ -3049,6 +3071,8 @@ types:
         type: u8_nullable
         doc: 'minimumOrderQuantity. Nullable, No Value = 18446744073709551615'
   dark_execution_instruction_optional:
+    meta:
+      bit-endian: le
     seq:
       - id: dark_indicator
         type: b1
@@ -3116,6 +3140,8 @@ types:
         type: u1_nullable
         doc: 'iOIQualityIndication. Nullable, No Value = 255'
   target_counterparties:
+    meta:
+      bit-endian: le
     seq:
       - id: euronext_data_driven
         type: b1
@@ -3460,6 +3486,8 @@ types:
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
   waiver_indicator:
+    meta:
+      bit-endian: le
     seq:
       - id: lrgs
         type: b1

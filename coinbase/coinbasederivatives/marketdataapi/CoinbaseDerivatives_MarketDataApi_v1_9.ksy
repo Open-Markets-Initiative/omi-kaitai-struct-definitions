@@ -69,6 +69,8 @@ types:
         type: s4
         doc: 'Instrument id of messages in snapshot packet (not used for incrementals)'
   packet_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: incremental_update
         type: b1
@@ -241,6 +243,8 @@ types:
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
   definition_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_prior_settlement_theoretical
         type: b1
@@ -646,6 +650,8 @@ types:
         type: flags
         doc: 'FundingRateFlags bit set'
   flags:
+    meta:
+      bit-endian: le
     seq:
       - id: is_final
         type: b1

@@ -276,6 +276,8 @@ types:
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
   exec_inst:
+    meta:
+      bit-endian: le
     seq:
       - id: participate_do_not_initiate
         type: b1

@@ -184,6 +184,8 @@ types:
         enum: short_code_3
         doc: 'Short code for party 3'
   flags:
+    meta:
+      bit-endian: le
     seq:
       - id: liq_prov
         type: b1
@@ -198,6 +200,8 @@ types:
         type: b5
         doc: 'Reserved'
   table_select_1:
+    meta:
+      bit-endian: le
     seq:
       - id: party_role
         type: b4
@@ -206,6 +210,8 @@ types:
         type: b4
         doc: 'Party role qualifier'
   table_select_2:
+    meta:
+      bit-endian: le
     seq:
       - id: party_role
         type: b4
@@ -214,6 +220,8 @@ types:
         type: b4
         doc: 'Party role qualifier'
   table_select_3:
+    meta:
+      bit-endian: le
     seq:
       - id: party_role
         type: b4
@@ -299,6 +307,8 @@ types:
         type: s8
         doc: 'Only applicable for AoD Near Touch Pegged orders; value added to the peg calculation'
   extended_order_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_enable
         type: b1
@@ -464,6 +474,8 @@ types:
         type: order_add_response_flags
         doc: 'Order add response flags'
   status:
+    meta:
+      bit-endian: le
     seq:
       - id: reason_code
         type: b5
@@ -472,6 +484,8 @@ types:
         type: b3
         doc: 'Order status'
   order_add_response_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_6
         type: b6
@@ -558,6 +572,8 @@ types:
         type: u8
         doc: 'Free form tag assigned by trading Member'
   trade_capture_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_1
         type: b1
@@ -619,6 +635,8 @@ types:
         type: trade_flags
         doc: 'Trade flags'
   trade_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_6
         type: b6
@@ -721,6 +739,8 @@ types:
         encoding: ASCII
         doc: '50 byte blacklist as agreed with OptimX'
   ioi_extended_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: stp_enable
         type: b1

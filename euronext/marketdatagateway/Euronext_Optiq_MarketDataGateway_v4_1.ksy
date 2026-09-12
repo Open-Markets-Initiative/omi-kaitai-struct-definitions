@@ -63,6 +63,8 @@ types:
         type: u2
         doc: 'Identifies the channel'
   packet_flags:
+    meta:
+      bit-endian: le
     seq:
       - id: compression
         type: b1
@@ -518,6 +520,8 @@ types:
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
   trade_qualifier:
+    meta:
+      bit-endian: le
     seq:
       - id: uncrossing_trade
         type: b1
@@ -623,6 +627,8 @@ types:
         type: u1_nullable
         doc: 'instrumentState. Nullable, No Value = 255'
   phase_qualifier:
+    meta:
+      bit-endian: le
     seq:
       - id: no_qualifier
         type: b1
@@ -1281,6 +1287,8 @@ types:
         type: contract_emm_properties_groups
         doc: 'ContractEMMProperties Block'
   order_type_rules:
+    meta:
+      bit-endian: le
     seq:
       - id: market
         type: b1
@@ -1304,6 +1312,8 @@ types:
         type: b10
         doc: '10 reserved bits'
   mm_protections:
+    meta:
+      bit-endian: le
     seq:
       - id: delta
         type: b1
@@ -1351,6 +1361,8 @@ types:
         type: u4_nullable
         doc: 'collarUnhaltDelay. Nullable, No Value = 4294967295'
   strategy_authorized:
+    meta:
+      bit-endian: le
     seq:
       - id: jelly_roll
         type: b1

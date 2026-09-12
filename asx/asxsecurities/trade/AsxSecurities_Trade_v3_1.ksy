@@ -354,6 +354,8 @@ types:
         enum: lot_type
         doc: 'Lot Type value'
   exchange_order_type:
+    meta:
+      bit-endian: le
     seq:
       - id: reserved_2_bits
         type: b2
