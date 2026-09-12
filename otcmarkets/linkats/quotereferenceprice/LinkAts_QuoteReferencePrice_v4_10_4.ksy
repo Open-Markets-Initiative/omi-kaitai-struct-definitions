@@ -68,22 +68,24 @@ types:
         type: millisecond_timestamp
         doc: 'Milliseconds since local time midnight (EST/EDT). Milliseconds since Midnight epoch'
   packet_flag:
+    meta:
+      bit-endian: le
     seq:
-      - id: test
-        type: b1
-        doc: 'Packet contains test messages'
-      - id: replay
-        type: b1
-        doc: 'Packet contains replay messages'
-      - id: reserved_4
-        type: b4
-        doc: 'Reserved 4'
-      - id: seq_num_reset
-        type: b1
-        doc: 'indicates that the channel sequence numbers are being reset to 1'
       - id: heartbeat
         type: b1
         doc: 'A Heartbeat is sent if no business level message has been published for more than a second'
+      - id: seq_num_reset
+        type: b1
+        doc: 'indicates that the channel sequence numbers are being reset to 1'
+      - id: reserved_4
+        type: b4
+        doc: 'Reserved 4'
+      - id: replay
+        type: b1
+        doc: 'Packet contains replay messages'
+      - id: test
+        type: b1
+        doc: 'Packet contains test messages'
   message:
     seq:
       - id: message_header
@@ -205,31 +207,33 @@ types:
         enum: security_status
         doc: 'Current security status'
   security_flags:
+    meta:
+      bit-endian: le
     seq:
-      - id: saturation_eligible
-        type: b1
-        doc: 'Indicates if a security is eligible to have their quotes saturated'
-      - id: otc_link_messaging_disabled
-        type: b1
-        doc: 'OTC Link Messaging Disabled'
-      - id: otc_link_ecn_eligible
-        type: b1
-        doc: 'OTC Link ECN eligible'
-      - id: bb_quoted
-        type: b1
-        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
-      - id: unsolicited_only
-        type: b1
-        doc: 'Indicates if the security may only be quoted unsolicited'
-      - id: qualified_institutional_buyers_only
-        type: b1
-        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
-      - id: caveat_emptor_warning
-        type: b1
-        doc: 'Indicates whether a Caveat Emptor warning has been applied'
       - id: proprietary_quote_eligible
         type: b1
         doc: 'Security is eligible for proprietary quoting under SEC Rule 15c-211'
+      - id: caveat_emptor_warning
+        type: b1
+        doc: 'Indicates whether a Caveat Emptor warning has been applied'
+      - id: qualified_institutional_buyers_only
+        type: b1
+        doc: 'Indicates if the security is restricted to Qualified Institutional Buyers'
+      - id: unsolicited_only
+        type: b1
+        doc: 'Indicates if the security may only be quoted unsolicited'
+      - id: bb_quoted
+        type: b1
+        doc: 'Indicates if the security is quoted on the OTC Bulletin Board'
+      - id: otc_link_ecn_eligible
+        type: b1
+        doc: 'OTC Link ECN eligible'
+      - id: otc_link_messaging_disabled
+        type: b1
+        doc: 'OTC Link Messaging Disabled'
+      - id: saturation_eligible
+        type: b1
+        doc: 'Indicates if a security is eligible to have their quotes saturated'
   reference_price_message:
     seq:
       - id: channel_seq_num
@@ -267,31 +271,33 @@ types:
         type: u8
         doc: 'Bid timestamp in milliseconds since UTC epoch'
   quote_flags:
+    meta:
+      bit-endian: le
     seq:
-      - id: fourth_reserved_1
+      - id: update_side
         type: b1
-        doc: 'Reserved'
-      - id: bid_priced
+        doc: 'Ask or Bid'
+      - id: state
         type: b1
-        doc: 'Bid Priced Actual'
-      - id: third_reserved_1
-        type: b1
-        doc: 'Reserved'
-      - id: second_reserved_1
+        doc: 'Open or Closed'
+      - id: reserved_1
         type: b1
         doc: 'Reserved'
       - id: ask_priced
         type: b1
         doc: 'Ask Priced'
-      - id: reserved_1
+      - id: second_reserved_1
         type: b1
         doc: 'Reserved'
-      - id: state
+      - id: third_reserved_1
         type: b1
-        doc: 'Open or Closed'
-      - id: update_side
+        doc: 'Reserved'
+      - id: bid_priced
         type: b1
-        doc: 'Ask or Bid'
+        doc: 'Bid Priced Actual'
+      - id: fourth_reserved_1
+        type: b1
+        doc: 'Reserved'
   reference_price_update_message:
     seq:
       - id: channel_seq_num

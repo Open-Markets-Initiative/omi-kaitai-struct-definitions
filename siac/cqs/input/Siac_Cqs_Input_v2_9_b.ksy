@@ -113,9 +113,7 @@ types:
         type: u1
         doc: 'Identifies the individual message within the block, beginning with one (1) and incremented for subsequent messages within a block'
       - id: reserved
-        type: str
         size: 4
-        encoding: ASCII
         doc: 'Reserved for Future Use (TBD), space filled'
       - id: participant_reference_number
         type: s8

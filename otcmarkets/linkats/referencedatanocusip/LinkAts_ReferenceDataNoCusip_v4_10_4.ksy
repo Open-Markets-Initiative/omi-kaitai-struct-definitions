@@ -68,22 +68,24 @@ types:
         type: millisecond_timestamp
         doc: 'Milliseconds since local time midnight (EST/EDT). Milliseconds since Midnight epoch'
   packet_flag:
+    meta:
+      bit-endian: le
     seq:
-      - id: test
-        type: b1
-        doc: 'Packet contains test messages'
-      - id: replay
-        type: b1
-        doc: 'Packet contains replay messages'
-      - id: reserved_4
-        type: b4
-        doc: 'Reserved 4'
-      - id: seq_num_reset
-        type: b1
-        doc: 'indicates that the channel sequence numbers are being reset to 1'
       - id: heartbeat
         type: b1
         doc: 'A Heartbeat is sent if no business level message has been published for more than a second'
+      - id: seq_num_reset
+        type: b1
+        doc: 'indicates that the channel sequence numbers are being reset to 1'
+      - id: reserved_4
+        type: b4
+        doc: 'Reserved 4'
+      - id: replay
+        type: b1
+        doc: 'Packet contains replay messages'
+      - id: test
+        type: b1
+        doc: 'Packet contains test messages'
   message:
     seq:
       - id: message_header

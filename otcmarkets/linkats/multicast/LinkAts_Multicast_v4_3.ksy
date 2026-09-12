@@ -68,22 +68,24 @@ types:
         type: millisecond_timestamp
         doc: 'Milliseconds since local time midnight (EST/EDT). Milliseconds since Midnight epoch'
   packet_flag:
+    meta:
+      bit-endian: le
     seq:
-      - id: test
-        type: b1
-        doc: 'Packet contains test messages'
-      - id: replay
-        type: b1
-        doc: 'Packet contains replay messages'
-      - id: reserved_4
-        type: b4
-        doc: 'Reserved Extended Quote Flag Bits'
-      - id: seq_num_reset
-        type: b1
-        doc: 'indicates that the channel sequence numbers are being reset to 1'
       - id: heartbeat
         type: b1
         doc: 'A Heartbeat is sent if no business level message has been published for more than a second'
+      - id: seq_num_reset
+        type: b1
+        doc: 'indicates that the channel sequence numbers are being reset to 1'
+      - id: reserved_4
+        type: b4
+        doc: 'Reserved Extended Quote Flag Bits'
+      - id: replay
+        type: b1
+        doc: 'Packet contains replay messages'
+      - id: test
+        type: b1
+        doc: 'Packet contains test messages'
   message:
     seq:
       - id: message_header
@@ -212,31 +214,33 @@ types:
         enum: security_status
         doc: 'Security status'
   security_flags:
+    meta:
+      bit-endian: le
     seq:
-      - id: saturation_eligible
-        type: b1
-        doc: 'Indicates if a security is eligible to have their quotes saturated'
-      - id: otc_link_messaging_disabled
-        type: b1
-        doc: 'Indicates whether OTC Link messaging is disabled for the security'
-      - id: otc_link_ecn_eligible
-        type: b1
-        doc: 'Indicates if the security is eligible for OTC Link ECN'
-      - id: bb_quoted
-        type: b1
-        doc: 'Indicates if the security is quoted on the OTC Bulletin Board interdealer quotation system'
-      - id: unsolicited_only
-        type: b1
-        doc: 'Indicates if the security may only be quoted unsolicited'
-      - id: qualified_institutional_buyers_only
-        type: b1
-        doc: 'Indicates if the security may only be quoted unsolicited for Qualified Institutional Buyers'
-      - id: caveat_emptor_warning
-        type: b1
-        doc: 'Indicates whether a Caveat Emptor warning has been applied to the security'
       - id: piggyback
         type: b1
         doc: 'Rule 15c2-11 “Piggyback” exempt security status flag'
+      - id: caveat_emptor_warning
+        type: b1
+        doc: 'Indicates whether a Caveat Emptor warning has been applied to the security'
+      - id: qualified_institutional_buyers_only
+        type: b1
+        doc: 'Indicates if the security may only be quoted unsolicited for Qualified Institutional Buyers'
+      - id: unsolicited_only
+        type: b1
+        doc: 'Indicates if the security may only be quoted unsolicited'
+      - id: bb_quoted
+        type: b1
+        doc: 'Indicates if the security is quoted on the OTC Bulletin Board interdealer quotation system'
+      - id: otc_link_ecn_eligible
+        type: b1
+        doc: 'Indicates if the security is eligible for OTC Link ECN'
+      - id: otc_link_messaging_disabled
+        type: b1
+        doc: 'Indicates whether OTC Link messaging is disabled for the security'
+      - id: saturation_eligible
+        type: b1
+        doc: 'Indicates if a security is eligible to have their quotes saturated'
   quote_message:
     seq:
       - id: channel_seq_num
@@ -290,48 +294,52 @@ types:
         type: extended_quote_flags
         doc: 'Extended Quote Information'
   quote_flags:
+    meta:
+      bit-endian: le
     seq:
-      - id: bid_ask_wanted
-        type: b1
-        doc: 'Bid Ask Wanted'
-      - id: bid_priced
-        type: b1
-        doc: 'Bid Priced'
-      - id: bid_unsolicited
-        type: b1
-        doc: 'Bid Unsolicited'
-      - id: ask_bid_wanted
-        type: b1
-        doc: 'Ask Bid Wanted'
-      - id: ask_priced
-        type: b1
-        doc: 'Ask Priced'
-      - id: ask_unsolicited
-        type: b1
-        doc: 'Ask Unsolicited'
-      - id: state
-        type: b1
-        doc: 'Open or Closed'
       - id: update_side
         type: b1
         doc: 'Ask or Bid'
+      - id: state
+        type: b1
+        doc: 'Open or Closed'
+      - id: ask_unsolicited
+        type: b1
+        doc: 'Ask Unsolicited'
+      - id: ask_priced
+        type: b1
+        doc: 'Ask Priced'
+      - id: ask_bid_wanted
+        type: b1
+        doc: 'Ask Bid Wanted'
+      - id: bid_unsolicited
+        type: b1
+        doc: 'Bid Unsolicited'
+      - id: bid_priced
+        type: b1
+        doc: 'Bid Priced'
+      - id: bid_ask_wanted
+        type: b1
+        doc: 'Bid Ask Wanted'
   extended_quote_flags:
+    meta:
+      bit-endian: le
     seq:
-      - id: reserved_4
-        type: b4
-        doc: 'Reserved Extended Quote Flag Bits'
-      - id: nms_conditional_quote
-        type: b1
-        doc: 'Displayed quote size is a round lot at least two times greater than the minimum round lot size and cannot be partially filled'
-      - id: offer_auto_ex
-        type: b1
-        doc: 'Offer Auto Execution enabled'
-      - id: bid_auto_ex
-        type: b1
-        doc: 'Bid Auto Execution enabled'
       - id: quote_saturated
         type: b1
         doc: 'Quote should be considered for inside price'
+      - id: bid_auto_ex
+        type: b1
+        doc: 'Bid Auto Execution enabled'
+      - id: offer_auto_ex
+        type: b1
+        doc: 'Offer Auto Execution enabled'
+      - id: nms_conditional_quote
+        type: b1
+        doc: 'Displayed quote size is a round lot at least two times greater than the minimum round lot size and cannot be partially filled'
+      - id: reserved_4
+        type: b4
+        doc: 'Reserved Extended Quote Flag Bits'
   quote_update_message:
     seq:
       - id: channel_seq_num
@@ -767,13 +775,15 @@ types:
         type: u8
         doc: 'Trade timestamp in milliseconds from UTC epoch'
   trade_status:
+    meta:
+      bit-endian: le
     seq:
-      - id: reserved_7
-        type: b7
-        doc: 'Reserved Trade Status Bits'
       - id: irregular
         type: b1
         doc: 'Indicates an irregular trade'
+      - id: reserved_7
+        type: b7
+        doc: 'Reserved Trade Status Bits'
   millisecond_timestamp:
     seq:
       - id: time
