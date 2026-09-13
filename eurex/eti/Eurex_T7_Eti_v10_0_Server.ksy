@@ -812,8 +812,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   notif_header_comp:
     seq:
@@ -1430,8 +1430,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   forced_user_logout_notification:
     seq:
@@ -1456,8 +1456,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   heartbeat_notification:
     seq:
@@ -1664,8 +1664,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   logon_response:
     seq:
@@ -2041,8 +2041,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   order_exec_notification:
     seq:
@@ -2736,8 +2736,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   retransmit_me_message_response:
     seq:
@@ -4318,8 +4318,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   trd_instrmnt_leg_grp_comp:
     seq:
@@ -4538,8 +4538,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - _io.pos
-        if: _parent.message_header.body_len != _io.pos
+        size: _parent.message_header.body_len - (_io.pos + 6)
+        if: _parent.message_header.body_len != (_io.pos + 6)
         doc: 'Alignment'
   side_alloc_grp_bc_comp:
     seq:

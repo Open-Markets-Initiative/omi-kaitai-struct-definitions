@@ -80,7 +80,7 @@ types:
         type: u2
         doc: 'Number of bytes in the following message'
       - id: sbe_message
-        size: 
+        size: message_length + 2 - 2
         doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 
 enums:

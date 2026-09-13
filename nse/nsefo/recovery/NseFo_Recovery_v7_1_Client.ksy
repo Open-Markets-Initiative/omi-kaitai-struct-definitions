@@ -51,6 +51,7 @@ types:
         enum: client_message_type
         doc: 'cMsgType. Code identifying message type [1, Char]'
       - id: client_payload
+        size-eos: true
         type:
           switch-on: client_message_type
           cases:

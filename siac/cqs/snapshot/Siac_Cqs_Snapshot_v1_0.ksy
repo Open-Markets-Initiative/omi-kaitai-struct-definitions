@@ -41,7 +41,7 @@ doc-ref: https://www.ctaplan.com/tech-specs
 seq:
   - id: block_header
     type: block_header_struct
-    doc: 'Block Header'
+    doc: 'Cqs Snapshot packet header'
   - id: message
     type: message_struct
     repeat: expr

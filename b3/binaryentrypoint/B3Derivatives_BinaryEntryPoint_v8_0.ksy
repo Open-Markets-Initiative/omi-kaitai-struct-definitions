@@ -1664,7 +1664,7 @@ types:
       - id: len_quote_req_id_data
         type: u1
       - id: quote_req_id_data
-        type: u1
+        size: len_quote_req_id_data
         if: len_quote_req_id_data > 0
   quote_status_report_message:
     seq:

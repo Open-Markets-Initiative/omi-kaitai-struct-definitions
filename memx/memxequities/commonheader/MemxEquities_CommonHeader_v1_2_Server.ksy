@@ -125,7 +125,7 @@ types:
   sequenced_message:
     seq:
       - id: sbe_message
-        size: 
+        size-eos: true
         doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 
 enums:

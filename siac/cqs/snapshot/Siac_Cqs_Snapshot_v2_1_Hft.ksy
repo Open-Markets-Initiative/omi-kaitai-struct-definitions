@@ -105,6 +105,8 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Per-message type code; paired with Message Category to identify the terminal message'
+      - id: message_payload
+        size: message_length - 4
   nanosecond_timestamp:
     seq:
       - id: time

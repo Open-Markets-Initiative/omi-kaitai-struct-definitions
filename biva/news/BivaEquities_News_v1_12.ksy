@@ -269,17 +269,17 @@ types:
         doc: 'Unique identifier for the market participant'
       - id: title
         type: str
-        size: 
+        terminator: 0
         encoding: ASCII
         doc: 'News title'
       - id: reference
         type: str
-        size: 
+        terminator: 0
         encoding: ASCII
         doc: 'Reference for news item associated object'
       - id: news_text
         type: str
-        size: 
+        terminator: 0
         encoding: ASCII
         doc: 'News data'
   second_timestamp:

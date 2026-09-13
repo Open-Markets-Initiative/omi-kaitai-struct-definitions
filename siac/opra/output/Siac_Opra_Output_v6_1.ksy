@@ -41,7 +41,7 @@ doc-ref: https://www.opraplan.com/document-library
 seq:
   - id: block_header
     type: block_header_struct
-    doc: 'Block Header'
+    doc: 'Opra packet header'
   - id: message
     type: message_struct
     repeat: expr

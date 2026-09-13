@@ -59,7 +59,6 @@ types:
             'schema_id::order': order_message
       - id: padding
         size: 0
-        if: message_header.message_length - _io.pos > 0
         doc: 'Tcp sbe alignment padding'
   message_header:
     seq:

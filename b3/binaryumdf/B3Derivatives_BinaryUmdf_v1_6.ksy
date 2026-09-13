@@ -583,7 +583,7 @@ types:
         type: u2
         doc: 'Length of a string, in bytes. For instance, the string ''Ação'', converted to UTF-8, has 6 bytes, so length = 6'
       - id: headline_data
-        type: u1
+        size: len_headline_data
         if: len_headline_data > 0
         doc: 'Bytes of the string, encoded in UTF-8'
   text:
@@ -592,7 +592,7 @@ types:
         type: u2
         doc: 'Length of a string, in bytes. For instance, the string ''Ação'', converted to UTF-8, has 6 bytes, so length = 6'
       - id: text_data
-        type: u1
+        size: len_text_data
         if: len_text_data > 0
         doc: 'Bytes of the string, encoded in UTF-8'
   url_link:
@@ -601,7 +601,7 @@ types:
         type: u2
         doc: 'Length of a string, in bytes. For instance, the string ''Ação'', converted to UTF-8, has 6 bytes, so length = 6'
       - id: url_link_data
-        type: u1
+        size: len_url_link_data
         if: len_url_link_data > 0
         doc: 'Bytes of the string, encoded in UTF-8'
   empty_book_message:

@@ -97,7 +97,6 @@ types:
             'template_id::orders_mmp_unfrozen_message': orders_mmp_unfrozen_message
       - id: padding
         size: 0
-        if: message_header.message_length - _io.pos > 0
         doc: 'Tcp sbe alignment padding'
   message_header:
     seq:

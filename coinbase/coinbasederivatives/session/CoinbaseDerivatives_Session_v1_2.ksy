@@ -65,8 +65,7 @@ types:
             'template_id::gap_fill_message': gap_fill_message
             'template_id::reject_message': reject_message
       - id: padding
-        type: u4
-        if: message_header.message_length - _io.pos > 0
+        size: 4
         doc: 'padding'
   message_header:
     seq:
@@ -173,8 +172,8 @@ types:
         type: u4
         doc: 'newSequenceNumber'
       - id: padding
-        type: u4
-        if: _parent.message_header.message_length - _io.pos > 0
+        size: _parent.message_header.message_length - (_io.pos + 36)
+        if: _parent.message_header.message_length - (_io.pos + 36) > 0
         doc: 'padding'
   reject_message:
     seq:
