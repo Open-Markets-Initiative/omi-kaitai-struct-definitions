@@ -156,10 +156,7 @@ types:
         enum: mpv
         doc: 'Minimum Price Variation for this option'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   trading_action_message:
     seq:

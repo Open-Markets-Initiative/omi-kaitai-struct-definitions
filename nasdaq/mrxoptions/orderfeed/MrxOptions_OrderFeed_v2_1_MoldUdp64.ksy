@@ -152,10 +152,7 @@ types:
         enum: mpv
         doc: 'Minimum Price Variation'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   trading_action_message:
     seq:
@@ -310,10 +307,7 @@ types:
         pad-right: 0x20
         doc: 'Attributable Order may provide CMTA to disseminate with order; Spaces when not set'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   nanosecond_timestamp:
     seq:

@@ -148,10 +148,7 @@ types:
         pad-right: 0x20
         doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
       - id: num_leg_information
         type: u1

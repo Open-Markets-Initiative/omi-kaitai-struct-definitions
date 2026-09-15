@@ -134,8 +134,8 @@ types:
         type: u4
         doc: 'enteringFirm'
       - id: onbehalf_firm
-        type: u4
-        doc: 'onbehalfFirm'
+        type: u4_nullable
+        doc: 'onbehalfFirm. Nullable, No Value = 0'
       - id: credentials
         type: credentials
         doc: 'credentials data struct'
@@ -218,8 +218,8 @@ types:
         type: u8
         doc: 'requestTimestamp'
       - id: entering_firm_optional
-        type: u4
-        doc: 'enteringFirm'
+        type: u4_nullable
+        doc: 'enteringFirm. Nullable, No Value = 0'
       - id: negotiation_reject_code
         type: u1
         enum: negotiation_reject_code
@@ -228,8 +228,8 @@ types:
         size: 3
         doc: '3 bytes padding'
       - id: current_session_ver_id
-        type: u8
-        doc: 'currentSessionVerID'
+        type: u8_nullable
+        doc: 'currentSessionVerID. Nullable, No Value = 0'
   establish_message:
     seq:
       - id: session_id
@@ -299,8 +299,8 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: last_incoming_seq_no_optional
-        type: u4
-        doc: 'lastIncomingSeqNo'
+        type: u4_nullable
+        doc: 'lastIncomingSeqNo. Nullable, No Value = 0'
   terminate_message:
     seq:
       - id: session_id
@@ -372,8 +372,8 @@ types:
         type: inbound_business_header
         doc: 'InboundBusinessHeader'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: mm_protection_reset_boolean
         type: u1
         enum: mm_protection_reset_boolean
@@ -382,8 +382,8 @@ types:
         type: u8
         doc: 'clOrdID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -472,8 +472,8 @@ types:
         type: inbound_business_header
         doc: 'InboundBusinessHeader'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: mm_protection_reset_boolean
         type: u1
         enum: mm_protection_reset_boolean
@@ -482,8 +482,8 @@ types:
         type: u8
         doc: 'clOrdID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -523,11 +523,11 @@ types:
         type: decimal_s8_4_nullable
         doc: 'price. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: order_id_optional
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 0'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
@@ -540,8 +540,8 @@ types:
         type: inbound_business_header
         doc: 'InboundBusinessHeader'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: mm_protection_reset_boolean
         type: u1
         enum: mm_protection_reset_boolean
@@ -550,8 +550,8 @@ types:
         type: u8
         doc: 'clOrdID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -594,19 +594,17 @@ types:
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: executing_trader_optional
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'executingTrader'
+        type: str_5_nullable
+        doc: 'executingTrader. Nullable, No Value = 0'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: custodian_info
         type: custodian_info
         doc: 'NewOrderSingleMessage'
@@ -650,8 +648,8 @@ types:
         type: inbound_business_header
         doc: 'InboundBusinessHeader'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: mm_protection_reset_boolean
         type: u1
         enum: mm_protection_reset_boolean
@@ -660,8 +658,8 @@ types:
         type: u8
         doc: 'clOrdID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -701,31 +699,29 @@ types:
         type: decimal_s8_4_nullable
         doc: 'price. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: order_id_optional
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 0'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: stop_px
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: executing_trader_optional
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'executingTrader'
+        type: str_5_nullable
+        doc: 'executingTrader. Nullable, No Value = 0'
       - id: account_type
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 0'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: custodian_info
         type: custodian_info
         doc: 'NewOrderSingleMessage'
@@ -759,11 +755,11 @@ types:
         type: u8
         doc: 'securityID'
       - id: order_id_optional
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 0'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: side
         type: u1
         enum: side
@@ -785,10 +781,8 @@ types:
         encoding: ASCII
         doc: 'enteringTrader'
       - id: executing_trader_optional
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'executingTrader'
+        type: str_5_nullable
+        doc: 'executingTrader. Nullable, No Value = 0'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -817,10 +811,8 @@ types:
         encoding: ASCII
         doc: 'enteringTrader'
       - id: executing_trader_optional
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'executingTrader'
+        type: str_5_nullable
+        doc: 'executingTrader. Nullable, No Value = 0'
       - id: security_id
         type: u8
         doc: 'securityID'
@@ -879,11 +871,11 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: entering_firm_optional
-        type: u4
-        doc: 'enteringFirm'
+        type: u4_nullable
+        doc: 'enteringFirm. Nullable, No Value = 0'
       - id: clordid
         type: u8
         doc: 'clOrdID'
@@ -913,8 +905,8 @@ types:
         type: u8
         doc: 'orderID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'execID'
@@ -947,8 +939,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -959,21 +951,21 @@ types:
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: crossid_optional
-        type: u8
-        doc: 'crossID'
+        type: u8_nullable
+        doc: 'crossID. Nullable, No Value = 0'
       - id: received_time
         type: nanosecond_timestamp_nullable
         doc: 'receivedTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: offset_152_padding_3
         size: 3
         doc: '3 bytes padding'
-      - id: ordtagid_optional
+      - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
       - id: investor_id
@@ -1045,8 +1037,8 @@ types:
         type: u8
         doc: 'leavesQty'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'execID'
@@ -1063,8 +1055,8 @@ types:
         type: u8
         doc: 'orderID'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: protection_price
         type: decimal_s8_4_nullable
         doc: 'protectionPrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
@@ -1088,8 +1080,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1100,18 +1092,18 @@ types:
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: received_time
         type: nanosecond_timestamp_nullable
         doc: 'receivedTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: offset_168_padding_3
         size: 3
         doc: '3 bytes padding'
-      - id: ordtagid_optional
+      - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
       - id: investor_id
@@ -1158,8 +1150,8 @@ types:
         type: u8
         doc: 'cumQty'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: exec_id
         type: u8
         doc: 'execID'
@@ -1173,8 +1165,8 @@ types:
         type: u8
         doc: 'orderID'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -1189,8 +1181,8 @@ types:
         size: 4
         doc: '4 bytes padding'
       - id: mass_action_report_id_optional
-        type: u8
-        doc: 'massActionReportID'
+        type: u8_nullable
+        doc: 'massActionReportID. Nullable, No Value = 0'
       - id: ordtype
         type: u1
         enum: ordtype
@@ -1200,8 +1192,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1212,18 +1204,18 @@ types:
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: received_time
         type: nanosecond_timestamp_nullable
         doc: 'receivedTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: offset_164_padding_3
         size: 3
         doc: '3 bytes padding'
-      - id: ordtagid_optional
+      - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
       - id: investor_id
@@ -1233,8 +1225,8 @@ types:
         type: s4_nullable
         doc: 'strategyID. Nullable, No Value = 0'
       - id: action_requested_from_session_id
-        type: u4
-        doc: 'actionRequestedFromSessionID'
+        type: u4_nullable
+        doc: 'actionRequestedFromSessionID. Nullable, No Value = 0'
       - id: block_padding
         size: 2
         doc: 'Padding to the block length the message header states'
@@ -1258,8 +1250,8 @@ types:
         enum: ord_status
         doc: 'ordStatus'
       - id: clordid_optional
-        type: u8
-        doc: 'clOrdID'
+        type: u8_nullable
+        doc: 'clOrdID. Nullable, No Value = 0'
       - id: secondary_order_id
         type: u8
         doc: 'secondaryOrderID'
@@ -1267,8 +1259,8 @@ types:
         type: u8
         doc: 'securityID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: last_qty
         type: u8
         doc: 'lastQty'
@@ -1316,20 +1308,20 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: tot_no_related_sym
-        type: u1
-        doc: 'totNoRelatedSym'
+        type: u1_nullable
+        doc: 'totNoRelatedSym. Nullable, No Value = 0'
       - id: offset_119_padding_1
         size: 1
         doc: '1 bytes padding'
       - id: secondary_exec_id
-        type: u8
-        doc: 'secondaryExecID'
+        type: u8_nullable
+        doc: 'secondaryExecID. Nullable, No Value = 0'
       - id: exec_ref_id
-        type: u8
-        doc: 'execRefID'
+        type: u8_nullable
+        doc: 'execRefID. Nullable, No Value = 0'
       - id: crossid_optional
-        type: u8
-        doc: 'crossID'
+        type: u8_nullable
+        doc: 'crossID. Nullable, No Value = 0'
       - id: crossed_indicator
         type: u2_nullable
         doc: 'crossedIndicator. Nullable, No Value = 0'
@@ -1380,8 +1372,8 @@ types:
         type: u8
         doc: 'clOrdID'
       - id: secondary_order_id_optional
-        type: u8
-        doc: 'secondaryOrderID'
+        type: u8_nullable
+        doc: 'secondaryOrderID. Nullable, No Value = 0'
       - id: security_id
         type: u8
         doc: 'securityID'
@@ -1396,14 +1388,14 @@ types:
         type: u8
         doc: 'execID'
       - id: order_id_optional
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 0'
       - id: origclordid
-        type: u8
-        doc: 'origClOrdID'
+        type: u8_nullable
+        doc: 'origClOrdID. Nullable, No Value = 0'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: ordtype
         type: u1
         enum: ordtype
@@ -1413,8 +1405,8 @@ types:
         enum: time_in_force
         doc: 'timeInForce'
       - id: expire_date
-        type: u2
-        doc: 'expireDate'
+        type: u2_nullable
+        doc: 'expireDate. Nullable, No Value = 0'
       - id: order_qty
         type: u8
         doc: 'orderQty'
@@ -1425,14 +1417,14 @@ types:
         type: decimal_s8_4_nullable
         doc: 'stopPx. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: min_qty
-        type: u8
-        doc: 'minQty'
+        type: u8_nullable
+        doc: 'minQty. Nullable, No Value = 0'
       - id: max_floor
-        type: u8
-        doc: 'maxFloor'
+        type: u8_nullable
+        doc: 'maxFloor. Nullable, No Value = 0'
       - id: crossid_optional
-        type: u8
-        doc: 'crossID'
+        type: u8_nullable
+        doc: 'crossID. Nullable, No Value = 0'
       - id: crossed_indicator
         type: u2_nullable
         doc: 'crossedIndicator. Nullable, No Value = 0'
@@ -1442,7 +1434,7 @@ types:
       - id: offset_146_padding_3
         size: 3
         doc: '3 bytes padding'
-      - id: ordtagid_optional
+      - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
       - id: investor_id
@@ -1485,8 +1477,8 @@ types:
         enum: ord_status
         doc: 'ordStatus'
       - id: clordid_optional
-        type: u8
-        doc: 'clOrdID'
+        type: u8_nullable
+        doc: 'clOrdID. Nullable, No Value = 0'
       - id: secondary_order_id
         type: u8
         doc: 'secondaryOrderID'
@@ -1494,8 +1486,8 @@ types:
         type: u8
         doc: 'securityID'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: last_qty
         type: u8
         doc: 'lastQty'
@@ -1535,17 +1527,17 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: days_to_settlement_optional
-        type: u2
-        doc: 'daysToSettlement'
+        type: u2_nullable
+        doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: offset_118_padding_2
         size: 2
         doc: '2 bytes padding'
       - id: secondary_exec_id
-        type: u8
-        doc: 'secondaryExecID'
+        type: u8_nullable
+        doc: 'secondaryExecID. Nullable, No Value = 0'
       - id: exec_ref_id
-        type: u8
-        doc: 'execRefID'
+        type: u8_nullable
+        doc: 'execRefID. Nullable, No Value = 0'
       - id: fixed_rate_percentage_8_optional
         type: decimal_s8_8_nullable
         doc: 'fixedRate. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
@@ -1583,8 +1575,8 @@ types:
         type: u4
         doc: 'refSeqNum'
       - id: business_reject_ref_id
-        type: u8
-        doc: 'businessRejectRefID'
+        type: u8_nullable
+        doc: 'businessRejectRefID. Nullable, No Value = 0'
       - id: business_reject_reason
         type: u4
         doc: 'businessRejectReason'
@@ -1661,10 +1653,8 @@ types:
         enum: security_response_type
         doc: 'securityResponseType'
       - id: security_strategy_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'securityStrategyType'
+        type: str_3_nullable
+        doc: 'securityStrategyType. Nullable, No Value = 0'
       - id: symbol
         type: str
         size: 20
@@ -1695,11 +1685,11 @@ types:
         type: u8
         doc: 'quoteReqID'
       - id: quote_id_optional
-        type: u8
-        doc: 'quoteID'
+        type: u8_nullable
+        doc: 'quoteID. Nullable, No Value = 0'
       - id: trade_id_optional
-        type: u4
-        doc: 'tradeID'
+        type: u4_nullable
+        doc: 'tradeID. Nullable, No Value = 0'
       - id: contra_broker
         type: u4
         doc: 'contraBroker'
@@ -1789,17 +1779,16 @@ types:
         enum: side
         doc: 'side'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
   quote_status_report_message:
     seq:
       - id: bidirectional_business_header
         type: bidirectional_business_header
         doc: 'BidirectionalBusinessHeader'
       - id: quote_reject_reason
-        type: u4
-        enum: quote_reject_reason
-        doc: 'quoteRejectReason'
+        type: u4_nullable
+        doc: 'quoteRejectReason. Nullable, No Value = 0'
       - id: security_id
         type: u8
         doc: 'securityID'
@@ -1810,8 +1799,8 @@ types:
         type: u8
         doc: 'quoteID'
       - id: trade_id_optional
-        type: u4
-        doc: 'tradeID'
+        type: u4_nullable
+        doc: 'tradeID. Nullable, No Value = 0'
       - id: contra_broker
         type: u4
         doc: 'contraBroker'
@@ -1827,8 +1816,8 @@ types:
         enum: quote_status_response_to
         doc: 'quoteStatusResponseTo. Nullable, No Value = 0'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
@@ -1866,8 +1855,8 @@ types:
         enum: execute_underlying_trade
         doc: 'executeUnderlyingTrade. Nullable, No Value = 0'
       - id: days_to_settlement_optional
-        type: u2
-        doc: 'daysToSettlement'
+        type: u2_nullable
+        doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1909,8 +1898,8 @@ types:
         enum: settltype
         doc: 'settlType'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -1951,14 +1940,14 @@ types:
         type: u8
         doc: 'securityID'
       - id: quote_req_id_optional
-        type: u8
-        doc: 'quoteReqID'
+        type: u8_nullable
+        doc: 'quoteReqID. Nullable, No Value = 0'
       - id: quote_id_optional
-        type: u8
-        doc: 'quoteID'
+        type: u8_nullable
+        doc: 'quoteID. Nullable, No Value = 0'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -1986,8 +1975,8 @@ types:
         type: bidirectional_business_header
         doc: 'BidirectionalBusinessHeader'
       - id: quote_request_reject_reason
-        type: u4
-        doc: 'quoteRequestRejectReason'
+        type: u4_nullable
+        doc: 'quoteRequestRejectReason. Nullable, No Value = 0'
       - id: security_id
         type: u8
         doc: 'securityID'
@@ -1995,11 +1984,11 @@ types:
         type: u8
         doc: 'quoteReqID'
       - id: quote_id_optional
-        type: u8
-        doc: 'quoteID'
+        type: u8_nullable
+        doc: 'quoteID. Nullable, No Value = 0'
       - id: trade_id_optional
-        type: u4
-        doc: 'tradeID'
+        type: u4_nullable
+        doc: 'tradeID. Nullable, No Value = 0'
       - id: contra_broker
         type: u4
         doc: 'contraBroker'
@@ -2019,8 +2008,8 @@ types:
         type: decimal_s8_8_nullable
         doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: order_qty_optional
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -2035,8 +2024,8 @@ types:
         type: decimal_s8_8_nullable
         doc: 'fixedRate. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: days_to_settlement_optional
-        type: u2
-        doc: 'daysToSettlement'
+        type: u2_nullable
+        doc: 'daysToSettlement. Nullable, No Value = 65535'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'
@@ -2061,11 +2050,11 @@ types:
         type: u8
         doc: 'securityID'
       - id: orig_pos_req_ref_id
-        type: u8
-        doc: 'origPosReqRefID'
+        type: u8_nullable
+        doc: 'origPosReqRefID. Nullable, No Value = 0'
       - id: pos_maint_rpt_ref_id
-        type: u8
-        doc: 'posMaintRptRefID'
+        type: u8_nullable
+        doc: 'posMaintRptRefID. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -2091,8 +2080,8 @@ types:
         type: decimal_s8_4_nullable
         doc: 'thresholdAmount. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
@@ -2129,8 +2118,8 @@ types:
         type: outbound_business_header
         doc: 'OutboundBusinessHeader'
       - id: pos_req_id_optional
-        type: u8
-        doc: 'posReqID'
+        type: u8_nullable
+        doc: 'posReqID. Nullable, No Value = 0'
       - id: security_id
         type: u8
         doc: 'securityID'
@@ -2150,11 +2139,11 @@ types:
         enum: pos_maint_status
         doc: 'posMaintStatus'
       - id: trade_id_optional
-        type: u4
-        doc: 'tradeID'
+        type: u4_nullable
+        doc: 'tradeID. Nullable, No Value = 0'
       - id: orig_pos_req_ref_id
-        type: u8
-        doc: 'origPosReqRefID'
+        type: u8_nullable
+        doc: 'origPosReqRefID. Nullable, No Value = 0'
       - id: account_type
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 0'
@@ -2168,16 +2157,16 @@ types:
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
       - id: account
-        type: u4
-        doc: 'account'
+        type: u4_nullable
+        doc: 'account. Nullable, No Value = 0'
       - id: sender_location
         type: str
         size: 10
         encoding: ASCII
         doc: 'senderLocation'
       - id: pos_maint_result
-        type: u4
-        doc: 'posMaintResult'
+        type: u4_nullable
+        doc: 'posMaintResult. Nullable, No Value = 0'
       - id: contrary_instruction_indicator
         type: u1
         enum: contrary_instruction_indicator
@@ -2211,11 +2200,11 @@ types:
         enum: pos_type
         doc: 'Used to identify the type of quantity'
       - id: long_qty_optional
-        type: u8
-        doc: 'Long Quantity'
+        type: u8_nullable
+        doc: 'Long Quantity. Nullable, No Value = 0'
       - id: short_qty
-        type: u8
-        doc: 'Short Quantity'
+        type: u8_nullable
+        doc: 'Short Quantity. Nullable, No Value = 0'
   allocation_instruction_message:
     seq:
       - id: inbound_business_header
@@ -2256,8 +2245,8 @@ types:
         type: u4
         doc: 'tradeID'
       - id: trade_date_optional
-        type: u2
-        doc: 'tradeDate'
+        type: u2_nullable
+        doc: 'tradeDate. Nullable, No Value = 0'
       - id: individual_alloc_id
         type: u8
         doc: 'individualAllocID'
@@ -2300,8 +2289,8 @@ types:
         enum: alloc_no_orders_type
         doc: 'allocNoOrdersType'
       - id: alloc_rej_code
-        type: u4
-        doc: 'allocRejCode'
+        type: u4_nullable
+        doc: 'allocRejCode. Nullable, No Value = 0'
       - id: quantity
         type: u8
         doc: 'quantity'
@@ -2310,8 +2299,8 @@ types:
         enum: alloc_status
         doc: 'allocStatus'
       - id: trade_date_optional
-        type: u2
-        doc: 'tradeDate'
+        type: u2_nullable
+        doc: 'tradeDate. Nullable, No Value = 0'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
@@ -2348,8 +2337,8 @@ types:
         type: u1_nullable
         doc: 'execRestatementReason. Nullable, No Value = 0'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
@@ -2358,10 +2347,8 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: asset
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'asset'
+        type: str_6_nullable
+        doc: 'asset. Nullable, No Value = 0'
       - id: security_id_optional
         type: u8_nullable
         doc: 'securityID. Nullable, No Value = 0'
@@ -2400,8 +2387,8 @@ types:
         type: u1_nullable
         doc: 'execRestatementReason. Nullable, No Value = 0'
       - id: ordtagid
-        type: u1
-        doc: 'ordTagID'
+        type: u1_nullable
+        doc: 'ordTagID. Nullable, No Value = 0'
       - id: side_optional
         type: u1
         enum: side_optional
@@ -2410,10 +2397,8 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: asset
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'asset'
+        type: str_6_nullable
+        doc: 'asset. Nullable, No Value = 0'
       - id: security_id_optional
         type: u8_nullable
         doc: 'securityID. Nullable, No Value = 0'
@@ -2423,6 +2408,20 @@ types:
       - id: text
         type: text
         doc: 'text data struct'
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -2464,13 +2463,15 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
-  s4_nullable:
+  str_5_nullable:
     seq:
       - id: value
-        type: s4
+        size: 5
     instances:
+      text:
+        value: value.to_s("ASCII")
       is_null:
-        value: value == 0
+        value: value[0] == 0
   u2_nullable:
     seq:
       - id: value
@@ -2478,10 +2479,10 @@ types:
     instances:
       is_null:
         value: value == 0
-  u8_nullable:
+  s4_nullable:
     seq:
       - id: value
-        type: u8
+        type: s4
     instances:
       is_null:
         value: value == 0
@@ -2506,6 +2507,24 @@ types:
     instances:
       real:
         value: mantissa / 10000000.0
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
 
 enums:
   template_id:

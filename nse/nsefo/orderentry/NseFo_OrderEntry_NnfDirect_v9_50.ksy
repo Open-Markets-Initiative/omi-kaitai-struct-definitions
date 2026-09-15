@@ -206,10 +206,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: password
         type: str
@@ -218,10 +215,7 @@ types:
         pad-right: 0x20
         doc: 'Password of the user'
       - id: second_reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: new_password
         type: str
@@ -245,10 +239,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: branch_id
         type: s2
@@ -272,10 +263,7 @@ types:
         pad-right: 0x20
         doc: 'Colour'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_type
         type: s2
@@ -320,22 +308,13 @@ types:
         pad-right: 0x20
         doc: 'Name of the trading member'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: second_reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: third_reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   st_broker_eligibility_per_mkt:
     meta:
@@ -365,10 +344,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: password
         type: str
@@ -377,10 +353,7 @@ types:
         pad-right: 0x20
         doc: 'Password of the user'
       - id: second_reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: new_password
         type: str
@@ -404,10 +377,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: branch_id
         type: s2
@@ -419,10 +389,7 @@ types:
         type: second_timestamp
         doc: 'End time. Seconds since Dos epoch'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: colour
         type: str
@@ -431,10 +398,7 @@ types:
         pad-right: 0x20
         doc: 'Colour'
       - id: third_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_type
         type: s2
@@ -443,10 +407,7 @@ types:
         type: floating_point_integer
         doc: 'Sequence number'
       - id: reserved_14
-        type: str
         size: 14
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: broker_status
         type: str
@@ -479,22 +440,13 @@ types:
         pad-right: 0x20
         doc: 'Name of the trading member'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: second_reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: third_reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   sign_off_request_out_message:
     seq:
@@ -502,10 +454,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_145
-        type: str
         size: 145
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   system_information_in_message:
     seq:
@@ -557,10 +506,7 @@ types:
         type: s2
         doc: 'Snap quote time'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: board_lot_quantity
         type: s4
@@ -759,10 +705,7 @@ types:
         pad-right: 0x20
         doc: 'Whether open orders are also requested'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: st_market_status
         type: st_market_status
@@ -776,18 +719,12 @@ types:
   update_local_database_header_message:
     seq:
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   update_local_database_trailer_message:
     seq:
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   download_request_message:
     seq:
@@ -869,10 +806,7 @@ types:
         enum: participant_type
         doc: 'Type of participant the order belongs to'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: competitor_period
         type: s2
@@ -885,17 +819,14 @@ types:
         enum: modified_cancelled_by
         doc: 'Who modified or cancelled the order'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reason_code
         type: s2
         enum: reason_code
         doc: 'Reason the give up was rejected'
       - id: reserved_4
-        type: s4
+        size: 4
         doc: 'Reserved'
       - id: token_no
         type: s4
@@ -910,16 +841,10 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id of the counter party'
       - id: third_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: closeout_flag
         type: str
@@ -928,10 +853,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the broker is in closeout status'
       - id: fourth_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: order_type
         type: s2
@@ -1029,10 +951,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: fifth_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: filler_116
         type: str
@@ -1068,19 +987,13 @@ types:
         type: s4
         doc: 'Identifier of the algorithm that generated the order'
       - id: second_reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_52
-        type: str
         size: 52
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   contract_desc:
     seq:
@@ -1213,10 +1126,7 @@ types:
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_24
-        type: str
         size: 24
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   trade_inquiry_message:
     seq:
@@ -1246,7 +1156,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the buy opens or closes a position'
       - id: reserved_4
-        type: s4
+        size: 4
         doc: 'Reserved'
       - id: buy_broker_id
         type: str
@@ -1288,22 +1198,13 @@ types:
         pad-right: 0x20
         doc: 'Account number on the sell side'
       - id: reserved_24
-        type: str
         size: 24
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: second_reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: buy_pan
         type: str
@@ -1318,10 +1219,7 @@ types:
         pad-right: 0x20
         doc: 'Permanent account number on the sell side'
       - id: reserved_60
-        type: str
         size: 60
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   spread_order_entry_message:
     seq:
@@ -1500,10 +1398,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: filler_116
         type: str
@@ -1539,19 +1434,13 @@ types:
         type: s4
         doc: 'Identifier of the algorithm that generated the order'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_52
-        type: str
         size: 52
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: price_diff
         type: decimal_s4_2
@@ -1624,10 +1513,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: filler_y
         type: str
@@ -1647,10 +1533,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: trader_number
         type: s4
@@ -1717,10 +1600,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id of the counter party'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: token
         type: s4
@@ -1747,13 +1627,10 @@ types:
         pad-right: 0x20
         doc: 'Book the order belongs to'
       - id: third_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: reserved_4
-        type: s4
+        size: 4
         doc: 'Reserved'
       - id: old_account_number
         type: str
@@ -1777,22 +1654,13 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: fourth_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: fifth_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: sixth_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: pan
         type: str
@@ -1810,19 +1678,13 @@ types:
         type: s4
         doc: 'Identifier of the algorithm that generated the order'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_52
-        type: str
         size: 52
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_order_limit_update_message:
     seq:
@@ -1924,10 +1786,7 @@ types:
         pad-right: 0x20
         doc: 'Action code indicating the action taken'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: broad_cast_message_length
         type: s2
@@ -1997,10 +1856,7 @@ types:
   report_statistics_body:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: number_of_records
         type: s2
@@ -2057,10 +1913,7 @@ types:
         type: s4
         doc: 'Number of data packets sent in the bhavcopy'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   enhanced_market_statistics_report_message:
     seq:
@@ -2071,10 +1924,7 @@ types:
         pad-right: 0x20
         doc: 'Selects the record carried and the trading session'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: number_of_records
         type: s2
@@ -2168,10 +2018,7 @@ types:
         pad-right: 0x20
         doc: 'Selects the record carried and the trading session'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: number_of_industry_records
         type: s2
@@ -2296,10 +2143,7 @@ types:
   spread_report_statistics_body:
     seq:
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: no_of_records
         type: s2
@@ -2540,10 +2384,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_5
-        type: str
         size: 5
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: session_key
         type: str
@@ -2557,10 +2398,7 @@ types:
         type: s2
         doc: 'Exchange provided box Id used for this connection'
       - id: reserved_10
-        type: str
         size: 10
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   box_sign_off_message:
     seq:
@@ -2577,10 +2415,7 @@ types:
         enum: status
         doc: 'Whether the outage is starting or ending'
       - id: reserved_200
-        type: str
         size: 200
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   branch_order_value_limit_update_message:
     seq:
@@ -2591,10 +2426,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_25
-        type: str
         size: 25
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: branch_id
         type: s2
@@ -2613,10 +2445,7 @@ types:
         type: floating_point_integer
         doc: 'Branch sell value limit'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_order_value_limit_update_message:
     seq:
@@ -2627,28 +2456,19 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: branch_id
         type: s2
         doc: 'Branch Id of the trading member'
       - id: reserved_26
-        type: str
         size: 26
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_id
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_limits
         type: user_limits
@@ -2658,10 +2478,7 @@ types:
   user_limits:
     seq:
       - id: reserved_32
-        type: str
         size: 32
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_order_buy_value_limit
         type: floating_point_integer
@@ -2670,10 +2487,7 @@ types:
         type: floating_point_integer
         doc: 'User order sell value limit'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   normal_order_limit_update_message:
     seq:
@@ -2684,10 +2498,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: user_id
         type: s4
@@ -2704,10 +2515,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_14
-        type: str
         size: 14
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   collateral_user_status_change_request_message:
     seq:
@@ -2721,10 +2529,7 @@ types:
         pad-right: 0x20
         doc: 'Collateral status of the user'
       - id: reserved_7
-        type: str
         size: 7
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   collateral_user_status_change_response_message:
     seq:
@@ -2738,10 +2543,7 @@ types:
         pad-right: 0x20
         doc: 'Collateral status of the user'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_trade_modify_cancel_status_change_request_message:
     seq:
@@ -2755,10 +2557,7 @@ types:
         pad-right: 0x20
         doc: 'Trade modify and cancel permission'
       - id: reserved_7
-        type: str
         size: 7
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_trade_modify_cancel_status_change_response_message:
     seq:
@@ -2772,10 +2571,7 @@ types:
         pad-right: 0x20
         doc: 'Trade modify and cancel permission'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_address_unlock_request_message:
     seq:
@@ -2783,10 +2579,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_70
-        type: str
         size: 70
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_address_unlock_confirm_message:
     seq:
@@ -2794,10 +2587,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_36
-        type: str
         size: 36
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   user_address_unlock_approve_message:
     seq:
@@ -2805,10 +2595,7 @@ types:
         type: s4
         doc: 'Id of the user signing on'
       - id: reserved_36
-        type: str
         size: 36
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   giveup_confirmation_message:
     seq:
@@ -2896,10 +2683,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the trade opens or closes a position'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
       - id: participant
         type: str

@@ -644,10 +644,7 @@ types:
         enum: customer_firm_indicator
         doc: 'For Order Exposure (AuctionType=I) only. Indicates the order capacity:'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   nanosecond_timestamp:
     seq:

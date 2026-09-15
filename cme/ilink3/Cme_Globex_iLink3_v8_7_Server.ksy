@@ -626,19 +626,19 @@ types:
       - id: nh
         type: b1
         doc: 'NH'
-      - id: reserved_1
+      - id: exec_inst_reserved_1
         type: b1
         doc: 'Reserved1'
-      - id: reserved_2
+      - id: exec_inst_reserved_2
         type: b1
         doc: 'Reserved2'
-      - id: reserved_3
+      - id: exec_inst_reserved_3
         type: b1
         doc: 'Reserved3'
-      - id: reserved_4
+      - id: exec_inst_reserved_4
         type: b1
         doc: 'Reserved4'
-      - id: reserved_5
+      - id: exec_inst_reserved_5
         type: b1
         doc: 'Reserved5'
   execution_report_reject:

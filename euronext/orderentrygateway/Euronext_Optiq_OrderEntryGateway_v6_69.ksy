@@ -128,22 +128,22 @@ types:
   new_order_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -160,15 +160,15 @@ types:
         type: u1
         enum: time_in_force
         doc: 'timeInForce'
-      - id: order_px_optional
+      - id: order_px
         type: s8_nullable
         doc: 'orderPx. Nullable, No Value = -9223372036854775808'
       - id: order_qty
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
@@ -195,7 +195,7 @@ types:
       - id: non_executing_client_id
         type: u2_nullable
         doc: 'nonExecutingClientID. Nullable, No Value = 65535'
-      - id: ioi_id_optional
+      - id: ioi_id
         type: s8_nullable
         doc: 'iOIID. Nullable, No Value = -9223372036854775808'
       - id: free_text_groups
@@ -371,7 +371,7 @@ types:
       - id: min_order_qty
         type: u8_nullable
         doc: 'minOrderQty. Nullable, No Value = 18446744073709551615'
-      - id: quote_req_id_optional
+      - id: quote_req_id
         type: u8_nullable
         doc: 'quoteReqID. Nullable, No Value = 18446744073709551615'
       - id: order_expiration_time
@@ -530,16 +530,16 @@ types:
   ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
@@ -547,26 +547,26 @@ types:
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -581,16 +581,16 @@ types:
       - id: ack_phase
         type: u1_nullable
         doc: 'ackPhase. Nullable, No Value = 255'
-      - id: order_id_optional
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: order_priority
         type: u8_nullable
         doc: 'orderPriority. Nullable, No Value = 18446744073709551615'
-      - id: order_px_optional
+      - id: order_px
         type: s8_nullable
         doc: 'orderPx. Nullable, No Value = -9223372036854775808'
-      - id: order_qty_optional
+      - id: order_qty
         type: u8_nullable
         doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: ack_qualifiers
@@ -642,43 +642,15 @@ types:
         doc: 'MiFIDFields'
   mifid_fields_group:
     seq:
-      - id: execution_instruction_optional
-        type: execution_instruction_optional
-        doc: 'ExecutionInstruction_set bit set. Nullable, No Value = 255'
+      - id: execution_within_firm_short_code
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: mifid_indicators_optional
         type: mifid_indicators_optional
         doc: 'MiFIDIndicators_set bit set. Nullable, No Value = 255'
-  execution_instruction_optional:
-    meta:
-      bit-endian: le
-    seq:
-      - id: stp_resting_order
-        type: b1
-        doc: 'STPRestingOrder'
-      - id: stp_incoming_order
-        type: b1
-        doc: 'STPIncomingOrder'
-      - id: disclosed_quantity_randomization
-        type: b1
-        doc: 'DisclosedQuantityRandomization'
-      - id: disabled_cancel_on_disconnect_indicator
-        type: b1
-        doc: 'DisabledCancelOnDisconnectIndicator'
-      - id: rfq_answer
-        type: b1
-        doc: 'RFQAnswer'
-      - id: rfq_confirmation
-        type: b1
-        doc: 'RFQConfirmation'
-      - id: conditional_order
-        type: b1
-        doc: 'ConditionalOrder'
-      - id: stp_both_orders
-        type: b1
-        doc: 'STPBothOrders'
   mifid_indicators_optional:
     meta:
       bit-endian: le
@@ -707,31 +679,31 @@ types:
   fill_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: trade_time
-        type: u8
-        doc: 'tradeTime'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'tradeTime. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -748,20 +720,20 @@ types:
         type: trade_qualifier
         doc: 'TradeQualifier_set bit set'
       - id: order_id
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: last_traded_px
-        type: s8
-        doc: 'lastTradedPx'
+        type: s8_nullable
+        doc: 'lastTradedPx. Nullable, No Value = -9223372036854775808'
       - id: last_shares
-        type: u8
-        doc: 'lastShares'
+        type: u8_nullable
+        doc: 'lastShares. Nullable, No Value = 18446744073709551615'
       - id: leaves_qty
-        type: u8
-        doc: 'leavesQty'
+        type: u8_nullable
+        doc: 'leavesQty. Nullable, No Value = 18446744073709551615'
       - id: execution_id
-        type: u4
-        doc: 'executionID'
+        type: u4_nullable
+        doc: 'executionID. Nullable, No Value = 4294967295'
       - id: execution_phase
         type: u1
         enum: execution_phase
@@ -863,7 +835,7 @@ types:
       - id: leg_side_optional
         type: u1_nullable
         doc: 'legSide. Nullable, No Value = 255'
-      - id: execution_id_optional
+      - id: execution_id
         type: u4_nullable
         doc: 'executionID. Nullable, No Value = 4294967295'
       - id: trade_unique_identifier
@@ -896,16 +868,16 @@ types:
   kill_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
@@ -913,29 +885,29 @@ types:
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
       - id: order_id
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -981,40 +953,40 @@ types:
   cancel_replace_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: order_id_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
-      - id: order_px_optional
+      - id: order_px
         type: s8_nullable
         doc: 'orderPx. Nullable, No Value = -9223372036854775808'
       - id: order_qty
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1139,39 +1111,39 @@ types:
   reject_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id_optional
         type: str_8_nullable
         doc: 'firmID. Nullable, No Value = 0'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_time_to_me
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
-      - id: book_in_optional
+      - id: book_in
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time_optional
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
-      - id: order_id_optional
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
-      - id: symbol_index_optional
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm_optional
@@ -1181,8 +1153,8 @@ types:
         type: u1_nullable
         doc: 'rejectedMessage. Nullable, No Value = 255'
       - id: error_code
-        type: u2
-        doc: 'errorCode'
+        type: u2_nullable
+        doc: 'errorCode. Nullable, No Value = 65535'
       - id: rejected_message_id
         type: u2_nullable
         doc: 'rejectedMessageID. Nullable, No Value = 65535'
@@ -1216,22 +1188,22 @@ types:
   quotes_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: trading_capacity
         type: u1
         enum: trading_capacity
@@ -1248,8 +1220,8 @@ types:
         type: mifid_indicators
         doc: 'MiFIDIndicators_set bit set'
       - id: rfe_answer
-        type: u1
-        doc: 'rFEAnswer'
+        type: u1_nullable
+        doc: 'rFEAnswer. Nullable, No Value = 255'
       - id: execution_instruction_optional
         type: execution_instruction_optional
         doc: 'ExecutionInstruction_set bit set. Nullable, No Value = 255'
@@ -1265,6 +1237,34 @@ types:
       - id: quotes_rep_groups
         type: quotes_rep_groups
         doc: 'QuotesRep Block'
+  execution_instruction_optional:
+    meta:
+      bit-endian: le
+    seq:
+      - id: stp_resting_order
+        type: b1
+        doc: 'STPRestingOrder'
+      - id: stp_incoming_order
+        type: b1
+        doc: 'STPIncomingOrder'
+      - id: disclosed_quantity_randomization
+        type: b1
+        doc: 'DisclosedQuantityRandomization'
+      - id: disabled_cancel_on_disconnect_indicator
+        type: b1
+        doc: 'DisabledCancelOnDisconnectIndicator'
+      - id: rfq_answer
+        type: b1
+        doc: 'RFQAnswer'
+      - id: rfq_confirmation
+        type: b1
+        doc: 'RFQConfirmation'
+      - id: conditional_order
+        type: b1
+        doc: 'ConditionalOrder'
+      - id: stp_both_orders
+        type: b1
+        doc: 'STPBothOrders'
   clearing_dataset_groups:
     seq:
       - id: group_size_encoding
@@ -1323,8 +1323,8 @@ types:
         type: s8_nullable
         doc: 'offerPx. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1332,16 +1332,16 @@ types:
   quote_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
@@ -1349,20 +1349,20 @@ types:
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: account_type
         type: u1
         enum: account_type
@@ -1371,9 +1371,9 @@ types:
         type: u1
         enum: lp_role
         doc: 'lPRole'
-      - id: execution_instruction_optional
-        type: execution_instruction_optional
-        doc: 'ExecutionInstruction_set bit set. Nullable, No Value = 255'
+      - id: execution_within_firm_short_code
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: ack_qualifiers_optional
         type: ack_qualifiers_optional
         doc: 'AckQualifiers_set bit set. Nullable, No Value = 255'
@@ -1399,8 +1399,8 @@ types:
         type: u8_nullable
         doc: 'offerOrderID. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1420,31 +1420,31 @@ types:
   quote_request_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: order_qty
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1530,34 +1530,34 @@ types:
   cancel_request_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: order_id_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1582,26 +1582,26 @@ types:
   mass_cancel_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: symbol_index_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm_optional
@@ -1613,10 +1613,10 @@ types:
       - id: side_optional
         type: u1_nullable
         doc: 'orderSide. Nullable, No Value = 255'
-      - id: lp_role_optional
+      - id: logical_access_id
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: oe_partition_id_optional
+      - id: oe_partition_id
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: contract_id
@@ -1646,16 +1646,16 @@ types:
   mass_cancel_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
@@ -1663,24 +1663,24 @@ types:
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
       - id: book_out_time
-        type: u8
-        doc: 'bookOUTTime'
+        type: u8_nullable
+        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_me
-        type: u8
-        doc: 'oEGINFromME'
+        type: u8_nullable
+        doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_to_member
-        type: u8
-        doc: 'oEGOUTToMember'
+        type: u8_nullable
+        doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: total_affected_orders
-        type: s4
-        doc: 'totalAffectedOrders'
-      - id: symbol_index_optional
+        type: s4_nullable
+        doc: 'totalAffectedOrders. Nullable, No Value = -2147483648'
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm_optional
@@ -1692,10 +1692,10 @@ types:
       - id: side_optional
         type: u1_nullable
         doc: 'orderSide. Nullable, No Value = 255'
-      - id: lp_role_optional
+      - id: logical_access_id
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: oe_partition_id_optional
+      - id: oe_partition_id
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: contract_id
@@ -1725,34 +1725,34 @@ types:
   open_order_request_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: order_id_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1763,73 +1763,73 @@ types:
   ownership_request_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: order_id_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
-      - id: lp_role_optional
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+      - id: logical_access_id
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: oe_partition_id_optional
+      - id: oe_partition_id
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: total_affected_orders
-        type: s4
-        doc: 'totalAffectedOrders'
+        type: s4_nullable
+        doc: 'totalAffectedOrders. Nullable, No Value = -2147483648'
       - id: order_category
         type: u1_nullable
         doc: 'orderCategory. Nullable, No Value = 255'
   ownership_request_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: order_id_optional
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
-      - id: lp_role_optional
+      - id: logical_access_id
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: oe_partition_id_optional
+      - id: oe_partition_id
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: order_category
@@ -1838,41 +1838,41 @@ types:
   trade_bust_notification_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: execution_id
-        type: u4
-        doc: 'executionID'
+        type: u4_nullable
+        doc: 'executionID. Nullable, No Value = 4294967295'
       - id: last_traded_px
-        type: s8
-        doc: 'lastTradedPx'
+        type: s8_nullable
+        doc: 'lastTradedPx. Nullable, No Value = -9223372036854775808'
       - id: last_shares
-        type: u8
-        doc: 'lastShares'
+        type: u8_nullable
+        doc: 'lastShares. Nullable, No Value = 18446744073709551615'
       - id: lis_transaction_id
         type: u4_nullable
         doc: 'lISTransactionID. Nullable, No Value = 4294967295'
@@ -1891,33 +1891,33 @@ types:
   collar_breach_confirmation_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
-      - id: order_id_optional
+      - id: order_id
         type: u8_nullable
         doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: orig_client_order_id
@@ -1926,28 +1926,28 @@ types:
   price_input_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1956,34 +1956,34 @@ types:
         type: u1
         enum: input_price_type
         doc: 'inputPriceType'
-      - id: price_optional
+      - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
   liquidity_provider_command_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -1995,16 +1995,16 @@ types:
   ask_for_quote_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2016,16 +2016,16 @@ types:
   request_for_execution_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2033,37 +2033,37 @@ types:
   rfq_notification_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: quote_req_id
-        type: u8
-        doc: 'quoteReqID'
+        type: u8_nullable
+        doc: 'quoteReqID. Nullable, No Value = 18446744073709551615'
       - id: order_qty
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: counterpart_firm_id
         type: str_8_nullable
         doc: 'counterpartFirmID. Nullable, No Value = 0'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2090,37 +2090,37 @@ types:
   rfq_matching_status_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: quote_req_id
-        type: u8
-        doc: 'quoteReqID'
+        type: u8_nullable
+        doc: 'quoteReqID. Nullable, No Value = 18446744073709551615'
       - id: potential_matching_px
         type: s8_nullable
         doc: 'potentialMatchingPX. Nullable, No Value = -9223372036854775808'
       - id: potential_matching_qty
-        type: u8
-        doc: 'potentialMatchingQty'
+        type: u8_nullable
+        doc: 'potentialMatchingQty. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2139,34 +2139,34 @@ types:
   rfqlp_matching_status_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: quote_req_id
-        type: u8
-        doc: 'quoteReqID'
+        type: u8_nullable
+        doc: 'quoteReqID. Nullable, No Value = 18446744073709551615'
       - id: potential_matching_qty
-        type: u8
-        doc: 'potentialMatchingQty'
+        type: u8_nullable
+        doc: 'potentialMatchingQty. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2178,30 +2178,30 @@ types:
   user_notification_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: execution_instruction_optional
-        type: execution_instruction_optional
-        doc: 'ExecutionInstruction_set bit set. Nullable, No Value = 255'
+      - id: execution_within_firm_short_code
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
       - id: family_id
         type: str_8_nullable
         doc: 'familyID. Nullable, No Value = 0'
-      - id: symbol_index_optional
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: user_status
         type: u1
         enum: user_status
         doc: 'userStatus'
-      - id: lp_role_optional
+      - id: logical_access_id
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
       - id: order_size_limit
@@ -2241,35 +2241,35 @@ types:
   mm_sign_in_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: logical_access_id
-        type: u4
-        doc: 'logicalAccessID'
+        type: u4_nullable
+        doc: 'logicalAccessID. Nullable, No Value = 4294967295'
       - id: oe_partition_id
-        type: u2
-        doc: 'oEPartitionID'
+        type: u2_nullable
+        doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: clearing_firm_id
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
@@ -2294,16 +2294,16 @@ types:
   mm_sign_in_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
@@ -2311,36 +2311,36 @@ types:
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
-      - id: book_out_time_optional
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: logical_access_id
-        type: u4
-        doc: 'logicalAccessID'
+        type: u4_nullable
+        doc: 'logicalAccessID. Nullable, No Value = 4294967295'
       - id: oe_partition_id
-        type: u2
-        doc: 'oEPartitionID'
+        type: u2_nullable
+        doc: 'oEPartitionID. Nullable, No Value = 65535'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: clearing_firm_id
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
@@ -2365,14 +2365,14 @@ types:
   instrument_synchronization_list_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
-      - id: oeg_out_to_member_optional
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: resynchronization_id
-        type: u2
-        doc: 'resynchronizationID'
+        type: u2_nullable
+        doc: 'resynchronizationID. Nullable, No Value = 65535'
       - id: instrument_synchronization_groups
         type: instrument_synchronization_groups
         doc: 'InstrumentSynchronizationSection Block'
@@ -2389,8 +2389,8 @@ types:
   instrument_synchronization_group:
     seq:
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2398,36 +2398,36 @@ types:
   synchronization_time_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
-      - id: oeg_out_to_member_optional
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: resynchronization_id
-        type: u2
-        doc: 'resynchronizationID'
+        type: u2_nullable
+        doc: 'resynchronizationID. Nullable, No Value = 65535'
       - id: last_book_in_time
-        type: u8
-        doc: 'lastBookInTime'
+        type: u8_nullable
+        doc: 'lastBookInTime. Nullable, No Value = 18446744073709551615'
   security_definition_request_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: security_req_id
-        type: s8
-        doc: 'securityReqID'
+        type: s8_nullable
+        doc: 'securityReqID. Nullable, No Value = -9223372036854775808'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: strategy_code
         type: u1
         enum: strategy_code
@@ -2448,11 +2448,11 @@ types:
   strategy_legs_group:
     seq:
       - id: leg_symbol_index
-        type: u4
-        doc: 'legSymbolIndex'
+        type: u4_nullable
+        doc: 'legSymbolIndex. Nullable, No Value = 4294967295'
       - id: leg_ratio
-        type: u4
-        doc: 'legRatio'
+        type: u4_nullable
+        doc: 'legRatio. Nullable, No Value = 4294967295'
       - id: leg_security_type
         type: u1
         enum: leg_security_type
@@ -2460,7 +2460,7 @@ types:
       - id: leg_put_or_call
         type: u1_nullable
         doc: 'legPutOrCall. Nullable, No Value = 255'
-      - id: leg_price_optional
+      - id: leg_price
         type: s8_nullable
         doc: 'legPrice. Nullable, No Value = -9223372036854775808'
       - id: leg_strike_price
@@ -2476,62 +2476,62 @@ types:
   security_definition_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
-      - id: firm_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
-      - id: book_in_optional
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time_optional
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
-        type: u8_nullable
-        doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
-        type: u8_nullable
-        doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: security_req_id
-        type: s8
-        doc: 'securityReqID'
-      - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
-  mm_protection_request_message:
-    seq:
-      - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
-      - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
-      - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
+      - id: oeg_in_from_member
+        type: u8_nullable
+        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+      - id: oeg_out_time_to_me
+        type: u8_nullable
+        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+      - id: book_in
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+      - id: book_out_time
+        type: u8_nullable
+        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+      - id: oeg_in_from_me
+        type: u8_nullable
+        doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
+      - id: oeg_out_to_member
+        type: u8_nullable
+        doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
+      - id: security_req_id
+        type: s8_nullable
+        doc: 'securityReqID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+  mm_protection_request_message:
+    seq:
+      - id: cl_msg_seq_num
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
+      - id: firm_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'firmID'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
+      - id: client_order_id
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: execution_within_firm_short_code
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
+      - id: symbol_index
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2568,43 +2568,43 @@ types:
   mm_protection_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_time_to_me
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
-      - id: book_in_optional
+      - id: book_in
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time_optional
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -2661,22 +2661,22 @@ types:
   new_wholesale_order_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: wholesale_trade_type
         type: u1
         enum: wholesale_trade_type
@@ -2689,14 +2689,14 @@ types:
         enum: strategy_code_optional
         doc: 'strategyCode. Nullable, No Value = 0'
       - id: price
-        type: s8
-        doc: 'price'
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: quantity
-        type: u8
-        doc: 'quantity'
+        type: u8_nullable
+        doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: mifid_indicators
         type: mifid_indicators
         doc: 'MiFIDIndicators_set bit set'
@@ -2729,11 +2729,11 @@ types:
   wholesale_legs_group:
     seq:
       - id: leg_symbol_index
-        type: u4
-        doc: 'legSymbolIndex'
+        type: u4_nullable
+        doc: 'legSymbolIndex. Nullable, No Value = 4294967295'
       - id: leg_price
-        type: s8
-        doc: 'legPrice'
+        type: s8_nullable
+        doc: 'legPrice. Nullable, No Value = -9223372036854775808'
       - id: bid_quantity
         type: u8_nullable
         doc: 'bidQuantity. Nullable, No Value = 18446744073709551615'
@@ -2746,7 +2746,7 @@ types:
       - id: leg_strike_price
         type: s8_nullable
         doc: 'legStrikePrice. Nullable, No Value = -9223372036854775808'
-      - id: leg_ratio_optional
+      - id: leg_ratio
         type: u4_nullable
         doc: 'legRatio. Nullable, No Value = 4294967295'
       - id: leg_put_or_call
@@ -2772,8 +2772,8 @@ types:
   wholesale_client_group:
     seq:
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: side
         type: u1
         enum: side
@@ -2821,40 +2821,40 @@ types:
   wholesale_order_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: sending_time_optional
-        type: u8_nullable
-        doc: 'sendingTime. Nullable, No Value = 18446744073709551615'
+      - id: sending_time
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_time_to_me
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
-      - id: book_in_optional
+      - id: book_in
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time_optional
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: wholesale_trade_type
         type: u1
         enum: wholesale_trade_type
@@ -2866,15 +2866,15 @@ types:
         type: u1
         enum: strategy_code_optional
         doc: 'strategyCode. Nullable, No Value = 0'
-      - id: price_optional
+      - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity_optional
+      - id: quantity
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: mifid_indicators
         type: mifid_indicators
         doc: 'MiFIDIndicators_set bit set'
@@ -2890,8 +2890,8 @@ types:
         enum: response_type
         doc: 'responseType'
       - id: error_code
-        type: u2
-        doc: 'errorCode'
+        type: u2_nullable
+        doc: 'errorCode. Nullable, No Value = 65535'
       - id: ack_qualifiers
         type: ack_qualifiers
         doc: 'AckQualifiers_set bit set'
@@ -2914,8 +2914,8 @@ types:
   wholesale_ack_legs_group:
     seq:
       - id: leg_symbol_index
-        type: u4
-        doc: 'legSymbolIndex'
+        type: u4_nullable
+        doc: 'legSymbolIndex. Nullable, No Value = 4294967295'
       - id: leg_bid_order_id
         type: u8_nullable
         doc: 'legBidOrderID. Nullable, No Value = 18446744073709551615'
@@ -2941,8 +2941,8 @@ types:
   wholesale_ack_clearing_group:
     seq:
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: side
         type: u1
         enum: side
@@ -2962,32 +2962,32 @@ types:
   request_for_implied_execution_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: order_id
-        type: u8
-        doc: 'orderID'
+        type: u8_nullable
+        doc: 'orderID. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
@@ -2997,22 +2997,22 @@ types:
   cross_order_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3026,14 +3026,14 @@ types:
         enum: order_type
         doc: 'orderType'
       - id: order_px
-        type: s8
-        doc: 'orderPx'
+        type: s8_nullable
+        doc: 'orderPx. Nullable, No Value = -9223372036854775808'
       - id: order_qty
-        type: u8
-        doc: 'orderQty'
+        type: u8_nullable
+        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: mifid_indicators
         type: mifid_indicators
         doc: 'MiFIDIndicators_set bit set'
@@ -3123,31 +3123,31 @@ types:
   rfq_audit_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: book_in
-        type: u8
-        doc: 'bookIn'
+        type: u8_nullable
+        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
       - id: book_out_time
-        type: u8
-        doc: 'bookOUTTime'
+        type: u8_nullable
+        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_me
-        type: u8
-        doc: 'oEGINFromME'
+        type: u8_nullable
+        doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_to_member
-        type: u8
-        doc: 'oEGOUTToMember'
+        type: u8_nullable
+        doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: quote_req_id
-        type: u8
-        doc: 'quoteReqID'
+        type: u8_nullable
+        doc: 'quoteReqID. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3213,19 +3213,19 @@ types:
   wave_for_liquidity_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: ioi_id
-        type: s8
-        doc: 'iOIID'
+        type: s8_nullable
+        doc: 'iOIID. Nullable, No Value = -9223372036854775808'
       - id: ioi_transaction_type
         type: u1
         enum: ioi_transaction_type
@@ -3237,8 +3237,8 @@ types:
         type: target_counterparties
         doc: 'TargetCounterparties_set bit set'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3297,35 +3297,35 @@ types:
   wave_for_liquidity_notification_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: oeg_in_from_member
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
       - id: oeg_out_time_to_me
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
-      - id: book_in_optional
+      - id: book_in
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time_optional
+      - id: book_out_time
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: oeg_in_from_me_optional
+      - id: oeg_in_from_me
         type: u8_nullable
         doc: 'oEGINFromME. Nullable, No Value = 18446744073709551615'
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
-      - id: ioi_id_optional
+      - id: ioi_id
         type: s8_nullable
         doc: 'iOIID. Nullable, No Value = -9223372036854775808'
       - id: exchange_ioi_id_optional
@@ -3339,8 +3339,8 @@ types:
         type: s8_nullable
         doc: 'originalIOIID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm_optional
         type: u1_nullable
         doc: 'eMM. Nullable, No Value = 255'
@@ -3358,20 +3358,20 @@ types:
       - id: ioi_quality_indication
         type: u1_nullable
         doc: 'iOIQualityIndication. Nullable, No Value = 255'
-      - id: error_code_optional
+      - id: error_code
         type: u2_nullable
         doc: 'errorCode. Nullable, No Value = 65535'
   clear_book_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
-      - id: oeg_out_to_member_optional
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3379,20 +3379,20 @@ types:
   logon_message:
     seq:
       - id: logical_access_id
-        type: u4
-        doc: 'logicalAccessID'
+        type: u4_nullable
+        doc: 'logicalAccessID. Nullable, No Value = 4294967295'
       - id: oe_partition_id
-        type: u2
-        doc: 'oEPartitionID'
-      - id: last_msg_seq_num_optional
+        type: u2_nullable
+        doc: 'oEPartitionID. Nullable, No Value = 65535'
+      - id: last_msg_seq_num
         type: u4_nullable
         doc: 'lastMsgSeqNum. Nullable, No Value = 4294967295'
       - id: software_provider
         type: str_8_nullable
         doc: 'softwareProvider. Nullable, No Value = 0'
       - id: queueing_indicator
-        type: u1
-        doc: 'queueingIndicator'
+        type: u1_nullable
+        doc: 'queueingIndicator. Nullable, No Value = 255'
   logon_ack_message:
     seq:
       - id: exchange_id
@@ -3401,8 +3401,8 @@ types:
         encoding: ASCII
         doc: 'exchangeID'
       - id: last_cl_msg_seq_num
-        type: u4
-        doc: 'lastClMsgSeqNum'
+        type: u4_nullable
+        doc: 'lastClMsgSeqNum. Nullable, No Value = 4294967295'
   logon_reject_message:
     seq:
       - id: exchange_id
@@ -3415,11 +3415,11 @@ types:
         enum: logon_reject_code
         doc: 'logonRejectCode'
       - id: last_cl_msg_seq_num
-        type: u4
-        doc: 'lastClMsgSeqNum'
+        type: u4_nullable
+        doc: 'lastClMsgSeqNum. Nullable, No Value = 4294967295'
       - id: last_msg_seq_num
-        type: u4
-        doc: 'lastMsgSeqNum'
+        type: u4_nullable
+        doc: 'lastMsgSeqNum. Nullable, No Value = 4294967295'
   logout_message:
     seq:
       - id: log_out_reason_code
@@ -3428,7 +3428,7 @@ types:
         doc: 'logOutReasonCode'
   technical_reject_message:
     seq:
-      - id: oeg_out_to_member_optional
+      - id: oeg_out_to_member
         type: u8_nullable
         doc: 'oEGOUTToMember. Nullable, No Value = 18446744073709551615'
       - id: rejected_client_message_sequence_number
@@ -3438,34 +3438,34 @@ types:
         type: u1_nullable
         doc: 'rejectedMessage. Nullable, No Value = 255'
       - id: error_code
-        type: u2
-        doc: 'errorCode'
+        type: u2_nullable
+        doc: 'errorCode. Nullable, No Value = 65535'
       - id: rejected_message_id
         type: u2_nullable
         doc: 'rejectedMessageID. Nullable, No Value = 65535'
   declaration_entry_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: operation_type
         type: u1
         enum: operation_type
         doc: 'operationType'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3477,15 +3477,15 @@ types:
         type: u1
         enum: side
         doc: 'orderSide'
-      - id: quantity_optional
+      - id: quantity
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
-      - id: price_optional
+      - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: execution_within_firm_short_code
-        type: s4
-        doc: 'executionWithinFirmShortCode'
+        type: s4_nullable
+        doc: 'executionWithinFirmShortCode. Nullable, No Value = -2147483648'
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
@@ -3513,11 +3513,11 @@ types:
         type: u1_nullable
         doc: 'tradingCapacityCross. Nullable, No Value = 255'
       - id: settlement_period
-        type: u1
-        doc: 'settlementPeriod'
+        type: u1_nullable
+        doc: 'settlementPeriod. Nullable, No Value = 255'
       - id: settlement_flag
-        type: u1
-        doc: 'settlementFlag'
+        type: u1_nullable
+        doc: 'settlementFlag. Nullable, No Value = 255'
       - id: guarantee_flag
         type: u1
         enum: guarantee_flag
@@ -3567,22 +3567,22 @@ types:
   declaration_entry_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: declaration_id_optional
+      - id: declaration_id
         type: u8_nullable
         doc: 'declarationID. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3634,19 +3634,19 @@ types:
   declaration_notice_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: client_order_id_optional
+      - id: client_order_id
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: declaration_id
-        type: u8
-        doc: 'declarationID'
+        type: u8_nullable
+        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
       - id: declaration_status
         type: u1
         enum: declaration_status
@@ -3656,8 +3656,8 @@ types:
         enum: operation_type
         doc: 'operationType'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
@@ -3668,16 +3668,16 @@ types:
       - id: side_optional
         type: u1_nullable
         doc: 'orderSide. Nullable, No Value = 255'
-      - id: quantity_optional
+      - id: quantity
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
-      - id: price_optional
+      - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: pre_matching_type
         type: u1_nullable
         doc: 'preMatchingType. Nullable, No Value = 255'
-      - id: trade_time_optional
+      - id: trade_time
         type: u8_nullable
         doc: 'tradeTime. Nullable, No Value = 18446744073709551615'
       - id: mi_cof_secondary_listing
@@ -3701,10 +3701,10 @@ types:
       - id: trading_capacity_cross
         type: u1_nullable
         doc: 'tradingCapacityCross. Nullable, No Value = 255'
-      - id: settlement_flag_optional
+      - id: settlement_flag
         type: u1_nullable
         doc: 'settlementFlag. Nullable, No Value = 255'
-      - id: settlement_period_optional
+      - id: settlement_period
         type: u1_nullable
         doc: 'settlementPeriod. Nullable, No Value = 255'
       - id: guarantee_flag_optional
@@ -3764,29 +3764,29 @@ types:
   declaration_cancel_and_refusal_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: declaration_id
-        type: u8
-        doc: 'declarationID'
+        type: u8_nullable
+        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
       - id: action_type
         type: u1
         enum: action_type
@@ -3797,74 +3797,74 @@ types:
   fund_price_input_message:
     seq:
       - id: cl_msg_seq_num
-        type: u4
-        doc: 'clMsgSeqNum'
+        type: u4_nullable
+        doc: 'clMsgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'sendingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'sendingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: price
-        type: s8
-        doc: 'price'
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: bypass_indicator
         type: u1_nullable
         doc: 'bypassIndicator. Nullable, No Value = 255'
   fund_price_input_ack_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: price
-        type: s8
-        doc: 'price'
+        type: s8_nullable
+        doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: bypass_indicator
         type: u1_nullable
         doc: 'bypassIndicator. Nullable, No Value = 255'
   declaration_entry_reject_message:
     seq:
       - id: msg_seq_num
-        type: u4
-        doc: 'msgSeqNum'
+        type: u4_nullable
+        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: client_order_id
-        type: s8
-        doc: 'clientOrderID'
+        type: s8_nullable
+        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: emm_optional
         type: u1_nullable
         doc: 'eMM. Nullable, No Value = 255'
@@ -3876,8 +3876,8 @@ types:
         enum: operation_type
         doc: 'operationType'
       - id: error_code
-        type: u2
-        doc: 'errorCode'
+        type: u2_nullable
+        doc: 'errorCode. Nullable, No Value = 65535'
       - id: rejected_message
         type: u1_nullable
         doc: 'rejectedMessage. Nullable, No Value = 255'
@@ -3887,6 +3887,13 @@ types:
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   nanosecond_timestamp:
     seq:
       - id: time
@@ -3900,6 +3907,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == -1
   s8_nullable:
     seq:
       - id: value
@@ -3907,6 +3921,20 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  s4_nullable:
+    seq:
+      - id: value
+        type: s4
+    instances:
+      is_null:
+        value: value == -2147483648
   u1_nullable:
     seq:
       - id: value
@@ -3930,27 +3958,6 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
-  s4_nullable:
-    seq:
-      - id: value
-        type: s4
-    instances:
-      is_null:
-        value: value == -2147483648
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
   s1_nullable:
     seq:
       - id: value

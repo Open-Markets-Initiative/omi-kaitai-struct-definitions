@@ -191,10 +191,7 @@ types:
         enum: mpv
         doc: 'Minimum Price Variation'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   trading_action_message:
     seq:
@@ -240,10 +237,7 @@ types:
         type: u2
         doc: 'The total quantity of the new order being added to the book'
       - id: reserved_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   add_order_long_form_message:
     seq:
@@ -274,10 +268,7 @@ types:
         type: u4
         doc: 'The total quantity of the new order being added to the book'
       - id: reserved_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   add_quote_short_form_message:
     seq:
@@ -650,10 +641,7 @@ types:
         enum: trade_type
         doc: 'Trade Type'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   net_order_imbalance_message:
     seq:

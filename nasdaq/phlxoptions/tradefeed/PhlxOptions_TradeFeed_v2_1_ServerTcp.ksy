@@ -177,10 +177,7 @@ types:
         enum: mpv
         doc: 'Minimum Price Variation for this option'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   trading_action_message:
     seq:
@@ -224,10 +221,7 @@ types:
         type: u4
         doc: 'Current number of contracts traded for an option in one trade'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   broken_trade_report_message:
     seq:

@@ -122,10 +122,7 @@ types:
         pad-right: 0x20
         doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
       - id: num_leg_information
         type: u1
@@ -325,10 +322,7 @@ types:
         type: u4
         doc: 'Size of the aggregated auction responses at the best price (zero if not shown)'
       - id: reserved_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
       - id: num_flex_dac_leg_information
         type: u1
@@ -341,10 +335,7 @@ types:
   flex_dac_leg_information:
     seq:
       - id: reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   nanosecond_timestamp:
     seq:

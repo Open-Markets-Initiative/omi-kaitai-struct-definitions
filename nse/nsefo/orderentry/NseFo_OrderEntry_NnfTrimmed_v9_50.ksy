@@ -147,10 +147,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
         type: s4
@@ -168,13 +165,10 @@ types:
         type: s4
         doc: 'Algorithm identifier'
       - id: reserved_2
-        type: s2
+        size: 2
         doc: 'Reserved'
       - id: reserved_32
-        type: str
         size: 32
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   contract_desc_tr:
     seq:
@@ -282,10 +276,7 @@ types:
         pad-right: 0x20
         doc: 'Who modified or cancelled the order'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: token_no
         type: s4
@@ -369,10 +360,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
         type: s4
@@ -390,16 +378,13 @@ types:
         type: s4
         doc: 'Algorithm identifier'
       - id: reserved_2
-        type: s2
+        size: 2
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_24
-        type: str
         size: 24
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   order_confirmation_trimmed_message:
     seq:
@@ -412,10 +397,10 @@ types:
       - id: error_code
         type: s2
         doc: 'Zero when the request succeeded'
-      - id: time_stamp_1
+      - id: timestamp_1_long_long
         type: s8
         doc: 'Time the message arrived at the host'
-      - id: time_stamp_2
+      - id: timestamp_2_char
         type: str
         size: 1
         encoding: ASCII
@@ -443,10 +428,7 @@ types:
         pad-right: 0x20
         doc: 'Whether the broker is in closeout status'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: order_number
         type: floating_point_integer
@@ -524,10 +506,7 @@ types:
         type: additional_order_flags
         doc: 'Further terms attached to the order'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: filler
         type: s4
@@ -548,16 +527,13 @@ types:
         type: s4
         doc: 'Algorithm identifier'
       - id: reserved_2
-        type: s2
+        size: 2
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_52
-        type: str
         size: 52
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   trade_confirmation_trimmed_message:
     seq:
@@ -570,14 +546,11 @@ types:
       - id: time_stamp
         type: s8
         doc: 'Time stamped at the matching engine'
-      - id: time_stamp_1
-        type: s8
+      - id: timestamp_1_double
+        type: floating_point_integer
         doc: 'Time the message arrived at the host'
-      - id: time_stamp_2
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+      - id: timestamp_2_double
+        type: floating_point_integer
         doc: 'Time the message reached the gateway'
       - id: response_order_number
         type: floating_point_integer
@@ -589,10 +562,7 @@ types:
         pad-right: 0x20
         doc: 'Trading member Id'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: account_number
         type: str
@@ -679,25 +649,19 @@ types:
         pad-right: 0x20
         doc: 'Permanent account number'
       - id: second_reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding to the two byte alignment of the next field'
       - id: algo_id
         type: s4
         doc: 'Algorithm identifier'
       - id: reserved_2
-        type: s2
+        size: 2
         doc: 'Reserved'
       - id: last_activity_reference
         type: s8
         doc: 'Reference of the last activity on the order'
       - id: reserved_52
-        type: str
         size: 52
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved'
   quick_acknowledgement_message:
     seq:

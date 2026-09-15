@@ -146,30 +146,30 @@ types:
   start_of_day_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: session_trading_day
-        type: u2
-        doc: 'sessionTradingDay'
+        type: u2_nullable
+        doc: 'sessionTradingDay. Nullable, No Value = 65535'
   end_of_day_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: session_trading_day
-        type: u2
-        doc: 'sessionTradingDay'
+        type: u2_nullable
+        doc: 'sessionTradingDay. Nullable, No Value = 65535'
   health_status_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
   technical_notification_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: technical_notification_type
@@ -177,32 +177,32 @@ types:
         enum: technical_notification_type
         doc: 'technicalNotificationType'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: retransmission_start_time
         type: nanosecond_timestamp_nullable
         doc: 'retransmissionStartTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: retransmission_end_time
         type: nanosecond_timestamp_nullable
         doc: 'retransmissionEndTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
-      - id: symbol_index_optional
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
   market_update_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: market_updates_groups
         type: market_updates_groups
         doc: 'Updates Block'
@@ -231,32 +231,32 @@ types:
         enum: update_type
         doc: 'updateType'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: number_of_orders
         type: u2_nullable
         doc: 'numberOfOrders. Nullable, No Value = 65535'
       - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity_optional
+      - id: quantity
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
   order_update_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: order_updates_groups
         type: order_updates_groups
         doc: 'Orders Block'
@@ -273,8 +273,8 @@ types:
   order_updates_group:
     seq:
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: action_type
         type: u1
         enum: action_type
@@ -303,18 +303,18 @@ types:
   price_update_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: price_updates_groups
         type: price_updates_groups
         doc: 'Prices Block'
@@ -335,12 +335,12 @@ types:
         enum: price_type
         doc: 'priceType'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: price
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity_optional
+      - id: quantity
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: imbalance_qty
@@ -355,19 +355,19 @@ types:
   full_trade_information_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
-      - id: symbol_index_optional
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: trading_date_time
@@ -592,11 +592,11 @@ types:
   market_status_change_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
@@ -621,11 +621,11 @@ types:
         enum: change_type
         doc: 'changeType'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: book_state
         type: u1_nullable
         doc: 'bookState. Nullable, No Value = 255'
@@ -706,18 +706,18 @@ types:
   timetable_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm_optional
         type: u1_nullable
         doc: 'eMM. Nullable, No Value = 255'
       - id: pattern_id
         type: u2_nullable
         doc: 'patternID. Nullable, No Value = 65535'
-      - id: symbol_index_optional
+      - id: symbol_index
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: timetables_groups
@@ -736,8 +736,8 @@ types:
   timetables_group:
     seq:
       - id: phase_time
-        type: nanosecond_timestamp
-        doc: 'phaseTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'phaseTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: phase_id
         type: u1
         enum: phase_id
@@ -762,21 +762,21 @@ types:
   standing_data_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: optiq_segment
         type: u1
         enum: optiq_segment
         doc: 'optiqSegment'
       - id: partition_id
-        type: u2
-        doc: 'partitionID'
+        type: u2_nullable
+        doc: 'partitionID. Nullable, No Value = 65535'
       - id: full_instrument_name
         type: str_102_nullable
         doc: 'fullInstrumentName. Nullable, No Value = 0'
@@ -799,8 +799,8 @@ types:
         encoding: ASCII
         doc: 'iSINCode'
       - id: price_decimals
-        type: u1
-        doc: 'priceDecimals'
+        type: u1_nullable
+        doc: 'priceDecimals. Nullable, No Value = 255'
       - id: quantity_decimals
         type: u1_nullable
         doc: 'quantityDecimals. Nullable, No Value = 255'
@@ -808,16 +808,16 @@ types:
         type: u1_nullable
         doc: 'amountDecimals. Nullable, No Value = 255'
       - id: ratio_decimals
-        type: u1
-        doc: 'ratioDecimals'
+        type: u1_nullable
+        doc: 'ratioDecimals. Nullable, No Value = 255'
       - id: cfi
         type: str
         size: 6
         encoding: ASCII
         doc: 'cFI'
       - id: instrument_event_date
-        type: u2
-        doc: 'instrumentEventDate'
+        type: u2_nullable
+        doc: 'instrumentEventDate. Nullable, No Value = 65535'
       - id: strike_price
         type: s8_nullable
         doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
@@ -854,7 +854,7 @@ types:
       - id: last_adjusted_closing_price
         type: s8_nullable
         doc: 'lastAdjustedClosingPrice. Nullable, No Value = -9223372036854775808'
-      - id: lot_size_optional
+      - id: lot_size
         type: u8_nullable
         doc: 'lotSize. Nullable, No Value = 18446744073709551615'
       - id: maturity_date_optional
@@ -1002,7 +1002,7 @@ types:
       - id: market_model
         type: u1_nullable
         doc: 'marketModel. Nullable, No Value = 255'
-      - id: lot_size_optional
+      - id: lot_size
         type: u8_nullable
         doc: 'lotSize. Nullable, No Value = 18446744073709551615'
       - id: inst_unit_exp
@@ -1014,30 +1014,30 @@ types:
   real_time_index_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: index_level
-        type: s8
-        doc: 'indexLevel'
+        type: s8_nullable
+        doc: 'indexLevel. Nullable, No Value = -9223372036854775808'
       - id: pctg_of_capitalization
         type: u8_nullable
         doc: 'pctgOfCapitalization. Nullable, No Value = 18446744073709551615'
       - id: prct_varfrom_prev_close
-        type: s8
-        doc: 'prctVarfromPrevClose'
+        type: s8_nullable
+        doc: 'prctVarfromPrevClose. Nullable, No Value = -9223372036854775808'
       - id: num_traded_instruments
         type: u2_nullable
         doc: 'numTradedInstruments. Nullable, No Value = 65535'
@@ -1052,14 +1052,14 @@ types:
   statistics_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: new_stats_groups
         type: new_stats_groups
         doc: 'NewStats Block'
@@ -1085,27 +1085,27 @@ types:
   index_summary_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: opening_level
-        type: s8
-        doc: 'openingLevel'
+        type: s8_nullable
+        doc: 'openingLevel. Nullable, No Value = -9223372036854775808'
       - id: opening_time
-        type: nanosecond_timestamp
-        doc: 'openingTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'openingTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: confirmed_reference_level
         type: s8_nullable
         doc: 'confirmedReferenceLevel. Nullable, No Value = -9223372036854775808'
@@ -1113,26 +1113,26 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'confirmedReferenceTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: closing_reference_level
-        type: s8
-        doc: 'closingReferenceLevel'
+        type: s8_nullable
+        doc: 'closingReferenceLevel. Nullable, No Value = -9223372036854775808'
       - id: closing_reference_time
-        type: u8
-        doc: 'closingReferenceTime'
+        type: u8_nullable
+        doc: 'closingReferenceTime. Nullable, No Value = 18446744073709551615'
       - id: prct_varfrom_prev_close
-        type: s8
-        doc: 'prctVarfromPrevClose'
+        type: s8_nullable
+        doc: 'prctVarfromPrevClose. Nullable, No Value = -9223372036854775808'
       - id: high_level
-        type: s8
-        doc: 'highLevel'
+        type: s8_nullable
+        doc: 'highLevel. Nullable, No Value = -9223372036854775808'
       - id: high_time
-        type: nanosecond_timestamp
-        doc: 'highTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'highTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: low_level
-        type: s8
-        doc: 'lowLevel'
+        type: s8_nullable
+        doc: 'lowLevel. Nullable, No Value = -9223372036854775808'
       - id: low_time
-        type: nanosecond_timestamp
-        doc: 'lowTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'lowTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: liquidation_level
         type: s8_nullable
         doc: 'liquidationLevel. Nullable, No Value = -9223372036854775808'
@@ -1142,18 +1142,18 @@ types:
   strategy_standing_data_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: derivatives_instrument_trading_code
         type: str
         size: 18
@@ -1173,8 +1173,8 @@ types:
         enum: strategy_code
         doc: 'strategyCode'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: cfi_optional
         type: str_6_nullable
         doc: 'cFI. Nullable, No Value = 0'
@@ -1194,14 +1194,14 @@ types:
   strategy_standing_data_group:
     seq:
       - id: leg_symbol_index
-        type: u4
-        doc: 'legSymbolIndex'
+        type: u4_nullable
+        doc: 'legSymbolIndex. Nullable, No Value = 4294967295'
       - id: leg_price
         type: s8_nullable
         doc: 'legPrice. Nullable, No Value = -9223372036854775808'
       - id: leg_ratio
-        type: u4
-        doc: 'legRatio'
+        type: u4_nullable
+        doc: 'legRatio. Nullable, No Value = 4294967295'
       - id: leg_buy_sell
         type: u1
         enum: leg_buy_sell
@@ -1209,21 +1209,21 @@ types:
   contract_standing_data_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: optiq_segment
         type: u1
         enum: optiq_segment
         doc: 'optiqSegment'
       - id: partition_id
-        type: u2
-        doc: 'partitionID'
+        type: u2_nullable
+        doc: 'partitionID. Nullable, No Value = 65535'
       - id: contract_event_date
         type: u2_nullable
         doc: 'contractEventDate. Nullable, No Value = 65535'
@@ -1247,7 +1247,7 @@ types:
         type: u1
         enum: underlying_type
         doc: 'underlyingType'
-      - id: price_decimals_optional
+      - id: price_decimals
         type: u1_nullable
         doc: 'priceDecimals. Nullable, No Value = 255'
       - id: quantity_decimals
@@ -1256,7 +1256,7 @@ types:
       - id: amount_decimals
         type: u1_nullable
         doc: 'amountDecimals. Nullable, No Value = 255'
-      - id: ratio_decimals_optional
+      - id: ratio_decimals
         type: u1_nullable
         doc: 'ratioDecimals. Nullable, No Value = 255'
       - id: main_depositary
@@ -1350,8 +1350,8 @@ types:
         type: u1_nullable
         doc: 'collarExpansionFactor. Nullable, No Value = 255'
       - id: mifidii_liquid_flag
-        type: u1
-        doc: 'mIFIDIILiquidFlag'
+        type: u1_nullable
+        doc: 'mIFIDIILiquidFlag. Nullable, No Value = 255'
       - id: pricing_algorithm
         type: u1
         enum: pricing_algorithm
@@ -1421,7 +1421,7 @@ types:
       - id: pattern_id
         type: u2_nullable
         doc: 'patternID. Nullable, No Value = 65535'
-      - id: lot_size_optional
+      - id: lot_size
         type: u8_nullable
         doc: 'lotSize. Nullable, No Value = 18446744073709551615'
       - id: strategy_authorized
@@ -1605,20 +1605,20 @@ types:
   outright_standing_data_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: instrument_event_date
-        type: u2
-        doc: 'instrumentEventDate'
+        type: u2_nullable
+        doc: 'instrumentEventDate. Nullable, No Value = 65535'
       - id: isin_code
         type: str
         size: 12
@@ -1633,8 +1633,8 @@ types:
         encoding: ASCII
         doc: 'maturityDate'
       - id: lot_size
-        type: u8
-        doc: 'lotSize'
+        type: u8_nullable
+        doc: 'lotSize. Nullable, No Value = 18446744073709551615'
       - id: strike_price
         type: s8_nullable
         doc: 'strikePrice. Nullable, No Value = -9223372036854775808'
@@ -1690,18 +1690,18 @@ types:
   long_order_update_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: long_order_updates_groups
         type: long_order_updates_groups
         doc: 'Orders Block'
@@ -1718,8 +1718,8 @@ types:
   long_order_updates_group:
     seq:
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: action_type
         type: u1
         enum: action_type
@@ -1757,21 +1757,21 @@ types:
   lis_package_structure_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: contract_symbol_index
-        type: u4
-        doc: 'contractSymbolIndex'
+        type: u4_nullable
+        doc: 'contractSymbolIndex. Nullable, No Value = 4294967295'
       - id: mifid_execution_id
         type: str
         size: 52
@@ -1797,11 +1797,11 @@ types:
   package_components_group:
     seq:
       - id: leg_symbol_index
-        type: u4
-        doc: 'legSymbolIndex'
+        type: u4_nullable
+        doc: 'legSymbolIndex. Nullable, No Value = 4294967295'
       - id: leg_ratio
-        type: u4
-        doc: 'legRatio'
+        type: u4_nullable
+        doc: 'legRatio. Nullable, No Value = 4294967295'
       - id: leg_last_px
         type: s8_nullable
         doc: 'legLastPx. Nullable, No Value = -9223372036854775808'
@@ -1810,12 +1810,12 @@ types:
         doc: 'legLastQty. Nullable, No Value = 18446744073709551615'
   apa_quotes_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: mifid_instrument_id_type
         type: str
         size: 4
@@ -1842,8 +1842,8 @@ types:
         encoding: ASCII
         doc: 'lEICode'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: quote_update_type
         type: u1
         enum: quote_update_type
@@ -1863,12 +1863,12 @@ types:
         doc: 'aPAOrigin. Nullable, No Value = 0'
   apa_standing_data_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: mifid_instrument_id_type
         type: str
         size: 4
@@ -1930,18 +1930,18 @@ types:
   apa_full_trade_information_message:
     seq:
       - id: md_seq_num
-        type: u8
-        doc: 'mDSeqNum'
+        type: u8_nullable
+        doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: trading_date_time
         type: str
         size: 27
@@ -2080,15 +2080,15 @@ types:
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
   bf_instrument_reference_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: optiq_segment
         type: u1
         enum: optiq_segment
@@ -2223,23 +2223,23 @@ types:
         doc: 'interestPaymentDate. Nullable, No Value = 65535'
   bf_trade_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: mifid_transaction_id
         type: str
         size: 52
         encoding: ASCII
         doc: 'miFIDTransactionID'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: bid_offer_date_time
         type: u8_nullable
         doc: 'bidOfferDateTime. Nullable, No Value = 18446744073709551615'
@@ -2258,8 +2258,8 @@ types:
         type: s8_nullable
         doc: 'offerPrice. Nullable, No Value = -9223372036854775808'
       - id: quantity
-        type: u8
-        doc: 'quantity'
+        type: u8_nullable
+        doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: mmt_agency_cross_trade_indicator
         type: str_4_nullable
         doc: 'mMTAgencyCrossTradeIndicator. Nullable, No Value = 0'
@@ -2287,15 +2287,15 @@ types:
         doc: 'tradingCurrency. Nullable, No Value = 0'
   bfnav_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: bid_offer_date_time
         type: u8_nullable
         doc: 'bidOfferDateTime. Nullable, No Value = 18446744073709551615'
@@ -2312,9 +2312,9 @@ types:
       - id: nav_price
         type: s8_nullable
         doc: 'nAVPrice. Nullable, No Value = -9223372036854775808'
-      - id: event_time_optional
-        type: u8_nullable
-        doc: 'eventTime. Nullable, No Value = 18446744073709551615'
+      - id: event_time
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: nav_bid_price
         type: s8_nullable
         doc: 'nAVBidPrice. Nullable, No Value = -9223372036854775808'
@@ -2323,18 +2323,18 @@ types:
         doc: 'nAVOfferPrice. Nullable, No Value = -9223372036854775808'
   bf_instrument_suspension_message:
     seq:
-      - id: md_seq_num_optional
+      - id: md_seq_num
         type: u8_nullable
         doc: 'mDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: rebroadcast_indicator
-        type: u1
-        doc: 'rebroadcastIndicator'
+        type: u1_nullable
+        doc: 'rebroadcastIndicator. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4
-        doc: 'symbolIndex'
+        type: u4_nullable
+        doc: 'symbolIndex. Nullable, No Value = 4294967295'
       - id: event_time
-        type: nanosecond_timestamp
-        doc: 'eventTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'eventTime. Nanoseconds since Unix epoch. Nullable, No Value = 18446744073709551615'
       - id: security_condition
         type: u1
         enum: security_condition
@@ -2345,16 +2345,16 @@ types:
         type: u8_nullable
         doc: 'lastMDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: snapshot_time
-        type: u8
-        doc: 'snapshotTime'
+        type: u8_nullable
+        doc: 'snapshotTime. Nullable, No Value = 18446744073709551615'
   end_of_snapshot_message:
     seq:
       - id: last_md_seq_num
         type: u8_nullable
         doc: 'lastMDSeqNum. Nullable, No Value = 18446744073709551615'
       - id: snapshot_time
-        type: u8
-        doc: 'snapshotTime'
+        type: u8_nullable
+        doc: 'snapshotTime. Nullable, No Value = 18446744073709551615'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -2375,20 +2375,6 @@ types:
     instances:
       is_null:
         value: value == 18446744073709551615
-  nanosecond_timestamp_nullable:
-    seq:
-      - id: value
-        type: nanosecond_timestamp
-    instances:
-      is_null:
-        value: value.time == -1
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
   u2_nullable:
     seq:
       - id: value
@@ -2396,13 +2382,13 @@ types:
     instances:
       is_null:
         value: value == 65535
-  s8_nullable:
+  nanosecond_timestamp_nullable:
     seq:
       - id: value
-        type: s8
+        type: nanosecond_timestamp
     instances:
       is_null:
-        value: value == -9223372036854775808
+        value: value.time == -1
   u1_nullable:
     seq:
       - id: value
@@ -2410,6 +2396,20 @@ types:
     instances:
       is_null:
         value: value == 255
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   s1_nullable:
     seq:
       - id: value

@@ -130,10 +130,7 @@ types:
         pad-right: 0x20
         doc: 'Underlying Symbol for the strategy. All legs in this strategy belong to this Underlying'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
       - id: num_leg_information
         type: u1
@@ -225,10 +222,7 @@ types:
         enum: scope
         doc: 'Scope'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   add_order_long_form_message:
     seq:
@@ -263,10 +257,7 @@ types:
         enum: scope
         doc: 'Scope'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   single_side_executed_message:
     seq:
@@ -321,10 +312,7 @@ types:
         type: u4
         doc: 'Execution Id. Identifies the component of an execution. Unique for a given day'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Not applicable for complex, will be conveyed as space " "'
       - id: price_long
         type: decimal_u4_4
@@ -373,10 +361,7 @@ types:
         enum: scope
         doc: 'Scope'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   single_side_replace_long_form_message:
     seq:
@@ -410,10 +395,7 @@ types:
         enum: scope
         doc: 'Scope'
       - id: reserved_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   single_side_delete_message:
     seq:
@@ -475,7 +457,7 @@ types:
         type: u4
         doc: 'Execution Id. Identifies the component of an execution. Unique for a given day'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Not applicable for complex, will be set to zero "0"'
       - id: cross_type
         type: u1
@@ -497,20 +479,14 @@ types:
         type: u4
         doc: 'Uniquely identifies the Auction for the trading day'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Not applicable for complex, will be conveyed as space " "'
       - id: trade_type
         type: u1
         enum: trade_type
         doc: 'Trade Type Identifier'
       - id: reserved_16
-        type: str
         size: 16
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   complex_strategy_auction_message:
     seq:
@@ -588,7 +564,7 @@ types:
         type: u4
         doc: 'Size of the aggregated auction responses at the best price (zero if not shown)'
       - id: reserved_4
-        type: u4
+        size: 4
         doc: 'Not applicable for complex, will be set to zero "0"'
       - id: num_flex_dac_leg_information
         type: u1
@@ -601,10 +577,7 @@ types:
   flex_dac_leg_information:
     seq:
       - id: reserved_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Reserved for future use'
   nanosecond_timestamp:
     seq:

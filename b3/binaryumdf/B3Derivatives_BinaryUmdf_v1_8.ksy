@@ -148,8 +148,8 @@ types:
         size: 3
         doc: '3 bytes padding'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   match_event_indicator:
     meta:
       bit-endian: le
@@ -187,8 +187,8 @@ types:
         size: 3
         doc: '3 bytes padding'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   security_status_3_message:
     seq:
       - id: security_id
@@ -218,11 +218,11 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'tradSesOpenTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: u8_nullable
+        doc: 'transactTime. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   security_group_phase_10_message:
     seq:
       - id: security_group
@@ -257,8 +257,8 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'tradSesOpenTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: transact_time
-        type: u8
-        doc: 'transactTime'
+        type: u8_nullable
+        doc: 'transactTime. Nullable, No Value = 0'
   deprecated_security_definition_message:
     seq:
       - id: security_id
@@ -310,29 +310,29 @@ types:
         type: decimal_s8_8_nullable
         doc: 'priceDivisor. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: security_validity_timestamp
-        type: s8
-        doc: 'securityValidityTimestamp'
+        type: s8_nullable
+        doc: 'securityValidityTimestamp. Nullable, No Value = -9223372036854775808'
       - id: no_shares_issued
-        type: u8
-        doc: 'noSharesIssued'
+        type: u8_nullable
+        doc: 'noSharesIssued. Nullable, No Value = 0'
       - id: clearing_house_id
-        type: u8
-        doc: 'clearingHouseID'
+        type: u8_nullable
+        doc: 'clearingHouseID. Nullable, No Value = 0'
       - id: min_order_qty
-        type: s8
-        doc: 'minOrderQty'
+        type: s8_nullable
+        doc: 'minOrderQty. Nullable, No Value = -9223372036854775808'
       - id: max_order_qty
-        type: s8
-        doc: 'maxOrderQty'
+        type: s8_nullable
+        doc: 'maxOrderQty. Nullable, No Value = -9223372036854775808'
       - id: min_lot_size
-        type: s8
-        doc: 'minLotSize'
+        type: s8_nullable
+        doc: 'minLotSize. Nullable, No Value = -9223372036854775808'
       - id: min_trade_vol
-        type: s8
-        doc: 'minTradeVol'
+        type: s8_nullable
+        doc: 'minTradeVol. Nullable, No Value = -9223372036854775808'
       - id: corporate_action_event_id
-        type: u4
-        doc: 'corporateActionEventId'
+        type: u4_nullable
+        doc: 'corporateActionEventId. Nullable, No Value = 0'
       - id: issue_date
         type: s4
         doc: 'issueDate'
@@ -388,10 +388,8 @@ types:
         type: str_3_nullable
         doc: 'settlCurrency. Nullable, No Value = 0'
       - id: security_strategy_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'securityStrategyType'
+        type: str_3_nullable
+        doc: 'securityStrategyType. Nullable, No Value = 0'
       - id: lot_type
         type: u1_nullable
         doc: 'lotType. Nullable, No Value = 255'
@@ -412,8 +410,8 @@ types:
         type: u1_nullable
         doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
       - id: governance_indicator
         type: u1_nullable
         doc: 'governanceIndicator. Nullable, No Value = 255'
@@ -430,8 +428,8 @@ types:
         type: u1_nullable
         doc: 'multiLegPriceMethod. Nullable, No Value = 255'
       - id: min_cross_qty
-        type: s8
-        doc: 'minCrossQty'
+        type: s8_nullable
+        doc: 'minCrossQty. Nullable, No Value = -9223372036854775808'
       - id: deprecated_underlyings_groups
         type: deprecated_underlyings_groups
         doc: 'noUnderlyings Block'
@@ -522,8 +520,8 @@ types:
         type: u8
         doc: 'Leg''s security ID'
       - id: leg_ratio_qty
-        type: decimal_s8_7
-        doc: 'Ratio of quantity for this leg relative to the entire security. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Ratio of quantity for this leg relative to the entire security. Implied decimal with scale 1e-7. Nullable, No Value = -9223372036854775808'
       - id: leg_security_type
         type: u1
         enum: leg_security_type
@@ -619,29 +617,29 @@ types:
         type: decimal_s8_8_nullable
         doc: 'priceDivisor. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: security_validity_timestamp
-        type: s8
-        doc: 'securityValidityTimestamp'
+        type: s8_nullable
+        doc: 'securityValidityTimestamp. Nullable, No Value = -9223372036854775808'
       - id: no_shares_issued
-        type: u8
-        doc: 'noSharesIssued'
+        type: u8_nullable
+        doc: 'noSharesIssued. Nullable, No Value = 0'
       - id: clearing_house_id
-        type: u8
-        doc: 'clearingHouseID'
+        type: u8_nullable
+        doc: 'clearingHouseID. Nullable, No Value = 0'
       - id: min_order_qty
-        type: s8
-        doc: 'minOrderQty'
+        type: s8_nullable
+        doc: 'minOrderQty. Nullable, No Value = -9223372036854775808'
       - id: max_order_qty
-        type: s8
-        doc: 'maxOrderQty'
+        type: s8_nullable
+        doc: 'maxOrderQty. Nullable, No Value = -9223372036854775808'
       - id: min_lot_size
-        type: s8
-        doc: 'minLotSize'
+        type: s8_nullable
+        doc: 'minLotSize. Nullable, No Value = -9223372036854775808'
       - id: min_trade_vol
-        type: s8
-        doc: 'minTradeVol'
+        type: s8_nullable
+        doc: 'minTradeVol. Nullable, No Value = -9223372036854775808'
       - id: corporate_action_event_id
-        type: u4
-        doc: 'corporateActionEventId'
+        type: u4_nullable
+        doc: 'corporateActionEventId. Nullable, No Value = 0'
       - id: issue_date
         type: s4
         doc: 'issueDate'
@@ -697,10 +695,8 @@ types:
         type: str_3_nullable
         doc: 'settlCurrency. Nullable, No Value = 0'
       - id: security_strategy_type
-        type: str
-        size: 3
-        encoding: ASCII
-        doc: 'securityStrategyType'
+        type: str_3_nullable
+        doc: 'securityStrategyType. Nullable, No Value = 0'
       - id: lot_type
         type: u1_nullable
         doc: 'lotType. Nullable, No Value = 255'
@@ -721,8 +717,8 @@ types:
         type: u1_nullable
         doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
-        type: u1
-        doc: 'marketSegmentID'
+        type: u1_nullable
+        doc: 'marketSegmentID. Nullable, No Value = 0'
       - id: governance_indicator
         type: u1_nullable
         doc: 'governanceIndicator. Nullable, No Value = 255'
@@ -739,8 +735,8 @@ types:
         type: u1_nullable
         doc: 'multiLegPriceMethod. Nullable, No Value = 255'
       - id: min_cross_qty
-        type: s8
-        doc: 'minCrossQty'
+        type: s8_nullable
+        doc: 'minCrossQty. Nullable, No Value = -9223372036854775808'
       - id: underlyings_groups
         type: underlyings_groups
         doc: 'noUnderlyings Block'
@@ -789,8 +785,8 @@ types:
         type: u8
         doc: 'Leg''s security ID'
       - id: leg_ratio_qty
-        type: decimal_s8_7
-        doc: 'Ratio of quantity for this leg relative to the entire security. Implied decimal with scale 1e-7'
+        type: decimal_s8_7_nullable
+        doc: 'Ratio of quantity for this leg relative to the entire security. Implied decimal with scale 1e-7. Nullable, No Value = -9223372036854775808'
       - id: leg_security_type
         type: u1
         enum: leg_security_type
@@ -846,8 +842,8 @@ types:
         type: u2
         doc: 'partNumber'
       - id: news_id
-        type: u8
-        doc: 'newsID'
+        type: u8_nullable
+        doc: 'newsID. Nullable, No Value = 0'
       - id: orig_time
         type: nanosecond_timestamp_nullable
         doc: 'origTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
@@ -919,11 +915,11 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
@@ -949,11 +945,11 @@ types:
         type: s8_nullable
         doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   closing_price_17_message:
     seq:
       - id: security_id
@@ -979,11 +975,11 @@ types:
         type: u2
         doc: 'tradeDate'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   auction_imbalance_19_message:
     seq:
       - id: security_id
@@ -1003,11 +999,11 @@ types:
         type: s8_nullable
         doc: 'mDEntrySize. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   imbalance_condition:
     meta:
       bit-endian: le
@@ -1072,11 +1068,11 @@ types:
         type: decimal_s8_4_nullable
         doc: 'tradingReferencePrice. Implied decimal with scale 1e-4. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   quantity_band_21_message:
     seq:
       - id: security_id
@@ -1089,17 +1085,17 @@ types:
         size: 3
         doc: '3 bytes padding'
       - id: avg_daily_traded_qty
-        type: s8
-        doc: 'avgDailyTradedQty'
+        type: s8_nullable
+        doc: 'avgDailyTradedQty. Nullable, No Value = -9223372036854775808'
       - id: max_trade_vol
-        type: s8
-        doc: 'maxTradeVol'
+        type: s8_nullable
+        doc: 'maxTradeVol. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   price_band_22_message:
     seq:
       - id: security_id
@@ -1127,11 +1123,11 @@ types:
         type: decimal_s8_8_nullable
         doc: 'tradingReferencePrice. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   high_price_24_message:
     seq:
       - id: security_id
@@ -1151,11 +1147,11 @@ types:
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   low_price_25_message:
     seq:
       - id: security_id
@@ -1175,11 +1171,11 @@ types:
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   last_trade_price_27_message:
     seq:
       - id: security_id
@@ -1205,23 +1201,23 @@ types:
         type: u4
         doc: 'tradeID'
       - id: md_entry_buyer
-        type: u4
-        doc: 'mDEntryBuyer'
+        type: u4_nullable
+        doc: 'mDEntryBuyer. Nullable, No Value = 0'
       - id: md_entry_seller
-        type: u4
-        doc: 'mDEntrySeller'
+        type: u4_nullable
+        doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: seller_days
-        type: u2
-        doc: 'sellerDays'
+        type: u2_nullable
+        doc: 'sellerDays. Nullable, No Value = 0'
       - id: md_entry_interest_rate
         type: decimal_s8_4_nullable
         doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4. Nullable, No Value = 0'
@@ -1301,8 +1297,8 @@ types:
         type: decimal_s8_4
         doc: 'mDEntryPx. Implied decimal with scale 1e-4'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: open_close_settl_flag
         type: u1
         enum: open_close_settl_flag
@@ -1316,8 +1312,8 @@ types:
         enum: settl_price_type
         doc: 'settlPriceType'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: padding_1
         size: 1
         doc: '1 bytes padding'
@@ -1339,11 +1335,11 @@ types:
         type: s8
         doc: 'mDEntrySize'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   snapshot_full_refresh_header_30_message:
     seq:
       - id: security_id
@@ -1368,8 +1364,8 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: last_rpt_seq
-        type: u4
-        doc: 'lastRptSeq'
+        type: u4_nullable
+        doc: 'lastRptSeq. Nullable, No Value = 0'
   order_mb_o_50_message:
     seq:
       - id: security_id
@@ -1399,20 +1395,20 @@ types:
         type: u4
         doc: 'mDEntryPositionNo'
       - id: entering_firm
-        type: u4
-        doc: 'enteringFirm'
+        type: u4_nullable
+        doc: 'enteringFirm. Nullable, No Value = 0'
       - id: md_insert_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDInsertTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDInsertTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: secondary_order_id
         type: u8
         doc: 'secondaryOrderID'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   delete_order_mb_o_51_message:
     seq:
       - id: security_id
@@ -1441,11 +1437,11 @@ types:
         type: u8
         doc: 'secondaryOrderID'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   mass_delete_orders_mb_o_52_message:
     seq:
       - id: security_id
@@ -1469,11 +1465,11 @@ types:
         type: u4
         doc: 'mDEntryPositionNo'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   trade_53_message:
     seq:
       - id: security_id
@@ -1499,11 +1495,11 @@ types:
         type: u4
         doc: 'tradeID'
       - id: md_entry_buyer
-        type: u4
-        doc: 'mDEntryBuyer'
+        type: u4_nullable
+        doc: 'mDEntryBuyer. Nullable, No Value = 0'
       - id: md_entry_seller
-        type: u4
-        doc: 'mDEntrySeller'
+        type: u4_nullable
+        doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
@@ -1514,11 +1510,11 @@ types:
         size: 1
         doc: '1 bytes padding'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   forward_trade_54_message:
     seq:
       - id: security_id
@@ -1544,23 +1540,23 @@ types:
         type: u4
         doc: 'tradeID'
       - id: md_entry_buyer
-        type: u4
-        doc: 'mDEntryBuyer'
+        type: u4_nullable
+        doc: 'mDEntryBuyer. Nullable, No Value = 0'
       - id: md_entry_seller
-        type: u4
-        doc: 'mDEntrySeller'
+        type: u4_nullable
+        doc: 'mDEntrySeller. Nullable, No Value = 0'
       - id: trade_date
         type: u2
         doc: 'tradeDate'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: seller_days
-        type: u2
-        doc: 'sellerDays'
+        type: u2_nullable
+        doc: 'sellerDays. Nullable, No Value = 0'
       - id: md_entry_interest_rate
         type: decimal_s8_4_nullable
         doc: 'mDEntryInterestRate. Implied decimal with scale 1e-4. Nullable, No Value = 0'
@@ -1592,20 +1588,20 @@ types:
         type: s8
         doc: 'fillQty'
       - id: traded_hidden_qty
-        type: s8
-        doc: 'tradedHiddenQty'
+        type: s8_nullable
+        doc: 'tradedHiddenQty. Nullable, No Value = -9223372036854775808'
       - id: cxl_qty
-        type: s8
-        doc: 'cxlQty'
+        type: s8_nullable
+        doc: 'cxlQty. Nullable, No Value = -9223372036854775808'
       - id: aggressor_time
-        type: nanosecond_timestamp
-        doc: 'aggressorTime. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'aggressorTime. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   execution_statistics_56_message:
     seq:
       - id: security_id
@@ -1634,11 +1630,11 @@ types:
         type: u4
         doc: 'numberOfTrades'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   trade_bust_57_message:
     seq:
       - id: security_id
@@ -1670,11 +1666,11 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: md_entry_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: rpt_seq
-        type: u4
-        doc: 'rptSeq'
+        type: u4_nullable
+        doc: 'rptSeq. Nullable, No Value = 0'
   snapshot_full_refresh_orders_mb_o_71_message:
     seq:
       - id: security_id
@@ -1705,11 +1701,11 @@ types:
         type: u4
         doc: 'mDEntryPositionNo'
       - id: entering_firm
-        type: u4
-        doc: 'enteringFirm'
+        type: u4_nullable
+        doc: 'enteringFirm. Nullable, No Value = 0'
       - id: md_insert_timestamp
-        type: nanosecond_timestamp
-        doc: 'mDInsertTimestamp. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'mDInsertTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: secondary_order_id
         type: u8
         doc: 'secondaryOrderID'
@@ -1730,13 +1726,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  u1_nullable:
-    seq:
-      - id: value
-        type: u1
-    instances:
-      is_null:
-        value: value == 255
   nanosecond_timestamp_nullable:
     seq:
       - id: value
@@ -1744,6 +1733,27 @@ types:
     instances:
       is_null:
         value: value.time == 0
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1772,6 +1782,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  s8_nullable:
+    seq:
+      - id: value
+        type: s8
+    instances:
+      is_null:
+        value: value == -9223372036854775808
   s4_nullable:
     seq:
       - id: value
@@ -1834,20 +1851,13 @@ types:
     instances:
       real:
         value: mantissa / 10000000.0
-  u8_nullable:
+  decimal_s8_7_nullable:
     seq:
       - id: value
-        type: u8
+        type: decimal_s8_7
     instances:
       is_null:
-        value: value == 0
-  s8_nullable:
-    seq:
-      - id: value
-        type: s8
-    instances:
-      is_null:
-        value: value == -9223372036854775808
+        value: value.mantissa == -9223372036854775808
 
 enums:
   template_id:
