@@ -120,28 +120,28 @@ types:
         type: u1
         enum: keep_alive
         doc: 'keepAlive'
-      - id: gateway_heartbeat_message_sub_sessions_groups
-        type: gateway_heartbeat_message_sub_sessions_groups
+      - id: sub_sessions_groups
+        type: sub_sessions_groups
         doc: 'SubSessions Block'
-  gateway_heartbeat_message_sub_sessions_groups:
+  sub_sessions_groups:
     seq:
       - id: session_info_group_encoding
         type: session_info_group_encoding
         doc: 'sessionInfoGroupEncoding'
-      - id: gateway_heartbeat_message_sub_sessions_group
-        type: gateway_heartbeat_message_sub_sessions_group
+      - id: sub_sessions_group
+        type: sub_sessions_group
         repeat: expr
         repeat-expr: session_info_group_encoding.num_in_group
         doc: 'SubSessions'
   session_info_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
         type: u1
         doc: 'numInGroup'
-  gateway_heartbeat_message_sub_sessions_group:
+  sub_sessions_group:
     seq:
       - id: subsession_type
         type: s1
@@ -248,7 +248,7 @@ types:
         size: 16
         encoding: ASCII
         doc: 'account'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -280,9 +280,9 @@ types:
         type: s1
         enum: time_in_force
         doc: 'timeInForce'
-      - id: cancel_instead_of_slide_cancel_instead_of_slide
+      - id: cancel_instead_of_slide
         type: s1
-        enum: cancel_instead_of_slide_cancel_instead_of_slide
+        enum: cancel_instead_of_slide
         doc: 'cancelInsteadOfSlide'
       - id: display_inst
         type: s1
@@ -339,7 +339,7 @@ types:
         size: 16
         encoding: ASCII
         doc: 'account'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -374,7 +374,7 @@ types:
         type: s1
         enum: time_in_force
         doc: 'timeInForce'
-      - id: cancel_instead_of_slide_cancel_instead_of_slide_optional
+      - id: cancel_instead_of_slide_optional
         type: s1_nullable
         doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
       - id: display_inst
@@ -427,7 +427,7 @@ types:
         doc: 'orderQty'
   order_cancel_request_message:
     seq:
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -448,7 +448,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'marketParticipantId'
-      - id: custom_group_id_uint_16
+      - id: custom_group_id
         type: u2
         doc: 'customGroupId'
       - id: cl_ord_id
@@ -459,7 +459,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'clearingAccount'
-      - id: cancel_instead_of_slide_cancel_instead_of_slide_optional
+      - id: cancel_instead_of_slide_optional
         type: s1_nullable
         doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
       - id: send_time
@@ -489,7 +489,7 @@ types:
         doc: 'quoteUpdates'
   quote_updates_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
@@ -497,7 +497,7 @@ types:
         doc: 'numInGroup'
   new_bulk_quote_message_quote_updates_group:
     seq:
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: side
@@ -519,7 +519,7 @@ types:
         doc: 'Reserved for future use'
   mass_cancel_request_message:
     seq:
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -547,7 +547,7 @@ types:
         doc: 'bulkAction'
   purge_request_message:
     seq:
-      - id: underlying_id_instrument_id
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
       - id: market_participant_id
@@ -584,7 +584,7 @@ types:
         doc: 'customGroupIds'
   custom_group_ids_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
@@ -592,7 +592,7 @@ types:
         doc: 'numInGroup'
   purge_request_message_custom_group_ids_group:
     seq:
-      - id: custom_group_id_uint_16
+      - id: custom_group_id
         type: u2
         doc: 'customGroupId'
   order_ack_message:
@@ -605,7 +605,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -643,9 +643,9 @@ types:
         type: s1
         enum: time_in_force
         doc: 'timeInForce'
-      - id: cancel_instead_of_slide_cancel_instead_of_slide
+      - id: cancel_instead_of_slide
         type: s1
-        enum: cancel_instead_of_slide_cancel_instead_of_slide
+        enum: cancel_instead_of_slide
         doc: 'cancelInsteadOfSlide'
       - id: display_inst
         type: s1
@@ -721,7 +721,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -767,7 +767,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -807,7 +807,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -851,7 +851,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'marketParticipantId'
-      - id: custom_group_id_uint_16
+      - id: custom_group_id
         type: u2
         doc: 'customGroupId'
       - id: cl_ord_id
@@ -886,7 +886,7 @@ types:
         doc: 'quoteAcks'
   quote_acks_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
@@ -894,7 +894,7 @@ types:
         doc: 'numInGroup'
   bulk_quote_ack_message_quote_acks_group:
     seq:
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: side
@@ -941,7 +941,7 @@ types:
         size: 3
         encoding: ASCII
         doc: 'aiq'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: side
@@ -974,7 +974,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -1011,7 +1011,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -1045,7 +1045,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
       - id: market_participant_id
@@ -1086,7 +1086,7 @@ types:
         doc: 'customGroupIds'
   purge_ack_message_custom_group_ids_group:
     seq:
-      - id: custom_group_id_uint_16
+      - id: custom_group_id
         type: u2
         doc: 'customGroupId'
   execution_report_message:
@@ -1099,7 +1099,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -1223,7 +1223,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -1270,10 +1270,10 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
-      - id: instrument_id_instrument_id
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
       - id: market_participant_id
@@ -1303,7 +1303,7 @@ types:
         doc: 'throttleIndicator'
   risk_limit_update_request_message:
     seq:
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -1314,10 +1314,10 @@ types:
       - id: cl_ord_id
         type: u8
         doc: 'clOrdId'
-      - id: risk_control_risk_control_optional
+      - id: risk_control_optional
         type: s1_nullable
         doc: 'riskControl. Nullable, No Value = 128'
-      - id: risk_control_status_risk_control_status_optional
+      - id: risk_control_status_optional
         type: s1_nullable
         doc: 'riskControlStatus. Nullable, No Value = 128'
       - id: time_limit
@@ -1332,12 +1332,12 @@ types:
       - id: ioc_attribution
         type: s1_nullable
         doc: 'iocAttribution. Nullable, No Value = 128'
-      - id: cust_capacity_weight_uint_8_optional
+      - id: cust_capacity_weight_optional
         type: u1_nullable
         doc: 'custCapacityWeight. Nullable, No Value = 255'
   risk_action_request_message:
     seq:
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -1348,15 +1348,15 @@ types:
       - id: cl_ord_id
         type: u8
         doc: 'clOrdId'
-      - id: risk_control_risk_control
+      - id: risk_control
         type: s1
-        enum: risk_control_risk_control
+        enum: risk_control
         doc: 'riskControl'
       - id: risk_action
         type: s1
         enum: risk_action
         doc: 'riskAction'
-      - id: custom_group_id_uint_16_optional
+      - id: custom_group_id_optional
         type: u2_nullable
         doc: 'customGroupId. Nullable, No Value = 65535'
   underlying_ref_data_message:
@@ -1364,7 +1364,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_uint_32
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
       - id: underlying_symbol
@@ -1386,10 +1386,10 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: instrument_id_uint_32
+      - id: instrument_id
         type: u4
         doc: 'instrumentId'
-      - id: underlying_id_uint_32
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
       - id: osi_symbol
@@ -1474,7 +1474,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id
+      - id: underlying_id
         type: u4
         doc: 'underlyingId'
       - id: market_participant_id
@@ -1550,7 +1550,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -1561,20 +1561,20 @@ types:
       - id: cl_ord_id
         type: u8
         doc: 'clOrdId'
-      - id: custom_group_id_uint_16_optional
+      - id: custom_group_id_optional
         type: u2_nullable
         doc: 'customGroupId. Nullable, No Value = 65535'
       - id: risk_ack_type
         type: s1
         enum: risk_ack_type
         doc: 'riskAckType'
-      - id: risk_control_status_risk_control_status
+      - id: risk_control_status
         type: s1
-        enum: risk_control_status_risk_control_status
+        enum: risk_control_status
         doc: 'riskControlStatus'
-      - id: risk_control_risk_control
+      - id: risk_control
         type: s1
-        enum: risk_control_risk_control
+        enum: risk_control
         doc: 'riskControl'
       - id: risk_action
         type: s1
@@ -1595,7 +1595,7 @@ types:
       - id: blocked_by_breach_indicator
         type: s1_nullable
         doc: 'blockedByBreachIndicator. Nullable, No Value = 128'
-      - id: cust_capacity_weight_uint_8
+      - id: cust_capacity_weight
         type: u1
         doc: 'custCapacityWeight'
       - id: throttle_indicator
@@ -1607,7 +1607,7 @@ types:
       - id: transact_time
         type: u8
         doc: 'transactTime'
-      - id: underlying_id_instrument_id_optional
+      - id: underlying_id_optional
         type: u4_nullable
         doc: 'underlyingId. Nullable, No Value = 4294967295'
       - id: market_participant_id
@@ -1615,9 +1615,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'marketParticipantId'
-      - id: risk_control_risk_control
+      - id: risk_control
         type: s1
-        enum: risk_control_risk_control
+        enum: risk_control
         doc: 'riskControl'
       - id: time_limit
         type: u8_nullable
@@ -2014,7 +2014,7 @@ enums:
     1:
       id: 'ioc'
       doc: 'TimeInForce Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  cancel_instead_of_slide_cancel_instead_of_slide:
+  cancel_instead_of_slide:
     0:
       id: 'slide'
       doc: 'CancelInsteadOfSlide Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2046,7 +2046,7 @@ enums:
     2:
       id: 'sell'
       doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  cancel_instead_of_slide_cancel_instead_of_slide_optional:
+  cancel_instead_of_slide_optional:
     0:
       id: 'slide'
       doc: 'CancelInsteadOfSlide Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2565,7 +2565,7 @@ enums:
     8:
       id: 'new_ioc_quote_reject'
       doc: 'RejectType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_risk_control_optional:
+  risk_control_optional:
     1:
       id: 'transaction_based'
       doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2584,7 +2584,7 @@ enums:
     6:
       id: 'intrinsic_value_and_arbitrage'
       doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_status_risk_control_status_optional:
+  risk_control_status_optional:
     0:
       id: 'disabled'
       doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2598,7 +2598,7 @@ enums:
     2:
       id: 'exclude_ioc'
       doc: 'IOCAttribution Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_risk_control:
+  risk_control:
     1:
       id: 'transaction_based'
       doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2768,7 +2768,7 @@ enums:
     1:
       id: 'unsolicited'
       doc: 'RiskAckType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_status_risk_control_status:
+  risk_control_status:
     0:
       id: 'disabled'
       doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

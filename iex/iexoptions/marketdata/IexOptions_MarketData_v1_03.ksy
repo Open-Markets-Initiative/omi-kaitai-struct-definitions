@@ -541,7 +541,7 @@ types:
         doc: 'messageListGroupEncoding'
   message_list_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group

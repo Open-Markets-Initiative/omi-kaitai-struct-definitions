@@ -395,9 +395,9 @@ types:
       - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
-      - id: mm_protection_reset_boolean
+      - id: mm_protection_reset
         type: u1
-        enum: mm_protection_reset_boolean
+        enum: mm_protection_reset
         doc: 'mmProtectionReset'
       - id: clordid
         type: u8
@@ -495,9 +495,9 @@ types:
       - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
-      - id: mm_protection_reset_boolean
+      - id: mm_protection_reset
         type: u1
-        enum: mm_protection_reset_boolean
+        enum: mm_protection_reset
         doc: 'mmProtectionReset'
       - id: clordid
         type: u8
@@ -563,9 +563,9 @@ types:
       - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
-      - id: mm_protection_reset_boolean
+      - id: mm_protection_reset
         type: u1
-        enum: mm_protection_reset_boolean
+        enum: mm_protection_reset
         doc: 'mmProtectionReset'
       - id: clordid
         type: u8
@@ -674,9 +674,9 @@ types:
       - id: ordtagid
         type: u1_nullable
         doc: 'ordTagID. Nullable, No Value = 0'
-      - id: mm_protection_reset_boolean
+      - id: mm_protection_reset
         type: u1
-        enum: mm_protection_reset_boolean
+        enum: mm_protection_reset
         doc: 'mmProtectionReset'
       - id: clordid
         type: u8
@@ -1008,7 +1008,7 @@ types:
       - id: cross_prioritization
         type: u1_nullable
         doc: 'crossPrioritization. Nullable, No Value = 255'
-      - id: mm_protection_reset_boolean_optional
+      - id: mm_protection_reset_optional
         type: u1_nullable
         doc: 'mmProtectionReset. Nullable, No Value = 255'
       - id: offset_165_padding_3
@@ -1141,7 +1141,7 @@ types:
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
-      - id: mm_protection_reset_boolean_optional
+      - id: mm_protection_reset_optional
         type: u1_nullable
         doc: 'mmProtectionReset. Nullable, No Value = 255'
       - id: exec_restatement_reason
@@ -1568,9 +1568,9 @@ types:
         type: u1
         enum: aggressor_indicator
         doc: 'aggressorIndicator'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: trade_date
         type: u2
@@ -1751,9 +1751,9 @@ types:
       - id: price_8
         type: decimal_s8_8
         doc: 'price. Implied decimal with scale 1e-8'
-      - id: settltype
+      - id: settl_type
         type: u1
-        enum: settltype
+        enum: settl_type
         doc: 'settlType'
       - id: execute_underlying_trade
         type: u1
@@ -1877,9 +1877,9 @@ types:
         type: u1
         enum: side_optional
         doc: 'side. Nullable, No Value = 0'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: price_8_optional
         type: decimal_s8_8_nullable
@@ -1951,9 +1951,9 @@ types:
         type: u1
         enum: side
         doc: 'side'
-      - id: settltype
+      - id: settl_type
         type: u1
-        enum: settltype
+        enum: settl_type
         doc: 'settlType'
       - id: account
         type: u4_nullable
@@ -2061,9 +2061,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: price_8_optional
         type: decimal_s8_8_nullable
@@ -2891,7 +2891,7 @@ enums:
     11:
       id: 'system_busy'
       doc: 'RetransmitRejectCode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  mm_protection_reset_boolean:
+  mm_protection_reset:
     0:
       id: 'false_value'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3110,7 +3110,7 @@ enums:
     0x33:
       id: 'multileg_security'
       doc: 'MultiLegReportingType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  mm_protection_reset_boolean_optional:
+  mm_protection_reset_optional:
     0:
       id: 'false_value'
       doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4743,7 +4743,7 @@ enums:
     033050:
       id: 'system_error_033050'
       doc: 'System Error'
-  settltype_optional:
+  settl_type_optional:
     0x30:
       id: 'buyers_discretion'
       doc: 'SettlType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4888,7 +4888,7 @@ enums:
     2:
       id: 'accept_security_as_proposal_with_revisions'
       doc: 'SecurityResponseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  settltype:
+  settl_type:
     0x30:
       id: 'buyers_discretion'
       doc: 'SettlType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

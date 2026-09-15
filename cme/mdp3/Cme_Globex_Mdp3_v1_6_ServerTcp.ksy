@@ -677,20 +677,20 @@ types:
       - id: lot_type_rules_groups
         type: lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
-      - id: legs_groups
-        type: legs_groups
+      - id: legacy_legs_groups
+        type: legacy_legs_groups
         doc: 'NoLegs Block'
-  legs_groups:
+  legacy_legs_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: legs_group
-        type: legs_group
+      - id: legacy_legs_group
+        type: legacy_legs_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Leg entries'
-  legs_group:
+  legacy_legs_group:
     seq:
       - id: leg_security_id
         type: s4

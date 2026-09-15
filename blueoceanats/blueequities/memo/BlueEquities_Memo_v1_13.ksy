@@ -284,7 +284,7 @@ types:
         doc: 'One party identifier associated with the order'
   repeating_group_dimensions:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'The total space reserved for a single repeating group entry'
       - id: num_in_group
@@ -292,7 +292,7 @@ types:
         doc: 'A counter representing the number of entries in the repeating group'
   parties_group:
     seq:
-      - id: party_i_d_new_order_single_party_id
+      - id: party_id_new_order_single_party_id
         type: str
         size: 16
         encoding: ASCII

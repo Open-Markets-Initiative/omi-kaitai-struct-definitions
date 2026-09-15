@@ -108,7 +108,7 @@ types:
         doc: 'Identifies the Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Participant-provided timestamp'
+        doc: 'Participant-provided timestamp. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'Identifies the individual message within the block, beginning with one (1) and incremented for subsequent messages within a block'
@@ -121,11 +121,11 @@ types:
   timestamp_1:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   administrative_message:
     seq:
       - id: administrative_message_type
@@ -469,7 +469,7 @@ types:
         doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -477,11 +477,11 @@ types:
   timestamp_2:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   special_long_quote_message:
     seq:
       - id: security_symbol
@@ -569,7 +569,7 @@ types:
         doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -678,7 +678,7 @@ types:
         doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
@@ -793,7 +793,7 @@ types:
         doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
@@ -980,6 +980,41 @@ types:
       - id: trading_status_id
         type: u4
         doc: 'Unique Identifier For Each Trading Status Message Used To Eliminate Duplicate Trading Status Messages Received Over Cqs And Cts Input Lines'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8le
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u2_2:
     seq:
       - id: mantissa

@@ -927,7 +927,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment
+      - id: min_price_increment_ex
         type: decimal_s8_9
         doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-9'
       - id: display_factor
@@ -1279,7 +1279,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment_optional
+      - id: min_price_increment_optional_ex
         type: decimal_s8_9_nullable
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: min_price_increment_amount
@@ -1484,7 +1484,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment_optional
+      - id: min_price_increment_optional_ex
         type: decimal_s8_9_nullable
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor
@@ -1681,7 +1681,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment_optional
+      - id: min_price_increment_optional_ex
         type: decimal_s8_9_nullable
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor
@@ -1894,7 +1894,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment
+      - id: min_price_increment_ex
         type: decimal_s8_9
         doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-9'
       - id: display_factor

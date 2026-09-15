@@ -260,7 +260,7 @@ types:
       - id: security_id
         type: u2
         doc: 'SecurityID'
-      - id: offer_size_uint_16
+      - id: offer_size_short
         type: u2
         doc: 'OfferSize'
       - id: offer_price_short

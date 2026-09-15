@@ -86,11 +86,11 @@ types:
   sip_block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_length
@@ -147,11 +147,11 @@ types:
   timestamp_1:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   end_of_end_of_day_summary_message:
     seq:
       - id: participant_id
@@ -745,8 +745,8 @@ types:
         encoding: ASCII
         doc: 'Corrected Short Sale Restriction Indicator'
       - id: corrected_prior_day_trade_date_and_time
-        type: u8
-        doc: 'Corrected Date And Time The Prior Day Trade Was Executed'
+        type: nanosecond_timestamp
+        doc: 'Corrected Date And Time The Prior Day Trade Was Executed. Nanoseconds since Unix epoch'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
@@ -782,8 +782,8 @@ types:
         encoding: ASCII
         doc: 'Original Short Sale Restriction Indicator'
       - id: original_prior_day_trade_date_and_time
-        type: u8
-        doc: 'Original Date And Time The Prior Day Trade Was Executed'
+        type: nanosecond_timestamp
+        doc: 'Original Date And Time The Prior Day Trade Was Executed. Nanoseconds since Unix epoch'
   prior_day_trade_message:
     seq:
       - id: participant_id
@@ -841,8 +841,8 @@ types:
         enum: trade_reporting_facility_id
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
       - id: prior_day_trade_date_and_time
-        type: u8
-        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time'
+        type: nanosecond_timestamp
+        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time. Nanoseconds since Unix epoch'
   sale_condition_4:
     seq:
       - id: category_1
@@ -918,8 +918,8 @@ types:
         enum: trade_reporting_facility_id
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
       - id: prior_day_trade_date_and_time
-        type: u8
-        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time'
+        type: nanosecond_timestamp
+        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -981,8 +981,8 @@ types:
         enum: trade_reporting_facility_id
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
       - id: prior_day_trade_date_and_time
-        type: u8
-        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time'
+        type: nanosecond_timestamp
+        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time. Nanoseconds since Unix epoch'
   fractional_prior_day_trade_message:
     seq:
       - id: participant_id
@@ -1040,8 +1040,8 @@ types:
         enum: trade_reporting_facility_id
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
       - id: prior_day_trade_date_and_time
-        type: u8
-        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time'
+        type: nanosecond_timestamp
+        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time. Nanoseconds since Unix epoch'
   fractional_prior_day_trade_cancel_error_message:
     seq:
       - id: participant_id
@@ -1099,8 +1099,8 @@ types:
         enum: trade_reporting_facility_id
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
       - id: prior_day_trade_date_and_time
-        type: u8
-        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time'
+        type: nanosecond_timestamp
+        doc: 'The First Integer Contains The Number Of Seconds From Epoch 111970000000 Utc The Next Integer Contains The Nanosecond Portion Of The Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -1685,11 +1685,11 @@ types:
   timestamp_2:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   long_trade_message:
     seq:
       - id: participant_id
@@ -2426,6 +2426,28 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u8_6:
     seq:
       - id: mantissa

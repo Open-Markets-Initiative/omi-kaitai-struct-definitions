@@ -1420,9 +1420,9 @@ types:
         type: u1
         enum: aggressor_indicator
         doc: 'aggressorIndicator'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: trade_date
         type: u2
@@ -1588,9 +1588,9 @@ types:
       - id: price
         type: decimal_s8_4
         doc: 'price. Implied decimal with scale 1e-4'
-      - id: settltype
+      - id: settl_type
         type: u1
-        enum: settltype
+        enum: settl_type
         doc: 'settlType'
       - id: execute_underlying_trade
         type: u1
@@ -1718,9 +1718,9 @@ types:
         type: u1
         enum: side_optional
         doc: 'side. Nullable, No Value = 0'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: price_optional
         type: decimal_s8_4_nullable
@@ -1789,9 +1789,9 @@ types:
         type: u1
         enum: side
         doc: 'side'
-      - id: settltype
+      - id: settl_type
         type: u1
-        enum: settltype
+        enum: settl_type
         doc: 'settlType'
       - id: account
         type: u4_nullable
@@ -1896,9 +1896,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
-      - id: settltype_optional
+      - id: settl_type_optional
         type: u1
-        enum: settltype_optional
+        enum: settl_type_optional
         doc: 'settlType. Nullable, No Value = 0'
       - id: price_optional
         type: decimal_s8_4_nullable
@@ -4463,7 +4463,7 @@ enums:
     033050:
       id: 'system_error_033050'
       doc: 'System Error'
-  settltype_optional:
+  settl_type_optional:
     0x30:
       id: 'buyers_discretion'
       doc: 'SettlType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4608,7 +4608,7 @@ enums:
     2:
       id: 'accept_security_as_proposal_with_revisions'
       doc: 'SecurityResponseType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  settltype:
+  settl_type:
     0x30:
       id: 'buyers_discretion'
       doc: 'SettlType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

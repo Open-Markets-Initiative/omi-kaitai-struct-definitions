@@ -111,28 +111,28 @@ types:
         type: u1
         enum: keep_alive
         doc: 'keepAlive'
-      - id: gateway_heartbeat_message_sub_sessions_groups
-        type: gateway_heartbeat_message_sub_sessions_groups
+      - id: sub_sessions_groups
+        type: sub_sessions_groups
         doc: 'SubSessions Block'
-  gateway_heartbeat_message_sub_sessions_groups:
+  sub_sessions_groups:
     seq:
       - id: session_info_group_encoding
         type: session_info_group_encoding
         doc: 'sessionInfoGroupEncoding'
-      - id: gateway_heartbeat_message_sub_sessions_group
-        type: gateway_heartbeat_message_sub_sessions_group
+      - id: sub_sessions_group
+        type: sub_sessions_group
         repeat: expr
         repeat-expr: session_info_group_encoding.num_in_group
         doc: 'SubSessions'
   session_info_group_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
         type: u1
         doc: 'numInGroup'
-  gateway_heartbeat_message_sub_sessions_group:
+  sub_sessions_group:
     seq:
       - id: subsession_type
         type: s1

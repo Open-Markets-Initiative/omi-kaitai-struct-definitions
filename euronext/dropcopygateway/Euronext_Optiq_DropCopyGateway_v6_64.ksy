@@ -94,21 +94,21 @@ types:
   dc_market_status_change_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: phase_id
         type: u1
         enum: phase_id
@@ -126,11 +126,11 @@ types:
         enum: change_type
         doc: 'changeType'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: event_time
-        type: u8_nullable
-        doc: 'eventTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventTime'
       - id: book_state
         type: u1
         enum: book_state
@@ -157,9 +157,9 @@ types:
       - id: order_entry_qualifier
         type: u1_nullable
         doc: 'orderEntryQualifier. Nullable, No Value = 255'
-      - id: session_sessionenum
+      - id: session
         type: u1
-        enum: session_sessionenum
+        enum: session
         doc: 'session'
       - id: scheduled_event
         type: u1_nullable
@@ -225,35 +225,35 @@ types:
   dc_price_update_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: event_time
-        type: u8_nullable
-        doc: 'eventTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventTime'
       - id: price_type
         type: u1
         enum: price_type
         doc: 'priceType'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
-      - id: price
+        type: u4
+        doc: 'symbolIndex'
+      - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity
+      - id: quantity_optional
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: imbalance_qty
@@ -265,21 +265,21 @@ types:
   long_order_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: order_event_type
         type: u1
         enum: order_event_type
         doc: 'orderEventType'
-      - id: account_type_internal_account_type_internalenum
+      - id: account_type_internal
         type: u1
-        enum: account_type_internal_account_type_internalenum
+        enum: account_type_internal
         doc: 'accountTypeInternal'
       - id: ack_phase
         type: u1_nullable
@@ -290,13 +290,13 @@ types:
       - id: ack_type
         type: u1_nullable
         doc: 'ackType. Nullable, No Value = 255'
-      - id: book_in
+      - id: book_in_optional
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: book_out_time
+      - id: book_out_time_optional
         type: u8_nullable
         doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
-      - id: client_order_id
+      - id: client_order_id_optional
         type: s8_nullable
         doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
       - id: dark_execution_instruction
@@ -307,10 +307,10 @@ types:
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
-      - id: execution_instruction_execution_instructionset
-        type: execution_instruction_execution_instructionset
+        type: u8
+        doc: 'eventId'
+      - id: execution_instruction
+        type: execution_instruction
         doc: 'ExecutionInstruction_set bit set'
       - id: firm_id
         type: str
@@ -324,23 +324,23 @@ types:
         type: u8_nullable
         doc: 'indicativeAuctionVolume. Nullable, No Value = 18446744073709551615'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
-      - id: lp_role_lp_roleenum_optional
+        type: u8
+        doc: 'oESessionID'
+      - id: lp_role_optional
         type: u1_nullable
         doc: 'lPRole. Nullable, No Value = 255'
-      - id: mi_fid_indicators_mi_fid_indicatorsset
-        type: mi_fid_indicators_mi_fid_indicatorsset
+      - id: mi_fid_indicators
+        type: mi_fid_indicators
         doc: 'MiFIDIndicators_set bit set'
-      - id: oegin_from_member
+      - id: oegin_from_member_optional
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
-      - id: oegout_time_to_me
+      - id: oegout_time_to_me_optional
         type: u8_nullable
         doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
       - id: order_id
-        type: u8_nullable
-        doc: 'orderID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'orderID'
       - id: order_priority
         type: u8_nullable
         doc: 'orderPriority. Nullable, No Value = 18446744073709551615'
@@ -348,55 +348,55 @@ types:
         type: s8_nullable
         doc: 'orderPx. Nullable, No Value = -9223372036854775808'
       - id: order_qty
-        type: u8_nullable
-        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
-      - id: order_side_order_sideenum
+        type: u8
+        doc: 'orderQty'
+      - id: order_side
         type: u1
-        enum: order_side_order_sideenum
+        enum: order_side
         doc: 'orderSide'
       - id: order_type
         type: u1
         enum: order_type
         doc: 'orderType'
       - id: orig_client_order_id
-        type: s8_nullable
-        doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'origClientOrderID'
       - id: stpid
         type: u2_nullable
         doc: 'sTPID. Nullable, No Value = 65535'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
-      - id: time_in_force_time_in_forceenum
+        type: u4
+        doc: 'symbolIndex'
+      - id: time_in_force
         type: u1
-        enum: time_in_force_time_in_forceenum
+        enum: time_in_force
         doc: 'timeInForce'
       - id: displayed_qty
         type: u8_nullable
         doc: 'displayedQty. Nullable, No Value = 18446744073709551615'
       - id: cross_order_indicator
-        type: u1_nullable
-        doc: 'crossOrderIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'crossOrderIndicator'
       - id: counterpart_firm_id
         type: str_8_nullable
         doc: 'counterpartFirmID. Nullable, No Value = 0'
-      - id: execution_id
+      - id: execution_id_optional
         type: u4_nullable
         doc: 'executionID. Nullable, No Value = 4294967295'
-      - id: execution_phase_execution_phaseenum_optional
+      - id: execution_phase_optional
         type: u1_nullable
         doc: 'executionPhase. Nullable, No Value = 255'
-      - id: last_shares
+      - id: last_shares_optional
         type: u8_nullable
         doc: 'lastShares. Nullable, No Value = 18446744073709551615'
-      - id: last_traded_px
+      - id: last_traded_px_optional
         type: s8_nullable
         doc: 'lastTradedPx. Nullable, No Value = -9223372036854775808'
       - id: leaves_qty
-        type: u8_nullable
-        doc: 'leavesQty. Nullable, No Value = 18446744073709551615'
-      - id: trade_qualifier_trade_qualifierset_optional
-        type: trade_qualifier_trade_qualifierset_optional
+        type: u8
+        doc: 'leavesQty'
+      - id: trade_qualifier_optional
+        type: trade_qualifier_optional
         doc: 'TradeQualifier_set bit set. Nullable, No Value = 255'
       - id: trade_time
         type: u8_nullable
@@ -416,7 +416,7 @@ types:
       - id: rejected_message
         type: u1_nullable
         doc: 'rejectedMessage. Nullable, No Value = 255'
-      - id: error_code
+      - id: error_code_optional
         type: u2_nullable
         doc: 'errorCode. Nullable, No Value = 65535'
       - id: stop_queue_priority
@@ -426,8 +426,8 @@ types:
         type: u1_nullable
         doc: 'counterpartyReasonType. Nullable, No Value = 255'
       - id: quote_indicator
-        type: u1_nullable
-        doc: 'quoteIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'quoteIndicator'
       - id: lis_transaction_id
         type: u4_nullable
         doc: 'lISTransactionID. Nullable, No Value = 4294967295'
@@ -547,7 +547,7 @@ types:
       - id: unused_dark_execution_instructionset_7
         type: b1
         doc: 'Unused DarkExecutionInstruction_set 7'
-  execution_instruction_execution_instructionset:
+  execution_instruction:
     meta:
       bit-endian: le
     seq:
@@ -575,7 +575,7 @@ types:
       - id: stp_both_orders
         type: b1
         doc: 'STPBothOrders'
-  mi_fid_indicators_mi_fid_indicatorsset:
+  mi_fid_indicators:
     meta:
       bit-endian: le
     seq:
@@ -600,7 +600,7 @@ types:
       - id: reserved_2
         type: b2
         doc: '2 reserved bits'
-  trade_qualifier_trade_qualifierset_optional:
+  trade_qualifier_optional:
     meta:
       bit-endian: le
     seq:
@@ -640,7 +640,7 @@ types:
         doc: 'FreeTextSection'
   group_size_encoding:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
@@ -724,7 +724,7 @@ types:
         doc: 'ClearingFields'
   long_order_clearing_fields_group:
     seq:
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: client_id
@@ -739,7 +739,7 @@ types:
       - id: open_close
         type: open_close
         doc: 'OpenClose_set bit set. Nullable, No Value = 65535'
-      - id: clearing_instruction_clearing_instructionenum_optional
+      - id: clearing_instruction_optional
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
   open_close:
@@ -791,7 +791,7 @@ types:
         doc: 'NonModifiableOptFields'
   long_order_non_modifiable_opt_fields_group:
     seq:
-      - id: trading_capacity_trading_capacityenum_optional
+      - id: trading_capacity_optional
         type: u1_nullable
         doc: 'tradingCapacity. Nullable, No Value = 255'
       - id: minimum_order_quantity
@@ -941,7 +941,7 @@ types:
       - id: leg_side
         type: u1_nullable
         doc: 'legSide. Nullable, No Value = 255'
-      - id: execution_id
+      - id: execution_id_optional
         type: u4_nullable
         doc: 'executionID. Nullable, No Value = 4294967295'
       - id: trade_unique_identifier
@@ -1031,51 +1031,51 @@ types:
   dc_short_order_reject_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: order_event_type
         type: u1
         enum: order_event_type
         doc: 'orderEventType'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: oegin_from_member
+      - id: oegin_from_member_optional
         type: u8_nullable
         doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: order_id
-        type: u8_nullable
-        doc: 'orderID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'orderID'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: breached_collar_price
         type: s8_nullable
         doc: 'breachedCollarPrice. Nullable, No Value = -9223372036854775808'
@@ -1086,18 +1086,18 @@ types:
         type: u1_nullable
         doc: 'rejectedMessage. Nullable, No Value = 255'
       - id: error_code
-        type: u2_nullable
-        doc: 'errorCode. Nullable, No Value = 65535'
-      - id: mi_fid_indicators_mi_fid_indicatorsset_optional
-        type: mi_fid_indicators_mi_fid_indicatorsset_optional
+        type: u2
+        doc: 'errorCode'
+      - id: mi_fid_indicators_optional
+        type: mi_fid_indicators_optional
         doc: 'MiFIDIndicators_set bit set. Nullable, No Value = 255'
-      - id: oe_session_id
+      - id: oe_session_id_optional
         type: u8_nullable
         doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
-      - id: order_side_order_sideenum_optional
+      - id: order_side_optional
         type: u1_nullable
         doc: 'orderSide. Nullable, No Value = 255'
-      - id: time_in_force_time_in_forceenum_optional
+      - id: time_in_force_optional
         type: u1_nullable
         doc: 'timeInForce. Nullable, No Value = 255'
       - id: d_c_short_order_reject_message_modifiable_short_codes_groups
@@ -1106,7 +1106,7 @@ types:
       - id: d_c_short_order_reject_message_short_codes_details_modifiable_groups
         type: d_c_short_order_reject_message_short_codes_details_modifiable_groups
         doc: 'ShortCodesDetailsModifiable Block'
-  mi_fid_indicators_mi_fid_indicatorsset_optional:
+  mi_fid_indicators_optional:
     meta:
       bit-endian: le
     seq:
@@ -1173,53 +1173,53 @@ types:
   dc_short_trade_cancellation_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: execution_id
-        type: u4_nullable
-        doc: 'executionID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'executionID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: last_traded_px
-        type: s8_nullable
-        doc: 'lastTradedPx. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'lastTradedPx'
       - id: last_shares
-        type: u8_nullable
-        doc: 'lastShares. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'lastShares'
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
   dc_static_collars_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: emm
         type: u1
         enum: emm
@@ -1244,77 +1244,77 @@ types:
         enum: update_type
         doc: 'updateType'
       - id: price
-        type: s8_nullable
-        doc: 'price. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'price'
   trade_bust_notification_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
-      - id: order_side_order_sideenum
+        type: u8
+        doc: 'oESessionID'
+      - id: order_side
         type: u1
-        enum: order_side_order_sideenum
+        enum: order_side
         doc: 'orderSide'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: book_in_time
-        type: u8_nullable
-        doc: 'bookINTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookINTime'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: execution_id
-        type: u4_nullable
-        doc: 'executionID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'executionID'
       - id: last_shares
-        type: u8_nullable
-        doc: 'lastShares. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'lastShares'
       - id: last_traded_px
-        type: s8_nullable
-        doc: 'lastTradedPx. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'lastTradedPx'
       - id: order_id
-        type: u8_nullable
-        doc: 'orderID. Nullable, No Value = 18446744073709551615'
-      - id: mi_fid_indicators_mi_fid_indicatorsset
-        type: mi_fid_indicators_mi_fid_indicatorsset
+        type: u8
+        doc: 'orderID'
+      - id: mi_fid_indicators
+        type: mi_fid_indicators
         doc: 'MiFIDIndicators_set bit set'
-      - id: clearing_firm_i_d_char_8
+      - id: clearing_firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'clearingFirmID'
-      - id: trading_capacity_trading_capacityenum
+      - id: trading_capacity
         type: u1
-        enum: trading_capacity_trading_capacityenum
+        enum: trading_capacity
         doc: 'tradingCapacity'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
-      - id: execution_phase_execution_phaseenum
+        type: u8
+        doc: 'oEGINFromMember'
+      - id: execution_phase
         type: u1
-        enum: execution_phase_execution_phaseenum
+        enum: execution_phase
         doc: 'executionPhase'
-      - id: trade_qualifier_trade_qualifierset
-        type: trade_qualifier_trade_qualifierset
+      - id: trade_qualifier
+        type: trade_qualifier
         doc: 'TradeQualifier_set bit set'
       - id: counterpart_firm_id
         type: str_8_nullable
@@ -1323,10 +1323,10 @@ types:
         type: u1
         enum: order_type
         doc: 'orderType'
-      - id: time_in_force_time_in_forceenum_optional
+      - id: time_in_force_optional
         type: u1_nullable
         doc: 'timeInForce. Nullable, No Value = 255'
-      - id: clearing_instruction_clearing_instructionenum_optional
+      - id: clearing_instruction_optional
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
       - id: technical_origin
@@ -1338,11 +1338,11 @@ types:
       - id: account_number
         type: str_12_nullable
         doc: 'accountNumber. Nullable, No Value = 0'
-      - id: account_type_account_typeenum
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
-      - id: lp_role_lp_roleenum_optional
+      - id: lp_role_optional
         type: u1_nullable
         doc: 'lPRole. Nullable, No Value = 255'
       - id: open_close
@@ -1390,7 +1390,7 @@ types:
       - id: trade_bust_notification_short_codes_details_modifiable_groups
         type: trade_bust_notification_short_codes_details_modifiable_groups
         doc: 'ShortCodesDetailsModifiable Block'
-  trade_qualifier_trade_qualifierset:
+  trade_qualifier:
     meta:
       bit-endian: le
     seq:
@@ -1463,58 +1463,58 @@ types:
   dc_quote_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
-      - id: trading_capacity_trading_capacityenum
+        type: s8
+        doc: 'clientOrderID'
+      - id: trading_capacity
         type: u1
-        enum: trading_capacity_trading_capacityenum
+        enum: trading_capacity
         doc: 'tradingCapacity'
-      - id: account_type_account_typeenum
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
-      - id: lp_role_lp_roleenum
+      - id: lp_role
         type: u1
-        enum: lp_role_lp_roleenum
+        enum: lp_role
         doc: 'lPRole'
-      - id: mi_fid_indicators_mi_fid_indicatorsset
-        type: mi_fid_indicators_mi_fid_indicatorsset
+      - id: mi_fid_indicators
+        type: mi_fid_indicators
         doc: 'MiFIDIndicators_set bit set'
       - id: rfe_answer
-        type: u1_nullable
-        doc: 'rFEAnswer. Nullable, No Value = 255'
+        type: u1
+        doc: 'rFEAnswer'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: execution_instruction_execution_instructionset_optional
-        type: execution_instruction_execution_instructionset_optional
+      - id: execution_instruction_optional
+        type: execution_instruction_optional
         doc: 'ExecutionInstruction_set bit set. Nullable, No Value = 255'
       - id: stpid
         type: u2_nullable
@@ -1534,7 +1534,7 @@ types:
       - id: d_c_quote_message_modifiable_short_codes_groups
         type: d_c_quote_message_modifiable_short_codes_groups
         doc: 'ModifiableShortCodes Block'
-  execution_instruction_execution_instructionset_optional:
+  execution_instruction_optional:
     meta:
       bit-endian: le
     seq:
@@ -1595,7 +1595,7 @@ types:
       - id: bid_oe_session_id
         type: u8_nullable
         doc: 'bidOESessionID. Nullable, No Value = 18446744073709551615'
-      - id: rfe_answer
+      - id: rfe_answer_optional
         type: u1_nullable
         doc: 'rFEAnswer. Nullable, No Value = 255'
       - id: bid_leaves_quantity
@@ -1640,7 +1640,7 @@ types:
       - id: offer_oe_session_id
         type: u8_nullable
         doc: 'offerOESessionID. Nullable, No Value = 18446744073709551615'
-      - id: rfe_answer
+      - id: rfe_answer_optional
         type: u1_nullable
         doc: 'rFEAnswer. Nullable, No Value = 255'
       - id: offer_leaves_quantity
@@ -1664,7 +1664,7 @@ types:
         doc: 'ClearingDataset'
   d_c_quote_message_clearing_dataset_group:
     seq:
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: client_id
@@ -1679,7 +1679,7 @@ types:
       - id: open_close
         type: open_close
         doc: 'OpenClose_set bit set. Nullable, No Value = 65535'
-      - id: clearing_instruction_clearing_instructionenum_optional
+      - id: clearing_instruction_optional
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
       - id: free_text
@@ -1730,70 +1730,70 @@ types:
   dcafqrfe_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: afq_reason
         type: u1_nullable
         doc: 'aFQReason. Nullable, No Value = 255'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
       - id: afq_indicator
-        type: u1_nullable
-        doc: 'aFQIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'aFQIndicator'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oESessionID'
   dc_declaration_new_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: message_sending_time
-        type: u8_nullable
-        doc: 'messageSendingTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'messageSendingTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: declaration_event_type
         type: u1
         enum: declaration_event_type
@@ -1804,30 +1804,30 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
-      - id: account_type_account_typeenum
+        type: u8
+        doc: 'oESessionID'
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: declaration_status
         type: u1
         enum: declaration_status
         doc: 'declarationStatus'
-      - id: price
+      - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity
+      - id: quantity_optional
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: side
@@ -1835,15 +1835,15 @@ types:
         enum: side
         doc: 'side'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: operation_type
         type: u1
         enum: operation_type
         doc: 'operationType'
       - id: cross_order_indicator
-        type: u1_nullable
-        doc: 'crossOrderIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'crossOrderIndicator'
       - id: entering_counterparty
         type: str_8_nullable
         doc: 'enteringCounterparty. Nullable, No Value = 0'
@@ -1859,21 +1859,21 @@ types:
       - id: principal_code
         type: str_8_nullable
         doc: 'principalCode. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: clearing_account
         type: str_16_nullable
         doc: 'clearingAccount. Nullable, No Value = 0'
       - id: settlement_period
-        type: u1_nullable
-        doc: 'settlementPeriod. Nullable, No Value = 255'
-      - id: settlement_flag
-        type: u1_nullable
-        doc: 'settlementFlag. Nullable, No Value = 255'
-      - id: guarantee_flag_guarantee_flagenum
         type: u1
-        enum: guarantee_flag_guarantee_flagenum
+        doc: 'settlementPeriod'
+      - id: settlement_flag
+        type: u1
+        doc: 'settlementFlag'
+      - id: guarantee_flag
+        type: u1
+        enum: guarantee_flag
         doc: 'guaranteeFlag'
       - id: transaction_price_type
         type: u1_nullable
@@ -1881,32 +1881,32 @@ types:
   dc_short_declaration_reject_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: message_sending_time
-        type: u8_nullable
-        doc: 'messageSendingTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'messageSendingTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: declaration_event_type
         type: u1
         enum: declaration_event_type
@@ -1917,53 +1917,53 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: error_code
-        type: u2_nullable
-        doc: 'errorCode. Nullable, No Value = 65535'
+        type: u2
+        doc: 'errorCode'
       - id: rejected_message_id
-        type: u2_nullable
-        doc: 'rejectedMessageID. Nullable, No Value = 65535'
+        type: u2
+        doc: 'rejectedMessageID'
   dc_short_declaration_cancel_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: message_sending_time
-        type: u8_nullable
-        doc: 'messageSendingTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'messageSendingTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: declaration_event_type
         type: u1
         enum: declaration_event_type
@@ -1974,21 +1974,21 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oESessionID'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: declaration_kill_reason
         type: u1
         enum: declaration_kill_reason
@@ -1996,49 +1996,49 @@ types:
   dc_short_trade_declaration_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: execution_id
-        type: u4_nullable
-        doc: 'executionID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'executionID'
       - id: cross_order_indicator
-        type: u1_nullable
-        doc: 'crossOrderIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'crossOrderIndicator'
       - id: trade_time
         type: u8_nullable
         doc: 'tradeTime. Nullable, No Value = 18446744073709551615'
       - id: publication_time
         type: u8_nullable
         doc: 'publicationTime. Nullable, No Value = 18446744073709551615'
-      - id: session_sessionenum_optional
+      - id: session_optional
         type: u1_nullable
         doc: 'session. Nullable, No Value = 255'
       - id: trade_type
         type: u1_nullable
         doc: 'tradeType. Nullable, No Value = 255'
-      - id: settlement_period
+      - id: settlement_period_optional
         type: u1_nullable
         doc: 'settlementPeriod. Nullable, No Value = 255'
-      - id: settlement_flag
+      - id: settlement_flag_optional
         type: u1_nullable
         doc: 'settlementFlag. Nullable, No Value = 255'
-      - id: guarantee_flag_guarantee_flagenum_optional
+      - id: guarantee_flag_optional
         type: u1_nullable
         doc: 'guaranteeFlag. Nullable, No Value = 255'
       - id: d_c_short_trade_declaration_message_short_trade_declarations_groups
@@ -2057,12 +2057,12 @@ types:
   d_c_short_trade_declaration_message_short_trade_declarations_group:
     seq:
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
-      - id: price
+        type: u8
+        doc: 'declarationID'
+      - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity
+      - id: quantity_optional
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: operation_type
@@ -2079,14 +2079,14 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: oe_partition_id
-        type: u2_nullable
-        doc: 'oEPartitionID. Nullable, No Value = 65535'
+        type: u2
+        doc: 'oEPartitionID'
       - id: logical_access_id
-        type: u4_nullable
-        doc: 'logicalAccessID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'logicalAccessID'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: trader_id
         type: str_16_nullable
         doc: 'traderID. Nullable, No Value = 0'
@@ -2096,84 +2096,84 @@ types:
       - id: principal_code
         type: str_8_nullable
         doc: 'principalCode. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: clearing_account
         type: str_16_nullable
         doc: 'clearingAccount. Nullable, No Value = 0'
-      - id: account_type_account_typeenum
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
   dc_short_trade_declaration_cancellation_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: execution_id
-        type: u4_nullable
-        doc: 'executionID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'executionID'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: price
-        type: s8_nullable
-        doc: 'price. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'price'
       - id: quantity
-        type: u8_nullable
-        doc: 'quantity. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'quantity'
   dc_trade_bust_declaration_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: message_sending_time
-        type: u8_nullable
-        doc: 'messageSendingTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'messageSendingTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: declaration_event_type
         type: u1
         enum: declaration_event_type
@@ -2184,30 +2184,30 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
-      - id: account_type_account_typeenum
+        type: u8
+        doc: 'oESessionID'
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: declaration_status
         type: u1
         enum: declaration_status
         doc: 'declarationStatus'
-      - id: price
+      - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
-      - id: quantity
+      - id: quantity_optional
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
       - id: side
@@ -2215,8 +2215,8 @@ types:
         enum: side
         doc: 'side'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: operation_type
         type: u1
         enum: operation_type
@@ -2233,7 +2233,7 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: clearing_account
@@ -2242,24 +2242,24 @@ types:
   dc_trade_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: execution_id
-        type: u4_nullable
-        doc: 'executionID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'executionID'
       - id: quantity
-        type: u8_nullable
-        doc: 'quantity. Nullable, No Value = 18446744073709551615'
-      - id: price
+        type: u8
+        doc: 'quantity'
+      - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
       - id: trade_time
@@ -2268,7 +2268,7 @@ types:
       - id: publication_time
         type: u8_nullable
         doc: 'publicationTime. Nullable, No Value = 18446744073709551615'
-      - id: session_sessionenum_optional
+      - id: session_optional
         type: u1_nullable
         doc: 'session. Nullable, No Value = 255'
       - id: exec_phase
@@ -2277,24 +2277,24 @@ types:
       - id: transparency_indicator
         type: u1_nullable
         doc: 'transparencyIndicator. Nullable, No Value = 255'
-      - id: trade_qualifier_trade_qualifierset
-        type: trade_qualifier_trade_qualifierset
+      - id: trade_qualifier
+        type: trade_qualifier
         doc: 'TradeQualifier_set bit set'
-      - id: settlement_period
+      - id: settlement_period_optional
         type: u1_nullable
         doc: 'settlementPeriod. Nullable, No Value = 255'
-      - id: settlement_flag
+      - id: settlement_flag_optional
         type: u1_nullable
         doc: 'settlementFlag. Nullable, No Value = 255'
-      - id: guarantee_flag_guarantee_flagenum_optional
+      - id: guarantee_flag_optional
         type: u1_nullable
         doc: 'guaranteeFlag. Nullable, No Value = 255'
       - id: counterparty_reason_type
         type: u1_nullable
         doc: 'counterpartyReasonType. Nullable, No Value = 255'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: emm
         type: u1
         enum: emm
@@ -2321,19 +2321,19 @@ types:
   d_c_trade_message_matched_orders_group:
     seq:
       - id: order_id
-        type: u8_nullable
-        doc: 'orderID. Nullable, No Value = 18446744073709551615'
-      - id: order_side_order_sideenum
+        type: u8
+        doc: 'orderID'
+      - id: order_side
         type: u1
-        enum: order_side_order_sideenum
+        enum: order_side
         doc: 'orderSide'
       - id: order_type
         type: u1
         enum: order_type
         doc: 'orderType'
-      - id: time_in_force_time_in_forceenum
+      - id: time_in_force
         type: u1
-        enum: time_in_force_time_in_forceenum
+        enum: time_in_force
         doc: 'timeInForce'
       - id: order_px
         type: s8_nullable
@@ -2348,29 +2348,29 @@ types:
         type: open_close
         doc: 'OpenClose_set bit set. Nullable, No Value = 65535'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: firm_id
         type: str
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: oe_partition_id
+      - id: oe_partition_id_optional
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
-      - id: logical_access_id
+      - id: logical_access_id_optional
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: book_in
+      - id: book_in_optional
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: trade_qualifier_trade_qualifierset_optional
-        type: trade_qualifier_trade_qualifierset_optional
+      - id: trade_qualifier_optional
+        type: trade_qualifier_optional
         doc: 'TradeQualifier_set bit set. Nullable, No Value = 255'
-      - id: account_type_internal_account_type_internalenum_optional
+      - id: account_type_internal_optional
         type: u1_nullable
         doc: 'accountTypeInternal. Nullable, No Value = 255'
-      - id: lp_role_lp_roleenum_optional
+      - id: lp_role_optional
         type: u1_nullable
         doc: 'lPRole. Nullable, No Value = 255'
       - id: clearing_account
@@ -2379,7 +2379,7 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: trader_id
@@ -2388,12 +2388,12 @@ types:
       - id: original_investor_id
         type: str_16_nullable
         doc: 'originalInvestorID. Nullable, No Value = 0'
-      - id: cross_order_indicator
+      - id: cross_order_indicator_optional
         type: u1_nullable
         doc: 'crossOrderIndicator. Nullable, No Value = 255'
-      - id: clearing_instruction_clearing_instructionenum
+      - id: clearing_instruction
         type: u2
-        enum: clearing_instruction_clearing_instructionenum
+        enum: clearing_instruction
         doc: 'clearingInstruction'
   d_c_trade_message_matched_declarations_groups:
     seq:
@@ -2408,8 +2408,8 @@ types:
   d_c_trade_message_matched_declarations_group:
     seq:
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: side
         type: u1
         enum: side
@@ -2423,25 +2423,25 @@ types:
         size: 8
         encoding: ASCII
         doc: 'firmID'
-      - id: oe_partition_id
+      - id: oe_partition_id_optional
         type: u2_nullable
         doc: 'oEPartitionID. Nullable, No Value = 65535'
-      - id: logical_access_id
+      - id: logical_access_id_optional
         type: u4_nullable
         doc: 'logicalAccessID. Nullable, No Value = 4294967295'
-      - id: book_in
+      - id: book_in_optional
         type: u8_nullable
         doc: 'bookIn. Nullable, No Value = 18446744073709551615'
-      - id: account_type_account_typeenum_optional
+      - id: account_type_optional
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 255'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: clearing_account
@@ -2450,7 +2450,7 @@ types:
       - id: principal_code
         type: str_8_nullable
         doc: 'principalCode. Nullable, No Value = 0'
-      - id: cross_order_indicator
+      - id: cross_order_indicator_optional
         type: u1_nullable
         doc: 'crossOrderIndicator. Nullable, No Value = 255'
       - id: trader_id
@@ -2462,29 +2462,29 @@ types:
   dc_short_declaration_fill_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: message_sending_time
-        type: u8_nullable
-        doc: 'messageSendingTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'messageSendingTime'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: operation_type
         type: u1
         enum: operation_type
@@ -2498,38 +2498,38 @@ types:
         enum: declaration_status
         doc: 'declarationStatus'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: emm
         type: u1
         enum: emm
         doc: 'eMM'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: declaration_id
-        type: u8_nullable
-        doc: 'declarationID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'declarationID'
       - id: price
-        type: s8_nullable
-        doc: 'price. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'price'
       - id: quantity
-        type: u8_nullable
-        doc: 'quantity. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'quantity'
       - id: side
         type: u1
         enum: side
         doc: 'side'
       - id: cross_order_indicator
-        type: u1_nullable
-        doc: 'crossOrderIndicator. Nullable, No Value = 255'
+        type: u1
+        doc: 'crossOrderIndicator'
       - id: trade_time
         type: u8_nullable
         doc: 'tradeTime. Nullable, No Value = 18446744073709551615'
       - id: entering_counterparty
         type: str_8_nullable
         doc: 'enteringCounterparty. Nullable, No Value = 0'
-      - id: session_sessionenum_optional
+      - id: session_optional
         type: u1_nullable
         doc: 'session. Nullable, No Value = 255'
       - id: trade_type
@@ -2541,11 +2541,11 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: oe_partition_id
-        type: u2_nullable
-        doc: 'oEPartitionID. Nullable, No Value = 65535'
+        type: u2
+        doc: 'oEPartitionID'
       - id: logical_access_id
-        type: u4_nullable
-        doc: 'logicalAccessID. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'logicalAccessID'
       - id: trader_id
         type: str_16_nullable
         doc: 'traderID. Nullable, No Value = 0'
@@ -2555,54 +2555,54 @@ types:
       - id: principal_code
         type: str_8_nullable
         doc: 'principalCode. Nullable, No Value = 0'
-      - id: clearing_firm_i_d_char_8_optional
+      - id: clearing_firm_id_optional
         type: str_8_nullable
         doc: 'clearingFirmID. Nullable, No Value = 0'
       - id: clearing_account
         type: str_16_nullable
         doc: 'clearingAccount. Nullable, No Value = 0'
-      - id: account_type_account_typeenum
+      - id: account_type
         type: u1
-        enum: account_type_account_typeenum
+        enum: account_type
         doc: 'accountType'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
-      - id: settlement_period
+      - id: settlement_period_optional
         type: u1_nullable
         doc: 'settlementPeriod. Nullable, No Value = 255'
-      - id: settlement_flag
+      - id: settlement_flag_optional
         type: u1_nullable
         doc: 'settlementFlag. Nullable, No Value = 255'
-      - id: guarantee_flag_guarantee_flagenum_optional
+      - id: guarantee_flag_optional
         type: u1_nullable
         doc: 'guaranteeFlag. Nullable, No Value = 255'
   dc_quote_request_message:
     seq:
       - id: msg_seq_num
-        type: u4_nullable
-        doc: 'msgSeqNum. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'msgSeqNum'
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: event_id
-        type: u8_nullable
-        doc: 'eventId. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'eventId'
       - id: book_in
-        type: u8_nullable
-        doc: 'bookIn. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookIn'
       - id: book_out_time
-        type: u8_nullable
-        doc: 'bookOUTTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookOUTTime'
       - id: client_order_id
-        type: s8_nullable
-        doc: 'clientOrderID. Nullable, No Value = -9223372036854775808'
+        type: s8
+        doc: 'clientOrderID'
       - id: dark_execution_instruction
         type: dark_execution_instruction
         doc: 'DarkExecutionInstruction_set bit set'
@@ -2619,24 +2619,24 @@ types:
         encoding: ASCII
         doc: 'firmID'
       - id: firm_id_publication
-        type: u1_nullable
-        doc: 'firmIDPublication. Nullable, No Value = 255'
+        type: u1
+        doc: 'firmIDPublication'
       - id: oe_session_id
-        type: u8_nullable
-        doc: 'oESessionID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oESessionID'
       - id: oegin_from_member
-        type: u8_nullable
-        doc: 'oEGINFromMember. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGINFromMember'
       - id: oegout_time_to_me
-        type: u8_nullable
-        doc: 'oEGOUTTimeToME. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'oEGOUTTimeToME'
       - id: order_id
-        type: u8_nullable
-        doc: 'orderID. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'orderID'
       - id: order_qty
-        type: u8_nullable
-        doc: 'orderQty. Nullable, No Value = 18446744073709551615'
-      - id: order_side_order_sideenum_optional
+        type: u8
+        doc: 'orderQty'
+      - id: order_side_optional
         type: u1_nullable
         doc: 'orderSide. Nullable, No Value = 255'
       - id: rfq_status
@@ -2644,8 +2644,8 @@ types:
         enum: rfq_status
         doc: 'rFQStatus'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: min_order_qty
         type: u8_nullable
         doc: 'minOrderQty. Nullable, No Value = 18446744073709551615'
@@ -2733,20 +2733,20 @@ types:
   dc_clear_book_message:
     seq:
       - id: produce_time
-        type: u8_nullable
-        doc: 'produceTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'produceTime'
       - id: consume_time
-        type: u8_nullable
-        doc: 'consumeTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'consumeTime'
       - id: sequence_time
         type: u8_nullable
         doc: 'sequenceTime. Nullable, No Value = 18446744073709551615'
       - id: book_in_time
-        type: u8_nullable
-        doc: 'bookINTime. Nullable, No Value = 18446744073709551615'
+        type: u8
+        doc: 'bookINTime'
       - id: symbol_index
-        type: u4_nullable
-        doc: 'symbolIndex. Nullable, No Value = 4294967295'
+        type: u4
+        doc: 'symbolIndex'
       - id: emm
         type: u1
         enum: emm
@@ -2754,20 +2754,6 @@ types:
       - id: clear_book_origin
         type: u1_nullable
         doc: 'clearBookOrigin. Nullable, No Value = 255'
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
   u1_nullable:
     seq:
       - id: value
@@ -2775,6 +2761,20 @@ types:
     instances:
       is_null:
         value: value == 255
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 4294967295
   s8_nullable:
     seq:
       - id: value
@@ -3199,7 +3199,7 @@ enums:
     3:
       id: 'cancel_only'
       doc: 'OrderEntryQualifier_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  session_sessionenum:
+  session:
     0:
       id: 'session_0'
       doc: 'Session_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3504,7 +3504,7 @@ enums:
     24:
       id: 'parked'
       doc: 'OrderEventType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  account_type_internal_account_type_internalenum:
+  account_type_internal:
     1:
       id: 'client'
       doc: 'AccountTypeInternal_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3657,7 +3657,7 @@ enums:
     27:
       id: 'avd_triggered_ack'
       doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  lp_role_lp_roleenum_optional:
+  lp_role_optional:
     1:
       id: 'liquidity_provideror_market_maker'
       doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3667,7 +3667,7 @@ enums:
     12:
       id: 'rfq_liquidity_provider'
       doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  order_side_order_sideenum:
+  order_side:
     1:
       id: 'buy'
       doc: 'OrderSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3717,7 +3717,7 @@ enums:
     14:
       id: 'auction_volume_discovery'
       doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  time_in_force_time_in_forceenum:
+  time_in_force:
     0:
       id: 'day'
       doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -3748,7 +3748,7 @@ enums:
     10:
       id: 'good_till_month_gtm'
       doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  execution_phase_execution_phaseenum_optional:
+  execution_phase_optional:
     1:
       id: 'continuous_trading_phase'
       doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4166,7 +4166,7 @@ enums:
     5:
       id: 'crossmargining'
       doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  clearing_instruction_clearing_instructionenum_optional:
+  clearing_instruction_optional:
     0:
       id: 'processnormallyformerly_systematicposting'
       doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4188,7 +4188,7 @@ enums:
     4010:
       id: 'giveuptosinglefirm'
       doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  trading_capacity_trading_capacityenum_optional:
+  trading_capacity_optional:
     1:
       id: 'dealingonownaccount'
       doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4324,7 +4324,7 @@ enums:
     2:
       id: 'event_cisc'
       doc: 'EventShortCodeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  order_side_order_sideenum_optional:
+  order_side_optional:
     1:
       id: 'buy'
       doc: 'OrderSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4334,7 +4334,7 @@ enums:
     3:
       id: 'cross'
       doc: 'OrderSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  time_in_force_time_in_forceenum_optional:
+  time_in_force_optional:
     0:
       id: 'day'
       doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4675,7 +4675,7 @@ enums:
     254:
       id: 'clear_book'
       doc: 'MarketDataUpdateType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  trading_capacity_trading_capacityenum:
+  trading_capacity:
     1:
       id: 'dealingonownaccount'
       doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4685,7 +4685,7 @@ enums:
     3:
       id: 'anyothercapacity'
       doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  execution_phase_execution_phaseenum:
+  execution_phase:
     1:
       id: 'continuous_trading_phase'
       doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4701,7 +4701,7 @@ enums:
     5:
       id: 'ipo'
       doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  account_type_account_typeenum:
+  account_type:
     1:
       id: 'client'
       doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4729,7 +4729,7 @@ enums:
     15:
       id: 'ceres_client'
       doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  lp_role_lp_roleenum:
+  lp_role:
     1:
       id: 'liquidity_provideror_market_maker'
       doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4872,7 +4872,7 @@ enums:
     7:
       id: 'declarationofatradeona_secondarylistingplace'
       doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  guarantee_flag_guarantee_flagenum:
+  guarantee_flag:
     1:
       id: 'clearedbutnot_guaranteed'
       doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4911,7 +4911,7 @@ enums:
     6:
       id: 'cancelled_upon_cs_drequest'
       doc: 'DeclarationKillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  session_sessionenum_optional:
+  session_optional:
     0:
       id: 'session_0'
       doc: 'Session_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4942,7 +4942,7 @@ enums:
     9:
       id: 'session_9'
       doc: 'Session_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  guarantee_flag_guarantee_flagenum_optional:
+  guarantee_flag_optional:
     1:
       id: 'clearedbutnot_guaranteed'
       doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -4975,7 +4975,7 @@ enums:
     2:
       id: 'dark_tradeand_deferred_publication'
       doc: 'TransparencyIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  account_type_internal_account_type_internalenum_optional:
+  account_type_internal_optional:
     1:
       id: 'client'
       doc: 'AccountTypeInternal_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -5021,7 +5021,7 @@ enums:
     15:
       id: 'ceres_client'
       doc: 'AccountTypeInternal_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  clearing_instruction_clearing_instructionenum:
+  clearing_instruction:
     0:
       id: 'processnormallyformerly_systematicposting'
       doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -5043,7 +5043,7 @@ enums:
     4010:
       id: 'giveuptosinglefirm'
       doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  account_type_account_typeenum_optional:
+  account_type_optional:
     1:
       id: 'client'
       doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

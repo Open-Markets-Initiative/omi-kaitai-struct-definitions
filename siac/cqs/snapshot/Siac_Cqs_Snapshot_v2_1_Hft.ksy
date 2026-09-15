@@ -86,11 +86,11 @@ types:
   sip_block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_length
@@ -120,6 +120,28 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   deliveryflag:

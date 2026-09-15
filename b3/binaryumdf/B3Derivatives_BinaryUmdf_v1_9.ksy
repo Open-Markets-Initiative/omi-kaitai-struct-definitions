@@ -139,8 +139,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_9_padding_3
         size: 3
@@ -148,7 +148,7 @@ types:
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
-  match_event_indicator_match_event_indicator:
+  match_event_indicator:
     meta:
       bit-endian: le
     seq:
@@ -178,8 +178,8 @@ types:
         doc: 'EndOfEvent'
   channel_reset_11_message:
     seq:
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_1_padding_3
         size: 3
@@ -192,8 +192,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -231,8 +231,8 @@ types:
       - id: offset_3_padding_5
         size: 5
         doc: '5 bytes padding'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -404,7 +404,7 @@ types:
       - id: put_or_call
         type: u1_nullable
         doc: 'putOrCall. Nullable, No Value = 255'
-      - id: price_type_price_type_optional
+      - id: price_type_optional
         type: u1_nullable
         doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
@@ -566,8 +566,8 @@ types:
       - id: security_id_optional
         type: u8_nullable
         doc: 'Security Id as defined by B3. For the Security Id list, see the Security Definition message in the market data feed. Nullable, No Value = 0'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: news_source
         type: u1
@@ -632,8 +632,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -669,8 +669,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -696,8 +696,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: open_close_settl_flag
         type: u1
@@ -726,8 +726,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -787,8 +787,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_9_padding_3
         size: 3
@@ -810,8 +810,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: price_band_type
         type: u1_nullable
@@ -842,8 +842,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -866,8 +866,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -890,8 +890,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -993,8 +993,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_9_padding_1
         size: 1
@@ -1012,9 +1012,9 @@ types:
         type: u1
         enum: open_close_settl_flag
         doc: 'openCloseSettlFlag'
-      - id: price_type_price_type
+      - id: price_type
         type: u1
-        enum: price_type_price_type
+        enum: price_type
         doc: 'priceType'
       - id: settl_price_type
         type: u1
@@ -1031,8 +1031,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_9_padding_1
         size: 1
@@ -1080,8 +1080,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -1123,8 +1123,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: offset_9_padding_1
         size: 1
@@ -1156,8 +1156,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: md_update_action
         type: u1
@@ -1184,8 +1184,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -1229,8 +1229,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -1316,8 +1316,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -1349,8 +1349,8 @@ types:
       - id: security_id
         type: u8
         doc: 'securityID'
-      - id: match_event_indicator_match_event_indicator
-        type: match_event_indicator_match_event_indicator
+      - id: match_event_indicator
+        type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: trading_session_id
         type: u1
@@ -1422,10 +1422,10 @@ types:
         type: u1
         enum: md_entry_type
         doc: 'mDEntryType'
-      - id: match_event_indicator_match_event_indicator_optional
-        type: match_event_indicator_match_event_indicator_optional
+      - id: match_event_indicator_optional
+        type: match_event_indicator_optional
         doc: 'MatchEventIndicator bit set. Nullable, No Value = 255'
-  match_event_indicator_match_event_indicator_optional:
+  match_event_indicator_optional:
     meta:
       bit-endian: le
     seq:
@@ -1853,7 +1853,7 @@ enums:
     1:
       id: 'call'
       doc: 'PutOrCall Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  price_type_price_type_optional:
+  price_type_optional:
     1:
       id: 'percentage'
       doc: 'PriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2153,7 +2153,7 @@ enums:
     109:
       id: 'sweep_trade'
       doc: 'TrdSubType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  price_type_price_type:
+  price_type:
     1:
       id: 'percentage'
       doc: 'PriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

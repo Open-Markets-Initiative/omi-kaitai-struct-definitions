@@ -305,10 +305,10 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies class or source of the PartyID (448) value. The exchange currently accepts the following values for this field: - ''D'' for Proprietary/Custom Code'
-      - id: party_role_party_role_type
+      - id: party_role
         type: u1
-        enum: party_role_party_role_type
-        doc: 'PartyRole'
+        enum: party_role
+        doc: 'Identifies the type or role of the PartyID (448) specified. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 14 3.3.7 Execution Allocations Group (Repeating Group 124) The Execution Allocations Group repeating group allows for identification of the original Exchange Trade that post trade allocations are occurring on. Though this is denoted as a repeating group, at the current time, this group will always contain a single entry. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. (Always set to 1) Field Offset Length Type Tag Ref Num Req''d Description'
   execution_report_bulk_quote_pending_new_message:
     seq:
       - id: clordid
@@ -1020,7 +1020,7 @@ types:
         type: u1
         enum: side
         doc: 'Side of the quote'
-      - id: quantity_uint_32
+      - id: quantity_long
         type: u4
         doc: 'Quantity'
       - id: trade_date
@@ -1072,19 +1072,20 @@ types:
         doc: 'Parties'
   allocation_report_message_parties_group:
     seq:
-      - id: party_i_d_execution_report_new_party_id
+      - id: party_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'PartyID'
+        doc: 'Party identifier/code. Printable characters only (ascii HEX 0x20 to 0x7E), with the exception of &, <, >, ” and ’'
       - id: party_id_source
         type: str
         size: 1
         encoding: ASCII
         doc: 'Identifies class or source of the PartyID (448) value. The exchange currently accepts the following values for this field: - ''D'' for Proprietary/Custom Code'
-      - id: party_role_uint_8
+      - id: party_role
         type: u1
-        doc: 'PartyRole'
+        enum: party_role
+        doc: 'Identifies the type or role of the PartyID (448) specified. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 14 3.3.7 Execution Allocations Group (Repeating Group 124) The Execution Allocations Group repeating group allows for identification of the original Exchange Trade that post trade allocations are occurring on. Though this is denoted as a repeating group, at the current time, this group will always contain a single entry. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. (Always set to 1) Field Offset Length Type Tag Ref Num Req''d Description'
   user_notification_message:
     seq:
       - id: sending_time
@@ -1458,7 +1459,7 @@ enums:
     255:
       id: 'null_value'
       doc: 'MatchTradePreventionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  party_role_party_role_type:
+  party_role:
     1:
       id: 'executing_firm_id'
       doc: 'PartyRoleType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

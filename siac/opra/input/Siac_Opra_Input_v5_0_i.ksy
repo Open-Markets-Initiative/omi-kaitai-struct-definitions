@@ -88,11 +88,11 @@ types:
   block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number Of Seconds From Epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number Of Seconds From Epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_header
@@ -620,6 +620,28 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   participant_id:

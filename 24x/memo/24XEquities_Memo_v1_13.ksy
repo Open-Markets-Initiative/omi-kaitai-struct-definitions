@@ -194,7 +194,7 @@ types:
         type: u1
         enum: order_capacity
         doc: 'OrderCapacity'
-      - id: cust_order_capacity_cust_order_capacity_type_optional
+      - id: cust_order_capacity_optional
         type: u1_nullable
         doc: 'CustOrderCapacity. Nullable, No Value = 255'
       - id: exec_inst
@@ -283,7 +283,7 @@ types:
         doc: 'Parties'
   repeating_group_dimensions:
     seq:
-      - id: block_length_uint_8
+      - id: block_length_short
         type: u1
         doc: 'blockLength'
       - id: num_in_group
@@ -291,7 +291,7 @@ types:
         doc: 'numInGroup'
   parties_group:
     seq:
-      - id: party_i_d_new_order_single_party_id
+      - id: party_id_new_order_single_party_id
         type: str
         size: 16
         encoding: ASCII
@@ -450,9 +450,9 @@ types:
         type: u1
         enum: order_capacity
         doc: 'OrderCapacity'
-      - id: cust_order_capacity_cust_order_capacity_type
+      - id: cust_order_capacity
         type: u1
-        enum: cust_order_capacity_cust_order_capacity_type
+        enum: cust_order_capacity
         doc: 'CustOrderCapacity'
       - id: exec_inst
         type: exec_inst
@@ -568,9 +568,9 @@ types:
         type: u1
         enum: order_capacity
         doc: 'OrderCapacity'
-      - id: cust_order_capacity_cust_order_capacity_type
+      - id: cust_order_capacity
         type: u1
-        enum: cust_order_capacity_cust_order_capacity_type
+        enum: cust_order_capacity
         doc: 'CustOrderCapacity'
       - id: exec_inst
         type: exec_inst
@@ -1503,7 +1503,7 @@ enums:
     0x52:
       id: 'riskless_principal'
       doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  cust_order_capacity_cust_order_capacity_type_optional:
+  cust_order_capacity_optional:
     1:
       id: 'member_trading_on_their_own_account'
       doc: 'CustOrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -1630,7 +1630,7 @@ enums:
     0x43:
       id: 'expired'
       doc: 'OrdStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  cust_order_capacity_cust_order_capacity_type:
+  cust_order_capacity:
     1:
       id: 'member_trading_on_their_own_account'
       doc: 'CustOrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

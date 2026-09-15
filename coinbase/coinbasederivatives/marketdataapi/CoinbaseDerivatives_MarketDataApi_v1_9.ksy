@@ -631,13 +631,13 @@ types:
       - id: funding_rate
         type: decimal_s8_9
         doc: 'fundingRate. Implied decimal with scale 1e-9'
-      - id: futures_mark_price_price
+      - id: futures_mark_price
         type: decimal_s8_9
         doc: 'futuresMarkPrice. Implied decimal with scale 1e-9'
-      - id: spot_mark_price_price
+      - id: spot_mark_price
         type: decimal_s8_9
         doc: 'spotMarkPrice. Implied decimal with scale 1e-9'
-      - id: fair_value_price
+      - id: fair_value
         type: decimal_s8_9
         doc: 'fairValue. Implied decimal with scale 1e-9'
       - id: final_funding_rate_timestamp
@@ -987,16 +987,16 @@ types:
       - id: final_funding_rate_timestamp
         type: s8_nullable
         doc: 'finalFundingRateTimestamp. Nullable, No Value = -9223372036854775808'
-      - id: futures_mark_price_price_optional
+      - id: futures_mark_price_optional
         type: decimal_s8_9_nullable
         doc: 'futuresMarkPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
       - id: predicted_funding_rate
         type: decimal_s8_9_nullable
         doc: 'predictedFundingRate. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
-      - id: spot_mark_price_price_optional
+      - id: spot_mark_price_optional
         type: decimal_s8_9_nullable
         doc: 'spotMarkPrice. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
-      - id: fair_value_price_optional
+      - id: fair_value_optional
         type: decimal_s8_9_nullable
         doc: 'fairValue. Implied decimal with scale 1e-9. Nullable, No Value = -9223372036854775808'
   end_of_cycle_message:

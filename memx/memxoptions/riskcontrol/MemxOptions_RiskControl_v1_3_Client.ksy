@@ -195,7 +195,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efi_d_active_risk_threshold_change_req_efid
+      - id: efid_active_risk_threshold_change_req_efid
         type: str
         size: 4
         encoding: ASCII
@@ -590,7 +590,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Underlier'
-      - id: efi_d_active_risk_threshold_change_rej_efid
+      - id: efid_active_risk_threshold_change_rej_efid
         type: str
         size: 4
         encoding: ASCII

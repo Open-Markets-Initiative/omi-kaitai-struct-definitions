@@ -696,20 +696,20 @@ types:
       - id: lot_type_rules_groups
         type: lot_type_rules_groups
         doc: 'NoLotTypeRules Block'
-      - id: legs_groups
-        type: legs_groups
+      - id: legacy_legs_groups
+        type: legacy_legs_groups
         doc: 'NoLegs Block'
-  legs_groups:
+  legacy_legs_groups:
     seq:
       - id: group_size
         type: group_size
         doc: 'Repeating group dimensions'
-      - id: legs_group
-        type: legs_group
+      - id: legacy_legs_group
+        type: legacy_legs_group
         repeat: expr
         repeat-expr: group_size.num_in_group
         doc: 'Number of Leg entries'
-  legs_group:
+  legacy_legs_group:
     seq:
       - id: leg_security_id
         type: s4
@@ -1804,7 +1804,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment
+      - id: min_price_increment_ex
         type: decimal_s8_9
         doc: 'Minimum constant tick for the instrument, sent only if instrument is non-VTT (Variable Tick table) eligible. Implied decimal with scale 1e-9'
       - id: display_factor_ex
@@ -1988,7 +1988,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment_optional
+      - id: min_price_increment_optional_ex
         type: decimal_s8_9_nullable
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: min_price_increment_amount_ex
@@ -2150,7 +2150,7 @@ types:
       - id: max_trade_vol
         type: u4
         doc: 'The maximum trading volume for a security'
-      - id: min_price_increment_optional
+      - id: min_price_increment_optional_ex
         type: decimal_s8_9_nullable
         doc: 'Minimum constant tick for the instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: display_factor_ex
@@ -2215,6 +2215,34 @@ types:
       - id: legs_groups
         type: legs_groups
         doc: 'NoLegs Block'
+  legs_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: legs_group
+        type: legs_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'Number of Leg entries'
+  legs_group:
+    seq:
+      - id: leg_security_id
+        type: s4
+        doc: 'Leg Security ID'
+      - id: leg_side
+        type: u1
+        enum: leg_side
+        doc: 'Leg side'
+      - id: leg_ratio_qty
+        type: s1
+        doc: 'Leg ratio of quantity for this individual leg relative to the entire multi-leg instrument'
+      - id: leg_price_ex
+        type: decimal_s8_9_nullable
+        doc: 'Price for the future leg of a UDS Covered instrument. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: leg_option_delta
+        type: decimal_s4_4_nullable
+        doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
   negotiate:
     seq:
       - id: hmac_signature

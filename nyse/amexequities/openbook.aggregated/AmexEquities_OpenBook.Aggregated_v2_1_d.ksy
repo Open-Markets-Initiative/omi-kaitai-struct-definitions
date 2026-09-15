@@ -62,12 +62,17 @@ types:
       - id: sequence_number
         type: u4
         doc: 'The message sequence number of the first message in this packet'
-      - id: timestamp
-        type: u4
-        doc: 'The time when this packet was published to the multicast channel, in seconds since Jan 1, 1970 00:00:00 UTC'
+      - id: send_time
+        type: send_time
+        doc: 'The time when this packet was published to the multicast channel. Nanoseconds since Unix epoch'
+  send_time:
+    seq:
+      - id: seconds
+        type: second_timestamp
+        doc: 'The time when this packet was published to the multicast channel, in seconds since Jan 1, 1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The nanosecond offset from the Send Time'
+        type: nanosecond_offset
+        doc: 'The nanosecond offset from the Send Time. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_header
@@ -471,6 +476,41 @@ types:
       - id: num_orders
         type: u2
         doc: 'This field contains the number of orders at the current price point'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   hhmmssmmm_time:
     seq:
       - id: time

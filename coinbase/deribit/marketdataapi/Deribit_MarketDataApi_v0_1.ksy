@@ -81,7 +81,7 @@ types:
       - id: retransmit
         type: b1
         doc: 'Retransmit packet indicator (Bit 2)'
-      - id: reserved_bits
+      - id: packet_reserved_bits
         type: b13
         doc: 'Bits reserved for future use'
   md_message:
@@ -493,7 +493,7 @@ types:
       - id: begin_seq_num
         type: s8
         doc: 'beginSeqNum'
-      - id: message_count_uint_8
+      - id: message_count_short
         type: u1
         doc: 'messageCount'
   retransmit_reject_message:

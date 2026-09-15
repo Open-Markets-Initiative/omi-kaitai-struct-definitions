@@ -110,7 +110,7 @@ types:
         doc: 'Identifies the Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Participant-provided timestamp'
+        doc: 'Participant-provided timestamp. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'Identifies the individual message within the block, beginning with one (1) and incremented for subsequent messages within a block'
@@ -123,11 +123,11 @@ types:
   timestamp_1:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   administrative_message:
     seq:
       - id: administrative_message_type
@@ -326,7 +326,7 @@ types:
         doc: 'Corrected Short Sale Restriction Indicator'
       - id: corrected_prior_day_trade_date_and_time
         type: corrected_prior_day_trade_date_and_time
-        doc: 'Corrected Prior Day Trade Date and Time'
+        doc: 'Corrected Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
@@ -363,23 +363,23 @@ types:
         doc: 'Original Short Sale Restriction Indicator'
       - id: original_prior_day_trade_date_and_time
         type: original_prior_day_trade_date_and_time
-        doc: 'Original Prior Day Trade Date and Time'
+        doc: 'Original Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   corrected_prior_day_trade_date_and_time:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   original_prior_day_trade_date_and_time:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   fractional_prior_day_trade_correction_message:
     seq:
       - id: security_symbol
@@ -424,7 +424,7 @@ types:
         doc: 'Corrected Short Sale Restriction Indicator'
       - id: corrected_prior_day_trade_date_and_time
         type: corrected_prior_day_trade_date_and_time
-        doc: 'Corrected Prior Day Trade Date and Time'
+        doc: 'Corrected Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
@@ -461,7 +461,7 @@ types:
         doc: 'Original Short Sale Restriction Indicator'
       - id: original_prior_day_trade_date_and_time
         type: original_prior_day_trade_date_and_time
-        doc: 'Original Prior Day Trade Date and Time'
+        doc: 'Original Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   prior_day_trade_message:
     seq:
       - id: security_symbol
@@ -507,15 +507,15 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   prior_day_trade_date_and_time:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   fractional_prior_day_trade_message:
     seq:
       - id: security_symbol
@@ -561,7 +561,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   prior_day_trade_cancel_error_message:
     seq:
       - id: security_symbol
@@ -607,7 +607,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -657,7 +657,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -760,18 +760,18 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: original_participant_reference_number
         type: s8
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
   timestamp_2:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC'
+        type: second_timestamp
+        doc: 'Number of seconds since Unix epoch 1/1/1970 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond portion of the timestamp'
+        type: nanosecond_offset
+        doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
   fractional_trade_correction_message:
     seq:
       - id: security_symbol
@@ -820,7 +820,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: original_participant_reference_number
         type: s8
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
@@ -865,7 +865,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
   fractional_long_trade_message:
     seq:
       - id: security_symbol
@@ -907,7 +907,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
   trading_status_message:
     seq:
       - id: security_symbol
@@ -1035,11 +1035,46 @@ types:
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
         doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8le
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u8_6:
     seq:
       - id: mantissa

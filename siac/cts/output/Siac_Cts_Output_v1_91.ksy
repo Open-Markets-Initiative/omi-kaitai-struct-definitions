@@ -78,18 +78,18 @@ types:
         doc: 'The Number Of Messages Contained In The Transmission Block'
       - id: sip_block_timestamp
         type: sip_block_timestamp
-        doc: 'Sip Block Timestamp'
+        doc: 'Sip Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
         doc: 'Lower 2 Bytes Of The 4 Byte Sum Of All The Bytes In The Block Excluding This Block Checksum Field'
   sip_block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond Portion Of The Time'
+        type: nanosecond_offset
+        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_length
@@ -133,7 +133,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -146,11 +146,11 @@ types:
   timestamp_1:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond Portion Of The Time'
+        type: nanosecond_offset
+        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
   end_of_end_of_day_message:
     seq:
       - id: participant_id
@@ -159,7 +159,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -177,7 +177,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -195,7 +195,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -213,7 +213,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -254,7 +254,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -272,7 +272,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -290,7 +290,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -308,7 +308,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -326,7 +326,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -344,7 +344,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -362,7 +362,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -392,7 +392,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -419,7 +419,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -464,7 +464,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -494,7 +494,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -519,7 +519,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -554,7 +554,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -578,7 +578,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -618,7 +618,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -676,7 +676,7 @@ types:
         doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   sale_conditions:
     seq:
       - id: category_1
@@ -699,11 +699,11 @@ types:
   prior_day_trade_date_and_time:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond Portion Of The Time'
+        type: nanosecond_offset
+        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
   original_trade:
     seq:
       - id: sale_conditions
@@ -732,7 +732,7 @@ types:
         doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   prior_day_trade_message:
     seq:
       - id: participant_id
@@ -741,7 +741,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -791,7 +791,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
   prior_day_trade_cancel_error_message:
     seq:
       - id: participant_id
@@ -800,7 +800,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -850,7 +850,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
-        doc: 'Prior Day Trade Date and Time'
+        doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -877,7 +877,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -931,7 +931,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -970,7 +970,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1032,7 +1032,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1103,7 +1103,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1161,7 +1161,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1190,7 +1190,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: original_participant_reference_number
         type: s8
         doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
@@ -1214,11 +1214,11 @@ types:
   timestamp_2:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'Nanosecond Portion Of The Time'
+        type: nanosecond_offset
+        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
   consolidated_data:
     seq:
       - id: previous_close_price_date
@@ -1277,7 +1277,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1323,7 +1323,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -1356,7 +1356,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1423,7 +1423,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1473,7 +1473,7 @@ types:
         doc: 'Participant Or Processor That Generated The Message'
       - id: timestamp_1
         type: timestamp_1
-        doc: 'Timestamp 1'
+        doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
         doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
@@ -1522,7 +1522,7 @@ types:
         doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -1545,6 +1545,41 @@ types:
       - id: participant_data
         type: participant_data
         doc: 'Participant Data'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8le
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u8_6:
     seq:
       - id: mantissa

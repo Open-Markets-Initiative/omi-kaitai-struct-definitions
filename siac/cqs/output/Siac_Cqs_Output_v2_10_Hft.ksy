@@ -7,7 +7,7 @@
 #   Encoding: Consolidated Tape Association
 #   Version: 2.10.Hft
 #   Date: 06/06/2025
-#   Specification: CQS_Pillar_Snapshot_Specification.pdf
+#   Specification: CQS_Pillar_Output_Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -86,11 +86,11 @@ types:
   sip_block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_header
@@ -133,11 +133,11 @@ types:
   timestamp_1:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   symbol_reference_data_message:
     seq:
       - id: security_symbol
@@ -399,11 +399,11 @@ types:
   timestamp_2:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   national_best_bid_long_appendage:
     seq:
       - id: best_bid_participant_id
@@ -752,6 +752,28 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
   decimal_u8_6:
     seq:
       - id: mantissa

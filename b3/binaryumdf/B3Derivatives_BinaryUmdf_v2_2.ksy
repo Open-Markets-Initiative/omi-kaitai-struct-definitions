@@ -404,7 +404,7 @@ types:
       - id: put_or_call
         type: u1_nullable
         doc: 'putOrCall. Nullable, No Value = 255'
-      - id: price_type_price_type_optional
+      - id: price_type_optional
         type: u1_nullable
         doc: 'priceType. Nullable, No Value = 0'
       - id: market_segment_id
@@ -1015,9 +1015,9 @@ types:
         type: u1
         enum: open_close_settl_flag
         doc: 'openCloseSettlFlag'
-      - id: price_type_price_type
+      - id: price_type
         type: u1
-        enum: price_type_price_type
+        enum: price_type
         doc: 'priceType'
       - id: settl_price_type
         type: u1
@@ -1831,7 +1831,7 @@ enums:
     1:
       id: 'call'
       doc: 'PutOrCall Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  price_type_price_type_optional:
+  price_type_optional:
     1:
       id: 'percentage'
       doc: 'PriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
@@ -2141,7 +2141,7 @@ enums:
     109:
       id: 'sweep_trade'
       doc: 'TrdSubType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  price_type_price_type:
+  price_type:
     1:
       id: 'percentage'
       doc: 'PriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'

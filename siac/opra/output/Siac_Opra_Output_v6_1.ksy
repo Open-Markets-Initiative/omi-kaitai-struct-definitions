@@ -80,18 +80,18 @@ types:
         doc: 'The Number Of Messages Contained In The Block Data Of The Transmission Block'
       - id: block_timestamp
         type: block_timestamp
-        doc: 'Block Timestamp'
+        doc: 'Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
         doc: 'Lower 16 Bits Of The 32 Bit Sum Of All Bytes In The Block Excluding The Block Checksum Field'
   block_timestamp:
     seq:
       - id: seconds
-        type: u4
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc'
+        type: second_timestamp
+        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
       - id: nanoseconds
-        type: u4
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond'
+        type: nanosecond_offset
+        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: participant_id
@@ -702,6 +702,41 @@ types:
       - id: offer_index_value
         type: s8
         doc: 'The Offer Index Value Represents The Value Of The Indexs Calculation Formula Using The Current Offer Values Of The Component Securities'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8le
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
 
 enums:
   data_feed_indicator:
