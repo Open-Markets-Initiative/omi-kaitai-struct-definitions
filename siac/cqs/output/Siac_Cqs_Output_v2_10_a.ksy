@@ -1012,7 +1012,7 @@ types:
   nanosecond_timestamp:
     seq:
       - id: time
-        type: s8le
+        type: s8
     instances:
       hour:
         value: time / 3600000000000 % 24

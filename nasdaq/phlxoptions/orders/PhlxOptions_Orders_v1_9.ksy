@@ -95,12 +95,9 @@ types:
         doc: 'Code identifying this message type'
   system_event_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -108,7 +105,7 @@ types:
       - id: version
         type: u1
         doc: 'Version of PHLX Orders. Currently set to 1'
-  options_directory_message:
+  timestamp:
     seq:
       - id: seconds
         type: second_timestamp
@@ -116,6 +113,11 @@ types:
       - id: nanoseconds
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+  options_directory_message:
+    seq:
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
@@ -165,12 +167,9 @@ types:
         doc: 'Day bits'
   complex_order_strategy_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
@@ -225,12 +224,9 @@ types:
         doc: 'Strategy Leg Ratio'
   security_trading_action_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
@@ -256,12 +252,9 @@ types:
         doc: 'Reflects the current trading state for the option on the PHLX market'
   complex_trading_action_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
@@ -271,12 +264,9 @@ types:
         doc: 'Reflects the current trading state for the option on the PHLX market'
   security_open_closed_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
@@ -302,12 +292,9 @@ types:
         doc: 'Reflects the current eligibility for auto execution of the options security on the PHLX. The allowable values are:'
   strategy_open_closed_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
@@ -317,12 +304,9 @@ types:
         doc: 'Reflects the current eligibility for auto execution of the options security on the PHLX. The allowable values are:'
   simple_order_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
@@ -388,12 +372,9 @@ types:
         doc: 'Indicates whether this Order opens or closes a position'
   complex_order_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
@@ -485,12 +466,9 @@ types:
         doc: 'Strategy Leg Ratio'
   auction_notification_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
         type: u4
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
@@ -535,12 +513,9 @@ types:
         doc: 'Reserved for future use'
   complex_auction_notification_message:
     seq:
-      - id: seconds
-        type: second_timestamp
-        doc: 'Seconds portion of the timestamp. Seconds since Midnight epoch'
-      - id: nanoseconds
-        type: nanosecond_offset
-        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: timestamp
+        type: timestamp
+        doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
         type: u4
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
@@ -565,6 +540,19 @@ types:
       - id: volume
         type: u4
         doc: 'Total volume available in COLA/PIXL/Solicitation. This field will be 0 under certain conditions for COLA when the strategy is opening'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   second_timestamp:
     seq:
       - id: time
