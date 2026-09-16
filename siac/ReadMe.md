@@ -28,14 +28,8 @@
 | [Opra][Opra] | [Headers][Siac.Opra.Headers] | [Udp][Omi.Encoding.Udp] | [1.][Siac.Opra.Headers.Udp.v1.Definition] | 8/3/2022 | 283 | [Header][Omi.Glossary.Status.Header] | [Verified][Omi.Glossary.Testing.Verified] | [url][Siac.Opra.Headers.Udp.v1.Url] |
 
 
-Siac: [website](https://en.wikipedia.org/wiki/Securities_Industry_Automation_Corporation "Go to The Securities Industry Automation Corporation")
+<p align="center"><a href="https://en.wikipedia.org/wiki/Securities_Industry_Automation_Corporation" title="The Securities Industry Automation Corporation Website"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/Website.png" alt="Website" width="32" height="32"></a>&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Securities_Industry_Automation_Corporation" title="The Securities Industry Automation Corporation on Wikipedia"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/Wikipedia.png" alt="Wikipedia" width="32" height="32"></a></p>
 
-
-## Open Markets Initiative
-
-[![Omi](https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/About/Images/Logo.png)](https://github.com/Open-Markets-Initiative/Directory)  The Open Markets Initiative (Omi) is a group of technologists dedicated to enhancing the stability of electronic financial markets using modern development methods.
-
-Other generated code can be found at [Omi Projects](https://github.com/Open-Markets-Initiative/Directory/tree/main/Projects "Open Markets Initiative Projects"); for Omi rules and regulations, see [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory").
 
 [Omi.Glossary.Status]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Glossary/Status.md "Protocol Deployment Status"
 [Omi.Glossary.Status.Active]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Glossary/Status.md "Deployment Status: Protocol is in active production"
