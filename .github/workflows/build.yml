@@ -119,14 +119,23 @@ jobs:
       - name: Run Iex IexEquities Deep IexTp v1.06 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_06.py
 
+      - name: Run Iex IexEquities Deep IexTp v1.08 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_deep_iextp_v1_08.py
+
       - name: Run Iex IexEquities DeepPlus IexTp v1.01 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_01.py
+
+      - name: Run Iex IexEquities DeepPlus IexTp v1.04 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_deepplus_iextp_v1_04.py
 
       - name: Run Iex IexEquities Tops IexTp v1.56 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_56.py
 
       - name: Run Iex IexEquities Tops IexTp v1.64 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_64.py
+
+      - name: Run Iex IexEquities Tops IexTp v1.66 Definition Tests
+        run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_66.py
 
       - name: Run Jnx JnxEquities Pts Glimpse v1.3 Definition Tests
         run: python3 .github/tests/test_jnx_jnxequities_pts_glimpse_v1_3.py
@@ -188,8 +197,17 @@ jobs:
       - name: Run Nyse ArcaEquities Bbo Xdp v2.4.c Definition Tests
         run: python3 .github/tests/test_nyse_arcaequities_bbo_xdp_v2_4_c.py
 
+      - name: Run Nyse ArcaEquities IntegratedFeed Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_arcaequities_integratedfeed_pillar_v2_5_g.py
+
       - name: Run Nyse ArcaOptions TopFeed Pillar v1.2.c Definition Tests
         run: python3 .github/tests/test_nyse_arcaoptions_topfeed_pillar_v1_2_c.py
+
+      - name: Run Nyse NationalEquities Bbo Pillar v2.5.d Definition Tests
+        run: python3 .github/tests/test_nyse_nationalequities_bbo_pillar_v2_5_d.py
+
+      - name: Run Nyse NationalEquities Trades Pillar v2.6 Definition Tests
+        run: python3 .github/tests/test_nyse_nationalequities_trades_pillar_v2_6.py
 
       - name: Run Nyse NyseEquities Bbo Pillar v2.5.b Definition Tests
         run: python3 .github/tests/test_nyse_nyseequities_bbo_pillar_v2_5_b.py

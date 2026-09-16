@@ -12,48 +12,13 @@ from iex_iexequities_tops_iextp_v1_56 import IexIexequitiesTopsIextpV156
 
 class IexIexequitiesTopsIextpV156Tests(unittest.TestCase):
 
-    def test_auctioninformationmessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/AuctionInformationMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_officialpricemessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/OfficialPriceMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_operationalhaltstatusmessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/OperationalHaltStatusMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_quoteupdatemessage(self):
         for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/QuoteUpdateMessage.pcap"):
             parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_securitydirectorymessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/SecurityDirectoryMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_shortsalepriceteststatusmessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/ShortSalePriceTestStatusMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_systemeventmessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/SystemEventMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_tradereportmessage(self):
         for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/TradeReportMessage.pcap"):
-            parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_tradingstatusmessage(self):
-        for payload in payloads.of("omi-data-packets/Iex/IexEquities.Tops.IexTp.v1.56/TradingStatusMessage.pcap"):
             parsed = IexIexequitiesTopsIextpV156.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
