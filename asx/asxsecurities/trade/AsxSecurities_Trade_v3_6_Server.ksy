@@ -378,18 +378,16 @@ types:
         type: match_attributes
         doc: 'Match attributes of the executed order'
   match_attributes:
-    meta:
-      bit-endian: le
     seq:
-      - id: passive_aggressive_indicator
-        type: b1
-        doc: 'Last Traded Price'
-      - id: crossing_dealing_capacity
-        type: b2
-        doc: 'Crossing Dealing Capacity'
       - id: reserved
         type: b5
         doc: 'Reserved'
+      - id: crossing_dealing_capacity
+        type: b2
+        doc: 'Crossing Dealing Capacity'
+      - id: passive_aggressive_indicator
+        type: b1
+        doc: 'Last Traded Price'
   decimal_s4_2:
     seq:
       - id: mantissa

@@ -276,7 +276,9 @@ types:
       - id: len_text_data
         type: u2
       - id: text_data
+        type: str
         size: len_text_data
+        encoding: ASCII
         if: len_text_data > 0
   security_definition_report_strategy_message:
     seq:
@@ -557,84 +559,108 @@ types:
       - id: len_security_id_data
         type: u2
       - id: security_id_data
+        type: str
         size: len_security_id_data
+        encoding: ASCII
         if: len_security_id_data > 0
   unit_of_measure:
     seq:
       - id: len_unit_of_measure_data
         type: u2
       - id: unit_of_measure_data
+        type: str
         size: len_unit_of_measure_data
+        encoding: ASCII
         if: len_unit_of_measure_data > 0
   price_denomination:
     seq:
       - id: len_price_denomination_data
         type: u2
       - id: price_denomination_data
+        type: str
         size: len_price_denomination_data
+        encoding: ASCII
         if: len_price_denomination_data > 0
   cleared_alias:
     seq:
       - id: len_cleared_alias_data
         type: u2
       - id: cleared_alias_data
+        type: str
         size: len_cleared_alias_data
+        encoding: ASCII
         if: len_cleared_alias_data > 0
   security_desc:
     seq:
       - id: len_security_desc_data
         type: u2
       - id: security_desc_data
+        type: str
         size: len_security_desc_data
+        encoding: ASCII
         if: len_security_desc_data > 0
   price_unit:
     seq:
       - id: len_price_unit_data
         type: u2
       - id: price_unit_data
+        type: str
         size: len_price_unit_data
+        encoding: ASCII
         if: len_price_unit_data > 0
   strip_name:
     seq:
       - id: len_strip_name_data
         type: u2
       - id: strip_name_data
+        type: str
         size: len_strip_name_data
+        encoding: ASCII
         if: len_strip_name_data > 0
   hub_name:
     seq:
       - id: len_hub_name_data
         type: u2
       - id: hub_name_data
+        type: str
         size: len_hub_name_data
+        encoding: ASCII
         if: len_hub_name_data > 0
   hub_alias:
     seq:
       - id: len_hub_alias_data
         type: u2
       - id: hub_alias_data
+        type: str
         size: len_hub_alias_data
+        encoding: ASCII
         if: len_hub_alias_data > 0
   security_exchange:
     seq:
       - id: len_security_exchange_data
         type: u2
       - id: security_exchange_data
+        type: str
         size: len_security_exchange_data
+        encoding: ASCII
         if: len_security_exchange_data > 0
   strategy_security_id:
     seq:
       - id: len_strategy_security_id_data
         type: u2
       - id: strategy_security_id_data
+        type: str
         size: len_strategy_security_id_data
+        encoding: ASCII
         if: len_strategy_security_id_data > 0
   physical_code:
     seq:
       - id: len_physical_code_data
         type: u2
       - id: physical_code_data
+        type: str
         size: len_physical_code_data
+        encoding: ASCII
         if: len_physical_code_data > 0
   security_definition_report_message:
     seq:
@@ -947,7 +973,9 @@ types:
       - id: len_home_exchange_data
         type: u2
       - id: home_exchange_data
+        type: str
         size: len_home_exchange_data
+        encoding: ASCII
         if: len_home_exchange_data > 0
   security_definition_reject_message:
     seq:
@@ -1080,21 +1108,27 @@ types:
       - id: len_product_name_data
         type: u2
       - id: product_name_data
+        type: str
         size: len_product_name_data
+        encoding: ASCII
         if: len_product_name_data > 0
   product_desc:
     seq:
       - id: len_product_desc_data
         type: u2
       - id: product_desc_data
+        type: str
         size: len_product_desc_data
+        encoding: ASCII
         if: len_product_desc_data > 0
   product_group:
     seq:
       - id: len_product_group_data
         type: u2
       - id: product_group_data
+        type: str
         size: len_product_group_data
+        encoding: ASCII
         if: len_product_group_data > 0
   ip_request_message:
     seq:

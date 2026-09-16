@@ -285,21 +285,19 @@ types:
         type: str_4_nullable
         doc: 'For a short sell order, the broker (MPID) that the member shall borrow shares from. Customer ports can be configured to require this field to be set on short sale orders, otherwise it is optional. 5.1.2 OrderCancelReplaceRequest The order cancel/replace request is used to change the parameters of an existing order. This message corresponds to FIX message type G Field Offset Length Type Tag Ref Num Req''d Description SBE. Nullable, No Value = 0'
   exec_inst:
-    meta:
-      bit-endian: le
     seq:
-      - id: participate_do_not_initiate
-        type: b1
-        doc: 'ParticipateDoNotInitiate'
-      - id: intermarket_sweep
-        type: b1
-        doc: 'IntermarketSweep'
-      - id: external_routing_not_allowed
-        type: b1
-        doc: 'ExternalRoutingNotAllowed'
       - id: reserved_13
         type: b13
         doc: '13 reserved bits'
+      - id: external_routing_not_allowed
+        type: b1
+        doc: 'ExternalRoutingNotAllowed'
+      - id: intermarket_sweep
+        type: b1
+        doc: 'IntermarketSweep'
+      - id: participate_do_not_initiate
+        type: b1
+        doc: 'ParticipateDoNotInitiate'
   execution_report_new_message:
     seq:
       - id: sending_time

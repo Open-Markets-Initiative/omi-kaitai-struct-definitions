@@ -442,9 +442,6 @@ enums:
     0x50:
       id: 'put'
       doc: 'Put Option'
-    0x20:
-      id: 'stock'
-      doc: 'Stock Leg'
   leg_side:
     0x42:
       id: 'buy'

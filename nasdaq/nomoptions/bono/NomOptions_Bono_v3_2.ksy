@@ -497,9 +497,6 @@ enums:
       id: 'closed_for_auto_execution'
       doc: 'Closed For Auto Execution'
   quote_condition:
-    0x20:
-      id: 'regular_quoteautox_eligible'
-      doc: 'Regular Quoteautox Eligible'
     0x52:
       id: 'rotational_quote'
       doc: 'Rotational Quote'

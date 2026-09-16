@@ -1301,9 +1301,6 @@ enums:
       id: 'next_day_trade'
       doc: 'Next Day Trade'
   trade_cond_2:
-    0x20:
-      id: 'not_available'
-      doc: 'Not Available'
     0x46:
       id: 'intermarket_sweep_order'
       doc: 'Intermarket Sweep Order'
@@ -1320,9 +1317,6 @@ enums:
       id: 'qualified_contingent_trade'
       doc: 'Qualified Contingent Trade'
   trade_cond_3:
-    0x20:
-      id: 'not_available'
-      doc: 'Not Available'
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
@@ -1333,9 +1327,6 @@ enums:
       id: 'sold'
       doc: 'Sold'
   trade_cond_4:
-    0x20:
-      id: 'not_available'
-      doc: 'Not Available'
     0x49:
       id: 'odd_lot_trade'
       doc: 'Odd Lot Trade'
@@ -1362,9 +1353,6 @@ enums:
       id: 'regulatory_closing_imbalance'
       doc: 'Regulatory Closing Imbalance'
   imbalance_side:
-    0x20:
-      id: 'no_imbalance'
-      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -1392,9 +1380,6 @@ enums:
       id: 'imbalance_freeze_is_in_effect'
       doc: 'Imbalance Freeze Is In Effect'
   unpaired_side:
-    0x20:
-      id: 'not_applicable'
-      doc: 'Not Applicable'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -1402,9 +1387,6 @@ enums:
       id: 'sell_side'
       doc: 'Sell Side'
   significant_imbalance:
-    0x20:
-      id: 'default_field'
-      doc: 'Default'
     0x59:
       id: 'the_current_imbalance_is_significant'
       doc: 'The Current Imbalance Is Significant'
@@ -1422,9 +1404,6 @@ enums:
       id: 'market_center_closing_auction'
       doc: 'Market Center Closing Auction'
   rpi_indicator:
-    0x20:
-      id: 'no_retail_interest'
-      doc: 'No Retail Interest'
     0x41:
       id: 'retail_interest_on_the_bid_side'
       doc: 'Retail Interest On The Bid Side'

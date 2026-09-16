@@ -233,21 +233,19 @@ types:
         encoding: ASCII
         doc: 'LnkId'
   exec_inst:
-    meta:
-      bit-endian: le
     seq:
-      - id: participate_do_not_initiate
-        type: b1
-        doc: 'ParticipateDoNotInitiate'
-      - id: intermarket_sweep
-        type: b1
-        doc: 'IntermarketSweep'
-      - id: external_routing_not_allowed
-        type: b1
-        doc: 'ExternalRoutingNotAllowed'
       - id: reserved_13
         type: b13
         doc: '13 reserved bits'
+      - id: external_routing_not_allowed
+        type: b1
+        doc: 'ExternalRoutingNotAllowed'
+      - id: intermarket_sweep
+        type: b1
+        doc: 'IntermarketSweep'
+      - id: participate_do_not_initiate
+        type: b1
+        doc: 'ParticipateDoNotInitiate'
   order_cancel_replace_request_message:
     seq:
       - id: origclordid

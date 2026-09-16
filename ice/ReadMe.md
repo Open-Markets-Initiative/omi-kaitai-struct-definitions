@@ -10,7 +10,7 @@
 | [IceFutures][IceFutures.Exchange] | [Mdf][Ice.IceFutures.Mdf] | [iMpact][Omi.Encoding.iMpact] | [1.1.34][Ice.IceFutures.Mdf.iMpact.v1.1.34.Definition] | 9/4/2018 | 2944 | [Deprecated][Omi.Glossary.Status.Deprecated] | [Verified][Omi.Glossary.Testing.Verified] | [pdf][Ice.IceFutures.Mdf.iMpact.v1.1.34.Pdf] |
 | [IceFutures][IceFutures.Exchange] | [Mdf][Ice.IceFutures.Mdf] | [iMpact][Omi.Encoding.iMpact] | [1.1.33][Ice.IceFutures.Mdf.iMpact.v1.1.33.Definition] | 8/6/2018 | 2893 | [Deprecated][Omi.Glossary.Status.Deprecated] | [Verified][Omi.Glossary.Testing.Verified] | [pdf][Ice.IceFutures.Mdf.iMpact.v1.1.33.Pdf] |
 | [IceFutures][IceFutures.Exchange] | [Mdf][Ice.IceFutures.Mdf] | [iMpact][Omi.Encoding.iMpact] | [1.1.24][Ice.IceFutures.Mdf.iMpact.v1.1.24.Definition] | 3/30/2016 | 2544 | [Deprecated][Omi.Glossary.Status.Deprecated] | [Verified][Omi.Glossary.Testing.Verified] | [pdf][Ice.IceFutures.Mdf.iMpact.v1.1.24.Pdf] |
-| [IceFutures][IceFutures.Exchange] | [Bgw][Ice.IceFutures.Bgw] | [Sbe][Omi.Encoding.Sbe] | [7.0][Ice.IceFutures.Bgw.Sbe.v7.0.Definition] | 10/24/2025 | 3848 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Ice.IceFutures.Bgw.Sbe.v7.0.Url] - [pdf][Ice.IceFutures.Bgw.Sbe.v7.0.Pdf] |
+| [IceFutures][IceFutures.Exchange] | [Bgw][Ice.IceFutures.Bgw] | [Sbe][Omi.Encoding.Sbe] | [7.0][Ice.IceFutures.Bgw.Sbe.v7.0.Definition] | 10/24/2025 | 3882 | [Active][Omi.Glossary.Status.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Ice.IceFutures.Bgw.Sbe.v7.0.Url] - [pdf][Ice.IceFutures.Bgw.Sbe.v7.0.Pdf] |
 
 
 Ice: [website](https://www.ice.com "Go to Intercontinental Exchange")

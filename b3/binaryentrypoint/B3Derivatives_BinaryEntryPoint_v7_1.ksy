@@ -465,7 +465,9 @@ types:
       - id: len_deprecated_investor_id_data
         type: u1
       - id: deprecated_investor_id_data
+        type: str
         size: len_deprecated_investor_id_data
+        encoding: ASCII
         if: len_deprecated_investor_id_data > 0
   memo:
     seq:
@@ -1678,7 +1680,9 @@ types:
       - id: len_quote_req_id_data
         type: u1
       - id: quote_req_id_data
+        type: str
         size: len_quote_req_id_data
+        encoding: ASCII
         if: len_quote_req_id_data > 0
   quote_status_report_message:
     seq:

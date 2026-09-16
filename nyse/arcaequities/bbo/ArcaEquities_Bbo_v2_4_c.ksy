@@ -820,9 +820,6 @@ enums:
       id: 'slow_on_the_bid_and_ask'
       doc: 'Slow On The Bid And Ask This Symbol Is On The Set Slow List'
   rpi_indicator:
-    0x20:
-      id: 'no_retail_interest'
-      doc: 'Space Means No Retail Interest Default'
     0x41:
       id: 'retail_interest_on_bid_side'
       doc: 'Retail Interest On Bid Side'

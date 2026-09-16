@@ -257,21 +257,19 @@ types:
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
   exec_inst:
-    meta:
-      bit-endian: le
     seq:
-      - id: participate_do_not_initiate
-        type: b1
-        doc: 'Post only, the order does not initiate an execution'
-      - id: intermarket_sweep
-        type: b1
-        doc: 'Intermarket sweep order'
-      - id: external_routing_not_allowed
-        type: b1
-        doc: 'Book only, the order is not externally routable'
       - id: reserved_13
         type: b13
         doc: '13 reserved bits'
+      - id: external_routing_not_allowed
+        type: b1
+        doc: 'Book only, the order is not externally routable'
+      - id: intermarket_sweep
+        type: b1
+        doc: 'Intermarket sweep order'
+      - id: participate_do_not_initiate
+        type: b1
+        doc: 'Post only, the order does not initiate an execution'
   parties_groups:
     seq:
       - id: repeating_group_dimensions

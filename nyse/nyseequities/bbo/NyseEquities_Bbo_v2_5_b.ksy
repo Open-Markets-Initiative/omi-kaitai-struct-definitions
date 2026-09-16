@@ -795,9 +795,6 @@ enums:
       id: 'regular_quote'
       doc: 'Regular Quote Value'
   rpi_indicator:
-    0x20:
-      id: 'no_retail_interest'
-      doc: 'No Retail Interest Default'
     0x41:
       id: 'retail_interest_on_bid_side'
       doc: 'Retail Interest On Bid Side'
