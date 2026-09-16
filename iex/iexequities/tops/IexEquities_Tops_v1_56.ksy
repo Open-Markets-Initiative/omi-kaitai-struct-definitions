@@ -294,6 +294,9 @@ types:
       - id: trade_id
         type: u8
         doc: 'IEX Generated Identifier. Trade ID is also'
+      - id: reserved_4
+        type: u4
+        doc: 'Reserved bytes'
   sale_condition_flags:
     meta:
       bit-endian: le
@@ -354,6 +357,9 @@ types:
       - id: trade_id
         type: u8
         doc: 'IEX Generated Identifier. Trade ID is also'
+      - id: reserved_4
+        type: u4
+        doc: 'Reserved bytes'
   auction_information_message:
     seq:
       - id: auction_type
