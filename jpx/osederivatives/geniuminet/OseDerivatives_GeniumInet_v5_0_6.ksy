@@ -264,30 +264,28 @@ types:
         enum: lot_type
         doc: 'Lot Type'
   order_attributes:
-    meta:
-      bit-endian: le
     seq:
-      - id: force
-        type: b1
-        doc: 'Force'
-      - id: short_sell
-        type: b1
-        doc: 'Short Sell'
-      - id: market_bid
-        type: b1
-        doc: 'Market Bid'
-      - id: price_stabilization
-        type: b1
-        doc: 'Price Stabilization'
-      - id: override_crossing
-        type: b1
-        doc: 'Override Crossing'
-      - id: undisclosed
-        type: b1
-        doc: 'Undisclosed'
       - id: unused
         type: b10
         doc: 'Unused'
+      - id: undisclosed
+        type: b1
+        doc: 'Undisclosed'
+      - id: override_crossing
+        type: b1
+        doc: 'Override Crossing'
+      - id: price_stabilization
+        type: b1
+        doc: 'Price Stabilization'
+      - id: market_bid
+        type: b1
+        doc: 'Market Bid'
+      - id: short_sell
+        type: b1
+        doc: 'Short Sell'
+      - id: force
+        type: b1
+        doc: 'Force'
   add_order_with_mpid:
     seq:
       - id: nanoseconds

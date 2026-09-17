@@ -286,17 +286,15 @@ types:
         type: nanosecond_timestamp
         doc: 'Ranking timestamp, in nanoseconds. Nanoseconds since Unix epoch'
   order_attributes:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_13
-        type: b13
+      - id: reserved_2
+        type: b2
         doc: 'Reserved'
       - id: bait_implied_order
         type: b1
         doc: 'Bait/implied order'
-      - id: reserved_2
-        type: b2
+      - id: reserved_13
+        type: b13
         doc: 'Reserved'
   add_order_with_mpid_attribution:
     seq:
