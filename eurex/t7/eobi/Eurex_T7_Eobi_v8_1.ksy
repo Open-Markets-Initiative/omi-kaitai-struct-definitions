@@ -149,8 +149,9 @@ types:
       - id: num_instrmt_leg_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
@@ -208,9 +209,8 @@ types:
       - id: offer_ord_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
   auction_clearing_price:
     seq:
       - id: transact_time
@@ -256,9 +256,8 @@ types:
       - id: input_source
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -282,8 +281,9 @@ types:
       - id: aggressor_side
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -309,8 +309,9 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
@@ -419,8 +420,9 @@ types:
       - id: md_entry_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -449,8 +451,9 @@ types:
       - id: mass_sold_out_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -584,8 +587,9 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
@@ -714,8 +718,9 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'

@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 787 | 1,588,318 |
+| 787 | 1,588,337 |
 
 ## Testing
 
@@ -356,11 +356,11 @@ Enjoy.
 [OtcMarkets.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/otcmarkets "OTC Markets Group"
 [Siac.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac "The Securities Industry Automation Corporation"
 
-[24XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/24x/24xequities "24X Equities"
-[A2XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/a2x/a2xequities "A2X Equities"
+[24XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/24x "24X Equities"
+[A2XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/a2x "A2X Equities"
 [AmexEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/amexequities "Nyse Amex Equities"
 [AmexOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/amexoptions "Nyse Amex Options"
-[AquisEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/aquis/aquisequities "Aquis Equities"
+[AquisEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/aquis "Aquis Equities"
 [ArcaEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/arcaequities "Nyse Arca Equities"
 [ArcaOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/arcaoptions "Nyse Arca Options"
 [AsxDerivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/asx/asxderivatives "Asx Derivatives"

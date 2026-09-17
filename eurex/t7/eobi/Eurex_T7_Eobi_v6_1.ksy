@@ -148,8 +148,9 @@ types:
       - id: num_instrmt_leg_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
@@ -280,9 +281,8 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: price
         type: decimal_u8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -485,9 +485,8 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: price
         type: decimal_u8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'

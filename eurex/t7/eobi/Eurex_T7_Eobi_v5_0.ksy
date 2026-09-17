@@ -148,8 +148,9 @@ types:
       - id: num_instrmt_leg_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
@@ -355,8 +356,9 @@ types:
       - id: num_md_instrument_entry_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: md_instrument_entry_grp_comp
         type: md_instrument_entry_grp_comp
         repeat: expr

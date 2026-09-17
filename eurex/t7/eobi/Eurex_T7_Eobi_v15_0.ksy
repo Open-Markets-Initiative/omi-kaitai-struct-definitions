@@ -261,8 +261,9 @@ types:
       - id: security_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: quantity_scaling_factor
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -304,9 +305,8 @@ types:
       - id: offer_ord_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
   auction_clearing_price:
     seq:
       - id: transact_time
@@ -352,9 +352,8 @@ types:
       - id: input_source
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -375,8 +374,9 @@ types:
       - id: aggressor_side
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -535,9 +535,8 @@ types:
       - id: tes_security_status
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: md_instrument_entry_grp_comp
         type: md_instrument_entry_grp_comp
         repeat: expr
@@ -670,9 +669,8 @@ types:
       - id: hhi_indicator
         type: s1_nullable
         doc: 'Nullable, No Value = 0x80'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: price
         type: decimal_u8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
@@ -938,8 +936,9 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad1
+      - id: pad_1
         size: 1
+        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
