@@ -207,7 +207,7 @@ types:
         type: u1
         enum: fast_market_indicator
         doc: 'Indicates if product is in the state Fast Market'
-      - id: num_md_instrument_entry_grp
+      - id: no_md_entries
         type: u1
         doc: 'Number of entries in Market Data message for MDEntryGrp'
       - id: trade_volume
@@ -222,7 +222,7 @@ types:
       - id: md_instrument_entry_grp
         type: md_instrument_entry_grp
         repeat: expr
-        repeat-expr: num_md_instrument_entry_grp
+        repeat-expr: 15
         doc: 'Instrument trade statistics repeated NoMDEntries times in the Instrument Summary Message. The group is not cut off by design'
   md_instrument_entry_grp:
     seq:
@@ -434,7 +434,7 @@ types:
       - id: trd_reg_ts_execution_time
         type: nanosecond_timestamp_nullable
         doc: 'Last matching execution timestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
-      - id: num_md_trade_entry_grp
+      - id: no_md_entries
         type: u1
         doc: 'Number of entries in Market Data message for MDEntryGrp'
       - id: pad_7
@@ -443,7 +443,7 @@ types:
       - id: md_trade_entry_grp
         type: md_trade_entry_grp
         repeat: expr
-        repeat-expr: num_md_trade_entry_grp
+        repeat-expr: 15
         doc: 'Trade statistics repeated NoMDEntries times in the Trade Reversal Message'
   md_trade_entry_grp:
     seq:
@@ -584,7 +584,7 @@ types:
         type: u1
         enum: implied_market_indicator
         doc: 'Indicates that an implied market to be created for either the legs of a multi-leg instrument or for the multi-leg instrument based on the existence of the legs'
-      - id: num_instrmt_leg_grp
+      - id: no_legs
         type: u1
         doc: 'Number of Legs repeating group instances'
       - id: pad_1
@@ -593,7 +593,7 @@ types:
       - id: instrmt_leg_grp
         type: instrmt_leg_grp
         repeat: expr
-        repeat-expr: num_instrmt_leg_grp
+        repeat-expr: 5
         doc: 'Leg definitions repeated NoLegs times in the Add Complex Instrument Message'
   instrmt_leg_grp:
     seq:

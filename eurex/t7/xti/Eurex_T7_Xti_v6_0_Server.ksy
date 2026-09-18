@@ -272,8 +272,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   notif_header_comp:
     seq:
@@ -812,8 +812,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   forced_user_logout_notification:
     seq:
@@ -840,8 +840,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   gateway_response:
     seq:
@@ -1026,8 +1026,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   rbc_header_comp:
     seq:
@@ -1363,8 +1363,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   order_exec_notification:
     seq:
@@ -1931,8 +1931,8 @@ types:
         encoding: ASCII
         pad-right: 0x20
       - id: alignment_padding
-        size: _parent.message_header.body_len - (_io.pos + 6)
-        if: _parent.message_header.body_len != (_io.pos + 6)
+        size: (8 - (_io.pos + 6) % 8) % 8
+        if: (_io.pos + 6) % 8 != 0
         doc: 'Alignment'
   retransmit_me_message_response:
     seq:

@@ -333,27 +333,25 @@ types:
         enum: lot_type
         doc: 'Lot Type value'
   exchange_order_type:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_2_bits
-        type: b2
-        doc: 'Reserved'
-      - id: market_bid
-        type: b1
-        doc: 'Market Bid'
-      - id: price_stabilisation
-        type: b1
-        doc: 'Price Stabilisation'
-      - id: reserved_bit
-        type: b1
+      - id: reserved_10_bits
+        type: b10
         doc: 'Reserved bit'
       - id: undisclosed
         type: b1
         doc: 'Undisclosed'
-      - id: reserved_10_bits
-        type: b10
+      - id: reserved_bit
+        type: b1
         doc: 'Reserved bit'
+      - id: price_stabilisation
+        type: b1
+        doc: 'Price Stabilisation'
+      - id: market_bid
+        type: b1
+        doc: 'Market Bid'
+      - id: reserved_2_bits
+        type: b2
+        doc: 'Reserved'
   add_order_participant_id_message:
     seq:
       - id: nanoseconds

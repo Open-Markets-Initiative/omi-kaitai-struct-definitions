@@ -303,27 +303,25 @@ types:
         size: 16
         doc: 'Reserved'
   st_broker_eligibility_per_mkt:
-    meta:
-      bit-endian: le
     seq:
-      - id: pre_open
-        type: b1
-        doc: 'Eligible for the pre open market'
-      - id: reserved_212
-        type: b11
-        doc: 'Reserved'
-      - id: auction_market
-        type: b1
-        doc: 'Eligible for the auction market'
-      - id: spot_market
-        type: b1
-        doc: 'Eligible for the spot market'
-      - id: oddlot_market
-        type: b1
-        doc: 'Eligible for the odd lot market'
       - id: normal_market
         type: b1
         doc: 'Eligible for the normal market'
+      - id: oddlot_market
+        type: b1
+        doc: 'Eligible for the odd lot market'
+      - id: spot_market
+        type: b1
+        doc: 'Eligible for the spot market'
+      - id: auction_market
+        type: b1
+        doc: 'Eligible for the auction market'
+      - id: reserved_212
+        type: b11
+        doc: 'Reserved'
+      - id: pre_open
+        type: b1
+        doc: 'Eligible for the pre open market'
   sign_on_request_out_message:
     seq:
       - id: user_id
@@ -567,21 +565,19 @@ types:
         enum: pl_market_status_auction
         doc: 'Status of the auction market'
   st_stock_eligible_indicators:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_113
-        type: b13
-        doc: 'Reserved'
-      - id: books_merged
-        type: b1
-        doc: 'Whether the books are merged'
-      - id: minimum_fill
-        type: b1
-        doc: 'Eligible for minimum fill orders'
       - id: eligible_aon
         type: b1
         doc: 'Eligible for all or none orders'
+      - id: minimum_fill
+        type: b1
+        doc: 'Eligible for minimum fill orders'
+      - id: books_merged
+        type: b1
+        doc: 'Whether the books are merged'
+      - id: reserved_113
+        type: b13
+        doc: 'Reserved'
   gateway_router_request_message:
     seq:
       - id: box_id
@@ -1011,54 +1007,52 @@ types:
         type: s2
         doc: 'Corporate action level'
   st_order_flags:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_12
-        type: b2
-        doc: 'Reserved'
-      - id: order_pre_open
-        type: b1
-        doc: 'Order belongs to the pre open session'
-      - id: frozen
-        type: b1
-        doc: 'Order has resulted in a freeze awaiting approval'
-      - id: modified
-        type: b1
-        doc: 'Order has been modified'
-      - id: traded
-        type: b1
-        doc: 'Order has traded at least partly'
-      - id: matched_ind
-        type: b1
-        doc: 'Order has been matched'
-      - id: mf
-        type: b1
-        doc: 'Minimum fill order'
-      - id: aon
-        type: b1
-        doc: 'All or none order'
-      - id: ioc
-        type: b1
-        doc: 'Immediate or cancel order'
-      - id: gtc
-        type: b1
-        doc: 'Good till cancelled order'
-      - id: day
-        type: b1
-        doc: 'Day order'
-      - id: mit
-        type: b1
-        doc: 'Market if touched order'
-      - id: sl
-        type: b1
-        doc: 'Stop loss order'
-      - id: market
-        type: b1
-        doc: 'Market order'
       - id: ato
         type: b1
         doc: 'At the open order'
+      - id: market
+        type: b1
+        doc: 'Market order'
+      - id: sl
+        type: b1
+        doc: 'Stop loss order'
+      - id: mit
+        type: b1
+        doc: 'Market if touched order'
+      - id: day
+        type: b1
+        doc: 'Day order'
+      - id: gtc
+        type: b1
+        doc: 'Good till cancelled order'
+      - id: ioc
+        type: b1
+        doc: 'Immediate or cancel order'
+      - id: aon
+        type: b1
+        doc: 'All or none order'
+      - id: mf
+        type: b1
+        doc: 'Minimum fill order'
+      - id: matched_ind
+        type: b1
+        doc: 'Order has been matched'
+      - id: traded
+        type: b1
+        doc: 'Order has traded at least partly'
+      - id: modified
+        type: b1
+        doc: 'Order has been modified'
+      - id: frozen
+        type: b1
+        doc: 'Order has resulted in a freeze awaiting approval'
+      - id: order_pre_open
+        type: b1
+        doc: 'Order belongs to the pre open session'
+      - id: reserved_12
+        type: b2
+        doc: 'Reserved'
   additional_order_flags:
     meta:
       bit-endian: le

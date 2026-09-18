@@ -197,54 +197,52 @@ types:
         pad-right: 0x20
         doc: 'Whether the option is a call or a put'
   st_order_flags:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_12
-        type: b2
-        doc: 'Reserved'
-      - id: order_pre_open
-        type: b1
-        doc: 'Order belongs to the pre open session'
-      - id: frozen
-        type: b1
-        doc: 'Order has resulted in a freeze awaiting approval'
-      - id: modified
-        type: b1
-        doc: 'Order has been modified'
-      - id: traded
-        type: b1
-        doc: 'Order has traded at least partly'
-      - id: matched_ind
-        type: b1
-        doc: 'Order has been matched'
-      - id: mf
-        type: b1
-        doc: 'Minimum fill order'
-      - id: aon
-        type: b1
-        doc: 'All or none order'
-      - id: ioc
-        type: b1
-        doc: 'Immediate or cancel order'
-      - id: gtc
-        type: b1
-        doc: 'Good till cancelled order'
-      - id: day
-        type: b1
-        doc: 'Day order'
-      - id: mit
-        type: b1
-        doc: 'Market if touched order'
-      - id: sl
-        type: b1
-        doc: 'Stop loss order'
-      - id: market
-        type: b1
-        doc: 'Market order'
       - id: ato
         type: b1
         doc: 'At the open order'
+      - id: market
+        type: b1
+        doc: 'Market order'
+      - id: sl
+        type: b1
+        doc: 'Stop loss order'
+      - id: mit
+        type: b1
+        doc: 'Market if touched order'
+      - id: day
+        type: b1
+        doc: 'Day order'
+      - id: gtc
+        type: b1
+        doc: 'Good till cancelled order'
+      - id: ioc
+        type: b1
+        doc: 'Immediate or cancel order'
+      - id: aon
+        type: b1
+        doc: 'All or none order'
+      - id: mf
+        type: b1
+        doc: 'Minimum fill order'
+      - id: matched_ind
+        type: b1
+        doc: 'Order has been matched'
+      - id: traded
+        type: b1
+        doc: 'Order has traded at least partly'
+      - id: modified
+        type: b1
+        doc: 'Order has been modified'
+      - id: frozen
+        type: b1
+        doc: 'Order has resulted in a freeze awaiting approval'
+      - id: order_pre_open
+        type: b1
+        doc: 'Order belongs to the pre open session'
+      - id: reserved_12
+        type: b2
+        doc: 'Reserved'
   additional_order_flags:
     meta:
       bit-endian: le
