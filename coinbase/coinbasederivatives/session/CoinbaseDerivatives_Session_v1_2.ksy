@@ -51,7 +51,7 @@ types:
         type: message_header
         doc: 'Coinbase Orders Api Sbe message header — FIX session fields plus standard SBE header'
       - id: payload
-        size: message_header.message_length - 36
+        size: message_header.message_length - 32
         type:
           switch-on: message_header.template_id
           cases:
@@ -65,8 +65,8 @@ types:
             'template_id::gap_fill_message': gap_fill_message
             'template_id::reject_message': reject_message
       - id: padding
-        size: 4
-        doc: 'padding'
+        size: 0
+        doc: 'Tcp sbe alignment padding'
   message_header:
     seq:
       - id: protocol_id
@@ -171,9 +171,8 @@ types:
       - id: new_sequence_number
         type: u4
         doc: 'newSequenceNumber'
-      - id: padding
-        size: _parent.message_header.message_length - (_io.pos + 36)
-        if: _parent.message_header.message_length - (_io.pos + 36) > 0
+      - id: gap_fill_padding
+        type: u4
         doc: 'padding'
   reject_message:
     seq:

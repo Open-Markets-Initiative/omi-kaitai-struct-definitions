@@ -17,6 +17,21 @@ class EurexT7EobiFbeV130Tests(unittest.TestCase):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_addflexibleinstrument(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/AddFlexibleInstrument.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_auctionbbo(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/AuctionBbo.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_auctionclearingprice(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/AuctionClearingPrice.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_crossrequest(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/CrossRequest.pcap"):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
@@ -62,6 +77,11 @@ class EurexT7EobiFbeV130Tests(unittest.TestCase):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_ordermassdelete(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/OrderMassDelete.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_ordermodify(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/OrderModify.pcap"):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
@@ -102,8 +122,18 @@ class EurexT7EobiFbeV130Tests(unittest.TestCase):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_topofbook(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/TopOfBook.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_tradereport(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/TradeReport.pcap"):
+            parsed = EurexT7EobiFbeV130.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_tradereversal(self):
+        for payload in payloads.of("omi-data-packets/Eurex/T7.Eobi.Fbe.v13.0/TradeReversal.pcap"):
             parsed = EurexT7EobiFbeV130.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

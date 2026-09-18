@@ -112,6 +112,10 @@ types:
             'template_id::end_of_cycle_message': end_of_cycle_message
             'template_id::retransmit_request_message': retransmit_request_message
             'template_id::retransmit_reject_message': retransmit_reject_message
+      - id: padding
+        size: md_message_header.message_length - _io.pos
+        if: md_message_header.message_length - _io.pos > 0
+        doc: 'Alignment padding out to the message length'
   md_message_header:
     seq:
       - id: message_length

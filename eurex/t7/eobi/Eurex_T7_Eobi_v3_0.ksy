@@ -145,8 +145,8 @@ types:
       - id: implied_market_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: num_instrmt_leg_grp_comp
-        type: u1
+      - id: no_legs
+        type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: pad_1
         size: 1
@@ -154,7 +154,7 @@ types:
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
-        repeat-expr: num_instrmt_leg_grp_comp
+        repeat-expr: 20
   instrmt_leg_grp_comp:
     seq:
       - id: leg_symbol
@@ -319,15 +319,15 @@ types:
       - id: fast_market_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: num_md_instrument_entry_grp_comp
-        type: u1
+      - id: no_md_entries
+        type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: pad2
         size: 2
       - id: md_instrument_entry_grp_comp
         type: md_instrument_entry_grp_comp
         repeat: expr
-        repeat-expr: num_md_instrument_entry_grp_comp
+        repeat-expr: 11
   md_instrument_entry_grp_comp:
     seq:
       - id: md_entry_px
@@ -567,15 +567,15 @@ types:
       - id: trd_reg_ts_execution_time
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
-      - id: num_md_trade_entry_grp_comp
-        type: u1
+      - id: no_md_entries
+        type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: pad7
         size: 7
       - id: md_trade_entry_grp_comp
         type: md_trade_entry_grp_comp
         repeat: expr
-        repeat-expr: num_md_trade_entry_grp_comp
+        repeat-expr: 11
   md_trade_entry_grp_comp:
     seq:
       - id: md_entry_px
