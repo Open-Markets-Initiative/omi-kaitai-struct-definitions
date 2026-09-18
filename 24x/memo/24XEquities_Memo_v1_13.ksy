@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: 24X 24XEquities Memo Sbe v1.13
+# Kaitai struct definition for: 24X Memo Sbe v1.13
 #
 # Protocol:
 #   Organization: 24 National Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: n24x_24xequities_memo_sbe_v1_13
-  title: 24X 24XEquities Memo Sbe v1.13
+  title: 24X Memo Sbe v1.13
   license: GPL-3.0
   endian: be
 

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Aquis AquisEquities TcpHeader Amd v1.0
+# Kaitai struct definition for: Aquis TcpHeader Amd v1.0
 #
 # Protocol:
 #   Organization: Aquis Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: aquis_aquisequities_tcpheader_amd_v1_0
-  title: Aquis AquisEquities TcpHeader Amd v1.0
+  title: Aquis TcpHeader Amd v1.0
   license: GPL-3.0
   endian: be
 

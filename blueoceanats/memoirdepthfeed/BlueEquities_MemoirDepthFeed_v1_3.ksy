@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: BlueOceanAts BlueEquities MemoirDepthFeed Sbe v1.3
+# Kaitai struct definition for: BlueOceanAts MemoirDepthFeed Sbe v1.3
 #
 # Protocol:
 #   Organization: Blue Ocean Technologies
@@ -31,7 +31,7 @@
 
 meta:
   id: blueoceanats_blueequities_memoirdepthfeed_sbe_v1_3
-  title: BlueOceanAts BlueEquities MemoirDepthFeed Sbe v1.3
+  title: BlueOceanAts MemoirDepthFeed Sbe v1.3
   license: GPL-3.0
   endian: be
 

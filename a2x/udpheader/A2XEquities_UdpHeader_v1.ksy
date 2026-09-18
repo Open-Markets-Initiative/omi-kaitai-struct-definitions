@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: A2X A2XEquities UdpHeader Amd v1
+# Kaitai struct definition for: A2X UdpHeader Amd v1
 #
 # Protocol:
 #   Organization: A2X Markets
@@ -31,7 +31,7 @@
 
 meta:
   id: a2x_a2xequities_udpheader_amd_v1
-  title: A2X A2XEquities UdpHeader Amd v1
+  title: A2X UdpHeader Amd v1
   license: GPL-3.0
   endian: be
 

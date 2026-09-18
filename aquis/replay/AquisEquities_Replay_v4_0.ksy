@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Aquis AquisEquities Replay Amd v4.0
+# Kaitai struct definition for: Aquis Replay Amd v4.0
 #
 # Protocol:
 #   Organization: Aquis Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: aquis_aquisequities_replay_amd_v4_0
-  title: Aquis AquisEquities Replay Amd v4.0
+  title: Aquis Replay Amd v4.0
   license: GPL-3.0
   endian: be
 

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: A2X A2XEquities Rtmdf Amd v1.3.2
+# Kaitai struct definition for: A2X Rtmdf Amd v1.3.2
 #
 # Protocol:
 #   Organization: A2X Markets
@@ -31,7 +31,7 @@
 
 meta:
   id: a2x_a2xequities_rtmdf_amd_v1_3_2
-  title: A2X A2XEquities Rtmdf Amd v1.3.2
+  title: A2X Rtmdf Amd v1.3.2
   license: GPL-3.0
   endian: be
 

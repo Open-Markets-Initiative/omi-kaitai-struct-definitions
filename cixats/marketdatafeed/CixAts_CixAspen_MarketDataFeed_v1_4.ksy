@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: CixAts CixAspen MarketDataFeed Aspen v1.4
+# Kaitai struct definition for: CixAts MarketDataFeed Aspen v1.4
 #
 # Protocol:
 #   Organization: CIX Trading Inc.
@@ -31,7 +31,7 @@
 
 meta:
   id: cixats_cixaspen_marketdatafeed_aspen_v1_4
-  title: CixAts CixAspen MarketDataFeed Aspen v1.4
+  title: CixAts MarketDataFeed Aspen v1.4
   license: GPL-3.0
   endian: le
 

@@ -6,7 +6,7 @@
 #   Protocol: TotalView Itch
 #   Encoding: Itch
 #   Version: 5.0.2023
-#   Date: 4/28/2023
+#   Date: 04/28/2023
 #   Specification: NQTVITCHSpecification.pdf
 #
 # Script:
@@ -880,9 +880,6 @@ enums:
     0x50:
       id: 'nyse_arca'
       doc: 'Nyse Arca'
-    0x4d:
-      id: 'nyse_texas'
-      doc: 'Nyse Texas'
     0x5a:
       id: 'bats_z'
       doc: 'Bats Z Exchange'
@@ -1006,9 +1003,6 @@ enums:
     0x4e:
       id: 'not_set_up_for_ipo_release'
       doc: 'Nasdaq Listed Instrument Is Not Set Up As A New Ipo Security'
-    0x5a:
-      id: 'non_ipo_new_listed_security'
-      doc: 'Nasdaq Listed Instrument Is A Non Ipo New Listed Security'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
@@ -1123,7 +1117,7 @@ enums:
       id: 'nasdaq'
       doc: 'Nasdaq'
     0x42:
-      id: 'nasdaq_texas'
+      id: 'bx'
       doc: 'Nasdaq Texas'
     0x58:
       id: 'psx'

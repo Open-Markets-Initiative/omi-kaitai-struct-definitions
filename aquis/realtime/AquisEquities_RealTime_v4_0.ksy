@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Aquis AquisEquities RealTime Amd v4.0
+# Kaitai struct definition for: Aquis RealTime Amd v4.0
 #
 # Protocol:
 #   Organization: Aquis Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: aquis_aquisequities_realtime_amd_v4_0
-  title: Aquis AquisEquities RealTime Amd v4.0
+  title: Aquis RealTime Amd v4.0
   license: GPL-3.0
   endian: be
 

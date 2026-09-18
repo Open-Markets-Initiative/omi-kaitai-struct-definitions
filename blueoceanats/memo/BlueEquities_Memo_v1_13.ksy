@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: BlueOceanAts BlueEquities Memo Sbe v1.13
+# Kaitai struct definition for: BlueOceanAts Memo Sbe v1.13
 #
 # Protocol:
 #   Organization: Blue Ocean Technologies
@@ -31,7 +31,7 @@
 
 meta:
   id: blueoceanats_blueequities_memo_sbe_v1_13
-  title: BlueOceanAts BlueEquities Memo Sbe v1.13
+  title: BlueOceanAts Memo Sbe v1.13
   license: GPL-3.0
   endian: be
 

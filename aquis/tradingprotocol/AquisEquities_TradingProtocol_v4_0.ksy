@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Aquis AquisEquities TradingProtocol Atp v4.0
+# Kaitai struct definition for: Aquis TradingProtocol Atp v4.0
 #
 # Protocol:
 #   Organization: Aquis Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: aquis_aquisequities_tradingprotocol_atp_v4_0
-  title: Aquis AquisEquities TradingProtocol Atp v4.0
+  title: Aquis TradingProtocol Atp v4.0
   license: GPL-3.0
   endian: le
 

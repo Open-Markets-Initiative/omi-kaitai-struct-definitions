@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: 24X 24XEquities MemoirLastSale Sbe v1.3
+# Kaitai struct definition for: 24X MemoirLastSale Sbe v1.3
 #
 # Protocol:
 #   Organization: 24 National Exchange
@@ -31,7 +31,7 @@
 
 meta:
   id: n24x_24xequities_memoirlastsale_sbe_v1_3
-  title: 24X 24XEquities MemoirLastSale Sbe v1.3
+  title: 24X MemoirLastSale Sbe v1.3
   license: GPL-3.0
   endian: be
 

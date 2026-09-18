@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: BlueOceanAts BlueEquities MemoirLastSale Sbe v1.3
+# Kaitai struct definition for: BlueOceanAts MemoirLastSale Sbe v1.3
 #
 # Protocol:
 #   Organization: Blue Ocean Technologies
@@ -31,7 +31,7 @@
 
 meta:
   id: blueoceanats_blueequities_memoirlastsale_sbe_v1_3
-  title: BlueOceanAts BlueEquities MemoirLastSale Sbe v1.3
+  title: BlueOceanAts MemoirLastSale Sbe v1.3
   license: GPL-3.0
   endian: be
 
