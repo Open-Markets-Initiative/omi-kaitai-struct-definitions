@@ -457,6 +457,9 @@ types:
       - id: prefix
         type: u2
         doc: 'prefix'
+      - id: offset_2_padding_2
+        size: 2
+        doc: '2 bytes padding'
       - id: document
         type: u4
         doc: 'document'

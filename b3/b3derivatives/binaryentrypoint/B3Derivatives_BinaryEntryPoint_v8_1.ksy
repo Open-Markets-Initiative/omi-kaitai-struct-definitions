@@ -452,6 +452,9 @@ types:
       - id: prefix
         type: u2
         doc: 'prefix'
+      - id: offset_2_padding_2
+        size: 2
+        doc: '2 bytes padding'
       - id: document
         type: u4
         doc: 'document'
@@ -731,9 +734,6 @@ types:
       - id: strategy_id
         type: s4_nullable
         doc: 'strategyID. Nullable, No Value = 0'
-      - id: block_padding
-        size: 2
-        doc: 'Padding to the block length the message header states'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -980,9 +980,9 @@ types:
       - id: mm_protection_reset_optional
         type: u1_nullable
         doc: 'mmProtectionReset. Nullable, No Value = 255'
-      - id: offset_165_padding_3
-        size: 3
-        doc: '3 bytes padding'
+      - id: offset_167_padding_1
+        size: 1
+        doc: '1 bytes padding'
       - id: strategy_id
         type: s4_nullable
         doc: 'strategyID. Nullable, No Value = 0'
@@ -1112,9 +1112,9 @@ types:
       - id: mm_protection_reset_optional
         type: u1_nullable
         doc: 'mmProtectionReset. Nullable, No Value = 255'
-      - id: offset_179_padding_3
-        size: 3
-        doc: '3 bytes padding'
+      - id: offset_181_padding_1
+        size: 1
+        doc: '1 bytes padding'
       - id: strategy_id
         type: s4_nullable
         doc: 'strategyID. Nullable, No Value = 0'
@@ -1227,9 +1227,6 @@ types:
       - id: action_requested_from_session_id
         type: u4_nullable
         doc: 'actionRequestedFromSessionID. Nullable, No Value = 0'
-      - id: block_padding
-        size: 2
-        doc: 'Padding to the block length the message header states'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
