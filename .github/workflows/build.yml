@@ -137,6 +137,9 @@ jobs:
       - name: Run Iex IexEquities Tops IexTp v1.66 Definition Tests
         run: python3 .github/tests/test_iex_iexequities_tops_iextp_v1_66.py
 
+      - name: Run Imperative DepthOfBook Aspen v1.11 Definition Tests
+        run: python3 .github/tests/test_imperative_intelligentcross_depthofbook_aspen_v1_11.py
+
       - name: Run Jnx JnxEquities Pts Glimpse v1.3 Definition Tests
         run: python3 .github/tests/test_jnx_jnxequities_pts_glimpse_v1_3.py
 
