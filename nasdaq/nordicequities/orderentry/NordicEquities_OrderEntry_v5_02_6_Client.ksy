@@ -167,16 +167,14 @@ types:
         repeat: eos
         doc: 'Additional appendage tag value'
   party_role_qualifier:
-    meta:
-      bit-endian: le
     seq:
-      - id: client_identification
-        type: b2
-      - id: investment_decision_within_firm
+      - id: reserved_78
         type: b2
       - id: execution_decision_within_firm
         type: b2
-      - id: reserved_78
+      - id: investment_decision_within_firm
+        type: b2
+      - id: client_identification
         type: b2
   tagvalue:
     seq:

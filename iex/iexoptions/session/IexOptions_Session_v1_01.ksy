@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexOptions Session Sbe v1.0
+# Kaitai struct definition for: Iex IexOptions Session Sbe v1.01
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: Session
 #   Encoding: Simple Binary Encoding
-#   Version: 1.0
-#   Date: 6/1/2026
-#   Specification: IEX Options Binary Session Protocol Specification v1.00
+#   Version: 1.01
+#   Date: 7/17/2026
+#   Specification: IEX Options Binary Session Protocol Specification v1.01
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexoptions_session_sbe_v1_0
-  title: Iex IexOptions Session Sbe v1.0
+  id: iex_iexoptions_session_sbe_v1_01
+  title: Iex IexOptions Session Sbe v1.01
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Options Session Sbe v1.0'
+doc: 'Investors Exchange IEX Options Session Sbe v1.01'
 doc-ref: https://www.iexexchange.io/options
 
 seq:

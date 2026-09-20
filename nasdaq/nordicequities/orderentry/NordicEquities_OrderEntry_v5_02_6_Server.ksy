@@ -191,16 +191,14 @@ types:
         repeat: eos
         doc: 'Additional appendage tag value'
   party_role_qualifier:
-    meta:
-      bit-endian: le
     seq:
-      - id: client_identification
-        type: b2
-      - id: investment_decision_within_firm
+      - id: reserved_78
         type: b2
       - id: execution_decision_within_firm
         type: b2
-      - id: reserved_78
+      - id: investment_decision_within_firm
+        type: b2
+      - id: client_identification
         type: b2
   tagvalue:
     seq:
@@ -583,19 +581,17 @@ types:
         type: u1
         doc: 'The execution venue'
   liquidity_attributes:
-    meta:
-      bit-endian: le
     seq:
-      - id: reserved_13
-        type: b3
-      - id: liquidity_indicator
-        type: b2
-      - id: liquidity_internalized
+      - id: liquidity_self_trade
         type: b1
       - id: liquidity_top_of_book
         type: b1
-      - id: liquidity_self_trade
+      - id: liquidity_internalized
         type: b1
+      - id: liquidity_indicator
+        type: b2
+      - id: reserved_13
+        type: b3
   broken_trade_message:
     seq:
       - id: timestamp

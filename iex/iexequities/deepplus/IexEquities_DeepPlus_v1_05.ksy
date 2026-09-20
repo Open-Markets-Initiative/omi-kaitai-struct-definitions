@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Iex IexEquities DeepPlus Snap v1.05
+# Kaitai struct definition for: Iex IexEquities DeepPlus IexTp v1.05
 #
 # Protocol:
 #   Organization: Investors Exchange
 #   Protocol: DeepPlus
-#   Encoding: Investors Exchange Snapshot Protocol
+#   Encoding: Investors Exchange Transport Protocol
 #   Version: 1.05
-#   Date: 6/4/2026
-#   Specification: IEX DEEP+ SNAP Specification.pdf
+#   Date: 8/21/2026
+#   Specification: IEX DEEP+ Specification v1.05.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,108 +30,92 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexequities_deepplus_snap_v1_05
-  title: Iex IexEquities DeepPlus Snap v1.05
+  id: iex_iexequities_deepplus_iextp_v1_05
+  title: Iex IexEquities DeepPlus IexTp v1.05
   license: GPL-3.0
   endian: le
 
-doc: 'Investors Exchange IEX Equities DeepPlus Snap v1.05'
+doc: 'Investors Exchange IEX Equities DeepPlus IexTp v1.05'
 doc-ref: https://www.iexexchange.io/resources/trading/documents
 
 seq:
-  - id: message
-    type: message_struct
-    repeat: eos
-    doc: 'Snap message'
+  - id: iextp_header
+    type: iextp_header_struct
+    doc: 'IexTp packet header'
+  - id: messages
+    repeat: expr
+    repeat-expr: iextp_header.message_count
+    type:
+      switch-on: iextp_header.message_count
+      cases:
+        _: message
 
 types:
-  message_struct:
+  iextp_header_struct:
+    seq:
+      - id: version
+        type: u1
+        doc: 'Version of transport specification'
+      - id: reserved
+        size: 1
+        doc: 'Reserved byte'
+      - id: message_protocol_id
+        type: u2
+        doc: 'Unique identifier of the higher layer protocol'
+      - id: channel_id
+        type: u4
+        doc: 'Identifies the stream of bytes sequenced messages'
+      - id: session_id
+        type: u4
+        doc: 'Identifies the session'
+      - id: payload_length
+        type: u2
+        doc: 'Byte length of the payload'
+      - id: message_count
+        type: u2
+        doc: 'Number of messages in the payload'
+      - id: stream_offset
+        type: u8
+        doc: 'Byte offset of the data stream'
+      - id: first_message_sequence_number
+        type: u8
+        doc: 'Sequence of the first message in the segment'
+      - id: send_time
+        type: nanosecond_timestamp
+        doc: 'Send time of segment. Nanoseconds since Unix epoch'
+  message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Snap message header'
+        doc: 'IexTp message header'
       - id: message_data
         size: message_header.message_length + 2 - 3
         type:
           switch-on: message_header.message_type
           cases:
-            'message_type::snapshot_request_message': snapshot_request_message
-            'message_type::error_response_message': error_response_message
-            'message_type::snapshot_start_message': snapshot_start_message
-            'message_type::snapshot_data_message': snapshot_data_message
-            'message_type::snapshot_end_message': snapshot_end_message
+            'message_type::system_event_message': system_event_message
+            'message_type::security_directory_message': security_directory_message
+            'message_type::trading_status_message': trading_status_message
+            'message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
+            'message_type::operational_halt_status_message': operational_halt_status_message
+            'message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
+            'message_type::security_event_message': security_event_message
+            'message_type::add_order_message': add_order_message
+            'message_type::order_modify_message': order_modify_message
+            'message_type::order_delete_message': order_delete_message
+            'message_type::order_executed_message': order_executed_message
+            'message_type::trade_message': trade_message
+            'message_type::trade_break_message': trade_break_message
+            'message_type::clear_book_message': clear_book_message
   message_header:
     seq:
       - id: message_length
         type: u2
-        doc: 'Length of message in bytes not including this field'
+        doc: 'Length of the message'
       - id: message_type
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
-  snapshot_request_message:
-    seq:
-      - id: authentication_token
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Token supplied by Iex Market Ops, left justified and space padded on the right'
-      - id: channel_id
-        type: u4
-        doc: 'Channel identifier from the Deep Plus feed IexTp header'
-      - id: session_id
-        type: u4
-        doc: 'Session identifier from the Deep Plus feed IexTp header'
-      - id: minimum_sequence_number
-        type: u8
-        doc: 'Minimum sequence number useable by the client, zero returns the latest snapshot available'
-  error_response_message:
-    seq:
-      - id: reject_reason_code
-        type: u1
-        enum: reject_reason_code
-        doc: 'Reason the Snapshot Request was rejected'
-  snapshot_start_message:
-    seq:
-      - id: snapshot_length
-        type: u8
-        doc: 'Length in bytes of the complete Snapshot Response including the Snapshot Start message, all Snapshot Data messages, and the Snapshot End message'
-  snapshot_data_message:
-    seq:
-      - id: iex_tp_header
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'IexTp header for the wrapped Deep Plus feed message, see the Iex Transport specification'
-      - id: iex_tp_message_block_length
-        type: u2
-        doc: 'Length of the IexTp message block, see the Iex Transport specification'
-      - id: iex_tp_message_length
-        type: u2
-        doc: 'Length of the wrapped Deep Plus message in bytes not including this field'
-      - id: iex_tp_message_type
-        type: u1
-        enum: iex_tp_message_type
-        doc: 'Code identifying the wrapped Deep Plus message type'
-      - id: iex_tp_message_data
-        type:
-          switch-on: iex_tp_message_type
-          cases:
-            'iex_tp_message_type::system_event_message': system_event_message
-            'iex_tp_message_type::security_directory_message': security_directory_message
-            'iex_tp_message_type::trading_status_message': trading_status_message
-            'iex_tp_message_type::retail_liquidity_indicator_message': retail_liquidity_indicator_message
-            'iex_tp_message_type::operational_halt_status_message': operational_halt_status_message
-            'iex_tp_message_type::short_sale_price_test_status_message': short_sale_price_test_status_message
-            'iex_tp_message_type::security_event_message': security_event_message
-            'iex_tp_message_type::add_order_message': add_order_message
-            'iex_tp_message_type::order_modify_message': order_modify_message
-            'iex_tp_message_type::order_delete_message': order_delete_message
-            'iex_tp_message_type::order_executed_message': order_executed_message
-            'iex_tp_message_type::trade_message': trade_message
-            'iex_tp_message_type::trade_break_message': trade_break_message
-            'iex_tp_message_type::clear_book_message': clear_book_message
   system_event_message:
     seq:
       - id: system_event
@@ -452,11 +436,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security identifier'
-  snapshot_end_message:
-    seq:
-      - id: snapshot_sequence_number
-        type: u8
-        doc: 'Sequence at which the snapshot was created'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -480,44 +459,6 @@ types:
 
 enums:
   message_type:
-    0x72:
-      id: 'snapshot_request_message'
-      doc: 'The Snapshot Request message is sent from the client to the Deep Plus Snap server to authenticate and request a Snapshot Response'
-    0x65:
-      id: 'error_response_message'
-      doc: 'Sent by the Deep Plus Snap server to the client when a Snapshot Request is rejected'
-    0x73:
-      id: 'snapshot_start_message'
-      doc: 'First message of a Snapshot Response sent from the Deep Plus Snap server when a Snapshot Request is successful'
-    0x64:
-      id: 'snapshot_data_message'
-      doc: 'Carries one complete Deep Plus feed message wrapped with an IexTp header providing Deep Plus feed sequencing and timing information'
-    0x78:
-      id: 'snapshot_end_message'
-      doc: 'Final message of a Snapshot Response, carries the sequence number at which the snapshot was created'
-  reject_reason_code:
-    0x41:
-      id: 'authentication_failure'
-      doc: 'The Authentication Token Was Not Valid'
-    0x43:
-      id: 'incorrect_channel_id'
-      doc: 'Incorrect Channel Id In The Snapshot Request'
-    0x45:
-      id: 'snapshot_request_already_active'
-      doc: 'A Snapshot Request Is Already Active On This Connection'
-    0x51:
-      id: 'quota_exceeded'
-      doc: 'The Per Channel Daily Snapshot Request Quota Has Been Exceeded'
-    0x52:
-      id: 'snapshot_not_yet_available'
-      doc: 'No Snapshot At Or Above The Requested Minimum Sequence Number Is Available'
-    0x53:
-      id: 'incorrect_session_id'
-      doc: 'Incorrect Session Id In The Snapshot Request'
-    0x55:
-      id: 'unknown_message'
-      doc: 'The Message Was Not Recognized By The Server'
-  iex_tp_message_type:
     0x53:
       id: 'system_event_message'
       doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
