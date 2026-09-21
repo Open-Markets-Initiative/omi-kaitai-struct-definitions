@@ -423,9 +423,11 @@ types:
         doc: 'Total order quantity'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: 'Locate requirement indicator'
   new_bulk_quote_type_243_message:
     seq:
@@ -449,6 +451,7 @@ types:
         doc: 'Client order identifier unique per Username and MPID'
       - id: self_trade_type_u_81
         type: u1
+        enum: self_trade_type_u_81
         doc: 'Self-trade prevention setting applied to all quotes in the message'
       - id: group_id
         type: u4
@@ -478,6 +481,7 @@ types:
         doc: 'Client order identifier unique per Username and MPID'
       - id: self_trade_type_u_81
         type: u1
+        enum: self_trade_type_u_81
         doc: 'Self-trade prevention setting applied to all quotes in the message'
       - id: group_id
         type: u4
@@ -669,6 +673,7 @@ types:
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: group_id
         type: u4
@@ -712,6 +717,7 @@ types:
         doc: 'Client order identifier unique per Username and MPID'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: target_cancel_username
         type: str
@@ -980,6 +986,12 @@ types:
       - id: mpv_class_id
         type: u2
         doc: 'Identification number of the MPV class'
+      - id: rpimpv
+        type: decimal_u8_8
+        doc: 'Numeric value of the Minimum Price Variation for Retail Price Improvement (RPI) orders for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
+      - id: luldmpv
+        type: decimal_u8_8
+        doc: 'Numeric value of the Minimum Price Variation for LULD bands for securities belonging to the MPVClass. Implied decimal with scale 1e-8'
   minimum_price_variant_level_reference_data_message:
     seq:
       - id: transact_time_timestamp_8
@@ -1256,6 +1268,7 @@ types:
         doc: 'Indicates whether the inbound message was throttled'
       - id: self_trade_type_u_81
         type: u1
+        enum: self_trade_type_u_81
         doc: 'Self-trade prevention setting applied to all quotes in the message'
       - id: group_id
         type: u4
@@ -1291,6 +1304,7 @@ types:
         doc: 'Indicates whether the inbound message was throttled'
       - id: self_trade_type_u_81
         type: u1
+        enum: self_trade_type_u_81
         doc: 'Self-trade prevention setting applied to all quotes in the message'
       - id: group_id
         type: u4
@@ -1331,9 +1345,11 @@ types:
         doc: 'Remaining quantity open on the order'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: 'Locate requirement indicator'
       - id: reason_code
         type: u2
@@ -1472,6 +1488,7 @@ types:
         doc: 'Reserved for future use'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: 'Locate requirement indicator'
       - id: participant_type
         type: u1
@@ -1488,6 +1505,7 @@ types:
         doc: 'Customer-defined free text with restricted ASCII characters'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: market_maker
         type: str
@@ -1539,6 +1557,7 @@ types:
         doc: 'Client-assigned identifier for the cross order'
       - id: open_close_u_81
         type: u1
+        enum: open_close_u_81
         doc: 'Sender’s open/close position'
       - id: optional_order_add_on
         type: optional_order_add_on
@@ -1765,6 +1784,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Customer-defined trading desk or entity identifier'
+      - id: reserved_4
+        size: 4
+        doc: 'Reserved for future use'
       - id: clearing_number
         type: str
         size: 5
@@ -1860,6 +1882,7 @@ types:
         doc: 'Identifier of the security; both sides of a cross must match'
       - id: side_u_81
         type: u1
+        enum: side_u_81
         doc: 'Optional side change; zero indicates no change'
       - id: num_leg_group
         type: u1
@@ -2102,6 +2125,36 @@ enums:
     1:
       id: 'close'
       doc: 'Close'
+  side_u_81:
+    0:
+      id: 'no_change_in_side'
+      doc: 'No Change In Side'
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+  locate_reqd_u_81:
+    0:
+      id: 'no_locate_reqd'
+      doc: 'No Locate Required'
+  self_trade_type_u_81:
+    0:
+      id: 'use_session_configuration'
+      doc: 'Use Session Configuration Selftrade Prevention Setting'
+    1:
+      id: 'no_self_trade_prevention'
+      doc: 'No Selftrade Prevention'
+    2:
+      id: 'cancel_newest'
+      doc: 'Cancel Newest Order'
+    3:
+      id: 'cancel_oldest'
+      doc: 'Cancel Oldest Order'
+    4:
+      id: 'cancel_both'
+      doc: 'Cancel Both Orders'
   bulk_action:
     0:
       id: 'not_applicable'
@@ -3488,6 +3541,16 @@ enums:
     2:
       id: 'covered'
       doc: 'Covered'
+  open_close_u_81:
+    0:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
+    1:
+      id: 'open'
+      doc: 'Open Position'
+    2:
+      id: 'close'
+      doc: 'Close Position'
   bust_correct_indicator:
     0:
       id: 'trade_bust'

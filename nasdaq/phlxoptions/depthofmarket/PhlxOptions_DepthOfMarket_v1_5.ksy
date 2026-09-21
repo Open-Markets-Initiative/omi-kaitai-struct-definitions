@@ -628,7 +628,7 @@ types:
         type: u1
         enum: customer_indicator
         doc: 'For Order Exposure only'
-      - id: reserved
+      - id: reserved_3
         size: 3
         doc: 'Reserved for future use'
   second_timestamp:

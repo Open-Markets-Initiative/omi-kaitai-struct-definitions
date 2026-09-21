@@ -255,27 +255,27 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_2
-        type: b2
-        doc: 'Reserved'
-      - id: is_option_strategy_hedge
-        type: b1
-        doc: 'Indicates that this future trade is part of an option strategy'
-      - id: has_no_direct_outright_taker
-        type: b1
-        doc: 'Indicates that this trade has no outright taker order in the same market'
-      - id: is_vertical_split
-        type: b1
-        doc: 'Indicates if the trade is a system priced leg from a composite strategy'
-      - id: has_no_direct_outright_originator
-        type: b1
-        doc: 'Indicate that the originator side of the deal resulted from implied order'
-      - id: is_leg_deal_outside_ipl
-        type: b1
-        doc: 'ndicate the deal is outside of IPL'
       - id: is_rfc_crossing
         type: b1
         doc: 'Indicate this is a RFC Crossing Deal'
+      - id: is_leg_deal_outside_ipl
+        type: b1
+        doc: 'Indicate the deal is outside of IPL'
+      - id: has_no_direct_outright_originator
+        type: b1
+        doc: 'Indicate that the originator side of the deal resulted from implied order'
+      - id: is_vertical_split
+        type: b1
+        doc: 'Indicates if the trade is a system priced leg from a composite strategy'
+      - id: has_no_direct_outright_taker
+        type: b1
+        doc: 'Indicates that this trade has no outright taker order in the same market'
+      - id: is_option_strategy_hedge
+        type: b1
+        doc: 'Indicates that this future trade is part of an option strategy'
+      - id: unused_2
+        type: b2
+        doc: 'Reserved'
   spot_market_trade_message:
     seq:
       - id: market_id
@@ -1601,12 +1601,12 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused_7
-        type: b7
-        doc: 'Reserved'
       - id: is_modify_order
         type: b1
         doc: 'Modify existing order'
+      - id: unused_7
+        type: b7
+        doc: 'Reserved'
   delete_order_message:
     seq:
       - id: market_id

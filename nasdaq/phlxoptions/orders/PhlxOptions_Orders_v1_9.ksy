@@ -508,7 +508,7 @@ types:
       - id: imbalance_volume
         type: u4
         doc: 'Total number of contracts better than Price (includes Orders that cannot be filled). The Exposed Order size'
-      - id: reserved
+      - id: reserved_4
         type: u4
         doc: 'Reserved for future use'
   complex_auction_notification_message:

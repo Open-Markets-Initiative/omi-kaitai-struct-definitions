@@ -52,7 +52,7 @@ types:
       - id: channel_id
         type: u1
         doc: 'B3 Channel Id'
-      - id: reserved
+      - id: packet_reserved
         type: u1
         doc: 'Packet Reserved Field'
       - id: sequence_version
@@ -169,7 +169,7 @@ types:
       - id: recovery_msg
         type: b1
         doc: 'RecoveryMsg'
-      - id: reserved_1
+      - id: reserved
         type: b1
         doc: 'Reserved'
       - id: end_of_event

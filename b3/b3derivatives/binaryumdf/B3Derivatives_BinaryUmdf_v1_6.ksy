@@ -52,7 +52,7 @@ types:
       - id: channel_id
         type: u1
         doc: 'B3 Channel Id'
-      - id: reserved
+      - id: packet_reserved
         type: u1
         doc: 'Packet Reserved Field'
       - id: sequence_version

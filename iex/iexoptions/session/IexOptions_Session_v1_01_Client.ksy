@@ -30,7 +30,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: iex_iexoptions_session_sbe_v1_01
+  id: iex_iexoptions_session_sbe_v1_01_client
   title: Iex IexOptions Session Sbe v1.01
   license: GPL-3.0
   endian: le

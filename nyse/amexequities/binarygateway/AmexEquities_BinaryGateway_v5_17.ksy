@@ -355,7 +355,7 @@ types:
       - id: special_ord_type
         type: b4
         doc: 'SpecialOrdType'
-      - id: locate_reqd
+      - id: locate_reqd_1
         type: b1
         doc: '0 = No LocateReqd'
       - id: retail_indicator
@@ -379,7 +379,7 @@ types:
       - id: proactive_if_locked
         type: b3
         doc: 'ProactiveIfLocked'
-      - id: self_trade_type
+      - id: self_trade_type_3
         type: b3
         doc: 'SelfTradeType'
       - id: cancel_instead_of_reprice
@@ -405,9 +405,6 @@ types:
       - id: sub_msg_header
         type: sub_msg_header
         doc: 'Pillar Stream Sub Message Item Header'
-      - id: stop_px
-        type: decimal_s8_8
-        doc: 'Trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-8'
       - id: deliver_to_comp_id
         type: str
         size: 5
@@ -491,6 +488,7 @@ types:
         doc: 'Side'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: '0 = No LocateReqd or not applicable. Orders with Side of Sell Short, Sell Short Exempt, Cross Short, or Cross Short Exempt must be entered with LocateReqd = 0 or will be rejected'
   bulk_cancel_request_message:
     seq:
@@ -557,9 +555,11 @@ types:
         doc: 'Customer defined – identifies specific entity/trading desk of customer firm'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: '0 = No LocateReqd or not applicable. Orders with Side of Sell Short, Sell Short Exempt, Cross Short, or Cross Short Exempt must be entered with LocateReqd = 0 or will be rejected'
       - id: self_trade_type_bits
         type: u1
+        enum: self_trade_type_bits
         doc: 'Self-trade prevention setting: 0=Use default/Cancel Newest, 1=No STP, 2=Cancel Newest, 3=Cancel Oldest, 4=Cancel Both, 5=Cancel Decrement'
       - id: user_data
         type: str
@@ -1099,6 +1099,7 @@ types:
         doc: 'Side'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: '0 = No LocateReqd or not applicable. Orders with Side of Sell Short, Sell Short Exempt, Cross Short, or Cross Short Exempt must be entered with LocateReqd = 0 or will be rejected'
       - id: reason_code
         type: u2
@@ -1205,6 +1206,7 @@ types:
         doc: 'Displayed liquidity indicator'
       - id: locate_reqd_u_81
         type: u1
+        enum: locate_reqd_u_81
         doc: '0 = No LocateReqd or not applicable. Orders with Side of Sell Short, Sell Short Exempt, Cross Short, or Cross Short Exempt must be entered with LocateReqd = 0 or will be rejected'
       - id: participant_type
         type: u1
@@ -1579,6 +1581,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Risk Entity – SubID associated with the specified MPID. Populate if applicable'
+      - id: reserved_4
+        size: 4
+        doc: 'Bytes reserved for future use'
       - id: clearing_number
         type: str
         size: 5
@@ -1922,13 +1927,6 @@ enums:
     8:
       id: 'reserved'
       doc: 'Reserved For Future Use'
-  locate_reqd:
-    0:
-      id: 'no_locate_reqd'
-      doc: 'No Locate Reqd'
-    1:
-      id: 'locate_reqd_for_ssh_orders'
-      doc: 'Locate Reqd For Ssh Orders'
   retail_indicator:
     0:
       id: 'not_retail'
@@ -1966,6 +1964,9 @@ enums:
     0:
       id: 'no_interest_type'
       doc: 'No Interest Type'
+    4:
+      id: 'q_order'
+      doc: 'Q Order'
     5:
       id: 'cco'
       doc: 'Capital Commitment Order Cco'
@@ -2014,25 +2015,6 @@ enums:
     2:
       id: 'proactive_trade_non_display'
       doc: 'Proactive Trade Non Display'
-  self_trade_type:
-    0:
-      id: 'default_cancel_newest'
-      doc: 'Use Default For All Dbk Gui Streams Cancel Newest'
-    1:
-      id: 'no_self_trade_prevention'
-      doc: 'No Self Trade Prevention'
-    2:
-      id: 'cancel_newest'
-      doc: 'Cancel Newest'
-    3:
-      id: 'cancel_oldest'
-      doc: 'Cancel Oldest'
-    4:
-      id: 'cancel_both'
-      doc: 'Cancel Both'
-    5:
-      id: 'cancel_decrement'
-      doc: 'Cancel Decrement'
   cancel_instead_of_reprice:
     0:
       id: 'not_applicable'
@@ -2152,6 +2134,28 @@ enums:
     4:
       id: 'pegged'
       doc: 'Pegged'
+  side_bits:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+    3:
+      id: 'sell_short'
+      doc: 'Sell Short'
+    4:
+      id: 'sell_short_exempt'
+      doc: 'Sell Short Exempt'
+    5:
+      id: 'cross'
+      doc: 'Cross'
+    6:
+      id: 'cross_short'
+      doc: 'Cross Short'
+    7:
+      id: 'cross_short_exempt'
+      doc: 'Cross Short Exempt'
   routing_strategy:
     1:
       id: 'midpoint_ping'
@@ -2187,6 +2191,13 @@ enums:
     7:
       id: 'cross_short_exempt'
       doc: 'Cross Short Exempt'
+  locate_reqd_u_81:
+    0:
+      id: 'no_locate_reqd'
+      doc: 'No Locate Reqd'
+    1:
+      id: 'locate_reqd_for_ssh_orders'
+      doc: 'Locate Reqd For Ssh Orders'
   bulk_cancel_type:
     1:
       id: 'session_day_directed'
@@ -2227,6 +2238,25 @@ enums:
     13:
       id: 'mpid_capital_commitment'
       doc: 'Cancel Orders For The Mpid Cancel Capital Commitment Orders'
+  self_trade_type_bits:
+    0:
+      id: 'default_cancel_newest'
+      doc: 'Use Default For All Dbk Gui Streams Cancel Newest'
+    1:
+      id: 'no_self_trade_prevention'
+      doc: 'No Self Trade Prevention'
+    2:
+      id: 'cancel_newest'
+      doc: 'Cancel Newest'
+    3:
+      id: 'cancel_oldest'
+      doc: 'Cancel Oldest'
+    4:
+      id: 'cancel_both'
+      doc: 'Cancel Both'
+    5:
+      id: 'cancel_decrement'
+      doc: 'Cancel Decrement'
   manual_response_type:
     1:
       id: 'approve_manual_action_request'

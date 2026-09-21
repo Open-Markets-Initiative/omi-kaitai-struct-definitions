@@ -951,30 +951,28 @@ types:
         type: market_updates
         doc: 'Bitwise flags indicating which fields have been adjusted'
   market_updates:
-    meta:
-      bit-endian: le
     seq:
-      - id: opening_trade_price
-        type: b1
-        doc: 'Has Opening Trade Price Changed'
-      - id: highest_traded_price
-        type: b1
-        doc: 'Has Highest Traded Price Changed'
-      - id: lowest_traded_price
-        type: b1
-        doc: 'Has Lowest Traded Price Changed'
-      - id: total_traded_volume_and_total_trades
-        type: b1
-        doc: 'Has Total Traded Volume and Total Trades Changed'
-      - id: last_traded_price
-        type: b1
-        doc: 'Has Last Traded Price Changed'
-      - id: last_traded_volume
-        type: b1
-        doc: 'Last Traded Volume'
       - id: all_fields
         type: b2
         doc: 'All Fields'
+      - id: last_traded_volume
+        type: b1
+        doc: 'Last Traded Volume'
+      - id: last_traded_price
+        type: b1
+        doc: 'Has Last Traded Price Changed'
+      - id: total_traded_volume_and_total_trades
+        type: b1
+        doc: 'Has Total Traded Volume and Total Trades Changed'
+      - id: lowest_traded_price
+        type: b1
+        doc: 'Has Lowest Traded Price Changed'
+      - id: highest_traded_price
+        type: b1
+        doc: 'Has Highest Traded Price Changed'
+      - id: opening_trade_price
+        type: b1
+        doc: 'Has Opening Trade Price Changed'
   market_settlement_message:
     seq:
       - id: nanoseconds

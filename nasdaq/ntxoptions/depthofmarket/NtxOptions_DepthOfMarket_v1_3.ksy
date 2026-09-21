@@ -583,7 +583,7 @@ types:
         type: u1
         enum: customer_firm_indicator
         doc: 'For Order Exposure (AuctionType=I) only. Indicates the order capacity:'
-      - id: reserved
+      - id: reserved_3
         size: 3
         doc: 'Reserved for future use'
   second_timestamp:

@@ -112,7 +112,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unused
+      - id: unused_5
         type: b5
         doc: 'Reserved for future use'
       - id: mac_run
