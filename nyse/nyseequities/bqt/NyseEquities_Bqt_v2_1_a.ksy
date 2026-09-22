@@ -470,7 +470,7 @@ types:
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Quote Condition value'
+        doc: 'Quote Condition value. Nullable, Empty Quote = 0'
       - id: rpi_indicator
         type: u1
         enum: rpi_indicator
@@ -1217,9 +1217,6 @@ enums:
     0x57:
       id: 'slow_on_the_bid_and_ask'
       doc: 'Slow On The Bid And Ask Due To A Set Slow List'
-    0x00:
-      id: 'empty_quote'
-      doc: 'No Bbo Available For The Given Instrument'
   rpi_indicator:
     0x20:
       id: 'no_retail_interest'

@@ -1854,22 +1854,26 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'The SoupBinTCP login username, left padded with spaces'
+        pad-right: 0x20
+        doc: 'The SoupBinTCP login username, padded on the right with spaces'
       - id: password
         type: str
         size: 10
         encoding: ASCII
-        doc: 'The SoupBinTCP login password, left padded with spaces'
+        pad-right: 0x20
+        doc: 'The SoupBinTCP login password, padded on the right with spaces'
       - id: requested_session
         type: str
         size: 10
         encoding: ASCII
-        doc: 'The requested session ID, space-padded; spaces request the currently active session'
+        pad-right: 0x20
+        doc: 'The requested session ID, or all spaces to log into the currently active session'
       - id: requested_sequence_number
         type: str
         size: 20
         encoding: ASCII
-        doc: 'The first sequenced message number the client wishes to receive, space-padded'
+        pad-right: 0x20
+        doc: 'The next sequence number in ASCII the client wants to receive, or 0 for the most recently generated message'
   nanosecond_timestamp:
     seq:
       - id: time

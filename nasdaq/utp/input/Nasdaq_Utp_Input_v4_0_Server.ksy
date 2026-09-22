@@ -1855,12 +1855,14 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Session ID accepted by the SIP for this client, left padded with spaces'
+        pad-right: 0x20
+        doc: 'The session ID of the session that is now logged into, left padded with spaces'
       - id: accepted_sequence_number
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Next sequenced message number the SIP will deliver, space-padded'
+        pad-right: 0x20
+        doc: 'The sequence number in ASCII of the next sequenced message to be sent, left padded with spaces'
   login_rejected_packet:
     seq:
       - id: reject_reason_code

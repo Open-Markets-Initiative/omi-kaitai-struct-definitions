@@ -575,6 +575,9 @@ enums:
       id: 'regulatory_imbalance'
       doc: 'Regulatory Imbalance Nyse Only'
   imbalance_side:
+    0x20:
+      id: 'no_imbalance'
+      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'

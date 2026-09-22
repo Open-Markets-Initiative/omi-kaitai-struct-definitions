@@ -1101,6 +1101,9 @@ enums:
       id: 'short_sale_restriction_in_effect'
       doc: 'Short Sale Restriction In Effect'
   primary_listing_market_participant_id:
+    0x20:
+      id: 'primary_listing_market_participant_id_not_applicable'
+      doc: 'Primary Listing Market Participant Id Not Applicable'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'

@@ -98,14 +98,14 @@ types:
             'message_type::modify_order_message': modify_order_message
             'message_type::replace_order_message': replace_order_message
             'message_type::delete_order_message': delete_order_message
-            'message_type::trade_cancel_message': trade_cancel_message
-            'message_type::cross_trade_message': cross_trade_message
-            'message_type::cross_correction_message': cross_correction_message
-            'message_type::retail_price_improvement_message': retail_price_improvement_message
-            'message_type::add_order_refresh_message': add_order_refresh_message
-            'message_type::imbalance_message': imbalance_message
             'message_type::order_execution_message': order_execution_message
             'message_type::non_displayed_trade_message': non_displayed_trade_message
+            'message_type::trade_cancel_message': trade_cancel_message
+            'message_type::retail_price_improvement_message': retail_price_improvement_message
+            'message_type::cross_trade_message': cross_trade_message
+            'message_type::cross_correction_message': cross_correction_message
+            'message_type::imbalance_message': imbalance_message
+            'message_type::add_order_refresh_message': add_order_refresh_message
             'message_type::stock_summary_message': stock_summary_message
   message_header:
     seq:
@@ -491,6 +491,66 @@ types:
       - id: num_parity_splits
         type: u1
         doc: 'Resulting number of splits at this price level Defaulted to 0. Future use by NYSE only'
+  order_execution_message:
+    seq:
+      - id: source_time_ns
+        type: u4
+        doc: 'The nanosecond offset from the SourceTime'
+      - id: symbol_index
+        type: u4
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
+      - id: symbol_seq_num
+        type: u4
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
+      - id: order_id
+        type: u8
+        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
+      - id: trade_id
+        type: u4
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
+      - id: price
+        type: u4
+        doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
+      - id: volume
+        type: u4
+        doc: 'The order quantity in shares'
+      - id: printable_flag
+        type: u1
+        enum: printable_flag
+        doc: 'Printable flag values'
+      - id: num_parity_splits
+        type: u1
+        doc: 'Resulting number of splits at this price level Defaulted to 0. Future use by NYSE only'
+      - id: db_exec_id
+        type: u4
+        doc: 'For Pillar-powered markets, unused, defaulted to 0. For NYSE Tape A symbols, DB ExecID is assigned by the matching engine to all orders that participated in this trade event'
+  non_displayed_trade_message:
+    seq:
+      - id: source_time_ns
+        type: u4
+        doc: 'The nanosecond offset from the SourceTime'
+      - id: symbol_index
+        type: u4
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
+      - id: symbol_seq_num
+        type: u4
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
+      - id: trade_id
+        type: u4
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
+      - id: price
+        type: u4
+        doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
+      - id: volume
+        type: u4
+        doc: 'The order quantity in shares'
+      - id: printable_flag
+        type: u1
+        enum: printable_flag
+        doc: 'Printable flag values'
+      - id: db_exec_id
+        type: u4
+        doc: 'For Pillar-powered markets, unused, defaulted to 0. For NYSE Tape A symbols, DB ExecID is assigned by the matching engine to all orders that participated in this trade event'
   trade_cancel_message:
     seq:
       - id: source_time_ns
@@ -504,7 +564,22 @@ types:
         doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
       - id: trade_id
         type: u4
-        doc: 'The TradeID of the original Trade or Execution message to be cancelled'
+        doc: 'Unique ID assigned by the matching engine to this execution. Used by any subsequent Trade Cancel message to identify this execution'
+  retail_price_improvement_message:
+    seq:
+      - id: source_time_ns
+        type: u4
+        doc: 'The nanosecond offset from the SourceTime'
+      - id: symbol_index
+        type: u4
+        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
+      - id: symbol_seq_num
+        type: u4
+        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
+      - id: rpi_indicator
+        type: u1
+        enum: rpi_indicator
+        doc: 'The side(s) where Retail Price Improvement orders (RPI orders) exist'
   cross_trade_message:
     seq:
       - id: source_time_ns
@@ -546,57 +621,6 @@ types:
       - id: volume
         type: u4
         doc: 'The order quantity in shares'
-  retail_price_improvement_message:
-    seq:
-      - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
-      - id: symbol_index
-        type: u4
-        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
-      - id: symbol_seq_num
-        type: u4
-        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
-      - id: rpi_indicator
-        type: u1
-        enum: rpi_indicator
-        doc: 'The side(s) where Retail Price Improvement orders (RPI orders) exist'
-  add_order_refresh_message:
-    seq:
-      - id: source_time
-        type: u4
-        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
-      - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
-      - id: symbol_index
-        type: u4
-        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
-      - id: symbol_seq_num
-        type: u4
-        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
-      - id: order_id
-        type: u8
-        doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
-      - id: price
-        type: u4
-        doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
-      - id: volume
-        type: u4
-        doc: 'The order quantity in shares'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'The side of the order. Valid values: ‘B’ – Buy ‘S’ – Sell'
-      - id: firm_id
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
-      - id: num_parity_splits
-        type: u1
-        doc: 'Resulting number of splits at this price level Defaulted to 0. Future use by NYSE only'
   imbalance_message:
     seq:
       - id: source_time
@@ -637,7 +661,7 @@ types:
       - id: continuous_book_clearing_price
         type: u4
         doc: 'For Pillar-powered markets, the price at which all interest on the book can trade, including auction and imbalance offset interest, and disregarding auction collars. For NYSE, the indicative matching price, i.e. the price closest to the reference price where the imbalance is 0. If a continuous book clearing price is not reached, it is defaulted to 0'
-      - id: closing_only_clearing_price
+      - id: auction_interest_clearing_price
         type: u4
         doc: 'For Pillar-powered markets, the price at which all eligible auction-only interest would trade, subject to auction collars For NYSE, the price closest to the reference price where the imbalance of closing-only interest is 0. If a closing-only clearing price is not reached, it is defaulted to 0'
       - id: ssr_filing_price
@@ -663,8 +687,22 @@ types:
       - id: num_extensions
         type: u1
         doc: 'Number of times the halt period has been extended'
-  order_execution_message:
+      - id: unpaired_qty
+        type: u4
+        doc: 'During the Closing Auction, the number of unpaired shares priced at or better than the Reference Price'
+      - id: unpaired_side
+        type: u1
+        enum: unpaired_side
+        doc: 'The side of the Unpaired Qty'
+      - id: significant_imbalance
+        type: u1
+        enum: significant_imbalance
+        doc: 'Significant Imbalance Values'
+  add_order_refresh_message:
     seq:
+      - id: source_time
+        type: u4
+        doc: 'The time when this msg was generated in the order book, in seconds since Jan 1, 1970 00:00:00 UTC'
       - id: source_time_ns
         type: u4
         doc: 'The nanosecond offset from the SourceTime'
@@ -677,52 +715,25 @@ types:
       - id: order_id
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
-      - id: trade_id
-        type: u4
-        doc: 'The TradeID of the original Trade or Execution message to be cancelled'
       - id: price
         type: u4
         doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
       - id: volume
         type: u4
         doc: 'The order quantity in shares'
-      - id: printable_flag
+      - id: side
         type: u1
-        enum: printable_flag
-        doc: 'Printable flag values'
+        enum: side
+        doc: 'The side of the order. Valid values: ‘B’ – Buy ‘S’ – Sell'
+      - id: firm_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
       - id: num_parity_splits
         type: u1
         doc: 'Resulting number of splits at this price level Defaulted to 0. Future use by NYSE only'
-      - id: db_exec_id
-        type: u4
-        doc: 'For Pillar-powered markets, unused, defaulted to 0. For NYSE Tape A symbols, DB ExecID is assigned by the matching engine to all orders that participated in this trade event'
-  non_displayed_trade_message:
-    seq:
-      - id: source_time_ns
-        type: u4
-        doc: 'The nanosecond offset from the SourceTime'
-      - id: symbol_index
-        type: u4
-        doc: 'The unique ID of this symbol for all products within this market. This ID cannot be used to cross reference a security between markets'
-      - id: symbol_seq_num
-        type: u4
-        doc: 'Reserved for future use. Ignore any content. This usage will become standard across all products in future releases'
-      - id: trade_id
-        type: u4
-        doc: 'The TradeID of the original Trade or Execution message to be cancelled'
-      - id: price
-        type: u4
-        doc: 'The order price. Use with the Price Scale from the symbol-mapping index'
-      - id: volume
-        type: u4
-        doc: 'The order quantity in shares'
-      - id: printable_flag
-        type: u1
-        enum: printable_flag
-        doc: 'Printable flag values'
-      - id: db_exec_id
-        type: u4
-        doc: 'For Pillar-powered markets, unused, defaulted to 0. For NYSE Tape A symbols, DB ExecID is assigned by the matching engine to all orders that participated in this trade event'
   stock_summary_message:
     seq:
       - id: source_time
@@ -889,30 +900,30 @@ enums:
     102:
       id: 'delete_order_message'
       doc: 'A Delete Order message is published when an order is taken off of the book for any reason except for full execution, in which case an Order Execution message is sent.'
-    112:
-      id: 'trade_cancel_message'
-      doc: 'In the event that an earlier trade has been reported in error, a Trade Cancel message is sent. This occurs whether the initial report was an Order Execution or a Non-Displayed Trade message.'
-    111:
-      id: 'cross_trade_message'
-      doc: 'A Cross Trade message is published on completion of a crossing auction, and shows the bulk volume that traded in the auction. The Reason Code field indicates the auction type. Additionally, a non-printable Order Execution or Trade message will be published for each order that traded.'
-    113:
-      id: 'cross_correction_message'
-      doc: 'In the event that an earlier Cross Trade has been reported in error, a Cross Correction message is sent.'
-    114:
-      id: 'retail_price_improvement_message'
-      doc: 'Published when RPI interest (hidden retail price improvement interest) is added or removed between the best bid and best offer price. When all RPI interest for this security is removed from the book, An RPI message with RPIIndicator = '' '' (space character) is published.'
-    106:
-      id: 'add_order_refresh_message'
-      doc: 'The Add Order Refresh message can be sent in either of two contexts: 1) If a client sends a Refresh Request to the Request Controller, an Add Order Refresh message is sent over the Refresh channels as part of the refresh response for every order currently sitting on the book. 2) If NYSE Operations refreshes a symbol, a Symbol Clear message is published, followed by a full refresh. The refresh includes an Add Order Refresh message for every order currently sitting on the book of the symbol.'
-    105:
-      id: 'imbalance_message'
-      doc: 'Imbalance messages are sent periodically during auctions to update price and volume information. If there is no change to the calculated fields, no message will be generated.'
     103:
       id: 'order_execution_message'
       doc: 'An Order Execution message is sent when an order is partially or fully executed.'
     110:
       id: 'non_displayed_trade_message'
       doc: 'An Non Displayed Trade message is sent as a result of a match between two non-displayed orders.'
+    112:
+      id: 'trade_cancel_message'
+      doc: 'In the event that an earlier trade has been reported in error, a Trade Cancel message is sent. This occurs whether the initial report was an Order Execution or a Non-Displayed Trade message.'
+    114:
+      id: 'retail_price_improvement_message'
+      doc: 'Published when RPI interest (hidden retail price improvement interest) is added or removed between the best bid and best offer price. When all RPI interest for this security is removed from the book, An RPI message with RPIIndicator = '' '' (space character) is published.'
+    111:
+      id: 'cross_trade_message'
+      doc: 'A Cross Trade message is published on completion of a crossing auction, and shows the bulk volume that traded in the auction. The Reason Code field indicates the auction type. Additionally, a non-printable Order Execution or Trade message will be published for each order that traded.'
+    113:
+      id: 'cross_correction_message'
+      doc: 'In the event that an earlier Cross Trade has been reported in error, a Cross Correction message is sent.'
+    105:
+      id: 'imbalance_message'
+      doc: 'Imbalance messages are sent periodically during auctions to update price and volume information. If there is no change to the calculated fields, no message will be generated.'
+    106:
+      id: 'add_order_refresh_message'
+      doc: 'The Add Order Refresh message can be sent in either of two contexts: 1) If a client sends a Refresh Request to the Request Controller, an Add Order Refresh message is sent over the Refresh channels as part of the refresh response for every order currently sitting on the book. 2) If NYSE Operations refreshes a symbol, a Symbol Clear message is published, followed by a full refresh. The refresh includes an Add Order Refresh message for every order currently sitting on the book of the symbol.'
     223:
       id: 'stock_summary_message'
       doc: 'On a separate channel from the main feed, the Stock Summary channel, a Stock Summary message per symbol is sent every 60 seconds. The message is sent regardless of whether there has been a change to the symbol in the last 60 seconds or not.'
@@ -929,9 +940,6 @@ enums:
     5:
       id: 'nyse_bonds'
       doc: 'Nyse Bonds'
-    6:
-      id: 'global_otc'
-      doc: 'Global Otc'
     8:
       id: 'nyse_amex_options'
       doc: 'Nyse Amex Options'
@@ -941,13 +949,16 @@ enums:
     10:
       id: 'nyse_national_equities'
       doc: 'Nyse National Equities'
+    11:
+      id: 'nyse_chicago'
+      doc: 'Nyse Chicago'
   exchange_code:
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
-    0x43:
-      id: 'nyse_national'
-      doc: 'Nyse National'
+    0x4c:
+      id: 'ltse'
+      doc: 'Ltse'
     0x4e:
       id: 'nyse'
       doc: 'Nyse'
@@ -961,75 +972,57 @@ enums:
       id: 'iex'
       doc: 'Iex'
     0x5a:
-      id: 'bats'
-      doc: 'Bats'
-    0x42:
-      id: 'global_otc'
-      doc: 'Global Otc Primary Symbols'
-    0x55:
-      id: 'otcbb'
-      doc: 'Otcbb Symbols'
+      id: 'cboe'
+      doc: 'Cboe'
   security_type:
     0x41:
+      id: 'adr'
+      doc: 'Adr'
+    0x43:
       id: 'common_stock'
       doc: 'Common Stock'
-    0x42:
+    0x44:
+      id: 'debentures'
+      doc: 'Debentures'
+    0x45:
+      id: 'etf'
+      doc: 'Etf'
+    0x46:
+      id: 'foreign'
+      doc: 'Foreign'
+    0x48:
+      id: 'us_depositary_shares'
+      doc: 'Us Depositary Shares'
+    0x49:
+      id: 'units'
+      doc: 'Units'
+    0x4c:
+      id: 'index_linked_notes'
+      doc: 'Index Linked Notes'
+    0x4d:
+      id: 'miscliquid_trust'
+      doc: 'Miscliquid Trust'
+    0x4f:
+      id: 'ordinary_shares'
+      doc: 'Ordinary Shares'
+    0x50:
       id: 'preferred_stock'
       doc: 'Preferred Stock'
-    0x43:
+    0x52:
+      id: 'rights'
+      doc: 'Rights'
+    0x53:
+      id: 'shares_of_beneficiary_interest'
+      doc: 'Shares Of Beneficiary Interest'
+    0x54:
+      id: 'test'
+      doc: 'Test'
+    0x55:
+      id: 'closed_end_fund'
+      doc: 'Closed End Fund'
+    0x57:
       id: 'warrant'
       doc: 'Warrant'
-    0x44:
-      id: 'right'
-      doc: 'Right'
-    0x45:
-      id: 'corporate_bond'
-      doc: 'Corporate Bond'
-    0x46:
-      id: 'treasury_bond'
-      doc: 'Treasury Bond'
-    0x47:
-      id: 'structured_product'
-      doc: 'Structured Product'
-    0x48:
-      id: 'adr_common'
-      doc: 'Adr Common'
-    0x49:
-      id: 'adr_preferred'
-      doc: 'Adr Preferred'
-    0x4a:
-      id: 'adr_warrants'
-      doc: 'Adr Warrants'
-    0x4b:
-      id: 'adr_rights'
-      doc: 'Adr Rights'
-    0x4c:
-      id: 'adr_corporate_bond'
-      doc: 'Adr Corporate Bond'
-    0x4d:
-      id: 'ny_registered_share'
-      doc: 'Ny Registered Share'
-    0x4e:
-      id: 'global_registered_share'
-      doc: 'Global Registered Share'
-    0x4f:
-      id: 'index'
-      doc: 'Index'
-    0x50:
-      id: 'fund'
-      doc: 'Fund'
-    0x51:
-      id: 'basket'
-      doc: 'Basket'
-    0x52:
-      id: 'unit'
-      doc: 'Unit'
-    0x53:
-      id: 'liquidating_trust'
-      doc: 'Liquidating Trust'
-    0x55:
-      id: 'unknown'
-      doc: 'Unknown'
   price_resolution:
     0:
       id: 'all_penny'
@@ -1054,9 +1047,6 @@ enums:
     0x31:
       id: 'rejected_due_to_an_invalid_source_id'
       doc: 'Rejected Due To An Invalid Source Id'
-    0x32:
-      id: 'invalid_sequence_range'
-      doc: 'Rejected Due To Invalid Sequence Range'
     0x33:
       id: 'maximum_sequence_range'
       doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
@@ -1083,18 +1073,12 @@ enums:
       id: 'udp'
       doc: 'Deliver Via Udp'
   security_status:
-    0x33:
-      id: 'opening_delay'
-      doc: 'Opening Delay Nyse Tape A Only'
     0x34:
       id: 'trading_halt'
       doc: 'Trading Halt'
     0x35:
       id: 'resume'
       doc: 'Resume'
-    0x36:
-      id: 'no_openno_resume'
-      doc: 'No Openno Resume Nyse Tape A Only'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
       doc: 'Short Sale Restriction Activated Day 1'
@@ -1119,25 +1103,16 @@ enums:
     0x58:
       id: 'closed'
       doc: 'Closed'
-    0x54:
-      id: 'time'
-      doc: 'Time'
     0x49:
       id: 'price_indication'
       doc: 'Price Indication'
     0x47:
       id: 'pre_opening_price_indication'
       doc: 'Pre Opening Price Indication'
-    0x52:
-      id: 'rule_15_indication'
-      doc: 'Rule 15 Indication'
   halt_condition:
     0x7e:
       id: 'security_not_delayedhalted'
       doc: 'Security Not Delayedhalted'
-    0x20:
-      id: 'not_delayedhalted_nyse_tape_a_only'
-      doc: 'Not Delayedhalted Nyse Tape A Only'
     0x44:
       id: 'news_dissemination'
       doc: 'News Dissemination'
@@ -1150,15 +1125,30 @@ enums:
     0x4d:
       id: 'luld_pause'
       doc: 'Luld Pause'
-    0x53:
-      id: 'related_security_not_used'
-      doc: 'Related Security Not Used'
     0x58:
       id: 'equipment_changeover'
       doc: 'Equipment Changeover'
-    0x5a:
-      id: 'no_open_no_resume'
-      doc: 'No Open No Resume'
+    0x41:
+      id: 'additional_information_requested'
+      doc: 'Additional Information Requested'
+    0x43:
+      id: 'regulatory_concern'
+      doc: 'Regulatory Concern'
+    0x45:
+      id: 'merger_effective'
+      doc: 'Merger Effective'
+    0x46:
+      id: 'etf_component_prices_not_available'
+      doc: 'Etf Component Prices Not Available'
+    0x4e:
+      id: 'corporate_action'
+      doc: 'Corporate Action'
+    0x4f:
+      id: 'new_security_offering'
+      doc: 'New Security Offering'
+    0x56:
+      id: 'intraday_indicative_value_not_available'
+      doc: 'Intraday Indicative Value Not Available'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -1178,21 +1168,24 @@ enums:
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
-    0x44:
-      id: 'finra'
-      doc: 'Finra'
+    0x48:
+      id: 'miami_pearl'
+      doc: 'Miami Pearl'
     0x49:
-      id: 'ise'
-      doc: 'Ise'
+      id: 'nasdaq_ise'
+      doc: 'Nasdaq Ise'
     0x4a:
-      id: 'edga'
-      doc: 'Edga'
+      id: 'cboe_edga'
+      doc: 'Cboe Edga'
     0x4b:
-      id: 'edgx'
-      doc: 'Edgx'
+      id: 'cboe_edgx'
+      doc: 'Cboe Edgx'
+    0x4c:
+      id: 'ltse'
+      doc: 'Ltse'
     0x4d:
-      id: 'chx'
-      doc: 'Chx'
+      id: 'nyse_chicago'
+      doc: 'Nyse Chicago'
     0x4e:
       id: 'nyse'
       doc: 'Nyse'
@@ -1202,12 +1195,12 @@ enums:
     0x51:
       id: 'nasdaq'
       doc: 'Nasdaq'
-    0x53:
-      id: 'cts'
-      doc: 'Cts'
     0x54:
       id: 'nasdaq_omx'
       doc: 'Nasdaq Omx'
+    0x55:
+      id: 'memx'
+      doc: 'Memx'
     0x56:
       id: 'iex'
       doc: 'Iex'
@@ -1218,11 +1211,11 @@ enums:
       id: 'nasdaq_omx_psx'
       doc: 'Nasdaq Omx Psx'
     0x59:
-      id: 'bats_y'
-      doc: 'Bats Y'
+      id: 'cboe_byx'
+      doc: 'Cboe Byx'
     0x5a:
-      id: 'bats'
-      doc: 'Bats'
+      id: 'cboe_bzx'
+      doc: 'Cboe Bzx'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'
@@ -1242,7 +1235,7 @@ enums:
       doc: 'Core Session'
     0x4c:
       id: 'late_session'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late Session'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1260,46 +1253,62 @@ enums:
     1:
       id: 'lost'
       doc: 'Lost Position In Book'
-  cross_type:
-    0x45:
-      id: 'early_opening'
-      doc: 'Market Center Early Opening Auction'
-    0x4f:
-      id: 'opening'
-      doc: 'Market Center Opening Auction'
-    0x35:
-      id: 'reopening'
-      doc: 'Market Center Reopening Auction'
-    0x36:
-      id: 'closing'
-      doc: 'Market Center Closing Auction'
+  printable_flag:
+    0:
+      id: 'not_printed'
+      doc: 'Not Printed To The Sip'
+    1:
+      id: 'printed'
+      doc: 'Printed To The Sip'
   rpi_indicator:
+    0x20:
+      id: 'no_retail_interest'
+      doc: 'No Retail Interest'
     0x41:
-      id: 'interest_on_bid'
+      id: 'retail_interest_on_the_bid_side'
       doc: 'Retail Interest On The Bid Side'
     0x42:
-      id: 'interest_on_offer'
+      id: 'retail_interest_on_the_offer_side'
       doc: 'Retail Interest On The Offer Side'
     0x43:
-      id: 'interest_on_bid_and_offer'
+      id: 'retail_interest_on_the_bid_and_offer_sides'
       doc: 'Retail Interest On The Bid And Offer Sides'
+  cross_type:
+    0x45:
+      id: 'market_center_early_opening_auction'
+      doc: 'Market Center Early Opening Auction'
+    0x4f:
+      id: 'market_center_opening_auction'
+      doc: 'Market Center Opening Auction'
+    0x35:
+      id: 'market_center_reopening_auction'
+      doc: 'Market Center Reopening Auction'
+    0x36:
+      id: 'market_center_closing_auction'
+      doc: 'Market Center Closing Auction'
   auction_type:
     0x4f:
-      id: 'early_opening'
+      id: 'early_opening_auction_non_nyse_only'
       doc: 'Early Opening Auction Non Nyse Only'
     0x4d:
-      id: 'core_opening'
+      id: 'core_opening_auction'
       doc: 'Core Opening Auction'
     0x48:
-      id: 'reopening'
+      id: 'reopening_auction_halt_resume'
       doc: 'Reopening Auction Halt Resume'
     0x43:
-      id: 'closing'
+      id: 'closing_auction'
       doc: 'Closing Auction'
+    0x50:
+      id: 'extreme_closing_imbalance'
+      doc: 'Extreme Closing Imbalance'
     0x52:
-      id: 'regulatory_imbalance'
-      doc: 'Regulatory Imbalance Nyse Only'
+      id: 'regulatory_closing_imbalance'
+      doc: 'Regulatory Closing Imbalance'
   imbalance_side:
+    0x20:
+      id: 'no_imbalance'
+      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -1308,29 +1317,39 @@ enums:
       doc: 'Sell Side'
   auction_status:
     0:
-      id: 'will_run_open_close'
+      id: 'will_run_as_always_for_open_and_close'
       doc: 'Will Run As Always For Open And Close'
     1:
-      id: 'will_run_interest'
+      id: 'will_run_interest_exists_inside_or_at_the_collars_or_is_fully_paired_off'
       doc: 'Will Run Interest Exists Inside Or At The Collars Or Is Fully Paired Off'
     2:
-      id: 'will_not_run_imbalance'
+      id: 'will_not_run_because_there_is_an_imbalance_through_the_collars'
       doc: 'Will Not Run Because There Is An Imbalance Through The Collars'
     3:
-      id: 'will_not_run_transition_to_closing'
+      id: 'will_not_run_will_transition_to_the_closing_auction_instead'
       doc: 'Will Not Run Will Transition To The Closing Auction Instead'
   freeze_status:
     0:
-      id: 'no_imbalance_freeze'
-      doc: 'Imbalance Freeze Not Yet In Effect'
+      id: 'imbalance_freeze_not_in_effect'
+      doc: 'Imbalance Freeze Not In Effect'
     1:
-      id: 'imbalance_freeze'
+      id: 'imbalance_freeze_is_in_effect'
       doc: 'Imbalance Freeze Is In Effect'
-  printable_flag:
-    0:
-      id: 'not_printed'
-      doc: 'Not Printed To The Sip'
-    1:
-      id: 'printed'
-      doc: 'Printed To The Sip'
+  unpaired_side:
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
+    0x42:
+      id: 'buy_side'
+      doc: 'Buy Side'
+    0x53:
+      id: 'sell_side'
+      doc: 'Sell Side'
+  significant_imbalance:
+    0x20:
+      id: 'default_field'
+      doc: 'Default'
+    0x59:
+      id: 'the_current_imbalance_is_significant'
+      doc: 'The Current Imbalance Is Significant'
 

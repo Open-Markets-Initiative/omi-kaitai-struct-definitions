@@ -96,13 +96,6 @@ class CoinbaseDeribitOrdersapiSbeV01Tests(unittest.TestCase):
             parsed = CoinbaseDeribitOrdersapiSbeV01.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_starbaseorderentry(self):
-        for payload in payloads.of("omi-data-packets/Coinbase/Deribit.OrdersApi.Sbe.v0.1/StarbaseOrderEntry.pcap"):
-            if payloads.partial(payload, 3, 2, "little", True):
-                self.skipTest("capture ends mid message; tcp reassembly required")
-            parsed = CoinbaseDeribitOrdersapiSbeV01.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -77,6 +77,7 @@ types:
             'message_type::timestamp_message': timestamp_message
             'message_type::system_event_message': system_event_message
             'message_type::stock_directory_message': stock_directory_message
+            'message_type::stock_trading_action_message': stock_trading_action_message
             'message_type::reg_sho_short_sale_price_test_restricted_indicator_message': reg_sho_short_sale_price_test_restricted_indicator_message
             'message_type::market_participant_position_message': market_participant_position_message
             'message_type::add_order_message': add_order_message
@@ -133,6 +134,40 @@ types:
         type: u1
         enum: financial_status_indicator
         doc: 'For NASDAQ-listed issues, this field indicates when a firm is not in compliance with NASDAQ continued listing requirements. For NYSE, NYSE Amex and NYSE Arca issues, this field will also be space-filled'
+      - id: round_lot_size
+        type: u4
+        doc: 'Indicates the number of shares that represent a round lot for the issue'
+      - id: round_lots_only
+        type: u1
+        enum: round_lots_only
+        doc: 'Indicates if NASDAQ system limits order entry for issue'
+  stock_trading_action_message:
+    seq:
+      - id: nanoseconds
+        type: nanosecond_offset
+        doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
+      - id: stock
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
+      - id: trading_state
+        type: u1
+        enum: trading_state
+        doc: 'Indicates the current trading state for the stock'
+      - id: reserved
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved'
+      - id: reason
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading Action reason'
   reg_sho_short_sale_price_test_restricted_indicator_message:
     seq:
       - id: nanoseconds
@@ -413,6 +448,7 @@ types:
       - id: interest_flag
         type: u1
         enum: interest_flag
+        doc: 'Identifies the retail interest indication for the issue'
   second_timestamp:
     seq:
       - id: time
@@ -454,6 +490,9 @@ enums:
     0x52:
       id: 'stock_directory_message'
       doc: 'Market data redistributors should process this message to populate the Financial Status Indicator (required display field) and the Market Category (recommended display field) for NASDAQ-listed issues.'
+    0x48:
+      id: 'stock_trading_action_message'
+      doc: 'NASDAQ uses this administrative message to indicate the current trading status of a security to the trading community.'
     0x59:
       id: 'reg_sho_short_sale_price_test_restricted_indicator_message'
       doc: 'For NASDAQ-listed issues, NASDAQ will support a full pre-opening spin of Reg SHO Short Sale Price Test Restricted Indicator messages indicating the Rule 201 status for all active issues.'
@@ -513,16 +552,16 @@ enums:
       id: 'end_of_system_hours'
       doc: 'It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today It Is Still Possible To Receive Broken Trade Messages And Order Delete Messages After The End Of Day'
     0x43:
-      id: 'end_of_message'
+      id: 'end_of_messages'
       doc: 'This Is Always The Last Message Sent In Any Trading Day'
     0x41:
-      id: 'halt'
+      id: 'emergency_market_condition_halt'
       doc: 'This Message Is Sent To Inform Nasdaq Market Participants That The Emc Is In Effect No Trading Is Allowed During The Emc'
     0x52:
-      id: 'quote_only_period'
+      id: 'emergency_market_condition_quote_only_period'
       doc: 'This Message Is Sent To Inform Nasdaq Market Participants That The Emc Quotation Only Period Is In Effect'
     0x42:
-      id: 'resumption'
+      id: 'emergency_market_condition_resumption'
       doc: 'This Message Is Sent To Inform Nasdaq Market Participants That Emc Is No Longer In Effect'
   market_category:
     0x4e:
@@ -536,7 +575,7 @@ enums:
       doc: 'New York Stock Exchange Arca'
     0x51:
       id: 'nasdaq_gsm'
-      doc: 'Nasdaq Global Select Marke'
+      doc: 'Nasdaq Global Select Market'
     0x47:
       id: 'nasdaq_gm'
       doc: 'Nasdaq Global Market'
@@ -548,11 +587,11 @@ enums:
       doc: 'Bats Bzx Exchange'
   financial_status_indicator:
     0x44:
-      id: 'delinquent'
-      doc: 'Delinquent'
-    0x45:
       id: 'deficient'
       doc: 'Deficient'
+    0x45:
+      id: 'delinquent'
+      doc: 'Delinquent'
     0x51:
       id: 'bankrupt'
       doc: 'Bankrupt'
@@ -571,6 +610,29 @@ enums:
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
       doc: 'Deficient Delinquent And Bankrupt'
+    0x20:
+      id: 'in_compliance'
+      doc: 'Company Is In Compliance If Nasda Qlisted Issue'
+  round_lots_only:
+    0x59:
+      id: 'yes_field'
+      doc: 'Only Round Lots Are Accepted In This Stock'
+    0x4e:
+      id: 'no_field'
+      doc: 'Oddmixed Lots Are Allowed'
+  trading_state:
+    0x48:
+      id: 'halted'
+      doc: 'Halted Across All Us Equity Markets Sr Os'
+    0x50:
+      id: 'paused'
+      doc: 'Paused Across All Us Equity Markets Sr Os Nasda Qlisted Securities Only'
+    0x51:
+      id: 'quotation_only'
+      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+    0x54:
+      id: 'trading'
+      doc: 'Trading On Nasdaq'
   reg_sho_action:
     0x30:
       id: 'no_price'
@@ -586,7 +648,7 @@ enums:
       id: 'primary'
       doc: 'Primary Market Maker'
     0x4e:
-      id: 'nonprimary'
+      id: 'non_primary'
       doc: 'Nonprimary Market Maker'
   market_maker_mode:
     0x4e:
@@ -598,6 +660,9 @@ enums:
     0x53:
       id: 'syndicate'
       doc: 'Syndicate'
+    0x52:
+      id: 'pre_syndicate'
+      doc: 'Presyndicate'
     0x4c:
       id: 'penalty'
       doc: 'Penalty'
@@ -626,7 +691,7 @@ enums:
       doc: 'Sell Order'
   printable:
     0x4e:
-      id: 'nonprintable'
+      id: 'non_printable'
       doc: 'Nonprintable'
     0x59:
       id: 'printable'

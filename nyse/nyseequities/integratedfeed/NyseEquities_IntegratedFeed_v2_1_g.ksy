@@ -1274,6 +1274,9 @@ enums:
       id: 'closing'
       doc: 'Market Center Closing Auction'
   rpi_indicator:
+    0x20:
+      id: 'no_retail_interest'
+      doc: 'Space Means No Retail Interest Default'
     0x41:
       id: 'interest_on_bid'
       doc: 'Retail Interest On The Bid Side'
@@ -1300,6 +1303,9 @@ enums:
       id: 'regulatory_imbalance'
       doc: 'Regulatory Imbalance Nyse Only'
   imbalance_side:
+    0x20:
+      id: 'no_imbalance'
+      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'

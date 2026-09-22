@@ -117,7 +117,7 @@ types:
       - id: unrestricted_liquidity_indicator
         type: b1
         doc: 'Indicates whether unrestricted liquidity is available at the top of the book'
-      - id: reserved_7
+      - id: unused_7
         type: b7
         doc: 'Reserved'
   order_cancel:
@@ -230,7 +230,7 @@ types:
       - id: duplicative_indicator
         type: b1
         doc: 'Duplicative indicator'
-      - id: spare
+      - id: unused_2
         type: b2
         doc: 'Spare'
   trade_bust_message:
@@ -324,19 +324,19 @@ types:
       - id: illiquid
         type: b1
         doc: '0 = Liquid, 1 = Illiquid'
-      - id: reserved_1
+      - id: unused_1
         type: b1
         doc: 'Reserved'
       - id: aod_enabled
         type: b1
         doc: '0 = Not enabled for AoD, 1 = Enabled for AoD'
-      - id: reserved_2
+      - id: unused_2
         type: b2
-        doc: 'Reserved'
+        doc: 'Spare'
       - id: avx_enabled
         type: b1
         doc: '0 = Not enabled for AVM, 1 = Enabled for AVM'
-      - id: reserved_8
+      - id: unused_8
         type: b8
         doc: 'Reserved'
   security_status_message:
@@ -371,7 +371,7 @@ types:
       - id: mac_run
         type: b1
         doc: 'MaC lockdown status; 0 = Not locked down, 1 = Locked down'
-      - id: reserved_5
+      - id: unused_5
         type: b5
         doc: 'Reserved'
   ao_d_update_message:

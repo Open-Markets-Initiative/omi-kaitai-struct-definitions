@@ -415,10 +415,11 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
-      - id: reserved_11
+      - id: reserved_1
         size: 1
-        doc: 'Future use only'
+        doc: 'This field is reserved for future use'
   modify_order_message:
     seq:
       - id: source_time_ns
@@ -447,9 +448,9 @@ types:
         type: u1
         enum: side
         doc: 'The side of the order. Valid values: ‘B’ – Buy ‘S’ – Sell'
-      - id: reserved_11
+      - id: reserved_1
         size: 1
-        doc: 'Future use only'
+        doc: 'This field is reserved for future use'
   delete_order_message:
     seq:
       - id: source_time_ns
@@ -464,9 +465,9 @@ types:
       - id: order_id
         type: u8
         doc: 'The unique ID assigned by the matching engine to this order . Can be used to match this message to the gateway Order Report'
-      - id: reserved_11
+      - id: reserved_1
         size: 1
-        doc: 'Future use only'
+        doc: 'This field is reserved for future use'
   order_execution_message:
     seq:
       - id: source_time_ns
@@ -494,9 +495,9 @@ types:
         type: u1
         enum: printable_flag
         doc: 'Printable flag values'
-      - id: reserved_11
+      - id: reserved_1
         size: 1
-        doc: 'Future use only'
+        doc: 'This field is reserved for future use'
       - id: trade_cond_1
         type: u1
         enum: trade_cond_1
@@ -650,10 +651,11 @@ types:
         type: str
         size: 5
         encoding: ASCII
+        pad-right: 0x20
         doc: 'The market participant’s firm ID. Blank-filled if a firm ID was not specified'
-      - id: reserved_11
+      - id: reserved_1
         size: 1
-        doc: 'Future use only'
+        doc: 'This field is reserved for future use'
   non_displayed_trade_message:
     seq:
       - id: source_time_ns
@@ -1301,6 +1303,9 @@ enums:
       id: 'next_day_trade'
       doc: 'Next Day Trade'
   trade_cond_2:
+    0x20:
+      id: 'not_available'
+      doc: 'Not Available'
     0x46:
       id: 'intermarket_sweep_order'
       doc: 'Intermarket Sweep Order'
@@ -1317,6 +1322,9 @@ enums:
       id: 'qualified_contingent_trade'
       doc: 'Qualified Contingent Trade'
   trade_cond_3:
+    0x20:
+      id: 'not_available'
+      doc: 'Not Available'
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
@@ -1327,6 +1335,9 @@ enums:
       id: 'sold'
       doc: 'Sold'
   trade_cond_4:
+    0x20:
+      id: 'not_available'
+      doc: 'Not Available'
     0x49:
       id: 'odd_lot_trade'
       doc: 'Odd Lot Trade'
@@ -1353,6 +1364,9 @@ enums:
       id: 'regulatory_closing_imbalance'
       doc: 'Regulatory Closing Imbalance'
   imbalance_side:
+    0x20:
+      id: 'no_imbalance'
+      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -1380,6 +1394,9 @@ enums:
       id: 'imbalance_freeze_is_in_effect'
       doc: 'Imbalance Freeze Is In Effect'
   unpaired_side:
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -1387,6 +1404,9 @@ enums:
       id: 'sell_side'
       doc: 'Sell Side'
   significant_imbalance:
+    0x20:
+      id: 'default_field'
+      doc: 'Default'
     0x59:
       id: 'the_current_imbalance_is_significant'
       doc: 'The Current Imbalance Is Significant'
@@ -1404,6 +1424,9 @@ enums:
       id: 'market_center_closing_auction'
       doc: 'Market Center Closing Auction'
   rpi_indicator:
+    0x20:
+      id: 'no_retail_interest'
+      doc: 'No Retail Interest'
     0x41:
       id: 'retail_interest_on_the_bid_side'
       doc: 'Retail Interest On The Bid Side'

@@ -519,6 +519,7 @@ types:
         doc: 'The volume of the trade in contracts'
       - id: trade_condition
         type: trade_condition
+        doc: 'Trade Condition'
   trade_condition:
     seq:
       - id: series
@@ -582,6 +583,7 @@ types:
         doc: 'The volume of the trade in contracts'
       - id: correction_condition
         type: correction_condition
+        doc: 'Correction Condition'
   correction_condition:
     seq:
       - id: transaction

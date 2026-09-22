@@ -336,12 +336,16 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
+        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139
         doc: 'OptionalOrderAddOn'
       - id: optional_routing_strategy_add_on
         type: optional_routing_strategy_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130 or _parent.seq_msg_header.seq_msg_length == 112
+        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130
         doc: 'OptionalRoutingStrategyAddOn'
+      - id: optional_settlement_type_add_on
+        type: optional_settlement_type_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 66 or _parent.seq_msg_header.seq_msg_length == 103 or _parent.seq_msg_header.seq_msg_length == 85
+        doc: 'OptionalSettlementTypeAddOn'
   bitfield_order_instructions:
     meta:
       bit-endian: le
@@ -447,6 +451,15 @@ types:
       - id: reserved_27
         size: 27
         doc: 'Reserved for future use'
+  optional_settlement_type_add_on:
+    seq:
+      - id: sub_msg_header
+        type: sub_msg_header
+        doc: 'Pillar Stream Sub Message Item Header'
+      - id: settlement_type
+        type: u1
+        enum: settlement_type
+        doc: 'Settlement Type'
   order_cancel_request_message:
     seq:
       - id: symbol_id
@@ -1050,8 +1063,16 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
+        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139
         doc: 'OptionalOrderAddOn'
+      - id: optional_routing_strategy_add_on
+        type: optional_routing_strategy_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130
+        doc: 'OptionalRoutingStrategyAddOn'
+      - id: optional_settlement_type_add_on
+        type: optional_settlement_type_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 66 or _parent.seq_msg_header.seq_msg_length == 103 or _parent.seq_msg_header.seq_msg_length == 85
+        doc: 'OptionalSettlementTypeAddOn'
   bitfield_flow_indicator:
     meta:
       bit-endian: le
@@ -1221,14 +1242,10 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
-      - id: optional_order_add_on
-        type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 102 or _parent.seq_msg_header.seq_msg_length == 139 or _parent.seq_msg_header.seq_msg_length == 121
-        doc: 'OptionalOrderAddOn'
-      - id: optional_routing_strategy_add_on
-        type: optional_routing_strategy_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 93 or _parent.seq_msg_header.seq_msg_length == 130 or _parent.seq_msg_header.seq_msg_length == 112
-        doc: 'OptionalRoutingStrategyAddOn'
+      - id: optional_settlement_type_add_on
+        type: optional_settlement_type_add_on
+        if: _parent.seq_msg_header.seq_msg_length == 66 or _parent.seq_msg_header.seq_msg_length == 103 or _parent.seq_msg_header.seq_msg_length == 85
+        doc: 'OptionalSettlementTypeAddOn'
   trade_bust_correct_message:
     seq:
       - id: transact_time
@@ -2166,6 +2183,13 @@ enums:
     3:
       id: 'retail_midpoint_ping'
       doc: 'Retail Midpoint Ping'
+  settlement_type:
+    0x30:
+      id: 'regular_way'
+      doc: 'Regular Way'
+    0x31:
+      id: 'cash'
+      doc: 'Cash'
   side:
     0:
       id: 'no_change_in_side'

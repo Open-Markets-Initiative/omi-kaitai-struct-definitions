@@ -128,7 +128,7 @@ types:
       - id: mac_run
         type: b1
         doc: 'MaC lockdown status; 0 = Not locked down, 1 = Locked down'
-      - id: reserved
+      - id: unused_5
         type: b5
         doc: 'Reserved'
   book_entry_message:

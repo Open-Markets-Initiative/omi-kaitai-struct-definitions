@@ -454,7 +454,7 @@ types:
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Quote Condition value'
+        doc: 'Quote Condition value. Nullable, Empty Quote = 0'
       - id: rpi_indicator
         type: u1
         enum: rpi_indicator
@@ -1196,10 +1196,10 @@ enums:
     0x57:
       id: 'slow_on_the_bid_and_ask'
       doc: 'Slow On The Bid And Ask Due To A Set Slow List'
-    0x00:
-      id: 'empty_quote'
-      doc: 'No Bbo Available For The Given Instrument'
   rpi_indicator:
+    0x20:
+      id: 'no_retail_interest'
+      doc: 'Space Means No Retail Interest Default'
     0x41:
       id: 'interest_on_bid'
       doc: 'Retail Interest On The Bid Side'
@@ -1223,6 +1223,9 @@ enums:
       id: 'seller'
       doc: 'Seller'
   trade_condition_2:
+    0x20:
+      id: 'na'
+      doc: 'Na'
     0x46:
       id: 'intermarket_sweep_order'
       doc: 'Intermarket Sweep Order'
@@ -1242,6 +1245,9 @@ enums:
       id: 'corrected_last_sale_price'
       doc: 'Corrected Last Sale Price'
   trade_condition_3:
+    0x20:
+      id: 'na'
+      doc: 'Na'
     0x4c:
       id: 'sold_last'
       doc: 'Sold Last'
@@ -1255,6 +1261,9 @@ enums:
       id: 'sold'
       doc: 'Sold'
   trade_condition_4:
+    0x20:
+      id: 'na'
+      doc: 'Not Available'
     0x40:
       id: 'regular_sale'
       doc: 'Regular Sale'

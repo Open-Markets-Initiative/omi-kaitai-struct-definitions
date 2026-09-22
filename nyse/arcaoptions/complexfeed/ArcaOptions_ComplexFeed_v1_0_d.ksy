@@ -474,6 +474,7 @@ types:
         type: leg_definition
         repeat: expr
         repeat-expr: num_leg_definition
+        doc: 'Leg definition'
   leg_definition:
     seq:
       - id: symbol_index
@@ -552,6 +553,7 @@ types:
         doc: 'The volume of the trade in contracts'
       - id: trade_condition
         type: trade_condition
+        doc: 'Trade Condition'
   trade_condition:
     seq:
       - id: series

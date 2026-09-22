@@ -1118,7 +1118,7 @@ enums:
       doc: 'Nasdaq'
     0x42:
       id: 'bx'
-      doc: 'Nasdaq Texas'
+      doc: 'Bx'
     0x58:
       id: 'psx'
       doc: 'Psx'

@@ -415,6 +415,13 @@ enums:
     0x5a:
       id: 'end_of_session_packet'
       doc: 'SoupbinTcp Login End of Session Packet'
+  reject_reason_code:
+    0x41:
+      id: 'not_authorized'
+      doc: 'The Login Request Packet''s username and password combination was invalid'
+    0x53:
+      id: 'session_not_available'
+      doc: 'The Login Request Packet''s requested session was invalid or not available'
   sequenced_message_type:
     0x41:
       id: 'order_accepted_message'

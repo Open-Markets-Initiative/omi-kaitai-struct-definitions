@@ -82,8 +82,8 @@ types:
             'message_type::mwcb_decline_level_message': mwcb_decline_level_message
             'message_type::mwcb_status_level_message': mwcb_status_level_message
             'message_type::ipo_quoting_period_update': ipo_quoting_period_update
-            'message_type::add_order_no_mpid_attribution_message': add_order_no_mpid_attribution_message
             'message_type::luld_auction_collar_message': luld_auction_collar_message
+            'message_type::add_order_no_mpid_attribution_message': add_order_no_mpid_attribution_message
             'message_type::add_order_with_mpid_attribution_message': add_order_with_mpid_attribution_message
             'message_type::order_executed_message': order_executed_message
             'message_type::order_executed_with_price_message': order_executed_with_price_message
@@ -215,7 +215,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
-      - id: reason
+      - id: reason_code
         type: str
         size: 4
         encoding: ASCII
@@ -339,6 +339,35 @@ types:
       - id: ipo_price
         type: decimal_u4_4
         doc: 'Denotes the IPO price to be used for intraday net change calculations. Prices are given in decimal format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
+  luld_auction_collar_message:
+    seq:
+      - id: stock_locate
+        type: u2
+        doc: 'Always 0'
+      - id: tracking_number
+        type: u2
+        doc: 'NASDAQ OMX internal tracking number'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: stock
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
+      - id: auction_collar_reference_price
+        type: decimal_u4_4
+        doc: 'Reference price used to set the Auction Collars. Implied decimal with scale 1e-4'
+      - id: upper_auction_collar_price
+        type: decimal_u4_4
+        doc: 'Indicates the price of the Upper Auction Collar Threshold. Implied decimal with scale 1e-4'
+      - id: lower_auction_collar_price
+        type: decimal_u4_4
+        doc: 'Indicates the price of the Lower Auction Collar Threshold. Implied decimal with scale 1e-4'
+      - id: auction_collar_extension
+        type: u4
+        doc: 'Indicates the number of the extensions to the Reopening Auction'
   add_order_no_mpid_attribution_message:
     seq:
       - id: stock_locate
@@ -369,35 +398,6 @@ types:
       - id: price
         type: decimal_u4_4
         doc: 'The display price of the new order. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
-  luld_auction_collar_message:
-    seq:
-      - id: stock_locate
-        type: u2
-        doc: 'Always 0'
-      - id: tracking_number
-        type: u2
-        doc: 'NASDAQ OMX internal tracking number'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: stock
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
-      - id: auction_collar_reference_price
-        type: decimal_u4_4
-        doc: 'Reference price used to set the Auction Collars. Implied decimal with scale 1e-4'
-      - id: upper_auction_collar_price
-        type: decimal_u4_4
-        doc: 'Indicates the price of the Upper Auction Collar Threshold. Implied decimal with scale 1e-4'
-      - id: lower_auction_collar_price
-        type: decimal_u4_4
-        doc: 'Indicates the price of the Lower Auction Collar Threshold. Implied decimal with scale 1e-4'
-      - id: auction_collar_extension
-        type: u4
-        doc: 'Indicates the number of the extensions to the Reopening Auction'
   add_order_with_mpid_attribution_message:
     seq:
       - id: stock_locate
@@ -731,12 +731,12 @@ enums:
     0x4b:
       id: 'ipo_quoting_period_update'
       doc: 'Indicates the anticipated IPO quotation release time of a security.'
-    0x41:
-      id: 'add_order_no_mpid_attribution_message'
-      doc: 'This message will be generated for unattributed orders accepted by the NASDAQ system.'
     0x4a:
       id: 'luld_auction_collar_message'
       doc: 'Indicates the auction collar thresholds within which a paused security can reopen following a LULD Trading Pause'
+    0x41:
+      id: 'add_order_no_mpid_attribution_message'
+      doc: 'This message will be generated for unattributed orders accepted by the Nasdaq system.'
     0x46:
       id: 'add_order_with_mpid_attribution_message'
       doc: 'This message will be generated for attributed orders and quotations accepted by the NASDAQ system.'
@@ -866,16 +866,16 @@ enums:
       id: 'bond'
       doc: 'Bond'
     0x43:
-      id: 'common'
+      id: 'common_stock'
       doc: 'Common Stock'
     0x46:
-      id: 'depository'
+      id: 'depository_receipt'
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
       doc: 'Sec 144 A'
     0x4c:
-      id: 'limited'
+      id: 'limited_partnership'
       doc: 'Limited Partnership'
     0x4e:
       id: 'notes'
@@ -884,25 +884,25 @@ enums:
       id: 'ordinary_share'
       doc: 'Ordinary Share'
     0x50:
-      id: 'preferred'
+      id: 'preferred_stock'
       doc: 'Preferred Stock'
     0x51:
-      id: 'other'
+      id: 'other_securities'
       doc: 'Other Securities'
     0x52:
       id: 'right'
       doc: 'Right'
     0x53:
-      id: 'shares'
+      id: 'shares_of_beneficial_interest'
       doc: 'Shares Of Beneficial Interest'
     0x54:
-      id: 'convertible'
+      id: 'convertible_debenture'
       doc: 'Convertible Debenture'
     0x55:
       id: 'unit'
       doc: 'Unit'
     0x56:
-      id: 'units_benif_int'
+      id: 'units_of_beneficial_interest'
       doc: 'Units Benif Int'
     0x57:
       id: 'warrant'

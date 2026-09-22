@@ -910,6 +910,9 @@ enums:
       id: 'regulatory_imbalance'
       doc: 'Regulatory Imbalance Nyse Only'
   imbalance_side:
+    0x20:
+      id: 'no_imbalance'
+      doc: 'No Imbalance'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -937,6 +940,9 @@ enums:
       id: 'imbalance_freeze'
       doc: 'Imbalance Freeze Is In Effect'
   unpaired_side:
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
     0x42:
       id: 'buy_side'
       doc: 'Buy Side'
@@ -944,6 +950,9 @@ enums:
       id: 'sell_side'
       doc: 'Sell Side'
   significant_imbalance:
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
     0x59:
       id: 'yes_field'
       doc: 'Yes'

@@ -92,9 +92,8 @@ types:
   login_rejected_packet:
     seq:
       - id: reject_reason_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: reject_reason_code
         doc: 'Login Reject Codes'
   sequenced_data_packet:
     seq:
@@ -129,7 +128,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -138,7 +137,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -213,7 +212,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: orig_user_ref_num
         type: u4
         doc: 'This must be filled out with the Order UserRefNum sent on the Enter Order Message or last Replace Order Message'
@@ -291,7 +290,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -306,7 +305,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -333,7 +332,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -372,7 +371,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -393,7 +392,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -424,7 +423,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -442,7 +441,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -450,7 +449,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -458,7 +457,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -476,7 +475,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -491,7 +490,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -521,7 +520,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: next_user_ref_num
         type: u4
         doc: 'The next available UserRefNum'
@@ -529,7 +528,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -567,7 +566,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -599,7 +598,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Unix epoch'
+        doc: 'Expressed as nanoseconds since midnight. Nanoseconds since Midnight epoch'
       - id: user_ref_num
         type: u4
         doc: 'As described above in Data Types. UserRefNum must be day-unique and strictly increasing for each OUCH account'
@@ -890,6 +889,13 @@ enums:
     0x5a:
       id: 'end_of_session_packet'
       doc: 'SoupbinTcp Login End of Session Packet'
+  reject_reason_code:
+    0x41:
+      id: 'not_authorized'
+      doc: 'The Login Request Packet''s username and password combination was invalid'
+    0x53:
+      id: 'session_not_available'
+      doc: 'The Login Request Packet''s requested session was invalid or not available'
   sequenced_message_type:
     0x53:
       id: 'system_event_message'

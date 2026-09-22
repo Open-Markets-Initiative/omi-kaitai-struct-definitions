@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 829 | 1,658,075 |
+| 843 | 1,667,231 |
 
 ## Testing
 
@@ -38,7 +38,7 @@ Production packet captures are required for protocol verification.  If your orga
 Other generated code can be found at [Omi Projects](https://github.com/Open-Markets-Initiative/Directory/tree/main/Projects "Open Markets Initiative Projects"); for Omi rules and regulations, see [Omi Directory](https://github.com/Open-Markets-Initiative/Directory "Open Markets Initiative Directory").
 ## Organizations
 
-> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [Biva][Biva.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [Bse][Bse.Directory] · [CixAts][CixAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Ice][Ice.Directory] · [Iex][Iex.Directory] · [Imperative][Imperative.Directory] · [Jnx][Jnx.Directory] · [Jpx][Jpx.Directory] · [Memx][Memx.Directory] · [Nasdaq][Nasdaq.Directory] · [Nse][Nse.Directory] · [Nyse][Nyse.Directory] · [OtcMarkets][OtcMarkets.Directory] · [Siac][Siac.Directory]
+> [24X][24X.Directory] · [A2X][A2X.Directory] · [Aquis][Aquis.Directory] · [Asx][Asx.Directory] · [B3][B3.Directory] · [Bist][Bist.Directory] · [Biva][Biva.Directory] · [BlueOceanAts][BlueOceanAts.Directory] · [Bse][Bse.Directory] · [CixAts][CixAts.Directory] · [Cme][Cme.Directory] · [Coinbase][Coinbase.Directory] · [Eurex][Eurex.Directory] · [Euronext][Euronext.Directory] · [Ice][Ice.Directory] · [Iex][Iex.Directory] · [Imperative][Imperative.Directory] · [Jnx][Jnx.Directory] · [Jpx][Jpx.Directory] · [Memx][Memx.Directory] · [Nasdaq][Nasdaq.Directory] · [Nse][Nse.Directory] · [Nyse][Nyse.Directory] · [OtcMarkets][OtcMarkets.Directory] · [Sgx][Sgx.Directory] · [Siac][Siac.Directory]
 
 ## Exchanges
 
@@ -46,7 +46,7 @@ Other generated code can be found at [Omi Projects](https://github.com/Open-Mark
 
 ## Platforms
 
-> [CixAts CixAspen][CixAspen.Platform] · [Cme Globex][Globex.Platform] · [Euronext Optiq][Optiq.Platform] · [Eurex T7][T7.Platform]
+> [CixAts CixAspen][CixAspen.Platform] · [Cme Globex][Globex.Platform] · [Euronext Optiq][Optiq.Platform] · [Eurex T7][T7.Platform] · [Sgx TitanDt][TitanDt.Platform]
 
 ## Consolidators
 
@@ -323,6 +323,7 @@ Enjoy.
 [OtcMarkets.Overnight.DepthOfBook]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/OtcMarkets/Protocols/Overnight/DepthOfBook.md "OTC Depth of Book"
 [OtcMarkets.Overnight.Retransmission]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/OtcMarkets/Protocols/Overnight/Retransmission.md "OTC Retransmission"
 [OtcMarkets.Overnight.TopOfBook]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/OtcMarkets/Protocols/Overnight/TopOfBook.md "OTC Top of Book"
+[Sgx.TitanDt.DepthOfBook]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Sgx/Protocols/TitanDt/DepthOfBook.md "Depth Of Book"
 [Siac.Cqs.Input]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Protocols/Cqs/Input.md ""
 [Siac.Cqs.Output]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Protocols/Cqs/Output.md "Output"
 [Siac.Cqs.Snapshot]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Protocols/Cqs/Snapshot.md "Snapshot"
@@ -356,6 +357,7 @@ Enjoy.
 [Nse.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nse "National Stock Exchange of India Ltd"
 [Nyse.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse "New York Stock Exchange"
 [OtcMarkets.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/otcmarkets "OTC Markets Group"
+[Sgx.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/sgx "Singapore Exchange"
 [Siac.Directory]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac "The Securities Industry Automation Corporation"
 
 [24XEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/24x "24X Equities"
@@ -416,6 +418,7 @@ Enjoy.
 [SseEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/jpx/sseequities "Sapporo Securities Exchange Equities"
 [T7.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/eurex/t7 "T7"
 [TexasEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/texasequities "Nyse Texas Equities"
+[TitanDt.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/sgx/titandt "SGX Titan"
 [TseEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/jpx/tseequities "Tokyo Stock Exchange Equities"
 [Uqdf.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/uqdf "Nasdaq UTP Quote Data Feed"
 [Utdf.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nasdaq/utdf "Nasdaq UTP Trade Data Feed"
