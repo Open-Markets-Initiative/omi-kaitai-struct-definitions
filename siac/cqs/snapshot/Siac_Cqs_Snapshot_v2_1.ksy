@@ -101,6 +101,7 @@ types:
         enum: message_category
         doc: 'Identifies the type of category and message'
       - id: category_payload
+        size: message_length - 3
         type:
           switch-on: message_category
           cases:

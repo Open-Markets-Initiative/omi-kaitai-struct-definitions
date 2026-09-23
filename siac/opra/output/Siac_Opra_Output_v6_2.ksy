@@ -130,7 +130,7 @@ types:
         type:
           switch-on: administrative_message_type
           cases:
-            _: administrative_message
+            'administrative_message_type::administrative': administrative_message
   administrative_message:
     seq:
       - id: message_indicator
@@ -287,7 +287,7 @@ types:
         type:
           switch-on: open_interest_message_type
           cases:
-            _: open_interest_message
+            'open_interest_message_type::open_interest': open_interest_message
   open_interest_message:
     seq:
       - id: message_indicator
@@ -333,7 +333,7 @@ types:
         type:
           switch-on: equity_and_index_end_of_day_summary_message_type
           cases:
-            _: equity_and_index_end_of_day_summary_message
+            'equity_and_index_end_of_day_summary_message_type::equity_and_index_end_of_day_summary': equity_and_index_end_of_day_summary_message
   equity_and_index_end_of_day_summary_message:
     seq:
       - id: message_indicator
@@ -414,6 +414,7 @@ types:
         type:
           switch-on: long_equity_and_index_quote_message_type
           cases:
+            'long_equity_and_index_quote_message_type::regular_trading': long_equity_and_index_quote_message
             'long_equity_and_index_quote_message_type::non_firm_quote': long_equity_and_index_quote_message
             'long_equity_and_index_quote_message_type::indicative_value': long_equity_and_index_quote_message
             'long_equity_and_index_quote_message_type::rotation': long_equity_and_index_quote_message
@@ -424,7 +425,6 @@ types:
             'long_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': long_equity_and_index_quote_message
             'long_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': long_equity_and_index_quote_message
             'long_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': long_equity_and_index_quote_message
-            _: long_equity_and_index_quote_message
   long_equity_and_index_quote_message:
     seq:
       - id: bbo_indicator
@@ -556,6 +556,7 @@ types:
         type:
           switch-on: short_equity_and_index_quote_message_type
           cases:
+            'short_equity_and_index_quote_message_type::regular_trading': short_equity_and_index_quote_message
             'short_equity_and_index_quote_message_type::non_firm_quote': short_equity_and_index_quote_message
             'short_equity_and_index_quote_message_type::indicative_value': short_equity_and_index_quote_message
             'short_equity_and_index_quote_message_type::rotation': short_equity_and_index_quote_message
@@ -566,7 +567,6 @@ types:
             'short_equity_and_index_quote_message_type::both_bid_and_offer_contain_customer_trading_interest': short_equity_and_index_quote_message
             'short_equity_and_index_quote_message_type::offer_side_of_quote_not_firm_bid_side_firm': short_equity_and_index_quote_message
             'short_equity_and_index_quote_message_type::bid_side_of_quote_not_firm_offer_side_firm': short_equity_and_index_quote_message
-            _: short_equity_and_index_quote_message
   short_equity_and_index_quote_message:
     seq:
       - id: bbo_indicator
@@ -625,8 +625,8 @@ types:
         type:
           switch-on: underlying_value_message_type
           cases:
+            'underlying_value_message_type::index_based_on_last_sale': underlying_value_last_sale_message
             'underlying_value_message_type::index_based_on_bid_and_offer': underlying_value_bid_and_offer_message
-            _: underlying_value_last_sale_message
   underlying_value_last_sale_message:
     seq:
       - id: message_indicator

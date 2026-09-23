@@ -103,6 +103,7 @@ types:
         enum: message_category
         doc: 'The Message Category Represents The Message Classification'
       - id: category_payload
+        size: message_length - 3
         type:
           switch-on: message_category
           cases:
