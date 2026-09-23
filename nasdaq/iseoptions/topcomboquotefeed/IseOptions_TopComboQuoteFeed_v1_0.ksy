@@ -471,6 +471,9 @@ enums:
     0x50:
       id: 'put'
       doc: 'Put Option'
+    0x20:
+      id: 'na'
+      doc: 'Blank For Stock Leg'
   side:
     0x42:
       id: 'buy'
@@ -478,6 +481,9 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
+    0x20:
+      id: 'hidden'
+      doc: 'Not Set Hidden'
   open_state:
     0x59:
       id: 'open'
@@ -493,6 +499,9 @@ enums:
       id: 'trading_resumed'
       doc: 'Trading Resumed'
   quote_condition:
+    0x20:
+      id: 'regular_quote'
+      doc: 'Regular Quote Auto Execution Eligible'
     0x58:
       id: 'halted'
       doc: 'Halsted Or Preopen'

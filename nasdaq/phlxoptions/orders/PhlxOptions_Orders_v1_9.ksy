@@ -650,6 +650,9 @@ enums:
     0x50:
       id: 'put'
       doc: 'Put Option'
+    0x20:
+      id: 'stock'
+      doc: 'Stock'
   option_closing_type:
     0x4e:
       id: 'normal'

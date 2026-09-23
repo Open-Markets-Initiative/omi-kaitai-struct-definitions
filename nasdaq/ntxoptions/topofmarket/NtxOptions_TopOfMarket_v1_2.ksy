@@ -494,4 +494,7 @@ enums:
     0x59:
       id: 'ask_side_firm'
       doc: 'Bid Side Not Firm Ask Side Firm'
+    0x20:
+      id: 'regular_quote'
+      doc: 'Regular Quote Autox Eligible'
 

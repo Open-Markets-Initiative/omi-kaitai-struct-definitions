@@ -69,7 +69,7 @@ types:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 1
+        size: message_header.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
@@ -652,6 +652,9 @@ enums:
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
   sale_condition_modifier_level_3:
     0x54:
       id: 'extended_hours_trade'
@@ -665,6 +668,9 @@ enums:
     0x5a:
       id: 'sold_out_of_sequence'
       doc: 'Sold Out Of Sequence'
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
   sale_condition_modifier_level_4:
     0x41:
       id: 'acquisition'
@@ -702,6 +708,9 @@ enums:
     0x78:
       id: 'odd_lot_cross_execution'
       doc: 'Odd Lot Cross Execution'
+    0x20:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
   current_trading_state:
     0x48:
       id: 'halted'
@@ -747,6 +756,9 @@ enums:
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange Llc'
+    0x20:
+      id: 'not_available'
+      doc: 'Not Available'
   financial_status_indicator:
     0x44:
       id: 'deficient'

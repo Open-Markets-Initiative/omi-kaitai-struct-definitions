@@ -43,6 +43,7 @@ seq:
     type: common_header_struct
     doc: 'Tcp Common Header'
   - id: client_data
+    size: common_header.message_length
     type:
       switch-on: common_header.message_type
       cases:

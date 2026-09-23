@@ -70,7 +70,7 @@ types:
         type: message_header
         doc: 'Mold Udp Message Header'
       - id: payload
-        size: message_header.message_length - 1
+        size: message_header.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
