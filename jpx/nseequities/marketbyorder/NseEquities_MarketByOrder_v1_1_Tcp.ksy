@@ -67,6 +67,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'User ID for login authentication'
       - id: multicast_group_number
         type: u1

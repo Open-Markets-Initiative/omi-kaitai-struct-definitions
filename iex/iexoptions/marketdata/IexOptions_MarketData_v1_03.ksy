@@ -539,6 +539,11 @@ types:
       - id: message_list_group_encoding
         type: message_list_group_encoding
         doc: 'messageListGroupEncoding'
+      - id: sequenced_packet_message_messages_group
+        type: sequenced_packet_message_messages_group
+        repeat: expr
+        repeat-expr: message_list_group_encoding.num_in_group
+        doc: 'messages'
   message_list_group_encoding:
     seq:
       - id: block_length_short
@@ -547,6 +552,18 @@ types:
       - id: num_in_group
         type: u1
         doc: 'numInGroup'
+  sequenced_packet_message_messages_group:
+    seq:
+      - id: message
+        type: message
+        doc: 'message data struct'
+  message:
+    seq:
+      - id: len_message_data
+        type: u2
+      - id: message_data
+        size: len_message_data
+        if: len_message_data > 0
   session_shutdown_message:
     seq:
       - id: channel_id

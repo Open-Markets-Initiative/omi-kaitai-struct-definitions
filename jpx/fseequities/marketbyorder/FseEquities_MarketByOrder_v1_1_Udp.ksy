@@ -126,6 +126,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Indicates trading status'
       - id: short_selling_status
         type: u1

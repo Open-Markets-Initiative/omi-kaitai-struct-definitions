@@ -41,18 +41,18 @@ doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 seq:
   - id: packet_type
     type: u1
-    enum: packet_type
+    enum: packet_type_enum
     doc: 'Code identifying this packet type'
   - id: payload
     type:
       switch-on: packet_type
       cases:
-        'packet_type::debug_packet': debug_packet
-        'packet_type::login_accepted_packet': login_accepted_packet
-        'packet_type::login_rejected_packet': login_rejected_packet
-        'packet_type::sequenced_data_packet': sequenced_data_packet
-        'packet_type::login_request_packet': login_request_packet
-        'packet_type::unsequenced_data_packet': unsequenced_data_packet
+        'packet_type_enum::debug_packet': debug_packet
+        'packet_type_enum::login_accepted_packet': login_accepted_packet
+        'packet_type_enum::login_rejected_packet': login_rejected_packet
+        'packet_type_enum::sequenced_data_packet': sequenced_data_packet
+        'packet_type_enum::login_request_packet': login_request_packet
+        'packet_type_enum::unsequenced_data_packet': unsequenced_data_packet
   - id: soup_lf
     type: u1
     doc: 'Terminating line feed character'
@@ -276,7 +276,7 @@ types:
         doc: 'Raw unsequenced message bytes'
 
 enums:
-  packet_type:
+  packet_type_enum:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'
