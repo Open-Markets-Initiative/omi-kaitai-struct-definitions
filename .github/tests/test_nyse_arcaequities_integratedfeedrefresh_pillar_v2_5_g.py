@@ -1,0 +1,47 @@
+# Generated Kaitai Struct definition tests: captures from omi-data-packets
+
+import sys
+import unittest
+
+sys.path.insert(0, "generated/python")
+
+import payloads
+
+from nyse_arcaequities_integratedfeedrefresh_pillar_v2_5_g import NyseArcaequitiesIntegratedfeedrefreshPillarV25G
+
+
+class NyseArcaequitiesIntegratedfeedrefreshPillarV25GTests(unittest.TestCase):
+
+    def test_addorderrefreshmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/AddOrderRefreshMessage.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_imbalancemessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/ImbalanceMessage.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_messagesequence(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/MessageSequence.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_refreshheadermessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/RefreshHeaderMessage.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_securitystatusmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/SecurityStatusMessage.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_symbolindexmappingmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/SymbolIndexMappingMessage.pcap"):
+            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+
+if __name__ == "__main__":
+    unittest.main()

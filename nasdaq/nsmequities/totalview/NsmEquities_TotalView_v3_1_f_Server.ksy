@@ -39,23 +39,28 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
-  - id: server_packet_type
-    type: u1
-    enum: server_packet_type_enum
-    doc: 'Code identifying this packet type'
+  - id: server_packet_header
+    type: server_packet_header_struct
+    doc: 'SoupTcp Packet Header sent by the server'
   - id: server_payload
     type:
-      switch-on: server_packet_type
+      switch-on: server_packet_header.server_packet_type
       cases:
-        'server_packet_type_enum::debug_packet': debug_packet
-        'server_packet_type_enum::login_accepted_packet': login_accepted_packet
-        'server_packet_type_enum::login_rejected_packet': login_rejected_packet
-        'server_packet_type_enum::sequenced_data_packet': sequenced_data_packet
+        'server_packet_type::debug_packet': debug_packet
+        'server_packet_type::login_accepted_packet': login_accepted_packet
+        'server_packet_type::login_rejected_packet': login_rejected_packet
+        'server_packet_type::sequenced_data_packet': sequenced_data_packet
   - id: soup_lf
     type: u1
     doc: 'Terminating line feed character'
 
 types:
+  server_packet_header_struct:
+    seq:
+      - id: server_packet_type
+        type: u1
+        enum: server_packet_type
+        doc: 'Code identifying this packet type'
   debug_packet:
     seq:
       - id: text
@@ -517,7 +522,7 @@ types:
         doc: 'This field indicates the absolute value of the percentage of deviation of the Near Indicative Clearing Price to the nearest Current Reference Price'
 
 enums:
-  client_packet_type_enum:
+  client_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'
@@ -533,7 +538,7 @@ enums:
     0x4f:
       id: 'logout_request_packet'
       doc: 'SoupTcp Logout Request Packet'
-  server_packet_type_enum:
+  server_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'

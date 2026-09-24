@@ -460,7 +460,7 @@ types:
         doc: 'This field indicates the absolute value of the percentage of deviation of the Near Indicative Clearing Price to the nearest Current Reference Price'
 
 enums:
-  client_packet_type_enum:
+  client_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'
@@ -476,7 +476,7 @@ enums:
     0x4f:
       id: 'logout_request_packet'
       doc: 'SoupTcp Logout Request Packet'
-  server_packet_type_enum:
+  server_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'

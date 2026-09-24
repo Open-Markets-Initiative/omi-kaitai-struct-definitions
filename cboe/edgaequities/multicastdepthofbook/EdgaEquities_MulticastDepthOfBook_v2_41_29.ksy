@@ -1,0 +1,566 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Cboe EdgaEquities MulticastDepthOfBook Pitch v2.41.29
+#
+# Protocol:
+#   Organization: Chicago Board Options Exchange
+#   Protocol: Multicast Depth Of Book
+#   Encoding: Pitch
+#   Version: 2.41.29
+#   Date: 4/20/2022
+#   Specification: US_EQUITIES_OPTIONS_MULTICAST_PITCH_SPECIFICATION.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: cboe_edgaequities_multicastdepthofbook_pitch_v2_41_29
+  title: Cboe EdgaEquities MulticastDepthOfBook Pitch v2.41.29
+  license: GPL-3.0
+  endian: le
+
+doc: 'Chicago Board Options Exchange Cboe Edga Equities Multicast Depth Of Book Pitch v2.41.29'
+doc-ref: http://markets.cboe.com/us/equities/support/technical
+
+seq:
+  - id: packet_header
+    type: packet_header_struct
+  - id: messages
+    repeat: expr
+    repeat-expr: packet_header.count
+    type:
+      switch-on: packet_header.count
+      cases:
+        _: message
+
+types:
+  packet_header_struct:
+    seq:
+      - id: length
+        type: u2
+        doc: 'Length of entire block of messages. Includes this header and Hdr Count messages to follow'
+      - id: count
+        type: u1
+        doc: 'Number of messages to follow this header'
+      - id: unit
+        type: u1
+        doc: 'Unit that applies to messages included in this header'
+      - id: sequence
+        type: u4
+        doc: 'Sequence Number of the first message to follow this header'
+  message:
+    seq:
+      - id: message_header
+        type: message_header
+      - id: payload
+        size: message_header.message_length - 2
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::time_message': time_message
+            'message_type::unit_clear_message': unit_clear_message
+            'message_type::add_order_long_message': add_order_long_message
+            'message_type::add_order_short_message': add_order_short_message
+            'message_type::add_order_expanded_message': add_order_expanded_message
+            'message_type::order_executed_message': order_executed_message
+            'message_type::order_executed_at_price_size_message': order_executed_at_price_size_message
+            'message_type::reduce_size_long_message': reduce_size_long_message
+            'message_type::reduce_size_short_message': reduce_size_short_message
+            'message_type::modify_order_long_message': modify_order_long_message
+            'message_type::modify_order_short_message': modify_order_short_message
+            'message_type::delete_order_message': delete_order_message
+            'message_type::trade_long_message': trade_long_message
+            'message_type::trade_short_message': trade_short_message
+            'message_type::trade_expanded_message': trade_expanded_message
+            'message_type::trade_break_message': trade_break_message
+            'message_type::end_of_session': end_of_session
+            'message_type::trading_status_message': trading_status_message
+  message_header:
+    seq:
+      - id: message_length
+        type: u1
+        doc: 'Current Pitch message length'
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying this message type'
+  time_message:
+    seq:
+      - id: time
+        type: second_timestamp
+        doc: 'Number of whole seconds from midnight Eastern Time. Seconds since Midnight epoch'
+  unit_clear_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+  add_order_long_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity
+        type: u4
+        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: add_order_flags
+        type: add_order_flags
+        doc: 'Add Order Flags'
+  add_order_flags:
+    meta:
+      bit-endian: le
+    seq:
+      - id: display
+        type: b1
+        doc: 'Order is displayed in the Cboe SIP quote'
+      - id: unused_7
+        type: b7
+        doc: 'Reserved 1-7 Bits'
+  add_order_short_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity_short
+        type: u2
+        doc: 'Instrument quantity being added to the complex book (may be less than the number entered)'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price_short
+        type: decimal_u2_2
+        doc: 'The limit order price. Implied decimal with scale 1e-2'
+      - id: add_order_flags
+        type: add_order_flags
+        doc: 'Add Order Flags'
+  add_order_expanded_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity
+        type: u4
+        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
+      - id: symbol_long
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: add_order_flags
+        type: add_order_flags
+        doc: 'Add Order Flags'
+      - id: participant_id
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Optionally specified. If specified the Executing Broker of firm attributed to this quote'
+      - id: customer_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Customer Indicator'
+  order_executed_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: executed_quantity
+        type: u4
+        doc: 'Number of shares/contracts executed'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+  order_executed_at_price_size_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: executed_quantity
+        type: u4
+        doc: 'Number of shares/contracts executed'
+      - id: remaining_quantity
+        type: u4
+        doc: 'Number of shares/contracts remaining after the execution'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+  reduce_size_long_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: canceled_quantity
+        type: u4
+        doc: 'Instrument quantity canceled'
+  reduce_size_short_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: canceled_quantity_short
+        type: u2
+        doc: 'Instrument quantity canceled'
+  modify_order_long_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: quantity
+        type: u4
+        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: modify_order_flags
+        type: modify_order_flags
+        doc: 'Modify Order Flags'
+  modify_order_flags:
+    meta:
+      bit-endian: le
+    seq:
+      - id: display
+        type: b1
+        doc: 'Order is displayed in the Cboe SIP quote'
+      - id: priority
+        type: b1
+        doc: 'Maintain Priority'
+      - id: unused_6
+        type: b6
+        doc: 'Reserved 2-7 Bits'
+  modify_order_short_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: quantity_short
+        type: u2
+        doc: 'Instrument quantity being added to the complex book (may be less than the number entered)'
+      - id: price_short
+        type: decimal_u2_2
+        doc: 'The limit order price. Implied decimal with scale 1e-2'
+      - id: modify_order_flags
+        type: modify_order_flags
+        doc: 'Modify Order Flags'
+  delete_order_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+  trade_long_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity
+        type: u4
+        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+  trade_short_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity_short
+        type: u2
+        doc: 'Instrument quantity being added to the complex book (may be less than the number entered)'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price_short
+        type: decimal_u2_2
+        doc: 'The limit order price. Implied decimal with scale 1e-2'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+  trade_expanded_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity
+        type: u4
+        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
+      - id: symbol_long
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+  trade_break_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: execution_id
+        type: u8
+        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
+  end_of_session:
+    seq:
+      - id: last_timestamp
+        type: u4
+        doc: 'Nanosecond offset from last unit timestamp'
+  trading_status_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: symbol_long
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: trading_status
+        type: u1
+        enum: trading_status
+        doc: 'Trading Status'
+      - id: reg_sho_action
+        type: u1
+        enum: reg_sho_action
+        doc: 'Reg SHO Action Values'
+      - id: padding
+        size: 2
+        doc: 'Reserved'
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
+  nanosecond_offset:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      millisecond:
+        value: time / 1000000 % 1000
+      microsecond:
+        value: time / 1000 % 1000
+      nanosecond:
+        value: time % 1000
+  decimal_u8_4:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
+
+enums:
+  message_type:
+    0x20:
+      id: 'time_message'
+      doc: 'A Time message is immediately generated and sent when there is a PITCH event for a given clock second'
+    0x97:
+      id: 'unit_clear_message'
+      doc: 'The Unit Clear message instructs feed recipients to clear all orders for the Cboe book in the unit specified in the Sequenced Unit Header'
+    0x21:
+      id: 'add_order_long_message'
+      doc: 'An Add Order message represents a newly accepted visible order on the Cboe book'
+    0x22:
+      id: 'add_order_short_message'
+      doc: 'An Add Order message represents a newly accepted visible order on the Cboe book.'
+    0x2f:
+      id: 'add_order_expanded_message'
+      doc: 'An Add Order message represents a newly accepted visible order on the Cboe book. Expanded version accommodates larger symbol sizes possible through the ISRA plan.'
+    0x23:
+      id: 'order_executed_message'
+      doc: 'Order Executed messages are sent when a visible order on the Cboe book is executed in whole or in part'
+    0x24:
+      id: 'order_executed_at_price_size_message'
+      doc: 'Order Executed at Price/Size messages are sent when a visible order on the Cboe book is executed in whole or in part at a different price than the limit price on the original Add Order message or the limit order price in the latest Modify Order message referencing the Order Id.'
+    0x25:
+      id: 'reduce_size_long_message'
+      doc: 'Reduce Size messages are sent when a visible order on the Cboe book is partially reduced.'
+    0x26:
+      id: 'reduce_size_short_message'
+      doc: 'Reduce Size messages are sent when a visible order on the Cboe book is partially reduced'
+    0x27:
+      id: 'modify_order_long_message'
+      doc: 'The Modify Order message is sent whenever an open order is visibly modified. The Order Id refers to the Order Id of the original Add Order message.'
+    0x28:
+      id: 'modify_order_short_message'
+      doc: 'The Modify Order message is sent whenever an open order is visibly modified. The Order Id refers to the Order Id of the original Add Order message.'
+    0x29:
+      id: 'delete_order_message'
+      doc: 'The Delete Order message is sent whenever an open order is completely canceled. The Order Id refers to the Order Id of the original Add Order message.'
+    0x2a:
+      id: 'trade_long_message'
+      doc: 'The Trade message provides information about executions of complex order auctions on the Cboe complex book.'
+    0x2b:
+      id: 'trade_short_message'
+      doc: 'The Trade message provides information about executions of non-displayed orders on the Cboe book and routed executions to other trading centers.'
+    0x30:
+      id: 'trade_expanded_message'
+      doc: 'The Trade message provides information about executions of complex order auctions on the Cboe complex book.'
+    0x2c:
+      id: 'trade_break_message'
+      doc: 'The Trade Break message is sent whenever an execution on Cboe is broken.'
+    0x2d:
+      id: 'end_of_session'
+      doc: 'The End of Session message is sent for each unit when the unit shuts down'
+    0x31:
+      id: 'trading_status_message'
+      doc: 'The Trading Status message is used to indicate the current trading status of a complex instrument.'
+  side_indicator:
+    0x42:
+      id: 'buy_order'
+      doc: 'Buy Order'
+    0x53:
+      id: 'sell_order'
+      doc: 'Sell Order'
+  trading_status:
+    0x41:
+      id: 'accepting_orders_for_queuing'
+      doc: 'Accepting Orders For Queuing'
+    0x48:
+      id: 'halted'
+      doc: 'Halted'
+    0x51:
+      id: 'quote_only'
+      doc: 'Quote Only'
+    0x53:
+      id: 'exchange_specific_suspension'
+      doc: 'Exchange Specific Suspension'
+    0x54:
+      id: 'trading'
+      doc: 'Trading'
+  reg_sho_action:
+    0x30:
+      id: 'no_price_test_in_effect'
+      doc: 'No Price Test In Effect'
+    0x31:
+      id: 'reg_sho_price_test_restriction_in_effect'
+      doc: 'Reg Sho Price Test Restriction In Effect'
+

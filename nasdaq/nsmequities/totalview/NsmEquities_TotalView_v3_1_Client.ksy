@@ -39,22 +39,27 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
-  - id: client_packet_type
-    type: u1
-    enum: client_packet_type_enum
-    doc: 'Code identifying this packet type'
+  - id: client_packet_header
+    type: client_packet_header_struct
+    doc: 'SoupTcp Packet Header sent by the client'
   - id: client_payload
     type:
-      switch-on: client_packet_type
+      switch-on: client_packet_header.client_packet_type
       cases:
-        'client_packet_type_enum::debug_packet': debug_packet
-        'client_packet_type_enum::login_request_packet': login_request_packet
-        'client_packet_type_enum::unsequenced_data_packet': unsequenced_data_packet
+        'client_packet_type::debug_packet': debug_packet
+        'client_packet_type::login_request_packet': login_request_packet
+        'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
   - id: soup_lf
     type: u1
     doc: 'Terminating line feed character'
 
 types:
+  client_packet_header_struct:
+    seq:
+      - id: client_packet_type
+        type: u1
+        enum: client_packet_type
+        doc: 'Code identifying this packet type'
   debug_packet:
     seq:
       - id: text
@@ -95,7 +100,7 @@ types:
         doc: 'Raw unsequenced message bytes'
 
 enums:
-  client_packet_type_enum:
+  client_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'
@@ -111,7 +116,7 @@ enums:
     0x4f:
       id: 'logout_request_packet'
       doc: 'SoupTcp Logout Request Packet'
-  server_packet_type_enum:
+  server_packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'SoupTcp Debug Packet'

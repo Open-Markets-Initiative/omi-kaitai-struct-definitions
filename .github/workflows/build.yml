@@ -62,6 +62,54 @@ jobs:
       - name: Run BlueOceanAts MemoirLastSale Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_blueoceanats_blueequities_memoirlastsale_sbe_v1_3.py
 
+      - name: Run Box BoxOptions SolaMulticast Hsvf v1.8 Definition Tests
+        run: python3 .github/tests/test_box_boxoptions_solamulticast_hsvf_v1_8.py
+
+      - name: Run Cboe ByxEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
+        run: python3 .github/tests/test_cboe_byxequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe BzxEquities BinaryOrderEntry Boe v2.3 Definition Tests
+        run: python3 .github/tests/test_cboe_bzxequities_binaryorderentry_boe_v2_3.py
+
+      - name: Run Cboe BzxEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
+        run: python3 .github/tests/test_cboe_bzxequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe BzxOptions BinaryOrderEntry Boe v2.10 Definition Tests
+        run: python3 .github/tests/test_cboe_bzxoptions_binaryorderentry_boe_v2_10.py
+
+      - name: Run Cboe C1Options Complex Pitch v2.1.18 Definition Tests
+        run: python3 .github/tests/test_cboe_c1options_complex_pitch_v2_1_18.py
+
+      - name: Run Cboe C1Options MarketDataFeed Csm v1.4.2 Definition Tests
+        run: python3 .github/tests/test_cboe_c1options_marketdatafeed_csm_v1_4_2.py
+
+      - name: Run Cboe C1Options MarketLevel2 Csm v1.0.4 Definition Tests
+        run: python3 .github/tests/test_cboe_c1options_marketlevel2_csm_v1_0_4.py
+
+      - name: Run Cboe C1Options MulticastDepthOfBook Pitch v2.39.4 Definition Tests
+        run: python3 .github/tests/test_cboe_c1options_multicastdepthofbook_pitch_v2_39_4.py
+
+      - name: Run Cboe C1Options OpeningAuction Csm v1.0 Definition Tests
+        run: python3 .github/tests/test_cboe_c1options_openingauction_csm_v1_0.py
+
+      - name: Run Cboe CfeFutures BinaryOrderEntry Boe3 v1.1.20 Definition Tests
+        run: python3 .github/tests/test_cboe_cfefutures_binaryorderentry_boe3_v1_1_20.py
+
+      - name: Run Cboe CfeFutures MulticastDepthOfBook Pitch v1.1.12 Definition Tests
+        run: python3 .github/tests/test_cboe_cfefutures_multicastdepthofbook_pitch_v1_1_12.py
+
+      - name: Run Cboe CfeFutures MulticastDepthOfBook Pitch v1.1.6 Definition Tests
+        run: python3 .github/tests/test_cboe_cfefutures_multicastdepthofbook_pitch_v1_1_6.py
+
+      - name: Run Cboe EdgaEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
+        run: python3 .github/tests/test_cboe_edgaequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe EdgxEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
+        run: python3 .github/tests/test_cboe_edgxequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe TitaniumConsolidated Indices Cgif v1.4.13 Definition Tests
+        run: python3 .github/tests/test_cboe_titaniumconsolidated_indices_cgif_v1_4_13.py
+
       - name: Run Cme Globex iLink3 Sbe v8.5 Definition Tests
         run: python3 .github/tests/test_cme_globex_ilink3_sbe_v8_5.py
 
@@ -158,6 +206,18 @@ jobs:
       - name: Run Memx MemxEquities MemoirDepthFeed Sbe v1.3 Definition Tests
         run: python3 .github/tests/test_memx_memxequities_memoirdepthfeed_sbe_v1_3.py
 
+      - name: Run Miax MiaxOptions ComplexTopOfMarket Mach v1.1 Definition Tests
+        run: python3 .github/tests/test_miax_miaxoptions_complextopofmarket_mach_v1_1.py
+
+      - name: Run Miax OnyxFutures TopOfMarket Mach v1.0.b Definition Tests
+        run: python3 .github/tests/test_miax_onyxfutures_topofmarket_mach_v1_0_b.py
+
+      - name: Run Miax PearlEquities DepthOfMarket Mach v1.3.d Definition Tests
+        run: python3 .github/tests/test_miax_pearlequities_depthofmarket_mach_v1_3_d.py
+
+      - name: Run Miax PearlEquities ExpressOrders Meo v2.6 Definition Tests
+        run: python3 .github/tests/test_miax_pearlequities_expressorders_meo_v2_6.py
+
       - name: Run Nasdaq IseOptions OrderComboFeed Itch v1.1 Definition Tests
         run: python3 .github/tests/test_nasdaq_iseoptions_ordercombofeed_itch_v1_1.py
 
@@ -170,11 +230,17 @@ jobs:
       - name: Run Nasdaq NsmEquities Orders Ouch v5.0 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_orders_ouch_v5_0.py
 
+      - name: Run Nasdaq NsmEquities Qbbo Itch v2.1 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_qbbo_itch_v2_1.py
+
       - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2017 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2017.py
 
       - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2023 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2023.py
+
+      - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2026 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2026.py
 
       - name: Run Nasdaq NtxEquities TotalView Itch v5.0 Definition Tests
         run: python3 .github/tests/test_nasdaq_ntxequities_totalview_itch_v5_0.py
@@ -191,6 +257,9 @@ jobs:
       - name: Run Nyse AmexEquities IntegratedFeed Xdp v2.1.g Definition Tests
         run: python3 .github/tests/test_nyse_amexequities_integratedfeed_xdp_v2_1_g.py
 
+      - name: Run Nyse AmexEquities IntegratedFeedRefresh Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_amexequities_integratedfeedrefresh_pillar_v2_5_g.py
+
       - name: Run Nyse AmexOptions ComplexFeed Xdp v1.3.a Definition Tests
         run: python3 .github/tests/test_nyse_amexoptions_complexfeed_xdp_v1_3_a.py
 
@@ -202,6 +271,9 @@ jobs:
 
       - name: Run Nyse ArcaEquities IntegratedFeed Pillar v2.5.g Definition Tests
         run: python3 .github/tests/test_nyse_arcaequities_integratedfeed_pillar_v2_5_g.py
+
+      - name: Run Nyse ArcaEquities IntegratedFeedRefresh Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_arcaequities_integratedfeedrefresh_pillar_v2_5_g.py
 
       - name: Run Nyse ArcaOptions TopFeed Pillar v1.2.c Definition Tests
         run: python3 .github/tests/test_nyse_arcaoptions_topfeed_pillar_v1_2_c.py
@@ -236,11 +308,20 @@ jobs:
       - name: Run Nyse NyseEquities IntegratedFeed Xdp v2.3.a Definition Tests
         run: python3 .github/tests/test_nyse_nyseequities_integratedfeed_xdp_v2_3_a.py
 
+      - name: Run Nyse NyseEquities IntegratedFeedRefresh Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_integratedfeedrefresh_pillar_v2_5_g.py
+
+      - name: Run Nyse NyseEquities IntegratedFeedRetransmission Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_nyseequities_integratedfeedretransmission_pillar_v2_5_g.py
+
       - name: Run Nyse NyseEquities OpenBook Ultra v2.1.b Definition Tests
         run: python3 .github/tests/test_nyse_nyseequities_openbook_ultra_v2_1_b.py
 
       - name: Run Nyse TexasEquities IntegratedFeed Pillar v2.5.g Definition Tests
         run: python3 .github/tests/test_nyse_texasequities_integratedfeed_pillar_v2_5_g.py
+
+      - name: Run Nyse TexasEquities IntegratedFeedRefresh Pillar v2.5.g Definition Tests
+        run: python3 .github/tests/test_nyse_texasequities_integratedfeedrefresh_pillar_v2_5_g.py
 
       - name: Run OtcMarkets LinkAts Multicast Link v4.3 Definition Tests
         run: python3 .github/tests/test_otcmarkets_linkats_multicast_link_v4_3.py
@@ -265,5 +346,14 @@ jobs:
 
       - name: Run Siac Opra Output Obi v6.2 Definition Tests
         run: python3 .github/tests/test_siac_opra_output_obi_v6_2.py
+
+      - name: Run Tmx Mx SolaMulticast Hsvf v1.14 Definition Tests
+        run: python3 .github/tests/test_tmx_mx_solamulticast_hsvf_v1_14.py
+
+      - name: Run Tmx Tsx QuantumFeedLevel2 Xmt v2.1 Definition Tests
+        run: python3 .github/tests/test_tmx_tsx_quantumfeedlevel2_xmt_v2_1.py
+
+      - name: Run Txse TxseEquities Seed Rake v1.0 Definition Tests
+        run: python3 .github/tests/test_txse_txseequities_seed_rake_v1_0.py
 
 
