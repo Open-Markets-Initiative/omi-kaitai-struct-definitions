@@ -847,7 +847,7 @@ types:
         doc: 'BOLO Appendage MPID Form'
   debug_packet:
     seq:
-      - id: text
+      - id: debug_text
         type: str
         size: 1
         encoding: ASCII

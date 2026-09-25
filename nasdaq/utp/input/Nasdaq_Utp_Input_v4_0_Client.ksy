@@ -1842,12 +1842,11 @@ types:
         doc: 'Symbol Trading Status (H=Halt, Q=Quotation, T=Trading, P=Volatility Pause)'
   debug_packet:
     seq:
-      - id: text
+      - id: debug_text
         type: str
-        size-eos: true
+        size: 1
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Text body (length contained in textLen, max 300)'
+        doc: 'Free-form human-readable text'
   login_request_packet:
     seq:
       - id: username

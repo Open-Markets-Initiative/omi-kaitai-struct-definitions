@@ -39,26 +39,26 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
-  - id: udp_packet_header
-    type: udp_packet_header_struct
+  - id: packet_header
+    type: packet_header_struct
     doc: 'Itch Mold Udp 64 Packet Header'
   - id: messages
     repeat: expr
-    repeat-expr: udp_packet_header.message_count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: udp_packet_header.message_count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
 types:
-  udp_packet_header_struct:
+  packet_header_struct:
     seq:
-      - id: udp_session
+      - id: session
         type: str
         size: 10
         encoding: ASCII
         doc: 'Identity of the multicast session'
-      - id: udp_sequence_number
+      - id: sequence_number
         type: u8
         doc: 'Sequence number of the first message to follow this header'
       - id: message_count
@@ -69,7 +69,7 @@ types:
       - id: message_header
         type: message_header
         doc: 'Mold Udp 64 Message Header'
-      - id: udp_payload
+      - id: payload
         size: message_header.message_length - 1
         type:
           switch-on: message_header.message_type

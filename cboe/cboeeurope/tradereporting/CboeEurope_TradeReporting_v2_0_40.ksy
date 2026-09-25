@@ -251,11 +251,6 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_last_mkt > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_account > 0
       - id: transaction_category
         type: u1
         enum: transaction_category
@@ -264,11 +259,6 @@ types:
         type: nanosecond_timestamp
         if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_time > 0
         doc: 'Nanoseconds since Unix epoch'
-      - id: party_role
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_party_role > 0
       - id: trade_report_trans_type
         type: u1
         enum: trade_report_trans_type
@@ -339,6 +329,18 @@ types:
       - id: tertiary_trd_type
         type: u1
         if: number_of_trade_capture_report_v_2_bitfields >= 6 and trade_capture_report_v_2_bitfield_6.trade_capture_report_v_2_bitfield_6_tertiary_trd_type > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_account > 0
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_party_role > 0
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_v_2_bitfield_1:
     meta:
       bit-endian: le
@@ -464,6 +466,7 @@ types:
       - id: side
         type: u1
         enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
@@ -471,14 +474,17 @@ types:
         type: str
         size: 4
         encoding: ASCII
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: account
         type: str
         size: 16
         encoding: ASCII
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   quote_v_2_message:
     seq:
       - id: quote_id
@@ -564,6 +570,11 @@ types:
         repeat: expr
         repeat-expr: num_quote_cancel_rpt_grp
         doc: 'Repeating group stated NoQuoteEntries times'
+      - id: clearing_firm
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_clearing_firm > 0
       - id: symbol
         type: str
         size: 8
@@ -588,11 +599,6 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_security_exchange > 0
-      - id: clearing_firm
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_clearing_firm > 0
   quote_cancel_v_2_bitfield_1:
     meta:
       bit-endian: le
@@ -734,10 +740,6 @@ types:
         repeat: expr
         repeat-expr: num_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_acknowledgment_v_2_return_bitfield_1.trade_capture_report_acknowledgment_v_2_return_bitfield_1_side > 0
       - id: symbol
         type: str
         size: 8
@@ -762,30 +764,14 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_security_exchange > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_account > 0
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_clearing_firm > 0
-      - id: party_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_acknowledgment_v_2_return_bitfield_4.trade_capture_report_acknowledgment_v_2_return_bitfield_4_party_id > 0
-      - id: party_role
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_acknowledgment_v_2_return_bitfield_6.trade_capture_report_acknowledgment_v_2_return_bitfield_6_party_role > 0
+      - id: order_qty
+        type: u4
+        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_order_qty > 0
       - id: trade_report_type_return
         type: u2
         if: number_of_return_bitfields >= 7 and trade_capture_report_acknowledgment_v_2_return_bitfield_7.trade_capture_report_acknowledgment_v_2_return_bitfield_7_trade_report_type_return > 0
@@ -823,6 +809,33 @@ types:
         type: u1
         enum: intra_firm_trade_ind
         if: number_of_return_bitfields >= 19 and trade_capture_report_acknowledgment_v_2_return_bitfield_19.trade_capture_report_acknowledgment_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_return_bitfields >= 1 and trade_capture_report_acknowledgment_v_2_return_bitfield_1.trade_capture_report_acknowledgment_v_2_return_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_account > 0
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 4 and trade_capture_report_acknowledgment_v_2_return_bitfield_4.trade_capture_report_acknowledgment_v_2_return_bitfield_4_party_id > 0
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 6 and trade_capture_report_acknowledgment_v_2_return_bitfield_6.trade_capture_report_acknowledgment_v_2_return_bitfield_6_party_role > 0
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_acknowledgment_v_2_return_bitfield_1:
     meta:
       bit-endian: le
@@ -1208,6 +1221,7 @@ types:
       - id: side
         type: u1
         enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
@@ -1215,14 +1229,17 @@ types:
         type: str
         size: 16
         encoding: ASCII
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_id
         type: str
         size: 4
         encoding: ASCII
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_reject_v_2_message:
     seq:
       - id: transaction_time
@@ -1332,10 +1349,6 @@ types:
         repeat: expr
         repeat-expr: num_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_reject_v_2_return_bitfield_1.trade_capture_report_reject_v_2_return_bitfield_1_side > 0
       - id: symbol
         type: str
         size: 8
@@ -1360,30 +1373,14 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_security_exchange > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_account > 0
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_clearing_firm > 0
-      - id: party_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_reject_v_2_return_bitfield_4.trade_capture_report_reject_v_2_return_bitfield_4_party_id > 0
-      - id: party_role
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_reject_v_2_return_bitfield_6.trade_capture_report_reject_v_2_return_bitfield_6_party_role > 0
+      - id: order_qty
+        type: u4
+        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_order_qty > 0
       - id: trade_report_type_return
         type: u2
         if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_trade_report_type_return > 0
@@ -1412,6 +1409,33 @@ types:
         type: u1
         enum: intra_firm_trade_ind
         if: number_of_return_bitfields >= 19 and trade_capture_report_reject_v_2_return_bitfield_19.trade_capture_report_reject_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_return_bitfields >= 1 and trade_capture_report_reject_v_2_return_bitfield_1.trade_capture_report_reject_v_2_return_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_account > 0
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 4 and trade_capture_report_reject_v_2_return_bitfield_4.trade_capture_report_reject_v_2_return_bitfield_4_party_id > 0
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 6 and trade_capture_report_reject_v_2_return_bitfield_6.trade_capture_report_reject_v_2_return_bitfield_6_party_role > 0
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_reject_v_2_return_bitfield_1:
     meta:
       bit-endian: le
@@ -1901,18 +1925,14 @@ types:
         type: trade_capture_confirm_v_2_return_bitfield_19
         if: number_of_return_bitfields >= 19
         doc: 'BitSet TradeCaptureConfirmV2 byte 19'
-      - id: num_trd_cap_ack_side_grp
+      - id: num_trade_capture_confirm_v_2_trd_cap_ack_side_grp
         type: u1
         doc: 'Corresponds to NoSides (552) in Cboe FIX. Indicates the number of repeating groups to fol- low. Currently, can be 1 or 2'
-      - id: trd_cap_ack_side_grp
-        type: trd_cap_ack_side_grp
+      - id: trade_capture_confirm_v_2_trd_cap_ack_side_grp
+        type: trade_capture_confirm_v_2_trd_cap_ack_side_grp
         repeat: expr
-        repeat-expr: num_trd_cap_ack_side_grp
+        repeat-expr: num_trade_capture_confirm_v_2_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_confirm_v_2_return_bitfield_1.trade_capture_confirm_v_2_return_bitfield_1_side > 0
       - id: symbol
         type: str
         size: 8
@@ -1937,30 +1957,14 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_exchange > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_account > 0
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_clearing_firm > 0
-      - id: party_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_confirm_v_2_return_bitfield_4.trade_capture_confirm_v_2_return_bitfield_4_party_id > 0
-      - id: party_role
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_confirm_v_2_return_bitfield_6.trade_capture_confirm_v_2_return_bitfield_6_party_role > 0
+      - id: order_qty
+        type: u4
+        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_order_qty > 0
       - id: trade_report_type_return
         type: u2
         if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_trade_report_type_return > 0
@@ -2007,6 +2011,39 @@ types:
         type: u1
         enum: intra_firm_trade_ind
         if: number_of_return_bitfields >= 19 and trade_capture_confirm_v_2_return_bitfield_19.trade_capture_confirm_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_return_bitfields >= 1 and trade_capture_confirm_v_2_return_bitfield_1.trade_capture_confirm_v_2_return_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_account > 0
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 4 and trade_capture_confirm_v_2_return_bitfield_4.trade_capture_confirm_v_2_return_bitfield_4_party_id > 0
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 6 and trade_capture_confirm_v_2_return_bitfield_6.trade_capture_confirm_v_2_return_bitfield_6_party_role > 0
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
+      - id: fee_code
+        type: str
+        size: 2
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and trade_capture_confirm_v_2_return_bitfield_8.trade_capture_confirm_v_2_return_bitfield_8_fee_code > 0
+        doc: 'Indicates fee associated with an execution. Fee codes are published in the pricing schedule. New fee codes may be sent with little to no notice. Participants are encouraged to code their sys- tems to accept unknown fee codes'
   trade_capture_confirm_v_2_return_bitfield_1:
     meta:
       bit-endian: le
@@ -2387,6 +2424,40 @@ types:
         type: b1
       - id: trade_capture_confirm_v_2_return_bitfield_19_reserved_128
         type: b1
+  trade_capture_confirm_v_2_trd_cap_ack_side_grp:
+    seq:
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
+      - id: capacity
+        type: u1
+        enum: capacity
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
+      - id: central_counterparty
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'The CCP handling the trade Counterparty N = None'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
+      - id: fee_code
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Indicates fee associated with an execution. Fee codes are published in the pricing schedule. New fee codes may be sent with little to no notice. Participants are encouraged to code their sys- tems to accept unknown fee codes'
   trade_capture_report_decline_v_2_message:
     seq:
       - id: transaction_time
@@ -2513,10 +2584,6 @@ types:
         repeat: expr
         repeat-expr: num_trd_cap_ack_side_grp
         doc: 'Repeating group stated NoSides times'
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_decline_v_2_return_bitfield_1.trade_capture_report_decline_v_2_return_bitfield_1_side > 0
       - id: symbol
         type: str
         size: 8
@@ -2541,30 +2608,14 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_security_exchange > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_account > 0
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_clearing_firm > 0
-      - id: party_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_decline_v_2_return_bitfield_4.trade_capture_report_decline_v_2_return_bitfield_4_party_id > 0
-      - id: party_role
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_decline_v_2_return_bitfield_6.trade_capture_report_decline_v_2_return_bitfield_6_party_role > 0
+      - id: order_qty
+        type: u4
+        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_order_qty > 0
       - id: trade_report_type_return
         type: u2
         if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_trade_report_type_return > 0
@@ -2593,6 +2644,33 @@ types:
         type: u1
         enum: intra_firm_trade_ind
         if: number_of_return_bitfields >= 19 and trade_capture_report_decline_v_2_return_bitfield_19.trade_capture_report_decline_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_return_bitfields >= 1 and trade_capture_report_decline_v_2_return_bitfield_1.trade_capture_report_decline_v_2_return_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_account > 0
+        doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
+      - id: party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 4 and trade_capture_report_decline_v_2_return_bitfield_4.trade_capture_report_decline_v_2_return_bitfield_4_party_id > 0
+        doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
+      - id: party_role
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 6 and trade_capture_report_decline_v_2_return_bitfield_6.trade_capture_report_decline_v_2_return_bitfield_6_party_role > 0
+        doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_decline_v_2_return_bitfield_1:
     meta:
       bit-endian: le

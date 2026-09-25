@@ -220,7 +220,7 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_bitfields
@@ -280,7 +280,7 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account > 0
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -687,10 +687,10 @@ types:
         type: u1
         enum: cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_cross_bitfields
@@ -766,29 +766,11 @@ types:
         type: u1
         enum: last_priority
         if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_last_priority > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_account > 0
-      - id: cmta_number
-        type: u4
-        if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_cmta_number > 0
-      - id: clearing_account
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_clearing_account > 0
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
         if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_routing_firm_id > 0
-      - id: clearing_optional_data
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_new_order_cross_bitfields >= 2 and new_order_cross_bitfield_2.new_order_cross_bitfield_2_clearing_optional_data > 0
       - id: client_id_attr
         type: str
         size: 4
@@ -831,11 +813,6 @@ types:
         type: u1
         enum: ors
         if: number_of_new_order_cross_bitfields >= 4 and new_order_cross_bitfield_4.new_order_cross_bitfield_4_ors > 0
-      - id: frequent_trader_id
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_new_order_cross_bitfields >= 4 and new_order_cross_bitfield_4.new_order_cross_bitfield_4_frequent_trader_id > 0
   new_order_cross_bitfield_1:
     meta:
       bit-endian: le
@@ -939,29 +916,29 @@ types:
         type: str
         size: 4
         encoding: ASCII
-      - id: account_optional
+      - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'See List of Optional Fields'
-      - id: cmta_number_optional
+        if: _parent.number_of_new_order_cross_bitfields >= 2 and _parent.new_order_cross_bitfield_2.new_order_cross_bitfield_2_account > 0
+      - id: cmta_number
         type: u4
-        doc: 'See List of Optional Fields'
-      - id: clearing_account_optional
+        if: _parent.number_of_new_order_cross_bitfields >= 2 and _parent.new_order_cross_bitfield_2.new_order_cross_bitfield_2_cmta_number > 0
+      - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'See List of Optional Fields'
-      - id: clearing_optional_dat_optional
+        if: _parent.number_of_new_order_cross_bitfields >= 2 and _parent.new_order_cross_bitfield_2.new_order_cross_bitfield_2_clearing_account > 0
+      - id: clearing_optional_data
         type: str
         size: 16
         encoding: ASCII
-        doc: 'See List of Optional Fields'
-      - id: frequent_trader_id_optional
+        if: _parent.number_of_new_order_cross_bitfields >= 2 and _parent.new_order_cross_bitfield_2.new_order_cross_bitfield_2_clearing_optional_data > 0
+      - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'See List of Optional Fields'
+        if: _parent.number_of_new_order_cross_bitfields >= 4 and _parent.new_order_cross_bitfield_4.new_order_cross_bitfield_4_frequent_trader_id > 0
   new_complex_order_message:
     seq:
       - id: cl_ord_id
@@ -973,7 +950,7 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_complex_order_bitfields
@@ -1033,7 +1010,7 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_clearing_account > 0
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -1208,10 +1185,10 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_complex_order_bitfields >= 9 and new_complex_order_bitfield_9.new_complex_order_bitfield_9_cross_on_behalf_of_id > 0
-      - id: stop_px_typeeffective_tbd
-        type: u1
-        enum: stop_px_typeeffective_tbd
-        if: number_of_new_complex_order_bitfields >= 9 and new_complex_order_bitfield_9.new_complex_order_bitfield_9_stop_px_type_effective_tbd > 0
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_new_complex_order_bitfields >= 9 and new_complex_order_bitfield_9.new_complex_order_bitfield_9_stop_px > 0
+        doc: 'Implied decimal with scale 1e-4'
   new_complex_order_bitfield_1:
     meta:
       bit-endian: le
@@ -1382,9 +1359,9 @@ types:
         type: b1
       - id: new_complex_order_bitfield_9_cross_on_behalf_of_id
         type: b1
-      - id: new_complex_order_bitfield_9_stop_px_effective_tbd
+      - id: new_complex_order_bitfield_9_stop_px
         type: b1
-      - id: new_complex_order_bitfield_9_stop_px_type_effective_tbd
+      - id: new_complex_order_bitfield_9_stop_px_type
         type: b1
       - id: new_complex_order_bitfield_9_reserved_32
         type: b1
@@ -1413,10 +1390,10 @@ types:
         type: u1
         enum: cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: number_of_new_order_cross_multileg_bitfields
@@ -1446,13 +1423,13 @@ types:
         type: new_order_cross_multileg_bitfield_6
         if: number_of_new_order_cross_multileg_bitfields >= 6
         doc: 'BitSet NewOrderCrossMultileg byte 6'
-      - id: num_order_allocations
+      - id: num_new_order_cross_multileg_order_allocations
         type: u2
         doc: 'Number of order allocations represented by re- peating groups included in this cross order. Must be at least 2 (One agency and one contra), and no more than 11'
-      - id: order_allocations
-        type: order_allocations
+      - id: new_order_cross_multileg_order_allocations
+        type: new_order_cross_multileg_order_allocations
         repeat: expr
-        repeat-expr: num_order_allocations
+        repeat-expr: num_new_order_cross_multileg_order_allocations
         doc: 'Repeating group stated GroupCnt times'
       - id: symbol_alphanumeric_8
         type: str
@@ -1489,15 +1466,6 @@ types:
         type: u1
         enum: last_priority
         if: number_of_new_order_cross_multileg_bitfields >= 2 and new_order_cross_multileg_bitfield_2.new_order_cross_multileg_bitfield_2_last_priority > 0
-      - id: equity_party_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 3 and new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_equity_party_id > 0
-      - id: equity_leg_short_sell
-        type: u1
-        enum: equity_leg_short_sell
-        if: number_of_new_order_cross_multileg_bitfields >= 3 and new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_equity_leg_short_sell > 0
       - id: drill_thru_protection
         type: decimal_s8_4
         if: number_of_new_order_cross_multileg_bitfields >= 3 and new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_drill_thru_protection > 0
@@ -1514,39 +1482,16 @@ types:
         type: u1
         enum: ors
         if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_ors > 0
-      - id: frequent_trader_id
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_frequent_trader_id > 0
       - id: cross_initiator
         type: str
         size: 4
         encoding: ASCII
         if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_cross_initiator > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_account > 0
-      - id: cmta_number
-        type: u4
-        if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_cmta_number > 0
-      - id: clearing_account
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_clearing_account > 0
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
         if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_routing_firm_id > 0
-      - id: clearing_optional_data
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 4 and new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_clearing_optional_data > 0
       - id: client_id_attr
         type: str
         size: 4
@@ -1581,11 +1526,6 @@ types:
         type: u1
         enum: session_eligibility
         if: number_of_new_order_cross_multileg_bitfields >= 5 and new_order_cross_multileg_bitfield_5.new_order_cross_multileg_bitfield_5_session_eligibility > 0
-      - id: leg_position_effects_ext
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_new_order_cross_multileg_bitfields >= 6 and new_order_cross_multileg_bitfield_6.new_order_cross_multileg_bitfield_6_leg_position_effects_ext > 0
       - id: cross_on_behalf_of_id
         type: str
         size: 4
@@ -1711,6 +1651,69 @@ types:
         type: b1
       - id: new_order_cross_multileg_bitfield_6_reserved_128
         type: b1
+  new_order_cross_multileg_order_allocations:
+    seq:
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
+      - id: alloc_qty
+        type: u4
+      - id: cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
+      - id: capacity
+        type: u1
+        enum: capacity
+      - id: give_up_firm_id
+        type: str
+        size: 4
+        encoding: ASCII
+      - id: leg_position_effects
+        type: str
+        size: 12
+        encoding: ASCII
+        doc: 'Indicates status of the client position in the option for each complex option leg. This value String of characters ‘O’, ‘C’, and ‘N’, equal in length to the number of option legs of the instrument. If an equity leg is present it will always be the last leg, and the position effect must be set to ‘N’. This field can be used for complex instruments with up to 12 legs. For more than 12 legs, fill this field with spaces (0x20) and use the optional LegPositionEffectsExt field. O=Open C=Close N=None* *Orders with Capacity = M or ‘N’ will not be required to specify a position effect on their orders or may specify a value of ‘N’, in which case<blank> will be sent to clearing. If the leg is limited to closing only transactions, only Capacity = M will be permitted to submit OpenClose = O if the order has TimeInForce= ‘3’ (IOC) and RoutingInst = B'
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 4 and _parent.new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_account > 0
+      - id: cmta_number
+        type: u4
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 4 and _parent.new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_cmta_number > 0
+      - id: clearing_account
+        type: str
+        size: 4
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 4 and _parent.new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_clearing_account > 0
+      - id: clearing_optional_data
+        type: str
+        size: 16
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 4 and _parent.new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_clearing_optional_data > 0
+      - id: equity_party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 3 and _parent.new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_equity_party_id > 0
+      - id: equity_leg_short_sell
+        type: u1
+        enum: equity_leg_short_sell
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 3 and _parent.new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_equity_leg_short_sell > 0
+      - id: frequent_trader_id
+        type: str
+        size: 6
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 4 and _parent.new_order_cross_multileg_bitfield_4.new_order_cross_multileg_bitfield_4_frequent_trader_id > 0
+      - id: leg_position_effects_ext
+        type: str
+        size: 16
+        encoding: ASCII
+        if: _parent.number_of_new_order_cross_multileg_bitfields >= 6 and _parent.new_order_cross_multileg_bitfield_6.new_order_cross_multileg_bitfield_6_leg_position_effects_ext > 0
+        doc: 'See List of Optional Fields'
   cancel_order_message:
     seq:
       - id: orig_cl_ord_id
@@ -1749,6 +1752,11 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_routing_firm_id > 0
+      - id: mass_cancel_inst
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_cancel_order_bitfields >= 2 and cancel_order_bitfield_2.cancel_order_bitfield_2_mass_cancel_inst > 0
       - id: send_time
         type: nanosecond_timestamp
         if: number_of_cancel_order_bitfields >= 2 and cancel_order_bitfield_2.cancel_order_bitfield_2_send_time > 0
@@ -1816,7 +1824,7 @@ types:
         type: modify_order_bitfield_2
         if: number_of_modify_order_bitfields >= 2
         doc: 'BitSet ModifyOrder byte 2'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -1945,10 +1953,10 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
       - id: reserved_12
@@ -1987,14 +1995,37 @@ types:
       - id: session_eligibility
         type: u1
         enum: session_eligibility
-      - id: num_quote
+      - id: num_quote_update_short_quote
         type: u1
         doc: 'Number of repeating groups included in this quote update. Allowed values are 1-20'
-      - id: quote
-        type: quote
+      - id: quote_update_short_quote
+        type: quote_update_short_quote
         repeat: expr
-        repeat-expr: num_quote
+        repeat-expr: num_quote_update_short_quote
         doc: 'Repeating group stated QuoteCnt times'
+  quote_update_short_quote:
+    seq:
+      - id: symbol_alphanumeric_6
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Cboe native identifier'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
+      - id: open_close
+        type: u1
+        enum: open_close
+      - id: price_binary_price_4
+        type: decimal_s4_4
+        doc: 'Limit price. To cancel an existing quote, specify a size of 0. Implied decimal with scale 1e-4'
+      - id: order_qty_binary_2
+        type: u2
+        doc: 'Order quantity. System limit is 999,999 contracts. To cancel an existing quote, specify a size of 0'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved for future expansion. To maintain forward compatibility, fill with 0'
   complex_quote_update_message:
     seq:
       - id: quote_update_id
@@ -2075,14 +2106,37 @@ types:
       - id: session_eligibility
         type: u1
         enum: session_eligibility
-      - id: num_quote
+      - id: num_complex_quote_update_short_quote
         type: u1
         doc: 'Number of repeating groups included in this quote update. Allowed values are 1-20'
-      - id: quote
-        type: quote
+      - id: complex_quote_update_short_quote
+        type: complex_quote_update_short_quote
         repeat: expr
-        repeat-expr: num_quote
+        repeat-expr: num_complex_quote_update_short_quote
         doc: 'Repeating group stated QuoteCnt times'
+  complex_quote_update_short_quote:
+    seq:
+      - id: symbol_alphanumeric_6
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Cboe native identifier'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
+      - id: open_close
+        type: u1
+        enum: open_close
+      - id: price_binary_price_4
+        type: decimal_s4_4
+        doc: 'Limit price. To cancel an existing quote, specify a size of 0. Implied decimal with scale 1e-4'
+      - id: order_qty_binary_2
+        type: u2
+        doc: 'Order quantity. System limit is 999,999 contracts. To cancel an existing quote, specify a size of 0'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved for future expansion. To maintain forward compatibility, fill with 0'
   purge_orders_message:
     seq:
       - id: reserved_1
@@ -2112,6 +2166,11 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_purge_orders_bitfields >= 1 and purge_orders_bitfield_1.purge_orders_bitfield_1_clearing_firm > 0
+      - id: mass_cancel_inst
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_purge_orders_bitfields >= 1 and purge_orders_bitfield_1.purge_orders_bitfield_1_mass_cancel_inst > 0
       - id: risk_root
         type: str
         size: 6
@@ -2227,23 +2286,25 @@ types:
         repeat: expr
         repeat-expr: num_complex_leg
         doc: 'Repeating group stated NoLegs times'
-      - id: leg_cfi_code
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_cfi_code > 0
-      - id: leg_maturity_date
-        type: yyyymmdd_date
-        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_maturity_date > 0
-      - id: leg_strike_price
-        type: decimal_s8_4
-        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_strike_price > 0
-        doc: 'Implied decimal with scale 1e-4'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_clearing_firm > 0
+      - id: leg_cfi_code
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_cfi_code > 0
+        doc: 'Corresponds to LegCFICode (608) in Cboe FIX. (Optional) CFI Code for leg. Required if LegSymbol is in OSI format. OP = Options Put OC = Options Call E = Equity'
+      - id: leg_maturity_date
+        type: yyyymmdd_date
+        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_maturity_date > 0
+        doc: 'Corresponds to LegMaturityDate (611) in Cboe FIX. (Optional) Required if LegSymbol is in OSI format'
+      - id: leg_strike_price
+        type: decimal_s8_4
+        if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_strike_price > 0
+        doc: 'Corresponds to LegStrikePrice (612) in Cboe FIX. (Optional) Option strike price. System maximum is 99,999,999. Must be non-negative. Required if LegSymbol is in OSI format. Implied decimal with scale 1e-4'
   new_complex_instrument_bitfield_1:
     meta:
       bit-endian: le
@@ -2275,11 +2336,13 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        doc: 'Corresponds to LegCFICode (608) in Cboe FIX. (Optional) CFI Code for leg. Required if LegSymbol is in OSI format. OP = Options Put OC = Options Call E = Equity'
       - id: leg_maturity_date
         type: yyyymmdd_date
+        doc: 'Corresponds to LegMaturityDate (611) in Cboe FIX. (Optional) Required if LegSymbol is in OSI format'
       - id: leg_strike_price
         type: decimal_s8_4
-        doc: 'Implied decimal with scale 1e-4'
+        doc: 'Corresponds to LegStrikePrice (612) in Cboe FIX. (Optional) Option strike price. System maximum is 99,999,999. Must be non-negative. Required if LegSymbol is in OSI format. Implied decimal with scale 1e-4'
       - id: leg_ratio_qty
         type: u4
         doc: 'Corresponds to LegRatioQty (623) in Cboe FIX. Ratio of number of contracts in this leg per order quantity. Accepted values are 1-999,999'
@@ -2306,9 +2369,9 @@ types:
         doc: 'Implied decimal with scale 1e-4'
       - id: maturity_date
         type: yyyymmdd_date
-      - id: multileg_reporting_typ
+      - id: multileg_reporting_type
         type: u1
-        enum: multileg_reporting_typ
+        enum: multileg_reporting_type
         doc: 'Corresponds to MultilegReportingType (442) in Cboe FIX. Indicates the type of Order Execution message. 1=Single-leg instrument 2=Individual leg of multi-leg instrument'
       - id: combo_order
         type: u1
@@ -2336,10 +2399,10 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transaction_time
@@ -2530,7 +2593,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -2580,7 +2643,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -3214,7 +3277,7 @@ types:
         type: b1
       - id: order_acknowledgment_return_bitfield_21_cmc_match_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_stop_px_type_effective
+      - id: order_acknowledgment_return_bitfield_21_stop_px_type
         type: b1
       - id: order_acknowledgment_return_bitfield_21_reserved_128
         type: b1
@@ -3315,20 +3378,15 @@ types:
         type: cross_order_acknowledgment_return_bitfield_19
         if: number_of_return_bitfields >= 19
         doc: 'BitSet CrossOrderAcknowledgment byte 19'
-      - id: num_order_allocations
+      - id: num_cross_order_acknowledgment_order_allocations
         type: u2
         doc: 'Number of order allocations represented by re- peating groups included in this cross order. Must be at least 2 (One agency and one contra), and no more than 11'
-      - id: order_allocations
-        type: order_allocations
+      - id: cross_order_acknowledgment_order_allocations
+        type: cross_order_acknowledgment_order_allocations
         repeat: expr
-        repeat-expr: num_order_allocations
+        repeat-expr: num_cross_order_acknowledgment_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_return_bitfields >= 1 and cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_side > 0
-        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -3341,21 +3399,7 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 4 and cross_order_acknowledgment_return_bitfield_4.cross_order_acknowledgment_return_bitfield_4_symbol > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 4 and cross_order_acknowledgment_return_bitfield_4.cross_order_acknowledgment_return_bitfield_4_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and cross_order_acknowledgment_return_bitfield_5.cross_order_acknowledgment_return_bitfield_5_account > 0
-      - id: clearing_account
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and cross_order_acknowledgment_return_bitfield_5.cross_order_acknowledgment_return_bitfield_5_clearing_account > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 5 and cross_order_acknowledgment_return_bitfield_5.cross_order_acknowledgment_return_bitfield_5_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -3375,10 +3419,6 @@ types:
         type: u1
         enum: put_or_call
         if: number_of_return_bitfields >= 6 and cross_order_acknowledgment_return_bitfield_6.cross_order_acknowledgment_return_bitfield_6_put_or_call > 0
-      - id: open_close
-        type: u1
-        enum: open_close
-        if: number_of_return_bitfields >= 6 and cross_order_acknowledgment_return_bitfield_6.cross_order_acknowledgment_return_bitfield_6_open_close > 0
       - id: attributed_quote
         type: u1
         enum: attributed_quote
@@ -3388,9 +3428,6 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 10 and cross_order_acknowledgment_return_bitfield_10.cross_order_acknowledgment_return_bitfield_10_target_party_id > 0
-      - id: cmta_number
-        type: u4
-        if: number_of_return_bitfields >= 10 and cross_order_acknowledgment_return_bitfield_10.cross_order_acknowledgment_return_bitfield_10_cmta_number > 0
       - id: cross_type
         type: u1
         enum: cross_type
@@ -3401,14 +3438,6 @@ types:
         enum: cross_prioritization
         if: number_of_return_bitfields >= 10 and cross_order_acknowledgment_return_bitfield_10.cross_order_acknowledgment_return_bitfield_10_cross_prioritization > 0
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: alloc_qty
-        type: u4
-        if: number_of_return_bitfields >= 11 and cross_order_acknowledgment_return_bitfield_11.cross_order_acknowledgment_return_bitfield_11_alloc_qty > 0
-      - id: give_up_firm_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 11 and cross_order_acknowledgment_return_bitfield_11.cross_order_acknowledgment_return_bitfield_11_give_up_firm_id > 0
       - id: routing_firm_id
         type: str
         size: 4
@@ -3828,6 +3857,50 @@ types:
         type: b1
       - id: cross_order_acknowledgment_return_bitfield_19_reserved_128
         type: b1
+  cross_order_acknowledgment_order_allocations:
+    seq:
+      - id: cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
+      - id: order_id
+        type: u8
+        doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identifier corresponds to the identifiers used in Cboe market data products'
+      - id: side
+        type: u1
+        enum: side
+        if: _parent.number_of_return_bitfields >= 1 and _parent.cross_order_acknowledgment_return_bitfield_1.cross_order_acknowledgment_return_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
+      - id: alloc_qty
+        type: u4
+        if: _parent.number_of_return_bitfields >= 11 and _parent.cross_order_acknowledgment_return_bitfield_11.cross_order_acknowledgment_return_bitfield_11_alloc_qty > 0
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: _parent.number_of_return_bitfields >= 4 and _parent.cross_order_acknowledgment_return_bitfield_4.cross_order_acknowledgment_return_bitfield_4_capacity > 0
+      - id: open_close
+        type: u1
+        enum: open_close
+        if: _parent.number_of_return_bitfields >= 6 and _parent.cross_order_acknowledgment_return_bitfield_6.cross_order_acknowledgment_return_bitfield_6_open_close > 0
+      - id: give_up_firm_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: _parent.number_of_return_bitfields >= 11 and _parent.cross_order_acknowledgment_return_bitfield_11.cross_order_acknowledgment_return_bitfield_11_give_up_firm_id > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: _parent.number_of_return_bitfields >= 5 and _parent.cross_order_acknowledgment_return_bitfield_5.cross_order_acknowledgment_return_bitfield_5_account > 0
+      - id: cmta_number
+        type: u4
+        if: _parent.number_of_return_bitfields >= 10 and _parent.cross_order_acknowledgment_return_bitfield_10.cross_order_acknowledgment_return_bitfield_10_cmta_number > 0
+      - id: clearing_account
+        type: str
+        size: 4
+        encoding: ASCII
+        if: _parent.number_of_return_bitfields >= 5 and _parent.cross_order_acknowledgment_return_bitfield_5.cross_order_acknowledgment_return_bitfield_5_clearing_account > 0
   quote_update_acknowledgment_message:
     seq:
       - id: transaction_time
@@ -3845,14 +3918,32 @@ types:
       - id: reserved_17
         size: 17
         doc: 'Reserved for future expansion. Filled with 0'
-      - id: num_quote
+      - id: num_quote_update_acknowledgment_quote
         type: u1
         doc: 'Number of repeating groups included in this quote update. Allowed values are 1-20'
-      - id: quote
-        type: quote
+      - id: quote_update_acknowledgment_quote
+        type: quote_update_acknowledgment_quote
         repeat: expr
-        repeat-expr: num_quote
+        repeat-expr: num_quote_update_acknowledgment_quote
         doc: 'Repeating group stated QuoteCnt times'
+  quote_update_acknowledgment_quote:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identifier corresponds to the identifiers used in Cboe market data products'
+      - id: quote_result
+        type: u1
+        enum: quote_result
+        doc: 'Result of the quote request. Acceptance: A = New Quote I = IOC Quote Accepted L = Modified; loss of priority R = Modified; retains priority (size reduction) N = No change, matches existing quote D = New Quote, but may remove liquidity d = Modified, but may remove liquidity V = No change, existing constituent series quote modify attempt after cutoff time (C1 only) Cancellation: U = User cancelled (zero size/price requested) Rejection: a = Admin O = Rejected, doesn’t match a known quote P = Rejected, can’t post f = Risk management firm or Custom Group ID level S = Rejected, symbol not found p = Rejected, invalid price r = Invalid Remove s = Risk management risk root level u = Rejected, other reason + = Risk management EFID Group level c = Rejected, closing only series v = Rejected, attempt to add constituent series quote after cutoff time (C1 only) Additional reasons indicating a reject may be added in the future with no notice'
+      - id: sub_liquidity_indicator
+        type: u1
+        enum: sub_liquidity_indicator
+      - id: subreason
+        type: u1
+        enum: subreason
+      - id: reserved_5
+        size: 5
+        doc: 'Reserved for future expansion. Filled with 0'
   order_rejected_message:
     seq:
       - id: transaction_time
@@ -3967,7 +4058,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -4017,7 +4108,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -4728,7 +4819,7 @@ types:
         type: cross_order_rejected_return_bitfield_21
         if: number_of_return_bitfields >= 21
         doc: 'BitSet CrossOrderRejected byte 21'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -4741,7 +4832,7 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and cross_order_rejected_return_bitfield_2.cross_order_rejected_return_bitfield_2_symbol > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 7 and cross_order_rejected_return_bitfield_7.cross_order_rejected_return_bitfield_7_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -5354,7 +5445,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -5400,7 +5491,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -6087,7 +6178,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -6165,7 +6256,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 7 and order_restated_return_bitfield_7.order_restated_return_bitfield_7_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 7 and order_restated_return_bitfield_7.order_restated_return_bitfield_7_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -7395,7 +7486,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -7491,7 +7582,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 9 and order_cancelled_return_bitfield_9.order_cancelled_return_bitfield_9_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 9 and order_cancelled_return_bitfield_9.order_cancelled_return_bitfield_9_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -8204,15 +8295,15 @@ types:
         type: cross_order_cancelled_return_bitfield_21
         if: number_of_return_bitfields >= 21
         doc: 'BitSet CrossOrderCancelled byte 21'
-      - id: num_order_allocations
+      - id: num_cross_order_cancelled_order_allocations
         type: u2
         doc: 'Number of order allocations represented by re- peating groups included in this cross order. Must be at least 2 (One agency and one contra), and no more than 11'
-      - id: order_allocations
-        type: order_allocations
+      - id: cross_order_cancelled_order_allocations
+        type: cross_order_cancelled_order_allocations
         repeat: expr
-        repeat-expr: num_order_allocations
+        repeat-expr: num_cross_order_cancelled_order_allocations
         doc: 'Repeating group stated GroupCnt times'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cross_order_cancelled_return_bitfield_1.cross_order_cancelled_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -8225,21 +8316,12 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and cross_order_cancelled_return_bitfield_2.cross_order_cancelled_return_bitfield_2_symbol > 0
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and cross_order_cancelled_return_bitfield_2.cross_order_cancelled_return_bitfield_2_capacity > 0
-      - id: account
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_account > 0
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_clearing_firm > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 3 and cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -8259,10 +8341,6 @@ types:
         type: u1
         enum: put_or_call
         if: number_of_return_bitfields >= 4 and cross_order_cancelled_return_bitfield_4.cross_order_cancelled_return_bitfield_4_put_or_call > 0
-      - id: open_close
-        type: u1
-        enum: open_close
-        if: number_of_return_bitfields >= 4 and cross_order_cancelled_return_bitfield_4.cross_order_cancelled_return_bitfield_4_open_close > 0
       - id: target_party_id
         type: str
         size: 4
@@ -8271,9 +8349,6 @@ types:
       - id: auction_id
         type: u8
         if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_auction_id > 0
-      - id: cmta_number
-        type: u4
-        if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_cmta_number > 0
       - id: cross_type
         type: u1
         enum: cross_type
@@ -8284,14 +8359,6 @@ types:
         enum: cross_prioritization
         if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_cross_prioritization > 0
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be prioritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: alloc_qty
-        type: u4
-        if: number_of_return_bitfields >= 10 and cross_order_cancelled_return_bitfield_10.cross_order_cancelled_return_bitfield_10_alloc_qty > 0
-      - id: give_up_firm_id
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and cross_order_cancelled_return_bitfield_10.cross_order_cancelled_return_bitfield_10_give_up_firm_id > 0
       - id: routing_firm_id
         type: str
         size: 4
@@ -8745,6 +8812,48 @@ types:
         type: b1
       - id: cross_order_cancelled_return_bitfield_21_reserved_128
         type: b1
+  cross_order_cancelled_order_allocations:
+    seq:
+      - id: cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. ID chosen by the client. Characters in the ASCII range 33-126 are allowed, except for comma, semicolon, pipe, the ‘at’ symbol (@) and double quotes. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders, which includes long-lived, persisting GTC/GTD orders. However, we strongly recommend that you keep your ClOrdID values unique'
+      - id: order_id
+        type: u8
+        doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identifier corresponds to the identifiers used in Cboe market data products'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
+      - id: alloc_qty
+        type: u4
+        if: _parent.number_of_return_bitfields >= 10 and _parent.cross_order_cancelled_return_bitfield_10.cross_order_cancelled_return_bitfield_10_alloc_qty > 0
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: _parent.number_of_return_bitfields >= 2 and _parent.cross_order_cancelled_return_bitfield_2.cross_order_cancelled_return_bitfield_2_capacity > 0
+      - id: open_close
+        type: u1
+        enum: open_close
+        if: _parent.number_of_return_bitfields >= 4 and _parent.cross_order_cancelled_return_bitfield_4.cross_order_cancelled_return_bitfield_4_open_close > 0
+      - id: give_up_firm_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: _parent.number_of_return_bitfields >= 10 and _parent.cross_order_cancelled_return_bitfield_10.cross_order_cancelled_return_bitfield_10_give_up_firm_id > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: _parent.number_of_return_bitfields >= 3 and _parent.cross_order_cancelled_return_bitfield_3.cross_order_cancelled_return_bitfield_3_account > 0
+      - id: cmta_number
+        type: u4
+        if: _parent.number_of_return_bitfields >= 9 and _parent.cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_cmta_number > 0
+      - id: clearing_account
+        type: str
+        size: 4
+        encoding: ASCII
   cancel_rejected_message:
     seq:
       - id: transaction_time
@@ -8851,7 +8960,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -9358,10 +9467,9 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-      - id: sub_liquidity_indicato
+      - id: sub_liquidity_indicator
         type: u1
-        enum: sub_liquidity_indicato
-        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL ( 0x00) = No additional information S = Execution from order that set the NBBO B = Step Up Mechanism (C1 and EDGX Only) U = Market Turner (C1 Only) b = AIM (C1 and EDGX Only) Q = QCC (C1 and EDGX Only) s = SAM (C1 and EDGX Only) P = PCC(C1 Only) F = RFC (C1 Only)'
+        enum: sub_liquidity_indicator
       - id: contra_broker
         type: str
         size: 4
@@ -9462,7 +9570,7 @@ types:
         enum: side
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_side > 0
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_price > 0
         doc: 'Implied decimal with scale 1e-4'
@@ -9535,7 +9643,7 @@ types:
       - id: max_floor
         type: u4
         if: number_of_return_bitfields >= 5 and order_execution_return_bitfield_5.order_execution_return_bitfield_5_max_floor > 0
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         if: number_of_return_bitfields >= 5 and order_execution_return_bitfield_5.order_execution_return_bitfield_5_order_qty > 0
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
@@ -9664,6 +9772,7 @@ types:
         type: u1
         enum: multileg_reporting_type
         if: number_of_return_bitfields >= 15 and order_execution_return_bitfield_15.order_execution_return_bitfield_15_multileg_reporting_type > 0
+        doc: 'Corresponds to MultilegReportingType (442) in Cboe FIX. Indicates the type of Order Execution message. 1=Single-leg instrument 2=Individual leg of multi-leg instrument'
       - id: secondary_exec_id
         type: u8
         if: number_of_return_bitfields >= 16 and order_execution_return_bitfield_16.order_execution_return_bitfield_16_secondary_exec_id > 0
@@ -10229,7 +10338,7 @@ types:
       - id: sub_liquidity_indicato
         type: u1
         enum: sub_liquidity_indicato
-        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL ( 0x00) = No additional information S = Execution from order that set the NBBO B = Step Up Mechanism (C1 and EDGX Only) U = Market Turner (C1 Only) b = AIM (C1 and EDGX Only) Q = QCC (C1 and EDGX Only) s = SAM (C1 and EDGX Only) P = PCC(C1 Only) F = RFC (C1 Only)'
+        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL ( 0x00) = No additional information S = Execution from order that set the NBBO B = Step Up Mechanism (C1 and EDGX Only) U = Market Turner (C1 Only) b = AIM (C1 and EDGX Only) s = SAM (C1 and EDGX Only)'
       - id: fee_code
         type: str
         size: 2
@@ -10290,7 +10399,7 @@ types:
       - id: sub_liquidity_indicato
         type: u1
         enum: sub_liquidity_indicato
-        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL ( 0x00) = No additional information S = Execution from order that set the NBBO B = Step Up Mechanism (C1 and EDGX Only) U = Market Turner (C1 Only) b = AIM (C1 and EDGX Only) Q = QCC (C1 and EDGX Only) s = SAM (C1 and EDGX Only) P = PCC(C1 Only) F = RFC (C1 Only)'
+        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL ( 0x00) = No additional information S = Execution from order that set the NBBO B = Step Up Mechanism (C1 and EDGX Only) U = Market Turner (C1 Only) b = AIM (C1 and EDGX Only) s = SAM (C1 and EDGX Only)'
       - id: fee_code
         type: str
         size: 2
@@ -10299,10 +10408,10 @@ types:
         type: str
         size: 2
         encoding: ASCII
-      - id: multileg_reporting_ty
+      - id: multileg_reporting_type
         type: u1
-        enum: multileg_reporting_ty
-        doc: 'Corresponds to MultilegReportingType(442) in Cboe FIX. Indicates the type of Complex Order Execution message 2=Individual leg of mutil-leg instrument 3=Entire multi-leg instrument package. 4=Last individual leg of a multi-leg instrument'
+        enum: multileg_reporting_type
+        doc: 'Corresponds to MultilegReportingType (442) in Cboe FIX. Indicates the type of Order Execution message. 1=Single-leg instrument 2=Individual leg of multi-leg instrument'
       - id: secondary_exec_id
         type: u8
   trade_cancel_or_correct_message:
@@ -12104,13 +12213,15 @@ types:
         size: 6
         encoding: ASCII
         if: number_of_return_bitfields >= 6 and complex_instrument_accepted_return_bitfield_6.complex_instrument_accepted_return_bitfield_6_leg_cfi_code > 0
+        doc: 'Corresponds to LegCFICode (608) in Cboe FIX. (Optional) CFI Code for leg. Required if LegSymbol is in OSI format. OP = Options Put OC = Options Call E = Equity'
       - id: leg_maturity_date
         type: yyyymmdd_date
         if: number_of_return_bitfields >= 6 and complex_instrument_accepted_return_bitfield_6.complex_instrument_accepted_return_bitfield_6_leg_maturity_date > 0
+        doc: 'Corresponds to LegMaturityDate (611) in Cboe FIX. (Optional) Required if LegSymbol is in OSI format'
       - id: leg_strike_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 6 and complex_instrument_accepted_return_bitfield_6.complex_instrument_accepted_return_bitfield_6_leg_strike_price > 0
-        doc: 'Implied decimal with scale 1e-4'
+        doc: 'Corresponds to LegStrikePrice (612) in Cboe FIX. (Optional) Option strike price. System maximum is 99,999,999. Must be non-negative. Required if LegSymbol is in OSI format. Implied decimal with scale 1e-4'
   complex_instrument_accepted_return_bitfield_1:
     meta:
       bit-endian: le
@@ -13076,10 +13187,10 @@ types:
         doc: 'Implied decimal with scale 1e-4'
       - id: maturity_date
         type: yyyymmdd_date
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: side
@@ -13099,10 +13210,9 @@ types:
       - id: floor_trade_time
         type: nanosecond_timestamp
         doc: 'Trade time. Nanoseconds since Unix epoch'
-      - id: trade_through_alert_typ
+      - id: trade_through_alert_type
         type: u1
-        enum: trade_through_alert_typ
-        doc: 'Corresponds to TradeThroughAlertType (21098) in Cboe FIX. Indication of a type of trade through. 0 = No trade through 1 = NBBO 2 = BBO (local best bid or offer) 3 = SBBO (market quote of complex derived by legs) 4 = Book trade through (trade through customer size) 5 = Due Dilligence trade through'
+        enum: trade_through_alert_type
       - id: price_type
         type: u1
         enum: price_type
@@ -13128,9 +13238,9 @@ types:
         doc: 'Implied decimal with scale 1e-4'
       - id: maturity_date
         type: yyyymmdd_date
-      - id: multileg_reporting_typ
+      - id: multileg_reporting_type
         type: u1
-        enum: multileg_reporting_typ
+        enum: multileg_reporting_type
         doc: 'Corresponds to MultilegReportingType (442) in Cboe FIX. Indicates the type of Order Execution message. 1=Single-leg instrument 2=Individual leg of multi-leg instrument'
       - id: combo_order
         type: u1
@@ -13158,10 +13268,10 @@ types:
         type: u1
         enum: side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell'
-      - id: order_qty
+      - id: order_qty_binary_4
         type: u4
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 contracts'
-      - id: price
+      - id: price_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
       - id: transaction_time
@@ -13300,6 +13410,13 @@ types:
         value: packed / 100 % 100
       day:
         value: packed % 100
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   message_type:
@@ -13912,16 +14029,6 @@ enums:
     0x59:
       id: 'yes_field'
       doc: 'Yes'
-  stop_px_typeeffective_tbd:
-    0x4c:
-      id: 'fixed_limit_price'
-      doc: 'Fixed Limit Price'
-    0x42:
-      id: 'fixed_underlying_bid_price_or_index_level'
-      doc: 'Fixed Underlying Bid Price Or Index Level Complex Orders Only'
-    0x41:
-      id: 'fixed_underlying_ask_price_or_index_level'
-      doc: 'Fixed Underlying Ask Price Or Index Level Complex Orders Only'
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
@@ -13952,13 +14059,19 @@ enums:
     0x32:
       id: 'sell'
       doc: 'Sell'
-  multileg_reporting_typ:
+  multileg_reporting_type:
     0x31:
       id: 'singleleg_instrument'
       doc: 'Singleleg Instrument'
     0x32:
       id: 'individual_leg_of_multileg_instrument'
       doc: 'Individual Leg Of Multileg Instrument'
+    0x33:
+      id: 'entire_multileg_instrument_package'
+      doc: 'Entire Multileg Instrument Package'
+    0x34:
+      id: 'last_individual_leg_of_multileg_instrument'
+      doc: 'Last Individual Leg Of Multileg Instrument'
   sub_liquidity_indicator:
     0x53:
       id: 'execution_from_order_that_set_the_nbbo'
@@ -14086,6 +14199,107 @@ enums:
     0x79:
       id: 'quote_received_by_cboe_during_replay'
       doc: 'Quote Received By Cboe During Replay'
+  quote_result:
+    0x41:
+      id: 'new_quote'
+      doc: 'New Quote'
+    0x49:
+      id: 'ioc_quote_accepted'
+      doc: 'Ioc Quote Accepted'
+    0x4c:
+      id: 'modified'
+      doc: 'Modified Loss Of Priority'
+    0x52:
+      id: 'modified_x52'
+      doc: 'Modified Retains Priority Size Reduction'
+    0x4e:
+      id: 'no_change_matches_existing_quote'
+      doc: 'No Change Matches Existing Quote'
+    0x44:
+      id: 'new_quote_but_may_remove_liquidity'
+      doc: 'New Quote But May Remove Liquidity'
+    0x64:
+      id: 'modified_but_may_remove_liquidity'
+      doc: 'Modified But May Remove Liquidity'
+    0x56:
+      id: 'no_change_existing_constituent_series_quote'
+      doc: 'No Change Existing Constituent Series Quote Modify Attempt After Cutoff Time C 1 Only Cancellation'
+    0x55:
+      id: 'user_cancelled'
+      doc: 'User Cancelled Zero Sizeprice Requested Rejection'
+    0x61:
+      id: 'admin'
+      doc: 'Admin'
+    0x4f:
+      id: 'rejected_doesnt_match_a_known_quote'
+      doc: 'Rejected Doesnt Match A Known Quote'
+    0x50:
+      id: 'rejected_cant_post'
+      doc: 'Rejected Cant Post'
+    0x66:
+      id: 'risk_management_firm_or_custom_group_id'
+      doc: 'Risk Management Firm Or Custom Group Id Level'
+    0x53:
+      id: 'rejected_symbol_not_found'
+      doc: 'Rejected Symbol Not Found'
+    0x70:
+      id: 'rejected_invalid_price'
+      doc: 'Rejected Invalid Price'
+    0x72:
+      id: 'invalid_remove'
+      doc: 'Invalid Remove'
+    0x73:
+      id: 'risk_management_risk_root_level'
+      doc: 'Risk Management Risk Root Level'
+    0x75:
+      id: 'rejected_other_reason'
+      doc: 'Rejected Other Reason'
+    0x2b:
+      id: 'risk_management_efid_group_level'
+      doc: 'Risk Management Efid Group Level'
+    0x63:
+      id: 'rejected_closing_only_series'
+      doc: 'Rejected Closing Only Series'
+    0x76:
+      id: 'rejected_attempt_to_add_constituent_series'
+      doc: 'Rejected Attempt To Add Constituent Series Quote After Cutoff Time C 1 Only Additional Reasons Indicating A Reject May Be Added In The Future With No Notice'
+  subreason:
+    0x41:
+      id: 'purgemass_cancel_efid_level_by_user'
+      doc: 'Purgemass Cancel Efid Level By User'
+    0x42:
+      id: 'purgemass_cancel_symbol_level_by_user'
+      doc: 'Purgemass Cancel Symbol Level By User'
+    0x43:
+      id: 'purgemass_cancel_custom_group_id_level_by_user'
+      doc: 'Purgemass Cancel Custom Group Id Level By User'
+    0x45:
+      id: 'efid_level_lockout_by_cboe_trade_desk_admin'
+      doc: 'Efid Level Lockout By Cboe Trade Desk Admin'
+    0x4a:
+      id: 'firm_disconnect'
+      doc: 'Firm Disconnect'
+    0x4b:
+      id: 'me_disconnect'
+      doc: 'Me Disconnect'
+    0x4c:
+      id: 'unregistered_mm_account'
+      doc: 'Unregistered Mm Account'
+    0x53:
+      id: 'minimum_size_requirement_not_met'
+      doc: 'Minimum Size Requirement Not Met'
+    0x54:
+      id: 'cboe_trade_desk_admin'
+      doc: 'Cboe Trade Desk Admin'
+    0x66:
+      id: 'risk_management_efid_level_by_rule'
+      doc: 'Risk Management Efid Level By Rule'
+    0x73:
+      id: 'risk_management_symbol_level_by_rule'
+      doc: 'Risk Management Symbol Level By Rule'
+    0x2b:
+      id: 'risk_management_efid_group_level_by_rule'
+      doc: 'Risk Management Efid Group Level By Rule'
   order_reject_reason:
     0x41:
       id: 'admin'
@@ -14186,43 +14400,6 @@ enums:
     0x34:
       id: 'after_volatility_cutoff'
       doc: 'After Volatility Cutoff'
-  subreason:
-    0x41:
-      id: 'purgemass_cancel_efid_level_by_user'
-      doc: 'Purgemass Cancel Efid Level By User'
-    0x42:
-      id: 'purgemass_cancel_symbol_level_by_user'
-      doc: 'Purgemass Cancel Symbol Level By User'
-    0x43:
-      id: 'purgemass_cancel_custom_group_id_level_by_user'
-      doc: 'Purgemass Cancel Custom Group Id Level By User'
-    0x45:
-      id: 'efid_level_lockout_by_cboe_trade_desk_admin'
-      doc: 'Efid Level Lockout By Cboe Trade Desk Admin'
-    0x4a:
-      id: 'firm_disconnect'
-      doc: 'Firm Disconnect'
-    0x4b:
-      id: 'me_disconnect'
-      doc: 'Me Disconnect'
-    0x4c:
-      id: 'unregistered_mm_account'
-      doc: 'Unregistered Mm Account'
-    0x53:
-      id: 'minimum_size_requirement_not_met'
-      doc: 'Minimum Size Requirement Not Met'
-    0x54:
-      id: 'cboe_trade_desk_admin'
-      doc: 'Cboe Trade Desk Admin'
-    0x66:
-      id: 'risk_management_efid_level_by_rule'
-      doc: 'Risk Management Efid Level By Rule'
-    0x73:
-      id: 'risk_management_symbol_level_by_rule'
-      doc: 'Risk Management Symbol Level By Rule'
-    0x2b:
-      id: 'risk_management_efid_group_level_by_rule'
-      doc: 'Risk Management Efid Group Level By Rule'
   restatement_reason:
     0x45:
       id: 'reduction_of_ord_qty_due_to_equity_leg_reject'
@@ -14588,44 +14765,6 @@ enums:
     0x34:
       id: 'after_volatility_cutoff'
       doc: 'After Volatility Cutoff'
-  sub_liquidity_indicato:
-    0x53:
-      id: 'execution_from_order_that_set_the_nbbo'
-      doc: 'Execution From Order That Set The Nbbo'
-    0x42:
-      id: 'step_up_mechanism'
-      doc: 'Step Up Mechanism C 1 And Edgx Only'
-    0x55:
-      id: 'market_turner'
-      doc: 'Market Turner C 1 Only'
-    0x62:
-      id: 'aim'
-      doc: 'Aim C 1 And Edgx Only'
-    0x51:
-      id: 'qcc'
-      doc: 'Qcc C 1 And Edgx Only'
-    0x73:
-      id: 'sam'
-      doc: 'Sam C 1 And Edgx Only'
-    0x50:
-      id: 'pcc'
-      doc: 'Pccc 1 Only'
-    0x46:
-      id: 'rfc'
-      doc: 'Rfc C 1 Only'
-  multileg_reporting_type:
-    0x31:
-      id: 'singleleg_instrument'
-      doc: 'Singleleg Instrument'
-    0x32:
-      id: 'individual_leg_of_multileg_instrument'
-      doc: 'Individual Leg Of Multileg Instrument'
-    0x33:
-      id: 'entire_multileg_instrument_package'
-      doc: 'Entire Multileg Instrument Package'
-    0x34:
-      id: 'last_individual_leg_of_multileg_instrument'
-      doc: 'Last Individual Leg Of Multileg Instrument'
   trade_through_alert_type:
     0x30:
       id: 'no_trade_through'
@@ -14662,16 +14801,22 @@ enums:
     0x43:
       id: 'auction_uncrossing'
       doc: 'Auction Uncrossing'
-  multileg_reporting_ty:
-    0x32:
-      id: 'individual_leg_of_mutilleg_instrument'
-      doc: 'Individual Leg Of Mutilleg Instrument'
-    0x33:
-      id: 'entire_multileg_instrument_package'
-      doc: 'Entire Multileg Instrument Package'
-    0x34:
-      id: 'last_individual_leg_of_a_multileg_instrument'
-      doc: 'Last Individual Leg Of A Multileg Instrument'
+  sub_liquidity_indicato:
+    0x53:
+      id: 'execution_from_order_that_set_the_nbbo'
+      doc: 'Execution From Order That Set The Nbbo'
+    0x42:
+      id: 'step_up_mechanism'
+      doc: 'Step Up Mechanism C 1 And Edgx Only'
+    0x55:
+      id: 'market_turner'
+      doc: 'Market Turner C 1 Only'
+    0x62:
+      id: 'aim'
+      doc: 'Aim C 1 And Edgx Only'
+    0x73:
+      id: 'sam'
+      doc: 'Sam C 1 And Edgx Only'
   purge_reject_reason:
     0x41:
       id: 'admin'
@@ -14823,23 +14968,4 @@ enums:
     0x32:
       id: 'legs_were_reordered'
       doc: 'Legs Were Reordered'
-  trade_through_alert_typ:
-    0x30:
-      id: 'no_trade_through'
-      doc: 'No Trade Through'
-    0x31:
-      id: 'nbbo'
-      doc: 'Nbbo'
-    0x32:
-      id: 'bbo'
-      doc: 'Bbo Local Best Bid Or Offer'
-    0x33:
-      id: 'sbbo'
-      doc: 'Sbbo Market Quote Of Complex Derived By Legs'
-    0x34:
-      id: 'book_trade_through'
-      doc: 'Book Trade Through Trade Through Customer Size'
-    0x35:
-      id: 'due_dilligence_trade_through'
-      doc: 'Due Dilligence Trade Through'
 

@@ -5533,10 +5533,9 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-      - id: sub_liquidity_indicato
+      - id: sub_liquidity_indicator
         type: u1
-        enum: sub_liquidity_indicato
-        doc: 'Cboe may add additional values without notice. Members must gracefully ignore unknown values. ASCII NUL (0x00) = No additional information E=Trade added RPI liquidity (BYX and EDGX) H=Trade added hidden liquidity I=Trade added hidden liquidity that was price improved J=Execution from first order to join the NBBO P=Periodic Auction (BYX Only) S=NBBO-Setter fee eligible V=Visible liquidity add trade that was price improved m=Midpoint Peg Order s=Order set the NBBO but is not fee eligible'
+        enum: sub_liquidity_indicator
       - id: contra_broker
         type: str
         size: 4
@@ -8151,34 +8150,6 @@ enums:
     0x79:
       id: 'order_received_by_cboe_during_replay'
       doc: 'Order Received By Cboe During Replay'
-  sub_liquidity_indicato:
-    0x45:
-      id: 'trade_added_rpi_liquidity'
-      doc: 'Trade Added Rpi Liquidity Byx And Edgx'
-    0x48:
-      id: 'trade_added_hidden_liquidity'
-      doc: 'Trade Added Hidden Liquidity'
-    0x49:
-      id: 'trade_added_hidden_liquidity_that_was_price'
-      doc: 'Trade Added Hidden Liquidity That Was Price Improved'
-    0x4a:
-      id: 'execution_from_first_order_to_join_the_nbbo'
-      doc: 'Execution From First Order To Join The Nbbo'
-    0x50:
-      id: 'periodic_auction'
-      doc: 'Periodic Auction Byx Only'
-    0x53:
-      id: 'nbbo_setter_fee_eligible'
-      doc: 'Nbbo Setter Fee Eligible'
-    0x56:
-      id: 'visible_liquidity_add_trade_that_was_price'
-      doc: 'Visible Liquidity Add Trade That Was Price Improved'
-    0x6d:
-      id: 'midpoint_peg_order'
-      doc: 'Midpoint Peg Order'
-    0x73:
-      id: 'order_set_the_nbbo_but_is_not_fee_eligible'
-      doc: 'Order Set The Nbbo But Is Not Fee Eligible'
   purge_reject_reason:
     0x41:
       id: 'admin'

@@ -233,6 +233,15 @@ jobs:
       - name: Run Nasdaq NsmEquities Qbbo Itch v2.1 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_qbbo_itch_v2_1.py
 
+      - name: Run Nasdaq NsmEquities TotalView Itch v2.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v2_0.py
+
+      - name: Run Nasdaq NsmEquities TotalView Itch v3.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v3_0.py
+
+      - name: Run Nasdaq NsmEquities TotalView Itch v4.0 Definition Tests
+        run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v4_0.py
+
       - name: Run Nasdaq NsmEquities TotalView Itch v5.0.2017 Definition Tests
         run: python3 .github/tests/test_nasdaq_nsmequities_totalview_itch_v5_0_2017.py
 

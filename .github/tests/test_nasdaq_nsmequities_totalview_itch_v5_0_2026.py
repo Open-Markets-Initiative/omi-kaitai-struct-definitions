@@ -18,7 +18,7 @@ class NasdaqNsmequitiesTotalviewItchV502026UdpTests(unittest.TestCase):
             self.assertTrue(parsed._io.is_eof())
 
     def test_addorderwithmpid(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderWithMPID.pcap"):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderwithMpid.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

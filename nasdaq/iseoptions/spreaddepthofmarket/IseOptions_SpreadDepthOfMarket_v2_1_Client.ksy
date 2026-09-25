@@ -69,7 +69,7 @@ types:
         doc: 'Code identifying this packet type sent by the client'
   debug_packet:
     seq:
-      - id: text
+      - id: debug_text
         type: str
         size: 1
         encoding: ASCII

@@ -1103,6 +1103,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 13 and order_acknowledgment_return_bitfield_13.order_acknowledgment_return_bitfield_13_avg_px > 0
         doc: 'Implied decimal with scale 1e-4'
+      - id: day_avg_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 13 and order_acknowledgment_return_bitfield_13.order_acknowledgment_return_bitfield_13_day_avg_px > 0
+        doc: 'Implied decimal with scale 1e-4'
       - id: frequent_trader_id
         type: str
         size: 6
@@ -1489,14 +1493,29 @@ types:
       - id: reserved_17
         size: 17
         doc: 'Reserved for future expansion. Filled with 0'
-      - id: num_quote
+      - id: num_quote_update_acknowledgment_quote
         type: u1
         doc: 'Number of repeating groups included in this quote update. Allowed values are 1-20'
-      - id: quote
-        type: quote
+      - id: quote_update_acknowledgment_quote
+        type: quote_update_acknowledgment_quote
         repeat: expr
-        repeat-expr: num_quote
+        repeat-expr: num_quote_update_acknowledgment_quote
         doc: 'Repeating group stated QuoteCnt times'
+  quote_update_acknowledgment_quote:
+    seq:
+      - id: order_id
+        type: u8
+        doc: 'Corresponds to OrderID (37) in CFE FIX. Order identifier supplied by CFE. This identifier corresponds to the identifiers used in CFE market data products. Sent to the OCC in the Exchange Data field'
+      - id: quote_result
+        type: u1
+        enum: quote_result
+        doc: 'Result of the quote request. Acceptance: A = New Quote L = Modified; loss of priority R = Modified; retains priority (size reduction) N = No change, matches existing quote D = New Quote, but may remove liquidity d = Modified, but may remove liquidity Cancellation: U = User cancelled (zero size/price requested) Rejection: a = Admin P = Rejected, can’t post f = Risk management EFID or Custom Group ID level S = Rejected, symbol not found p = Rejected, invalid price s = Risk management product root level n = Risk management configuration is not sufficient u = Rejected, other reason Additional reasons indicating a reject may be added in the future with no notice'
+      - id: sub_liquidity_indicator
+        type: u1
+        enum: sub_liquidity_indicator
+      - id: reserved_6
+        size: 6
+        doc: 'Reserved for future expansion. To maintain forward compatibility, fill with 0'
   order_rejected_message:
     seq:
       - id: transaction_time
@@ -4418,6 +4437,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 13 and order_execution_return_bitfield_13.order_execution_return_bitfield_13_avg_px > 0
         doc: 'Implied decimal with scale 1e-4'
+      - id: day_avg_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 13 and order_execution_return_bitfield_13.order_execution_return_bitfield_13_day_avg_px > 0
+        doc: 'Implied decimal with scale 1e-4'
       - id: pending_status
         type: u1
         enum: pending_status
@@ -5845,9 +5868,560 @@ types:
       - id: reserved_1
         size: 1
         doc: 'Reserved for CFE Internal use'
-      - id: return_bitfield_1
+      - id: number_of_tas_restatement_bitfields
         type: u1
-        doc: 'Bitfield identifying fields to return'
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: tas_restatement_bitfield_1
+        type: tas_restatement_bitfield_1
+        if: number_of_tas_restatement_bitfields >= 1
+        doc: 'BitSet TASRestatement byte 1'
+      - id: tas_restatement_bitfield_2
+        type: tas_restatement_bitfield_2
+        if: number_of_tas_restatement_bitfields >= 2
+        doc: 'BitSet TASRestatement byte 2'
+      - id: tas_restatement_bitfield_3
+        type: tas_restatement_bitfield_3
+        if: number_of_tas_restatement_bitfields >= 3
+        doc: 'BitSet TASRestatement byte 3'
+      - id: tas_restatement_bitfield_4
+        type: tas_restatement_bitfield_4
+        if: number_of_tas_restatement_bitfields >= 4
+        doc: 'BitSet TASRestatement byte 4'
+      - id: tas_restatement_bitfield_5
+        type: tas_restatement_bitfield_5
+        if: number_of_tas_restatement_bitfields >= 5
+        doc: 'BitSet TASRestatement byte 5'
+      - id: tas_restatement_bitfield_6
+        type: tas_restatement_bitfield_6
+        if: number_of_tas_restatement_bitfields >= 6
+        doc: 'BitSet TASRestatement byte 6'
+      - id: tas_restatement_bitfield_7
+        type: tas_restatement_bitfield_7
+        if: number_of_tas_restatement_bitfields >= 7
+        doc: 'BitSet TASRestatement byte 7'
+      - id: tas_restatement_bitfield_8
+        type: tas_restatement_bitfield_8
+        if: number_of_tas_restatement_bitfields >= 8
+        doc: 'BitSet TASRestatement byte 8'
+      - id: tas_restatement_bitfield_9
+        type: tas_restatement_bitfield_9
+        if: number_of_tas_restatement_bitfields >= 9
+        doc: 'BitSet TASRestatement byte 9'
+      - id: tas_restatement_bitfield_10
+        type: tas_restatement_bitfield_10
+        if: number_of_tas_restatement_bitfields >= 10
+        doc: 'BitSet TASRestatement byte 10'
+      - id: tas_restatement_bitfield_11
+        type: tas_restatement_bitfield_11
+        if: number_of_tas_restatement_bitfields >= 11
+        doc: 'BitSet TASRestatement byte 11'
+      - id: tas_restatement_bitfield_12
+        type: tas_restatement_bitfield_12
+        if: number_of_tas_restatement_bitfields >= 12
+        doc: 'BitSet TASRestatement byte 12'
+      - id: tas_restatement_bitfield_13
+        type: tas_restatement_bitfield_13
+        if: number_of_tas_restatement_bitfields >= 13
+        doc: 'BitSet TASRestatement byte 13'
+      - id: tas_restatement_bitfield_14
+        type: tas_restatement_bitfield_14
+        if: number_of_tas_restatement_bitfields >= 14
+        doc: 'BitSet TASRestatement byte 14'
+      - id: tas_restatement_bitfield_15
+        type: tas_restatement_bitfield_15
+        if: number_of_tas_restatement_bitfields >= 15
+        doc: 'BitSet TASRestatement byte 15'
+      - id: tas_restatement_bitfield_16
+        type: tas_restatement_bitfield_16
+        if: number_of_tas_restatement_bitfields >= 16
+        doc: 'BitSet TASRestatement byte 16'
+      - id: tas_restatement_bitfield_17
+        type: tas_restatement_bitfield_17
+        if: number_of_tas_restatement_bitfields >= 17
+        doc: 'BitSet TASRestatement byte 17'
+      - id: tas_restatement_bitfield_18
+        type: tas_restatement_bitfield_18
+        if: number_of_tas_restatement_bitfields >= 18
+        doc: 'BitSet TASRestatement byte 18'
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in CFE FIX. 1 = Buy 2 = Sell'
+      - id: price
+        type: decimal_s8_4
+        if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_price > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: time_in_force
+        type: u1
+        enum: time_in_force
+        if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_time_in_force > 0
+      - id: min_qty
+        type: u4
+        if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_min_qty > 0
+      - id: symbol_alphanumeric_8
+        type: str
+        size: 8
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 2 and tas_restatement_bitfield_2.tas_restatement_bitfield_2_symbol > 0
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_tas_restatement_bitfields >= 2 and tas_restatement_bitfield_2.tas_restatement_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 3 and tas_restatement_bitfield_3.tas_restatement_bitfield_3_account > 0
+      - id: clearing_firm
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 3 and tas_restatement_bitfield_3.tas_restatement_bitfield_3_clearing_firm > 0
+      - id: clearing_account
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 3 and tas_restatement_bitfield_3.tas_restatement_bitfield_3_clearing_account > 0
+      - id: prevent_match
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 3 and tas_restatement_bitfield_3.tas_restatement_bitfield_3_prevent_match > 0
+      - id: maturity_date
+        type: yyyymmdd_date
+        if: number_of_tas_restatement_bitfields >= 4 and tas_restatement_bitfield_4.tas_restatement_bitfield_4_maturity_date > 0
+      - id: open_close
+        type: u1
+        enum: open_close
+        if: number_of_tas_restatement_bitfields >= 4 and tas_restatement_bitfield_4.tas_restatement_bitfield_4_open_close > 0
+      - id: orig_cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 5 and tas_restatement_bitfield_5.tas_restatement_bitfield_5_orig_cl_ord_id > 0
+        doc: 'Corresponds to OrigClOrdID (41) in CFE FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
+      - id: last_shares
+        type: u4
+        if: number_of_tas_restatement_bitfields >= 5 and tas_restatement_bitfield_5.tas_restatement_bitfield_5_last_shares > 0
+      - id: last_px
+        type: decimal_s8_4
+        if: number_of_tas_restatement_bitfields >= 5 and tas_restatement_bitfield_5.tas_restatement_bitfield_5_last_px > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: fee_code
+        type: str
+        size: 2
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 8 and tas_restatement_bitfield_8.tas_restatement_bitfield_8_fee_code > 0
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_tas_restatement_bitfields >= 8 and tas_restatement_bitfield_8.tas_restatement_bitfield_8_stop_px > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: cmta_number
+        type: u4
+        if: number_of_tas_restatement_bitfields >= 9 and tas_restatement_bitfield_9.tas_restatement_bitfield_9_cmta_number > 0
+      - id: cti_code
+        type: u1
+        enum: cti_code
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_cti_code > 0
+      - id: manual_order_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_manual_order_indicator > 0
+      - id: oeoid
+        type: str
+        size: 18
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_oeoid > 0
+      - id: trade_date
+        type: yyyymmdd_date
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_trade_date > 0
+      - id: clearing_price
+        type: decimal_s8_4
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_clearing_price > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: clearing_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 12 and tas_restatement_bitfield_12.tas_restatement_bitfield_12_clearing_symbol > 0
+      - id: multileg_reporting_type
+        type: u1
+        enum: multileg_reporting_type
+        if: number_of_tas_restatement_bitfields >= 13 and tas_restatement_bitfield_13.tas_restatement_bitfield_13_multileg_reporting_type > 0
+      - id: secondary_exec_id
+        type: u8
+        if: number_of_tas_restatement_bitfields >= 14 and tas_restatement_bitfield_14.tas_restatement_bitfield_14_secondary_exec_id > 0
+      - id: frequent_trader_id
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_tas_restatement_bitfields >= 16 and tas_restatement_bitfield_16.tas_restatement_bitfield_16_frequent_trader_id > 0
+      - id: cust_order_handling_inst
+        type: u1
+        enum: cust_order_handling_inst
+        if: number_of_tas_restatement_bitfields >= 17 and tas_restatement_bitfield_17.tas_restatement_bitfield_17_cust_order_handling_inst > 0
+  tas_restatement_bitfield_1:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_1_side
+        type: b1
+      - id: tas_restatement_bitfield_1_peg_difference
+        type: b1
+      - id: tas_restatement_bitfield_1_price
+        type: b1
+      - id: tas_restatement_bitfield_1_exec_inst
+        type: b1
+      - id: tas_restatement_bitfield_1_order_type
+        type: b1
+      - id: tas_restatement_bitfield_1_time_in_force
+        type: b1
+      - id: tas_restatement_bitfield_1_min_qty
+        type: b1
+      - id: tas_restatement_bitfield_1_max_remove_pct
+        type: b1
+  tas_restatement_bitfield_2:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_2_symbol
+        type: b1
+      - id: tas_restatement_bitfield_2_symbol_sfx
+        type: b1
+      - id: tas_restatement_bitfield_2_currency
+        type: b1
+      - id: tas_restatement_bitfield_2_id_source
+        type: b1
+      - id: tas_restatement_bitfield_2_security_id
+        type: b1
+      - id: tas_restatement_bitfield_2_security_exchange
+        type: b1
+      - id: tas_restatement_bitfield_2_capacity
+        type: b1
+      - id: tas_restatement_bitfield_2_reserved_128
+        type: b1
+  tas_restatement_bitfield_3:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_3_account
+        type: b1
+      - id: tas_restatement_bitfield_3_clearing_firm
+        type: b1
+      - id: tas_restatement_bitfield_3_clearing_account
+        type: b1
+      - id: tas_restatement_bitfield_3_display_indicator
+        type: b1
+      - id: tas_restatement_bitfield_3_max_floor
+        type: b1
+      - id: tas_restatement_bitfield_3_discretion_amount
+        type: b1
+      - id: tas_restatement_bitfield_3_order_qty
+        type: b1
+      - id: tas_restatement_bitfield_3_prevent_match
+        type: b1
+  tas_restatement_bitfield_4:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_4_maturity_date
+        type: b1
+      - id: tas_restatement_bitfield_4_strike_price
+        type: b1
+      - id: tas_restatement_bitfield_4_put_or_call
+        type: b1
+      - id: tas_restatement_bitfield_4_open_close
+        type: b1
+      - id: tas_restatement_bitfield_4_cl_ord_id_batch
+        type: b1
+      - id: tas_restatement_bitfield_4_corrected_size
+        type: b1
+      - id: tas_restatement_bitfield_4_party_id
+        type: b1
+      - id: tas_restatement_bitfield_4_access_fee
+        type: b1
+  tas_restatement_bitfield_5:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_5_orig_cl_ord_id
+        type: b1
+      - id: tas_restatement_bitfield_5_leaves_qty
+        type: b1
+      - id: tas_restatement_bitfield_5_last_shares
+        type: b1
+      - id: tas_restatement_bitfield_5_last_px
+        type: b1
+      - id: tas_restatement_bitfield_5_display_price
+        type: b1
+      - id: tas_restatement_bitfield_5_working_price
+        type: b1
+      - id: tas_restatement_bitfield_5_base_liquidity_indicator
+        type: b1
+      - id: tas_restatement_bitfield_5_expire_time
+        type: b1
+  tas_restatement_bitfield_6:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_6_secondary_order_id
+        type: b1
+      - id: tas_restatement_bitfield_6_ccp
+        type: b1
+      - id: tas_restatement_bitfield_6_contra_capacity
+        type: b1
+      - id: tas_restatement_bitfield_6_attributed_order
+        type: b1
+      - id: tas_restatement_bitfield_6_ext_exec_inst
+        type: b1
+      - id: tas_restatement_bitfield_6_bulk_order_ids
+        type: b1
+      - id: tas_restatement_bitfield_6_bulk_reject_reasons
+        type: b1
+      - id: tas_restatement_bitfield_6_party_role
+        type: b1
+  tas_restatement_bitfield_7:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_7_sub_liquidity_indicator
+        type: b1
+      - id: tas_restatement_bitfield_7_trade_report_type_return
+        type: b1
+      - id: tas_restatement_bitfield_7_trade_publish_ind_return
+        type: b1
+      - id: tas_restatement_bitfield_7_text
+        type: b1
+      - id: tas_restatement_bitfield_7_bid
+        type: b1
+      - id: tas_restatement_bitfield_7_offer
+        type: b1
+      - id: tas_restatement_bitfield_7_large_size
+        type: b1
+      - id: tas_restatement_bitfield_7_last_mkt
+        type: b1
+  tas_restatement_bitfield_8:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_8_fee_code
+        type: b1
+      - id: tas_restatement_bitfield_8_echo_text
+        type: b1
+      - id: tas_restatement_bitfield_8_stop_px
+        type: b1
+      - id: tas_restatement_bitfield_8_routing_inst
+        type: b1
+      - id: tas_restatement_bitfield_8_rout_strategy
+        type: b1
+      - id: tas_restatement_bitfield_8_route_delivery_method
+        type: b1
+      - id: tas_restatement_bitfield_8_ex_destination
+        type: b1
+      - id: tas_restatement_bitfield_8_trade_report_ref_id
+        type: b1
+  tas_restatement_bitfield_9:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_9_marketing_fee_code
+        type: b1
+      - id: tas_restatement_bitfield_9_target_party_id
+        type: b1
+      - id: tas_restatement_bitfield_9_auction_id
+        type: b1
+      - id: tas_restatement_bitfield_9_order_category
+        type: b1
+      - id: tas_restatement_bitfield_9_liquidity_provision
+        type: b1
+      - id: tas_restatement_bitfield_9_cmta_number
+        type: b1
+      - id: tas_restatement_bitfield_9_cross_type
+        type: b1
+      - id: tas_restatement_bitfield_9_cross_prioritization
+        type: b1
+  tas_restatement_bitfield_10:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_10_cross_id
+        type: b1
+      - id: tas_restatement_bitfield_10_alloc_qty
+        type: b1
+      - id: tas_restatement_bitfield_10_give_up_firm_id
+        type: b1
+      - id: tas_restatement_bitfield_10_routing_f_irm_id
+        type: b1
+      - id: tas_restatement_bitfield_10_waiver_type
+        type: b1
+      - id: tas_restatement_bitfield_10_cross_exclusion_indicator
+        type: b1
+      - id: tas_restatement_bitfield_10_price_formation
+        type: b1
+      - id: tas_restatement_bitfield_10_client_qualified_role
+        type: b1
+  tas_restatement_bitfield_11:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_11_client_id
+        type: b1
+      - id: tas_restatement_bitfield_11_investor_id
+        type: b1
+      - id: tas_restatement_bitfield_11_executor_id
+        type: b1
+      - id: tas_restatement_bitfield_11_order_origination
+        type: b1
+      - id: tas_restatement_bitfield_11_algo
+        type: b1
+      - id: tas_restatement_bitfield_11_deferral_reason
+        type: b1
+      - id: tas_restatement_bitfield_11_investor_qualified_role
+        type: b1
+      - id: tas_restatement_bitfield_11_executor_qualified_role
+        type: b1
+  tas_restatement_bitfield_12:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_12_cti_code
+        type: b1
+      - id: tas_restatement_bitfield_12_manual_order_indicator
+        type: b1
+      - id: tas_restatement_bitfield_12_oeoid
+        type: b1
+      - id: tas_restatement_bitfield_12_trade_date
+        type: b1
+      - id: tas_restatement_bitfield_12_clearing_price
+        type: b1
+      - id: tas_restatement_bitfield_12_clearing_size
+        type: b1
+      - id: tas_restatement_bitfield_12_clearing_symbol
+        type: b1
+      - id: tas_restatement_bitfield_12_reserved_128
+        type: b1
+  tas_restatement_bitfield_13:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_13_cum_qty
+        type: b1
+      - id: tas_restatement_bitfield_13_day_order_qty
+        type: b1
+      - id: tas_restatement_bitfield_13_day_cum_qty
+        type: b1
+      - id: tas_restatement_bitfield_13_avg_px
+        type: b1
+      - id: tas_restatement_bitfield_13_day_avg_px
+        type: b1
+      - id: tas_restatement_bitfield_13_pending_status
+        type: b1
+      - id: tas_restatement_bitfield_13_drill_thru_protection
+        type: b1
+      - id: tas_restatement_bitfield_13_multileg_reporting_type
+        type: b1
+  tas_restatement_bitfield_14:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_14_leg_cfi_code
+        type: b1
+      - id: tas_restatement_bitfield_14_leg_maturity_date
+        type: b1
+      - id: tas_restatement_bitfield_14_leg_strike_price
+        type: b1
+      - id: tas_restatement_bitfield_14_room_id
+        type: b1
+      - id: tas_restatement_bitfield_14_secondary_exec_id
+        type: b1
+      - id: tas_restatement_bitfield_14_user_request_id
+        type: b1
+      - id: tas_restatement_bitfield_14_sis_username
+        type: b1
+      - id: tas_restatement_bitfield_14_user_status
+        type: b1
+  tas_restatement_bitfield_15:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_15_trade_reporting_indicator
+        type: b1
+      - id: tas_restatement_bitfield_15_equity_party_id
+        type: b1
+      - id: tas_restatement_bitfield_15_equity_nbbo_protect
+        type: b1
+      - id: tas_restatement_bitfield_15_mass_cancel_id
+        type: b1
+      - id: tas_restatement_bitfield_15_trade_publish_ind
+        type: b1
+      - id: tas_restatement_bitfield_15_report_time
+        type: b1
+      - id: tas_restatement_bitfield_15_leg_symbol_sfx
+        type: b1
+      - id: tas_restatement_bitfield_15_client_id_attr
+        type: b1
+  tas_restatement_bitfield_16:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_16_frequent_trader_id
+        type: b1
+      - id: tas_restatement_bitfield_16_session_eligibility
+        type: b1
+      - id: tas_restatement_bitfield_16_combo_order
+        type: b1
+      - id: tas_restatement_bitfield_16_compression
+        type: b1
+      - id: tas_restatement_bitfield_16_floor_destination
+        type: b1
+      - id: tas_restatement_bitfield_16_floor_routing_inst
+        type: b1
+      - id: tas_restatement_bitfield_16_multi_class_sprd
+        type: b1
+      - id: tas_restatement_bitfield_16_order_origin
+        type: b1
+  tas_restatement_bitfield_17:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_17_price_type
+        type: b1
+      - id: tas_restatement_bitfield_17_strategy_id
+        type: b1
+      - id: tas_restatement_bitfield_17_trading_session_id
+        type: b1
+      - id: tas_restatement_bitfield_17_trade_through_alert_type
+        type: b1
+      - id: tas_restatement_bitfield_17_sender_location_id
+        type: b1
+      - id: tas_restatement_bitfield_17_floor_trader_acronym
+        type: b1
+      - id: tas_restatement_bitfield_17_exec_leg_cfi_code
+        type: b1
+      - id: tas_restatement_bitfield_17_cust_order_handling_inst
+        type: b1
+  tas_restatement_bitfield_18:
+    meta:
+      bit-endian: le
+    seq:
+      - id: tas_restatement_bitfield_18_reserved_1
+        type: b1
+      - id: tas_restatement_bitfield_18_cross_initiator
+        type: b1
+      - id: tas_restatement_bitfield_18_subreason
+        type: b1
+      - id: tas_restatement_bitfield_18_reserved_8
+        type: b1
+      - id: tas_restatement_bitfield_18_reserved_16
+        type: b1
+      - id: tas_restatement_bitfield_18_reserved_32
+        type: b1
+      - id: tas_restatement_bitfield_18_reserved_64
+        type: b1
+      - id: tas_restatement_bitfield_18_reserved_128
+        type: b1
   variance_restatement_new_order_message_message:
     seq:
       - id: transaction_time
@@ -5864,9 +6438,563 @@ types:
       - id: reserved_1
         size: 1
         doc: 'Reserved for CFE Internal use'
-      - id: return_bitfield_1
+      - id: number_of_variance_restatement_bitfields
         type: u1
-        doc: 'Bitfield identifying fields to return'
+        doc: 'Number of bitfields that follow; the fields they gate are appended'
+      - id: variance_restatement_bitfield_1
+        type: variance_restatement_bitfield_1
+        if: number_of_variance_restatement_bitfields >= 1
+        doc: 'BitSet VarianceRestatement byte 1'
+      - id: variance_restatement_bitfield_2
+        type: variance_restatement_bitfield_2
+        if: number_of_variance_restatement_bitfields >= 2
+        doc: 'BitSet VarianceRestatement byte 2'
+      - id: variance_restatement_bitfield_3
+        type: variance_restatement_bitfield_3
+        if: number_of_variance_restatement_bitfields >= 3
+        doc: 'BitSet VarianceRestatement byte 3'
+      - id: variance_restatement_bitfield_4
+        type: variance_restatement_bitfield_4
+        if: number_of_variance_restatement_bitfields >= 4
+        doc: 'BitSet VarianceRestatement byte 4'
+      - id: variance_restatement_bitfield_5
+        type: variance_restatement_bitfield_5
+        if: number_of_variance_restatement_bitfields >= 5
+        doc: 'BitSet VarianceRestatement byte 5'
+      - id: variance_restatement_bitfield_6
+        type: variance_restatement_bitfield_6
+        if: number_of_variance_restatement_bitfields >= 6
+        doc: 'BitSet VarianceRestatement byte 6'
+      - id: variance_restatement_bitfield_7
+        type: variance_restatement_bitfield_7
+        if: number_of_variance_restatement_bitfields >= 7
+        doc: 'BitSet VarianceRestatement byte 7'
+      - id: variance_restatement_bitfield_8
+        type: variance_restatement_bitfield_8
+        if: number_of_variance_restatement_bitfields >= 8
+        doc: 'BitSet VarianceRestatement byte 8'
+      - id: variance_restatement_bitfield_9
+        type: variance_restatement_bitfield_9
+        if: number_of_variance_restatement_bitfields >= 9
+        doc: 'BitSet VarianceRestatement byte 9'
+      - id: variance_restatement_bitfield_10
+        type: variance_restatement_bitfield_10
+        if: number_of_variance_restatement_bitfields >= 10
+        doc: 'BitSet VarianceRestatement byte 10'
+      - id: variance_restatement_bitfield_11
+        type: variance_restatement_bitfield_11
+        if: number_of_variance_restatement_bitfields >= 11
+        doc: 'BitSet VarianceRestatement byte 11'
+      - id: variance_restatement_bitfield_12
+        type: variance_restatement_bitfield_12
+        if: number_of_variance_restatement_bitfields >= 12
+        doc: 'BitSet VarianceRestatement byte 12'
+      - id: variance_restatement_bitfield_13
+        type: variance_restatement_bitfield_13
+        if: number_of_variance_restatement_bitfields >= 13
+        doc: 'BitSet VarianceRestatement byte 13'
+      - id: variance_restatement_bitfield_14
+        type: variance_restatement_bitfield_14
+        if: number_of_variance_restatement_bitfields >= 14
+        doc: 'BitSet VarianceRestatement byte 14'
+      - id: variance_restatement_bitfield_15
+        type: variance_restatement_bitfield_15
+        if: number_of_variance_restatement_bitfields >= 15
+        doc: 'BitSet VarianceRestatement byte 15'
+      - id: variance_restatement_bitfield_16
+        type: variance_restatement_bitfield_16
+        if: number_of_variance_restatement_bitfields >= 16
+        doc: 'BitSet VarianceRestatement byte 16'
+      - id: variance_restatement_bitfield_17
+        type: variance_restatement_bitfield_17
+        if: number_of_variance_restatement_bitfields >= 17
+        doc: 'BitSet VarianceRestatement byte 17'
+      - id: variance_restatement_bitfield_18
+        type: variance_restatement_bitfield_18
+        if: number_of_variance_restatement_bitfields >= 18
+        doc: 'BitSet VarianceRestatement byte 18'
+      - id: side
+        type: u1
+        enum: side
+        if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_side > 0
+        doc: 'Corresponds to Side (54) in CFE FIX. 1 = Buy 2 = Sell'
+      - id: price
+        type: decimal_s8_4
+        if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_price > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: time_in_force
+        type: u1
+        enum: time_in_force
+        if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_time_in_force > 0
+      - id: min_qty
+        type: u4
+        if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_min_qty > 0
+      - id: symbol_alphanumeric_8
+        type: str
+        size: 8
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 2 and variance_restatement_bitfield_2.variance_restatement_bitfield_2_symbol > 0
+      - id: capacity
+        type: u1
+        enum: capacity
+        if: number_of_variance_restatement_bitfields >= 2 and variance_restatement_bitfield_2.variance_restatement_bitfield_2_capacity > 0
+      - id: account
+        type: str
+        size: 16
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 3 and variance_restatement_bitfield_3.variance_restatement_bitfield_3_account > 0
+      - id: clearing_firm
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 3 and variance_restatement_bitfield_3.variance_restatement_bitfield_3_clearing_firm > 0
+      - id: clearing_account
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 3 and variance_restatement_bitfield_3.variance_restatement_bitfield_3_clearing_account > 0
+      - id: prevent_participant_match
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 3 and variance_restatement_bitfield_3.variance_restatement_bitfield_3_prevent_participant_match > 0
+      - id: maturity_date
+        type: yyyymmdd_date
+        if: number_of_variance_restatement_bitfields >= 4 and variance_restatement_bitfield_4.variance_restatement_bitfield_4_maturity_date > 0
+      - id: open_close
+        type: u1
+        enum: open_close
+        if: number_of_variance_restatement_bitfields >= 4 and variance_restatement_bitfield_4.variance_restatement_bitfield_4_open_close > 0
+      - id: orig_cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 5 and variance_restatement_bitfield_5.variance_restatement_bitfield_5_orig_cl_ord_id > 0
+        doc: 'Corresponds to OrigClOrdID (41) in CFE FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
+      - id: last_shares
+        type: u4
+        if: number_of_variance_restatement_bitfields >= 5 and variance_restatement_bitfield_5.variance_restatement_bitfield_5_last_shares > 0
+      - id: last_px
+        type: decimal_s8_4
+        if: number_of_variance_restatement_bitfields >= 5 and variance_restatement_bitfield_5.variance_restatement_bitfield_5_last_px > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: fee_code
+        type: str
+        size: 2
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 8 and variance_restatement_bitfield_8.variance_restatement_bitfield_8_fee_code > 0
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_variance_restatement_bitfields >= 8 and variance_restatement_bitfield_8.variance_restatement_bitfield_8_stop_px > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: cmta_number
+        type: u4
+        if: number_of_variance_restatement_bitfields >= 9 and variance_restatement_bitfield_9.variance_restatement_bitfield_9_cmta_number > 0
+      - id: cti_code
+        type: u1
+        enum: cti_code
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_cti_code > 0
+      - id: manual_order_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_manual_order_indicator > 0
+      - id: oeoid
+        type: str
+        size: 18
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_oeoid > 0
+      - id: trade_date
+        type: yyyymmdd_date
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_trade_date > 0
+      - id: clearing_price
+        type: decimal_s8_4
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_clearing_price > 0
+        doc: 'Implied decimal with scale 1e-4'
+      - id: clearing_size
+        type: u4
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_clearing_size > 0
+      - id: clearing_symbol
+        type: str
+        size: 8
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 12 and variance_restatement_bitfield_12.variance_restatement_bitfield_12_clearing_symbol > 0
+      - id: multileg_reporting_type
+        type: u1
+        enum: multileg_reporting_type
+        if: number_of_variance_restatement_bitfields >= 13 and variance_restatement_bitfield_13.variance_restatement_bitfield_13_multileg_reporting_type > 0
+      - id: secondary_exec_id
+        type: u8
+        if: number_of_variance_restatement_bitfields >= 14 and variance_restatement_bitfield_14.variance_restatement_bitfield_14_secondary_exec_id > 0
+      - id: frequent_trader_id
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_variance_restatement_bitfields >= 16 and variance_restatement_bitfield_16.variance_restatement_bitfield_16_frequent_trader_id > 0
+      - id: cust_order_handling_inst
+        type: u1
+        enum: cust_order_handling_inst
+        if: number_of_variance_restatement_bitfields >= 17 and variance_restatement_bitfield_17.variance_restatement_bitfield_17_cust_order_handling_inst > 0
+  variance_restatement_bitfield_1:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_1_side
+        type: b1
+      - id: variance_restatement_bitfield_1_peg_difference
+        type: b1
+      - id: variance_restatement_bitfield_1_price
+        type: b1
+      - id: variance_restatement_bitfield_1_exec_inst
+        type: b1
+      - id: variance_restatement_bitfield_1_order_type
+        type: b1
+      - id: variance_restatement_bitfield_1_time_in_force
+        type: b1
+      - id: variance_restatement_bitfield_1_min_qty
+        type: b1
+      - id: variance_restatement_bitfield_1_max_remove_pct
+        type: b1
+  variance_restatement_bitfield_2:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_2_symbol
+        type: b1
+      - id: variance_restatement_bitfield_2_symbol_sfx
+        type: b1
+      - id: variance_restatement_bitfield_2_currency
+        type: b1
+      - id: variance_restatement_bitfield_2_id_source
+        type: b1
+      - id: variance_restatement_bitfield_2_security_id
+        type: b1
+      - id: variance_restatement_bitfield_2_security_exchange
+        type: b1
+      - id: variance_restatement_bitfield_2_capacity
+        type: b1
+      - id: variance_restatement_bitfield_2_reserved_128
+        type: b1
+  variance_restatement_bitfield_3:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_3_account
+        type: b1
+      - id: variance_restatement_bitfield_3_clearing_firm
+        type: b1
+      - id: variance_restatement_bitfield_3_clearing_account
+        type: b1
+      - id: variance_restatement_bitfield_3_display_indicator
+        type: b1
+      - id: variance_restatement_bitfield_3_max_floor
+        type: b1
+      - id: variance_restatement_bitfield_3_discretion_amount
+        type: b1
+      - id: variance_restatement_bitfield_3_order_qty
+        type: b1
+      - id: variance_restatement_bitfield_3_prevent_participant_match
+        type: b1
+  variance_restatement_bitfield_4:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_4_maturity_date
+        type: b1
+      - id: variance_restatement_bitfield_4_strike_price
+        type: b1
+      - id: variance_restatement_bitfield_4_put_or_call
+        type: b1
+      - id: variance_restatement_bitfield_4_open_close
+        type: b1
+      - id: variance_restatement_bitfield_4_cl_ord_id_batch
+        type: b1
+      - id: variance_restatement_bitfield_4_corrected_size
+        type: b1
+      - id: variance_restatement_bitfield_4_party_id
+        type: b1
+      - id: variance_restatement_bitfield_4_access_fee
+        type: b1
+  variance_restatement_bitfield_5:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_5_orig_cl_ord_id
+        type: b1
+      - id: variance_restatement_bitfield_5_leaves_qty
+        type: b1
+      - id: variance_restatement_bitfield_5_last_shares
+        type: b1
+      - id: variance_restatement_bitfield_5_last_px
+        type: b1
+      - id: variance_restatement_bitfield_5_display_price
+        type: b1
+      - id: variance_restatement_bitfield_5_working_price
+        type: b1
+      - id: variance_restatement_bitfield_5_base_liquidity_indicator
+        type: b1
+      - id: variance_restatement_bitfield_5_expire_time
+        type: b1
+  variance_restatement_bitfield_6:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_6_secondary_order_id
+        type: b1
+      - id: variance_restatement_bitfield_6_ccp
+        type: b1
+      - id: variance_restatement_bitfield_6_contra_capacity
+        type: b1
+      - id: variance_restatement_bitfield_6_attributed_order
+        type: b1
+      - id: variance_restatement_bitfield_6_ext_exec_inst
+        type: b1
+      - id: variance_restatement_bitfield_6_bulk_order_ids
+        type: b1
+      - id: variance_restatement_bitfield_6_bulk_reject_reasons
+        type: b1
+      - id: variance_restatement_bitfield_6_party_role
+        type: b1
+  variance_restatement_bitfield_7:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_7_sub_liquidity_indicator
+        type: b1
+      - id: variance_restatement_bitfield_7_trade_report_type_return
+        type: b1
+      - id: variance_restatement_bitfield_7_trade_publish_ind_return
+        type: b1
+      - id: variance_restatement_bitfield_7_text
+        type: b1
+      - id: variance_restatement_bitfield_7_bid
+        type: b1
+      - id: variance_restatement_bitfield_7_offer
+        type: b1
+      - id: variance_restatement_bitfield_7_large_size
+        type: b1
+      - id: variance_restatement_bitfield_7_last_mkt
+        type: b1
+  variance_restatement_bitfield_8:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_8_fee_code
+        type: b1
+      - id: variance_restatement_bitfield_8_echo_text
+        type: b1
+      - id: variance_restatement_bitfield_8_stop_px
+        type: b1
+      - id: variance_restatement_bitfield_8_routing_inst
+        type: b1
+      - id: variance_restatement_bitfield_8_rout_strategy
+        type: b1
+      - id: variance_restatement_bitfield_8_route_delivery_method
+        type: b1
+      - id: variance_restatement_bitfield_8_ex_destination
+        type: b1
+      - id: variance_restatement_bitfield_8_trade_report_ref_id
+        type: b1
+  variance_restatement_bitfield_9:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_9_marketing_fee_code
+        type: b1
+      - id: variance_restatement_bitfield_9_target_party_id
+        type: b1
+      - id: variance_restatement_bitfield_9_auction_id
+        type: b1
+      - id: variance_restatement_bitfield_9_order_category
+        type: b1
+      - id: variance_restatement_bitfield_9_liquidity_provision
+        type: b1
+      - id: variance_restatement_bitfield_9_cmta_number
+        type: b1
+      - id: variance_restatement_bitfield_9_cross_type
+        type: b1
+      - id: variance_restatement_bitfield_9_cross_prioritization
+        type: b1
+  variance_restatement_bitfield_10:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_10_cross_id
+        type: b1
+      - id: variance_restatement_bitfield_10_alloc_qty
+        type: b1
+      - id: variance_restatement_bitfield_10_give_up_firm_id
+        type: b1
+      - id: variance_restatement_bitfield_10_routing_f_irm_id
+        type: b1
+      - id: variance_restatement_bitfield_10_waiver_type
+        type: b1
+      - id: variance_restatement_bitfield_10_cross_exclusion_indicator
+        type: b1
+      - id: variance_restatement_bitfield_10_price_formation
+        type: b1
+      - id: variance_restatement_bitfield_10_client_qualified_role
+        type: b1
+  variance_restatement_bitfield_11:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_11_client_id
+        type: b1
+      - id: variance_restatement_bitfield_11_investor_id
+        type: b1
+      - id: variance_restatement_bitfield_11_executor_id
+        type: b1
+      - id: variance_restatement_bitfield_11_order_origination
+        type: b1
+      - id: variance_restatement_bitfield_11_algo
+        type: b1
+      - id: variance_restatement_bitfield_11_deferral_reason
+        type: b1
+      - id: variance_restatement_bitfield_11_investor_qualified_role
+        type: b1
+      - id: variance_restatement_bitfield_11_executor_qualified_role
+        type: b1
+  variance_restatement_bitfield_12:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_12_cti_code
+        type: b1
+      - id: variance_restatement_bitfield_12_manual_order_indicator
+        type: b1
+      - id: variance_restatement_bitfield_12_oeoid
+        type: b1
+      - id: variance_restatement_bitfield_12_trade_date
+        type: b1
+      - id: variance_restatement_bitfield_12_clearing_price
+        type: b1
+      - id: variance_restatement_bitfield_12_clearing_size
+        type: b1
+      - id: variance_restatement_bitfield_12_clearing_symbol
+        type: b1
+      - id: variance_restatement_bitfield_12_reserved_128
+        type: b1
+  variance_restatement_bitfield_13:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_13_cum_qty
+        type: b1
+      - id: variance_restatement_bitfield_13_day_order_qty
+        type: b1
+      - id: variance_restatement_bitfield_13_day_cum_qty
+        type: b1
+      - id: variance_restatement_bitfield_13_avg_px
+        type: b1
+      - id: variance_restatement_bitfield_13_day_avg_px
+        type: b1
+      - id: variance_restatement_bitfield_13_pending_status
+        type: b1
+      - id: variance_restatement_bitfield_13_drill_thru_protection
+        type: b1
+      - id: variance_restatement_bitfield_13_multileg_reporting_type
+        type: b1
+  variance_restatement_bitfield_14:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_14_leg_cfi_code
+        type: b1
+      - id: variance_restatement_bitfield_14_leg_maturity_date
+        type: b1
+      - id: variance_restatement_bitfield_14_leg_strike_price
+        type: b1
+      - id: variance_restatement_bitfield_14_room_id
+        type: b1
+      - id: variance_restatement_bitfield_14_secondary_exec_id
+        type: b1
+      - id: variance_restatement_bitfield_14_user_request_id
+        type: b1
+      - id: variance_restatement_bitfield_14_sis_username
+        type: b1
+      - id: variance_restatement_bitfield_14_user_status
+        type: b1
+  variance_restatement_bitfield_15:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_15_trade_reporting_indicator
+        type: b1
+      - id: variance_restatement_bitfield_15_equity_party_id
+        type: b1
+      - id: variance_restatement_bitfield_15_equity_nbbo_protect
+        type: b1
+      - id: variance_restatement_bitfield_15_mass_cancel_id
+        type: b1
+      - id: variance_restatement_bitfield_15_trade_publish_ind
+        type: b1
+      - id: variance_restatement_bitfield_15_report_time
+        type: b1
+      - id: variance_restatement_bitfield_15_leg_symbol_sfx
+        type: b1
+      - id: variance_restatement_bitfield_15_client_id_attr
+        type: b1
+  variance_restatement_bitfield_16:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_16_frequent_trader_id
+        type: b1
+      - id: variance_restatement_bitfield_16_session_eligibility
+        type: b1
+      - id: variance_restatement_bitfield_16_combo_order
+        type: b1
+      - id: variance_restatement_bitfield_16_compression
+        type: b1
+      - id: variance_restatement_bitfield_16_floor_destination
+        type: b1
+      - id: variance_restatement_bitfield_16_floor_routing_inst
+        type: b1
+      - id: variance_restatement_bitfield_16_multi_class_sprd
+        type: b1
+      - id: variance_restatement_bitfield_16_order_origin
+        type: b1
+  variance_restatement_bitfield_17:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_17_price_type
+        type: b1
+      - id: variance_restatement_bitfield_17_strategy_id
+        type: b1
+      - id: variance_restatement_bitfield_17_trading_session_id
+        type: b1
+      - id: variance_restatement_bitfield_17_trade_through_alert_type
+        type: b1
+      - id: variance_restatement_bitfield_17_sender_location_id
+        type: b1
+      - id: variance_restatement_bitfield_17_floor_trader_acronym
+        type: b1
+      - id: variance_restatement_bitfield_17_exec_leg_cfi_code
+        type: b1
+      - id: variance_restatement_bitfield_17_cust_order_handling_inst
+        type: b1
+  variance_restatement_bitfield_18:
+    meta:
+      bit-endian: le
+    seq:
+      - id: variance_restatement_bitfield_18_reserved_1
+        type: b1
+      - id: variance_restatement_bitfield_18_cross_initiator
+        type: b1
+      - id: variance_restatement_bitfield_18_subreason
+        type: b1
+      - id: variance_restatement_bitfield_18_reserved_8
+        type: b1
+      - id: variance_restatement_bitfield_18_reserved_16
+        type: b1
+      - id: variance_restatement_bitfield_18_reserved_32
+        type: b1
+      - id: variance_restatement_bitfield_18_reserved_64
+        type: b1
+      - id: variance_restatement_bitfield_18_reserved_128
+        type: b1
   tas_quote_restatement_message:
     seq:
       - id: transaction_time
@@ -5889,10 +7017,9 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Corresponds to ClearingSymbol (21053) in CFE FIX'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Corresponds to ClearingPrice (21050) in CFE FIX. Optional field used in restatement messages where the originally reported fill price (LastPx) is transformed prior to clearing. Implied decimal with scale 1e-4'
+        doc: 'Implied decimal with scale 1e-4'
       - id: reserved_16
         size: 16
         doc: 'Reserved for future expansion. To maintain forward compatibility, fill with 0'
@@ -5918,10 +7045,9 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Corresponds to ClearingSymbol (21053) in CFE FIX'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Corresponds to ClearingPrice (21050) in CFE FIX. Optional field used in restatement messages where the originally reported fill price (LastPx) is transformed prior to clearing. Implied decimal with scale 1e-4'
+        doc: 'Implied decimal with scale 1e-4'
       - id: clearing_size
         type: u4
       - id: reserved_16
@@ -6289,6 +7415,52 @@ enums:
     0x7a:
       id: 'invalid_size_modifier'
       doc: 'Invalid Size Modifier'
+  quote_result:
+    0x41:
+      id: 'new_quote'
+      doc: 'New Quote'
+    0x4c:
+      id: 'modified'
+      doc: 'Modified Loss Of Priority'
+    0x52:
+      id: 'modified_x52'
+      doc: 'Modified Retains Priority Size Reduction'
+    0x4e:
+      id: 'no_change_matches_existing_quote'
+      doc: 'No Change Matches Existing Quote'
+    0x44:
+      id: 'new_quote_but_may_remove_liquidity'
+      doc: 'New Quote But May Remove Liquidity'
+    0x64:
+      id: 'modified_but_may_remove_liquidity'
+      doc: 'Modified But May Remove Liquidity Cancellation'
+    0x55:
+      id: 'user_cancelled'
+      doc: 'User Cancelled Zero Sizeprice Requested Rejection'
+    0x61:
+      id: 'admin'
+      doc: 'Admin'
+    0x50:
+      id: 'rejected_cant_post'
+      doc: 'Rejected Cant Post'
+    0x66:
+      id: 'risk_management_efid_or_custom_group_id'
+      doc: 'Risk Management Efid Or Custom Group Id Level'
+    0x53:
+      id: 'rejected_symbol_not_found'
+      doc: 'Rejected Symbol Not Found'
+    0x70:
+      id: 'rejected_invalid_price'
+      doc: 'Rejected Invalid Price'
+    0x73:
+      id: 'risk_management_product_root_level'
+      doc: 'Risk Management Product Root Level'
+    0x6e:
+      id: 'risk_management_configuration_is_not'
+      doc: 'Risk Management Configuration Is Not Sufficient'
+    0x75:
+      id: 'rejected_other_reason'
+      doc: 'Rejected Other Reason Additional Reasons Indicating A Reject May Be Added In The Future With No Notice'
   order_reject_reason:
     0x41:
       id: 'admin'
