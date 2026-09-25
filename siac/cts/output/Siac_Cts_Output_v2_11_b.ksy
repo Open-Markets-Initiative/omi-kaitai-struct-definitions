@@ -510,13 +510,13 @@ types:
         doc: 'Contains The Participant Reference Number'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 17 Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies The Daily Established Drop Level Value Level 17% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 213 Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies The Daily Established Drop Level Value Level 213% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 320 Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies The Daily Established Drop Level Value Level 320% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
       - id: reserved
         type: str
         size: 1
@@ -2646,10 +2646,10 @@ enums:
   minimum_price_increment_indicator:
     0x31:
       id: 'penny_mpi_001'
-      doc: 'Penny Mpi 001'
+      doc: 'Penny Mpi 0.01'
     0x32:
       id: 'half_penny_mpi_0005'
-      doc: 'Half Penny Mpi 0005'
+      doc: 'Half Penny Mpi 0.005'
   luld_tier:
     0x30:
       id: 'luld_not_applicable'

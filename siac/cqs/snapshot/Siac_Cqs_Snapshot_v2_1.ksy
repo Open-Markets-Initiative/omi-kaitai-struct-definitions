@@ -219,13 +219,13 @@ types:
         doc: 'Identifies The Participant Or Processor That Generated The Message'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 17 Of Previous Close Sp 500 Value'
+        doc: 'Identifies The Daily Established Drop Level Value Level 17% Of Previous Close Sp 500 Value'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 213 Of Previous Close Sp 500 Value'
+        doc: 'Identifies The Daily Established Drop Level Value Level 213% Of Previous Close Sp 500 Value'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 320 Of Previous Close Sp 500 Value'
+        doc: 'Identifies The Daily Established Drop Level Value Level 320% Of Previous Close Sp 500 Value'
       - id: reserved
         type: str
         size: 1
@@ -365,7 +365,7 @@ types:
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Indicates Retail Price Improvement Rpi Interest Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0001'
+        doc: 'Indicates Retail Price Improvement Rpi Interest Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0.001'
       - id: settlement_condition
         type: u1
         enum: settlement_condition

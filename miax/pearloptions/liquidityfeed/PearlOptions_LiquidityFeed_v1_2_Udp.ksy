@@ -354,7 +354,7 @@ enums:
   pearl_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 At All Prices'
+      doc: 'Penny 0.01 At All Prices'
     0x4e:
       id: 'penny_or_nickel'
       doc: 'Penny If Price 3 Nickel If Price 3'
@@ -364,7 +364,7 @@ enums:
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 At All Prices'
+      doc: 'Penny 0.01 At All Prices'
     0x4e:
       id: 'penny_or_nickel'
       doc: 'Penny If Price 3 Nickel If Price 3'

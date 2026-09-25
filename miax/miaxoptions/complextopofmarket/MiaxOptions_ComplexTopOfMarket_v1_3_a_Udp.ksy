@@ -195,14 +195,29 @@ types:
       - id: reserved_10
         size: 10
         doc: 'Reserved for future use'
-      - id: number_of_legs
+      - id: num_leg_definition
         type: u1
         doc: 'Number of Legs. Variable from 2 to 8'
-      - id: leg_definition_0
-        type: str
-        size-eos: true
-        encoding: ASCII
-        doc: 'Repeating leg block, count given by Number of Legs'
+      - id: leg_definition
+        type: leg_definition
+        repeat: expr
+        repeat-expr: num_leg_definition
+        doc: 'Complex Strategy Number of Legs'
+  leg_definition:
+    seq:
+      - id: product_id
+        type: u4
+        doc: 'MIAX Product ID mapped to a given option. It is assigned per trading session and is valid for that session'
+      - id: leg_ratio_qty
+        type: u2
+        doc: 'The ratio of this individual leg'
+      - id: leg_side
+        type: u1
+        enum: leg_side
+        doc: 'The side of this individual leg'
+      - id: reserved_8
+        size: 8
+        doc: 'Reserved for future use'
   system_state_message:
     seq:
       - id: nanoseconds
@@ -548,23 +563,23 @@ enums:
   miax_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 For All Prices'
+      doc: 'Penny 0.01 For All Prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 001 If Price 3 Nickel 005 If Price 3'
+      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 005 If Price 3 Dime 010 If Price 3'
+      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 For All Prices'
+      doc: 'Penny 0.01 For All Prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 001 If Price 3 Nickel 005 If Price 3'
+      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 005 If Price 3 Dime 010 If Price 3'
+      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
   opening_underlying_market_code:
     0x41:
       id: 'nyse_amex'
@@ -636,6 +651,13 @@ enums:
     0x55:
       id: 'updated'
       doc: 'Strategy Definition Updated'
+  leg_side:
+    0x42:
+      id: 'bid'
+      doc: 'Bid'
+    0x41:
+      id: 'ask'
+      doc: 'Ask'
   system_status:
     0x53:
       id: 'start_of_system_hours'

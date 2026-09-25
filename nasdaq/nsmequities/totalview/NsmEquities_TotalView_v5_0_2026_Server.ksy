@@ -1246,43 +1246,43 @@ enums:
   price_variation_indicator:
     0x4c:
       id: 'less_than_1_percent'
-      doc: 'Less Than 1'
+      doc: 'Less Than 1%'
     0x31:
       id: 'less_than_2_percent'
-      doc: '1 To 199'
+      doc: '1 To 1.99%'
     0x32:
       id: 'less_than_3_percent'
-      doc: '2 To 299'
+      doc: '2 To 2.99%'
     0x33:
       id: 'less_than_4_percent'
-      doc: '3 To 399'
+      doc: '3 To 3.99%'
     0x34:
       id: 'less_than_5_percent'
-      doc: '4 To 499'
+      doc: '4 To 4.99%'
     0x35:
       id: 'less_than_6_percent'
-      doc: '5 To 599'
+      doc: '5 To 5.99%'
     0x36:
       id: 'less_than_7_percent'
-      doc: '6 To 699'
+      doc: '6 To 6.99%'
     0x37:
       id: 'less_than_8_percent'
-      doc: '7 To 799'
+      doc: '7 To 7.99%'
     0x38:
       id: 'less_than_9_percent'
-      doc: '8 To 899'
+      doc: '8 To 8.99%'
     0x39:
       id: 'less_than_10_percent'
-      doc: '9 To 999'
+      doc: '9 To 9.99%'
     0x41:
       id: 'less_than_20_percent'
-      doc: '10 To 1999'
+      doc: '10 To 19.99%'
     0x42:
       id: 'less_than_30_percent'
-      doc: '20 To 2999'
+      doc: '20 To 29.99%'
     0x43:
       id: 'more_than_30_percent'
-      doc: '30 Or Greater'
+      doc: '30% Or Greater'
     0x20:
       id: 'not_available'
       doc: 'Cannot Be Calculated'

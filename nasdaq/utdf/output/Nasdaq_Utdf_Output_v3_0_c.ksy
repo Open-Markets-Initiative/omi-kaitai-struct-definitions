@@ -1822,13 +1822,13 @@ enums:
   mwcb_status_level_indicator:
     0x31:
       id: 'market_wide_circuit_breaker_decline_level_1_breached_7_decline'
-      doc: 'Market Wide Circuit Breaker Decline Level 1 Breached 7 Decline'
+      doc: 'Market Wide Circuit Breaker Decline Level 1 Breached 7% Decline'
     0x32:
       id: 'market_wide_circuit_breaker_decline_level_2_breached_13_decline'
-      doc: 'Market Wide Circuit Breaker Decline Level 2 Breached 13 Decline'
+      doc: 'Market Wide Circuit Breaker Decline Level 2 Breached 13% Decline'
     0x33:
       id: 'market_wide_circuit_breaker_decline_level_3_breached_20_decline'
-      doc: 'Market Wide Circuit Breaker Decline Level 3 Breached 20 Decline'
+      doc: 'Market Wide Circuit Breaker Decline Level 3 Breached 20% Decline'
   trading_action_indicator:
     0x48:
       id: 'trading_halt_in_effect'

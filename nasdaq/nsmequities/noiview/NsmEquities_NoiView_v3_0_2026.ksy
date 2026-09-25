@@ -620,7 +620,7 @@ enums:
   price_variation_indicator:
     0x4c:
       id: 'less_than_1'
-      doc: 'Less Than 1'
+      doc: 'Less Than 1%'
     0x31:
       id: 'one_to_one_point_nine_nine_percent'
       doc: 'One To One Point Nine Nine Percent'

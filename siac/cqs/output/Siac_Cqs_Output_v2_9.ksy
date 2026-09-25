@@ -327,13 +327,13 @@ types:
         doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 7'
+        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 7%'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 13'
+        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 13%'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 20'
+        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 20%'
       - id: reserved
         type: u1
         doc: 'Field Is Reserved For Future Use'
@@ -485,7 +485,7 @@ types:
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'When Retail Price Improvement Rpi Interest Is Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0001 An Indication Of Interest On The Bid Offer Or Both The Bid And Offer Will Identify That Interest Will Be Eligible To Interact With Incoming Retail Order Interest'
+        doc: 'When Retail Price Improvement Rpi Interest Is Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0.001 An Indication Of Interest On The Bid Offer Or Both The Bid And Offer Will Identify That Interest Will Be Eligible To Interact With Incoming Retail Order Interest'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
@@ -738,7 +738,7 @@ types:
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'When Retail Price Improvement Rpi Interest Is Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0001 An Indication Of Interest On The Bid Offer Or Both The Bid And Offer Will Identify That Interest Will Be Eligible To Interact With Incoming Retail Order Interest'
+        doc: 'When Retail Price Improvement Rpi Interest Is Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0.001 An Indication Of Interest On The Bid Offer Or Both The Bid And Offer Will Identify That Interest Will Be Eligible To Interact With Incoming Retail Order Interest'
       - id: settlement_condition
         type: u1
         enum: settlement_condition

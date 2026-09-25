@@ -107,12 +107,9 @@ types:
             'message_type::stock_halt_status_message': stock_halt_status_message
   sequenced_message_header:
     seq:
-      - id: time_stamp
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Milliseconds past midnight Eastern the message was generated'
+      - id: timestamp
+        type: millisecond_ascii_timestamp
+        doc: 'Milliseconds past midnight Eastern the message was generated. Milliseconds since Midnight epoch'
       - id: message_type
         type: u1
         enum: message_type
@@ -253,6 +250,21 @@ types:
         type: u1
         enum: stock_halted
         doc: 'Indicates if the stock symbol is halted on NASDAQ system'
+  millisecond_ascii_timestamp:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.to_i / 3600000 % 24
+      minute:
+        value: text.to_i / 60000 % 60
+      second:
+        value: text.to_i / 1000 % 60
+      millisecond:
+        value: text.to_i % 1000
 
 enums:
   client_packet_type:

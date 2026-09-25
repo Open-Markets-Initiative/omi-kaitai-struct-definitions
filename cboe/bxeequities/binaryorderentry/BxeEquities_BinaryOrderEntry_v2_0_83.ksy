@@ -9225,7 +9225,7 @@ enums:
   price_formation:
     0x33:
       id: 'negotiated_trade_subject_to_conditions_other_than_the'
-      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price Pric Please Note That This Is Not Needed Or Supported On Bxe Or Cxe For Mmt Level 38 Contribution To Price Formation Or The Price Discovery Process Supported Values Are Not Specified Or P Plain Vanilla Trade'
+      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price Pric Please Note That This Is Not Needed Or Supported On Bxe Or Cxe For Mmt Level 3.8 Contribution To Price Formation Or The Price Discovery Process Supported Values Are Not Specified Or P Plain Vanilla Trade'
     0x54:
       id: 'non_price_forming_trade'
       doc: 'Non Price Forming Trade Npft Effective 1 December 2025 On Bxe And Cxe This Value Will Be Ignored If Used On A Rts 2 Instrument'

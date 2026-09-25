@@ -535,23 +535,23 @@ enums:
   miax_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 For All Prices'
+      doc: 'Penny 0.01 For All Prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 001 If Price 3 Nickel 005 If Price 3'
+      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 005 If Price 3 Dime 010 If Price 3'
+      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 001 For All Prices'
+      doc: 'Penny 0.01 For All Prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 001 If Price 3 Nickel 005 If Price 3'
+      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 005 If Price 3 Dime 010 If Price 3'
+      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
   opening_underlying_market_code:
     0x41:
       id: 'nyse_amex'

@@ -413,13 +413,13 @@ types:
         doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 7'
+        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 7%'
       - id: mwcb_level_2
         type: s8
-        doc: 'Decline Level 13 Of Previous Close'
+        doc: 'Decline Level 13% Of Previous Close'
       - id: mwcb_level_3
         type: s8
-        doc: 'Decline Level 20 Of Previous Close'
+        doc: 'Decline Level 20% Of Previous Close'
       - id: reserved
         type: u1
         doc: 'Field Is Reserved For Future Use'

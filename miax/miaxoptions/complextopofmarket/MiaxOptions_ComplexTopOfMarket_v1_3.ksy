@@ -195,13 +195,29 @@ types:
       - id: reserved_10
         size: 10
         doc: 'Reserved for future use'
-      - id: number_of_legs
+      - id: num_leg_definition
         type: u1
         doc: 'Number of Legs. Variable from 2 to 8'
-      - id: leg_definition_0
-        type: str
-        size-eos: true
-        encoding: ASCII
+      - id: leg_definition
+        type: leg_definition
+        repeat: expr
+        repeat-expr: num_leg_definition
+        doc: 'Complex Strategy Number of Legs'
+  leg_definition:
+    seq:
+      - id: product_id
+        type: u4
+        doc: 'MIAX Product ID mapped to a given option. It is assigned per trading session and is valid for that session'
+      - id: leg_ratio_qty
+        type: u2
+        doc: 'The ratio of this individual leg'
+      - id: leg_side
+        type: u1
+        enum: leg_side
+        doc: 'The side of this individual leg'
+      - id: reserved_8
+        size: 8
+        doc: 'Reserved for future use'
   system_state_message:
     seq:
       - id: nanoseconds
@@ -623,6 +639,13 @@ enums:
     0x55:
       id: 'updated'
       doc: 'Strategy Definition Updated'
+  leg_side:
+    0x42:
+      id: 'bid'
+      doc: 'Bid'
+    0x41:
+      id: 'ask'
+      doc: 'Ask'
   system_status:
     0x53:
       id: 'start_of_system_hours'

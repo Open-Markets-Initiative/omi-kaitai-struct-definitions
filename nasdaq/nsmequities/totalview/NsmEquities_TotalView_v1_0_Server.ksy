@@ -106,12 +106,12 @@ types:
             'message_type::broken_trade_message': broken_trade_message
   sequenced_message_header:
     seq:
-      - id: time_stamp
+      - id: timestamp
         type: str
         size: 7
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Hundredths of a second past midnight Eastern the message was generated'
+        doc: 'Hundredths of a second past midnight Eastern the message was generated. Hundredths since Midnight epoch'
       - id: message_type
         type: u1
         enum: message_type
