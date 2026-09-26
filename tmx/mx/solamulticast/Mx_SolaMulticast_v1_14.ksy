@@ -790,7 +790,7 @@ types:
       - id: market_depth_level
         type: market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level
+        repeat-expr: num_market_depth_level.to_i
         doc: 'Option Market Depth'
   market_depth_level:
     seq:
@@ -860,7 +860,7 @@ types:
       - id: market_depth_level
         type: market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level
+        repeat-expr: num_market_depth_level.to_i
         doc: 'Option Market Depth'
   futures_market_depth_message:
     seq:
@@ -883,7 +883,7 @@ types:
       - id: market_depth_level
         type: market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level
+        repeat-expr: num_market_depth_level.to_i
         doc: 'Option Market Depth'
   strategy_market_depth_message:
     seq:
@@ -909,7 +909,7 @@ types:
       - id: strategy_market_depth_level
         type: strategy_market_depth_level
         repeat: expr
-        repeat-expr: num_strategy_market_depth_level
+        repeat-expr: num_strategy_market_depth_level.to_i
         doc: 'Strategy Market Depth Level'
   strategy_market_depth_level:
     seq:
@@ -1652,7 +1652,7 @@ types:
       - id: strategy_instrument_leg
         type: strategy_instrument_leg
         repeat: expr
-        repeat-expr: num_strategy_instrument_leg
+        repeat-expr: num_strategy_instrument_leg.to_i
         doc: 'Strategy Instrument Leg'
   strategy_instrument_leg:
     seq:
@@ -2593,7 +2593,7 @@ types:
       - id: bond_definition
         type: bond_definition
         repeat: expr
-        repeat-expr: num_bond_definition
+        repeat-expr: num_bond_definition.to_i
         doc: 'Bond Definition'
   bond_definition:
     seq:
@@ -2706,7 +2706,7 @@ types:
       - id: tick_entry
         type: tick_entry
         repeat: expr
-        repeat-expr: num_tick_entry
+        repeat-expr: num_tick_entry.to_i
         doc: 'Tick Entry'
   tick_entry:
     seq:

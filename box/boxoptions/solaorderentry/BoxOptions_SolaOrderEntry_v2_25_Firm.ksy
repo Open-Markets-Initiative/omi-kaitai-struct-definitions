@@ -135,7 +135,7 @@ types:
       - id: user_connection_occurrence
         type: user_connection_occurrence
         repeat: expr
-        repeat-expr: num_user_connection_occurrence
+        repeat-expr: num_user_connection_occurrence.to_i
         doc: 'The guide states this block as (1 to 99 occurrences)'
   user_connection_occurrence:
     seq:
@@ -164,7 +164,7 @@ types:
       - id: disconnection_instruction_occurrence
         type: disconnection_instruction_occurrence
         repeat: expr
-        repeat-expr: num_disconnection_instruction_occurrence
+        repeat-expr: num_disconnection_instruction_occurrence.to_i
         doc: 'The guide states this block as 1 to 99 occurrences'
   disconnection_instruction_occurrence:
     seq:
@@ -209,13 +209,13 @@ types:
       - id: owner_data
         type: owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
-      - id: filler_must_be_blank_string_22
+      - id: filler_x_2
         size: 2
         doc: 'Stated inline as String (2)'
-      - id: filler_must_be_blank_2_string_88
+      - id: filler_2_x_8
         size: 8
         doc: 'Stated inline as String (8)'
-      - id: filler_must_be_blank_3_string_22
+      - id: filler_3_x_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: calculation_time_interval
@@ -324,7 +324,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -383,11 +383,11 @@ types:
       - id: additional_price
         type: str_10_nullable
         doc: 'Must be left empty for Solicitation. Nullable, No Value = 0'
-      - id: quantity_term_quantity_term_1
+      - id: quantity_term
         type: u1
-        enum: quantity_term_quantity_term_1
+        enum: quantity_term
         doc: 'B: Surrender Quantity for Solicitation, Facilitation and Floor Trade J: Indicates that the Auction type as MIP Space: None The above value indicates that the InitO is willing to surrender a portion of the total number of contracts'
-      - id: additional_quantity_additional_quantity_8
+      - id: additional_quantity
         type: str_8_nullable
         doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: buying_post_trading_instruction
@@ -406,7 +406,7 @@ types:
       - id: selling_additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   buying_clearing_data:
@@ -516,18 +516,18 @@ types:
       - id: additional_price
         type: str_10_nullable
         doc: 'Must be left empty for Solicitation. Nullable, No Value = 0'
-      - id: quantity_term_quantity_term_1
+      - id: quantity_term
         type: u1
-        enum: quantity_term_quantity_term_1
+        enum: quantity_term
         doc: 'B: Surrender Quantity for Solicitation, Facilitation and Floor Trade J: Indicates that the Auction type as MIP Space: None The above value indicates that the InitO is willing to surrender a portion of the total number of contracts'
       - id: post_trading_instruction
         type: str
         size: 50
         encoding: ASCII
         doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
-      - id: additional_quantity_quantity_8
+      - id: additional_quantity
         type: str_8_nullable
-        doc: 'Number of contracts or shares. Nullable, No Value = 0'
+        doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
@@ -597,14 +597,14 @@ types:
         type: u1
         enum: special_price_term
         doc: 'PIP Solicitation Facilitation B: Solicitation Auction C: Facilitation Auction G: Regular PIP X: Customer Cross Order or Qualified Contingent Cross Order Note: These values specify the type of Auction to be started. Order Entry ’ ’: (Blank), No Special Price Term O: Directed Order P: Preferenced Order R: Floor Trade A: Indication of Interest'
-      - id: filler_must_be_blank_string_1010
+      - id: filler_x_10
         size: 10
         doc: 'Stated inline as String (10)'
-      - id: quantity_term_quantity_term_1
+      - id: quantity_term
         type: u1
-        enum: quantity_term_quantity_term_1
+        enum: quantity_term
         doc: 'B: Surrender Quantity for Solicitation, Facilitation and Floor Trade J: Indicates that the Auction type as MIP Space: None The above value indicates that the InitO is willing to surrender a portion of the total number of contracts'
-      - id: additional_quantity_additional_quantity_8
+      - id: additional_quantity
         type: str_8_nullable
         doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: duration_type
@@ -637,7 +637,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_2_string_44
+      - id: filler_2_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   improvement_order_entry:
@@ -666,7 +666,7 @@ types:
       - id: auction_id
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
-      - id: filler_string_1717
+      - id: filler_x_17
         size: 17
         doc: 'Stated inline as String (17)'
       - id: clearing_data
@@ -683,7 +683,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_2_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   order_modification:
@@ -717,13 +717,13 @@ types:
         type: u1
         enum: special_price_term
         doc: 'PIP Solicitation Facilitation B: Solicitation Auction C: Facilitation Auction G: Regular PIP X: Customer Cross Order or Qualified Contingent Cross Order Note: These values specify the type of Auction to be started. Order Entry ’ ’: (Blank), No Special Price Term O: Directed Order P: Preferenced Order R: Floor Trade A: Indication of Interest'
-      - id: filler_must_be_blank_string_1010
+      - id: filler_x_10
         size: 10
         doc: 'Stated inline as String (10)'
-      - id: filler_must_be_blank_2_string_11
+      - id: filler_2_x_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_must_be_blank_3_string_88
+      - id: filler_3_x_8
         size: 8
         doc: 'Stated inline as String (8)'
       - id: duration_type
@@ -763,7 +763,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_4
+      - id: filler_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   new_complex_order_instrument:
@@ -780,7 +780,7 @@ types:
       - id: new_complex_order_instrument_occurrence
         type: new_complex_order_instrument_occurrence
         repeat: expr
-        repeat-expr: num_new_complex_order_instrument_occurrence
+        repeat-expr: num_new_complex_order_instrument_occurrence.to_i
         doc: 'The guide states this block as 2 to 16 occurrences'
   new_complex_order_instrument_occurrence:
     seq:
@@ -798,7 +798,7 @@ types:
         type: u1
         enum: leg_verb
         doc: 'Identifies an order/quote side B: Buy S: Sell'
-      - id: filler_must_be_spaces
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: leg_quantity_ratio
@@ -849,14 +849,13 @@ types:
       - id: additional_price
         type: str_10_nullable
         doc: 'Must be left empty for Solicitation. Nullable, No Value = 0'
-      - id: quantity_term_quantity_sign_1
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'For a quote or an order update, it identifies how to handle the quantity: "+": Add the incoming quantity to the booked quantity "-": Subtract the incoming quantity from the booked quantity "=": Replace the booked quantity with the incoming quantity Participants are able to modify the quantity of an order by specifying the quantity variation from the original value (+, - signs) instead of being limited to specifying only the remaining quantity'
-      - id: additional_quantity_quantity_8
+      - id: quantity_term
+        type: u1
+        enum: quantity_term
+        doc: 'B: Surrender Quantity for Solicitation, Facilitation and Floor Trade J: Indicates that the Auction type as MIP Space: None The above value indicates that the InitO is willing to surrender a portion of the total number of contracts'
+      - id: additional_quantity
         type: str_8_nullable
-        doc: 'Number of contracts or shares. Nullable, No Value = 0'
+        doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: buying_post_trading_instruction
         type: str
         size: 50
@@ -873,7 +872,7 @@ types:
       - id: selling_additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
       - id: num_complex_order_auction_entry_occurrence
@@ -884,7 +883,7 @@ types:
       - id: complex_order_auction_entry_occurrence
         type: complex_order_auction_entry_occurrence
         repeat: expr
-        repeat-expr: num_complex_order_auction_entry_occurrence
+        repeat-expr: num_complex_order_auction_entry_occurrence.to_i
         doc: 'The guide states this block as 2 to 16 occurrences'
   complex_order_auction_entry_occurrence:
     seq:
@@ -922,7 +921,7 @@ types:
       - id: bulk_quote_occurrence
         type: bulk_quote_occurrence
         repeat: expr
-        repeat-expr: num_bulk_quote_occurrence
+        repeat-expr: num_bulk_quote_occurrence.to_i
         doc: 'The guide states this block as 1 to 280 occurrences'
   bulk_quote_occurrence:
     seq:
@@ -1257,7 +1256,7 @@ enums:
     0x41:
       id: 'indication_of_interest'
       doc: 'Indication Of Interest'
-  quantity_term_quantity_term_1:
+  quantity_term:
     0x42:
       id: 'surrender_quantity_for_solicitation_facilitation_and_floor_trade'
       doc: 'Surrender Quantity For Solicitation Facilitation And Floor Trade'

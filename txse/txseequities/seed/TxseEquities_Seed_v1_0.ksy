@@ -133,61 +133,61 @@ types:
       - id: limit_order_self_match_instruction
         type: s1
         enum: limit_order_self_match_instruction
-        if: limit_order_presence_bits.has_limit_order_self_match_instruction == 1
+        if: limit_order_presence_bits.has_limit_order_self_match_instruction
         doc: 'Enum LimitOrderSelfMatchInstruction. Determines the behavior when orders from the same entity would match'
       - id: limit_order_price_slide_instruction
         type: s1
         enum: limit_order_price_slide_instruction
-        if: limit_order_presence_bits.has_limit_order_price_slide_instruction == 1
+        if: limit_order_presence_bits.has_limit_order_price_slide_instruction
         doc: 'Enum LimitOrderPriceSlideInstruction'
       - id: limit_order_min_qty
         type: s4
-        if: limit_order_presence_bits.has_limit_order_min_qty == 1
+        if: limit_order_presence_bits.has_limit_order_min_qty
         doc: 'Number of shares that must be executed to execute any shares'
       - id: limit_order_max_floor_qty
         type: s4
-        if: limit_order_presence_bits.has_limit_order_max_floor_qty == 1
+        if: limit_order_presence_bits.has_limit_order_max_floor_qty
         doc: 'Quantity to be displayed at one time with remaining quantity not displayed on the book'
       - id: limit_order_max_replenish_qty_range
         type: s4
-        if: limit_order_presence_bits.has_limit_order_max_replenish_qty_range == 1
+        if: limit_order_presence_bits.has_limit_order_max_replenish_qty_range
         doc: 'Defines the maximum range to be used when calculating a random refresh quantity'
       - id: limit_order_max_replenish_time_range
         type: s8
-        if: limit_order_presence_bits.has_limit_order_max_replenish_time_range == 1
+        if: limit_order_presence_bits.has_limit_order_max_replenish_time_range
         doc: 'Defines the maximum range to be used when calculating a random refresh time, in nanoseconds'
       - id: limit_order_reference_price_target
         type: s2
-        if: limit_order_presence_bits.has_limit_order_reference_price_target == 1
+        if: limit_order_presence_bits.has_limit_order_reference_price_target
         doc: 'The target relative to the reference base price in basis points of the NBBO spread'
       - id: limit_order_expire_time
         type: nanosecond_timestamp
-        if: limit_order_presence_bits.has_limit_order_expire_time == 1
+        if: limit_order_presence_bits.has_limit_order_expire_time
         doc: 'Timestamp at which the order''s open quantity will be canceled, valid only with GTT time in force. Nanoseconds since Unix epoch'
       - id: limit_order_user_data
         type: s8
-        if: limit_order_presence_bits.has_limit_order_user_data == 1
+        if: limit_order_presence_bits.has_limit_order_user_data
         doc: 'Pass-through field for use by clients, not used by the Exchange'
       - id: limit_order_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_presence_bits.has_limit_order_mpid == 1
+        if: limit_order_presence_bits.has_limit_order_mpid
         doc: 'Market Participant Identifier. Upper-case alpha only'
       - id: limit_order_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_presence_bits.has_limit_order_member_group == 1
+        if: limit_order_presence_bits.has_limit_order_member_group
         doc: 'Member supplied grouping'
       - id: limit_order_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_presence_bits.has_limit_order_locate_broker == 1
+        if: limit_order_presence_bits.has_limit_order_locate_broker
         doc: 'Identifies the broker that has loaned the stock to settle the short sale'
   limit_order_presence_bits:
     meta:
@@ -290,32 +290,32 @@ types:
       - id: market_order_self_match_instruction
         type: s1
         enum: market_order_self_match_instruction
-        if: market_order_presence_bits.has_market_order_self_match_instruction == 1
+        if: market_order_presence_bits.has_market_order_self_match_instruction
         doc: 'Enum MarketOrderSelfMatchInstruction'
       - id: market_order_user_data
         type: s8
-        if: market_order_presence_bits.has_market_order_user_data == 1
+        if: market_order_presence_bits.has_market_order_user_data
         doc: 'Pass-through field for use by clients, not used by the Exchange'
       - id: market_order_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_presence_bits.has_market_order_mpid == 1
+        if: market_order_presence_bits.has_market_order_mpid
         doc: 'Market Participant Identifier'
       - id: market_order_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_presence_bits.has_market_order_member_group == 1
+        if: market_order_presence_bits.has_market_order_member_group
         doc: 'Member supplied grouping'
       - id: market_order_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_presence_bits.has_market_order_locate_broker == 1
+        if: market_order_presence_bits.has_market_order_locate_broker
         doc: 'Identifies the broker that has loaned the stock to settle the short sale'
   market_order_presence_bits:
     meta:
@@ -379,7 +379,7 @@ types:
         doc: 'The ClOrdId of the order to be canceled'
       - id: modify_order_order_qty
         type: s4
-        if: modify_order_presence_bits.has_modify_order_order_qty == 1
+        if: modify_order_presence_bits.has_modify_order_order_qty
         doc: 'Quantity can remain the same or decrease. Quantity cannot increase'
       - id: modify_order_bit_fields
         type: modify_order_bit_fields
@@ -389,7 +389,7 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: modify_order_presence_bits.has_modify_order_locate_broker == 1
+        if: modify_order_presence_bits.has_modify_order_locate_broker
         doc: 'Identifies the broker that has loaned the stock to settle the short sale'
   modify_order_presence_bits:
     meta:
@@ -436,15 +436,15 @@ types:
         doc: 'Bitfield used in ReplaceOrder, OrderReplaced, and ReplaceRejected messages'
       - id: replace_order_price
         type: decimal_s8_8
-        if: replace_order_presence_bits.has_replace_order_price == 1
+        if: replace_order_presence_bits.has_replace_order_price
         doc: 'New limit price. Implied decimal with scale 1e-8'
       - id: replace_order_order_qty
         type: s4
-        if: replace_order_presence_bits.has_replace_order_order_qty == 1
+        if: replace_order_presence_bits.has_replace_order_order_qty
         doc: 'Quantity can remain the same, decrease or increase'
       - id: replace_order_max_floor_qty
         type: s4
-        if: replace_order_presence_bits.has_replace_order_max_floor_qty == 1
+        if: replace_order_presence_bits.has_replace_order_max_floor_qty
         doc: 'Quantity to be displayed at one time with remaining quantity not displayed on the book'
       - id: self_match_scope
         type: s1
@@ -453,23 +453,23 @@ types:
       - id: replace_order_self_match_instruction
         type: s1
         enum: replace_order_self_match_instruction
-        if: replace_order_presence_bits.has_replace_order_self_match_instruction == 1
+        if: replace_order_presence_bits.has_replace_order_self_match_instruction
         doc: 'Enum ReplaceOrderSelfMatchInstruction'
       - id: replace_order_price_slide_instruction
         type: s1
         enum: replace_order_price_slide_instruction
-        if: replace_order_presence_bits.has_replace_order_price_slide_instruction == 1
+        if: replace_order_presence_bits.has_replace_order_price_slide_instruction
         doc: 'Enum ReplaceOrderPriceSlideInstruction'
       - id: replace_order_reference_price_target
         type: s2
-        if: replace_order_presence_bits.has_replace_order_reference_price_target == 1
+        if: replace_order_presence_bits.has_replace_order_reference_price_target
         doc: 'The target relative to the reference base price in basis points of the NBBO spread'
       - id: replace_order_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: replace_order_presence_bits.has_replace_order_locate_broker == 1
+        if: replace_order_presence_bits.has_replace_order_locate_broker
         doc: 'Identifies the broker that has loaned the stock to settle the short sale'
   replace_order_presence_bits:
     meta:
@@ -544,25 +544,25 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_presence_bits.has_mass_cancel_mpid == 1
+        if: mass_cancel_presence_bits.has_mass_cancel_mpid
         doc: 'Market Participant Identifier'
       - id: mass_cancel_sender_comp
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_presence_bits.has_mass_cancel_sender_comp == 1
+        if: mass_cancel_presence_bits.has_mass_cancel_sender_comp
         doc: 'Narrows the cancel to orders entered on the specified order entry port (SenderComp)'
       - id: mass_cancel_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_presence_bits.has_mass_cancel_member_group == 1
+        if: mass_cancel_presence_bits.has_mass_cancel_member_group
         doc: 'Member supplied grouping'
       - id: mass_cancel_cl_ord_id
         type: s8
-        if: mass_cancel_presence_bits.has_mass_cancel_cl_ord_id == 1
+        if: mass_cancel_presence_bits.has_mass_cancel_cl_ord_id
         doc: 'Scopes the mass cancel to this specific order. SenderComp is required when ClOrdId is supplied'
   mass_cancel_presence_bits:
     meta:
@@ -673,12 +673,12 @@ types:
       - id: trading_session_status_operational_halt_reason
         type: s1
         enum: trading_session_status_operational_halt_reason
-        if: trading_session_status_presence_bits.has_trading_session_status_operational_halt_reason == 1
+        if: trading_session_status_presence_bits.has_trading_session_status_operational_halt_reason
         doc: 'Enum TradingSessionStatusOperationalHaltReason'
       - id: trading_session_status_regulatory_halt_reason
         type: s1
         enum: trading_session_status_regulatory_halt_reason
-        if: trading_session_status_presence_bits.has_trading_session_status_regulatory_halt_reason == 1
+        if: trading_session_status_presence_bits.has_trading_session_status_regulatory_halt_reason
         doc: 'Enum TradingSessionStatusRegulatoryHaltReason'
   trading_session_status_presence_bits:
     meta:
@@ -758,12 +758,12 @@ types:
       - id: symbol_status_operational_halt_reason
         type: s1
         enum: symbol_status_operational_halt_reason
-        if: symbol_status_presence_bits.has_symbol_status_operational_halt_reason == 1
+        if: symbol_status_presence_bits.has_symbol_status_operational_halt_reason
         doc: 'Enum SymbolStatusOperationalHaltReason'
       - id: symbol_status_regulatory_halt_reason
         type: s1
         enum: symbol_status_regulatory_halt_reason
-        if: symbol_status_presence_bits.has_symbol_status_regulatory_halt_reason == 1
+        if: symbol_status_presence_bits.has_symbol_status_regulatory_halt_reason
         doc: 'Enum SymbolStatusRegulatoryHaltReason'
   symbol_status_presence_bits:
     meta:
@@ -811,69 +811,69 @@ types:
       - id: limit_order_accepted_self_match_instruction
         type: s1
         enum: limit_order_accepted_self_match_instruction
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_self_match_instruction == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_self_match_instruction
         doc: 'Enum LimitOrderAcceptedSelfMatchInstruction'
       - id: limit_order_accepted_price_slide_instruction
         type: s1
         enum: limit_order_accepted_price_slide_instruction
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_price_slide_instruction == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_price_slide_instruction
         doc: 'Enum LimitOrderAcceptedPriceSlideInstruction'
       - id: limit_order_accepted_min_qty
         type: s4
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_min_qty == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_min_qty
         doc: 'Number of shares that must be executed to execute any shares'
       - id: limit_order_accepted_max_floor_qty
         type: s4
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_floor_qty == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_floor_qty
         doc: 'Quantity to be displayed at one time with remaining quantity not displayed on the book'
       - id: limit_order_accepted_max_replenish_qty_range
         type: s4
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_replenish_qty_range == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_replenish_qty_range
         doc: 'Defines the maximum range to be used when calculating a random refresh quantity'
       - id: limit_order_accepted_max_replenish_time_range
         type: s8
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_replenish_time_range == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_max_replenish_time_range
         doc: 'Defines the maximum range to be used when calculating a random refresh time, in nanoseconds'
       - id: limit_order_accepted_reference_price_target
         type: s2
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_reference_price_target == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_reference_price_target
         doc: 'The target relative to the reference base price in basis points of the NBBO spread'
       - id: limit_order_accepted_expire_time
         type: nanosecond_timestamp
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_expire_time == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_expire_time
         doc: 'Timestamp at which the order''s open quantity will be canceled, valid only with GTT time in force. Nanoseconds since Unix epoch'
       - id: limit_order_accepted_user_data
         type: s8
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_user_data == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_user_data
         doc: 'Pass-through field for use by clients, not used by the Exchange'
       - id: limit_order_accepted_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_mpid == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_mpid
         doc: 'Market Participant Identifier'
       - id: limit_order_accepted_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_member_group == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_member_group
         doc: 'Member supplied grouping'
       - id: limit_order_accepted_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_locate_broker == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_locate_broker
         doc: 'Identifies the broker that has loaned the stock to settle the short sale'
       - id: limit_order_accepted_rank_price
         type: decimal_s8_8
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_rank_price == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_rank_price
         doc: 'Optional rank price, when different from limit price. Implied decimal with scale 1e-8'
       - id: limit_order_accepted_display_price
         type: decimal_s8_8
-        if: limit_order_accepted_presence_bits.has_limit_order_accepted_display_price == 1
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_display_price
         doc: 'Optional display price, when different from limit price. Implied decimal with scale 1e-8'
   limit_order_accepted_presence_bits:
     meta:
@@ -992,61 +992,61 @@ types:
       - id: limit_order_rejected_self_match_instruction
         type: s1
         enum: limit_order_rejected_self_match_instruction
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_self_match_instruction == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_self_match_instruction
         doc: 'Enum LimitOrderRejectedSelfMatchInstruction'
       - id: limit_order_rejected_price_slide_instruction
         type: s1
         enum: limit_order_rejected_price_slide_instruction
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_price_slide_instruction == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_price_slide_instruction
         doc: 'Enum LimitOrderRejectedPriceSlideInstruction'
       - id: limit_order_rejected_min_qty
         type: s4
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_min_qty == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_min_qty
         doc: 'Minimum quantity to execute'
       - id: limit_order_rejected_max_floor_qty
         type: s4
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_floor_qty == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_floor_qty
         doc: 'Quantity to be displayed at one time'
       - id: limit_order_rejected_max_replenish_qty_range
         type: s4
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_replenish_qty_range == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_replenish_qty_range
         doc: 'Maximum range for random refresh quantity'
       - id: limit_order_rejected_max_replenish_time_range
         type: s8
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_replenish_time_range == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_max_replenish_time_range
         doc: 'Maximum range for random refresh time'
       - id: limit_order_rejected_reference_price_target
         type: s2
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_reference_price_target == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_reference_price_target
         doc: 'Basis points relative to the NBBO spread'
       - id: limit_order_rejected_expire_time
         type: nanosecond_timestamp
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_expire_time == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_expire_time
         doc: 'Timestamp at which the order will be canceled. Nanoseconds since Unix epoch'
       - id: limit_order_rejected_user_data
         type: s8
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_user_data == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_user_data
         doc: 'Pass-through field'
       - id: limit_order_rejected_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_mpid == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_mpid
         doc: 'Market Participant Identifier'
       - id: limit_order_rejected_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_member_group == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_member_group
         doc: 'Member supplied grouping'
       - id: limit_order_rejected_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: limit_order_rejected_presence_bits.has_limit_order_rejected_locate_broker == 1
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_locate_broker
         doc: 'Locate broker'
   limit_order_rejected_presence_bits:
     meta:
@@ -1155,32 +1155,32 @@ types:
       - id: market_order_accepted_self_match_instruction
         type: s1
         enum: market_order_accepted_self_match_instruction
-        if: market_order_accepted_presence_bits.has_market_order_accepted_self_match_instruction == 1
+        if: market_order_accepted_presence_bits.has_market_order_accepted_self_match_instruction
         doc: 'Enum MarketOrderAcceptedSelfMatchInstruction'
       - id: market_order_accepted_user_data
         type: s8
-        if: market_order_accepted_presence_bits.has_market_order_accepted_user_data == 1
+        if: market_order_accepted_presence_bits.has_market_order_accepted_user_data
         doc: 'Pass-through field'
       - id: market_order_accepted_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_accepted_presence_bits.has_market_order_accepted_mpid == 1
+        if: market_order_accepted_presence_bits.has_market_order_accepted_mpid
         doc: 'Market Participant Identifier'
       - id: market_order_accepted_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_accepted_presence_bits.has_market_order_accepted_member_group == 1
+        if: market_order_accepted_presence_bits.has_market_order_accepted_member_group
         doc: 'Member supplied grouping'
       - id: market_order_accepted_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_accepted_presence_bits.has_market_order_accepted_locate_broker == 1
+        if: market_order_accepted_presence_bits.has_market_order_accepted_locate_broker
         doc: 'Locate broker'
   market_order_accepted_presence_bits:
     meta:
@@ -1257,32 +1257,32 @@ types:
       - id: market_order_rejected_self_match_instruction
         type: s1
         enum: market_order_rejected_self_match_instruction
-        if: market_order_rejected_presence_bits.has_market_order_rejected_self_match_instruction == 1
+        if: market_order_rejected_presence_bits.has_market_order_rejected_self_match_instruction
         doc: 'Enum MarketOrderRejectedSelfMatchInstruction'
       - id: market_order_rejected_user_data
         type: s8
-        if: market_order_rejected_presence_bits.has_market_order_rejected_user_data == 1
+        if: market_order_rejected_presence_bits.has_market_order_rejected_user_data
         doc: 'Pass-through field'
       - id: market_order_rejected_mpid
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_rejected_presence_bits.has_market_order_rejected_mpid == 1
+        if: market_order_rejected_presence_bits.has_market_order_rejected_mpid
         doc: 'Market Participant Identifier'
       - id: market_order_rejected_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_rejected_presence_bits.has_market_order_rejected_member_group == 1
+        if: market_order_rejected_presence_bits.has_market_order_rejected_member_group
         doc: 'Member supplied grouping'
       - id: market_order_rejected_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: market_order_rejected_presence_bits.has_market_order_rejected_locate_broker == 1
+        if: market_order_rejected_presence_bits.has_market_order_rejected_locate_broker
         doc: 'Locate broker'
   market_order_rejected_presence_bits:
     meta:
@@ -1377,7 +1377,7 @@ types:
         doc: 'Number of shares that were still available to execute after the modify'
       - id: order_modified_order_qty
         type: s4
-        if: order_modified_presence_bits.has_order_modified_order_qty == 1
+        if: order_modified_presence_bits.has_order_modified_order_qty
         doc: 'Quantity can remain the same or decrease'
       - id: order_modified_bit_fields
         type: order_modified_bit_fields
@@ -1387,7 +1387,7 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: order_modified_presence_bits.has_order_modified_locate_broker == 1
+        if: order_modified_presence_bits.has_order_modified_locate_broker
         doc: 'Locate broker'
   order_modified_presence_bits:
     meta:
@@ -1438,7 +1438,7 @@ types:
         doc: 'Enum ModifyRejectedReason'
       - id: modify_rejected_order_qty
         type: s4
-        if: modify_rejected_presence_bits.has_modify_rejected_order_qty == 1
+        if: modify_rejected_presence_bits.has_modify_rejected_order_qty
         doc: 'Quantity can remain the same or decrease'
       - id: modify_rejected_bit_fields
         type: modify_rejected_bit_fields
@@ -1448,7 +1448,7 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: modify_rejected_presence_bits.has_modify_rejected_locate_broker == 1
+        if: modify_rejected_presence_bits.has_modify_rejected_locate_broker
         doc: 'Locate broker'
   modify_rejected_presence_bits:
     meta:
@@ -1504,15 +1504,15 @@ types:
         doc: 'Number of shares that were still available to execute after the modify'
       - id: order_replaced_price
         type: decimal_s8_8
-        if: order_replaced_presence_bits.has_order_replaced_price == 1
+        if: order_replaced_presence_bits.has_order_replaced_price
         doc: 'New limit price. Implied decimal with scale 1e-8'
       - id: order_replaced_order_qty
         type: s4
-        if: order_replaced_presence_bits.has_order_replaced_order_qty == 1
+        if: order_replaced_presence_bits.has_order_replaced_order_qty
         doc: 'Quantity can remain the same, decrease or increase'
       - id: order_replaced_max_floor_qty
         type: s4
-        if: order_replaced_presence_bits.has_order_replaced_max_floor_qty == 1
+        if: order_replaced_presence_bits.has_order_replaced_max_floor_qty
         doc: 'Quantity to be displayed at one time'
       - id: self_match_scope
         type: s1
@@ -1521,31 +1521,31 @@ types:
       - id: order_replaced_self_match_instruction
         type: s1
         enum: order_replaced_self_match_instruction
-        if: order_replaced_presence_bits.has_order_replaced_self_match_instruction == 1
+        if: order_replaced_presence_bits.has_order_replaced_self_match_instruction
         doc: 'Enum OrderReplacedSelfMatchInstruction'
       - id: order_replaced_price_slide_instruction
         type: s1
         enum: order_replaced_price_slide_instruction
-        if: order_replaced_presence_bits.has_order_replaced_price_slide_instruction == 1
+        if: order_replaced_presence_bits.has_order_replaced_price_slide_instruction
         doc: 'Enum OrderReplacedPriceSlideInstruction'
       - id: order_replaced_reference_price_target
         type: s2
-        if: order_replaced_presence_bits.has_order_replaced_reference_price_target == 1
+        if: order_replaced_presence_bits.has_order_replaced_reference_price_target
         doc: 'Basis points relative to the NBBO spread'
       - id: order_replaced_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: order_replaced_presence_bits.has_order_replaced_locate_broker == 1
+        if: order_replaced_presence_bits.has_order_replaced_locate_broker
         doc: 'Locate broker'
       - id: order_replaced_rank_price
         type: decimal_s8_8
-        if: order_replaced_presence_bits.has_order_replaced_rank_price == 1
+        if: order_replaced_presence_bits.has_order_replaced_rank_price
         doc: 'Optional rank price, when different from limit price. Implied decimal with scale 1e-8'
       - id: order_replaced_display_price
         type: decimal_s8_8
-        if: order_replaced_presence_bits.has_order_replaced_display_price == 1
+        if: order_replaced_presence_bits.has_order_replaced_display_price
         doc: 'Optional display price, when different from limit price. Implied decimal with scale 1e-8'
   order_replaced_presence_bits:
     meta:
@@ -1629,15 +1629,15 @@ types:
         doc: 'Enum ReplaceRejectedReason'
       - id: replace_rejected_price
         type: decimal_s8_8
-        if: replace_rejected_presence_bits.has_replace_rejected_price == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_price
         doc: 'New limit price. Implied decimal with scale 1e-8'
       - id: replace_rejected_order_qty
         type: s4
-        if: replace_rejected_presence_bits.has_replace_rejected_order_qty == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_order_qty
         doc: 'Quantity'
       - id: replace_rejected_max_floor_qty
         type: s4
-        if: replace_rejected_presence_bits.has_replace_rejected_max_floor_qty == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_max_floor_qty
         doc: 'Quantity to be displayed at one time'
       - id: self_match_scope
         type: s1
@@ -1646,23 +1646,23 @@ types:
       - id: replace_rejected_self_match_instruction
         type: s1
         enum: replace_rejected_self_match_instruction
-        if: replace_rejected_presence_bits.has_replace_rejected_self_match_instruction == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_self_match_instruction
         doc: 'Enum ReplaceRejectedSelfMatchInstruction'
       - id: replace_rejected_price_slide_instruction
         type: s1
         enum: replace_rejected_price_slide_instruction
-        if: replace_rejected_presence_bits.has_replace_rejected_price_slide_instruction == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_price_slide_instruction
         doc: 'Enum ReplaceRejectedPriceSlideInstruction'
       - id: replace_rejected_reference_price_target
         type: s2
-        if: replace_rejected_presence_bits.has_replace_rejected_reference_price_target == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_reference_price_target
         doc: 'Basis points relative to the NBBO spread'
       - id: replace_rejected_locate_broker
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: replace_rejected_presence_bits.has_replace_rejected_locate_broker == 1
+        if: replace_rejected_presence_bits.has_replace_rejected_locate_broker
         doc: 'Locate broker'
   replace_rejected_presence_bits:
     meta:
@@ -1764,11 +1764,11 @@ types:
         doc: 'Enum RestatementReason'
       - id: order_restated_rank_price
         type: decimal_s8_8
-        if: order_restated_presence_bits.has_order_restated_rank_price == 1
+        if: order_restated_presence_bits.has_order_restated_rank_price
         doc: 'The rank price. Only present on re-priced orders. Implied decimal with scale 1e-8'
       - id: order_restated_display_price
         type: decimal_s8_8
-        if: order_restated_presence_bits.has_order_restated_display_price == 1
+        if: order_restated_presence_bits.has_order_restated_display_price
         doc: 'The display price, when different from rank price. Only present on re-priced orders. Implied decimal with scale 1e-8'
       - id: display_qty
         type: s4
@@ -1845,25 +1845,25 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_mpid == 1
+        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_mpid
         doc: 'Market Participant Identifier'
       - id: mass_cancel_accepted_sender_comp
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_sender_comp == 1
+        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_sender_comp
         doc: 'Narrows the cancel to orders entered on the specified order entry port'
       - id: mass_cancel_accepted_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_member_group == 1
+        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_member_group
         doc: 'Member supplied grouping'
       - id: mass_cancel_accepted_cl_ord_id
         type: s8
-        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_cl_ord_id == 1
+        if: mass_cancel_accepted_presence_bits.has_mass_cancel_accepted_cl_ord_id
         doc: 'Scopes the mass cancel to this specific order'
   mass_cancel_accepted_presence_bits:
     meta:
@@ -1921,25 +1921,25 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_mpid == 1
+        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_mpid
         doc: 'Market Participant Identifier'
       - id: mass_cancel_rejected_sender_comp
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_sender_comp == 1
+        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_sender_comp
         doc: 'Narrows the cancel to orders entered on the specified order entry port'
       - id: mass_cancel_rejected_member_group
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_member_group == 1
+        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_member_group
         doc: 'Member supplied grouping'
       - id: mass_cancel_rejected_cl_ord_id
         type: s8
-        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_cl_ord_id == 1
+        if: mass_cancel_rejected_presence_bits.has_mass_cancel_rejected_cl_ord_id
         doc: 'Scopes the mass cancel to this specific order'
   mass_cancel_rejected_presence_bits:
     meta:

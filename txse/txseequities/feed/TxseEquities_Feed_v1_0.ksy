@@ -114,12 +114,12 @@ types:
       - id: trading_session_status_operational_halt_reason
         type: s1
         enum: trading_session_status_operational_halt_reason
-        if: trading_session_status_presence_bits.has_trading_session_status_operational_halt_reason == 1
+        if: trading_session_status_presence_bits.has_trading_session_status_operational_halt_reason
         doc: 'Enum TradingSessionStatusOperationalHaltReason. Operational and technical reasons for trading halts initiated by the Exchange'
       - id: trading_session_status_regulatory_halt_reason
         type: s1
         enum: trading_session_status_regulatory_halt_reason
-        if: trading_session_status_presence_bits.has_trading_session_status_regulatory_halt_reason == 1
+        if: trading_session_status_presence_bits.has_trading_session_status_regulatory_halt_reason
         doc: 'Enum TradingSessionStatusRegulatoryHaltReason. Regulatory reasons for trading halts and pauses'
   trading_session_status_presence_bits:
     meta:
@@ -198,12 +198,12 @@ types:
       - id: symbol_status_operational_halt_reason
         type: s1
         enum: symbol_status_operational_halt_reason
-        if: symbol_status_presence_bits.has_symbol_status_operational_halt_reason == 1
+        if: symbol_status_presence_bits.has_symbol_status_operational_halt_reason
         doc: 'Enum SymbolStatusOperationalHaltReason. Operational and technical reasons for trading halts initiated by the Exchange'
       - id: symbol_status_regulatory_halt_reason
         type: s1
         enum: symbol_status_regulatory_halt_reason
-        if: symbol_status_presence_bits.has_symbol_status_regulatory_halt_reason == 1
+        if: symbol_status_presence_bits.has_symbol_status_regulatory_halt_reason
         doc: 'Enum SymbolStatusRegulatoryHaltReason. Regulatory reasons for trading halts and pauses'
   symbol_status_presence_bits:
     meta:

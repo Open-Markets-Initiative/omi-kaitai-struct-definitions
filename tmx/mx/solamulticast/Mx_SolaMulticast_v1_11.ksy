@@ -1391,7 +1391,7 @@ types:
       - id: option_market_depth_trading_instrument
         type: option_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_option_market_depth_trading_instrument
+        repeat-expr: num_option_market_depth_trading_instrument.to_i
         doc: 'Option Market Depth Trading instrument'
   option_market_depth_trading_instrument:
     seq:
@@ -1495,7 +1495,7 @@ types:
       - id: future_options_market_depth_trading_instrument
         type: future_options_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_future_options_market_depth_trading_instrument
+        repeat-expr: num_future_options_market_depth_trading_instrument.to_i
         doc: 'Future Options Market Depth Trading instrument'
   future_options_market_depth_trading_instrument:
     seq:
@@ -1585,7 +1585,7 @@ types:
       - id: futures_market_depth_trading_instrument
         type: futures_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_futures_market_depth_trading_instrument
+        repeat-expr: num_futures_market_depth_trading_instrument.to_i
         doc: 'Futures Market Depth Trading instrument'
   futures_market_depth_trading_instrument:
     seq:
@@ -1660,7 +1660,7 @@ types:
       - id: strategy_market_depth_trading_instrument
         type: strategy_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_strategy_market_depth_trading_instrument
+        repeat-expr: num_strategy_market_depth_trading_instrument.to_i
         doc: 'Strategy Market Depth Trading instrument'
   strategy_market_depth_trading_instrument:
     seq:
@@ -1775,7 +1775,7 @@ types:
       - id: swap_future_market_depth_trading_instrument
         type: swap_future_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_swap_future_market_depth_trading_instrument
+        repeat-expr: num_swap_future_market_depth_trading_instrument.to_i
         doc: 'Swap Future Market Depth Trading instrument'
   swap_future_market_depth_trading_instrument:
     seq:
@@ -3572,7 +3572,7 @@ types:
       - id: strategy_summary_strategy_leg
         type: strategy_summary_strategy_leg
         repeat: expr
-        repeat-expr: num_strategy_summary_strategy_leg
+        repeat-expr: num_strategy_summary_strategy_leg.to_i
         doc: 'Strategy Summary Strategy Leg'
   strategy_summary_strategy_leg:
     seq:
@@ -4366,7 +4366,7 @@ types:
       - id: tick_entry_group
         type: tick_entry_group
         repeat: expr
-        repeat-expr: num_tick_entry_group
+        repeat-expr: num_tick_entry_group.to_i
         doc: 'Tick Entry Group'
   tick_entry_group:
     seq:

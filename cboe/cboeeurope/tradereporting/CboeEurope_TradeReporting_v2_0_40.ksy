@@ -226,120 +226,120 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_symbol > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_currency > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_id_source > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_security_id > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_security_exchange > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_security_exchange
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_last_mkt > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 1 and trade_capture_report_v_2_bitfield_1.trade_capture_report_v_2_bitfield_1_last_mkt
       - id: transaction_category
         type: u1
         enum: transaction_category
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_transaction_category > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_transaction_category
       - id: trade_time
         type: nanosecond_timestamp
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_time > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_time
         doc: 'Nanoseconds since Unix epoch'
       - id: trade_report_trans_type
         type: u1
         enum: trade_report_trans_type
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_report_trans_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_report_trans_type
       - id: trade_id
         type: u8
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_id > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_trade_id
       - id: venue_type
         type: u1
         enum: venue_type
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_venue_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_venue_type
       - id: trading_session_sub_id
         type: u1
         enum: trading_session_sub_id
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trading_session_sub_id > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trading_session_sub_id
       - id: match_type
         type: u1
         enum: match_type
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_match_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_match_type
       - id: trd_sub_type
         type: u1
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trd_sub_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trd_sub_type
       - id: secondary_trd_type
         type: u1
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_secondary_trd_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_secondary_trd_type
       - id: trade_price_condition
         type: u1
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_price_condition > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_price_condition
       - id: trade_publish_indicator
         type: u1
         enum: trade_publish_indicator
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_publish_indicator > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_publish_indicator
       - id: large_size
         type: u8
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_large_size > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_large_size
       - id: execution_method
         type: u1
         enum: execution_method
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_execution_method > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_execution_method
       - id: gross_trade_amt
         type: decimal_s8_4
-        if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_gross_trade_amt > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_gross_trade_amt
         doc: 'Implied decimal with scale 1e-4'
       - id: order_category
         type: u1
         enum: order_category
-        if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_order_category > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_order_category
       - id: price_formation
         type: u1
         enum: price_formation
-        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_price_formation > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
-        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_algorithmic_indicator > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_algorithmic_indicator
       - id: waiver_type
         type: u1
         enum: waiver_type
-        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_waiver_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_waiver_type
       - id: deferral_reason
         type: u1
         enum: deferral_reason
-        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_deferral_reason > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_deferral_reason
       - id: intra_firm_trade_ind
         type: u1
         enum: intra_firm_trade_ind
-        if: number_of_trade_capture_report_v_2_bitfields >= 6 and trade_capture_report_v_2_bitfield_6.trade_capture_report_v_2_bitfield_6_intra_firm_trade_ind > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 6 and trade_capture_report_v_2_bitfield_6.trade_capture_report_v_2_bitfield_6_intra_firm_trade_ind
       - id: tertiary_trd_type
         type: u1
-        if: number_of_trade_capture_report_v_2_bitfields >= 6 and trade_capture_report_v_2_bitfield_6.trade_capture_report_v_2_bitfield_6_tertiary_trd_type > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 6 and trade_capture_report_v_2_bitfield_6.trade_capture_report_v_2_bitfield_6_tertiary_trd_type
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_account > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_account
         doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_party_role > 0
+        if: number_of_trade_capture_report_v_2_bitfields >= 2 and trade_capture_report_v_2_bitfield_2.trade_capture_report_v_2_bitfield_2_party_role
         doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_v_2_bitfield_1:
     meta:
@@ -503,31 +503,31 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_symbol > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_currency > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_id_source > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_security_id > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_security_exchange > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_security_exchange
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_clearing_firm > 0
+        if: number_of_quote_v_2_bitfields >= 1 and quote_v_2_bitfield_1.quote_v_2_bitfield_1_clearing_firm
   quote_v_2_bitfield_1:
     meta:
       bit-endian: le
@@ -574,31 +574,31 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_clearing_firm > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_clearing_firm
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_symbol > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_currency > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_id_source > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_security_id > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_security_exchange > 0
+        if: number_of_quote_cancel_v_2_bitfields >= 1 and quote_cancel_v_2_bitfield_1.quote_cancel_v_2_bitfield_1_security_exchange
   quote_cancel_v_2_bitfield_1:
     meta:
       bit-endian: le
@@ -744,97 +744,97 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_security_exchange
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_clearing_firm
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_order_qty
       - id: trade_report_type_return
         type: u2
-        if: number_of_return_bitfields >= 7 and trade_capture_report_acknowledgment_v_2_return_bitfield_7.trade_capture_report_acknowledgment_v_2_return_bitfield_7_trade_report_type_return > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_acknowledgment_v_2_return_bitfield_7.trade_capture_report_acknowledgment_v_2_return_bitfield_7_trade_report_type_return
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and trade_capture_report_acknowledgment_v_2_return_bitfield_7.trade_capture_report_acknowledgment_v_2_return_bitfield_7_last_mkt > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_acknowledgment_v_2_return_bitfield_7.trade_capture_report_acknowledgment_v_2_return_bitfield_7_last_mkt
       - id: trade_report_ref_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and trade_capture_report_acknowledgment_v_2_return_bitfield_8.trade_capture_report_acknowledgment_v_2_return_bitfield_8_trade_report_ref_id > 0
+        if: number_of_return_bitfields >= 8 and trade_capture_report_acknowledgment_v_2_return_bitfield_8.trade_capture_report_acknowledgment_v_2_return_bitfield_8_trade_report_ref_id
       - id: order_category
         type: u1
         enum: order_category
-        if: number_of_return_bitfields >= 9 and trade_capture_report_acknowledgment_v_2_return_bitfield_9.trade_capture_report_acknowledgment_v_2_return_bitfield_9_order_category > 0
+        if: number_of_return_bitfields >= 9 and trade_capture_report_acknowledgment_v_2_return_bitfield_9.trade_capture_report_acknowledgment_v_2_return_bitfield_9_order_category
       - id: waiver_type
         type: u1
         enum: waiver_type
-        if: number_of_return_bitfields >= 10 and trade_capture_report_acknowledgment_v_2_return_bitfield_10.trade_capture_report_acknowledgment_v_2_return_bitfield_10_waiver_type > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_acknowledgment_v_2_return_bitfield_10.trade_capture_report_acknowledgment_v_2_return_bitfield_10_waiver_type
       - id: price_formation
         type: u1
         enum: price_formation
-        if: number_of_return_bitfields >= 10 and trade_capture_report_acknowledgment_v_2_return_bitfield_10.trade_capture_report_acknowledgment_v_2_return_bitfield_10_price_formation > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_acknowledgment_v_2_return_bitfield_10.trade_capture_report_acknowledgment_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
-        if: number_of_return_bitfields >= 11 and trade_capture_report_acknowledgment_v_2_return_bitfield_11.trade_capture_report_acknowledgment_v_2_return_bitfield_11_algorithmic_indicator > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_acknowledgment_v_2_return_bitfield_11.trade_capture_report_acknowledgment_v_2_return_bitfield_11_algorithmic_indicator
       - id: deferral_reason
         type: u1
         enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and trade_capture_report_acknowledgment_v_2_return_bitfield_11.trade_capture_report_acknowledgment_v_2_return_bitfield_11_deferral_reason > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_acknowledgment_v_2_return_bitfield_11.trade_capture_report_acknowledgment_v_2_return_bitfield_11_deferral_reason
       - id: intra_firm_trade_ind
         type: u1
         enum: intra_firm_trade_ind
-        if: number_of_return_bitfields >= 19 and trade_capture_report_acknowledgment_v_2_return_bitfield_19.trade_capture_report_acknowledgment_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+        if: number_of_return_bitfields >= 19 and trade_capture_report_acknowledgment_v_2_return_bitfield_19.trade_capture_report_acknowledgment_v_2_return_bitfield_19_intra_firm_trade_ind
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_acknowledgment_v_2_return_bitfield_1.trade_capture_report_acknowledgment_v_2_return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and trade_capture_report_acknowledgment_v_2_return_bitfield_1.trade_capture_report_acknowledgment_v_2_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_acknowledgment_v_2_return_bitfield_2.trade_capture_report_acknowledgment_v_2_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_acknowledgment_v_2_return_bitfield_3.trade_capture_report_acknowledgment_v_2_return_bitfield_3_account
         doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_id
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_acknowledgment_v_2_return_bitfield_4.trade_capture_report_acknowledgment_v_2_return_bitfield_4_party_id > 0
+        if: number_of_return_bitfields >= 4 and trade_capture_report_acknowledgment_v_2_return_bitfield_4.trade_capture_report_acknowledgment_v_2_return_bitfield_4_party_id
         doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_acknowledgment_v_2_return_bitfield_6.trade_capture_report_acknowledgment_v_2_return_bitfield_6_party_role > 0
+        if: number_of_return_bitfields >= 6 and trade_capture_report_acknowledgment_v_2_return_bitfield_6.trade_capture_report_acknowledgment_v_2_return_bitfield_6_party_role
         doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_acknowledgment_v_2_return_bitfield_1:
     meta:
@@ -1353,88 +1353,88 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_security_exchange
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_clearing_firm
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_order_qty
       - id: trade_report_type_return
         type: u2
-        if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_trade_report_type_return > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_trade_report_type_return
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_last_mkt > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_last_mkt
       - id: waiver_type
         type: u1
         enum: waiver_type
-        if: number_of_return_bitfields >= 10 and trade_capture_report_reject_v_2_return_bitfield_10.trade_capture_report_reject_v_2_return_bitfield_10_waiver_type > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_reject_v_2_return_bitfield_10.trade_capture_report_reject_v_2_return_bitfield_10_waiver_type
       - id: price_formation
         type: u1
         enum: price_formation
-        if: number_of_return_bitfields >= 10 and trade_capture_report_reject_v_2_return_bitfield_10.trade_capture_report_reject_v_2_return_bitfield_10_price_formation > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_reject_v_2_return_bitfield_10.trade_capture_report_reject_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
-        if: number_of_return_bitfields >= 11 and trade_capture_report_reject_v_2_return_bitfield_11.trade_capture_report_reject_v_2_return_bitfield_11_algorithmic_indicator > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_reject_v_2_return_bitfield_11.trade_capture_report_reject_v_2_return_bitfield_11_algorithmic_indicator
       - id: deferral_reason
         type: u1
         enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and trade_capture_report_reject_v_2_return_bitfield_11.trade_capture_report_reject_v_2_return_bitfield_11_deferral_reason > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_reject_v_2_return_bitfield_11.trade_capture_report_reject_v_2_return_bitfield_11_deferral_reason
       - id: intra_firm_trade_ind
         type: u1
         enum: intra_firm_trade_ind
-        if: number_of_return_bitfields >= 19 and trade_capture_report_reject_v_2_return_bitfield_19.trade_capture_report_reject_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+        if: number_of_return_bitfields >= 19 and trade_capture_report_reject_v_2_return_bitfield_19.trade_capture_report_reject_v_2_return_bitfield_19_intra_firm_trade_ind
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_reject_v_2_return_bitfield_1.trade_capture_report_reject_v_2_return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and trade_capture_report_reject_v_2_return_bitfield_1.trade_capture_report_reject_v_2_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_reject_v_2_return_bitfield_2.trade_capture_report_reject_v_2_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_reject_v_2_return_bitfield_3.trade_capture_report_reject_v_2_return_bitfield_3_account
         doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_id
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_reject_v_2_return_bitfield_4.trade_capture_report_reject_v_2_return_bitfield_4_party_id > 0
+        if: number_of_return_bitfields >= 4 and trade_capture_report_reject_v_2_return_bitfield_4.trade_capture_report_reject_v_2_return_bitfield_4_party_id
         doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_reject_v_2_return_bitfield_6.trade_capture_report_reject_v_2_return_bitfield_6_party_role > 0
+        if: number_of_return_bitfields >= 6 and trade_capture_report_reject_v_2_return_bitfield_6.trade_capture_report_reject_v_2_return_bitfield_6_party_role
         doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_reject_v_2_return_bitfield_1:
     meta:
@@ -1937,112 +1937,112 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_exchange
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_clearing_firm
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_order_qty
       - id: trade_report_type_return
         type: u2
-        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_trade_report_type_return > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_trade_report_type_return
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_text > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_text
         doc: 'Human readable text with more information about the reject reason'
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_last_mkt > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_confirm_v_2_return_bitfield_7.trade_capture_confirm_v_2_return_bitfield_7_last_mkt
       - id: order_category
         type: u1
         enum: order_category
-        if: number_of_return_bitfields >= 9 and trade_capture_confirm_v_2_return_bitfield_9.trade_capture_confirm_v_2_return_bitfield_9_order_category > 0
+        if: number_of_return_bitfields >= 9 and trade_capture_confirm_v_2_return_bitfield_9.trade_capture_confirm_v_2_return_bitfield_9_order_category
       - id: waiver_type
         type: u1
         enum: waiver_type
-        if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_waiver_type > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_waiver_type
       - id: price_formation
         type: u1
         enum: price_formation
-        if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_price_formation > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
-        if: number_of_return_bitfields >= 11 and trade_capture_confirm_v_2_return_bitfield_11.trade_capture_confirm_v_2_return_bitfield_11_algorithmic_indicator > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_confirm_v_2_return_bitfield_11.trade_capture_confirm_v_2_return_bitfield_11_algorithmic_indicator
       - id: deferral_reason
         type: u1
         enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and trade_capture_confirm_v_2_return_bitfield_11.trade_capture_confirm_v_2_return_bitfield_11_deferral_reason > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_confirm_v_2_return_bitfield_11.trade_capture_confirm_v_2_return_bitfield_11_deferral_reason
       - id: trade_publish_ind
         type: u1
         enum: trade_publish_ind
-        if: number_of_return_bitfields >= 15 and trade_capture_confirm_v_2_return_bitfield_15.trade_capture_confirm_v_2_return_bitfield_15_trade_publish_ind > 0
+        if: number_of_return_bitfields >= 15 and trade_capture_confirm_v_2_return_bitfield_15.trade_capture_confirm_v_2_return_bitfield_15_trade_publish_ind
       - id: report_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 15 and trade_capture_confirm_v_2_return_bitfield_15.trade_capture_confirm_v_2_return_bitfield_15_report_time > 0
+        if: number_of_return_bitfields >= 15 and trade_capture_confirm_v_2_return_bitfield_15.trade_capture_confirm_v_2_return_bitfield_15_report_time
         doc: 'Nanoseconds since Unix epoch'
       - id: intra_firm_trade_ind
         type: u1
         enum: intra_firm_trade_ind
-        if: number_of_return_bitfields >= 19 and trade_capture_confirm_v_2_return_bitfield_19.trade_capture_confirm_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+        if: number_of_return_bitfields >= 19 and trade_capture_confirm_v_2_return_bitfield_19.trade_capture_confirm_v_2_return_bitfield_19_intra_firm_trade_ind
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_confirm_v_2_return_bitfield_1.trade_capture_confirm_v_2_return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and trade_capture_confirm_v_2_return_bitfield_1.trade_capture_confirm_v_2_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_account
         doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_id
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_confirm_v_2_return_bitfield_4.trade_capture_confirm_v_2_return_bitfield_4_party_id > 0
+        if: number_of_return_bitfields >= 4 and trade_capture_confirm_v_2_return_bitfield_4.trade_capture_confirm_v_2_return_bitfield_4_party_id
         doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_confirm_v_2_return_bitfield_6.trade_capture_confirm_v_2_return_bitfield_6_party_role > 0
+        if: number_of_return_bitfields >= 6 and trade_capture_confirm_v_2_return_bitfield_6.trade_capture_confirm_v_2_return_bitfield_6_party_role
         doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and trade_capture_confirm_v_2_return_bitfield_8.trade_capture_confirm_v_2_return_bitfield_8_fee_code > 0
+        if: number_of_return_bitfields >= 8 and trade_capture_confirm_v_2_return_bitfield_8.trade_capture_confirm_v_2_return_bitfield_8_fee_code
         doc: 'Indicates fee associated with an execution. Fee codes are published in the pricing schedule. New fee codes may be sent with little to no notice. Participants are encouraged to code their sys- tems to accept unknown fee codes'
   trade_capture_confirm_v_2_return_bitfield_1:
     meta:
@@ -2588,88 +2588,88 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_security_exchange
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_clearing_firm
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_order_qty
       - id: trade_report_type_return
         type: u2
-        if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_trade_report_type_return > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_trade_report_type_return
       - id: last_mkt
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_last_mkt > 0
+        if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_last_mkt
       - id: waiver_type
         type: u1
         enum: waiver_type
-        if: number_of_return_bitfields >= 10 and trade_capture_report_decline_v_2_return_bitfield_10.trade_capture_report_decline_v_2_return_bitfield_10_waiver_type > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_decline_v_2_return_bitfield_10.trade_capture_report_decline_v_2_return_bitfield_10_waiver_type
       - id: price_formation
         type: u1
         enum: price_formation
-        if: number_of_return_bitfields >= 10 and trade_capture_report_decline_v_2_return_bitfield_10.trade_capture_report_decline_v_2_return_bitfield_10_price_formation > 0
+        if: number_of_return_bitfields >= 10 and trade_capture_report_decline_v_2_return_bitfield_10.trade_capture_report_decline_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
-        if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_algorithmic_indicator > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_algorithmic_indicator
       - id: deferral_reason
         type: u1
         enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_deferral_reason > 0
+        if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_deferral_reason
       - id: intra_firm_trade_ind
         type: u1
         enum: intra_firm_trade_ind
-        if: number_of_return_bitfields >= 19 and trade_capture_report_decline_v_2_return_bitfield_19.trade_capture_report_decline_v_2_return_bitfield_19_intra_firm_trade_ind > 0
+        if: number_of_return_bitfields >= 19 and trade_capture_report_decline_v_2_return_bitfield_19.trade_capture_report_decline_v_2_return_bitfield_19_intra_firm_trade_ind
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and trade_capture_report_decline_v_2_return_bitfield_1.trade_capture_report_decline_v_2_return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and trade_capture_report_decline_v_2_return_bitfield_1.trade_capture_report_decline_v_2_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1 = Buy 2 = Sell 8 = Cross'
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and trade_capture_report_decline_v_2_return_bitfield_2.trade_capture_report_decline_v_2_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and trade_capture_report_decline_v_2_return_bitfield_3.trade_capture_report_decline_v_2_return_bitfield_3_account
         doc: 'Corresponds to Account (1) in Cboe FIX. Contains the Account specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. Allowed charac- ters are alphanumeric and colon'
       - id: party_id
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and trade_capture_report_decline_v_2_return_bitfield_4.trade_capture_report_decline_v_2_return_bitfield_4_party_id > 0
+        if: number_of_return_bitfields >= 4 and trade_capture_report_decline_v_2_return_bitfield_4.trade_capture_report_decline_v_2_return_bitfield_4_party_id
         doc: 'Corresponds to PartyID (448) in Cboe FIX. The end-client responsible for the trade. Must be an identifier (4 uppercase letters) known to Cboe'
       - id: party_role
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and trade_capture_report_decline_v_2_return_bitfield_6.trade_capture_report_decline_v_2_return_bitfield_6_party_role > 0
+        if: number_of_return_bitfields >= 6 and trade_capture_report_decline_v_2_return_bitfield_6.trade_capture_report_decline_v_2_return_bitfield_6_party_role
         doc: 'Corresponds to PartyRole (452) in Cboe FIX. Contains the PartyRole specified on this leg on the trade capture, if any. Reflected back on trade capture report confirmations. 2 = EnteringFirm (the party reporting the trade)'
   trade_capture_report_decline_v_2_return_bitfield_1:
     meta:
@@ -3148,40 +3148,40 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_security_exchange
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and quote_status_v_2_return_bitfield_2.quote_status_v_2_return_bitfield_2_capacity
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and quote_status_v_2_return_bitfield_3.quote_status_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and quote_status_v_2_return_bitfield_3.quote_status_v_2_return_bitfield_3_clearing_firm
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and quote_status_v_2_return_bitfield_7.quote_status_v_2_return_bitfield_7_text > 0
+        if: number_of_return_bitfields >= 7 and quote_status_v_2_return_bitfield_7.quote_status_v_2_return_bitfield_7_text
         doc: 'Human readable text with more information about the reject reason'
   quote_status_v_2_return_bitfield_1:
     meta:
@@ -3665,35 +3665,35 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_symbol > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_symbol
       - id: currency
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_currency > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_currency
       - id: id_source
         type: u1
         enum: id_source
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_id_source > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_id_source
       - id: security_id
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_security_id > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_security_id
       - id: security_exchange
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_security_exchange > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_security_exchange
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and quote_reject_v_2_return_bitfield_2.quote_reject_v_2_return_bitfield_2_capacity
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and quote_reject_v_2_return_bitfield_3.quote_reject_v_2_return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and quote_reject_v_2_return_bitfield_3.quote_reject_v_2_return_bitfield_3_clearing_firm
   quote_reject_v_2_return_bitfield_1:
     meta:
       bit-endian: le

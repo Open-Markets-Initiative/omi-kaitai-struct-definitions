@@ -243,27 +243,27 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_firm > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account
       - id: price
         type: decimal_s8_4
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_ord_type > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_time_in_force > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_min_qty > 0
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -271,61 +271,61 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_capacity > 0
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_account > 0
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_account
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_prevent_match > 0
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_prevent_match
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_expire_time > 0
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_maturity_date > 0
+        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_maturity_date
       - id: risk_reset
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_risk_reset > 0
+        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_risk_reset
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_open_close > 0
+        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_open_close
       - id: cmta_number
         type: u4
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_cmta_number > 0
+        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_cmta_number
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_new_order_bitfields >= 6 and new_order_bitfield_6.new_order_bitfield_6_stop_px > 0
+        if: number_of_new_order_bitfields >= 6 and new_order_bitfield_6.new_order_bitfield_6_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: custom_group_id
         type: u2
-        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_custom_group_id > 0
+        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_custom_group_id
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_cti_code > 0
+        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_manual_order_indicator > 0
+        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_oeoid > 0
+        if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_oeoid
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 8 and new_order_bitfield_8.new_order_bitfield_8_frequent_trader_id > 0
+        if: number_of_new_order_bitfields >= 8 and new_order_bitfield_8.new_order_bitfield_8_frequent_trader_id
   new_order_bitfield_1:
     meta:
       bit-endian: le
@@ -508,31 +508,31 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_clearing_firm > 0
+        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_clearing_firm
       - id: product_name
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_product_name > 0
+        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_product_name
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_mass_cancel_id > 0
+        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_mass_cancel_id
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_manual_order_indicator > 0
+        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_oeoid > 0
+        if: number_of_cancel_order_bitfields >= 1 and cancel_order_bitfield_1.cancel_order_bitfield_1_oeoid
       - id: mass_cancel_inst
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_cancel_order_bitfields >= 2 and cancel_order_bitfield_2.cancel_order_bitfield_2_mass_cancel_inst > 0
+        if: number_of_cancel_order_bitfields >= 2 and cancel_order_bitfield_2.cancel_order_bitfield_2_mass_cancel_inst
   cancel_order_bitfield_1:
     meta:
       bit-endian: le
@@ -600,46 +600,46 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm
       - id: order_qty
         type: u4
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: price
         type: decimal_s8_4
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_ord_type > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_ord_type
       - id: cancel_orig_on_reject
         type: u1
         enum: cancel_orig_on_reject
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_cancel_orig_on_reject > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_cancel_orig_on_reject
       - id: side
         type: u1
         enum: side
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_side > 0
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_stop_px > 0
+        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_manual_order_indicator > 0
+        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_oeoid > 0
+        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_oeoid
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_frequent_trader_id > 0
+        if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_frequent_trader_id
   modify_order_bitfield_1:
     meta:
       bit-endian: le
@@ -774,31 +774,31 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_clearing_firm > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_clearing_firm
       - id: mass_cancel_inst
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_mass_cancel_inst > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_mass_cancel_inst
       - id: product_name
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_product_name > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_product_name
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_mass_cancel_id > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_mass_cancel_id
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_manual_order_indicator > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_oeoid > 0
+        if: number_of_purge_order_bitfields >= 1 and purge_order_bitfield_1.purge_order_bitfield_1_oeoid
   purge_order_bitfield_1:
     meta:
       bit-endian: le
@@ -953,23 +953,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -977,95 +977,95 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: leaves_qty
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_base_liquidity_indicator > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_base_liquidity_indicator
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator > 0
+        if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: cum_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_cum_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_cum_qty
       - id: day_order_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_order_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_order_qty
       - id: day_cum_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_cum_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_cum_qty
       - id: avg_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_avg_px > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_avg_px
         doc: 'Implied decimal with scale 1e-4'
       - id: day_avg_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_avg_px > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_avg_px
         doc: 'Implied decimal with scale 1e-4'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   return_bitfield_1:
     meta:
       bit-endian: le
@@ -1544,23 +1544,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -1568,63 +1568,63 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   quote_update_rejected_message:
     seq:
       - id: transaction_time
@@ -1733,23 +1733,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -1757,80 +1757,80 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id
         doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
       - id: leaves_qty
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_base_liquidity_indicator > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_base_liquidity_indicator
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   quote_restated_message:
     seq:
       - id: transaction_time
@@ -2047,23 +2047,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -2071,80 +2071,80 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: leaves_qty
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty
       - id: last_shares
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares
       - id: last_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: secondary_order_id
         type: u8
-        if: number_of_return_bitfields >= 6 and return_bitfield_6.return_bitfield_6_secondary_order_id > 0
+        if: number_of_return_bitfields >= 6 and return_bitfield_6.return_bitfield_6_secondary_order_id
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   quote_cancelled_message:
     seq:
       - id: transaction_time
@@ -2267,23 +2267,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -2291,38 +2291,38 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
   order_execution_message:
     seq:
       - id: transaction_time
@@ -2431,23 +2431,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -2455,107 +2455,107 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: trade_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date
       - id: clearing_size
         type: u4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size
       - id: cum_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_cum_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_cum_qty
       - id: day_order_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_order_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_order_qty
       - id: day_cum_qty
         type: u4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_cum_qty > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_cum_qty
       - id: avg_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_avg_px > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_avg_px
         doc: 'Implied decimal with scale 1e-4'
       - id: day_avg_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_avg_px > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_avg_px
         doc: 'Implied decimal with scale 1e-4'
       - id: pending_status
         type: u1
         enum: pending_status
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_pending_status > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_pending_status
       - id: multileg_reporting_type
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
-        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id > 0
+        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   quote_execution_message:
     seq:
       - id: transaction_time
@@ -2725,20 +2725,20 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: corrected_size
         type: u4
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_corrected_size > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_corrected_size
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
   purge_rejected_message:
     seq:
       - id: transaction_time
@@ -2831,7 +2831,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id > 0
+        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id
   risk_reset_acknowledgment_message:
     seq:
       - id: risk_status_id
@@ -2948,23 +2948,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -2972,104 +2972,104 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id
         doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
       - id: last_shares
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares
       - id: last_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: trade_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date
       - id: clearing_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_price > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_price
         doc: 'Implied decimal with scale 1e-4'
       - id: clearing_size
         type: u4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol
       - id: multileg_reporting_type
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
-        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id > 0
+        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   variance_restatement_message:
     seq:
       - id: transaction_time
@@ -3160,23 +3160,23 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty > 0
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
       - id: symbol_long
         type: str
         size: 8
@@ -3184,100 +3184,100 @@ types:
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity > 0
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match > 0
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
       - id: maturity_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
       - id: open_close
         type: u1
         enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close > 0
+        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id
         doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
       - id: last_shares
         type: u4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_shares
       - id: last_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px > 0
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px > 0
+        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number > 0
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: cti_code
         type: u1
         enum: cti_code
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_cti_code
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_manual_order_indicator
       - id: oeoid
         type: str
         size: 18
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_oeoid
       - id: trade_date
         type: yyyymmdd_date
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_trade_date
       - id: clearing_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_price > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_price
         doc: 'Implied decimal with scale 1e-4'
       - id: clearing_size
         type: u4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol > 0
+        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_symbol
       - id: multileg_reporting_type
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type > 0
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_multileg_reporting_type
       - id: secondary_exec_id
         type: u8
-        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id > 0
+        if: number_of_return_bitfields >= 14 and return_bitfield_14.return_bitfield_14_secondary_exec_id
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id > 0
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_frequent_trader_id
   tas_quote_restatement_message:
     seq:
       - id: transaction_time

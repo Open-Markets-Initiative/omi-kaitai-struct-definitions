@@ -144,7 +144,7 @@ types:
       - id: option_classes_requested
         type: option_classes_requested
         repeat: expr
-        repeat-expr: num_option_classes_requested
+        repeat-expr: num_option_classes_requested.to_i
         doc: 'Option classes the client asks for, none when the count is 000'
   option_classes_requested:
     seq:
@@ -496,7 +496,7 @@ types:
       - id: market_depth_level
         type: market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level
+        repeat-expr: num_market_depth_level.to_i
         doc: 'Market Depth Level'
   market_depth_level:
     seq:
@@ -569,7 +569,7 @@ types:
       - id: complex_market_depth_level
         type: complex_market_depth_level
         repeat: expr
-        repeat-expr: num_complex_market_depth_level
+        repeat-expr: num_complex_market_depth_level.to_i
         doc: 'Complex Market Depth Level'
   complex_market_depth_level:
     seq:
@@ -925,7 +925,7 @@ types:
       - id: instrument_leg
         type: instrument_leg
         repeat: expr
-        repeat-expr: num_instrument_leg
+        repeat-expr: num_instrument_leg.to_i
         doc: 'Instrument Leg Repeating Group'
   instrument_leg:
     seq:

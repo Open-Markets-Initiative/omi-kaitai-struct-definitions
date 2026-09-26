@@ -779,7 +779,7 @@ types:
       - id: option_market_depth_level
         type: option_market_depth_level
         repeat: expr
-        repeat-expr: num_option_market_depth_level
+        repeat-expr: num_option_market_depth_level.to_i
         doc: 'Option Market Depth'
   option_market_depth_level:
     seq:
@@ -850,7 +850,7 @@ types:
       - id: future_options_market_depth_trading_instrument
         type: future_options_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_future_options_market_depth_trading_instrument
+        repeat-expr: num_future_options_market_depth_trading_instrument.to_i
         doc: 'Future Options Market Depth Trading instrument'
   future_options_market_depth_trading_instrument:
     seq:
@@ -921,7 +921,7 @@ types:
       - id: futures_market_depth_trading_instrument
         type: futures_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_futures_market_depth_trading_instrument
+        repeat-expr: num_futures_market_depth_trading_instrument.to_i
         doc: 'Futures Market Depth Trading instrument'
   futures_market_depth_trading_instrument:
     seq:
@@ -995,7 +995,7 @@ types:
       - id: strategy_market_depth_trading_instrument
         type: strategy_market_depth_trading_instrument
         repeat: expr
-        repeat-expr: num_strategy_market_depth_trading_instrument
+        repeat-expr: num_strategy_market_depth_trading_instrument.to_i
         doc: 'Strategy Market Depth Trading instrument'
   strategy_market_depth_trading_instrument:
     seq:
@@ -1703,7 +1703,7 @@ types:
       - id: strategy_instrument_leg
         type: strategy_instrument_leg
         repeat: expr
-        repeat-expr: num_strategy_instrument_leg
+        repeat-expr: num_strategy_instrument_leg.to_i
         doc: 'Strategy Instrument Leg'
   strategy_instrument_leg:
     seq:
@@ -2414,7 +2414,7 @@ types:
       - id: bond_definition
         type: bond_definition
         repeat: expr
-        repeat-expr: num_bond_definition
+        repeat-expr: num_bond_definition.to_i
         doc: 'Bond Definition'
   bond_definition:
     seq:
@@ -2527,7 +2527,7 @@ types:
       - id: tick_entry
         type: tick_entry
         repeat: expr
-        repeat-expr: num_tick_entry
+        repeat-expr: num_tick_entry.to_i
         doc: 'Tick Entry'
   tick_entry:
     seq:

@@ -245,7 +245,7 @@ types:
       - id: instrument
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
-      - id: order_id_client_order_id_20
+      - id: order_id_x_20
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: auction_id
@@ -288,7 +288,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -320,13 +320,13 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
-      - id: filler_numeric_66
+      - id: filler_n_6
         size: 6
         doc: 'Stated inline as Numeric (6)'
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_2_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   clearing_data:
@@ -396,7 +396,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -436,7 +436,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   order_modification_acknowledgement:
@@ -452,7 +452,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -484,13 +484,13 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
-      - id: filler_numeric_66
+      - id: filler_n_6
         size: 6
         doc: 'Stated inline as Numeric (6)'
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_2_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   new_complex_order_instrument_acknowledgement:
@@ -514,7 +514,7 @@ types:
       - id: new_complex_order_instrument_acknowledgement_occurrence
         type: new_complex_order_instrument_acknowledgement_occurrence
         repeat: expr
-        repeat-expr: num_new_complex_order_instrument_acknowledgement_occurrence
+        repeat-expr: num_new_complex_order_instrument_acknowledgement_occurrence.to_i
         doc: 'The guide states this block as 2 to 16 occurrences'
   new_complex_order_instrument_acknowledgement_occurrence:
     seq:
@@ -532,7 +532,7 @@ types:
         type: u1
         enum: leg_verb
         doc: 'Identifies an order/quote side B: Buy S: Sell'
-      - id: filler_must_be_spaces
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: leg_quantity_ratio
@@ -565,7 +565,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -603,7 +603,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   auction_or_improvement_cancellation_acknowledgement:
@@ -619,7 +619,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -669,7 +669,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -709,7 +709,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   bulk_quote_acknowledgement:
@@ -728,7 +728,7 @@ types:
       - id: bulk_quote_acknowledgement_occurrence
         type: bulk_quote_acknowledgement_occurrence
         repeat: expr
-        repeat-expr: num_bulk_quote_acknowledgement_occurrence
+        repeat-expr: num_bulk_quote_acknowledgement_occurrence.to_i
         doc: 'The guide states this block as 1 to 280 occurrences'
   bulk_quote_acknowledgement_occurrence:
     seq:
@@ -818,7 +818,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: filler_string_22
+      - id: filler_x_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: trader_id
@@ -826,7 +826,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: filler_2
+      - id: filler_2_x_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: nb_of_instruments
@@ -834,7 +834,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Stated inline as Numeric (4)'
-      - id: 1_to_9999_occurrences_instrument
+      - id: field_1_to_9999_occurrences_instrument
         type: str
         size: 4
         encoding: ASCII
@@ -909,10 +909,10 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trade number for an instrument and one day'
-      - id: trade_memo_string_5050
+      - id: trade_memo
         type: str_50_nullable
         doc: 'Stated inline as String (50). Nullable, No Value = 0'
-      - id: original_reference_id_order_id_8
+      - id: original_reference_id
         type: str
         size: 8
         encoding: ASCII
@@ -949,12 +949,12 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_11
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_zero_filled
+      - id: filler_2_x_4
         size: 4
-        doc: 'Stated inline as String (4)'
+        doc: 'Stated inline as String (4). Nullable, No Value = 0'
   cancellation_of_all_quotes_notices:
     seq:
       - id: group
@@ -1074,16 +1074,14 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trade number for an instrument and one day'
-      - id: trade_memo_trade_memo_50
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'Text entered by Market Operation when it is a Manual Trade Entry'
-      - id: original_reference_id_original_reference_id_8
+      - id: trade_memo
+        type: str_50_nullable
+        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+      - id: original_reference_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'References either the Original Order ID of the traded order or the Quote ID of the quote that has traded ID Code for the Counterpart Participant Trader ID firm if it is a cross trade, else blank'
+        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
       - id: id_code_for_the_counterpart_participant
         type: str
         size: 4
@@ -1100,12 +1098,12 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_11
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_zero_filled
+      - id: filler_2_x_4
         size: 4
-        doc: 'Stated inline as String (4)'
+        doc: 'Stated inline as String (4). Nullable, No Value = 0'
   quote_notice:
     seq:
       - id: group
@@ -1225,16 +1223,14 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trade number for an instrument and one day'
-      - id: trade_memo_trade_memo_50
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'Text entered by Market Operation when it is a Manual Trade Entry'
-      - id: original_reference_id_original_reference_id_8
+      - id: trade_memo
+        type: str_50_nullable
+        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+      - id: original_reference_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'References either the Original Order ID of the traded order or the Quote ID of the quote that has traded ID Code for the Counterpart Participant Trader ID firm if it is a cross trade, else blank'
+        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
       - id: id_code_for_the_counterpart_participant
         type: str
         size: 4
@@ -1251,12 +1247,12 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_11
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_zero_filled
+      - id: filler_2_x_4
         size: 4
-        doc: 'Stated inline as String (4)'
+        doc: 'Stated inline as String (4). Nullable, No Value = 0'
   leg_execution_cancellation_notice:
     seq:
       - id: group
@@ -1318,10 +1314,10 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trade number for an instrument and one day'
-      - id: trade_memo_string_5050
+      - id: trade_memo
         type: str_50_nullable
         doc: 'Stated inline as String (50). Nullable, No Value = 0'
-      - id: original_reference_id_order_id_8
+      - id: original_reference_id
         type: str
         size: 8
         encoding: ASCII
@@ -1358,12 +1354,12 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_11
+      - id: filler_x_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_zero_filled
+      - id: filler_2_x_4
         size: 4
-        doc: 'Stated inline as String (4)'
+        doc: 'Stated inline as String (4). Nullable, No Value = 0'
   order_cancellation_notice_by_system:
     seq:
       - id: group
@@ -1377,7 +1373,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_order_id_8
+      - id: order_id_x_8
         type: str
         size: 8
         encoding: ASCII
@@ -1417,7 +1413,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_must_be_blank_string_44
+      - id: filler_x_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   str_6_nullable:
@@ -1693,7 +1689,7 @@ enums:
     0x41:
       id: 'indication_of_interest'
       doc: 'Indication Of Interest'
-  quantity_term_quantity_term_1:
+  quantity_term:
     0x42:
       id: 'surrender_quantity_for_solicitation_facilitation_and_floor_trade'
       doc: 'Surrender Quantity For Solicitation Facilitation And Floor Trade'
