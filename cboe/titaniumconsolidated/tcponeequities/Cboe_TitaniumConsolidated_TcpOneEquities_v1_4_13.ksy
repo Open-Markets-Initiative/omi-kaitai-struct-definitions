@@ -330,7 +330,7 @@ types:
         type: u1
         doc: 'Size of each ADAP Block message'
       - id: adap_block
-        type: adap_block
+        type: adap_message_adap_block
         repeat: expr
         repeat-expr: num_adap_block
         doc: 'ADAP Block'
@@ -346,7 +346,7 @@ types:
         type: b1
       - id: unused_5
         type: b5
-  adap_block:
+  adap_message_adap_block:
     seq:
       - id: adap_update
         type:
@@ -413,10 +413,18 @@ types:
         type: u1
         doc: 'Size of each ADAP Block message'
       - id: adap_block
-        type: adap_block
+        type: expanded_adap_message_adap_block
         repeat: expr
         repeat-expr: num_adap_block
         doc: 'ADAP Block'
+  expanded_adap_message_adap_block:
+    seq:
+      - id: adap_update
+        type:
+          switch-on: _parent.adap_block_size
+          cases:
+            10: short_update_adap_block
+            18: long_update_adap_block
   rpi_message:
     seq:
       - id: timestamp
