@@ -118,7 +118,7 @@ types:
         doc: 'Sequence number the trading system assigns'
   heartbeat_question:
     seq:
-      - id: user_sequence_id_first_user_sequence_id_for_nextcurrent_heartbeat_period
+      - id: first_user_sequence_id
         type: str
         size: 8
         encoding: ASCII
@@ -157,7 +157,7 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Received Message type in Error'
-      - id: preceding_user_sequence_id_received_zeroes_if_none
+      - id: preceding_user_sequence_id_received
         type: str
         size: 8
         encoding: ASCII
@@ -219,7 +219,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Identifies current session ID If set to blank spaces, this means the Participant wants to connect to the current session ID'
-      - id: last_user_sequence_id_received_if_no_business_message_has_been_received_on_this_connection_this_field_is_equal_to_zeroes
+      - id: last_user_sequence_id_received
         type: str_8_nullable
         doc: 'Identifies all the incoming business messages for one connection. Must be sequential and start at 1 at the beginning of the day. Used by SOLA® to track gaps in message sequence. When the maximum User Sequence ID of 99999999 is reached, the Participant is required to reset back to 0 (zero), and then increment by 1 for each new business message sent to the Exchange. The same reset is required when the Participant reaches the next maximum User Sequence ID of 99999999 and so on. Nullable, No Value = 0'
       - id: time
@@ -242,13 +242,13 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: order_id_x_20
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: original_message_type
@@ -272,7 +272,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: quote_id_identifies_traders_quote_on_this_group
+      - id: quote_id
         type: str_8_nullable
         doc: 'If entered by Participant Quote ID is validated against the Quote ID received in the KD “Sail Bulk Quote Acknowledgment message”, On failed validation the system returns an ER “Sail Error Notice” message with the expected Quote ID. An empty Quote ID is accepted and not validated by the system. An empty Quote ID is defined as follows: All ‘ ‘ (blank) spaces 00000000 On all outbound messages with Quote ID, the Quote ID corresponds to the Quote ID referenced in the KD message. Nullable, No Value = 0'
   order_acknowledgement:
@@ -280,7 +280,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -379,16 +379,16 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: type_of_cancellation_only_q_quotes_only_can_be_returned
+      - id: type_of_cancellation
         type: u1
-        enum: type_of_cancellation_only_q_quotes_only_can_be_returned
+        enum: type_of_cancellation
         doc: 'Type of cancellation A: All L: Locked O: OrdersOnly Q: QuotesOnly'
   improvement_order_acknowlegment:
     seq:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -428,7 +428,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
-      - id: auction_id_only_if_message_type_is_ki_or_else_zeroes
+      - id: auction_id
         type: str
         size: 6
         encoding: ASCII
@@ -444,7 +444,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -547,7 +547,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: original_message_type_re_rf_rq_rp_gz
+      - id: original_message_type
         type: str
         size: 2
         encoding: ASCII
@@ -557,7 +557,61 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
+        type: str_4_nullable
+        doc: 'Instrument identification within a Group. Nullable, No Value = 0'
+      - id: trader_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
+      - id: order_id_x_8
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'Provides the Participant with the outcome reserved for the order that is the subject of the entry, modification, or cancellation. " ": Order put in the Order Book (having possibly been partially executed) A: Order cancelled by the trader or at the end of the exposition phase B: Order has been eliminated by the trading system due to invalid out of limits price D: The order is a ''Directed/Routed Order'' and has been received by ExecutingParticipant E: The order has been eliminated by the trading system G: Cancelled By Supervisor I: Session Order has been cancelled when the Participant closes or loses his connection to the SOLA trading system J: Eliminated Due To Maximum Nb Triggers Limit Exceeded K: Eliminated Due To Trade Activity Limit Exceeded L: Order has been sent to the away exchange M: Cancelled by the BOX Market Operations Center (MOC) O: Eliminated Due To Drill Through Protection P: Order is being exposed R: Order is eliminated due to trading restriction T: Eliminated Due To Trade Limit Exceeded W: Cancel Pending X: Order executed in full (or partially and the remaining part could not be put in the Order Book) (Fill & Kill) The guide states no width for this type. One character is inferred from the values it states, each of which is one character wide'
+      - id: verb_side
+        type: u1
+        enum: verb_side
+        doc: 'Identifies an order/quote side B: Buy S: Sell'
+      - id: quantity
+        type: str_8_nullable
+        doc: 'Number of contracts or shares. Nullable, No Value = 0'
+      - id: assigned_price
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Price assigned by the Trading System. Refer toPrice for format details'
+      - id: clearing_data
+        type: clearing_data
+        doc: 'The guide states these fields once, as Clearing Data, for every message that carries them'
+      - id: owner_data
+        type: owner_data
+        doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
+      - id: original_order_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'First Order ID assigned to the order by the trading system'
+      - id: auction_id_optional
+        type: str_6_nullable
+        doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
+      - id: additional_client_memo
+        type: str_16_nullable
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+      - id: filler_x_4
+        size: 4
+        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+  auction_or_improvement_cancellation_acknowledgement:
+    seq:
+      - id: group
+        type: str_2_nullable
+        doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -598,60 +652,6 @@ types:
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
       - id: auction_id
-        type: str_6_nullable
-        doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
-      - id: additional_client_memo
-        type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_x_4
-        size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
-  auction_or_improvement_cancellation_acknowledgement:
-    seq:
-      - id: group
-        type: str_2_nullable
-        doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a Group. Nullable, No Value = 0'
-      - id: trader_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_x_8
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
-      - id: status
-        type: u1
-        enum: status
-        doc: 'Provides the Participant with the outcome reserved for the order that is the subject of the entry, modification, or cancellation. " ": Order put in the Order Book (having possibly been partially executed) A: Order cancelled by the trader or at the end of the exposition phase B: Order has been eliminated by the trading system due to invalid out of limits price D: The order is a ''Directed/Routed Order'' and has been received by ExecutingParticipant E: The order has been eliminated by the trading system G: Cancelled By Supervisor I: Session Order has been cancelled when the Participant closes or loses his connection to the SOLA trading system J: Eliminated Due To Maximum Nb Triggers Limit Exceeded K: Eliminated Due To Trade Activity Limit Exceeded L: Order has been sent to the away exchange M: Cancelled by the BOX Market Operations Center (MOC) O: Eliminated Due To Drill Through Protection P: Order is being exposed R: Order is eliminated due to trading restriction T: Eliminated Due To Trade Limit Exceeded W: Cancel Pending X: Order executed in full (or partially and the remaining part could not be put in the Order Book) (Fill & Kill) The guide states no width for this type. One character is inferred from the values it states, each of which is one character wide'
-      - id: verb_side
-        type: u1
-        enum: verb_side
-        doc: 'Identifies an order/quote side B: Buy S: Sell'
-      - id: quantity
-        type: str_8_nullable
-        doc: 'Number of contracts or shares. Nullable, No Value = 0'
-      - id: assigned_price
-        type: str
-        size: 10
-        encoding: ASCII
-        doc: 'Price assigned by the Trading System. Refer toPrice for format details'
-      - id: clearing_data
-        type: clearing_data
-        doc: 'The guide states these fields once, as Clearing Data, for every message that carries them'
-      - id: owner_data
-        type: owner_data
-        doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
-      - id: original_order_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'First Order ID assigned to the order by the trading system'
-      - id: auction_id_only_if_message_type_is_ki_or_else_zeroes
         type: str
         size: 6
         encoding: ASCII
@@ -661,7 +661,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -701,7 +701,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
-      - id: auction_id_only_if_message_type_is_ki_or_else_zeroes
+      - id: auction_id
         type: str
         size: 6
         encoding: ASCII
@@ -717,7 +717,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: quote_id_identifies_traders_quote_on_this_group
+      - id: quote_id
         type: str_8_nullable
         doc: 'If entered by Participant Quote ID is validated against the Quote ID received in the KD “Sail Bulk Quote Acknowledgment message”, On failed validation the system returns an ER “Sail Error Notice” message with the expected Quote ID. An empty Quote ID is accepted and not validated by the system. An empty Quote ID is defined as follows: All ‘ ‘ (blank) spaces 00000000 On all outbound messages with Quote ID, the Quote ID corresponds to the Quote ID referenced in the KD message. Nullable, No Value = 0'
       - id: num_bulk_quote_acknowledgement_occurrence
@@ -762,7 +762,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -790,7 +790,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -834,7 +834,7 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Stated inline as Numeric (4)'
-      - id: field_1_to_9999_occurrences_instrument
+      - id: instrument
         type: str
         size: 4
         encoding: ASCII
@@ -853,7 +853,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -901,7 +901,7 @@ types:
         type: u1
         enum: trade_type
         doc: 'Identifies the origin of the trade A: Traded during a Guaranteed Auction B: Solicitation Auction C: Facilitation Auction F: Traded during Continuous Trading following FIFO algorithm M: Trade entered by Market Operations O: Traded during Opening'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: trade_number
@@ -960,7 +960,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -977,7 +977,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -985,7 +985,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: verb
@@ -1018,7 +1018,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -1026,11 +1026,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: reference_id_order_id_or_quote_id
+      - id: reference_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'The guide states the field type as Order ID/Quote ID'
+        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1066,7 +1066,7 @@ types:
         type: u1
         enum: trade_type
         doc: 'Identifies the origin of the trade A: Traded during a Guaranteed Auction B: Solicitation Auction C: Facilitation Auction F: Traded during Continuous Trading following FIFO algorithm M: Trade entered by Market Operations O: Traded during Opening'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: trade_number
@@ -1109,7 +1109,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -1154,7 +1154,7 @@ types:
         size: 10
         encoding: ASCII
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: original_reference_id_quote_or_order_id
@@ -1167,7 +1167,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -1175,11 +1175,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: reference_id_order_id_or_quote_id
+      - id: reference_id
         type: str
         size: 8
         encoding: ASCII
-        doc: 'The guide states the field type as Order ID/Quote ID'
+        doc: 'Identifies an order. Associated with Group ID and Instrument ID; it is the Order Key identifier'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1215,7 +1215,7 @@ types:
         type: u1
         enum: trade_type
         doc: 'Identifies the origin of the trade A: Traded during a Guaranteed Auction B: Solicitation Auction C: Facilitation Auction F: Traded during Continuous Trading following FIFO algorithm M: Trade entered by Market Operations O: Traded during Opening'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: trade_number
@@ -1258,7 +1258,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -1306,7 +1306,7 @@ types:
         type: u1
         enum: trade_type
         doc: 'Identifies the origin of the trade A: Traded during a Guaranteed Auction B: Solicitation Auction C: Facilitation Auction F: Traded during Continuous Trading following FIFO algorithm M: Trade entered by Market Operations O: Traded during Opening'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: trade_number
@@ -1365,7 +1365,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -1405,7 +1405,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the trading system'
-      - id: auction_id_only_if_message_type_is_ki_or_else_zeroes
+      - id: auction_id
         type: str
         size: 6
         encoding: ASCII
@@ -1631,19 +1631,6 @@ enums:
     0x49:
       id: 'both_cmta_and_give_up_firms_will_be_defined_in_the_post_trading_instruction_field_the_guide_states_no_width_for_this_type_one_character_is_inferred_from_the_values_it_states_each_of_which_is_one_character_wide'
       doc: 'Both Cmta And Give Up Firms Will Be Defined In The Post Trading Instruction Field The Guide States No Width For This Type One Character Is Inferred From The Values It States Each Of Which Is One Character Wide'
-  type_of_cancellation_q_quotes_only:
-    0x41:
-      id: 'all'
-      doc: 'All'
-    0x4c:
-      id: 'locked'
-      doc: 'Locked'
-    0x4f:
-      id: 'orders_only'
-      doc: 'Orders Only'
-    0x51:
-      id: 'quotes_only'
-      doc: 'Quotes Only'
   type_of_cancellation:
     0x41:
       id: 'all'
@@ -1801,19 +1788,6 @@ enums:
     0x58:
       id: 'order_executed_in_full_or_partially_and_the_remaining_part_could_not_be_put_in_the_order_book_fill_kill_the_guide_states_no_width_for_this_type_one_character_is_inferred_from_the_values_it_states_each_of_which_is_one_character_wide'
       doc: 'Order Executed In Full Or Partially And The Remaining Part Could Not Be Put In The Order Book Fill Kill The Guide States No Width For This Type One Character Is Inferred From The Values It States Each Of Which Is One Character Wide'
-  type_of_cancellation_only_q_quotes_only_can_be_returned:
-    0x41:
-      id: 'all'
-      doc: 'All'
-    0x4c:
-      id: 'locked'
-      doc: 'Locked'
-    0x4f:
-      id: 'orders_only'
-      doc: 'Orders Only'
-    0x51:
-      id: 'quotes_only'
-      doc: 'Quotes Only'
   trader_lock_out:
     0x4c:
       id: 'locked'

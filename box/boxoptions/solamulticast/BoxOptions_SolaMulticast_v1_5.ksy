@@ -807,6 +807,7 @@ types:
         doc: 'Type Of Market'
       - id: type_of_options
         type: u1
+        enum: type_of_options
         doc: 'Type Of Options'
   complex_order_instrument_keys_message:
     seq:
@@ -1635,6 +1636,9 @@ enums:
     0x50:
       id: 'trade_done_on_a_complex_order_instrument'
       doc: 'Trade Done On A Complex Order Instrument'
+    0x20:
+      id: 'actual_transaction_took_place'
+      doc: 'Actual Transaction Took Place'
   instrument_status_marker:
     0x59:
       id: 'preopening_phase'
@@ -1747,6 +1751,10 @@ enums:
     0x45:
       id: 'equities'
       doc: 'Equities'
+  type_of_options:
+    0x20:
+      id: 'regular'
+      doc: 'Regular'
   delivery_month:
     0x4d:
       id: 'january_put'
@@ -1938,4 +1946,7 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
+    0x20:
+      id: 'all'
+      doc: 'All'
 

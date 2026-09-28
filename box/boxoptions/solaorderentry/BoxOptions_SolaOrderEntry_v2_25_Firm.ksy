@@ -183,7 +183,7 @@ types:
         doc: 'Y: Yes N: No'
   heartbeat_response:
     seq:
-      - id: user_sequence_id_first_user_sequence_id_for_nextcurrent_heartbeat_period
+      - id: first_user_sequence_id
         type: str
         size: 8
         encoding: ASCII
@@ -286,9 +286,9 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: type_of_cancellation_q_quotes_only
+      - id: type_of_cancellation
         type: u1
-        enum: type_of_cancellation_q_quotes_only
+        enum: type_of_cancellation
         doc: 'Type of cancellation A: All L: Locked O: OrdersOnly Q: QuotesOnly'
       - id: mm_cat_user_time
         type: str_8_nullable
@@ -298,7 +298,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: type_of_cancellation
@@ -316,7 +316,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: trader_id
@@ -345,7 +345,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: verb_side
@@ -494,7 +494,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: referenced_order_id
@@ -576,7 +576,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: price_type
@@ -645,7 +645,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: verb_side
@@ -663,7 +663,7 @@ types:
       - id: price
         type: str_10_nullable
         doc: 'Price with format indicator and price mantissa Format indicator (1): If the format indicator is Alpha, it means that the price is negative (A means negative value with no decimal, B means negative value with 1 decimal, C means negative value with 2 decimals, etc.). If the format indicator is Numeric, it means that the price is positive (0 means positive value with no decimal, 1 means positive value with one decimal, 2 means positive value with 2 decimals, etc.). If the format indicator is set to spaces, it means that the price is not significant. Price mantissa (9): Represents the price value including the number of decimals defined in the format indicator. Examples: Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 Format indicator = A; Price mantissa = 3567838; Price = -3567838 Format indicator = ; Price mantissa = 3567838; Price = not significant. Nullable, No Value = 0'
-      - id: auction_id
+      - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: filler_x_17
@@ -691,7 +691,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: price_type
@@ -811,7 +811,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: verb_side
@@ -907,7 +907,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: quote_id_identifies_traders_quote_on_this_group
+      - id: quote_id
         type: str_8_nullable
         doc: 'If entered by Participant Quote ID is validated against the Quote ID received in the KD “Sail Bulk Quote Acknowledgment message”, On failed validation the system returns an ER “Sail Error Notice” message with the expected Quote ID. An empty Quote ID is accepted and not validated by the system. An empty Quote ID is defined as follows: All ‘ ‘ (blank) spaces 00000000 On all outbound messages with Quote ID, the Quote ID corresponds to the Quote ID referenced in the KD message. Nullable, No Value = 0'
       - id: mm_cat_user_time
@@ -928,7 +928,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: verb_side
@@ -960,7 +960,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: quantity_1
@@ -971,7 +971,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: cancelled_order_id
@@ -984,7 +984,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group Identification within the system. A Group is composed of instruments and is usually associated with a specific underlying. Nullable, No Value = 0'
-      - id: instrument
+      - id: instrument_optional
         type: str_4_nullable
         doc: 'Instrument identification within a Group. Nullable, No Value = 0'
       - id: cancelled_order_id
@@ -1198,19 +1198,6 @@ enums:
     0x49:
       id: 'both_cmta_and_give_up_firms_will_be_defined_in_the_post_trading_instruction_field_the_guide_states_no_width_for_this_type_one_character_is_inferred_from_the_values_it_states_each_of_which_is_one_character_wide'
       doc: 'Both Cmta And Give Up Firms Will Be Defined In The Post Trading Instruction Field The Guide States No Width For This Type One Character Is Inferred From The Values It States Each Of Which Is One Character Wide'
-  type_of_cancellation_q_quotes_only:
-    0x41:
-      id: 'all'
-      doc: 'All'
-    0x4c:
-      id: 'locked'
-      doc: 'Locked'
-    0x4f:
-      id: 'orders_only'
-      doc: 'Orders Only'
-    0x51:
-      id: 'quotes_only'
-      doc: 'Quotes Only'
   type_of_cancellation:
     0x41:
       id: 'all'
@@ -1368,19 +1355,6 @@ enums:
     0x58:
       id: 'order_executed_in_full_or_partially_and_the_remaining_part_could_not_be_put_in_the_order_book_fill_kill_the_guide_states_no_width_for_this_type_one_character_is_inferred_from_the_values_it_states_each_of_which_is_one_character_wide'
       doc: 'Order Executed In Full Or Partially And The Remaining Part Could Not Be Put In The Order Book Fill Kill The Guide States No Width For This Type One Character Is Inferred From The Values It States Each Of Which Is One Character Wide'
-  type_of_cancellation_only_q_quotes_only_can_be_returned:
-    0x41:
-      id: 'all'
-      doc: 'All'
-    0x4c:
-      id: 'locked'
-      doc: 'Locked'
-    0x4f:
-      id: 'orders_only'
-      doc: 'Orders Only'
-    0x51:
-      id: 'quotes_only'
-      doc: 'Quotes Only'
   trader_lock_out:
     0x4c:
       id: 'locked'

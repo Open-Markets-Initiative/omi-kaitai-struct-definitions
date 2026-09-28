@@ -222,7 +222,7 @@ types:
       - id: md_instrument_entry_grp
         type: md_instrument_entry_grp
         repeat: expr
-        repeat-expr: 15
+        repeat-expr: 15 no_md_entries
         doc: 'Instrument trade statistics repeated NoMDEntries times in the Instrument Summary Message. The group is not cut off by design'
   md_instrument_entry_grp:
     seq:
@@ -443,7 +443,7 @@ types:
       - id: md_trade_entry_grp
         type: md_trade_entry_grp
         repeat: expr
-        repeat-expr: 15
+        repeat-expr: 15 no_md_entries
         doc: 'Trade statistics repeated NoMDEntries times in the Trade Reversal Message'
   md_trade_entry_grp:
     seq:
@@ -593,7 +593,7 @@ types:
       - id: instrmt_leg_grp
         type: instrmt_leg_grp
         repeat: expr
-        repeat-expr: 5
+        repeat-expr: 5 no_legs
         doc: 'Leg definitions repeated NoLegs times in the Add Complex Instrument Message'
   instrmt_leg_grp:
     seq:
