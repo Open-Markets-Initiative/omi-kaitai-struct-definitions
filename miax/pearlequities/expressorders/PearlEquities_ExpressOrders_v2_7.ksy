@@ -1030,18 +1030,29 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Firm specified unique order Id'
-      - id: number_of_matching_engines
+      - id: num_matching_engine_status
         type: u1
         doc: '24 This is the number of Matching Engines in'
       - id: matching_engine_status
-        type: str
-        size: 24
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Status response for the Mass Cancel Request from'
+        type: matching_engine_status
+        repeat: expr
+        repeat-expr: num_matching_engine_status
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
       - id: reserved_10
         size: 10
         doc: 'Reserved for future use'
+  matching_engine_status:
+    seq:
+      - id: login_status
+        type: u1
+        enum: login_status
+        doc: 'Login Status'
+      - id: trading_session_id
+        type: u1
+        doc: 'The current trading session ID of the corresponding Matching Engine'
+      - id: highest_sequence_number
+        type: u8
+        doc: 'the highest sequence number that the server currently has for the client'
   aggressive_side_purge_request:
     seq:
       - id: reserved_8
@@ -1141,6 +1152,16 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Miax Application Protocol'
+      - id: num_requested_matching_engine
+        type: u1
+        doc: '24 This is the number of Matching Engines in'
+      - id: requested_matching_engine
+        type: requested_matching_engine
+        repeat: expr
+        repeat-expr: num_requested_matching_engine
+        doc: 'The trading session and sequence number the client asks of one matching engine, repeated once for each the login request counts'
+  requested_matching_engine:
+    seq:
       - id: requested_trading_session_id
         type: u1
         doc: 'Specifies the session the client would like to log into, or zero to log into the currently active session'
@@ -1149,19 +1170,14 @@ types:
         doc: 'Specifies client requested sequence number'
   login_response:
     seq:
-      - id: number_of_matching_engines
+      - id: num_matching_engine_status
         type: u1
         doc: '24 This is the number of Matching Engines in'
-      - id: login_status
-        type: u1
-        enum: login_status
-        doc: 'Login Status'
-      - id: trading_session_id
-        type: u1
-        doc: 'The current trading session ID of the corresponding Matching Engine'
-      - id: highest_sequence_number
-        type: u8
-        doc: 'the highest sequence number that the server currently has for the client'
+      - id: matching_engine_status
+        type: matching_engine_status
+        repeat: expr
+        repeat-expr: num_matching_engine_status
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
   synchronization_complete:
     seq:
       - id: number_of_matching_engines
@@ -2191,6 +2207,31 @@ enums:
     0x52:
       id: 'remove_blocking_for_the_specified_scope'
       doc: 'Remove Blocking For The Specified Scope'
+  login_status:
+    0x20:
+      id: 'successful'
+      doc: 'Successful'
+    0x53:
+      id: 'invalid_trading_session_requested'
+      doc: 'Invalid trading session requested for the Matching Engine'
+    0x55:
+      id: 'no_active_trading_session_exists'
+      doc: 'No active trading session exists for the Matching Engine, Matching Engine unavailable'
+    0x58:
+      id: 'rejected'
+      doc: 'Invalid Username/Computer ID combination'
+    0x4e:
+      id: 'invalid_start_sequence_number_requested'
+      doc: 'Invalid start sequence number requested'
+    0x49:
+      id: 'incompatible_session_protocol_version'
+      doc: 'Incompatible Session protocol version'
+    0x41:
+      id: 'incompatible_application_protocol_version'
+      doc: 'Incompatible application protocol version'
+    0x4c:
+      id: 'request_rejected_because_client_already_logged_in'
+      doc: 'Request rejected because client already logged in'
   purge_status:
     0x20:
       id: 'successful'
@@ -2225,31 +2266,6 @@ enums:
     0x2a:
       id: 'downgraded_from_older_version'
       doc: 'Downgraded From Older Version'
-  login_status:
-    0x20:
-      id: 'successful'
-      doc: 'Successful'
-    0x53:
-      id: 'invalid_trading_session_requested'
-      doc: 'Invalid trading session requested for the Matching Engine'
-    0x55:
-      id: 'no_active_trading_session_exists'
-      doc: 'No active trading session exists for the Matching Engine, Matching Engine unavailable'
-    0x58:
-      id: 'rejected'
-      doc: 'Invalid Username/Computer ID combination'
-    0x4e:
-      id: 'invalid_start_sequence_number_requested'
-      doc: 'Invalid start sequence number requested'
-    0x49:
-      id: 'incompatible_session_protocol_version'
-      doc: 'Incompatible Session protocol version'
-    0x41:
-      id: 'incompatible_application_protocol_version'
-      doc: 'Incompatible application protocol version'
-    0x4c:
-      id: 'request_rejected_because_client_already_logged_in'
-      doc: 'Request rejected because client already logged in'
   logout_reason:
     0x20:
       id: 'graceful_logout'

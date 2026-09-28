@@ -1000,18 +1000,29 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Firm specified unique order Id'
-      - id: number_of_matching_engines
+      - id: num_matching_engine_status
         type: u1
         doc: '24 This is the number of Matching Engines in'
       - id: matching_engine_status
-        type: str
-        size: 24
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Status response for the Mass Cancel Request from'
+        type: matching_engine_status
+        repeat: expr
+        repeat-expr: num_matching_engine_status
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
       - id: reserved_10
         size: 10
         doc: 'Reserved for future use'
+  matching_engine_status:
+    seq:
+      - id: login_status
+        type: u1
+        enum: login_status
+        doc: 'Login Status'
+      - id: trading_session_id
+        type: u1
+        doc: 'The current trading session ID of the corresponding Matching Engine'
+      - id: highest_sequence_number
+        type: u8
+        doc: 'the highest sequence number that the server currently has for the client'
   login_request:
     seq:
       - id: esesm_version
@@ -1038,6 +1049,16 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Miax Application Protocol'
+      - id: num_requested_matching_engine
+        type: u1
+        doc: '24 This is the number of Matching Engines in'
+      - id: requested_matching_engine
+        type: requested_matching_engine
+        repeat: expr
+        repeat-expr: num_requested_matching_engine
+        doc: 'The trading session and sequence number the client asks of one matching engine, repeated once for each the login request counts'
+  requested_matching_engine:
+    seq:
       - id: requested_trading_session_id
         type: u1
         doc: 'Specifies the session the client would like to log into, or zero to log into the currently active session'
@@ -1046,19 +1067,14 @@ types:
         doc: 'Specifies client requested sequence number'
   login_response:
     seq:
-      - id: number_of_matching_engines
+      - id: num_matching_engine_status
         type: u1
         doc: '24 This is the number of Matching Engines in'
-      - id: login_status
-        type: u1
-        enum: login_status
-        doc: 'Login Status'
-      - id: trading_session_id
-        type: u1
-        doc: 'The current trading session ID of the corresponding Matching Engine'
-      - id: highest_sequence_number
-        type: u8
-        doc: 'the highest sequence number that the server currently has for the client'
+      - id: matching_engine_status
+        type: matching_engine_status
+        repeat: expr
+        repeat-expr: num_matching_engine_status
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
   synchronization_complete:
     seq:
       - id: number_of_matching_engines

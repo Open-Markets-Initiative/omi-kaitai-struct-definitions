@@ -71,15 +71,15 @@ types:
             'transaction_code::download_request_message': download_request_message
             'transaction_code::update_local_database_data_message': update_local_database_data_message
             'transaction_code::message_record_message': message_record_message
+            'transaction_code::order_entry_request_message': order_entry_request_message
+            'transaction_code::order_modification_request_message': order_modification_request_message
+            'transaction_code::order_cancellation_request_message': order_cancellation_request_message
+            'transaction_code::order_confirmation_message': order_confirmation_message
+            'transaction_code::order_modification_confirmation_message': order_modification_confirmation_message
             'transaction_code::order_entry_message': order_entry_message
-            'transaction_code::order_entry_message_2012': order_entry_message
-            'transaction_code::order_entry_message_2040': order_entry_message
             'transaction_code::order_entry_message_2042': order_entry_message
             'transaction_code::order_entry_message_2062': order_entry_message
-            'transaction_code::order_entry_message_2070': order_entry_message
             'transaction_code::order_entry_message_2072': order_entry_message
-            'transaction_code::order_entry_message_2073': order_entry_message
-            'transaction_code::order_entry_message_2074': order_entry_message
             'transaction_code::order_entry_message_2170': order_entry_message
             'transaction_code::order_entry_message_2231': order_entry_message
             'transaction_code::order_entry_message_9002': order_entry_message
@@ -790,7 +790,7 @@ types:
       - id: download_payload
         size-eos: true
         doc: 'Downloaded record body, any transaction code, opaque'
-  order_entry_message:
+  order_entry_request_message:
     seq:
       - id: order_entry_body
         type: order_entry_body
@@ -1086,6 +1086,31 @@ types:
       - id: reserved_68
         type: b3
         doc: 'Reserved'
+  order_modification_request_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_cancellation_request_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_confirmation_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_modification_confirmation_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_entry_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
   price_modification_message:
     seq:
       - id: token_no
@@ -2795,41 +2820,41 @@ enums:
       id: 'trailer_record_message'
       doc: 'Signals the message download is complete for a stream'
     2000:
-      id: 'order_entry_message'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
-    2012:
-      id: 'order_entry_message_2012'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_entry_request_message'
+      doc: 'Order entry request, carried in the shared order entry structure'
     2040:
-      id: 'order_entry_message_2040'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      id: 'order_modification_request_message'
+      doc: 'Order modification request, carried in the shared order entry structure'
+    2070:
+      id: 'order_cancellation_request_message'
+      doc: 'Order cancellation request, carried in the shared order entry structure'
+    2073:
+      id: 'order_confirmation_message'
+      doc: 'Order entry confirmation, carried in the shared order entry structure'
+    2074:
+      id: 'order_modification_confirmation_message'
+      doc: 'Order modification confirmation, carried in the shared order entry structure'
+    2012:
+      id: 'order_entry_message'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2042:
       id: 'order_entry_message_2042'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2062:
       id: 'order_entry_message_2062'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
-    2070:
-      id: 'order_entry_message_2070'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2072:
       id: 'order_entry_message_2072'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
-    2073:
-      id: 'order_entry_message_2073'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
-    2074:
-      id: 'order_entry_message_2074'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2170:
       id: 'order_entry_message_2170'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2231:
       id: 'order_entry_message_2231'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     9002:
       id: 'order_entry_message_9002'
-      doc: 'Order entry, modification, cancellation and kill switch, and their confirmations and errors, all carried in the shared order entry structure. Transaction Code in the header names the operation'
+      doc: 'Order entry acknowledgements, rejections, errors and kill switch, all carried in the shared order entry structure. Transaction Code in the header names the operation'
     2013:
       id: 'price_modification_message'
       doc: 'Modifies the price of a live order, and its acknowledgement'

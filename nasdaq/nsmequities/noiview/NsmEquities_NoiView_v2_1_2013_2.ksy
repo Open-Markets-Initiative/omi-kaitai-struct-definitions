@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.1.20111101
+# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.1.2013.2
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Net Order Imbalance View
 #   Encoding: Itch
-#   Version: 2.1.20111101
-#   Date: 11/01/2011
+#   Version: 2.1.2013.2
+#   Date: 03/09/2013
 #   Specification: NQNoiview-v2_1.pdf
 #
 # Script:
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_noiview_itch_v2_1_20111101
-  title: Nasdaq NsmEquities NoiView Itch v2.1.20111101
+  id: nasdaq_nsmequities_noiview_itch_v2_1_2013_2
+  title: Nasdaq NsmEquities NoiView Itch v2.1.2013.2
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.1.20111101'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.1.2013.2'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
@@ -78,6 +78,7 @@ types:
             'message_type::stock_trading_action_message': stock_trading_action_message
             'message_type::reg_sho_restriction_message': reg_sho_restriction_message
             'message_type::noii_message': noii_message
+            'message_type::cross_trade_message': cross_trade_message
   message_header:
     seq:
       - id: length
@@ -202,6 +203,36 @@ types:
         type: u1
         enum: price_variation_indicator
         doc: 'This field indicates the absolute value of the percentage of deviation of the Near Indicative Clearing Price to the nearest Current Reference Price'
+  cross_trade_message:
+    seq:
+      - id: shares
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The number of shares matched in the NASDAQ Cross'
+      - id: stock
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Denotes the security symbol for the issue in the NASDAQ Single Book'
+      - id: cross_price
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The price at which the cross occurred. Implied decimal with scale 1e-4'
+      - id: match_number
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The NASDAQ generated day-unique Match Number of this execution'
+      - id: cross_type
+        type: u1
+        enum: cross_type
+        doc: 'Denotes the type of NASDAQ cross for which the NOII message is being generated'
   millisecond_ascii_timestamp:
     seq:
       - id: text
@@ -235,6 +266,9 @@ enums:
     0x49:
       id: 'noii_message'
       doc: 'NASDAQ disseminates NOII data at 5-second intervals in the minutes leading up to the NASDAQ Opening and Closing Crosses as well as the IPO/Halt Crosses.'
+    0x51:
+      id: 'cross_trade_message'
+      doc: 'Cross Trade message indicates that NASDAQ has completed its cross process for a specific security.'
   event_code:
     0x4f:
       id: 'start_of_messages'
@@ -318,15 +352,12 @@ enums:
     0x48:
       id: 'halted_or_paused_across_all_us_equity_markets_sr_os'
       doc: 'Halted Or Paused Across All Us Equity Markets Sr Os'
-    0x56:
-      id: 'halted_or_paused_on_nasdaq_only'
-      doc: 'Halted Or Paused On Nasdaq Only'
+    0x50:
+      id: 'paused_across_all_us_equity_markets_sr_os'
+      doc: 'Paused Across All Us Equity Markets Sr Os'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
       doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
-    0x52:
-      id: 'quotation_only_period_for_nasdaq_only_halt_or_pause'
-      doc: 'Quotation Only Period For Nasdaq Only Halt Or Pause'
     0x54:
       id: 'trading_on_nasdaq'
       doc: 'Trading On Nasdaq'

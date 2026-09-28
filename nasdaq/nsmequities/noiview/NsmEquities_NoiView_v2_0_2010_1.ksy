@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.0.20101111
+# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.0.2010.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Net Order Imbalance View
 #   Encoding: Itch
-#   Version: 2.0.20101111
-#   Date: 11/11/2010
+#   Version: 2.0.2010.1
+#   Date: 07/02/2010
 #   Specification: Noiview-v2spec.pdf
 #
 # Script:
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_noiview_itch_v2_0_20101111
-  title: Nasdaq NsmEquities NoiView Itch v2.0.20101111
+  id: nasdaq_nsmequities_noiview_itch_v2_0_2010_1
+  title: Nasdaq NsmEquities NoiView Itch v2.0.2010.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.0.20101111'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.0.2010.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
@@ -129,16 +129,22 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ Single Book'
-      - id: current_trading_state
+      - id: trading_state
         type: u1
-        enum: current_trading_state
+        enum: trading_state
         doc: 'Indicates the current trading state for the stock'
+      - id: reserved_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reserved'
       - id: reason
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reflects the Market Ops or MarketWatch code for the trading state change'
+        doc: 'Trading Action reason'
   noii_message:
     seq:
       - id: paired_shares
@@ -289,22 +295,22 @@ enums:
     0x4e:
       id: 'oddmixed_lots_are_allowed'
       doc: 'Oddmixed Lots Are Allowed'
-  current_trading_state:
+  trading_state:
     0x48:
-      id: 'halted_or_paused_across_all_us_equity_markets_sr_os'
-      doc: 'Halted Or Paused Across All Us Equity Markets Sr Os'
+      id: 'halted_or_paused_on_nasdaq_and_all_utp_participants'
+      doc: 'Halted Or Paused On Nasdaq And All Utp Participants'
     0x56:
-      id: 'halted_or_paused_on_nasdaq_only'
-      doc: 'Halted Or Paused On Nasdaq Only'
+      id: 'halted_or_paused_on_nasdaq_omx'
+      doc: 'Halted Or Paused On Nasdaq Omx'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
       doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
     0x52:
-      id: 'quotation_only_period_for_nasdaq_only_halt_or_pause'
-      doc: 'Quotation Only Period For Nasdaq Only Halt Or Pause'
+      id: 'quotation_only_period_for_nasdaq_omx_only_halt_or_pause'
+      doc: 'Quotation Only Period For Nasdaq Omx Only Halt Or Pause'
     0x54:
-      id: 'trading_on_nasdaq'
-      doc: 'Trading On Nasdaq'
+      id: 'trading_on_nasdaq_omx'
+      doc: 'Trading On Nasdaq Omx'
   imbalance_direction:
     0x42:
       id: 'buy_imbalance'

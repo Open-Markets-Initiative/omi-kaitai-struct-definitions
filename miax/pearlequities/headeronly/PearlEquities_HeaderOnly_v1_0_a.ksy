@@ -125,6 +125,16 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Miax Application Protocol'
+      - id: num_requested_matching_engine
+        type: u1
+        doc: 'Count of all Matching Engines for the exchange'
+      - id: requested_matching_engine
+        type: requested_matching_engine
+        repeat: expr
+        repeat-expr: num_requested_matching_engine
+        doc: 'The trading session and sequence number the client asks of one matching engine, repeated once for each the login request counts'
+  requested_matching_engine:
+    seq:
       - id: requested_trading_session_id
         type: u1
         doc: 'Specifies the session the client would like to log into, or zero to log into the currently active session'
@@ -133,9 +143,16 @@ types:
         doc: 'Specifies client requested sequence number'
   login_response:
     seq:
-      - id: number_of_matching_engines
+      - id: num_matching_engine_status
         type: u1
         doc: 'Count of all Matching Engines for the exchange'
+      - id: matching_engine_status
+        type: matching_engine_status
+        repeat: expr
+        repeat-expr: num_matching_engine_status
+        doc: 'The login status, trading session and highest sequence number of one matching engine, repeated once for each the login response counts'
+  matching_engine_status:
+    seq:
       - id: login_status
         type: u1
         enum: login_status

@@ -126,9 +126,9 @@ types:
       - id: price
         type: decimal_s8_8
         doc: 'Limit price. Implied decimal with scale 1e-8'
-      - id: self_match_scope
+      - id: limit_order_self_match_scope
         type: s1
-        enum: self_match_scope
+        if: limit_order_presence_bits.has_limit_order_self_match_scope
         doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
       - id: limit_order_self_match_instruction
         type: s1
@@ -193,7 +193,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: scope
+      - id: has_limit_order_self_match_scope
         type: b1
         doc: 'Set when limitOrderSelfMatchScope is present'
       - id: has_limit_order_self_match_instruction
@@ -283,10 +283,10 @@ types:
       - id: symbol_id
         type: s2
         doc: 'Symbol identifier'
-      - id: self_match_scope
+      - id: market_order_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: market_order_presence_bits.has_market_order_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: market_order_self_match_instruction
         type: s1
         enum: market_order_self_match_instruction
@@ -321,9 +321,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: scope
+      - id: has_market_order_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when marketOrderSelfMatchScope is present'
       - id: has_market_order_self_match_instruction
         type: b1
         doc: 'Set when marketOrderSelfMatchInstruction is present'
@@ -383,6 +383,7 @@ types:
         doc: 'Quantity can remain the same or decrease. Quantity cannot increase'
       - id: modify_order_bit_fields
         type: modify_order_bit_fields
+        if: modify_order_presence_bits.has_modify_order_bit_fields
         doc: 'Bitfield used in ModifyOrder, OrderModified, and ModifyRejected messages'
       - id: modify_order_locate_broker
         type: str
@@ -446,10 +447,10 @@ types:
         type: s4
         if: replace_order_presence_bits.has_replace_order_max_floor_qty
         doc: 'Quantity to be displayed at one time with remaining quantity not displayed on the book'
-      - id: self_match_scope
+      - id: replace_order_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: replace_order_presence_bits.has_replace_order_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: replace_order_self_match_instruction
         type: s1
         enum: replace_order_self_match_instruction
@@ -484,9 +485,9 @@ types:
       - id: has_replace_order_max_floor_qty
         type: b1
         doc: 'Set when replaceOrderMaxFloorQty is present'
-      - id: scope
+      - id: has_replace_order_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when replaceOrderSelfMatchScope is present'
       - id: has_replace_order_self_match_instruction
         type: b1
         doc: 'Set when replaceOrderSelfMatchInstruction is present'
@@ -804,10 +805,10 @@ types:
       - id: price
         type: decimal_s8_8
         doc: 'Limit price. Implied decimal with scale 1e-8'
-      - id: self_match_scope
+      - id: limit_order_accepted_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: limit_order_accepted_presence_bits.has_limit_order_accepted_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: limit_order_accepted_self_match_instruction
         type: s1
         enum: limit_order_accepted_self_match_instruction
@@ -985,10 +986,10 @@ types:
         type: s1
         enum: limit_order_rejected_reason
         doc: 'Enum LimitOrderRejectedReason'
-      - id: self_match_scope
+      - id: limit_order_rejected_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: limit_order_rejected_presence_bits.has_limit_order_rejected_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: limit_order_rejected_self_match_instruction
         type: s1
         enum: limit_order_rejected_self_match_instruction
@@ -1052,9 +1053,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: scope
+      - id: has_limit_order_rejected_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when limitOrderRejectedSelfMatchScope is present'
       - id: has_limit_order_rejected_self_match_instruction
         type: b1
         doc: 'Set when limitOrderRejectedSelfMatchInstruction is present'
@@ -1148,10 +1149,10 @@ types:
       - id: symbol_id
         type: s2
         doc: 'Symbol identifier'
-      - id: self_match_scope
+      - id: market_order_accepted_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: market_order_accepted_presence_bits.has_market_order_accepted_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: market_order_accepted_self_match_instruction
         type: s1
         enum: market_order_accepted_self_match_instruction
@@ -1186,9 +1187,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: scope
+      - id: has_market_order_accepted_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when marketOrderAcceptedSelfMatchScope is present'
       - id: has_market_order_accepted_self_match_instruction
         type: b1
         doc: 'Set when marketOrderAcceptedSelfMatchInstruction is present'
@@ -1250,10 +1251,10 @@ types:
         type: s1
         enum: market_order_rejected_reason
         doc: 'Enum MarketOrderRejectedReason'
-      - id: self_match_scope
+      - id: market_order_rejected_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: market_order_rejected_presence_bits.has_market_order_rejected_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: market_order_rejected_self_match_instruction
         type: s1
         enum: market_order_rejected_self_match_instruction
@@ -1288,9 +1289,9 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: scope
+      - id: has_market_order_rejected_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when marketOrderRejectedSelfMatchScope is present'
       - id: has_market_order_rejected_self_match_instruction
         type: b1
         doc: 'Set when marketOrderRejectedSelfMatchInstruction is present'
@@ -1381,6 +1382,7 @@ types:
         doc: 'Quantity can remain the same or decrease'
       - id: order_modified_bit_fields
         type: order_modified_bit_fields
+        if: order_modified_presence_bits.has_order_modified_bit_fields
         doc: 'Bitfield used in ModifyOrder, OrderModified, and ModifyRejected messages'
       - id: order_modified_locate_broker
         type: str
@@ -1442,6 +1444,7 @@ types:
         doc: 'Quantity can remain the same or decrease'
       - id: modify_rejected_bit_fields
         type: modify_rejected_bit_fields
+        if: modify_rejected_presence_bits.has_modify_rejected_bit_fields
         doc: 'Bitfield used in ModifyOrder, OrderModified, and ModifyRejected messages'
       - id: modify_rejected_locate_broker
         type: str
@@ -1514,10 +1517,10 @@ types:
         type: s4
         if: order_replaced_presence_bits.has_order_replaced_max_floor_qty
         doc: 'Quantity to be displayed at one time'
-      - id: self_match_scope
+      - id: order_replaced_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: order_replaced_presence_bits.has_order_replaced_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: order_replaced_self_match_instruction
         type: s1
         enum: order_replaced_self_match_instruction
@@ -1560,9 +1563,9 @@ types:
       - id: has_order_replaced_max_floor_qty
         type: b1
         doc: 'Set when orderReplacedMaxFloorQty is present'
-      - id: scope
+      - id: has_order_replaced_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when orderReplacedSelfMatchScope is present'
       - id: has_order_replaced_self_match_instruction
         type: b1
         doc: 'Set when orderReplacedSelfMatchInstruction is present'
@@ -1639,10 +1642,10 @@ types:
         type: s4
         if: replace_rejected_presence_bits.has_replace_rejected_max_floor_qty
         doc: 'Quantity to be displayed at one time'
-      - id: self_match_scope
+      - id: replace_rejected_self_match_scope
         type: s1
-        enum: self_match_scope
-        doc: 'Enum SelfMatchScope. Determines the scope for self-match prevention'
+        if: replace_rejected_presence_bits.has_replace_rejected_self_match_scope
+        doc: 'Enum SelfMatchScope'
       - id: replace_rejected_self_match_instruction
         type: s1
         enum: replace_rejected_self_match_instruction
@@ -1677,9 +1680,9 @@ types:
       - id: has_replace_rejected_max_floor_qty
         type: b1
         doc: 'Set when replaceRejectedMaxFloorQty is present'
-      - id: scope
+      - id: has_replace_rejected_self_match_scope
         type: b1
-        doc: 'Set when limitOrderSelfMatchScope is present'
+        doc: 'Set when replaceRejectedSelfMatchScope is present'
       - id: has_replace_rejected_self_match_instruction
         type: b1
         doc: 'Set when replaceRejectedSelfMatchInstruction is present'
@@ -1772,6 +1775,7 @@ types:
         doc: 'The display price, when different from rank price. Only present on re-priced orders. Implied decimal with scale 1e-8'
       - id: display_qty
         type: s4
+        if: order_restated_presence_bits.has_display_qty
         doc: 'The quantity of the displayed replenished reserve order. Only present on reserve orders'
   order_restated_presence_bits:
     meta:
@@ -2152,19 +2156,6 @@ enums:
     3:
       id: 'riskless_principal'
       doc: 'Order To Offset Client Order'
-  self_match_scope:
-    0:
-      id: 'by_member'
-      doc: 'Match Prevention Applies To All Orders From The Same Member'
-    1:
-      id: 'by_mpid'
-      doc: 'Match Prevention Applies To Orders From The Same Member With The Same Mpid'
-    2:
-      id: 'by_member_group'
-      doc: 'Match Prevention Applies To Orders From The Same Member Within The Same Member Group'
-    3:
-      id: 'by_mpid_and_member_group'
-      doc: 'Match Prevention Applies To Orders From The Same Member With The Same Mpid And Member Group'
   limit_order_self_match_instruction:
     0:
       id: 'no_self_match_prevention'

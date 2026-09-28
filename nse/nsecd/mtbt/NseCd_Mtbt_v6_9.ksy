@@ -44,6 +44,7 @@ seq:
     doc: 'STREAM_HEADER'
   - id: message
     type: message_struct
+    size: stream_header.message_length - 8
     doc: 'STREAM_DATA. First field is always Message Type and must be read/interpreted first'
 
 types:
@@ -65,7 +66,7 @@ types:
         enum: message_type
         doc: 'cMsgType. Code identifying message type [1, Char]'
       - id: payload
-        size-eos: true
+        size: _root.stream_header.message_length - 8 - 1
         type:
           switch-on: message_type
           cases:

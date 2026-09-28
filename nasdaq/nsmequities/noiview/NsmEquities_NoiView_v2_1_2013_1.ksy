@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.1.20110502
+# Kaitai struct definition for: Nasdaq NsmEquities NoiView Itch v2.1.2013.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Net Order Imbalance View
 #   Encoding: Itch
-#   Version: 2.1.20110502
-#   Date: 05/02/2011
+#   Version: 2.1.2013.1
+#   Date: 01/09/2013
 #   Specification: NQNoiview-v2_1.pdf
 #
 # Script:
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_noiview_itch_v2_1_20110502
-  title: Nasdaq NsmEquities NoiView Itch v2.1.20110502
+  id: nasdaq_nsmequities_noiview_itch_v2_1_2013_1
+  title: Nasdaq NsmEquities NoiView Itch v2.1.2013.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.1.20110502'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance View Itch v2.1.2013.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
@@ -310,6 +310,9 @@ enums:
     0x53:
       id: 'nasdaq_capital_market'
       doc: 'Nasdaq Capital Market'
+    0x5a:
+      id: 'bats_bzx_exchange'
+      doc: 'Bats Bzx Exchange'
   financial_status_indicator:
     0x44:
       id: 'deficient'
@@ -349,15 +352,12 @@ enums:
     0x48:
       id: 'halted_or_paused_across_all_us_equity_markets_sr_os'
       doc: 'Halted Or Paused Across All Us Equity Markets Sr Os'
-    0x56:
-      id: 'halted_or_paused_on_nasdaq_only'
-      doc: 'Halted Or Paused On Nasdaq Only'
+    0x50:
+      id: 'paused_across_all_us_equity_markets_sr_os'
+      doc: 'Paused Across All Us Equity Markets Sr Os'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
       doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
-    0x52:
-      id: 'quotation_only_period_for_nasdaq_only_halt_or_pause'
-      doc: 'Quotation Only Period For Nasdaq Only Halt Or Pause'
     0x54:
       id: 'trading_on_nasdaq'
       doc: 'Trading On Nasdaq'
