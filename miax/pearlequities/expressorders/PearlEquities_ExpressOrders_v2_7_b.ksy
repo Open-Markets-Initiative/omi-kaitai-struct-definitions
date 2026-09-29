@@ -87,7 +87,7 @@ types:
         encoding: ASCII
         doc: 'ESesM sequenced message type'
       - id: sequenced_message
-        size: _parent.esesm_packet_header.esesm_packet_length - 12 - 11
+        size: _parent.esesm_packet_header.esesm_packet_length - 1 - 11
         type:
           switch-on: sequenced_message_type
           cases:
@@ -759,7 +759,7 @@ types:
         encoding: ASCII
         doc: 'ESesM unsequenced message type'
       - id: unsequenced_message
-        size: _parent.esesm_packet_header.esesm_packet_length - 3 - 2
+        size: _parent.esesm_packet_header.esesm_packet_length - 1 - 2
         type:
           switch-on: unsequenced_message_type
           cases:

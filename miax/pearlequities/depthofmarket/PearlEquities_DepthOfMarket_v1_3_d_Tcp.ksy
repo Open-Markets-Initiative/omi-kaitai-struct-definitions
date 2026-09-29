@@ -91,7 +91,7 @@ types:
         enum: unsequenced_message_type
         doc: 'Market-data Refresh request/response discriminator carried over the ESesM unsequenced channel (Request Type R, Response Type r, End of Refresh E)'
       - id: unsequenced_message
-        size: _parent.esesm_packet_header.esesm_packet_length - 2 - 1
+        size: _parent.esesm_packet_header.esesm_packet_length - 1 - 1
         type:
           switch-on: unsequenced_message_type
           cases:

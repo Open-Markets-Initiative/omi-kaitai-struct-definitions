@@ -700,7 +700,7 @@ types:
         encoding: ASCII
         doc: 'SesM unsequenced message type'
       - id: unsequenced_message
-        size: _parent.sesm_packet_header.sesm_packet_length - 2
+        size: _parent.sesm_packet_header.sesm_packet_length - 1 - 2
         type:
           switch-on: unsequenced_message_type
           cases:
