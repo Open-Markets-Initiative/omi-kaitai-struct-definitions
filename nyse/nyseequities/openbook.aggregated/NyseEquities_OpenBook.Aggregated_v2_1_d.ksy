@@ -875,6 +875,9 @@ enums:
     0x5a:
       id: 'cboe_bzx'
       doc: 'Cboe Bzx'
+    0x20:
+      id: 'no_value'
+      doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'

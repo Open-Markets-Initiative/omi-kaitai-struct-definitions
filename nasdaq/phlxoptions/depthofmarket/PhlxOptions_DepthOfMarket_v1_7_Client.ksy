@@ -1,0 +1,486 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Nasdaq PhlxOptions DepthOfMarket Itch v1.7
+#
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: Depth Of Market
+#   Encoding: Itch
+#   Version: 1.7
+#   Date: 04/25/2025
+#   Specification: phlxdepth - TCP Update.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: nasdaq_phlxoptions_depthofmarket_itch_v1_7_client
+  title: Nasdaq PhlxOptions DepthOfMarket Itch v1.7
+  license: GPL-3.0
+  endian: be
+
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Depth Of Market Itch v1.7'
+doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs
+
+seq:
+  - id: client_soup_bin_tcp_packet
+    type: client_soup_bin_tcp_packet_struct
+    repeat: eos
+    doc: 'Soup Bin Tcp Packet sent by the client'
+
+types:
+  client_soup_bin_tcp_packet_struct:
+    seq:
+      - id: client_packet_header
+        type: client_packet_header
+        doc: 'Packet header of a packet sent by the client'
+      - id: client_payload
+        size: client_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: client_packet_header.client_packet_type
+          cases:
+            'client_packet_type::debug_packet': debug_packet
+            'client_packet_type::login_request_packet': login_request_packet
+            'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
+  client_packet_header:
+    seq:
+      - id: packet_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: client_packet_type
+        type: u1
+        enum: client_packet_type
+        doc: 'Code identifying this packet type sent by the client'
+  debug_packet:
+    seq:
+      - id: debug_text
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Free form human readable text'
+  login_request_packet:
+    seq:
+      - id: username
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Session username'
+      - id: password
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Login password'
+      - id: requested_session
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Specifies the session the client would like to log into, or all blanks to log into the currently active session'
+      - id: requested_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Specifies the next sequence number in ASCII the client wants to receive upon connection, or 0 to start receiving the most recently generated message'
+  unsequenced_data_packet:
+    seq:
+      - id: unsequenced_message_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Value identifying unsequenced message type'
+      - id: unsequenced_message
+        size: _parent.client_packet_header.packet_length - 2
+        doc: 'The unsequenced (client to server) message carried by the packet, opaque bytes unless an application source dispatches it'
+
+enums:
+  client_packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x4c:
+      id: 'login_request_packet'
+      doc: 'SoupbinTcp Login Request Packet'
+    0x55:
+      id: 'unsequenced_data_packet'
+      doc: 'Soupbin Tcp Unsequenced Data Packet'
+    0x52:
+      id: 'client_heartbeat_packet'
+      doc: 'SoupbinTcp Client Heartbeat Packet'
+    0x4f:
+      id: 'logout_request_packet'
+      doc: 'SoupbinTcp Logout Request Packet'
+  server_packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x41:
+      id: 'login_accepted_packet'
+      doc: 'SoupbinTcp Login Accepted Packet'
+    0x4a:
+      id: 'login_rejected_packet'
+      doc: 'SoupbinTcp Login Rejected Packet'
+    0x53:
+      id: 'sequenced_data_packet'
+      doc: 'Sequenced Data Packet'
+    0x48:
+      id: 'server_heartbeat_packet'
+      doc: 'SoupbinTcp Server Heartbeat Packet'
+    0x5a:
+      id: 'end_of_session_packet'
+      doc: 'SoupbinTcp Login End of Session Packet'
+  reject_reason_code:
+    0x41:
+      id: 'not_authorized'
+      doc: 'The Login Request Packet''s username and password combination was invalid'
+    0x53:
+      id: 'session_not_available'
+      doc: 'The Login Request Packet''s requested session was invalid or not available'
+  sequenced_message_type:
+    0x54:
+      id: 'seconds_message'
+      doc: 'This message is sent every second for which at least one PHLX Depth message is being generated.'
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x4c:
+      id: 'base_reference_message'
+      doc: 'This message indicates the base reference number to which all the order/quote/trade reference number deltas must be added to obtain the absolute order/quote PHLX reference number.'
+    0x52:
+      id: 'option_directory_message'
+      doc: 'At the start of each trading day, the options system disseminates option symbol directory messages for all active option symbols in the PHLX ® options system.'
+    0x48:
+      id: 'trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the PHLX Options Market.'
+    0x4f:
+      id: 'security_open_message'
+      doc: 'The options system plans to disseminate the Option Open Message for each option as soon as the opening is completed. Upon receipt of the open state message, firms should be advised that the option denoted in the message is now available for auto execution within the PHLX ® Options Market System. Upon receipt of the closed state message, firms should be advised that the option is no longer eligible for auto-execution within the Options Market System.'
+    0x61:
+      id: 'add_order_short_message'
+      doc: 'An Add Order Message indicates that a new order has been accepted by the options system and was added to the displayable book. The message includes a day-unique Order Reference Number used by options system to track the order.'
+    0x41:
+      id: 'add_order_long_message'
+      doc: 'An Add Order Message indicates that a new order has been accepted by the options system and was added to the displayable book. The message includes a day-unique Order Reference Number used by options system to track the order.'
+    0x6a:
+      id: 'add_quote_short_message'
+      doc: 'An Add Quote Message indicates that a new quote has been accepted by the PHLX ® options system and was added to the displayable book. The message includes a unique Bid/Ask Reference Numbers used by the options system to track the quote.'
+    0x4a:
+      id: 'add_quote_long_message'
+      doc: 'An Add Quote Message indicates that a new quote has been accepted by the PHLX ® options system and was added to the displayable book. The message includes a unique Bid/Ask Reference Numbers used by the options system to track the quote.'
+    0x45:
+      id: 'single_side_executed_message'
+      doc: 'This message is sent whenever a Side order is executed in whole or in part. It is possible to receive several Single Side Executed Messages for the same Side order if that Side order is executed in several parts. The multiple Single Side Executed Messages on the same order are cumulative. By combining the executions received separately via two types of Single Side Executed Messages and Trade Messages, it is possible to build a complete view of all non-auction executions that happen on PHLX ®. Auction execution information is available in one bulk print via the Auction Trade Message.'
+    0x43:
+      id: 'single_side_executed_with_price_message'
+      doc: 'This message is sent whenever an incoming Side order is executed against the book in whole or in part at a price different from the initial display price. Since the execution price is different than the display price of the original Add/Replace, the options system includes a price field within this execution message. It is possible to receive multiple Single Side Executed and Single Side Executed with Price messages for the same Side order if that Side order is executed in several parts. The multiple Single Side Executed messages on the same Side order are cumulative.'
+    0x58:
+      id: 'single_side_cancel_message'
+      doc: 'This message is sent whenever an order or a side of a quote on the book is modified as a result of a partial cancellation.'
+    0x75:
+      id: 'single_side_replace_short_message'
+      doc: 'This message is sent whenever one side of a quote on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x55:
+      id: 'single_side_replace_long_message'
+      doc: 'This message is sent whenever one side of a quote on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x76:
+      id: 'order_replace_short_message'
+      doc: 'This message is sent whenever an order on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x56:
+      id: 'order_replace_long_message'
+      doc: 'This message is sent whenever an order on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x44:
+      id: 'single_side_delete_message'
+      doc: 'The message is sent when an order or a side of a quote is being cancelled. All remaining contracts are no longer accessible so the side should be removed from the book.'
+    0x47:
+      id: 'single_side_update_message'
+      doc: 'This message is sent whenever an order or a side of a quote is being updated for price and (or) contracts. The reference number associated with the order quote is unchanged.'
+    0x6b:
+      id: 'quote_replace_short_message'
+      doc: 'This message is sent whenever a quote on the book is replaced. The replaced quote has new reference numbers on both sides.'
+    0x4b:
+      id: 'quote_replace_long_message'
+      doc: 'This message is sent whenever a quote on the book is replaced. The replaced quote has new reference numbers on both sides.'
+    0x59:
+      id: 'quote_delete_message'
+      doc: 'The message is sent when a single quote is being cancelled. All remaining contracts are no longer accessible so the quote should be removed from the book.'
+    0x5a:
+      id: 'block_delete_message'
+      doc: 'This message contains a block of Single Side Deletes. Each reference number inside the block represents an order or a side of a quote that is being cancelled. All remaining contracts are no longer accessible so the side should be removed from the book.'
+    0x50:
+      id: 'non_auction_options_trade_message'
+      doc: 'This Options Trade Message is designed to provide execution details for match events involving non-displayable order types and Complex orders. (Note: There is a separate message for Option auction events.)'
+    0x51:
+      id: 'options_cross_trade_message'
+      doc: 'Options Auction Trade message is sent for every option when an auction in that option is completed. The message indicates the bulk volume associated with the auction event.'
+    0x42:
+      id: 'broken_trade_order_executed_message'
+      doc: 'The Broken Trade Message is sent whenever an execution on PHLX ® is broken. An execution may be broken if it is found to be “clearly erroneous” pursuant to PHLX ® Clearly Erroneous Policy. A trade break is final; once a trade is broken, it cannot be reinstated.'
+    0x49:
+      id: 'auction_notification_message'
+      doc: 'This message is also sent as notification that there is an exposed buy (sell) order available for execution at the National Best Offer (Bid).'
+    0x4d:
+      id: 'end_of_replay_sequence_message'
+      doc: 'The End of replay Sequence message reflects the sequence number at the time replay of existing messages is complete. The firms can then use this sequence number to resume on the real time Mold channel. Only for SoupBINTCP.'
+  event_code:
+    0x4f:
+      id: 'start_of_messages_this_is_always_the_first_message_sent_in_any_trading_day'
+      doc: 'After 400 Am'
+    0x53:
+      id: 'start_of_system_hours_this_message_indicates_that_phlx_is_open_and_ready_to_start_accepting_orders'
+      doc: '700 Am'
+    0x51:
+      id: 'start_of_opening_process_this_message_is_intended_to_indicate_that_phlx_has_started_its_opening_auction_process'
+      doc: '93000 Am'
+    0x4e:
+      id: 'end_of_normal_hours_processing_this_message_is_intended_to_indicate_that_phlx_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_for_options_that_trade_during_normal_trading_hours'
+      doc: '40000 Pm'
+    0x4c:
+      id: 'end_of_late_hours_processing_this_message_is_intended_to_indicate_that_phlx_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_for_options_that_trade_during_extended_hours'
+      doc: '41500 Pm'
+    0x45:
+      id: 'end_of_system_hours_this_message_indicates_that_phlx_options_system_is_now_closed'
+      doc: '515 Pm'
+    0x43:
+      id: 'end_of_messages_this_is_always_the_last_message_sent_in_any_trading_day'
+      doc: '520 Pm'
+    0x57:
+      id: 'end_of_wco_early_closing_this_message_is_intended_to_indicate_that_the_exchange_will_no_longer_accept_any_new_orders_or_changes_to_existing_orders_on_last_trading_date_of_wco_options'
+      doc: '1200 Noon'
+  option_type:
+    0x43:
+      id: 'call'
+      doc: 'Call Option'
+    0x50:
+      id: 'put'
+      doc: 'Put Option'
+  options_closing_type:
+    0x4e:
+      id: 'normal'
+      doc: 'Normal Hours'
+    0x4c:
+      id: 'late'
+      doc: 'Late Hours'
+    0x57:
+      id: 'wco_early_closing'
+      doc: 'Wco Early Closing At 1200 Noon'
+  tradable:
+    0x59:
+      id: 'tradable'
+      doc: 'Option Is Tradable'
+    0x4e:
+      id: 'not_tradable'
+      doc: 'Option Is Not Tradable'
+  mpv:
+    0x45:
+      id: 'everywhere'
+      doc: 'Penny Everywhere'
+    0x53:
+      id: 'scaled'
+      doc: 'Scaled'
+    0x50:
+      id: 'pilot'
+      doc: 'Penny Pilot'
+  current_trading_state:
+    0x48:
+      id: 'halt'
+      doc: 'Halt In Effect'
+    0x54:
+      id: 'trading'
+      doc: 'Trading On Phlx®'
+    0x42:
+      id: 'buy_side_trading_suspended_or_exhausted'
+      doc: 'Buy Side Trading Suspended Exhausted Ie Buy Orders Are Not Executable And Buy Side Book Is Non Firm'
+    0x53:
+      id: 'sell_side_trading_suspended_or_exhausted'
+      doc: 'Sell Side Trading Suspended Exhausted Ie Sell Orders Are Not Executable And Sell Side Book Is Non Firm'
+  open_state:
+    0x59:
+      id: 'open'
+      doc: 'Open For Auto Execution'
+    0x4e:
+      id: 'closed'
+      doc: 'Closed For Auto Execution'
+  market_side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+    0x58:
+      id: 'buy_x58'
+      doc: 'Buy Aon'
+    0x59:
+      id: 'sell_x59'
+      doc: 'Sell Aon'
+    0x4d:
+      id: 'buy_x4d'
+      doc: 'Buy Implied'
+    0x4e:
+      id: 'sell_x4e'
+      doc: 'Sell Implied'
+  printable:
+    0x4e:
+      id: 'nonprintable'
+      doc: 'Nonprintable'
+    0x59:
+      id: 'printable'
+      doc: 'Printable'
+  change_reason:
+    0x55:
+      id: 'user'
+      doc: 'User'
+    0x52:
+      id: 'reprice'
+      doc: 'Reprice'
+    0x53:
+      id: 'suspend'
+      doc: 'Suspend'
+    0x45:
+      id: 'exhausted'
+      doc: 'Exhausted'
+  trade_indicator:
+    0x4f:
+      id: 'non_displayable'
+      doc: 'Non Displayable Simple Order Cross'
+    0x43:
+      id: 'complex'
+      doc: 'Complex Order Cross'
+  cross_type:
+    0x4f:
+      id: 'opening_reopening'
+      doc: 'Opening Reopening Auction'
+  auction_type:
+    0x4f:
+      id: 'opening'
+      doc: 'Opening'
+    0x52:
+      id: 'reopening'
+      doc: 'Reopening'
+    0x49:
+      id: 'exposure'
+      doc: 'Order Exposure'
+  imbalance_direction:
+    0x42:
+      id: 'buy'
+      doc: 'Buy Imbalance'
+    0x53:
+      id: 'sell'
+      doc: 'Sell Imbalance'
+  customer_indicator:
+    0x43:
+      id: 'customer'
+      doc: 'Customer'
+    0x46:
+      id: 'firm'
+      doc: 'Firm'
+    0x4d:
+      id: 'onfloor'
+      doc: 'Onfloor Market Maker'
+    0x50:
+      id: 'professional'
+      doc: 'Professional Customer'
+    0x42:
+      id: 'non_phlx'
+      doc: 'Broker Dealer Non Phlx'
+  message_type:
+    0x54:
+      id: 'seconds_message'
+      doc: 'This message is sent every second for which at least one PHLX Depth message is being generated.'
+    0x53:
+      id: 'system_event_message'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
+    0x4c:
+      id: 'base_reference_message'
+      doc: 'This message indicates the base reference number to which all the order/quote/trade reference number deltas must be added to obtain the absolute order/quote PHLX reference number.'
+    0x52:
+      id: 'option_directory_message'
+      doc: 'At the start of each trading day, the options system disseminates option symbol directory messages for all active option symbols in the PHLX ® options system.'
+    0x48:
+      id: 'trading_action_message'
+      doc: 'The options system uses this administrative message to indicate the current trading status of an index or equity option within the PHLX Options Market.'
+    0x4f:
+      id: 'security_open_message'
+      doc: 'The options system plans to disseminate the Option Open Message for each option as soon as the opening is completed. Upon receipt of the open state message, firms should be advised that the option denoted in the message is now available for auto execution within the PHLX ® Options Market System. Upon receipt of the closed state message, firms should be advised that the option is no longer eligible for auto-execution within the Options Market System.'
+    0x61:
+      id: 'add_order_short_message'
+      doc: 'An Add Order Message indicates that a new order has been accepted by the options system and was added to the displayable book. The message includes a day-unique Order Reference Number used by options system to track the order.'
+    0x41:
+      id: 'add_order_long_message'
+      doc: 'An Add Order Message indicates that a new order has been accepted by the options system and was added to the displayable book. The message includes a day-unique Order Reference Number used by options system to track the order.'
+    0x6a:
+      id: 'add_quote_short_message'
+      doc: 'An Add Quote Message indicates that a new quote has been accepted by the PHLX ® options system and was added to the displayable book. The message includes a unique Bid/Ask Reference Numbers used by the options system to track the quote.'
+    0x4a:
+      id: 'add_quote_long_message'
+      doc: 'An Add Quote Message indicates that a new quote has been accepted by the PHLX ® options system and was added to the displayable book. The message includes a unique Bid/Ask Reference Numbers used by the options system to track the quote.'
+    0x45:
+      id: 'single_side_executed_message'
+      doc: 'This message is sent whenever a Side order is executed in whole or in part. It is possible to receive several Single Side Executed Messages for the same Side order if that Side order is executed in several parts. The multiple Single Side Executed Messages on the same order are cumulative. By combining the executions received separately via two types of Single Side Executed Messages and Trade Messages, it is possible to build a complete view of all non-auction executions that happen on PHLX ®. Auction execution information is available in one bulk print via the Auction Trade Message.'
+    0x43:
+      id: 'single_side_executed_with_price_message'
+      doc: 'This message is sent whenever an incoming Side order is executed against the book in whole or in part at a price different from the initial display price. Since the execution price is different than the display price of the original Add/Replace, the options system includes a price field within this execution message. It is possible to receive multiple Single Side Executed and Single Side Executed with Price messages for the same Side order if that Side order is executed in several parts. The multiple Single Side Executed messages on the same Side order are cumulative.'
+    0x58:
+      id: 'single_side_cancel_message'
+      doc: 'This message is sent whenever an order or a side of a quote on the book is modified as a result of a partial cancellation.'
+    0x75:
+      id: 'single_side_replace_short_message'
+      doc: 'This message is sent whenever one side of a quote on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x55:
+      id: 'single_side_replace_long_message'
+      doc: 'This message is sent whenever one side of a quote on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x76:
+      id: 'order_replace_short_message'
+      doc: 'This message is sent whenever an order on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x56:
+      id: 'order_replace_long_message'
+      doc: 'This message is sent whenever an order on the book is replaced. The replacement has a new reference number and replaces the prior reference number.'
+    0x44:
+      id: 'single_side_delete_message'
+      doc: 'The message is sent when an order or a side of a quote is being cancelled. All remaining contracts are no longer accessible so the side should be removed from the book.'
+    0x47:
+      id: 'single_side_update_message'
+      doc: 'This message is sent whenever an order or a side of a quote is being updated for price and (or) contracts. The reference number associated with the order quote is unchanged.'
+    0x6b:
+      id: 'quote_replace_short_message'
+      doc: 'This message is sent whenever a quote on the book is replaced. The replaced quote has new reference numbers on both sides.'
+    0x4b:
+      id: 'quote_replace_long_message'
+      doc: 'This message is sent whenever a quote on the book is replaced. The replaced quote has new reference numbers on both sides.'
+    0x59:
+      id: 'quote_delete_message'
+      doc: 'The message is sent when a single quote is being cancelled. All remaining contracts are no longer accessible so the quote should be removed from the book.'
+    0x5a:
+      id: 'block_delete_message'
+      doc: 'This message contains a block of Single Side Deletes. Each reference number inside the block represents an order or a side of a quote that is being cancelled. All remaining contracts are no longer accessible so the side should be removed from the book.'
+    0x50:
+      id: 'non_auction_options_trade_message'
+      doc: 'This Options Trade Message is designed to provide execution details for match events involving non-displayable order types and Complex orders. (Note: There is a separate message for Option auction events.)'
+    0x51:
+      id: 'options_cross_trade_message'
+      doc: 'Options Auction Trade message is sent for every option when an auction in that option is completed. The message indicates the bulk volume associated with the auction event.'
+    0x42:
+      id: 'broken_trade_order_executed_message'
+      doc: 'The Broken Trade Message is sent whenever an execution on PHLX ® is broken. An execution may be broken if it is found to be “clearly erroneous” pursuant to PHLX ® Clearly Erroneous Policy. A trade break is final; once a trade is broken, it cannot be reinstated.'
+    0x49:
+      id: 'auction_notification_message'
+      doc: 'This message is also sent as notification that there is an exposed buy (sell) order available for execution at the National Best Offer (Bid).'
+

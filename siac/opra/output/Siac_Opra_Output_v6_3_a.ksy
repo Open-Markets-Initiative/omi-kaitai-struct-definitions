@@ -270,7 +270,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: volume
         type: u4
@@ -341,7 +341,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: open_interest_volume
         type: u4
@@ -387,7 +387,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: volume
         type: u4
@@ -477,7 +477,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: premium_price_denominator_code
         type: u1
@@ -676,7 +676,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: multicast_line_number
         type: u2

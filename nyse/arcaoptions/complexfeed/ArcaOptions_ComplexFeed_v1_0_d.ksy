@@ -1061,6 +1061,9 @@ enums:
     0x55:
       id: 'memx'
       doc: 'Memx'
+    0x20:
+      id: 'no_value'
+      doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'

@@ -171,8 +171,9 @@ types:
         enum: trade_cond_1
         doc: 'TradeCond1 value'
       - id: trade_cond_2
-        type: u1
-        enum: trade_cond_2
+        type: str
+        size: 1
+        encoding: ASCII
         doc: '(blank) n/a for complex symbols'
       - id: reserved_2
         size: 2
@@ -327,8 +328,9 @@ types:
         enum: trade_cond_1
         doc: 'TradeCond1 value'
       - id: trade_cond_2
-        type: u1
-        enum: trade_cond_2
+        type: str
+        size: 1
+        encoding: ASCII
         doc: '(blank) n/a for complex symbols'
       - id: reserved_2
         size: 2
@@ -535,13 +537,6 @@ enums:
     0x53:
       id: 'so_sweep_trade'
       doc: 'So Sweep Trade'
-  trade_cond_2:
-    0x50:
-      id: 'complex_trade_with_equity'
-      doc: 'Complex Trade With Equity Trade'
-    0x4c:
-      id: 'complex_trade'
-      doc: 'Complex Trade'
   side:
     0x42:
       id: 'buy'

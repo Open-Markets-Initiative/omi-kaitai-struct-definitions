@@ -247,7 +247,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: volume
         type: u4
@@ -318,7 +318,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: open_interest_volume
         type: u4
@@ -364,7 +364,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: volume
         type: u4
@@ -454,7 +454,7 @@ types:
         enum: strike_price_denominator_code
         doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
       - id: strike_price
-        type: u4
+        type: s4
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
       - id: premium_price_denominator_code
         type: u1
@@ -592,13 +592,13 @@ types:
         type: decimal_u2_1
         doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract. Implied decimal with scale 1e-1'
       - id: bid_price_short
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
       - id: offer_price_short
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option. Implied decimal with scale 1e-2'
       - id: offer_size_short
         type: u2
@@ -733,10 +733,10 @@ types:
     instances:
       real:
         value: mantissa / 10.0
-  decimal_s2_2:
+  decimal_u2_2:
     seq:
       - id: mantissa
-        type: s2
+        type: u2
     instances:
       real:
         value: mantissa / 100.0

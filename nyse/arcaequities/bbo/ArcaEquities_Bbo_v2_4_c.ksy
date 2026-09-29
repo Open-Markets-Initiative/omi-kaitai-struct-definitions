@@ -806,6 +806,9 @@ enums:
     0x5a:
       id: 'bats'
       doc: 'Bats'
+    0x20:
+      id: 'no_value'
+      doc: 'Default (0x20) when the field is not populated'
   quote_condition:
     0x43:
       id: 'closing'

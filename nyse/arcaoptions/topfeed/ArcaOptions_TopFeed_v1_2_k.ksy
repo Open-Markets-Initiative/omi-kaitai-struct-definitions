@@ -1140,9 +1140,6 @@ enums:
       id: 'market_wide_circuit_breaker_halt_level_3'
       doc: 'Market Wide Circuit Breaker Halt Level 3'
   ssr_triggering_exchange_id:
-    0x20:
-      id: 'na_space_or_0_x_20'
-      doc: 'Na Space Or 0 X 20'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
@@ -1209,6 +1206,9 @@ enums:
     0x55:
       id: 'memx'
       doc: 'Memx'
+    0x20:
+      id: 'no_value'
+      doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'

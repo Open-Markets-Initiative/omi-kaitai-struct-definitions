@@ -386,15 +386,15 @@ types:
       - id: ssr_state
         type: u1
         enum: ssr_state
-        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code. Valid'
+        doc: 'The current SSR state, which this msg updates if the Security Status field contains an SSR Code. Valid. Nullable, No Value = 0'
       - id: market_state
         type: u1
         enum: market_state
-        doc: 'The current Market State, which this msg updates if the Security Status field contains a Market State Code'
+        doc: 'The current Market State, which this msg updates if the Security Status field contains a Market State Code. Nullable, No Value = 0'
       - id: session_state
         type: u1
         enum: session_state
-        doc: 'Unused. Defaulted to 0x00'
+        doc: 'Unused. Defaulted to 0x00. Nullable, No Value = 0'
   refresh_header_message:
     seq:
       - id: current_refresh_pkt
@@ -1099,6 +1099,9 @@ enums:
     0x5a:
       id: 'bats'
       doc: 'Bats'
+    0x20:
+      id: 'no_value'
+      doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'
