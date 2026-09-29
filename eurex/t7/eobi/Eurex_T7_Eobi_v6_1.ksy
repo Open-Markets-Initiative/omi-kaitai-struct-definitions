@@ -154,7 +154,7 @@ types:
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
-        repeat-expr: num_instrmt_leg_grp_comp
+        repeat-expr: 20
   instrmt_leg_grp_comp:
     seq:
       - id: leg_symbol
@@ -368,7 +368,7 @@ types:
       - id: md_instrument_entry_grp_comp
         type: md_instrument_entry_grp_comp
         repeat: expr
-        repeat-expr: num_md_instrument_entry_grp_comp
+        repeat-expr: 15
   md_instrument_entry_grp_comp:
     seq:
       - id: md_entry_px
@@ -645,7 +645,7 @@ types:
       - id: md_trade_entry_grp_comp
         type: md_trade_entry_grp_comp
         repeat: expr
-        repeat-expr: num_md_trade_entry_grp_comp
+        repeat-expr: 15
   md_trade_entry_grp_comp:
     seq:
       - id: md_entry_px
