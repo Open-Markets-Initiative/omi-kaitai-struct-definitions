@@ -2892,52 +2892,52 @@ enums:
       id: 'trf_not_applicable'
       doc: 'Trf Not Applicable'
     0x41:
-      id: 'not_currently_active'
+      id: 'not_currently_active_a'
       doc: 'Not Currently Active'
     0x42:
       id: 'finra_nasdaq_trf_chicago'
       doc: 'Finra Nasdaq Trf Chicago'
     0x43:
-      id: 'not_currently_active_x43'
+      id: 'not_currently_active_c'
       doc: 'Not Currently Active'
     0x44:
-      id: 'not_currently_active_x44'
+      id: 'not_currently_active_d'
       doc: 'Not Currently Active'
     0x49:
-      id: 'not_currently_active_x49'
+      id: 'not_currently_active_i'
       doc: 'Not Currently Active'
     0x4a:
-      id: 'not_currently_active_x4a'
+      id: 'not_currently_active_j'
       doc: 'Not Currently Active'
     0x4b:
-      id: 'not_currently_active_x4b'
+      id: 'not_currently_active_k'
       doc: 'Not Currently Active'
     0x4d:
-      id: 'not_currently_active_x4d'
+      id: 'not_currently_active_m'
       doc: 'Not Currently Active'
     0x4e:
       id: 'finra_nyse_trf'
       doc: 'Finra Nyse Trf'
     0x50:
-      id: 'not_currently_active_x50'
+      id: 'not_currently_active_p'
       doc: 'Not Currently Active'
     0x54:
       id: 'finra_nasdaq_trf_carteret'
       doc: 'Finra Nasdaq Trf Carteret'
     0x56:
-      id: 'not_currently_active_x56'
+      id: 'not_currently_active_v'
       doc: 'Not Currently Active'
     0x57:
-      id: 'not_currently_active_x57'
+      id: 'not_currently_active_w'
       doc: 'Not Currently Active'
     0x58:
-      id: 'not_currently_active_x58'
+      id: 'not_currently_active_x'
       doc: 'Not Currently Active'
     0x59:
-      id: 'not_currently_active_x59'
+      id: 'not_currently_active_y'
       doc: 'Not Currently Active'
     0x5a:
-      id: 'not_currently_active_x5a'
+      id: 'not_currently_active_z'
       doc: 'Not Currently Active'
   category_1:
     0x20:
@@ -3239,7 +3239,7 @@ enums:
       id: 'market_center_official_close'
       doc: 'Market Center Official Close'
     0x4e:
-      id: 'reserved'
+      id: 'reserved_n'
       doc: 'Reserved'
     0x4f:
       id: 'market_center_opening_trade'
@@ -3281,7 +3281,7 @@ enums:
       id: 'qualified_contingent_trade'
       doc: 'Qualified Contingent Trade'
     0x38:
-      id: 'reserved_x38'
+      id: 'reserved_8'
       doc: 'Reserved'
     0x39:
       id: 'corrected_consolidated_close_price_as_per_listing_market'
@@ -3307,7 +3307,7 @@ enums:
       id: 'security_status_not_applicable'
       doc: 'Security Status Not Applicable'
     0x31:
-      id: 'reserved'
+      id: 'reserved_1'
       doc: 'Reserved'
     0x32:
       id: 'trading_halt'
@@ -3316,7 +3316,7 @@ enums:
       id: 'resume'
       doc: 'Resume'
     0x34:
-      id: 'reserved_x34'
+      id: 'reserved_4'
       doc: 'Reserved'
     0x35:
       id: 'price_indication'
@@ -3337,7 +3337,7 @@ enums:
       id: 'closing_imbalance_sell'
       doc: 'Closing Imbalance Sell'
     0x42:
-      id: 'reserved_x42'
+      id: 'reserved_b'
       doc: 'Reserved'
     0x43:
       id: 'no_market_imbalance'

@@ -469,7 +469,7 @@ types:
         doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -569,7 +569,7 @@ types:
         doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -678,7 +678,7 @@ types:
         doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
@@ -793,7 +793,7 @@ types:
         doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
@@ -1029,6 +1029,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   message_category:

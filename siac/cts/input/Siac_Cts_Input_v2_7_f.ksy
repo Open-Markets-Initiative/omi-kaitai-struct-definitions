@@ -760,7 +760,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
@@ -820,7 +820,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
@@ -865,7 +865,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
   fractional_long_trade_message:
     seq:
       - id: security_symbol
@@ -907,7 +907,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
   trading_status_message:
     seq:
       - id: security_symbol
@@ -1035,7 +1035,7 @@ types:
         doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -1082,6 +1082,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
 
 enums:
   message_category:

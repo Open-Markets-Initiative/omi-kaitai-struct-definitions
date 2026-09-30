@@ -1190,7 +1190,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
         doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
@@ -1323,7 +1323,7 @@ types:
         doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -1522,7 +1522,7 @@ types:
         doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
       - id: timestamp_2
         type: timestamp_2
-        doc: 'Timestamp 2. Nanoseconds since Unix epoch'
+        doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
@@ -1587,6 +1587,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_u2_2:
     seq:
       - id: mantissa
