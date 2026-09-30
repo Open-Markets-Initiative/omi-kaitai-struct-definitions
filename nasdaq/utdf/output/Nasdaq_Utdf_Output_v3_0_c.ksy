@@ -70,7 +70,7 @@ types:
         type: message_header
         doc: 'Utp Mold Udp 64 Message Header'
       - id: category_payload
-        size: message_header.message_length - 4
+        size: message_header.message_length - 2
         type:
           switch-on: message_header.message_category
           cases:

@@ -184,6 +184,13 @@ types:
         doc: 'Apendage Id'
       - id: enter_order_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: enter_order_optional_field
+          cases:
+            'enter_order_optional_field::firm': firm_value
+            'enter_order_optional_field::minqty': min_qty_value
+            'enter_order_optional_field::customertype': customer_type_value
+            'enter_order_optional_field::maxfloor': max_floor_value
   replace_order_message:
     seq:
       - id: orig_user_ref_num
@@ -234,6 +241,16 @@ types:
         doc: 'Apendage Id'
       - id: replace_order_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: replace_order_optional_field
+          cases:
+            'replace_order_optional_field::minqty': min_qty_value
+            'replace_order_optional_field::maxfloor': max_floor_value
+            'replace_order_optional_field::pricetype': price_type_value
+            'replace_order_optional_field::postonly': post_only_value
+            'replace_order_optional_field::expiretime': expire_time_value
+            'replace_order_optional_field::tradenow': trade_now_value
+            'replace_order_optional_field::handleinst': handle_inst_value
   cancel_order_message:
     seq:
       - id: user_ref_num
@@ -275,6 +292,10 @@ types:
         doc: 'Apendage Id'
       - id: account_query_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: account_query_optional_field
+          cases:
+            'account_query_optional_field::userrefidx': user_ref_idx_value
   mass_cancel_request_message:
     seq:
       - id: user_ref_num
@@ -310,6 +331,12 @@ types:
         doc: 'Apendage Id'
       - id: mass_cancel_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: mass_cancel_request_optional_field
+          cases:
+            'mass_cancel_request_optional_field::side': side_value
+            'mass_cancel_request_optional_field::group_id': group_id_value
+            'mass_cancel_request_optional_field::userrefidx': user_ref_idx_value
   disable_order_entry_request_message:
     seq:
       - id: user_ref_num
@@ -339,6 +366,10 @@ types:
         doc: 'Apendage Id'
       - id: disable_order_entry_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: disable_order_entry_request_optional_field
+          cases:
+            'disable_order_entry_request_optional_field::userrefidx': user_ref_idx_value
   enable_order_entry_request_message:
     seq:
       - id: user_ref_num
@@ -368,6 +399,87 @@ types:
         doc: 'Apendage Id'
       - id: enable_order_entry_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: enable_order_entry_request_optional_field
+          cases:
+            'enable_order_entry_request_optional_field::userrefidx': user_ref_idx_value
+  firm_value:
+    seq:
+      - id: firm
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical Ouch account can potentially enter orders for multiple firms in a Service Bureau configuration'
+  min_qty_value:
+    seq:
+      - id: min_qty
+        type: u4
+        doc: 'MinQty must be a round lot'
+  customer_type_value:
+    seq:
+      - id: customer_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'R = Retail Designated Order N = Not Retail Designated (default)'
+  max_floor_value:
+    seq:
+      - id: max_floor
+        type: u4
+        doc: 'Represents the portion of your order that you wish to have displayed'
+  price_type_value:
+    seq:
+      - id: price_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'L = limit (default) P = market peg M = midpoint peg R = primary peg Q = market maker peg m = midpoint'
+  post_only_value:
+    seq:
+      - id: post_only
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'P = Post Only (Mid-point Post Only not available on BX) N = No (default)'
+  expire_time_value:
+    seq:
+      - id: expire_time
+        type: u4
+        doc: 'Seconds to live. Must be less than 86400 (number of seconds in a day)'
+  trade_now_value:
+    seq:
+      - id: trade_now
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Y = yes N = no (default)'
+  handle_inst_value:
+    seq:
+      - id: handle_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'I = imbalance only (CrossType O and C) O = retail order type 1 (CrossType R) T = retail order type 2 (CrossType R) Q = retail price improvement (CrossType R) B = Extended Life + Continuous (CrossType E) D = Direct Listing Capital Raise (CrossType H)'
+  user_ref_idx_value:
+    seq:
+      - id: user_ref_idx
+        type: u1
+        doc: 'User Reference Index – identifies the channel within the given port'
+  side_value:
+    seq:
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+  group_id_value:
+    seq:
+      - id: group_id
+        type: u2
+        doc: 'Customer Group ID – identifies specific entity within customer firm'
   decimal_u8_4:
     seq:
       - id: mantissa

@@ -176,6 +176,46 @@ types:
         doc: 'Apendage Id'
       - id: enter_order_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: enter_order_optional_field
+          cases:
+            'enter_order_optional_field::userrefidx': user_ref_idx_value
+            'enter_order_optional_field::account': account_value
+            'enter_order_optional_field::pegtype': peg_type_value
+            'enter_order_optional_field::minqtytype': min_qty_type_value
+            'enter_order_optional_field::minqty': min_qty_value
+            'enter_order_optional_field::maxfloor': max_floor_value
+            'enter_order_optional_field::expiretime': expire_time_value
+            'enter_order_optional_field::pegoffset': peg_offset_value
+            'enter_order_optional_field::targetstrategy': target_strategy_value
+            'enter_order_optional_field::orderorigination': order_origination_value
+            'enter_order_optional_field::routingarrangementindicator': routing_arrangement_indicator_value
+            'enter_order_optional_field::baskettrade': basket_trade_value
+            'enter_order_optional_field::programtrade': program_trade_value
+            'enter_order_optional_field::jitney': jitney_value
+            'enter_order_optional_field::gefeligible': gef_eligible_value
+            'enter_order_optional_field::anonymous': anonymous_value
+            'enter_order_optional_field::umirregulationid': umir_regulation_id_value
+            'enter_order_optional_field::bypass': bypass_value
+            'enter_order_optional_field::tsxncib': tsxncib_value
+            'enter_order_optional_field::notradefeat': no_trade_feat_value
+            'enter_order_optional_field::notradekey': no_trade_key_value
+            'enter_order_optional_field::shortmarkingexempt': short_marking_exempt_value
+            'enter_order_optional_field::pocomment': po_comment_value
+            'enter_order_optional_field::displayrange': display_range_value
+            'enter_order_optional_field::customeraccount': customer_account_value
+            'enter_order_optional_field::algorithmid': algorithm_id_value
+            'enter_order_optional_field::customerlei': customer_lei_value
+            'enter_order_optional_field::brokerlei': broker_lei_value
+            'enter_order_optional_field::conditionalorder': conditional_order_value
+            'enter_order_optional_field::allowconditional': allow_conditional_value
+            'enter_order_optional_field::firmupid': firm_up_id_value
+            'enter_order_optional_field::cxdconnect': cxd_connect_value
+            'enter_order_optional_field::purestreamconnect': pure_stream_connect_value
+            'enter_order_optional_field::minrate': min_rate_value
+            'enter_order_optional_field::maxrate': max_rate_value
+            'enter_order_optional_field::routingstrategy': routing_strategy_value
+            'enter_order_optional_field::handlinst': handl_inst_value
   replace_order_request_message:
     seq:
       - id: orig_user_ref_num
@@ -216,6 +256,32 @@ types:
         doc: 'Apendage Id'
       - id: replace_order_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: replace_order_request_optional_field
+          cases:
+            'replace_order_request_optional_field::userrefidx': user_ref_idx_value
+            'replace_order_request_optional_field::minqtytype': min_qty_type_value
+            'replace_order_request_optional_field::pegtype': peg_type_value
+            'replace_order_request_optional_field::minqty': min_qty_value
+            'replace_order_request_optional_field::maxfloor': max_floor_value
+            'replace_order_request_optional_field::expiretime': expire_time_value
+            'replace_order_request_optional_field::pegoffset': peg_offset_value
+            'replace_order_request_optional_field::targetstrategy': target_strategy_value
+            'replace_order_request_optional_field::orderorigination': order_origination_value
+            'replace_order_request_optional_field::routingarrangementindicator': routing_arrangement_indicator_value
+            'replace_order_request_optional_field::umirregulationid': umir_regulation_id_value
+            'replace_order_request_optional_field::anonymous': anonymous_value
+            'replace_order_request_optional_field::displayrange': display_range_value
+            'replace_order_request_optional_field::customeraccount': customer_account_value
+            'replace_order_request_optional_field::algorithmid': algorithm_id_value
+            'replace_order_request_optional_field::customerlei': customer_lei_value
+            'replace_order_request_optional_field::brokerlei': broker_lei_value
+            'replace_order_request_optional_field::allowconditional': allow_conditional_value
+            'replace_order_request_optional_field::cxdconnect': cxd_connect_value
+            'replace_order_request_optional_field::purestreamconnect': pure_stream_connect_value
+            'replace_order_request_optional_field::minrate': min_rate_value
+            'replace_order_request_optional_field::maxrate': max_rate_value
+            'replace_order_request_optional_field::handlinst': handl_inst_value
   cancel_order_request_message:
     seq:
       - id: user_ref_num
@@ -242,6 +308,10 @@ types:
         doc: 'Apendage Id'
       - id: cancel_order_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: cancel_order_request_optional_field
+          cases:
+            'cancel_order_request_optional_field::userrefidx': user_ref_idx_value
   account_query_request_message:
     seq:
       - id: appendage_length
@@ -263,6 +333,243 @@ types:
         doc: 'Apendage Id'
       - id: account_query_request_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: account_query_request_optional_field
+          cases:
+            'account_query_request_optional_field::userrefidx': user_ref_idx_value
+  user_ref_idx_value:
+    seq:
+      - id: user_ref_idx
+        type: u1
+        doc: 'User Reference Index - identifies the channel within the given port'
+  account_value:
+    seq:
+      - id: account
+        type: str
+        size: 15
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account'
+  peg_type_value:
+    seq:
+      - id: peg_type
+        type: u1
+        enum: peg_type
+        doc: 'M = Midpoint Peg; R = Primary Peg; x = Minimum Price Improvement; S = Seek Price Improvement; L = M-ELO (CXC Only); o = Odd Lot Liquidity Providing (OLP) (CXD Only)'
+  min_qty_type_value:
+    seq:
+      - id: min_qty_type
+        type: u1
+        enum: min_qty_type
+        doc: 'N = MAQ; m = MAQ at touch (CXD only); t = MQ at touch (CXD only); z = Minimum Quantity (MQ). Default N'
+  min_qty_value:
+    seq:
+      - id: min_qty
+        type: u4
+        doc: 'Works in conjunction with MinQtyType. Order will be rejected if Bypass=Y is combined with MinQty. Requires MaxFloor=0 (Hidden). Default 0 (zero), no minimum quantity'
+  max_floor_value:
+    seq:
+      - id: max_floor
+        type: u4
+        doc: 'Represents the portion of the order to be displayed (0=Hidden). Default Max Floor=OrderQty'
+  expire_time_value:
+    seq:
+      - id: expire_time
+        type: u4
+        doc: 'Seconds to live. Must be less than 86400 (number of seconds in a day). Default 0 (zero), no expire time'
+  peg_offset_value:
+    seq:
+      - id: peg_offset
+        type: decimal_s8_8
+        doc: 'Offset amount for the pegged value. Default 0 (zero), no peg offset. Implied decimal with scale 1e-8'
+  target_strategy_value:
+    seq:
+      - id: target_strategy
+        type: u2
+        enum: target_strategy
+        doc: '1000 = Liquidity Rate 5-15%; 1001 = Liquidity Rate 5-30%; 1002 = Mach Two 10 - 200%; 1003 = Custom Liquidity Rate'
+  order_origination_value:
+    seq:
+      - id: order_origination
+        type: u1
+        enum: order_origination
+        doc: 'Broker/Dealer needs to report, as specified by the customer'
+  routing_arrangement_indicator_value:
+    seq:
+      - id: routing_arrangement_indicator
+        type: u1
+        enum: routing_arrangement_indicator
+        doc: '0 = No routing arrangement in place; 1 = Routing arrangement in place'
+  basket_trade_value:
+    seq:
+      - id: basket_trade
+        type: u1
+        enum: basket_trade
+        doc: 'N = No; Y = Yes. Default N (No)'
+  program_trade_value:
+    seq:
+      - id: program_trade
+        type: u1
+        enum: program_trade
+        doc: 'N = No; Y = Yes. Default N (No)'
+  jitney_value:
+    seq:
+      - id: jitney
+        type: str
+        size: 3
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'To mark an order as being executed on behalf of another broker: TSX Broker Number, 3 digit numbers'
+  gef_eligible_value:
+    seq:
+      - id: gef_eligible
+        type: u1
+        enum: gef_eligible
+        doc: 'N = No; Y = Yes. Default N (No)'
+  anonymous_value:
+    seq:
+      - id: anonymous
+        type: u1
+        enum: anonymous
+        doc: 'N = No; Y = Yes. Default N (No)'
+  umir_regulation_id_value:
+    seq:
+      - id: umir_regulation_id
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'IA = Insider Account; SS = Significant Shareholder'
+  bypass_value:
+    seq:
+      - id: bypass
+        type: u1
+        enum: bypass
+        doc: 'Order marker that indicates the order should only trade with displayed quantity. N = No; Y = Yes. Default N (No)'
+  tsxncib_value:
+    seq:
+      - id: tsxncib
+        type: u1
+        enum: tsxncib
+        doc: 'Identifies Normal-Course Issuer Bid (NCIB) orders. N = No; Y = Yes. Default N (No)'
+  no_trade_feat_value:
+    seq:
+      - id: no_trade_feat
+        type: u1
+        enum: no_trade_feat
+        doc: 'Defines the behavior of self-trade prevention when using NoTradeKey. If option E is selected, resulting trades are suppressed on public market data, and ExecuteMatch appendage will be returned to entry firm. Default N (Cancel Newest)'
+  no_trade_key_value:
+    seq:
+      - id: no_trade_key
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Participant-generated key prevents the order from trading against orders with the same key value'
+  short_marking_exempt_value:
+    seq:
+      - id: short_marking_exempt
+        type: u1
+        enum: short_marking_exempt
+        doc: '0 = SME'
+  po_comment_value:
+    seq:
+      - id: po_comment
+        type: str
+        size: 32
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'A free-form pass-through field for use by the participants'
+  display_range_value:
+    seq:
+      - id: display_range
+        type: u4
+        doc: 'Quantity assigned to max floor orders indicating the range in which the displayed quantity will randomly increase or decrease'
+  customer_account_value:
+    seq:
+      - id: customer_account
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number for clients not eligible to obtain an LEI'
+  algorithm_id_value:
+    seq:
+      - id: algorithm_id
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Unique identifier for the end-client (orders automatically generated on a predetermined basis)'
+  customer_lei_value:
+    seq:
+      - id: customer_lei
+        type: str
+        size: 52
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'LEI for clients eligible to obtain an LEI including LEI of the foreign dealer equivalent (Encryption Required)'
+  broker_lei_value:
+    seq:
+      - id: broker_lei
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
+  conditional_order_value:
+    seq:
+      - id: conditional_order
+        type: u1
+        enum: conditional_order
+        doc: 'C = Conditional Order (CXD only); X = eXtended Firm-up Time (XFT) conditional order (CXD only)'
+  allow_conditional_value:
+    seq:
+      - id: allow_conditional
+        type: u1
+        enum: allow_conditional
+        doc: 'N = No; Y = Yes. Default N (No)'
+  firm_up_id_value:
+    seq:
+      - id: firm_up_id
+        type: u8
+        doc: 'Unique firm up ID for a Conditional match'
+  cxd_connect_value:
+    seq:
+      - id: cxd_connect
+        type: u1
+        enum: cxd_connect
+        doc: 'Y = Yes; N = No. Default N (No)'
+  pure_stream_connect_value:
+    seq:
+      - id: pure_stream_connect
+        type: u1
+        enum: pure_stream_connect
+        doc: 'Y = Yes; N = No. Default N (No)'
+  min_rate_value:
+    seq:
+      - id: min_rate
+        type: u2
+        doc: 'Minimum rate for CXD PureStream Customer Reference Rate Range. Specified in percent as integer. Default 1 (1%)'
+  max_rate_value:
+    seq:
+      - id: max_rate
+        type: u2
+        doc: 'Required maximum rate for CXD PureStream Custom Reference Rate Range orders. Specified in percent as integer. Should be between 1% and 500%'
+  routing_strategy_value:
+    seq:
+      - id: routing_strategy
+        type: str
+        size: 15
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Routing Strategy provided by Nasdaq Canada'
+  handl_inst_value:
+    seq:
+      - id: handl_inst
+        type: u1
+        enum: handl_inst
+        doc: 'f = DAO; 1 = OPR Reprice; 5 = OPR Cancel. Default 1'
   decimal_u8_8:
     seq:
       - id: mantissa

@@ -208,6 +208,25 @@ types:
         doc: 'Apendage Id'
       - id: order_accepted_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: order_accepted_optional_field
+          cases:
+            'order_accepted_optional_field::firm': firm_value
+            'order_accepted_optional_field::minqty': min_qty_value
+            'order_accepted_optional_field::customertype': customer_type_value
+            'order_accepted_optional_field::maxfloor': max_floor_value
+            'order_accepted_optional_field::pricetype': price_type_value
+            'order_accepted_optional_field::pegoffset': peg_offset_value
+            'order_accepted_optional_field::discretionprice': discretion_price_value
+            'order_accepted_optional_field::discretionpegtype': discretion_peg_type_value
+            'order_accepted_optional_field::discretionpegoffset': discretion_peg_offset_value
+            'order_accepted_optional_field::postonly': post_only_value
+            'order_accepted_optional_field::randomreserves': random_reserves_value
+            'order_accepted_optional_field::route': route_value
+            'order_accepted_optional_field::expiretime': expire_time_value
+            'order_accepted_optional_field::tradenow': trade_now_value
+            'order_accepted_optional_field::handleinst': handle_inst_value
+            'order_accepted_optional_field::bbo_weight_indicator': bbo_weight_indicator_value
   replaced_message:
     seq:
       - id: timestamp
@@ -286,6 +305,18 @@ types:
         doc: 'Apendage Id'
       - id: replaced_message_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: replaced_message_optional_field
+          cases:
+            'replaced_message_optional_field::firm': firm_value
+            'replaced_message_optional_field::minqty': min_qty_value
+            'replaced_message_optional_field::maxfloor': max_floor_value
+            'replaced_message_optional_field::pricetype': price_type_value
+            'replaced_message_optional_field::postonly': post_only_value
+            'replaced_message_optional_field::expiretime': expire_time_value
+            'replaced_message_optional_field::tradenow': trade_now_value
+            'replaced_message_optional_field::handleinst': handle_inst_value
+            'replaced_message_optional_field::bbo_weight_indicator': bbo_weight_indicator_value
   canceled_message:
     seq:
       - id: timestamp
@@ -367,6 +398,11 @@ types:
         doc: 'Apendage Id'
       - id: order_executed_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: order_executed_optional_field
+          cases:
+            'order_executed_optional_field::reference_price': reference_price_value
+            'order_executed_optional_field::reference_price_type': reference_price_type_value
   broken_trade_message:
     seq:
       - id: timestamp
@@ -516,6 +552,12 @@ types:
         doc: 'Apendage Id'
       - id: order_restated_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: order_restated_optional_field
+          cases:
+            'order_restated_optional_field::display_quantity': display_quantity_value
+            'order_restated_optional_field::display_price': display_price_value
+            'order_restated_optional_field::secondaryordrefnum': secondary_ord_ref_num_value
   account_query_response_message:
     seq:
       - id: timestamp
@@ -562,6 +604,12 @@ types:
         doc: 'Apendage Id'
       - id: mass_cancel_response_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: mass_cancel_response_optional_field
+          cases:
+            'mass_cancel_response_optional_field::side': side_value
+            'mass_cancel_response_optional_field::group_id': group_id_value
+            'mass_cancel_response_optional_field::userrefidx': user_ref_idx_value
   disable_order_entry_response_message:
     seq:
       - id: timestamp
@@ -594,6 +642,10 @@ types:
         doc: 'Apendage Id'
       - id: disable_order_entry_response_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: disable_order_entry_response_optional_field
+          cases:
+            'disable_order_entry_response_optional_field::userrefidx': user_ref_idx_value
   enable_order_entry_response_message:
     seq:
       - id: timestamp
@@ -626,6 +678,159 @@ types:
         doc: 'Apendage Id'
       - id: enable_order_entry_response_optional_value
         size: optional_field_length + 1 - 2
+        type:
+          switch-on: enable_order_entry_response_optional_field
+          cases:
+            'enable_order_entry_response_optional_field::userrefidx': user_ref_idx_value
+  firm_value:
+    seq:
+      - id: firm
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical Ouch account can potentially enter orders for multiple firms in a Service Bureau configuration'
+  min_qty_value:
+    seq:
+      - id: min_qty
+        type: u4
+        doc: 'MinQty must be a round lot'
+  customer_type_value:
+    seq:
+      - id: customer_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'R = Retail Designated Order N = Not Retail Designated (default)'
+  max_floor_value:
+    seq:
+      - id: max_floor
+        type: u4
+        doc: 'Represents the portion of your order that you wish to have displayed'
+  price_type_value:
+    seq:
+      - id: price_type
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'L = limit (default) P = market peg M = midpoint peg R = primary peg Q = market maker peg m = midpoint'
+  peg_offset_value:
+    seq:
+      - id: peg_offset
+        type: decimal_s4_4
+        doc: 'Offset amount for the pegged value. Implied decimal with scale 1e-4'
+  discretion_price_value:
+    seq:
+      - id: discretion_price
+        type: decimal_u8_4
+        doc: 'Discretion price for Discretionary Order. Implied decimal with scale 1e-4'
+  discretion_peg_type_value:
+    seq:
+      - id: discretion_peg_type
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'L = limit (default) P = market peg M = midpoint peg R = primary peg'
+  discretion_peg_offset_value:
+    seq:
+      - id: discretion_peg_offset
+        type: decimal_s4_4
+        doc: 'Offset amount for the pegged value of the Discretionary Price. Implied decimal with scale 1e-4'
+  post_only_value:
+    seq:
+      - id: post_only
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'P = Post Only (Mid-point Post Only not available on BX) N = No (default)'
+  random_reserves_value:
+    seq:
+      - id: random_reserves
+        type: u4
+        doc: 'Shares to do random reserve with'
+  route_value:
+    seq:
+      - id: route
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Route destination'
+  expire_time_value:
+    seq:
+      - id: expire_time
+        type: u4
+        doc: 'Seconds to live. Must be less than 86400 (number of seconds in a day)'
+  trade_now_value:
+    seq:
+      - id: trade_now
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Y = yes N = no (default)'
+  handle_inst_value:
+    seq:
+      - id: handle_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'I = imbalance only (CrossType O and C) O = retail order type 1 (CrossType R) T = retail order type 2 (CrossType R) Q = retail price improvement (CrossType R) B = Extended Life + Continuous (CrossType E) D = Direct Listing Capital Raise (CrossType H)'
+  bbo_weight_indicator_value:
+    seq:
+      - id: bbo_weight_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: '''0'' = 0-0.2% ''1'' = 0.2%-1% ''2'' = 1%-2% ''3'' = greater than 2% space = unspecified (default) ''S'' = Sets the QBBO while joining the NBBO ''N'' = Improves the NBBO upon entry'
+  reference_price_value:
+    seq:
+      - id: reference_price
+        type: decimal_u8_4
+        doc: 'Used in the Order Executed Message only. The reference price associated with the execution; provided with an associated Reference Price Type. Implied decimal with scale 1e-4'
+  reference_price_type_value:
+    seq:
+      - id: reference_price_type
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Used in the Order Executed Message only. I = Intraday Indicative Value'
+  display_quantity_value:
+    seq:
+      - id: display_quantity
+        type: u4
+        doc: 'Used in the Order Restated Message only. Represents an update of an order''s displayed quantity (i.e. an order with reserves)'
+  display_price_value:
+    seq:
+      - id: display_price
+        type: decimal_u8_4
+        doc: 'Used in the Order Restated Message only. Represents an update of an order''s displayed price. Implied decimal with scale 1e-4'
+  secondary_ord_ref_num_value:
+    seq:
+      - id: secondary_ord_ref_num
+        type: u8
+        doc: 'An alternative order reference number used when publishing the order on the Nasdaq market data feeds (identifying, for example, the displayed portion of a reserve order)'
+  side_value:
+    seq:
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+  group_id_value:
+    seq:
+      - id: group_id
+        type: u2
+        doc: 'Customer Group ID – identifies specific entity within customer firm'
+  user_ref_idx_value:
+    seq:
+      - id: user_ref_idx
+        type: u1
+        doc: 'User Reference Index – identifies the channel within the given port'
   nanosecond_timestamp:
     seq:
       - id: time

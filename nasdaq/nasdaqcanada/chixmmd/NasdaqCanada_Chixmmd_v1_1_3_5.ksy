@@ -346,7 +346,7 @@ types:
       - id: cross_type
         type: u1
         enum: cross_type
-        doc: 'I = Internal; B = Basis; C = Contingent; V = VWAP; X = Intentional Cross; D = Derivative Related'
+        doc: 'I = Internal; B = Basis; C = Contingent; V = VWAP; X = Intentional Cross; D = Derivative Related; N = Net Asset Value'
       - id: settlement_terms
         type: u1
         enum: settlement_terms
@@ -412,7 +412,7 @@ types:
       - id: cross_type
         type: u1
         enum: cross_type
-        doc: 'I = Internal; B = Basis; C = Contingent; V = VWAP; X = Intentional Cross; D = Derivative Related'
+        doc: 'I = Internal; B = Basis; C = Contingent; V = VWAP; X = Intentional Cross; D = Derivative Related; N = Net Asset Value'
       - id: settlement_terms
         type: u1
         enum: settlement_terms
@@ -559,6 +559,9 @@ enums:
     0x44:
       id: 'derivative_related'
       doc: 'Derivative Related'
+    0x4e:
+      id: 'net_asset_value'
+      doc: 'Net Asset Value French Edition 3.6 October 2025'
   settlement_terms:
     0x54:
       id: 'cash_today'
