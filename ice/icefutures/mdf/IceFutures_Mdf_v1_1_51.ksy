@@ -1081,6 +1081,20 @@ types:
         doc: 'Length of this field'
       - id: variable_field
         size: len_variable_field
+        type:
+          switch-on: special_field_id
+          cases:
+            'special_field_id::alt_price': alt_price_value
+            'special_field_id::alt_high_price': alt_high_price_value
+            'special_field_id::alt_low_price': alt_low_price_value
+            'special_field_id::alt_vwap': alt_vwap_value
+            'special_field_id::alt_last_trade_price': alt_last_trade_price_value
+            'special_field_id::aon': aon_value
+            'special_field_id::accrued_distribution': accrued_distribution_value
+            'special_field_id::accrued_funding': accrued_funding_value
+            'special_field_id::annualization_factor': annualization_factor_value
+            'special_field_id::trf_days_to_maturity': trf_days_to_maturity_value
+            'special_field_id::seconds_to_end_tpl_hold': seconds_to_end_tpl_hold_value
   fragment_wrapper_message:
     seq:
       - id: total_length
@@ -1839,6 +1853,63 @@ types:
         type: u1
         enum: side
         doc: 'Order side'
+  alt_price_value:
+    seq:
+      - id: alt_price
+        type: s8
+        doc: 'Eris Futures Price'
+  alt_high_price_value:
+    seq:
+      - id: alt_high_price
+        type: s8
+        doc: 'High Eris Futures Price'
+  alt_low_price_value:
+    seq:
+      - id: alt_low_price
+        type: s8
+        doc: 'Low Eris Futures Price'
+  alt_vwap_value:
+    seq:
+      - id: alt_vwap
+        type: s8
+        doc: 'Volume-weighted Average Eris Futures Price'
+  alt_last_trade_price_value:
+    seq:
+      - id: alt_last_trade_price
+        type: s8
+        doc: 'Last Trade Eris Futures Price'
+  aon_value:
+    seq:
+      - id: aon
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Order is All-Or-None'
+  accrued_distribution_value:
+    seq:
+      - id: accrued_distribution
+        type: s1
+        doc: 'The sum of all daily distributions'
+  accrued_funding_value:
+    seq:
+      - id: accrued_funding
+        type: s1
+        doc: 'The sum of all daily funding values'
+  annualization_factor_value:
+    seq:
+      - id: annualization_factor
+        type: s4
+        doc: 'The number of periods used to annualize a return'
+  trf_days_to_maturity_value:
+    seq:
+      - id: trf_days_to_maturity
+        type: s4
+        doc: 'This is a weighting factor determined for each expiry calculated daily'
+  seconds_to_end_tpl_hold_value:
+    seq:
+      - id: seconds_to_end_tpl_hold
+        type: s4
+        doc: 'If the TPL hold is scheduled to end early this will contain the number of seconds remaining for the hold period'
   nanosecond_timestamp:
     seq:
       - id: time

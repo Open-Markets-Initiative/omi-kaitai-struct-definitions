@@ -970,6 +970,15 @@ types:
         doc: 'Length of this field'
       - id: variable_field
         size: len_variable_field
+        type:
+          switch-on: special_field_id
+          cases:
+            'special_field_id::alt_price': alt_price_value
+            'special_field_id::alt_high_price': alt_high_price_value
+            'special_field_id::alt_low_price': alt_low_price_value
+            'special_field_id::alt_vwap': alt_vwap_value
+            'special_field_id::alt_last_trade_price': alt_last_trade_price_value
+            'special_field_id::aon': aon_value
   market_snapshot_order_message:
     seq:
       - id: market_id
@@ -1666,6 +1675,38 @@ types:
       - id: vwap
         type: s8
         doc: 'Weighted Average Price. DealPriceDenominator for the market should be applied to get the real price'
+  alt_price_value:
+    seq:
+      - id: alt_price
+        type: s8
+        doc: 'Eris Futures Price'
+  alt_high_price_value:
+    seq:
+      - id: alt_high_price
+        type: s8
+        doc: 'High Eris Futures Price'
+  alt_low_price_value:
+    seq:
+      - id: alt_low_price
+        type: s8
+        doc: 'Low Eris Futures Price'
+  alt_vwap_value:
+    seq:
+      - id: alt_vwap
+        type: s8
+        doc: 'Volume-weighted Average Eris Futures Price'
+  alt_last_trade_price_value:
+    seq:
+      - id: alt_last_trade_price
+        type: s8
+        doc: 'Last Trade Eris Futures Price'
+  aon_value:
+    seq:
+      - id: aon
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Order is All-Or-None'
   millisecond_timestamp:
     seq:
       - id: time
