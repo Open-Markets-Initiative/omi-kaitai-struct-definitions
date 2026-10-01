@@ -6,7 +6,7 @@
 #   Protocol: TotalView Itch
 #   Encoding: Itch
 #   Version: 5.0.2026
-#   Date: 02/19/2026
+#   Date: 06/11/2026
 #   Specification: NQTVITCHSpecification.pdf
 #
 # Script:
@@ -332,8 +332,8 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: ipo_quotation_release_time
-        type: u4
-        doc: 'Denotes the IPO release time, in seconds since midnight, for quotation to the nearest second'
+        type: second_timestamp
+        doc: 'Denotes the IPO release time, in seconds since midnight, for quotation to the nearest second. Seconds since Midnight epoch'
       - id: ipo_quotation_release_qualifier
         type: u1
         enum: ipo_quotation_release_qualifier
@@ -763,6 +763,17 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  second_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600 % 24
+      minute:
+        value: time / 60 % 60
+      second:
+        value: time % 60
   decimal_u4_4:
     seq:
       - id: mantissa
@@ -826,7 +837,7 @@ enums:
       doc: 'Nasdaq uses this administrative message to indicate the current trading status of a security to the trading community'
     0x59:
       id: 'reg_sho_short_sale_price_test_restricted_indicator_message'
-      doc: 'Nasaq processes orders based on the most Reg SHO Restriction status value'
+      doc: 'Nasdaq processes orders based on the most Reg SHO Restriction status value'
     0x4c:
       id: 'market_participant_position_message'
       doc: 'Nasdaq will send out this message only if Nasdaq Operations changes the status of a market participant firm in an issue'
@@ -931,6 +942,9 @@ enums:
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
+    0x46:
+      id: 'texas_exchange'
+      doc: 'Texas Exchange'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
@@ -1295,7 +1309,7 @@ enums:
       doc: 'Nasdaq uses this administrative message to indicate the current trading status of a security to the trading community'
     0x59:
       id: 'reg_sho_short_sale_price_test_restricted_indicator_message'
-      doc: 'Nasaq processes orders based on the most Reg SHO Restriction status value'
+      doc: 'Nasdaq processes orders based on the most Reg SHO Restriction status value'
     0x4c:
       id: 'market_participant_position_message'
       doc: 'Nasdaq will send out this message only if Nasdaq Operations changes the status of a market participant firm in an issue'

@@ -82,7 +82,7 @@ types:
   new_order_message:
     seq:
       - id: timestamp
-        type: nanosecond_timestamp
+        type: dos_nanosecond_timestamp
         doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
       - id: order_id
         type: floating_point_integer
@@ -103,7 +103,7 @@ types:
   new_spread_order_message:
     seq:
       - id: timestamp
-        type: nanosecond_timestamp
+        type: dos_nanosecond_timestamp
         doc: 'Time in nanoseconds from 01-Jan-1980 00:00:00. Nanoseconds since Dos epoch'
       - id: order_id
         type: floating_point_integer
@@ -121,11 +121,13 @@ types:
       - id: quantity
         type: s4
         doc: 'Quantity of the order'
-  nanosecond_timestamp:
+  dos_nanosecond_timestamp:
     seq:
       - id: time
         type: s8
     instances:
+      unix_seconds:
+        value: time / 1000000000 + 315532800
       hour:
         value: time / 3600000000000 % 24
       minute:

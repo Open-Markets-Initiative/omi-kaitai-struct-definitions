@@ -6,7 +6,7 @@
 #   Protocol: TotalView Itch
 #   Encoding: Itch
 #   Version: 5.0.2026
-#   Date: 02/19/2026
+#   Date: 06/11/2026
 #   Specification: NQTVITCHSpecification.pdf
 #
 # Script:
@@ -71,7 +71,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: 1
+        size: _parent.client_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free form human readable text'
   login_request_packet:
@@ -166,7 +166,7 @@ enums:
       doc: 'Nasdaq uses this administrative message to indicate the current trading status of a security to the trading community'
     0x59:
       id: 'reg_sho_short_sale_price_test_restricted_indicator_message'
-      doc: 'Nasaq processes orders based on the most Reg SHO Restriction status value'
+      doc: 'Nasdaq processes orders based on the most Reg SHO Restriction status value'
     0x4c:
       id: 'market_participant_position_message'
       doc: 'Nasdaq will send out this message only if Nasdaq Operations changes the status of a market participant firm in an issue'
@@ -271,6 +271,9 @@ enums:
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
+    0x46:
+      id: 'texas_exchange'
+      doc: 'Texas Exchange'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
@@ -635,7 +638,7 @@ enums:
       doc: 'Nasdaq uses this administrative message to indicate the current trading status of a security to the trading community'
     0x59:
       id: 'reg_sho_short_sale_price_test_restricted_indicator_message'
-      doc: 'Nasaq processes orders based on the most Reg SHO Restriction status value'
+      doc: 'Nasdaq processes orders based on the most Reg SHO Restriction status value'
     0x4c:
       id: 'market_participant_position_message'
       doc: 'Nasdaq will send out this message only if Nasdaq Operations changes the status of a market participant firm in an issue'

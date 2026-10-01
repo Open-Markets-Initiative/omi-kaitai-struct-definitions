@@ -72,7 +72,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: 1
+        size: _parent.server_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free form human readable text'
   login_accepted_packet:
@@ -177,7 +177,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -238,7 +238,7 @@ types:
         enum: order_type
         doc: 'Indicates the type of order'
       - id: limit_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Price of the order in fixed point format with 6 whole number places followed Integer by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
@@ -304,7 +304,7 @@ types:
         enum: side
         doc: 'Indicates the side of the order'
       - id: price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: size
         type: u4
@@ -340,7 +340,7 @@ types:
         pad-right: 0x20
         doc: 'Attributable Order may provide CMTA to disseminate with order; Spaces when not set'
       - id: response_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Price of the aggregated auction responses in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: response_size
         type: u4
@@ -382,10 +382,10 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_u4_4:
+  decimal_s4_4:
     seq:
       - id: mantissa
-        type: u4
+        type: s4
     instances:
       real:
         value: mantissa / 10000.0

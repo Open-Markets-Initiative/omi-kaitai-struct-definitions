@@ -612,17 +612,17 @@ types:
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_short
-        type: u2
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
+        type: decimal_u2_1
+        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract. Implied decimal with scale 1e-1'
       - id: bid_price_short
-        type: u2
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        type: decimal_u2_2
+        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
       - id: offer_price_short
-        type: u2
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option'
+        type: decimal_u2_2
+        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option. Implied decimal with scale 1e-2'
       - id: offer_size_short
         type: u2
         doc: 'The Offer Size Identifies The Number Of Contracts For Sale For An Option At The Offer Price'
@@ -796,6 +796,20 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_u2_1:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 10.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   data_feed_indicator:

@@ -185,7 +185,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol of the underlying'
       - id: expiry_date
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: strike_price
         type: decimal_s4_2
@@ -319,7 +319,7 @@ types:
         type: s4
         doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
       - id: entry_date_time
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Time the order entered the system. Seconds since Dos epoch'
       - id: last_modified
         type: s4
@@ -387,7 +387,7 @@ types:
   order_confirmation_trimmed_message:
     seq:
       - id: log_time
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Time the message was generated. Seconds since Dos epoch'
       - id: user_id
         type: s4
@@ -465,7 +465,7 @@ types:
         type: s4
         doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
       - id: entry_date_time
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Time the order entered the system. Seconds since Dos epoch'
       - id: last_modified
         type: s4
@@ -536,7 +536,7 @@ types:
   trade_confirmation_trimmed_message:
     seq:
       - id: log_time
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Time the message was generated. Seconds since Dos epoch'
       - id: trader_id
         type: s4
@@ -611,7 +611,7 @@ types:
         pad-right: 0x20
         doc: 'Type of activity being confirmed'
       - id: activity_time
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Time the activity occurred. Seconds since Dos epoch'
       - id: token
         type: s4
@@ -678,11 +678,13 @@ types:
       - id: message_length
         type: s2
         doc: 'Length of this message'
-  second_timestamp:
+  dos_second_timestamp:
     seq:
       - id: time
         type: s4
     instances:
+      unix_seconds:
+        value: time + 315532800
       hour:
         value: time / 3600 % 24
       minute:

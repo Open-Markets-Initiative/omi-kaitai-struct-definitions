@@ -156,7 +156,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Zero (0) for Stock Leg. Implied decimal with scale 1e-4'
       - id: option_type
         type: str
@@ -208,7 +208,7 @@ types:
         type: u1
         doc: 'The Trade Condition is the same as defined in the OPRA specification (OPRA terminology is either "Last Sale" or "Transaction"). Always refer to the www.opraplan.com website to ensure the possible Trade Conditions sent out by this feed, which are consistent with the Trade Conditions defined by OPRA'
       - id: price
-        type: decimal_u4_4
+        type: decimal_s4_4
         doc: 'Reflects the transaction (premium) price on the execution. Implied decimal with scale 1e-4'
       - id: volume
         type: u4
@@ -229,10 +229,10 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_u4_4:
+  decimal_s4_4:
     seq:
       - id: mantissa
-        type: u4
+        type: s4
     instances:
       real:
         value: mantissa / 10000.0

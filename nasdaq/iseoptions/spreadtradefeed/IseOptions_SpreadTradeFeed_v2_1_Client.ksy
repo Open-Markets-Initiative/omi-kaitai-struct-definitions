@@ -3,7 +3,7 @@
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Phlx Options Spread Trade Feed
+#   Protocol: ISE Options Spread Trade Feed
 #   Encoding: Itch
 #   Version: 2.1
 #   Date: 02/13/2026
@@ -35,7 +35,7 @@ meta:
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq ISE Phlx Options Spread Trade Feed Itch v2.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq ISE ISE Options Spread Trade Feed Itch v2.1'
 doc-ref: https://data.nasdaq.com/market-data-specifications
 
 seq:
@@ -71,7 +71,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: 1
+        size: _parent.client_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free form human readable text'
   login_request_packet:

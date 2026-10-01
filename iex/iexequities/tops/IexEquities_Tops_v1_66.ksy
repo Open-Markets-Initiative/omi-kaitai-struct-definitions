@@ -389,9 +389,7 @@ types:
         enum: imbalance_side
         doc: 'Side of the unpaired shares at the Reference Price using orders on the Auction Book'
       - id: extension_number
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
         doc: 'Number of extensions an auction received'
       - id: scheduled_auction_time
         type: second_timestamp
@@ -447,7 +445,7 @@ enums:
       doc: 'The System Event Message is used to indicate events that apply to the market or the data feed'
     0x44:
       id: 'security_directory_message'
-      doc: 'The System Event Message is used to indicate events that apply to the market or the data feed.'
+      doc: 'IEX disseminates a full pre-market spin of Security Directory Messages for all IEX-listed securities. After the pre-market spin, IEX will use the Security Directory Message to relay changes for an individual security.'
     0x48:
       id: 'trading_status_message'
       doc: 'The Trading Status Message is used to indicate the current trading status of a security.'

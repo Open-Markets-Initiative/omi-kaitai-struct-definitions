@@ -103,7 +103,7 @@ types:
     seq:
       - id: message_size
         type: u2
-        doc: 'The size of this message in bytes'
+        doc: 'Size of the message body in bytes including this field'
       - id: message_type
         type: u2
         enum: message_type
@@ -698,37 +698,22 @@ enums:
   delivery_flag:
     1:
       id: 'heartbeat'
-      doc: 'Xdp Heartbeat Message'
+      doc: 'Heartbeat'
+    2:
+      id: 'contains_original_and_refresh_msgs'
+      doc: 'Contains original and Refresh msgs'
+    3:
+      id: 'contains_only_refresh_messages'
+      doc: 'Contains only Refresh messages'
     10:
       id: 'xdp_failover'
       doc: 'XDP Failover'
     11:
-      id: 'original_message'
-      doc: 'Original Message'
+      id: 'contains_only_original_messages'
+      doc: 'Contains only original messages'
     12:
       id: 'sequence_number_reset_message'
       doc: 'Sequence Number Reset Message'
-    13:
-      id: 'one_retransmission_packet'
-      doc: 'Only one packet in retransmission sequence'
-    15:
-      id: 'retransmission_sequence_message'
-      doc: 'Part of a retransmission sequence'
-    17:
-      id: 'one_refresh_packet'
-      doc: 'one packet in Refresh sequence'
-    18:
-      id: 'refresh_sequence_start'
-      doc: 'Start of Refresh sequence'
-    19:
-      id: 'refresh_sequence_message'
-      doc: 'Part of a Refresh sequence'
-    20:
-      id: 'refresh_sequence_end'
-      doc: 'End of Refresh Sequence'
-    21:
-      id: 'message_unavailable'
-      doc: 'Message Unavailable'
   message_type:
     401:
       id: 'outright_quote_message'

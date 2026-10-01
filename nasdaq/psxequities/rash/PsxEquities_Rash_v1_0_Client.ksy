@@ -1,0 +1,806 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Nasdaq PsxEquities Rash AsciiRash v1.0
+#
+# Protocol:
+#   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
+#   Protocol: Rash
+#   Encoding: Ascii Rash
+#   Version: 1.0
+#   Date: 04/07/2020
+#   Specification: psxrashsb10.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: nasdaq_psxequities_rash_asciirash_v1_0_client
+  title: Nasdaq PsxEquities Rash AsciiRash v1.0
+  license: GPL-3.0
+  endian: be
+
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Rash AsciiRash v1.0'
+doc-ref:
+  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/psxrashsb10.pdf
+
+seq:
+  - id: client_soup_bin_tcp_packet
+    type: client_soup_bin_tcp_packet_struct
+    repeat: eos
+    doc: 'Soup Bin Tcp Packet sent by the client'
+
+types:
+  client_soup_bin_tcp_packet_struct:
+    seq:
+      - id: client_packet_header
+        type: client_packet_header
+        doc: 'Packet header of a packet sent by the client'
+      - id: client_payload
+        size: client_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: client_packet_header.client_packet_type
+          cases:
+            'client_packet_type::debug_packet': debug_packet
+            'client_packet_type::login_request_packet': login_request_packet
+            'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
+  client_packet_header:
+    seq:
+      - id: packet_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: client_packet_type
+        type: u1
+        enum: client_packet_type
+        doc: 'Code identifying this packet type sent by the client'
+  debug_packet:
+    seq:
+      - id: debug_text
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Free form human readable text'
+  login_request_packet:
+    seq:
+      - id: username
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Session username'
+      - id: password
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Login password'
+      - id: requested_session
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Specifies the session the client would like to log into, or all blanks to log into the currently active session'
+      - id: requested_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Specifies the next sequence number in ASCII the client wants to receive upon connection, or 0 to start receiving the most recently generated message'
+  unsequenced_data_packet:
+    seq:
+      - id: unsequenced_message_type
+        type: u1
+        enum: unsequenced_message_type
+        doc: 'Value identifying unsequenced message type'
+      - id: unsequenced_message
+        size: _parent.client_packet_header.packet_length - 2
+        type:
+          switch-on: unsequenced_message_type
+          cases:
+            'unsequenced_message_type::enter_order_message': enter_order_message
+            'unsequenced_message_type::enter_order_message_with_cross_functionality': enter_order_message_with_cross_functionality
+            'unsequenced_message_type::cancel_order_message': cancel_order_message
+  enter_order_message:
+    seq:
+      - id: order_token_client_order_id
+        type: str
+        size: 14
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Token must be day unique for each RASH port account'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'B/S/T/E: Buy, Sell, Short, Short Exempt. For sell short and sell short exempt, the subscriber affirms the ability to borrow securities in good deliverable form for delivery within three business days'
+      - id: shares_order_qty
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Total number of shares entered. Must be greater than zero'
+      - id: stock_symbol
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Stock symbol'
+      - id: price
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Price, 6 whole and 4 implied decimal digits. Implied decimal with scale 1e-4'
+      - id: time_in_force
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'The number of seconds that this order should live before being automatically canceled; special values (0 = Immediate or Cancel, 99998 = Market Day, 99999 = system day and the others the document lists) are listed in section 2.1.1'
+      - id: firm_client_id
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'MPID'
+      - id: display
+        type: u1
+        enum: display
+        doc: 'Display instruction; see the Display values'
+      - id: min_qty
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Minimum fill amount allowed'
+      - id: max_floor
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Shares to display. If zero this field will default to the order quantity. Use the display field to specify a hidden order'
+      - id: peg_type
+        type: u1
+        enum: peg_type
+        doc: 'Peg type'
+      - id: peg_difference_sign
+        type: u1
+        enum: peg_difference_sign
+        doc: '+ or -. If peg type is set to N, specify +'
+      - id: peg_difference
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Amount; 6.4 (implied decimal). If peg type is set to N, specify 0. Implied decimal with scale 1e-4'
+      - id: discretion_price
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Discretion Price for Discretionary Order. If set to 0, this order does not have discretion. Implied decimal with scale 1e-4'
+      - id: discretion_peg_type
+        type: u1
+        enum: discretion_peg_type
+        doc: 'Discretion peg type'
+      - id: discretion_peg_difference_sign
+        type: u1
+        enum: discretion_peg_difference_sign
+        doc: '+ or -. If peg type is set to N, specify +'
+      - id: discretion_peg_difference
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Amount; 6.4 (implied decimal). If peg type is set to N, specify 0. Implied decimal with scale 1e-4'
+      - id: capacity_rule_80_a_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Capacity code'
+      - id: random_reserve
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Shares to do random reserve with'
+      - id: route_dest_exec_broker
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Target ID: a routing strategy or a directed order destination code'
+      - id: cust_terminal_id_sender_sub_id
+        type: str
+        size: 32
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Client initiated; pass-thru. Must be left-justified'
+  enter_order_message_with_cross_functionality:
+    seq:
+      - id: order_token_client_order_id
+        type: str
+        size: 14
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Token must be day unique for each RASH port account'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'B/S/T/E: Buy, Sell, Short, Short Exempt. For sell short and sell short exempt, the subscriber affirms the ability to borrow securities in good deliverable form for delivery within three business days'
+      - id: shares_order_qty
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Total number of shares entered. Must be greater than zero'
+      - id: stock_symbol
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Stock symbol'
+      - id: price
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Price, 6 whole and 4 implied decimal digits. Implied decimal with scale 1e-4'
+      - id: time_in_force
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'The number of seconds that this order should live before being automatically canceled; special values (0 = Immediate or Cancel, 99998 = Market Day, 99999 = system day and the others the document lists) are listed in section 2.1.1'
+      - id: firm_client_id
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'MPID'
+      - id: display
+        type: u1
+        enum: display
+        doc: 'Display instruction; see the Display values'
+      - id: min_qty
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Minimum fill amount allowed'
+      - id: max_floor
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Shares to display. If zero this field will default to the order quantity. Use the display field to specify a hidden order'
+      - id: peg_type
+        type: u1
+        enum: peg_type
+        doc: 'Peg type'
+      - id: peg_difference_sign
+        type: u1
+        enum: peg_difference_sign
+        doc: '+ or -. If peg type is set to N, specify +'
+      - id: peg_difference
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Amount; 6.4 (implied decimal). If peg type is set to N, specify 0. Implied decimal with scale 1e-4'
+      - id: discretion_price
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Discretion Price for Discretionary Order. If set to 0, this order does not have discretion. Implied decimal with scale 1e-4'
+      - id: discretion_peg_type
+        type: u1
+        enum: discretion_peg_type
+        doc: 'Discretion peg type'
+      - id: discretion_peg_difference_sign
+        type: u1
+        enum: discretion_peg_difference_sign
+        doc: '+ or -. If peg type is set to N, specify +'
+      - id: discretion_peg_difference
+        type: str
+        size: 10
+        encoding: ASCII
+        doc: 'Amount; 6.4 (implied decimal). If peg type is set to N, specify 0. Implied decimal with scale 1e-4'
+      - id: capacity_rule_80_a_indicator
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Capacity code'
+      - id: random_reserve
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Shares to do random reserve with'
+      - id: route_dest_exec_broker
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Target ID: a routing strategy or a directed order destination code'
+      - id: cust_terminal_id_sender_sub_id
+        type: str
+        size: 32
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Client initiated; pass-thru. Must be left-justified'
+      - id: intermarket_sweep_eligibility
+        type: u1
+        enum: intermarket_sweep_eligibility
+        doc: 'Inter-market sweep eligibility'
+      - id: cross_type
+        type: u1
+        enum: cross_type
+        doc: 'Cross type'
+  cancel_order_message:
+    seq:
+      - id: order_token_client_order_id
+        type: str
+        size: 14
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Token must be day unique for each RASH port account'
+      - id: shares
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Specify zero to cancel the order; otherwise the new intended order size'
+
+enums:
+  client_packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x4c:
+      id: 'login_request_packet'
+      doc: 'SoupbinTcp Login Request Packet'
+    0x55:
+      id: 'unsequenced_data_packet'
+      doc: 'Soupbin Tcp Unsequenced Data Packet'
+    0x52:
+      id: 'client_heartbeat_packet'
+      doc: 'SoupbinTcp Client Heartbeat Packet'
+    0x4f:
+      id: 'logout_request_packet'
+      doc: 'SoupbinTcp Logout Request Packet'
+  unsequenced_message_type:
+    0x4f:
+      id: 'enter_order_message'
+      doc: 'The Enter Order Message lets you enter a new order. Each new order must have a Token that is unique to the day and that logical RASH Port account. If you send a valid order, you should receive an Accepted Order Message.'
+    0x51:
+      id: 'enter_order_message_with_cross_functionality'
+      doc: 'Enters orders in much the same way as the Enter Order Message, with a few additional fields. Notably, the Cross Type Flag allows you to specify that an order begins participation in a cross.'
+    0x58:
+      id: 'cancel_order_message'
+      doc: 'Requests that an order be canceled. A Shares field of zero cancels the entire balance of the order; otherwise Shares is the new intended order size.'
+  side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+    0x54:
+      id: 'short_field'
+      doc: 'Sell Short'
+    0x45:
+      id: 'short_exempt'
+      doc: 'Sell Short Exempt'
+  display:
+    0x59:
+      id: 'anonymous_price_to_comply'
+      doc: 'Anonymous Price To Comply'
+    0x4e:
+      id: 'non_displayed'
+      doc: 'Non Displayed'
+    0x41:
+      id: 'attributable_price_to_display'
+      doc: 'Attributable Price To Display'
+    0x49:
+      id: 'imbalance_only'
+      doc: 'Imbalance Only'
+    0x50:
+      id: 'post_only'
+      doc: 'Post Only'
+    0x4d:
+      id: 'mid_point_peg'
+      doc: 'Mid Point Peg'
+    0x57:
+      id: 'mid_point_peg_post_only'
+      doc: 'Mid Point Peg Post Only'
+  peg_type:
+    0x4d:
+      id: 'midpoint'
+      doc: 'Midpoint'
+    0x4e:
+      id: 'no_peg'
+      doc: 'No Peg'
+    0x50:
+      id: 'market'
+      doc: 'Market'
+    0x52:
+      id: 'primary'
+      doc: 'Primary'
+  peg_difference_sign:
+    0x2b:
+      id: 'plus'
+      doc: 'Positive Peg Difference'
+    0x2d:
+      id: 'minus'
+      doc: 'Negative Peg Difference'
+  discretion_peg_type:
+    0x4d:
+      id: 'midpoint'
+      doc: 'Midpoint'
+    0x4e:
+      id: 'no_peg'
+      doc: 'No Peg'
+    0x50:
+      id: 'market'
+      doc: 'Market'
+    0x52:
+      id: 'primary'
+      doc: 'Primary'
+  discretion_peg_difference_sign:
+    0x2b:
+      id: 'plus'
+      doc: 'Positive Peg Difference'
+    0x2d:
+      id: 'minus'
+      doc: 'Negative Peg Difference'
+  intermarket_sweep_eligibility:
+    0x59:
+      id: 'eligible'
+      doc: 'Eligible'
+    0x4e:
+      id: 'not_eligible'
+      doc: 'Not Eligible'
+    0x79:
+      id: 'trade_at_intermarket_sweep_order'
+      doc: 'Tradeat Intermarket Sweep Order'
+  cross_type:
+    0x4f:
+      id: 'opening_cross'
+      doc: 'Opening Cross'
+    0x43:
+      id: 'closing_cross'
+      doc: 'Closing Cross'
+    0x49:
+      id: 'intraday_cross'
+      doc: 'Intraday Cross'
+    0x4e:
+      id: 'immediately_live'
+      doc: 'Order Is Immediately Live Dont Wait For A Cross'
+  server_packet_type:
+    0x2b:
+      id: 'debug_packet'
+      doc: 'SoupbinTcp Debug Packet'
+    0x41:
+      id: 'login_accepted_packet'
+      doc: 'SoupbinTcp Login Accepted Packet'
+    0x4a:
+      id: 'login_rejected_packet'
+      doc: 'SoupbinTcp Login Rejected Packet'
+    0x53:
+      id: 'sequenced_data_packet'
+      doc: 'Sequenced Data Packet'
+    0x48:
+      id: 'server_heartbeat_packet'
+      doc: 'SoupbinTcp Server Heartbeat Packet'
+    0x5a:
+      id: 'end_of_session_packet'
+      doc: 'SoupbinTcp Login End of Session Packet'
+  reject_reason_code:
+    0x41:
+      id: 'not_authorized'
+      doc: 'The Login Request Packet''s username and password combination was invalid'
+    0x53:
+      id: 'session_not_available'
+      doc: 'The Login Request Packet''s requested session was invalid or not available'
+  sequenced_message_type:
+    0x53:
+      id: 'system_event_message'
+      doc: 'System Event Messages signal events that affect the entire system.'
+    0x41:
+      id: 'accepted_order_message'
+      doc: 'An Accepted Order Message acknowledges the receipt of a valid Enter Order Message. The data fields from the Enter Order Message are echoed back; the accepted values may differ from the entered values for some fields.'
+    0x52:
+      id: 'accepted_order_message_with_cross_functionality'
+      doc: 'Similar to the regular Accepted Order Message, with the additional information provided upon order entry using the Enter Order Message with Cross Functionality.'
+    0x43:
+      id: 'canceled_order_message'
+      doc: 'A Canceled Order Message informs you that an order has been reduced or canceled. Canceled shares reflect the number of shares that are out.'
+    0x4a:
+      id: 'rejected_order_message'
+      doc: 'A Rejected Order Message may be sent in response to an Enter Order Message if the order cannot be accepted at this time. The Token of a rejected order cannot be re-used.'
+    0x45:
+      id: 'executed_order_message'
+      doc: 'An Executed Order Message informs you that all or part of an order has been executed.'
+    0x42:
+      id: 'broken_trade_message'
+      doc: 'A Broken Trade Message informs you that an execution has been broken. The trade is no longer good and will not clear.'
+  event_code:
+    0x53:
+      id: 'start_of_day'
+      doc: 'Start Of Day This Is Always The First Message Each Day It Indicates That The System Is Open And Ready To Start Accepting Orders'
+    0x45:
+      id: 'end_of_day'
+      doc: 'End Of Day This Indicates That The System Is Now Closed And Will Not Accept Any New Orders In This Session There Will Not Be Any More Executions During This Session However It Is Still Possible To Receive Broken Trade Messages And Canceled Order Messages'
+  cancel_reason:
+    0x55:
+      id: 'user_requested_cancel'
+      doc: 'User Requested Cancel Sent In Response To A Cancel Request Message'
+    0x49:
+      id: 'immediate_or_cancel'
+      doc: 'Immediate Or Cancel Order'
+    0x54:
+      id: 'timeout'
+      doc: 'Timeout The Time In Force For This Order Has Expired'
+    0x53:
+      id: 'supervisory'
+      doc: 'Supervisory The Order Was Manually Canceled Or Reduced By A Supervisory Terminal'
+    0x44:
+      id: 'regulatory_restriction'
+      doc: 'This Order Cannot Be Executed Because Of A Regulatory Restriction Eg Trade Through Restrictions'
+    0x51:
+      id: 'self_match_prevention'
+      doc: 'Self Match Prevention The Order Was Cancelled Because It Would Have Executed With An Existing Order Entered By The Same Mpid'
+    0x5a:
+      id: 'system_cancel'
+      doc: 'System Cancel This Order Was Cancelled By The System'
+    0x4b:
+      id: 'market_collars'
+      doc: 'This Order Cannot Be Executed Because Of Market Collars'
+    0x45:
+      id: 'closed'
+      doc: 'Closed Any Day Order That Was Received After The Closing Cross Is Complete In A Given Symbol Will Receive This Cancel Reason'
+    0x4a:
+      id: 'rejected_by_away_destination'
+      doc: 'System Cancel This Order Was Cancelled Because It Was Rejected By An Away Destination'
+    0x41:
+      id: 'administrative_cancel'
+      doc: 'Administrative Cancel This Order Was Cancelled By The System'
+    0x46:
+      id: 'post_only_cancel_nms'
+      doc: 'Post Only Cancel This Post Only Order Was Cancelled Because It Would Have Been Price Slid For Nms'
+    0x47:
+      id: 'post_only_cancel_contra_displayed_order'
+      doc: 'Post Only Cancel This Post Only Order Was Cancelled Because It Would Have Been Price Slid Due To A Contra Side Displayed Order On The Book'
+  reject_reason:
+    0x59:
+      id: 'no_shares_found_for_routing'
+      doc: 'No Shares Found For Routing'
+    0x43:
+      id: 'nasdaq_omx_psx_is_closed'
+      doc: 'Nasdaq Omx Psx Is Closed'
+    0x49:
+      id: 'invalid_order_side'
+      doc: 'Invalid Order Side'
+    0x45:
+      id: 'invalid_peg'
+      doc: 'Invalid Peg'
+    0x4c:
+      id: 'invalid_firm'
+      doc: 'Invalid Firm'
+    0x5a:
+      id: 'quantity_exceeds_threshold'
+      doc: 'Quantity Exceeds Threshold'
+    0x4f:
+      id: 'other'
+      doc: 'Other A Reason Not Contemplated In This Version Of Rash'
+    0x42:
+      id: 'quote_not_available_for_pegged_order'
+      doc: 'Quote Not Available For Pegged Order'
+    0x50:
+      id: 'pegging_not_allowed'
+      doc: 'Pegging Not Allowed'
+    0x58:
+      id: 'invalid_price'
+      doc: 'Invalid Price'
+    0x47:
+      id: 'destination_not_available'
+      doc: 'Destination Not Available'
+    0x4a:
+      id: 'processing_error'
+      doc: 'Processing Error'
+    0x4e:
+      id: 'invalid_routing_instructions'
+      doc: 'Invalid Routing Instructions'
+    0x44:
+      id: 'invalid_display_value'
+      doc: 'Invalid Display Value'
+    0x4d:
+      id: 'outside_of_permitted_times_for_clearing_destination'
+      doc: 'Outside Of Permitted Times For Clearing Destination'
+    0x48:
+      id: 'security_is_halted'
+      doc: 'Security Is Halted'
+    0x53:
+      id: 'invalid_symbol'
+      doc: 'Invalid Symbol'
+    0x51:
+      id: 'invalid_order_quantity'
+      doc: 'Invalid Order Quantity'
+    0x4b:
+      id: 'invalid_minimum_quantity'
+      doc: 'Invalid Minimum Quantity'
+    0x57:
+      id: 'invalid_destination'
+      doc: 'Invalid Destination'
+    0x41:
+      id: 'advance_features_not_allowed'
+      doc: 'Advance Features Not Allowed'
+    0x55:
+      id: 'possible_duplicate_order'
+      doc: 'Possible Duplicate Order'
+    0x56:
+      id: 'invalid_order_type'
+      doc: 'Invalid Order Type'
+    0x54:
+      id: 'test_mode'
+      doc: 'Test Mode'
+    0x52:
+      id: 'routing_not_allowed'
+      doc: 'Routing Not Allowed'
+    0x46:
+      id: 'order_not_marketable'
+      doc: 'Order Not Marketable Conflicting Instructions Improper Cross Type'
+    0x61:
+      id: 'prm_invalid_message_format'
+      doc: 'Pre Trade Risk Management Invalid Message Format'
+    0x62:
+      id: 'prm_no_quote'
+      doc: 'Pre Trade Risk Management No Quote'
+    0x63:
+      id: 'prm_invalid_account'
+      doc: 'Pre Trade Risk Management Invalid Account'
+    0x64:
+      id: 'prm_short_sale_violation'
+      doc: 'Pre Trade Risk Management Short Sale Violation'
+    0x65:
+      id: 'prm_iso_order_check'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Iso Order Check'
+    0x66:
+      id: 'prm_gtc_order_check'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Gtc Order Check'
+    0x67:
+      id: 'prm_pre_market_order_check'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Premarket Order Check'
+    0x68:
+      id: 'prm_post_market_order_check'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Postmarket Order Check'
+    0x69:
+      id: 'prm_delayed_checking_flag_off'
+      doc: 'Pre Trade Risk Management Order Rejected Due To The Delayed Checking Flag Turned Off'
+    0x6a:
+      id: 'prm_exceeded_maximum_shares_threshold'
+      doc: 'Pre Trade Risk Management Exceeded Maximum Shares Threshold'
+    0x6b:
+      id: 'prm_exceeded_maximum_value_threshold'
+      doc: 'Pre Trade Risk Management Exceeded Maximum Value Threshold'
+    0x6d:
+      id: 'prm_reject_all_orders'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Previous Command To Reject All Orders'
+    0x6e:
+      id: 'prm_invalid_price_fat_finger'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Invalid Price Fat Finger'
+    0x6f:
+      id: 'prm_not_on_easy_to_borrow_list'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Symbol Not Listed On Easy To Borrow List'
+    0x70:
+      id: 'prm_not_available'
+      doc: 'Pre Trade Risk Management Prm Is Not Available'
+    0x71:
+      id: 'prm_invalid_message'
+      doc: 'Pre Trade Risk Management Invalid Message'
+    0x72:
+      id: 'prm_snap_in_process'
+      doc: 'Pre Trade Risk Management Snap Is In Process'
+    0x73:
+      id: 'prm_symbol_halted'
+      doc: 'Pre Trade Risk Management Symbol Halted'
+    0x74:
+      id: 'prm_on_open'
+      doc: 'Pre Trade Risk Management Order Rejected Due To On Open'
+    0x75:
+      id: 'prm_on_close'
+      doc: 'Pre Trade Risk Management Order Rejected Due To On Close'
+    0x76:
+      id: 'prm_program_trading'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Program Trading'
+    0x7b:
+      id: 'prm_not_on_restricted_list'
+      doc: 'Pre Trade Risk Management Order Rejected Due To Symbol Not Listed On Restricted List'
+  liquidity:
+    0x41:
+      id: 'added'
+      doc: 'Added'
+    0x52:
+      id: 'removed'
+      doc: 'Removed'
+    0x4a:
+      id: 'non_displayed_and_added_liquidity'
+      doc: 'Nondisplayed And Added Liquidity'
+    0x58:
+      id: 'routed'
+      doc: 'Routed'
+    0x44:
+      id: 'dot'
+      doc: 'Dot'
+    0x46:
+      id: 'added_or_opening_trade'
+      doc: 'Added Or Opening Trade On Nyse'
+    0x47:
+      id: 'odd_lot_or_on_close_order'
+      doc: 'Odd Lot Or On Close Order On Nyse'
+    0x4f:
+      id: 'open_cross'
+      doc: 'Open Cross'
+    0x4d:
+      id: 'open_cross_x4d'
+      doc: 'Open Cross Imbalanceonly'
+    0x43:
+      id: 'closing_cross'
+      doc: 'Closing Cross'
+    0x4c:
+      id: 'closing_cross_x4c'
+      doc: 'Closing Cross Imbalanceonly'
+    0x48:
+      id: 'halt_ipo_cross'
+      doc: 'Halt Ipo Cross'
+    0x4b:
+      id: 'halt_ipo'
+      doc: 'Halt Ipo'
+    0x59:
+      id: 're_routed_by_nyse'
+      doc: 'Re Routed By Nyse'
+    0x53:
+      id: 'odd_lot_execution'
+      doc: 'Odd Lot Execution On Nyse'
+    0x55:
+      id: 'added_liquidity'
+      doc: 'Added Liquidity On Nyse'
+    0x42:
+      id: 'routed_to_bx'
+      doc: 'Routed To Bx'
+    0x45:
+      id: 'nyse_other'
+      doc: 'Nyse Other'
+    0x54:
+      id: 'opening_trade'
+      doc: 'Opening Trade On Arca'
+    0x5a:
+      id: 'on_close_order'
+      doc: 'On Close Order On Arca'
+    0x51:
+      id: 'routed_to_nasdaq'
+      doc: 'Routed To Nasdaq'
+    0x6d:
+      id: 'removed_liquidity_at_a_midpoint'
+      doc: 'Removed Liquidity At A Midpoint'
+    0x6b:
+      id: 'added_liquidity_via_a_midpoint_order'
+      doc: 'Added Liquidity Via A Midpoint Order'
+    0x56:
+      id: 'displayed_added_liquidity_with_original_order_size_of_greater_than_or_equal_to_2000_shares_only_applicable_to_symbols_that_are_set_to_the_pro_rata_execution_algorithm'
+      doc: 'Displayed Added Liquidity With Original Order Size Of Greater Than Or Equal To 2000 Shares Only Applicable To Symbols That Are Set To The Pro Rata Execution Algorithm'
+  broken_trade_reason:
+    0x45:
+      id: 'erroneous'
+      doc: 'Erroneous The Trade Was Deemed Clearly Erroneous'
+    0x43:
+      id: 'consent'
+      doc: 'Consent The Two Parties Mutually Agreed To Break The Trade'
+    0x53:
+      id: 'supervisory'
+      doc: 'Supervisory The Trade Was Manually Broken By A Supervisory Terminal'
+    0x58:
+      id: 'external'
+      doc: 'External The Trade Was Broken By An External Third Party'
+

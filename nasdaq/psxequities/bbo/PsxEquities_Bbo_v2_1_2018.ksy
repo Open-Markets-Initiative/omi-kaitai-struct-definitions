@@ -317,9 +317,24 @@ types:
         type: u1
         enum: security_class
         doc: 'Indicates the primary listing market for the issue'
-      - id: nasdaq_best_bid
+      - id: nasdaq_best_bid_proxy_price
         type: decimal_u4_4
-        doc: 'Denotes the Nasdaq best bid. Implied decimal with scale 1e-4'
+        doc: 'Denotes the Nasdaq best bid price for NextShares in proxy price format. Implied decimal with scale 1e-4'
+      - id: nasdaq_best_bid_size
+        type: u4
+        doc: 'Denotes the aggregated number of shares available for display within the Nasdaq market center system at the Nasdaq best bid price'
+      - id: nasdaq_best_bid_nav_premium_discount_amount
+        type: decimal_s4_4
+        doc: 'Denotes premium or discount amount to the NAV reflected in the Nasdaq best bid. Please note: This is a signed (+/-) field. Implied decimal with scale 1e-4'
+      - id: nasdaq_best_offer_proxy_price
+        type: decimal_u4_4
+        doc: 'Denotes the Nasdaq best offer for the NextShares in proxy price format. Implied decimal with scale 1e-4'
+      - id: nasdaq_best_offer_size
+        type: u4
+        doc: 'Denotes the aggregated number of shares available for display within the Nasdaq market center system at the Nasdaq best offer price'
+      - id: nasdaq_best_offer_nav_premium_discount_amount
+        type: decimal_s4_4
+        doc: 'Denotes the premium or discount amount to the NAV reflected in the Nasdaq best offer. Please note: this is a signed (+/-) field. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -344,6 +359,13 @@ types:
     seq:
       - id: mantissa
         type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
     instances:
       real:
         value: mantissa / 10000.0

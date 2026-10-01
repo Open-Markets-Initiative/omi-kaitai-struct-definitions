@@ -315,7 +315,7 @@ types:
         type: s4
         doc: 'Highest price allowed'
       - id: expiry_date
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: no_delivery_start_date
         type: s4
@@ -402,7 +402,7 @@ types:
         pad-right: 0x20
         doc: 'Series of the security'
       - id: expiry_date
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: strike_price
         type: s4
@@ -1459,7 +1459,7 @@ types:
         pad-right: 0x20
         doc: 'Symbol of the security'
       - id: expiry_date
-        type: second_timestamp
+        type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: strike_price
         type: s4
@@ -1518,11 +1518,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Text of the broadcast message'
-  second_timestamp:
+  dos_second_timestamp:
     seq:
       - id: time
         type: s4
     instances:
+      unix_seconds:
+        value: time + 315532800
       hour:
         value: time / 3600 % 24
       minute:

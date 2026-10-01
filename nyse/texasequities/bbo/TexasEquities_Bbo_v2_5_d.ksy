@@ -334,6 +334,13 @@ types:
       - id: total_refresh_pkts
         type: u2
         doc: 'The total number of refresh packets you should expect in the update'
+      - id: refresh_header_layout
+        type:
+          switch-on: current_refresh_pkt
+          cases:
+            1: full_refresh_header
+  full_refresh_header:
+    seq:
       - id: last_seq_num
         type: u4
         doc: 'The last sequence number sent on the channel for any symbol. The refresh is the state of the order book as of this sequence number'
