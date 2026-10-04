@@ -44,7 +44,7 @@ seq:
   - id: message
     type: message_struct
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
 
 types:
   packet_header_struct:
@@ -55,10 +55,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence
+      - id: sequence_number
         type: u8
         doc: 'Sequence Number of the first message to follow this header'
-      - id: count
+      - id: message_count
         type: u2
         doc: 'Number of messages to follow this header'
   message_struct:

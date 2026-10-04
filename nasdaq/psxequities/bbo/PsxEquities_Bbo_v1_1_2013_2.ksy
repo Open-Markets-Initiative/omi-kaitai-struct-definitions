@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq PsxEquities Bbo Itch v1.1.2013.2
+# Kaitai struct definition for: Nasdaq PsxEquities Bbo AsciiItch v1.1.2013.2
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Best Bid And Offer
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 1.1.2013.2
 #   Date: 03/11/2013
 #   Specification: PSXbbo-v1_1.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_psxequities_bbo_itch_v1_1_2013_2
-  title: Nasdaq PsxEquities Bbo Itch v1.1.2013.2
+  id: nasdaq_psxequities_bbo_asciiitch_v1_1_2013_2
+  title: Nasdaq PsxEquities Bbo AsciiItch v1.1.2013.2
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer Itch v1.1.2013.2'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer AsciiItch v1.1.2013.2'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -58,10 +58,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence
+      - id: sequence_number
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
-      - id: count
+      - id: message_count
         type: u2le
         doc: 'Number of messages to follow this header'
   message:
@@ -69,7 +69,7 @@ types:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.length - 9
+        size: message_header.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
@@ -80,7 +80,7 @@ types:
             'message_type::quotation_message': quotation_message
   message_header:
     seq:
-      - id: length
+      - id: message_length
         type: u2
         doc: 'Length of data message not including this field'
       - id: timestamp

@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -58,10 +58,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence
+      - id: sequence_number
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
-      - id: count
+      - id: message_count
         type: u2le
         doc: 'Number of messages to follow this header'
   message:
@@ -69,7 +69,7 @@ types:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.length - 1
+        size: message_header.message_length - 1
         type:
           switch-on: message_header.message_type
           cases:
@@ -86,7 +86,7 @@ types:
             'message_type::complex_auction_notification_message': complex_auction_notification_message
   message_header:
     seq:
-      - id: length
+      - id: message_length
         type: u2
         doc: 'Length of data message not including this field'
       - id: message_type

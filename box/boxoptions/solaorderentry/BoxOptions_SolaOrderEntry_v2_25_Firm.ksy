@@ -64,7 +64,7 @@ seq:
         '"OM"': order_modification
         '"ON"': new_complex_order_instrument
         '"OT"': complex_order_auction_entry
-        '"Q<i>"': bulk_quote
+        '"QP"': bulk_quote
         '"RP"': market_maker_protection_subscription
         '"RQ"': request_for_quote
         '"XE"': order_cancellation

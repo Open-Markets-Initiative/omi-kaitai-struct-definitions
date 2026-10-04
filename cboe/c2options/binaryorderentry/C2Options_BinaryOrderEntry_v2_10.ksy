@@ -269,6 +269,7 @@ types:
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account
       - id: price_long
         type: decimal_s8_4
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -292,6 +293,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -656,6 +658,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_order_cross_bitfields >= 1 and new_order_cross_bitfield_1.new_order_cross_bitfield_1_symbol
       - id: maturity_date
         type: yyyymmdd_date
         if: number_of_new_order_cross_bitfields >= 1 and new_order_cross_bitfield_1.new_order_cross_bitfield_1_maturity_date
@@ -901,6 +904,7 @@ types:
         if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_clearing_account
       - id: price_long
         type: decimal_s8_4
+        if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
@@ -914,6 +918,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_complex_order_bitfields >= 1 and new_complex_order_bitfield_1.new_complex_order_bitfield_1_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -1226,6 +1231,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_order_cross_multileg_bitfields >= 1 and new_order_cross_multileg_bitfield_1.new_order_cross_multileg_bitfield_1_symbol
       - id: exec_inst
         type: u1
         enum: exec_inst
@@ -1566,9 +1572,11 @@ types:
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm
       - id: order_qty_long
         type: u4
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
@@ -2160,6 +2168,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2183,6 +2192,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2211,6 +2221,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -2842,6 +2853,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2851,6 +2863,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2867,6 +2880,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -3088,6 +3102,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -3111,6 +3126,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3139,6 +3155,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -3390,6 +3407,7 @@ types:
         doc: 'BitSet OrderAcknowledgment byte 17'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -3399,8 +3417,10 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -3567,6 +3587,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -3590,6 +3611,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3618,6 +3640,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -3914,6 +3937,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -3937,6 +3961,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3965,6 +3990,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -4387,6 +4413,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -4410,6 +4437,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -4438,6 +4466,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -4733,6 +4762,7 @@ types:
         doc: 'BitSet OrderAcknowledgment byte 17'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -4742,6 +4772,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -4758,6 +4789,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_firm
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -4927,6 +4959,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -4950,6 +4983,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -5205,6 +5239,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -5893,6 +5928,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -5916,6 +5952,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -5950,6 +5987,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str

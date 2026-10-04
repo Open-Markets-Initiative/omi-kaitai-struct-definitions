@@ -3,7 +3,7 @@
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Quoted Best Bid And Offer
+#   Protocol: Best Bid And Offer
 #   Encoding: Itch
 #   Version: 2.1
 #   Date: 2/19/2026
@@ -35,7 +35,7 @@ meta:
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Quoted Best Bid And Offer Itch v2.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Best Bid And Offer Itch v2.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:

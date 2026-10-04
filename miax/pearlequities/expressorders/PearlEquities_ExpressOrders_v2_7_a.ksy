@@ -1362,6 +1362,9 @@ enums:
       id: 'cboe_bzx_exchange'
       doc: 'Cboe Bzx Exchange'
   order_status:
+    0x20:
+      id: 'successful'
+      doc: 'Successful'
     0x41:
       id: 'duplicate_client_order_id'
       doc: 'Duplicate Client Order Id'

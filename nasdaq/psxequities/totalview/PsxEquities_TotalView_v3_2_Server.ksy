@@ -239,7 +239,7 @@ types:
         type: u1
         enum: trading_state
         doc: 'Indicates the trading state for the issue at the time of the GLIMPSE transmission'
-      - id: reserved
+      - id: reserved_1
         type: str
         size: 1
         encoding: ASCII

@@ -97,13 +97,8 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_purgeordersmessage_riskgroupid(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/PurgeOrdersMessage_RiskGroupID.pcap"):
-            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
-    def test_purgeordersmessage_symbol(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/PurgeOrdersMessage_Symbol.pcap"):
+    def test_purgeordersmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/PurgeOrdersMessage.pcap"):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

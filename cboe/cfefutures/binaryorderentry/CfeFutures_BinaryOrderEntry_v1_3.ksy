@@ -268,6 +268,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -974,6 +975,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -1565,6 +1567,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -1754,6 +1757,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2068,6 +2072,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2288,6 +2293,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2452,6 +2458,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2722,6 +2729,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2969,6 +2977,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3181,6 +3190,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity

@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities TotalView Itch v2.0.a
+# Kaitai struct definition for: Nasdaq NsmEquities TotalView AsciiItch v2.0.a
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: TotalView Itch
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 2.0.a
 #   Date: 02/15/2007
 #   Specification: Nasdaq TotalView ITCH (2.0a).pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_totalview_itch_v2_0_a_client
-  title: Nasdaq NsmEquities TotalView Itch v2.0.a
+  id: nasdaq_nsmequities_totalview_asciiitch_v2_0_a_client
+  title: Nasdaq NsmEquities TotalView AsciiItch v2.0.a
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch Itch v2.0.a'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch AsciiItch v2.0.a'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:

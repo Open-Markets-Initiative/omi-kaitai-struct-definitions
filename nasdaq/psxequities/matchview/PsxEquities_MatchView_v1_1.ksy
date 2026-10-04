@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq PsxEquities MatchView Itch v1.1
+# Kaitai struct definition for: Nasdaq PsxEquities MatchView AsciiItch v1.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Match View
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 1.1
 #   Date: 08/10/2011
 #   Specification: PSXMatchView-v1_1.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_psxequities_matchview_itch_v1_1
-  title: Nasdaq PsxEquities MatchView Itch v1.1
+  id: nasdaq_psxequities_matchview_asciiitch_v1_1
+  title: Nasdaq PsxEquities MatchView AsciiItch v1.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Match View Itch v1.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Match View AsciiItch v1.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
 
 seq:
@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -58,10 +58,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence
+      - id: sequence_number
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
-      - id: count
+      - id: message_count
         type: u2le
         doc: 'Number of messages to follow this header'
   message:
@@ -69,14 +69,14 @@ types:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.length - 9
+        size: message_header.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
             'message_type::best_bid_and_offer_message': best_bid_and_offer_message
   message_header:
     seq:
-      - id: length
+      - id: message_length
         type: u2
         doc: 'Length of data message not including this field'
       - id: timestamp

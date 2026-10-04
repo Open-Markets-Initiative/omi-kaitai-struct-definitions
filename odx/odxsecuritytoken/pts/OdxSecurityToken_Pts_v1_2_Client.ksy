@@ -155,7 +155,7 @@ enums:
       doc: 'The Login Request Packet''s requested session was invalid or not available'
   sequenced_message_type:
     0x54:
-      id: 'timestamp_seconds_message'
+      id: 'seconds_message'
       doc: 'Reflects the number of seconds past midnight.'
     0x53:
       id: 'system_event_message'

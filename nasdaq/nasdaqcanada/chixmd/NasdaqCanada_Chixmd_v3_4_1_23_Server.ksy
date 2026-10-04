@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NasdaqCanada Chixmd Itch v3.4.1.23
+# Kaitai struct definition for: Nasdaq NasdaqCanada Chixmd AsciiItch v3.4.1.23
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: CHIXMD Market Data
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 3.4.1.23
 #   Date: 10/08/2025
 #   Specification: Nasdaq Canada Market Data Specification - CHIXMD 3.4 V1.23.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nasdaqcanada_chixmd_itch_v3_4_1_23_server
-  title: Nasdaq NasdaqCanada Chixmd Itch v3.4.1.23
+  id: nasdaq_nasdaqcanada_chixmd_asciiitch_v3_4_1_23_server
+  title: Nasdaq NasdaqCanada Chixmd AsciiItch v3.4.1.23
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Canada CHIXMD Market Data Itch v3.4.1.23'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Canada CHIXMD Market Data AsciiItch v3.4.1.23'
 doc-ref:
   - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
   - https://www.nasdaq.com/docs/2026/01/20/Nasdaq%20Canada%20Market%20Data%20Specification%20-%20CHIXMD%203.4%20V1.23.pdf

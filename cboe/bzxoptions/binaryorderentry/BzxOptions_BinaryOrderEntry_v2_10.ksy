@@ -254,6 +254,7 @@ types:
         if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account
       - id: price_long
         type: decimal_s8_4
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -277,6 +278,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -670,9 +672,11 @@ types:
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm
       - id: order_qty_long
         type: u4
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
@@ -1066,6 +1070,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -1089,6 +1094,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -1117,6 +1123,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -1722,6 +1729,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -1745,6 +1753,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -1773,6 +1782,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -1885,6 +1895,561 @@ types:
       - id: reserved_1
         size: 1
         doc: 'Todo'
+      - id: number_of_return_bitfields
+        type: u1
+        doc: 'Number of bitfields that follow; the fields they gate are appended to the message'
+      - id: cross_order_rejected_return_bitfield_1
+        type: cross_order_rejected_return_bitfield_1
+        if: number_of_return_bitfields >= 1
+        doc: 'BitSet CrossOrderRejected byte 1'
+      - id: cross_order_rejected_return_bitfield_2
+        type: cross_order_rejected_return_bitfield_2
+        if: number_of_return_bitfields >= 2
+        doc: 'BitSet CrossOrderRejected byte 2'
+      - id: cross_order_rejected_return_bitfield_3
+        type: cross_order_rejected_return_bitfield_3
+        if: number_of_return_bitfields >= 3
+        doc: 'BitSet CrossOrderRejected byte 3'
+      - id: cross_order_rejected_return_bitfield_4
+        type: cross_order_rejected_return_bitfield_4
+        if: number_of_return_bitfields >= 4
+        doc: 'BitSet CrossOrderRejected byte 4'
+      - id: cross_order_rejected_return_bitfield_5
+        type: cross_order_rejected_return_bitfield_5
+        if: number_of_return_bitfields >= 5
+        doc: 'BitSet CrossOrderRejected byte 5'
+      - id: cross_order_rejected_return_bitfield_6
+        type: cross_order_rejected_return_bitfield_6
+        if: number_of_return_bitfields >= 6
+        doc: 'BitSet CrossOrderRejected byte 6'
+      - id: cross_order_rejected_return_bitfield_7
+        type: cross_order_rejected_return_bitfield_7
+        if: number_of_return_bitfields >= 7
+        doc: 'BitSet CrossOrderRejected byte 7'
+      - id: cross_order_rejected_return_bitfield_8
+        type: cross_order_rejected_return_bitfield_8
+        if: number_of_return_bitfields >= 8
+        doc: 'BitSet CrossOrderRejected byte 8'
+      - id: cross_order_rejected_return_bitfield_9
+        type: cross_order_rejected_return_bitfield_9
+        if: number_of_return_bitfields >= 9
+        doc: 'BitSet CrossOrderRejected byte 9'
+      - id: cross_order_rejected_return_bitfield_10
+        type: cross_order_rejected_return_bitfield_10
+        if: number_of_return_bitfields >= 10
+        doc: 'BitSet CrossOrderRejected byte 10'
+      - id: cross_order_rejected_return_bitfield_11
+        type: cross_order_rejected_return_bitfield_11
+        if: number_of_return_bitfields >= 11
+        doc: 'BitSet CrossOrderRejected byte 11'
+      - id: cross_order_rejected_return_bitfield_12
+        type: cross_order_rejected_return_bitfield_12
+        if: number_of_return_bitfields >= 12
+        doc: 'BitSet CrossOrderRejected byte 12'
+      - id: cross_order_rejected_return_bitfield_13
+        type: cross_order_rejected_return_bitfield_13
+        if: number_of_return_bitfields >= 13
+        doc: 'BitSet CrossOrderRejected byte 13'
+      - id: cross_order_rejected_return_bitfield_14
+        type: cross_order_rejected_return_bitfield_14
+        if: number_of_return_bitfields >= 14
+        doc: 'BitSet CrossOrderRejected byte 14'
+      - id: cross_order_rejected_return_bitfield_15
+        type: cross_order_rejected_return_bitfield_15
+        if: number_of_return_bitfields >= 15
+        doc: 'BitSet CrossOrderRejected byte 15'
+      - id: cross_order_rejected_return_bitfield_16
+        type: cross_order_rejected_return_bitfield_16
+        if: number_of_return_bitfields >= 16
+        doc: 'BitSet CrossOrderRejected byte 16'
+      - id: cross_order_rejected_return_bitfield_17
+        type: cross_order_rejected_return_bitfield_17
+        if: number_of_return_bitfields >= 17
+        doc: 'BitSet CrossOrderRejected byte 17'
+      - id: cross_order_rejected_return_bitfield_18
+        type: cross_order_rejected_return_bitfield_18
+        if: number_of_return_bitfields >= 18
+        doc: 'BitSet CrossOrderRejected byte 18'
+      - id: cross_order_rejected_return_bitfield_19
+        type: cross_order_rejected_return_bitfield_19
+        if: number_of_return_bitfields >= 19
+        doc: 'BitSet CrossOrderRejected byte 19'
+      - id: price_long
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: exec_inst
+        type: u1
+        enum: exec_inst
+        if: number_of_return_bitfields >= 1 and cross_order_rejected_return_bitfield_1.cross_order_rejected_return_bitfield_1_exec_inst
+      - id: symbol_long
+        type: str
+        size: 8
+        encoding: ASCII
+        if: number_of_return_bitfields >= 2 and cross_order_rejected_return_bitfield_2.cross_order_rejected_return_bitfield_2_symbol
+      - id: order_qty_long
+        type: u4
+        if: number_of_return_bitfields >= 3 and cross_order_rejected_return_bitfield_3.cross_order_rejected_return_bitfield_3_order_qty
+        doc: 'Order quantity. System limit is 999,999 shares'
+      - id: prevent_match
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 3 and cross_order_rejected_return_bitfield_3.cross_order_rejected_return_bitfield_3_prevent_match
+      - id: maturity_date
+        type: yyyymmdd_date
+        if: number_of_return_bitfields >= 4 and cross_order_rejected_return_bitfield_4.cross_order_rejected_return_bitfield_4_maturity_date
+      - id: strike_price
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 4 and cross_order_rejected_return_bitfield_4.cross_order_rejected_return_bitfield_4_strike_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: put_or_call
+        type: u1
+        enum: put_or_call
+        if: number_of_return_bitfields >= 4 and cross_order_rejected_return_bitfield_4.cross_order_rejected_return_bitfield_4_put_or_call
+      - id: attributed_quote
+        type: u1
+        enum: attributed_quote
+        if: number_of_return_bitfields >= 6 and cross_order_rejected_return_bitfield_6.cross_order_rejected_return_bitfield_6_attributed_quote
+      - id: target_party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 9 and cross_order_rejected_return_bitfield_9.cross_order_rejected_return_bitfield_9_target_party_id
+        doc: 'Optional appendage, present when return bitfield 9 bit 2 is set'
+      - id: cross_type
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 9 and cross_order_rejected_return_bitfield_9.cross_order_rejected_return_bitfield_9_cross_type
+        doc: 'Optional appendage, present when return bitfield 9 bit 64 is set'
+      - id: cross_prioritization
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 9 and cross_order_rejected_return_bitfield_9.cross_order_rejected_return_bitfield_9_cross_prioritization
+        doc: 'Optional appendage, present when return bitfield 9 bit 128 is set'
+      - id: routing_firm_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 10 and cross_order_rejected_return_bitfield_10.cross_order_rejected_return_bitfield_10_routing_firm_id
+        doc: 'Optional appendage, present when return bitfield 10 bit 8 is set'
+      - id: equity_party_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 15 and cross_order_rejected_return_bitfield_15.cross_order_rejected_return_bitfield_15_equity_party_id
+        doc: 'Optional appendage, present when return bitfield 15 bit 2 is set'
+      - id: frequent_trader_id
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and cross_order_rejected_return_bitfield_16.cross_order_rejected_return_bitfield_16_frequent_trader_id
+        doc: 'Optional appendage, present when return bitfield 16 bit 1 is set'
+      - id: compression
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and cross_order_rejected_return_bitfield_16.cross_order_rejected_return_bitfield_16_compression
+      - id: cross_initiator
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 18 and cross_order_rejected_return_bitfield_18.cross_order_rejected_return_bitfield_18_cross_initiator
+        doc: 'Optional appendage, present when return bitfield 18 bit 2 is set'
+      - id: subreason
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 18 and cross_order_rejected_return_bitfield_18.cross_order_rejected_return_bitfield_18_subreason
+        doc: 'Optional appendage, present when return bitfield 18 bit 4 is set'
+      - id: cross_on_behalf_of_id
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 19 and cross_order_rejected_return_bitfield_19.cross_order_rejected_return_bitfield_19_cross_on_behalf_of_id
+        doc: 'Optional appendage, present when return bitfield 19 bit 4 is set'
+  cross_order_rejected_return_bitfield_1:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_1_side
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_peg_difference
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_exec_inst
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_ord_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_time_in_force
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_min_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_1_reserved_128
+        type: b1
+  cross_order_rejected_return_bitfield_2:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_2_symbol
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_symbol_sfx
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_currency
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_id_source
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_security_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_security_exchange
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_capacity
+        type: b1
+      - id: cross_order_rejected_return_bitfield_2_contra_trader
+        type: b1
+  cross_order_rejected_return_bitfield_3:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_3_account
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_clearing_firm
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_clearing_account
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_display_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_max_floor
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_discretion_amount
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_order_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_3_prevent_match
+        type: b1
+  cross_order_rejected_return_bitfield_4:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_4_maturity_date
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_strike_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_put_or_call
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_open_close
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_cl_ord_id_batch
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_corrected_size
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_party_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_4_access_fee
+        type: b1
+  cross_order_rejected_return_bitfield_5:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_5_orig_cl_ord_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_leaves_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_last_shares
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_last_px
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_display_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_working_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_base_liquidity_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_5_expire_time
+        type: b1
+  cross_order_rejected_return_bitfield_6:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_6_secondary_order_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_ccp
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_contra_capacity
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_attributed_quote
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_ext_exec_inst
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_bulk_order_ids
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_bulk_reject_reasons
+        type: b1
+      - id: cross_order_rejected_return_bitfield_6_party_role
+        type: b1
+  cross_order_rejected_return_bitfield_7:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_7_sub_liquidity_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_trade_report_type_return
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_trade_publish_ind_return
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_text
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_bid
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_offer
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_large_size
+        type: b1
+      - id: cross_order_rejected_return_bitfield_7_last_mkt
+        type: b1
+  cross_order_rejected_return_bitfield_8:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_8_fee_code
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_echo_text
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_stop_px
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_routing_inst
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_rout_strategy
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_route_delivery_method
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_ex_destination
+        type: b1
+      - id: cross_order_rejected_return_bitfield_8_trade_report_ref_id
+        type: b1
+  cross_order_rejected_return_bitfield_9:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_9_marketing_fee_code
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_target_party_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_auction_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_order_category
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_liquidity_provision
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_cmta_number
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_cross_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_9_cross_prioritization
+        type: b1
+  cross_order_rejected_return_bitfield_10:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_10_cross_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_alloc_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_give_up_firm_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_routing_firm_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_waiver_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_cross_exclusion_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_price_formation
+        type: b1
+      - id: cross_order_rejected_return_bitfield_10_client_qualified_role
+        type: b1
+  cross_order_rejected_return_bitfield_11:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_11_client_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_investor_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_executor_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_order_origination
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_algo
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_deferral_reason
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_investor_qualified_role
+        type: b1
+      - id: cross_order_rejected_return_bitfield_11_executor_qualified_role
+        type: b1
+  cross_order_rejected_return_bitfield_12:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_12_cti_code
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_manual_order_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_operator_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_trade_date
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_clearing_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_clearing_size
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_clearing_symbol
+        type: b1
+      - id: cross_order_rejected_return_bitfield_12_clearing_optional_data
+        type: b1
+  cross_order_rejected_return_bitfield_13:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_13_cum_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_day_order_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_day_cum_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_avg_px
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_day_avg_px
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_pending_status
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_drill_thru_protection
+        type: b1
+      - id: cross_order_rejected_return_bitfield_13_multileg_reporting_type
+        type: b1
+  cross_order_rejected_return_bitfield_14:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_14_leg_cfi_code
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_leg_maturity_date
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_leg_strike_price
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_room_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_secondary_exec_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_user_request_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_sis_username
+        type: b1
+      - id: cross_order_rejected_return_bitfield_14_user_status
+        type: b1
+  cross_order_rejected_return_bitfield_15:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_15_trade_reporting_indicator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_equity_party_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_equity_nbbo_protect
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_mass_cancel_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_trade_publish_ind
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_report_time
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_leg_symbol_sfx
+        type: b1
+      - id: cross_order_rejected_return_bitfield_15_client_id_attr
+        type: b1
+  cross_order_rejected_return_bitfield_16:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_16_frequent_trader_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_session_eligibility
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_combo_order
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_compression
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_floor_destination
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_floor_routing_inst
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_multi_class_sprd
+        type: b1
+      - id: cross_order_rejected_return_bitfield_16_order_origin
+        type: b1
+  cross_order_rejected_return_bitfield_17:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_17_price_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_strategy_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_trading_session_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_trade_through_alert_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_sender_location_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_floor_trader_acronym
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_exec_leg_cfi_code
+        type: b1
+      - id: cross_order_rejected_return_bitfield_17_cust_order_handling_inst
+        type: b1
+  cross_order_rejected_return_bitfield_18:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_18_reserved_1
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_cross_initiator
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_subreason
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_cross_trade_flag
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_reserved_16
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_held
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_locate_broker
+        type: b1
+      - id: cross_order_rejected_return_bitfield_18_reserved_128
+        type: b1
+  cross_order_rejected_return_bitfield_19:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cross_order_rejected_return_bitfield_19_floor_trade_time
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_equity_ex_destination
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_cross_on_behalf_of_id
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_cmc_sessions
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_intra_firm_trade_ind
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_cmc_match_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_stop_px_type
+        type: b1
+      - id: cross_order_rejected_return_bitfield_19_reserved_128
+        type: b1
   quote_update_rejected_message:
     seq:
       - id: transaction_time
@@ -1996,6 +2561,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2019,6 +2585,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2047,6 +2614,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -2269,6 +2837,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2292,6 +2861,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2320,6 +2890,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -2659,6 +3230,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2682,6 +3254,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -2710,6 +3283,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
@@ -2945,6 +3519,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -2968,6 +3543,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3197,6 +3773,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3462,6 +4039,7 @@ types:
         doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: price_long
         type: decimal_s8_4
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
@@ -3485,6 +4063,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
       - id: capacity
         type: u1
         enum: capacity
@@ -3519,6 +4098,7 @@ types:
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: order_qty_long
         type: u4
+        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
         doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str

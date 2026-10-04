@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe TitaniumConsolidated MulticastOneEquities Pitch v1.4.15
+# Kaitai struct definition for: Cboe TitaniumConsolidated MulticastOneEquities CboeOne v1.4.15
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
 #   Protocol: Multicast One Equities
-#   Encoding: Pitch
+#   Encoding: Cboe One
 #   Version: 1.4.15
 #   Date: 06/30/2026
 #   Specification: technical-specifications-cboe-titanium-cboe-one-equities-feed-specification.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_titaniumconsolidated_multicastoneequities_pitch_v1_4_15
-  title: Cboe TitaniumConsolidated MulticastOneEquities Pitch v1.4.15
+  id: cboe_titaniumconsolidated_multicastoneequities_cboeone_v1_4_15
+  title: Cboe TitaniumConsolidated MulticastOneEquities CboeOne v1.4.15
   license: GPL-3.0
   endian: le
 
-doc: 'Chicago Board Options Exchange Cboe Titanium Consolidated Multicast One Equities Pitch v1.4.15'
+doc: 'Chicago Board Options Exchange Cboe Titanium Consolidated Multicast One Equities CboeOne v1.4.15'
 doc-ref: http://markets.cboe.com/us/equities/support/technical
 
 seq:

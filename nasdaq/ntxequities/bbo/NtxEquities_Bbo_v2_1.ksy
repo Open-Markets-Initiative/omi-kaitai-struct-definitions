@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NtxEquities Qbbo Itch v2.1
+# Kaitai struct definition for: Nasdaq NtxEquities Bbo Itch v2.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
-#   Protocol: Quoted Best Bid And Offer
+#   Protocol: TX Best Bid And Offer
 #   Encoding: Itch
 #   Version: 2.1
 #   Date: 8/2/2024
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_ntxequities_qbbo_itch_v2_1
-  title: Nasdaq NtxEquities Qbbo Itch v2.1
+  id: nasdaq_ntxequities_bbo_itch_v2_1
+  title: Nasdaq NtxEquities Bbo Itch v2.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Quoted Best Bid And Offer Itch v2.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas TX Best Bid And Offer Itch v2.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:

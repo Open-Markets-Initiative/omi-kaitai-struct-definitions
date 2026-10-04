@@ -12,43 +12,43 @@ from siac_cqs_output_cta_v2_10_a import SiacCqsOutputCtaV210A
 
 class SiacCqsOutputCtaV210ATests(unittest.TestCase):
 
-    def test_a_s_symbol_reference_data(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/A_S_Symbol_Reference_Data.pcap"):
+    def test_endofdaymessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/EndOfDayMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_c_a_start_of_day(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/C_A_Start_of_Day.pcap"):
+    def test_finraclosemessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/FinraCloseMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_c_c_finra_close(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/C_C_FINRA_Close.pcap"):
+    def test_finraopenmessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/FinraOpenMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_c_o_finra_open(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/C_O_FINRA_Open.pcap"):
+    def test_lineintegritymessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/LineIntegrityMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_c_t_line_integrity(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/C_T_Line_Integrity.pcap"):
+    def test_longquotemessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/LongQuoteMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_c_z_end_of_day(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/C_Z_End_of_Day.pcap"):
+    def test_marketwidecircuitbreakerdeclinelevelstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/MarketWideCircuitBreakerDeclineLevelStatusMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_m_k_mwcb_decline_level_status(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/M_K_MWCB_Decline_Level_Status.pcap"):
+    def test_startofdaymessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/StartOfDayMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_q_l_long_quote(self):
-        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/Q_L_Long_Quote.pcap"):
+    def test_symbolreferencedatamessage(self):
+        for payload in payloads.of("omi-data-packets/Siac/Cqs.Output.Cta.v2.10.a/SymbolReferenceDataMessage.pcap"):
             parsed = SiacCqsOutputCtaV210A.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

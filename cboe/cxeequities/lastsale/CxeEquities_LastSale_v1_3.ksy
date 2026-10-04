@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe CxeEquities LastSale Apf v1.3
+# Kaitai struct definition for: Cboe CxeEquities LastSale AsciiPitch v1.3
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
 #   Protocol: Last Sale
-#   Encoding: Apf
+#   Encoding: Ascii Pitch
 #   Version: 1.3
 #   Date: 10/2/2023
 #   Specification: BATS_Europe_Last_Sale_Specification.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_cxeequities_lastsale_apf_v1_3
-  title: Cboe CxeEquities LastSale Apf v1.3
+  id: cboe_cxeequities_lastsale_asciipitch_v1_3
+  title: Cboe CxeEquities LastSale AsciiPitch v1.3
   license: GPL-3.0
   endian: be
 
-doc: 'Chicago Board Options Exchange Cboe CXE Last Sale Apf v1.3'
+doc: 'Chicago Board Options Exchange Cboe CXE Last Sale AsciiPitch v1.3'
 doc-ref: https://www.cboe.com/europe/equities/support/technical
 
 seq:

@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities TotalView Itch v2.0
+# Kaitai struct definition for: Nasdaq NsmEquities TotalView AsciiItch v2.0
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: TotalView Itch
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 2.0
 #   Date: 08/09/2006
 #   Specification: Nasdaq TotalView ITCH (2.0).pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_totalview_itch_v2_0_server
-  title: Nasdaq NsmEquities TotalView Itch v2.0
+  id: nasdaq_nsmequities_totalview_asciiitch_v2_0_server
+  title: Nasdaq NsmEquities TotalView AsciiItch v2.0
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch Itch v2.0'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch AsciiItch v2.0'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
@@ -77,11 +77,8 @@ types:
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
       - id: sequence_number
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'The sequence number in ASCII of the next Sequenced Message to be sent. Left padded with spaces'
+        type: u4
+        doc: 'Sequence Number of the first message to follow this header'
   login_rejected_packet:
     seq:
       - id: reject_reason_code

@@ -459,6 +459,37 @@ types:
       - id: mm_sent_time
         type: nanosecond_timestamp
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
+      - id: quote_request_group
+        type: quote_request_group
+        repeat: eos
+        doc: 'Repeating group containing one to twenty single-sided market maker quotes'
+  quote_request_group:
+    seq:
+      - id: series_index
+        type: u4
+        doc: 'Options series index used for order entry'
+      - id: bitfield_quote_inst
+        type: bitfield_quote_inst
+        doc: 'Quote instructions, attributes, and modifiers for market maker quotes'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
+      - id: order_qty
+        type: u4
+        doc: 'Total order quantity'
+  bitfield_quote_inst:
+    meta:
+      bit-endian: le
+    seq:
+      - id: side_2
+        type: b2
+        doc: 'Quote side'
+      - id: mm_quote_type
+        type: b3
+        doc: 'Market maker quote type'
+      - id: unused_3
+        type: b3
+        doc: 'Reserved for future use'
   new_bulk_quote_type_259_message:
     seq:
       - id: mpid
@@ -489,6 +520,10 @@ types:
       - id: mm_sent_time
         type: nanosecond_timestamp
         doc: 'Customer-provided sending time in nanoseconds since epoch. Nanoseconds since Unix epoch'
+      - id: quote_request_group
+        type: quote_request_group
+        repeat: eos
+        doc: 'Repeating group containing one to twenty single-sided market maker quotes'
   new_order_cross_message:
     seq:
       - id: cross_id
@@ -1273,9 +1308,41 @@ types:
       - id: group_id
         type: u4
         doc: 'User-defined takedown group applied to all quotes in the message'
-      - id: repeating_groups
+      - id: num_quote_ack_group
         type: u1
         doc: 'Number of repeating quote acknowledgement groups included'
+      - id: quote_ack_group
+        type: quote_ack_group
+        repeat: expr
+        repeat-expr: num_quote_ack_group
+        doc: 'Quote acknowledgment structure for Bulk Quote acknowledgments'
+  quote_ack_group:
+    seq:
+      - id: series_index
+        type: u4
+        doc: 'Options series index used for order entry'
+      - id: side_u_81
+        type: u1
+        enum: side_u_81
+        doc: 'Optional side change; zero indicates no change'
+      - id: ack_type
+        type: u1
+        enum: ack_type
+        doc: 'Acknowledgement event type'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
+      - id: quantity
+        type: u4
+        doc: 'Quote quantity'
+      - id: reason_code
+        type: u2
+        enum: reason_code
+        doc: 'Matching engine reason code qualifying the event'
+      - id: working_away_from_display
+        type: u1
+        enum: working_away_from_display
+        doc: 'Indicates whether working price differs from display price'
   bulk_quote_acknowledgment_message:
     seq:
       - id: transact_time_timestamp_8
@@ -1309,9 +1376,44 @@ types:
       - id: group_id
         type: u4
         doc: 'User-defined takedown group applied to all quotes in the message'
-      - id: repeating_groups
+      - id: num_quote_ack_with_id_group
         type: u1
         doc: 'Number of repeating quote acknowledgement groups included'
+      - id: quote_ack_with_id_group
+        type: quote_ack_with_id_group
+        repeat: expr
+        repeat-expr: num_quote_ack_with_id_group
+        doc: 'Quote acknowledgment structure including OrderID for Bulk Quote acknowledgments'
+  quote_ack_with_id_group:
+    seq:
+      - id: series_index
+        type: u4
+        doc: 'Options series index used for order entry'
+      - id: side_u_81
+        type: u1
+        enum: side_u_81
+        doc: 'Optional side change; zero indicates no change'
+      - id: ack_type
+        type: u1
+        enum: ack_type
+        doc: 'Acknowledgement event type'
+      - id: price
+        type: decimal_s8_8
+        doc: 'Order price; net limit price for complex orders. Implied decimal with scale 1e-8'
+      - id: quantity
+        type: u4
+        doc: 'Quote quantity'
+      - id: reason_code
+        type: u2
+        enum: reason_code
+        doc: 'Matching engine reason code qualifying the event'
+      - id: working_away_from_display
+        type: u1
+        enum: working_away_from_display
+        doc: 'Indicates whether working price differs from display price'
+      - id: order_id
+        type: u8
+        doc: 'Exchange-assigned identifier of the most recent order'
   order_single_complex_modify_cancel_request_acknowledgment_and_urout_message:
     seq:
       - id: transact_time_timestamp_8
@@ -2155,6 +2257,13 @@ enums:
     4:
       id: 'cancel_both'
       doc: 'Cancel Both Orders'
+  mm_quote_type:
+    0:
+      id: 'standard'
+      doc: 'Standard Market Maker Quote'
+    1:
+      id: 'repricing'
+      doc: 'Repricing Quote'
   bulk_action:
     0:
       id: 'not_applicable'

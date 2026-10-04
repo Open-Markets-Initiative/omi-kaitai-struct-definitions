@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NsmEquities TotalView Itch v2.0
+# Kaitai struct definition for: Nasdaq NsmEquities TotalView AsciiItch v2.0
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: TotalView Itch
-#   Encoding: Itch
+#   Encoding: Ascii Itch
 #   Version: 2.0
 #   Date: 08/09/2006
 #   Specification: Nasdaq TotalView ITCH (2.0).pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nsmequities_totalview_itch_v2_0_udp
-  title: Nasdaq NsmEquities TotalView Itch v2.0
+  id: nasdaq_nsmequities_totalview_asciiitch_v2_0_udp
+  title: Nasdaq NsmEquities TotalView AsciiItch v2.0
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch Itch v2.0'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch AsciiItch v2.0'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
 
 seq:
@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -58,10 +58,10 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence
+      - id: sequence_number
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
-      - id: count
+      - id: message_count
         type: u2le
         doc: 'Number of messages to follow this header'
   message:
@@ -69,7 +69,7 @@ types:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.length - 9
+        size: message_header.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
@@ -81,7 +81,7 @@ types:
             'message_type::broken_trade_message': broken_trade_message
   message_header:
     seq:
-      - id: length
+      - id: message_length
         type: u2
         doc: 'Length of data message not including this field'
       - id: timestamp

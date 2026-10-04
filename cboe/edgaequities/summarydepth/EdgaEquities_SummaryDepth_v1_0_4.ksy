@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe EdgaEquities SummaryDepth Pitch v1.0.4
+# Kaitai struct definition for: Cboe EdgaEquities SummaryDepth Csdp v1.0.4
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
 #   Protocol: Summary Depth
-#   Encoding: Pitch
+#   Encoding: Cboe Summary Depth Protocol
 #   Version: 1.0.4
 #   Date: 7/26/2021
 #   Specification: Cboe_US_Equities_Summary_Depth_Feed_Specification.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_edgaequities_summarydepth_pitch_v1_0_4
-  title: Cboe EdgaEquities SummaryDepth Pitch v1.0.4
+  id: cboe_edgaequities_summarydepth_csdp_v1_0_4
+  title: Cboe EdgaEquities SummaryDepth Csdp v1.0.4
   license: GPL-3.0
   endian: le
 
-doc: 'Chicago Board Options Exchange Cboe Edga Equities Summary Depth Pitch v1.0.4'
+doc: 'Chicago Board Options Exchange Cboe Edga Equities Summary Depth Csdp v1.0.4'
 doc-ref: http://markets.cboe.com/us/equities/support/technical
 
 seq:

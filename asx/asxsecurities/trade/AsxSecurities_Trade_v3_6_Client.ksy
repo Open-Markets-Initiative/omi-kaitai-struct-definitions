@@ -514,10 +514,10 @@ enums:
     1:
       id: 'principal_order'
       doc: 'Order Crossed With A Principal Order'
-    3:
+    2:
       id: 'agency_order'
       doc: 'Order Crossed With An Agency Order'
-    4:
+    3:
       id: 'mixed_agency_and_principal_order'
       doc: 'Order Crossed With A Mixed Agency And Principal Order'
 
