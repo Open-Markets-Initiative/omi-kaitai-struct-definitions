@@ -1861,7 +1861,7 @@ types:
         size: 7
         encoding: ASCII
         doc: 'Settlement Price'
-      - id: settlement_price_fraction_indicator_options
+      - id: settlement_price_fraction_indicator_y_1
         type: str
         size: 1
         encoding: ASCII

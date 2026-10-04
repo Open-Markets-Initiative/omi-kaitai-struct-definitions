@@ -53,17 +53,17 @@ types:
     seq:
       - id: start_of_frame
         type: u1
-        enum: start_of_frame
         doc: 'Start of Frame'
       - id: protocol_name
-        type: u1
-        enum: protocol_name
+        type: str
+        size: 1
+        encoding: ASCII
         doc: 'Protocol Name'
       - id: protocol_version
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Start of Frame'
+        doc: 'Protocol major version number'
       - id: message_length
         type: u2
         doc: 'Length of message from Header to Body inclusive'
@@ -94,7 +94,7 @@ types:
       - id: msg_type
         type: u1
         enum: msg_type
-        doc: 'Length of this message'
+        doc: 'Business message type'
   body_message:
     seq:
       - id: business_header
@@ -328,14 +328,6 @@ types:
         value: time / 1000000 % 1000
 
 enums:
-  start_of_frame:
-    2:
-      id: 'new_frame'
-      doc: 'Xmt start of frame'
-  protocol_name:
-    0x58:
-      id: 'xmt'
-      doc: 'Xmt'
   ack_required_poss_dup:
     0x30:
       id: 'unused'

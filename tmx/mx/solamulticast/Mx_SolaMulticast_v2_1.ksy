@@ -67,6 +67,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies the type of message being sent'
   login_message:
     seq:
