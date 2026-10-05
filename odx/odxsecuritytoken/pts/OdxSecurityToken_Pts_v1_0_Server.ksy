@@ -255,8 +255,8 @@ types:
         pad-right: 0x20
         doc: 'Orderbook group identifier. Blank if system wide event'
       - id: price
-        type: decimal_u4_2
-        doc: 'Price of the order. 7FFFFFFF hex = market order. Reference Price if zero in Order Number. Implied decimal with scale 1e-2'
+        type: decimal_u4_2_nullable
+        doc: 'Price of the order. 7FFFFFFF hex = market order. Reference Price if zero in Order Number. Implied decimal with scale 1e-2. Nullable, Market Order = 2147483647'
   order_executed_with_price_message:
     seq:
       - id: nanoseconds
@@ -301,8 +301,8 @@ types:
         type: u4
         doc: 'Total number of shares added to the book. Ignore if reference price message'
       - id: price
-        type: decimal_u4_2
-        doc: 'Price of the order. 7FFFFFFF hex = market order. Reference Price if zero in Order Number. Implied decimal with scale 1e-2'
+        type: decimal_u4_2_nullable
+        doc: 'Price of the order. 7FFFFFFF hex = market order. Reference Price if zero in Order Number. Implied decimal with scale 1e-2. Nullable, Market Order = 2147483647'
   order_book_state_message:
     seq:
       - id: nanoseconds
@@ -332,8 +332,8 @@ types:
         pad-right: 0x20
         doc: 'Orderbook ID'
       - id: equilibrium_price
-        type: decimal_u4_2
-        doc: 'Equilibrium Price. 7FFFFFFF hex = no price available. Implied decimal with scale 1e-2'
+        type: decimal_u4_2_nullable
+        doc: 'Equilibrium Price. 7FFFFFFF hex = no price available. Implied decimal with scale 1e-2. Nullable, No Price Available = 2147483647'
   second_timestamp:
     seq:
       - id: time
@@ -363,6 +363,13 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  decimal_u4_2_nullable:
+    seq:
+      - id: value
+        type: decimal_u4_2
+    instances:
+      is_null:
+        value: value.mantissa == 2147483647
 
 enums:
   client_packet_type:
