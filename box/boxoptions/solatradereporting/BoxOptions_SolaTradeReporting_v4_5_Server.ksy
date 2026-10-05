@@ -140,9 +140,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -153,11 +152,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -275,9 +274,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -288,11 +286,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -410,9 +408,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -423,11 +420,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -545,9 +542,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -558,11 +554,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -680,9 +676,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -693,11 +688,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -827,9 +822,8 @@ types:
         encoding: ASCII
         doc: 'Option Strike Price The format is defined by the new field ‘Strike Price Fraction Indicator’. Filled with zero when the instrument is not an option Right justified, Zero padded'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Define the number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -840,11 +834,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Volume of the trade Right justified, Zero padded'
-      - id: price_x_10000
+      - id: price
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Transaction price Right justified, Zero padded'
+        doc: 'Transaction price Right justified, Zero padded. Implied decimal with scale 1e-4'
       - id: cmta_broker
         type: str
         size: 4
@@ -1007,6 +1001,58 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
+  strike_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   option_type:
     0x43:
       id: 'call'

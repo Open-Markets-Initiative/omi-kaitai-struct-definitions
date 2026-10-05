@@ -289,7 +289,7 @@ types:
         size: 1
         encoding: ASCII
         doc: '• H = Hedger • S = Speculator'
-      - id: filler_must_be_blank_x_5
+      - id: filler_5
         size: 5
         doc: 'Stated inline as String (5)'
   owner_data:
@@ -380,7 +380,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the system'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
   global_cancellation_confirmation:
@@ -448,7 +448,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the system'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
   new_strategy_instrument_acknowledgement:
@@ -498,7 +498,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies an order/quote side: B = Buy S = Sell'
-      - id: filler_x_1
+      - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: leg_quantity_ratio
@@ -568,7 +568,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the system'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
   bulk_quote_acknowledgement:
@@ -684,7 +684,7 @@ types:
       - id: group
         type: str_2_nullable
         doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
-      - id: filler_x_2
+      - id: filler_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: trader_id
@@ -692,7 +692,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the Trader: 4 first characters = Firm identifier 4 last characters = Trader identifier'
-      - id: filler_x_4
+      - id: filler_4
         size: 4
         doc: 'Stated inline as String (4)'
       - id: num_excluded_instrument_notice_occurrence
@@ -801,7 +801,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies the origin of the Trade: F = Traded during continuous trading following FIFO algorithm M = Trade entered by MOD O = Traded during opening'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
       - id: trade_number
@@ -981,7 +981,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies the origin of the Trade: F = Traded during continuous trading following FIFO algorithm M = Trade entered by MOD O = Traded during opening'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
       - id: trade_number
@@ -1063,7 +1063,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies the origin of the Trade: F = Traded during continuous trading following FIFO algorithm M = Trade entered by MOD O = Traded during opening'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
       - id: trade_number
@@ -1145,7 +1145,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies the origin of the Trade: F = Traded during continuous trading following FIFO algorithm M = Trade entered by MOD O = Traded during opening'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
       - id: trade_number
@@ -1240,7 +1240,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'First Order ID assigned to the order by the system'
-      - id: filler_n_6
+      - id: filler_6
         size: 6
         doc: 'Stated inline as Numeric (6). Nullable, No Value = 0'
   request_for_quote_with_side_acknowledgement:

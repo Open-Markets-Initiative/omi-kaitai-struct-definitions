@@ -385,7 +385,7 @@ types:
         type: u1
         enum: buy_sell_indicator
         doc: 'The type of order being added'
-      - id: shares_integer_4
+      - id: shares
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: stock
@@ -415,7 +415,7 @@ types:
         type: u1
         enum: buy_sell_indicator
         doc: 'The type of order being added'
-      - id: shares_integer_4
+      - id: shares
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: stock
@@ -528,7 +528,7 @@ types:
       - id: new_order_reference_number
         type: u8
         doc: 'The new reference number for this order at time of replacement. Please note that the NASDAQ PSX system will use this new order reference number for all subsequent updates'
-      - id: shares_integer_4
+      - id: shares
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: price
@@ -552,7 +552,7 @@ types:
         type: u1
         enum: buy_sell_indicator
         doc: 'The type of order being added'
-      - id: shares_integer_4
+      - id: shares
         type: u4
         doc: 'The total number of shares associated with the order being added to the book'
       - id: stock
@@ -578,7 +578,7 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: shares_integer_8
+      - id: cross_shares
         type: u8
         doc: 'The number of shares matched in the Nasdaq PSX Cross'
       - id: stock

@@ -7,7 +7,7 @@
 #   Encoding: High Speed Vender Feed
 #   Version: 1.5
 #   Date: 03/15/2021
-#   Specification: HSVF-BX-002E-BOX-SOLA-HSVF-Multicast-Specifications-Guide-v1.5-1.pdf
+#   Specification: HSVF-BX-002E-BOX-SOLA-HSVF-Multicast-Specifications-Guide-v1.5.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -141,9 +141,8 @@ types:
         encoding: ASCII
         doc: 'Price at which the transaction took place'
       - id: trade_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
@@ -155,9 +154,8 @@ types:
         encoding: ASCII
         doc: 'Net change equals last trade price minus previous close'
       - id: net_change_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_fraction_indicator
         doc: 'Fraction indicator for the net change price'
       - id: filler_6
         size: 6
@@ -200,9 +198,8 @@ types:
         encoding: ASCII
         doc: 'Strike Price of the option in full'
       - id: strike_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: strike_price_fraction_indicator
         doc: 'Defines the number of decimal places or fraction positions'
       - id: expiry_year
         type: str
@@ -243,9 +240,8 @@ types:
         encoding: ASCII
         doc: 'Price at which the transaction took place'
       - id: trade_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
@@ -257,9 +253,8 @@ types:
         encoding: ASCII
         doc: 'Net change equals last trade price minus previous close'
       - id: net_change_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_fraction_indicator
         doc: 'Fraction indicator for the net change price'
       - id: filler_6
         size: 6
@@ -302,9 +297,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -317,9 +311,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -367,9 +360,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -386,9 +378,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -499,9 +490,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -519,9 +509,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -577,9 +566,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -601,9 +589,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -635,9 +622,8 @@ types:
         encoding: ASCII
         doc: 'Price at which the transaction took place'
       - id: trade_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: filler_6
         size: 6
@@ -688,9 +674,8 @@ types:
         encoding: ASCII
         doc: 'Price at which the transaction took place'
       - id: trade_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: filler_6
         size: 6
@@ -734,9 +719,8 @@ types:
         encoding: ASCII
         doc: 'Maximum threshold price authorized for an option contract'
       - id: maximum_threshold_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: minimum_threshold_price
         type: str
@@ -744,9 +728,8 @@ types:
         encoding: ASCII
         doc: 'Minimum threshold price authorized for an option contract'
       - id: minimum_threshold_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
         type: str
@@ -754,9 +737,8 @@ types:
         encoding: ASCII
         doc: 'Precision with which the price of an order limit can be expressed'
       - id: tick_increment_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: tick_increment_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: option_type
         type: u1
@@ -856,9 +838,8 @@ types:
         encoding: ASCII
         doc: 'Maximum threshold price authorized for an option contract'
       - id: max_threshold_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: max_threshold_price_fraction_indicator
         doc: 'Number of decimal places or fraction positions'
       - id: min_threshold_price_sign
         type: u1
@@ -870,9 +851,8 @@ types:
         encoding: ASCII
         doc: 'Minimum threshold price authorized for an option contract'
       - id: min_threshold_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: min_threshold_price_fraction_indicator
         doc: 'Number of decimal places or fraction positions'
       - id: tick_increment
         type: str
@@ -880,9 +860,8 @@ types:
         encoding: ASCII
         doc: 'Precision with which the price of an order limit can be expressed'
       - id: tick_increment_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: tick_increment_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: filler_2
         size: 2
@@ -967,9 +946,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -982,9 +960,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -997,9 +974,8 @@ types:
         encoding: ASCII
         doc: 'Closing or most recent trade price'
       - id: last_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: last_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: open_interest
         type: str
@@ -1025,9 +1001,8 @@ types:
         encoding: ASCII
         doc: 'Net change equals last trade price minus previous close'
       - id: net_change_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_fraction_indicator
         doc: 'Fraction indicator for the net change price'
       - id: open_price
         type: str
@@ -1035,9 +1010,8 @@ types:
         encoding: ASCII
         doc: 'Price of the first trade of the day'
       - id: open_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: open_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: high_price
         type: str
@@ -1045,9 +1019,8 @@ types:
         encoding: ASCII
         doc: 'Highest trade price of the day or current high price if sent after a cancellation'
       - id: high_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: high_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: low_price
         type: str
@@ -1055,9 +1028,8 @@ types:
         encoding: ASCII
         doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
       - id: low_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: low_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: option_marker
         type: option_marker
@@ -1073,9 +1045,8 @@ types:
         encoding: ASCII
         doc: 'Reference Price of the Option'
       - id: reference_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: reference_price_fraction_indicator
         doc: 'Number of decimal places or fraction positions'
   complex_order_summary_message:
     seq:
@@ -1101,9 +1072,8 @@ types:
         encoding: ASCII
         doc: 'Bid price for the option series'
       - id: bid_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_size
         type: str
@@ -1120,9 +1090,8 @@ types:
         encoding: ASCII
         doc: 'Ask price for the option series'
       - id: ask_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: ask_size
         type: str
@@ -1140,9 +1109,8 @@ types:
         encoding: ASCII
         doc: 'Closing or most recent trade price'
       - id: last_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: last_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: open_price_sign
         type: u1
@@ -1154,9 +1122,8 @@ types:
         encoding: ASCII
         doc: 'Price of the first trade of the day'
       - id: open_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: open_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: high_price_sign
         type: u1
@@ -1168,9 +1135,8 @@ types:
         encoding: ASCII
         doc: 'Highest trade price of the day or current high price if sent after a cancellation'
       - id: high_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: high_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: low_price_sign
         type: u1
@@ -1182,9 +1148,8 @@ types:
         encoding: ASCII
         doc: 'Lowest trade price of the day or current low price if sent after a cancellation'
       - id: low_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: low_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
         type: u1
@@ -1196,9 +1161,8 @@ types:
         encoding: ASCII
         doc: 'Net change equals last trade price minus previous close'
       - id: net_change_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_fraction_indicator
         doc: 'Fraction indicator for the net change price'
       - id: volume
         type: str
@@ -1249,9 +1213,8 @@ types:
         encoding: ASCII
         doc: 'Indicates the price of the Initial Order'
       - id: initial_order_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: initial_order_price_fraction_indicator
         doc: 'Fraction Indicator Code'
       - id: initial_order_quantity
         type: str
@@ -1318,9 +1281,8 @@ types:
         encoding: ASCII
         doc: 'Indicates the price of the Initial Order'
       - id: initial_order_price_fraction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: initial_order_price_fraction_indicator
         doc: 'Fraction Indicator Code'
       - id: initial_order_quantity
         type: str
@@ -1373,13 +1335,14 @@ types:
         type: u1
         enum: type_of_order
         doc: 'Type of limit entered'
-      - id: filler_1
-        size: 1
-        doc: 'Filler'
-      - id: limit_fraction_indicator
+      - id: limit_entered_for_an_order
         type: str
-        size: 1
+        size: 6
         encoding: ASCII
+        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
+      - id: limit_fraction_indicator
+        type: u1
+        enum: limit_fraction_indicator
         doc: 'Fraction Indicator Code'
       - id: order_quantity
         type: str
@@ -1400,7 +1363,7 @@ types:
         type: u1
         enum: type_of_clearing_account
         doc: 'Indicates the account type for which an order was entered using the clearing house member''s account typology'
-      - id: second_filler_1
+      - id: filler_1
         size: 1
         doc: 'Filler'
       - id: end_of_the_exposition
@@ -1447,13 +1410,14 @@ types:
         type: u1
         enum: limit_entered_for_an_order_sign
         doc: '+ or - sign'
-      - id: filler_1
-        size: 1
-        doc: 'Filler'
-      - id: limit_fraction_indicator
+      - id: limit_entered_for_an_order
         type: str
-        size: 1
+        size: 6
         encoding: ASCII
+        doc: 'For a buy order, represents the highest price that the order issuer is willing to pay For a sell order, represents the lowest price at which the order issuer is willing to sell'
+      - id: limit_fraction_indicator
+        type: u1
+        enum: limit_fraction_indicator
         doc: 'Fraction Indicator Code'
       - id: order_quantity
         type: str
@@ -1474,7 +1438,7 @@ types:
         type: u1
         enum: type_of_clearing_account
         doc: 'Indicates the account type for which an order was entered using the clearing house member''s account typology'
-      - id: second_filler_1
+      - id: filler_1
         size: 1
         doc: 'Filler'
       - id: end_of_the_exposition
@@ -1598,6 +1562,110 @@ enums:
     0x57:
       id: 'november_put'
       doc: 'November Put'
+  strike_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  trade_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   net_change_sign:
     0x2b:
       id: 'positive'
@@ -1605,6 +1673,58 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
+  net_change_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   price_indicator_marker:
     0x41:
       id: 'as_of_trade'
@@ -1639,6 +1759,110 @@ enums:
     0x20:
       id: 'actual_transaction_took_place'
       doc: 'Actual Transaction Took Place'
+  bid_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  ask_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   instrument_status_marker:
     0x59:
       id: 'preopening_phase'
@@ -1730,6 +1954,162 @@ enums:
     0x50:
       id: 'public_customer_volume'
       doc: 'Public Customer Volume'
+  maximum_threshold_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  minimum_threshold_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  tick_increment_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   option_type:
     0x41:
       id: 'american'
@@ -1796,6 +2176,58 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
+  max_threshold_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   min_threshold_price_sign:
     0x2b:
       id: 'positive'
@@ -1803,6 +2235,58 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
+  min_threshold_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   complex_order_instrument_allow_implied:
     0x4e:
       id: 'no_field'
@@ -1834,6 +2318,58 @@ enums:
     0x31:
       id: 'bulletin_ended'
       doc: 'Bulletin Ended'
+  last_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   tick:
     0x2b:
       id: 'uptick'
@@ -1841,6 +2377,214 @@ enums:
     0x2d:
       id: 'downtick'
       doc: 'Downtick'
+  open_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  high_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  low_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+  reference_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   open_price_sign:
     0x2b:
       id: 'positive'
@@ -1862,6 +2606,58 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
+  initial_order_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   initial_order_side:
     0x42:
       id: 'buy'
@@ -1903,6 +2699,58 @@ enums:
     0x50:
       id: 'exposed_order'
       doc: 'Exposed Order'
+  limit_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   type_of_clearing_account:
     0x36:
       id: 'public_customer'

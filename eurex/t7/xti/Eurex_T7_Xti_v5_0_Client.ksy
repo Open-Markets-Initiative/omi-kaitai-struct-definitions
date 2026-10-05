@@ -134,7 +134,7 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: compliance_id
         type: u8_nullable
@@ -395,10 +395,10 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: offer_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: bid_size
         type: s4_nullable
@@ -430,16 +430,16 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_abs
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_pct
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: compliance_id
         type: u8_nullable
@@ -531,7 +531,7 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: compliance_id
         type: u8_nullable
@@ -574,16 +574,16 @@ types:
       - id: request_header_comp
         type: request_header_comp
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_abs
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_pct
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cl_ord_id
         type: u8_nullable
@@ -664,7 +664,7 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: cl_ord_id
         type: u8_nullable
@@ -903,20 +903,20 @@ types:
     instances:
       is_null:
         value: value == -2147483648
-  decimal_u8_8:
+  decimal_s8_8:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 100000000.0
-  decimal_u8_8_nullable:
+  decimal_s8_8_nullable:
     seq:
       - id: value
-        type: decimal_u8_8
+        type: decimal_s8_8
     instances:
       is_null:
-        value: value.mantissa == 9223372036854775808
+        value: value.mantissa == -9223372036854775808
   u1_nullable:
     seq:
       - id: value
@@ -931,20 +931,20 @@ types:
     instances:
       is_null:
         value: value == 65535
-  decimal_u8_4:
+  decimal_s8_4:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 10000.0
-  decimal_u8_4_nullable:
+  decimal_s8_4_nullable:
     seq:
       - id: value
-        type: decimal_u8_4
+        type: decimal_s8_4
     instances:
       is_null:
-        value: value.mantissa == 9223372036854775808
+        value: value.mantissa == -9223372036854775808
 
 enums:
   template_id:

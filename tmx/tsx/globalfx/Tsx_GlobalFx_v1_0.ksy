@@ -78,8 +78,8 @@ types:
         type: u4
         doc: 'Sequence Number within this Stream Id'
       - id: valid_for_seconds
-        type: u2
-        doc: 'Time to live for the prices in this datagram, zero if periodic refresh is not enabled'
+        type: u2_nullable
+        doc: 'Time to live for the prices in this datagram, zero if periodic refresh is not enabled. Nullable, No Value = 0'
       - id: unused_2
         size: 1
         doc: 'Reserved for future use'
@@ -105,17 +105,33 @@ types:
         enum: price_terms
         doc: 'Which currency the Tier Size is in and which way the prices are quoted. The section 3.3 example leaves it zero in every tier, though section 3 states only D and I'
       - id: bid_price
+        type: bid_price
+        doc: 'Bid Price mantissa, which Bid Price Exponent scales. Zero for Tier Status Z. Nullable, No Value = 0'
+      - id: offer_price
+        type: offer_price
+        doc: 'Offer Price mantissa, which Offer Price Exponent scales. Zero for Tier Status Z. Nullable, No Value = 0'
+  bid_price:
+    seq:
+      - id: bid_price_mantissa
         type: s4
         doc: 'Bid Price mantissa, which Bid Price Exponent scales. Zero for Tier Status Z'
       - id: bid_price_exponent
         type: s1
         doc: 'Power of ten the Bid Price mantissa is multiplied by, for example -5 for 0.00001'
-      - id: offer_price
+    instances:
+      real:
+        value: 'bid_price_mantissa * (bid_price_exponent == 9 ? 1000000000.0 : bid_price_exponent == 8 ? 100000000.0 : bid_price_exponent == 7 ? 10000000.0 : bid_price_exponent == 6 ? 1000000.0 : bid_price_exponent == 5 ? 100000.0 : bid_price_exponent == 4 ? 10000.0 : bid_price_exponent == 3 ? 1000.0 : bid_price_exponent == 2 ? 100.0 : bid_price_exponent == 1 ? 10.0 : bid_price_exponent == 0 ? 1.0 : bid_price_exponent == -1 ? 0.1 : bid_price_exponent == -2 ? 0.01 : bid_price_exponent == -3 ? 0.001 : bid_price_exponent == -4 ? 0.0001 : bid_price_exponent == -5 ? 0.00001 : bid_price_exponent == -6 ? 0.000001 : bid_price_exponent == -7 ? 0.0000001 : bid_price_exponent == -8 ? 0.00000001 : bid_price_exponent == -9 ? 0.000000001 : 1.0)'
+  offer_price:
+    seq:
+      - id: offer_price_mantissa
         type: s4
         doc: 'Offer Price mantissa, which Offer Price Exponent scales. Zero for Tier Status Z'
       - id: offer_price_exponent
         type: s1
         doc: 'Power of ten the Offer Price mantissa is multiplied by'
+    instances:
+      real:
+        value: 'offer_price_mantissa * (offer_price_exponent == 9 ? 1000000000.0 : offer_price_exponent == 8 ? 100000000.0 : offer_price_exponent == 7 ? 10000000.0 : offer_price_exponent == 6 ? 1000000.0 : offer_price_exponent == 5 ? 100000.0 : offer_price_exponent == 4 ? 10000.0 : offer_price_exponent == 3 ? 1000.0 : offer_price_exponent == 2 ? 100.0 : offer_price_exponent == 1 ? 10.0 : offer_price_exponent == 0 ? 1.0 : offer_price_exponent == -1 ? 0.1 : offer_price_exponent == -2 ? 0.01 : offer_price_exponent == -3 ? 0.001 : offer_price_exponent == -4 ? 0.0001 : offer_price_exponent == -5 ? 0.00001 : offer_price_exponent == -6 ? 0.000001 : offer_price_exponent == -7 ? 0.0000001 : offer_price_exponent == -8 ? 0.00000001 : offer_price_exponent == -9 ? 0.000000001 : 1.0)'
   microsecond_timestamp:
     seq:
       - id: time
@@ -131,6 +147,13 @@ types:
         value: time / 1000 % 1000
       microsecond:
         value: time % 1000
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
 
 enums:
   tier_status:

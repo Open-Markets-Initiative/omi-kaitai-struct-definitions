@@ -209,13 +209,13 @@ types:
       - id: owner_data
         type: owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
-      - id: filler_x_2
+      - id: reserved_2
         size: 2
         doc: 'Stated inline as String (2)'
-      - id: filler_2_x_8
+      - id: reserved_8
         size: 8
         doc: 'Stated inline as String (8)'
-      - id: filler_3_x_2
+      - id: second_reserved_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: calculation_time_interval
@@ -324,7 +324,7 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Identifies the trader 4 first characters: Firm Identifier 4 Last characters: Trader Identifier'
-      - id: order_id_x_8
+      - id: order_id
         type: str
         size: 8
         encoding: ASCII
@@ -406,7 +406,7 @@ types:
       - id: selling_additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_x_4
+      - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   buying_clearing_data:
@@ -597,7 +597,7 @@ types:
         type: u1
         enum: special_price_term
         doc: 'PIP Solicitation Facilitation B: Solicitation Auction C: Facilitation Auction G: Regular PIP X: Customer Cross Order or Qualified Contingent Cross Order Note: These values specify the type of Auction to be started. Order Entry ’ ’: (Blank), No Special Price Term O: Directed Order P: Preferenced Order R: Floor Trade A: Indication of Interest'
-      - id: filler_x_10
+      - id: reserved_10
         size: 10
         doc: 'Stated inline as String (10)'
       - id: quantity_term
@@ -637,7 +637,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_2_x_4
+      - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   improvement_order_entry:
@@ -666,7 +666,7 @@ types:
       - id: auction_id_optional
         type: str_6_nullable
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
-      - id: filler_x_17
+      - id: reserved_17
         size: 17
         doc: 'Stated inline as String (17)'
       - id: clearing_data
@@ -683,7 +683,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_2_x_4
+      - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   order_modification:
@@ -717,13 +717,13 @@ types:
         type: u1
         enum: special_price_term
         doc: 'PIP Solicitation Facilitation B: Solicitation Auction C: Facilitation Auction G: Regular PIP X: Customer Cross Order or Qualified Contingent Cross Order Note: These values specify the type of Auction to be started. Order Entry ’ ’: (Blank), No Special Price Term O: Directed Order P: Preferenced Order R: Floor Trade A: Indication of Interest'
-      - id: filler_x_10
+      - id: reserved_10
         size: 10
         doc: 'Stated inline as String (10)'
-      - id: filler_2_x_1
+      - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
-      - id: filler_3_x_8
+      - id: reserved_8
         size: 8
         doc: 'Stated inline as String (8)'
       - id: duration_type
@@ -763,7 +763,7 @@ types:
       - id: additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_4
+      - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
   new_complex_order_instrument:
@@ -798,7 +798,7 @@ types:
         type: u1
         enum: leg_verb
         doc: 'Identifies an order/quote side B: Buy S: Sell'
-      - id: filler_x_1
+      - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: leg_quantity_ratio
@@ -872,7 +872,7 @@ types:
       - id: selling_additional_client_memo
         type: str_16_nullable
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
-      - id: filler_x_4
+      - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
       - id: num_complex_order_auction_entry_occurrence

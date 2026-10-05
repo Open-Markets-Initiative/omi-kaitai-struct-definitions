@@ -1,0 +1,764 @@
+# ---------------------------------------------------------------------
+# Kaitai struct definition for: Miax OnyxFutures TopOfMarket Mach v1.3.a
+#
+# Protocol:
+#   Organization: Miami International Holdings
+#   Protocol: Top Of Market
+#   Encoding: Mach
+#   Version: 1.3.a
+#   Date: 7/31/2026
+#   Specification: ONYX ToM Feed v1.3a.pdf
+#
+# Script:
+#   Generator: 1.0.0.0
+#   License: Public/GPLv3
+#   Authors: Omi Developers
+#
+# Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
+#
+# This kaitai struct definition is contributed to The Open Markets Initiative under
+# the license noted above.
+#
+# The protocol compiler technologies used to produce this file
+# are the subject of patents owned by Scaled Sources LLC.  Those patent
+# rights are retained and are not transferred by this contribution:
+#   https://patents.google.com/patent/US20240129382A1/en
+#   https://patents.google.com/patent/US20240419416A1/en
+#
+# Open Markets Initiative website:
+#   https://openmarketsinitiative.com
+# ---------------------------------------------------------------------
+
+meta:
+  id: miax_onyxfutures_topofmarket_mach_v1_3_a
+  title: Miax OnyxFutures TopOfMarket Mach v1.3.a
+  license: GPL-3.0
+  endian: le
+
+doc: 'Miami International Holdings MIAX Futures Onyx Top Of Market Mach v1.3.a'
+doc-ref: https://www.miaxglobal.com/markets/futures/miax-futures/onyx-interface-specifications
+
+seq:
+  - id: mach_message
+    type: mach_message_struct
+    repeat: eos
+
+types:
+  mach_message_struct:
+    seq:
+      - id: sequence_number
+        type: u8
+        doc: 'Sequence number of this data packet'
+      - id: packet_length
+        type: u2
+        doc: 'Length of the packet. This includes the header and application data'
+      - id: packet_type
+        type: u1
+        enum: packet_type
+        doc: 'protocol packet type'
+      - id: session_number
+        type: u1
+        doc: 'The Session this packet was generated from'
+      - id: payload
+        type:
+          switch-on: packet_type
+          cases:
+            'packet_type::application_message': application_message
+  application_message:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying this message type'
+      - id: data
+        size: _parent.packet_length - 12 - 1
+        type:
+          switch-on: message_type
+          cases:
+            'message_type::simple_instrument_definition_message': simple_instrument_definition_message
+            'message_type::complex_instrument_definition_message': complex_instrument_definition_message
+            'message_type::complex_instrument_definition_deprecated_message': complex_instrument_definition_deprecated_message
+            'message_type::system_state_message': system_state_message
+            'message_type::instrument_trading_status_notification_message': instrument_trading_status_notification_message
+            'message_type::best_bid_and_offer_message': best_bid_and_offer_message
+            'message_type::last_sale_message': last_sale_message
+            'message_type::trade_cancel_message': trade_cancel_message
+  simple_instrument_definition_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: underlying_asset_type
+        type: u1
+        enum: underlying_asset_type
+        doc: 'Underlying Asset Type of this instrument:'
+      - id: underlying_asset_alphanumeric_4
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Underlying Asset Code'
+      - id: product_group_code_alphanumeric_6
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Product Group Code: e.g.: MWE for Hard Red Spring Wheat Standard Deliverable (5000 Bushels)'
+      - id: exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+      - id: instrument_id_source
+        type: u1
+        enum: instrument_id_source
+        doc: 'Indicates whether the Instrument ID has been assigned by the exchange or from an external industry source'
+      - id: instrument_type
+        type: u1
+        enum: instrument_type
+      - id: instrument_listing_status
+        type: u1
+        enum: instrument_listing_status
+      - id: reserved_3
+        size: 3
+        doc: 'Currently reserved for future use'
+      - id: currency
+        type: u1
+        enum: currency
+        doc: 'The currency in which all Futures Instruments of the Futures Product will trade'
+      - id: settlement_currency
+        type: u1
+        enum: settlement_currency
+        doc: 'The Currency in which the Product settles'
+      - id: match_algorithm
+        type: u1
+        enum: match_algorithm
+        doc: 'The allocation model used by the MIAX Futures Onyx Trading Platform for the Product'
+      - id: minimum_size
+        type: u4
+        doc: 'Minimum Order Size'
+      - id: maximum_size
+        type: u4
+        doc: 'Maximum Order Size'
+      - id: tick
+        type: decimal_s8_9
+        doc: 'Order Entry Price Tick of the Product. Implied decimal with scale 1e-9'
+      - id: unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Individual unit of the Deliverable of the Underlying Asset associated with the Futures Contract'
+      - id: unit_of_measure_quantity
+        type: u4
+        doc: 'The quantity of the Underlying Asset that is required for the Deliverable associated with the Futures Contract'
+      - id: settlement_price
+        type: decimal_s8_9
+        doc: 'The previous day. Implied decimal with scale 1e-9'
+      - id: settlement_price_type_calc_method
+        type: u1
+        enum: settlement_price_type_calc_method
+        doc: 'Actual or Theoretical Settlement Price Indicator'
+      - id: total_volume
+        type: u4
+        doc: 'The aggregate amount of volume that has traded from the prior Trading Day'
+      - id: open_interest_quantity
+        type: u4
+        doc: 'The amount of aggregate open contracts in a Simple Instrument'
+      - id: high_limit_price
+        type: decimal_s8_9_nullable
+        doc: 'The Upper Band of the Daily Trading Limit of a Futures Product. Implied decimal with scale 1e-9. Nullable, No Limit = 999999999999999999'
+      - id: low_limit_price
+        type: decimal_s8_9_nullable
+        doc: 'The Lower Band of the Daily Trading Limit of a Futures Product. Implied decimal with scale 1e-9. Nullable, No Limit = -999999999999999999'
+      - id: trading_collar_variation_type
+        type: u1
+        enum: trading_collar_variation_type
+      - id: trading_collar_variation
+        type: decimal_s8_9
+        doc: 'The Dollar Value or Percentage Value used in the calculation of the Trading Collar. Implied decimal with scale 1e-9'
+      - id: contract_date
+        type: u4
+        doc: 'The Contract Date will be assigned to each Simple Instrument'
+      - id: maturity_date
+        type: u2
+        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+      - id: valuation_date
+        type: u2
+        doc: 'The date that the Final Settlement Price will be calculated for purposes of Simple Instrument expiration'
+      - id: first_trade_date
+        type: u2
+        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx'
+      - id: last_trade_date
+        type: u2
+        doc: 'Last Trade Date will be the Maturity Date of the Simple Instrument'
+      - id: first_notice_date
+        type: u2
+        doc: 'Last business date of the month preceding the month of the Maturity Date of the Simple Instrument'
+      - id: last_notice_date
+        type: u2
+        doc: 'Last Notice Date will be the business day preceding the Last Delivery Date of the Simple Instrument'
+      - id: first_delivery_date
+        type: u2
+        doc: 'First Delivery Date will be the first business day of the month of the Maturity Date of the Simple Instrument'
+      - id: last_delivery_date
+        type: u2
+        doc: 'Last Delivery Date will be the seventh business day following the Last Trading Date of the Simple Instrument'
+      - id: option_strike_price
+        type: decimal_s8_9_nullable
+        doc: 'NULL when Instrument Type not equal to. Implied decimal with scale 1e-9. Nullable, Not An Option = 999999999999999999'
+      - id: option_strike_currency
+        type: u1
+        enum: option_strike_currency
+      - id: option_type
+        type: u1
+        enum: option_type
+      - id: option_expiration_type
+        type: u1
+        enum: option_expiration_type
+      - id: underlying_future_instrument_id
+        type: u4
+        doc: 'The Instrument ID of the Futures Instrument that is the Underlying Asset of the Options on Futures, TAS, or BTIC Instrument Value of 0 when Instrument Type is'
+  complex_instrument_definition_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: instrument_id_formerly_known_as_strategy_id
+        type: u4
+        doc: 'Unique ID assigned by MIAX Futures Onyx for a Complex instrument and is permanent for the life of an instrument'
+      - id: underlying_asset_type
+        type: u1
+        enum: underlying_asset_type
+        doc: 'Underlying Asset Type of this instrument:'
+      - id: underlying_asset_alphanumeric_9
+        type: str
+        size: 9
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Underlying Asset Code'
+      - id: product_group_code_alphanumeric_13
+        type: str
+        size: 13
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Product Group Code: e.g.: MWE for Hard Red Spring Wheat Standard Deliverable (5000 Bushels) Cross Product Spread example: XXX-YYY'
+      - id: spread_type
+        type: u1
+        enum: spread_type
+        doc: 'Spread Type'
+      - id: exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+      - id: instrument_id_source
+        type: u1
+        enum: instrument_id_source
+        doc: 'Indicates whether the Instrument ID has been assigned by the exchange or from an external industry source'
+      - id: instrument_type
+        type: u1
+        enum: instrument_type
+      - id: currency
+        type: u1
+        enum: currency
+        doc: 'The currency in which all Futures Instruments of the Futures Product will trade'
+      - id: settlement_currency
+        type: u1
+        enum: settlement_currency
+        doc: 'The Currency in which the Product settles'
+      - id: match_algorithm
+        type: u1
+        enum: match_algorithm
+        doc: 'The allocation model used by the MIAX Futures Onyx Trading Platform for the Product'
+      - id: minimum_size
+        type: u4
+        doc: 'Minimum Order Size'
+      - id: maximum_size
+        type: u4
+        doc: 'Maximum Order Size'
+      - id: tick
+        type: decimal_s8_9
+        doc: 'Order Entry Price Tick of the Product. Implied decimal with scale 1e-9'
+      - id: unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Individual unit of the Deliverable of the Underlying Asset associated with the Futures Contract'
+      - id: unit_of_measure_quantity
+        type: u4
+        doc: 'The quantity of the Underlying Asset that is required for the Deliverable associated with the Futures Contract'
+      - id: settlement_price
+        type: decimal_s8_9
+        doc: 'The previous day. Implied decimal with scale 1e-9'
+      - id: settlement_price_type_calc_method
+        type: u1
+        enum: settlement_price_type_calc_method
+        doc: 'Actual or Theoretical Settlement Price Indicator'
+      - id: trading_collar_variation_type
+        type: u1
+        enum: trading_collar_variation_type
+      - id: trading_collar_variation
+        type: decimal_s8_9
+        doc: 'The Dollar Value or Percentage Value used in the calculation of the Trading Collar. Implied decimal with scale 1e-9'
+      - id: listing_status
+        type: u1
+        enum: listing_status
+      - id: first_trade_date
+        type: u2
+        doc: 'First Trade Date will be the Trading Date that the Simple Instrument is initially made available for Trading on MIAX Futures Onyx'
+      - id: reserved_64
+        size: 64
+        doc: 'Reserved for future use'
+      - id: num_instrument_leg
+        type: u1
+        doc: 'Number of strategy legs'
+      - id: instrument_leg
+        type: instrument_leg
+        repeat: expr
+        repeat-expr: num_instrument_leg
+        doc: 'Complex Strategy Number of Legs'
+  instrument_leg:
+    seq:
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: leg_ratio_and_side
+        type: s4
+        doc: 'Leg ratio for the specified instrument Positive indicates Buy Negative indicates Sell'
+      - id: maturity_date
+        type: u2
+        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+      - id: reserved_32
+        size: 32
+        doc: 'Currently reserved for future use'
+  complex_instrument_definition_deprecated_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: instrument_id_formerly_known_as_strategy_id
+        type: u4
+        doc: 'Unique ID assigned by MIAX Futures Onyx for a Complex instrument and is permanent for the life of an instrument'
+      - id: underlying_asset_type
+        type: u1
+        enum: underlying_asset_type
+        doc: 'Underlying Asset Type of this instrument:'
+      - id: underlying_asset_alphanumeric_4
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Underlying Asset Code'
+      - id: product_group_code_alphanumeric_6
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Product Group Code: e.g.: MWE for Hard Red Spring Wheat Standard Deliverable (5000 Bushels)'
+      - id: spread_type
+        type: u1
+        enum: spread_type
+        doc: 'Spread Type'
+      - id: exchange
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+      - id: instrument_id_source
+        type: u1
+        enum: instrument_id_source
+        doc: 'Indicates whether the Instrument ID has been assigned by the exchange or from an external industry source'
+      - id: instrument_type
+        type: u1
+        enum: instrument_type
+      - id: currency
+        type: u1
+        enum: currency
+        doc: 'The currency in which all Futures Instruments of the Futures Product will trade'
+      - id: settlement_currency
+        type: u1
+        enum: settlement_currency
+        doc: 'The Currency in which the Product settles'
+      - id: match_algorithm
+        type: u1
+        enum: match_algorithm
+        doc: 'The allocation model used by the MIAX Futures Onyx Trading Platform for the Product'
+      - id: minimum_size
+        type: u4
+        doc: 'Minimum Order Size'
+      - id: maximum_size
+        type: u4
+        doc: 'Maximum Order Size'
+      - id: tick
+        type: decimal_s8_9
+        doc: 'Order Entry Price Tick of the Product. Implied decimal with scale 1e-9'
+      - id: unit_of_measure
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Individual unit of the Deliverable of the Underlying Asset associated with the Futures Contract'
+      - id: unit_of_measure_quantity
+        type: u4
+        doc: 'The quantity of the Underlying Asset that is required for the Deliverable associated with the Futures Contract'
+      - id: trading_collar_variation_type
+        type: u1
+        enum: trading_collar_variation_type
+      - id: trading_collar_variation
+        type: decimal_s8_9
+        doc: 'The Dollar Value or Percentage Value used in the calculation of the Trading Collar. Implied decimal with scale 1e-9'
+      - id: reserved_16
+        size: 16
+        doc: 'Reserved for future use'
+      - id: num_deprecated_instrument_leg
+        type: u1
+        doc: 'Number of strategy legs'
+      - id: deprecated_instrument_leg
+        type: deprecated_instrument_leg
+        repeat: expr
+        repeat-expr: num_deprecated_instrument_leg
+        doc: 'Complex Strategy Number of Legs'
+  deprecated_instrument_leg:
+    seq:
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: leg_ratio_and_side
+        type: s4
+        doc: 'Leg ratio for the specified instrument Positive indicates Buy Negative indicates Sell'
+      - id: reserved_4
+        size: 4
+        doc: 'Previously was Maturity Month-Year field; replaced by the Maturity Date field below'
+      - id: maturity_date
+        type: u2
+        doc: 'Maturity Date is the expiration date of a Simple Instrument'
+      - id: reserved_6
+        size: 6
+        doc: 'Reserved for future use'
+  system_state_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: to_m_version
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'E.g'
+      - id: session_id
+        type: u1
+        doc: 'Current trading session identifier'
+      - id: system_status
+        type: u1
+        enum: system_status
+  instrument_trading_status_notification_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: trading_status
+        type: u1
+        doc: '1 - Pre-Open 2 - Opening Freeze 3 - Trading 4 - Halt 5 - Operational Halt 6 - Closed'
+      - id: market_state
+        type: u1
+        doc: '1 - Pre-Opening 2 - Extended 1 Trading Session 3 - Regular Trading Session 4 - Extended 2 Trading Session'
+  best_bid_and_offer_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: mbb_price
+        type: decimal_s8_9_nullable
+        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for a Simple Instrument or a Complex Instrument. Implied decimal with scale 1e-9. Nullable, No Interest = -999999999999999999'
+      - id: mbb_size
+        type: u4
+        doc: 'Aggregate size in contracts at the displayed of f er price'
+      - id: mbo_price
+        type: decimal_s8_9_nullable
+        doc: 'Will be provided for updates as a result of any changes to the prices or sizes of the MBBO for a Simple Instrument or a Complex Instrument. Implied decimal with scale 1e-9. Nullable, No Interest = 999999999999999999'
+      - id: mbo_size
+        type: u4
+        doc: 'Aggregate size in contracts at the displayed of f er price'
+  last_sale_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: trade_date
+        type: u2
+        doc: 'Business Trade Date'
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: trade_id
+        type: u8
+        doc: 'Unique ID assigned by the Matching Engine'
+      - id: correction_number
+        type: u1
+        doc: 'Trade correction number'
+      - id: price
+        type: decimal_s8_9
+        doc: 'Execution price. Implied decimal with scale 1e-9'
+      - id: size
+        type: u4
+        doc: 'Number of contracts executed'
+      - id: trade_type
+        type: u1
+        enum: trade_type
+      - id: complex_trade_id
+        type: u8
+        doc: 'For Trade Type'
+      - id: instrument_type
+        type: u1
+        enum: instrument_type
+  trade_cancel_message:
+    seq:
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Matching Engine time. Nanoseconds since Unix epoch'
+      - id: trade_date
+        type: u2
+        doc: 'Business Trade Date'
+      - id: instrument_id
+        type: u4
+        doc: 'Unique numeric ID assigned by MIAX Futures Onyx for a Simple instrument and is permanent for the life of a Simple instrument'
+      - id: trade_id
+        type: u8
+        doc: 'Unique ID assigned by the Matching Engine'
+      - id: correction_number
+        type: u1
+        doc: 'Trade correction number'
+      - id: price
+        type: decimal_s8_9
+        doc: 'Execution price. Implied decimal with scale 1e-9'
+      - id: size
+        type: u4
+        doc: 'Number of contracts executed'
+      - id: instrument_type
+        type: u1
+        enum: instrument_type
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  decimal_s8_9:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000000.0
+  decimal_s8_9_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_9
+    instances:
+      is_null:
+        value: value.mantissa == 999999999999999999
+
+enums:
+  packet_type:
+    0:
+      id: 'heartbeat'
+      doc: 'Mach Heartbeat Message'
+    1:
+      id: 'start_of_session'
+      doc: 'Mach Start Of Session Message'
+    2:
+      id: 'end_of_session'
+      doc: 'Mach end of session Message'
+    3:
+      id: 'application_message'
+      doc: 'Mach Application Message'
+  message_type:
+    1:
+      id: 'simple_instrument_definition_message'
+      doc: 'Simple Instrument Definition'
+    17:
+      id: 'complex_instrument_definition_message'
+      doc: 'Complex Instrument Definition'
+    2:
+      id: 'complex_instrument_definition_deprecated_message'
+      doc: 'Complex Instrument Definition (deprecated)'
+    3:
+      id: 'system_state_message'
+      doc: 'System State'
+    4:
+      id: 'instrument_trading_status_notification_message'
+      doc: 'Instrument Trading Status Notification'
+    15:
+      id: 'best_bid_and_offer_message'
+      doc: 'Top of Market (Best Bid and Offer) Message'
+    16:
+      id: 'last_sale_message'
+      doc: 'Last Sale (Trade) Message'
+    14:
+      id: 'trade_cancel_message'
+      doc: 'Trade Cancel Message'
+  underlying_asset_type:
+    0x45:
+      id: 'equity'
+      doc: 'Equity'
+    0x41:
+      id: 'commodity_agriculture'
+      doc: 'Commodity Agriculture'
+    0x46:
+      id: 'futures'
+      doc: 'Futures'
+    0x4e:
+      id: 'not_field'
+      doc: 'Not'
+  instrument_id_source:
+    0x45:
+      id: 'exchange'
+      doc: 'Exchange'
+  instrument_type:
+    0x46:
+      id: 'futures'
+      doc: 'Futures'
+    0x4f:
+      id: 'options_on'
+      doc: 'Options On'
+    0x54:
+      id: 'trade_at'
+      doc: 'Trade At'
+    0x42:
+      id: 'basis'
+      doc: 'Basis'
+  instrument_listing_status:
+    0x41:
+      id: 'active'
+      doc: 'Active'
+    0x49:
+      id: 'inactive'
+      doc: 'Inactive'
+  currency:
+    0x55:
+      id: 'usd'
+      doc: 'Usd'
+  settlement_currency:
+    0x55:
+      id: 'usd'
+      doc: 'Usd'
+  match_algorithm:
+    0x50:
+      id: 'price_time'
+      doc: 'Price Time'
+  settlement_price_type_calc_method:
+    0x41:
+      id: 'actual'
+      doc: 'Actual'
+    0x54:
+      id: 'theoretical'
+      doc: 'Theoretical'
+  trading_collar_variation_type:
+    0x44:
+      id: 'product'
+      doc: 'Product'
+    0x50:
+      id: 'product_x50'
+      doc: 'Product'
+    0x4e:
+      id: 'not_field'
+      doc: 'Not'
+  option_strike_currency:
+    0x55:
+      id: 'us_dollar'
+      doc: 'Us Dollar'
+    0x4e:
+      id: 'na_when'
+      doc: 'Na When'
+  option_type:
+    0x43:
+      id: 'call'
+      doc: 'Call'
+    0x50:
+      id: 'put'
+      doc: 'Put'
+    0x4e:
+      id: 'na_when'
+      doc: 'Na When'
+  option_expiration_type:
+    0x41:
+      id: 'american_style'
+      doc: 'American Style'
+    0x45:
+      id: 'european_style'
+      doc: 'European Style'
+    0x4e:
+      id: 'na_when'
+      doc: 'Na When'
+  spread_type:
+    0x53:
+      id: 'standard'
+      doc: 'Standard'
+    0x45:
+      id: 'equity'
+      doc: 'Equity'
+    0x42:
+      id: 'butterfly'
+      doc: 'Butterfly'
+    0x43:
+      id: 'cross'
+      doc: 'Cross'
+  listing_status:
+    0x41:
+      id: 'active'
+      doc: 'Active'
+    0x49:
+      id: 'inactive'
+      doc: 'Inactive'
+  system_status:
+    0x53:
+      id: 'start_of'
+      doc: 'Start Of'
+    0x43:
+      id: 'end_of'
+      doc: 'End Of'
+    0x31:
+      id: 'start_of_x31'
+      doc: 'Start Of'
+    0x32:
+      id: 'end_of_x32'
+      doc: 'End Of'
+  trade_type:
+    0x4f:
+      id: 'outright'
+      doc: 'Outright'
+    0x53:
+      id: 'strategy'
+      doc: 'Strategy'
+    0x4d:
+      id: 'strategy_x4d'
+      doc: 'Strategy'
+    0x43:
+      id: 'complex'
+      doc: 'Complex'
+    0x4c:
+      id: 'complex_x4c'
+      doc: 'Complex'
+    0x41:
+      id: 'adjusted_late'
+      doc: 'Adjusted Late'
+

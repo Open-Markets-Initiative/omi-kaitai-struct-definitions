@@ -141,13 +141,13 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: quote_event_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: quote_event_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: reserved_size
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -213,10 +213,10 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_cxl_size
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_cxl_size
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -307,7 +307,7 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -541,10 +541,10 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_id_sfx
         type: u4_nullable
@@ -602,10 +602,10 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_id_sfx
         type: u4_nullable
@@ -641,10 +641,10 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_id_sfx
         type: u4_nullable
@@ -683,40 +683,40 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_low_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_high_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: volume_discovery_price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_abs
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_pct
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -989,16 +989,16 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: last_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: potential_exec_volume
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: imbalance_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -1145,10 +1145,10 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: bid_cxl_size
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: offer_cxl_size
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_entry_reject_reason
         type: u4_nullable
@@ -1180,19 +1180,19 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_id_sfx
         type: u4_nullable
@@ -1236,19 +1236,19 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: trd_reg_ts_time_priority
         type: nanosecond_timestamp_nullable
@@ -1405,16 +1405,16 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -1460,10 +1460,10 @@ types:
   fills_grp_comp:
     seq:
       - id: fill_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: fill_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: fill_match_id
         type: u4_nullable
@@ -1504,40 +1504,40 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_low_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_high_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: volume_discovery_price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_abs
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: peg_offset_value_pct
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -1665,16 +1665,16 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cxl_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: display_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -1862,10 +1862,10 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: quote_event_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: quote_event_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: quote_msg_id
         type: u8_nullable
@@ -1903,7 +1903,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: order_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -2065,10 +2065,10 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: alloc_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
@@ -2077,7 +2077,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: settl_curr_fx_rate
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -2178,7 +2178,7 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
@@ -2187,7 +2187,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: settl_curr_fx_rate
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: market_segment_id
         type: s4_nullable
@@ -2240,7 +2240,7 @@ types:
   side_alloc_grp_bc_comp:
     seq:
       - id: alloc_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: individual_alloc_id
         type: u4_nullable
@@ -2359,28 +2359,28 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: settl_curr_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: side_gross_trade_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: settl_curr_fx_rate
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: accrued_interes_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: coupon_rate
-        type: decimal_u8_7_nullable
+        type: decimal_s8_7_nullable
         doc: 'Implied decimal with scale 1e-7. Nullable, No Value = 0x8000000000000000'
       - id: root_party_id_client_id
         type: u8_nullable
@@ -2619,19 +2619,19 @@ types:
         type: s8_nullable
         doc: 'Nullable, No Value = 0x8000000000000000'
       - id: price
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: last_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: settl_curr_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: settl_curr_fx_rate
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: transact_time
         type: nanosecond_timestamp_nullable
@@ -2643,19 +2643,19 @@ types:
         type: u8_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: leaves_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: cum_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: side_gross_trade_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: accrued_interes_amt
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: coupon_rate
-        type: decimal_u8_7_nullable
+        type: decimal_s8_7_nullable
         doc: 'Implied decimal with scale 1e-7. Nullable, No Value = 0x8000000000000000'
       - id: root_party_id_client_id
         type: u8_nullable
@@ -2905,10 +2905,10 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: stop_px
-        type: decimal_u8_8_nullable
+        type: decimal_s8_8_nullable
         doc: 'Implied decimal with scale 1e-8. Nullable, No Value = 0x8000000000000000'
       - id: order_qty
-        type: decimal_u8_4_nullable
+        type: decimal_s8_4_nullable
         doc: 'Implied decimal with scale 1e-4. Nullable, No Value = 0x8000000000000000'
       - id: order_id_sfx
         type: u4_nullable
@@ -3008,34 +3008,34 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
-  decimal_u8_8:
+  decimal_s8_8:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 100000000.0
-  decimal_u8_8_nullable:
+  decimal_s8_8_nullable:
     seq:
       - id: value
-        type: decimal_u8_8
+        type: decimal_s8_8
     instances:
       is_null:
-        value: value.mantissa == 9223372036854775808
-  decimal_u8_4:
+        value: value.mantissa == -9223372036854775808
+  decimal_s8_4:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 10000.0
-  decimal_u8_4_nullable:
+  decimal_s8_4_nullable:
     seq:
       - id: value
-        type: decimal_u8_4
+        type: decimal_s8_4
     instances:
       is_null:
-        value: value.mantissa == 9223372036854775808
+        value: value.mantissa == -9223372036854775808
   s4_nullable:
     seq:
       - id: value
@@ -3043,20 +3043,20 @@ types:
     instances:
       is_null:
         value: value == -2147483648
-  decimal_u8_7:
+  decimal_s8_7:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 10000000.0
-  decimal_u8_7_nullable:
+  decimal_s8_7_nullable:
     seq:
       - id: value
-        type: decimal_u8_7
+        type: decimal_s8_7
     instances:
       is_null:
-        value: value.mantissa == 9223372036854775808
+        value: value.mantissa == -9223372036854775808
 
 enums:
   template_id:

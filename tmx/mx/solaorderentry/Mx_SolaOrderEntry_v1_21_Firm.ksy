@@ -206,7 +206,7 @@ types:
       - id: minimum_volume
         type: str_8_nullable
         doc: 'Number of contracts or shares. Nullable, No Value = 0'
-      - id: filler_must_be_blank_x_2
+      - id: filler_2
         size: 2
         doc: 'Stated inline as String (2)'
       - id: calculation_time_interval
@@ -227,7 +227,7 @@ types:
       - id: anti_wash_id
         type: str_8_nullable
         doc: 'Anti-Wash ID for the Wash Trade Protection. Note: This field cannot be empty if the AntiWashInstruction is set to a value. Nullable, No Value = 0'
-      - id: filler_x_20
+      - id: filler_20
         size: 20
         doc: 'Stated inline as String (20). Nullable, No Value = 0'
   incoming_messages_header:
@@ -267,7 +267,7 @@ types:
         size: 1
         encoding: ASCII
         doc: '• H = Hedger • S = Speculator'
-      - id: filler_must_be_blank_x_5
+      - id: filler_5
         size: 5
         doc: 'Stated inline as String (5)'
   owner_data:
@@ -430,7 +430,7 @@ types:
       - id: short_exposure_limit
         type: str_10_nullable
         doc: 'Price format with format indicator and price mantissa: Format indicator (1) • Alpha: the price is negative (‘A’ means negative value with no decimal, ‘B’ means negative value with 1 decimal, ‘C’ means negative value with 2 decimals, etc.) • Numeric: the price is positive (‘0’ means positive value with no decimal, ‘1’ means positive value with one decimal, ‘2’ means positive value with 2 decimals, etc.) • Set to spaces: the price is not significant Price mantissa (9) • Represents the price value including the number of decimals defined in the format indicator Examples: • Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 • Format indicator = A; Price mantissa = 3567838; Price = -3567838 • Format indicator = ; Price mantissa = 3567838; Price = not significant. Nullable, No Value = 0'
-      - id: filler_must_be_blank_x_2
+      - id: filler_2
         size: 2
         doc: 'Stated inline as String (2)'
   set_global_risk_limits:
@@ -557,7 +557,7 @@ types:
       - id: executing_participant
         type: str_4_nullable
         doc: 'Identifies a firm referenced in the system. Nullable, No Value = 0'
-      - id: filler_x_1
+      - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: clearing_data
@@ -575,7 +575,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Anti-Wash instruction to indicate how to handle the trade situation: B = CancelBothInboundOrderAndOpposite RestingOrder I = CancelInboundOrder O = CancelOppositeRestingOrder Note: This field is not provided if the AntiWashId field is empty. Note: This field must be provided if the AntiWashId field is not empty'
-      - id: filler_x_20
+      - id: filler_20
         size: 20
         doc: 'Stated inline as String (20). Nullable, No Value = 0'
   order_modification:
@@ -638,10 +638,10 @@ types:
       - id: gtd_date
         type: str_8_nullable
         doc: 'Year, Month and Day (YYYYMMDD). Nullable, No Value = 0'
-      - id: filler_x_4
+      - id: filler_4
         size: 4
         doc: 'Stated inline as String (4)'
-      - id: filler_x_1
+      - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: modified_order_id
@@ -664,7 +664,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Anti-Wash instruction to indicate how to handle the trade situation: B = CancelBothInboundOrderAndOpposite RestingOrder I = CancelInboundOrder O = CancelOppositeRestingOrder Note: This field is not provided if the AntiWashId field is empty. Note: This field must be provided if the AntiWashId field is not empty'
-      - id: filler_x_20
+      - id: filler_20
         size: 20
         doc: 'Stated inline as String (20). Nullable, No Value = 0'
   new_strategy_instrument:
@@ -699,7 +699,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies an order/quote side: B = Buy S = Sell'
-      - id: filler_x_1
+      - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: leg_quantity_ratio
@@ -718,7 +718,7 @@ types:
       - id: instrument
         type: str_4_nullable
         doc: 'Instrument identification within a group. Nullable, No Value = 0'
-      - id: filler_x_1
+      - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
       - id: quantity
@@ -739,10 +739,7 @@ types:
       - id: selling_owner_data
         type: selling_owner_data
         doc: 'Owner Data for the selling side, which OX: Cross Entry carries alongside the other side'
-      - id: filler_x_20
-        size: 20
-        doc: 'Stated inline as String (20). Nullable, No Value = 0'
-      - id: filler_x_20_2
+      - id: filler_20
         size: 20
         doc: 'Stated inline as String (20). Nullable, No Value = 0'
   buying_clearing_data:
@@ -767,7 +764,7 @@ types:
         size: 1
         encoding: ASCII
         doc: '• H = Hedger • S = Speculator'
-      - id: filler_must_be_blank_x_5
+      - id: filler_5
         size: 5
         doc: 'Stated inline as String (5)'
   selling_clearing_data:
@@ -792,7 +789,7 @@ types:
         size: 1
         encoding: ASCII
         doc: '• H = Hedger • S = Speculator'
-      - id: filler_must_be_blank_x_5
+      - id: filler_5
         size: 5
         doc: 'Stated inline as String (5)'
   buying_owner_data:
