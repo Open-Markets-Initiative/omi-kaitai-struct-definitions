@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -54,16 +54,16 @@ types:
     seq:
       - id: length
         type: u2
-        doc: 'Length of entire block of messages. Includes this header and Hdr Count messages to follow'
-      - id: count
-        type: u2
-        doc: 'Count of messages requested'
+        doc: 'Length of entire block of messages. Includes this header and Message Count messages to follow'
+      - id: message_count
+        type: u1
+        doc: 'Number of messages to follow this header'
       - id: unit
         type: u1
-        doc: 'Unit that the gap is requested for'
+        doc: 'Unit that applies to messages included in this header'
       - id: sequence
         type: u4
-        doc: 'Sequence of first message, (lowest sequence in range)'
+        doc: 'Sequence Number of the first message to follow this header'
   message:
     seq:
       - id: message_header
@@ -120,10 +120,10 @@ types:
         doc: 'Accepted or reason for reject'
   gap_request_message:
     seq:
-      - id: unit
+      - id: gap_unit
         type: u1
         doc: 'Unit that the gap is requested for'
-      - id: sequence
+      - id: gap_sequence
         type: u4
         doc: 'Sequence of first message, (lowest sequence in range)'
       - id: count
@@ -131,10 +131,10 @@ types:
         doc: 'Count of messages requested'
   gap_response_message:
     seq:
-      - id: unit
+      - id: gap_unit
         type: u1
         doc: 'Unit that the gap is requested for'
-      - id: sequence
+      - id: gap_sequence
         type: u4
         doc: 'Sequence of first message, (lowest sequence in range)'
       - id: count
@@ -164,8 +164,8 @@ enums:
       id: 'login_accepted'
       doc: 'Login Accepted'
     0x4e:
-      id: 'not_authorized_invalid_usernamepassword'
-      doc: 'Not Authorized Invalid Usernamepassword'
+      id: 'not_authorized_invalid_username_password'
+      doc: 'Not Authorized Invalid Username Password'
     0x42:
       id: 'session_in_use'
       doc: 'Session In Use'

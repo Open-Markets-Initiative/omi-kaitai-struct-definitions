@@ -1845,7 +1845,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: 1
+        size-eos: true
         encoding: ASCII
         doc: 'Free-form human-readable text'
   login_accepted_packet:

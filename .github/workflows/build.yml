@@ -71,8 +71,14 @@ jobs:
       - name: Run Cboe BzxEquities BinaryOrderEntry Boe v2.3 Definition Tests
         run: python3 .github/tests/test_cboe_bzxequities_binaryorderentry_boe_v2_3.py
 
+      - name: Run Cboe BzxEquities MulticastDepthOfBook Pitch v2.20.4 Definition Tests
+        run: python3 .github/tests/test_cboe_bzxequities_multicastdepthofbook_pitch_v2_20_4.py
+
       - name: Run Cboe BzxEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
         run: python3 .github/tests/test_cboe_bzxequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe BzxEquities MulticastDepthOfBook Spin v2.20.4 Definition Tests
+        run: python3 .github/tests/test_cboe_bzxequities_multicastdepthofbook_spin_v2_20_4.py
 
       - name: Run Cboe BzxOptions BinaryOrderEntry Boe v2.10 Definition Tests
         run: python3 .github/tests/test_cboe_bzxoptions_binaryorderentry_boe_v2_10.py
@@ -106,6 +112,9 @@ jobs:
 
       - name: Run Cboe EdgxEquities MulticastDepthOfBook Pitch v2.41.29 Definition Tests
         run: python3 .github/tests/test_cboe_edgxequities_multicastdepthofbook_pitch_v2_41_29.py
+
+      - name: Run Cboe GapRequestProxy Pitch v1 Definition Tests
+        run: python3 .github/tests/test_cboe_gaprequestproxy_pitch_v1.py
 
       - name: Run Cboe TitaniumConsolidated Indices Cgif v1.4.13 Definition Tests
         run: python3 .github/tests/test_cboe_titaniumconsolidated_indices_cgif_v1_4_13.py

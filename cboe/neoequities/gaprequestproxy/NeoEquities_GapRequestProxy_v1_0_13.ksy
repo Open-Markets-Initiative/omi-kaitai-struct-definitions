@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -54,16 +54,16 @@ types:
     seq:
       - id: length
         type: u2
-        doc: 'Length of entire block of messages. Includes this header and Hdr Count messages to follow'
-      - id: count
-        type: u2
-        doc: 'Count of messages requested'
+        doc: 'Length of entire block of messages. Includes this header and Message Count messages to follow'
+      - id: message_count
+        type: u1
+        doc: 'Number of messages to follow this header'
       - id: unit
         type: u1
-        doc: 'Unit that the gap is requested for'
+        doc: 'Unit that applies to messages included in this header'
       - id: sequence
         type: u4
-        doc: 'Sequence of first message (lowest sequence in range)'
+        doc: 'Sequence Number of the first message to follow this header'
   message:
     seq:
       - id: message_header
@@ -114,16 +114,16 @@ types:
         doc: 'Password supplied by Cboe Canada'
   login_response_message:
     seq:
-      - id: status
+      - id: login_response_status
         type: u1
-        enum: status
+        enum: login_response_status
         doc: 'Accepted or reason for reject'
   gap_request_message:
     seq:
-      - id: unit
+      - id: gap_unit
         type: u1
         doc: 'Unit that the gap is requested for'
-      - id: sequence
+      - id: gap_sequence
         type: u4
         doc: 'Sequence of first message (lowest sequence in range)'
       - id: count
@@ -131,19 +131,19 @@ types:
         doc: 'Count of messages requested'
   gap_response_message:
     seq:
-      - id: unit
+      - id: gap_unit
         type: u1
         doc: 'Unit that the gap is requested for'
-      - id: sequence
+      - id: gap_sequence
         type: u4
         doc: 'Sequence of first message (lowest sequence in range)'
       - id: count
         type: u2
         doc: 'Count of messages requested'
-      - id: status
+      - id: gap_response_status
         type: u1
-        enum: status
-        doc: 'Accepted or reason for reject'
+        enum: gap_response_status
+        doc: 'Accepted or reason for reject. All non-A status codes should be interpreted as a reject'
 
 enums:
   message_type:
@@ -159,10 +159,10 @@ enums:
     0x04:
       id: 'gap_response_message'
       doc: 'Sent by the GRP in response to a Gap Request message. The Unit and Sequence fields will match the values supplied in the Gap Request message. A Gap Response message, with a Status of Accepted or reason for failure, will be sent for each Gap Request message received by the GRP.'
-  status:
+  login_response_status:
     0x41:
-      id: 'accepted'
-      doc: 'Accepted'
+      id: 'login_accepted'
+      doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized_invalid_username_password'
       doc: 'Not Authorized Invalid Username Password'
@@ -172,6 +172,10 @@ enums:
     0x53:
       id: 'invalid_session'
       doc: 'Invalid Session'
+  gap_response_status:
+    0x41:
+      id: 'accepted'
+      doc: 'Accepted'
     0x4f:
       id: 'out_of_range_ahead_of_sequence_or_too_far_behind'
       doc: 'Out Of Range Ahead Of Sequence Or Too Far Behind'
@@ -181,6 +185,9 @@ enums:
     0x4d:
       id: 'minute_gap_request_allocation_exhausted'
       doc: 'Minute Gap Request Allocation Exhausted'
+    0x53:
+      id: 'second_gap_request_allocation_exhausted'
+      doc: 'Second Gap Request Allocation Exhausted'
     0x43:
       id: 'count_request_limit_for_one_gap_request_exceeded'
       doc: 'Count Request Limit For One Gap Request Exceeded'

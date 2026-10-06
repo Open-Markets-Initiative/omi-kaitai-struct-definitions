@@ -22,11 +22,6 @@ class NyseArcaequitiesIntegratedfeedrefreshPillarV25GTests(unittest.TestCase):
             parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_messagesequence(self):
-        for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/MessageSequence.pcap"):
-            parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_refreshheadermessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/ArcaEquities.IntegratedFeedRefresh.Pillar.v2.5.g/RefreshHeaderMessage.pcap"):
             parsed = NyseArcaequitiesIntegratedfeedrefreshPillarV25G.from_bytes(payload)

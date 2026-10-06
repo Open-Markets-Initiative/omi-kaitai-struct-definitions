@@ -2724,9 +2724,12 @@ types:
         doc: 'Whether the give up record is deleted'
   order_cancellation_confirmation_message:
     seq:
-      - id: order_entry_body
-        type: order_entry_body
-        doc: 'Order Entry Body'
+      - id: cancellation_confirmation_body
+        type:
+          switch-on: _parent.message_header.message_length
+          cases:
+            316: order_entry_body
+            480: spread_order_body
   dos_second_timestamp:
     seq:
       - id: time

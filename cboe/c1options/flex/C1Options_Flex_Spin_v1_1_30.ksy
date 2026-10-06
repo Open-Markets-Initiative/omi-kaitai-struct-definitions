@@ -43,9 +43,9 @@ seq:
     type: packet_header_struct
   - id: messages
     repeat: expr
-    repeat-expr: packet_header.count
+    repeat-expr: packet_header.message_count
     type:
-      switch-on: packet_header.count
+      switch-on: packet_header.message_count
       cases:
         _: message
 
@@ -54,10 +54,10 @@ types:
     seq:
       - id: length
         type: u2
-        doc: 'Length of entire block of messages. Includes this header and Hdr Count messages to follow'
-      - id: count
+        doc: 'Length of entire block of messages. Includes this header and Message Count messages to follow'
+      - id: message_count
         type: u1
-        doc: 'Number of messages to follow this header'
+        doc: 'Number of messages required to define the complex instrument'
       - id: unit
         type: u1
         doc: 'Unit that applies to messages included in this header'
