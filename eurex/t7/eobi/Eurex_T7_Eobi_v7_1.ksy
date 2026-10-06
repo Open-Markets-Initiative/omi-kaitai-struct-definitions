@@ -54,7 +54,7 @@ types:
         type: eobi_header
         doc: 'EOBI PacketHeader MessageHeaderComp (BodyLen + TemplateID + MsgSeqNum) — first 8 bytes of every Eurex T7 EOBI packet'
       - id: appl_seq_num
-        type: u8_nullable
+        type: u4_nullable
         doc: 'Application sequence number per Market Segment / Partition. Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
         type: s4_nullable
@@ -68,9 +68,8 @@ types:
       - id: appl_seq_reset_indicator
         type: u1_nullable
         doc: 'Indicates whether Application Sequence Number was reset for this Market Segment. Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: pad5
+        size: 5
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -148,9 +147,8 @@ types:
       - id: num_instrmt_leg_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: instrmt_leg_grp_comp
         type: instrmt_leg_grp_comp
         repeat: expr
@@ -305,9 +303,8 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
@@ -514,9 +511,8 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trd_match_id
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
@@ -704,13 +700,6 @@ types:
     seq:
       - id: value
         type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
     instances:
       is_null:
         value: value == 4294967295

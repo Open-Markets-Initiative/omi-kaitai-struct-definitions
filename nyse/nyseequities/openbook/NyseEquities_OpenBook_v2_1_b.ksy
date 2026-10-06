@@ -62,29 +62,29 @@ types:
     seq:
       - id: packet_size
         type: u2
-        doc: 'The size of the packet in bytes, including this 16 byte packet header'
+        doc: 'The size of the packet in bytes, excluding these two bytes'
       - id: message_type
         type: u2
         enum: message_type
-        doc: 'The type of this message'
+        doc: 'This field identifies the type of message'
       - id: sequence_number
         type: u4
-        doc: 'The message sequence number of the first message in this packet'
+        doc: 'The packet sequence number. Incremented by 1 for each packet published in this channel except heartbeat packets'
       - id: timestamp
         type: u4
-        doc: 'The time when this packet was published to the multicast channel, in seconds since Jan 1, 1970 00:00:00 UTC'
+        doc: 'The time this packet was published, in milliseconds since midnight'
       - id: product_id
         type: u1
-        doc: 'The nanosecond offset from the Send Time'
+        doc: 'Product identifier: 12 NYSE OpenBook Ultra, 62 NYSE American OpenBook Ultra'
       - id: retransmission_flag
         type: u1
-        doc: 'A flag that indicates whether this is an original, retransmitted, or ‘replayed’ message'
+        doc: 'Indicates whether this packet contains original, retransmitted, or refresh message'
       - id: message_count
         type: u1
-        doc: 'The number of messages in this packet'
+        doc: 'The number of messages following this header in the packet'
       - id: link_flag
         type: u1
-        doc: 'A flag that indicates whether this is an original, retransmitted, or ‘replayed’ message'
+        doc: 'The sequence number of this packet in a refresh sequence. If RetransFlag is not 5 or 6, this field is set to 0'
   sequence_number_reset_message:
     seq:
       - id: next_sequence_number

@@ -54,7 +54,7 @@ types:
         type: eobi_header
         doc: 'EOBI PacketHeader MessageHeaderComp (BodyLen + TemplateID + MsgSeqNum) — first 8 bytes of every Eurex T7 EOBI packet'
       - id: appl_seq_num
-        type: u8_nullable
+        type: u4_nullable
         doc: 'Application sequence number per Market Segment / Partition. Nullable, No Value = 0xFFFFFFFF'
       - id: market_segment_id
         type: s4_nullable
@@ -68,9 +68,11 @@ types:
       - id: appl_seq_reset_indicator
         type: u1_nullable
         doc: 'Indicates whether Application Sequence Number was reset for this Market Segment. Nullable, No Value = 0xFF'
-      - id: pad_1
-        size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
+      - id: dscp
+        type: u1_nullable
+        doc: 'Copy of DSCP from IP protocol header. Nullable, No Value = 0xFF'
+      - id: pad4
+        size: 4
       - id: transact_time
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
@@ -248,9 +250,8 @@ types:
       - id: security_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: quantity_scaling_factor
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -361,9 +362,8 @@ types:
       - id: aggressor_side
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -912,9 +912,8 @@ types:
       - id: algorithmic_trade_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
-      - id: pad_1
+      - id: pad1
         size: 1
-        doc: 'Padding to 8-byte alignment before TransactTime'
       - id: trade_condition
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
@@ -977,13 +976,6 @@ types:
     seq:
       - id: value
         type: u4
-    instances:
-      is_null:
-        value: value == 4294967295
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
     instances:
       is_null:
         value: value == 4294967295

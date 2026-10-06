@@ -99,14 +99,12 @@ types:
         doc: 'Length in bytes of the complete Snapshot Response including the Snapshot Start message, all Snapshot Data messages, and the Snapshot End message'
   snapshot_data_message:
     seq:
-      - id: iex_tp_header
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'IexTp header for the wrapped Deep Plus feed message, see the Iex Transport specification'
+      - id: iextp_header
+        type: iextp_header
+        doc: 'IexTp header of the wrapped feed message'
       - id: iex_tp_message_block_length
         type: u2
-        doc: 'Length of the IexTp message block, see the Iex Transport specification'
+        doc: 'Length in bytes of the IexTp message block that follows this field: the IexTp Message Length field and the message'
       - id: iex_tp_message_length
         type: u2
         doc: 'Length of the wrapped Deep Plus message in bytes not including this field'
@@ -115,6 +113,7 @@ types:
         enum: iex_tp_message_type
         doc: 'Code identifying the wrapped Deep Plus message type'
       - id: iex_tp_message_data
+        size: iex_tp_message_length - 1
         type:
           switch-on: iex_tp_message_type
           cases:
@@ -132,6 +131,38 @@ types:
             'iex_tp_message_type::trade_message': trade_message
             'iex_tp_message_type::trade_break_message': trade_break_message
             'iex_tp_message_type::clear_book_message': clear_book_message
+  iextp_header:
+    seq:
+      - id: version
+        type: u1
+        doc: 'Version of transport specification'
+      - id: reserved
+        size: 1
+        doc: 'Reserved byte'
+      - id: message_protocol_id
+        type: u2
+        doc: 'Unique identifier of the higher layer protocol'
+      - id: channel_id
+        type: u4
+        doc: 'Channel identifier from the Deep Plus feed IexTp header'
+      - id: session_id
+        type: u4
+        doc: 'Session identifier from the Deep Plus feed IexTp header'
+      - id: payload_length
+        type: u2
+        doc: 'Byte length of the payload'
+      - id: message_count
+        type: u2
+        doc: 'Number of messages in the payload'
+      - id: stream_offset
+        type: u8
+        doc: 'Byte offset of the data stream'
+      - id: first_message_sequence_number
+        type: u8
+        doc: 'Sequence of the first message in the segment'
+      - id: send_time
+        type: nanosecond_timestamp
+        doc: 'Send time of segment. Nanoseconds since Unix epoch'
   system_event_message:
     seq:
       - id: system_event

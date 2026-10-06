@@ -1211,6 +1211,9 @@ enums:
     0x53:
       id: 'sell'
       doc: 'Sell'
+    0x20:
+      id: 'not_defined'
+      doc: 'Side Will Be Space Filled For The Legs Not Defined'
   session_state:
     0x50:
       id: 'pre_open'

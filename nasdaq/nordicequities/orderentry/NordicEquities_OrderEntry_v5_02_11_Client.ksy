@@ -73,7 +73,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: 1
+        size: _parent.client_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free form human readable text'
   login_request_packet:

@@ -13,6 +13,7 @@
 | [Snapshot][Aquis.AquisEquities.Snapshot] | [Amd][Omi.Encoding.Amd] | [4.1][Aquis.AquisEquities.Snapshot.Amd.v4.1.Definition] | 1/1/2026 | 208 | [Active][Omi.Glossary.Deployment.Active] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.Snapshot.Amd.v4.1.Url] - [pdf][Aquis.AquisEquities.Snapshot.Amd.v4.1.Pdf] |
 | [TcpHeader][Aquis.AquisEquities.TcpHeader] | [Amd][Omi.Encoding.Amd] | [1.0][Aquis.AquisEquities.TcpHeader.Amd.v1.0.Definition] | 8/1/2025 | 66 | [Header][Omi.Glossary.Deployment.Header] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.TcpHeader.Amd.v1.0.Url] |
 | [TcpHeader][Aquis.AquisEquities.TcpHeader] | [Atp][Omi.Encoding.Atp] | [1.0][Aquis.AquisEquities.TcpHeader.Atp.v1.0.Definition] | 8/1/2025 | 66 | [Header][Omi.Glossary.Deployment.Header] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.TcpHeader.Atp.v1.0.Url] |
+| [TcpHeader][Aquis.AquisEquities.TcpHeader] | [Atp][Omi.Encoding.Atp] | [2.0][Aquis.AquisEquities.TcpHeader.Atp.v2.0.Definition] | 8/1/2025 | 66 | [Header][Omi.Glossary.Deployment.Header] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.TcpHeader.Atp.v2.0.Url] |
 | [TradingProtocol][Aquis.AquisEquities.TradingProtocol] | [Atp][Omi.Encoding.Atp] | [4.0][Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Definition] | 8/1/2025 | 1124 | [Active][Omi.Glossary.Deployment.Active] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Url] - [pdf][Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Pdf] |
 | [UdpHeader][Aquis.AquisEquities.UdpHeader] | [Amd][Omi.Encoding.Amd] | [1.0][Aquis.AquisEquities.UdpHeader.Amd.v1.0.Definition] | 8/1/2025 | 75 | [Header][Omi.Glossary.Deployment.Header] | [Beta][Omi.Glossary.Testing.Beta] | [url][Aquis.AquisEquities.UdpHeader.Amd.v1.0.Url] |
 
@@ -67,6 +68,8 @@
 [Aquis.AquisEquities.TcpHeader.Amd.v1.0.Url]: https://www.aquis.eu/technologies "Aquis Exchange 1.0 Url"
 [Aquis.AquisEquities.TcpHeader.Atp.v1.0.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/aquis/tcpheader/AquisEquities_TcpHeader_Atp_v1_0.ksy "Aquis TcpHeader Atp v1.0 Kaitai Struct Definition"
 [Aquis.AquisEquities.TcpHeader.Atp.v1.0.Url]: https://www.aquis.eu/technologies "Aquis Exchange 1.0 Url"
+[Aquis.AquisEquities.TcpHeader.Atp.v2.0.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/aquis/tcpheader/AquisEquities_TcpHeader_v2_0.ksy "Aquis TcpHeader Atp v2.0 Kaitai Struct Definition"
+[Aquis.AquisEquities.TcpHeader.Atp.v2.0.Url]: https://www.aquis.eu/technologies "Aquis Exchange 2.0 Url"
 [Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/aquis/tradingprotocol/AquisEquities_TradingProtocol_v4_0.ksy "Aquis TradingProtocol Atp v4.0 Kaitai Struct Definition"
 [Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Url]: https://www.aquis.eu/markets/documents "Aquis Exchange 4.0 Url"
 [Aquis.AquisEquities.TradingProtocol.Atp.v4.0.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Aquis/Specifications/Atp/Aquis.AquisEquities.TradingProtocol.Atp.v4.0.pdf "Aquis Exchange 4.0 Pdf"

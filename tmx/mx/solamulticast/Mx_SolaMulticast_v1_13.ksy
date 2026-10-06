@@ -90,7 +90,7 @@ seq:
         '"GR"': group_status_message
         '"GS"': group_status_strategies_message
         '"KF"': future_deliverables_message
-        '"L:"': bulletins_message
+        '"L"': bulletins_message
         '"S"': end_of_sales_message
         '"TT"': tick_table_message
         '"U"': end_of_transmission_message
