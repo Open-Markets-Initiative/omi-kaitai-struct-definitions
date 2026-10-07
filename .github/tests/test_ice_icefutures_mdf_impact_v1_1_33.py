@@ -12,8 +12,8 @@ from ice_icefutures_mdf_impact_v1_1_33 import IceIcefuturesMdfImpactV1133
 
 class IceIcefuturesMdfImpactV1133Tests(unittest.TestCase):
 
-    def test_addormodifymessage(self):
-        for payload in payloads.of("omi-data-packets/Ice/IceFutures.Mdf.iMpact.v1.1.33/AddOrModifyMessage.pcap"):
+    def test_addormodifyordermessage(self):
+        for payload in payloads.of("omi-data-packets/Ice/IceFutures.Mdf.iMpact.v1.1.33/AddOrModifyOrderMessage.pcap"):
             parsed = IceIcefuturesMdfImpactV1133.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
@@ -47,8 +47,8 @@ class IceIcefuturesMdfImpactV1133Tests(unittest.TestCase):
             parsed = IceIcefuturesMdfImpactV1133.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_newoptionsstrategydefinintionmessage(self):
-        for payload in payloads.of("omi-data-packets/Ice/IceFutures.Mdf.iMpact.v1.1.33/NewOptionsStrategyDefinintionMessage.pcap"):
+    def test_newoptionsstrategydefinitionmessage(self):
+        for payload in payloads.of("omi-data-packets/Ice/IceFutures.Mdf.iMpact.v1.1.33/NewOptionsStrategyDefinitionMessage.pcap"):
             parsed = IceIcefuturesMdfImpactV1133.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

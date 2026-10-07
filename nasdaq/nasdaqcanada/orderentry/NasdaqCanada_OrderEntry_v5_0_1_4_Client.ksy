@@ -169,11 +169,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: enter_order_optional_field
         type: s1
         enum: enter_order_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: enter_order_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -249,11 +249,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: replace_order_request_optional_field
         type: s1
         enum: replace_order_request_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: replace_order_request_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -301,11 +301,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: cancel_order_request_optional_field
         type: s1
         enum: cancel_order_request_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: cancel_order_request_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -326,11 +326,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: account_query_request_optional_field
         type: s1
         enum: account_query_request_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: account_query_request_optional_value
         size: optional_field_length + 1 - 2
         type:

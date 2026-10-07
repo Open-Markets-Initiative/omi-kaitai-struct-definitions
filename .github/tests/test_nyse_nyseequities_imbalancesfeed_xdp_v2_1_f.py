@@ -17,8 +17,8 @@ class NyseNyseequitiesImbalancesfeedXdpV21FTests(unittest.TestCase):
             parsed = NyseNyseequitiesImbalancesfeedXdpV21F.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_sequenceresetmessage(self):
-        for payload in payloads.of("omi-data-packets/Nyse/NyseEquities.ImbalancesFeed.Xdp.v2.1.f/SequenceResetMessage.pcap"):
+    def test_sequencenumberresetmessage(self):
+        for payload in payloads.of("omi-data-packets/Nyse/NyseEquities.ImbalancesFeed.Xdp.v2.1.f/SequenceNumberResetMessage.pcap"):
             parsed = NyseNyseequitiesImbalancesfeedXdpV21F.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

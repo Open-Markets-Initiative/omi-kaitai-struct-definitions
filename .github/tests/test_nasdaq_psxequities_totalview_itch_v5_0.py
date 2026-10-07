@@ -63,7 +63,7 @@ class NasdaqPsxequitiesTotalviewItchV50Tests(unittest.TestCase):
             self.assertTrue(parsed._io.is_eof())
 
     def test_trademessagenoncross(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/PsxEquities.TotalView.Itch.v5.0/TradeMessageNon-cross.pcap"):
+        for payload in payloads.of("omi-data-packets/Nasdaq/PsxEquities.TotalView.Itch.v5.0/TradeMessageNonCross.pcap"):
             parsed = NasdaqPsxequitiesTotalviewItchV50.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

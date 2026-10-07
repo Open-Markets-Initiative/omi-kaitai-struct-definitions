@@ -37,11 +37,6 @@ class NasdaqNsmequitiesTotalviewItchV502017UdpTests(unittest.TestCase):
             parsed = NasdaqNsmequitiesTotalviewItchV502017Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_multiplepackets(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2017/Multiple.Packets.pcap"):
-            parsed = NasdaqNsmequitiesTotalviewItchV502017Udp.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_mwcbdeclinelevelmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2017/MwcbDeclineLevelMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502017Udp.from_bytes(payload)

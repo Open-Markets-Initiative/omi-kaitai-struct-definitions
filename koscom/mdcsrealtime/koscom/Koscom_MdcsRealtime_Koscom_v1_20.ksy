@@ -116,10 +116,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   k_otc_market_operation_message:
     seq:
@@ -151,10 +149,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   k_otc_market_action_message:
     seq:
@@ -197,10 +193,8 @@ types:
         encoding: ASCII
         doc: 'SPACE 2026.08.10 changed'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   k_otc_quote_message:
     seq:
@@ -315,10 +309,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   k_otc_order_filled_message:
     seq:
@@ -446,10 +438,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   otc_bond_traded_info_message:
     seq:
@@ -502,12 +492,12 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '999999V99(Unit:1 KRW, 1 USD, 1YEN, 1 EURO, 1CNY, 1GBP, 1HKD, 1AUD, 1SGD, miscellaneous)'
+        doc: '999999V99(Unit:1 KRW, 1 USD, 1YEN, 1 EURO, 1CNY, 1GBP, 1HKD, 1AUD, 1SGD, miscellaneous). Implied decimal with scale 1e-2'
       - id: pretax_yield
         type: str
         size: 8
         encoding: ASCII
-        doc: '999V99999'
+        doc: '999V99999. Implied decimal with scale 1e-5'
       - id: settlement_date_otc
         type: yyyymmdd_ascii_date
         doc: 'YYYYMMDD'
@@ -515,7 +505,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '999V99999, FRN'
+        doc: '999V99999, FRN. Implied decimal with scale 1e-5'
       - id: fx_category
         type: str
         size: 1
@@ -526,7 +516,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '9999V9999(KRW/USD, KRW/YEN, KRW/EURO, KRW/CNY, KRW/GBP, KRW/HKD, KRW/AUD, KRW/SGD, KRW/miscellaneous)'
+        doc: '9999V9999(KRW/USD, KRW/YEN, KRW/EURO, KRW/CNY, KRW/GBP, KRW/HKD, KRW/AUD, KRW/SGD, KRW/miscellaneous). Implied decimal with scale 1e-4'
       - id: trading_category
         type: str
         size: 1
@@ -534,10 +524,8 @@ types:
         pad-right: 0x20
         doc: '2:Brokerage 4:Direct Participant'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   otc_bond_trades_per_institution_message:
     seq:
@@ -566,7 +554,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '9999V9999'
+        doc: '9999V9999. Implied decimal with scale 1e-4'
       - id: ask_trading_volume_institution
         type: str
         size: 15
@@ -581,7 +569,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '9999V9999'
+        doc: '9999V9999. Implied decimal with scale 1e-4'
       - id: bid_trading_volume_institution
         type: str
         size: 15
@@ -599,10 +587,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   otc_bond_types_per_investor_message:
     seq:
@@ -630,12 +616,12 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: '99999V99999'
+        doc: '99999V99999. Implied decimal with scale 1e-5'
       - id: bid_yield_investor
         type: str
         size: 10
         encoding: ASCII
-        doc: '99999V99999'
+        doc: '99999V99999. Implied decimal with scale 1e-5'
       - id: ask_trading_volume_investor
         type: str
         size: 20
@@ -663,10 +649,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   k_bond_message:
     seq:
@@ -737,12 +721,12 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: '999V99999'
+        doc: '999V99999. Implied decimal with scale 1e-5'
       - id: price_quotes_trading
         type: str
         size: 8
         encoding: ASCII
-        doc: '99999V999 Unit: KRW'
+        doc: '99999V999 Unit: KRW. Implied decimal with scale 1e-3'
       - id: contract_category
         type: str
         size: 1
@@ -774,10 +758,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   mkf_index_message:
     seq:
@@ -800,7 +782,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: sign
         type: u1
         enum: sign
@@ -809,7 +791,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: trading_volume
         type: str
         size: 12
@@ -827,10 +809,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   mkf_index_jpy_message:
     seq:
@@ -853,7 +833,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: sign
         type: u1
         enum: sign
@@ -862,7 +842,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: trading_volume
         type: str
         size: 12
@@ -880,10 +860,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   wisefn_index_message:
     seq:
@@ -906,7 +884,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: sign
         type: u1
         enum: sign
@@ -915,7 +893,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: trading_volume
         type: str
         size: 12
@@ -933,10 +911,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   kis_index_message:
     seq:
@@ -959,7 +935,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Current MKF Index value (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: sign
         type: u1
         enum: sign
@@ -968,7 +944,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Magnitude of the index change against the previous day (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: trading_volume
         type: str
         size: 12
@@ -986,10 +962,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   mkf_bond_index_message:
     seq:
@@ -1015,50 +989,50 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: clean_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: market_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: call_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: zero_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: futures_basis_price
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: average_duration_nullable
         type: str_6_nullable
-        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Nullable, No Value = 0'
+        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Implied decimal with scale 1e-3. Nullable, No Value = 0'
       - id: average_convexity
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places)'
+        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places). Implied decimal with scale 1e-3'
       - id: average_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: average_forward_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
         type: str
         size: 1
@@ -1066,10 +1040,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   kis_bond_index_message:
     seq:
@@ -1095,52 +1067,52 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: clean_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: market_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: call_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: zero_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: futures_basis_price
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: average_duration
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average duration'
+        doc: 'Average duration. Implied decimal with scale 1e-3'
       - id: average_convexity
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places)'
+        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places). Implied decimal with scale 1e-3'
       - id: average_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: average_forward_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
         type: str
         size: 1
@@ -1148,10 +1120,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   kebi_bond_index_message:
     seq:
@@ -1177,50 +1147,50 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: clean_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: market_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: call_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: zero_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: futures_basis_price
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: average_duration_nullable
         type: str_6_nullable
-        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Nullable, No Value = 0'
+        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Implied decimal with scale 1e-3. Nullable, No Value = 0'
       - id: average_convexity
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places)'
+        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places). Implied decimal with scale 1e-3'
       - id: average_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: average_forward_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
         type: str
         size: 1
@@ -1228,10 +1198,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   kabi_bond_index_message:
     seq:
@@ -1257,48 +1225,48 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: clean_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: market_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: call_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: zero_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: futures_basis_price_nullable
         type: str_9_nullable
-        doc: 'Futures basis price. Not calculated; set to ''0''. Nullable, No Value = 0'
+        doc: 'Futures basis price. Not calculated; set to ''0''. Implied decimal with scale 1e-2. Nullable, No Value = 0'
       - id: average_duration
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average duration'
+        doc: 'Average duration. Implied decimal with scale 1e-3'
       - id: average_convexity
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places)'
+        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places). Implied decimal with scale 1e-3'
       - id: average_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: average_forward_ytm_nullable
         type: str_6_nullable
-        doc: 'Average forward YTM. Unit: percent. Not calculated; set to ''0''. Nullable, No Value = 0'
+        doc: 'Average forward YTM. Unit: percent. Not calculated; set to ''0''. Implied decimal with scale 1e-3. Nullable, No Value = 0'
       - id: filler_1
         type: str
         size: 1
@@ -1306,10 +1274,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   nicepni_bond_index_message:
     seq:
@@ -1335,50 +1301,50 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Total profit index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: clean_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Clean price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: market_price_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000'
+        doc: 'Market price index (10 ASCII digits with 4 implied decimal places). Standard 10,000. Implied decimal with scale 1e-4'
       - id: call_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Call re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: zero_re_investment_index
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places)'
+        doc: 'Zero re-investment index (10 ASCII digits with 4 implied decimal places). Implied decimal with scale 1e-4'
       - id: futures_basis_price
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places)'
+        doc: 'Futures basis price (9 ASCII digits with 2 implied decimal places). Implied decimal with scale 1e-2'
       - id: average_duration_nullable
         type: str_6_nullable
-        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Nullable, No Value = 0'
+        doc: 'Average duration (6 ASCII digits with 3 implied decimal places). Not calculated for MKF; set to ''0''. Implied decimal with scale 1e-3. Nullable, No Value = 0'
       - id: average_convexity
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places)'
+        doc: 'Average convexity (6 ASCII digits with 3 implied decimal places). Implied decimal with scale 1e-3'
       - id: average_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: average_forward_ytm
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent'
+        doc: 'Average forward yield to maturity (6 ASCII digits with 3 implied decimal places). Unit: percent. Implied decimal with scale 1e-3'
       - id: filler_1
         type: str
         size: 1
@@ -1386,10 +1352,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII space'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   domestic_etf_inav_message:
     seq:
@@ -1406,12 +1370,12 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: during_marketfinal_nav
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_28
         type: str
         size: 28
@@ -1419,10 +1383,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   domestic_etf_estimated_inav_message:
     seq:
@@ -1439,12 +1401,12 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: during_marketfinal_market_nav
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_8
         type: str
         size: 8
@@ -1452,10 +1414,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   global_etf_inav_message:
     seq:
@@ -1472,12 +1432,12 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: during_marketfinal_nav
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9(7)V9(2) Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: filler_28
         type: str
         size: 28
@@ -1485,10 +1445,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etf_tracking_error_message:
     seq:
@@ -1510,7 +1468,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2), Unit:%'
+        doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: disparate_ratio_sign
         type: str
         size: 1
@@ -1521,7 +1479,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2), Unit:%'
+        doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_7
         type: str
         size: 7
@@ -1529,10 +1487,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   global_etf_tracking_error_message:
     seq:
@@ -1554,7 +1510,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2), Unit:%'
+        doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: disparate_ratio_sign
         type: str
         size: 1
@@ -1565,7 +1521,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2), Unit:%'
+        doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_7
         type: str
         size: 7
@@ -1573,10 +1529,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etp_pdf_message:
     seq:
@@ -1648,10 +1602,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etp_operator_information_message:
     seq:
@@ -1697,10 +1649,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etp_transfer_agent_batch_message:
     seq:
@@ -1734,7 +1684,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2) Information Category 03S: Final NAV of the previous business day, Fund unit Information Category 05S: TU unit Information Category 01Q: Final NAV of the previous business day, Fund unit'
+        doc: '9(7)V9(2) Information Category 03S: Final NAV of the previous business day, Fund unit Information Category 05S: TU unit Information Category 01Q: Final NAV of the previous business day, Fund unit. Implied decimal with scale 1e-2'
       - id: etf_foreign_flow_net_asset_total_amount
         type: str
         size: 15
@@ -1750,7 +1700,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2)'
+        doc: '9(7)V9(2). Implied decimal with scale 1e-2'
       - id: etf_cu_quantity
         type: str
         size: 8
@@ -1760,37 +1710,37 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: previous_days_tax_base_nav_before_dividend
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: previous_days_cash_dividend_amount
         type: str
         size: 12
         encoding: ASCII
-        doc: '9999999999V99 Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9999999999V99 Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: tax_base_nav_as_of_the_day_before_the_previous_day
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit'
+        doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
       - id: previous_days_nontaxable_base_price_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99'
+        doc: '9999999V99. Implied decimal with scale 1e-2'
       - id: previous_days_nontaxable_base_price_before_dividend_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99'
+        doc: '9999999V99. Implied decimal with scale 1e-2'
       - id: day_before_previous_days_nontaxable_base_price_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
-        doc: '9999999V99'
+        doc: '9999999V99. Implied decimal with scale 1e-2'
       - id: number_of_freefloating_etf_shares
         type: str
         size: 16
@@ -1803,10 +1753,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etf_risk_appraisement_message:
     seq:
@@ -1861,7 +1809,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: '99999V99 Unit:%'
+        doc: '99999V99 Unit:%. Implied decimal with scale 1e-2'
       - id: risk_appraisal_amount
         type: str
         size: 15
@@ -1871,7 +1819,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: '99999V99 Unit:%'
+        doc: '99999V99 Unit:%. Implied decimal with scale 1e-2'
       - id: filler_38
         type: str
         size: 38
@@ -1879,10 +1827,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   synthetic_etf_constituents_message:
     seq:
@@ -1927,7 +1873,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Composition ratio within Indices 99999V99 Unit:%'
+        doc: 'Composition ratio within Indices 99999V99 Unit:%. Implied decimal with scale 1e-2'
       - id: filler_60
         type: str
         size: 60
@@ -1935,10 +1881,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   elw_investment_indicator_sensitivity_message:
     seq:
@@ -1955,7 +1899,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: '9(8)9V9(2)'
+        doc: '9(8)9V9(2). Implied decimal with scale 1e-2'
       - id: sensitivity_delta_sign
         type: str
         size: 1
@@ -1966,7 +1910,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: '9V9(6)'
+        doc: '9V9(6). Implied decimal with scale 1e-6'
       - id: sensitivity_gamma_sign
         type: str
         size: 1
@@ -1977,7 +1921,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: '9V9(6)'
+        doc: '9V9(6). Implied decimal with scale 1e-6'
       - id: sensitivity_theta_sign
         type: str
         size: 1
@@ -1988,7 +1932,7 @@ types:
         type: str
         size: 12
         encoding: ASCII
-        doc: '9(6)V9(6)'
+        doc: '9(6)V9(6). Implied decimal with scale 1e-6'
       - id: sensitivity_vega_sign
         type: str
         size: 1
@@ -1999,7 +1943,7 @@ types:
         type: str
         size: 12
         encoding: ASCII
-        doc: '9(6)V9(6)'
+        doc: '9(6)V9(6). Implied decimal with scale 1e-6'
       - id: sensitivity_rho_sign
         type: str
         size: 1
@@ -2010,17 +1954,17 @@ types:
         type: str
         size: 12
         encoding: ASCII
-        doc: '9(6)V9(6)'
+        doc: '9(6)V9(6). Implied decimal with scale 1e-6'
       - id: intrinsic_volatility
         type: str
         size: 5
         encoding: ASCII
-        doc: '9(3)V9(2) "0" for Early Closed ELW'
+        doc: '9(3)V9(2) "0" for Early Closed ELW. Implied decimal with scale 1e-2'
       - id: prerequisite_cost
         type: str
         size: 10
         encoding: ASCII
-        doc: '9(8)V9(2) "0" for Standard ELW'
+        doc: '9(8)V9(2) "0" for Standard ELW. Implied decimal with scale 1e-2'
       - id: filler_6
         type: str
         size: 6
@@ -2028,10 +1972,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etn_iiv_message:
     seq:
@@ -2048,12 +1990,12 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2)'
+        doc: '9(7)V9(2). Implied decimal with scale 1e-2'
       - id: during_market_hours_final_iv
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2)'
+        doc: '9(7)V9(2). Implied decimal with scale 1e-2'
       - id: filler_28
         type: str
         size: 28
@@ -2061,10 +2003,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   etn_disparate_ratio_message:
     seq:
@@ -2092,7 +2032,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: '9(7)V9(2), Unit:%'
+        doc: '9(7)V9(2), Unit:%. Implied decimal with scale 1e-2'
       - id: filler_56
         type: str
         size: 56
@@ -2100,10 +2040,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   loan_transaction_available_quantity_message:
     seq:
@@ -2131,10 +2069,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF). Workbook field name: 정보분배메세지종료키워드'
   str_12_nullable:
     seq:
@@ -2216,6 +2152,10 @@ enums:
     0x32:
       id: 'no_trade'
       doc: 'No Trade'
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
   type_field:
     0x31:
       id: 'trading_halt'

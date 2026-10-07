@@ -13,8 +13,8 @@ from cboe_cfefutures_binaryorderentry_boe3_v1_1_20_firm import CboeCfefuturesBin
 
 class CboeCfefuturesBinaryorderentryBoe3V1120ExchangeTests(unittest.TestCase):
 
-    def test_clientheartbeatmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ClientHeartbeatMessage.pcap"):
+    def test_clientheartbeat(self):
+        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ClientHeartbeat.pcap"):
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Firm.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
@@ -28,8 +28,8 @@ class CboeCfefuturesBinaryorderentryBoe3V1120ExchangeTests(unittest.TestCase):
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Exchange.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_serverheartbeatmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ServerHeartbeatMessage.pcap"):
+    def test_serverheartbeat(self):
+        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ServerHeartbeat.pcap"):
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Exchange.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

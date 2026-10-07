@@ -27,8 +27,8 @@ class TmxMxSolamulticastHsvfV114Tests(unittest.TestCase):
             parsed = TmxMxSolamulticastHsvfV114.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_strategyinstrumentkeymessage(self):
-        for payload in payloads.of("omi-data-packets/Tmx/Mx.SolaMulticast.Hsvf.v1.14/StrategyInstrumentKeyMessage.pcap"):
+    def test_strategyinstrumentkeysmessage(self):
+        for payload in payloads.of("omi-data-packets/Tmx/Mx.SolaMulticast.Hsvf.v1.14/StrategyInstrumentKeysMessage.pcap"):
             parsed = TmxMxSolamulticastHsvfV114.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

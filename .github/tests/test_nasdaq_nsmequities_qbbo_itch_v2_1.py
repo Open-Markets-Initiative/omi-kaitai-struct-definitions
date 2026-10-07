@@ -12,23 +12,23 @@ from nasdaq_nsmequities_qbbo_itch_v2_1 import NasdaqNsmequitiesQbboItchV21
 
 class NasdaqNsmequitiesQbboItchV21Tests(unittest.TestCase):
 
-    def test_bbobboquotationmessage(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/Bbo.BboQuotationMessage.pcap"):
+    def test_bboquotationmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/BboQuotationMessage.pcap"):
             parsed = NasdaqNsmequitiesQbboItchV21.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_bboregshorestrictionmessage(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/Bbo.RegShoRestrictionMessage.pcap"):
+    def test_regshorestrictionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/RegShoRestrictionMessage.pcap"):
             parsed = NasdaqNsmequitiesQbboItchV21.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_bbostocktradingactionmessage(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/Bbo.StockTradingActionMessage.pcap"):
+    def test_stocktradingactionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/StockTradingActionMessage.pcap"):
             parsed = NasdaqNsmequitiesQbboItchV21.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_bbosystemeventmessage(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/Bbo.SystemEventMessage.pcap"):
+    def test_systemeventmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.Qbbo.Itch.v2.1/SystemEventMessage.pcap"):
             parsed = NasdaqNsmequitiesQbboItchV21.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

@@ -13,8 +13,8 @@ from cme_globex_mdp3_sbe_v1_12_servertcp import CmeGlobexMdp3SbeV112Servertcp
 
 class CmeGlobexMdp3SbeV112UdpTests(unittest.TestCase):
 
-    def test_marketdatarequesttcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MarketDataRequest.Tcp.pcap"):
+    def test_marketdatarequest(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MarketDataRequest.pcap"):
             parsed = CmeGlobexMdp3SbeV112Clienttcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
@@ -28,38 +28,38 @@ class CmeGlobexMdp3SbeV112UdpTests(unittest.TestCase):
             parsed = CmeGlobexMdp3SbeV112Servertcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_mdinstrumentdefinitionfxtcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MdInstrumentDefinitionFx.Tcp.pcap"):
+    def test_mdinstrumentdefinitionfx(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/MdInstrumentDefinitionFx.pcap"):
             parsed = CmeGlobexMdp3SbeV112Servertcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_requestacktcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/RequestAck.Tcp.pcap"):
+    def test_requestack(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/RequestAck.pcap"):
             parsed = CmeGlobexMdp3SbeV112Servertcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_securitylistrequesttcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityListRequest.Tcp.pcap"):
+    def test_securitylistrequest(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityListRequest.pcap"):
             parsed = CmeGlobexMdp3SbeV112Clienttcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_securitystatustcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityStatus.Tcp.pcap"):
+    def test_securitystatus(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityStatus.pcap"):
             parsed = CmeGlobexMdp3SbeV112Servertcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_securitystatusrequesttcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityStatusRequest.Tcp.pcap"):
+    def test_securitystatusrequest(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SecurityStatusRequest.pcap"):
             parsed = CmeGlobexMdp3SbeV112Clienttcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_snapshotfullrefreshtcplongqtytcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SnapshotFullRefreshTcpLongQty.Tcp.pcap"):
+    def test_snapshotfullrefreshtcplongqty(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SnapshotFullRefreshTcpLongQty.pcap"):
             parsed = CmeGlobexMdp3SbeV112Servertcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_subscriberheartbeattcp(self):
-        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SubscriberHeartbeat.Tcp.pcap"):
+    def test_subscriberheartbeat(self):
+        for payload in payloads.of("omi-data-packets/Cme/Globex.Mdp3.Sbe.v1.12/SubscriberHeartbeat.pcap"):
             parsed = CmeGlobexMdp3SbeV112Clienttcp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

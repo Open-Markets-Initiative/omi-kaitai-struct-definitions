@@ -12,8 +12,8 @@ from cboe_cfefutures_multicastdepthofbook_pitch_v1_1_12 import CboeCfefuturesMul
 
 class CboeCfefuturesMulticastdepthofbookPitchV1112Tests(unittest.TestCase):
 
-    def test_futureinstrumentdefinitionmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.12/FutureInstrumentDefinitionMessage.pcap"):
+    def test_futuresinstrumentdefinitionmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.12/FuturesInstrumentDefinitionMessage.pcap"):
             parsed = CboeCfefuturesMulticastdepthofbookPitchV1112.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

@@ -22,8 +22,8 @@ class CboeC1optionsMarketdatafeedCsmV142Tests(unittest.TestCase):
             parsed = CboeC1optionsMarketdatafeedCsmV142.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_heartbeat(self):
-        for payload in payloads.of("omi-data-packets/Cboe/C1Options.MarketDataFeed.Csm.v1.4.2/Heartbeat.pcap"):
+    def test_heartbeatmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/C1Options.MarketDataFeed.Csm.v1.4.2/HeartbeatMessage.pcap"):
             parsed = CboeC1optionsMarketdatafeedCsmV142.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

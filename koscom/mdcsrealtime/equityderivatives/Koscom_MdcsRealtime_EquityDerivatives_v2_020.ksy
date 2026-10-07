@@ -120,10 +120,8 @@ types:
         type: hhmm_ascii_time
         doc: 'Current time in HHMM format, transmitted at one-minute intervals'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   krx_index_message:
     seq:
@@ -173,10 +171,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   krx_estimated_index_message:
     seq:
@@ -226,10 +222,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   global_index_message:
     seq:
@@ -281,10 +275,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_prime_index_message:
     seq:
@@ -355,10 +347,8 @@ types:
         type: hhmmssmm_ascii_time
         doc: 'Transmission time in HHMMSSMM format (8 ASCII digits)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_ktb_index_message:
     seq:
@@ -425,10 +415,8 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (7 ASCII digits with 3 implied decimal places). Unit: percent'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_ktb_index_term_structure_message:
     seq:
@@ -470,10 +458,8 @@ types:
         enum: index_constituent
         doc: 'Flag identifying whether the security is included in the index. ''0'' securities are included in the ETF but not in the Index; ''1'' securities are included in the Index'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_index_krx_message:
     seq:
@@ -641,10 +627,8 @@ types:
         encoding: ASCII
         doc: 'Reinvested call cash during the calculation period (26 ASCII digits with 6 implied decimal places)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   equity_derivatives_underlying_snapshot_kospi_message:
     seq:
@@ -730,10 +714,8 @@ types:
         encoding: ASCII
         doc: 'The highest quoted bid'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   equity_derivatives_underlying_snapshot_kosdaq_message:
     seq:
@@ -819,10 +801,8 @@ types:
         encoding: ASCII
         doc: 'The highest quoted bid'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message:
     seq:
@@ -908,10 +888,8 @@ types:
         encoding: ASCII
         doc: 'The highest quoted bid'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_equities_batch_data_message:
     seq:
@@ -1528,10 +1506,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to pre-market possibility'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_closing_date_message:
     seq:
@@ -1553,10 +1529,8 @@ types:
         pad-right: 0x20
         doc: 'Closing date of a listed company (Dec 31, June 30, Mar 31)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_mm_lp_information_message:
     seq:
@@ -1641,10 +1615,8 @@ types:
         encoding: ASCII
         doc: 'Maximum Order Price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_member_information_message:
     seq:
@@ -1684,10 +1656,8 @@ types:
         pad-right: 0x20
         doc: 'Managing an abbreviated name of a market participant in KR'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_treasury_stocks_batch_message:
     seq:
@@ -1770,10 +1740,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value of treasury stock'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_equity_index_indicator_message:
     seq:
@@ -1974,10 +1942,8 @@ types:
         pad-right: 0x20
         doc: 'Filler 8'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   securities_dividend_yield_per_industry_message:
     seq:
@@ -2004,10 +1970,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. ASCII spaces'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bonds_batch_data_message:
     seq:
@@ -2234,10 +2198,8 @@ types:
         pad-right: 0x20
         doc: 'Investment caution Bond Type Code 0: N/A 1: Designation Alert 2: Designation'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   repo_batch_data_message:
     seq:
@@ -2286,10 +2248,8 @@ types:
         encoding: ASCII
         doc: 'Market Value'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   issue_event_message:
     seq:
@@ -2329,10 +2289,8 @@ types:
         pad-right: 0x20
         doc: 'End date of Issue Event'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   corporate_bonds_reference_message:
     seq:
@@ -2477,10 +2435,8 @@ types:
         pad-right: 0x20
         doc: 'Baby Bonds Type Code'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   regular_bonds_installment_repayment_date_message:
     seq:
@@ -2502,10 +2458,8 @@ types:
         pad-right: 0x20
         doc: 'Redemption at maturity date with level/un-leveled payment'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   repo_classification_data_message:
     seq:
@@ -2533,10 +2487,8 @@ types:
         pad-right: 0x20
         doc: 'REPO Classification Name'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   repo_trade_availability_per_term_message:
     seq:
@@ -2607,10 +2559,8 @@ types:
         encoding: ASCII
         doc: 'Duration of Term Repo (such as 1 day, 3 days, 5 days, 7 days)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   retail_bonds_type_code_message:
     seq:
@@ -2644,10 +2594,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to Generated Quotes'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   hhmm_ascii_time:
     seq:
@@ -2703,6 +2651,10 @@ types:
         value: text.substring(6, 8).to_i
 
 enums:
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
   index_change_sign_against_the_previous_day:
     0x2b:
       id: 'ascended'

@@ -17,8 +17,8 @@ class MiaxMiaxoptionsComplextopofmarketMachV11Tests(unittest.TestCase):
             parsed = MiaxMiaxoptionsComplextopofmarketMachV11.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_systemstatusmessage(self):
-        for payload in payloads.of("omi-data-packets/Miax/MiaxOptions.ComplexTopOfMarket.Mach.v1.1/SystemStatusMessage.pcap"):
+    def test_systemstatemessage(self):
+        for payload in payloads.of("omi-data-packets/Miax/MiaxOptions.ComplexTopOfMarket.Mach.v1.1/SystemStateMessage.pcap"):
             parsed = MiaxMiaxoptionsComplextopofmarketMachV11.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

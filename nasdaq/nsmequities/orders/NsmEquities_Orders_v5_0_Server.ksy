@@ -201,11 +201,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: order_accepted_optional_field
         type: s1
         enum: order_accepted_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: order_accepted_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -298,11 +298,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: replaced_message_optional_field
         type: s1
         enum: replaced_message_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: replaced_message_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -391,11 +391,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: order_executed_optional_field
         type: s1
         enum: order_executed_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: order_executed_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -545,11 +545,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: order_restated_optional_field
         type: s1
         enum: order_restated_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: order_restated_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -597,11 +597,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: mass_cancel_response_optional_field
         type: s1
         enum: mass_cancel_response_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: mass_cancel_response_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -635,11 +635,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: disable_order_entry_response_optional_field
         type: s1
         enum: disable_order_entry_response_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: disable_order_entry_response_optional_value
         size: optional_field_length + 1 - 2
         type:
@@ -671,11 +671,11 @@ types:
     seq:
       - id: optional_field_length
         type: s1
-        doc: 'Apendage Length Type'
+        doc: 'Appendage Length Type'
       - id: enable_order_entry_response_optional_field
         type: s1
         enum: enable_order_entry_response_optional_field
-        doc: 'Apendage Id'
+        doc: 'Appendage Id'
       - id: enable_order_entry_response_optional_value
         size: optional_field_length + 1 - 2
         type:

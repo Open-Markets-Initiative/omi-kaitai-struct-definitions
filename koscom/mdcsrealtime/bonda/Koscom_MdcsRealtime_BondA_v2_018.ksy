@@ -186,10 +186,8 @@ types:
         type: hhmm_ascii_time
         doc: 'Current time in HHMM format, transmitted at one-minute intervals'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   krx_index_message:
     seq:
@@ -242,10 +240,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   krx_estimated_index_message:
     seq:
@@ -298,10 +294,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   global_index_message:
     seq:
@@ -356,10 +350,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bond_prime_index_message:
     seq:
@@ -433,10 +425,8 @@ types:
         pad-right: 0x20
         doc: 'Transmission Time'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bond_ktb_index_message:
     seq:
@@ -503,10 +493,8 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (7 ASCII digits with 3 implied decimal places). Unit: percent'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bond_ktb_index_term_structure_message:
     seq:
@@ -548,10 +536,8 @@ types:
         enum: index_constituent
         doc: 'Flag identifying whether the security is included in the index. ''0'' securities are included in the ETF but not in the Index; ''1'' securities are included in the Index'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bond_index_krx_message:
     seq:
@@ -719,10 +705,8 @@ types:
         encoding: ASCII
         doc: 'Reinvested call cash during the calculation period (26 ASCII digits with 6 implied decimal places)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   market_operation_ts_message:
     seq:
@@ -781,10 +765,8 @@ types:
         pad-right: 0x20
         doc: 'Trading Halt Reason Code 1XX~301: KOSPI 6XX: KOSDAQ + KONEX 7XX: KONEX BXX: Bond RXX: REPO'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   market_operation_schedule_message:
     seq:
@@ -877,10 +859,8 @@ types:
         pad-right: 0x20
         doc: 'Expected Time of Expanding Price Limit Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   issue_closing_message:
     seq:
@@ -923,10 +903,8 @@ types:
         pad-right: 0x20
         doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   member_firm_sanctions_message:
     seq:
@@ -965,10 +943,8 @@ types:
         encoding: ASCII
         doc: 'Allowance or sanctions for member''s trading. Bitwise operation. 1: Ask Trust 2: Ask Principal 4: Bid Trust 8: Bid Principal'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   regular_bonds_ktb_quote_message:
     seq:
@@ -1159,10 +1135,8 @@ types:
         encoding: ASCII
         doc: 'Bid total remaining quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_order_filled_message:
     seq:
@@ -1265,10 +1239,8 @@ types:
         pad-right: 0x20
         doc: 'The date when the buyer makes payment to the seller while the seller delivers the assets to the buyer'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   general_bonds_ktb_order_filled_plus_quote_message:
     seq:
@@ -1531,10 +1503,8 @@ types:
         encoding: ASCII
         doc: 'Bid total remaining quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_negotiated_trade_data_message:
     seq:
@@ -1561,10 +1531,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated Trading Volume'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_negotiated_trade_data_message:
     seq:
@@ -1585,10 +1553,8 @@ types:
         encoding: ASCII
         doc: 'Report Trading_Total Trading Volume'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_batch_data_message:
     seq:
@@ -1815,10 +1781,8 @@ types:
         pad-right: 0x20
         doc: 'Investment caution Bond Type Code 0: N/A 1: Designation Alert 2: Designation'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_batch_data_message:
     seq:
@@ -1867,10 +1831,8 @@ types:
         encoding: ASCII
         doc: 'Market Value'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   issue_event_message:
     seq:
@@ -1910,10 +1872,8 @@ types:
         pad-right: 0x20
         doc: 'End date of Issue Event'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   corporate_bonds_reference_message:
     seq:
@@ -2058,10 +2018,8 @@ types:
         pad-right: 0x20
         doc: 'Baby Bonds Type Code'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   regular_bonds_installment_repayment_date_message:
     seq:
@@ -2083,10 +2041,8 @@ types:
         pad-right: 0x20
         doc: 'Redemption at maturity date with level/un-leveled payment'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_classification_data_message:
     seq:
@@ -2114,10 +2070,8 @@ types:
         pad-right: 0x20
         doc: 'REPO Classification Name'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_trade_availability_per_term_message:
     seq:
@@ -2188,10 +2142,8 @@ types:
         encoding: ASCII
         doc: 'Duration of Term Repo (such as 1 day, 3 days, 5 days, 7 days)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   retail_bonds_type_code_message:
     seq:
@@ -2225,10 +2177,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to Generated Quotes'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   baby_bonds_reporting_market_yield_message:
     seq:
@@ -2270,10 +2220,8 @@ types:
         encoding: ASCII
         doc: 'Closing Price with Yield'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   ktb_confirmed_info_for_wit_message:
     seq:
@@ -2312,10 +2260,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to Cancellation'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   ktb_short_term_yield_message:
     seq:
@@ -2343,10 +2289,8 @@ types:
         encoding: ASCII
         doc: 'Short-term Yield'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   ktb_average_yield_message:
     seq:
@@ -2374,10 +2318,8 @@ types:
         encoding: ASCII
         doc: 'Average Yield'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_credit_rating_information_message:
     seq:
@@ -2471,10 +2413,8 @@ types:
         pad-right: 0x20
         doc: 'SF Ratings 4'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   regular_bonds_disclosure_basic_exchange_rate_message:
     seq:
@@ -2502,10 +2442,8 @@ types:
         pad-right: 0x20
         doc: 'Currency Codes 1: Korean Won(KRW) 2: US Dollar(USD) 3: Japanese Yen(JPY) 4: Euro(EUR) 5: Yuan Renminbi(CNY) 6: Pound Sterling(GBP) 7: Hong Kong Dollar(HKD) 8: Austrailian Dollar(AUD) 9: Singap'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   investor_activities_per_bond_types_message:
     seq:
@@ -2542,10 +2480,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated Bid Trading Volume'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_isin_issue_information_message:
     seq:
@@ -3185,10 +3121,8 @@ types:
         pad-right: 0x20
         doc: 'Crowdfunding'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_isin_information_text_message:
     seq:
@@ -3258,10 +3192,8 @@ types:
         pad-right: 0x20
         doc: 'ELS Condition 2'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   baby_bonds_quote_message:
     seq:
@@ -3612,10 +3544,8 @@ types:
         encoding: ASCII
         doc: 'Bid per Type_Total Remaining Quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_quote_message:
     seq:
@@ -4171,10 +4101,8 @@ types:
         encoding: ASCII
         doc: 'Net Bid per Type_Total Remaining Quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   bonds_total_remaining_volume_on_quotes_message:
     seq:
@@ -4224,10 +4152,8 @@ types:
         encoding: ASCII
         doc: 'Bid per Type_Total Remaining Quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   baby_bonds_order_filled_plus_quote_message:
     seq:
@@ -4650,10 +4576,8 @@ types:
         encoding: ASCII
         doc: 'Bid per Type_Total Remaining Quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   repo_order_filled_plus_quote_message:
     seq:
@@ -5297,10 +5221,8 @@ types:
         encoding: ASCII
         doc: 'Net Bid per Type_Total Remaining Quantity'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'A keyword indicating the end of a message. (%HFF)'
   hhmm_ascii_time:
     seq:
@@ -5356,6 +5278,10 @@ types:
         value: text.substring(6, 12).to_i
 
 enums:
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
   index_change_sign_against_the_previous_day:
     0x2b:
       id: 'ascended'

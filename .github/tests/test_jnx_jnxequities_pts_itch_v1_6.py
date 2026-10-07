@@ -27,13 +27,13 @@ class JnxJnxequitiesPtsItchV16Tests(unittest.TestCase):
             parsed = JnxJnxequitiesPtsItchV16.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_shortsellingpricerestrictionstatemessage(self):
-        for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Itch.v1.6/ShortSellingPriceRestrictionStateMessage.pcap"):
+    def test_secondsmessage(self):
+        for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Itch.v1.6/SecondsMessage.pcap"):
             parsed = JnxJnxequitiesPtsItchV16.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_timestampsecondsmessage(self):
-        for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Itch.v1.6/TimestampSecondsMessage.pcap"):
+    def test_shortsellingpricerestrictionstatemessage(self):
+        for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Itch.v1.6/ShortSellingPriceRestrictionStateMessage.pcap"):
             parsed = JnxJnxequitiesPtsItchV16.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

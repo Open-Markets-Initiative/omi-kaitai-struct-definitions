@@ -42,8 +42,8 @@ class CboeBzxoptionsBinaryorderentryBoeV210Tests(unittest.TestCase):
             parsed = CboeBzxoptionsBinaryorderentryBoeV210.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderacknowledgementmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxOptions.BinaryOrderEntry.Boe.v2.10/OrderAcknowledgementMessage.pcap"):
+    def test_orderacknowledgmentmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxOptions.BinaryOrderEntry.Boe.v2.10/OrderAcknowledgmentMessage.pcap"):
             parsed = CboeBzxoptionsBinaryorderentryBoeV210.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

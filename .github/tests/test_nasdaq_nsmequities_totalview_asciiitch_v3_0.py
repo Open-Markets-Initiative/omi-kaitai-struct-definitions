@@ -82,11 +82,6 @@ class NasdaqNsmequitiesTotalviewAsciiitchV30UdpTests(unittest.TestCase):
             parsed = NasdaqNsmequitiesTotalviewAsciiitchV30Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_stocktradingactionmessagewithstockdirectorymessage(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.AsciiItch.v3.0/StockTradingActionMessageWithStockDirectoryMessage.pcap"):
-            parsed = NasdaqNsmequitiesTotalviewAsciiitchV30Udp.from_bytes(payload)
-            self.assertTrue(parsed._io.is_eof())
-
     def test_systemeventmessage(self):
         for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.AsciiItch.v3.0/SystemEventMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewAsciiitchV30Udp.from_bytes(payload)

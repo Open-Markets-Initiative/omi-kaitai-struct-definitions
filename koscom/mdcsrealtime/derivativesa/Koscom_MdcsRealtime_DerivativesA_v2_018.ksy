@@ -49,6 +49,7 @@ seq:
     type:
       switch-on: message_code
       cases:
+        '"I2000"': polling_data_message
         '"B601F"': derivatives_quote_five_levels_message
         '"B602F"': derivatives_quote_five_levels_message
         '"B603F"': derivatives_quote_five_levels_message
@@ -390,6 +391,15 @@ seq:
         '"HA06F"': daily_disclosed_rfr_message
 
 types:
+  polling_data_message:
+    seq:
+      - id: current_time_1_minute_interval
+        type: hhmm_ascii_time
+        doc: 'Current Time (1-minute interval)'
+      - id: end_keyword
+        type: u1
+        enum: end_keyword
+        doc: 'End of text sentinel (0xFF)'
   derivatives_quote_five_levels_message:
     seq:
       - id: message_sequence_number
@@ -604,10 +614,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_quote_ten_levels_message:
     seq:
@@ -973,10 +981,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_snapshot_five_levels_message:
     seq:
@@ -1245,10 +1251,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_snapshot_ten_levels_message:
     seq:
@@ -1667,10 +1671,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_order_filled_message:
     seq:
@@ -1772,10 +1774,8 @@ types:
         encoding: ASCII
         doc: 'Lower Limit of Dynamic Price Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_order_filled_plus_quote_five_levels_message:
     seq:
@@ -2047,10 +2047,8 @@ types:
         encoding: ASCII
         doc: 'Bid Price_ Valid Counts'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_order_filled_plus_quote_ten_levels_message:
     seq:
@@ -2472,10 +2470,8 @@ types:
         encoding: ASCII
         doc: 'Bid Price_ Valid Counts'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_market_operation_ts_plus_quote_five_levels_message:
     seq:
@@ -2718,10 +2714,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_market_operation_ts_plus_quote_ten_levels_message:
     seq:
@@ -3114,10 +3108,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_negotiated_trade_message:
     seq:
@@ -3143,10 +3135,8 @@ types:
         encoding: ASCII
         doc: 'Total Accumulated Trading Value'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_market_operation_ts_message:
     seq:
@@ -3205,10 +3195,8 @@ types:
         pad-right: 0x20
         doc: 'Trading Halt Reason Code 1XX~301: KOSPI 6XX: KOSDAQ + KONEX 7XX: KONEX BXX: Bond RXX: REPO'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_issue_closing_message:
     seq:
@@ -3256,10 +3244,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_market_operation_schedule_message:
     seq:
@@ -3352,10 +3338,8 @@ types:
         pad-right: 0x20
         doc: 'Expected Time of Expanding Price Limit Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_dynamic_upper_lower_limit_message:
     seq:
@@ -3401,10 +3385,8 @@ types:
         encoding: ASCII
         doc: 'Lower Limit of Dynamic Price Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_price_limit_range_increase_message:
     seq:
@@ -3457,10 +3439,8 @@ types:
         encoding: ASCII
         doc: 'A price subtracting the price limit from the base price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_quantity_allocation_message:
     seq:
@@ -3505,10 +3485,8 @@ types:
         pad-right: 0x20
         doc: 'Time when Allocation ended'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_group_order_acceptance_halt_message:
     seq:
@@ -3548,10 +3526,8 @@ types:
         pad-right: 0x20
         doc: 'Board Event Processing Time'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_batch_data_message:
     seq:
@@ -4210,10 +4186,8 @@ types:
         pad-right: 0x20
         doc: 'Designation Date for Suspended Stocks'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   equity_derivatives_adjustment_details_message:
     seq:
@@ -4270,10 +4244,8 @@ types:
         encoding: ASCII
         doc: 'Adjustment Coefficient of Open Intetest Volumes that have been adjusted'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   commodity_futures_settlement_reference_ktb_message:
     seq:
@@ -4312,10 +4284,8 @@ types:
         encoding: ASCII
         doc: 'Conversion Factor'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_investor_activities_message:
     seq:
@@ -4393,10 +4363,8 @@ types:
         encoding: ASCII
         doc: 'Spread_Ask Trading value'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   derivatives_open_interest_message:
     seq:
@@ -4429,10 +4397,8 @@ types:
         encoding: ASCII
         doc: 'Open interest is the total number of outstanding derivative contracts, such as options or futures that have not been settled for an asset after the end of session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   futures_settled_price_message:
     seq:
@@ -4470,10 +4436,8 @@ types:
         pad-right: 0x20
         doc: '1: Closing price of underlying asset 2: A price with calculation 3: No final settlement price 4: Special Quotation(SQ) 5: Closing price of underlying asset on a recent day (limited to equities) 6: Adj'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   options_base_price_of_clearing_margins_message:
     seq:
@@ -4511,10 +4475,8 @@ types:
         pad-right: 0x20
         doc: 'Type Code of Settlement Price after Exercising an Option 1: KOSPI200 Closing Price Index 2: No KOSPI200 3: Sprecial Quotation 4: Adjusted closing price 5: closing price on the recent day'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   options_implied_volatility_message:
     seq:
@@ -4539,10 +4501,8 @@ types:
         encoding: ASCII
         doc: 'Historical Volatility (90 days)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   options_sensitivity_message:
     seq:
@@ -4607,10 +4567,8 @@ types:
         encoding: ASCII
         doc: 'Sensitivity Rho'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   commodity_futures_spot_settlement_reference_message:
     seq:
@@ -4650,10 +4608,8 @@ types:
         type: hhmm_ascii_time
         doc: 'BIS_Time of Inputting Yield Rate (HHMM or HH" ")'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   daily_disclosed_rfr_message:
     seq:
@@ -4705,11 +4661,20 @@ types:
         pad-right: 0x20
         doc: '180 day average interest rate 9999V99999999'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
+  hhmm_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 4
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
   hhmmssuuuuuu_ascii_time:
     seq:
       - id: text
@@ -4738,15 +4703,10 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
-  hhmm_ascii_time:
-    seq:
-      - id: text
-        type: str
-        size: 4
-        encoding: ASCII
-    instances:
-      hour:
-        value: text.substring(0, 2).to_i
-      minute:
-        value: text.substring(2, 4).to_i
+
+enums:
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
 

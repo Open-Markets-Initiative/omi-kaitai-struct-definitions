@@ -90,10 +90,8 @@ types:
         type: hhmm_ascii_time
         doc: 'Current time in HHMM format, transmitted at one-minute intervals'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   krx_index_message:
     seq:
@@ -143,10 +141,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   krx_estimated_index_message:
     seq:
@@ -196,10 +192,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   global_index_message:
     seq:
@@ -251,10 +245,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_prime_index_message:
     seq:
@@ -325,10 +317,8 @@ types:
         type: hhmmssmm_ascii_time
         doc: 'Transmission time in HHMMSSMM format (8 ASCII digits)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_ktb_index_message:
     seq:
@@ -395,10 +385,8 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (7 ASCII digits with 3 implied decimal places). Unit: percent'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_ktb_index_term_structure_message:
     seq:
@@ -440,10 +428,8 @@ types:
         enum: index_constituent
         doc: 'Flag identifying whether the security is included in the index. ''0'' securities are included in the ETF but not in the Index; ''1'' securities are included in the Index'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   bond_index_krx_message:
     seq:
@@ -611,10 +597,8 @@ types:
         encoding: ASCII
         doc: 'Reinvested call cash during the calculation period (26 ASCII digits with 6 implied decimal places)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_quote_message:
     seq:
@@ -970,10 +954,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_order_filled_message:
     seq:
@@ -1061,10 +1043,8 @@ types:
         encoding: ASCII
         doc: 'LP holding quantity per each account'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_order_filled_plus_quote_message:
     seq:
@@ -1462,10 +1442,8 @@ types:
         encoding: ASCII
         doc: 'Total bid volume'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_market_operation_ts_plus_quote_message:
     seq:
@@ -1844,10 +1822,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_snapshot_message:
     seq:
@@ -2232,10 +2208,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_negotiated_trade_message:
     seq:
@@ -2271,10 +2245,8 @@ types:
         encoding: ASCII
         doc: 'Total Accumulated Trading Value'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_quote_message:
     seq:
@@ -2430,10 +2402,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_order_filled_message:
     seq:
@@ -2516,10 +2486,8 @@ types:
         pad-right: 0x20
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_order_filled_plus_quote_message:
     seq:
@@ -2712,10 +2680,8 @@ types:
         encoding: ASCII
         doc: 'Total bid volume'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_market_operation_ts_plus_quote_message:
     seq:
@@ -2894,10 +2860,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_snapshot_message:
     seq:
@@ -3092,10 +3056,8 @@ types:
         encoding: ASCII
         doc: 'An estimated trading volume before the single price trade session'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_negotiated_trade_message:
     seq:
@@ -3137,10 +3099,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_determination_of_base_price_message:
     seq:
@@ -3192,10 +3152,8 @@ types:
         encoding: ASCII
         doc: 'Lower Limit Price of Block Trading After hours'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_auction_results_message:
     seq:
@@ -3241,10 +3199,8 @@ types:
         encoding: ASCII
         doc: 'Bid-to-cover Ratio'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_batch_data_message:
     seq:
@@ -3395,10 +3351,8 @@ types:
         pad-right: 0x20
         doc: 'A Representative Issue to Calculate Base Price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_batch_data_message:
     seq:
@@ -3555,10 +3509,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to an Issue of which base price is settled with a today''s single price'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   external_gold_spot_closing_price_message:
     seq:
@@ -3646,10 +3598,8 @@ types:
         pad-right: 0x20
         doc: 'Provided only in case of "USDKRW" - GOLDKRWGR ex) : " 1209855"'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_market_operation_ts_message:
     seq:
@@ -3708,10 +3658,8 @@ types:
         pad-right: 0x20
         doc: 'Trading Halt Reason Code 1XX~301: KOSPI 6XX: KOSDAQ + KONEX 7XX: KONEX BXX: Bond RXX: REPO'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_issue_closing_message:
     seq:
@@ -3779,10 +3727,8 @@ types:
         encoding: ASCII
         doc: 'Closing Price_Lower Limit of Buy-In'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_market_operation_schedule_message:
     seq:
@@ -3875,10 +3821,8 @@ types:
         pad-right: 0x20
         doc: 'Expected Time of Expanding Price Limit Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_market_operation_ts_message:
     seq:
@@ -3937,10 +3881,8 @@ types:
         pad-right: 0x20
         doc: 'Trading Halt Reason Code 1XX~301: KOSPI 6XX: KOSDAQ + KONEX 7XX: KONEX BXX: Bond RXX: REPO'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_issue_closing_message:
     seq:
@@ -4008,10 +3950,8 @@ types:
         encoding: ASCII
         doc: 'Closing Price_Lower Limit of Buy-In'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   emissions_market_operation_schedule_message:
     seq:
@@ -4104,10 +4044,8 @@ types:
         pad-right: 0x20
         doc: 'Expected Time of Expanding Price Limit Range'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   spot_gold_random_end_message:
     seq:
@@ -4140,10 +4078,8 @@ types:
         pad-right: 0x20
         doc: '1: Trigger of Random End in the opening single price session 2: Removal of Random End in the opening single price session 3: Trigger of Random End in the closing single price session 4: Removal of Ran'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF)'
   hhmm_ascii_time:
     seq:
@@ -4214,6 +4150,10 @@ types:
         value: text.substring(6, 12).to_i
 
 enums:
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
   index_change_sign_against_the_previous_day:
     0x2b:
       id: 'ascended'

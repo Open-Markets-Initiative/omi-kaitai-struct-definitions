@@ -47,8 +47,8 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_masscancelacknowledgementmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/MassCancelAcknowledgementMessage.pcap"):
+    def test_masscancelacknowledgmentmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/MassCancelAcknowledgmentMessage.pcap"):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
@@ -67,8 +67,8 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderacknowledgementmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderAcknowledgementMessage.pcap"):
+    def test_orderacknowledgmentmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderAcknowledgmentMessage.pcap"):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
@@ -97,8 +97,8 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_purgeordersmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/PurgeOrdersMessage.pcap"):
+    def test_purgeordermessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/PurgeOrderMessage.pcap"):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

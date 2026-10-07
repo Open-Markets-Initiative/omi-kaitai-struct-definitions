@@ -65,10 +65,8 @@ types:
         type: hhmm_ascii_time
         doc: 'Current time in HHMM format, transmitted at one-minute intervals'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   krx_index_message:
     seq:
@@ -118,10 +116,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   krx_estimated_index_message:
     seq:
@@ -171,10 +167,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   global_index_message:
     seq:
@@ -223,10 +217,8 @@ types:
         pad-right: 0x20
         doc: 'Reserved filler. Always 4 ASCII space characters'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   bond_prime_index_message:
     seq:
@@ -297,10 +289,8 @@ types:
         type: hhmmssmm_ascii_time
         doc: 'Transmission time in HHMMSSMM format (8 ASCII digits)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   bond_ktb_index_message:
     seq:
@@ -367,10 +357,8 @@ types:
         encoding: ASCII
         doc: 'Average forward yield to maturity (7 ASCII digits with 3 implied decimal places). Unit: percent'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   bond_ktb_index_term_structure_message:
     seq:
@@ -412,10 +400,8 @@ types:
         enum: index_constituent
         doc: 'Flag identifying whether the security is included in the index. ''0'' securities are included in the ETF but not in the Index; ''1'' securities are included in the Index'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   bond_index_krx_message:
     seq:
@@ -583,10 +569,8 @@ types:
         encoding: ASCII
         doc: 'Reinvested call cash during the calculation period (26 ASCII digits with 6 implied decimal places)'
       - id: end_keyword
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: end_keyword
         doc: 'End of text sentinel (0xFF) marking the end of the message'
   hhmm_ascii_time:
     seq:
@@ -642,6 +626,10 @@ types:
         value: text.substring(6, 8).to_i
 
 enums:
+  end_keyword:
+    255:
+      id: 'end_of_message'
+      doc: 'End Of Message'
   index_change_sign_against_the_previous_day:
     0x2b:
       id: 'ascended'

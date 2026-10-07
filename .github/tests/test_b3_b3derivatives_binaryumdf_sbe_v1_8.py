@@ -17,8 +17,8 @@ class B3B3derivativesBinaryumdfSbeV18Tests(unittest.TestCase):
             parsed = B3B3derivativesBinaryumdfSbeV18.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_sequence(self):
-        for payload in payloads.of("omi-data-packets/B3/B3Derivatives.BinaryUmdf.Sbe.v1.8/Sequence.pcap"):
+    def test_sequencemessage(self):
+        for payload in payloads.of("omi-data-packets/B3/B3Derivatives.BinaryUmdf.Sbe.v1.8/SequenceMessage.pcap"):
             parsed = B3B3derivativesBinaryumdfSbeV18.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

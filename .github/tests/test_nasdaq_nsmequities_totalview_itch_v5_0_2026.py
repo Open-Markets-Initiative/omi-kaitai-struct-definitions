@@ -12,83 +12,83 @@ from nasdaq_nsmequities_totalview_itch_v5_0_2026_udp import NasdaqNsmequitiesTot
 
 class NasdaqNsmequitiesTotalviewItchV502026UdpTests(unittest.TestCase):
 
-    def test_addordernompid(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderNoMPID.pcap"):
+    def test_addordernompidattributionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderNoMpidAttributionMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_addorderwithmpid(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderWithMpid.pcap"):
+    def test_addorderwithmpidattributionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/AddOrderWithMpidAttributionMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_crosstrade(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/CrossTrade.pcap"):
+    def test_crosstrademessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/CrossTradeMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_luldauctioncollar(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/LULDAuctionCollar.pcap"):
+    def test_luldauctioncollarmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/LuldAuctionCollarMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_marketparticipantposition(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/MarketParticipantPosition.pcap"):
+    def test_marketparticipantpositionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/MarketParticipantPositionMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_netorderimbalanceindicator(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/NetOrderImbalanceIndicator.pcap"):
+    def test_netorderimbalanceindicatormessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/NetOrderImbalanceIndicatorMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_noncrosstrade(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/NonCrossTrade.pcap"):
+    def test_noncrosstrademessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/NonCrossTradeMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_ordercancel(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderCancel.pcap"):
+    def test_ordercancelmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderCancelMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderdelete(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderDelete.pcap"):
+    def test_orderdeletemessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderDeleteMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderexecuted(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderExecuted.pcap"):
+    def test_orderexecutedmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderExecutedMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderexecutedwithprice(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderExecutedWithPrice.pcap"):
+    def test_orderexecutedwithpricemessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderExecutedWithPriceMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_orderreplace(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderReplace.pcap"):
+    def test_orderreplacemessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/OrderReplaceMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_regshorestriction(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/RegSHORestriction.pcap"):
+    def test_regshoshortsalepricetestrestrictedindicatormessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/RegShoShortSalePriceTestRestrictedIndicatorMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_stockdirectory(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/StockDirectory.pcap"):
+    def test_stockdirectorymessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/StockDirectoryMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_stocktradingaction(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/StockTradingAction.pcap"):
+    def test_stocktradingactionmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/StockTradingActionMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_systemevent(self):
-        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/SystemEvent.pcap"):
+    def test_systemeventmessage(self):
+        for payload in payloads.of("omi-data-packets/Nasdaq/NsmEquities.TotalView.Itch.v5.0.2026/SystemEventMessage.pcap"):
             parsed = NasdaqNsmequitiesTotalviewItchV502026Udp.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

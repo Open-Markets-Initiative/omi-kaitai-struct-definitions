@@ -17,13 +17,13 @@ class CboeCfefuturesMulticastdepthofbookPitchV116Tests(unittest.TestCase):
             parsed = CboeCfefuturesMulticastdepthofbookPitchV116.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_deletemessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.6/DeleteMessage.pcap"):
+    def test_deleteordermessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.6/DeleteOrderMessage.pcap"):
             parsed = CboeCfefuturesMulticastdepthofbookPitchV116.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
-    def test_futureinstrumentdefinitionmessage(self):
-        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.6/FutureInstrumentDefinitionMessage.pcap"):
+    def test_futuresinstrumentdefinitionmessage(self):
+        for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.MulticastDepthOfBook.Pitch.v1.1.6/FuturesInstrumentDefinitionMessage.pcap"):
             parsed = CboeCfefuturesMulticastdepthofbookPitchV116.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

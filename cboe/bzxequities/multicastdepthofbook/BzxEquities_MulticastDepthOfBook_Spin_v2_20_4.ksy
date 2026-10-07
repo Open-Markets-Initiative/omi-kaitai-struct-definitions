@@ -524,7 +524,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
-      - id: reserved_1_2
+      - id: second_reserved_1
         type: str
         size: 1
         encoding: ASCII
