@@ -75,8 +75,6 @@ types:
         type:
           switch-on: msg_header.msg_type
           cases:
-            'msg_type::add_order': add_order
-            'msg_type::aggregate_implied_order': aggregate_implied_order
             'msg_type::aggregate_order_book_update_message': aggregate_order_book_update_message
             'msg_type::calculated_opening_price_message': calculated_opening_price_message
             'msg_type::sequence_reset': sequence_reset
@@ -98,8 +96,6 @@ types:
             'msg_type::commodity_and_class_status': commodity_and_class_status
             'msg_type::vcm_trigger': vcm_trigger
             'msg_type::thm_trigger': thm_trigger
-            'msg_type::trade': trade
-            'msg_type::trade_amendment_message': trade_amendment_message
             'msg_type::trade_statistics_message': trade_statistics_message
   msg_header:
     seq:
@@ -110,70 +106,11 @@ types:
         type: u2
         enum: msg_type
         doc: 'Code identifying this message type'
-  add_order:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier per instrument and side for each order'
-      - id: price
-        type: s8
-        doc: 'Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of the order'
-      - id: lot_type
-        type: u1
-        enum: lot_type
-        doc: 'Lot Type'
-      - id: order_type
-        type: u1
-        enum: order_type
-        doc: 'Additional order attributes'
-      - id: order_book_position
-        type: u4
-        doc: 'Order rank information for the order position within the order book'
-      - id: business_time
-        type: u8
-        doc: 'Transaction time. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond. Null means N/A'
-      - id: filler_1
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
-  aggregate_implied_order:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: implied_price
-        type: s8
-        doc: 'Implied Price. Decimal places determined from Class Definition field “DecimalInPrice”. Null means N/A'
-      - id: implied_quantity
-        type: u8
-        doc: 'Aggregated Implied Volume at Implied Price'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of the order'
-      - id: filler_1
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
   aggregate_order_book_update_message:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: filler_3
         type: str
         size: 3
@@ -198,7 +135,7 @@ types:
         doc: 'Aggregated implied quantity at this Price Level'
       - id: price
         type: s8
-        doc: 'Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
+        doc: 'Price'
       - id: number_of_orders
         type: u2
         doc: 'Number of orders'
@@ -223,7 +160,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: calculated_opening_price
         type: s8
         doc: 'Calculated Opening Price'
@@ -291,7 +228,7 @@ types:
         doc: 'Padding'
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: settlement_price
         type: s8
         doc: '‘DecimalInPremium’'
@@ -305,7 +242,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: quote_quantity
         type: s4
         doc: 'Quantity'
@@ -463,7 +400,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: symbol
         type: str
         size: 32
@@ -704,7 +641,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: suspension_indicator
         type: u1
         enum: suspension_indicator
@@ -741,7 +678,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: cooling_off_start_time
         type: u8
         doc: 'Time when the cooling off period starts (UTC timestamp)'
@@ -786,83 +723,11 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Padding'
-  trade:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier per instrument and side for each order'
-      - id: price
-        type: s8
-        doc: 'Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
-      - id: trade_id
-        type: u8
-        doc: 'Unique trade identification'
-      - id: match_id
-        type: u8
-        doc: 'An identifier that links all trade which are executed as part of a single execution operation involving an aggressing order'
-      - id: statistics_update
-        type: u1
-        enum: statistics_update
-        doc: 'Statistics update indicator'
-      - id: match_type
-        type: u1
-        enum: match_type
-        doc: 'Match Type'
-      - id: trade_type
-        type: u1
-        enum: trade_type
-        doc: 'Trade Type'
-      - id: trade_subtype
-        type: u1
-        enum: trade_subtype
-        doc: 'The condition in which a trade was executed'
-      - id: filler_4
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: trade_time
-        type: u8
-        doc: 'Date and time of the trade. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
-  trade_amendment_message:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: trade_id
-        type: u8
-        doc: 'Unique trade identification'
-      - id: price
-        type: s8
-        doc: 'Price. Decimal places determined from Class Definition field DecimalInPrice. Null means N/A'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: amendment_execution_time
-        type: u8
-        doc: 'Date and time of the trade amendment execution. UTC nanoseconds since 1970-01-01 00:00:00 GMT, precision to nearest microsecond'
-      - id: trade_state
-        type: u1
-        enum: trade_state
-        doc: 'Trade State'
-      - id: filler_3
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
   trade_statistics_message:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: last_price
         type: s8
         doc: 'Last Traded Price'
@@ -907,12 +772,6 @@ types:
 
 enums:
   msg_type:
-    330:
-      id: 'add_order'
-      doc: 'Generated when a new normal order is inserted into the order book.'
-    337:
-      id: 'aggregate_implied_order'
-      doc: 'Generated whenever there is an update on implied order at the given implied price.'
     353:
       id: 'aggregate_order_book_update_message'
       doc: 'The aggregate order book is sent whenever there is a orderbook change'
@@ -976,12 +835,6 @@ enums:
     325:
       id: 'thm_trigger'
       doc: 'Generated when trading halt is triggered on a particular instrument class.'
-    350:
-      id: 'trade'
-      doc: 'The trade message is generated each time a trade has been performed.'
-    356:
-      id: 'trade_amendment_message'
-      doc: 'Represents a trade amendment or cancellation.'
     360:
       id: 'trade_statistics_message'
       doc: 'Trade information for completed deals'
@@ -992,20 +845,6 @@ enums:
     1:
       id: 'offer'
       doc: 'Offer'
-  lot_type:
-    2:
-      id: 'round_lot'
-      doc: 'Round Lot'
-  order_type:
-    1:
-      id: 'market'
-      doc: 'Market'
-    2:
-      id: 'limit'
-      doc: 'Limit'
-    3:
-      id: 'market_to_limit'
-      doc: 'Market To Limit'
   update_action:
     0:
       id: 'new_field'
@@ -1196,50 +1035,6 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
-  statistics_update:
-    0:
-      id: 'no_update'
-      doc: 'No Update'
-    1:
-      id: 'open_high_low_last_price_and_turnover_update'
-      doc: 'Open High Low Last Price And Turnover Update'
-    2:
-      id: 'turnover_update_only'
-      doc: 'Turnover Update Only'
-  match_type:
-    0:
-      id: 'continuous_match'
-      doc: 'Continuous Match'
-    1:
-      id: 'opening_uncross'
-      doc: 'Opening Uncross'
-    2:
-      id: 'block_trade'
-      doc: 'Block Trade'
-  trade_type:
-    0:
-      id: 't_session_trade'
-      doc: 'T Session Trade'
-    1:
-      id: 't_1_aht_session_trade'
-      doc: 'T 1 Aht Session Trade'
-  trade_subtype:
-    0:
-      id: 'not_available'
-      doc: 'Not Available'
-    1:
-      id: 'explicit_order_vs_explicit_order'
-      doc: 'Explicit Order Vs Explicit Order'
-    2:
-      id: 'explicit_order_vs_implied_order'
-      doc: 'Explicit Order Vs Implied Order'
-  trade_state:
-    1:
-      id: 'cancelled'
-      doc: 'Cancelled'
-    2:
-      id: 'amended'
-      doc: 'Amended'
   session:
     0:
       id: 't_session'

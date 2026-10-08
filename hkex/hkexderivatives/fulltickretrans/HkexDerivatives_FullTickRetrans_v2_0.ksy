@@ -83,7 +83,6 @@ types:
             'msg_type::delete_order': delete_order
             'msg_type::market_alert_message': market_alert_message
             'msg_type::modify_order': modify_order
-            'msg_type::open_interest_message': open_interest_message
             'msg_type::orderbook_clear_message': orderbook_clear_message
             'msg_type::quote_request': quote_request
             'msg_type::commodity_definition': commodity_definition
@@ -271,30 +270,6 @@ types:
       - id: order_book_position
         type: u4
         doc: 'Order rank information for the order position within the order book'
-  open_interest_message:
-    seq:
-      - id: day_indicator
-        type: u2
-        enum: day_indicator
-        doc: 'Session indicator used to'
-      - id: filler_6
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: settlement_price
-        type: s4
-        doc: '‘DecimalInPremium’'
-      - id: gross_oi
-        type: s4
-        doc: 'If DayIndicator = 1,'
-      - id: net_oi
-        type: s4
-        doc: 'If DayIndicator =1,'
   orderbook_clear_message:
     seq:
       - id: orderbook_id
@@ -851,9 +826,6 @@ enums:
     331:
       id: 'modify_order'
       doc: 'Generated when an existing order identified by the OrderID is modified.'
-    366:
-      id: 'open_interest_message'
-      doc: 'Issued to show the Previous Day settlement price and open interest'
     335:
       id: 'orderbook_clear_message'
       doc: 'The Orderbook Clear message is used to inform clients that all existing orders should be removed from both the bid and ask sides of the specified orderbook'
@@ -960,13 +932,6 @@ enums:
     2:
       id: 'normal'
       doc: 'Normal'
-  day_indicator:
-    0:
-      id: 'current_trading_day'
-      doc: 'Current Trading Day'
-    1:
-      id: 'previous_trading_day'
-      doc: 'Previous Trading Day'
   bid_ask_flag:
     0:
       id: 'bid'

@@ -436,10 +436,8 @@ types:
   bond_index_krx_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: calculating_date
         type: yyyymmdd_ascii_date
         doc: 'Calculation date in YYYYMMDD format'
@@ -823,10 +821,8 @@ types:
   securities_buy_in_volume_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -912,6 +908,15 @@ types:
         value: text.substring(4, 6).to_i
       hundredth:
         value: text.substring(6, 8).to_i
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "        "
 
 enums:
   end_keyword:

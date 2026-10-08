@@ -406,10 +406,8 @@ types:
   bond_index_krx_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Message sequence number assigned by the Market Engine'
+        type: str_8_nullable
+        doc: 'Message sequence number assigned by the Market Engine. Nullable, No Value ='
       - id: calculating_date
         type: yyyymmdd_ascii_date
         doc: 'Calculation date in YYYYMMDD format'
@@ -624,6 +622,15 @@ types:
         value: text.substring(4, 6).to_i
       hundredth:
         value: text.substring(6, 8).to_i
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "        "
 
 enums:
   end_keyword:

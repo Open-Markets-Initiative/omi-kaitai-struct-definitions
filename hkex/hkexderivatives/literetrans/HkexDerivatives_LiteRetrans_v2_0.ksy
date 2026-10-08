@@ -75,7 +75,6 @@ types:
         type:
           switch-on: msg_header.msg_type
           cases:
-            'msg_type::add_order': add_order
             'msg_type::aggregate_implied_order': aggregate_implied_order
             'msg_type::aggregate_order_book_update_message': aggregate_order_book_update_message
             'msg_type::calculated_opening_price_message': calculated_opening_price_message
@@ -99,8 +98,6 @@ types:
             'msg_type::vcm_trigger': vcm_trigger
             'msg_type::vcm_end': vcm_end
             'msg_type::thm_trigger': thm_trigger
-            'msg_type::trade': trade
-            'msg_type::trade_amendment_message': trade_amendment_message
             'msg_type::trade_statistics_message': trade_statistics_message
   msg_header:
     seq:
@@ -111,41 +108,6 @@ types:
         type: u2
         enum: msg_type
         doc: 'Code identifying this message type'
-  add_order:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier per instrument and side for each order'
-      - id: price
-        type: s8
-        doc: 'Price'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of the order'
-      - id: lot_type
-        type: u1
-        enum: lot_type
-        doc: 'Lot Type'
-      - id: order_type
-        type: u1
-        enum: order_type
-        doc: 'Additional order attributes'
-      - id: order_book_position
-        type: u4
-        doc: 'Order rank information for the order position within the order book'
-      - id: filler_1
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
   aggregate_implied_order:
     seq:
       - id: orderbook_id
@@ -735,74 +697,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Padding'
-  trade:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier per instrument and side for each order'
-      - id: price
-        type: s8
-        doc: 'Price'
-      - id: trade_id
-        type: u8
-        doc: 'Unique trade identification'
-      - id: match_id
-        type: u8
-        doc: 'An identifier that links all trade which are executed as part of a single execution operation involving an aggressing order'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of the order'
-      - id: trade_sub_type
-        type: u1
-        enum: trade_sub_type
-        doc: 'Trade Sub Type'
-      - id: trade_condition
-        type: u1
-        enum: trade_condition
-        doc: 'The condition in which a trade was executed'
-      - id: filler_3
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: trade_time
-        type: u8
-        doc: 'Date and time of the last'
-  trade_amendment_message:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: trade_id
-        type: u8
-        doc: 'Unique trade identification'
-      - id: price
-        type: s8
-        doc: 'Price'
-      - id: quantity
-        type: u4
-        doc: 'Number of contracts'
-      - id: amendment_execution_time
-        type: u8
-        doc: 'Date and time of the trade amendment execution'
-      - id: trade_state
-        type: u1
-        enum: trade_state
-        doc: 'Trade State'
-      - id: filler_3
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
   trade_statistics_message:
     seq:
       - id: orderbook_id
@@ -852,9 +746,6 @@ types:
 
 enums:
   msg_type:
-    330:
-      id: 'add_order'
-      doc: 'Generated when a new order is inserted into the order book.'
     337:
       id: 'aggregate_implied_order'
       doc: 'Generated whenever there is an update on implied order at the given implied price.'
@@ -924,12 +815,6 @@ enums:
     326:
       id: 'thm_trigger'
       doc: 'Generated when trading halt is triggered on a particular instrument class.'
-    350:
-      id: 'trade'
-      doc: 'The trade message is generated each time a trade has been performed'
-    356:
-      id: 'trade_amendment_message'
-      doc: 'Represents a trade amendment or cancellation'
     360:
       id: 'trade_statistics_message'
       doc: 'Trade information for completed deals'
@@ -940,20 +825,6 @@ enums:
     1:
       id: 'offer'
       doc: 'Offer'
-  lot_type:
-    2:
-      id: 'round_lot'
-      doc: 'Round Lot'
-  order_type:
-    1:
-      id: 'market'
-      doc: 'Market'
-    2:
-      id: 'limit'
-      doc: 'Limit'
-    3:
-      id: 'market_to_limit'
-      doc: 'Market To Limit'
   update_action:
     0:
       id: 'new_field'
@@ -1135,42 +1006,6 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
-  trade_sub_type:
-    0:
-      id: 'continuous_match'
-      doc: 'Continuous Match'
-    1:
-      id: 'opening_uncross'
-      doc: 'Opening Uncross'
-    2:
-      id: 'block_trade'
-      doc: 'Block Trade'
-  trade_condition:
-    0:
-      id: 'na'
-      doc: 'Na'
-    1:
-      id: 'explicit_order_vs_explicit_order'
-      doc: 'Explicit Order Vs Explicit Order'
-    2:
-      id: 'explicit_order_vs_implied_order'
-      doc: 'Explicit Order Vs Implied Order'
-    3:
-      id: 'implied_order_vs_explicit_order'
-      doc: 'Implied Order Vs Explicit Order'
-    4:
-      id: 'implied_order_vs_implied_order'
-      doc: 'Implied Order Vs Implied Order'
-    5:
-      id: 'exchange_reported_on_behalf_trade'
-      doc: 'Exchange Reported On Behalf Trade'
-  trade_state:
-    1:
-      id: 'cancelled'
-      doc: 'Cancelled'
-    2:
-      id: 'amended'
-      doc: 'Amended'
   session:
     0:
       id: 't_session'

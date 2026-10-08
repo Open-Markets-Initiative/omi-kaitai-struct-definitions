@@ -403,10 +403,8 @@ types:
   derivatives_quote_five_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -620,10 +618,8 @@ types:
   derivatives_quote_ten_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1065,10 +1061,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: final_ask_bid_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: ask_level_1_price
         type: str
@@ -1335,10 +1329,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: final_ask_bid_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: ask_level_1_price
         type: str
@@ -1677,10 +1669,8 @@ types:
   derivatives_order_filled_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1758,10 +1748,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: final_ask_bid_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: upper_limit_of_dynamic_price_range
         type: str
@@ -1780,10 +1768,8 @@ types:
   derivatives_order_filled_plus_quote_five_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1861,10 +1847,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: final_ask_bid_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: upper_limit_of_dynamic_price_range
         type: str
@@ -2053,10 +2037,8 @@ types:
   derivatives_order_filled_plus_quote_ten_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -2134,10 +2116,8 @@ types:
         encoding: ASCII
         doc: 'Accumulated trading value Trading value=trading amount*trading price'
       - id: final_ask_bid_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: final_ask_bid_type_code
         doc: 'Ask/Bid Type Code space: order filled with single price 0: N/A 1: ASK 2: BID'
       - id: upper_limit_of_dynamic_price_range
         type: str
@@ -2476,10 +2456,8 @@ types:
   derivatives_market_operation_ts_plus_quote_five_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -2720,10 +2698,8 @@ types:
   derivatives_market_operation_ts_plus_quote_ten_levels_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3141,10 +3117,8 @@ types:
   derivatives_market_operation_ts_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3201,10 +3175,8 @@ types:
   derivatives_issue_closing_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3228,11 +3200,8 @@ types:
         encoding: ASCII
         doc: 'Closing price on the day''s regular session'
       - id: closing_price_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price'
+        type: str_1_nullable
+        doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: accumulated_trading_volume
         type: str
         size: 12
@@ -3344,10 +3313,8 @@ types:
   derivatives_dynamic_upper_lower_limit_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3391,10 +3358,8 @@ types:
   derivatives_price_limit_range_increase_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3445,10 +3410,8 @@ types:
   derivatives_quantity_allocation_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3532,10 +3495,8 @@ types:
   derivatives_batch_data_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -4192,10 +4153,8 @@ types:
   equity_derivatives_adjustment_details_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: business_date
         type: str
         size: 8
@@ -4250,10 +4209,8 @@ types:
   commodity_futures_settlement_reference_ktb_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information Ca. Nullable, No Value ='
       - id: application_date
         type: str
         size: 8
@@ -4675,6 +4632,15 @@ types:
         value: text.substring(0, 2).to_i
       minute:
         value: text.substring(2, 4).to_i
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "        "
   hhmmssuuuuuu_ascii_time:
     seq:
       - id: text
@@ -4690,6 +4656,15 @@ types:
         value: text.substring(4, 6).to_i
       microsecond:
         value: text.substring(6, 12).to_i
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == " "
   hhmmss_ascii_time:
     seq:
       - id: text
@@ -4709,4 +4684,17 @@ enums:
     255:
       id: 'end_of_message'
       doc: 'End Of Message'
+  final_ask_bid_type_code:
+    0x20:
+      id: 'single_price'
+      doc: 'Order Filled With Single Price'
+    0x30:
+      id: 'not_applicable'
+      doc: 'Not Applicable'
+    0x31:
+      id: 'ask'
+      doc: 'Ask'
+    0x32:
+      id: 'bid'
+      doc: 'Bid'
 

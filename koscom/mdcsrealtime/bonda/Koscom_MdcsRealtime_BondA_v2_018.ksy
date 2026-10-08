@@ -542,10 +542,8 @@ types:
   bond_index_krx_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: calculating_date
         type: yyyymmdd_ascii_date
         doc: 'Calculation date in YYYYMMDD format'
@@ -711,10 +709,8 @@ types:
   market_operation_ts_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -865,10 +861,8 @@ types:
   issue_closing_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -897,11 +891,8 @@ types:
         encoding: ASCII
         doc: 'Closing Price_Yield'
       - id: closing_price_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price'
+        type: str_1_nullable
+        doc: '1: Closing price 2: Quotation 3: No Trades 4: Quotation of an Issue of which base price is settled with a today''s single price. Nullable, No Value ='
       - id: end_keyword
         type: u1
         enum: end_keyword
@@ -949,10 +940,8 @@ types:
   regular_bonds_ktb_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1141,10 +1130,8 @@ types:
   bonds_order_filled_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1245,10 +1232,8 @@ types:
   general_bonds_ktb_order_filled_plus_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -1559,10 +1544,8 @@ types:
   bonds_batch_data_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -1622,17 +1605,11 @@ types:
         pad-right: 0x20
         doc: 'Category code'
       - id: bond_guaranteed_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Bond_Guaranteed Type Code 1:Guaranteed 2:Partial Guaranteed 3:Collateral-backed 4:Non-Guaranteed 5:Government Guaranteed 6:Covered Bond'
+        type: str_1_nullable
+        doc: 'Bond_Guaranteed Type Code 1:Guaranteed 2:Partial Guaranteed 3:Collateral-backed 4:Non-Guaranteed 5:Government Guaranteed 6:Covered Bond. Nullable, No Value ='
       - id: coupon_payment_type_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe'
+        type: str_2_nullable
+        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe. Nullable, No Value ='
       - id: listing_date
         type: str
         size: 8
@@ -1673,35 +1650,20 @@ types:
         encoding: ASCII
         doc: '0: Irregular 0: Coupon Bond, Compound Interest Bond and others are not transmitted'
       - id: coupon_payment_timing_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Paid in advance 2: Paid afterwards'
+        type: str_1_nullable
+        doc: '1: Paid in advance 2: Paid afterwards. Nullable, No Value ='
       - id: interest_payment
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Issuing date 2: Redemption date'
+        type: str_1_nullable
+        doc: '1: Issuing date 2: Redemption date. Nullable, No Value ='
       - id: coupon_payment_date_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date'
+        type: str_1_nullable
+        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date. Nullable, No Value ='
       - id: decimal_point_of_coupon_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '0: No 1: Floor 2: Ceiling 3: Rounding up'
+        type: str_1_nullable
+        doc: '0: No 1: Floor 2: Ceiling 3: Rounding up. Nullable, No Value ='
       - id: pre_issue_sale_coupon_payment_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'A method of paying an interest during the period from sale date to issue date when pre-sale occurs before issue date. 1: At sales 2: At 1st coupon payment 3. At maturity 4. At sales (KTB Types)'
+        type: str_1_nullable
+        doc: 'A method of paying an interest during the period from sale date to issue date when pre-sale occurs before issue date. 1: At sales 2: At 1st coupon payment 3. At maturity 4. At sales (KTB Types). Nullable, No Value ='
       - id: issuing_amount
         type: str
         size: 22
@@ -1758,11 +1720,8 @@ types:
         pad-right: 0x20
         doc: 'Perpetual Bond_Maturity Structure Status Y: Applicable N: Not Applicable'
       - id: strip_bond_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Strip Bond Type Code 1: General bond 2: Separation of Principal 3: Separation of Interest'
+        type: str_1_nullable
+        doc: 'Strip Bond Type Code 1: General bond 2: Separation of Principal 3: Separation of Interest. Nullable, No Value ='
       - id: base_price
         type: str
         size: 11
@@ -1787,10 +1746,8 @@ types:
   repo_batch_data_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: total_number_of_instruments_of_the_contract
         type: str
         size: 6
@@ -1837,10 +1794,8 @@ types:
   issue_event_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -1878,10 +1833,8 @@ types:
   corporate_bonds_reference_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -1913,11 +1866,8 @@ types:
         pad-right: 0x20
         doc: 'Listing Date of derivatives(CLASS) or issues'
       - id: coupon_payment_type_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe'
+        type: str_2_nullable
+        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe. Nullable, No Value ='
       - id: issuing_amount
         type: str
         size: 22
@@ -1929,11 +1879,8 @@ types:
         encoding: ASCII
         doc: 'Listed Amount'
       - id: coupon_payment_timing_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Paid in advance 2: Paid afterwards'
+        type: str_1_nullable
+        doc: '1: Paid in advance 2: Paid afterwards. Nullable, No Value ='
       - id: number_of_months_for_grace
         type: str
         size: 4
@@ -1945,17 +1892,11 @@ types:
         encoding: ASCII
         doc: 'Number of Amortization'
       - id: interest_payment
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Issuing date 2: Redemption date'
+        type: str_1_nullable
+        doc: '1: Issuing date 2: Redemption date. Nullable, No Value ='
       - id: coupon_payment_date_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date'
+        type: str_1_nullable
+        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date. Nullable, No Value ='
       - id: coupon_rate
         type: str
         size: 14
@@ -2024,10 +1965,8 @@ types:
   regular_bonds_installment_repayment_date_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -2047,10 +1986,8 @@ types:
   repo_classification_data_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: business_date
         type: str
         size: 8
@@ -2076,10 +2013,8 @@ types:
   repo_trade_availability_per_term_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -2148,10 +2083,8 @@ types:
   retail_bonds_type_code_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: retail_bond_type_code
         type: str
         size: 2
@@ -2183,10 +2116,8 @@ types:
   baby_bonds_reporting_market_yield_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: business_date
         type: str
         size: 8
@@ -2324,10 +2255,8 @@ types:
   bonds_credit_rating_information_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -2486,10 +2415,8 @@ types:
   bonds_isin_issue_information_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -2551,23 +2478,14 @@ types:
         pad-right: 0x20
         doc: 'Bond_Type Code AB: Special Bonds CO: Corporate Bonds FO: Foreign Bonds GB: Governmental Bonds MB: Municipal Bonds'
       - id: special_bond_issue_code
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Special Bond_Issue Code'
+        type: str_3_nullable
+        doc: 'Special Bond_Issue Code. Nullable, No Value ='
       - id: mb_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'MB_Type Code 1:Offering Regional Bond 2:Regional Development Bond 3:City Railroad Bond 4:Other MB 5:Others'
+        type: str_1_nullable
+        doc: 'MB_Type Code 1:Offering Regional Bond 2:Regional Development Bond 3:City Railroad Bond 4:Other MB 5:Others. Nullable, No Value ='
       - id: bond_guaranteed_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Bond_Guaranteed Type Code 1:Guaranteed 2:Partial Guaranteed 3:Collateral-backed 4:Non-Guaranteed 5:Government Guaranteed 6:Covered Bond'
+        type: str_1_nullable
+        doc: 'Bond_Guaranteed Type Code 1:Guaranteed 2:Partial Guaranteed 3:Collateral-backed 4:Non-Guaranteed 5:Government Guaranteed 6:Covered Bond. Nullable, No Value ='
       - id: guaranteed_rate_for_payment
         type: str
         size: 13
@@ -2586,11 +2504,8 @@ types:
         pad-right: 0x20
         doc: 'Option-embedded_Type Code 1:Call(Call) 2:Put(Put) 3:CallandPut(Call and Put)'
       - id: coupon_payment_type_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe'
+        type: str_2_nullable
+        doc: '11: Fixed Rate_Discount Bond 12: Fixed Rate_Compounding Interest Bond 13: Fixed Rate_Coupon Bond 14: Fixed Rate_Simple Interest Bond 15: Fixed Rate_Compound(5yrs)+Simple(2yrs) 19: Fixed Rate_Othe. Nullable, No Value ='
       - id: risk_bond_redemption_type_code
         type: str
         size: 1
@@ -2604,17 +2519,11 @@ types:
         pad-right: 0x20
         doc: '(Three of them can appear all at once) 100: Indirect Public Issue 010: Direct Public Issue 001: Private Issue 000: QIB Securities'
       - id: securitization_type_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Securitization_Type Code 11:ABS(Bond) 12:ABS(Beneficiary Certificate) 13:ABS(unstructured) 21:MBS(Bond) 22:MBS(Beneficiary Certificate) 31:SLBS(Bond) 32:SLBS(Beneficiary Certificate)'
+        type: str_2_nullable
+        doc: 'Securitization_Type Code 11:ABS(Bond) 12:ABS(Beneficiary Certificate) 13:ABS(unstructured) 21:MBS(Bond) 22:MBS(Beneficiary Certificate) 31:SLBS(Bond) 32:SLBS(Beneficiary Certificate). Nullable, No Value ='
       - id: redemption_priority_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Redemption Priority_Type Code 1:Senior(default) 2:Sub-Senior 3:Subordinated 4:Equity-like'
+        type: str_1_nullable
+        doc: 'Redemption Priority_Type Code 1:Senior(default) 2:Sub-Senior 3:Subordinated 4:Equity-like. Nullable, No Value ='
       - id: listing_date
         type: str
         size: 8
@@ -2661,46 +2570,28 @@ types:
         encoding: ASCII
         doc: '0: Irregular 0: Coupon Bond, Compound Interest Bond and others are not transmitted'
       - id: coupon_payment_timing_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Paid in advance 2: Paid afterwards'
+        type: str_1_nullable
+        doc: '1: Paid in advance 2: Paid afterwards. Nullable, No Value ='
       - id: interest_payment
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Issuing date 2: Redemption date'
+        type: str_1_nullable
+        doc: '1: Issuing date 2: Redemption date. Nullable, No Value ='
       - id: coupon_payment_date_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date'
+        type: str_1_nullable
+        doc: 'Coupon Payment Date Type Code 1: Based on the date 2: Based on the last date. Nullable, No Value ='
       - id: decimal_point_of_coupon_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '0: No 1: Floor 2: Ceiling 3: Rounding up'
+        type: str_1_nullable
+        doc: '0: No 1: Floor 2: Ceiling 3: Rounding up. Nullable, No Value ='
       - id: number_of_months_to_pay_interest
         type: str
         size: 4
         encoding: ASCII
         doc: 'Used if it is Coupon Bond, Compounding Interest Bond, or Amortized Bond (Coupon Bond:3-month paid afterwards, 3-month, Compounding Interest Bond:Actual coupon is paid on maturity date. In this case,'
       - id: bond_sale_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Pre-Issue Sae ,2: Issue Sale, 3: Post-Issue Sale'
+        type: str_1_nullable
+        doc: '1: Pre-Issue Sae ,2: Issue Sale, 3: Post-Issue Sale. Nullable, No Value ='
       - id: pre_issue_sale_coupon_payment_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'A method of paying an interest during the period from sale date to issue date when pre-sale occurs before issue date. 1: At sales 2: At 1st coupon payment 3. At maturity 4. At sales (KTB Types)'
+        type: str_1_nullable
+        doc: 'A method of paying an interest during the period from sale date to issue date when pre-sale occurs before issue date. 1: At sales 2: At 1st coupon payment 3. At maturity 4. At sales (KTB Types). Nullable, No Value ='
       - id: issuing_amount
         type: str
         size: 22
@@ -2771,17 +2662,11 @@ types:
         encoding: ASCII
         doc: 'Other Funds'
       - id: inscription_type_of_bond
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Inscription Type of Bond'
+        type: str_1_nullable
+        doc: 'Inscription Type of Bond. Nullable, No Value ='
       - id: taxation
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Taxation'
+        type: str_1_nullable
+        doc: 'Taxation. Nullable, No Value ='
       - id: bond_lead_manager_company_code
         type: str
         size: 4
@@ -3003,11 +2888,8 @@ types:
         pad-right: 0x20
         doc: '2nd Put Exercise_End Date'
       - id: coupon_payment_decision_code_for_bank_holidays
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Previous Business Day (No accrued interest when coupon paid on the next business day) 2: Previous Business Day (Accrued interest applied when coupon paid on the next business day) 3: Next Busines'
+        type: str_1_nullable
+        doc: '1: Previous Business Day (No accrued interest when coupon paid on the next business day) 2: Previous Business Day (Accrued interest applied when coupon paid on the next business day) 3: Next Busines. Nullable, No Value ='
       - id: hybrid_bond
         type: str
         size: 1
@@ -3042,11 +2924,8 @@ types:
         encoding: ASCII
         doc: 'Maximum Yield'
       - id: strip_bond_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Strip Bond Type Code 1: General bond 2: Separation of Principal 3: Separation of Interest'
+        type: str_1_nullable
+        doc: 'Strip Bond Type Code 1: General bond 2: Separation of Principal 3: Separation of Interest. Nullable, No Value ='
       - id: original_bond_type_code_subjec_to_strip
         type: str
         size: 12
@@ -3093,11 +2972,8 @@ types:
         encoding: ASCII
         doc: 'Accrued Interest Rate on Bank Holidays_Type Code'
       - id: principal_payment_methods_on_bank_holidays_type_code
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: '1: Prior to Business Day (No accrued interest) 2: Prior to Business Day (Accrued interest is added) 3: Post Business Day (No accrued interest) 4: Post Business Day (Accrued interest is added)'
+        type: str_1_nullable
+        doc: '1: Prior to Business Day (No accrued interest) 2: Prior to Business Day (Accrued interest is added) 3: Post Business Day (No accrued interest) 4: Post Business Day (Accrued interest is added). Nullable, No Value ='
       - id: principal_base_rate_on_bank_holidays_type_code
         type: str
         size: 1
@@ -3127,10 +3003,8 @@ types:
   bonds_isin_information_text_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: isin_code
         type: str
         size: 12
@@ -3198,10 +3072,8 @@ types:
   baby_bonds_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -3550,10 +3422,8 @@ types:
   repo_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -4107,10 +3977,8 @@ types:
   bonds_total_remaining_volume_on_quotes_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -4158,10 +4026,8 @@ types:
   baby_bonds_order_filled_plus_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -4582,10 +4448,8 @@ types:
   repo_order_filled_plus_quote_message:
     seq:
       - id: message_sequence_number
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information'
+        type: str_8_nullable
+        doc: 'A message sequence number given by Market data team - Market data: seq number is given by instruments and boards (※ only for high-bandwidth service) - Batch Data: seq number is given by Information. Nullable, No Value ='
       - id: board_id
         type: str
         size: 2
@@ -5261,6 +5125,15 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "        "
   hhmmssuuuuuu_ascii_time:
     seq:
       - id: text
@@ -5276,6 +5149,33 @@ types:
         value: text.substring(4, 6).to_i
       microsecond:
         value: text.substring(6, 12).to_i
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == " "
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "  "
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "   "
 
 enums:
   end_keyword:

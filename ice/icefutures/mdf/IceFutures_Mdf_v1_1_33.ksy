@@ -41,11 +41,13 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'iMpact Upd market data packet header'
-  - id: message
-    type: message_struct
+  - id: messages
     repeat: expr
     repeat-expr: packet_header.number_of_msgs
-    doc: 'iMpact message'
+    type:
+      switch-on: packet_header.number_of_msgs
+      cases:
+        _: message
 
 types:
   packet_header_struct:
@@ -62,7 +64,7 @@ types:
       - id: sent_date_time
         type: millisecond_timestamp
         doc: 'Field is the timestamp of when the message block is sent, the number of milliseconds since Jan 1st, 1970, 00:00:00 GMT. Milliseconds since Unix epoch'
-  message_struct:
+  message:
     seq:
       - id: message_header
         type: message_header

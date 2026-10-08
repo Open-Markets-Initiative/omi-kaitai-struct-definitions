@@ -75,7 +75,6 @@ types:
         type:
           switch-on: msg_header.msg_type
           cases:
-            'msg_type::aggregate_implied_order': aggregate_implied_order
             'msg_type::aggregate_order_book_update_message': aggregate_order_book_update_message
             'msg_type::calculated_opening_price_message': calculated_opening_price_message
             'msg_type::sequence_reset': sequence_reset
@@ -110,32 +109,11 @@ types:
         type: u2
         enum: msg_type
         doc: 'Code identifying this message type'
-  aggregate_implied_order:
-    seq:
-      - id: orderbook_id
-        type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
-      - id: implied_price
-        type: s8
-        doc: 'Implied Price. Decimal places determined from Class Definition field “DecimalInPrice”. Null means N/A'
-      - id: implied_quantity
-        type: u8
-        doc: 'Aggregated Implied Volume at Implied Price'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of the order'
-      - id: filler_1
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Padding'
   aggregate_order_book_update_message:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: filler_3
         type: str
         size: 3
@@ -185,7 +163,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: calculated_opening_price
         type: s8
         doc: 'Calculated Opening Price'
@@ -213,7 +191,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: implied_volatility
         type: u4
         doc: 'Implied Volatility'
@@ -261,7 +239,7 @@ types:
         doc: 'Padding'
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: settlement_price
         type: s8
         doc: '‘DecimalInPremium’'
@@ -275,7 +253,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: quote_quantity
         type: s4
         doc: 'Quantity'
@@ -433,7 +411,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: symbol
         type: str
         size: 32
@@ -674,7 +652,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: suspension_indicator
         type: u1
         enum: suspension_indicator
@@ -711,7 +689,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: cooling_off_start_time
         type: u8
         doc: 'Time when the cooling off period starts (UTC timestamp)'
@@ -760,7 +738,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: order_id
         type: u8
         doc: 'Order ID. 0 if not available'
@@ -805,7 +783,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: trade_id
         type: u8
         doc: 'Unique trade identification'
@@ -832,7 +810,7 @@ types:
     seq:
       - id: orderbook_id
         type: u4
-        doc: 'Uniquely identifies an instrument available for trading'
+        doc: 'Uniquely identifies a series'
       - id: last_price
         type: s8
         doc: 'Last Traded Price'
@@ -877,9 +855,6 @@ types:
 
 enums:
   msg_type:
-    337:
-      id: 'aggregate_implied_order'
-      doc: 'Generated whenever there is an update on implied order at the given implied price.'
     353:
       id: 'aggregate_order_book_update_message'
       doc: 'The aggregate order book is sent whenever there is a orderbook change'
