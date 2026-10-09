@@ -15,21 +15,29 @@ class CboeCfefuturesBinaryorderentryBoe3V1120ExchangeTests(unittest.TestCase):
 
     def test_clientheartbeat(self):
         for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ClientHeartbeat.pcap"):
+            if payloads.partial(payload, 2, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Firm.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_quoteupdate(self):
         for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/QuoteUpdate.pcap"):
+            if payloads.partial(payload, 2, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Firm.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_quoteupdateacknowledgement(self):
         for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/QuoteUpdateAcknowledgement.pcap"):
+            if payloads.partial(payload, 2, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Exchange.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_serverheartbeat(self):
         for payload in payloads.of("omi-data-packets/Cboe/CfeFutures.BinaryOrderEntry.Boe3.v1.1.20/ServerHeartbeat.pcap"):
+            if payloads.partial(payload, 2, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeCfefuturesBinaryorderentryBoe3V1120Exchange.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

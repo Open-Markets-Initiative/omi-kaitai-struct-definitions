@@ -927,6 +927,9 @@ enums:
     0x42:
       id: 'begin_accepting_orders'
       doc: 'Begin Accepting Orders'
+    0x4e:
+      id: 'overnight_session'
+      doc: 'Overnight Session'
     0x45:
       id: 'early_session'
       doc: 'Early Session'
@@ -1075,6 +1078,9 @@ enums:
     0x50:
       id: 'preopening'
       doc: 'Preopening'
+    0x4e:
+      id: 'overnight_session'
+      doc: 'Overnight Session'
     0x45:
       id: 'early_session'
       doc: 'Early Session'

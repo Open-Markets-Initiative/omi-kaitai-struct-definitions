@@ -574,9 +574,6 @@ enums:
     0x4c:
       id: 'ltse'
       doc: 'Ltse'
-    0x4d:
-      id: 'nyse_texas'
-      doc: 'Nyse Texas'
     0x4e:
       id: 'nyse'
       doc: 'Nyse'
@@ -756,9 +753,6 @@ enums:
     0x44:
       id: 'finra'
       doc: 'Finra'
-    0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
     0x48:
       id: 'miami_peral'
       doc: 'Miami Peral'

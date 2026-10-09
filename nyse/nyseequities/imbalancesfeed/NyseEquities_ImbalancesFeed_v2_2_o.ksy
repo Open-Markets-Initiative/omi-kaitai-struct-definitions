@@ -153,21 +153,21 @@ types:
         doc: 'ID of the Originating Market'
       - id: system_id
         type: u1
-        doc: 'ID of the Originating matching engine server'
+        doc: 'ID of the TXN for the symbol'
       - id: exchange_code
         type: u1
         enum: exchange_code
         doc: 'For listed equity markets, the market where this symbol is listed'
       - id: price_scale_code
         type: u1
-        doc: 'Specifies placement of the decimal point in price fields for this security'
+        doc: 'Specifies placement of the decimal point in price fields for this security on the Pillar equity markets. See Prices: 6 - low priced securities, 4 - medium priced securities, 3 - high priced securities'
       - id: security_type
         type: u1
         enum: security_type
-        doc: 'Type of Security used by Pillar-powered markets'
+        doc: 'Type of Security used by Pillar markets'
       - id: lot_size
         type: u2
-        doc: 'Round lot size in shares'
+        doc: 'Round lot size in shares for this security on the Pillar equity markets'
       - id: prev_close_price
         type: u4
         doc: 'The previous day''s closing price for this security'
@@ -176,20 +176,23 @@ types:
         doc: 'The previous day''s closing volume for the security'
       - id: price_resolution
         type: u1
-        doc: 'Minimum price increment: 0 - All Penny, 1 - Penny/Nickel, 5 - Nickel/Dime'
+        doc: 'The price increment for the Outright series for the underlying symbol: 0 - All Penny, 1 - Penny/Nickel, 5 - Nickel/Dime'
       - id: round_lot
         type: u1
         enum: round_lot
-        doc: 'Round Lots Accepted: Y - Yes, N - No'
+        doc: 'Round Lots Accepted for this security on the Pillar equity markets: Y - Yes, N - No'
       - id: mpv
         type: u2
-        doc: 'The minimum increment for a trade price, in 100ths of a cent. Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
+        doc: 'The minimum trade price increment for this security on the Pillar equity markets, in 100ths of a cent. Typically 1, or $0.0001, but for some Tick Pilot stocks, can be 500, or $0.05'
       - id: unit_of_trade
         type: u2
-        doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
-      - id: reserved_2
-        size: 2
-        doc: 'Reserved for future use. Disregard any content'
+        doc: 'The Unit of Trade in shares for this security on the Pillar equity markets. Valid values are 1, 10, 50 and 100'
+      - id: late_close_eligible
+        type: u1
+        doc: 'The Outright series for the underlying symbol is eligible for a later Core session close: 0 - Not eligible, 1 - Eligible'
+      - id: eth_eligible
+        type: u1
+        doc: 'The Outright series for the underlying symbol is eligible for Extended Trading Sessions: 0 - Not eligible, 1 - Eligible'
   symbol_clear_message:
     seq:
       - id: source_time
@@ -594,15 +597,6 @@ enums:
     3:
       id: 'nyse_arca_equities'
       doc: 'Nyse Arca Equities'
-    4:
-      id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
-    5:
-      id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
-    8:
-      id: 'nyse_american_options'
-      doc: 'Nyse American Options'
     9:
       id: 'nyse_american_equities'
       doc: 'Nyse American Equities'
@@ -616,6 +610,9 @@ enums:
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x4c:
       id: 'ltse'
       doc: 'Ltse'
@@ -639,8 +636,8 @@ enums:
       doc: 'Cboe'
   security_type:
     0x41:
-      id: 'adr'
-      doc: 'Adr'
+      id: 'american_depositary_receipts'
+      doc: 'American Depositary Receipts'
     0x43:
       id: 'common_stock'
       doc: 'Common Stock'
@@ -648,14 +645,14 @@ enums:
       id: 'debentures'
       doc: 'Debentures'
     0x45:
-      id: 'etf'
-      doc: 'Etf'
+      id: 'exchange_traded_funds'
+      doc: 'Exchange Traded Funds'
     0x46:
       id: 'foreign'
       doc: 'Foreign'
     0x48:
-      id: 'us_depositary_shares'
-      doc: 'Us Depositary Shares'
+      id: 'american_depositary_shares'
+      doc: 'American Depositary Shares'
     0x49:
       id: 'units'
       doc: 'Units'
@@ -663,8 +660,8 @@ enums:
       id: 'index_linked_notes'
       doc: 'Index Linked Notes'
     0x4d:
-      id: 'miscliquid_trust'
-      doc: 'Miscliquid Trust'
+      id: 'other_blank'
+      doc: 'Other Blank'
     0x4f:
       id: 'ordinary_shares'
       doc: 'Ordinary Shares'
@@ -675,8 +672,8 @@ enums:
       id: 'rights'
       doc: 'Rights'
     0x53:
-      id: 'shares_of_beneficiary_interest'
-      doc: 'Shares Of Beneficiary Interest'
+      id: 'shares_of_beneficial_interest'
+      doc: 'Shares Of Beneficial Interest'
     0x54:
       id: 'test'
       doc: 'Test'
@@ -684,8 +681,8 @@ enums:
       id: 'closed_end_fund'
       doc: 'Closed End Fund'
     0x57:
-      id: 'warrant'
-      doc: 'Warrant'
+      id: 'warrants'
+      doc: 'Warrants'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -701,8 +698,8 @@ enums:
       id: 'resume'
       doc: 'Resume'
     0x36:
-      id: 'suspend'
-      doc: 'Suspend'
+      id: 'suspend_operational_halt'
+      doc: 'Suspend Operational Halt'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
       doc: 'Short Sale Restriction Activated Day 1'
@@ -718,6 +715,9 @@ enums:
     0x42:
       id: 'begin_accepting_orders'
       doc: 'Begin Accepting Orders'
+    0x4e:
+      id: 'overnight_session'
+      doc: 'Overnight Session'
     0x45:
       id: 'early_session'
       doc: 'Early Session'
@@ -756,8 +756,8 @@ enums:
       id: 'equipment_changeover'
       doc: 'Equipment Changeover'
     0x41:
-      id: 'additional_information_requested'
-      doc: 'Additional Information Requested'
+      id: 'sip_outage_material_sip_latency_or_extraordinary_market_activity'
+      doc: 'Sip Outage Material Sip Latency Or Extraordinary Market Activity'
     0x43:
       id: 'regulatory_concern'
       doc: 'Regulatory Concern'
@@ -765,8 +765,8 @@ enums:
       id: 'merger_effective'
       doc: 'Merger Effective'
     0x46:
-      id: 'etf_component_prices_not_available'
-      doc: 'Etf Component Prices Not Available'
+      id: 'etf_iiv_etf_components_prices_not_available'
+      doc: 'Etf Iiv Etf Components Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -774,11 +774,11 @@ enums:
       id: 'new_security_offering'
       doc: 'New Security Offering'
     0x56:
-      id: 'intraday_indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available'
+      id: 'primary_listing_exchange_discretionary_halt'
+      doc: 'Primary Listing Exchange Discretionary Halt'
     0x36:
-      id: 'suspend'
-      doc: 'Suspend'
+      id: 'suspend_operational_halt'
+      doc: 'Suspend Operational Halt'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -793,8 +793,8 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx'
+      id: 'nasdaq_omx_tx'
+      doc: 'Nasdaq Omx Tx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
@@ -805,8 +805,8 @@ enums:
       id: 'n_24_x'
       doc: 'N 24 X'
     0x48:
-      id: 'miami_peral'
-      doc: 'Miami Peral'
+      id: 'miax_pearl'
+      doc: 'Miax Pearl'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'
@@ -866,6 +866,9 @@ enums:
     0x50:
       id: 'preopening'
       doc: 'Preopening'
+    0x4e:
+      id: 'overnight_session'
+      doc: 'Overnight Session'
     0x45:
       id: 'early_session'
       doc: 'Early Session'

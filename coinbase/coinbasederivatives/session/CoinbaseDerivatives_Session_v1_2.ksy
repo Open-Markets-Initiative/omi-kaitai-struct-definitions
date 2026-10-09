@@ -3,7 +3,7 @@
 #
 # Protocol:
 #   Organization: Coinbase
-#   Protocol: Session Layer
+#   Protocol: 
 #   Encoding: Tcp
 #   Version: 1.2
 #   Date: 7/27/2020
@@ -35,7 +35,7 @@ meta:
   license: GPL-3.0
   endian: le
 
-doc: 'Coinbase Coinbase Derivatives Session Layer Tcp v1.2'
+doc: 'Coinbase Coinbase Derivatives Tcp v1.2'
 doc-ref: https://docs.cdp.coinbase.com/derivatives/introduction/downloads
 
 seq:

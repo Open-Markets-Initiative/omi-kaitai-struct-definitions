@@ -56,7 +56,7 @@ types:
         type: u2
         doc: 'Length of entire block of messages. Includes this header and Message Count messages to follow'
       - id: message_count
-        type: u8
+        type: s8
         doc: 'Number of Trade and Trade Break messages which will be contained in this spin'
       - id: unit
         type: u1

@@ -1110,6 +1110,9 @@ enums:
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x4c:
       id: 'ltse'
       doc: 'Ltse'

@@ -178,10 +178,10 @@ types:
         type: yyyymmdd_date
         doc: 'Notation Date'
       - id: first_trading_date_and_time
-        type: u8
+        type: yyyymmddhhmmssmmm_timestamp
         doc: 'First Trading Date and Time'
       - id: last_trading_date_and_time
-        type: u8
+        type: yyyymmddhhmmssmmm_timestamp
         doc: 'Last Trading Date and Time'
       - id: country_id
         type: u1
@@ -275,11 +275,11 @@ types:
         type: u4
         doc: 'Used to group combination order book executions and the trades in the constituent order books to- gether'
       - id: time_of_trade_execution
-        type: u8
+        type: yyyymmddhhmmssmmm_timestamp
       - id: time_of_trade_agreement
-        type: u8
+        type: yyyymmddhhmmssmmm_timestamp
       - id: time_of_trade_dissemination
-        type: u8
+        type: yyyymmddhhmmssmmm_timestamp
       - id: trade_price
         type: s4
       - id: trade_type
@@ -445,6 +445,25 @@ types:
         value: packed / 100 % 100
       day:
         value: packed % 100
+  yyyymmddhhmmssmmm_timestamp:
+    seq:
+      - id: packed
+        type: s8
+    instances:
+      year:
+        value: packed / 10000000000000
+      month:
+        value: packed / 100000000000 % 100
+      day:
+        value: packed / 1000000000 % 100
+      hour:
+        value: packed / 10000000 % 100
+      minute:
+        value: packed / 100000 % 100
+      second:
+        value: packed / 1000 % 100
+      millisecond:
+        value: packed % 1000
 
 enums:
   financial_product:

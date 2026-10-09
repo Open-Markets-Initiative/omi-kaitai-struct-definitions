@@ -1085,9 +1085,7 @@ types:
       - id: market_id
         type: s4
       - id: auction_date
-        type: str
-        size: 10
-        encoding: ASCII
+        type: mdy_date
         doc: 'Date format'
       - id: message_date_time
         type: millisecond_timestamp
@@ -1707,6 +1705,19 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  mdy_date:
+    seq:
+      - id: text
+        type: str
+        size: 10
+        encoding: ASCII
+    instances:
+      month:
+        value: text.substring(0, 2).to_i
+      day:
+        value: text.substring(3, 5).to_i
+      year:
+        value: text.substring(6, 10).to_i
 
 enums:
   message_type:

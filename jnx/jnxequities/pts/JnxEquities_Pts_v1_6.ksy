@@ -122,8 +122,8 @@ types:
         type: nanosecond_offset
         doc: 'Number of nanoseconds since last Timestamp Seconds Message. Nanoseconds since Second epoch'
       - id: price_tick_size_table_id
-        type: decimal_u4_1
-        doc: 'Price tick size table identifier. Implied decimal with scale 1e-1'
+        type: u4
+        doc: 'Price tick size table identifier'
       - id: price_tick_size
         type: decimal_u4_1
         doc: 'Price tick size. Implied decimal with scale 1e-1'
@@ -154,11 +154,11 @@ types:
         type: u4
         doc: 'Number of shares that represent a round lot'
       - id: price_tick_size_table_id
-        type: decimal_u4_1
-        doc: 'Price tick size table identifier. Implied decimal with scale 1e-1'
+        type: u4
+        doc: 'Price tick size table identifier'
       - id: price_decimals
-        type: decimal_u4_1
-        doc: 'Number of decimal places in price fields; value is 1. Implied decimal with scale 1e-1'
+        type: u4
+        doc: 'Number of decimal places in price fields; value is 1'
       - id: upper_price_limit
         type: decimal_u4_1
         doc: 'Maximum tradable price. Implied decimal with scale 1e-1'

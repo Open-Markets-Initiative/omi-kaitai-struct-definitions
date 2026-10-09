@@ -39,15 +39,21 @@ doc: 'National Stock Exchange of India Ltd NSE Commodity Derivatives Mtbt Tick D
 doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:
-  - id: stream_header
-    type: stream_header_struct
-    doc: 'STREAM_HEADER'
-  - id: message
-    type: message_struct
-    doc: 'STREAM_DATA. First field is always Message Type and must be read/interpreted first'
+  - id: stream_packet
+    type: stream_packet_struct
+    repeat: eos
+    doc: 'Mtbt Tcp Packet. One STREAM_DATA message per packet, same framing as the multicast feed'
 
 types:
-  stream_header_struct:
+  stream_packet_struct:
+    seq:
+      - id: stream_header
+        type: stream_header
+        doc: 'STREAM_HEADER'
+      - id: message
+        type: message
+        doc: 'STREAM_DATA. First field is always Message Type and must be read/interpreted first'
+  stream_header:
     seq:
       - id: message_length
         type: s2
@@ -58,7 +64,7 @@ types:
       - id: sequence_number
         type: u4
         doc: 'Sequence number of the packet for this Stream Id. For Equity Derivative (FO) segment, this field is unsigned int [4, Uint]'
-  message_struct:
+  message:
     seq:
       - id: message_type
         type: u1
