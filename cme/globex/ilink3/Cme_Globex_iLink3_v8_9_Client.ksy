@@ -73,9 +73,15 @@ types:
             'template_id::order_mass_status_request': order_mass_status_request
             'template_id::order_status_request': order_status_request
             'template_id::party_details_list_request': party_details_list_request
+            'template_id::execution_ack': execution_ack
             'template_id::request_for_quote': request_for_quote
             'template_id::new_order_cross': new_order_cross
             'template_id::security_definition_request': security_definition_request
+            'template_id::request_for_cross': request_for_cross
+            'template_id::mass_quote_request': mass_quote_request
+            'template_id::quote_cancel_by_set': quote_cancel_by_set
+            'template_id::quote_cancel_by_group': quote_cancel_by_group
+            'template_id::quote_cancel_by_instrument': quote_cancel_by_instrument
   simple_open_framing_header:
     seq:
       - id: message_length
@@ -997,6 +1003,63 @@ types:
       - id: party_role
         type: u2
         doc: 'Required if NoPartyIDs(453) is greater than 0. Identifies the type of PartyID(448)'
+  execution_ack:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: order_id
+        type: u8
+        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
+      - id: exec_ack_status
+        type: u1
+        enum: exec_ack_status
+        doc: 'Indicates the status of the execution acknowledgement'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
+      - id: sec_exec_id
+        type: u8
+        doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
+      - id: last_px
+        type: decimal_s8_9
+        doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: last_qty
+        type: u4
+        doc: 'Quantity of shares bought/sold on this (last) fill'
+      - id: dk_reason
+        type: u1
+        enum: dk_reason
+        doc: 'Reason for execution rejection'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of order'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
   request_for_quote:
     seq:
       - id: party_details_list_req_id
@@ -1234,6 +1297,291 @@ types:
       - id: broken_date_end
         type: u2_nullable
         doc: 'End date of a financing deal, i.e. the date the seller reimburses the buyer and takes back control of the collateral. Nullable, No Value = 65535'
+  request_for_cross:
+    seq:
+      - id: cross_id
+        type: u8
+        doc: 'Identifier for a cross order. Must be unique during a given trading day'
+      - id: order_request_id
+        type: u8
+        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: cross_type
+        type: u1
+        enum: cross_type
+        doc: 'Constant. Type of cross being submitted to a market'
+      - id: price
+        type: decimal_s8_9
+        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: sides_groups
+        type: sides_groups
+        doc: 'NoSides Block'
+  mass_quote_request:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: quote_req_id_optional
+        type: u8_nullable
+        doc: 'Unique identifier for quote request being responded to. Nullable, No Value = 18446744073709551615'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: quote_id
+        type: u4
+        doc: 'Unique identifier for mass quote populated by the client system'
+      - id: tot_no_quote_entries
+        type: u1
+        doc: 'Total number of quotes for the quote set across all messages. Should be the sum of all NoQuoteEntries in each message that has repeating quotes that are part of the same quote set. Required if NoQuoteEntries is not 0. Since fragmentation is not supported in practice this will always be equal to the value of NoQuoteEntries'
+      - id: mm_protection_reset
+        type: u1
+        enum: mm_protection_reset
+        doc: 'When market maker protection is triggered CME will not accept any new quotes from the market maker for that product group until it receives a mass quote message with the MMProtectionReset flag set to true'
+      - id: liquidity_flag
+        type: u1_nullable
+        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments. Nullable, No Value = 255'
+      - id: short_sale_type
+        type: u1_nullable
+        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: quote_entry_open
+        type: u1_nullable
+        doc: 'A boolean value indicating if new quotes should be rejected for the sender comp for whom quotes are being cancelled on behalf; also to be used to reset such a block on mass quotes being sent by the blocked sender comp. Nullable, No Value = 255'
+      - id: quote_entry_control
+        type: u1_nullable
+        doc: 'Optional field that allows market makers to block new entries or unblock previously set block. Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: reserved_60
+        type: str
+        size: 60
+        encoding: ASCII
+        doc: 'Reserved for future use'
+      - id: mass_quote_request_entries_groups
+        type: mass_quote_request_entries_groups
+        doc: 'NoQuoteEntries Block'
+  mass_quote_request_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: mass_quote_request_entries_group
+        type: mass_quote_request_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of quote entries'
+  mass_quote_request_entries_group:
+    seq:
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: price
+        type: decimal_s8_9
+        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
+      - id: order_qty
+        type: u4
+        doc: 'Number of shares or contracts ordered'
+      - id: side_side
+        type: u1
+        enum: side_side
+        doc: 'Quote side'
+      - id: quote_entry_id
+        type: u4
+        doc: 'Unique identifier for a quote. The QuoteEntryID stays with the quote as a static identifier even if the quote is updated. For fills this value is transposed into client order ID (tag 11)'
+      - id: quote_set_id
+        type: u2
+        doc: 'Unique id for the Quote Set'
+  quote_cancel_by_set:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: quote_id
+        type: u4
+        doc: 'Unique identifier for mass quote populated by the client system'
+      - id: cxl_linked_sessions
+        type: u1_nullable
+        doc: 'Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: quote_entry_control
+        type: u1_nullable
+        doc: 'Optional field that allows market makers to block new entries or unblock previously set block. Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: quote_cancel_by_set_entries_groups
+        type: quote_cancel_by_set_entries_groups
+        doc: 'NoQuoteSets Block'
+  quote_cancel_by_set_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: quote_cancel_by_set_entries_group
+        type: quote_cancel_by_set_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of Quote Set IDs'
+  quote_cancel_by_set_entries_group:
+    seq:
+      - id: quote_set_id
+        type: u2
+        doc: 'Unique id for the Quote Set'
+  quote_cancel_by_group:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: quote_id
+        type: u4
+        doc: 'Unique identifier for mass quote populated by the client system'
+      - id: cxl_linked_sessions
+        type: u1_nullable
+        doc: 'Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: quote_entry_control
+        type: u1_nullable
+        doc: 'Optional field that allows market makers to block new entries or unblock previously set block. Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: quote_cancel_by_group_entries_groups
+        type: quote_cancel_by_group_entries_groups
+        doc: 'NoQuoteEntries Block'
+  quote_cancel_by_group_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: quote_cancel_by_group_entries_group
+        type: quote_cancel_by_group_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of Security Groups'
+  quote_cancel_by_group_entries_group:
+    seq:
+      - id: security_group
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=Product Group (Tag 1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+  quote_cancel_by_instrument:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: sending_time_epoch
+        type: nanosecond_timestamp
+        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
+      - id: manual_order_indicator
+        type: u1
+        enum: manual_order_indicator
+        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
+      - id: location
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: quote_id
+        type: u4
+        doc: 'Unique identifier for mass quote populated by the client system'
+      - id: cxl_linked_sessions
+        type: u1_nullable
+        doc: 'Value is echoed back from inbound customer request. Nullable, No Value = 255'
+      - id: quote_cancel_by_instrument_entries_groups
+        type: quote_cancel_by_instrument_entries_groups
+        doc: 'NoQuoteEntries Block'
+  quote_cancel_by_instrument_entries_groups:
+    seq:
+      - id: group_size
+        type: group_size
+        doc: 'Repeating group dimensions'
+      - id: quote_cancel_by_instrument_entries_group
+        type: quote_cancel_by_instrument_entries_group
+        repeat: expr
+        repeat-expr: group_size.num_in_group
+        doc: 'The number of instruments'
+  quote_cancel_by_instrument_entries_group:
+    seq:
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1784,6 +2132,38 @@ enums:
     99:
       id: 'gfs'
       doc: 'GFS'
+  exec_ack_status:
+    1:
+      id: 'accepted'
+      doc: 'Accepted'
+    2:
+      id: 'rejected'
+      doc: 'Rejected'
+  dk_reason:
+    0x41:
+      id: 'unknown_security'
+      doc: 'Unknown Security'
+    0x42:
+      id: 'wrong_side'
+      doc: 'Wrong Side'
+    0x43:
+      id: 'quantity_exceeds_order'
+      doc: 'Quantity Exceeds Order'
+    0x44:
+      id: 'no_matching_order'
+      doc: 'No Matching Order'
+    0x45:
+      id: 'price_exceeds_limit'
+      doc: 'Price Exceeds Limit'
+    0x46:
+      id: 'calculation_difference'
+      doc: 'Calculation Difference'
+    0x47:
+      id: 'no_matching_execution_report'
+      doc: 'No Matching Execution Report'
+    0x5a:
+      id: 'other'
+      doc: 'Other'
   quote_type:
     1:
       id: 'tradeable'
@@ -1815,6 +2195,37 @@ enums:
     7:
       id: 'undisclosed'
       doc: 'Undisclosed'
+  cross_type:
+    3:
+      id: 'cross'
+      doc: 'Default product configuration'
+    20:
+      id: 'r_cross'
+      doc: 'RFQ + RFC Cross'
+    21:
+      id: 'c_cross'
+      doc: 'Committed Cross'
+  quote_entry_control:
+    0:
+      id: 'false_field'
+      doc: 'False, No'
+    1:
+      id: 'true_field'
+      doc: 'True, Yes'
+  side_side:
+    1:
+      id: 'buy'
+      doc: 'Buy'
+    2:
+      id: 'sell'
+      doc: 'Sell'
+  cxl_linked_sessions:
+    0:
+      id: 'false_field'
+      doc: 'False, No'
+    1:
+      id: 'true_field'
+      doc: 'True, Yes'
   poss_retrans_flag:
     0:
       id: 'false_field'
@@ -1958,38 +2369,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True, Yes'
-  exec_ack_status:
-    1:
-      id: 'accepted'
-      doc: 'Accepted'
-    2:
-      id: 'rejected'
-      doc: 'Rejected'
-  dk_reason:
-    0x41:
-      id: 'unknown_security'
-      doc: 'Unknown Security'
-    0x42:
-      id: 'wrong_side'
-      doc: 'Wrong Side'
-    0x43:
-      id: 'quantity_exceeds_order'
-      doc: 'Quantity Exceeds Order'
-    0x44:
-      id: 'no_matching_order'
-      doc: 'No Matching Order'
-    0x45:
-      id: 'price_exceeds_limit'
-      doc: 'Price Exceeds Limit'
-    0x46:
-      id: 'calculation_difference'
-      doc: 'Calculation Difference'
-    0x47:
-      id: 'no_matching_execution_report'
-      doc: 'No Matching Execution Report'
-    0x5a:
-      id: 'other'
-      doc: 'Other'
   quote_ack_status:
     0:
       id: 'accepted'
@@ -1997,13 +2376,6 @@ enums:
     5:
       id: 'rejected'
       doc: 'Rejected'
-  quote_entry_control:
-    0:
-      id: 'false_field'
-      doc: 'False, No'
-    1:
-      id: 'true_field'
-      doc: 'True, Yes'
   ord_status_trd_cxl:
     0x47:
       id: 'trade_correction'
@@ -2078,18 +2450,4 @@ enums:
     100:
       id: 'cancelper_quote_set'
       doc: 'Cancel per Quote Set'
-  cxl_linked_sessions:
-    0:
-      id: 'false_field'
-      doc: 'False, No'
-    1:
-      id: 'true_field'
-      doc: 'True, Yes'
-  side_side:
-    1:
-      id: 'buy'
-      doc: 'Buy'
-    2:
-      id: 'sell'
-      doc: 'Sell'
 

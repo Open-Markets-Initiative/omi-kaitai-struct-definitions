@@ -652,9 +652,6 @@ enums:
     0x52:
       id: 'replay'
       doc: 'Replay Mode'
-    0x54:
-      id: 'snapshot_mode'
-      doc: 'Snapshot Mode'
   login_reject_code:
     0x54:
       id: 'malformed_token'

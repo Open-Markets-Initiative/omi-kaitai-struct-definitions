@@ -122,9 +122,9 @@ types:
             'template_id::order_cancel_request_message': order_cancel_request_message
             'template_id::mass_cancel_request_message': mass_cancel_request_message
             'template_id::mass_cancel_clear_lockout_request_message': mass_cancel_clear_lockout_request_message
-            'template_id::allocation_instruction_message': allocation_instruction_message
             'template_id::mass_cancel_bulk_clear_all_lockouts_request_message': mass_cancel_bulk_clear_all_lockouts_request_message
             'template_id::mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message': mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message
+            'template_id::allocation_instruction_message': allocation_instruction_message
   sbe_header:
     seq:
       - id: block_length
@@ -604,6 +604,32 @@ types:
       - id: lockout_id
         type: u8
         doc: 'The LockoutID of a previous lockout, returned in a PendingMassCancel message. 5.1.10 MassCancelBulkClearAllLockoutsRequest The mass cancel clear all lockouts request message requests the clearing of previously placed lockouts. A lockout can be requested as part of a MassCancelRequest using the MassCancelInst field. The MassCancelBulkClearAllLockoutsRequest will clear all existing lockouts for the FIRM associated with the port. A MassCancelBulkClearLockoutAccepted message will be sent on the requesting port if the request is deemed valid else a MassCancelBulkClearLockoutReject will be sent instead with the appropriate reject reason code. note: Lockouts initiated via a different port sent in parallel to this request may be cleared as part of this operation as well. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 49 Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 32'
+  mass_cancel_bulk_clear_all_lockouts_request_message:
+    seq:
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+  mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message:
+    seq:
+      - id: sending_time
+        type: nanosecond_timestamp
+        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier of the order as assigned by the client'
+      - id: efid_optional
+        type: str_4_nullable
+        doc: 'Cancel all orders on this EFID. Nullable, No Value = 0'
+      - id: underlier_optional
+        type: str_6_nullable
+        doc: 'The Underlying symbol on which to cancel orders. If UnderlyingOrSeries is set to CancelAllOnSeries, cancels will be limited in scope for the OptionsSecurityID provided on this message. Nullable, No Value = 0'
   allocation_instruction_message:
     seq:
       - id: sending_time
@@ -712,32 +738,6 @@ types:
         type: u1
         enum: nested_party_role
         doc: 'Identifies the type or role of the NestedPartyID (524) specified. 3.3.9 Request Allocations Group (Repeating Group 78) The Request Allocations Group repeating group allows for multiple allocations to be supplied in a post-trade request message. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 15 This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description'
-  mass_cancel_bulk_clear_all_lockouts_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier of the order as assigned by the client'
-  mass_cancel_bulk_clear_lockouts_by_efid_or_underlier_request_message:
-    seq:
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier of the order as assigned by the client'
-      - id: efid_optional
-        type: str_4_nullable
-        doc: 'Cancel all orders on this EFID. Nullable, No Value = 0'
-      - id: underlier_optional
-        type: str_6_nullable
-        doc: 'The Underlying symbol on which to cancel orders. If UnderlyingOrSeries is set to CancelAllOnSeries, cancels will be limited in scope for the OptionsSecurityID provided on this message. Nullable, No Value = 0'
   nanosecond_timestamp:
     seq:
       - id: time

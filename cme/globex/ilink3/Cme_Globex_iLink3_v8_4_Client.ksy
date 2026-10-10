@@ -73,6 +73,7 @@ types:
             'template_id::order_mass_status_request': order_mass_status_request
             'template_id::order_status_request': order_status_request
             'template_id::party_details_list_request': party_details_list_request
+            'template_id::execution_ack': execution_ack
             'template_id::request_for_quote': request_for_quote
             'template_id::new_order_cross': new_order_cross
             'template_id::security_definition_request': security_definition_request
@@ -959,6 +960,51 @@ types:
       - id: party_role
         type: u2
         doc: 'Required if NoPartyIDs(453) > 0. Identifies the type of PartyID(448)'
+  execution_ack:
+    seq:
+      - id: party_details_list_req_id
+        type: u8
+        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
+      - id: order_id
+        type: u8
+        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
+      - id: exec_ack_status
+        type: u1
+        enum: exec_ack_status
+        doc: 'Indicates the status of the execution acknowledgement'
+      - id: seq_num
+        type: u4
+        doc: 'Sequence number as assigned to message'
+      - id: clordid
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
+      - id: sec_exec_id
+        type: u8
+        doc: 'Unique identifier that allows linking id spread summary fill notice with leg fill notice and trade cancel messages'
+      - id: last_px
+        type: decimal_s8_9
+        doc: 'Price of this (last) fill. Implied decimal with scale 1e-9'
+      - id: security_id
+        type: s4
+        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: last_qty
+        type: u4
+        doc: 'Quantity of shares bought/sold on this (last) fill'
+      - id: dk_reason
+        type: u1
+        enum: dk_reason
+        doc: 'Reason for execution rejection'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of order'
+      - id: sender_id
+        type: str
+        size: 20
+        encoding: ASCII
+        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
   request_for_quote:
     seq:
       - id: party_details_list_req_id
@@ -1679,6 +1725,38 @@ enums:
     6:
       id: 'gtd'
       doc: 'GTD'
+  exec_ack_status:
+    1:
+      id: 'accepted'
+      doc: 'Accepted'
+    2:
+      id: 'rejected'
+      doc: 'Rejected'
+  dk_reason:
+    0x41:
+      id: 'unknown_security'
+      doc: 'Unknown Security'
+    0x42:
+      id: 'wrong_side'
+      doc: 'Wrong Side'
+    0x43:
+      id: 'quantity_exceeds_order'
+      doc: 'Quantity Exceeds Order'
+    0x44:
+      id: 'no_matching_order'
+      doc: 'No Matching Order'
+    0x45:
+      id: 'price_exceeds_limit'
+      doc: 'Price Exceeds Limit'
+    0x46:
+      id: 'calculation_difference'
+      doc: 'Calculation Difference'
+    0x47:
+      id: 'no_matching_execution_report'
+      doc: 'No Matching Execution Report'
+    0x5a:
+      id: 'other'
+      doc: 'Other'
   quote_type:
     1:
       id: 'tradeable'
@@ -1835,38 +1913,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True, Yes'
-  exec_ack_status:
-    1:
-      id: 'accepted'
-      doc: 'Accepted'
-    2:
-      id: 'rejected'
-      doc: 'Rejected'
-  dk_reason:
-    0x41:
-      id: 'unknown_security'
-      doc: 'Unknown Security'
-    0x42:
-      id: 'wrong_side'
-      doc: 'Wrong Side'
-    0x43:
-      id: 'quantity_exceeds_order'
-      doc: 'Quantity Exceeds Order'
-    0x44:
-      id: 'no_matching_order'
-      doc: 'No Matching Order'
-    0x45:
-      id: 'price_exceeds_limit'
-      doc: 'Price Exceeds Limit'
-    0x46:
-      id: 'calculation_difference'
-      doc: 'Calculation Difference'
-    0x47:
-      id: 'no_matching_execution_report'
-      doc: 'No Matching Execution Report'
-    0x5a:
-      id: 'other'
-      doc: 'Other'
   quote_ack_status:
     0:
       id: 'accepted'

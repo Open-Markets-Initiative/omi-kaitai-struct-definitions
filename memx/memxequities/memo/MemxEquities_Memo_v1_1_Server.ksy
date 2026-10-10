@@ -49,6 +49,7 @@ seq:
       cases:
         'message_type::login_accepted': login_accepted_message
         'message_type::login_rejected': login_rejected_message
+        'message_type::start_of_session': start_of_session_message
         'message_type::replay_begin': replay_begin_message
         'message_type::replay_rejected': replay_rejected_message
         'message_type::replay_complete': replay_complete_message
@@ -79,6 +80,11 @@ types:
         type: u1
         enum: login_reject_code
         doc: 'The code for the rejection type'
+  start_of_session_message:
+    seq:
+      - id: session_id
+        type: u8
+        doc: 'The identifier for the session for which data is desired'
   replay_begin_message:
     seq:
       - id: next_sequence_number
@@ -1227,9 +1233,6 @@ enums:
     0x52:
       id: 'replay'
       doc: 'Replay Mode'
-    0x54:
-      id: 'snapshot_mode'
-      doc: 'Snapshot Mode'
   login_reject_code:
     0x54:
       id: 'malformed_token'
