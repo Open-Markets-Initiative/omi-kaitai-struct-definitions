@@ -41,7 +41,7 @@ doc-ref: https://www.nyse.com/connectivity/specs
 seq:
   - id: server_message
     type:
-      switch-on: server_message.login_response.msg_header.msg_type
+      switch-on: peek_msg_type
       cases:
         'msg_type::login_response': login_response
         'msg_type::stream_avail': stream_avail
@@ -49,6 +49,12 @@ seq:
         'msg_type::open_response': open_response
         'msg_type::close_response': close_response
         'msg_type::seq_msg': server_seq_msg
+
+instances:
+  peek_msg_type:
+    pos: 0
+    type: u2
+    enum: msg_type
 
 types:
   login_response:

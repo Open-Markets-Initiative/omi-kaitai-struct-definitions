@@ -708,18 +708,27 @@ types:
         type: u1
         enum: odd_lot_attachment_type
         doc: 'Odd Lot Attachment Type'
-      - id: odd_lot_attachment_count
+      - id: num_utp_adf_mpid_odd_lot_attachment
         type: u2
         doc: 'Odd Lot Attachment Count'
       - id: national_bbo_appendage_longform
         type: national_bbo_appendage_longform
+        if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: finra_adf_mpid_appendage
         type: finra_adf_mpid_appendage
+        if: finra_adf_mpid_appendage_indicator == finra_adf_mpid_appendage_indicator::adf_mpi_ds_attached_finra_mpid_was_generated
         doc: 'FINRA ADF MPID Appendage'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: utp_adf_mpid_odd_lot_attachment
+        type: utp_adf_mpid_odd_lot_attachment
+        repeat: expr
+        repeat-expr: num_utp_adf_mpid_odd_lot_attachment
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'UTP ADF MPID Odd Lot Attachment. Provides one or more odd lot price levels as an attachment to the odd lot or combined quote message, including ADF MPID attribution. Repeats Odd Lot Attachment Count times. ADF Market Participant Identifier is populated with the FINRA ADF MPID update if necessary'
   national_bbo_appendage_longform:
     seq:
       - id: nbbo_quote_condition
@@ -799,6 +808,29 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'BOLO Best Ask Market Participant Identifier (ADF MPID)'
+  utp_adf_mpid_odd_lot_attachment:
+    seq:
+      - id: market_center_id
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Market Center ID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side'
+      - id: odd_lot_price
+        type: decimal_u8_6
+        doc: 'Odd Lot Price. Implied decimal with scale 1e-6'
+      - id: shares_at_odd_lot_price
+        type: u2
+        doc: 'Shares at Odd Lot Price'
+      - id: adf_market_participant_identifier
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ADF Market Participant Identifier'
   odd_lot_quote_message_long_form:
     seq:
       - id: market_center_originator
@@ -839,12 +871,19 @@ types:
         type: u1
         enum: odd_lot_attachment_type
         doc: 'Odd Lot Attachment Type'
-      - id: odd_lot_attachment_count
+      - id: num_utp_adf_mpid_odd_lot_attachment
         type: u2
         doc: 'Odd Lot Attachment Count'
       - id: bolo_appendage_mpid_form
         type: bolo_appendage_mpid_form
+        if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: utp_adf_mpid_odd_lot_attachment
+        type: utp_adf_mpid_odd_lot_attachment
+        repeat: expr
+        repeat-expr: num_utp_adf_mpid_odd_lot_attachment
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'UTP ADF MPID Odd Lot Attachment. Provides one or more odd lot price levels as an attachment to the odd lot or combined quote message, including ADF MPID attribution. Repeats Odd Lot Attachment Count times. ADF Market Participant Identifier is populated with the FINRA ADF MPID update if necessary'
   debug_packet:
     seq:
       - id: debug_text
@@ -1341,4 +1380,11 @@ enums:
     0x35:
       id: 'mpid_form_odd_lot_price_levels_attached'
       doc: 'Mpid Form Odd Lot Price Levels Attached'
+  side:
+    0x42:
+      id: 'update_for_the_bid_side'
+      doc: 'Update For The Bid Side'
+    0x41:
+      id: 'update_for_the_ask_side'
+      doc: 'Update For The Ask Side'
 

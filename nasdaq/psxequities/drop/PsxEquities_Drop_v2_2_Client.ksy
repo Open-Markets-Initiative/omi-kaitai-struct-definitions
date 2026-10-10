@@ -39,22 +39,28 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/psxdrop.pdf
 
 seq:
-  - id: client_packet_header
-    type: client_packet_header_struct
-    doc: 'SoupTcp Packet Header sent by the client'
-  - id: client_payload
-    type:
-      switch-on: client_packet_header.client_packet_type
-      cases:
-        'client_packet_type::debug_packet': debug_packet
-        'client_packet_type::login_request_packet': login_request_packet
-        'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
-  - id: soup_lf
-    type: u1
-    doc: 'Terminating line feed character'
+  - id: client_frame
+    type: client_frame_struct
+    repeat: eos
+    doc: 'One SoupTcp packet sent by the client, closed by a line feed'
 
 types:
-  client_packet_header_struct:
+  client_frame_struct:
+    seq:
+      - id: client_packet_header
+        type: client_packet_header
+        doc: 'SoupTcp Packet Header sent by the client'
+      - id: client_payload
+        type:
+          switch-on: client_packet_header.client_packet_type
+          cases:
+            'client_packet_type::debug_packet': debug_packet
+            'client_packet_type::login_request_packet': login_request_packet
+            'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
+      - id: soup_lf
+        type: u1
+        doc: 'Terminating line feed character'
+  client_packet_header:
     seq:
       - id: client_packet_type
         type: u1

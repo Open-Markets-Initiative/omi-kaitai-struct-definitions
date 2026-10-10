@@ -39,16 +39,21 @@ doc: 'CME Group CME Globex Market Data Platform 3 Sbe v1.9'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+MDP+3.0+Market+Data
 
 seq:
-  - id: server_technical_header
-    type: server_technical_header_struct
-    doc: 'Cme Technical Header sent by Cme to the firm'
-  - id: server_tcp_message
-    type: server_tcp_message_struct
+  - id: server_tcp_frame
+    type: server_tcp_frame_struct
     repeat: eos
-    doc: 'Cme Tcp Message sent by Cme to the firm'
+    doc: 'One technical header and the message it carries: the unit the wire repeats'
 
 types:
-  server_technical_header_struct:
+  server_tcp_frame_struct:
+    seq:
+      - id: server_technical_header
+        type: server_technical_header
+        doc: 'Cme Technical Header sent by Cme to the firm. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+      - id: server_tcp_message
+        type: server_tcp_message
+        doc: 'Cme Tcp Message sent by Cme to the firm'
+  server_technical_header:
     seq:
       - id: encoding_type
         type: u2
@@ -57,18 +62,17 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: tcp_sending_time
-        type: u8
-        doc: 'Packet Sending Time'
-  server_tcp_message_struct:
-    seq:
+        type: nanosecond_timestamp
+        doc: 'Packet Sending Time, nanoseconds since the Unix epoch. Nanoseconds since Unix epoch'
       - id: tcp_message_size
         type: u2
         doc: 'Message Size'
+  server_tcp_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Template ID and length of message root'
       - id: server_payload
-        size: tcp_message_size - 10
         type:
           switch-on: message_header.template_id
           cases:
@@ -114,6 +118,7 @@ types:
         enum: template_id
       - id: schema_id
         type: u2
+        enum: schema_id
       - id: version
         type: u2
   channel_reset:
@@ -2578,6 +2583,13 @@ enums:
     210:
       id: 'subscriber_heartbeat'
       doc: 'SubscriberHeartbeat'
+  schema_id:
+    1:
+      id: 'mktdata'
+      doc: 'Sbe Schema Id for mktdata'
+    2:
+      id: 'mdpsessionmgmt'
+      doc: 'Sbe Schema Id for mdpsessionmgmt'
   security_update_action:
     0x41:
       id: 'add'

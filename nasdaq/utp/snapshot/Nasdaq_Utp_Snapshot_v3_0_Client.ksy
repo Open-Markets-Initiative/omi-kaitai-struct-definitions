@@ -541,4 +541,11 @@ enums:
     0x35:
       id: 'mpid_form_odd_lot_price_levels_attached'
       doc: 'Mpid Form Odd Lot Price Levels Attached'
+  side:
+    0x42:
+      id: 'update_for_the_bid_side'
+      doc: 'Update For The Bid Side'
+    0x41:
+      id: 'update_for_the_ask_side'
+      doc: 'Update For The Ask Side'
 

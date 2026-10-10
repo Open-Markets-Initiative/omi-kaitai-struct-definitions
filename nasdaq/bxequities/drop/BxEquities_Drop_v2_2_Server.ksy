@@ -39,23 +39,29 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.nasdaqtrader.com/content/technicalsupport/specifications/tradingproducts/NQBXDROP2.2.pdf
 
 seq:
-  - id: server_packet_header
-    type: server_packet_header_struct
-    doc: 'SoupTcp Packet Header sent by the server'
-  - id: server_payload
-    type:
-      switch-on: server_packet_header.server_packet_type
-      cases:
-        'server_packet_type::debug_packet': debug_packet
-        'server_packet_type::login_accepted_packet': login_accepted_packet
-        'server_packet_type::login_rejected_packet': login_rejected_packet
-        'server_packet_type::sequenced_data_packet': sequenced_data_packet
-  - id: soup_lf
-    type: u1
-    doc: 'Terminating line feed character'
+  - id: server_frame
+    type: server_frame_struct
+    repeat: eos
+    doc: 'One SoupTcp packet sent by the server, closed by a line feed'
 
 types:
-  server_packet_header_struct:
+  server_frame_struct:
+    seq:
+      - id: server_packet_header
+        type: server_packet_header
+        doc: 'SoupTcp Packet Header sent by the server'
+      - id: server_payload
+        type:
+          switch-on: server_packet_header.server_packet_type
+          cases:
+            'server_packet_type::debug_packet': debug_packet
+            'server_packet_type::login_accepted_packet': login_accepted_packet
+            'server_packet_type::login_rejected_packet': login_rejected_packet
+            'server_packet_type::sequenced_data_packet': sequenced_data_packet
+      - id: soup_lf
+        type: u1
+        doc: 'Terminating line feed character'
+  server_packet_header:
     seq:
       - id: server_packet_type
         type: u1

@@ -455,6 +455,24 @@ types:
         type: bolo_appendage_mpid_form
         if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: odd_lot_price_level_attachment_short_form
+        type: odd_lot_price_level_attachment_short_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Short Form'
+      - id: odd_lot_price_level_attachment_long_form
+        type: odd_lot_price_level_attachment_long_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Long Form'
+      - id: odd_lot_price_level_attachment_adf_mpid_form
+        type: odd_lot_price_level_attachment_adf_mpid_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
   bolo_appendage_short_form:
     seq:
       - id: bolo_best_bid_market_center
@@ -539,6 +557,63 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'BOLO Best Ask Market Participant Identifier (ADF MPID)'
+  odd_lot_price_level_attachment_short_form:
+    seq:
+      - id: market_center_id
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Market Center ID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side: B = Bid update, A = Ask update'
+      - id: odd_lot_price_short
+        type: decimal_u2_2
+        doc: 'Odd Lot Price, 2 implied decimal places. Implied decimal with scale 1e-2'
+      - id: shares_at_odd_lot_price
+        type: u2
+        doc: 'Shares at Odd Lot Price'
+  odd_lot_price_level_attachment_long_form:
+    seq:
+      - id: market_center_id
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Market Center ID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side: B = Bid update, A = Ask update'
+      - id: odd_lot_price_long
+        type: decimal_u8_6
+        doc: 'Odd Lot Price, 6 implied decimal places. Implied decimal with scale 1e-6'
+      - id: shares_at_odd_lot_price
+        type: u2
+        doc: 'Shares at Odd Lot Price'
+  odd_lot_price_level_attachment_adf_mpid_form:
+    seq:
+      - id: market_center_id
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Market Center ID'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side: B = Bid update, A = Ask update'
+      - id: odd_lot_price_long
+        type: decimal_u8_6
+        doc: 'Odd Lot Price, 6 implied decimal places. Implied decimal with scale 1e-6'
+      - id: shares_at_odd_lot_price
+        type: u2
+        doc: 'Shares at Odd Lot Price'
+      - id: adf_market_participant_identifier
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'ADF Market Participant Identifier (blank if Market Center is not "D")'
   combined_quote_message_long_form_message:
     seq:
       - id: market_center_originator
@@ -642,6 +717,24 @@ types:
         type: bolo_appendage_mpid_form
         if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: odd_lot_price_level_attachment_short_form
+        type: odd_lot_price_level_attachment_short_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Short Form'
+      - id: odd_lot_price_level_attachment_long_form
+        type: odd_lot_price_level_attachment_long_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Long Form'
+      - id: odd_lot_price_level_attachment_adf_mpid_form
+        type: odd_lot_price_level_attachment_adf_mpid_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
   finra_adf_mpid_appendage:
     seq:
       - id: bid_adf_mpid
@@ -708,6 +801,24 @@ types:
         type: bolo_appendage_mpid_form
         if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: odd_lot_price_level_attachment_short_form
+        type: odd_lot_price_level_attachment_short_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Short Form'
+      - id: odd_lot_price_level_attachment_long_form
+        type: odd_lot_price_level_attachment_long_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Long Form'
+      - id: odd_lot_price_level_attachment_adf_mpid_form
+        type: odd_lot_price_level_attachment_adf_mpid_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
   odd_lot_quote_message_long_form_message:
     seq:
       - id: market_center_originator
@@ -763,6 +874,24 @@ types:
         type: bolo_appendage_mpid_form
         if: bolo_appendage_indicator == bolo_appendage_indicator::mpid_form_bolo_appendage_attached
         doc: 'BOLO Appendage MPID Form'
+      - id: odd_lot_price_level_attachment_short_form
+        type: odd_lot_price_level_attachment_short_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Short Form'
+      - id: odd_lot_price_level_attachment_long_form
+        type: odd_lot_price_level_attachment_long_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment Long Form'
+      - id: odd_lot_price_level_attachment_adf_mpid_form
+        type: odd_lot_price_level_attachment_adf_mpid_form
+        repeat: expr
+        repeat-expr: odd_lot_attachment_count
+        if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
   administrative_message:
     seq:
       - id: administrative_message_type
@@ -1606,6 +1735,13 @@ enums:
     0x35:
       id: 'mpid_form_odd_lot_price_levels_attached'
       doc: 'Mpid Form Odd Lot Price Levels Attached'
+  side:
+    0x42:
+      id: 'update_for_the_bid_side'
+      doc: 'Update For The Bid Side'
+    0x41:
+      id: 'update_for_the_ask_side'
+      doc: 'Update For The Ask Side'
   trading_action_code:
     0x48:
       id: 'trading_halt'

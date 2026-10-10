@@ -39,16 +39,21 @@ doc: 'CME Group CME Globex Session Management Sbe v0.2'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+MDP+3.0+Market+Data
 
 seq:
-  - id: client_technical_header
-    type: client_technical_header_struct
-    doc: 'Cme Technical Header sent by the subscriber to Cme'
-  - id: client_message
-    type: client_message_struct
+  - id: client_tcp_frame
+    type: client_tcp_frame_struct
     repeat: eos
-    doc: 'Cme Session Message sent by the subscriber to Cme'
+    doc: 'One technical header and the message it carries: the unit the wire repeats'
 
 types:
-  client_technical_header_struct:
+  client_tcp_frame_struct:
+    seq:
+      - id: client_technical_header
+        type: client_technical_header
+        doc: 'Cme Technical Header sent by the subscriber to Cme. Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+      - id: client_message
+        type: client_message
+        doc: 'Cme Session Message sent by the subscriber to Cme'
+  client_technical_header:
     seq:
       - id: encoding_type
         type: u2
@@ -57,18 +62,17 @@ types:
         type: u4
         doc: 'Packet Sequence Number'
       - id: sending_time
-        type: u8
-        doc: 'Packet Sending Time'
-  client_message_struct:
-    seq:
+        type: nanosecond_timestamp
+        doc: 'Packet Sending Time, nanoseconds since the Unix epoch. Nanoseconds since Unix epoch'
       - id: message_size
         type: u2
         doc: 'Message Size'
+  client_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Template ID and length of message root'
       - id: client_payload
-        size: message_size - 10
         type:
           switch-on: message_header.template_id
           cases:

@@ -140,7 +140,7 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -204,13 +204,13 @@ types:
         type: u1
         enum: quote_condition
       - id: bid_price
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Best bid price. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
       - id: ask_price
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Best ask price. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size
         type: u2
@@ -227,13 +227,13 @@ types:
         type: u1
         enum: quote_condition
       - id: bid_price_long
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Best bid price. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
       - id: ask_price_long
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Best ask price. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
@@ -250,7 +250,7 @@ types:
         type: u1
         enum: quote_condition
       - id: price
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Best bid or ask price, the side determined by Message Type. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size
         type: u2
@@ -267,7 +267,7 @@ types:
         type: u1
         enum: quote_condition
       - id: price
-        type: decimal_s2_2
+        type: decimal_u2_2
         doc: 'Best bid or ask price, the side determined by Message Type. NOTE: When converted to a decimal format, this price is in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size
         type: u2
@@ -284,7 +284,7 @@ types:
         type: u1
         enum: quote_condition
       - id: price_long
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Best bid or ask price, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: size_long
         type: u4
@@ -301,7 +301,7 @@ types:
         type: u1
         enum: quote_condition
       - id: price_long
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Best bid or ask price, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: size_long
         type: u4
@@ -324,7 +324,7 @@ types:
         pad-right: 0x20
         doc: 'The Trade Condition is the same as defined in the OPRA specification. Either “Last Sale” or “Transaction”'
       - id: price_long
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Best bid or ask price, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: volume
         type: u4
@@ -341,7 +341,7 @@ types:
         type: u4
         doc: 'Indicates the original internal control number (cross id) associated with the given trade transaction in the options market system'
       - id: original_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Reported Premium Price of an option contract in the original trade report message on this feed. Implied decimal with scale 1e-4'
       - id: original_volume
         type: u4
@@ -368,17 +368,17 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
-  decimal_s4_4:
+  decimal_u4_4:
     seq:
       - id: mantissa
-        type: s4
+        type: u4
     instances:
       real:
         value: mantissa / 10000.0
-  decimal_s2_2:
+  decimal_u2_2:
     seq:
       - id: mantissa
-        type: s2
+        type: u2
     instances:
       real:
         value: mantissa / 100.0

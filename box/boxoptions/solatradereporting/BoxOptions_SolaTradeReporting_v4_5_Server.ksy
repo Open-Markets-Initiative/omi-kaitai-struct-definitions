@@ -38,27 +38,33 @@ meta:
 doc: 'Box Options Market BOX Options Exchange Sola Trade Reporting Atr v4.5'
 
 seq:
-  - id: message_header
-    type: message_header_struct
-    doc: 'Atr message header, twenty eight bytes opening every message either way'
-  - id: server_message
-    type:
-      switch-on: message_header.message_type
-      cases:
-        '"10"': client_signon_acknowledgment
-        '"30"': trade
-        '"31"': trade_cancel
-        '"40"': allocation
-        '"41"': allocation_cancel
-        '"50"': give_up
-        '"51"': give_up_cancel
-        '"99"': error_message
-  - id: end_of_text
-    type: u1
-    doc: 'End of text, an ascii character of 0x03, closing every Atr message'
+  - id: server_frame
+    type: server_frame_struct
+    repeat: eos
+    doc: 'One Atr message sent by the Atr server, opened by the header and closed by an end of text'
 
 types:
-  message_header_struct:
+  server_frame_struct:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Atr message header, twenty eight bytes opening every message either way'
+      - id: server_message
+        type:
+          switch-on: message_header.message_type
+          cases:
+            '"10"': client_signon_acknowledgment
+            '"30"': trade
+            '"31"': trade_cancel
+            '"40"': allocation
+            '"41"': allocation_cancel
+            '"50"': give_up
+            '"51"': give_up_cancel
+            '"99"': error_message
+      - id: end_of_text
+        type: u1
+        doc: 'End of text, an ascii character of 0x03, closing every Atr message'
+  message_header:
     seq:
       - id: source
         type: str

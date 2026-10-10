@@ -41,13 +41,19 @@ doc-ref: https://www.nyse.com/connectivity/specs
 seq:
   - id: client_message
     type:
-      switch-on: client_message.login_message.msg_header.msg_type
+      switch-on: peek_msg_type
       cases:
         'msg_type::login': login_message
         'msg_type::heartbeat': heartbeat
         'msg_type::open': open
         'msg_type::close': close
         'msg_type::seq_msg': client_seq_msg
+
+instances:
+  peek_msg_type:
+    pos: 0
+    type: u2
+    enum: msg_type
 
 types:
   login_message:

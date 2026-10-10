@@ -67,7 +67,27 @@ types:
       - id: payload
         size: message_size - 10
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.schema_id
+          cases:
+            'schema_id::mktdata': mktdata_message
+            'schema_id::mdpsessionmgmt': mdpsessionmgmt_message
+  message_header:
+    seq:
+      - id: block_length
+        type: u2
+      - id: template_id
+        type: u2
+        enum: template_id
+      - id: schema_id
+        type: u2
+        enum: schema_id
+      - id: version
+        type: u2
+  mktdata_message:
+    seq:
+      - id: mktdata_payload
+        type:
+          switch-on: _parent.message_header.template_id
           cases:
             'template_id::channel_reset': channel_reset
             'template_id::admin_login': admin_login
@@ -97,26 +117,6 @@ types:
             'template_id::md_instrument_definition_future': md_instrument_definition_future
             'template_id::md_instrument_definition_option': md_instrument_definition_option
             'template_id::md_instrument_definition_spread': md_instrument_definition_spread
-            'template_id::negotiate': negotiate
-            'template_id::negotiation_reject': negotiation_reject
-            'template_id::negotiation_response': negotiation_response
-            'template_id::terminate': terminate
-            'template_id::market_data_request': market_data_request
-            'template_id::request_ack': request_ack
-            'template_id::request_reject': request_reject
-            'template_id::security_list_request': security_list_request
-            'template_id::security_status_request': security_status_request
-  message_header:
-    seq:
-      - id: block_length
-        type: u2
-      - id: template_id
-        type: u2
-        enum: template_id
-      - id: schema_id
-        type: u2
-      - id: version
-        type: u2
   channel_reset:
     seq:
       - id: transact_time
@@ -2243,6 +2243,21 @@ types:
       - id: leg_option_delta
         type: decimal_s4_4_nullable
         doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
+  mdpsessionmgmt_message:
+    seq:
+      - id: mdpsessionmgmt_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::negotiate': negotiate
+            'template_id::negotiation_reject': negotiation_reject
+            'template_id::negotiation_response': negotiation_response
+            'template_id::terminate': terminate
+            'template_id::market_data_request': market_data_request
+            'template_id::request_ack': request_ack
+            'template_id::request_reject': request_reject
+            'template_id::security_list_request': security_list_request
+            'template_id::security_status_request': security_status_request
   negotiate:
     seq:
       - id: hmac_signature
@@ -2748,6 +2763,13 @@ enums:
     210:
       id: 'subscriber_heartbeat'
       doc: 'SubscriberHeartbeat'
+  schema_id:
+    1:
+      id: 'mktdata'
+      doc: 'Sbe Schema Id for mktdata'
+    2:
+      id: 'mdpsessionmgmt'
+      doc: 'Sbe Schema Id for mdpsessionmgmt'
   security_update_action:
     0x41:
       id: 'add'

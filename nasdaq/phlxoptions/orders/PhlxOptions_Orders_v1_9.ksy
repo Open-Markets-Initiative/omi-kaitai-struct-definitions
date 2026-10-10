@@ -131,7 +131,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -209,7 +209,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -240,7 +240,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -280,7 +280,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -320,7 +320,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -352,7 +352,7 @@ types:
         enum: market_qualifier
         doc: 'Market Qualifier value'
       - id: limit_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Limit Price of Limit or Stop Order. Otherwise field is zero. Implied decimal with scale 1e-4'
       - id: all_or_none
         type: u1
@@ -400,7 +400,7 @@ types:
         enum: order_type
         doc: 'Indicates the type of order'
       - id: limit_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Limit Price of Limit or Stop Order. Otherwise field is zero. Implied decimal with scale 1e-4'
       - id: debit_or_credit
         type: u1
@@ -451,7 +451,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -482,7 +482,7 @@ types:
         type: expiration
         doc: 'Expiration Year, Month and Day Bitfield'
       - id: explicit_strike_price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Denotes the explicit strike price of the option. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
@@ -496,7 +496,7 @@ types:
         enum: auction_type
         doc: 'Type of Auction:'
       - id: price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Price at which auction is started. For PIXL auctions, price is zero. The price at which an exposed order is available for execution. Implied decimal with scale 1e-4'
       - id: auction_side
         type: u1
@@ -527,7 +527,7 @@ types:
         enum: auction_type
         doc: 'Type of Auction:'
       - id: price
-        type: decimal_s4_4
+        type: decimal_u4_4
         doc: 'Price at which auction is started. For PIXL auctions, price is zero. The price at which an exposed order is available for execution. Implied decimal with scale 1e-4'
       - id: auction_side
         type: u1
@@ -575,10 +575,10 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
-  decimal_s4_4:
+  decimal_u4_4:
     seq:
       - id: mantissa
-        type: s4
+        type: u4
     instances:
       real:
         value: mantissa / 10000.0

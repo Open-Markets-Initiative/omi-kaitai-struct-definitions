@@ -132,14 +132,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (short form, 5 chars)'
       - id: bid_short
-        type: u2
-        doc: 'Bid Price (short form, implied 2 decimal precision)'
+        type: decimal_u2_2
+        doc: 'Bid Price (short form, implied 2 decimal precision). Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'Bid Size (short form)'
       - id: ask_short
-        type: u2
-        doc: 'Ask Price (short form, implied 2 decimal precision)'
+        type: decimal_u2_2
+        doc: 'Ask Price (short form, implied 2 decimal precision). Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'Ask Size (short form)'
@@ -175,14 +175,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: bid_long
-        type: u8
-        doc: 'Bid Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Bid Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
       - id: ask_long
-        type: u8
-        doc: 'Ask Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Ask Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
@@ -328,14 +328,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (short form, 5 chars)'
       - id: bid_short
-        type: u2
-        doc: 'Bid Price (short form, implied 2 decimal precision)'
+        type: decimal_u2_2
+        doc: 'Bid Price (short form, implied 2 decimal precision). Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'Bid Size (short form)'
       - id: ask_short
-        type: u2
-        doc: 'Ask Price (short form, implied 2 decimal precision)'
+        type: decimal_u2_2
+        doc: 'Ask Price (short form, implied 2 decimal precision). Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'Ask Size (short form)'
@@ -387,14 +387,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: bid_long
-        type: u8
-        doc: 'Bid Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Bid Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
       - id: ask_long
-        type: u8
-        doc: 'Ask Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Ask Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
@@ -449,14 +449,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: bid_long
-        type: u8
-        doc: 'Bid Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Bid Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
       - id: ask_long
-        type: u8
-        doc: 'Ask Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Ask Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
@@ -525,14 +525,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: bid_long
-        type: u8
-        doc: 'Bid Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Bid Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
       - id: ask_long
-        type: u8
-        doc: 'Ask Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Ask Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'
@@ -647,14 +647,14 @@ types:
         pad-right: 0x20
         doc: 'Security Identifier (long form)'
       - id: bid_long
-        type: u8
-        doc: 'Bid Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Bid Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: bid_size_long
         type: u4
         doc: 'Bid Size (long form)'
       - id: ask_long
-        type: u8
-        doc: 'Ask Price (long form, implied 6 decimal precision)'
+        type: decimal_u8_6
+        doc: 'Ask Price (long form, implied 6 decimal precision). Implied decimal with scale 1e-6'
       - id: ask_size_long
         type: u4
         doc: 'Ask Size (long form)'

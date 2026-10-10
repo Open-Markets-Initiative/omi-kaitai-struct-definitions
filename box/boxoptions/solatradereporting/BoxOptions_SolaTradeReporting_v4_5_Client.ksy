@@ -38,27 +38,33 @@ meta:
 doc: 'Box Options Market BOX Options Exchange Sola Trade Reporting Atr v4.5'
 
 seq:
-  - id: message_header
-    type: message_header_struct
-    doc: 'Atr message header, twenty eight bytes opening every message either way'
-  - id: client_message
-    type:
-      switch-on: message_header.message_type
-      cases:
-        '"04"': restart_request
-        '"09"': client_signon
-        '"42"': new_allocation
-        '"43"': modify_allocation
-        '"44"': delete_allocation
-        '"52"': new_give_up
-        '"53"': modify_give_up
-        '"54"': delete_give_up
-  - id: end_of_text
-    type: u1
-    doc: 'End of text, an ascii character of 0x03, closing every Atr message'
+  - id: client_frame
+    type: client_frame_struct
+    repeat: eos
+    doc: 'One Atr message sent by the participant, opened by the header and closed by an end of text'
 
 types:
-  message_header_struct:
+  client_frame_struct:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Atr message header, twenty eight bytes opening every message either way'
+      - id: client_message
+        type:
+          switch-on: message_header.message_type
+          cases:
+            '"04"': restart_request
+            '"09"': client_signon
+            '"42"': new_allocation
+            '"43"': modify_allocation
+            '"44"': delete_allocation
+            '"52"': new_give_up
+            '"53"': modify_give_up
+            '"54"': delete_give_up
+      - id: end_of_text
+        type: u1
+        doc: 'End of text, an ascii character of 0x03, closing every Atr message'
+  message_header:
     seq:
       - id: source
         type: str
