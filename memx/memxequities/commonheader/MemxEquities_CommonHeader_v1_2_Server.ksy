@@ -125,7 +125,7 @@ types:
         doc: 'The count of messages that were sent on this stream'
   sequenced_message:
     seq:
-      - id: sbe_message
+      - id: server_sbe_message
         size-eos: true
         doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 

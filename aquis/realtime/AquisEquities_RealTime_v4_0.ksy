@@ -517,6 +517,12 @@ enums:
     9:
       id: 'on_exchange_trade_reporting'
       doc: 'On Exchange Trade Reporting'
+    10:
+      id: 'off_exchange_trade_reporting'
+      doc: 'Off Exchange Trade Reporting'
+    11:
+      id: 'systematic_internalizer_trade_reporting'
+      doc: 'Systematic Internalizer Trade Reporting'
   transaction_category:
     1:
       id: 'dark_trade'

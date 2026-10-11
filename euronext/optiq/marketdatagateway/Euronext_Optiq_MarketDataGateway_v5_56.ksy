@@ -589,6 +589,8 @@ types:
       - id: group_size_encoding
         type: group_size_encoding
         doc: 'groupSizeEncoding'
+      - id: not_used_group
+        size: group_size_encoding.block_length_short
   market_status_change_message:
     seq:
       - id: md_seq_num

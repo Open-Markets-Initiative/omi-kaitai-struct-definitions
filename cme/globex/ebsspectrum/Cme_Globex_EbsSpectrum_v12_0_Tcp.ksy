@@ -39,16 +39,21 @@ doc: 'CME Group CME Globex Ebs Spectrum Market Data Sbe v12.0'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/EBS+Spectrum+Market+Data
 
 seq:
-  - id: technical_header
-    type: technical_header_struct
-    doc: 'Cme Technical Header'
-  - id: tcp_message
-    type: tcp_message_struct
+  - id: tcp_frame
+    type: tcp_frame_struct
     repeat: eos
-    doc: 'Cme Market Data Message'
+    doc: 'One technical header framed Cme Sbe message'
 
 types:
-  technical_header_struct:
+  tcp_frame_struct:
+    seq:
+      - id: technical_header
+        type: technical_header
+        doc: 'Cme Technical Header. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+      - id: tcp_message
+        type: tcp_message
+        doc: 'Cme Market Data Message'
+  technical_header:
     seq:
       - id: encoding_type
         type: u2
@@ -59,16 +64,15 @@ types:
       - id: tcp_sending_time
         type: u8
         doc: 'Packet Sending Time'
-  tcp_message_struct:
-    seq:
       - id: tcp_message_size
         type: u2
         doc: 'Message Size'
+  tcp_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Template ID and length of message root'
       - id: payload
-        size: tcp_message_size - 10
         type:
           switch-on: message_header.template_id
           cases:

@@ -101,7 +101,7 @@ types:
         doc: 'The first requested sequence number'
   unsequenced_message:
     seq:
-      - id: sbe_message
+      - id: client_sbe_message
         size-eos: true
         doc: 'The wrapped protocol''s sbe message, read as the bytes remaining in the frame'
 

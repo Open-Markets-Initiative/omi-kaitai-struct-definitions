@@ -485,11 +485,15 @@ types:
       - id: group_size_encoding
         type: group_size_encoding
         doc: 'groupSizeEncoding'
+      - id: not_used_group
+        size: group_size_encoding.block_length_short
   other_not_used_groups:
     seq:
       - id: group_size_encoding
         type: group_size_encoding
         doc: 'groupSizeEncoding'
+      - id: other_not_used_group
+        size: group_size_encoding.block_length_short
   additional_infos_groups:
     seq:
       - id: group_size_encoding

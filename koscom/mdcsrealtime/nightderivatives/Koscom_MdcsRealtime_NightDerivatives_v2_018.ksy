@@ -47,7 +47,7 @@ seq:
 types:
   packet_struct:
     seq:
-      - id: message_code
+      - id: tr_code
         type: str
         size: 5
         encoding: ASCII
@@ -55,7 +55,7 @@ types:
         doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
       - id: payload
         type:
-          switch-on: message_code
+          switch-on: tr_code
           cases:
             '"I2000"': polling_data_message
             '"B601V"': derivatives_quote_five_levels_message

@@ -41,16 +41,16 @@ doc-ref:
   - https://www.nasdaq.com/docs/2026/01/20/Nasdaq%20Canada%20Market%20Data%20Specification%20-%20CHIXMD%203.4%20V1.23.pdf
 
 seq:
-  - id: server_packet
-    type: server_packet_struct
+  - id: server_frame
+    type: server_frame_struct
     repeat: eos
-    doc: 'SoupTcp Packet'
+    doc: 'SoupTcp Lf terminated packet sent by the server'
 
 types:
-  server_packet_struct:
+  server_frame_struct:
     seq:
       - id: server_packet_header
-        type: server_packet_header_struct
+        type: server_packet_header
         doc: 'SoupTcp Packet Header sent by the server'
       - id: server_payload
         type:
@@ -63,7 +63,7 @@ types:
       - id: soup_lf
         type: u1
         doc: 'Terminating line feed character'
-  server_packet_header_struct:
+  server_packet_header:
     seq:
       - id: server_packet_type
         type: u1
