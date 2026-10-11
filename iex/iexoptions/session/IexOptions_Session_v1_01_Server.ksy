@@ -39,13 +39,13 @@ doc: 'Investors Exchange IEX Options Session Sbe v1.01'
 doc-ref: https://www.iexexchange.io/options
 
 seq:
-  - id: sbe_message
-    type: sbe_message_struct
+  - id: server_sbe_message
+    type: server_sbe_message_struct
     repeat: eos
-    doc: 'Iex Options length-framed Sbe Message'
+    doc: 'Iex Options length-framed Sbe Message sent by Iex Options to the User'
 
 types:
-  sbe_message_struct:
+  server_sbe_message_struct:
     seq:
       - id: packet_length
         type: u2
@@ -53,20 +53,12 @@ types:
       - id: message_header
         type: message_header
         doc: 'Iex Options Sbe message header — message identifiers and length of message root'
-      - id: payload
+      - id: server_payload
         size: packet_length - 10
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.schema_id
           cases:
-            'template_id::login_request_message': login_request_message
-            'template_id::login_response_message': login_response_message
-            'template_id::gateway_heartbeat_message': gateway_heartbeat_message
-            'template_id::terminate_message': terminate_message
-            'template_id::sequenced_message_header_message': sequenced_message_header_message
-            'template_id::subsession_join_message': subsession_join_message
-            'template_id::subsession_join_response_message': subsession_join_response_message
-            'template_id::subsession_leave_message': subsession_leave_message
-            'template_id::subsession_leave_response_message': subsession_leave_response_message
+            'schema_id::session': server_session_message
   message_header:
     seq:
       - id: block_length
@@ -78,22 +70,23 @@ types:
         doc: 'Template ID used to encode the message'
       - id: schema_id
         type: u2
+        enum: schema_id
         doc: 'Identifier of the schema publishing the message (10000 market data, 20000 session, 20001 order entry business)'
       - id: version
         type: u2
         doc: 'Schema version'
-  login_request_message:
+  server_session_message:
     seq:
-      - id: logon_id
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'logonId'
-      - id: token
-        type: str
-        size: 32
-        encoding: ASCII
-        doc: 'token'
+      - id: server_session_payload
+        type:
+          switch-on: _parent.message_header.template_id
+          cases:
+            'template_id::login_response_message': login_response_message
+            'template_id::gateway_heartbeat_message': gateway_heartbeat_message
+            'template_id::terminate_message': terminate_message
+            'template_id::sequenced_message_header_message': sequenced_message_header_message
+            'template_id::subsession_join_response_message': subsession_join_response_message
+            'template_id::subsession_leave_response_message': subsession_leave_response_message
   login_response_message:
     seq:
       - id: logon_id
@@ -165,17 +158,6 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
-  subsession_join_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: start_sequence
-        type: u4
-        doc: 'startSequence'
-      - id: end_sequence
-        type: u4
-        doc: 'endSequence'
   subsession_join_response_message:
     seq:
       - id: subsession_id
@@ -185,11 +167,6 @@ types:
         type: u1
         enum: status
         doc: 'status'
-  subsession_leave_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
   subsession_leave_response_message:
     seq:
       - id: subsession_id
@@ -235,6 +212,10 @@ enums:
     11:
       id: 'subsession_leave_response_message'
       doc: 'SubsessionLeaveResponseMessage'
+  schema_id:
+    20000:
+      id: 'session'
+      doc: 'Sbe Schema Id for iex.options.boe.session'
   status:
     0:
       id: 'success'

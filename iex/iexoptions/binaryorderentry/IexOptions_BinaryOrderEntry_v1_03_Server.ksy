@@ -39,13 +39,13 @@ doc: 'Investors Exchange IEX Options Binary Order Entry Sbe v1.03'
 doc-ref: https://www.iex.io/options/resources
 
 seq:
-  - id: sbe_message
-    type: sbe_message_struct
+  - id: server_sbe_message
+    type: server_sbe_message_struct
     repeat: eos
-    doc: 'Iex Options length-framed Sbe Message'
+    doc: 'Iex Options length-framed Sbe Message sent by Iex Options to the User'
 
 types:
-  sbe_message_struct:
+  server_sbe_message_struct:
     seq:
       - id: packet_length
         type: u2
@@ -53,13 +53,13 @@ types:
       - id: message_header
         type: message_header
         doc: 'Iex Options Sbe message header — message identifiers and length of message root'
-      - id: payload
+      - id: server_payload
         size: packet_length - 10
         type:
           switch-on: message_header.schema_id
           cases:
-            'schema_id::session': session_message
-            'schema_id::business': business_message
+            'schema_id::session': server_session_message
+            'schema_id::business': server_business_message
   message_header:
     seq:
       - id: block_length
@@ -76,33 +76,18 @@ types:
       - id: version
         type: u2
         doc: 'Schema version'
-  session_message:
+  server_session_message:
     seq:
-      - id: session_payload
+      - id: server_session_payload
         type:
           switch-on: _parent.message_header.template_id
           cases:
-            'template_id::login_request_message': login_request_message
             'template_id::login_response_message': login_response_message
             'template_id::gateway_heartbeat_message': gateway_heartbeat_message
             'template_id::terminate_message': terminate_message
             'template_id::sequenced_message_header_message': sequenced_message_header_message
-            'template_id::subsession_join_message': subsession_join_message
             'template_id::subsession_join_response_message': subsession_join_response_message
-            'template_id::subsession_leave_message': subsession_leave_message
             'template_id::subsession_leave_response_message': subsession_leave_response_message
-  login_request_message:
-    seq:
-      - id: logon_id
-        type: str
-        size: 16
-        encoding: ASCII
-        doc: 'logonId'
-      - id: token
-        type: str
-        size: 32
-        encoding: ASCII
-        doc: 'token'
   login_response_message:
     seq:
       - id: logon_id
@@ -174,17 +159,6 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
-  subsession_join_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
-      - id: start_sequence
-        type: u4
-        doc: 'startSequence'
-      - id: end_sequence
-        type: u4
-        doc: 'endSequence'
   subsession_join_response_message:
     seq:
       - id: subsession_id
@@ -194,11 +168,6 @@ types:
         type: u1
         enum: status
         doc: 'status'
-  subsession_leave_message:
-    seq:
-      - id: subsession_id
-        type: u8
-        doc: 'subsessionId'
   subsession_leave_response_message:
     seq:
       - id: subsession_id
@@ -208,18 +177,12 @@ types:
         type: u1
         enum: reason
         doc: 'reason'
-  business_message:
+  server_business_message:
     seq:
-      - id: business_payload
+      - id: server_business_payload
         type:
           switch-on: _parent.message_header.template_id
           cases:
-            'template_id::login_request_message': new_order_single_message
-            'template_id::login_response_message': order_cancel_replace_request_message
-            'template_id::gateway_heartbeat_message': order_cancel_request_message
-            'template_id::client_heartbeat_message': new_bulk_quote_message
-            'template_id::logout_request_message': mass_cancel_request_message
-            'template_id::terminate_message': purge_request_message
             'template_id::order_ack_message': order_ack_message
             'template_id::unsolicited_modify_ack_message': unsolicited_modify_ack_message
             'template_id::order_cancel_ack_message': order_cancel_ack_message
@@ -232,8 +195,6 @@ types:
             'template_id::execution_report_message': execution_report_message
             'template_id::trade_bust_correct_message': trade_bust_correct_message
             'template_id::application_layer_reject_message': application_layer_reject_message
-            'template_id::risk_limit_update_request_message': risk_limit_update_request_message
-            'template_id::risk_action_request_message': risk_action_request_message
             'template_id::underlying_ref_data_message': underlying_ref_data_message
             'template_id::instrument_ref_data_message': instrument_ref_data_message
             'template_id::mpid_configuration_acknowledgement_message': mpid_configuration_acknowledgement_message
@@ -241,308 +202,6 @@ types:
             'template_id::session_configuration_acknowledgement_message': session_configuration_acknowledgement_message
             'template_id::risk_control_acknowledgment_message': risk_control_acknowledgment_message
             'template_id::risk_control_alert_message': risk_control_alert_message
-  new_order_single_message:
-    seq:
-      - id: account_account_optional
-        type: str_16_nullable
-        doc: 'account. Nullable, No Value = 0'
-      - id: instrument_id
-        type: u4
-        doc: 'instrumentId'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: clearing_account_optional
-        type: str_4_nullable
-        doc: 'clearingAccount. Nullable, No Value = 0'
-      - id: customer_or_firm
-        type: s1
-        enum: customer_or_firm
-        doc: 'customerOrFirm'
-      - id: open_close
-        type: s1
-        enum: open_close
-        doc: 'openClose'
-      - id: attributed_quote_optional
-        type: s1_nullable
-        doc: 'attributedQuote. Nullable, No Value = 128'
-      - id: time_in_force
-        type: s1
-        enum: time_in_force
-        doc: 'timeInForce'
-      - id: cancel_instead_of_slide_optional
-        type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
-      - id: display_inst
-        type: s1_nullable
-        doc: 'displayInst. Nullable, No Value = 128'
-      - id: exec_inst
-        type: s1_nullable
-        doc: 'execInst. Nullable, No Value = 128'
-      - id: ord_type
-        type: s1
-        enum: ord_type
-        doc: 'ordType'
-      - id: target_party_id
-        type: str_4_nullable
-        doc: 'targetPartyId. Nullable, No Value = 0'
-      - id: auction_id
-        type: u4_nullable
-        doc: 'auctionId. Nullable, No Value = 4294967295'
-      - id: clearing_firm
-        type: u4_nullable
-        doc: 'clearingFirm. Nullable, No Value = 4294967295'
-      - id: optional_data
-        type: str_16_nullable
-        doc: 'optionalData. Nullable, No Value = 0'
-      - id: routing_firm_id
-        type: str_4_nullable
-        doc: 'routingFirmId. Nullable, No Value = 0'
-      - id: aiq
-        type: str_3_nullable
-        doc: 'aiq. Nullable, No Value = 0'
-      - id: side
-        type: s1
-        enum: side
-        doc: 'side'
-      - id: price_price_8_optional
-        type: decimal_s8_8_nullable
-        doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
-      - id: order_qty_quantity_non_zero
-        type: u4
-        doc: 'orderQty'
-  order_cancel_replace_request_message:
-    seq:
-      - id: account_account_optional
-        type: str_16_nullable
-        doc: 'account. Nullable, No Value = 0'
-      - id: instrument_id
-        type: u4
-        doc: 'instrumentId'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: clearing_account_optional
-        type: str_4_nullable
-        doc: 'clearingAccount. Nullable, No Value = 0'
-      - id: orig_cl_ord_id
-        type: u8
-        doc: 'origClOrdId'
-      - id: customer_or_firm_optional
-        type: s1_nullable
-        doc: 'customerOrFirm. Nullable, No Value = 128'
-      - id: open_close_optional
-        type: s1_nullable
-        doc: 'openClose. Nullable, No Value = 128'
-      - id: attributed_quote_optional
-        type: s1_nullable
-        doc: 'attributedQuote. Nullable, No Value = 128'
-      - id: time_in_force_optional
-        type: s1_nullable
-        doc: 'timeInForce. Nullable, No Value = 128'
-      - id: cancel_instead_of_slide_optional
-        type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
-      - id: display_inst
-        type: s1_nullable
-        doc: 'displayInst. Nullable, No Value = 128'
-      - id: exec_inst
-        type: s1_nullable
-        doc: 'execInst. Nullable, No Value = 128'
-      - id: ord_type_optional
-        type: s1_nullable
-        doc: 'ordType. Nullable, No Value = 128'
-      - id: target_party_id
-        type: str_4_nullable
-        doc: 'targetPartyId. Nullable, No Value = 0'
-      - id: auction_id
-        type: u4_nullable
-        doc: 'auctionId. Nullable, No Value = 4294967295'
-      - id: clearing_firm
-        type: u4_nullable
-        doc: 'clearingFirm. Nullable, No Value = 4294967295'
-      - id: optional_data
-        type: str_16_nullable
-        doc: 'optionalData. Nullable, No Value = 0'
-      - id: routing_firm_id
-        type: str_4_nullable
-        doc: 'routingFirmId. Nullable, No Value = 0'
-      - id: aiq
-        type: str_3_nullable
-        doc: 'aiq. Nullable, No Value = 0'
-      - id: side_optional
-        type: s1_nullable
-        doc: 'side. Nullable, No Value = 128'
-      - id: price_price_8_optional
-        type: decimal_s8_8_nullable
-        doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
-      - id: order_qty_quantity_non_zero
-        type: u4
-        doc: 'orderQty'
-  order_cancel_request_message:
-    seq:
-      - id: instrument_id
-        type: u4
-        doc: 'instrumentId'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: orig_cl_ord_id
-        type: u8
-        doc: 'origClOrdId'
-  new_bulk_quote_message:
-    seq:
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: custom_group_id_optional
-        type: u2_nullable
-        doc: 'customGroupId. Nullable, No Value = 65535'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: clearing_account_optional
-        type: str_4_nullable
-        doc: 'clearingAccount. Nullable, No Value = 0'
-      - id: cancel_instead_of_slide_optional
-        type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
-      - id: send_time
-        type: u8
-        doc: 'sendTime'
-      - id: aiq
-        type: str_3_nullable
-        doc: 'aiq. Nullable, No Value = 0'
-      - id: time_in_force
-        type: s1
-        enum: time_in_force
-        doc: 'timeInForce'
-      - id: new_bulk_quote_message_quote_updates_groups
-        type: new_bulk_quote_message_quote_updates_groups
-        doc: 'quoteUpdates Block'
-  new_bulk_quote_message_quote_updates_groups:
-    seq:
-      - id: quote_updates_group_encoding
-        type: quote_updates_group_encoding
-        doc: 'quoteUpdatesGroupEncoding'
-      - id: new_bulk_quote_message_quote_updates_group
-        type: new_bulk_quote_message_quote_updates_group
-        repeat: expr
-        repeat-expr: quote_updates_group_encoding.num_in_group
-        doc: 'quoteUpdates'
-  quote_updates_group_encoding:
-    seq:
-      - id: block_length_short
-        type: u1
-        doc: 'blockLength'
-      - id: num_in_group
-        type: u1
-        doc: 'numInGroup'
-  new_bulk_quote_message_quote_updates_group:
-    seq:
-      - id: instrument_id
-        type: u4
-        doc: 'instrumentId'
-      - id: side
-        type: s1
-        enum: side
-        doc: 'side'
-      - id: price_price_4_optional
-        type: decimal_s4_4_nullable
-        doc: 'price. Implied decimal with scale 1e-4. Nullable, No Value = -2147483648'
-      - id: order_qty_quantity_zero_optional
-        type: u4_nullable
-        doc: 'Order quantity. Nullable, No Value = 4294967295'
-      - id: quote_type
-        type: s1
-        enum: quote_type
-        doc: 'Type of quote'
-      - id: reserved
-        type: s1_nullable
-        doc: 'Scratchpad – not validated. Nullable, No Value = 128'
-  mass_cancel_request_message:
-    seq:
-      - id: underlying_id_optional
-        type: u4_nullable
-        doc: 'underlyingId. Nullable, No Value = 4294967295'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: send_time
-        type: u8
-        doc: 'sendTime'
-      - id: ack_style_mass_cancel_ack_style
-        type: u1
-        enum: ack_style_mass_cancel_ack_style
-        doc: 'ackStyle'
-      - id: mpid_filter
-        type: u1
-        enum: mpid_filter
-        doc: 'mpidFilter'
-      - id: bulk_action
-        type: u1
-        enum: bulk_action
-        doc: 'bulkAction'
-  purge_request_message:
-    seq:
-      - id: underlying_id_optional
-        type: u4_nullable
-        doc: 'underlyingId. Nullable, No Value = 4294967295'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: send_time
-        type: u8
-        doc: 'sendTime'
-      - id: ack_style_purge_request_ack_style
-        type: u1
-        enum: ack_style_purge_request_ack_style
-        doc: 'ackStyle'
-      - id: bulk_action
-        type: u1
-        enum: bulk_action
-        doc: 'bulkAction'
-      - id: purge_request_message_custom_group_ids_groups
-        type: purge_request_message_custom_group_ids_groups
-        doc: 'customGroupIds Block'
-  purge_request_message_custom_group_ids_groups:
-    seq:
-      - id: custom_group_ids_group_encoding
-        type: custom_group_ids_group_encoding
-        doc: 'customGroupIdsGroupEncoding'
-      - id: purge_request_message_custom_group_ids_group
-        type: purge_request_message_custom_group_ids_group
-        repeat: expr
-        repeat-expr: custom_group_ids_group_encoding.num_in_group
-        doc: 'customGroupIds'
-  custom_group_ids_group_encoding:
-    seq:
-      - id: block_length_short
-        type: u1
-        doc: 'blockLength'
-      - id: num_in_group
-        type: u1
-        doc: 'numInGroup'
-  purge_request_message_custom_group_ids_group:
-    seq:
-      - id: custom_group_id
-        type: u2
-        doc: 'Custom group identifier'
   order_ack_message:
     seq:
       - id: account_account_optional
@@ -1007,6 +666,14 @@ types:
         repeat: expr
         repeat-expr: custom_group_ids_group_encoding.num_in_group
         doc: 'customGroupIds'
+  custom_group_ids_group_encoding:
+    seq:
+      - id: block_length_short
+        type: u1
+        doc: 'blockLength'
+      - id: num_in_group
+        type: u1
+        doc: 'numInGroup'
   purge_ack_message_custom_group_ids_group:
     seq:
       - id: custom_group_id
@@ -1202,60 +869,6 @@ types:
       - id: throttle_indicator_optional
         type: s1_nullable
         doc: 'throttleIndicator. Nullable, No Value = 128'
-  risk_limit_update_request_message:
-    seq:
-      - id: underlying_id_optional
-        type: u4_nullable
-        doc: 'underlyingId. Nullable, No Value = 4294967295'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: risk_control_optional
-        type: s1_nullable
-        doc: 'riskControl. Nullable, No Value = 128'
-      - id: risk_control_status
-        type: s1_nullable
-        doc: 'riskControlStatus. Nullable, No Value = 128'
-      - id: time_limit
-        type: u8_nullable
-        doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
-      - id: percentage_limit
-        type: u4_nullable
-        doc: 'percentageLimit. Nullable, No Value = 4294967295'
-      - id: count_limit
-        type: u4_nullable
-        doc: 'countLimit. Nullable, No Value = 4294967295'
-      - id: ioc_attribution
-        type: s1_nullable
-        doc: 'iocAttribution. Nullable, No Value = 128'
-      - id: cust_capacity_weight
-        type: u1_nullable
-        doc: 'custCapacityWeight. Nullable, No Value = 255'
-  risk_action_request_message:
-    seq:
-      - id: underlying_id_optional
-        type: u4_nullable
-        doc: 'underlyingId. Nullable, No Value = 4294967295'
-      - id: market_participant_id_optional
-        type: str_4_nullable
-        doc: 'marketParticipantId. Nullable, No Value = 0'
-      - id: cl_ord_id
-        type: u8
-        doc: 'clOrdId'
-      - id: risk_control
-        type: s1
-        enum: risk_control
-        doc: 'riskControl'
-      - id: risk_action
-        type: s1
-        enum: risk_action
-        doc: 'riskAction'
-      - id: custom_group_id_optional
-        type: u2_nullable
-        doc: 'customGroupId. Nullable, No Value = 65535'
   underlying_ref_data_message:
     seq:
       - id: transact_time
@@ -1543,6 +1156,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 18446744073709551615
   s1_nullable:
     seq:
       - id: value
@@ -1580,6 +1200,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
   u2_nullable:
     seq:
       - id: value
@@ -1601,20 +1228,6 @@ types:
     instances:
       is_null:
         value: value.mantissa == -2147483648
-  u8_nullable:
-    seq:
-      - id: value
-        type: u8
-    instances:
-      is_null:
-        value: value == 18446744073709551615
-  u1_nullable:
-    seq:
-      - id: value
-        type: u1
-    instances:
-      is_null:
-        value: value == 255
 
 enums:
   template_id:
@@ -1721,140 +1334,6 @@ enums:
     20001:
       id: 'business'
       doc: 'Sbe Schema Id for iex.options.boe.business'
-  status:
-    0:
-      id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  keep_alive:
-    0:
-      id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  subsession_type:
-    0:
-      id: 'client_to_gateway'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'gateway_to_client'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'reference_data'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  joined:
-    0:
-      id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  reason:
-    0:
-      id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    8:
-      id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    9:
-      id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    10:
-      id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    11:
-      id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    12:
-      id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    13:
-      id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    14:
-      id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    15:
-      id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    16:
-      id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    17:
-      id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   customer_or_firm:
     0:
       id: 'customer'
@@ -2030,6 +1509,205 @@ enums:
     1:
       id: 'single_ack_with_mmqs'
       doc: 'PurgeRequestAckStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  risk_control_optional:
+    1:
+      id: 'transaction_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'volume_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'percentage_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'grmp'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'purge_lockout_reset'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'intrinsic_value_and_arbitrage'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'all_blocks_for_underlying'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  risk_control_status:
+    0:
+      id: 'disabled'
+      doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'enabled'
+      doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  ioc_attribution:
+    1:
+      id: 'include_ioc'
+      doc: 'IOCAttribution Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'exclude_ioc'
+      doc: 'IOCAttribution Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  risk_control:
+    1:
+      id: 'transaction_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'volume_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'percentage_based'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'grmp'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'purge_lockout_reset'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'intrinsic_value_and_arbitrage'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'all_blocks_for_underlying'
+      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  risk_action:
+    1:
+      id: 'query_risk_control'
+      doc: 'RiskActionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'unblock'
+      doc: 'RiskActionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  status:
+    0:
+      id: 'success'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'session_level_reject'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'logout_requested'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'unknown'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'invalid_logon_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'invalid_token'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'already_logged_in'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'login_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    8:
+      id: 'invalid_packet_length'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    9:
+      id: 'invalid_message'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    10:
+      id: 'join_revoked'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    11:
+      id: 'heartbeat_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    12:
+      id: 'message_out_of_sequence'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    13:
+      id: 'invalid_subsession_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    14:
+      id: 'subsession_not_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    15:
+      id: 'denial_of_service'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    16:
+      id: 'invalid_argument'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    17:
+      id: 'already_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  keep_alive:
+    0:
+      id: 'false_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'true_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  subsession_type:
+    0:
+      id: 'client_to_gateway'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'gateway_to_client'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'reference_data'
+      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  joined:
+    0:
+      id: 'false_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'true_field'
+      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+  reason:
+    0:
+      id: 'success'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    1:
+      id: 'session_level_reject'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    2:
+      id: 'logout_requested'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    3:
+      id: 'unknown'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    4:
+      id: 'invalid_logon_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    5:
+      id: 'invalid_token'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    6:
+      id: 'already_logged_in'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    7:
+      id: 'login_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    8:
+      id: 'invalid_packet_length'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    9:
+      id: 'invalid_message'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    10:
+      id: 'join_revoked'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    11:
+      id: 'heartbeat_timeout'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    12:
+      id: 'message_out_of_sequence'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    13:
+      id: 'invalid_subsession_id'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    14:
+      id: 'subsession_not_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    15:
+      id: 'denial_of_service'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    16:
+      id: 'invalid_argument'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+    17:
+      id: 'already_joined'
+      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   attributed_quote:
     1:
       id: 'sum'
@@ -2895,71 +2573,6 @@ enums:
     1:
       id: 'throttled'
       doc: 'ThrottleIndicator Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_optional:
-    1:
-      id: 'transaction_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'volume_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'percentage_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'grmp'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'purge_lockout_reset'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'intrinsic_value_and_arbitrage'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'all_blocks_for_underlying'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control_status:
-    0:
-      id: 'disabled'
-      doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    1:
-      id: 'enabled'
-      doc: 'RiskControlStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  ioc_attribution:
-    1:
-      id: 'include_ioc'
-      doc: 'IOCAttribution Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'exclude_ioc'
-      doc: 'IOCAttribution Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_control:
-    1:
-      id: 'transaction_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'volume_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    3:
-      id: 'percentage_based'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    4:
-      id: 'grmp'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    5:
-      id: 'purge_lockout_reset'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    6:
-      id: 'intrinsic_value_and_arbitrage'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    7:
-      id: 'all_blocks_for_underlying'
-      doc: 'RiskControl Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-  risk_action:
-    1:
-      id: 'query_risk_control'
-      doc: 'RiskActionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
-    2:
-      id: 'unblock'
-      doc: 'RiskActionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
   mpv_group:
     0:
       id: 'all_penny'

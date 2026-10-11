@@ -1850,7 +1850,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size-eos: true
+        size: _root.client_tcp_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free-form human-readable text'
   login_request_packet:

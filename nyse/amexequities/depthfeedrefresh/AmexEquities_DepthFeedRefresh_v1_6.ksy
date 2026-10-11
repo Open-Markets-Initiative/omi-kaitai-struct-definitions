@@ -502,6 +502,15 @@ enums:
     3:
       id: 'nyse_arca'
       doc: 'Nyse Arca Equities'
+    4:
+      id: 'nyse_arca_options'
+      doc: 'Nyse Arca Options'
+    5:
+      id: 'nyse_bonds'
+      doc: 'Nyse Bonds'
+    8:
+      id: 'nyse_american_options'
+      doc: 'Nyse American Options'
     9:
       id: 'nyse_american'
       doc: 'Nyse American Equities'
@@ -512,9 +521,6 @@ enums:
       id: 'nyse_texas'
       doc: 'Nyse Texas Equities'
   exchange_code:
-    0x46:
-      id: 'txse'
-      doc: 'Txse'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
@@ -541,8 +547,8 @@ enums:
       doc: 'Cboe'
   security_type:
     0x41:
-      id: 'american_depositary_receipts'
-      doc: 'American Depositary Receipts'
+      id: 'adr'
+      doc: 'Adr'
     0x43:
       id: 'common_stock'
       doc: 'Common Stock'
@@ -550,14 +556,14 @@ enums:
       id: 'debentures'
       doc: 'Debentures'
     0x45:
-      id: 'exchange_traded_funds'
-      doc: 'Exchange Traded Funds'
+      id: 'etf'
+      doc: 'Etf'
     0x46:
       id: 'foreign'
       doc: 'Foreign'
     0x48:
-      id: 'american_depositary_shares'
-      doc: 'American Depositary Shares'
+      id: 'us_depositary_shares'
+      doc: 'Us Depositary Shares'
     0x49:
       id: 'units'
       doc: 'Units'
@@ -565,8 +571,8 @@ enums:
       id: 'index_linked_notes'
       doc: 'Index Linked Notes'
     0x4d:
-      id: 'other_blank'
-      doc: 'Other Blank'
+      id: 'miscliquid_trust'
+      doc: 'Miscliquid Trust'
     0x4f:
       id: 'ordinary_shares'
       doc: 'Ordinary Shares'
@@ -577,8 +583,8 @@ enums:
       id: 'rights'
       doc: 'Rights'
     0x53:
-      id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      id: 'shares_of_beneficiary_interest'
+      doc: 'Shares Of Beneficiary Interest'
     0x54:
       id: 'test'
       doc: 'Test'
@@ -586,8 +592,8 @@ enums:
       id: 'closed_end_fund'
       doc: 'Closed End Fund'
     0x57:
-      id: 'warrants'
-      doc: 'Warrants'
+      id: 'warrant'
+      doc: 'Warrant'
   price_resolution:
     0:
       id: 'all_penny'
@@ -613,8 +619,8 @@ enums:
       id: 'resume'
       doc: 'Resume'
     0x36:
-      id: 'suspend_operational_halt'
-      doc: 'Suspend Operational Halt'
+      id: 'suspend'
+      doc: 'Suspend'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
       doc: 'Short Sale Restriction Activated Day 1'
@@ -668,8 +674,8 @@ enums:
       id: 'equipment_changeover'
       doc: 'Equipment Changeover'
     0x41:
-      id: 'sip_outage_material_sip_latency_or_extraordinary_market_activity'
-      doc: 'Sip Outage Material Sip Latency Or Extraordinary Market Activity'
+      id: 'additional_information_requested'
+      doc: 'Additional Information Requested'
     0x43:
       id: 'regulatory_concern'
       doc: 'Regulatory Concern'
@@ -677,8 +683,8 @@ enums:
       id: 'merger_effective'
       doc: 'Merger Effective'
     0x46:
-      id: 'etf_iiv_etf_component_prices_not_available'
-      doc: 'Etf Iiv Etf Component Prices Not Available'
+      id: 'etf_component_prices_not_available'
+      doc: 'Etf Component Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -686,11 +692,11 @@ enums:
       id: 'new_security_offering'
       doc: 'New Security Offering'
     0x56:
-      id: 'primary_listing_exchange_discretionary_halt'
-      doc: 'Primary Listing Exchange Discretionary Halt'
+      id: 'intraday_indicative_value_not_available'
+      doc: 'Intraday Indicative Value Not Available'
     0x36:
-      id: 'suspend_operational_halt'
-      doc: 'Suspend Operational Halt'
+      id: 'suspend'
+      doc: 'Suspend'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -705,8 +711,8 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_oms_tx'
-      doc: 'Nasdaq Oms Tx'
+      id: 'nasdaq_omx_bx'
+      doc: 'Nasdaq Omx Bx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'

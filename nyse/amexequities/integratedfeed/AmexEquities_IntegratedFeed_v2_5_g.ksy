@@ -191,14 +191,9 @@ types:
       - id: unit_of_trade
         type: u2
         doc: 'This field specifies the security Unit of Trade in shares. Valid values are 1, 10, 50 and 100'
-      - id: late_close_eligible
-        type: u1
-        enum: late_close_eligible
-        doc: 'The Outright series for the underlying symbol is eligible for a later Core session close'
-      - id: eth_eligible
-        type: u1
-        enum: eth_eligible
-        doc: 'The Outright series for the underlying symbol is eligible for Extended Trading Sessions'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved for future use. Disregard any content'
   symbol_clear_message:
     seq:
       - id: source_time
@@ -795,6 +790,15 @@ enums:
     3:
       id: 'nyse_arca_equities'
       doc: 'Nyse Arca Equities'
+    4:
+      id: 'nyse_arca_options'
+      doc: 'Nyse Arca Options'
+    5:
+      id: 'nyse_bonds'
+      doc: 'Nyse Bonds'
+    8:
+      id: 'nyse_american_options'
+      doc: 'Nyse American Options'
     9:
       id: 'nyse_american_equities'
       doc: 'Nyse American Equities'
@@ -805,9 +809,6 @@ enums:
       id: 'nyse_texas_equities'
       doc: 'Nyse Texas Equities'
   exchange_code:
-    0x46:
-      id: 'txse'
-      doc: 'Txse'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
@@ -888,20 +889,6 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
-  late_close_eligible:
-    0:
-      id: 'not_eligible'
-      doc: 'Not Eligible'
-    1:
-      id: 'eligible'
-      doc: 'Eligible'
-  eth_eligible:
-    0:
-      id: 'not_eligible'
-      doc: 'Not Eligible'
-    1:
-      id: 'eligible'
-      doc: 'Eligible'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -910,8 +897,8 @@ enums:
       id: 'resume'
       doc: 'Resume'
     0x36:
-      id: 'suspend_operational_halt'
-      doc: 'Suspend Operational Halt'
+      id: 'suspend'
+      doc: 'Suspend'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
       doc: 'Short Sale Restriction Activated Day 1'
@@ -965,8 +952,8 @@ enums:
       id: 'equipment_changeover'
       doc: 'Equipment Changeover'
     0x41:
-      id: 'sip_outage_material_sip_latency_or_extraordinary_market_activity'
-      doc: 'Sip Outage Material Sip Latency Or Extraordinary Market Activity'
+      id: 'additional_information_requested'
+      doc: 'Additional Information Requested'
     0x43:
       id: 'regulatory_concern'
       doc: 'Regulatory Concern'
@@ -974,8 +961,8 @@ enums:
       id: 'merger_effective'
       doc: 'Merger Effective'
     0x46:
-      id: 'etf_iiv_etf_component_prices_not_available'
-      doc: 'Etf Iiv Etf Component Prices Not Available'
+      id: 'etf_component_prices_not_available'
+      doc: 'Etf Component Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -983,11 +970,11 @@ enums:
       id: 'new_security_offering'
       doc: 'New Security Offering'
     0x56:
-      id: 'primary_listing_exchange_discretionary_halt'
-      doc: 'Primary Listing Exchange Discretionary Halt'
+      id: 'intraday_indicative_value_not_available'
+      doc: 'Intraday Indicative Value Not Available'
     0x36:
-      id: 'suspend_operational_halt'
-      doc: 'Suspend Operational Halt'
+      id: 'suspend'
+      doc: 'Suspend'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -1002,8 +989,8 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_oms_tx'
-      doc: 'Nasdaq Oms Tx'
+      id: 'nasdaq_omx_bx'
+      doc: 'Nasdaq Omx Bx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
