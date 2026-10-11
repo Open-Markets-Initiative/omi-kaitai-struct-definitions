@@ -47,13 +47,14 @@ seq:
 types:
   message_struct:
     seq:
-      - id: frame
-        type: u2
-        doc: 'Total bytes of packet including this header'
+      - id: frame_header
+        type: frame_header
+        doc: 'Optiq length prefix, read before the message it frames'
       - id: message_header
         type: message_header
         doc: 'Optiq Sbe message header — message identifiers and length of message root'
       - id: payload
+        size: frame_header.frame - 10
         type:
           switch-on: message_header.template_id
           cases:
@@ -76,6 +77,11 @@ types:
             'template_id::dc_short_declaration_fill_message': dc_short_declaration_fill_message
             'template_id::dc_quote_request_message': dc_quote_request_message
             'template_id::dc_clear_book_message': dc_clear_book_message
+  frame_header:
+    seq:
+      - id: frame
+        type: u2
+        doc: 'Total bytes of packet including this header'
   message_header:
     seq:
       - id: block_length

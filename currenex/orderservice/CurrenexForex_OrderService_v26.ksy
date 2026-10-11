@@ -39,39 +39,45 @@ doc: 'Currenex Currenex Forex Order Service Cbp v26'
 doc-ref: https://www.currenex.com/support
 
 seq:
-  - id: soh
-    type: u1
-    doc: 'Start of Currenex message'
-  - id: message_header
-    type: message_header_struct
-    doc: 'Currenex Market Data Message Header'
-  - id: message_body
-    type:
-      switch-on: message_header.message_type
-      cases:
-        'message_type::logon': logon
-        'message_type::logout': logout
-        'message_type::heartbeat': heartbeat
-        'message_type::instrument_info_request': instrument_info_request
-        'message_type::instrument_info': instrument_info
-        'message_type::new_order_request': new_order_request
-        'message_type::new_order_ack': new_order_ack
-        'message_type::order_cancel_request': order_cancel_request
-        'message_type::order_cancel_reject': order_cancel_reject
-        'message_type::order_replace_or_cancel_request': order_replace_or_cancel_request
-        'message_type::order_replace_or_cancel_ack': order_replace_or_cancel_ack
-        'message_type::order_canceled_or_expired': order_canceled_or_expired
-        'message_type::trade': trade
-        'message_type::pending_fill': pending_fill
-        'message_type::pending_fill_cancel': pending_fill_cancel
-        'message_type::trade_pending': trade_pending
-        'message_type::resend_request': resend_request
-        'message_type::gap_fill': gap_fill
-  - id: etx
-    type: u1
-    doc: 'End of Currenex message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Currenex Tcp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: soh
+        type: u1
+        doc: 'Start of Currenex message'
+      - id: message_header
+        type: message_header_struct
+        doc: 'Currenex Market Data Message Header'
+      - id: message_body
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::logon': logon
+            'message_type::logout': logout
+            'message_type::heartbeat': heartbeat
+            'message_type::instrument_info_request': instrument_info_request
+            'message_type::instrument_info': instrument_info
+            'message_type::new_order_request': new_order_request
+            'message_type::new_order_ack': new_order_ack
+            'message_type::order_cancel_request': order_cancel_request
+            'message_type::order_cancel_reject': order_cancel_reject
+            'message_type::order_replace_or_cancel_request': order_replace_or_cancel_request
+            'message_type::order_replace_or_cancel_ack': order_replace_or_cancel_ack
+            'message_type::order_canceled_or_expired': order_canceled_or_expired
+            'message_type::trade': trade
+            'message_type::pending_fill': pending_fill
+            'message_type::pending_fill_cancel': pending_fill_cancel
+            'message_type::trade_pending': trade_pending
+            'message_type::resend_request': resend_request
+            'message_type::gap_fill': gap_fill
+      - id: etx
+        type: u1
+        doc: 'End of Currenex message'
   message_header_struct:
     seq:
       - id: sequence_number

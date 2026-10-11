@@ -39,37 +39,43 @@ doc: 'Chicago Board Options Exchange Cboe Byx Equities Top AsciiPitch v1.3.2'
 doc-ref: http://markets.cboe.com/us/equities/support/technical
 
 seq:
-  - id: message_type
-    type: u1
-    enum: message_type_enum
-    doc: 'Single ASCII byte identifying this packet type'
-  - id: payload
-    type:
-      switch-on: message_type
-      cases:
-        'message_type_enum::logon_message': logon_message
-        'message_type_enum::logon_rejected_message': logon_rejected_message
-        'message_type_enum::seconds_message': seconds_message
-        'message_type_enum::milliseconds_message': milliseconds_message
-        'message_type_enum::expanded_spin_message': expanded_spin_message
-        'message_type_enum::expanded_bid_update_message': expanded_bid_update_message
-        'message_type_enum::long_bid_update_message': long_bid_update_message
-        'message_type_enum::short_bid_update_message': short_bid_update_message
-        'message_type_enum::expanded_ask_update_message': expanded_ask_update_message
-        'message_type_enum::long_ask_update_message': long_ask_update_message
-        'message_type_enum::short_ask_update_message': short_ask_update_message
-        'message_type_enum::expanded_two_sided_update_message': expanded_two_sided_update_message
-        'message_type_enum::long_two_sided_update_message': long_two_sided_update_message
-        'message_type_enum::short_two_sided_update_message': short_two_sided_update_message
-        'message_type_enum::expanded_trade_message': expanded_trade_message
-        'message_type_enum::long_trade_message': long_trade_message
-        'message_type_enum::short_trade_message': short_trade_message
-        'message_type_enum::trading_status_message': trading_status_message
-  - id: top_lf
-    type: u1
-    doc: 'Terminating line feed character (0x0A)'
+  - id: frame
+    type: frame_struct
+    repeat: eos
+    doc: 'Cboe TOP Tcp Lf terminated record — packet type byte, type-determined payload, terminating LF'
 
 types:
+  frame_struct:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Single ASCII byte identifying this packet type'
+      - id: payload
+        type:
+          switch-on: message_type
+          cases:
+            'message_type::logon_message': logon_message
+            'message_type::logon_rejected_message': logon_rejected_message
+            'message_type::seconds_message': seconds_message
+            'message_type::milliseconds_message': milliseconds_message
+            'message_type::expanded_spin_message': expanded_spin_message
+            'message_type::expanded_bid_update_message': expanded_bid_update_message
+            'message_type::long_bid_update_message': long_bid_update_message
+            'message_type::short_bid_update_message': short_bid_update_message
+            'message_type::expanded_ask_update_message': expanded_ask_update_message
+            'message_type::long_ask_update_message': long_ask_update_message
+            'message_type::short_ask_update_message': short_ask_update_message
+            'message_type::expanded_two_sided_update_message': expanded_two_sided_update_message
+            'message_type::long_two_sided_update_message': long_two_sided_update_message
+            'message_type::short_two_sided_update_message': short_two_sided_update_message
+            'message_type::expanded_trade_message': expanded_trade_message
+            'message_type::long_trade_message': long_trade_message
+            'message_type::short_trade_message': short_trade_message
+            'message_type::trading_status_message': trading_status_message
+      - id: top_lf
+        type: u1
+        doc: 'Terminating line feed character (0x0A)'
   logon_message:
     seq:
       - id: username
@@ -480,7 +486,7 @@ types:
         doc: 'Reserved'
 
 enums:
-  message_type_enum:
+  message_type:
     0x4c:
       id: 'logon_message'
       doc: 'Logon Message'

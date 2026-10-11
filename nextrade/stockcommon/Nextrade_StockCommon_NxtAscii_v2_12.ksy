@@ -39,68 +39,74 @@ doc: 'Nextrade Nextrade Nextrade Stock Market Data Common NxtAscii v2.12'
 doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
-  - id: tr_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
-  - id: payload
-    type:
-      switch-on: tr_code
-      cases:
-        '"I2500"': polling_data_message
-        '"B651S"': securities_quote_10_level_message
-        '"B651Q"': securities_quote_10_level_message
-        '"A351S"': securities_order_filled_message
-        '"A351Q"': securities_order_filled_message
-        '"A751S"': market_operation_ts_message
-        '"A751Q"': market_operation_ts_message
-        '"A651S"': issue_closing_message
-        '"A651Q"': issue_closing_message
-        '"R851S"': triggering_removing_vi_message
-        '"R851Q"': triggering_removing_vi_message
-        '"E151S"': closing_price_trading_quote_message
-        '"E151Q"': closing_price_trading_quote_message
-        '"B251S"': equities_snapshot_10_level_message
-        '"B251Q"': equities_snapshot_10_level_message
-        '"C051S"': investor_activities_per_an_industry_message
-        '"C051Q"': investor_activities_per_an_industry_message
-        '"B551S"': current_movement_message
-        '"B551Q"': current_movement_message
-        '"P051S"': program_trading_activity_per_investor_message
-        '"P051Q"': program_trading_activity_per_investor_message
-        '"C351S"': program_trading_information_per_issue_aggregated_information_message
-        '"C351Q"': program_trading_information_per_issue_aggregated_information_message
-        '"J051S"': program_trading_information_of_total_aggregated_information_message
-        '"J051Q"': program_trading_information_of_total_aggregated_information_message
-        '"M451S"': market_operation_schedule_message
-        '"M451Q"': market_operation_schedule_message
-        '"R351T"': member_firm_imposing_lifting_sanctions_message
-        '"B951S"': top_five_traders_activities_message
-        '"B951Q"': top_five_traders_activities_message
-        '"A051S"': equities_batch_data_message
-        '"E051S"': equities_batch_data_message
-        '"A051Q"': equities_batch_data_message
-        '"E051Q"': equities_batch_data_message
-        '"M951T"': member_information_message
-        '"E851T"': member_information_message
-        '"I651S"': issue_event_message
-        '"E651S"': issue_event_message
-        '"I651Q"': issue_event_message
-        '"E651Q"': issue_event_message
-        '"C451S"': block_basket_trade_data_message
-        '"C451Q"': block_basket_trade_data_message
-        '"C151S"': investor_activities_per_an_issue_eod_message
-        '"C151Q"': investor_activities_per_an_issue_eod_message
-        '"I851S"': short_selling_message
-        '"I851Q"': short_selling_message
-        '"E251S"': brokers_acitity_information_message
-        '"E251Q"': brokers_acitity_information_message
-        '"E351S"': trading_activity_by_session_per_an_issue_message
-        '"E351Q"': trading_activity_by_session_per_an_issue_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Nextrade Market Data Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: tr_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
+      - id: payload
+        type:
+          switch-on: tr_code
+          cases:
+            '"I2500"': polling_data_message
+            '"B651S"': securities_quote_10_level_message
+            '"B651Q"': securities_quote_10_level_message
+            '"A351S"': securities_order_filled_message
+            '"A351Q"': securities_order_filled_message
+            '"A751S"': market_operation_ts_message
+            '"A751Q"': market_operation_ts_message
+            '"A651S"': issue_closing_message
+            '"A651Q"': issue_closing_message
+            '"R851S"': triggering_removing_vi_message
+            '"R851Q"': triggering_removing_vi_message
+            '"E151S"': closing_price_trading_quote_message
+            '"E151Q"': closing_price_trading_quote_message
+            '"B251S"': equities_snapshot_10_level_message
+            '"B251Q"': equities_snapshot_10_level_message
+            '"C051S"': investor_activities_per_an_industry_message
+            '"C051Q"': investor_activities_per_an_industry_message
+            '"B551S"': current_movement_message
+            '"B551Q"': current_movement_message
+            '"P051S"': program_trading_activity_per_investor_message
+            '"P051Q"': program_trading_activity_per_investor_message
+            '"C351S"': program_trading_information_per_issue_aggregated_information_message
+            '"C351Q"': program_trading_information_per_issue_aggregated_information_message
+            '"J051S"': program_trading_information_of_total_aggregated_information_message
+            '"J051Q"': program_trading_information_of_total_aggregated_information_message
+            '"M451S"': market_operation_schedule_message
+            '"M451Q"': market_operation_schedule_message
+            '"R351T"': member_firm_imposing_lifting_sanctions_message
+            '"B951S"': top_five_traders_activities_message
+            '"B951Q"': top_five_traders_activities_message
+            '"A051S"': equities_batch_data_message
+            '"E051S"': equities_batch_data_message
+            '"A051Q"': equities_batch_data_message
+            '"E051Q"': equities_batch_data_message
+            '"M951T"': member_information_message
+            '"E851T"': member_information_message
+            '"I651S"': issue_event_message
+            '"E651S"': issue_event_message
+            '"I651Q"': issue_event_message
+            '"E651Q"': issue_event_message
+            '"C451S"': block_basket_trade_data_message
+            '"C451Q"': block_basket_trade_data_message
+            '"C151S"': investor_activities_per_an_issue_eod_message
+            '"C151Q"': investor_activities_per_an_issue_eod_message
+            '"I851S"': short_selling_message
+            '"I851Q"': short_selling_message
+            '"E251S"': brokers_acitity_information_message
+            '"E251Q"': brokers_acitity_information_message
+            '"E351S"': trading_activity_by_session_per_an_issue_message
+            '"E351Q"': trading_activity_by_session_per_an_issue_message
   polling_data_message:
     seq:
       - id: current_time_1_minute_interval

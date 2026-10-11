@@ -39,79 +39,85 @@ doc: 'TMX Group Montreal Exchange Sola Multicast Hsvf v1.11'
 doc-ref: https://www.tmxwebstore.com/
 
 seq:
-  - id: hsvf_stx
-    type: u1
-    doc: 'Start of Hsvf message'
-  - id: message_header
-    type: message_header_struct
-    doc: 'Hsvf Udp Market Data Packet Header'
-  - id: message_body
-    type:
-      switch-on: message_header.message_type
-      cases:
-        '"C"': option_trade_message
-        '"CB"': future_options_trade_message
-        '"CF"': futures_trade_message
-        '"CS"': strategy_trade_message
-        '"CW"': swap_future_trade_message
-        '"D"': option_rfq_message
-        '"DB"': future_options_rfq_message
-        '"DF"': futures_rfq_message
-        '"DS"': strategy_rfq_message
-        '"DW"': swap_future_rfq_message
-        '"E"': instrument_schedule_notice_option_message
-        '"EB"': instrument_schedule_notice_futures_option_message
-        '"EF"': instrument_schedule_notice_future_message
-        '"ES"': instrument_schedule_notice_strategy_message
-        '"EW"': instrument_schedule_notice_swap_future_message
-        '"F"': option_quote_message
-        '"FB"': future_options_quote_message
-        '"FF"': futures_quote_message
-        '"FS"': strategy_quote_message
-        '"FW"': swap_future_quote_message
-        '"H"': option_market_depth_message
-        '"HB"': future_options_market_depth_message
-        '"HF"': futures_market_depth_message
-        '"HS"': strategy_market_depth_message
-        '"HW"': swap_future_market_depth_message
-        '"I"': option_trade_cancellation_message
-        '"IB"': future_options_trade_cancellation_message
-        '"IF"': futures_trade_cancellation_message
-        '"IS"': strategy_trade_cancellation_message
-        '"IW"': swap_future_trade_cancellation_message
-        '"J"': option_instrument_keys_message
-        '"JB"': future_options_instrument_keys_message
-        '"JE"': underlying_instrument_keys_message
-        '"JF"': futures_instrument_keys_message
-        '"JS"': strategy_instrument_keys_message
-        '"JW"': swap_future_instrument_keys_message
-        '"N"': option_summary_message
-        '"NB"': future_options_summary_message
-        '"NF"': futures_summary_message
-        '"NS"': strategy_summary_message
-        '"NW"': swap_future_summary_message
-        '"Q"': beginning_of_options_summary_message
-        '"QB"': beginning_of_future_options_summary_message
-        '"QF"': beginning_of_futures_summary_message
-        '"QS"': beginning_of_strategy_summary_message
-        '"QW"': swap_future_beginning_of_summary_message
-        '"X"': option_trade_correction_message
-        '"XB"': future_options_trade_correction_message
-        '"XF"': futures_trade_correction_message
-        '"XS"': strategy_trade_correction_message
-        '"XW"': swap_future_trade_correction_message
-        '"GR"': group_status_message
-        '"GS"': strategies_message
-        '"L"': bulletins_message
-        '"S"': end_of_sales_message
-        '"TT"': tick_table_message
-        '"U"': end_of_transmission_message
-        '"V"': circuit_assurance_message
-  - id: hsvf_etx
-    type: u1
-    doc: 'End of Hsvf message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Hsvf Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: hsvf_stx
+        type: u1
+        doc: 'Start of Hsvf message'
+      - id: message_header
+        type: message_header_struct
+        doc: 'Hsvf Udp Market Data Packet Header'
+      - id: message_body
+        type:
+          switch-on: message_header.message_type
+          cases:
+            '"C"': option_trade_message
+            '"CB"': future_options_trade_message
+            '"CF"': futures_trade_message
+            '"CS"': strategy_trade_message
+            '"CW"': swap_future_trade_message
+            '"D"': option_rfq_message
+            '"DB"': future_options_rfq_message
+            '"DF"': futures_rfq_message
+            '"DS"': strategy_rfq_message
+            '"DW"': swap_future_rfq_message
+            '"E"': instrument_schedule_notice_option_message
+            '"EB"': instrument_schedule_notice_futures_option_message
+            '"EF"': instrument_schedule_notice_future_message
+            '"ES"': instrument_schedule_notice_strategy_message
+            '"EW"': instrument_schedule_notice_swap_future_message
+            '"F"': option_quote_message
+            '"FB"': future_options_quote_message
+            '"FF"': futures_quote_message
+            '"FS"': strategy_quote_message
+            '"FW"': swap_future_quote_message
+            '"H"': option_market_depth_message
+            '"HB"': future_options_market_depth_message
+            '"HF"': futures_market_depth_message
+            '"HS"': strategy_market_depth_message
+            '"HW"': swap_future_market_depth_message
+            '"I"': option_trade_cancellation_message
+            '"IB"': future_options_trade_cancellation_message
+            '"IF"': futures_trade_cancellation_message
+            '"IS"': strategy_trade_cancellation_message
+            '"IW"': swap_future_trade_cancellation_message
+            '"J"': option_instrument_keys_message
+            '"JB"': future_options_instrument_keys_message
+            '"JE"': underlying_instrument_keys_message
+            '"JF"': futures_instrument_keys_message
+            '"JS"': strategy_instrument_keys_message
+            '"JW"': swap_future_instrument_keys_message
+            '"N"': option_summary_message
+            '"NB"': future_options_summary_message
+            '"NF"': futures_summary_message
+            '"NS"': strategy_summary_message
+            '"NW"': swap_future_summary_message
+            '"Q"': beginning_of_options_summary_message
+            '"QB"': beginning_of_future_options_summary_message
+            '"QF"': beginning_of_futures_summary_message
+            '"QS"': beginning_of_strategy_summary_message
+            '"QW"': swap_future_beginning_of_summary_message
+            '"X"': option_trade_correction_message
+            '"XB"': future_options_trade_correction_message
+            '"XF"': futures_trade_correction_message
+            '"XS"': strategy_trade_correction_message
+            '"XW"': swap_future_trade_correction_message
+            '"GR"': group_status_message
+            '"GS"': strategies_message
+            '"L"': bulletins_message
+            '"S"': end_of_sales_message
+            '"TT"': tick_table_message
+            '"U"': end_of_transmission_message
+            '"V"': circuit_assurance_message
+      - id: hsvf_etx
+        type: u1
+        doc: 'End of Hsvf message'
   message_header_struct:
     seq:
       - id: sequence_number

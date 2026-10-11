@@ -39,35 +39,41 @@ doc: 'Currenex Currenex Forex Now Forex Market Data Cbp v10'
 doc-ref: https://www.currenex.com/support
 
 seq:
-  - id: itch_soh
-    type: u1
-    doc: 'Start of Currenex Itch message'
-  - id: message_header
-    type: message_header_struct
-    doc: 'Currenex Itch Market Data Message Header'
-  - id: message_body
-    type:
-      switch-on: message_header.message_type
-      cases:
-        'message_type::logon_message': logon_message
-        'message_type::logout_message': logout_message
-        'message_type::heart_beat_message': heart_beat_message
-        'message_type::instrument_info': instrument_info
-        'message_type::instrument_info_ack_message': instrument_info_ack_message
-        'message_type::subscription_request_message': subscription_request_message
-        'message_type::mass_subscription_request_message': mass_subscription_request_message
-        'message_type::subscription_reply_message': subscription_reply_message
-        'message_type::mass_subscription_reply_message': mass_subscription_reply_message
-        'message_type::depth_of_book_message': depth_of_book_message
-        'message_type::paid_given_message': paid_given_message
-        'message_type::wamr_with_confidence_factor_message': wamr_with_confidence_factor_message
-        'message_type::mid_activity_indicator_message': mid_activity_indicator_message
-        'message_type::reject_message': reject_message
-  - id: itch_etx
-    type: u1
-    doc: 'End of Currenex Itch message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Currenex Itch Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: itch_soh
+        type: u1
+        doc: 'Start of Currenex Itch message'
+      - id: message_header
+        type: message_header_struct
+        doc: 'Currenex Itch Market Data Message Header'
+      - id: message_body
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::logon_message': logon_message
+            'message_type::logout_message': logout_message
+            'message_type::heart_beat_message': heart_beat_message
+            'message_type::instrument_info': instrument_info
+            'message_type::instrument_info_ack_message': instrument_info_ack_message
+            'message_type::subscription_request_message': subscription_request_message
+            'message_type::mass_subscription_request_message': mass_subscription_request_message
+            'message_type::subscription_reply_message': subscription_reply_message
+            'message_type::mass_subscription_reply_message': mass_subscription_reply_message
+            'message_type::depth_of_book_message': depth_of_book_message
+            'message_type::paid_given_message': paid_given_message
+            'message_type::wamr_with_confidence_factor_message': wamr_with_confidence_factor_message
+            'message_type::mid_activity_indicator_message': mid_activity_indicator_message
+            'message_type::reject_message': reject_message
+      - id: itch_etx
+        type: u1
+        doc: 'End of Currenex Itch message'
   message_header_struct:
     seq:
       - id: sequence_number

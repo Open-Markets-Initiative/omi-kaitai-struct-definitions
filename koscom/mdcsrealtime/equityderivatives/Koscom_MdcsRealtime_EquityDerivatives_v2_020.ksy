@@ -39,81 +39,87 @@ doc: 'Koscom Co., Ltd. MDCS Realtime Market Data MDCS Realtime Equity Derivative
 doc-ref: https://data.koscom.co.kr
 
 seq:
-  - id: message_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
-  - id: payload
-    type:
-      switch-on: message_code
-      cases:
-        '"I2000"': polling_data_message
-        '"IA000"': krx_index_message
-        '"IB000"': krx_estimated_index_message
-        '"J2000"': global_index_message
-        '"J4000"': bond_prime_index_message
-        '"K1000"': bond_ktb_index_message
-        '"K8000"': bond_ktb_index_term_structure_message
-        '"IG000"': bond_index_krx_message
-        '"B201S"': equity_derivatives_underlying_snapshot_kospi_message
-        '"B201Q"': equity_derivatives_underlying_snapshot_kosdaq_message
-        '"B202S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
-        '"B203S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
-        '"B204S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
-        '"B205S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
-        '"A001S"': securities_equities_batch_data_message
-        '"A002S"': securities_equities_batch_data_message
-        '"A003S"': securities_equities_batch_data_message
-        '"A004S"': securities_equities_batch_data_message
-        '"A005S"': securities_equities_batch_data_message
-        '"A001Q"': securities_equities_batch_data_message
-        '"A001X"': securities_equities_batch_data_message
-        '"I501S"': securities_closing_date_message
-        '"I503S"': securities_closing_date_message
-        '"I504S"': securities_closing_date_message
-        '"I505S"': securities_closing_date_message
-        '"I501Q"': securities_closing_date_message
-        '"I501X"': securities_closing_date_message
-        '"I701S"': securities_mm_lp_information_message
-        '"I702S"': securities_mm_lp_information_message
-        '"I703S"': securities_mm_lp_information_message
-        '"I704S"': securities_mm_lp_information_message
-        '"I705S"': securities_mm_lp_information_message
-        '"I701Q"': securities_mm_lp_information_message
-        '"I701X"': securities_mm_lp_information_message
-        '"M900S"': securities_member_information_message
-        '"M900Q"': securities_member_information_message
-        '"M900X"': securities_member_information_message
-        '"A901S"': securities_treasury_stocks_batch_message
-        '"A901Q"': securities_treasury_stocks_batch_message
-        '"A901X"': securities_treasury_stocks_batch_message
-        '"CA01S"': securities_equity_index_indicator_message
-        '"CA01Q"': securities_equity_index_indicator_message
-        '"P200S"': securities_dividend_yield_per_industry_message
-        '"P200Q"': securities_dividend_yield_per_industry_message
-        '"A001B"': bonds_batch_data_message
-        '"A001R"': repo_batch_data_message
-        '"I601S"': issue_event_message
-        '"I602S"': issue_event_message
-        '"I603S"': issue_event_message
-        '"I604S"': issue_event_message
-        '"I605S"': issue_event_message
-        '"I601Q"': issue_event_message
-        '"I601X"': issue_event_message
-        '"I601B"': issue_event_message
-        '"I601M"': issue_event_message
-        '"I601K"': issue_event_message
-        '"I601R"': issue_event_message
-        '"F901B"': corporate_bonds_reference_message
-        '"F901M"': corporate_bonds_reference_message
-        '"BN01B"': regular_bonds_installment_repayment_date_message
-        '"CB01R"': repo_classification_data_message
-        '"S001R"': repo_trade_availability_per_term_message
-        '"G300B"': retail_bonds_type_code_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Koscom MDCS Exture Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: message_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
+      - id: payload
+        type:
+          switch-on: message_code
+          cases:
+            '"I2000"': polling_data_message
+            '"IA000"': krx_index_message
+            '"IB000"': krx_estimated_index_message
+            '"J2000"': global_index_message
+            '"J4000"': bond_prime_index_message
+            '"K1000"': bond_ktb_index_message
+            '"K8000"': bond_ktb_index_term_structure_message
+            '"IG000"': bond_index_krx_message
+            '"B201S"': equity_derivatives_underlying_snapshot_kospi_message
+            '"B201Q"': equity_derivatives_underlying_snapshot_kosdaq_message
+            '"B202S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
+            '"B203S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
+            '"B204S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
+            '"B205S"': equity_derivatives_underlying_snapshot_kospi_mm_lp_included_message
+            '"A001S"': securities_equities_batch_data_message
+            '"A002S"': securities_equities_batch_data_message
+            '"A003S"': securities_equities_batch_data_message
+            '"A004S"': securities_equities_batch_data_message
+            '"A005S"': securities_equities_batch_data_message
+            '"A001Q"': securities_equities_batch_data_message
+            '"A001X"': securities_equities_batch_data_message
+            '"I501S"': securities_closing_date_message
+            '"I503S"': securities_closing_date_message
+            '"I504S"': securities_closing_date_message
+            '"I505S"': securities_closing_date_message
+            '"I501Q"': securities_closing_date_message
+            '"I501X"': securities_closing_date_message
+            '"I701S"': securities_mm_lp_information_message
+            '"I702S"': securities_mm_lp_information_message
+            '"I703S"': securities_mm_lp_information_message
+            '"I704S"': securities_mm_lp_information_message
+            '"I705S"': securities_mm_lp_information_message
+            '"I701Q"': securities_mm_lp_information_message
+            '"I701X"': securities_mm_lp_information_message
+            '"M900S"': securities_member_information_message
+            '"M900Q"': securities_member_information_message
+            '"M900X"': securities_member_information_message
+            '"A901S"': securities_treasury_stocks_batch_message
+            '"A901Q"': securities_treasury_stocks_batch_message
+            '"A901X"': securities_treasury_stocks_batch_message
+            '"CA01S"': securities_equity_index_indicator_message
+            '"CA01Q"': securities_equity_index_indicator_message
+            '"P200S"': securities_dividend_yield_per_industry_message
+            '"P200Q"': securities_dividend_yield_per_industry_message
+            '"A001B"': bonds_batch_data_message
+            '"A001R"': repo_batch_data_message
+            '"I601S"': issue_event_message
+            '"I602S"': issue_event_message
+            '"I603S"': issue_event_message
+            '"I604S"': issue_event_message
+            '"I605S"': issue_event_message
+            '"I601Q"': issue_event_message
+            '"I601X"': issue_event_message
+            '"I601B"': issue_event_message
+            '"I601M"': issue_event_message
+            '"I601K"': issue_event_message
+            '"I601R"': issue_event_message
+            '"F901B"': corporate_bonds_reference_message
+            '"F901M"': corporate_bonds_reference_message
+            '"BN01B"': regular_bonds_installment_repayment_date_message
+            '"CB01R"': repo_classification_data_message
+            '"S001R"': repo_trade_availability_per_term_message
+            '"G300B"': retail_bonds_type_code_message
   polling_data_message:
     seq:
       - id: current_time

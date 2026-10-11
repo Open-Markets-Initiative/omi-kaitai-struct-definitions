@@ -39,35 +39,41 @@ doc: 'Nextrade Nextrade Nextrade Stock Market Data 3 Level NxtAscii v2.12'
 doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
-  - id: tr_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
-  - id: payload
-    type:
-      switch-on: tr_code
-      cases:
-        '"I2500"': polling_data_message
-        '"B651S"': securities_quote_3_level_message
-        '"B651Q"': securities_quote_3_level_message
-        '"G751S"': securities_order_filled_plus_quote_3_level_message
-        '"G751Q"': securities_order_filled_plus_quote_3_level_message
-        '"R151S"': market_operation_ts_plus_quote_3_level_message
-        '"R151Q"': market_operation_ts_plus_quote_3_level_message
-        '"A351S"': securities_order_filled_message
-        '"A351Q"': securities_order_filled_message
-        '"A751S"': market_operation_ts_message
-        '"A751Q"': market_operation_ts_message
-        '"A651S"': issue_closing_message
-        '"A651Q"': issue_closing_message
-        '"R851S"': triggering_removing_vi_message
-        '"R851Q"': triggering_removing_vi_message
-        '"E151S"': closing_price_trading_quote_message
-        '"E151Q"': closing_price_trading_quote_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Nextrade Market Data Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: tr_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
+      - id: payload
+        type:
+          switch-on: tr_code
+          cases:
+            '"I2500"': polling_data_message
+            '"B651S"': securities_quote_3_level_message
+            '"B651Q"': securities_quote_3_level_message
+            '"G751S"': securities_order_filled_plus_quote_3_level_message
+            '"G751Q"': securities_order_filled_plus_quote_3_level_message
+            '"R151S"': market_operation_ts_plus_quote_3_level_message
+            '"R151Q"': market_operation_ts_plus_quote_3_level_message
+            '"A351S"': securities_order_filled_message
+            '"A351Q"': securities_order_filled_message
+            '"A751S"': market_operation_ts_message
+            '"A751Q"': market_operation_ts_message
+            '"A651S"': issue_closing_message
+            '"A651Q"': issue_closing_message
+            '"R851S"': triggering_removing_vi_message
+            '"R851Q"': triggering_removing_vi_message
+            '"E151S"': closing_price_trading_quote_message
+            '"E151Q"': closing_price_trading_quote_message
   polling_data_message:
     seq:
       - id: current_time_1_minute_interval

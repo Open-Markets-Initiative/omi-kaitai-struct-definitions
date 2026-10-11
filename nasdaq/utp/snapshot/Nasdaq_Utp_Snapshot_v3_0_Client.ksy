@@ -39,18 +39,24 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.utpplan.com/technical
 
 seq:
-  - id: client_tcp_packet_header
-    type: client_tcp_packet_header_struct
-    doc: 'Packet header of a packet sent by the client'
-  - id: client_tcp_payload
-    size: client_tcp_packet_header.packet_length + 2 - 3
-    type:
-      switch-on: client_tcp_packet_header.client_packet_type
-      cases:
-        'client_packet_type::debug_packet': debug_packet
-        'client_packet_type::login_request_packet': login_request_packet
+  - id: client_packet
+    type: client_packet_struct
+    repeat: eos
+    doc: 'SoupBinTCP packet carrying UTP Snap-Shot messages sent by the client'
 
 types:
+  client_packet_struct:
+    seq:
+      - id: client_tcp_packet_header
+        type: client_tcp_packet_header_struct
+        doc: 'Packet header of a packet sent by the client'
+      - id: client_tcp_payload
+        size: client_tcp_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: client_tcp_packet_header.client_packet_type
+          cases:
+            'client_packet_type::debug_packet': debug_packet
+            'client_packet_type::login_request_packet': login_request_packet
   client_tcp_packet_header_struct:
     seq:
       - id: packet_length

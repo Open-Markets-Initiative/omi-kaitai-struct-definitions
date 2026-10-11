@@ -14,36 +14,50 @@ class CboeBzxequitiesMulticastdepthofbookSpinV2204Tests(unittest.TestCase):
 
     def test_loginmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/LoginMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_loginresponsemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/LoginResponseMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_spinfinishedmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/SpinFinishedMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_spinimageavailablemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/SpinImageAvailableMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_spinrequestmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/SpinRequestMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_spinresponsemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/SpinResponseMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_timemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.MulticastDepthOfBook.Spin.v2.20.4/TimeMessage.pcap"):
+            if payloads.partial(payload, 0, 2, "little", True):
+                self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeBzxequitiesMulticastdepthofbookSpinV2204.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

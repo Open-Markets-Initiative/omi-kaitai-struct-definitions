@@ -39,20 +39,26 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.utpplan.com/technical
 
 seq:
-  - id: server_tcp_packet_header
-    type: server_tcp_packet_header_struct
-    doc: 'Packet header of a packet sent by the server'
-  - id: server_tcp_payload
-    size: server_tcp_packet_header.packet_length + 2 - 3
-    type:
-      switch-on: server_tcp_packet_header.server_packet_type
-      cases:
-        'server_packet_type::sequenced_data_packet': sequenced_data_packet
-        'server_packet_type::debug_packet': debug_packet
-        'server_packet_type::login_accepted_packet': login_accepted_packet
-        'server_packet_type::login_rejected_packet': login_rejected_packet
+  - id: server_packet
+    type: server_packet_struct
+    repeat: eos
+    doc: 'SoupBinTCP packet carrying UTP Participant Input messages sent by the server'
 
 types:
+  server_packet_struct:
+    seq:
+      - id: server_tcp_packet_header
+        type: server_tcp_packet_header_struct
+        doc: 'Packet header of a packet sent by the server'
+      - id: server_tcp_payload
+        size: server_tcp_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: server_tcp_packet_header.server_packet_type
+          cases:
+            'server_packet_type::sequenced_data_packet': sequenced_data_packet
+            'server_packet_type::debug_packet': debug_packet
+            'server_packet_type::login_accepted_packet': login_accepted_packet
+            'server_packet_type::login_rejected_packet': login_rejected_packet
   server_tcp_packet_header_struct:
     seq:
       - id: packet_length

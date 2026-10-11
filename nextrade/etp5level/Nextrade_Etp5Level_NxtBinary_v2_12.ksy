@@ -39,27 +39,33 @@ doc: 'Nextrade Nextrade Nextrade Etp Market Data 5 Level NxtBinary v2.12'
 doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
-  - id: tr_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
-  - id: payload
-    type:
-      switch-on: tr_code
-      cases:
-        '"I2500"': polling_data_message
-        '"B753S"': securities_quote_mm_lp_quotes_included_5_level_message
-        '"G753S"': securities_order_filled_plus_quote_mm_lp_quotes_included_5_level_message
-        '"R153S"': market_operation_ts_plus_quote_mm_lp_quotes_included_5_level_message
-        '"A353S"': securities_order_filled_message
-        '"A753S"': market_operation_ts_message
-        '"A653S"': issue_closing_message
-        '"R853S"': triggering_removing_vi_message
-        '"E153S"': closing_price_trading_quote_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Nextrade Market Data Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: tr_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
+      - id: payload
+        type:
+          switch-on: tr_code
+          cases:
+            '"I2500"': polling_data_message
+            '"B753S"': securities_quote_mm_lp_quotes_included_5_level_message
+            '"G753S"': securities_order_filled_plus_quote_mm_lp_quotes_included_5_level_message
+            '"R153S"': market_operation_ts_plus_quote_mm_lp_quotes_included_5_level_message
+            '"A353S"': securities_order_filled_message
+            '"A753S"': market_operation_ts_message
+            '"A653S"': issue_closing_message
+            '"R853S"': triggering_removing_vi_message
+            '"E153S"': closing_price_trading_quote_message
   polling_data_message:
     seq:
       - id: current_time_1_minute_interval

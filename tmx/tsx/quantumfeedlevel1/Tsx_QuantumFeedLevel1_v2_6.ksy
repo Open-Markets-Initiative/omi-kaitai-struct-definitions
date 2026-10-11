@@ -39,16 +39,22 @@ doc: 'TMX Group Toronto Stock Exchange Quantum Feed Level 1 Xmt v2.6'
 doc-ref: https://www.tmxwebstore.com/
 
 seq:
-  - id: frame_header
-    type: frame_header_struct
-    doc: 'Xmt Udp Packet Frame Header'
-  - id: body
-    type: body_struct
-    repeat: expr
-    repeat-expr: frame_header.num_body
-    doc: 'Xmt Body'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Xmt Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: frame_header
+        type: frame_header_struct
+        doc: 'Xmt Udp Packet Frame Header'
+      - id: body
+        type: body_struct
+        repeat: expr
+        repeat-expr: frame_header.num_body
+        doc: 'Xmt Body'
   frame_header_struct:
     seq:
       - id: start_of_frame

@@ -39,50 +39,56 @@ doc: 'Box Options Market BOX Options Exchange Sola Multicast Hsvf v1.8'
 doc-ref: https://boxoptions.com/technology/trading-interface-specifications
 
 seq:
-  - id: hsvf_stx
-    type: u1
-    doc: 'Start of Hsvf message'
-  - id: message_header
-    type: message_header_struct
-    doc: 'Hsvf Udp Market Data Packet Header'
-  - id: message_body
-    type:
-      switch-on: message_header.message_type
-      cases:
-        '"U"': end_of_transmission_message
-        '"V"': circuit_assurance_message
-        '"Z"': system_timestamp_message
-        '"C"': option_trade_message
-        '"CS"': complex_order_instrument_trade_message
-        '"D"': option_request_for_quote_message
-        '"F"': option_quote_message
-        '"FS"': complex_order_quote_message
-        '"GC"': group_opening_time_message
-        '"GR"': group_status_message
-        '"GS"': strategies_group_status_message
-        '"H"': option_market_depth_message
-        '"HS"': complex_order_market_depth_message
-        '"I"': option_trade_cancellation_message
-        '"IS"': complex_order_trade_cancellation_message
-        '"J"': option_instrument_keys_message
-        '"JS"': complex_order_instrument_keys_message
-        '"L"': bulletins_message
-        '"N"': option_summary_message
-        '"NS"': complex_order_summary_message
-        '"Q"': beginning_of_options_summary_message
-        '"QS"': beginning_of_complex_order_summary_message
-        '"S"': end_of_sales_message
-        '"M"': option_improvement_process_beginning_message
-        '"MS"': complex_order_improvement_process_beginning_message_message
-        '"O"': market_sheet_initial_and_improvement_order_message
-        '"OS"': complex_order_market_sheet_initial_and_improvement_order_message
-        '"T"': initial_and_improvement_order_message
-        '"TS"': complex_order_initial_and_improvement_order_message
-  - id: hsvf_etx
-    type: u1
-    doc: 'End of Hsvf message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Hsvf Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: hsvf_stx
+        type: u1
+        doc: 'Start of Hsvf message'
+      - id: message_header
+        type: message_header_struct
+        doc: 'Hsvf Udp Market Data Packet Header'
+      - id: message_body
+        type:
+          switch-on: message_header.message_type
+          cases:
+            '"U"': end_of_transmission_message
+            '"V"': circuit_assurance_message
+            '"Z"': system_timestamp_message
+            '"C"': option_trade_message
+            '"CS"': complex_order_instrument_trade_message
+            '"D"': option_request_for_quote_message
+            '"F"': option_quote_message
+            '"FS"': complex_order_quote_message
+            '"GC"': group_opening_time_message
+            '"GR"': group_status_message
+            '"GS"': strategies_group_status_message
+            '"H"': option_market_depth_message
+            '"HS"': complex_order_market_depth_message
+            '"I"': option_trade_cancellation_message
+            '"IS"': complex_order_trade_cancellation_message
+            '"J"': option_instrument_keys_message
+            '"JS"': complex_order_instrument_keys_message
+            '"L"': bulletins_message
+            '"N"': option_summary_message
+            '"NS"': complex_order_summary_message
+            '"Q"': beginning_of_options_summary_message
+            '"QS"': beginning_of_complex_order_summary_message
+            '"S"': end_of_sales_message
+            '"M"': option_improvement_process_beginning_message
+            '"MS"': complex_order_improvement_process_beginning_message_message
+            '"O"': market_sheet_initial_and_improvement_order_message
+            '"OS"': complex_order_market_sheet_initial_and_improvement_order_message
+            '"T"': initial_and_improvement_order_message
+            '"TS"': complex_order_initial_and_improvement_order_message
+      - id: hsvf_etx
+        type: u1
+        doc: 'End of Hsvf message'
   message_header_struct:
     seq:
       - id: sequence_number

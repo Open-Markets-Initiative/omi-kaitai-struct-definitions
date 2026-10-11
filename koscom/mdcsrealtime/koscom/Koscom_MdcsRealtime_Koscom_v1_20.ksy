@@ -39,54 +39,60 @@ doc: 'Koscom Co., Ltd. MDCS Realtime Market Data MDCS Realtime Koscom Exture v1.
 doc-ref: https://data.koscom.co.kr
 
 seq:
-  - id: message_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
-  - id: payload
-    type:
-      switch-on: message_code
-      cases:
-        '"A6013"': k_otc_issue_closing_message
-        '"A7013"': k_otc_market_operation_message
-        '"G5013"': k_otc_market_action_message
-        '"A2013"': k_otc_quote_message
-        '"A3013"': k_otc_order_filled_message
-        '"J6077"': otc_bond_traded_info_message
-        '"J7077"': otc_bond_trades_per_institution_message
-        '"C1077"': otc_bond_types_per_investor_message
-        '"L9077"': k_bond_message
-        '"E2000"': mkf_index_message
-        '"O9000"': mkf_index_jpy_message
-        '"P3000"': wisefn_index_message
-        '"BP000"': kis_index_message
-        '"K0000"': mkf_bond_index_message
-        '"L6000"': kis_bond_index_message
-        '"K6000"': kebi_bond_index_message
-        '"Q6000"': kabi_bond_index_message
-        '"CE000"': nicepni_bond_index_message
-        '"BV03S"': domestic_etf_inav_message
-        '"BW03S"': domestic_etf_estimated_inav_message
-        '"L503S"': global_etf_inav_message
-        '"P603S"': etf_tracking_error_message
-        '"P703S"': global_etf_tracking_error_message
-        '"F803S"': etp_pdf_message
-        '"M803S"': etp_operator_information_message
-        '"M805S"': etp_operator_information_message
-        '"M801Q"': etp_operator_information_message
-        '"N803S"': etp_transfer_agent_batch_message
-        '"N805S"': etp_transfer_agent_batch_message
-        '"N801Q"': etp_transfer_agent_batch_message
-        '"Q403S"': etf_risk_appraisement_message
-        '"Q503S"': synthetic_etf_constituents_message
-        '"C702S"': elw_investment_indicator_sensitivity_message
-        '"S304S"': etn_iiv_message
-        '"X404S"': etn_disparate_ratio_message
-        '"CC000"': loan_transaction_available_quantity_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Koscom MDCS Exture Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: message_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
+      - id: payload
+        type:
+          switch-on: message_code
+          cases:
+            '"A6013"': k_otc_issue_closing_message
+            '"A7013"': k_otc_market_operation_message
+            '"G5013"': k_otc_market_action_message
+            '"A2013"': k_otc_quote_message
+            '"A3013"': k_otc_order_filled_message
+            '"J6077"': otc_bond_traded_info_message
+            '"J7077"': otc_bond_trades_per_institution_message
+            '"C1077"': otc_bond_types_per_investor_message
+            '"L9077"': k_bond_message
+            '"E2000"': mkf_index_message
+            '"O9000"': mkf_index_jpy_message
+            '"P3000"': wisefn_index_message
+            '"BP000"': kis_index_message
+            '"K0000"': mkf_bond_index_message
+            '"L6000"': kis_bond_index_message
+            '"K6000"': kebi_bond_index_message
+            '"Q6000"': kabi_bond_index_message
+            '"CE000"': nicepni_bond_index_message
+            '"BV03S"': domestic_etf_inav_message
+            '"BW03S"': domestic_etf_estimated_inav_message
+            '"L503S"': global_etf_inav_message
+            '"P603S"': etf_tracking_error_message
+            '"P703S"': global_etf_tracking_error_message
+            '"F803S"': etp_pdf_message
+            '"M803S"': etp_operator_information_message
+            '"M805S"': etp_operator_information_message
+            '"M801Q"': etp_operator_information_message
+            '"N803S"': etp_transfer_agent_batch_message
+            '"N805S"': etp_transfer_agent_batch_message
+            '"N801Q"': etp_transfer_agent_batch_message
+            '"Q403S"': etf_risk_appraisement_message
+            '"Q503S"': synthetic_etf_constituents_message
+            '"C702S"': elw_investment_indicator_sensitivity_message
+            '"S304S"': etn_iiv_message
+            '"X404S"': etn_disparate_ratio_message
+            '"CC000"': loan_transaction_available_quantity_message
   k_otc_issue_closing_message:
     seq:
       - id: isin

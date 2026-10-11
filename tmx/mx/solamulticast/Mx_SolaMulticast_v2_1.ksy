@@ -38,24 +38,30 @@ meta:
 doc: 'TMX Group Montreal Exchange Sola Multicast Hsvf v2.1'
 
 seq:
-  - id: hsvf_stx
-    type: u1
-    doc: 'Start of Hsvf message'
-  - id: messageheader
-    type: messageheader_struct
-    doc: 'Hsvf Udp Market Data Packet Header'
-  - id: message_body
-    type:
-      switch-on: messageheader.message_type
-      cases:
-        '"LI"': login_message
-        '"RT"': retransmission_request_message
-        '"ER"': error_message
-  - id: hsvf_etx
-    type: u1
-    doc: 'End of Hsvf message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Hsvf Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: hsvf_stx
+        type: u1
+        doc: 'Start of Hsvf message'
+      - id: messageheader
+        type: messageheader_struct
+        doc: 'Hsvf Udp Market Data Packet Header'
+      - id: message_body
+        type:
+          switch-on: messageheader.message_type
+          cases:
+            '"LI"': login_message
+            '"RT"': retransmission_request_message
+            '"ER"': error_message
+      - id: hsvf_etx
+        type: u1
+        doc: 'End of Hsvf message'
   messageheader_struct:
     seq:
       - id: sequence_number

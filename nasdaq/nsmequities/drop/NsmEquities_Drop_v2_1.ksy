@@ -39,28 +39,34 @@ doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) N
 doc-ref: https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/drop_210.pdf
 
 seq:
-  - id: message_header
-    type: message_header_struct
-    doc: 'Time Stamp and Type opening every Drop message line'
-  - id: message
-    type:
-      switch-on: message_header.message_type
-      cases:
-        'message_type::new_order_accepted_message': new_order_accepted_message
-        'message_type::existing_order_executed_message': existing_order_executed_message
-        'message_type::existing_order_canceled_message': existing_order_canceled_message
-        'message_type::previous_execution_broken_message': previous_execution_broken_message
-        'message_type::existing_order_replaced_message': existing_order_replaced_message
-        'message_type::existing_order_cancelled_aiq_message': existing_order_cancelled_aiq_message
-  - id: cr
-    type: u1
-    doc: 'Carriage return ending the line'
-  - id: lf
-    type: u1
-    doc: 'Line feed ending the line'
+  - id: frame
+    type: frame_struct
+    repeat: eos
+    doc: 'A fixed length, comma delimited, CR/LF terminated Drop message line'
 
 types:
-  message_header_struct:
+  frame_struct:
+    seq:
+      - id: message_header
+        type: message_header
+        doc: 'Time Stamp and Type opening every Drop message line'
+      - id: message
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::new_order_accepted_message': new_order_accepted_message
+            'message_type::existing_order_executed_message': existing_order_executed_message
+            'message_type::existing_order_canceled_message': existing_order_canceled_message
+            'message_type::previous_execution_broken_message': previous_execution_broken_message
+            'message_type::existing_order_replaced_message': existing_order_replaced_message
+            'message_type::existing_order_cancelled_aiq_message': existing_order_cancelled_aiq_message
+      - id: cr
+        type: u1
+        doc: 'Carriage return ending the line'
+      - id: lf
+        type: u1
+        doc: 'Line feed ending the line'
+  message_header:
     seq:
       - id: time_stamp
         type: str

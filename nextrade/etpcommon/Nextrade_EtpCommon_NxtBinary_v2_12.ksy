@@ -39,45 +39,51 @@ doc: 'Nextrade Nextrade Nextrade Etp Market Data Common NxtBinary v2.12'
 doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
-  - id: tr_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
-  - id: payload
-    type:
-      switch-on: tr_code
-      cases:
-        '"I2500"': polling_data_message
-        '"B753S"': securities_quote_mm_lp_quotes_included_10_level_message
-        '"A353S"': securities_order_filled_message
-        '"A753S"': market_operation_ts_message
-        '"A653S"': issue_closing_message
-        '"R853S"': triggering_removing_vi_message
-        '"E153S"': closing_price_trading_quote_message
-        '"B253S"': equities_snapshot_mm_lp_quotes_included_10_level_message
-        '"IC53S"': investor_activities_per_commodities_message
-        '"V650S"': etp_constituents_message
-        '"EA50S"': etp_constituents_message
-        '"I753S"': mm_lp_information_message
-        '"EB53S"': mm_lp_information_message
-        '"M453S"': market_operation_schedule_message
-        '"R350S"': member_firm_imposing_lifting_sanctions_message
-        '"B953S"': top_five_traders_activities_message
-        '"A053S"': equities_batch_data_message
-        '"E053S"': equities_batch_data_message
-        '"M950S"': member_information_message
-        '"E850S"': member_information_message
-        '"I653S"': issue_event_message
-        '"E653S"': issue_event_message
-        '"C453S"': block_basket_trade_data_message
-        '"C153S"': investor_activities_per_an_issue_eod_message
-        '"I853S"': short_selling_message
-        '"E253S"': brokers_acitity_information_message
-        '"E353S"': trading_activity_by_session_per_an_issue_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Nextrade Market Data Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: tr_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character Ascii TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category naming the message family (e.g. "B6" Quote, "A3" Order Filled, "G7" Order Filled plus Quote, "A7" Market Operation TS, "A0" Equities Batch) with a 3-character Information Category naming the market or product variant, typically a 2-digit information code plus a 1-character market code (e.g. "51S" = KOSPI stock, "51Q" = KOSDAQ stock, "53S" = exchange traded product)'
+      - id: payload
+        type:
+          switch-on: tr_code
+          cases:
+            '"I2500"': polling_data_message
+            '"B753S"': securities_quote_mm_lp_quotes_included_10_level_message
+            '"A353S"': securities_order_filled_message
+            '"A753S"': market_operation_ts_message
+            '"A653S"': issue_closing_message
+            '"R853S"': triggering_removing_vi_message
+            '"E153S"': closing_price_trading_quote_message
+            '"B253S"': equities_snapshot_mm_lp_quotes_included_10_level_message
+            '"IC53S"': investor_activities_per_commodities_message
+            '"V650S"': etp_constituents_message
+            '"EA50S"': etp_constituents_message
+            '"I753S"': mm_lp_information_message
+            '"EB53S"': mm_lp_information_message
+            '"M453S"': market_operation_schedule_message
+            '"R350S"': member_firm_imposing_lifting_sanctions_message
+            '"B953S"': top_five_traders_activities_message
+            '"A053S"': equities_batch_data_message
+            '"E053S"': equities_batch_data_message
+            '"M950S"': member_information_message
+            '"E850S"': member_information_message
+            '"I653S"': issue_event_message
+            '"E653S"': issue_event_message
+            '"C453S"': block_basket_trade_data_message
+            '"C153S"': investor_activities_per_an_issue_eod_message
+            '"I853S"': short_selling_message
+            '"E253S"': brokers_acitity_information_message
+            '"E353S"': trading_activity_by_session_per_an_issue_message
   polling_data_message:
     seq:
       - id: current_time_1_minute_interval

@@ -39,25 +39,31 @@ doc: 'Chicago Board Options Exchange Cboe Edga Equities Last Sale AsciiPitch v1.
 doc-ref: http://markets.cboe.com/us/equities/support/technical
 
 seq:
-  - id: packet_type
-    type: u1
-    enum: packet_type_enum
-    doc: 'Code identifying this packet type'
-  - id: payload
-    type:
-      switch-on: packet_type
-      cases:
-        'packet_type_enum::debug_packet': debug_packet
-        'packet_type_enum::login_accepted_packet': login_accepted_packet
-        'packet_type_enum::login_rejected_packet': login_rejected_packet
-        'packet_type_enum::sequenced_data_packet': sequenced_data_packet
-        'packet_type_enum::login_request_packet': login_request_packet
-        'packet_type_enum::unsequenced_data_packet': unsequenced_data_packet
-  - id: soup_lf
-    type: u1
-    doc: 'Terminating line feed character'
+  - id: frame
+    type: frame_struct
+    repeat: eos
+    doc: 'Soup 2.0 Lf terminated record'
 
 types:
+  frame_struct:
+    seq:
+      - id: packet_type
+        type: u1
+        enum: packet_type
+        doc: 'Code identifying this packet type'
+      - id: payload
+        type:
+          switch-on: packet_type
+          cases:
+            'packet_type::debug_packet': debug_packet
+            'packet_type::login_accepted_packet': login_accepted_packet
+            'packet_type::login_rejected_packet': login_rejected_packet
+            'packet_type::sequenced_data_packet': sequenced_data_packet
+            'packet_type::login_request_packet': login_request_packet
+            'packet_type::unsequenced_data_packet': unsequenced_data_packet
+      - id: soup_lf
+        type: u1
+        doc: 'Terminating line feed character'
   debug_packet:
     seq:
       - id: text
@@ -195,7 +201,7 @@ types:
         doc: 'Raw unsequenced message bytes'
 
 enums:
-  packet_type_enum:
+  packet_type:
     0x2b:
       id: 'debug_packet'
       doc: 'Soup 2.0 Debug Packet'

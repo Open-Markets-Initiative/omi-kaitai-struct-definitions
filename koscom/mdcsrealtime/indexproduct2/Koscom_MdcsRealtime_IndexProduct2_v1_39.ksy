@@ -39,26 +39,32 @@ doc: 'Koscom Co., Ltd. MDCS Realtime Market Data MDCS Realtime Index Product 2 E
 doc-ref: https://data.koscom.co.kr
 
 seq:
-  - id: message_code
-    type: str
-    size: 5
-    encoding: ASCII
-    pad-right: 0x20
-    doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
-  - id: payload
-    type:
-      switch-on: message_code
-      cases:
-        '"I2000"': polling_data_message
-        '"IA000"': krx_index_message
-        '"IB000"': krx_estimated_index_message
-        '"J2000"': global_index_message
-        '"J4000"': bond_prime_index_message
-        '"K1000"': bond_ktb_index_message
-        '"K8000"': bond_ktb_index_term_structure_message
-        '"IG000"': bond_index_krx_message
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Koscom MDCS Exture Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: message_code
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Five-character ASCII TR-CODE identifying the disseminated market data record. Formed by concatenating a 2-character Data Category (message family, e.g. "IA" Krx Index, "B6" Quote, "C4" Negotiated Trade, "A7" Market Operation TS) with a 3-character Information Category (market/product variant, typically 2-digit information code plus 1-character market code, e.g. "01S" = Equities/KOSPI, "01F" = Derivatives, "000" = All Market)'
+      - id: payload
+        type:
+          switch-on: message_code
+          cases:
+            '"I2000"': polling_data_message
+            '"IA000"': krx_index_message
+            '"IB000"': krx_estimated_index_message
+            '"J2000"': global_index_message
+            '"J4000"': bond_prime_index_message
+            '"K1000"': bond_ktb_index_message
+            '"K8000"': bond_ktb_index_term_structure_message
+            '"IG000"': bond_index_krx_message
   polling_data_message:
     seq:
       - id: current_time

@@ -41,22 +41,28 @@ doc-ref:
   - https://www.nasdaq.com/docs/2026/01/20/Nasdaq%20Canada%20Market%20Data%20Specification%20-%20CHIXMD%203.4%20V1.23.pdf
 
 seq:
-  - id: server_packet_header
-    type: server_packet_header_struct
-    doc: 'SoupTcp Packet Header sent by the server'
-  - id: server_payload
-    type:
-      switch-on: server_packet_header.server_packet_type
-      cases:
-        'server_packet_type::debug_packet': debug_packet
-        'server_packet_type::login_accepted_packet': login_accepted_packet
-        'server_packet_type::login_rejected_packet': login_rejected_packet
-        'server_packet_type::sequenced_data_packet': sequenced_data_packet
-  - id: soup_lf
-    type: u1
-    doc: 'Terminating line feed character'
+  - id: server_packet
+    type: server_packet_struct
+    repeat: eos
+    doc: 'SoupTcp Packet'
 
 types:
+  server_packet_struct:
+    seq:
+      - id: server_packet_header
+        type: server_packet_header_struct
+        doc: 'SoupTcp Packet Header sent by the server'
+      - id: server_payload
+        type:
+          switch-on: server_packet_header.server_packet_type
+          cases:
+            'server_packet_type::debug_packet': debug_packet
+            'server_packet_type::login_accepted_packet': login_accepted_packet
+            'server_packet_type::login_rejected_packet': login_rejected_packet
+            'server_packet_type::sequenced_data_packet': sequenced_data_packet
+      - id: soup_lf
+        type: u1
+        doc: 'Terminating line feed character'
   server_packet_header_struct:
     seq:
       - id: server_packet_type

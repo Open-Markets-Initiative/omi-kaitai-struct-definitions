@@ -39,32 +39,38 @@ doc: 'Currenex Currenex Forex Executable Streaming Prices Cbp v9'
 doc-ref: https://www.currenex.com/support
 
 seq:
-  - id: itch_soh
-    type: u1
-    doc: 'Start of Currenex Itch message'
-  - id: message_header
-    type: message_header_struct
-    doc: 'Currenex Itch Market Data Message Header'
-  - id: message_body
-    type:
-      switch-on: message_header.message_type
-      cases:
-        'message_type::logon': logon
-        'message_type::logout': logout
-        'message_type::heartbeat': heartbeat
-        'message_type::instrument_info': instrument_info
-        'message_type::instrument_info_ack': instrument_info_ack
-        'message_type::subscription_request': subscription_request
-        'message_type::subscription_reply': subscription_reply
-        'message_type::price_message': price_message
-        'message_type::price_cancel_message': price_cancel_message
-        'message_type::trade_ticker_message': trade_ticker_message
-        'message_type::reject_message': reject_message
-  - id: itch_etx
-    type: u1
-    doc: 'End of Currenex Itch message'
+  - id: packet
+    type: packet_struct
+    repeat: eos
+    doc: 'Currenex Itch Udp Packet'
 
 types:
+  packet_struct:
+    seq:
+      - id: itch_soh
+        type: u1
+        doc: 'Start of Currenex Itch message'
+      - id: message_header
+        type: message_header_struct
+        doc: 'Currenex Itch Market Data Message Header'
+      - id: message_body
+        type:
+          switch-on: message_header.message_type
+          cases:
+            'message_type::logon': logon
+            'message_type::logout': logout
+            'message_type::heartbeat': heartbeat
+            'message_type::instrument_info': instrument_info
+            'message_type::instrument_info_ack': instrument_info_ack
+            'message_type::subscription_request': subscription_request
+            'message_type::subscription_reply': subscription_reply
+            'message_type::price_message': price_message
+            'message_type::price_cancel_message': price_cancel_message
+            'message_type::trade_ticker_message': trade_ticker_message
+            'message_type::reject_message': reject_message
+      - id: itch_etx
+        type: u1
+        doc: 'End of Currenex Itch message'
   message_header_struct:
     seq:
       - id: sequence_number

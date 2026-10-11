@@ -42,7 +42,7 @@ seq:
     type: tcp_packet_header_struct
     doc: 'Jpx Flex Tcp packet header carrying length prefix and packet type discriminator'
   - id: tcp_payload
-    size: tcp_packet_header.packet_length - 3
+    size: tcp_packet_header.packet_length + 2 - 3
     type:
       switch-on: tcp_packet_header.packet_type
       cases:
