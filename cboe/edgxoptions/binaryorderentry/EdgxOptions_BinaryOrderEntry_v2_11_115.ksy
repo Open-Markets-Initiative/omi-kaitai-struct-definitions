@@ -43,6 +43,7 @@ seq:
     type: message_header_struct
     doc: '10-byte BOE v2 message header. Every message starts with StartOfMessage = 0xBA 0xBA'
   - id: message
+    size: message_header.message_length + 2 - 10
     type:
       switch-on: message_header.message_type
       cases:
@@ -5319,6 +5320,10 @@ types:
       - id: cross_order_rejected_return_bitfield_21_intra_firm_trade_ind
         type: b1
       - id: cross_order_rejected_return_bitfield_21_cmc_match_qty
+        type: b1
+      - id: cross_order_rejected_return_bitfield_21_reserved_64
+        type: b1
+      - id: cross_order_rejected_return_bitfield_21_reserved_128
         type: b1
   quote_update_rejected_message:
     seq:
@@ -12637,6 +12642,10 @@ types:
       - id: complex_instrument_accepted_return_bitfield_21_intra_firm_trade_ind
         type: b1
       - id: complex_instrument_accepted_return_bitfield_21_cmc_match_qty
+        type: b1
+      - id: complex_instrument_accepted_return_bitfield_21_reserved_64
+        type: b1
+      - id: complex_instrument_accepted_return_bitfield_21_reserved_128
         type: b1
   complex_instrument_rejected_message:
     seq:

@@ -43,6 +43,7 @@ seq:
     type: message_header_struct
     doc: '10-byte BOE v2 message header. Every message starts with StartOfMessage = 0xBA 0xBA'
   - id: message
+    size: message_header.message_length + 2 - 10
     type:
       switch-on: message_header.message_type
       cases:

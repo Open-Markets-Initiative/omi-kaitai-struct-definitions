@@ -73,7 +73,7 @@ types:
         type: message_header
         doc: 'UTP Participant Input message header — fixed Version + Message Category prefix common to inbound and return messages'
       - id: category_payload
-        size: _root.client_tcp_packet_header.packet_length - 3
+        size: _parent.client_tcp_packet_header.packet_length - 3
         type:
           switch-on: message_header.message_category
           cases:
@@ -1850,7 +1850,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: _root.client_tcp_packet_header.packet_length - 1
+        size: _parent.client_tcp_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free-form human-readable text'
   login_request_packet:

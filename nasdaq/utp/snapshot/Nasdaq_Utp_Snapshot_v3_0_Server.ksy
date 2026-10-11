@@ -74,7 +74,7 @@ types:
         type: message_header
         doc: 'UTP Snap-Shot message header — fixed Version + Message Category prefix'
       - id: category_payload
-        size: _root.server_tcp_packet_header.packet_length - 3
+        size: _parent.server_tcp_packet_header.packet_length - 3
         type:
           switch-on: message_header.message_category
           cases:
@@ -894,7 +894,7 @@ types:
     seq:
       - id: debug_text
         type: str
-        size: _root.server_tcp_packet_header.packet_length - 1
+        size: _parent.server_tcp_packet_header.packet_length - 1
         encoding: ASCII
         doc: 'Free-form human-readable text'
   login_accepted_packet:
