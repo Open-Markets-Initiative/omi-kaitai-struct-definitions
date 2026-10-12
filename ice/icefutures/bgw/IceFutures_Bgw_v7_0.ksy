@@ -54,7 +54,7 @@ types:
         type: message_header
         doc: 'Ice Binary Order Gateway Sbe message header'
       - id: payload
-        size: simple_open_framing_header.message_length - 21
+        size: simple_open_framing_header.message_length - 25
         type:
           switch-on: message_header.template_id
           cases:
