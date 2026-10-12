@@ -39,19 +39,19 @@ doc: 'Currenex Currenex Forex Order Service Cbp v26'
 doc-ref: https://www.currenex.com/support
 
 seq:
-  - id: packet
-    type: packet_struct
+  - id: frame
+    type: frame_struct
     repeat: eos
-    doc: 'Currenex Tcp Packet'
+    doc: 'One Currenex message, framed Soh .. Etx'
 
 types:
-  packet_struct:
+  frame_struct:
     seq:
       - id: soh
         type: u1
         doc: 'Start of Currenex message'
       - id: message_header
-        type: message_header_struct
+        type: message_header
         doc: 'Currenex Market Data Message Header'
       - id: message_body
         type:
@@ -78,7 +78,7 @@ types:
       - id: etx
         type: u1
         doc: 'End of Currenex message'
-  message_header_struct:
+  message_header:
     seq:
       - id: sequence_number
         type: u4

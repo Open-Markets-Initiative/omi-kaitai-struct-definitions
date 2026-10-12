@@ -631,11 +631,13 @@ types:
         type: u2
         enum: market_id_of_open_price
         doc: 'The ID of the Originating Market'
-      - id: number_of_close_prices
+      - id: num_close_price
         type: u1
         doc: 'The number of Market ID/Closing Price pairs. Values can be 0-3'
       - id: close_price
         type: close_price
+        repeat: expr
+        repeat-expr: num_close_price
         doc: 'Market ID/Closing Price pairs'
   close_price:
     seq:

@@ -361,7 +361,7 @@ types:
       - id: stream_id
         type: u2
         doc: 'Identifies Stream on which this symbol will be updated'
-      - id: no_of_legs
+      - id: num_leg_definition
         type: u2
         doc: 'Number of legs in complex symbol: 1 – 5'
       - id: reserved_2
@@ -369,6 +369,8 @@ types:
         doc: 'Filler'
       - id: leg_definition
         type: leg_definition
+        repeat: expr
+        repeat-expr: num_leg_definition
         doc: 'Leg definition'
   leg_definition:
     seq:
