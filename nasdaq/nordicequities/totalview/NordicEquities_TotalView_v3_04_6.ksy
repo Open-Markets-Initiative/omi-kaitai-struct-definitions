@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Equity TotalView Itch v3.04.6'
 doc-ref:
-  - https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
   - https://www.nasdaq.com/docs/2026/06/03/Nordic-Equity-TotalView-ITCH%203.04.6.pdf
+  - https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
 
 seq:
   - id: packet_header

@@ -37,10 +37,10 @@
 
 [Currenex.CurrenexForex.Esp.Cbp.v9.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/currenex/esp/CurrenexForex_Esp_v9.ksy "Currenex Esp Cbp v9 Kaitai Struct Definition"
 [Currenex.CurrenexForex.Esp.Cbp.v9.Url]: https://www.currenex.com/support "Currenex 9 Url"
-[Currenex.CurrenexForex.Esp.Cbp.v9.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Currenex/Specifications/Esp/Currenex.Forex.Esp.Cbp.v9.pdf "Currenex 9 Pdf"
+[Currenex.CurrenexForex.Esp.Cbp.v9.Pdf]: https://www.currenex.com/support/documentation/currenex/ITCH-Spec.pdf "Currenex 9 Pdf"
 [Currenex.CurrenexForex.Now.Cbp.v10.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/currenex/now/CurrenexForex_Now_v10.ksy "Currenex Now Cbp v10 Kaitai Struct Definition"
 [Currenex.CurrenexForex.Now.Cbp.v10.Url]: https://www.currenex.com/support "Currenex 10 Url"
-[Currenex.CurrenexForex.Now.Cbp.v10.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Currenex/Specifications/Now/Currenex.Forex.Now.Cbp.v10.pdf "Currenex 10 Pdf"
+[Currenex.CurrenexForex.Now.Cbp.v10.Pdf]: https://www.currenex.com/support/documentation/currenexnow/Currenex_NOW_Itch_Specification.pdf "Currenex 10 Pdf"
 [Currenex.CurrenexForex.OrderService.Cbp.v26.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/currenex/orderservice/CurrenexForex_OrderService_v26.ksy "Currenex OrderService Cbp v26 Kaitai Struct Definition"
 [Currenex.CurrenexForex.OrderService.Cbp.v26.Url]: https://www.currenex.com/support "Currenex 26 Url"
-[Currenex.CurrenexForex.OrderService.Cbp.v26.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Currenex/Specifications/OrderService/Currenex.Forex.OrderService.Cbp.v26.pdf "Currenex 26 Pdf"
+[Currenex.CurrenexForex.OrderService.Cbp.v26.Pdf]: https://www.currenex.com/support/documentation/currenex/OUCH-Spec.pdf "Currenex 26 Pdf"

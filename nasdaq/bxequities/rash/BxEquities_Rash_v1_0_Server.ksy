@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq BX Rash AsciiRash v1.0'
 doc-ref:
-  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
   - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/NQBX_RASH.pdf
+  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
 
 seq:
   - id: server_frame

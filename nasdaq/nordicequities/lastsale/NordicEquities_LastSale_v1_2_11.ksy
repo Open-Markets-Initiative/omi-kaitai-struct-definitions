@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Equity Last Sale Itch v1.2.11'
 doc-ref:
-  - https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
   - https://www.nasdaq.com/docs/2026/06/04/Nordic-Equity-Last-Sale-1.2.11.pdf
+  - https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
 
 seq:
   - id: packet_header

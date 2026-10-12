@@ -37,8 +37,8 @@ meta:
 
 doc: 'London Stock Exchange Millennium Exchange Native Trading Gateway Recovery Ntgi v21.2'
 doc-ref:
-  - https://www.londonstockexchange.com/resources/equities-trading-resources?tab=technical-library
   - https://docs.londonstockexchange.com/sites/default/files/documents/mit203-native-trading-gateway-specification-issue-21-2.pdf
+  - https://www.londonstockexchange.com/resources/equities-trading-resources?tab=technical-library
 
 seq:
   - id: message

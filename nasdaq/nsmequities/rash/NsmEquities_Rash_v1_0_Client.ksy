@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Rash AsciiRash v1.0'
 doc-ref:
-  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
   - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/rash.pdf
+  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
 
 seq:
   - id: client_frame

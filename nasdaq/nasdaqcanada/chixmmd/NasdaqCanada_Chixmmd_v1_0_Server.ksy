@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Canada CHIXMMD Multicast Market Data Glimpse v1.0'
 doc-ref:
-  - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
   - https://www.nasdaq.com/NasdaqCanadaGlimpse1.0Specification
+  - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
 
 seq:
   - id: server_frame

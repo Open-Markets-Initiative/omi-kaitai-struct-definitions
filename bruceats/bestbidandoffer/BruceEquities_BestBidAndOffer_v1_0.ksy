@@ -36,6 +36,7 @@ meta:
   endian: be
 
 doc: 'Bruce ATS Bruce ATS Equities Best Bid And Offer Itch v1.0'
+doc-ref: https://data.nasdaq.com/market-data-specifications
 
 seq:
   - id: packet_header

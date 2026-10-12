@@ -64,4 +64,4 @@
 [BlueOceanAts.BlueEquities.MemoirTopOfBook.Sbe.v1.3.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/BlueOceanAts/Specifications/BlueEquities/Common/BlueOceanAts.Udp.v1.1.pdf "Blue Ocean Technologies 1.3 Pdf"
 [BlueOceanAts.CommonHeader.Udp.v1.1.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/blueoceanats/commonheader/BlueOceanAts_CommonHeader_v1_1.ksy "BlueOceanAts CommonHeader Udp v1.1 Kaitai Struct Definition"
 [BlueOceanAts.CommonHeader.Udp.v1.1.Url]: https://blueocean-tech.io/trading-updates "Blue Ocean Technologies 1.1 Url"
-[BlueOceanAts.CommonHeader.Udp.v1.1.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/BlueOceanAts/Specifications/BlueEquities/Common/BlueOceanAts.Udp.v1.1.pdf "Blue Ocean Technologies 1.1 Pdf"
+[BlueOceanAts.CommonHeader.Udp.v1.1.Pdf]: https://blueocean-tech.io/trading-updates "Blue Ocean Technologies 1.1 Pdf"

@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Rash AsciiRash v1.1'
 doc-ref:
-  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
   - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/NQBXRASHsb.pdf
+  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
 
 seq:
   - id: server_soup_bin_tcp_packet

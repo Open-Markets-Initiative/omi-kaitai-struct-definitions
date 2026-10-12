@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Canada Nasdaq Canada Order Entry Ouch v5.0.1.4'
 doc-ref:
-  - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
   - https://www.nasdaq.com/docs/nasdaq-canada-ouch
+  - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
 
 seq:
   - id: server_soup_bin_tcp_packet

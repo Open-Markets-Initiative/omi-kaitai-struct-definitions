@@ -36,6 +36,7 @@ meta:
   endian: be
 
 doc: 'Bruce ATS Bruce ATS Equities Last Sale Itch v1.0'
+doc-ref: https://data.nasdaq.com/market-data-specifications
 
 seq:
   - id: packet_header
