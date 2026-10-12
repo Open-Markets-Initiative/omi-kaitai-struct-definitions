@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1777 | 2,741,097 |
+| 1776 | 2,739,425 |
 
 ## Testing
 
@@ -337,7 +337,6 @@ Enjoy.
 [Hkex.HkexSecurities.Index]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/Index.md "Orion Market Data Cash Index"
 [Hkex.HkexSecurities.IndexRefresh]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/IndexRefresh.md "Orion Market Data Cash Index Refresh"
 [Hkex.HkexSecurities.IndexRetrans]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/IndexRetrans.md "Orion Market Data Cash Index Retransmission"
-[Hkex.HkexSecurities.Mmdh]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/Mmdh.md "Orion Market Data Cash Mainland Market Data Hub"
 [Hkex.HkexSecurities.Premium]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/Premium.md "Orion Market Data Cash Premium"
 [Hkex.HkexSecurities.PremiumRefresh]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/PremiumRefresh.md "Orion Market Data Cash Premium Refresh"
 [Hkex.HkexSecurities.PremiumRetrans]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/HkexSecurities/PremiumRetrans.md "Orion Market Data Cash Premium Retransmission"
