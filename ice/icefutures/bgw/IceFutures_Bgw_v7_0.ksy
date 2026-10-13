@@ -3019,864 +3019,864 @@ enums:
   severity_level:
     1:
       id: 'info'
-      doc: 'SeverityLevelEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Info'
     2:
       id: 'warning'
-      doc: 'SeverityLevelEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Warning'
     3:
       id: 'error'
-      doc: 'SeverityLevelEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Error'
     4:
       id: 'fatal'
-      doc: 'SeverityLevelEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Fatal'
   security_response_type:
     1:
       id: 'accepted_security_as_defined'
-      doc: 'SecurityResponseTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'AcceptedSecurityAsDefined'
     4:
       id: 'accepted_security_per_request'
-      doc: 'SecurityResponseTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'AcceptedSecurityPerRequest'
     5:
       id: 'rejected_security_per_request'
-      doc: 'SecurityResponseTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RejectedSecurityPerRequest'
     10:
       id: 'security_already_defined'
-      doc: 'SecurityResponseTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'SecurityAlreadyDefined'
   security_trading_status:
     2:
       id: 'trading_halt_suspended'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'TradingHalt_Suspended'
     4:
       id: 'no_open_no_resume_pre_close'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NoOpen_NoResume_PreClose'
     17:
       id: 'ready_to_trade_open'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ReadyToTrade_Open'
     18:
       id: 'not_available_for_trading_close'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NotAvailableForTrading_Close'
     19:
       id: 'not_traded'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NotTraded'
     20:
       id: 'unknown_or_invalid_expired'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UnknownOrInvalid_Expired'
     21:
       id: 'pre_open'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PreOpen'
     100:
       id: 'trading_as_strategy_leg_only_open'
-      doc: 'SecurityTradingStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'TradingAsStrategyLegOnly_Open'
   exchange_silo:
     0:
       id: 'ice'
-      doc: 'ExchangeSiloEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ICE'
     1:
       id: 'endex'
-      doc: 'ExchangeSiloEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ENDEX'
     2:
       id: 'liffe'
-      doc: 'ExchangeSiloEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'LIFFE'
   leg_deals_suppressed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   block_only:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   flex_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   gt_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   mifid_regulated_market_boolean_enum:
     0:
       id: 'false_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   override_block_min:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   test_market_indicator_boolean_enum:
     0:
       id: 'false_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   block_details_block_type:
     0:
       id: 'regular'
-      doc: 'BlockTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Regular'
     1:
       id: 'pnc'
-      doc: 'BlockTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PNC'
     2:
       id: 'dp'
-      doc: 'BlockTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'DP'
     3:
       id: 'lis'
-      doc: 'BlockTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'LIS'
   leg_security_type:
     1:
       id: 'fut'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FUT'
     2:
       id: 'opt'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'OPT'
     3:
       id: 'common_stock'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CommonStock'
     4:
       id: 'mleg'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'MLEG'
   leg_side:
     1:
       id: 'buy'
-      doc: 'SideEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'SideEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   put_or_call:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   settl_method:
     0x43:
       id: 'cash_financial'
-      doc: 'SettlMethodEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash_Financial'
     0x50:
       id: 'physical'
-      doc: 'SettlMethodEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Physical'
   strike_exercise_style:
     0:
       id: 'european'
-      doc: 'StrikeExerciseStyleEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'European'
     1:
       id: 'american'
-      doc: 'StrikeExerciseStyleEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'American'
     3:
       id: 'asian'
-      doc: 'StrikeExerciseStyleEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Asian'
   clearable:
     0:
       id: 'false_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   hedge_only:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   is_dividend_adjusted:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   aon_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   mifid_regulated_market_boolean_enum_null:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   flex_strike_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   test_market_indicator_boolean_enum_null:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   market_transparency_type:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   non_commoditized_market:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   security_request_type:
     1:
       id: 'create_strategy'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CreateStrategy'
     3:
       id: 'request_listof_futures'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RequestListofFutures'
     100:
       id: 'request_listof_options'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RequestListofOptions'
     101:
       id: 'request_listof_strategies'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RequestListofStrategies'
     102:
       id: 'create_flex_option'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CreateFlexOption'
     103:
       id: 'create_flex_expiry'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CreateFlexExpiry'
     104:
       id: 'request_list_of_products'
-      doc: 'SecurityRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RequestListOfProducts'
   security_type_security_type_enum_null:
     1:
       id: 'fut'
-      doc: 'SecurityTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FUT'
     2:
       id: 'opt'
-      doc: 'SecurityTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'OPT'
     3:
       id: 'common_stock'
-      doc: 'SecurityTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CommonStock'
     4:
       id: 'mleg'
-      doc: 'SecurityTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'MLEG'
   stops_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   options_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   uds_options_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   uds_futures_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   mass_quotes_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   rfq_futures_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   rfq_options_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   crossing_order_futures_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   crossing_order_options_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   self_block_allowed:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   success:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   direct_electronic_access:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   trading_capacity:
     0:
       id: 'deal'
-      doc: 'TradingCapacityEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Own account'
     1:
       id: 'mtch'
-      doc: 'TradingCapacityEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Matched principal'
     2:
       id: 'aotc'
-      doc: 'TradingCapacityEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Any other capacity'
   liquidity_provision:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   commodity_deriv_indicator:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   time_in_force_time_in_force_enum:
     0:
       id: 'day'
-      doc: 'TimeInForceEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Day'
     1:
       id: 'gtc'
-      doc: 'TimeInForceEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'GTC'
     3:
       id: 'fak'
-      doc: 'TimeInForceEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FAK'
     4:
       id: 'fok'
-      doc: 'TimeInForceEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FOK'
     6:
       id: 'gtd'
-      doc: 'TimeInForceEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'GTD'
   side_side_enum:
     1:
       id: 'buy'
-      doc: 'SideEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'SideEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   ord_type_order_type_enum:
     1:
       id: 'market'
-      doc: 'OrderTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Market'
     2:
       id: 'limit'
-      doc: 'OrderTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Limit'
     3:
       id: 'stop'
-      doc: 'OrderTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Stop'
     4:
       id: 'stop_limit'
-      doc: 'OrderTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'StopLimit'
   manual_order_indicator:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   self_match_prevention_instruction:
     0x52:
       id: 'cancel_resting_order'
-      doc: 'SelfMatchPreventionInstructionEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelRestingOrder'
     0x54:
       id: 'cancel_taking_order'
-      doc: 'SelfMatchPreventionInstructionEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelTakingOrder'
     0x42:
       id: 'cancel_both_orders'
-      doc: 'SelfMatchPreventionInstructionEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelBothOrders'
   exec_inst:
     0x47:
       id: 'aon'
-      doc: 'ExecInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'All or None'
     0x50:
       id: 'pnc'
-      doc: 'ExecInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Privately negotiated contract'
     0x44:
       id: 'dp'
-      doc: 'ExecInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Delayed publication'
   cust_order_handling_inst:
     0x43:
       id: 'c'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Vendor-provided platform billed by executing broker'
     0x44:
       id: 'd'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Other, including other-provided screen'
     0x47:
       id: 'g'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Sponsored access via exchange API or provided by executing broker'
     0x48:
       id: 'h'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Premium algorithmic trading provider billed by executing broker'
     0x57:
       id: 'w'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Desk'
     0x59:
       id: 'y'
-      doc: 'CustOrderHandlingInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Electronic'
   position_effect:
     0x4f:
       id: 'open'
-      doc: 'PositionEffectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Open'
     0x43:
       id: 'close'
-      doc: 'PositionEffectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Close'
   alloc_handl_inst:
     0x41:
       id: 'apt'
-      doc: 'AllocHandlInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Average price transaction'
     0x47:
       id: 'g'
-      doc: 'AllocHandlInstEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Give up'
   price_type:
     2:
       id: 'per_contract'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PerContract'
     10:
       id: 'fixed_cabinet_trade_price'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FixedCabinetTradePrice'
     100:
       id: 'fixed_rate'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FixedRate'
     101:
       id: 'npv'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NPV'
     102:
       id: 'rate_differential'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RateDifferential'
     103:
       id: 'npv_differential'
-      doc: 'PriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NPVDifferential'
   side_side_enum_null:
     1:
       id: 'buy'
-      doc: 'SideEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'SideEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   cross_type_cross_type_enum:
     0x31:
       id: 'aon'
-      doc: 'CrossTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'AON'
     0x32:
       id: 'ioc'
-      doc: 'CrossTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'IOC'
   bypass_mqr:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   bench_mark_price_type:
     3:
       id: 'fixed_amount'
-      doc: 'BenchmarkPriceTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FixedAmount'
   ord_type_order_type_enum_null:
     1:
       id: 'market'
-      doc: 'OrderTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Market'
     2:
       id: 'limit'
-      doc: 'OrderTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Limit'
     3:
       id: 'stop'
-      doc: 'OrderTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Stop'
     4:
       id: 'stop_limit'
-      doc: 'OrderTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'StopLimit'
   mass_cancel_request_type:
     6:
       id: 'cancel_for_trading_session'
-      doc: 'MassCancelRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelForTradingSession'
     10:
       id: 'cancel_all_for_trader'
-      doc: 'MassCancelRequestTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelAllForTrader'
   time_in_force_time_in_force_enum_null:
     0:
       id: 'day'
-      doc: 'TimeInForceEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Day'
     1:
       id: 'gtc'
-      doc: 'TimeInForceEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'GTC'
     3:
       id: 'fak'
-      doc: 'TimeInForceEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FAK'
     4:
       id: 'fok'
-      doc: 'TimeInForceEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FOK'
     6:
       id: 'gtd'
-      doc: 'TimeInForceEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'GTD'
   risk_protection_reset:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   quote_cancel_type:
     3:
       id: 'cancel_by_underlying_market'
-      doc: 'QuoteCancelTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelByUnderlyingMarket'
     4:
       id: 'cancel_all'
-      doc: 'QuoteCancelTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelAll'
     5:
       id: 'cancel_by_product_id'
-      doc: 'QuoteCancelTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelByProductID'
   security_type_security_type_enum:
     1:
       id: 'fut'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FUT'
     2:
       id: 'opt'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'OPT'
     3:
       id: 'common_stock'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CommonStock'
     4:
       id: 'mleg'
-      doc: 'SecurityTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'MLEG'
   order_status:
     0:
       id: 'new_field'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     1:
       id: 'partial_fill'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartialFill'
     2:
       id: 'fill'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Fill'
     4:
       id: 'canceled'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Canceled'
     5:
       id: 'replace'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Replace'
     8:
       id: 'rejected'
-      doc: 'OrderStatusEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Rejected'
   exec_type:
     0x30:
       id: 'new_field'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     0x31:
       id: 'partial_fill'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartialFill'
     0x32:
       id: 'fill'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Fill'
     0x34:
       id: 'cancelled'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled'
     0x35:
       id: 'replaced'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Replaced'
     0x38:
       id: 'rejected'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Rejected'
     0x44:
       id: 'restated'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Restated'
     0x47:
       id: 'trade_correct'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'TradeCorrect'
     0x48:
       id: 'trade_cancel'
-      doc: 'ExecTypeEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'TradeCancel'
   order_state:
     0:
       id: 'active'
-      doc: 'OrderStateEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Active'
     1:
       id: 'inactive'
-      doc: 'OrderStateEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Inactive'
     2:
       id: 'withdrawn'
-      doc: 'OrderStateEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Withdrawn'
     4:
       id: 'consummated'
-      doc: 'OrderStateEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Consummated'
     6:
       id: 'elected'
-      doc: 'OrderStateEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Elected'
   exec_restatement_reason:
     3:
       id: 'repriced'
-      doc: 'ExecRestatementReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'REPRICED'
     99:
       id: 'other'
-      doc: 'ExecRestatementReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'OTHER'
   cancel_reason:
     0:
       id: 'canceled_by_user'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledByUser'
     7:
       id: 'canceled_by_system'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledBySystem'
     10:
       id: 'canceled_for_reasonability_limits'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledForReasonabilityLimits'
     11:
       id: 'canceled_at_market_close'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledAtMarketClose'
     13:
       id: 'canceled_for_ipl'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledForIPL'
     27:
       id: 'canceled_for_ioc'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledForIOC'
     28:
       id: 'canceled_for_fok'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledForFOK'
     31:
       id: 'canceled_for_market'
-      doc: 'CancelReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CanceledForMarket'
   reject_response_to:
     1:
       id: 'cancel'
-      doc: 'RejectResponseToEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancel'
     2:
       id: 'cancel_replace'
-      doc: 'RejectResponseToEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelReplace'
     3:
       id: 'new_order'
-      doc: 'RejectResponseToEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NewOrder'
   reject_reason:
     0:
       id: 'too_late_to_cancel'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'TooLateToCancel'
     1:
       id: 'unknown_symbol'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UnknownSymbol'
     2:
       id: 'exchange_closed'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ExchangeClosed'
     3:
       id: 'order_exceeds_limit'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'OrderExceedsLimit'
     4:
       id: 'unable_to_process_request'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UnableToProcessRequest'
     5:
       id: 'unknown_order'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UnknownOrder'
     6:
       id: 'duplicate_order'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'DuplicateOrder'
     7:
       id: 'missing_permissions'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'MissingPermissions'
     9:
       id: 'user_defined'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UserDefined'
     10:
       id: 'cancel_or_replace_pending'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelOrReplacePending'
     11:
       id: 'unsupported'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Unsupported'
     12:
       id: 'risk_protection_active'
-      doc: 'RejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RiskProtectionActive'
   cross_type_cross_type_enum_null:
     0x31:
       id: 'aon'
-      doc: 'CrossTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'AON'
     0x32:
       id: 'ioc'
-      doc: 'CrossTypeEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'IOC'
   waiver_indicator:
     1:
       id: 'lrgs'
-      doc: 'WaiverIndicatorEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Large In Scale (LIS): Off-exchange trade (except EFP) greater than or equal to LIS'
     2:
       id: 'size'
-      doc: 'WaiverIndicatorEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Above specified size: Off-exchange trade (except EFP) less than LIS'
     3:
       id: 'ilqd'
-      doc: 'WaiverIndicatorEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: '= Illiquid instrument'
   quote_ack_status:
     0:
       id: 'accepted'
-      doc: 'QuoteAckStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Accepted'
     4:
       id: 'cancelled_all'
-      doc: 'QuoteAckStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelledAll'
     5:
       id: 'rejected'
-      doc: 'QuoteAckStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Rejected'
     200:
       id: 'partially_cancelled'
-      doc: 'QuoteAckStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartiallyCancelled'
     300:
       id: 'unreasonable_quotes'
-      doc: 'QuoteAckStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'UnreasonableQuotes'
   quote_reject_reason:
     0:
       id: 'accepted'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Accepted'
     99:
       id: 'other'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Other'
     100:
       id: 'validation_failure'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ValidationFailure'
     101:
       id: 'invalid_user_id'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidUserID'
     102:
       id: 'risk_protection_active'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RiskProtectionActive'
     104:
       id: 'no_clearing_account_for_trader'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NoClearingAccountForTrader'
     105:
       id: 'no_mass_quote_sets'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'NoMassQuoteSets'
     106:
       id: 'first_set_mass_quote_is_empty'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'FirstSetMassQuoteIsEmpty'
     107:
       id: 'invalid_clearing_account_status'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidClearingAccountStatus'
     108:
       id: 'invalid_clearing_limits'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidClearingLimits'
     109:
       id: 'invalid_market_id'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMarketID'
     110:
       id: 'exceeds_allowed_mass_quote_sets'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ExceedsAllowedMassQuoteSets'
     111:
       id: 'exceeds_allowed_mass_quotes'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'ExceedsAllowedMassQuotes'
     112:
       id: 'invalid_mass_quote_id'
-      doc: 'QuoteRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMassQuoteID'
   rfc_status:
     0:
       id: 'none'
-      doc: 'RFCStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'None'
     1:
       id: 'success'
-      doc: 'RFCStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Success'
     2:
       id: 'partial_success_bid_failure'
-      doc: 'RFCStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartialSuccessBidFailure'
     3:
       id: 'partial_success_offer_failure'
-      doc: 'RFCStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartialSuccessOfferFailure'
     4:
       id: 'failure'
-      doc: 'RFCStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Failure'
   mass_cancel_response:
     0:
       id: 'rejected'
-      doc: 'MassCancelResponseEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Rejected'
     6:
       id: 'cancel_for_trading_session'
-      doc: 'MassCancelResponseEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelForTradingSession'
     10:
       id: 'cancel_all_for_trader'
-      doc: 'MassCancelResponseEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'CancelAllForTrader'
   mass_cancel_reject_reason:
     0:
       id: 'unsupported'
-      doc: 'MassCancelRejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Unsupported'
     6:
       id: 'invalid_trading_session'
-      doc: 'MassCancelRejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidTradingSession'
     7:
       id: 'invalid_market'
-      doc: 'MassCancelRejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMarket'
     99:
       id: 'other'
-      doc: 'MassCancelRejectEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Other'
   quote_entry_reject_reason:
     99:
       id: 'other'
-      doc: 'QuoteEntryRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Other'
     102:
       id: 'risk_protection_active'
-      doc: 'QuoteEntryRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RiskProtectionActive'
     113:
       id: 'risk_protection_active_for_sell_side'
-      doc: 'QuoteEntryRejectReasonEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'RiskProtectionActiveForSellSide'
   status:
     0:
       id: 'success'
-      doc: 'RequestStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Success'
     1:
       id: 'partial_success'
-      doc: 'RequestStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'PartialSuccess'
     2:
       id: 'failure'
-      doc: 'RequestStatusEnum Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'Failure'
   gap_fill_flag:
     0:
       id: 'false_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanEnumNULL Scaled.Binary.Specification.Load.Sbe.Ice.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
 

@@ -496,64 +496,64 @@ enums:
   options_product_type:
     0:
       id: 'equity_underlying'
-      doc: 'OptionsProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EquityUnderlying'
     1:
       id: 'index_underlying'
-      doc: 'OptionsProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'IndexUnderlying'
   strike_put_or_call:
     0:
       id: 'put'
-      doc: 'PutOrCallType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put'
     1:
       id: 'call'
-      doc: 'PutOrCallType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call'
   closing_only:
     0:
       id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   is_test_symbol:
     0:
       id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   instrument_trading_status:
     0x48:
       id: 'halted'
-      doc: 'InstrumentTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Halted'
     0x54:
       id: 'trading'
-      doc: 'InstrumentTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading'
   instrument_trading_status_reason:
     0x58:
       id: 'none'
-      doc: 'InstrumentTradingStatusReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'None'
     0x41:
       id: 'administrative'
-      doc: 'InstrumentTradingStatusReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Administrative'
   trading_session:
     0x31:
       id: 'trading'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading'
     0x32:
       id: 'closed'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Closed'
   side:
     0x42:
       id: 'buy'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     0x53:
       id: 'sell'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   order_capacity:
     0x43:
       id: 'customer'
-      doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Customer'
     0x4e:
       id: 'non_customer'
-      doc: 'OrderCapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NonCustomer'
 

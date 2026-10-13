@@ -168,10 +168,10 @@ types:
   enter_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: enter_order_optional_field
-        type: s1
+        type: u1
         enum: enter_order_optional_field
         doc: 'Appendage Id'
       - id: enter_order_optional_value
@@ -248,10 +248,10 @@ types:
   replace_order_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: replace_order_request_optional_field
-        type: s1
+        type: u1
         enum: replace_order_request_optional_field
         doc: 'Appendage Id'
       - id: replace_order_request_optional_value
@@ -300,10 +300,10 @@ types:
   cancel_order_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: cancel_order_request_optional_field
-        type: s1
+        type: u1
         enum: cancel_order_request_optional_field
         doc: 'Appendage Id'
       - id: cancel_order_request_optional_value
@@ -316,7 +316,6 @@ types:
     seq:
       - id: appendage_length
         type: u2
-        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: account_query_request_appendage
         type: account_query_request_appendage
@@ -325,10 +324,10 @@ types:
   account_query_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: account_query_request_optional_field
-        type: s1
+        type: u1
         enum: account_query_request_optional_field
         doc: 'Appendage Id'
       - id: account_query_request_optional_value

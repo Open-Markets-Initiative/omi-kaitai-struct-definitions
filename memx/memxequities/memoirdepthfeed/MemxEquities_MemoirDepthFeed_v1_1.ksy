@@ -401,58 +401,58 @@ enums:
   is_test_symbol:
     0:
       id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   short_sale_restriction:
     0:
       id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   security_trading_status:
     0x48:
       id: 'halted'
-      doc: 'SecurityTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Halted'
     0x50:
       id: 'paused'
-      doc: 'SecurityTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Paused'
     0x51:
       id: 'quoting'
-      doc: 'SecurityTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quoting'
     0x54:
       id: 'trading'
-      doc: 'SecurityTradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading'
   security_trading_status_reason:
     0x58:
       id: 'none'
-      doc: 'SecurityTradingStatusReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'None'
     0x52:
       id: 'regulatory'
-      doc: 'SecurityTradingStatusReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Regulatory'
     0x41:
       id: 'administrative'
-      doc: 'SecurityTradingStatusReasonType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Administrative'
   trading_session:
     0x31:
       id: 'opening'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Opening'
     0x32:
       id: 'trading'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading'
     0x33:
       id: 'post_trading'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PostTrading'
     0x34:
       id: 'closed'
-      doc: 'TradingSessionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Closed'
   side:
     0x42:
       id: 'buy'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     0x53:
       id: 'sell'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
 

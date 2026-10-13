@@ -152,8 +152,8 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: stock_group
-        type: u1
-        doc: 'An Identifier Of The Stock Group'
+        type: u1_nullable
+        doc: 'An Identifier Of The Stock Group. Nullable, No Value = 0'
       - id: listing_market
         type: u1
         enum: listing_market
@@ -169,21 +169,21 @@ types:
         pad-right: 0x20
         doc: 'Clearing And Settlement Registration Number'
       - id: board_lot
-        type: u2
-        doc: 'Contains The Board Lot Size'
+        type: u2_nullable
+        doc: 'Contains The Board Lot Size. Nullable, No Value = 0'
       - id: currency
         type: u1
         enum: currency
         doc: 'The Currency Associated With A Reported Price'
       - id: face_value
-        type: decimal_u8_6
-        doc: 'The Face Value Of A Debenture. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Face Value Of A Debenture. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: last_sale
-        type: decimal_u8_6
-        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: min_po_qty
-        type: u4
-        doc: 'The Minimum Volume Required For Post Only Orders'
+        type: u4_nullable
+        doc: 'The Minimum Volume Required For Post Only Orders. Nullable, No Value = 0'
       - id: stock_state
         type: str
         size: 2
@@ -203,24 +203,24 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
-        type: u2
-        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization'
+        type: u2_nullable
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
         doc: 'Market Side Of An Order'
       - id: order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: priority_time_stamp
-        type: microsecond_timestamp
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch'
+        type: microsecond_timestamp_nullable
+        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
   market_state_update_message:
     seq:
       - id: market_state
@@ -228,11 +228,11 @@ types:
         enum: market_state
         doc: 'Indicates The Current Market State'
       - id: stock_group
-        type: u1
-        doc: 'An Identifier Of The Stock Group'
+        type: u1_nullable
+        doc: 'An Identifier Of The Stock Group. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   order_booked_message:
     seq:
       - id: symbol
@@ -242,27 +242,27 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
-        type: u2
-        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization'
+        type: u2_nullable
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
         doc: 'Market Side Of An Order'
       - id: order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: priority_time_stamp
-        type: microsecond_timestamp
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch'
+        type: microsecond_timestamp_nullable
+        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   order_cancelled_message:
     seq:
       - id: symbol
@@ -272,18 +272,18 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
-        type: u2
-        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization'
+        type: u2_nullable
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
         doc: 'Market Side Of An Order'
       - id: order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   order_price_time_assigned_message:
     seq:
       - id: symbol
@@ -293,27 +293,27 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
-        type: u2
-        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization'
+        type: u2_nullable
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
         doc: 'Market Side Of An Order'
       - id: order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: priority_time_stamp
-        type: microsecond_timestamp
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch'
+        type: microsecond_timestamp_nullable
+        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   stock_status_message:
     seq:
       - id: symbol
@@ -335,8 +335,8 @@ types:
         pad-right: 0x20
         doc: 'The State Of The Stock'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_report_message:
     seq:
       - id: symbol
@@ -346,39 +346,39 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
       - id: buy_display_volume
-        type: u4
-        doc: 'Public Remaining Display Volume For The Buy Order'
+        type: u4_nullable
+        doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
       - id: sell_display_volume
-        type: u4
-        doc: 'Public Remaining Volume For The Sell Order'
+        type: u4_nullable
+        doc: 'Public Remaining Volume For The Sell Order. Nullable, No Value = 0'
       - id: bypass
         type: u1
         enum: bypass
         doc: 'An Indicator For Bypass Crosses Which Can Be Printed Outside Of The Protected Nbbo And Are Not Subject To Cross Interference'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: cross_type
         type: u1
         enum: cross_type
@@ -390,8 +390,8 @@ types:
         pad-right: 0x20
         doc: 'Indicates At Least One Side Of The Trade Is Dark'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_report_terms_message:
     seq:
       - id: symbol
@@ -401,49 +401,49 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
       - id: buy_display_volume
-        type: u4
-        doc: 'Public Remaining Display Volume For The Buy Order'
+        type: u4_nullable
+        doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
-        type: u8
-        doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System'
+        type: u8_nullable
+        doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
       - id: sell_display_volume
-        type: u4
-        doc: 'Public Remaining Volume For The Sell Order'
+        type: u4_nullable
+        doc: 'Public Remaining Volume For The Sell Order. Nullable, No Value = 0'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: settlement_terms
         type: u1
         enum: settlement_terms
         doc: 'Settlement Terms Associated With The Order'
       - id: settlement_date
-        type: u4
-        doc: 'Settlement Date Associated With The Order'
+        type: yyyymmdd_date_nullable
+        doc: 'Settlement Date Associated With The Order. Nullable, No Value = 0'
       - id: cross_type
         type: u1
         enum: cross_type
         doc: 'Type Of Crosses Originating From A Participating Organization Between Managed Accounts That Have The Same Manager'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_cancelled_message:
     seq:
       - id: symbol
@@ -453,11 +453,11 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_cancelled_terms_message:
     seq:
       - id: symbol
@@ -467,11 +467,11 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_correction_message:
     seq:
       - id: symbol
@@ -481,34 +481,34 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
         doc: 'Indicates Which Side Initiated The Trade Correction'
       - id: orig_trade_number
-        type: u4
-        doc: 'Used With Trade Corrections To Reference Previously Reported Executions'
+        type: u4_nullable
+        doc: 'Used With Trade Corrections To Reference Previously Reported Executions. Nullable, No Value = 0'
       - id: bypass
         type: u1
         enum: bypass
         doc: 'An Indicator For Bypass Crosses Which Can Be Printed Outside Of The Protected Nbbo And Are Not Subject To Cross Interference'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: cross_type
         type: u1
         enum: cross_type
@@ -520,8 +520,8 @@ types:
         pad-right: 0x20
         doc: 'Indicates At Least One Side Of The Trade Is Dark'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_correction_terms_message:
     seq:
       - id: symbol
@@ -531,44 +531,58 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
         doc: 'Indicates Which Side Initiated The Trade Correction'
       - id: orig_trade_number
-        type: u4
-        doc: 'Used With Trade Corrections To Reference Previously Reported Executions'
+        type: u4_nullable
+        doc: 'Used With Trade Corrections To Reference Previously Reported Executions. Nullable, No Value = 0'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: settlement_terms
         type: u1
         enum: settlement_terms
         doc: 'Settlement Terms Associated With The Order'
       - id: settlement_date
-        type: u4
-        doc: 'Settlement Date Associated With The Order'
+        type: yyyymmdd_date_nullable
+        doc: 'Settlement Date Associated With The Order. Nullable, No Value = 0'
       - id: cross_type
         type: u1
         enum: cross_type
         doc: 'Type Of Crosses Originating From A Participating Organization Between Managed Accounts That Have The Same Manager'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -576,6 +590,27 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  decimal_u8_6_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_6
+    instances:
+      is_null:
+        value: value.mantissa == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
+  u8_nullable:
+    seq:
+      - id: value
+        type: u8
+    instances:
+      is_null:
+        value: value == 0
   microsecond_timestamp:
     seq:
       - id: time
@@ -591,6 +626,13 @@ types:
         value: time / 1000 % 1000
       microsecond:
         value: time % 1000
+  microsecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: microsecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -604,6 +646,49 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
+  hhmmss_time_nullable:
+    seq:
+      - id: value
+        type: hhmmss_time
+    instances:
+      is_null:
+        value: value.time == 0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  yyyymmdd_date_nullable:
+    seq:
+      - id: value
+        type: yyyymmdd_date
+    instances:
+      is_null:
+        value: value.packed == 0
 
 enums:
   ack_required_poss_dup:

@@ -219,135 +219,135 @@ enums:
   status:
     0:
       id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Success'
     1:
       id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SessionLevelReject'
     2:
       id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LogoutRequested'
     3:
       id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unknown'
     4:
       id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidLogonId'
     5:
       id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidToken'
     6:
       id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AlreadyLoggedIn'
     7:
       id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LoginTimeout'
     8:
       id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidPacketLength'
     9:
       id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMessage'
     10:
       id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'JoinRevoked'
     11:
       id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HeartbeatTimeout'
     12:
       id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MessageOutOfSequence'
     13:
       id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidSubsessionId'
     14:
       id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SubsessionNotJoined'
     15:
       id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DenialOfService'
     16:
       id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidArgument'
     17:
       id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AlreadyJoined'
   keep_alive:
     0:
       id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   subsession_type:
     0:
       id: 'client_to_gateway'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ClientToGateway'
     1:
       id: 'gateway_to_client'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'GatewayToClient'
     2:
       id: 'reference_data'
-      doc: 'Subsession Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ReferenceData'
   joined:
     0:
       id: 'false_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'Boolean Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   reason:
     0:
       id: 'success'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Success'
     1:
       id: 'session_level_reject'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SessionLevelReject'
     2:
       id: 'logout_requested'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LogoutRequested'
     3:
       id: 'unknown'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unknown'
     4:
       id: 'invalid_logon_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidLogonId'
     5:
       id: 'invalid_token'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidToken'
     6:
       id: 'already_logged_in'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AlreadyLoggedIn'
     7:
       id: 'login_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LoginTimeout'
     8:
       id: 'invalid_packet_length'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidPacketLength'
     9:
       id: 'invalid_message'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMessage'
     10:
       id: 'join_revoked'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'JoinRevoked'
     11:
       id: 'heartbeat_timeout'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HeartbeatTimeout'
     12:
       id: 'message_out_of_sequence'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MessageOutOfSequence'
     13:
       id: 'invalid_subsession_id'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidSubsessionId'
     14:
       id: 'subsession_not_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SubsessionNotJoined'
     15:
       id: 'denial_of_service'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DenialOfService'
     16:
       id: 'invalid_argument'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidArgument'
     17:
       id: 'already_joined'
-      doc: 'Status Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AlreadyJoined'
 

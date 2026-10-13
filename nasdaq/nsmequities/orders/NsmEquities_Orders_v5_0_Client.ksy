@@ -176,10 +176,10 @@ types:
   enter_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: enter_order_optional_field
-        type: s1
+        type: u1
         enum: enter_order_optional_field
         doc: 'Appendage Id'
       - id: enter_order_optional_value
@@ -249,10 +249,10 @@ types:
   replace_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: replace_order_optional_field
-        type: s1
+        type: u1
         enum: replace_order_optional_field
         doc: 'Appendage Id'
       - id: replace_order_optional_value
@@ -288,6 +288,7 @@ types:
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: cancel_order_appendage
         type: cancel_order_appendage
@@ -296,10 +297,10 @@ types:
   cancel_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: cancel_order_optional_field
-        type: s1
+        type: u1
         enum: cancel_order_optional_field
         doc: 'Appendage Id'
       - id: cancel_order_optional_value
@@ -322,6 +323,7 @@ types:
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: modify_order_appendage
         type: modify_order_appendage
@@ -330,10 +332,10 @@ types:
   modify_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: modify_order_optional_field
-        type: s1
+        type: u1
         enum: modify_order_optional_field
         doc: 'Appendage Id'
       - id: modify_order_optional_value
@@ -357,10 +359,10 @@ types:
   account_query_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: account_query_optional_field
-        type: s1
+        type: u1
         enum: account_query_optional_field
         doc: 'Appendage Id'
       - id: account_query_optional_value
@@ -396,10 +398,10 @@ types:
   mass_cancel_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: mass_cancel_request_optional_field
-        type: s1
+        type: u1
         enum: mass_cancel_request_optional_field
         doc: 'Appendage Id'
       - id: mass_cancel_request_optional_value
@@ -431,10 +433,10 @@ types:
   disable_order_entry_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: disable_order_entry_request_optional_field
-        type: s1
+        type: u1
         enum: disable_order_entry_request_optional_field
         doc: 'Appendage Id'
       - id: disable_order_entry_request_optional_value
@@ -464,10 +466,10 @@ types:
   enable_order_entry_request_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: enable_order_entry_request_optional_field
-        type: s1
+        type: u1
         enum: enable_order_entry_request_optional_field
         doc: 'Appendage Id'
       - id: enable_order_entry_request_optional_value

@@ -255,11 +255,11 @@ types:
         doc: 'Customer defined up to 8 characters; only printable ASCII characters allowed, excluding comma, semicolon, pipe delimiter, “at” symbol, greater than/less than, ampersand (&) and single/double quotation mark'
       - id: optional_order_add_on
         type: optional_order_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 106 or _parent.seq_msg_header.seq_msg_length == 143
+        if: _parent.seq_msg_header.seq_msg_length == 106
         doc: 'OptionalOrderAddOn'
       - id: optional_settlement_type_add_on
         type: optional_settlement_type_add_on
-        if: _parent.seq_msg_header.seq_msg_length == 70 or _parent.seq_msg_header.seq_msg_length == 107 or _parent.seq_msg_header.seq_msg_length == 89
+        if: _parent.seq_msg_header.seq_msg_length == 70
         doc: 'OptionalSettlementTypeAddOn'
   bitfield_order_instructions:
     meta:

@@ -234,21 +234,21 @@ enums:
   reset_seq_num:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   reason_reject_reason:
     1:
       id: 'invalid_schema_id'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_SCHEMA_ID'
     2:
       id: 'invalid_template_id'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_TEMPLATE_ID'
     3:
       id: 'invalid_block_length'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_BLOCK_LENGTH'
     4:
       id: 'invalid_field_value'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_FIELD_VALUE'
 

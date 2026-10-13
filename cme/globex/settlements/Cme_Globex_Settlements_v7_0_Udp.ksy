@@ -572,10 +572,10 @@ enums:
   open_close_settl_flag:
     3:
       id: 'estimated'
-      doc: 'Estimated values'
+      doc: 'Estimated Values'
     4:
       id: 'actual_adjusted'
-      doc: 'Actual adjusted values'
+      doc: 'Actual Adjusted Values'
   low_px_ind:
     0x41:
       id: 'ask'

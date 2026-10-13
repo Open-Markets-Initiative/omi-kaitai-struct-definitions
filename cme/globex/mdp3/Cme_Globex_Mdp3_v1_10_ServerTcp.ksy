@@ -2568,7 +2568,7 @@ enums:
       doc: 'Not Available For Trading'
     20:
       id: 'unknownor_invalid'
-      doc: 'Unknown or Invalid'
+      doc: 'Unknown Or Invalid'
     21:
       id: 'pre_open'
       doc: 'Pre Open'
@@ -2618,10 +2618,10 @@ enums:
       doc: 'Reset Statistics'
     5:
       id: 'implied_matching_on'
-      doc: 'Implied Matching ON'
+      doc: 'Implied Matching On'
     6:
       id: 'implied_matching_off'
-      doc: 'Implied Matching OFF'
+      doc: 'Implied Matching Off'
     7:
       id: 'end_of_workup'
       doc: 'End Of Workup'
@@ -2702,16 +2702,16 @@ enums:
       doc: 'Indicative Opening Price'
     100:
       id: 'intraday_vwap'
-      doc: 'Latest update to VWAP'
+      doc: 'Latest Update To Vwap'
     101:
       id: 'repo_average_830_am'
-      doc: 'Repo Average 8-30 AM'
+      doc: 'Repo Average 830 Am'
     102:
       id: 'repo_average_10_am'
-      doc: 'Repo Average 10 AM'
+      doc: 'Repo Average 10 Am'
     103:
       id: 'prev_session_repo_average_10_am'
-      doc: 'Prev Session Repo Average 10 AM'
+      doc: 'Prev Session Repo Average 10 Am'
   md_entry_type_statistics:
     0x34:
       id: 'open_price'
@@ -2749,7 +2749,7 @@ enums:
       doc: 'Not Available For Trading'
     20:
       id: 'unknown_or_invalid'
-      doc: 'Unknown or Invalid'
+      doc: 'Unknown Or Invalid'
     21:
       id: 'pre_open'
       doc: 'Pre Open'
@@ -2819,7 +2819,7 @@ enums:
       doc: 'Electronic Volume'
     0x67:
       id: 'threshold_limitsand_price_band_variation'
-      doc: 'Threshold Limits and Price Band Variation'
+      doc: 'Threshold Limits And Price Band Variation'
   security_update_action:
     0x41:
       id: 'add'
@@ -2854,20 +2854,20 @@ enums:
   security_alt_id_source:
     1:
       id: 'cusip'
-      doc: 'CUSIP (9 char)'
+      doc: 'Cusip 9 Char'
     4:
       id: 'isin'
-      doc: 'ISIN (12 char)'
+      doc: 'Isin 12 Char'
   repo_sub_type:
     0:
       id: 'special'
-      doc: 'Repo on a single underlying instrument'
+      doc: 'Repo On A Single Underlying Instrument'
     1:
       id: 'gc'
-      doc: 'General Collateral Repo on a single or basket of eligible underlyings, allocation at BrokerTec'
+      doc: 'General Collateral Repo On A Single Or Basket Of Eligible Underlyings Allocation At Broker Tec'
     2:
       id: 'gc_for_dbv'
-      doc: 'General Collateral Repo on a single or basket of eligible underlyings, allocation outside of BrokerTec, such as at the clearer, tri-party agent, etc.'
+      doc: 'General Collateral Repo On A Single Or Basket Of Eligible Underlyings Allocation Outside Of Broker Tec Such As At The Clearer Triparty Agent Etc'
   money_or_par:
     1:
       id: 'money'
@@ -2878,10 +2878,10 @@ enums:
   underlying_security_alt_id_source:
     1:
       id: 'cusip'
-      doc: 'CUSIP (9 char)'
+      doc: 'Cusip 9 Char'
     4:
       id: 'isin'
-      doc: 'ISIN (12 char)'
+      doc: 'Isin 12 Char'
   workup_trading_status:
     17:
       id: 'ready_to_trade'
@@ -2912,40 +2912,40 @@ enums:
   error_codes:
     0:
       id: 'hmac_reject'
-      doc: 'Failed authentication'
+      doc: 'Failed Authentication'
     1:
       id: 'invalid_value'
-      doc: 'Failed required field validation'
+      doc: 'Failed Required Field Validation'
     2:
       id: 'slow_connection'
-      doc: 'Slow connection'
+      doc: 'Slow Connection'
     3:
       id: 'other'
-      doc: 'Unexpected request, see Reason field for details'
+      doc: 'Unexpected Request See Reason Field For Details'
   subscription_req_type:
     0:
       id: 'snapshot'
       doc: 'Snapshot'
     1:
       id: 'snapshot_and_updates'
-      doc: 'Snapshot and updates'
+      doc: 'Snapshot And Updates'
     2:
       id: 'unsubscribe'
-      doc: 'Disable previous subscription'
+      doc: 'Disable Previous Subscription'
   md_req_id_status:
     0:
       id: 'full_ack'
-      doc: 'Requested subscription scope is fully acknowledged'
+      doc: 'Requested Subscription Scope Is Fully Acknowledged'
     1:
       id: 'partial_ack'
-      doc: 'Requested subscription scope is partially acknowledged'
+      doc: 'Requested Subscription Scope Is Partially Acknowledged'
   md_req_rej_reason:
     0:
       id: 'unknown_security'
       doc: 'Unknown Security'
     1:
       id: 'unknown_message'
-      doc: 'Unknown or Invalid Message'
+      doc: 'Unknown Or Invalid Message'
     2:
       id: 'unsupported_scope'
       doc: 'Unsupported Scope'

@@ -145,8 +145,8 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: stock_group
-        type: u1
-        doc: 'An Identifier Of The Stock Group'
+        type: u1_nullable
+        doc: 'An Identifier Of The Stock Group. Nullable, No Value = 0'
       - id: cusip
         type: str
         size: 12
@@ -154,18 +154,18 @@ types:
         pad-right: 0x20
         doc: 'Clearing And Settlement Registration Number'
       - id: board_lot
-        type: u2
-        doc: 'Contains The Board Lot Size'
+        type: u2_nullable
+        doc: 'Contains The Board Lot Size. Nullable, No Value = 0'
       - id: currency
         type: u1
         enum: currency
         doc: 'The Currency Associated With A Reported Price'
       - id: face_value
-        type: decimal_u8_6
-        doc: 'The Face Value Of A Debenture. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Face Value Of A Debenture. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: last_sale_price
-        type: decimal_u8_6
-        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: listing_market
         type: u1
         enum: listing_market
@@ -175,17 +175,17 @@ types:
         enum: product_type
         doc: 'The Product Type For A Symbol'
       - id: buy_maximum_quantity
-        type: u4
-        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Purchase'
+        type: u4_nullable
+        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Purchase. Nullable, No Value = 0'
       - id: buy_minimum_quantity
-        type: u4
-        doc: 'The Minimum Quantity Of A Mutual Fund Required To Purchase'
+        type: u4_nullable
+        doc: 'The Minimum Quantity Of A Mutual Fund Required To Purchase. Nullable, No Value = 0'
       - id: sell_maximum_quantity
-        type: u4
-        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Sell'
+        type: u4_nullable
+        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Sell. Nullable, No Value = 0'
       - id: sell_minimum_quantity
-        type: u4
-        doc: 'The Minimum Quantity Of A Mutual Fund Required To Sell'
+        type: u4_nullable
+        doc: 'The Minimum Quantity Of A Mutual Fund Required To Sell. Nullable, No Value = 0'
       - id: stock_state
         type: str
         size: 2
@@ -209,24 +209,24 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: bypass
         type: u1
         enum: bypass
         doc: 'An Indicator For Bypass Crosses Which Can Be Printed Outside Of The Protected Nbbo And Are Not Subject To Cross Interference'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: settlement_terms
         type: u1
         enum: settlement_terms
@@ -236,8 +236,8 @@ types:
         enum: cross_type
         doc: 'Type Of Crosses Originating From A Participating Organization Between Managed Accounts That Have The Same Manager'
       - id: last_sale_price
-        type: decimal_u8_6
-        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: opening_trade
         type: u1
         enum: opening_trade
@@ -251,11 +251,11 @@ types:
         enum: product_type
         doc: 'The Product Type For A Symbol'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trade_date
-        type: u4
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date'
+        type: yyyymmdd_date_nullable
+        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
       - id: is_mid_only
         type: u1
         enum: is_mid_only
@@ -269,8 +269,8 @@ types:
         enum: is_conditional
         doc: 'Indicates A Firmup Conditional To Firmup Conditional Execution'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   trade_cancelled_message:
     seq:
       - id: symbol
@@ -280,23 +280,23 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: price
-        type: decimal_u8_6
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
-        type: u4
-        doc: 'The Quantity Of Shares For An Order Or Trade'
+        type: u4_nullable
+        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
-        type: u2
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order'
+        type: u2_nullable
+        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: trade_time_stamp
-        type: u4
-        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added'
+        type: hhmmss_time_nullable
+        doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: last_sale_price
-        type: decimal_u8_6
-        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: listing_market
         type: u1
         enum: listing_market
@@ -306,14 +306,14 @@ types:
         enum: product_type
         doc: 'The Product Type For A Symbol'
       - id: trade_number
-        type: u4
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade'
+        type: u4_nullable
+        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trade_date
-        type: u4
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date'
+        type: yyyymmdd_date_nullable
+        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
   moc_imbalance_message:
     seq:
       - id: symbol
@@ -327,33 +327,33 @@ types:
         enum: imbalance_side
         doc: 'Marker To Indicate Which Side Has An Imbalance Volume For Market On Close'
       - id: imbalance_volume
-        type: u4
-        doc: 'Identifies The Volume Of Shares Of The Imbalance Side For Market On Close'
+        type: u4_nullable
+        doc: 'Identifies The Volume Of Shares Of The Imbalance Side For Market On Close. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: imbalance_reference_price
-        type: decimal_u8_6
-        doc: 'The Price That Determines If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price That Determines If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: paired_volume
-        type: u4
-        doc: 'The Number Of Moc And Loc Shares That Are Able Be Matched At The Reference Price'
+        type: u4_nullable
+        doc: 'The Number Of Moc And Loc Shares That Are Able Be Matched At The Reference Price. Nullable, No Value = 0'
       - id: market_order_imbalance_volume
-        type: u4
-        doc: 'Indicates The Share Imbalance When Considering Moc Orders Only Note This Will Not Change From Freeze Period As Moc Orders Are Not Allowed After This Time'
+        type: u4_nullable
+        doc: 'Indicates The Share Imbalance When Considering Moc Orders Only Note This Will Not Change From Freeze Period As Moc Orders Are Not Allowed After This Time. Nullable, No Value = 0'
       - id: market_order_imbalance_side
         type: u1
         enum: market_order_imbalance_side
         doc: 'Side Buy Or Sell Of The Market Order Imbalance Volume'
       - id: near_indicative_closing_price
-        type: decimal_u8_6
-        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Onclose Orders Moc Loc And Visible Continuous Market Orders Effectively This Is The Price At Which The Closing Print Would Occur At The Time Of Publication. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Onclose Orders Moc Loc And Visible Continuous Market Orders Effectively This Is The Price At Which The Closing Print Would Occur At The Time Of Publication. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: far_indicative_closing_price
-        type: decimal_u8_6
-        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Closing Interest Only Moc Loc This Calculation Excludes Continuous Market Orders. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Closing Interest Only Moc Loc This Calculation Excludes Continuous Market Orders. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: price_variation
-        type: decimal_u4_2
-        doc: 'This Field Indicates The Absolute Value Of The Percentage Of Deviation Of The Near Indicative Closing Price From The Reference Price. Implied decimal with scale 1e-2'
+        type: decimal_u4_2_nullable
+        doc: 'This Field Indicates The Absolute Value Of The Percentage Of Deviation Of The Near Indicative Closing Price From The Reference Price. Implied decimal with scale 1e-2. Nullable, No Value = 0'
   stock_status_message:
     seq:
       - id: symbol
@@ -375,17 +375,17 @@ types:
         pad-right: 0x20
         doc: 'The State Of The Stock'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: calculated_closing_price
-        type: decimal_u8_6
-        doc: 'The Price At Which Moc Orders Will Trade At Closing. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'The Price At Which Moc Orders Will Trade At Closing. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: vwap
-        type: decimal_u8_6
-        doc: 'Volume Weighted Average Price Based On Trades Occurring In The Continuous Market For Moc. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Volume Weighted Average Price Based On Trades Occurring In The Continuous Market For Moc. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: resume_trade_time
-        type: u4
-        doc: 'The Time At Which A Halted Stock Will Resume Trading'
+        type: u4_nullable
+        doc: 'The Time At Which A Halted Stock Will Resume Trading. Nullable, No Value = 0'
       - id: listing_market
         type: u1
         enum: listing_market
@@ -403,20 +403,34 @@ types:
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: bid_price
-        type: decimal_u8_6
-        doc: 'Contains The Bid Price For The Symbol. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Contains The Bid Price For The Symbol. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: bid_size
-        type: u4
-        doc: 'Contains The Bid Size Volume For The Symbol'
+        type: u4_nullable
+        doc: 'Contains The Bid Size Volume For The Symbol. Nullable, No Value = 0'
       - id: ask_price
-        type: decimal_u8_6
-        doc: 'Contains The Ask Price For The Symbol. Implied decimal with scale 1e-6'
+        type: decimal_u8_6_nullable
+        doc: 'Contains The Ask Price For The Symbol. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: ask_size
-        type: u4
-        doc: 'Contains The Ask Size Volume For The Symbol'
+        type: u4_nullable
+        doc: 'Contains The Ask Size Volume For The Symbol. Nullable, No Value = 0'
       - id: trading_system_time_stamp
-        type: nanosecond_timestamp
-        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch'
+        type: nanosecond_timestamp_nullable
+        doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -424,6 +438,56 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  decimal_u8_6_nullable:
+    seq:
+      - id: value
+        type: decimal_u8_6
+    instances:
+      is_null:
+        value: value.mantissa == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
+  hhmmss_time_nullable:
+    seq:
+      - id: value
+        type: hhmmss_time
+    instances:
+      is_null:
+        value: value.time == 0
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
+  yyyymmdd_date_nullable:
+    seq:
+      - id: value
+        type: yyyymmdd_date
+    instances:
+      is_null:
+        value: value.packed == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -437,6 +501,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  nanosecond_timestamp_nullable:
+    seq:
+      - id: value
+        type: nanosecond_timestamp
+    instances:
+      is_null:
+        value: value.time == 0
   decimal_u4_2:
     seq:
       - id: mantissa
@@ -444,6 +515,13 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  decimal_u4_2_nullable:
+    seq:
+      - id: value
+        type: decimal_u4_2
+    instances:
+      is_null:
+        value: value.mantissa == 0
 
 enums:
   ack_required_poss_dup:

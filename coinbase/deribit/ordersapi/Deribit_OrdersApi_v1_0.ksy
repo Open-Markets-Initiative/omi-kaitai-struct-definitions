@@ -1691,510 +1691,510 @@ enums:
   reset_seq_num:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   reason_reject_reason:
     1:
       id: 'invalid_schema_id'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_SCHEMA_ID'
     2:
       id: 'invalid_template_id'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_TEMPLATE_ID'
     3:
       id: 'invalid_block_length'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_BLOCK_LENGTH'
     4:
       id: 'invalid_field_value'
-      doc: 'RejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_FIELD_VALUE'
   side:
     1:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
     0:
       id: 'both'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'for use as mass cancel filter criteria'
   self_trading_mode:
     0:
       id: 'cancel_taker'
-      doc: 'SelfTradingMode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CANCEL_TAKER'
     1:
       id: 'cancel_maker'
-      doc: 'SelfTradingMode Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CANCEL_MAKER'
   product_type:
     0:
       id: 'all'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ALL'
     1:
       id: 'options'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTIONS'
     2:
       id: 'futures'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURES'
     3:
       id: 'combo_futures'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'COMBO_FUTURES'
     4:
       id: 'combo_options'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'COMBO_OPTIONS'
     5:
       id: 'spot'
-      doc: 'ProductType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SPOT'
   status:
     1:
       id: 'active'
-      doc: 'OrderStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ACTIVE'
     2:
       id: 'filled'
-      doc: 'OrderStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FILLED'
     3:
       id: 'canceled'
-      doc: 'OrderStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CANCELED'
     4:
       id: 'queued'
-      doc: 'OrderStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'QUEUED'
   cancel_reason:
     0:
       id: 'unknown'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UNKNOWN'
     1:
       id: 'self_match_prevention'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SELF_MATCH_PREVENTION'
     2:
       id: 'time_in_force'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TIME_IN_FORCE'
     3:
       id: 'admin'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ADMIN'
     4:
       id: 'mm_protection'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MM_PROTECTION'
     5:
       id: 'liquidation'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LIQUIDATION'
     6:
       id: 'market_state_transition'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MARKET_STATE_TRANSITION'
     7:
       id: 'client_disconnect'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLIENT_DISCONNECT'
     8:
       id: 'reduce_only'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'REDUCE_ONLY'
     9:
       id: 'delivered'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Instrument status changed to DELIVERED'
     10:
       id: 'settlement'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Instrument entered settlement'
     11:
       id: 'book_deactivated'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Instrument status changed to INACTIVE'
     12:
       id: 'by_request'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BY_REQUEST'
     13:
       id: 'risk_check_timed_out'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RISK_CHECK_TIMED_OUT'
     14:
       id: 'mmp_group_deleted'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_DELETED'
     15:
       id: 'portfolio_locked'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PORTFOLIO_LOCKED'
     16:
       id: 'post_only'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'post-only order would have crossed'
   leg_side:
     1:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
     0:
       id: 'both'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'for use as mass cancel filter criteria'
   reason_order_reject_reason:
     0:
       id: 'system_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SYSTEM_ERROR'
     1:
       id: 'invalid_instrument'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_INSTRUMENT'
     2:
       id: 'invalid_field'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_FIELD'
     3:
       id: 'insufficient_margin'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INSUFFICIENT_MARGIN'
     4:
       id: 'duplicate_client_order_id'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DUPLICATE_CLIENT_ORDER_ID'
     5:
       id: 'invalid_quantity'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_QUANTITY'
     6:
       id: 'invalid_price'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_PRICE'
     7:
       id: 'not_allowed_by_market_state'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_ALLOWED_BY_MARKET_STATE'
     8:
       id: 'post_only'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'POST_ONLY'
     9:
       id: 'too_many_open_orders'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'exceeded max open orders for instrument/side'
     10:
       id: 'permission_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PERMISSION_ERROR'
     11:
       id: 'portfolio_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PORTFOLIO_NOT_FOUND'
     12:
       id: 'order_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'for replaces and eng responses'
     13:
       id: 'mmp_not_configured'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_NOT_CONFIGURED'
     14:
       id: 'mmp_max_quote_qty_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_MAX_QUOTE_QTY_EXCEEDED'
     15:
       id: 'mmp_group_frozen'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_FROZEN'
     16:
       id: 'invalid_margin_mode'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_MARGIN_MODE'
     17:
       id: 'in_liquidation'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is in liquidation'
     18:
       id: 'risk_check_timed_out'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RISK_CHECK_TIMED_OUT'
     19:
       id: 'too_many_pending_replaces'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOO_MANY_PENDING_REPLACES'
     20:
       id: 'iceberg_not_allowed'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICEBERG_NOT_ALLOWED'
     21:
       id: 'invalid_allocations'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block trade error'
     22:
       id: 'price_too_high'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds upper price band limit'
     23:
       id: 'price_too_low'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds lower price band limit'
     24:
       id: 'price_band_unavailable'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'no price band or mark price available'
     25:
       id: 'rate_limit'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'gateway rate limit exceeded'
     26:
       id: 'portfolio_locked'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is locked'
     27:
       id: 'position_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'future or options position size limit exceeded'
     28:
       id: 'order_size_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'open order aggregate size limit exceeded'
   reason_cancel_order_reject_reason:
     0:
       id: 'error'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ERROR'
     1:
       id: 'unknown_order'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UNKNOWN_ORDER'
     2:
       id: 'client_permission_error'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLIENT_PERMISSION_ERROR'
     3:
       id: 'not_allowed_by_market_state'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_ALLOWED_BY_MARKET_STATE'
     4:
       id: 'cancel_pending'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CANCEL_PENDING'
   bid_status:
     0:
       id: 'inactive'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'no active quote in book (before or after update)'
     1:
       id: 'unmodified'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'live in book with no change'
     2:
       id: 'qty_reduced'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'QTY_REDUCED'
     3:
       id: 'updated'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'live in book (possibly with fills)'
     4:
       id: 'filled'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'fully filled'
     5:
       id: 'canceled_by_request'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'existing quote/order was canceled by client request or because update was rejected'
     6:
       id: 'canceled_by_mmp'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote was accepted then canceled because MMP was triggered'
     7:
       id: 'canceled_by_self_match'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote was accepted then canceled due to self-match prevention'
     8:
       id: 'speed_bumped'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote is speed bumped (pending in book)'
   ask_status:
     0:
       id: 'inactive'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'no active quote in book (before or after update)'
     1:
       id: 'unmodified'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'live in book with no change'
     2:
       id: 'qty_reduced'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'QTY_REDUCED'
     3:
       id: 'updated'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'live in book (possibly with fills)'
     4:
       id: 'filled'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'fully filled'
     5:
       id: 'canceled_by_request'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'existing quote/order was canceled by client request or because update was rejected'
     6:
       id: 'canceled_by_mmp'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote was accepted then canceled because MMP was triggered'
     7:
       id: 'canceled_by_self_match'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote was accepted then canceled due to self-match prevention'
     8:
       id: 'speed_bumped'
-      doc: 'QuoteStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'quote is speed bumped (pending in book)'
   bid_reject_reason:
     0:
       id: 'system_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SYSTEM_ERROR'
     1:
       id: 'invalid_instrument'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_INSTRUMENT'
     2:
       id: 'invalid_field'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_FIELD'
     3:
       id: 'insufficient_margin'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INSUFFICIENT_MARGIN'
     4:
       id: 'duplicate_client_order_id'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DUPLICATE_CLIENT_ORDER_ID'
     5:
       id: 'invalid_quantity'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_QUANTITY'
     6:
       id: 'invalid_price'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_PRICE'
     7:
       id: 'not_allowed_by_market_state'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_ALLOWED_BY_MARKET_STATE'
     8:
       id: 'post_only'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'POST_ONLY'
     9:
       id: 'too_many_open_orders'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'exceeded max open orders for instrument/side'
     10:
       id: 'permission_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PERMISSION_ERROR'
     11:
       id: 'portfolio_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PORTFOLIO_NOT_FOUND'
     12:
       id: 'order_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'for replaces and eng responses'
     13:
       id: 'mmp_not_configured'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_NOT_CONFIGURED'
     14:
       id: 'mmp_max_quote_qty_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_MAX_QUOTE_QTY_EXCEEDED'
     15:
       id: 'mmp_group_frozen'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_FROZEN'
     16:
       id: 'invalid_margin_mode'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_MARGIN_MODE'
     17:
       id: 'in_liquidation'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is in liquidation'
     18:
       id: 'risk_check_timed_out'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RISK_CHECK_TIMED_OUT'
     19:
       id: 'too_many_pending_replaces'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOO_MANY_PENDING_REPLACES'
     20:
       id: 'iceberg_not_allowed'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICEBERG_NOT_ALLOWED'
     21:
       id: 'invalid_allocations'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block trade error'
     22:
       id: 'price_too_high'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds upper price band limit'
     23:
       id: 'price_too_low'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds lower price band limit'
     24:
       id: 'price_band_unavailable'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'no price band or mark price available'
     25:
       id: 'rate_limit'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'gateway rate limit exceeded'
     26:
       id: 'portfolio_locked'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is locked'
     27:
       id: 'position_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'future or options position size limit exceeded'
     28:
       id: 'order_size_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'open order aggregate size limit exceeded'
   ask_reject_reason:
     0:
       id: 'system_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SYSTEM_ERROR'
     1:
       id: 'invalid_instrument'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_INSTRUMENT'
     2:
       id: 'invalid_field'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_FIELD'
     3:
       id: 'insufficient_margin'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INSUFFICIENT_MARGIN'
     4:
       id: 'duplicate_client_order_id'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DUPLICATE_CLIENT_ORDER_ID'
     5:
       id: 'invalid_quantity'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_QUANTITY'
     6:
       id: 'invalid_price'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_PRICE'
     7:
       id: 'not_allowed_by_market_state'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_ALLOWED_BY_MARKET_STATE'
     8:
       id: 'post_only'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'POST_ONLY'
     9:
       id: 'too_many_open_orders'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'exceeded max open orders for instrument/side'
     10:
       id: 'permission_error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PERMISSION_ERROR'
     11:
       id: 'portfolio_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PORTFOLIO_NOT_FOUND'
     12:
       id: 'order_not_found'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'for replaces and eng responses'
     13:
       id: 'mmp_not_configured'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_NOT_CONFIGURED'
     14:
       id: 'mmp_max_quote_qty_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_MAX_QUOTE_QTY_EXCEEDED'
     15:
       id: 'mmp_group_frozen'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_FROZEN'
     16:
       id: 'invalid_margin_mode'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_MARGIN_MODE'
     17:
       id: 'in_liquidation'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is in liquidation'
     18:
       id: 'risk_check_timed_out'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RISK_CHECK_TIMED_OUT'
     19:
       id: 'too_many_pending_replaces'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOO_MANY_PENDING_REPLACES'
     20:
       id: 'iceberg_not_allowed'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICEBERG_NOT_ALLOWED'
     21:
       id: 'invalid_allocations'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block trade error'
     22:
       id: 'price_too_high'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds upper price band limit'
     23:
       id: 'price_too_low'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'price exceeds lower price band limit'
     24:
       id: 'price_band_unavailable'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'no price band or mark price available'
     25:
       id: 'rate_limit'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'gateway rate limit exceeded'
     26:
       id: 'portfolio_locked'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is locked'
     27:
       id: 'position_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'future or options position size limit exceeded'
     28:
       id: 'order_size_limit_exceeded'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'open order aggregate size limit exceeded'
   reason_mass_quote_reject_reason:
     0:
       id: 'system_error'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SYSTEM_ERROR'
     1:
       id: 'invalid_mmp_group'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_MMP_GROUP'
     2:
       id: 'mmp_group_disabled'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_DISABLED'
     3:
       id: 'mmp_group_frozen'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MMP_GROUP_FROZEN'
     4:
       id: 'too_many_quotes'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOO_MANY_QUOTES'
     5:
       id: 'invalid_instrument'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_INSTRUMENT'
     6:
       id: 'rate_limit'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'gateway rate limit exceeded'
     7:
       id: 'portfolio_locked'
-      doc: 'MassQuoteRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio is locked'
   reason_mass_cancel_reject_reason:
     0:
       id: 'error'
-      doc: 'MassCancelRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ERROR'
     1:
       id: 'invalid_mmp_group'
-      doc: 'MassCancelRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INVALID_MMP_GROUP'
     2:
       id: 'client_permission_error'
-      doc: 'MassCancelRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLIENT_PERMISSION_ERROR'
     3:
       id: 'not_allowed_by_market_state'
-      doc: 'MassCancelRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_ALLOWED_BY_MARKET_STATE'
   trigger:
     0:
       id: 'quantity'
-      doc: 'MmpTriggerType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'QUANTITY'
     1:
       id: 'delta'
-      doc: 'MmpTriggerType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELTA'
     2:
       id: 'vega'
-      doc: 'MmpTriggerType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'VEGA'
 

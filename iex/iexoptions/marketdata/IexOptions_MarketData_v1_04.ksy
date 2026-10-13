@@ -745,169 +745,169 @@ enums:
   mpv_group:
     0:
       id: 'all_penny'
-      doc: 'MPVType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AllPenny'
     1:
       id: 'penny_nickel'
-      doc: 'MPVType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PennyNickel'
     2:
       id: 'nickel_dime'
-      doc: 'MPVType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NickelDime'
   close_indicator:
     0:
       id: 'default_field'
-      doc: 'CloseIndicatorType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Default'
     1:
       id: 'underlying_closed'
-      doc: 'CloseIndicatorType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UnderlyingClosed'
   closing_only_series:
     0:
       id: 'false_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'False'
     1:
       id: 'true_field'
-      doc: 'BooleanType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'True'
   option_type:
     0:
       id: 'put'
-      doc: 'OptionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put'
     1:
       id: 'call'
-      doc: 'OptionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call'
   orp_enablement:
     0:
       id: 'orp_protection_enabled'
-      doc: 'ORPType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ORPProtectionEnabled'
     1:
       id: 'orp_protection_disabled'
-      doc: 'ORPType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ORPProtectionDisabled'
   trading_status:
     0:
       id: 'halted'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Halted'
     1:
       id: 'pre_opening'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PreOpening'
     2:
       id: 'opening_process'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OpeningProcess'
     3:
       id: 'continuous_trading'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ContinuousTrading'
     4:
       id: 're_opening_process'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ReOpeningProcess'
     5:
       id: 'suspended'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Suspended'
     6:
       id: 'queueing'
-      doc: 'TradingStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Queueing'
   auction_summary_type:
     0:
       id: 'opening'
-      doc: 'AuctionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Opening'
     1:
       id: 'halt_re_opening'
-      doc: 'AuctionType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HaltReOpening'
   liquidity_event_type:
     0:
       id: 'sum'
-      doc: 'LiquidityEventType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SUM'
   side:
     1:
       id: 'buy'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'SideType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   capacity:
     0:
       id: 'customer'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Customer'
     1:
       id: 'firm'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm'
     2:
       id: 'broker_dealer'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BrokerDealer'
     3:
       id: 'market_maker'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MarketMaker'
     4:
       id: 'away_market_maker'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AwayMarketMaker'
     5:
       id: 'prof_customer'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ProfCustomer'
     6:
       id: 'not_disclosed'
-      doc: 'CapacityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NotDisclosed'
   customer_indicator:
     0:
       id: 'customer'
-      doc: 'CustIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Customer'
     1:
       id: 'non_customer'
-      doc: 'CustIndType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NonCustomer'
   mod_flag:
     0:
       id: 'reset_priority'
-      doc: 'ModFlagType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ResetPriority'
     1:
       id: 'maintain_priority'
-      doc: 'ModFlagType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MaintainPriority'
   status_status_type:
     0:
       id: 'regular_trading'
-      doc: 'StatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RegularTrading'
     1:
       id: 'trading_halted'
-      doc: 'StatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TradingHalted'
   feed:
     0:
       id: 'deep'
-      doc: 'FeedType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEEP'
     1:
       id: 'tops'
-      doc: 'FeedType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOPS'
   status_retransmission_status_type:
     0:
       id: 'success'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Success'
     1:
       id: 'invalid_channel_id'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidChannelId'
     2:
       id: 'invalid_feed'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidFeed'
     3:
       id: 'invalid_logon_id'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidLogonId'
     4:
       id: 'invalid_request_id'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidRequestId'
     5:
       id: 'invalid_packet_length'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidPacketLength'
     6:
       id: 'invalid_message'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidMessage'
     7:
       id: 'invalid_seq_num_range'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InvalidSeqNumRange'
     8:
       id: 'denial_of_service'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DenialOfService'
     9:
       id: 'max_daily_requests_exceeded'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MaxDailyRequestsExceeded'
     10:
       id: 'max_seq_num_range_exceeded'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MaxSeqNumRangeExceeded'
     11:
       id: 'seq_num_ttl_expired'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SeqNumTTLExpired'
     12:
       id: 'internal_error'
-      doc: 'RetransmissionStatusType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InternalError'
 

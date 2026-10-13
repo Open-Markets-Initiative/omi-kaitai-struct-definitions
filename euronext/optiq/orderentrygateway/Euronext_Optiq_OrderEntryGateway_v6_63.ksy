@@ -4199,1691 +4199,1691 @@ enums:
   emm:
     1:
       id: 'cashand_derivative_central_order_book'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash_and_Derivative_Central_Order_Book'
     2:
       id: 'nav_trading_facility'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NAV_Trading_Facility'
     4:
       id: 'derivatives_wholesales'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Derivatives_Wholesales'
     5:
       id: 'cash_on_exchange_offbook'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash_On_Exchange_Off_book'
     6:
       id: 'euronextoffexchangetradereports'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Euronext_off_exchange_trade_reports'
     7:
       id: 'derivatives_on_exchange_offbook'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Derivatives_On_Exchange_Off_book'
     8:
       id: 'etfmtfnav_central_order_book'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ETF_MTF_NAV_Central_Order_Book'
     9:
       id: 'listednottraded'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Listed_not_traded'
     15:
       id: 'delta_neutral_contingency_leg'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta_Neutral_Contingency_Leg'
     99:
       id: 'not_applicable'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Not_Applicable'
   side:
     1:
       id: 'buy'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
     3:
       id: 'cross'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cross'
   order_type:
     1:
       id: 'market'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Market'
     2:
       id: 'limit'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Limit'
     3:
       id: 'stopmarketor_stopmarketonquote'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Stop_market_or_Stop_market_on_quote'
     4:
       id: 'stoplimitor_stoplimitonquote'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Stop_limit_or_Stop_limit_on_quote'
     5:
       id: 'primary_peg'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Primary_Peg'
     6:
       id: 'markettolimit'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Market_to_limit'
     7:
       id: 'market_peg'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Market_Peg'
     8:
       id: 'mid_point_peg'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Mid_Point_Peg'
     9:
       id: 'average_price'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Average_Price'
     10:
       id: 'iceberg'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iceberg'
     14:
       id: 'auction_volume_discovery'
-      doc: 'OrderType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Auction_Volume_Discovery'
   time_in_force:
     0:
       id: 'day'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Day'
     1:
       id: 'good_till_cancel'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Good_Till_Cancel'
     2:
       id: 'validfor_uncrossing'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Valid_for_Uncrossing'
     3:
       id: 'immediateor_cancel'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Immediate_or_Cancel'
     4:
       id: 'fillor_kill'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Fill_or_Kill'
     5:
       id: 'goodtill_time'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Good_till_Time'
     6:
       id: 'goodtill_date'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Good_till_Date'
     7:
       id: 'validfor_closing_uncrossing'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Valid_for_Closing_Uncrossing'
     8:
       id: 'validfor_session'
-      doc: 'TimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Valid_for_Session'
   trading_capacity:
     1:
       id: 'dealingonownaccount'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Dealing_on_own_account'
     2:
       id: 'matchedprincipal'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Matched_principal'
     3:
       id: 'anyothercapacity'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Any_other_capacity'
   account_type:
     1:
       id: 'client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Client'
     2:
       id: 'house'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'House'
     4:
       id: 'ro'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RO'
     5:
       id: 'assigned_broker'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Assigned_Broker'
     6:
       id: 'liquidity_provider'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Liquidity_Provider'
     7:
       id: 'related_party'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Related_Party'
     8:
       id: 'structured_product_market_maker'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Structured_Product_Market_Maker'
     14:
       id: 'omega_client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Omega_Client'
     15:
       id: 'ceres_client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ceres_Client'
   lp_role_optional:
     1:
       id: 'liquidity_provideror_market_maker'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Liquidity_Provider_or_Market_Maker'
     3:
       id: 'retail_liquidity_provider'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Retail_Liquidity_Provider'
     12:
       id: 'rfq_liquidity_provider'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Liquidity_Provider'
   undisclosed_iceberg_type:
     1:
       id: 'limit'
-      doc: 'UndisclosedIcebergType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Limit'
     2:
       id: 'peg_mid_point'
-      doc: 'UndisclosedIcebergType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Peg_Mid_Point'
     3:
       id: 'peg_primary'
-      doc: 'UndisclosedIcebergType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Peg_Primary'
     4:
       id: 'peg_market'
-      doc: 'UndisclosedIcebergType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Peg_Market'
   stop_triggered_time_in_force:
     0:
       id: 'day'
-      doc: 'TriggeredStopTimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Day'
     1:
       id: 'good_till_cancel'
-      doc: 'TriggeredStopTimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Good_Till_Cancel'
     3:
       id: 'immediateor_cancel'
-      doc: 'TriggeredStopTimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Immediate_or_Cancel'
     6:
       id: 'goodtill_date'
-      doc: 'TriggeredStopTimeInForce_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Good_till_Date'
   technical_origin:
     1:
       id: 'indextradingarbitrage'
-      doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Index_trading_arbitrage'
     2:
       id: 'portfoliostrategy'
-      doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Portfolio_strategy'
     3:
       id: 'unwindorder'
-      doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unwind_order'
     4:
       id: 'otherordersdefault'
-      doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Other_orders__default'
     5:
       id: 'crossmargining'
-      doc: 'TechnicalOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cross_margining'
   clearing_instruction:
     0:
       id: 'processnormallyformerly_systematicposting'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Process_normally__formerly_Systematic_posting_'
     8:
       id: 'manualmode'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Manual_mode'
     9:
       id: 'automaticpostingmode'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Automatic_posting_mode'
     10:
       id: 'automaticgiveupmode'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Automatic_give_up_mode'
     4008:
       id: 'automaticandaccountauthorization'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Automatic_and_account_authorization'
     4009:
       id: 'manualandaccountauthorization'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Manual_and_account_authorization'
     4010:
       id: 'giveuptosinglefirm'
-      doc: 'ClearingInstruction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Give_up_to_single_firm'
   account_type_cross:
     1:
       id: 'client'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Client'
     2:
       id: 'house'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'House'
     4:
       id: 'ro'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RO'
     5:
       id: 'assigned_broker'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Assigned_Broker'
     6:
       id: 'liquidity_provider'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Liquidity_Provider'
     7:
       id: 'related_party'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Related_Party'
     8:
       id: 'structured_product_market_maker'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Structured_Product_Market_Maker'
     14:
       id: 'omega_client'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Omega_Client'
     15:
       id: 'ceres_client'
-      doc: 'AccountTypeCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ceres_Client'
   trading_capacity_cross:
     1:
       id: 'dealingonownaccount'
-      doc: 'TradingCapacityCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Dealing_on_own_account'
     2:
       id: 'matchedprincipal'
-      doc: 'TradingCapacityCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Matched_principal'
     3:
       id: 'anyothercapacity'
-      doc: 'TradingCapacityCross_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Any_other_capacity'
   side_optional:
     1:
       id: 'buy'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
     3:
       id: 'cross'
-      doc: 'Side_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cross'
   ack_type:
     0:
       id: 'new_order_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New_Order_Ack'
     1:
       id: 'replace_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Replace_Ack'
     2:
       id: 'order_creation_by_market_operations'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Creation_By_Market_Operations'
     3:
       id: 'stop_triggered_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Stop_Triggered_Ack'
     4:
       id: 'collar_confirmation_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Collar_Confirmation_Ack'
     5:
       id: 'refilled_iceberg_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Refilled_Iceberg_Ack'
     6:
       id: 'mtl_second_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MTL_Second_Ack'
     7:
       id: 'knock_in_by_issuer_kibi_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'KnockIn_By_Issuer_KIBI_Ack'
     8:
       id: 'knock_out_by_issuer_kobi_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'KnockOut_By_Issuer_KOBI_Ack'
     9:
       id: 'payment_after_knock_out_pako_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Payment_After_KnockOut_PAKO_Ack'
     10:
       id: 'price_input_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Price_Input_Ack'
     11:
       id: 'rfq_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Ack'
     12:
       id: 'bid_only_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bid_Only_Ack'
     13:
       id: 'offer_only_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Offer_Only_Ack'
     14:
       id: 'iceberg_transformedto_limit'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iceberg_Transformed_to_Limit'
     15:
       id: 'ownership_request_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ownership_Request_Ack'
     16:
       id: 'vfuvfc_triggered_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'VFU_VFC_Triggered_Ack'
     17:
       id: 'open_order_request_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Open_Order_Request_Ack'
     21:
       id: 'rfie_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFIE_Ack'
     22:
       id: 'cross_order_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cross_Order_Ack'
     23:
       id: 'move_darkto_co_bas_limit'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Move_Dark_to_COB_as_Limit'
     24:
       id: 'move_darkto_co_bas_market'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Move_Dark_to_COB_as_Market'
     25:
       id: 'parkedduetoendof_session'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Parked_due_to_end_of_Session'
     26:
       id: 'auto_rfq_confirmation_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Auto_RFQ_Confirmation_Ack'
     27:
       id: 'avd_triggered_ack'
-      doc: 'AckType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AVD_Triggered_Ack'
   ack_phase:
     1:
       id: 'continuous_trading_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Continuous_Trading_Phase'
     2:
       id: 'call_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Phase'
     3:
       id: 'halt_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Halt_Phase'
     4:
       id: 'closed_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Closed_Phase'
     5:
       id: 'trading_at_last_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading_At_Last_Phase'
     6:
       id: 'reserved'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reserved'
     7:
       id: 'suspended'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Suspended'
     8:
       id: 'random_uncrossing_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Random_Uncrossing_Phase'
     9:
       id: 'uncrossing_phase'
-      doc: 'AckPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Uncrossing_Phase'
   trade_type:
     1:
       id: 'conventional_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Conventional_Trade'
     2:
       id: 'largein_scale_li_s_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_LiS_Trade'
     3:
       id: 'basis_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Basis_Trade'
     4:
       id: 'largein_scale_li_s_package_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_LiS_Package_Trade'
     5:
       id: 'guaranteed_cross_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guaranteed_Cross_Trade'
     6:
       id: 'against_actual_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Against_Actual_Trade'
     7:
       id: 'asset_allocation_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Asset_Allocation_Trade'
     9:
       id: 'exchangefor_swap_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_for_Swap_Trade'
     10:
       id: 'exchangefor_physical_trade_cash_leg'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_for_Physical_Trade_Cash_Leg'
     11:
       id: 'strategy_leg_conventional_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Conventional_Trade'
     12:
       id: 'strategy_leg_largein_scale_li_s_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Large_in_Scale_LiS_Trade'
     13:
       id: 'strategy_leg_basis_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Basis_Trade'
     14:
       id: 'strategy_leg_guaranteed_cross_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Guaranteed_Cross_Trade'
     15:
       id: 'strategy_leg_against_actual_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Against_Actual_Trade'
     16:
       id: 'strategy_leg_asset_allocation_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Asset_Allocation_Trade'
     18:
       id: 'strategy_leg_exchange_for_swap_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Exchange_For_Swap_Trade'
     19:
       id: 'strategy_leg_exchange_for_physical_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Exchange_For_Physical_Trade'
     20:
       id: 'bo_b_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BoB_Trade'
     22:
       id: 'atom_x_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AtomX_Trade'
     24:
       id: 'trade_cancellation'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trade_Cancellation'
     25:
       id: 'outof_market_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Out_of_Market_Trade'
     26:
       id: 'delta_neutral_trade_underlying_cash_leg'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta_Neutral_Trade_Underlying_Cash_Leg'
     27:
       id: 'market_vwap_operation_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Market_VWAP_Operation_Trade'
     28:
       id: 'euronext_fund_service_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Euronext_Fund_Service_Trade'
     29:
       id: 'secondary_listing_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Secondary_Listing_Trade'
     30:
       id: 'requestfor_cross_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Request_for_Cross_Trade'
     31:
       id: 'requestforcrossstrategy_leg_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Request_for_cross_strategy_Leg_Trade'
     32:
       id: 'trade_publication'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trade_Publication'
     33:
       id: 'dark_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Dark_Trade'
     34:
       id: 'delta_neutral_trade_underlying_future_leg'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta_Neutral_Trade_Underlying_Future_Leg'
     36:
       id: 'total_traded_volume'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Total_Traded_Volume'
     37:
       id: 'etfmtfnav_tradepriceinbp'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ETF_MTF_NAV_Trade_price_in_bp'
     38:
       id: 'etfmtfnav_dark_tradepriceinbp'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ETF_MTF_NAV_Dark_Trade_price_in_bp'
     39:
       id: 'guaranteed_cross_negotiateddeal_nliq'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guaranteed_Cross_Negotiated_deal_NLIQ'
     40:
       id: 'guaranteed_cross_negotiateddeal_oilq'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guaranteed_Cross_Negotiated_deal_OILQ'
     41:
       id: 'largein_scale_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_Trade'
     42:
       id: 'largein_scale_tradeinbasispoints'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_Trade_in_basis_points'
     43:
       id: 'largein_scale_package_tradeinbasispoints'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_Package_Trade_in_basis_points'
     44:
       id: 'strategy_leg_largein_scale_tradeinbasispoints'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Large_in_Scale_Trade_in_basis_points'
     46:
       id: 'non_standard_settlement'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Non_Standard_Settlement'
     47:
       id: 'repurchase_agreement_repo'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Repurchase_Agreement___Repo'
     48:
       id: 'exchange_granted_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_Granted_Trade'
     49:
       id: 'other'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Other'
     50:
       id: 'odd_lot'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Odd_Lot'
     100:
       id: 'conventional_trade_provisionalprice'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Conventional_Trade___Provisional_price'
     101:
       id: 'largein_scale_li_s_trade_provisionalprice'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale__LiS__Trade___Provisional_price'
     102:
       id: 'largein_scale_li_s_package_trade_provisionalprice'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale__LiS__Package_Trade___Provisional_price'
     103:
       id: 'issuing_or_tender_offer_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Issuing_Or_Tender_Offer_Trade'
     104:
       id: 'rfq_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Trade'
     105:
       id: 'avd_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AVD_Trade'
     106:
       id: 'strategy_leg_conventional_trade_provisionalprice'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strategy_Leg_Conventional_Trade___Provisional_price'
     107:
       id: 'block_standard_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_Standard_Trade'
     108:
       id: 'block_nfc_auction_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_NFC_Auction_Trade'
     109:
       id: 'block_historical_trade'
-      doc: 'TradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_Historical_Trade'
   execution_phase:
     1:
       id: 'continuous_trading_phase'
-      doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Continuous_Trading_Phase'
     2:
       id: 'uncrossing_phase'
-      doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Uncrossing_Phase'
     3:
       id: 'trading_at_last_phase'
-      doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trading_At_Last_Phase'
     4:
       id: 'continuous_uncrossing_phase'
-      doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Continuous_Uncrossing_Phase'
     5:
       id: 'ipo'
-      doc: 'ExecutionPhase_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'IPO'
   leg_side_optional:
     1:
       id: 'buy'
-      doc: 'LegSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'LegSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   message_price_notation:
     1:
       id: 'price'
-      doc: 'MessagePriceNotation_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Price'
     2:
       id: 'spreadinbasispoints'
-      doc: 'MessagePriceNotation_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Spread_in_basis_points'
     3:
       id: 'spread'
-      doc: 'MessagePriceNotation_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Spread'
   kill_reason:
     1:
       id: 'order_cancelledby_client'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_by_Client'
     2:
       id: 'order_expired'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Expired'
     3:
       id: 'order_cancelledby_market_operations'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_by_Market_Operations'
     4:
       id: 'order_eliminateddueto_corporate_event'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Eliminated_due_to_Corporate_Event'
     5:
       id: 'doneforday'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Done_for_day'
     6:
       id: 'cancelled_mt_linanempty_order_book'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled_MTL_in_an_empty_Order_Book'
     7:
       id: 'cancelledby_stp'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled_by_STP'
     8:
       id: 'remainingquantitykilled_ioc'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Remaining_quantity_killed_IOC'
     9:
       id: 'beginningof_pako_period'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Beginning_of_PAKO_Period'
     11:
       id: 'order_cancelleddueto_cancel_on_disconnect_mechanism'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_due_to_Cancel_On_Disconnect_Mechanism'
     12:
       id: 'rf_qexpired'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_expired_'
     13:
       id: 'rf_qpartiallyorfullymatchedwithothercounterparts'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_partially_or_fully_matched_with_other_counterparts'
     14:
       id: 'rf_qcancelledbytheissuer'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_cancelled_by_the_issuer'
     15:
       id: 'rfq_notmatchedduetoissuerordersfeatures'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Not_matched_due_to_issuer_orders_features'
     16:
       id: 'quotecancelleddueto_knock_out'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quote_cancelled_due_to_Knock_Out'
     17:
       id: 'ordercancelledduetoa_killcommand'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_a_Kill_command'
     18:
       id: 'ordercancelleddueto_static_collars'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_Static_Collars'
     19:
       id: 'lp_ordercancelleddueto_rf_qexpiration'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LP_Order_cancelled_due_to_RFQ_expiration'
     20:
       id: 'lp_ordercancelleddueto_rf_qcancellation'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LP_Order_cancelled_due_to_RFQ_cancellation'
     21:
       id: 'rfq_remainingquantitykilled'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Remaining_quantity_killed'
     22:
       id: 'lp_ordercancelleddueto_rf_qconfirmation'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LP_Order_cancelled_due_to_RFQ_confirmation'
     23:
       id: 'ordercancelleddueto_market_maker_protection'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_Market_Maker_Protection'
     24:
       id: 'ordercancelledbyclearingriskmanager'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_by_clearing_risk_manager'
     25:
       id: 'ordercancelledbymemberriskmanager'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_by_member_risk_manager'
     26:
       id: 'ordercancelleddueto_trade_price_validation'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_Trade_Price_Validation'
     30:
       id: 'conditional_ordercancelleddueto_potential_matching'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Conditional_Order_cancelled_due_to_Potential_Matching'
     36:
       id: 'order_cancelledduetoapotentialtradeoutside_fs_plimits'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_due_to_a_potential_trade_outside_FSP_limits'
     37:
       id: 'remaining_rfc_quantity_cancelled'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Remaining_RFC_Quantity_Cancelled'
     38:
       id: 'order_cancelledduetoanincorrect_reactor_response'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_due_to_an_incorrect_Reactor_Response'
     41:
       id: 'ordercancelleddueto_order_price_control_collarbreach'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_Order_Price_Control_Collar_breach'
     42:
       id: 'ordercancelleddueto_execution_prevention_across_all_firms'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_cancelled_due_to_Execution_Prevention_Across_All_Firms'
     43:
       id: 'cancelleddueto_breachof_me_psetbyaclearingriskmanager'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled_due_to_Breach_of_MEP_set_by_a_clearing_risk_manager'
     44:
       id: 'cancelleddueto_breachof_me_psetbyamemberriskmanager'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled_due_to_Breach_of_MEP_set_by_a_member_risk_manager'
     45:
       id: 'auto_rf_qfullymatchedwithothercounterparts'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Auto_RFQ_fully_matched_with_other_counterparts'
     46:
       id: 'order_cancelledduetoincompatibilitywith_uncrossing_price'
-      doc: 'KillReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Cancelled_due_to_incompatibility_with_Uncrossing_Price'
   account_type_optional:
     1:
       id: 'client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Client'
     2:
       id: 'house'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'House'
     4:
       id: 'ro'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RO'
     5:
       id: 'assigned_broker'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Assigned_Broker'
     6:
       id: 'liquidity_provider'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Liquidity_Provider'
     7:
       id: 'related_party'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Related_Party'
     8:
       id: 'structured_product_market_maker'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Structured_Product_Market_Maker'
     14:
       id: 'omega_client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Omega_Client'
     15:
       id: 'ceres_client'
-      doc: 'AccountType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ceres_Client'
   emm_optional:
     1:
       id: 'cashand_derivative_central_order_book'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash_and_Derivative_Central_Order_Book'
     2:
       id: 'nav_trading_facility'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NAV_Trading_Facility'
     4:
       id: 'derivatives_wholesales'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Derivatives_Wholesales'
     5:
       id: 'cash_on_exchange_offbook'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash_On_Exchange_Off_book'
     6:
       id: 'euronextoffexchangetradereports'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Euronext_off_exchange_trade_reports'
     7:
       id: 'derivatives_on_exchange_offbook'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Derivatives_On_Exchange_Off_book'
     8:
       id: 'etfmtfnav_central_order_book'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ETF_MTF_NAV_Central_Order_Book'
     9:
       id: 'listednottraded'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Listed_not_traded'
     15:
       id: 'delta_neutral_contingency_leg'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta_Neutral_Contingency_Leg'
     99:
       id: 'not_applicable'
-      doc: 'EMM_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Not_Applicable'
   collar_rej_type:
     1:
       id: 'lowdynamiccollar'
-      doc: 'CollarRejectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Low_dynamic_collar'
     2:
       id: 'highdynamiccollar'
-      doc: 'CollarRejectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'High_dynamic_collar'
     3:
       id: 'lowstaticcollar'
-      doc: 'CollarRejectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Low_static_collar'
     4:
       id: 'highstaticcollar'
-      doc: 'CollarRejectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'High_static_collar'
   lp_role:
     1:
       id: 'liquidity_provideror_market_maker'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Liquidity_Provider_or_Market_Maker'
     3:
       id: 'retail_liquidity_provider'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Retail_Liquidity_Provider'
     12:
       id: 'rfq_liquidity_provider'
-      doc: 'LPRole_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Liquidity_Provider'
   buy_revision_flag:
     0:
       id: 'new_field'
-      doc: 'BuyRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     1:
       id: 'replacement'
-      doc: 'BuyRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Replacement'
     2:
       id: 'cancellation'
-      doc: 'BuyRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancellation'
   sell_revision_flag:
     0:
       id: 'new_field'
-      doc: 'SellRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     1:
       id: 'replacement'
-      doc: 'SellRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Replacement'
     2:
       id: 'cancellation'
-      doc: 'SellRevisionIndicator_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancellation'
   trading_capacity_optional:
     1:
       id: 'dealingonownaccount'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Dealing_on_own_account'
     2:
       id: 'matchedprincipal'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Matched_principal'
     3:
       id: 'anyothercapacity'
-      doc: 'TradingCapacity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Any_other_capacity'
   rfq_type:
     1:
       id: 'manual_rfq'
-      doc: 'RFQType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Manual_RFQ'
     2:
       id: 'auto_rfq'
-      doc: 'RFQType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Auto_RFQ'
   order_category:
     1:
       id: 'lit_order'
-      doc: 'OrderCategory_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Lit_Order'
     2:
       id: 'lis_order'
-      doc: 'OrderCategory_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LIS_Order'
     3:
       id: 'quote_request'
-      doc: 'OrderCategory_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quote_Request'
     4:
       id: 'rfqlp_answer'
-      doc: 'OrderCategory_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_LP_Answer'
   option_type:
     1:
       id: 'call'
-      doc: 'OptionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call'
     2:
       id: 'put'
-      doc: 'OptionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put'
     3:
       id: 'other'
-      doc: 'OptionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Other'
   input_price_type:
     1:
       id: 'valuation_price'
-      doc: 'InputPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Valuation_Price'
     2:
       id: 'alternative_indicative_price_aip'
-      doc: 'InputPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Alternative_Indicative_Price_AIP'
   lp_action_code:
     1:
       id: 'knock_in_by_issuer_kibi'
-      doc: 'LPActionCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Knock_In_By_Issuer_KIBI'
     2:
       id: 'knock_out_by_issuer_kobi'
-      doc: 'LPActionCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Knock_Out_By_Issuer_KOBI'
     3:
       id: 'payment_after_knock_out_pako'
-      doc: 'LPActionCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Payment_After_Knock_Out_PAKO'
     4:
       id: 'bid_only'
-      doc: 'LPActionCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bid_Only'
     5:
       id: 'offer_only'
-      doc: 'LPActionCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Offer_Only'
   afq_reason:
     1:
       id: 'quotecancelledbythe_liquidity_provider'
-      doc: 'AFQReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quote_cancelled_by_the_Liquidity_Provider'
     2:
       id: 'quotecancelledby_market_control'
-      doc: 'AFQReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quote_cancelled_by_Market_Control'
     3:
       id: 'noquote_mminutesbeforeanuncrossing'
-      doc: 'AFQReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'No_quote_M_minutes_before_an_uncrossing'
     4:
       id: 'noquote_ssecondsbeforeanuncrossing'
-      doc: 'AFQReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'No_quote_S_seconds_before_an_uncrossing'
     5:
       id: 'quotecompletelymatched'
-      doc: 'AFQReason_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Quote_completely_matched'
   rfq_update_type:
     1:
       id: 'new_field'
-      doc: 'RFQUpdateType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     2:
       id: 'cancelledbythe_rf_qissuer'
-      doc: 'RFQUpdateType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled_by_the_RFQ_issuer'
     3:
       id: 'expired'
-      doc: 'RFQUpdateType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Expired'
     4:
       id: 'partiallyor_fully_matched'
-      doc: 'RFQUpdateType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Partially_or_Fully_Matched'
   recipient_type:
     1:
       id: 'rfq_issuer'
-      doc: 'RecipientType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_Issuer'
     2:
       id: 'rf_qrecipient_lp'
-      doc: 'RecipientType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RFQ_recipient__LP_'
   user_status:
     1:
       id: 'trader_algo_suspended'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Suspended'
     2:
       id: 'trader_algo_suspension_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Suspension_Cleared'
     3:
       id: 'trader_algo_killed'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Killed'
     4:
       id: 'trader_algo_kill_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Kill_Cleared'
     5:
       id: 'firm_suspended'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Suspended'
     6:
       id: 'firm_suspension_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Suspension_Cleared'
     7:
       id: 'firm_killed'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Killed'
     8:
       id: 'firm_kill_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Kill_Cleared'
     9:
       id: 'dea_suspended'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Suspended'
     10:
       id: 'dea_suspension_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Suspension_Cleared'
     11:
       id: 'dea_killed'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Killed'
     12:
       id: 'dea_kill_cleared'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Kill_Cleared'
     13:
       id: 'trader_algo_suspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Suspended_by_Risk_Manager'
     14:
       id: 'trader_algo_unsuspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Unsuspended_by_Risk_Manager'
     15:
       id: 'firm_suspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Suspended_by_Risk_Manager'
     16:
       id: 'firm_unsuspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Unsuspended_by_Risk_Manager'
     17:
       id: 'dea_suspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Suspended_by_Risk_Manager'
     18:
       id: 'dea_unsuspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Unsuspended_by_Risk_Manager'
     19:
       id: 'logical_access_suspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Logical_Access_Suspended_by_Risk_Manager'
     20:
       id: 'logical_access_unsuspendedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Logical_Access_Unsuspended_by_Risk_Manager'
     21:
       id: 'trader_algo_blockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Blocked_by_Risk_Manager'
     22:
       id: 'trader_algo_unblockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trader_Algo_Unblocked_by_Risk_Manager'
     23:
       id: 'firm_blockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Blocked_by_Risk_Manager'
     24:
       id: 'firm_unblockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Firm_Unblocked_by_Risk_Manager'
     25:
       id: 'dea_blockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Blocked_by_Risk_Manager'
     26:
       id: 'dea_unblockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DEA_Unblocked_by_Risk_Manager'
     27:
       id: 'logical_access_blockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Logical_Access_Blocked_by_Risk_Manager'
     28:
       id: 'logical_access_unblockedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Logical_Access_Unblocked_by_Risk_Manager'
     29:
       id: 'order_size_limit_activatedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Size_Limit_Activated_by_Risk_Manager'
     30:
       id: 'order_size_limit_deactivatedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order_Size_Limit_Deactivated_by_Risk_Manager'
     31:
       id: 'oal_activatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OAL_Activated_for_a_Firm_by_Risk_Manager'
     32:
       id: 'oal_deactivatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OAL_Deactivated_for_a_Firm_by_Risk_Manager'
     33:
       id: 'oal_activatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OAL_Activated_for_a_Logical_Access_by_Risk_Manager'
     34:
       id: 'oal_deactivatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OAL_Deactivated_for_a_Logical_Access_by_Risk_Manager'
     35:
       id: 'mep_activatedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Activated_by_Risk_Manager'
     36:
       id: 'mep_deactivatedby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Deactivated_by_Risk_Manager'
     37:
       id: 'mep_action_activated_acceptonlyactionsdecreasingposition'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Action_Activated__Accept_only_actions_decreasing_position'
     38:
       id: 'mep_action_activated_incomingrequestsareblocked'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Action_Activated__Incoming_requests_are_blocked'
     39:
       id: 'mep_action_activated_bookpurgedandincomingrequestsblocked'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Action_Activated__Book_purged_and_incoming_requests_blocked'
     40:
       id: 'mep_action_activated_no_action_alert_only'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MEP_Action_Activated__No_Action__Alert_Only'
     41:
       id: 'no_actioninplace'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'No_Action_in_place'
     42:
       id: 'uor_activatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UOR_Activated_for_a_Firm_by_Risk_Manager'
     43:
       id: 'uor_deactivatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UOR_Deactivated_for_a_Firm_by_Risk_Manager'
     44:
       id: 'uor_activatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UOR_Activated_for_a_Logical_Access_by_Risk_Manager'
     45:
       id: 'uor_deactivatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UOR_Deactivated_for_a_Logical_Access_by_Risk_Manager'
     46:
       id: 'osl_activatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OSL_Activated_for_a_Firm_by_Risk_Manager'
     47:
       id: 'osl_deactivatedfora_firmby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OSL_Deactivated_for_a_Firm_by_Risk_Manager'
     48:
       id: 'osl_activatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OSL_Activated_for_a_Logical_Access_by_Risk_Manager'
     49:
       id: 'osl_deactivatedfora_logical_accessby_risk_manager'
-      doc: 'UserStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OSL_Deactivated_for_a_Logical_Access_by_Risk_Manager'
   exposure_side:
     1:
       id: 'buy'
-      doc: 'ExposureSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'ExposureSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   strategy_code:
     0x41:
       id: 'jelly_roll'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Jelly_Roll'
     0x42:
       id: 'butterfly'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Butterfly'
     0x43:
       id: 'callor_put_cabinet'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Cabinet'
     0x44:
       id: 'spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Spread'
     0x45:
       id: 'calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Calendar_Spread'
     0x46:
       id: 'diagonal_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Calendar_Spread'
     0x47:
       id: 'guts'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guts'
     0x48:
       id: 'twoby_one_ratio_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Two_by_One_Ratio_Spread'
     0x49:
       id: 'iron_butterfly'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Butterfly'
     0x4a:
       id: 'combo'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Combo'
     0x4b:
       id: 'strangle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strangle'
     0x4c:
       id: 'ladder'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ladder'
     0x4d:
       id: 'strip'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strip'
     0x4e:
       id: 'straddle_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_Calendar_Spread'
     0x4f:
       id: 'pack'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Pack'
     0x50:
       id: 'diagonal_straddle_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Straddle_Calendar_Spread'
     0x51:
       id: 'simple_inter_commodity_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Simple_Inter_Commodity_Spread'
     0x52:
       id: 'conversion_reversal'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Conversion_Reversal'
     0x53:
       id: 'straddle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle'
     0x56:
       id: 'volatility_trade'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Volatility_Trade'
     0x57:
       id: 'condor'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Condor'
     0x58:
       id: 'box_field'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Box'
     0x59:
       id: 'bundle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bundle'
     0x5a:
       id: 'reduced_tick_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reduced_Tick_Spread'
     0x61:
       id: 'ladderversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ladder_versus_Underlying'
     0x62:
       id: 'butterflyversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Butterfly_versus_Underlying'
     0x63:
       id: 'call_spreadversus_putversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Put_versus_Underlying'
     0x64:
       id: 'callor_put_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Spread_versus_Underlying'
     0x65:
       id: 'callor_put_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Calendar_Spread_versus_Underlying'
     0x66:
       id: 'call_put_diagonal_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CallPut_Diagonal_Calendar_Spread_versus_Underlying'
     0x67:
       id: 'gutsversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guts_versus_Underlying'
     0x68:
       id: 'twoby_one_callor_put_ratio_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Two_by_One_Call_or_Put_Ratio_Spread_versus_Underlying'
     0x69:
       id: 'iron_butterflyversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Butterfly_versus_Underlying'
     0x6a:
       id: 'comboversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Combo_versus_Underlying'
     0x6b:
       id: 'strangleversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strangle_versus_Underlying'
     0x6d:
       id: 'exchangefor_physical'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_for_Physical'
     0x6e:
       id: 'straddle_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_Calendar_Spread_versus_Underlying'
     0x70:
       id: 'put_spreadversus_callversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Spread_versus_Call_versus_Underlying'
     0x71:
       id: 'diagonal_straddle_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Straddle_Calendar_Spread_versus_Underlying'
     0x72:
       id: 'synthetic'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Synthetic'
     0x73:
       id: 'straddleversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_versus_Underlying'
     0x74:
       id: 'condorversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Condor_versus_Underlying'
     0x75:
       id: 'buy_write'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy_Write'
     0x76:
       id: 'iron_condorversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Condor_versus_Underlying'
     0x77:
       id: 'iron_condor'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Condor'
     0x78:
       id: 'call_spreadversus_sella_put'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Sell_a_Put'
     0x79:
       id: 'put_spreadversus_sella_call'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Spread_versus_Sell_a_Call'
     0x7a:
       id: 'put_straddleversus_sella_callora_put'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Straddle_versus_Sell_a_Call_or_a_Put'
     0x54:
       id: 'ic_sonesidedcombinationsameexpiry'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICS_one_sided_combination_same_expiry'
     0x55:
       id: 'ic_stwosidedcombinationsameexpiry'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICS_two_sided_combination_same_expiry'
     0x6c:
       id: 'ratio_inter_contract_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ratio_Inter_Contract_Spread'
     0x31:
       id: 'call_spreadversus_put_or_put_spreadversus_call'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Put_Or_Put_Spread_versus_Call'
     0x32:
       id: 'ratio_spread_option'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ratio_Spread_Option'
   leg_security_type:
     0:
       id: 'future'
-      doc: 'LegSecurityType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Future'
     1:
       id: 'option'
-      doc: 'LegSecurityType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Option'
     2:
       id: 'cash'
-      doc: 'LegSecurityType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cash'
   leg_put_or_call:
     1:
       id: 'call'
-      doc: 'LegPutOrCall_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call'
     0:
       id: 'put'
-      doc: 'LegPutOrCall_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put'
   leg_side:
     1:
       id: 'buy'
-      doc: 'LegSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'LegSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
   request_type:
     1:
       id: 'set'
-      doc: 'RequestType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Set'
     2:
       id: 'get'
-      doc: 'RequestType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Get'
     3:
       id: 'adjust'
-      doc: 'RequestType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Adjust'
   protection_type:
     1:
       id: 'delta'
-      doc: 'ProtectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta'
     2:
       id: 'volume'
-      doc: 'ProtectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Volume'
   breach_action:
     0:
       id: 'ignore'
-      doc: 'BreachAction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ignore'
     1:
       id: 'pull'
-      doc: 'BreachAction_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Pull'
   protection_type_optional:
     1:
       id: 'delta'
-      doc: 'ProtectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Delta'
     2:
       id: 'volume'
-      doc: 'ProtectionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Volume'
   wholesale_trade_type:
     0:
       id: 'largein_scale_trade_formerly_block_trade'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large_in_Scale_Trade_Formerly_Block_Trade'
     1:
       id: 'against_actual'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Against_Actual'
     2:
       id: 'exchange_for_swaps'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_For_Swaps'
     3:
       id: 'block_standard'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_Standard'
     4:
       id: 'block_nfc_auction'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_NFC_Auction'
     5:
       id: 'block_historical'
-      doc: 'WholesaleTradeType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Block_Historical'
   strategy_code_optional:
     0x41:
       id: 'jelly_roll'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Jelly_Roll'
     0x42:
       id: 'butterfly'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Butterfly'
     0x43:
       id: 'callor_put_cabinet'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Cabinet'
     0x44:
       id: 'spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Spread'
     0x45:
       id: 'calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Calendar_Spread'
     0x46:
       id: 'diagonal_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Calendar_Spread'
     0x47:
       id: 'guts'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guts'
     0x48:
       id: 'twoby_one_ratio_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Two_by_One_Ratio_Spread'
     0x49:
       id: 'iron_butterfly'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Butterfly'
     0x4a:
       id: 'combo'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Combo'
     0x4b:
       id: 'strangle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strangle'
     0x4c:
       id: 'ladder'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ladder'
     0x4d:
       id: 'strip'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strip'
     0x4e:
       id: 'straddle_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_Calendar_Spread'
     0x4f:
       id: 'pack'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Pack'
     0x50:
       id: 'diagonal_straddle_calendar_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Straddle_Calendar_Spread'
     0x51:
       id: 'simple_inter_commodity_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Simple_Inter_Commodity_Spread'
     0x52:
       id: 'conversion_reversal'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Conversion_Reversal'
     0x53:
       id: 'straddle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle'
     0x56:
       id: 'volatility_trade'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Volatility_Trade'
     0x57:
       id: 'condor'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Condor'
     0x58:
       id: 'box_field'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Box'
     0x59:
       id: 'bundle'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bundle'
     0x5a:
       id: 'reduced_tick_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reduced_Tick_Spread'
     0x61:
       id: 'ladderversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ladder_versus_Underlying'
     0x62:
       id: 'butterflyversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Butterfly_versus_Underlying'
     0x63:
       id: 'call_spreadversus_putversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Put_versus_Underlying'
     0x64:
       id: 'callor_put_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Spread_versus_Underlying'
     0x65:
       id: 'callor_put_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_or_Put_Calendar_Spread_versus_Underlying'
     0x66:
       id: 'call_put_diagonal_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CallPut_Diagonal_Calendar_Spread_versus_Underlying'
     0x67:
       id: 'gutsversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Guts_versus_Underlying'
     0x68:
       id: 'twoby_one_callor_put_ratio_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Two_by_One_Call_or_Put_Ratio_Spread_versus_Underlying'
     0x69:
       id: 'iron_butterflyversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Butterfly_versus_Underlying'
     0x6a:
       id: 'comboversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Combo_versus_Underlying'
     0x6b:
       id: 'strangleversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Strangle_versus_Underlying'
     0x6d:
       id: 'exchangefor_physical'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Exchange_for_Physical'
     0x6e:
       id: 'straddle_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_Calendar_Spread_versus_Underlying'
     0x70:
       id: 'put_spreadversus_callversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Spread_versus_Call_versus_Underlying'
     0x71:
       id: 'diagonal_straddle_calendar_spreadversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Diagonal_Straddle_Calendar_Spread_versus_Underlying'
     0x72:
       id: 'synthetic'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Synthetic'
     0x73:
       id: 'straddleversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Straddle_versus_Underlying'
     0x74:
       id: 'condorversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Condor_versus_Underlying'
     0x75:
       id: 'buy_write'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy_Write'
     0x76:
       id: 'iron_condorversus_underlying'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Condor_versus_Underlying'
     0x77:
       id: 'iron_condor'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Iron_Condor'
     0x78:
       id: 'call_spreadversus_sella_put'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Sell_a_Put'
     0x79:
       id: 'put_spreadversus_sella_call'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Spread_versus_Sell_a_Call'
     0x7a:
       id: 'put_straddleversus_sella_callora_put'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Put_Straddle_versus_Sell_a_Call_or_a_Put'
     0x54:
       id: 'ic_sonesidedcombinationsameexpiry'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICS_one_sided_combination_same_expiry'
     0x55:
       id: 'ic_stwosidedcombinationsameexpiry'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ICS_two_sided_combination_same_expiry'
     0x6c:
       id: 'ratio_inter_contract_spread'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ratio_Inter_Contract_Spread'
     0x31:
       id: 'call_spreadversus_put_or_put_spreadversus_call'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Call_Spread_versus_Put_Or_Put_Spread_versus_Call'
     0x32:
       id: 'ratio_spread_option'
-      doc: 'StrategyCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ratio_Spread_Option'
   wholesale_side:
     1:
       id: 'buy'
-      doc: 'WholesaleSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'WholesaleSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
     3:
       id: 'cross'
-      doc: 'WholesaleSide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cross'
   response_type:
     0:
       id: 'accept'
-      doc: 'ResponseType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Accept'
     1:
       id: 'reject'
-      doc: 'ResponseType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reject'
   order_actor_type:
     1:
       id: 'initiator'
-      doc: 'OrderActorType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Initiator'
     2:
       id: 'reactor'
-      doc: 'OrderActorType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reactor'
   order_origin:
     1:
       id: 'cob'
-      doc: 'OrderOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'COB'
     2:
       id: 'lp_answer'
-      doc: 'OrderOrigin_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LP_Answer'
   ioi_transaction_type:
     1:
       id: 'new_field'
-      doc: 'WaveForLiquidityIOITransactionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New'
     2:
       id: 'cancel'
-      doc: 'WaveForLiquidityIOITransactionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancel'
     3:
       id: 'replace'
-      doc: 'WaveForLiquidityIOITransactionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Replace'
   ioi_side:
     1:
       id: 'buy'
-      doc: 'IOISide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Buy'
     2:
       id: 'sell'
-      doc: 'IOISide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Sell'
     4:
       id: 'undisclosed'
-      doc: 'IOISide_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Undisclosed'
   ioi_quantity:
     1:
       id: 'small'
-      doc: 'IOIQuantity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Small'
     2:
       id: 'medium'
-      doc: 'IOIQuantity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Medium'
     3:
       id: 'large'
-      doc: 'IOIQuantity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Large'
     4:
       id: 'undisclosed_quantity'
-      doc: 'IOIQuantity_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Undisclosed_Quantity'
   ioi_quality_indication:
     1:
       id: 'high'
-      doc: 'IOIQualityIndication_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'High'
     2:
       id: 'low'
-      doc: 'IOIQualityIndication_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Low'
     3:
       id: 'medium'
-      doc: 'IOIQualityIndication_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Medium'
   ioi_type:
     1:
       id: 'ack'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Ack'
     2:
       id: 'reject'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Reject'
     3:
       id: 'new_ioi_notification'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New_IOI_Notification'
     4:
       id: 'ioi_reply_notification'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'IOI_Reply_Notification'
     5:
       id: 'ioi_cancellation_notification'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'IOI_Cancellation_Notification'
     6:
       id: 'ioi_replacement_notification'
-      doc: 'IOIType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'IOI_Replacement_Notification'
   logon_reject_code:
     1:
       id: 'unknown_connection_identifier'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unknown_Connection_Identifier'
     2:
       id: 'systemunavailable'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'System_unavailable'
     3:
       id: 'invalidsequencenumber'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Invalid_sequence_number'
     4:
       id: 'clientsessionalreadyloggedon'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Client_session_already_logged_on'
     5:
       id: 'clientsessiondisabled'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Client_session_disabled'
     6:
       id: 'invalid_queueing_indicator'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Invalid_Queueing_Indicator'
     7:
       id: 'invalid_logonformat'
-      doc: 'LogonRejectCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Invalid_Logon_format'
   log_out_reason_code:
     0:
       id: 'regular_logout'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Regular_Logout'
     1:
       id: 'end_of_day'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'End_Of_Day'
     2:
       id: 'toomanyunknownmessages'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Too_many_unknown_messages'
     3:
       id: 'excessive_numberof_messages'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Excessive_Number_of_Messages'
     4:
       id: 'excessive_amountof_datain_bytes'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Excessive_Amount_of_Data_in_Bytes'
     5:
       id: 'excessive_numberof_messages_amountof_datain_bytes'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Excessive_Number_of_Messages_Amount_of_Data_in_Bytes'
     6:
       id: 'logout_by_market_operations'
-      doc: 'LogOutReasonCode_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Logout_By_Market_Operations'
   operation_type:
     1:
       id: 'declarationofatradeoutsidethebook'
-      doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Declaration_of_a_trade_outside_the_book'
     4:
       id: 'fundorderquantity'
-      doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Fund_order__quantity_'
     5:
       id: 'declarationofa_vwa_ptransaction'
-      doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Declaration_of_a_VWAP_transaction'
     6:
       id: 'fundordercashamount'
-      doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Fund_order__cash_amount_'
     7:
       id: 'declarationofatradeona_secondarylistingplace'
-      doc: 'OperationType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Declaration_of_a_trade_on_a_Secondary_listing_place'
   guarantee_flag:
     1:
       id: 'clearedbutnot_guaranteed'
-      doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cleared_but_not_Guaranteed'
     2:
       id: 'clearedand_guaranteed'
-      doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cleared_and_Guaranteed'
   transaction_price_type:
     1:
       id: 'plain_vanilla_trade'
-      doc: 'TransactionPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Plain_Vanilla_Trade'
     2:
       id: 'non_price_forming_trade'
-      doc: 'TransactionPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Non_Price_Forming_Trade'
     3:
       id: 'trade_not_contributingto_price_discovery_process'
-      doc: 'TransactionPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trade_Not_Contributing_to_Price_Discovery_Process'
     4:
       id: 'dark_trade'
-      doc: 'TransactionPriceType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Dark_Trade'
   pre_matching_type:
     1:
       id: 'notprematched'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Not_prematched'
     2:
       id: 'prematchedforthenextfixing'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Prematched_for_the_next_fixing'
     3:
       id: 'prematchedforthesecondnextfixing'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Prematched_for_the_second_next_fixing'
     4:
       id: 'prematchedforthethirdnextfixing'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Prematched_for_the_third_next_fixing'
     5:
       id: 'prematchedforthefourthnextfixing'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Prematched_for_the_fourth_next_fixing'
     6:
       id: 'prematchedforthefifthnextfixing'
-      doc: 'PreMatchingType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Prematched_for_the_fifth_next_fixing'
   declaration_status:
     1:
       id: 'new_waitingfor_counterparty_confirmation'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'New_Waiting_for_Counterparty_Confirmation'
     2:
       id: 'confirmedby_counterparty'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Confirmed_by_Counterparty'
     3:
       id: 'refusedby_counterparty'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Refused_by_Counterparty'
     4:
       id: 'pending_cancellation'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Pending_Cancellation'
     5:
       id: 'cancelled'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cancelled'
     6:
       id: 'time_out'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Time_Out'
     7:
       id: 'filled'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Filled'
     8:
       id: 'restated'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Restated'
     9:
       id: 'expirationofapendingdeclaration'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Expiration_of_a_pending_declaration'
     10:
       id: 'eliminationofapendingdeclaration'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Elimination_of_a_pending_declaration'
     11:
       id: 'eliminationofaprematcheddeclarationfollowinga_ce'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Elimination_of_a_prematched_declaration_following_a_CE'
     12:
       id: 'eliminationofaprematcheddeclarationby_moc'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Elimination_of_a_prematched_declaration_by_MOC'
     13:
       id: 'pre_matched'
-      doc: 'DeclarationStatus_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Pre_Matched'
   guarantee_flag_optional:
     1:
       id: 'clearedbutnot_guaranteed'
-      doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cleared_but_not_Guaranteed'
     2:
       id: 'clearedand_guaranteed'
-      doc: 'GuaranteeFlag_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Cleared_and_Guaranteed'
   ccpid:
     1:
       id: 'lch_sa'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LCH_SA'
     2:
       id: 'bilateral_settlement'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bilateral_Settlement'
     3:
       id: 'lch_limited'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LCH_Limited'
     5:
       id: 'sixx_clear'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SIX_X_Clear'
     6:
       id: 'euro_ccp'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EuroCCP'
     7:
       id: 'bilateral_gross_settlement'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Bilateral_Gross_Settlement'
     9:
       id: 'euronext_clearing'
-      doc: 'CCPID_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Euronext_Clearing'
   action_type:
     1:
       id: 'declaration_cancellation_request'
-      doc: 'ActionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Declaration_Cancellation_Request'
     2:
       id: 'declaration_refusal'
-      doc: 'ActionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Declaration_Refusal'
     3:
       id: 'trade_cancellation_request'
-      doc: 'ActionType_enum Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Trade_Cancellation_Request'
 

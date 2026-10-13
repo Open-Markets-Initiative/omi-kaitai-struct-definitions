@@ -875,81 +875,81 @@ enums:
   product_group:
     0:
       id: 'currency'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CURRENCY'
     1:
       id: 'equity'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EQUITY'
     2:
       id: 'energy'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ENERGY'
     3:
       id: 'metals'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'METALS'
     4:
       id: 'interest_rate'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INTEREST_RATE'
     5:
       id: 'agriculture'
-      doc: 'ProductGroup Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AGRICULTURE'
   trading_status:
     0:
       id: 'pre_open'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN'
     1:
       id: 'open'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPEN'
     2:
       id: 'halt'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HALT'
     3:
       id: 'pause'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PAUSE'
     4:
       id: 'close'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLOSE'
     5:
       id: 'pre_open_no_cancel'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN_NO_CANCEL'
     6:
       id: 'expired'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EXPIRED'
   spread_buy_convention:
     1:
       id: 'use_far_bid'
-      doc: 'SpreadBuyConvention Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'USE_FAR_BID'
   stat_type:
     0x34:
       id: 'day_opening_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DAY_OPENING_PRICE'
     0x35:
       id: 'closing_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLOSING_PRICE'
     0x36:
       id: 'settlement_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SETTLEMENT_PRICE'
     0x37:
       id: 'trading_session_high_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRADING_SESSION_HIGH_PRICE'
     0x38:
       id: 'trading_session_low_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRADING_SESSION_LOW_PRICE'
     0x46:
       id: 'reference_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'REFERENCE_PRICE'
     0x49:
       id: 'indicative_opening_price'
-      doc: 'MarketStatType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INDICATIVE_OPENING_PRICE'
   reason:
     1:
       id: 'seq_too_low'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SEQ_TOO_LOW'
     2:
       id: 'seq_too_high'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SEQ_TOO_HIGH'
     3:
       id: 'rate_limit_exceeded'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RATE_LIMIT_EXCEEDED'
     4:
       id: 'other_error'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OTHER_ERROR'
 

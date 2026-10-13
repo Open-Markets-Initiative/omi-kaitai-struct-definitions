@@ -1202,178 +1202,178 @@ enums:
   instrument_trading_status:
     0x43:
       id: 'closed'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLOSED'
     0x50:
       id: 'pre_open'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN'
     0x4e:
       id: 'pre_open_nc'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN_NC'
     0x4f:
       id: 'open'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPEN'
     0x55:
       id: 'paused'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PAUSED'
     0x48:
       id: 'halted'
-      doc: 'InstrumentTradingStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HALTED'
   aggressor_side:
     0x4e:
       id: 'no_aggressor'
-      doc: 'AggressorSide Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NO_AGGRESSOR'
     0x42:
       id: 'buy'
-      doc: 'AggressorSide Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
     0x53:
       id: 'sell'
-      doc: 'AggressorSide Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SELL'
   trade_update_action:
     0x4e:
       id: 'new_field'
-      doc: 'TradeUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NEW'
     0x44:
       id: 'delete_field'
-      doc: 'TradeUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELETE'
   order_update_action:
     0x4e:
       id: 'new_field'
-      doc: 'OrderUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NEW'
     0x55:
       id: 'update'
-      doc: 'OrderUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'UPDATE'
     0x44:
       id: 'delete_field'
-      doc: 'OrderUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELETE'
   side:
     0x42:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
     0x53:
       id: 'sell'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SELL'
   open_price_type:
     0x49:
       id: 'indicative'
-      doc: 'OpenPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INDICATIVE'
     0x54:
       id: 'traded'
-      doc: 'OpenPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRADED'
     0x4e:
       id: 'no_price'
-      doc: 'OpenPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NO_PRICE'
   settlement_price_type:
     0x46:
       id: 'final_field'
-      doc: 'SettlementPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FINAL'
     0x50:
       id: 'preliminary'
-      doc: 'SettlementPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRELIMINARY'
     0x4e:
       id: 'no_price'
-      doc: 'SettlementPriceType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NO_PRICE'
   instrument_update_action:
     0x41:
       id: 'add'
-      doc: 'InstrumentUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ADD'
     0x44:
       id: 'delete_field'
-      doc: 'InstrumentUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELETE'
     0x4d:
       id: 'modify'
-      doc: 'InstrumentUpdateAction Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MODIFY'
   instrument_type:
     0x46:
       id: 'futures'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURES'
     0x4f:
       id: 'option'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION'
     0x4d:
       id: 'mleg'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MLEG'
   put_or_call:
     0x50:
       id: 'put'
-      doc: 'PutOrCall Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PUT'
     0x43:
       id: 'call'
-      doc: 'PutOrCall Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CALL'
     0x4e:
       id: 'not_option'
-      doc: 'PutOrCall Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_OPTION'
   expiration_style:
     0x53:
       id: 'standard'
-      doc: 'ExpirationStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'STANDARD'
     0x44:
       id: 'daily'
-      doc: 'ExpirationStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DAILY'
     0x57:
       id: 'weekly'
-      doc: 'ExpirationStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'WEEKLY'
     0x51:
       id: 'quaterly'
-      doc: 'ExpirationStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'QUATERLY'
   exercise_style:
     0x45:
       id: 'european'
-      doc: 'ExerciseStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EUROPEAN'
     0x41:
       id: 'american'
-      doc: 'ExerciseStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'AMERICAN'
     0x4e:
       id: 'not_option'
-      doc: 'ExerciseStyle Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'NOT_OPTION'
   delivery:
     0x43:
       id: 'cash'
-      doc: 'Delivery Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CASH'
     0x50:
       id: 'physical'
-      doc: 'Delivery Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PHYSICAL'
   strategy_type:
     0:
       id: 'custom'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CUSTOM'
     1:
       id: 'futures_calendar'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURES_CALENDAR'
     2:
       id: 'futures_inter_commodity'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURES_INTER_COMMODITY'
     3:
       id: 'covered'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'COVERED'
     4:
       id: 'option_butterfly'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_BUTTERFLY'
     5:
       id: 'option_vertical'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_VERTICAL'
     6:
       id: 'option_strangle'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_STRANGLE'
     7:
       id: 'option_straddle'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_STRADDLE'
     8:
       id: 'option_diagonal'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_DIAGONAL'
     9:
       id: 'option_calendar'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_CALENDAR'
     10:
       id: 'option_iron_condor'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_IRON_CONDOR'
     11:
       id: 'protective_put'
-      doc: 'StrategyType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PROTECTIVE_PUT'
   leg_side:
     0x42:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
     0x53:
       id: 'sell'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SELL'
 

@@ -189,10 +189,10 @@ types:
   order_accepted_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_accepted_optional_field
-        type: s1
+        type: u1
         enum: order_accepted_optional_field
         doc: 'Appendage Id'
       - id: order_accepted_optional_value
@@ -281,10 +281,10 @@ types:
   order_replaced_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_replaced_optional_field
-        type: s1
+        type: u1
         enum: order_replaced_optional_field
         doc: 'Appendage Id'
       - id: order_replaced_optional_value
@@ -344,10 +344,10 @@ types:
   order_canceled_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_canceled_optional_field
-        type: s1
+        type: u1
         enum: order_canceled_optional_field
         doc: 'Appendage Id'
       - id: order_canceled_optional_value
@@ -393,10 +393,10 @@ types:
   stp_canceled_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: stp_canceled_optional_field
-        type: s1
+        type: u1
         enum: stp_canceled_optional_field
         doc: 'Appendage Id'
       - id: stp_canceled_optional_value
@@ -443,10 +443,10 @@ types:
   order_executed_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_executed_optional_field
-        type: s1
+        type: u1
         enum: order_executed_optional_field
         doc: 'Appendage Id'
       - id: order_executed_optional_value
@@ -488,10 +488,10 @@ types:
   corrected_trade_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: corrected_trade_optional_field
-        type: s1
+        type: u1
         enum: corrected_trade_optional_field
         doc: 'Appendage Id'
       - id: corrected_trade_optional_value
@@ -524,10 +524,10 @@ types:
   rejected_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: rejected_order_optional_field
-        type: s1
+        type: u1
         enum: rejected_order_optional_field
         doc: 'Appendage Id'
       - id: rejected_order_optional_value
@@ -560,10 +560,10 @@ types:
   cancel_reject_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: cancel_reject_optional_field
-        type: s1
+        type: u1
         enum: cancel_reject_optional_field
         doc: 'Appendage Id'
       - id: cancel_reject_optional_value
@@ -594,10 +594,10 @@ types:
   order_restated_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_restated_optional_field
-        type: s1
+        type: u1
         enum: order_restated_optional_field
         doc: 'Appendage Id'
       - id: order_restated_optional_value
@@ -626,10 +626,10 @@ types:
   account_query_response_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: account_query_response_optional_field
-        type: s1
+        type: u1
         enum: account_query_response_optional_field
         doc: 'Appendage Id'
       - id: account_query_response_optional_value

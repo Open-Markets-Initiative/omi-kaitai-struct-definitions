@@ -199,10 +199,10 @@ types:
   order_accepted_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_accepted_optional_field
-        type: s1
+        type: u1
         enum: order_accepted_optional_field
         doc: 'Appendage Id'
       - id: order_accepted_optional_value
@@ -301,10 +301,10 @@ types:
   replaced_message_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: replaced_message_optional_field
-        type: s1
+        type: u1
         enum: replaced_message_optional_field
         doc: 'Appendage Id'
       - id: replaced_message_optional_value
@@ -341,6 +341,7 @@ types:
         doc: 'Reason the order was reduced or canceled'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: canceled_message_appendage
         type: canceled_message_appendage
@@ -349,10 +350,10 @@ types:
   canceled_message_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: canceled_message_optional_field
-        type: s1
+        type: u1
         enum: canceled_message_optional_field
         doc: 'Appendage Id'
       - id: canceled_message_optional_value
@@ -394,6 +395,7 @@ types:
         doc: 'AIQ strategy used on the cancelled order'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: aiq_canceled_appendage
         type: aiq_canceled_appendage
@@ -402,10 +404,10 @@ types:
   aiq_canceled_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: aiq_canceled_optional_field
-        type: s1
+        type: u1
         enum: aiq_canceled_optional_field
         doc: 'Appendage Id'
       - id: aiq_canceled_optional_value
@@ -445,10 +447,10 @@ types:
   order_executed_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_executed_optional_field
-        type: s1
+        type: u1
         enum: order_executed_optional_field
         doc: 'Appendage Id'
       - id: order_executed_optional_value
@@ -480,6 +482,7 @@ types:
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: broken_trade_appendage
         type: broken_trade_appendage
@@ -488,10 +491,10 @@ types:
   broken_trade_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: broken_trade_optional_field
-        type: s1
+        type: u1
         enum: broken_trade_optional_field
         doc: 'Appendage Id'
       - id: broken_trade_optional_value
@@ -520,6 +523,7 @@ types:
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: rejected_order_appendage
         type: rejected_order_appendage
@@ -528,10 +532,10 @@ types:
   rejected_order_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: rejected_order_optional_field
-        type: s1
+        type: u1
         enum: rejected_order_optional_field
         doc: 'Appendage Id'
       - id: rejected_order_optional_value
@@ -550,6 +554,7 @@ types:
         doc: 'UserRefNum must be day-unique and strictly increasing for each OUCH account'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: cancel_pending_appendage
         type: cancel_pending_appendage
@@ -558,10 +563,10 @@ types:
   cancel_pending_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: cancel_pending_optional_field
-        type: s1
+        type: u1
         enum: cancel_pending_optional_field
         doc: 'Appendage Id'
       - id: cancel_pending_optional_value
@@ -580,6 +585,7 @@ types:
         doc: 'UserRefNum must be day-unique and strictly increasing for each OUCH account'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: cancel_reject_appendage
         type: cancel_reject_appendage
@@ -588,10 +594,10 @@ types:
   cancel_reject_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: cancel_reject_optional_field
-        type: s1
+        type: u1
         enum: cancel_reject_optional_field
         doc: 'Appendage Id'
       - id: cancel_reject_optional_value
@@ -620,6 +626,7 @@ types:
         doc: 'The day-unique Order Reference Number assigned by NASDAQ to this order'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: order_priority_update_appendage
         type: order_priority_update_appendage
@@ -628,10 +635,10 @@ types:
   order_priority_update_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_priority_update_optional_field
-        type: s1
+        type: u1
         enum: order_priority_update_optional_field
         doc: 'Appendage Id'
       - id: order_priority_update_optional_value
@@ -657,6 +664,7 @@ types:
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: order_modified_appendage
         type: order_modified_appendage
@@ -665,10 +673,10 @@ types:
   order_modified_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_modified_optional_field
-        type: s1
+        type: u1
         enum: order_modified_optional_field
         doc: 'Appendage Id'
       - id: order_modified_optional_value
@@ -701,10 +709,10 @@ types:
   order_restated_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: order_restated_optional_field
-        type: s1
+        type: u1
         enum: order_restated_optional_field
         doc: 'Appendage Id'
       - id: order_restated_optional_value
@@ -726,6 +734,7 @@ types:
         doc: 'The next available UserRefNum'
       - id: appendage_length
         type: u2
+        if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
       - id: account_query_response_appendage
         type: account_query_response_appendage
@@ -734,10 +743,10 @@ types:
   account_query_response_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: account_query_response_optional_field
-        type: s1
+        type: u1
         enum: account_query_response_optional_field
         doc: 'Appendage Id'
       - id: account_query_response_optional_value
@@ -776,10 +785,10 @@ types:
   mass_cancel_response_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: mass_cancel_response_optional_field
-        type: s1
+        type: u1
         enum: mass_cancel_response_optional_field
         doc: 'Appendage Id'
       - id: mass_cancel_response_optional_value
@@ -814,10 +823,10 @@ types:
   disable_order_entry_response_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: disable_order_entry_response_optional_field
-        type: s1
+        type: u1
         enum: disable_order_entry_response_optional_field
         doc: 'Appendage Id'
       - id: disable_order_entry_response_optional_value
@@ -850,10 +859,10 @@ types:
   enable_order_entry_response_appendage:
     seq:
       - id: optional_field_length
-        type: s1
+        type: u1
         doc: 'Appendage Length Type'
       - id: enable_order_entry_response_optional_field
-        type: s1
+        type: u1
         enum: enable_order_entry_response_optional_field
         doc: 'Appendage Id'
       - id: enable_order_entry_response_optional_value

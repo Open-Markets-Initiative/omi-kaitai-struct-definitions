@@ -3295,7 +3295,7 @@ enums:
   keep_alive_interval_lapsed:
     0:
       id: 'not_lapsed'
-      doc: 'NotLapsed'
+      doc: 'Not Lapsed'
     1:
       id: 'lapsed'
       doc: 'Lapsed'
@@ -3305,7 +3305,7 @@ enums:
       doc: 'Split Message Delayed'
     1:
       id: 'outof_order_message_delayed'
-      doc: 'Out of Order Message Delayed'
+      doc: 'Out Of Order Message Delayed'
     2:
       id: 'complete_message_delayed'
       doc: 'Complete Message Delayed'
@@ -3319,13 +3319,13 @@ enums:
   ord_type:
     0x31:
       id: 'marketwith_protection'
-      doc: 'Market with Protection'
+      doc: 'Market With Protection'
     0x32:
       id: 'limit'
       doc: 'Limit'
     0x33:
       id: 'stopwith_protection'
-      doc: 'Stop with Protection'
+      doc: 'Stop With Protection'
     0x34:
       id: 'stop_limit'
       doc: 'Stop Limit'
@@ -3365,30 +3365,30 @@ enums:
   liquidity_flag:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   managed_order:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   short_sale_type:
     0:
       id: 'long_sell'
       doc: 'Long Sell'
     1:
       id: 'short_sale_with_no_exemption_sesh'
-      doc: 'Short Sale With No Exemption SESH'
+      doc: 'Short Sale With No Exemption Sesh'
     2:
       id: 'short_sale_with_exemption_ssex'
-      doc: 'Short Sale With Exemption SSEX'
+      doc: 'Short Sale With Exemption Ssex'
     3:
       id: 'undisclosed_sell_information_not_available_undi'
-      doc: 'Undisclosed Sell Information Not Available UNDI'
+      doc: 'Undisclosed Sell Information Not Available Undi'
   ofm_override:
     0:
       id: 'disabled'
@@ -3399,10 +3399,10 @@ enums:
   mm_protection_reset:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   list_update_action:
     0x41:
       id: 'add'
@@ -3416,20 +3416,20 @@ enums:
       doc: 'Give Up'
     0x53:
       id: 'sg_xoffset'
-      doc: 'SGX offset'
+      doc: 'Sgx Offset'
   cust_order_capacity:
     1:
       id: 'membertradingfortheirownaccount'
-      doc: 'Member trading for their own account'
+      doc: 'Member Trading For Their Own Account'
     2:
       id: 'clearingfirmtradingforitsproprietaryaccount'
-      doc: 'Clearing firm trading for its proprietary account'
+      doc: 'Clearing Firm Trading For Its Proprietary Account'
     3:
       id: 'membertradingforanothermember'
-      doc: 'Member trading for anothermember'
+      doc: 'Member Trading For Anothermember'
     4:
       id: 'allother'
-      doc: 'All other'
+      doc: 'All Other'
   clearing_account_type:
     0:
       id: 'customer'
@@ -3450,27 +3450,27 @@ enums:
       doc: 'No Average Pricing'
     1:
       id: 'tradeispartofan_average_price_group_identifiedbythe_avg_px_grp_id'
-      doc: 'Trade is part of an Average Price Group Identified by the AvgPxGrp ID'
+      doc: 'Trade Is Part Of An Average Price Group Identified By The Avg Px Grp Id'
     3:
       id: 'tradeispartofa_notional_value_average_price_group'
-      doc: 'Trade is part of a Notional Value Average Price Group'
+      doc: 'Trade Is Part Of A Notional Value Average Price Group'
   clearing_trade_price_type:
     0:
       id: 'trade_clearingat_execution_price'
-      doc: 'Trade Clearing at Execution Price'
+      doc: 'Trade Clearing At Execution Price'
     1:
       id: 'trade_clearingat_alternate_clearing_price'
-      doc: 'Trade Clearing at Alternate Clearing Price'
+      doc: 'Trade Clearing At Alternate Clearing Price'
   cust_order_handling_inst:
     0x43:
       id: 'fc_mprovidedscreen'
-      doc: 'FCM provided screen'
+      doc: 'Fcm Provided Screen'
     0x44:
       id: 'otherprovidedscreen'
-      doc: 'Other provided screen'
+      doc: 'Other Provided Screen'
     0x47:
       id: 'fcmapi_cta_ix'
-      doc: 'FCM API or FIX'
+      doc: 'Fcm Api Or Fix'
     0x48:
       id: 'algo_engine'
       doc: 'Algo Engine'
@@ -3499,16 +3499,16 @@ enums:
   quote_cancel_type:
     1:
       id: 'cancelper_instrument'
-      doc: 'Cancel per Instrument'
+      doc: 'Cancel Per Instrument'
     3:
       id: 'cancelper_instrumentgroup'
-      doc: 'Cancel per Instrument group'
+      doc: 'Cancel Per Instrument Group'
     4:
       id: 'cancelallquotes'
-      doc: 'Cancel all quotes'
+      doc: 'Cancel All Quotes'
     100:
       id: 'cancelper_quote_set'
-      doc: 'Cancel per Quote Set'
+      doc: 'Cancel Per Quote Set'
   mass_action_scope:
     1:
       id: 'instrument'
@@ -3518,17 +3518,17 @@ enums:
       doc: 'All'
     9:
       id: 'market_segment_id'
-      doc: 'Market Segment ID'
+      doc: 'Market Segment Id'
     10:
       id: 'instrument_group'
       doc: 'Instrument Group'
     100:
       id: 'quote_set_id'
-      doc: 'Quote Set ID'
+      doc: 'Quote Set Id'
   mass_cancel_request_type:
     100:
       id: 'sender_sub_id'
-      doc: 'Sender Sub ID'
+      doc: 'Sender Sub Id'
     101:
       id: 'account'
       doc: 'Account'
@@ -3569,7 +3569,7 @@ enums:
   ord_status_req_type:
     100:
       id: 'sender_sub_id'
-      doc: 'SenderSubID'
+      doc: 'Sender Sub Id'
     101:
       id: 'account'
       doc: 'Account'
@@ -3579,10 +3579,10 @@ enums:
       doc: 'Day'
     1:
       id: 'gtc'
-      doc: 'GTC'
+      doc: 'Gtc'
     6:
       id: 'gtd'
-      doc: 'GTD'
+      doc: 'Gtd'
   exec_ack_status:
     1:
       id: 'accepted'
@@ -3635,7 +3635,7 @@ enums:
       doc: 'Day'
     3:
       id: 'fak'
-      doc: 'FAK'
+      doc: 'Fak'
   leg_side:
     1:
       id: 'buy'
@@ -3646,10 +3646,10 @@ enums:
   poss_retrans_flag:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   manual_order_indicator_optional:
     0:
       id: 'automated'
@@ -3680,10 +3680,10 @@ enums:
   aggressor_indicator:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   order_event_type:
     4:
       id: 'partially_filled'
@@ -3719,10 +3719,10 @@ enums:
   last_rpt_requested:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   exec_restatement_reason:
     8:
       id: 'market_exchange_option'
@@ -3744,13 +3744,13 @@ enums:
       doc: 'Cancel From Firmsoft'
     106:
       id: 'cancel_from_risk_management_api'
-      doc: 'Cancel From Risk Management API'
+      doc: 'Cancel From Risk Management Api'
     107:
       id: 'self_match_prevention_newest_order_cancelled'
       doc: 'Self Match Prevention Newest Order Cancelled'
     108:
       id: 'cancelduetovolquotedoptionorderrestedqtylessthanminordersize'
-      doc: 'Cancel due to vol quoted option order rested qty less than min order size'
+      doc: 'Cancel Due To Vol Quoted Option Order Rested Qty Less Than Min Order Size'
   request_result:
     0:
       id: 'valid_request'
@@ -3760,17 +3760,17 @@ enums:
       doc: 'No Data Found That Matched Selection Criteria'
     3:
       id: 'not_authorizedto_retrieve_data'
-      doc: 'Not Authorized to Retrieve Data'
+      doc: 'Not Authorized To Retrieve Data'
     4:
       id: 'data_temporarily_unavailable'
       doc: 'Data Temporarily Unavailable'
   last_fragment:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
   quote_ack_status:
     0:
       id: 'accepted'
@@ -3781,19 +3781,19 @@ enums:
   quote_cxl_status:
     1:
       id: 'cancelper_instrument'
-      doc: 'Cancel per Instrument'
+      doc: 'Cancel Per Instrument'
     3:
       id: 'cancelper_instrumentgroup'
-      doc: 'Cancel per Instrument group'
+      doc: 'Cancel Per Instrument Group'
     4:
       id: 'cancelallquotes'
-      doc: 'Cancel all quotes'
+      doc: 'Cancel All Quotes'
     5:
       id: 'rejected'
       doc: 'Rejected'
     100:
       id: 'cancelper_quote_set'
-      doc: 'Cancel per Quote Set'
+      doc: 'Cancel Per Quote Set'
   ord_status_trd_cxl:
     0x47:
       id: 'trade_correction'
@@ -3831,10 +3831,10 @@ enums:
   security_response_type:
     1:
       id: 'accept_security_proposalasis'
-      doc: 'Accept Security Proposal as is'
+      doc: 'Accept Security Proposal As Is'
     2:
       id: 'accept_securityproposalwithrevisionsasindicatedinthemessage'
-      doc: 'Accept Security proposal with revisions as indicated in the message'
+      doc: 'Accept Security Proposal With Revisions As Indicated In The Message'
     5:
       id: 'reject_security_proposal'
       doc: 'Reject Security Proposal'
@@ -3844,12 +3844,12 @@ enums:
       doc: 'Expire On Trading Session Close'
     2:
       id: 'expirationatgivendate'
-      doc: 'Expiration at given date'
+      doc: 'Expiration At Given Date'
   auto_quote_request:
     0:
       id: 'false_field'
-      doc: 'False, No'
+      doc: 'False No'
     1:
       id: 'true_field'
-      doc: 'True, Yes'
+      doc: 'True Yes'
 

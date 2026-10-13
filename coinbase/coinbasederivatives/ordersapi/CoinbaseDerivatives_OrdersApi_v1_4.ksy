@@ -897,160 +897,160 @@ enums:
   reset_seq_num:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   trading_instrument_status:
     0:
       id: 'ok'
-      doc: 'TradingSystemStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OK'
     1:
       id: 'temporarily_unavailable'
-      doc: 'TradingSystemStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TEMPORARILY_UNAVAILABLE'
     2:
       id: 'back_pressured'
-      doc: 'TradingSystemStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BACK_PRESSURED'
   security_type:
     0:
       id: 'futures'
-      doc: 'SecurityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURES'
     1:
       id: 'options'
-      doc: 'SecurityType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTIONS'
   instrument_status:
     1:
       id: 'pre_open'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN'
     2:
       id: 'pre_open_no_cancel'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRE_OPEN_NO_CANCEL'
     3:
       id: 'ready_to_trade'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'READY_TO_TRADE'
     4:
       id: 'trading_halt'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRADING_HALT'
     5:
       id: 'close'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLOSE'
     6:
       id: 'post_close'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'POST_CLOSE'
   is_last_message:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   side:
     1:
       id: 'buy'
-      doc: 'Side Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BUY'
   order_reject_reason:
     1:
       id: 'error'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Error occurred during submit.'
     2:
       id: 'invalid_instrument'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'InstrumentId is unknown.'
     3:
       id: 'cl_ord_id_in_use'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ClientOrderId is already in use for another order.'
     8:
       id: 'validation_failure'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Some sort of validation failure.'
     9:
       id: 'unknown_order'
-      doc: 'OrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unknown order.'
   cancel_reason:
     0:
       id: 'expired'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'EXPIRED'
     1:
       id: 'canceled_by_user'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CANCELED_BY_USER'
     2:
       id: 'self_match_prevention'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SELF_MATCH_PREVENTION'
     3:
       id: 'client_disconnect'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'CLIENT_DISCONNECT'
     4:
       id: 'price_limit'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PRICE_LIMIT'
     5:
       id: 'admin_cancel'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ADMIN_CANCEL'
     6:
       id: 'mass_cancel'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'MASS_CANCEL'
     7:
       id: 'stream_replaced'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'STREAM_REPLACED'
     8:
       id: 'active_limit_exceeded'
-      doc: 'CancelReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'ACTIVE_LIMIT_EXCEEDED'
   cancel_order_reject_reason:
     1:
       id: 'error'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Error occurred during cancel request.'
     2:
       id: 'unknown_order'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Unknown order.'
     3:
       id: 'order_filled'
-      doc: 'CancelOrderRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'Order already filled'
   current_session_only:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   request_trading_lock:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   only_current_session:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   trading_lock_applied:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   is_aggressor:
     0:
       id: 'false_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FALSE'
     1:
       id: 'true_field'
-      doc: 'Bool Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TRUE'
   resend_reject_reason:
     1:
       id: 'begin_exec_id_too_small'
-      doc: 'ResendRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'BEGIN_EXEC_ID_TOO_SMALL'
     2:
       id: 'end_exec_id_too_large'
-      doc: 'ResendRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'END_EXEC_ID_TOO_LARGE'
     3:
       id: 'resend_already_in_progress'
-      doc: 'ResendRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RESEND_ALREADY_IN_PROGRESS'
     4:
       id: 'too_many_resend_requests'
-      doc: 'ResendRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'TOO_MANY_RESEND_REQUESTS'
     5:
       id: 'server_error'
-      doc: 'ResendRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SERVER_ERROR'
 

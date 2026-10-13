@@ -656,71 +656,71 @@ enums:
   type_field:
     0:
       id: 'perp_future'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'PERP_FUTURE'
     1:
       id: 'option'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION'
     2:
       id: 'spot'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SPOT'
     3:
       id: 'future_combo'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'FUTURE_COMBO'
     4:
       id: 'option_combo'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPTION_COMBO'
     5:
       id: 'dated_future'
-      doc: 'InstrumentType Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DATED_FUTURE'
   status:
     0:
       id: 'open'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPEN'
     1:
       id: 'inactive'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INACTIVE'
     2:
       id: 'settlement'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SETTLEMENT'
     3:
       id: 'delivered'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELIVERED'
     4:
       id: 'locked'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LOCKED'
     5:
       id: 'halted'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HALTED'
   trading_status:
     0:
       id: 'open'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OPEN'
     1:
       id: 'inactive'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'INACTIVE'
     2:
       id: 'settlement'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SETTLEMENT'
     3:
       id: 'delivered'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'DELIVERED'
     4:
       id: 'locked'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'LOCKED'
     5:
       id: 'halted'
-      doc: 'InstrumentStatus Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'HALTED'
   reason:
     1:
       id: 'seq_too_low'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SEQ_TOO_LOW'
     2:
       id: 'seq_too_high'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'SEQ_TOO_HIGH'
     3:
       id: 'rate_limit_exceeded'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'RATE_LIMIT_EXCEEDED'
     4:
       id: 'other_error'
-      doc: 'RetransmitRejectReason Scaled.Binary.Specification.Load.Sbe.V1.Xml.Xml.typesEnumValidValue'
+      doc: 'OTHER_ERROR'
 
