@@ -421,7 +421,7 @@ enums:
       doc: 'System Event Messages signal events that affect the entire NASDAQ system:'
     0x41:
       id: 'accepted_message'
-      doc: 'Functionality that is not available will be greyed out in the specifications. Any changes will be conveyed via the NASDAQ Head Trader Alerts or Technical Updates.'
+      doc: 'This message acknowledges the receipt and acceptance of a valid Enter Order Message. The data fields from the Enter Order Message are echoed back in this message. Note that the accepted values may differ from the entered values for some fields.'
     0x55:
       id: 'replaced_message'
       doc: 'This message acknowledges the receipt and acceptance of a valid Replace Order Message. The data fields from the Replace Order Message are echoed back in this message. Note that the accepted values may differ from the entered values for some fields. You will receive one and only one of these two for each replacement.'

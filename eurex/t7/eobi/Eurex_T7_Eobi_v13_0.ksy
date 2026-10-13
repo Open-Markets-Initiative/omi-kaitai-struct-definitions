@@ -143,10 +143,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_desc
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_40_nullable
       - id: security_sub_type
         type: s4_nullable
         doc: 'Nullable, No Value = 0x80000000'
@@ -207,10 +204,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_desc
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_40_nullable
       - id: security_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -249,10 +243,7 @@ types:
         type: nanosecond_timestamp_nullable
         doc: 'Matching-engine transaction time in nanoseconds since Unix epoch. Nanoseconds since Unix epoch. Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: security_desc
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_40_nullable
       - id: security_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -1037,6 +1028,15 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
+  str_40_nullable:
+    seq:
+      - id: value
+        size: 40
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   decimal_s8_8:
     seq:
       - id: mantissa

@@ -273,10 +273,7 @@ types:
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: pound_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
@@ -371,10 +368,7 @@ types:
         type: selling_owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
       - id: iml_handling
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'All Public Customer Orders sent to BOX must include NBBO filtering instructions: 1. NBBO Filtering and IML Routing: The order is filtered for NBBO and is routed to the best away Exchange if it is executed and BOX is not at NBBO. 2. No NBBO Filtering: The order is not filtered for NBBO. This type of filtering is not acceptable for Public Customer and Broker Dealer origin orders, regardless of whether they are for BOX Participants or not. 3. NBBO Filtering and No IML Routing: Order filtered against NBBO without Inter-Market Linkage routing instructions, the Order being rejected back to the sender if it is marketable at the time of reception and BOX is not at NBBO. For Complex Order, this is the only valid value. 4. InBound ISO order. The order is a Limit and IOC order. It is not filtered against NBBO and not routed away. 5. Contingent Orders: Specifies that the Auction or Floor Trade is contingent and should not be controlled against the NBBO for the execution price. Only used for Solicitation, Facilitation and Floor Trades. The only values supported for Solicitation and Facilitation are 3 and 5. 6. No Exposure for Complex Order Instrument upon entry. Default behaviour for Complex Order Instrument is to be exposed upon entry. Only valid for Complex Order'
       - id: special_price_term
         type: u1
@@ -467,10 +461,7 @@ types:
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: pound_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
@@ -481,10 +472,7 @@ types:
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: pound_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
@@ -563,10 +551,7 @@ types:
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: pound_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
@@ -618,10 +603,7 @@ types:
         type: str_4_nullable
         doc: 'Contains the digit portion of the Participant ID of the Participant to whom the. Nullable, No Value = 0'
       - id: iml_handling
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'All Public Customer Orders sent to BOX must include NBBO filtering instructions: 1. NBBO Filtering and IML Routing: The order is filtered for NBBO and is routed to the best away Exchange if it is executed and BOX is not at NBBO. 2. No NBBO Filtering: The order is not filtered for NBBO. This type of filtering is not acceptable for Public Customer and Broker Dealer origin orders, regardless of whether they are for BOX Participants or not. 3. NBBO Filtering and No IML Routing: Order filtered against NBBO without Inter-Market Linkage routing instructions, the Order being rejected back to the sender if it is marketable at the time of reception and BOX is not at NBBO. For Complex Order, this is the only valid value. 4. InBound ISO order. The order is a Limit and IOC order. It is not filtered against NBBO and not routed away. 5. Contingent Orders: Specifies that the Auction or Floor Trade is contingent and should not be controlled against the NBBO for the execution price. Only used for Solicitation, Facilitation and Floor Trades. The only values supported for Solicitation and Facilitation are 3 and 5. 6. No Exposure for Complex Order Instrument upon entry. Default behaviour for Complex Order Instrument is to be exposed upon entry. Only valid for Complex Order'
       - id: clearing_data
         type: clearing_data
@@ -739,10 +721,7 @@ types:
         encoding: ASCII
         doc: 'Identifies a firm referenced in the SOLA® database'
       - id: iml_handling
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'All Public Customer Orders sent to BOX must include NBBO filtering instructions: 1. NBBO Filtering and IML Routing: The order is filtered for NBBO and is routed to the best away Exchange if it is executed and BOX is not at NBBO. 2. No NBBO Filtering: The order is not filtered for NBBO. This type of filtering is not acceptable for Public Customer and Broker Dealer origin orders, regardless of whether they are for BOX Participants or not. 3. NBBO Filtering and No IML Routing: Order filtered against NBBO without Inter-Market Linkage routing instructions, the Order being rejected back to the sender if it is marketable at the time of reception and BOX is not at NBBO. For Complex Order, this is the only valid value. 4. InBound ISO order. The order is a Limit and IOC order. It is not filtered against NBBO and not routed away. 5. Contingent Orders: Specifies that the Auction or Floor Trade is contingent and should not be controlled against the NBBO for the execution price. Only used for Solicitation, Facilitation and Floor Trades. The only values supported for Solicitation and Facilitation are 3 and 5. 6. No Exposure for Complex Order Instrument upon entry. Default behaviour for Complex Order Instrument is to be exposed upon entry. Only valid for Complex Order'
       - id: modified_order_id
         type: str
@@ -837,10 +816,7 @@ types:
         type: selling_owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
       - id: iml_handling
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'All Public Customer Orders sent to BOX must include NBBO filtering instructions: 1. NBBO Filtering and IML Routing: The order is filtered for NBBO and is routed to the best away Exchange if it is executed and BOX is not at NBBO. 2. No NBBO Filtering: The order is not filtered for NBBO. This type of filtering is not acceptable for Public Customer and Broker Dealer origin orders, regardless of whether they are for BOX Participants or not. 3. NBBO Filtering and No IML Routing: Order filtered against NBBO without Inter-Market Linkage routing instructions, the Order being rejected back to the sender if it is marketable at the time of reception and BOX is not at NBBO. For Complex Order, this is the only valid value. 4. InBound ISO order. The order is a Limit and IOC order. It is not filtered against NBBO and not routed away. 5. Contingent Orders: Specifies that the Auction or Floor Trade is contingent and should not be controlled against the NBBO for the execution price. Only used for Solicitation, Facilitation and Floor Trades. The only values supported for Solicitation and Facilitation are 3 and 5. 6. No Exposure for Complex Order Instrument upon entry. Default behaviour for Complex Order Instrument is to be exposed upon entry. Only valid for Complex Order'
       - id: special_price_term
         type: u1
@@ -1028,6 +1004,15 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   str_50_nullable:
     seq:
       - id: value

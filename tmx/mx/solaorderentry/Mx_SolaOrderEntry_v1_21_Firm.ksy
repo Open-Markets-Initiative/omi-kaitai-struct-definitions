@@ -527,10 +527,7 @@ types:
         type: str_10_nullable
         doc: 'Price format with format indicator and price mantissa: Format indicator (1) • Alpha: the price is negative (‘A’ means negative value with no decimal, ‘B’ means negative value with 1 decimal, ‘C’ means negative value with 2 decimals, etc.) • Numeric: the price is positive (‘0’ means positive value with no decimal, ‘1’ means positive value with one decimal, ‘2’ means positive value with 2 decimals, etc.) • Set to spaces: the price is not significant Price mantissa (9) • Represents the price value including the number of decimals defined in the format indicator Examples: • Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 • Format indicator = A; Price mantissa = 3567838; Price = -3567838 • Format indicator = ; Price mantissa = 3567838; Price = not significant. Nullable, No Value = 0'
       - id: special_price_term
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'If included, must contain one of the following values: ‘ ’ = None S = Stop order'
       - id: additional_price
         type: str
@@ -538,10 +535,7 @@ types:
         encoding: ASCII
         doc: 'If Special Price Term is equal to ‘S’, this field represents the trigger price: i.e., the price from which a STOP order will be triggered. Note: Mandatory if Special Price Term is different from spaces'
       - id: quantity_term
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'If included, must contain one of the following values: ‘ ’ = None D = Disclosed M = Minimum'
       - id: additional_quantity
         type: str_8_nullable
@@ -570,10 +564,7 @@ types:
         type: str_8_nullable
         doc: 'Anti-Wash ID for the Wash Trade Protection. Note: This field cannot be empty if the AntiWashInstruction is set to a value. Nullable, No Value = 0'
       - id: anti_wash_instruction
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Anti-Wash instruction to indicate how to handle the trade situation: B = CancelBothInboundOrderAndOpposite RestingOrder I = CancelInboundOrder O = CancelOppositeRestingOrder Note: This field is not provided if the AntiWashId field is empty. Note: This field must be provided if the AntiWashId field is not empty'
       - id: filler_20
         size: 20
@@ -611,10 +602,7 @@ types:
         type: str_10_nullable
         doc: 'Price format with format indicator and price mantissa: Format indicator (1) • Alpha: the price is negative (‘A’ means negative value with no decimal, ‘B’ means negative value with 1 decimal, ‘C’ means negative value with 2 decimals, etc.) • Numeric: the price is positive (‘0’ means positive value with no decimal, ‘1’ means positive value with one decimal, ‘2’ means positive value with 2 decimals, etc.) • Set to spaces: the price is not significant Price mantissa (9) • Represents the price value including the number of decimals defined in the format indicator Examples: • Format indicator = 2; Price mantissa = 3509438; Price = 35094.38 • Format indicator = A; Price mantissa = 3567838; Price = -3567838 • Format indicator = ; Price mantissa = 3567838; Price = not significant. Nullable, No Value = 0'
       - id: special_price_term
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'If included, must contain one of the following values: ‘ ’ = None S = Stop order'
       - id: additional_price
         type: str
@@ -622,10 +610,7 @@ types:
         encoding: ASCII
         doc: 'If Special Price Term is equal to ‘S’, this field represents the trigger price: i.e., the price from which a STOP order will be triggered. Note: Mandatory if Special Price Term is different from spaces'
       - id: quantity_term
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'If included, must contain one of the following values: ‘ ’ = None D = Disclosed M = Minimum'
       - id: additional_quantity
         type: str_8_nullable
@@ -659,10 +644,7 @@ types:
         type: str_8_nullable
         doc: 'Anti-Wash ID for the Wash Trade Protection. Note: This field cannot be empty if the AntiWashInstruction is set to a value. Nullable, No Value = 0'
       - id: anti_wash_instruction
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Anti-Wash instruction to indicate how to handle the trade situation: B = CancelBothInboundOrderAndOpposite RestingOrder I = CancelInboundOrder O = CancelOppositeRestingOrder Note: This field is not provided if the AntiWashId field is empty. Note: This field must be provided if the AntiWashId field is not empty'
       - id: filler_20
         size: 20
@@ -965,4 +947,13 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
 

@@ -102,10 +102,7 @@ types:
   login_request_message:
     seq:
       - id: username
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'CompID assigned to the client'
   replay_request_message:
     seq:
@@ -170,10 +167,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN Code of an instrument'
       - id: allowed_book_types
         type: allowed_book_types
@@ -183,16 +177,10 @@ types:
         enum: source_venue
         doc: 'Venue from which market data is received for the instrument'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'The tick structure applicable for the instrument'
       - id: reserved_8
         size: 8
@@ -204,10 +192,7 @@ types:
         type: decimal_s8_8
         doc: 'Static Circuit Breaker Tolerance (%) of the instrument. Implied decimal with scale 1e-8'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment the instrument is assigned to'
       - id: reserved_12
         size: 12
@@ -216,10 +201,7 @@ types:
         size: 11
         doc: 'Reserved for future use'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217'
       - id: partition_id
         type: str
@@ -306,10 +288,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier'
       - id: transaction_identification_code
-        type: str
-        size: 52
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_52_nullable
         doc: 'A unique trade identifier. The value will be right aligned'
       - id: mifid_trade_type
         type: u1
@@ -320,22 +299,13 @@ types:
         enum: auction_type
         doc: 'The value in this field is only relevant when Trade Type is 1'
       - id: mifid_price
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'MiFID compliant Price field populated using either Price or Percentage. {DECIMAL-18/13} in case the price is expressed as monetary value. {DECIMAL-11/10} in case the price is expressed as percentage'
       - id: mifid_quantity
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Number of units of the financial instrument. {DECIMAL-18/17} Will be set to default value (20 spaces) if the traded security is a bond'
       - id: trading_date_and_time
-        type: str
-        size: 27
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_27_nullable
         doc: 'Date and time when the transaction was executed/agreed upon. If a trade is cancelled or amended, this field will contain the Trading Date and Time of the original trade'
       - id: instrument_identification_code_type
         type: str
@@ -344,10 +314,7 @@ types:
         pad-right: 0x20
         doc: 'Only relevant for non-equity instruments. Empty for equity and equity-like instruments'
       - id: instrument_identification_code
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'Instrument identification number (ISIN code)'
       - id: price_notation
         type: str
@@ -356,40 +323,22 @@ types:
         pad-right: 0x20
         doc: 'Indicates if the price is expressed in monetary value or in percentage. Only relevant for non-equity instruments'
       - id: price_major_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the price is expressed (applicable if the price is expressed as monetary value). Currency Code as per ISO 4217'
       - id: notional_amount
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Notional value relevant to the security. {DECIMAL-18/5} Only relevant for non-equity instruments'
       - id: notional_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major Currency in which the notional amount is denominated. Only relevant for non-equity instruments'
       - id: venue_of_execution
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the venue where the transaction was executed'
       - id: publication_date_and_time
-        type: str
-        size: 27
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_27_nullable
         doc: 'Date and time when the transaction was published'
       - id: pt_ref_price_waiver_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Not Applicable to LSE'
       - id: reserved_4
         size: 4
@@ -490,6 +439,15 @@ types:
         type: u1
         enum: duplicative_indicator
         doc: 'Indicates whether the trade report is duplicative'
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   nanosecond_timestamp:
     seq:
       - id: time
@@ -503,6 +461,33 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -510,6 +495,24 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -530,6 +533,42 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
+  str_52_nullable:
+    seq:
+      - id: value
+        size: 52
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_27_nullable:
+    seq:
+      - id: value
+        size: 27
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_4_nullable:
+    seq:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
 
 enums:
   message_type:

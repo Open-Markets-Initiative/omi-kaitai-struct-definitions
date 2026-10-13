@@ -103,10 +103,7 @@ types:
   login_request_message:
     seq:
       - id: username
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'CompID assigned to the client'
   recovery_request_message:
     seq:
@@ -118,10 +115,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: group_id
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Group/Segment ID if Request Level is 1. Blank if not'
       - id: request_order_book_type
         type: u1
@@ -193,10 +187,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN Code of an instrument'
       - id: allowed_book_types
         type: allowed_book_types
@@ -206,16 +197,10 @@ types:
         enum: source_venue
         doc: 'Venue from which market data is received for the instrument'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'Not Applicable to TRADEcho'
       - id: price_band_tolerances
         type: decimal_s8_8
@@ -227,10 +212,7 @@ types:
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment the instrument is assigned to'
       - id: reserved_12
         size: 12
@@ -239,10 +221,7 @@ types:
         size: 11
         doc: 'Reserved for future use'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217'
       - id: reserved_1
         size: 1
@@ -357,10 +336,7 @@ types:
         enum: order_book_type
         doc: 'Order Book Type'
       - id: participant
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Identity of trading participant that submitted the order'
       - id: order_type
         type: u1
@@ -370,10 +346,7 @@ types:
         size: 10
         doc: 'Reserved field'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217'
       - id: venue_of_publication
         type: str
@@ -381,6 +354,24 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identification of the regulatory regime under which the transaction was published. The value sent by the source venue is passed on'
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   nanosecond_timestamp:
     seq:
       - id: time
@@ -394,6 +385,33 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -401,6 +419,15 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_4:
     seq:
       - id: mantissa

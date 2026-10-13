@@ -71,20 +71,23 @@ types:
     seq:
       - id: text
         type: str
-        size: 1
+        size-eos: true
         encoding: ASCII
         doc: 'Free form human readable text'
   login_accepted_packet:
     seq:
-      - id: session
+      - id: accepted_session
         type: str
         size: 10
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identity of the multicast session the payload relates to'
-      - id: sequence_number
-        type: u4
-        doc: 'Sequence Number of the first message to follow this header'
+        doc: 'The session ID of the session that is now logged into. Left padded with spaces'
+      - id: accepted_sequence_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The sequence number in ASCII of the next Sequenced Message to be sent. Left padded with spaces'
   login_rejected_packet:
     seq:
       - id: reject_reason_code

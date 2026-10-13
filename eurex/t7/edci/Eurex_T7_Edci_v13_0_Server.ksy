@@ -139,15 +139,9 @@ types:
         type: u1
         enum: exec_type
       - id: affected_fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: affected_fix_orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   forced_logout_notification:
@@ -160,10 +154,7 @@ types:
         type: u2
         doc: 'Nullable, No Value = 0xFFFF'
       - id: var_text
-        type: str
-        size: len_var_text
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2000_nullable
       - id: alignment_padding
         size: (8 - (_io.pos + 6) % 8) % 8
         if: (_io.pos + 6) % 8 != 0
@@ -198,9 +189,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: default_cstm_appl_ver_id
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: default_cstm_appl_ver_sub_id
         type: str
         size: 5
@@ -342,35 +331,17 @@ types:
         type: u1
         enum: cust_order_handling_inst
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: fix_orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
       - id: fills_grp_comp
@@ -429,10 +400,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: var_text
-        type: str
-        size: len_var_text
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2000_nullable
       - id: alignment_padding
         size: (8 - (_io.pos + 6) % 8) % 8
         if: (_io.pos + 6) % 8 != 0
@@ -461,10 +429,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: pad6
         size: 6
   session_status_broadcast:
@@ -546,6 +511,33 @@ types:
     instances:
       is_null:
         value: value == -9223372036854775808
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_2000_nullable:
+    seq:
+      - id: value
+        size: 2000
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -574,6 +566,24 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_5_nullable:
+    seq:
+      - id: value
+        size: 5
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
 
 enums:
   template_id:

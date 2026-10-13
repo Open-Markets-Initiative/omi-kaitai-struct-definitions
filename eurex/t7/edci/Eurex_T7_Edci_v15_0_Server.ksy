@@ -190,15 +190,9 @@ types:
         type: u1
         enum: exec_type
       - id: affected_fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: affected_fix_orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   enter_clip_request_notification:
@@ -241,15 +235,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: root_party_contra_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: root_party_contra_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: pad2v2
         size: 2
       - id: cross_request_side_grp_comp
@@ -304,10 +292,7 @@ types:
         type: u1
         enum: cust_order_handling_inst
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: order_origination
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -323,10 +308,7 @@ types:
         type: u2
         doc: 'Nullable, No Value = 0xFFFF'
       - id: var_text
-        type: str
-        size: len_var_text
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2000_nullable
       - id: alignment_padding
         size: (8 - (_io.pos + 6) % 8) % 8
         if: (_io.pos + 6) % 8 != 0
@@ -358,10 +340,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: var_text
-        type: str
-        size: len_var_text
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2000_nullable
       - id: alignment_padding
         size: (8 - (_io.pos + 6) % 8) % 8
         if: (_io.pos + 6) % 8 != 0
@@ -385,9 +364,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: default_cstm_appl_ver_id
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: default_cstm_appl_ver_sub_id
         type: str
         size: 5
@@ -541,35 +518,17 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: fix_orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: fills_grp_comp
         type: fills_grp_comp
         repeat: expr
@@ -697,15 +656,9 @@ types:
         type: u1
         enum: list_update_action
       - id: requesting_party_entering_firm
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: requesting_party_clearing_firm
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: party_detail_status
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -727,10 +680,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: var_text
-        type: str
-        size: len_var_text
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2000_nullable
       - id: alignment_padding
         size: (8 - (_io.pos + 6) % 8) % 8
         if: (_io.pos + 6) % 8 != 0
@@ -815,15 +765,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: requesting_party_entering_firm
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: requesting_party_clearing_firm
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: pad1
         size: 1
   service_availability_market_broadcast:
@@ -870,15 +814,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_sponsored_access_unit
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
   session_status_broadcast:
     seq:
       - id: pad2
@@ -1026,6 +964,15 @@ types:
     instances:
       is_null:
         value: value == -2147483648
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -1040,6 +987,60 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  str_5_nullable:
+    seq:
+      - id: value
+        size: 5
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_2000_nullable:
+    seq:
+      - id: value
+        size: 2000
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_9_nullable:
+    seq:
+      - id: value
+        size: 9
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
 
 enums:
   template_id:

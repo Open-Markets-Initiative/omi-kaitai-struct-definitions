@@ -106,10 +106,7 @@ types:
   login_request_message:
     seq:
       - id: username
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'CompID assigned to the client'
   recovery_request_message:
     seq:
@@ -121,10 +118,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: group_id
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Group/Segment ID if Request Level is 1. Blank if not'
       - id: request_order_book_type
         type: u1
@@ -347,16 +341,10 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN code of the instrument'
       - id: sedol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'SEDOL code of the instrument'
       - id: allowed_book_types
         type: allowed_book_types
@@ -366,28 +354,16 @@ types:
         enum: source_venue
         doc: 'Mandatory field if Request Level = 1. Not considered for other Request Levels'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment the instrument is assigned to'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency code as per ISO 4217'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'The tick structure applicable for the instrument'
       - id: previous_days_closing_price
         type: decimal_s8_8
@@ -435,20 +411,14 @@ types:
         size: 8
         doc: 'Reserved for future use'
       - id: ex_marker_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'The value of an Ex-Marker pertaining to a tradable instrument'
       - id: security_type
         type: u1
         enum: security_type
         doc: 'Type of security'
       - id: country_of_register
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Country of Register'
       - id: exchange_market_size
         type: u8
@@ -467,10 +437,7 @@ types:
         type: decimal_s8_8
         doc: 'Strike Price (exercise price for warrants). Implied decimal with scale 1e-8'
       - id: security_exchange
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Not Applicable to LSE'
       - id: reserved_12
         size: 12
@@ -502,16 +469,10 @@ types:
         size: 2
         doc: 'Reserved for future use'
       - id: symbol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'Symbol of the instrument'
       - id: description
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_40_nullable
         doc: 'Description of the instrument'
   allowed_book_types:
     meta:
@@ -659,6 +620,24 @@ types:
       - id: dynamic_reference_price
         type: decimal_s8_8
         doc: 'Reference Price as reported by the source venue. Implied decimal with scale 1e-8'
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   nanosecond_timestamp:
     seq:
       - id: time
@@ -699,6 +678,42 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   yyyymmdd_ascii_date:
     seq:
       - id: text
@@ -712,6 +727,15 @@ types:
         value: text.substring(4, 6).to_i
       day:
         value: text.substring(6, 8).to_i
+  str_40_nullable:
+    seq:
+      - id: value
+        size: 40
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_u8_4:
     seq:
       - id: mantissa

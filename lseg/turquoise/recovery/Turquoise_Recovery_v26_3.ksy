@@ -110,10 +110,7 @@ types:
   login_request_message:
     seq:
       - id: username
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'CompID assigned to the client'
   recovery_request_message:
     seq:
@@ -125,10 +122,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: group_id
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Group/Segment ID if Request Level is 1. Blank if not'
       - id: request_order_book_type
         type: u1
@@ -200,16 +194,10 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN code of the instrument'
       - id: sedol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'Not Applicable to Turquoise'
       - id: allowed_book_types
         type: allowed_book_types
@@ -219,28 +207,16 @@ types:
         enum: source_venue
         doc: 'Mandatory field if Request Level = 1. Not considered for other Request Levels'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment or instrument group ID as identified by the trading market'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency code as per ISO 4217'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'The tick structure applicable for the instrument'
       - id: previous_days_closing_price
         type: decimal_s8_8
@@ -288,19 +264,13 @@ types:
         size: 8
         doc: 'Reserved for future use. Any value in this field should be ignored'
       - id: ex_marker_code
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'Not Applicable to Turquoise'
       - id: security_type
         type: u1
         doc: 'Type of security'
       - id: country_of_register
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Not Applicable to Turquoise'
       - id: exchange_market_size
         type: u8
@@ -319,10 +289,7 @@ types:
         type: decimal_s8_8
         doc: 'Not Applicable to Turquoise. Implied decimal with scale 1e-8'
       - id: security_exchange
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Market Identifier Code'
       - id: reserved_12
         size: 12
@@ -354,16 +321,10 @@ types:
         size: 2
         doc: 'Reserved for future use'
       - id: symbol
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'MTF Common Symbol of the instrument'
       - id: description
-        type: str
-        size: 40
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_40_nullable
         doc: 'Description of the instrument'
   allowed_book_types:
     meta:
@@ -439,19 +400,13 @@ types:
         enum: order_book_type
         doc: 'Order book the status applies to'
       - id: participant
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Not Applicable to Turquoise'
       - id: order_type
         type: u1
         doc: 'Type of the order'
       - id: rfq_id
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_10_nullable
         doc: 'Not Applicable to Turquoise'
   top_of_book_message:
     seq:
@@ -621,10 +576,7 @@ types:
         type: u8
         doc: 'Unique identifier of the trade'
       - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The unique ID of the BTF Order'
       - id: cross_type
         type: u1
@@ -773,10 +725,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: transaction_identification_code
-        type: str
-        size: 52
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_52_nullable
         doc: 'A unique trade identifier. The value will be right aligned'
       - id: trade_type
         type: u1
@@ -787,34 +736,19 @@ types:
         enum: auction_type
         doc: 'Not Applicable to Turquoise'
       - id: mi_fid_price
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'MiFID compliant Price field populated using executed price'
       - id: mi_fid_quantity
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Number of units of the financial instrument. {DECIMAL-18/17}'
       - id: trading_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'Date and time when the transaction was executed/agreed upon'
       - id: instrument_identification_code_type
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Instrument Identification Code Type'
       - id: instrument_identification_code
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'Instrument identification number (ISIN code)'
       - id: price_notation
         type: str
@@ -823,40 +757,22 @@ types:
         pad-right: 0x20
         doc: 'Price Notation'
       - id: price_major_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the price is expressed (applicable if the price is expressed as monetary value)'
       - id: notional_amount
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Notional value relevant to the security'
       - id: notional_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the notional amount is denominated'
       - id: venue_of_execution_alpha_4
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the venue where the transaction was executed'
       - id: publication_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'Date and time when the transaction was published'
       - id: pt_ref_price_waiver_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Ref Price Waiver Flag'
       - id: trading_system
         type: str
@@ -865,28 +781,16 @@ types:
         pad-right: 0x20
         doc: 'Type of trading system where the transaction was executed'
       - id: market_closing_price_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Market Closing Price Flag'
       - id: pt_algo_trade
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Algo Trade'
       - id: pt_cancellation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Cancellation Flag'
       - id: pt_amendment_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Amendment Flag'
       - id: reserved_1
         size: 1
@@ -974,50 +878,29 @@ types:
         type: u8
         doc: 'GTP Instrument identifier if Request Level is 0. Blank if not'
       - id: transaction_identification_code
-        type: str
-        size: 52
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_52_nullable
         doc: 'A unique trade identifier. The value will be right aligned'
       - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The unique ID of the BTF Order'
       - id: cross_type
         type: u1
         enum: cross_type
         doc: 'The type of the BTF Order:'
       - id: mi_fid_price
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'MiFID compliant Price field populated using executed price'
       - id: mi_fid_quantity
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Number of units of the financial instrument. {DECIMAL-18/17}'
       - id: trading_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'Date and time when the transaction was executed/agreed upon'
       - id: instrument_identification_code_type
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Instrument Identification Code Type'
       - id: instrument_identification_code
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'Instrument identification number (ISIN code)'
       - id: price_notation
         type: str
@@ -1026,64 +909,37 @@ types:
         pad-right: 0x20
         doc: 'Price Notation'
       - id: price_major_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the price is expressed (applicable if the price is expressed as monetary value)'
       - id: notional_amount
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Notional value relevant to the security'
       - id: notional_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the notional amount is denominated'
       - id: venue_of_execution_alpha_4
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the venue where the transaction was executed'
       - id: publication_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'Date and time when the transaction was published'
       - id: reserved_4
         size: 4
         doc: 'Reserved for future use'
       - id: nt_pre_trade_waiver_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'NT Pre-Trade Waiver Flag'
       - id: pt_algo_trade
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Algo Trade'
       - id: second_reserved_4
         size: 4
         doc: 'Reserved for future use'
       - id: pt_cancellation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Cancellation Flag'
       - id: pt_amendment_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PT Amendment Flag'
       - id: reserved_1
         size: 1
@@ -1173,16 +1029,10 @@ types:
         type: u1
         doc: 'For continuous trading, position of the price point in the order book. For periodic auction, this will be set to the default value'
       - id: update_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'For continuous trading, the date and time when the aggregated bid or offer price or volume was calculated following the receipt of an order for execution, cancellation, or modification into the trading system. For periodic auction, the date and time at which the price would best satisfy the trading algorithm'
       - id: instrument_identification_code
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'Instrument identification number (ISIN code)'
       - id: order_book_side
         type: str
@@ -1191,16 +1041,10 @@ types:
         pad-right: 0x20
         doc: 'For continuous trading, the side corresponding to the price level in the order book. For periodic auction trading system, this will be set to the default value'
       - id: price_mi_fid_decimal_20
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'For continuous trading, a price of orders aggregated at a given price level. For periodic auctions, the price at which the auction trading system would best satisfy its trading algorithm. Will be set to 0 (zero) when the order book is cleared or the indicative auction price is reset'
       - id: price_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency unit in which the price is expressed'
       - id: price_notation
         type: str
@@ -1209,22 +1053,13 @@ types:
         pad-right: 0x20
         doc: 'Price Notation'
       - id: quantity
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'For continuous trading, number of units of the financial instruments aggregated on the price level. For periodic auction, the aggregated quantity attached to the price that would best satisfy the trading algorithm. Will be set to 0 (zero) when the order book is cleared or the indicative auction price is reset'
       - id: aggregated_no_of_orders_and_quotes
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'For continuous trading, the number of orders aggregated at a given price level. For periodic auction and empty side during continuous trading, this will be set to 0 (zero)'
       - id: venue
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the trading venue through the system of which orders are advertised. In accordance with ISO 10383 segment MIC or, where the segment MIC does not exist, the operating MIC'
       - id: trading_system
         type: str
@@ -1239,10 +1074,7 @@ types:
         pad-right: 0x20
         doc: 'Type of trading system phase where the order is advertised'
       - id: publication_date_and_time
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
         doc: 'Date and time when the transaction was published'
       - id: order_book_update
         type: order_book_update
@@ -1257,6 +1089,24 @@ types:
       - id: unused_7
         type: b7
         doc: 'Unused'
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1270,6 +1120,42 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -1297,6 +1183,15 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_40_nullable:
+    seq:
+      - id: value
+        size: 40
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   hhmmss_ascii_time:
     seq:
       - id: text
@@ -1310,6 +1205,24 @@ types:
         value: text.substring(2, 4).to_i
       second:
         value: text.substring(4, 6).to_i
+  str_10_nullable:
+    seq:
+      - id: value
+        size: 10
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -1324,6 +1237,33 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  str_52_nullable:
+    seq:
+      - id: value
+        size: 52
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_4_nullable:
+    seq:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
 
 enums:
   message_type:

@@ -7,7 +7,7 @@
 #   Encoding: Pitch
 #   Version: 2.41.29
 #   Date: 4/20/2022
-#   Specification: US_EQUITIES_OPTIONS_MULTICAST_PITCH_SPECIFICATION.pdf
+#   Specification: US Equities Options Multicast PITCH Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Edgx Options Multicast Depth Of Book Pitch v2.41.29'
-doc-ref: http://markets.cboe.com/us/options/support/technical
+doc-ref:
+  - http://markets.cboe.com/us/options/support/technical
+  - http://markets.cboe.com/us/equities/support/technical
 
 seq:
   - id: packet_header

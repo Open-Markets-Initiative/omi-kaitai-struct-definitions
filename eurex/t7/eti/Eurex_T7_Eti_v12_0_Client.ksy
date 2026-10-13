@@ -136,10 +136,7 @@ types:
   add_complex_instrument_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -163,10 +160,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
       - id: instrmt_leg_grp_comp
@@ -206,10 +200,7 @@ types:
   add_flexible_instrument_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -239,19 +230,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad4
         size: 4
   add_scaled_simple_instrument_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -273,10 +258,7 @@ types:
   amend_basket_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -315,15 +297,9 @@ types:
         type: u1
         doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: basket_root_party_grp_comp
         type: basket_root_party_grp_comp
         repeat: expr
@@ -342,20 +318,11 @@ types:
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
       - id: root_party_contra_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: root_party_contra_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: basket_side_trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
   instrmt_match_side_grp_comp:
@@ -397,10 +364,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   basket_side_alloc_grp_comp:
@@ -424,24 +388,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: pad4
         size: 4
   approve_basket_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -468,20 +423,11 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: basket_side_trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad5
         size: 5
       - id: basket_side_alloc_ext_grp_comp
@@ -536,77 +482,38 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
   approve_reverse_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -630,19 +537,13 @@ types:
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   approve_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -705,90 +606,45 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad4
         size: 4
   cross_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -803,17 +659,11 @@ types:
         type: s4_nullable
         doc: 'Nullable, No Value = 0x80000000'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
   delete_all_order_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -854,10 +704,7 @@ types:
   delete_all_quote_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -885,10 +732,7 @@ types:
   delete_basket_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -909,19 +753,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
   delete_clip_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -955,10 +793,7 @@ types:
   delete_order_complex_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -997,24 +832,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad5
         size: 5
   delete_order_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1053,24 +879,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad5
         size: 5
   delete_order_single_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1109,24 +926,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad5
         size: 5
   delete_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1153,19 +961,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
   enter_basket_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1201,15 +1003,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad3
         size: 3
       - id: basket_root_party_grp_comp
@@ -1227,10 +1023,7 @@ types:
   enter_clip_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1284,15 +1077,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: root_party_contra_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: root_party_contra_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: pad7
         size: 7
       - id: cross_request_side_grp_comp
@@ -1348,60 +1135,27 @@ types:
         type: u1
         enum: cust_order_handling_inst
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: side_compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
   side_cross_leg_grp_comp:
@@ -1413,19 +1167,13 @@ types:
         type: u1
         enum: leg_position_effect
       - id: leg_account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: pad4
         size: 4
   enter_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1512,35 +1260,17 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: underlying_security_id
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: underlying_security_desc
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
       - id: underlying_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
       - id: underlying_issuer
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
       - id: pad4
         size: 4
       - id: side_alloc_grp_comp
@@ -1578,15 +1308,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: pad4
         size: 4
   trd_instrmnt_leg_grp_comp:
@@ -1616,19 +1340,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: instr_attrib_value
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: pad7
         size: 7
   underlying_stip_grp_comp:
     seq:
       - id: underlying_stip_value
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: underlying_stip_type
         type: str
         size: 7
@@ -1639,19 +1357,13 @@ types:
   heartbeat:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
   inquire_enrichment_rule_id_list_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1662,10 +1374,7 @@ types:
   inquire_mm_parameter_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1679,10 +1388,7 @@ types:
   inquire_margin_based_risk_limit_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1691,19 +1397,13 @@ types:
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
       - id: party_detail_executing_unit
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: pad1
         size: 1
   inquire_pre_trade_risk_limits_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1715,24 +1415,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_unit
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: risk_limit_group
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
       - id: pad3
         size: 3
   inquire_session_list_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1740,10 +1431,7 @@ types:
   inquire_user_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1754,10 +1442,7 @@ types:
   logon_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1769,13 +1454,9 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: default_cstm_appl_ver_id
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: password
-        type: str
-        size: 32
-        encoding: ASCII
+        type: str_32_nullable
       - id: appl_usage_orders
         type: u1
         enum: appl_usage_orders
@@ -1786,38 +1467,23 @@ types:
         type: u1
         enum: order_routing_indicator
       - id: fix_engine_name
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: fix_engine_version
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: fix_engine_vendor
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_name
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_version
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_vendor
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: pad3
         size: 3
   logon_request_encrypted:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1829,14 +1495,9 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: default_cstm_appl_ver_id
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: encrypted_password
-        type: str
-        size: 684
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_684_nullable
       - id: appl_usage_orders
         type: u1
         enum: appl_usage_orders
@@ -1847,38 +1508,23 @@ types:
         type: u1
         enum: order_routing_indicator
       - id: fix_engine_name
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: fix_engine_version
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: fix_engine_vendor
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_name
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_version
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: application_system_vendor
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: pad7
         size: 7
   logout_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1886,10 +1532,7 @@ types:
   mm_parameter_definition_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1920,10 +1563,7 @@ types:
   mass_order:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -1941,20 +1581,11 @@ types:
         type: u8_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFFFFFFFFFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: price_validity_check_type
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -1983,51 +1614,27 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: num_order_entry_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
@@ -2064,10 +1671,7 @@ types:
   mass_quote_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2140,10 +1744,7 @@ types:
   modify_basket_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2179,15 +1780,9 @@ types:
         type: u1
         doc: 'Nullable, No Value = 0xFF'
       - id: basket_trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
       - id: basket_root_party_grp_comp
@@ -2205,10 +1800,7 @@ types:
   modify_order_complex_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2253,20 +1845,11 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: appl_seq_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -2310,48 +1893,24 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: num_leg_ord_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
@@ -2364,10 +1923,7 @@ types:
   leg_ord_grp_comp:
     seq:
       - id: leg_account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
@@ -2376,10 +1932,7 @@ types:
   modify_order_complex_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2454,19 +2007,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   modify_order_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2520,71 +2067,35 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: executing_trader_qualifier
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -2628,10 +2139,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: check_sum_correction
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: pad3
         size: 3
       - id: leg_ord_grp_comp
@@ -2641,10 +2149,7 @@ types:
   modify_order_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2686,10 +2191,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
@@ -2726,19 +2228,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: check_sum_correction
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: pad3
         size: 3
   modify_order_single_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2786,20 +2282,11 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: appl_seq_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -2843,15 +2330,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: position_effect
         type: u1
         enum: position_effect
@@ -2859,52 +2340,28 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   modify_order_single_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -2973,19 +2430,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
   modify_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3036,15 +2487,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
       - id: side_alloc_grp_comp
@@ -3058,10 +2503,7 @@ types:
   new_order_complex_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3097,20 +2539,11 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: appl_seq_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -3154,48 +2587,24 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: num_leg_ord_grp_comp
         type: u1
         doc: 'Nullable, No Value = 0xFF'
@@ -3208,10 +2617,7 @@ types:
   new_order_complex_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3283,19 +2689,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
   new_order_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3337,71 +2737,35 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: executing_trader_qualifier
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -3450,10 +2814,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: check_sum_correction
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: pad3
         size: 3
       - id: leg_ord_grp_comp
@@ -3463,10 +2824,7 @@ types:
   new_order_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3505,10 +2863,7 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1
         size: 1
       - id: party_id_investment_decision_maker
@@ -3545,19 +2900,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: check_sum_correction
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: pad3
         size: 3
   new_order_single_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3596,20 +2945,11 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: appl_seq_indicator
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -3656,65 +2996,35 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: fix_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad2v2
         size: 2
   new_order_single_short_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3780,19 +3090,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
   ping_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3805,10 +3109,7 @@ types:
   pre_trade_risk_limits_definition_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3832,15 +3133,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: risk_limit_group
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
       - id: party_detail_executing_unit
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: pad1
         size: 1
       - id: risk_limit_qty_grp_comp
@@ -3860,10 +3155,7 @@ types:
   quote_activation_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3897,10 +3189,7 @@ types:
   rfq_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3918,19 +3207,13 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad7
         size: 7
   retransmit_me_message_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3955,10 +3238,7 @@ types:
   retransmit_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -3980,10 +3260,7 @@ types:
   reverse_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4004,24 +3281,15 @@ types:
         type: u2_nullable
         doc: 'Nullable, No Value = 0xFFFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: reversal_reason_text
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: pad6
         size: 6
   srqs_enter_quote_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4075,85 +3343,43 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: pad2v2
         size: 2
   srqs_hit_quote_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4207,86 +3433,41 @@ types:
         type: u1
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: firm_trade_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: position_effect
         type: u1
         enum: position_effect
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_end_client_identification
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad6
         size: 6
       - id: srqs_hit_quote_grp_comp
@@ -4309,10 +3490,7 @@ types:
   srqs_inquire_smart_respondent_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4335,10 +3513,7 @@ types:
   srqs_open_negotiation_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4416,35 +3591,17 @@ types:
         type: u1
         enum: quote_condition
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: quote_req_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: party_order_origination_trader
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: charge_id
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: pad6
         size: 6
       - id: quot_req_legs_grp_comp
@@ -4507,15 +3664,9 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: target_party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: target_party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: party_detail_status
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -4527,10 +3678,7 @@ types:
   srqs_quote_snapshot_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4538,10 +3686,7 @@ types:
   srqs_quoting_status_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4556,27 +3701,15 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
   srqs_update_deal_status_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4606,29 +3739,17 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: pad3
         size: 3
   srqs_update_negotiation_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4682,30 +3803,15 @@ types:
         type: u1
         enum: quote_condition
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: free_text_5
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: party_order_origination_trader
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: charge_id
-        type: str
-        size: 132
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_132_nullable
       - id: target_parties_comp
         type: target_parties_comp
         repeat: expr
@@ -4713,10 +3819,7 @@ types:
   subscribe_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4732,10 +3835,7 @@ types:
   tes_compression_run_status_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4757,10 +3857,7 @@ types:
   unsubscribe_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4773,10 +3870,7 @@ types:
   update_remaining_risk_allowance_base_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4805,19 +3899,13 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_detail_executing_unit
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: pad7
         size: 7
   upload_tes_trade_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -4913,35 +4001,17 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: trade_report_id
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: trade_report_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: underlying_security_id
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: underlying_security_desc
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
       - id: underlying_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
       - id: underlying_issuer
-        type: str
-        size: 30
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_30_nullable
       - id: swap_clearer
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
@@ -4983,15 +4053,9 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: party_executing_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: party_executing_trader
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
       - id: pad1
         size: 1
       - id: tes_enrichment_rule_id
@@ -5025,67 +4089,34 @@ types:
         type: u1_nullable
         doc: 'Nullable, No Value = 0xFF'
       - id: account
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: party_id_position_account
-        type: str
-        size: 32
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_32_nullable
       - id: party_id_take_up_trading_firm
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_5_nullable
       - id: free_text_1
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_2
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: free_text_3
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
       - id: party_id_order_origination_firm
-        type: str
-        size: 7
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_7_nullable
       - id: party_id_beneficiary
-        type: str
-        size: 9
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_9_nullable
       - id: party_id_location_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
       - id: compliance_text
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
       - id: pad1v1
         size: 1
   user_login_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -5094,18 +4125,13 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: password
-        type: str
-        size: 32
-        encoding: ASCII
+        type: str_32_nullable
       - id: pad4
         size: 4
   user_login_request_encrypted:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -5114,17 +4140,11 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: encrypted_password
-        type: str
-        size: 684
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_684_nullable
   user_logout_request:
     seq:
       - id: network_msg_id
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
       - id: pad2
         size: 2
       - id: request_header_comp
@@ -5134,6 +4154,15 @@ types:
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: pad4
         size: 4
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   u4_nullable:
     seq:
       - id: value
@@ -5162,6 +4191,15 @@ types:
     instances:
       is_null:
         value: value == 255
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   s8_nullable:
     seq:
       - id: value
@@ -5190,6 +4228,24 @@ types:
     instances:
       is_null:
         value: value == 18446744073709551615
+  str_5_nullable:
+    seq:
+      - id: value
+        size: 5
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -5238,6 +4294,78 @@ types:
     instances:
       is_null:
         value: value.mantissa == -9223372036854775808
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_7_nullable:
+    seq:
+      - id: value
+        size: 7
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_9_nullable:
+    seq:
+      - id: value
+        size: 9
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_32_nullable:
+    seq:
+      - id: value
+        size: 32
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_684_nullable:
+    seq:
+      - id: value
+        size: 684
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   decimal_u8_4:
     seq:
       - id: mantissa
@@ -5252,6 +4380,15 @@ types:
     instances:
       is_null:
         value: value.mantissa == 9223372036854775808
+  str_132_nullable:
+    seq:
+      - id: value
+        size: 132
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
 
 enums:
   template_id:

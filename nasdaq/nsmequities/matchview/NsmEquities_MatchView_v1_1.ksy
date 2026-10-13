@@ -7,7 +7,7 @@
 #   Encoding: Ascii Itch
 #   Version: 1.1
 #   Date: 08/10/2011
-#   Specification: NQMatchView-V1_1.pdf
+#   Specification: NQOUCH-V1_1.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Match View AsciiItch v1.1'
-doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
+doc-ref:
+  - http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
+  - https://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs
 
 seq:
   - id: packet_header

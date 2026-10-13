@@ -95,7 +95,7 @@
 [Siac.Opra.Headers.Udp.v1.Url]: https://www.opraplan.com/document-library "The Securities Industry Automation Corporation 1 Url"
 [Siac.Opra.Input.Obi.v5.0.i.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/siac/opra/input/Siac_Opra_Input_v5_0_i.ksy "Siac Opra Input Obi v5.0.i Kaitai Struct Definition"
 [Siac.Opra.Input.Obi.v5.0.i.Url]: https://www.opraplan.com/document-library "The Securities Industry Automation Corporation 5.0.i Url"
-[Siac.Opra.Input.Obi.v5.0.i.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Specifications/Siac.Opra.Input.Obi.v5.0.i.pdf "The Securities Industry Automation Corporation 5.0.i Pdf"
+[Siac.Opra.Input.Obi.v5.0.i.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Specifications/Opra/Input/Siac.Opra.Input.Obi.v5.0.i.pdf "The Securities Industry Automation Corporation 5.0.i Pdf"
 [Siac.Opra.Output.Obi.v4.0.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/siac/opra/output/Siac_Opra_Output_v4_0.ksy "Siac Opra Output Obi v4.0 Kaitai Struct Definition"
 [Siac.Opra.Output.Obi.v4.0.Url]: https://www.opraplan.com/document-library "The Securities Industry Automation Corporation 4.0 Url"
 [Siac.Opra.Output.Obi.v4.0.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Siac/Specifications/Opra/Output/Siac.Opra.Output.Obi.v4.0.pdf "The Securities Industry Automation Corporation 4.0 Pdf"

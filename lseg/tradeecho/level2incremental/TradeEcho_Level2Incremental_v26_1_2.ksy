@@ -110,10 +110,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN Code of an instrument'
       - id: allowed_book_types
         type: allowed_book_types
@@ -123,16 +120,10 @@ types:
         enum: source_venue
         doc: 'Venue from which market data is received for the instrument'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'Not Applicable to TRADEcho'
       - id: price_band_tolerances
         type: decimal_s8_8
@@ -144,25 +135,16 @@ types:
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment the instrument is assigned to. UVIN for the Non-XLON Instrument Universe, otherwise the XLON Instrument Universe segment code'
       - id: reserved_12
         size: 12
         doc: 'Reserved for future use'
       - id: security_exchange
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Not Applicable to TRADEcho'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217. For additional currencies supported refer to the Additional Field Values section of this document'
       - id: reserved_1
         size: 1
@@ -306,10 +288,7 @@ types:
         enum: order_book_type
         doc: 'Order book type the status applies to'
       - id: participant
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Identity of trading participant that submitted the order'
       - id: order_type
         type: u1
@@ -319,16 +298,10 @@ types:
         size: 10
         doc: 'Reserved field'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217. For additional currencies supported refer to the Additional Field Values section of this document'
       - id: venue_of_publication
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the regulatory regime under which the transaction was published. The value sent by the source venue is passed on'
   nanosecond_timestamp:
     seq:
@@ -343,6 +316,33 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -350,6 +350,24 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -377,6 +395,15 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_4_nullable:
+    seq:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
 
 enums:
   message_type:

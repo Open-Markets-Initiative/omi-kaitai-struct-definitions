@@ -103,10 +103,7 @@ types:
   login_request_message:
     seq:
       - id: username
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_8_nullable
         doc: 'CompID assigned to the client'
   replay_request_message:
     seq:
@@ -171,10 +168,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'ISIN Code of an instrument'
       - id: allowed_book_types
         type: allowed_book_types
@@ -184,16 +178,10 @@ types:
         enum: source_venue
         doc: 'Venue from which market data is received for the instrument'
       - id: venue_instrument_id
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Instrument identifier used by the source venue'
       - id: tick_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_2_nullable
         doc: 'Not Applicable to TRADEcho'
       - id: price_band_tolerances
         type: decimal_s8_8
@@ -205,25 +193,16 @@ types:
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
       - id: segment
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_6_nullable
         doc: 'Segment the instrument is assigned to'
       - id: reserved_12
         size: 12
         doc: 'Reserved for future use'
       - id: security_exchange
-        type: str
-        size: 11
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_11_nullable
         doc: 'Not Applicable to TRADEcho'
       - id: currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Currency Code as per ISO 4217. For additional currencies supported refer to the Additional Field Values section of this document'
       - id: reserved_1
         size: 1
@@ -331,10 +310,7 @@ types:
         type: u8
         doc: 'GTP Instrument identifier'
       - id: transaction_identification_code
-        type: str
-        size: 52
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_52_nullable
         doc: 'A unique trade identifier. The value will be right aligned'
       - id: total_number_of_transactions
         type: u4
@@ -347,22 +323,13 @@ types:
         enum: source_venue
         doc: 'Venue from which market data is received for the instrument'
       - id: price
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The trade price, limited to a precision of {DECIMAL-19/18}. Will be set to default value (20 spaces) if there is a pending price (PNDG). In case of transactions under ESMA jurisdiction, will be set to default value (20 spaces) if price is not available (NOAP)'
       - id: quantity
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The number of units of the financial instrument or the number of derivative contracts in the trade, limited to a precision of {DECIMAL-19/18}. Will be set to default value (20 spaces) if quantity is not available. In case of transactions under FCA jurisdiction, will be set to default value (20 spaces) if the traded security is a bond'
       - id: trading_date_and_time
-        type: str
-        size: 27
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_27_nullable
         doc: 'Date and time when the transaction was executed or agreed upon. If a trade is cancelled or amended, this field will contain the trading date and time of the original trade. Blank for aggregated publications: DATF, FWAF, IDAF, COAF, AGFW'
       - id: instrument_identification_code_type
         type: str
@@ -371,10 +338,7 @@ types:
         pad-right: 0x20
         doc: 'Type of the instrument identification code'
       - id: instrument_identification_code
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_12_nullable
         doc: 'Instrument identification number (UPI or ISIN code)'
       - id: price_notation
         type: str
@@ -383,64 +347,34 @@ types:
         pad-right: 0x20
         doc: 'Indicates if the price is expressed in monetary value, in percentage or yield. Will be set to default value (4 spaces) if not available'
       - id: price_major_currency_price_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the price is expressed (applicable if the price is expressed as monetary value). Currency Code as per ISO 4217. Price Major Currency (FCA 2017/587) / Price Currency (ESMA, FCA 2017/583)'
       - id: notional_amount
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Notional value relevant to the security, limited to a precision of {DECIMAL-19/18}'
       - id: notional_currency
-        type: str
-        size: 3
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_3_nullable
         doc: 'Major currency in which the notional amount is denominated'
       - id: venue_of_execution
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the venue where the transaction was executed. XOFF = OTC, SINT = Systematic Internaliser, or the MIC corresponding to the relevant RM/MTF/OTF'
       - id: publication_date_and_time
-        type: str
-        size: 27
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_27_nullable
         doc: 'Date and time when the transaction was published'
       - id: benchmark_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'BENC when the trade is a benchmark trade'
       - id: agency_cross_trade_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'ACTX when the trade is an agency cross trade'
       - id: non_price_forming_transactions_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'NPFT when the trade is a non-price forming trade'
       - id: non_price_contribution_to_discovery
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'TNCP when the trade does not contribute to the price discovery process'
       - id: special_dividend_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'SDIV when the trade is a special dividend trade'
       - id: pt_deferral_reason_flag
         type: str
@@ -449,10 +383,7 @@ types:
         pad-right: 0x20
         doc: 'Post trade deferral reason, SIZE or LRGS'
       - id: reference_price_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'RFPT when the trade is a reference price trade'
       - id: nt_liquidity_flag
         type: str
@@ -461,46 +392,25 @@ types:
         pad-right: 0x20
         doc: 'Negotiated trade liquidity indication, NLIQ or OILQ'
       - id: nt_price_conditions_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PRIC when the negotiated trade is subject to conditions other than the current market price'
       - id: algo_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'ALGO when the trade is an algorithmic trade'
       - id: pt_illiquid_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'ILQD when publication is deferred for an illiquid instrument'
       - id: price_improvement_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'RPRI when the trade has received price improvement'
       - id: cancellation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'CANC when the trade is a cancellation'
       - id: amendment_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'AMND when the trade is an amendment'
       - id: duplicate_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'DUPL when the trade report is duplicative'
       - id: exchange_for_physicals_flag
         type: str
@@ -509,70 +419,37 @@ types:
         pad-right: 0x20
         doc: 'Package or exchange for physicals trade, TPAC or XFPH'
       - id: limited_details_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'LMTF when the trade is a limited details trade'
       - id: ld_full_details_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'FULF for full details of an earlier limited details trade'
       - id: daily_aggregated_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'DATF when the trade is a daily aggregated trade'
       - id: da_full_details_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'FULA for full details of an earlier daily aggregated trade'
       - id: volume_omission_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'VOLO when the trade is a volume omission trade'
       - id: vo_full_details_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'FULV for full details of an earlier volume omission trade'
       - id: four_weeks_aggregation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'FWAF when the trade is a four weeks aggregation trade'
       - id: fa_full_details_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'FULJ for full details of an earlier four weeks aggregation trade'
       - id: indefinite_aggregation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'IDAF when the trade is an indefinite aggregation trade'
       - id: volume_omission_for_sovereign_debt_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'VOLW for a volume omission trade eligible for subsequent enrichment in aggregated form'
       - id: consecutive_aggregation_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'COAF for full details in aggregated form of an earlier volume omission trade'
       - id: reserved_1
         size: 1
@@ -586,16 +463,10 @@ types:
         enum: venue_book_definition_id
         doc: 'Book Definition ID sent by the venue'
       - id: notation_of_the_quantity_in_measurement_unit
-        type: str
-        size: 25
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_25_nullable
         doc: 'Indication of measurement units used to represent the value in the Quantity in Measurement Unit'
       - id: quantity_in_measurement_unit
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The Quantity in Measurement Unit, limited to a precision of IEEE 754 Double Standard'
       - id: transaction_to_be_cleared
         type: u1
@@ -608,10 +479,7 @@ types:
         pad-right: 0x20
         doc: 'Emission Allowance Type. Blank if not applicable'
       - id: venue_of_publication
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the regulatory regime under which the transaction was published. The value sent by the source venue is passed on. ECHO = UK APA Regulation, ECEU = EU APA Regulation, or the MIC corresponding to the relevant RM/MTF/OTF'
       - id: market_mechanism
         type: u1
@@ -670,22 +538,13 @@ types:
         enum: duplicative_indicator
         doc: 'Duplicative indicator short code'
       - id: thirdcountry_trading_venue_of_execution
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'Identification of the third-country trading venue where the transaction was executed'
       - id: portfolio_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'PORT when the trade is a portfolio trade'
       - id: contingent_transaction_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'CONT when the trade is a contingent trade'
       - id: missing_price_price_conditions
         type: str
@@ -694,22 +553,13 @@ types:
         pad-right: 0x20
         doc: 'Missing Price (ESMA) / Price Conditions (FCA), PNDG or NOAP'
       - id: market_closing_price_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'CLSE for a benchmark transaction executed at the market closing price'
       - id: nt_large_in_scale_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'NTLS for a negotiated trade larger than LIS brought onto a venue'
       - id: nt_pre_trade_transparency_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'NETW for a negotiated trade with a pre trade transparency waiver'
       - id: effective_date_of_the_contract
         type: iso_date
@@ -718,28 +568,16 @@ types:
         type: iso_date
         doc: 'Termination date of the financial instrument''s contract. Blank if not applicable'
       - id: spread
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The spread on the floating leg, limited to a precision of IEEE 754 Double Standard. Blank if not applicable'
       - id: upfront_payment
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'The upfront payment exchanged as part of CDS transactions, limited to a precision of {DECIMAL-19/18}. Blank if not applicable'
       - id: lei_of_clearing_house
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_20_nullable
         doc: 'Clearing house which the transaction will be cleared through. Blank if not applicable'
       - id: matched_principal_trade_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'MTCH when the trade is a matched principal trade'
       - id: esma_standard_deferral_flags
         type: str
@@ -748,10 +586,7 @@ types:
         pad-right: 0x20
         doc: 'ESMA standard deferral flag'
       - id: negotiation_trade_flag
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_4_nullable
         doc: 'NEGO when the trade is a negotiation trade'
       - id: esma_supplementary_deferral_flags
         type: str
@@ -765,6 +600,15 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Type of trading system on which the transaction was executed. Blank if not specified in the underlying trade report or Venue of Execution is populated with SINT or XOFF'
+  str_8_nullable:
+    seq:
+      - id: value
+        size: 8
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   nanosecond_timestamp:
     seq:
       - id: time
@@ -778,6 +622,33 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_11_nullable:
+    seq:
+      - id: value
+        size: 11
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_8:
     seq:
       - id: mantissa
@@ -785,6 +656,24 @@ types:
     instances:
       real:
         value: mantissa / 100000000.0
+  str_6_nullable:
+    seq:
+      - id: value
+        size: 6
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_3_nullable:
+    seq:
+      - id: value
+        size: 3
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -812,6 +701,51 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  str_52_nullable:
+    seq:
+      - id: value
+        size: 52
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_20_nullable:
+    seq:
+      - id: value
+        size: 20
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_27_nullable:
+    seq:
+      - id: value
+        size: 27
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_4_nullable:
+    seq:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
+  str_25_nullable:
+    seq:
+      - id: value
+        size: 25
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   iso_date:
     seq:
       - id: text

@@ -88,13 +88,9 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: default_cstm_appl_ver_id
-        type: str
-        size: 30
-        encoding: ASCII
+        type: str_30_nullable
       - id: password
-        type: str
-        size: 32
-        encoding: ASCII
+        type: str_32_nullable
       - id: pad2v2
         size: 2
   request_header_comp:
@@ -169,9 +165,7 @@ types:
         type: u4_nullable
         doc: 'Nullable, No Value = 0xFFFFFFFF'
       - id: password
-        type: str
-        size: 32
-        encoding: ASCII
+        type: str_32_nullable
       - id: pad4
         size: 4
   user_logout_request:
@@ -192,6 +186,24 @@ types:
     instances:
       is_null:
         value: value == 4294967295
+  str_30_nullable:
+    seq:
+      - id: value
+        size: 30
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
+  str_32_nullable:
+    seq:
+      - id: value
+        size: 32
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 0
   u8_nullable:
     seq:
       - id: value

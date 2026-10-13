@@ -361,10 +361,7 @@ types:
         type: str_20_nullable
         doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
       - id: pound_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
@@ -1470,6 +1467,15 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
+  str_1_nullable:
+    seq:
+      - id: value
+        size: 1
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: value[0] == 32
   str_50_nullable:
     seq:
       - id: value

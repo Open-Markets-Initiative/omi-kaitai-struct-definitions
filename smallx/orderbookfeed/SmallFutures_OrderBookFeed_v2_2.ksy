@@ -54,7 +54,7 @@ types:
         type: u1
         doc: 'Identifier of Market Data Channel distributing data for a group of instruments'
       - id: incarnation
-        type: s2
+        type: u2
         doc: 'Incarnation of the Market Data Channel'
       - id: source
         type: u1
@@ -63,7 +63,7 @@ types:
         type: packet_flags
         doc: 'Packet flags'
       - id: message_sequence
-        type: s4
+        type: u4
         doc: 'Sequence of the first message in this packet'
       - id: message_count
         type: u1
