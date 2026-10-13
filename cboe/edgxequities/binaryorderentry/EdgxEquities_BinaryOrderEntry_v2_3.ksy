@@ -235,7 +235,7 @@ types:
         type: b1
       - id: return_bitfield_1_min_qty
         type: b1
-      - id: return_bitfield_1_reserved_128
+      - id: return_bitfield_1_max_remove_pct
         type: b1
   return_bitfield_2:
     meta:
@@ -1293,6 +1293,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -1547,6 +1550,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -1749,6 +1755,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -1992,6 +2001,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -2329,6 +2341,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -2574,6 +2589,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8
@@ -2735,6 +2753,9 @@ types:
       - id: min_qty
         type: u4
         if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_min_qty
+      - id: max_remove_pct
+        type: u1
+        if: number_of_return_bitfields >= 1 and return_bitfield_1.return_bitfield_1_max_remove_pct
       - id: symbol
         type: str
         size: 8

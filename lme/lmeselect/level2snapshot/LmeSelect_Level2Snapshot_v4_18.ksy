@@ -42,8 +42,8 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'LMEsource packet header, giving the packet size, the number of messages it carries, the sequence number of the first of them and the time the packet was sent'
-  - id: messages
-    type: messages_struct
+  - id: message
+    type: message_struct
     repeat: expr
     repeat-expr: packet_header.msg_count
     doc: 'LMEsource application messages carried by this packet; a message is never fragmented across packets'
@@ -68,7 +68,7 @@ types:
       - id: send_time
         type: nanosecond_timestamp
         doc: 'UTC timestamp for the time this packet was sent, in nanoseconds since epoch, provided to the nearest microsecond. Nanoseconds since Unix epoch'
-  messages_struct:
+  message_struct:
     seq:
       - id: message_header
         type: message_header

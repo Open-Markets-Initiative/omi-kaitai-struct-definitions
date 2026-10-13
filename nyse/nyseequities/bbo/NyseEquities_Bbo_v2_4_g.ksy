@@ -429,6 +429,9 @@ types:
         type: u1
         enum: rpi_indicator
         doc: 'The side(s) where Retail Price Indication orders (RPI orders) exist'
+      - id: reserved_4
+        size: 4
+        doc: 'Future use. Any field content should be ignored'
   nanosecond_timestamp:
     seq:
       - id: time
