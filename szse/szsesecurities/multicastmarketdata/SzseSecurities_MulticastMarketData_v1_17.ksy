@@ -83,15 +83,15 @@ types:
         doc: 'Flag bits identifying packet attributes, most significant bit first'
       - id: original_size
         type: u4
-        if: flag.compress > compress::no_compression
+        if: flag.compress > 0
         doc: 'The length of the packet body before compression and encryption'
       - id: compressed_size
         type: u4
-        if: flag.compress > compress::no_compression
+        if: flag.compress > 0
         doc: 'The length of the transmitted packet body after compression'
       - id: encrypted_size
         type: u4
-        if: flag.encryption > encryption::no_encryption
+        if: flag.encryption > 0
         doc: 'The length of the transmitted packet body after encryption'
       - id: padding
         size: (4 - _io.pos % 4) % 4
@@ -126,7 +126,7 @@ types:
         type: message_lengths
         repeat: expr
         repeat-expr: _root.packet_header.msg_count
-        if: _root.packet_header.flag.msg_header == msg_header::existence_of_leader_length
+        if: _root.packet_header.flag.msg_header
         doc: 'Table giving the length of each application message in the packet, letting a receiver split messages without parsing them'
       - id: messages
         type: messages
