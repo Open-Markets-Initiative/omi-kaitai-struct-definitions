@@ -717,16 +717,16 @@ enums:
   market_center_originator_id:
     0x59:
       id: 'byx'
-      doc: 'Cboe Byx'
+      doc: 'Cboe BYX'
     0x5a:
       id: 'bzx'
-      doc: 'Cboe Bzx'
+      doc: 'Cboe BZX'
     0x4a:
       id: 'edga'
-      doc: 'Cboe Edga'
+      doc: 'Cboe EDGA'
     0x4b:
       id: 'edgx'
-      doc: 'Cboe Edgx'
+      doc: 'Cboe EDGX'
     0x57:
       id: 'cboe'
       doc: 'Cboe'
@@ -741,22 +741,22 @@ enums:
       doc: 'Nasdaq'
     0x49:
       id: 'ise'
-      doc: 'Nasdaq Ise'
+      doc: 'Nasdaq ISE'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x41:
       id: 'american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x43:
       id: 'national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x4d:
       id: 'chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x44:
       id: 'finra'
       doc: 'Financial Industry Regulatory Authority'
@@ -768,89 +768,89 @@ enums:
       doc: 'Long Term Stock Exchange'
     0x48:
       id: 'pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX Pearl'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x45:
       id: 'market_independent'
       doc: 'Market Independent'
   sub_market_center_id:
     0x4e:
       id: 'nyse_trf'
-      doc: 'Nyse Trf'
+      doc: 'NYSE TRF'
     0x51:
       id: 'nasdaq_trf_carteret'
-      doc: 'Nasdaq Trf Carteret'
+      doc: 'Nasdaq TRF Carteret'
     0x42:
       id: 'nasdaq_trf_chicago'
-      doc: 'Nasdaq Trf Chicago'
+      doc: 'Nasdaq TRF Chicago'
     0x20:
       id: 'finra_alternative_display_facility'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
   quote_condition:
     0x41:
       id: 'manual_ask_automated_bid'
-      doc: 'Manual Ask Automated Bid'
+      doc: 'Manual Ask automated Bid'
     0x42:
       id: 'manual_bid_automated_ask'
-      doc: 'Manual Bid Automated Ask'
+      doc: 'Manual Bid automated Ask'
     0x46:
       id: 'fast_trading'
-      doc: 'Fast Trading'
+      doc: 'Fast trading'
     0x48:
       id: 'manual_bid_and_ask'
-      doc: 'Manual Bid And Ask'
+      doc: 'Manual Bid and Ask'
     0x49:
       id: 'order_imbalance'
-      doc: 'Order Imbalance'
+      doc: 'Order imbalance'
     0x4c:
       id: 'closed_quote'
-      doc: 'Closed Quote'
+      doc: 'Closed quote'
     0x4e:
       id: 'non_firm_quote'
-      doc: 'Non Firm Quote'
+      doc: 'Non firm quote'
     0x4f:
       id: 'opening_quote_automated'
-      doc: 'Opening Quote Automated'
+      doc: 'Opening quote automated'
     0x52:
       id: 'regular_two_sided_open_quote_automated'
-      doc: 'Regular Two Sided Open Quote Automated'
+      doc: 'Regular two sided open quote automated'
     0x55:
       id: 'manual_bid_and_ask_non_firm'
-      doc: 'Manual Bid And Ask Non Firm'
+      doc: 'Manual Bid and Ask non firm'
     0x58:
       id: 'order_influx'
-      doc: 'Order Influx'
+      doc: 'Order influx'
     0x59:
       id: 'automated_bid_no_offer_or_automated_offer_no_bid'
-      doc: 'Automated Bid No Offer Or Automated Offer No Bid'
+      doc: 'Automated bid, no offer or automated offer, no bid'
     0x5a:
       id: 'no_open_no_resume'
-      doc: 'No Open No Resume'
+      doc: 'No open no resume'
     0x34:
       id: 'intraday_auction'
       doc: 'Intraday Auction'
   sip_generated_update:
     0x20:
       id: 'originated_from_the_market_participant'
-      doc: 'Originated From The Market Participant'
+      doc: 'Originated from the market participant'
     0x45:
       id: 'si_pgenerated_transaction'
-      doc: 'Si Pgenerated Transaction'
+      doc: 'SIP-generated transaction'
   luld_bbo_indicator:
     0x20:
       id: 'not_applicable'
       doc: 'Not Applicable'
     0x41:
       id: 'bid_price_above_upper_limit_price_band'
-      doc: 'Bid Price Above Upper Limit Price Band'
+      doc: 'Bid Price above Upper Limit Price Band'
     0x42:
       id: 'ask_price_below_lower_limit_price_band'
-      doc: 'Ask Price Below Lower Limit Price Band'
+      doc: 'Ask Price below Lower Limit Price Band'
     0x43:
       id: 'bid_and_ask_outside_price_band'
-      doc: 'Bid And Ask Outside Price Band'
+      doc: 'Bid and Ask outside price band'
   retail_interest_indicator:
     0x20:
       id: 'not_applicable'
@@ -863,117 +863,117 @@ enums:
       doc: 'On Ask Quote'
     0x43:
       id: 'on_both_bid_and_ask_quote'
-      doc: 'On Both Bid And Ask Quote'
+      doc: 'On both Bid and Ask Quote'
   nbbo_appendage_indicator:
     0x30:
       id: 'no_national_bbo_change'
-      doc: 'No National Bbo Change'
+      doc: 'No National BBO Change'
     0x31:
       id: 'no_national_bbo_can_be_calculated'
-      doc: 'No National Bbo Can Be Calculated'
+      doc: 'No National BBO Can be Calculated'
     0x32:
       id: 'short_form_national_bbo_appendage'
-      doc: 'Short Form National Bbo Appendage'
+      doc: 'Short Form National BBO Appendage'
     0x33:
       id: 'long_form_national_bbo_appendage'
-      doc: 'Long Form National Bbo Appendage'
+      doc: 'Long Form National BBO Appendage'
     0x34:
       id: 'quote_contains_all_national_bbo_information'
-      doc: 'Long Form National Bbo Appendage'
+      doc: 'Long Form National BBO Appendage'
   luld_national_bbo_indicator:
     0x20:
       id: 'not_applicable'
       doc: 'Not Applicable'
     0x41:
       id: 'national_best_bid_and_national_best_ask_are_executable'
-      doc: 'National Best Bid And National Best Ask Are Executable'
+      doc: 'National Best Bid and National Best Ask are Executable'
     0x42:
       id: 'national_best_bid_below_lower_limit_price_band'
-      doc: 'National Best Bid Below Lower Limit Price Band'
+      doc: 'National Best Bid below Lower Limit Price Band'
     0x43:
       id: 'national_best_ask_above_upper_limit_price_band'
-      doc: 'National Best Ask Above Upper Limit Price Band'
+      doc: 'National Best Ask above Upper Limit Price Band'
     0x44:
       id: 'national_best_bid_below_lower_limit_price_band_and_national_best_ask_above_upper_limit_price_band'
-      doc: 'National Best Bid Below Lower Limit Price Band And National Best Ask Above Upper Limit Price Band'
+      doc: 'National Best Bid below Lower Limit Price Band and National Best Ask above Upper Limit Price Band'
     0x45:
       id: 'national_best_bid_equals_upper_limit_price_band'
-      doc: 'National Best Bid Equals Upper Limit Price Band'
+      doc: 'National Best Bid equals Upper Limit Price Band'
     0x46:
       id: 'national_best_offer_equals_lower_limit_price_band'
-      doc: 'National Best Offer Equals Lower Limit Price Band'
+      doc: 'National Best Offer equals Lower Limit Price Band'
     0x47:
       id: 'national_best_bid_equals_upper_limit_price_band_x47'
-      doc: 'National Best Bid Equals Upper Limit Price Band'
+      doc: 'National Best Bid equals Upper Limit Price Band'
     0x48:
       id: 'national_best_ask_equals_lower_limit_price_band'
-      doc: 'National Best Ask Equals Lower Limit Price Band'
+      doc: 'National Best Ask equals Lower Limit Price Band'
     0x49:
       id: 'national_best_bid_equals_upper_limit_price_band_and_national_best_ask_equals_lower_limit_price_band'
-      doc: 'National Best Bid Equals Upper Limit Price Band And National Best Ask Equals Lower Limit Price Band'
+      doc: 'National Best Bid equals Upper Limit Price Band and National Best Ask equals Lower Limit Price Band'
   nbbo_quote_condition:
     0x41:
       id: 'manual_ask_automated_bid'
-      doc: 'Manual Ask Automated Bid'
+      doc: 'Manual Ask automated Bid'
     0x42:
       id: 'manual_bid_automated_ask'
-      doc: 'Manual Bid Automated Ask'
+      doc: 'Manual Bid automated Ask'
     0x46:
       id: 'fast_trading'
-      doc: 'Fast Trading'
+      doc: 'Fast trading'
     0x48:
       id: 'manual_bid_and_ask'
-      doc: 'Manual Bid And Ask'
+      doc: 'Manual Bid and Ask'
     0x49:
       id: 'order_imbalance'
-      doc: 'Order Imbalance'
+      doc: 'Order imbalance'
     0x4c:
       id: 'closed_quote'
-      doc: 'Closed Quote'
+      doc: 'Closed quote'
     0x4e:
       id: 'non_firm_quote'
-      doc: 'Non Firm Quote'
+      doc: 'Non firm quote'
     0x4f:
       id: 'opening_quote_automated'
-      doc: 'Opening Quote Automated'
+      doc: 'Opening quote automated'
     0x52:
       id: 'regular_two_sided_open_quote_automated'
-      doc: 'Regular Two Sided Open Quote Automated'
+      doc: 'Regular two sided open quote automated'
     0x55:
       id: 'manual_bid_and_ask_non_firm'
-      doc: 'Manual Bid And Ask Non Firm'
+      doc: 'Manual Bid and Ask non firm'
     0x58:
       id: 'order_influx'
-      doc: 'Order Influx'
+      doc: 'Order influx'
     0x59:
       id: 'automated_bid_no_offer_or_automated_offer_no_bid'
-      doc: 'Automated Bid No Offer Or Automated Offer No Bid'
+      doc: 'Automated bid, no offer or automated offer, no bid'
     0x5a:
       id: 'no_open_no_resume'
-      doc: 'No Open No Resume'
+      doc: 'No open no resume'
     0x34:
       id: 'intraday_auction'
       doc: 'Intraday Auction'
   finra_adf_mpid_appendage_indicator:
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     0x30:
       id: 'no_adf_mpid_changes'
-      doc: 'No Adf Mpid Changes'
+      doc: 'No ADF MPID changes'
     0x31:
       id: 'no_adf_mpid_exists'
-      doc: 'No Adf Mpid Exists'
+      doc: 'No ADF MPID exists'
     0x32:
       id: 'adf_mpi_ds_attached'
-      doc: 'Adf Mpi Ds Attached'
+      doc: 'ADF MPIDs attached'
   trading_action_code:
     0x48:
       id: 'trading_halt'
       doc: 'Trading Halt'
     0x51:
       id: 'quotation_resumption_including_after_ema'
-      doc: 'Quotation Resumption Including After Ema'
+      doc: 'Quotation Resumption, including after EMA'
     0x54:
       id: 'trading_resumption'
       doc: 'Trading Resumption'
@@ -995,7 +995,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'rule_144a'
-      doc: 'Rule 144a'
+      doc: 'Rule144A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -1016,7 +1016,7 @@ enums:
       doc: 'Rights'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -1025,7 +1025,7 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_of_beneficial_interest'
-      doc: 'Units Of Beneficial Interest'
+      doc: 'Units of Beneficial Interest'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
@@ -1055,51 +1055,51 @@ enums:
   short_sale_threshold_indicator:
     0x59:
       id: 'issue_is_restricted'
-      doc: 'Issue Is Restricted'
+      doc: 'Issue is restricted'
     0x4e:
       id: 'issue_is_not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'not available'
   financial_status_indicator:
     0x43:
       id: 'creations_and_or_redemptions_suspended'
-      doc: 'Creations And Or Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and or Redemptions Suspended for Exchange Traded Product'
     0x44:
       id: 'deficient'
-      doc: 'Deficient Issuer Failed To Meet Nasdaq Continued Listing Requirements'
+      doc: 'Deficient Issuer Failed to Meet NASDAQ Continued Listing Requirements'
     0x45:
       id: 'delinquent'
       doc: 'Issuer Missed Regulatory Filing Deadline'
     0x51:
       id: 'bankrupt'
-      doc: 'Issuer Has Filed For Bankruptcy'
+      doc: 'Issuer Has Filed for Bankruptcy'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer Is NOT Deficient, Delinquent, or Bankrupt.'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent, and Bankrupt'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_effect'
-      doc: 'No Price Test In Effect'
+      doc: 'No price test in effect'
     0x31:
       id: 'reg_sho_in_effect_due_to_an_intra_day_price_drop'
-      doc: 'Reg Sho In Effect Due To An Intra Day Price Drop'
+      doc: 'Reg SHO in effect due to an intra day price drop'
     0x32:
       id: 'reg_sho_restriction_remains_in_effect'
-      doc: 'Reg Sho Restriction Remains In Effect'
+      doc: 'Reg SHO Restriction remains in effect'
   luld_price_band_indicator:
     0x41:
       id: 'opening_update'
@@ -1112,16 +1112,16 @@ enums:
       doc: 'Restated Value'
     0x44:
       id: 'suspended_during_trading_halt_or_trading_pause'
-      doc: 'Suspended During Trading Halt Or Trading Pause'
+      doc: 'Suspended during trading halt or trading pause'
     0x45:
       id: 're_opening_update'
-      doc: 'Re Opening Update'
+      doc: 'Re-Opening Update'
     0x46:
       id: 'outside_price_band_rule_hours'
-      doc: 'Outside Price Band Rule Hours'
+      doc: 'Outside price band rule hours'
     0x20:
       id: 'none_provided'
-      doc: 'None Provided'
+      doc: 'None provided'
   mwcb_status_level_indicator:
     0x31:
       id: 'level_1_breached'
@@ -1135,14 +1135,14 @@ enums:
   special_condition:
     0x4f:
       id: 'one_sided_national_bbo_at_market_close'
-      doc: 'One Sided National Bbo At Market Close'
+      doc: 'One Sided National BBO at Market Close'
     0x48:
       id: 'trading_halt_in_effect_at_market_close'
-      doc: 'Trading Halt In Effect At Market Close'
+      doc: 'Trading Halt In Effect at Market Close'
     0x4d:
       id: 'no_eligible_market_participant_quotes_in_issue_at_market_close'
-      doc: 'No Eligible Market Participant Quotes In Issue At Market Close'
+      doc: 'No Eligible Market Participant Quotes in Issue at Market Close'
     0x20:
       id: 'no_special_condition_exists'
-      doc: 'No Special Condition Exists'
+      doc: 'No Special Condition exists'
 

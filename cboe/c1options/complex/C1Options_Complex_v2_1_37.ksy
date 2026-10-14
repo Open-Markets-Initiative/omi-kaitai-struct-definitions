@@ -768,17 +768,17 @@ enums:
   leg_security_type:
     0x4f:
       id: 'option'
-      doc: 'Leg Is An Option Instrument'
+      doc: 'Leg is an option instrument'
     0x45:
       id: 'equity'
-      doc: 'Leg Is An Equity Instrument'
+      doc: 'Leg is an equity instrument'
   symbol_condition:
     0x4e:
       id: 'normal'
       doc: 'Normal'
     0x43:
       id: 'closing_only'
-      doc: 'Closing Only'
+      doc: 'Closing only'
   side_indicator:
     0x42:
       id: 'buy_order'
@@ -789,7 +789,7 @@ enums:
   customer_indicator:
     0x4e:
       id: 'non_customer'
-      doc: 'Non Customer'
+      doc: 'Non-Customer'
     0x43:
       id: 'customer'
       doc: 'Customer'
@@ -826,10 +826,10 @@ enums:
       doc: 'Complex With Stock Floor Trade'
     0x74:
       id: 'complex_combo_order_floor_trade'
-      doc: 'Complex Floor Trade Of Proprietary Products Marked As Combo Order'
+      doc: 'complex floor trade of proprietary products marked as combo order'
     0x76:
       id: 'extended_hours_trade'
-      doc: 'Transaction Represents A Trade Executed During The Curb Session'
+      doc: 'Transaction represents a trade executed during the Curb session'
     0x49:
       id: 'electronic_trade_x49'
       doc: 'Electronic Trade'
@@ -858,27 +858,27 @@ enums:
       doc: 'Curb Trading'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote-Only'
     0x54:
       id: 'rth_trading'
-      doc: 'Rth Trading'
+      doc: 'RTH Trading'
   gth_trading_status:
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote-Only'
     0x54:
       id: 'trading'
       doc: 'Trading'
   auction_opening_type:
     0x47:
       id: 'gth'
-      doc: 'Gth'
+      doc: 'GTH'
     0x4f:
       id: 'rth'
-      doc: 'Rth'
+      doc: 'RTH'
     0x48:
       id: 'halt_reopening'
       doc: 'Halt Reopening'

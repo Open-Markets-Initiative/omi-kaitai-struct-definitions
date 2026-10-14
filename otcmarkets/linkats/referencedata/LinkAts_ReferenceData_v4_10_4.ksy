@@ -356,26 +356,26 @@ enums:
   spin_type:
     1:
       id: 'reference'
-      doc: 'Reference Spin'
+      doc: 'Reference spin'
     2:
       id: 'market_data'
-      doc: 'Market Data Spin'
+      doc: 'Market data spin'
     3:
       id: 'opening'
-      doc: 'Opening Spin'
+      doc: 'Opening spin'
   security_action:
     1:
       id: 'update'
-      doc: 'Update Existing Security'
+      doc: 'Update existing security'
     2:
       id: 'add'
-      doc: 'Add New Security'
+      doc: 'Add new security'
     3:
       id: 'delete_field'
-      doc: 'Delete Security'
+      doc: 'Delete security'
     4:
       id: 'spin'
-      doc: 'Spin Refresh'
+      doc: 'Spin refresh'
   asset_class:
     1:
       id: 'equity'
@@ -389,22 +389,22 @@ enums:
       doc: 'No Tier'
     1:
       id: 'otcqxus_premier'
-      doc: 'Otcqx Us Premier'
+      doc: 'OTCQX U.S. Premier'
     2:
       id: 'otcqxus'
-      doc: 'Otcqx Us'
+      doc: 'OTCQX US'
     5:
       id: 'otcqx_international_premier'
-      doc: 'Otcqx International Premier'
+      doc: 'OTCQX International Premier'
     6:
       id: 'otcqx_international'
-      doc: 'Otcqx International'
+      doc: 'OTCQX International'
     10:
       id: 'otcqb'
-      doc: 'Otcqb'
+      doc: 'OTCQB'
     11:
       id: 'otcbb_only'
-      doc: 'Otcbb Only'
+      doc: 'OTCBB Only'
     20:
       id: 'pink_current'
       doc: 'Pink Current'
@@ -422,7 +422,7 @@ enums:
       doc: 'Expert Market'
     50:
       id: 'otc_bonds'
-      doc: 'Otc Bonds'
+      doc: 'OTC Bonds'
   reporting_status:
     0x41:
       id: 'alternative_reporting'
@@ -432,10 +432,10 @@ enums:
       doc: 'Bank Thrift'
     0x43:
       id: 'sec_reporting_reg_cf'
-      doc: 'Sec Reporting Reg Cf'
+      doc: 'SEC Reporting – Reg CF'
     0x46:
       id: 'sec_reporting'
-      doc: 'Sec Reporting'
+      doc: 'SEC Reporting'
     0x47:
       id: 'international_reporting'
       doc: 'International Reporting'
@@ -450,13 +450,13 @@ enums:
       doc: 'Other Reporting Standard'
     0x52:
       id: 'finra_reporting'
-      doc: 'Finra Reporting'
+      doc: 'FINRA Reporting'
     0x56:
       id: 'sec_investment_company'
-      doc: 'Sec Reporting Investment Company'
+      doc: 'SEC Reporting Investment Company'
     0x57:
       id: 'sec_reporting_reg_a'
-      doc: 'Sec Reporting Reg A'
+      doc: 'SEC Reporting Reg A'
   disclosure_status:
     0:
       id: 'no_disclosure'
@@ -473,23 +473,23 @@ enums:
   security_status:
     0x41:
       id: 'active'
-      doc: 'Security Is Active'
+      doc: 'Security is active'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote only'
     0x53:
       id: 'suspended'
-      doc: 'Security Suspended'
+      doc: 'Security suspended'
     0x48:
       id: 'halted'
-      doc: 'Security Halted'
+      doc: 'Security halted'
     0x49:
       id: 'internal_halt'
-      doc: 'Internal Halt'
+      doc: 'Internal halt'
     0x52:
       id: 'revoked'
-      doc: 'Security Revoked'
+      doc: 'Security revoked'
     0x44:
       id: 'deleted'
-      doc: 'Security Deleted'
+      doc: 'Security deleted'
 

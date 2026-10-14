@@ -579,59 +579,59 @@ enums:
   auction_type:
     0x4f:
       id: 'early_opening'
-      doc: 'Early Opening Auction Non Nyse Only'
+      doc: 'Early Opening Auction (non-NYSE only)'
     0x4d:
       id: 'core_opening'
       doc: 'Core Opening Auction'
     0x48:
       id: 'reopening'
-      doc: 'Reopening Auction Halt Resume'
+      doc: 'Reopening Auction (Halt resume)'
     0x43:
       id: 'closing'
       doc: 'Closing Auction'
     0x52:
       id: 'regulatory_imbalance'
-      doc: 'Regulatory Imbalance Nyse Only'
+      doc: 'Regulatory Imbalance (NYSE only)'
   imbalance_side:
     0x20:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'No imbalance'
     0x42:
       id: 'buy_side'
-      doc: 'Buy Side'
+      doc: 'Buy side'
     0x53:
       id: 'sell_side'
-      doc: 'Sell Side'
+      doc: 'Sell side'
   auction_status:
     0:
       id: 'will_run_open_close'
-      doc: 'Will Run As Always For Open And Close'
+      doc: 'Will run as always for Open and Close'
     1:
       id: 'will_run_interest'
-      doc: 'Will Run Interest Exists Inside Or At The Collars Or Is Fully Paired Off'
+      doc: 'Will run, interest exists inside or at the collars or is fully paired off'
     2:
       id: 'will_not_run_imbalance'
-      doc: 'Will Not Run Because There Is An Imbalance Through The Collars'
+      doc: 'Will not run because there is an imbalance through the collars'
     3:
       id: 'will_not_run_transition_to_closing'
-      doc: 'Will Not Run Will Transition To The Closing Auction Instead'
+      doc: 'Will not run, will transition to the Closing auction instead'
   freeze_status:
     0:
       id: 'no_imbalance_freeze'
-      doc: 'Imbalance Freeze Not Yet In Effect'
+      doc: 'Imbalance freeze not yet in effect'
     1:
       id: 'imbalance_freeze'
-      doc: 'Imbalance Freeze Is In Effect'
+      doc: 'Imbalance freeze is in effect'
   unpaired_side:
     0x20:
       id: 'not_applicable'
       doc: 'Not Applicable'
     0x42:
       id: 'buy_side'
-      doc: 'Buy Side'
+      doc: 'Buy side'
     0x53:
       id: 'sell_side'
-      doc: 'Sell Side'
+      doc: 'Sell side'
   significant_imbalance:
     0x20:
       id: 'not_applicable'

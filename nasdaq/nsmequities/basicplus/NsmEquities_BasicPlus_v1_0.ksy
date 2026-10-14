@@ -388,22 +388,22 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_consolidated_market_transmissions'
-      doc: 'Denotes That The Consolidated Systems Have Started The Daily Transmission Schedule'
+      doc: 'Denotes that the Consolidated systems have started the daily transmission schedule'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'The Consolidated Trading Session Is Open And Ready To Start Accepting Orders'
+      doc: 'The Consolidated Trading Session is open and ready to start accepting orders'
     0x51:
       id: 'start_of_regular_market_hours'
-      doc: 'Denotes The Start Of The Regular Us Market Session'
+      doc: 'Denotes the start of the regular US market session'
     0x4d:
       id: 'end_of_regular_market_hours'
-      doc: 'Denotes The End Of The Regular Us Session'
+      doc: 'Denotes the end of the regular US session'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'The Consolidated Sessions Is Now Closed And Will Not Accept Any New Orders For The Trading Day'
+      doc: 'The Consolidated Sessions is now closed and will not accept any new orders for the trading day'
     0x43:
       id: 'end_of_transmissions'
-      doc: 'Denotes That The Consolidated System Has Ended Its Daily Transmission Schedule'
+      doc: 'Denotes that the consolidated system has ended its daily transmission schedule'
   best_bid_exchanges:
     1:
       id: 'nasdaq'
@@ -413,19 +413,19 @@ enums:
       doc: 'Nasdaq Texas Exchange'
     3:
       id: 'nasdaq_and_nasdaq_texas'
-      doc: 'Nasdaq Nasdaq Texas Exchanges'
+      doc: 'Nasdaq & Nasdaq Texas Exchanges'
     4:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Psx Exchange'
+      doc: 'Nasdaq PSX Exchange'
     5:
       id: 'nasdaq_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Psx Exchanges'
+      doc: 'Nasdaq & Nasdaq PSX Exchanges'
     6:
       id: 'nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq Texas & Nasdaq PSX Exchanges'
     7:
       id: 'nasdaq_nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq, Nasdaq Texas, & Nasdaq PSX Exchanges'
   best_offer_exchanges:
     1:
       id: 'nasdaq'
@@ -435,19 +435,19 @@ enums:
       doc: 'Nasdaq Texas Exchange'
     3:
       id: 'nasdaq_and_nasdaq_texas'
-      doc: 'Nasdaq Nasdaq Texas Exchanges'
+      doc: 'Nasdaq & Nasdaq Texas Exchanges'
     4:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Psx Exchange'
+      doc: 'Nasdaq PSX Exchange'
     5:
       id: 'nasdaq_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Psx Exchanges'
+      doc: 'Nasdaq & Nasdaq PSX Exchanges'
     6:
       id: 'nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq Texas & Nasdaq PSX Exchanges'
     7:
       id: 'nasdaq_nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq, Nasdaq Texas, & Nasdaq PSX Exchanges'
   buy_side_rpi_exchanges:
     1:
       id: 'nasdaq'
@@ -457,19 +457,19 @@ enums:
       doc: 'Nasdaq Texas Exchange'
     3:
       id: 'nasdaq_and_nasdaq_texas'
-      doc: 'Nasdaq Nasdaq Texas Exchanges'
+      doc: 'Nasdaq & Nasdaq Texas Exchanges'
     4:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Psx Exchange'
+      doc: 'Nasdaq PSX Exchange'
     5:
       id: 'nasdaq_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Psx Exchanges'
+      doc: 'Nasdaq & Nasdaq PSX Exchanges'
     6:
       id: 'nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq Texas & Nasdaq PSX Exchanges'
     7:
       id: 'nasdaq_nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq, Nasdaq Texas, & Nasdaq PSX Exchanges'
   sell_side_rpi_exchanges:
     1:
       id: 'nasdaq'
@@ -479,42 +479,42 @@ enums:
       doc: 'Nasdaq Texas Exchange'
     3:
       id: 'nasdaq_and_nasdaq_texas'
-      doc: 'Nasdaq Nasdaq Texas Exchanges'
+      doc: 'Nasdaq & Nasdaq Texas Exchanges'
     4:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Psx Exchange'
+      doc: 'Nasdaq PSX Exchange'
     5:
       id: 'nasdaq_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Psx Exchanges'
+      doc: 'Nasdaq & Nasdaq PSX Exchanges'
     6:
       id: 'nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq Texas & Nasdaq PSX Exchanges'
     7:
       id: 'nasdaq_nasdaq_texas_and_nasdaq_psx'
-      doc: 'Nasdaq Nasdaq Texas Nasdaq Psx Exchanges'
+      doc: 'Nasdaq, Nasdaq Texas, & Nasdaq PSX Exchanges'
   trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused'
-      doc: 'Paused Across All Us Equity Markets Sr Os Nasda Qlisted Securities Only'
+      doc: 'Paused across all U.S. equity markets / SROs (NASDAQ-listed securities only)'
     0x51:
       id: 'quotation_only_period'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on Nasdaq'
   reg_sho_action:
     0x30:
       id: 'no_price_test'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'reg_sho_short_sale_price_test_restriction'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'test_restriction_remains'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
   market_category:
     0x51:
       id: 'nasdaq_global_select_market'
@@ -530,16 +530,16 @@ enums:
       doc: 'New York Stock Exchange'
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x4d:
       id: 'nyse_texas'
-      doc: 'Nyse Texas'
+      doc: 'NYSE Texas'
     0x5a:
       id: 'bats_z'
-      doc: 'Bats Z Exchange'
+      doc: 'BATS Z Exchange'
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
@@ -561,32 +561,32 @@ enums:
       doc: 'Suspended'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient Delinquent and Bankrupt'
     0x43:
       id: 'creations_and_redemptions_suspended'
-      doc: 'Creations Andor Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and/or Redemptions Suspended for Exchange Traded Product'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer is NOT Deficient, Delinquent, or Bankrupt'
     0x20:
       id: 'not_available'
-      doc: 'Firms Should Refer To Siac Feeds For Code If Needed'
+      doc: 'Firms should refer to SIAC feeds for code if needed'
   round_lots_only:
     0x59:
       id: 'yes_field'
-      doc: 'Nasdaq System Only Accepts Round Lot Orders For This Security'
+      doc: 'Nasdaq system only accepts round lot orders for this security'
     0x4e:
       id: 'no_field'
-      doc: 'Nasdaq System Does Not Have Any Order Size Restrictions For This Security'
+      doc: 'Nasdaq system does not have any order size restrictions for this security'
   issue_classification:
     0x41:
       id: 'american_depositary_share'
@@ -602,7 +602,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
-      doc: 'Sec 144 A'
+      doc: 'Sec 144A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -623,7 +623,7 @@ enums:
       doc: 'Right'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -632,7 +632,7 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_of_beneficial_interest'
-      doc: 'Units Of Beneficial Interest'
+      doc: 'Units of Beneficial Interest'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
@@ -646,53 +646,53 @@ enums:
   short_sale_threshold_indicator:
     0x59:
       id: 'restricted'
-      doc: 'Issue Is Restricted Under Sec Rule 203 B 3'
+      doc: 'Issue is restricted under SEC Rule 203(b)(3)'
     0x4e:
       id: 'not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'not_available'
-      doc: 'Threshold Indicator Not Available'
+      doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
       id: 'set_up_for_ipo_release'
-      doc: 'Nasdaq Listed Instrument Is Set Up As A New Ipo Security'
+      doc: 'Nasdaq listed instrument is set up as a new IPO security'
     0x4e:
       id: 'not_set_up_for_ipo_release'
-      doc: 'Nasdaq Listed Instrument Is Not Set Up As A New Ipo Security'
+      doc: 'Nasdaq listed instrument is not set up as a new IPO security'
     0x5a:
       id: 'non_ipo_new_listed_security'
-      doc: 'Nasdaq Listed Instrument Is A Non Ipo New Listed Security'
+      doc: 'Nasdaq listed instrument is a non-IPO new listed security'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1'
-      doc: 'Tier 1 Nms Stocks And Select Et Ps'
+      doc: 'Tier 1 NMS Stocks and select ETPs'
     0x32:
       id: 'tier_2'
-      doc: 'Tier 2 Nms Stocks'
+      doc: 'Tier 2 NMS Stocks'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
   etp_flag:
     0x59:
       id: 'etp'
-      doc: 'Instrument Is An Etp'
+      doc: 'Instrument is an ETP'
     0x4e:
       id: 'not_etp'
-      doc: 'Instrument Is Not An Etp'
+      doc: 'Instrument is not an ETP'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
   inverse_indicator:
     0x59:
       id: 'inverse_etp'
-      doc: 'Etp Is An Inverse Etp'
+      doc: 'ETP is an Inverse ETP'
     0x4e:
       id: 'not_inverse_etp'
-      doc: 'Etp Is Not An Inverse Etp'
+      doc: 'ETP is not an Inverse ETP'
   breached_level:
     0x31:
       id: 'level_1'
@@ -706,10 +706,10 @@ enums:
   ipo_quotation_release_qualifier:
     0x41:
       id: 'anticipated_quotation_release_time'
-      doc: 'Used When Nasdaq Market Operations Initially Enters The Ipo Instrument For Release'
+      doc: 'Used when Nasdaq Market Operations initially enters the IPO instrument for release'
     0x43:
       id: 'ipo_release_canceled_or_postponed'
-      doc: 'Used When Nasdaq Market Operations Cancels Or Postpones The Release Of The New Ipo Instrument'
+      doc: 'Used when Nasdaq Market Operations cancels or postpones the release of the new IPO instrument'
   market_code:
     0x51:
       id: 'nasdaq'
@@ -719,12 +719,12 @@ enums:
       doc: 'Nasdaq Texas'
     0x58:
       id: 'psx'
-      doc: 'Psx'
+      doc: 'PSX'
   operational_halt_action:
     0x48:
       id: 'halted'
-      doc: 'Operationally Halted On The Identified Market'
+      doc: 'Operationally Halted on the identified Market'
     0x54:
       id: 'trading_resumed'
-      doc: 'Operational Halt Has Been Lifted And Trading Resumed'
+      doc: 'Operational Halt has been lifted and Trading resumed'
 

@@ -819,115 +819,115 @@ enums:
   market_id:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     5:
       id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
+      doc: 'NYSE Bonds'
     6:
       id: 'global_otc'
-      doc: 'Global Otc'
+      doc: 'Global OTC'
     8:
       id: 'nyse_amex_options'
-      doc: 'Nyse Amex Options'
+      doc: 'NYSE Amex Options'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     10:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
   exchange_code:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'global_otc'
-      doc: 'Global Otc Primary Symbols'
+      doc: 'Global OTC primary symbols'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x55:
       id: 'otcbb'
-      doc: 'Otcbb Symbols For Global Otc'
+      doc: 'OTCBB symbols for Global OTC'
     0x56:
       id: 'other_otc'
-      doc: 'Other Otc Symbols For Global Otc'
+      doc: 'Other OTC symbols for Global OTC'
     0x5a:
       id: 'bats'
-      doc: 'Bats'
+      doc: 'BATS'
   security_type:
     0x41:
       id: 'adr'
-      doc: 'Adr'
+      doc: 'ADR'
     0x43:
       id: 'common_stock'
-      doc: 'Common Stock'
+      doc: 'COMMON STOCK'
     0x44:
       id: 'debentures'
-      doc: 'Debentures'
+      doc: 'DEBENTURES'
     0x45:
       id: 'etf'
-      doc: 'Etf'
+      doc: 'ETF'
     0x46:
       id: 'foreign'
-      doc: 'Foreign'
+      doc: 'FOREIGN'
     0x48:
       id: 'us_depositary_shares'
-      doc: 'Us Depositary Shares'
+      doc: 'US DEPOSITARY SHARES'
     0x49:
       id: 'units'
-      doc: 'Units'
+      doc: 'UNITS'
     0x4c:
       id: 'index_linked_notes'
-      doc: 'Index Linked Notes'
+      doc: 'INDEX LINKED NOTES'
     0x4d:
       id: 'miscliquid_trust'
-      doc: 'Miscliquid Trust'
+      doc: 'MISC/LIQUID TRUST'
     0x4f:
       id: 'ordinary_shares'
-      doc: 'Ordinary Shares'
+      doc: 'ORDINARY SHARES'
     0x50:
       id: 'preferred_stock'
-      doc: 'Preferred Stock'
+      doc: 'PREFERRED STOCK'
     0x52:
       id: 'rights'
-      doc: 'Rights'
+      doc: 'RIGHTS'
     0x53:
       id: 'shares_of_beneficiary_interest'
-      doc: 'Shares Of Beneficiary Interest'
+      doc: 'SHARES OF BENEFICIARY INTEREST'
     0x54:
       id: 'test'
-      doc: 'Test'
+      doc: 'TEST'
     0x55:
       id: 'units_x55'
-      doc: 'Units'
+      doc: 'UNITS'
     0x57:
       id: 'warrant'
-      doc: 'Warrant'
+      doc: 'WARRANT'
   price_resolution:
     0:
       id: 'all_penny'
       doc: 'All Penny'
     1:
       id: 'penny_nickel'
-      doc: 'Penny Nickel'
+      doc: 'Penny/Nickel'
     5:
       id: 'nickel_dime'
-      doc: 'Nickel Dime'
+      doc: 'Nickel/Dime'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -938,42 +938,42 @@ enums:
   status:
     0x30:
       id: 'message_was_accepted'
-      doc: 'Message Was Accepted'
+      doc: 'Message was accepted'
     0x31:
       id: 'rejected_due_to_an_invalid_source_id'
-      doc: 'Rejected Due To An Invalid Source Id'
+      doc: 'Rejected due to an Invalid Source ID'
     0x32:
       id: 'invalid_sequence_range'
-      doc: 'Rejected Due To Invalid Sequence Range'
+      doc: 'Rejected due to invalid sequence range'
     0x33:
       id: 'maximum_sequence_range'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
+      doc: 'Rejected due to maximum sequence range (see threshold limits)'
     0x34:
       id: 'maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
+      doc: 'Rejected due to maximum request in a day'
     0x35:
       id: 'maximum_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
+      doc: 'Rejected due to maximum number of refresh requests in a day'
     0x36:
       id: 'old_seq_num_ttl'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
+      doc: 'Rejected. Request message SeqNum TTL (Time to live) is too old. Use refresh to recover current state if necessary.'
     0x37:
       id: 'invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
+      doc: 'Rejected due to an Invalid Channel ID'
     0x38:
       id: 'invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
+      doc: 'Rejected due to an Invalid Product ID'
     0x39:
       id: 'invalid_msg_type_or_mismatch_between_msg_type_and_msg_size'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
+      doc: 'Rejected due to: 1) Invalid MsgType, or 2) Mismatch between MsgType and MsgSize'
   retransmit_method:
     0:
       id: 'udp'
-      doc: 'Deliver Via Udp'
+      doc: 'deliver via UDP'
   security_status:
     0x33:
       id: 'opening_delay'
-      doc: 'Opening Delay Nyse Tape A Only'
+      doc: 'Opening Delay (NYSE tape A only)'
     0x34:
       id: 'trading_halt'
       doc: 'Trading Halt'
@@ -982,28 +982,28 @@ enums:
       doc: 'Resume'
     0x36:
       id: 'no_openno_resume'
-      doc: 'No Openno Resume Nyse Tape A Only'
+      doc: 'No open/no resume (NYSE tape A only)'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
-      doc: 'Short Sale Restriction Activated Day 1'
+      doc: 'Short Sale Restriction Activated (Day 1)'
     0x43:
       id: 'short_sale_restriction_continued_day_2'
-      doc: 'Short Sale Restriction Continued Day 2'
+      doc: 'Short Sale Restriction Continued (Day 2)'
     0x44:
       id: 'short_sale_restriction_deactivated'
       doc: 'Short Sale Restriction Deactivated'
     0x50:
       id: 'preopening'
-      doc: 'Preopening'
+      doc: 'Pre-opening'
     0x45:
       id: 'early_session'
-      doc: 'Early Session'
+      doc: 'Early session'
     0x4f:
       id: 'core_session'
-      doc: 'Core Session'
+      doc: 'Core session'
     0x4c:
       id: 'late_session_non_nyse_only'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1015,35 +1015,35 @@ enums:
       doc: 'Price Indication'
     0x47:
       id: 'pre_opening_price_indication'
-      doc: 'Pre Opening Price Indication'
+      doc: 'Pre-Opening Price Indication'
     0x52:
       id: 'rule_15_indication'
       doc: 'Rule 15 Indication'
   halt_condition:
     0x7e:
       id: 'security_not_delayedhalted'
-      doc: 'Security Not Delayedhalted'
+      doc: 'Security not delayed/halted'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     0x44:
       id: 'news_dissemination'
-      doc: 'News Dissemination'
+      doc: 'News dissemination'
     0x49:
       id: 'order_imbalance'
-      doc: 'Order Imbalance'
+      doc: 'Order imbalance'
     0x50:
       id: 'news_pending'
-      doc: 'News Pending'
+      doc: 'News pending'
     0x4d:
       id: 'volatility_trading_pause'
       doc: 'Volatility Trading Pause'
     0x58:
       id: 'equipment_changeover'
-      doc: 'Equipment Changeover'
+      doc: 'Equipment changeover'
     0x5a:
       id: 'no_open_no_resume'
-      doc: 'No Open No Resume'
+      doc: 'No open/No resume'
     0x31:
       id: 'market_wide_circuit_breaker_halt_level_1'
       doc: 'Market Wide Circuit Breaker Halt Level 1'
@@ -1056,81 +1056,81 @@ enums:
   ssr_triggering_exchange_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x44:
       id: 'finra'
-      doc: 'Finra'
+      doc: 'FINRA'
     0x49:
       id: 'ise'
-      doc: 'Ise'
+      doc: 'ISE'
     0x4a:
       id: 'edga'
-      doc: 'Edga'
+      doc: 'EDGA'
     0x4b:
       id: 'edgx'
-      doc: 'Edgx'
+      doc: 'EDGX'
     0x4d:
       id: 'chx'
-      doc: 'Chx'
+      doc: 'CHX'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x53:
       id: 'cts'
-      doc: 'Cts'
+      doc: 'CTS'
     0x54:
       id: 'nasdaq_omx'
-      doc: 'Nasdaq Omx'
+      doc: 'NASDAQ OMX'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x57:
       id: 'cbsx'
-      doc: 'Cbsx'
+      doc: 'CBSX'
     0x58:
       id: 'nasdaq_omx_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'bats_y'
-      doc: 'Bats Y'
+      doc: 'BATS Y'
     0x5a:
       id: 'bats'
-      doc: 'Bats'
+      doc: 'BATS'
     0x20:
       id: 'no_value'
       doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'
-      doc: 'No Short Sale Restriction In Effect'
+      doc: 'No Short Sale Restriction in Effect'
     0x45:
       id: 'short_sale_restriction_in_effect'
-      doc: 'Short Sale Restriction In Effect'
+      doc: 'Short Sale Restriction in Effect'
   market_state:
     0x50:
       id: 'preopening'
-      doc: 'Preopening'
+      doc: 'Pre-opening'
     0x45:
       id: 'early_session'
-      doc: 'Early Session'
+      doc: 'Early session'
     0x4f:
       id: 'core_session'
-      doc: 'Core Session'
+      doc: 'Core session'
     0x4c:
       id: 'late_session'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1156,7 +1156,7 @@ enums:
       doc: 'Regular Quote'
     0x57:
       id: 'slow_on_the_bid_and_ask'
-      doc: 'Slow On The Bid And Ask Due To A Set Slow List'
+      doc: 'Slow on the Bid and Ask due to a Set Slow List'
   bid_quote_condition:
     0x43:
       id: 'closing'
@@ -1169,46 +1169,46 @@ enums:
       doc: 'Regular Quote'
     0x57:
       id: 'slow_on_the_bid_and_ask'
-      doc: 'Slow On The Bid And Ask Due To A Set Slow List'
+      doc: 'Slow on the Bid and Ask due to a Set Slow List'
   retail_pricing_indicator:
     0:
       id: 'no_retail_interest'
       doc: 'No Retail Interest'
     1:
       id: 'retail_interest_on_the_bid_side'
-      doc: 'Retail Interest On The Bid Side'
+      doc: 'Retail Interest on the Bid side'
     2:
       id: 'retail_interest_on_the_ask_side'
-      doc: 'Retail Interest On The Ask Side'
+      doc: 'Retail Interest on the Ask side'
     3:
       id: 'retail_interest_on_bid_and_ask_side'
-      doc: 'Retail Interest On Bid And Ask Side'
+      doc: 'Retail Interest on Bid and Ask side'
   market_id_of_best_ask:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   market_id_of_best_bid:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   side:
     0x42:
       id: 'buy'
@@ -1228,20 +1228,20 @@ enums:
       doc: 'Regular Quote'
     0x57:
       id: 'slow_on_the_bid_and_ask'
-      doc: 'Slow On The Bid And Ask Due To A Set Slow List'
+      doc: 'Slow on the Bid and Ask due to a Set Slow List'
   rpi_indicator:
     0x20:
       id: 'no_retail_interest'
-      doc: 'Space Means No Retail Interest Default'
+      doc: 'Space means no retail interest (default)'
     0x41:
       id: 'interest_on_bid'
-      doc: 'Retail Interest On The Bid Side'
+      doc: 'Retail interest on the bid side'
     0x42:
       id: 'interest_on_offer'
-      doc: 'Retail Interest On The Offer Side'
+      doc: 'Retail interest on the offer side'
     0x43:
       id: 'interest_on_bid_and_offer'
-      doc: 'Retail Interest On The Bid And Offer Sides'
+      doc: 'Retail interest on the bid and offer sides'
   trade_condition_1:
     0x40:
       id: 'regular_sale'
@@ -1258,7 +1258,7 @@ enums:
   trade_condition_2:
     0x20:
       id: 'na'
-      doc: 'Na'
+      doc: 'N/A'
     0x46:
       id: 'intermarket_sweep_order'
       doc: 'Intermarket Sweep Order'
@@ -1280,7 +1280,7 @@ enums:
   trade_condition_3:
     0x20:
       id: 'na'
-      doc: 'Na'
+      doc: 'N/A'
     0x4c:
       id: 'sold_last'
       doc: 'Sold Last'
@@ -1289,14 +1289,14 @@ enums:
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_sold_out_of_sequence'
-      doc: 'Extended Hours Sold Out Of Sequence'
+      doc: 'Extended Hours Sold (Out of Sequence)'
     0x5a:
       id: 'sold'
       doc: 'Sold'
   trade_condition_4:
     0x20:
       id: 'na'
-      doc: 'Na'
+      doc: 'N/A'
     0x40:
       id: 'regular_sale'
       doc: 'Regular Sale'
@@ -1314,7 +1314,7 @@ enums:
       doc: 'Odd Lot Trade'
     0x4b:
       id: 'rule_127_nyse_only_or_rule_155_nyse_american_only'
-      doc: 'Rule 127 Nyse Only Or Rule 155 Nyse American Only'
+      doc: 'Rule 127 (NYSE only) or Rule 155 (NYSE American Only)'
     0x4d:
       id: 'official_closing_price'
       doc: 'Official Closing Price'
@@ -1326,66 +1326,66 @@ enums:
       doc: 'Official Open Price'
     0x56:
       id: 'stock_option_trade'
-      doc: 'Stock Option Trade'
+      doc: 'Stock-Option Trade'
     0x58:
       id: 'cross_trade'
       doc: 'Cross Trade'
   market_id_of_high_price:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   market_id_of_low_price:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   market_id_of_open_price:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   market_id_of_the_close:
     0:
       id: 'nyse_group_bqt'
-      doc: 'Nyse Group Bqt'
+      doc: 'NYSE Group (BQT)'
     1:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
   reason:
     0:
       id: 'new_trade'
-      doc: 'New Trade'
+      doc: 'New trade'
     1:
       id: 'trade_cancellation'
       doc: 'Trade Cancellation'
@@ -1397,12 +1397,12 @@ enums:
       doc: 'Trade Correction'
     4:
       id: 'closing_end_trade_summary'
-      doc: 'Closing End Trade Summary'
+      doc: 'Closing/End Trade Summary'
   complete:
     0:
       id: 'normal'
-      doc: 'Normal Data Is Complete'
+      doc: 'Normal. Data is complete'
     1:
       id: 'abnormal'
-      doc: 'An Unrecoverable Gap Was Experienced In The Input Stream So Data May Not Be Complete'
+      doc: 'An unrecoverable gap was experienced in the input stream, so data may not be complete'
 

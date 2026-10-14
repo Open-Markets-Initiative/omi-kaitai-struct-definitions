@@ -260,7 +260,7 @@ enums:
   customer_indicator:
     0x4e:
       id: 'non_customer'
-      doc: 'Non Customer'
+      doc: 'Non-Customer'
     0x43:
       id: 'customer'
       doc: 'Customer'

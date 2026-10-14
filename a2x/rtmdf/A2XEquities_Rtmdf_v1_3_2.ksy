@@ -347,10 +347,10 @@ enums:
   trade_type:
     1:
       id: 'visible'
-      doc: 'A Trade Against Visible Order Quantity In The Continuous Trading Order Book'
+      doc: 'a trade against visible order quantity in the continuous trading order book'
     2:
       id: 'hidden_or_reserve'
-      doc: 'A Trade Against Hidden Or Reserve Quantity In The Continuous Trading Order Book'
+      doc: 'a trade against hidden or reserve quantity in the continuous trading order book'
     3:
       id: 'market_at_close'
       doc: 'Market At Close'

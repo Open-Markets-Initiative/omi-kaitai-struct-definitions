@@ -160,19 +160,19 @@ enums:
   event_code:
     0x53:
       id: 'start_of_day'
-      doc: 'This Is Always The First Message Sent In Any Trading Day It Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This is always the first message sent in any trading day. It indicates that NASDAQ is open and ready to start accepting orders.'
     0x45:
       id: 'end_of_day'
-      doc: 'It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today All Orders That Remain Open In This Session Are Now Dead And Can Be Purged From The Book It Is Still Possible To Receive Broken Trade Messages And Order Cancel Messages After The End Of Day'
+      doc: 'It indicates that NASDAQ is now closed and will not accept any new orders today. All orders that remain open in this session are now dead and can be purged from the book. It is still possible to receive Broken Trade Messages and Order Cancel Messages after the End of Day.'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order.'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order.'
   display:
     0x59:
       id: 'displayed'
-      doc: 'Displayed In The Quote'
+      doc: 'Displayed in the quote'
 

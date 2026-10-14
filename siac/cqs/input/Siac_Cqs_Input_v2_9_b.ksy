@@ -132,7 +132,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Administrative Message'
+        doc: 'Identifies the type of Administrative message'
       - id: administrative_message_payload
         type:
           switch-on: administrative_message_type
@@ -144,7 +144,7 @@ types:
     seq:
       - id: error_code
         type: u1
-        doc: 'Error Code Indicating The First Error Encountered While Validating The Rejected Participant Input Message'
+        doc: 'Error code indicating the first error encountered while validating the rejected Participant input message'
       - id: block_sequence_number
         type: u4
         doc: 'Sequential block sequence number; rolls over after 4,294,967,295'
@@ -158,7 +158,7 @@ types:
     seq:
       - id: error_code
         type: u1
-        doc: 'Error Code Indicating The First Error Encountered While Validating The Rejected Participant Input Message'
+        doc: 'Error code indicating the first error encountered while validating the rejected Participant input message'
       - id: block_sequence_number
         type: u4
         doc: 'Sequential block sequence number; rolls over after 4,294,967,295'
@@ -171,13 +171,13 @@ types:
       - id: odd_lot_quote_appendage_type
         type: u1
         enum: odd_lot_quote_appendage_type
-        doc: 'Identifies The Type Of Odd Lot Quote Appendage On A Partial Reject Message Short Long Or Extended'
+        doc: 'Identifies the type of Odd Lot Quote appendage on a Partial Reject Message (Short, Long, or Extended)'
       - id: count_of_odd_lot_bid_appendages
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: count_of_odd_lot_offer_appendages
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: partial_reject_odd_lot_bid_short_quote_appendage
         type: partial_reject_odd_lot_bid_short_quote_appendage
         repeat: expr
@@ -218,77 +218,77 @@ types:
     seq:
       - id: odd_lot_quote_price_2
         type: decimal_u2_2
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Price associated with an odd lot bid or offer (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   partial_reject_odd_lot_offer_short_quote_appendage:
     seq:
       - id: odd_lot_quote_price_2
         type: decimal_u2_2
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Price associated with an odd lot bid or offer (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   partial_reject_odd_lot_bid_long_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   partial_reject_odd_lot_offer_long_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   partial_reject_odd_lot_bid_extended_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
       - id: odd_lot_finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifier Of The Finra Adf Market Maker Associated With The Respective Finra Odd Lot Bid Or Offer Left Justified Spacefilled'
+        doc: 'Identifier of the FINRA ADF Market Maker associated with the respective FINRA odd lot bid or offer. Left justified, space-filled'
   partial_reject_odd_lot_offer_extended_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
       - id: odd_lot_finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifier Of The Finra Adf Market Maker Associated With The Respective Finra Odd Lot Bid Or Offer Left Justified Spacefilled'
+        doc: 'Identifier of the FINRA ADF Market Maker associated with the respective FINRA odd lot bid or offer. Left justified, space-filled'
   warning_message:
     seq:
       - id: previous_block_sequence_number
         type: u4
-        doc: 'Block Sequence Number Prior To The Gap That Triggered The Warning'
+        doc: 'Block Sequence Number prior to the gap that triggered the Warning'
       - id: previous_participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Prior To The Gap That Triggered The Warning'
+        doc: 'Participant Reference Number prior to the gap that triggered the Warning'
   control_message:
     seq:
       - id: control_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Control Message'
+        doc: 'Identifies the type of Control message'
       - id: control_message_payload
         type:
           switch-on: control_message_type
@@ -300,13 +300,13 @@ types:
     seq:
       - id: current_block_sequence_number
         type: u4
-        doc: 'Next Expected Participant Block Sequence Number Returned By Cqs In A Sequence Information And Message Count Response'
+        doc: 'Next expected Participant Block Sequence Number returned by CQS in a Sequence Information and Message Count Response'
       - id: last_participant_reference_number
         type: s8
-        doc: 'Last Participant Reference Number Received By Cqs On The Individual Line'
+        doc: 'Last Participant Reference Number received by CQS on the individual line'
       - id: message_count
         type: u8
-        doc: 'Count Of Messages Received On The Individual Line Since Startup Excludes Line Integrity And Sequence Information And Message Count Inquiry Messages'
+        doc: 'Count of messages received on the individual line since startup. Excludes Line Integrity and Sequence Information and Message Count Inquiry messages'
   odd_lot_refresh_request_message:
     seq:
       - id: security_symbol_begin_range
@@ -314,19 +314,19 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Contains The Alphabetic Range For The First Symbol'
+        doc: 'Left justified, space-filled. Contains the alphabetic range for the first symbol'
       - id: security_symbol_end_range
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Contains The Alphabetic Range For The Last Symbol'
+        doc: 'Left justified, space-filled. Contains the alphabetic range for the last symbol'
       - id: reserved_8
         type: str
         size: 8
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   test_message:
     seq:
       - id: data
@@ -334,14 +334,14 @@ types:
         size: 256
         encoding: ASCII
         pad-right: 0x20
-        doc: 'All Ascii Characters Starting With Hex 0 And Ending Hex Ff In Sequential Order'
+        doc: 'All ASCII characters starting with hex 0 and ending hex FF, in sequential order'
   quote_message:
     seq:
       - id: quote_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Quote Message'
+        doc: 'Identifies the type of Quote message'
       - id: quote_message_payload
         type:
           switch-on: quote_message_type
@@ -363,29 +363,29 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'Price Used By The Exchange To Establish The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Price used by the exchange to establish the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Latest Upper Threshold Price Of The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Latest upper threshold price of the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Latest Lower Threshold Price Of The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Latest lower threshold price of the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Number Of Manual Or Automatic Extensions The Applicable Auction Has Received Optional Set To Zero'
+        doc: 'Number of manual or automatic extensions the applicable auction has received. Optional set to zero'
       - id: reserved_62
         type: str
         size: 62
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   short_quote_message:
     seq:
       - id: security_symbol_short
@@ -393,25 +393,25 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Short Form Security Symbol Used In Short Quote Messages'
+        doc: 'Left justified, space-filled. Short form security symbol used in Short Quote messages'
       - id: bid_price_short
         type: decimal_u2_2
-        doc: 'Bid Price Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Bid price (Short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
-        doc: 'Bid Size Short Form'
+        doc: 'Bid size (Short form)'
       - id: offer_price_short
         type: decimal_u2_2
-        doc: 'Offer Price Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Offer price (Short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: offer_size_short
         type: u2
-        doc: 'Offer Size Short Form'
+        doc: 'Offer size (Short form)'
       - id: reserved_2
         type: str
         size: 2
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   long_quote_message:
     seq:
       - id: security_symbol
@@ -419,61 +419,61 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote Used To Determine Whether A Quote Qualifies For The Best Bid And Best Offer Calculation'
+        doc: 'Denotes a particular condition applicable to the quote. Used to determine whether a quote qualifies for the Best Bid and Best Offer calculation'
       - id: security_status_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Security Status Indicator Codes In Input Quote Messages Are Not Supported By Cqs Must Be Space'
+        doc: 'Security Status Indicator codes in input Quote messages are not supported by CQS. Must be Space'
       - id: bid_price
         type: decimal_u8_6
-        doc: 'Bid Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Bid price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
-        doc: 'Bid Size In Shares'
+        doc: 'Bid size in shares'
       - id: offer_price
         type: decimal_u8_6
-        doc: 'Offer Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Offer price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: offer_size
         type: u4
-        doc: 'Offer Size In Shares'
+        doc: 'Offer size in shares'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Identifies Retail Price Improvement Rpi Interest Priced Better Than The Protected Bbo'
+        doc: 'Identifies Retail Price Improvement (RPI) interest priced better than the Protected BBO'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security Normal Crossed Or Locked'
+        doc: 'Identifies the market condition of a quote for a security (Normal, Crossed, or Locked)'
       - id: finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Market Maker Id Of The Quoting Participant On Finr As Alternative Display Facility Or The Finra Adf Identifier Fnra Left Justified Spacefilled'
+        doc: 'FINRA Market Maker ID of the quoting participant on FINRA''s Alternative Display Facility, or the FINRA ADF Identifier FNRA. Left justified, space-filled'
       - id: finra_bbo_indicator
         type: u1
         enum: finra_bbo_indicator
-        doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
+        doc: 'For FINRA ADF, represents the FINRA BBO state of the FINRA ADF quote'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect'
   timestamp_2:
     seq:
       - id: seconds
@@ -489,91 +489,91 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote Used To Determine Whether A Quote Qualifies For The Best Bid And Best Offer Calculation'
+        doc: 'Denotes a particular condition applicable to the quote. Used to determine whether a quote qualifies for the Best Bid and Best Offer calculation'
       - id: security_status_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Security Status Indicator Codes In Input Quote Messages Are Not Supported By Cqs Must Be Space'
+        doc: 'Security Status Indicator codes in input Quote messages are not supported by CQS. Must be Space'
       - id: bid_price
         type: decimal_u8_6
-        doc: 'Bid Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Bid price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
-        doc: 'Bid Size In Shares'
+        doc: 'Bid size in shares'
       - id: offer_price
         type: decimal_u8_6
-        doc: 'Offer Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Offer price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: offer_size
         type: u4
-        doc: 'Offer Size In Shares'
+        doc: 'Offer size in shares'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Identifies Retail Price Improvement Rpi Interest Priced Better Than The Protected Bbo'
+        doc: 'Identifies Retail Price Improvement (RPI) interest priced better than the Protected BBO'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security Normal Crossed Or Locked'
+        doc: 'Identifies the market condition of a quote for a security (Normal, Crossed, or Locked)'
       - id: finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Market Maker Id Of The Quoting Participant On Finr As Alternative Display Facility Or The Finra Adf Identifier Fnra Left Justified Spacefilled'
+        doc: 'FINRA Market Maker ID of the quoting participant on FINRA''s Alternative Display Facility, or the FINRA ADF Identifier FNRA. Left justified, space-filled'
       - id: finra_best_bid_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Finra Adf Provided Quote Condition Associated With The Finra Best Bid Price Spacefilled When Not Applicable'
+        doc: 'FINRA ADF provided Quote Condition associated with the FINRA Best Bid Price. Space-filled when not applicable'
       - id: finra_best_bid_price
         type: decimal_u8_6
-        doc: 'Finra Adf Provided Best Bid Price That Is The Finra Best Bid Fbbo Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'FINRA ADF provided Best Bid Price that is the FINRA Best Bid (FBBO). Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: finra_best_bid_size
         type: u4
-        doc: 'Finra Adf Provided Best Bid Size In Shares Optional Set To Zero'
+        doc: 'FINRA ADF provided Best Bid Size in shares. Optional set to zero'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Bid Fbbo Left Justified Spacefilled'
+        doc: 'FINRA ADF provided Market Maker ID that had the FINRA Best Bid (FBBO). Left justified, space-filled'
       - id: finra_best_offer_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Finra Adf Provided Quote Condition Associated With The Finra Best Offer Price Spacefilled When Not Applicable'
+        doc: 'FINRA ADF provided Quote Condition associated with the FINRA Best Offer Price. Space-filled when not applicable'
       - id: finra_best_offer_price
         type: decimal_u8_6
-        doc: 'Finra Adf Provided Best Offer Price That Is The Finra Best Offer Fbbo Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'FINRA ADF provided Best Offer Price that is the FINRA Best Offer (FBBO). Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: finra_best_offer_size
         type: u4
-        doc: 'Finra Adf Provided Best Offer Size In Shares Optional Set To Zero'
+        doc: 'FINRA ADF provided Best Offer Size in shares. Optional set to zero'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
+        doc: 'FINRA ADF provided Market Maker ID that had the FINRA Best Offer (FBBO). Left justified, space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect'
   round_lot_short_quote_message:
     seq:
       - id: security_symbol_short
@@ -581,29 +581,29 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Short Form Security Symbol Used In Short Quote Messages'
+        doc: 'Left justified, space-filled. Short form security symbol used in Short Quote messages'
       - id: round_lot_bid_price_short
         type: decimal_u2_2
-        doc: 'Round Lot Bid Price Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Round Lot bid price (Short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: round_lot_bid_size_short
         type: u2
-        doc: 'Round Lot Bid Size Short Form'
+        doc: 'Round Lot bid size (Short form)'
       - id: round_lot_offer_price_short
         type: decimal_u2_2
-        doc: 'Round Lot Offer Price Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Round Lot offer price (Short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: round_lot_offer_size_short
         type: u2
-        doc: 'Round Lot Offer Size Short Form'
+        doc: 'Round Lot offer size (Short form)'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_short_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_short_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_short_quote_appendage
         type: odd_lot_bid_short_quote_appendage
         repeat: expr
@@ -618,18 +618,18 @@ types:
     seq:
       - id: odd_lot_quote_price_2
         type: decimal_u2_2
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Price associated with an odd lot bid or offer (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   odd_lot_offer_short_quote_appendage:
     seq:
       - id: odd_lot_quote_price_2
         type: decimal_u2_2
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Short Form Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Price associated with an odd lot bid or offer (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   round_lot_long_quote_message:
     seq:
       - id: security_symbol
@@ -637,58 +637,58 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote Used To Determine Whether A Quote Qualifies For The Best Bid And Best Offer Calculation'
+        doc: 'Denotes a particular condition applicable to the quote. Used to determine whether a quote qualifies for the Best Bid and Best Offer calculation'
       - id: round_lot_bid_price
         type: decimal_u8_6
-        doc: 'Round Lot Bid Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Round Lot bid price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: round_lot_bid_size
         type: u4
-        doc: 'Round Lot Bid Size In Shares'
+        doc: 'Round Lot bid size in shares'
       - id: round_lot_offer_price
         type: decimal_u8_6
-        doc: 'Round Lot Offer Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Round Lot offer price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: round_lot_offer_size
         type: u4
-        doc: 'Round Lot Offer Size In Shares'
+        doc: 'Round Lot offer size in shares'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Identifies Retail Price Improvement Rpi Interest Priced Better Than The Protected Bbo'
+        doc: 'Identifies Retail Price Improvement (RPI) interest priced better than the Protected BBO'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security Normal Crossed Or Locked'
+        doc: 'Identifies the market condition of a quote for a security (Normal, Crossed, or Locked)'
       - id: finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Market Maker Id Of The Quoting Participant On Finr As Alternative Display Facility Or The Finra Adf Identifier Fnra Left Justified Spacefilled'
+        doc: 'FINRA Market Maker ID of the quoting participant on FINRA''s Alternative Display Facility, or the FINRA ADF Identifier FNRA. Left justified, space-filled'
       - id: finra_bbo_indicator
         type: u1
         enum: finra_bbo_indicator
-        doc: 'For Finra Adf Represents The Finra Bbo State Of The Finra Adf Quote'
+        doc: 'For FINRA ADF, represents the FINRA BBO state of the FINRA ADF quote'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_long_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_long_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_long_quote_appendage
         type: odd_lot_bid_long_quote_appendage
         repeat: expr
@@ -703,18 +703,18 @@ types:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   odd_lot_offer_long_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
   round_lot_finra_adf_quote_message:
     seq:
       - id: security_symbol
@@ -722,88 +722,88 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote Used To Determine Whether A Quote Qualifies For The Best Bid And Best Offer Calculation'
+        doc: 'Denotes a particular condition applicable to the quote. Used to determine whether a quote qualifies for the Best Bid and Best Offer calculation'
       - id: round_lot_bid_price
         type: decimal_u8_6
-        doc: 'Round Lot Bid Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Round Lot bid price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: round_lot_bid_size
         type: u4
-        doc: 'Round Lot Bid Size In Shares'
+        doc: 'Round Lot bid size in shares'
       - id: round_lot_offer_price
         type: decimal_u8_6
-        doc: 'Round Lot Offer Price Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Round Lot offer price. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: round_lot_offer_size
         type: u4
-        doc: 'Round Lot Offer Size In Shares'
+        doc: 'Round Lot offer size in shares'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Identifies Retail Price Improvement Rpi Interest Priced Better Than The Protected Bbo'
+        doc: 'Identifies Retail Price Improvement (RPI) interest priced better than the Protected BBO'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security Normal Crossed Or Locked'
+        doc: 'Identifies the market condition of a quote for a security (Normal, Crossed, or Locked)'
       - id: finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Market Maker Id Of The Quoting Participant On Finr As Alternative Display Facility Or The Finra Adf Identifier Fnra Left Justified Spacefilled'
+        doc: 'FINRA Market Maker ID of the quoting participant on FINRA''s Alternative Display Facility, or the FINRA ADF Identifier FNRA. Left justified, space-filled'
       - id: finra_best_bid_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Finra Adf Provided Quote Condition Associated With The Finra Best Bid Price Spacefilled When Not Applicable'
+        doc: 'FINRA ADF provided Quote Condition associated with the FINRA Best Bid Price. Space-filled when not applicable'
       - id: finra_best_bid_price
         type: decimal_u8_6
-        doc: 'Finra Adf Provided Best Bid Price That Is The Finra Best Bid Fbbo Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'FINRA ADF provided Best Bid Price that is the FINRA Best Bid (FBBO). Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: finra_best_bid_size
         type: u4
-        doc: 'Finra Adf Provided Best Bid Size In Shares Optional Set To Zero'
+        doc: 'FINRA ADF provided Best Bid Size in shares. Optional set to zero'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Bid Fbbo Left Justified Spacefilled'
+        doc: 'FINRA ADF provided Market Maker ID that had the FINRA Best Bid (FBBO). Left justified, space-filled'
       - id: finra_best_offer_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Finra Adf Provided Quote Condition Associated With The Finra Best Offer Price Spacefilled When Not Applicable'
+        doc: 'FINRA ADF provided Quote Condition associated with the FINRA Best Offer Price. Space-filled when not applicable'
       - id: finra_best_offer_price
         type: decimal_u8_6
-        doc: 'Finra Adf Provided Best Offer Price That Is The Finra Best Offer Fbbo Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'FINRA ADF provided Best Offer Price that is the FINRA Best Offer (FBBO). Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: finra_best_offer_size
         type: u4
-        doc: 'Finra Adf Provided Best Offer Size In Shares Optional Set To Zero'
+        doc: 'FINRA ADF provided Best Offer Size in shares. Optional set to zero'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Finra Adf Provided Market Maker Id That Had The Finra Best Offer Fbbo Left Justified Spacefilled'
+        doc: 'FINRA ADF provided Market Maker ID that had the FINRA Best Offer (FBBO). Left justified, space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_extended_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_extended_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_extended_quote_appendage
         type: odd_lot_bid_extended_quote_appendage
         repeat: expr
@@ -818,30 +818,30 @@ types:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
       - id: odd_lot_finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifier Of The Finra Adf Market Maker Associated With The Respective Finra Odd Lot Bid Or Offer Left Justified Spacefilled'
+        doc: 'Identifier of the FINRA ADF Market Maker associated with the respective FINRA odd lot bid or offer. Left justified, space-filled'
   odd_lot_offer_extended_quote_appendage:
     seq:
       - id: odd_lot_quote_price
         type: decimal_u8_6
-        doc: 'Price Associated With An Odd Lot Bid Or Offer Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Price associated with an odd lot bid or offer. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: odd_lot_quote_size
         type: u1
-        doc: 'Size Associated With An Odd Lot Bid Or Offer In Shares Set To Zero Indicates Removal Of A Previously Reported Odd Lot At This Price'
+        doc: 'Size associated with an odd lot bid or offer in shares. Set to zero indicates removal of a previously reported odd lot at this price'
       - id: odd_lot_finra_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifier Of The Finra Adf Market Maker Associated With The Respective Finra Odd Lot Bid Or Offer Left Justified Spacefilled'
+        doc: 'Identifier of the FINRA ADF Market Maker associated with the respective FINRA odd lot bid or offer. Left justified, space-filled'
   odd_lot_short_quote_message:
     seq:
       - id: security_symbol_short
@@ -849,17 +849,17 @@ types:
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Short Form Security Symbol Used In Short Quote Messages'
+        doc: 'Left justified, space-filled. Short form security symbol used in Short Quote messages'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_short_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_short_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_short_quote_appendage
         type: odd_lot_bid_short_quote_appendage
         repeat: expr
@@ -877,17 +877,17 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_long_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_long_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_long_quote_appendage
         type: odd_lot_bid_long_quote_appendage
         repeat: expr
@@ -905,17 +905,17 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: clear_prior_odd_lot_quotes
         type: u1
         enum: clear_prior_odd_lot_quotes
-        doc: 'Identifies Whether To Clear All Previously Reported Odd Lot Bids Andor Offers For The Participant'
+        doc: 'Identifies whether to clear all previously reported odd lot bids and/or offers for the Participant'
       - id: num_odd_lot_bid_extended_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Bid Appendages On A Quote Message Optional Set To Zero Bid Appendages Are Populated Before Any Offer Appendage'
+        doc: 'Number of odd lot bid appendages on a quote message. Optional set to zero. Bid appendages are populated before any offer appendage'
       - id: num_odd_lot_offer_extended_quote_appendage
         type: u1
-        doc: 'Number Of Odd Lot Offer Appendages On A Quote Message Optional Set To Zero Offer Appendages Are Populated After Any Odd Lot Bid Appendages'
+        doc: 'Number of odd lot offer appendages on a quote message. Optional set to zero. Offer appendages are populated after any odd lot bid appendages'
       - id: odd_lot_bid_extended_quote_appendage
         type: odd_lot_bid_extended_quote_appendage
         repeat: expr
@@ -932,7 +932,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Trade Message'
+        doc: 'Identifies the type of Trade message'
       - id: trade_message_payload
         type:
           switch-on: trade_message_type
@@ -945,41 +945,41 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: last_price_opening_reopening_luld_reference_price
         type: decimal_u8_6
-        doc: 'Last Price For A Security When Security Status Is Set To Luld Reference Price Contains The Opening Reopening Luld Reference Price Reported By The Listing Exchange Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Last price for a security; when Security Status is set to LULD Reference Price, contains the Opening (Reopening) LULD Reference Price reported by the listing exchange. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: high_indication_price_upper_limit_price_band
         type: decimal_u8_6
-        doc: 'High Indication Price For Trading Range Or When Paired With Luld Trading Pause The Upper Limit Price Band Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'High Indication Price for trading range or, when paired with LULD Trading Pause, the Upper Limit Price Band. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: low_indication_price_lower_limit_price_band
         type: decimal_u8_6
-        doc: 'Low Indication Price For Trading Range Or When Paired With Luld Trading Pause The Lower Limit Price Band Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Low Indication Price for trading range or, when paired with LULD Trading Pause, the Lower Limit Price Band. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: buy_volume
         type: u4
-        doc: 'Reported Imbalance Of Buy Orders Without Matching Sell Orders For The Security For A Participant Optional Set To Zero'
+        doc: 'Reported imbalance of buy orders without matching sell orders for the security for a Participant. Optional set to zero'
       - id: sell_volume
         type: u4
-        doc: 'Reported Imbalance Of Sell Orders Without Matching Buy Orders For The Security For A Participant'
+        doc: 'Reported imbalance of sell orders without matching buy orders for the security for a Participant'
       - id: security_status
         type: u1
         enum: security_status
-        doc: 'Trading Action On The Trading Status Category T Type S Message'
+        doc: 'Trading action on the Trading Status (Category T Type S) message'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Reason For A Trading Halt'
+        doc: 'Reason for a Trading Halt'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect'
       - id: trading_status_id
         type: u4
-        doc: 'Unique Identifier For Each Trading Status Message Used To Eliminate Duplicate Trading Status Messages Received Over Cqs And Cts Input Lines'
+        doc: 'Unique identifier for each Trading Status Message; used to eliminate duplicate Trading Status messages received over CQS and CTS input lines'
   nanosecond_timestamp:
     seq:
       - id: time

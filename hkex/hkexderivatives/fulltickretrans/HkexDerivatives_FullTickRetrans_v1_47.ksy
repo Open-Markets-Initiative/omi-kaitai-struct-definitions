@@ -986,7 +986,7 @@ enums:
   source:
     0x48:
       id: 'trading_system'
-      doc: 'Market Alerts Sent Through The Trading System'
+      doc: 'Market Alerts sent through the Trading System'
     0x4d:
       id: 'other_market_alerts'
       doc: 'Other Market Alerts'
@@ -1045,7 +1045,7 @@ enums:
       doc: 'Ask'
     2:
       id: 'both'
-      doc: 'Bid And Ask'
+      doc: 'Bid and Ask'
   underlying_price_unit:
     1:
       id: 'price'
@@ -1278,7 +1278,7 @@ enums:
       doc: 'Options Strangle'
     172:
       id: 'synthetic_futures'
-      doc: 'Standard Combo Series For Stock Options Market'
+      doc: 'Standard Combo Series for Stock Options Market'
     201:
       id: 'time_spread_level_1'
       doc: 'Time Spread Level 1'
@@ -1366,28 +1366,28 @@ enums:
       doc: 'Inverted Price Then Time'
     3:
       id: 'price_then_traders_then_time'
-      doc: 'Price Traders Before Mm Time'
+      doc: 'Price, Traders before MM, Time'
     4:
       id: 'inverted_price_then_traders_then_time'
-      doc: 'Inverted Price Traders Before Mm Time'
+      doc: 'Inverted Price, Traders before MM, Time'
     5:
       id: 'price_then_market_makers_then_time'
-      doc: 'Price Mm Before Traders Time'
+      doc: 'Price, MM before Traders, Time'
     6:
       id: 'inverted_price_then_market_makers_then_time'
-      doc: 'Inverted Price Mm Before Traders Time'
+      doc: 'Inverted Price, MM before Traders, Time'
     7:
       id: 'price_then_baits_then_time'
-      doc: 'Price Baits Before Normal Orders Time'
+      doc: 'Price, Baits before Normal Orders, Time'
     8:
       id: 'inverted_price_then_baits_then_time'
-      doc: 'Inverted Price Baits Before Normal Orders Time'
+      doc: 'Inverted Price, Baits before Normal Orders, Time'
     11:
       id: 'price_then_own_orders_then_time'
-      doc: 'Price Own Orders Time'
+      doc: 'Price, Own Orders, Time'
     12:
       id: 'inverted_price_then_own_orders_then_time'
-      doc: 'Inverted Price Own Orders Time'
+      doc: 'Inverted Price, Own Orders, Time'
   tradable:
     1:
       id: 'yes_field'
@@ -1492,7 +1492,7 @@ enums:
       doc: 'Not Available'
     1:
       id: 'active'
-      doc: 'Both Expired And Not Expired'
+      doc: 'both expired and not expired'
     2:
       id: 'suspended'
       doc: 'Suspended'
@@ -1504,7 +1504,7 @@ enums:
       doc: 'Delisted'
     5:
       id: 'locked'
-      doc: 'Suspended For Trading And Posttrade Operations'
+      doc: 'Suspended for trading and post-trade operations'
   price_method:
     0:
       id: 'not_available'
@@ -1670,7 +1670,7 @@ enums:
       doc: 'Not Suspended'
     3:
       id: 'locked'
-      doc: 'Suspended For Trading And Posttrade Operations'
+      doc: 'Suspended for trading and post-trade operations'
   suspended:
     0x59:
       id: 'yes_field'
@@ -1701,10 +1701,10 @@ enums:
   trade_state:
     1:
       id: 'given_up_trade'
-      doc: 'The Trade Has Been Deleted'
+      doc: 'The trade has been deleted'
     2:
       id: 'rectified'
-      doc: 'The Trade Has Been Rectified'
+      doc: 'The trade has been rectified'
     3:
       id: 'deleted'
       doc: 'Normal'

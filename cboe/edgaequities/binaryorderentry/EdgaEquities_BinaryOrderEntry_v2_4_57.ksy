@@ -7409,35 +7409,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid Usernamepassword'
+      doc: 'Not authorized (invalid username/password)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bit_field_in_login_message'
-      doc: 'Invalid Return Bit Field In Login Message'
+      doc: 'Invalid return bit field in Login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -7453,60 +7453,60 @@ enums:
       doc: 'Sell'
     0x35:
       id: 'sell_short'
-      doc: 'Sell Short Client Affirms Ability To Borrow'
+      doc: 'Sell Short (client affirms ability to borrow)'
     0x36:
       id: 'sell_short_exempt'
       doc: 'Sell Short Exempt'
   exec_inst:
     0x66:
       id: 'intermarket_sweep'
-      doc: 'Intermarket Sweep Directed Or Book Post Only'
+      doc: 'Intermarket Sweep (Directed or Book/Post only)'
     0x50:
       id: 'market_peg'
-      doc: 'Market Peg Peg Buy Sell To Nbbo Offer Bid'
+      doc: 'Market Peg (peg Buy [Sell] to NBBO Offer [Bid])'
     0x51:
       id: 'market_maker_peg'
-      doc: 'Market Maker Peg See Cboe Titanium Us Equities Market Maker Specification'
+      doc: 'Market Maker Peg (see Cboe Titanium U.S. Equities Market Maker Specification)'
     0x52:
       id: 'primary_peg'
-      doc: 'Primary Peg Peg Buy Sell To Nbb Bid Offer'
+      doc: 'Primary Peg (peg Buy [Sell] to NBB Bid [Offer])'
     0x55:
       id: 'supplemental_peg_order'
       doc: 'Supplemental Peg Order'
     0x4d:
       id: 'midpoint'
-      doc: 'Midpoint Peg To Nbbo Midpoint'
+      doc: 'Midpoint (peg to NBBO Midpoint)'
     0x6d:
       id: 'midpoint_x6d'
-      doc: 'Midpoint Peg To Nbbo Midpoint But Do Not Match When Nbbo Is Locked'
+      doc: 'Midpoint (peg to NBBO Midpoint, but do not match when NBBO is locked)'
     0x4c:
       id: 'alternate_midpoint'
-      doc: 'Alternate Midpoint Less Aggressive Of Midpoint And 1 Tick Inside Nbbo Edga And Edgx'
+      doc: 'Alternate Midpoint (less aggressive of midpoint and 1 tick inside NBBO) EDGA and EDGX:'
     0x64:
       id: 'midpoint_discretionary_order'
       doc: 'Midpoint Discretionary Order'
     0x65:
       id: 'midpoint_discretionary_order_with_quote_depletion_protection'
-      doc: 'Midpoint Discretionary Order With Quote Depletion Protection Bzx'
+      doc: 'Midpoint Discretionary Order with Quote Depletion Protection BZX:'
     0x72:
       id: 'late'
-      doc: 'Late For Use With Auction Only Orders See The Cboe Titanium Us Equities Auction Process Specification Bzx And Edgx'
+      doc: 'Late (for use with Auction Only orders); see the Cboe Titanium U.S. Equities Auction Process Specification BZX and EDGX:'
     0x6f:
       id: 'listing_market_opening'
-      doc: 'Listing Market Opening For Rooc Rout Strategy Only'
+      doc: 'Listing Market Opening (for ROOC RoutStrategy only)'
     0x63:
       id: 'listing_market_close'
-      doc: 'Listing Market Close For Rooc Rout Strategy Only'
+      doc: 'Listing Market Close (for ROOC RoutStrategy only)'
     0x61:
       id: 'both_listing_market_open_and_close'
-      doc: 'Both Listing Market Open And Close For Rooc Rout Strategy Strategy Only Also Eligible For Participation In Halt Auctions'
+      doc: 'Both Listing Market Open and Close (for ROOC RoutStrategy strategy only; also eligible for participation in halt auctions)'
   ord_type:
     0x31:
       id: 'market'
       doc: 'Market'
     0x32:
       id: 'limit'
-      doc: 'Limit Default'
+      doc: 'Limit (default)'
     0x33:
       id: 'stop'
       doc: 'Stop'
@@ -7515,47 +7515,47 @@ enums:
       doc: 'Stop Limit'
     0x50:
       id: 'pegged'
-      doc: 'Pegged Pegged Requires Exec Inst Be Set To L M M P Q Or R Market Implies A Time In Force Of Day Market Day Orders Post In Luld Straddle State Or If A Short Sale During A Regulation Sho Short Sale Circuit Breaker Pegged Orders May Not Be Routable Except For Midpoint Pegs Byx Where Rout Strategy Rmpt Rmpl Or Dirc'
+      doc: 'Pegged Pegged requires ExecInst be set to ‘L’, ‘M’, ‘m’, ‘P’, ‘Q’, or ‘R’. Market implies a TimeInForce of Day. Market day orders post in LULD straddle state or if a short sale during a Regulation SHO short sale circuit breaker. Pegged orders may not be routable except for midpoint pegs BYX where RoutStrategy = RMPT, RMPL, or DIRC.'
   time_in_force:
     0x30:
       id: 'day'
-      doc: 'Day Default Early Trading Session Until End Of Regular Session'
+      doc: 'Day (Default) (Early Trading Session until end of Regular Session)'
     0x31:
       id: 'gtc'
-      doc: 'Gtc Allowed But Treated As Day'
+      doc: 'GTC (allowed, but treated as Day)'
     0x32:
       id: 'at_the_open'
-      doc: 'At The Open Bzx Only And Cboe Listed Securities Only'
+      doc: 'At the Open (BZX only and Cboe listed securities only)'
     0x33:
       id: 'ioc'
-      doc: 'Ioc Portion Not Filled Immediately Is Cancelled'
+      doc: 'IOC (Portion not filled immediately is cancelled)'
     0x34:
       id: 'fok'
-      doc: 'Fok An Ioc Where The Entire Size Must Be Filled Else The Order Will Be Cancelled Back'
+      doc: 'FOK (an IOC where the entire size must be filled, else the order will be cancelled back)'
     0x35:
       id: 'gtx'
-      doc: 'Gtx Early Trading Session Until End Of Post Market Session'
+      doc: 'GTX (Early Trading Session until end of Post-Market Session)'
     0x36:
       id: 'gtd'
-      doc: 'Gtd Early Trading Session Expires At Earlier Of Expire Time Or End Of Post Market Session'
+      doc: 'GTD (Early Trading Session; expires at earlier of ExpireTime or end of Post-Market Session)'
     0x37:
       id: 'at_the_close'
-      doc: 'At The Close Bzx Only And Applicable To Cboe Listed Securities And Cboe Market Close Symbols'
+      doc: 'At the Close (BZX only and applicable to Cboe Listed securities and Cboe Market Close symbols'
     0x45:
       id: 'pre'
-      doc: 'Pre Pre Market Trading Session Until End Of Regular Session'
+      doc: 'PRE (Pre-Market Trading Session until end of Regular Session)'
     0x50:
       id: 'rtp'
-      doc: 'Rtp Regular Hours And Post Market Sessioneffective 100926'
+      doc: 'RTP (Regular Hours and Post-Market Session)(effective 10/09/26)'
     0x52:
       id: 'rho'
-      doc: 'Rho Regular Hours Session Only'
+      doc: 'RHO (Regular Hours/Session Only)'
     0x54:
       id: 'ptd'
-      doc: 'Ptd Pre Market Trading Session Expires At Earlier Of Specified Expire Time Or End Of Post Market Session'
+      doc: 'PTD (Pre-Market Trading Session; expires at earlier of specified ExpireTime or end of Post-Market Session)'
     0x58:
       id: 'ptx'
-      doc: 'Ptx Pre Market Trading Session Until End Of Post Market Session'
+      doc: 'PTX (Pre-Market Trading Session until end of Post-Market Session)'
   capacity:
     0x41:
       id: 'agency'
@@ -7569,7 +7569,7 @@ enums:
   display_indicator:
     0x56:
       id: 'default_field'
-      doc: 'Default As Determined By Port Level Setting Defaults To S'
+      doc: 'Default. As determined by port level setting (defaults to S)'
     0x50:
       id: 'price_adjust'
       doc: 'Price Adjust'
@@ -7578,126 +7578,126 @@ enums:
       doc: 'Multiple Price Adjust'
     0x52:
       id: 'cancel_back_the_order_if_it_cannot_be_booked_and_displayed'
-      doc: 'Cancel Back The Order If It Cannot Be Booked And Displayed Without Adjustment'
+      doc: 'Cancel back the order if it cannot be booked and displayed without adjustment'
     0x72:
       id: 'hidden'
-      doc: 'Hidden Cancel Back The Order If It Cannot Be Booked Without Adjustment'
+      doc: 'Hidden; cancel back the order if it cannot be booked without adjustment'
     0x53:
       id: 'display_price_sliding'
-      doc: 'Display Price Sliding This Is To Override An Optout Of Display Price Siding At The Port Level'
+      doc: 'Display Price Sliding (this is to override an opt-out of Display Price Siding at the port level)'
     0x4c:
       id: 'display_price_sliding_but_cancel_back_if_order_crosses_the'
-      doc: 'Display Price Sliding But Cancel Back If Order Crosses The Nbbo On Entry'
+      doc: 'Display Price Sliding, but cancel back if order crosses the NBBO on entry'
     0x4d:
       id: 'multiple_display_price_sliding'
       doc: 'Multiple Display Price Sliding'
     0x68:
       id: 'hidden_multiple_price_slide'
-      doc: 'Hidden Multiple Price Slide Other Options'
+      doc: 'Hidden Multiple Price Slide Other Options:'
     0x76:
       id: 'visible'
-      doc: 'Visible For Visible Peg Orders Only Others Will Be Rejected'
+      doc: 'Visible (for visible peg orders only; others will be rejected)'
     0x49:
       id: 'invisible'
-      doc: 'Invisible Implied For Midpoint Peg Orders'
+      doc: 'Invisible (implied for Midpoint Peg orders)'
     0x4e:
       id: 'no_rescrape_at_limit'
-      doc: 'No Rescrape At Limit Applicable Only To Fully Routable Ioc Orders Routing Inst R And Time In Force 3 After Walking The Price To The Limit There Will Be No Final Scrape At Cboe And The Cancel Reason Code Will State X Expired Rather Than N No Liquidity'
+      doc: 'No Rescrape at Limit. Applicable only to fully routable, IOC orders (RoutingInst = R and TimeInForce = 3). After walking the price to the limit, there will be no final scrape at Cboe and the cancel reason code will state X (Expired) rather than N (No Liquidity).'
   locate_reqd:
     0x4e:
       id: 'client_affirms_ability_to_borrow'
-      doc: 'Client Affirms Ability To Borrow Default'
+      doc: 'Client affirms ability to borrow (default)'
     0x59:
       id: 'client_does_not_affirm_ability_to_borrow'
-      doc: 'Client Does Not Affirm Ability To Borrow Results In Reject'
+      doc: 'Client does not affirm ability to borrow (results in reject)'
   attributed_quote:
     0x4e:
       id: 'do_not_attribute_firm_mpid_to_this_order'
-      doc: 'Do Not Attribute Firm Mpid To This Order'
+      doc: 'Do not attribute firm MPID to this order'
     0x59:
       id: 'attribute_firm_mpid_to_this_order'
-      doc: 'Attribute Firm Mpid To This Order'
+      doc: 'Attribute firm MPID to this order'
     0x52:
       id: 'attribute_rtal_to_this_order'
-      doc: 'Attribute Rtal To This Order'
+      doc: 'Attribute RTAL to this order'
   ext_exec_inst:
     0x4e:
       id: 'none'
       doc: 'None'
     0x52:
       id: 'retail_order_eligible_for_retail_rebate'
-      doc: 'Retail Order Eligible For Retail Rebate Byx And Edgx'
+      doc: 'Retail Order, eligible for Retail rebate. BYX and EDGX:'
     0x50:
       id: 'retail_order'
-      doc: 'Retail Order Price Improvement Only'
+      doc: 'Retail Order (Price Improvement Only)'
     0x54:
       id: 'retail_price_improving_order'
-      doc: 'Retail Price Improving Order Edgx'
+      doc: 'Retail Price Improving Order EDGX:'
     0x58:
       id: 'retail_priority_order'
-      doc: 'Retail Priority Order Eligible For Retail Priority And Retail Rebate Rate'
+      doc: 'Retail Priority Order; eligible for Retail Priority and Retail rebate rate.'
   ex_destination:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_texas'
       doc: 'Nasdaq Texas'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x46:
       id: 'texas_stock_exchange'
       doc: 'Texas Stock Exchange'
     0x47:
       id: 'n_24_x_national_exchange'
-      doc: '24 X National Exchange'
+      doc: '24X National Exchange'
     0x48:
       id: 'miax_pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX Pearl'
     0x49:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
     0x4a:
       id: 'edga'
-      doc: 'Edga'
+      doc: 'EDGA'
     0x4b:
       id: 'edgx'
-      doc: 'Edgx'
+      doc: 'EDGX'
     0x4c:
       id: 'long_term_stock_exchange'
       doc: 'Long Term Stock Exchange'
     0x4d:
       id: 'nyse_texas'
-      doc: 'Nyse Texas'
+      doc: 'NYSE Texas'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
       doc: 'Nasdaq'
     0x54:
       id: 'intelligent_cross'
-      doc: 'Intelligent Cross Pending Approval'
+      doc: 'Intelligent Cross (pending approval)'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Psx'
+      doc: 'Nasdaq PSX'
     0x59:
       id: 'byx_1'
-      doc: 'Byx 1'
+      doc: 'BYX1'
     0x5a:
       id: 'bzx_1'
-      doc: 'Bzx 11 Post To Away Option Available For Rout And Roux Only 2 Post To Edgx For Rout Roux Rouz Rdot'
+      doc: 'BZX1 1Post to Away option available for ROUT and ROUX only. 2Post to EDGX (for ROUT, ROUX, ROUZ, RDOT).'
   cross_trade_flag:
     0x30:
       id: 'none'
-      doc: 'None To Override Port Setting As Necessary'
+      doc: 'None (to override port setting as necessary)'
     0x31:
       id: 'periodic_auction_only'
       doc: 'Periodic Auction Only'
@@ -7707,164 +7707,164 @@ enums:
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
-      doc: 'Leave Original Order Alone'
+      doc: 'Leave original order alone'
     0x59:
       id: 'cancel_original_order_if_modification_fails'
-      doc: 'Cancel Original Order If Modification Fails'
+      doc: 'Cancel original order if modification fails'
   base_liquidity_indicator:
     0x41:
       id: 'added_liquidity'
       doc: 'Added Liquidity'
     0x43:
       id: 'auction_uncrossing'
-      doc: 'Auction Uncrossing'
+      doc: 'Auction/Uncrossing'
     0x52:
       id: 'removed_liquidity'
       doc: 'Removed Liquidity'
     0x57:
       id: 'waiting_for_execution_at_premarket_time_as'
-      doc: 'Waiting For Execution At Premarket Time As Defined By Time In Force Value And Hold Early To 7 Am Port Setting Only Applied On The Initial Order Acknowledgment'
+      doc: 'Waiting for execution at pre-market time as defined by TimeInForce value and ''Hold Early to 7am'' port setting. Only applied on the initial order acknowledgment.'
     0x58:
       id: 'routed_to_another_market'
-      doc: 'Routed To Another Market'
+      doc: 'Routed to Another Market'
   sub_liquidity_indicator:
     0x45:
       id: 'trade_added_rpi_liquidity'
-      doc: 'Trade Added Rpi Liquidity Byx And Edgx'
+      doc: 'Trade added RPI liquidity (BYX and EDGX)'
     0x48:
       id: 'trade_added_hidden_liquidity'
-      doc: 'Trade Added Hidden Liquidity'
+      doc: 'Trade added hidden liquidity'
     0x49:
       id: 'trade_added_hidden_liquidity_that_was_price_improved'
-      doc: 'Trade Added Hidden Liquidity That Was Price Improved'
+      doc: 'Trade added hidden liquidity that was price improved'
     0x4a:
       id: 'execution_from_first_order_to_join_the_nbbo'
-      doc: 'Execution From First Order To Join The Nbbo'
+      doc: 'Execution from first order to join the NBBO'
     0x50:
       id: 'periodic_auction'
-      doc: 'Periodic Auction Byx Only'
+      doc: 'Periodic Auction (BYX Only)'
     0x53:
       id: 'nbbo_setter_fee_eligible'
-      doc: 'Nbbo Setter Fee Eligible'
+      doc: 'NBBO-Setter fee eligible'
     0x56:
       id: 'visible_liquidity_add_trade_that_was_price_improved'
-      doc: 'Visible Liquidity Add Trade That Was Price Improved'
+      doc: 'Visible liquidity add trade that was price improved'
     0x6d:
       id: 'midpoint_peg_order'
-      doc: 'Midpoint Peg Order'
+      doc: 'Midpoint peg order'
     0x73:
       id: 'order_set_the_nbbo_but_is_not_fee_eligible'
-      doc: 'Order Set The Nbbo But Is Not Fee Eligible'
+      doc: 'Order set the NBBO but is not fee eligible'
   order_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x43:
       id: 'capacity_undefined'
-      doc: 'Capacity Undefined'
+      doc: 'Capacity undefined'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x45:
       id: 'size_reduction_due_to_swp_restatement'
-      doc: 'Size Reduction Due To Swp Restatement'
+      doc: 'Size reduction due to SWP restatement'
     0x46:
       id: 'failed_to_quote'
-      doc: 'Failed To Quote'
+      doc: 'Failed to quote'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4c:
       id: 'order_would_lock_or_cross_nbbo'
-      doc: 'Order Would Lock Or Cross Nbbo'
+      doc: 'Order would lock or cross NBBO'
     0x4d:
       id: 'order_size_exceeded'
-      doc: 'Order Size Exceeded'
+      doc: 'Order size exceeded'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn''t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can''t modify an order that is pending fill'
     0x51:
       id: 'waiting_for_first_trade'
-      doc: 'Waiting For First Trade'
+      doc: 'Waiting for first trade'
     0x52:
       id: 'routing_unavailable'
       doc: 'Routing Unavailable'
     0x53:
       id: 'short_sale_price_violation'
-      doc: 'Short Sale Price Violation'
+      doc: 'Short sale price violation'
     0x54:
       id: 'fill_would_trade_through_the_nbbo'
-      doc: 'Fill Would Trade Through The Nbbo'
+      doc: 'Fill would trade through the NBBO'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x57:
       id: 'add_liquidity_only_order_would_remove'
-      doc: 'Add Liquidity Only Order Would Remove'
+      doc: 'Add liquidity only order would remove'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x66:
       id: 'risk_management_mpid_or_risk_group_id_level'
-      doc: 'Risk Management Mpid Or Risk Group Id Level'
+      doc: 'Risk management MPID or RiskGroupID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x72:
       id: 'reserve_reload'
-      doc: 'Reserve Reload'
+      doc: 'Reserve reload'
     0x73:
       id: 'risk_management_symbol_level'
-      doc: 'Risk Management Symbol Level'
+      doc: 'Risk management symbol level'
     0x75:
       id: 'limit_up_limit_down'
-      doc: 'Limit Up Limit Down Luld'
+      doc: 'Limit Up Limit Down (LULD)'
     0x77:
       id: 'would_remove_on_unslide'
-      doc: 'Would Remove On Unslide'
+      doc: 'Would remove on unslide'
     0x78:
       id: 'crossed_market'
-      doc: 'Crossed Market'
+      doc: 'Crossed market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order received by Cboe during replay'
   restatement_reason:
     0x43:
       id: 'cboe_market_close'
-      doc: 'Cboe Market Close Cmc'
+      doc: 'Cboe Market Close (CMC)'
     0x4c:
       id: 'reload'
       doc: 'Reload'
     0x50:
       id: 'peg_or_price_sliding_reprice'
-      doc: 'Peg Or Price Sliding Reprice'
+      doc: 'Peg or Price Sliding Reprice'
     0x51:
       id: 'liquidity_updated'
       doc: 'Liquidity Updated'
@@ -7873,408 +7873,408 @@ enums:
       doc: 'Reroute'
     0x53:
       id: 'reduction_of_order_qty_due_to_swp'
-      doc: 'Reduction Of Order Qty Due To Swp'
+      doc: 'Reduction of OrderQty due to SWP'
     0x57:
       id: 'wash_or_mtp_decrement'
-      doc: 'Wash Or Mtp Decrement Cboe Reserves The Right To Add New Values As Necessary Without Prior Notice'
+      doc: 'Wash or MTP Decrement Cboe reserves the right to add new values as necessary without prior notice.'
   modify_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x43:
       id: 'capacity_undefined'
-      doc: 'Capacity Undefined'
+      doc: 'Capacity undefined'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x45:
       id: 'size_reduction_due_to_swp_restatement'
-      doc: 'Size Reduction Due To Swp Restatement'
+      doc: 'Size reduction due to SWP restatement'
     0x46:
       id: 'failed_to_quote'
-      doc: 'Failed To Quote'
+      doc: 'Failed to quote'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4c:
       id: 'order_would_lock_or_cross_nbbo'
-      doc: 'Order Would Lock Or Cross Nbbo'
+      doc: 'Order would lock or cross NBBO'
     0x4d:
       id: 'order_size_exceeded'
-      doc: 'Order Size Exceeded'
+      doc: 'Order size exceeded'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn''t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can''t modify an order that is pending fill'
     0x51:
       id: 'waiting_for_first_trade'
-      doc: 'Waiting For First Trade'
+      doc: 'Waiting for first trade'
     0x52:
       id: 'routing_unavailable'
       doc: 'Routing Unavailable'
     0x53:
       id: 'short_sale_price_violation'
-      doc: 'Short Sale Price Violation'
+      doc: 'Short sale price violation'
     0x54:
       id: 'fill_would_trade_through_the_nbbo'
-      doc: 'Fill Would Trade Through The Nbbo'
+      doc: 'Fill would trade through the NBBO'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x57:
       id: 'add_liquidity_only_order_would_remove'
-      doc: 'Add Liquidity Only Order Would Remove'
+      doc: 'Add liquidity only order would remove'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x66:
       id: 'risk_management_mpid_or_risk_group_id_level'
-      doc: 'Risk Management Mpid Or Risk Group Id Level'
+      doc: 'Risk management MPID or RiskGroupID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x72:
       id: 'reserve_reload'
-      doc: 'Reserve Reload'
+      doc: 'Reserve reload'
     0x73:
       id: 'risk_management_symbol_level'
-      doc: 'Risk Management Symbol Level'
+      doc: 'Risk management symbol level'
     0x75:
       id: 'limit_up_limit_down'
-      doc: 'Limit Up Limit Down Luld'
+      doc: 'Limit Up Limit Down (LULD)'
     0x77:
       id: 'would_remove_on_unslide'
-      doc: 'Would Remove On Unslide'
+      doc: 'Would remove on unslide'
     0x78:
       id: 'crossed_market'
-      doc: 'Crossed Market'
+      doc: 'Crossed market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order received by Cboe during replay'
   cancel_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x43:
       id: 'capacity_undefined'
-      doc: 'Capacity Undefined'
+      doc: 'Capacity undefined'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x45:
       id: 'size_reduction_due_to_swp_restatement'
-      doc: 'Size Reduction Due To Swp Restatement'
+      doc: 'Size reduction due to SWP restatement'
     0x46:
       id: 'failed_to_quote'
-      doc: 'Failed To Quote'
+      doc: 'Failed to quote'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4c:
       id: 'order_would_lock_or_cross_nbbo'
-      doc: 'Order Would Lock Or Cross Nbbo'
+      doc: 'Order would lock or cross NBBO'
     0x4d:
       id: 'order_size_exceeded'
-      doc: 'Order Size Exceeded'
+      doc: 'Order size exceeded'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn''t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can''t modify an order that is pending fill'
     0x51:
       id: 'waiting_for_first_trade'
-      doc: 'Waiting For First Trade'
+      doc: 'Waiting for first trade'
     0x52:
       id: 'routing_unavailable'
       doc: 'Routing Unavailable'
     0x53:
       id: 'short_sale_price_violation'
-      doc: 'Short Sale Price Violation'
+      doc: 'Short sale price violation'
     0x54:
       id: 'fill_would_trade_through_the_nbbo'
-      doc: 'Fill Would Trade Through The Nbbo'
+      doc: 'Fill would trade through the NBBO'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x57:
       id: 'add_liquidity_only_order_would_remove'
-      doc: 'Add Liquidity Only Order Would Remove'
+      doc: 'Add liquidity only order would remove'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x66:
       id: 'risk_management_mpid_or_risk_group_id_level'
-      doc: 'Risk Management Mpid Or Risk Group Id Level'
+      doc: 'Risk management MPID or RiskGroupID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x72:
       id: 'reserve_reload'
-      doc: 'Reserve Reload'
+      doc: 'Reserve reload'
     0x73:
       id: 'risk_management_symbol_level'
-      doc: 'Risk Management Symbol Level'
+      doc: 'Risk management symbol level'
     0x75:
       id: 'limit_up_limit_down'
-      doc: 'Limit Up Limit Down Luld'
+      doc: 'Limit Up Limit Down (LULD)'
     0x77:
       id: 'would_remove_on_unslide'
-      doc: 'Would Remove On Unslide'
+      doc: 'Would remove on unslide'
     0x78:
       id: 'crossed_market'
-      doc: 'Crossed Market'
+      doc: 'Crossed market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order received by Cboe during replay'
   cancel_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x43:
       id: 'capacity_undefined'
-      doc: 'Capacity Undefined'
+      doc: 'Capacity undefined'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x45:
       id: 'size_reduction_due_to_swp_restatement'
-      doc: 'Size Reduction Due To Swp Restatement'
+      doc: 'Size reduction due to SWP restatement'
     0x46:
       id: 'failed_to_quote'
-      doc: 'Failed To Quote'
+      doc: 'Failed to quote'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4c:
       id: 'order_would_lock_or_cross_nbbo'
-      doc: 'Order Would Lock Or Cross Nbbo'
+      doc: 'Order would lock or cross NBBO'
     0x4d:
       id: 'order_size_exceeded'
-      doc: 'Order Size Exceeded'
+      doc: 'Order size exceeded'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn''t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can''t modify an order that is pending fill'
     0x51:
       id: 'waiting_for_first_trade'
-      doc: 'Waiting For First Trade'
+      doc: 'Waiting for first trade'
     0x52:
       id: 'routing_unavailable'
       doc: 'Routing Unavailable'
     0x53:
       id: 'short_sale_price_violation'
-      doc: 'Short Sale Price Violation'
+      doc: 'Short sale price violation'
     0x54:
       id: 'fill_would_trade_through_the_nbbo'
-      doc: 'Fill Would Trade Through The Nbbo'
+      doc: 'Fill would trade through the NBBO'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x57:
       id: 'add_liquidity_only_order_would_remove'
-      doc: 'Add Liquidity Only Order Would Remove'
+      doc: 'Add liquidity only order would remove'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x66:
       id: 'risk_management_mpid_or_risk_group_id_level'
-      doc: 'Risk Management Mpid Or Risk Group Id Level'
+      doc: 'Risk management MPID or RiskGroupID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x72:
       id: 'reserve_reload'
-      doc: 'Reserve Reload'
+      doc: 'Reserve reload'
     0x73:
       id: 'risk_management_symbol_level'
-      doc: 'Risk Management Symbol Level'
+      doc: 'Risk management symbol level'
     0x75:
       id: 'limit_up_limit_down'
-      doc: 'Limit Up Limit Down Luld'
+      doc: 'Limit Up Limit Down (LULD)'
     0x77:
       id: 'would_remove_on_unslide'
-      doc: 'Would Remove On Unslide'
+      doc: 'Would remove on unslide'
     0x78:
       id: 'crossed_market'
-      doc: 'Crossed Market'
+      doc: 'Crossed market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order received by Cboe during replay'
   purge_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x43:
       id: 'capacity_undefined'
-      doc: 'Capacity Undefined'
+      doc: 'Capacity undefined'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x45:
       id: 'size_reduction_due_to_swp_restatement'
-      doc: 'Size Reduction Due To Swp Restatement'
+      doc: 'Size reduction due to SWP restatement'
     0x46:
       id: 'failed_to_quote'
-      doc: 'Failed To Quote'
+      doc: 'Failed to quote'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4c:
       id: 'order_would_lock_or_cross_nbbo'
-      doc: 'Order Would Lock Or Cross Nbbo'
+      doc: 'Order would lock or cross NBBO'
     0x4d:
       id: 'order_size_exceeded'
-      doc: 'Order Size Exceeded'
+      doc: 'Order size exceeded'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn''t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can''t modify an order that is pending fill'
     0x51:
       id: 'waiting_for_first_trade'
-      doc: 'Waiting For First Trade'
+      doc: 'Waiting for first trade'
     0x52:
       id: 'routing_unavailable'
       doc: 'Routing Unavailable'
     0x53:
       id: 'short_sale_price_violation'
-      doc: 'Short Sale Price Violation'
+      doc: 'Short sale price violation'
     0x54:
       id: 'fill_would_trade_through_the_nbbo'
-      doc: 'Fill Would Trade Through The Nbbo'
+      doc: 'Fill would trade through the NBBO'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x57:
       id: 'add_liquidity_only_order_would_remove'
-      doc: 'Add Liquidity Only Order Would Remove'
+      doc: 'Add liquidity only order would remove'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x66:
       id: 'risk_management_mpid_or_risk_group_id_level'
-      doc: 'Risk Management Mpid Or Risk Group Id Level'
+      doc: 'Risk management MPID or RiskGroupID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x72:
       id: 'reserve_reload'
-      doc: 'Reserve Reload'
+      doc: 'Reserve reload'
     0x73:
       id: 'risk_management_symbol_level'
-      doc: 'Risk Management Symbol Level'
+      doc: 'Risk management symbol level'
     0x75:
       id: 'limit_up_limit_down'
-      doc: 'Limit Up Limit Down Luld'
+      doc: 'Limit Up Limit Down (LULD)'
     0x77:
       id: 'would_remove_on_unslide'
-      doc: 'Would Remove On Unslide'
+      doc: 'Would remove on unslide'
     0x78:
       id: 'crossed_market'
-      doc: 'Crossed Market'
+      doc: 'Crossed market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order received by Cboe during replay'
 

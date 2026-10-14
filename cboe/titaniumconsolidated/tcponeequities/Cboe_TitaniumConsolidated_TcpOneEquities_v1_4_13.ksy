@@ -839,7 +839,7 @@ enums:
   market_center:
     0x2a:
       id: 'all_cboe_markets'
-      doc: 'All Cboe Markets For This Feed'
+      doc: 'All Cboe Markets for this feed'
     0x59:
       id: 'byx'
       doc: 'Byx'

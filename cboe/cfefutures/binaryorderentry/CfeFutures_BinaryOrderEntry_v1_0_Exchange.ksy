@@ -138,38 +138,38 @@ types:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: time_in_force
         type: u1
         enum: time_in_force
         doc: 'Time In Force'
       - id: min_qty
         type: u4
-        doc: 'Minimum Fill Quantity For Ioc Orders'
+        doc: 'Minimum fill quantity for IOC orders'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: capacity
         type: u1
         enum: capacity
@@ -178,83 +178,83 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Account Identifier Associated With An Order'
+        doc: 'Unique account identifier associated with an order'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: prevent_match
         type: prevent_match
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC) that the order expires. Nanoseconds since Unix epoch'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About The Liquidity Of An Order. Nullable, No Additional Information = 0'
+        doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: cti_code
         type: u1
         enum: cti_code
-        doc: 'Cti Code'
+        doc: 'CTI code'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: cum_qty
         type: u4
-        doc: 'Cumulative Quantity'
+        doc: 'Cumulative quantity'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Supplemental Customer Identifier Used For Billing Related Programs'
+        doc: 'Supplemental customer identifier used for billing related programs'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'Execution Source Code Provided During Order Entry To Describe Broker Service. Nullable, Apply Default = 0'
+        doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   prevent_match:
     seq:
       - id: mtp_modifier
         type: u1
         enum: mtp_modifier
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: unique_id_level
         type: u1
         enum: unique_id_level
@@ -268,140 +268,140 @@ types:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'Reason For The Order Rejection'
+        doc: 'Reason for the order rejection'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Human Readable Text With More Information'
+        doc: 'Human readable text with more information'
   order_modified_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'The Cl Ord Id Of The Original Order'
+        doc: 'The ClOrdId of the original order'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Supplemental Customer Identifier Used For Billing Related Programs'
+        doc: 'Supplemental customer identifier used for billing related programs'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'Execution Source Code Provided During Order Entry To Describe Broker Service. Nullable, Apply Default = 0'
+        doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   modify_rejected_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'The Cl Ord Id Of The Original Order'
+        doc: 'The ClOrdId of the original order'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: modify_reject_reason
         type: u1
         enum: modify_reject_reason
-        doc: 'See Order Reason Codes On Page 174'
+        doc: 'SeeOrder Reason Codes on page 174'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Human Readable Text With More Information'
+        doc: 'Human readable text with more information'
   order_execution_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: last_shares
         type: u4
-        doc: 'Executed Contracts Quantity'
+        doc: 'Executed contracts quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About The Liquidity Of An Order. Nullable, No Additional Information = 0'
+        doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
       - id: side
         type: u1
         enum: side
@@ -410,166 +410,166 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
       - id: trade_date
         type: u4
-        doc: 'Business Date Of The Execution'
+        doc: 'Business date of the execution'
       - id: clearing_size
         type: u4
-        doc: 'Size To Clear With Occ'
+        doc: 'Size to clear with OCC'
       - id: pending_status
         type: u1
         enum: pending_status
-        doc: 'Field Is Provided As A Convenience To Determine Whether An Order Execution Message Is A Preliminary Notification Representing A Pending Trade'
+        doc: 'Field is provided as a convenience to determine whether an Order Execution message is a preliminary notification representing a pending trade'
       - id: multileg_reporting_type
         type: u1
         enum: multileg_reporting_type
-        doc: 'Present On Order Execution And Tas Restatement Messages Representing Either Spread Orders Or Simple Orders That Are Part Spread Execution'
+        doc: 'Present on Order Execution and TAS Restatement messages representing either Spread orders or Simple orders that are part Spread execution'
       - id: secondary_exec_id
         type: u8
-        doc: 'Indicates Whether An Execution Is A Spread Or A Simple Instrument Execution That Is Part Of A Spread Trade'
+        doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
   order_cancelled_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Cancel Reason'
+        doc: 'Cancel reason'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   cancel_rejected_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: cancel_reject_reason
         type: u1
         enum: cancel_reject_reason
-        doc: 'Cancel Reject Reason'
+        doc: 'Cancel reject reason'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Human Readable Text With More Information'
+        doc: 'Human readable text with more information'
   mass_cancel_acknowledgement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: cancelled_order_count
         type: u4
-        doc: 'Number Of Orders Cancelled'
+        doc: 'Number of orders cancelled'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   mass_cancel_rejected_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: mass_cancel_reject_reason
         type: u1
         enum: mass_cancel_reject_reason
-        doc: 'Reason For The Mass Cancel Rejection'
+        doc: 'Reason for the mass cancel rejection'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Human Readable Text With More Information'
+        doc: 'Human readable text with more information'
   purge_acknowledgement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: cancelled_order_count
         type: u4
-        doc: 'Number Of Orders Cancelled'
+        doc: 'Number of orders cancelled'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   purge_rejected_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: purge_reject_reason
         type: u1
         enum: purge_reject_reason
-        doc: 'Reason For The Purge Rejection'
+        doc: 'Reason for the purge rejection'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Human Readable Text With More Information'
+        doc: 'Human readable text with more information'
   trade_cancel_or_correct_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: exec_ref_id
         type: u8
-        doc: 'Refers To The Exec Id Of The Fill Being Cancelled Or Corrected'
+        doc: 'Refers to the ExecId of the fill being cancelled or corrected'
       - id: side
         type: u1
         enum: side
@@ -577,191 +577,191 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: last_shares
         type: u4
-        doc: 'Executed Contracts Quantity'
+        doc: 'Executed contracts quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: corrected_price
         type: decimal_s8_4
-        doc: 'For Trade Corrections This Is The New Trade Price. Implied decimal with scale 1e-4'
+        doc: 'For trade corrections, this is the new trade price. Implied decimal with scale 1e-4'
       - id: orig_time
         type: nanosecond_timestamp
-        doc: 'The Date And Time Of The Original Trade In Gmt. Nanoseconds since Unix epoch'
+        doc: 'The date and time of the original trade, in GMT. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: capacity
         type: u1
         enum: capacity
         doc: 'Capacity'
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
   tas_restatement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: last_shares
         type: u4
-        doc: 'Executed Contracts Quantity'
+        doc: 'Executed contracts quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
       - id: trade_date
         type: u4
-        doc: 'Business Date Of The Execution'
+        doc: 'Business date of the execution'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Price As Sent To Clearing After Applying Postclose Conversions To The Original Last Px Value. Implied decimal with scale 1e-4'
+        doc: 'Price as sent to clearing after applying post-close conversions to the original LastPx value. Implied decimal with scale 1e-4'
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Symbol As Sent To Clearing After Applying Postclose Conversions To The Original Symbol'
+        doc: 'Symbol as sent to clearing; after applying post-close conversions to the original Symbol'
       - id: multileg_reporting_type
         type: u1
         enum: multileg_reporting_type
-        doc: 'Present On Order Execution And Tas Restatement Messages Representing Either Spread Orders Or Simple Orders That Are Part Spread Execution'
+        doc: 'Present on Order Execution and TAS Restatement messages representing either Spread orders or Simple orders that are part Spread execution'
       - id: secondary_exec_id
         type: u8
-        doc: 'Indicates Whether An Execution Is A Spread Or A Simple Instrument Execution That Is Part Of A Spread Trade'
+        doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
   variance_restatement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: last_shares
         type: u4
-        doc: 'Executed Contracts Quantity'
+        doc: 'Executed contracts quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
       - id: trade_date
         type: u4
-        doc: 'Business Date Of The Execution'
+        doc: 'Business date of the execution'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Price As Sent To Clearing After Applying Postclose Conversions To The Original Last Px Value. Implied decimal with scale 1e-4'
+        doc: 'Price as sent to clearing after applying post-close conversions to the original LastPx value. Implied decimal with scale 1e-4'
       - id: clearing_size
         type: u4
-        doc: 'Size To Clear With Occ'
+        doc: 'Size to clear with OCC'
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Symbol As Sent To Clearing After Applying Postclose Conversions To The Original Symbol'
+        doc: 'Symbol as sent to clearing; after applying post-close conversions to the original Symbol'
       - id: multileg_reporting_type
         type: u1
         enum: multileg_reporting_type
-        doc: 'Present On Order Execution And Tas Restatement Messages Representing Either Spread Orders Or Simple Orders That Are Part Spread Execution'
+        doc: 'Present on Order Execution and TAS Restatement messages representing either Spread orders or Simple orders that are part Spread execution'
       - id: secondary_exec_id
         type: u8
-        doc: 'Indicates Whether An Execution Is A Spread Or A Simple Instrument Execution That Is Part Of A Spread Trade'
+        doc: 'Indicates whether an execution is a spread or a simple instrument execution that is part of a spread trade'
   quote_update_acknowledgement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
       - id: num_quote_update_acknowledgement_group
         type: u1
-        doc: 'Number Of Repeating Groups Included In This Message'
+        doc: 'Number of repeating groups included in this message'
       - id: quote_update_acknowledgement_group
         type: quote_update_acknowledgement_group
         repeat: expr
@@ -770,53 +770,53 @@ types:
     seq:
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: quote_result
         type: u1
         enum: quote_result
-        doc: 'Result Of The Quote Request'
+        doc: 'Result of the quote request'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About The Liquidity Of An Order. Nullable, No Additional Information = 0'
+        doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
   quote_update_rejected_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: quote_reject_reason
         type: u1
         enum: quote_reject_reason
-        doc: 'Reason For The Quote Rejection'
+        doc: 'Reason for the quote rejection'
   quote_restated_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: working_price
         type: decimal_s8_4
-        doc: 'The Price At Which The Quote Is Working On The Order Book. Implied decimal with scale 1e-4'
+        doc: 'The price at which the quote is working on the order book. Implied decimal with scale 1e-4'
       - id: quote_symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: side
         type: u1
         enum: side
@@ -824,42 +824,42 @@ types:
       - id: restatement_reason
         type: u1
         enum: restatement_reason
-        doc: 'The Reason For This Quote Restated Message'
+        doc: 'The reason for this Quote Restated message'
   quote_execution_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: quote_symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: last_shares
         type: u4
-        doc: 'Executed Contracts Quantity'
+        doc: 'Executed contracts quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: side
         type: u1
         enum: side
@@ -867,34 +867,34 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About The Liquidity Of An Order. Nullable, No Additional Information = 0'
+        doc: 'Additional information about the liquidity of an order. Nullable, No Additional Information = 0'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
   quote_cancelled_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cfe'
+        doc: 'Order identifier supplied by CFE'
       - id: quote_symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: side
         type: u1
         enum: side
@@ -902,76 +902,76 @@ types:
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Cancel Reason'
+        doc: 'Cancel reason'
   tas_quote_restatement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: quote_symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Symbol As Sent To Clearing After Applying Postclose Conversions To The Original Symbol'
+        doc: 'Symbol as sent to clearing; after applying post-close conversions to the original Symbol'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Price As Sent To Clearing After Applying Postclose Conversions To The Original Last Px Value. Implied decimal with scale 1e-4'
+        doc: 'Price as sent to clearing after applying post-close conversions to the original LastPx value. Implied decimal with scale 1e-4'
   variance_quote_restatement_message:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Time The Event Occurred In The Cfe Matching Engine Not The Time The Message Was Sent. Nanoseconds since Unix epoch'
+        doc: 'The time the event occurred in the CFE Matching Engine (not the time the message was sent). Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: exec_id
         type: u8
-        doc: 'Sent To The Occ In The Trade Id Field'
+        doc: 'Sent to the OCC in the Trade Id field'
       - id: quote_symbol
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: clearing_symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Symbol As Sent To Clearing After Applying Postclose Conversions To The Original Symbol'
+        doc: 'Symbol as sent to clearing; after applying post-close conversions to the original Symbol'
       - id: clearing_price
         type: decimal_s8_4
-        doc: 'Price As Sent To Clearing After Applying Postclose Conversions To The Original Last Px Value. Implied decimal with scale 1e-4'
+        doc: 'Price as sent to clearing after applying post-close conversions to the original LastPx value. Implied decimal with scale 1e-4'
       - id: clearing_size
         type: u4
-        doc: 'Size To Clear With Occ'
+        doc: 'Size to clear with OCC'
   reset_risk_acknowledgement_message:
     seq:
       - id: risk_status_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Identifier For This Reset Risk Request'
+        doc: 'Unique identifier for this Reset Risk request'
       - id: risk_reset_result
         type: u1
         enum: risk_reset_result
-        doc: 'Result Of Risk Rest'
+        doc: 'Result of risk rest'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'The Earliest Timestamp Populated With Nanosecond Precision Recorded By Cfe Of The Corresponding Inbound Message Being Acknowledged. Nanoseconds since Unix epoch'
+        doc: 'The earliest timestamp, populated with nanosecond precision, recorded by CFE of the corresponding inbound message being acknowledged. Nanoseconds since Unix epoch'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1055,19 +1055,19 @@ enums:
   time_in_force:
     0x30:
       id: 'day'
-      doc: 'Expires At The End Of The Business Day'
+      doc: 'Expires at the end of the business day'
     0x31:
       id: 'gtc'
-      doc: 'Order Remains Until Cancelled Or Contract Expires'
+      doc: 'Order remains until cancelled or contract expires'
     0x33:
       id: 'ioc'
-      doc: 'Portion Not Filled Immediately Is Cancelled'
+      doc: 'Portion not filled immediately is cancelled'
     0x34:
       id: 'fok'
-      doc: 'An Ioc Where The Entire Size Must Be Filled Else The Order Will Be Cancelled Back'
+      doc: 'An IOC where the entire size must be filled, else the order will be cancelled back'
     0x36:
       id: 'gtd'
-      doc: 'Expires At The Datetime Specified In The Expire Time Field'
+      doc: 'Expires at the date-time specified in the ExpireTime field'
   capacity:
     0x43:
       id: 'customer'
@@ -1088,13 +1088,13 @@ enums:
   unique_id_level:
     0x4e:
       id: 'none'
-      doc: 'Do Not Prevent Match At Any Level'
+      doc: 'Do not prevent match at any level'
     0x46:
       id: 'tph'
       doc: 'Tph'
     0x4d:
       id: 'efid'
-      doc: 'Prevent Match At Efid Level'
+      doc: 'Prevent Match at EFID Level'
   open_close:
     0x4f:
       id: 'open'
@@ -1108,16 +1108,16 @@ enums:
   cti_code:
     0x31:
       id: 'cti_1'
-      doc: 'Transactions Initiated And Executed By An Individual Tph For The Tp Hs Own Account For An Account The Tph Controls Or For The Account In Which The Tph Has An Ownership Or Financial Interest'
+      doc: 'Transactions initiated and executed by an individual TPH for the TPH’s own account, for an account the TPH controls, or for the account in which the TPH has an ownership or financial interest'
     0x32:
       id: 'cti_2'
-      doc: 'Transactions Executed For The Proprietary Account Of A Clearing Tph Or Nonclearing Tph'
+      doc: 'Transactions executed for the proprietary account of a clearing TPH or non-clearing TPH'
     0x33:
       id: 'cti_3'
-      doc: 'Transactions Where An Individual Tph Or Authorized Trader Executes For The Personal Account Of Another Individual Tph For An Account The Other Individual Tph Controls Or For An Account In Which The Other Individual Tph Has An Ownership Or Financial Interest'
+      doc: 'Transactions where an individual TPH or authorized trader executes for the personal account of another individual TPH, for an account the other individual TPH controls or for an account in which the other individual TPH has an ownership or financial interest'
     0x34:
       id: 'cti_4'
-      doc: 'Any Transaction Not Meeting The Definition Of Cti 12 Or 3'
+      doc: 'Any transaction not meeting the definition of CTI 1, 2 or 3'
   manual_order_indicator:
     0x59:
       id: 'manual'
@@ -1128,7 +1128,7 @@ enums:
   cust_order_handling_inst:
     0x57:
       id: 'desk'
-      doc: 'High Touch'
+      doc: 'high touch'
     0x59:
       id: 'electronic'
       doc: 'Electronic'
@@ -1195,7 +1195,7 @@ enums:
   size_modifier:
     0x52:
       id: 'reduced_size'
-      doc: 'Reduce Outstanding Size Of Quote By The Order Qty Provided'
+      doc: 'Reduce outstanding size of quote by the OrderQty provided'
   exchange_message_type:
     501:
       id: 'login_response_message'
@@ -1319,7 +1319,7 @@ enums:
       doc: 'Removed Liquidity'
     0x43:
       id: 'market_opening_trade'
-      doc: 'Opening Reopening'
+      doc: 'opening / re-opening'
   sub_liquidity_indicator:
     0x43:
       id: 'carried_order_indicator'
@@ -1791,19 +1791,19 @@ enums:
       doc: 'Modified Loss Of Priority'
     0x52:
       id: 'modified_retains_priority'
-      doc: 'Size Reduction'
+      doc: 'Size reduction'
     0x4e:
       id: 'no_change'
-      doc: 'Matches Existing Quote'
+      doc: 'Matches existing quote'
     0x44:
       id: 'new_quote_x44'
-      doc: 'May Remove Liquidity'
+      doc: 'May remove liquidity'
     0x64:
       id: 'modified_but_may_remove_liquidity'
       doc: 'Modified But May Remove Liquidity'
     0x55:
       id: 'user_cancelled'
-      doc: 'Zero Sizeprice'
+      doc: 'zero size/price'
     0x61:
       id: 'admin'
       doc: 'Admin'

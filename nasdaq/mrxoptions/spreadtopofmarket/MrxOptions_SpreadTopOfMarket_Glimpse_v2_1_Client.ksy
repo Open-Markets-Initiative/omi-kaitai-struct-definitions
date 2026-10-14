@@ -179,28 +179,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early Closing'
   strategy_type:
     0x56:
       id: 'vertical_spread'
@@ -238,24 +238,24 @@ enums:
   option_type:
     0x43:
       id: 'call_option'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put_option'
-      doc: 'Put Option'
+      doc: 'Put option'
     0x20:
       id: 'stock_leg'
       doc: 'Stock Leg'
   side:
     0x42:
       id: 'leg_is_on_buy_side'
-      doc: 'Leg Is On Buy Side'
+      doc: 'Leg is on Buy side'
     0x53:
       id: 'leg_is_on_sell_side'
-      doc: 'Leg Is On Sell Side'
+      doc: 'Leg is on Sell side'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'continuous_trading'
       doc: 'Continuous Trading'
@@ -267,12 +267,12 @@ enums:
       doc: 'Opening Auction'
     0x52:
       id: 're_opening'
-      doc: 'Re Opening'
+      doc: 'Re-Opening'
     0x58:
       id: 'closed'
       doc: 'Closed'
   quote_condition:
     0x20:
       id: 'regular_quoteautox_eligible'
-      doc: 'Regular Quoteautox Eligible'
+      doc: 'Regular quote/autox eligible'
 

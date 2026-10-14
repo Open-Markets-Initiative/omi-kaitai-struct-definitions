@@ -157,101 +157,101 @@ enums:
   buy_sell:
     0x42:
       id: 'bought'
-      doc: 'B Bought'
+      doc: 'B = Bought'
     0x53:
       id: 'sold'
-      doc: 'S Sold'
+      doc: 'S = Sold'
     0x54:
       id: 'sold_short'
-      doc: 'T Sold Short'
+      doc: 'T = Sold Short'
     0x45:
       id: 'sold_short_exempt'
-      doc: 'E Sold Short Exempt'
+      doc: 'E = Sold Short Exempt'
   capacity:
     0x41:
       id: 'agency'
-      doc: 'A Agency'
+      doc: 'A = Agency'
     0x50:
       id: 'principal'
-      doc: 'P Principal'
+      doc: 'P = Principal'
     0x52:
       id: 'riskless'
-      doc: 'R Riskless'
+      doc: 'R = Riskless'
   liquidity_code:
     0x41:
       id: 'added'
-      doc: 'A Added'
+      doc: 'A = Added'
     0x52:
       id: 'removed'
-      doc: 'R Removed'
+      doc: 'R = Removed'
     0x56:
       id: 'displayed_added_liquidity_with_original_order_size_of_greater_than_or_equal_to_2000_shares'
-      doc: 'V Displayed Added Liquidity With Original Order Size Of Greater Than Or Equal To 2000 Shares'
+      doc: 'V = Displayed added liquidity with original order size of greater than or equal to 2,000 shares'
     0x58:
       id: 'routed'
-      doc: 'X Routed'
+      doc: 'X = Routed'
     0x44:
       id: 'dot'
-      doc: 'D Dot'
+      doc: 'D = DOT'
     0x46:
       id: 'added_or_opening_trade_on_nyse'
-      doc: 'F Added Or Opening Trade On Nyse'
+      doc: 'F = Added or Opening Trade (on NYSE)'
     0x47:
       id: 'odd_lot_or_on_close_order_on_nyse'
-      doc: 'G Odd Lot Or On Close Order On Nyse'
+      doc: 'G = Odd Lot or On-Close order (on NYSE)'
     0x4f:
       id: 'opening_cross_billable'
-      doc: 'O Opening Cross Billable'
+      doc: 'O = Opening Cross (billable)'
     0x4d:
       id: 'opening_cross_nonbillable'
-      doc: 'M Opening Cross Nonbillable'
+      doc: 'M = Opening Cross (non-billable)'
     0x43:
       id: 'closing_cross_billable'
-      doc: 'C Closing Cross Billable'
+      doc: 'C = Closing Cross (billable)'
     0x4c:
       id: 'closing_cross_nonbillable'
-      doc: 'L Closing Cross Nonbillable'
+      doc: 'L = Closing Cross (non-billable)'
     0x48:
       id: 'halt_ipo_cross_billable'
-      doc: 'H Halt Ipo Cross Billable'
+      doc: 'H = Halt/IPO Cross (billable)'
     0x4b:
       id: 'halt_ipo_cross_nonbillable'
-      doc: 'K Halt Ipo Cross Nonbillable'
+      doc: 'K = Halt/IPO Cross (non-billable)'
     0x49:
       id: 'intraday_and_postmarket_crosses'
-      doc: 'I Intraday And Postmarket Crosses'
+      doc: 'I = Intraday and post-market crosses'
     0x4a:
       id: 'nondisplayed_and_added_liquidity'
-      doc: 'J Nondisplayed And Added Liquidity'
+      doc: 'J = Non-displayed and added liquidity'
     0x59:
       id: 're_routed_by_nyse'
-      doc: 'Y Re Routed By Nyse'
+      doc: 'Y = Re-Routed by NYSE'
     0x53:
       id: 'odd_lot_execution_on_nyse'
-      doc: 'S Odd Lot Execution On Nyse'
+      doc: 'S = Odd Lot Execution (on NYSE)'
     0x55:
       id: 'added_liquidity_on_nyse'
-      doc: 'U Added Liquidity On Nyse'
+      doc: 'U = Added Liquidity (On NYSE)'
     0x42:
       id: 'routed_to_bx'
-      doc: 'B Routed To Bx'
+      doc: 'B = Routed to BX'
     0x45:
       id: 'nyse_other'
-      doc: 'E Nyse Other'
+      doc: 'E = NYSE Other'
     0x50:
       id: 'routed_to_psx'
-      doc: 'P Routed To Psx'
+      doc: 'P = Routed to PSX'
     0x54:
       id: 'opening_trade_on_arca'
-      doc: 'T Opening Trade On Arca'
+      doc: 'T = Opening Trade (on ARCA)'
     0x5a:
       id: 'on_close_order_on_arca'
-      doc: 'Z On Close Order On Arca'
+      doc: 'Z = On-Close order (on ARCA)'
     0x39:
       id: 'added_displayed_using_minimum_life_order_type'
-      doc: '9 Added Displayed Using Minimum Life Order Type'
+      doc: '9 = Added (displayed) using Minimum Life Order Type'
   clearing_code:
     0x51:
       id: 'qsr'
-      doc: 'Q Qsr'
+      doc: 'Q = QSR'
 

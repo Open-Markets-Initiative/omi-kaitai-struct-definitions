@@ -159,38 +159,38 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'The Start If Day Message Is The First Message Sent Out In A Trading Day'
+      doc: 'The start if day message is the first message sent out in a trading day'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicate That Tradelogiq Order Books Are Open And Ready To Start Accepting Order'
+      doc: 'This message indicate that Tradelogiq order books are Open and ready to start accepting order'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Order Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours order are available for execution'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours are no longer available for execution'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Tradelogiq Order Books Are Now Closed And Will Not Accept New Orders'
+      doc: 'It indicates that Tradelogiq order books are now closed and will not accept new orders'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
     0x42:
       id: 'trading_halted'
-      doc: 'Trading Halted Due To Market Wide Circuit Breaker'
+      doc: 'Trading Halted due to Market-Wide Circuit Breaker'
     0x52:
       id: 'trading_resumed'
-      doc: 'Trading Resumed Following Market Wide Circuit Breaker'
+      doc: 'Trading Resumed following Market-Wide Circuit Breaker'
   market:
     0x74:
       id: 'tsx'
-      doc: 'Tsx'
+      doc: 'TSX'
     0x76:
       id: 'venture'
       doc: 'Venture'
     0x63:
       id: 'cnsx'
-      doc: 'Cnsx'
+      doc: 'CNSX'
     0x71:
       id: 'nasdaq_canada'
       doc: 'Nasdaq Canada'
@@ -203,13 +203,13 @@ enums:
   shortable:
     0x45:
       id: 'short_exempt'
-      doc: 'Short Exempt'
+      doc: 'short exempt'
     0x53:
       id: 'shortable'
-      doc: 'Shortable'
+      doc: 'shortable'
     0x4e:
       id: 'not_shortable'
-      doc: 'Not Shortable'
+      doc: 'not shortable'
   dividend_indicator:
     0x41:
       id: 'annual'

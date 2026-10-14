@@ -1093,7 +1093,7 @@ enums:
       doc: 'Ask'
     2:
       id: 'both'
-      doc: 'Bid And Ask'
+      doc: 'Bid and Ask'
   underlying_type:
     0x53:
       id: 'stock'

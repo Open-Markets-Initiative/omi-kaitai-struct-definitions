@@ -1207,57 +1207,57 @@ enums:
   event_code:
     0x4f:
       id: 'open'
-      doc: 'New Trade Date Is Opening'
+      doc: 'New Trade Date is opening'
     0x53:
       id: 'start'
-      doc: 'Messages Will Start For This Trade Date'
+      doc: 'Messages will start for this Trade Date'
     0x43:
       id: 'end'
-      doc: 'Trade Date Has Ended'
+      doc: 'Trade Date has Ended'
     0x50:
       id: 'paused'
-      doc: 'System Is Paused Note Applies To All Trade Dates'
+      doc: 'System is Paused, note applies to all trade dates'
     0x52:
       id: 'resumed'
-      doc: 'System Is Resumed Note Applies To All Trade Dates'
+      doc: 'System is Resumed, note applies to all trade dates'
   contract_type:
     0x46:
       id: 'cfut'
-      doc: 'Future Or Forward Contract Cfut'
+      doc: 'Future or Forward contract (CFUT)'
     0x4f:
       id: 'copta'
-      doc: 'Regular Option Contract Copta'
+      doc: 'Regular Option contract (COPTA)'
     0x45:
       id: 'eopta'
-      doc: 'Equity Option Contract Eopta'
+      doc: 'Equity Option contract (EOPTA)'
     0x4e:
       id: 'oopt'
-      doc: 'Single Session Option Oopt'
+      doc: 'Single Session Option (OOPT)'
     0x53:
       id: 'csprd'
-      doc: 'Calendar Or Intra Spread Contract Csprd'
+      doc: 'Calendar or Intra-Spread contract (CSPRD)'
     0x41:
       id: 'sprd'
-      doc: 'Arbitrage Or Inter Spread Contract Sprd'
+      doc: 'Arbitrage or Inter-Spread contract (SPRD)'
     0x44:
       id: 'sfut'
-      doc: 'Equity Cfd Or Share Future Sfut'
+      doc: 'Equity CFD or Share Future (SFUT)'
   financial_type:
     0x43:
       id: 'commodity'
-      doc: 'Commodity Product'
+      doc: 'Commodity product'
     0x44:
       id: 'cfd'
-      doc: 'Cfd Product'
+      doc: 'CFD product'
     0x45:
       id: 'equity'
-      doc: 'Equity Product'
+      doc: 'Equity product'
     0x58:
       id: 'government_bond'
-      doc: 'Government Bond Product'
+      doc: 'Government Bond product'
     0x42:
       id: 'bank_bill'
-      doc: 'Bank Bill Product'
+      doc: 'Bank Bill product'
   option_type:
     0x50:
       id: 'put'
@@ -1268,10 +1268,10 @@ enums:
   activated:
     0x59:
       id: 'yes_field'
-      doc: 'Strike Is Active'
+      doc: 'Strike is active'
     0x4e:
       id: 'no_field'
-      doc: 'Strike Is Inactive'
+      doc: 'Strike is inactive'
   trading_status:
     0x70:
       id: 'pending'
@@ -1281,7 +1281,7 @@ enums:
       doc: 'Halted'
     0x50:
       id: 'pre_open'
-      doc: 'Pre Open Or First Price Discovery'
+      doc: 'Pre-Open (or first price discovery)'
     0x43:
       id: 'closed'
       doc: 'Closed'
@@ -1296,22 +1296,22 @@ enums:
       doc: 'Opened'
     0x55:
       id: 'unavailable'
-      doc: 'End Lock Or Unavailable'
+      doc: 'End Lock or Unavailable'
     0x64:
       id: 'pre_price_discovery'
-      doc: 'Pre Price Discovery'
+      doc: 'Pre-Price Discovery'
     0x49:
       id: 'inactive'
-      doc: 'Inactive Or Deactivated Single Session Option'
+      doc: 'Inactive or deactivated single session option'
     0x44:
       id: 'price_discovery'
-      doc: 'Price Discovery A Subsequent Price Discovery'
+      doc: 'Price Discovery (a subsequent price discovery)'
     0x41:
       id: 'activated'
-      doc: 'Activated Or Reactivated Single Session Option'
+      doc: 'Activated or re-activated single session option'
     0x52:
       id: 'regulatory_halt'
-      doc: 'Regulatory Halt An Ad Hoc Price Discovery'
+      doc: 'Regulatory Halt (an ad hoc price discovery)'
   side:
     0x53:
       id: 'sell'
@@ -1322,46 +1322,46 @@ enums:
   trade_type:
     0x54:
       id: 'normal'
-      doc: 'Normal Trade Trade Price Matches Both Order Prices'
+      doc: 'Normal Trade, trade price matches both order prices'
     0x74:
       id: 'crossing_normal'
-      doc: 'Crossing Normal Trade Trade Price Matches Both Order Prices'
+      doc: 'Crossing Normal Trade, trade price matches both order prices'
     0x57:
       id: 'sweeping'
-      doc: 'Sweeping Trade Trade Price Matches Resting Order'
+      doc: 'Sweeping Trade, trade price matches resting order'
     0x77:
       id: 'crossing_sweeping'
-      doc: 'Crossing Sweeping Trade Trade Price Matches Resting Order'
+      doc: 'Crossing Sweeping Trade, trade price matches resting order'
     0x4c:
       id: 'levelling'
-      doc: 'Levelling Trade Trade Price May Be Different Than Price Of Resting Orders'
+      doc: 'Levelling Trade, trade price may be different than price of resting order(s)'
     0x6c:
       id: 'crossing_levelling'
-      doc: 'Crossing Levelling Trade Trade Price May Be Different Than Price Of Resting Orders'
+      doc: 'Crossing Levelling Trade, trade price may be different than price of resting order(s)'
     0x53:
       id: 'spread_to_underlying'
-      doc: 'Spreadto Underlying Trade Price Is Based On The Order Of The Underlying Future Relating To Intra Inter Or Custom Matching With An Outright Order'
+      doc: 'Spread-to-Underlying trade (price is based on the order of the underlying future, relating to intra, inter or custom matching with an outright order)'
     0x73:
       id: 'crossing_spread_to_underlying'
-      doc: 'Crossing Spreadto Underlying Trade Price Is Based On The Order Of The Underlying Future Relating To Intra Inter Or Custom Matching With An Outright Order'
+      doc: 'Crossing Spread-to-Underlying trade (price is based on the order of the underlying future, relating to intra, inter or custom matching with an outright order)'
     0x52:
       id: 'intra_spread'
-      doc: 'Intra Spreadto Intra Spread Trade Price Is Based On The Near Contracts Prior Day Settlement'
+      doc: 'Intra-Spread-to-Intra-Spread trade (price is based on the near contract’s prior day settlement)'
     0x72:
       id: 'crossing_intra_spread'
-      doc: 'Crossing Intra Spreadto Intra Spread Trade Price Is Based On The Near Contracts Prior Day Settlement'
+      doc: 'Crossing Intra-Spread-to-Intra-Spread trade (price is based on the near contract’s prior day settlement)'
     0x51:
       id: 'inter_spread'
-      doc: 'Inter Spreadto Inter Spread Trade Price Is Based On The Secondarys Contracts Prior Day Settlement'
+      doc: 'Inter-Spread-to-Inter-Spread trade (price is based on the secondary’s contract’s prior day settlement)'
     0x71:
       id: 'crossing_inter_spread'
-      doc: 'Crossing Inter Spreadto Inter Spread Trade Price Is Based On The Secondarys Contracts Prior Day Settlement'
+      doc: 'Crossing Inter-Spread-to-Inter-Spread trade (price is based on the secondary’s contract’s prior day settlement)'
     0x55:
       id: 'custom'
-      doc: 'Customto Custom Trade'
+      doc: 'Custom-to-Custom trade'
     0x75:
       id: 'crossing_custom'
-      doc: 'Crossing Customto Custom Trade'
+      doc: 'Crossing Custom-to-Custom trade'
   printable:
     0x59:
       id: 'yes_field'

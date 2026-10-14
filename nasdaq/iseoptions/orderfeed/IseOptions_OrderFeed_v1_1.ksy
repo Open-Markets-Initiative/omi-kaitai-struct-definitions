@@ -394,35 +394,35 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early closing'
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
   trading_type:
     0x45:
       id: 'equity'
@@ -432,7 +432,7 @@ enums:
       doc: 'Index'
     0x46:
       id: 'etf'
-      doc: 'Etf'
+      doc: 'ETF'
     0x43:
       id: 'currency'
       doc: 'Currency'
@@ -446,20 +446,20 @@ enums:
   tradable:
     0x59:
       id: 'tradable'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'not_tradable'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   mpv:
     0x45:
       id: 'penny_everywhere'
-      doc: 'Penny Everywhere'
+      doc: 'penny Everywhere'
     0x53:
       id: 'scaled'
       doc: 'Scaled'
     0x50:
       id: 'penny_pilot'
-      doc: 'Penny Pilot'
+      doc: 'penny Pilot'
   closing_only:
     0x59:
       id: 'closing_position_only'
@@ -470,24 +470,24 @@ enums:
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading_on_the_options_system'
-      doc: 'Trading On The Options System'
+      doc: 'Trading on the options system'
   open_state:
     0x59:
       id: 'open_for_auto_execution'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed_for_auto_execution'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   imbalance_direction:
     0x42:
       id: 'buy_imbalance'
-      doc: 'Buy Imbalance'
+      doc: 'buy imbalance'
     0x53:
       id: 'sell_imbalance'
-      doc: 'Sell Imbalance'
+      doc: 'sell imbalance'
   order_type:
     0x4d:
       id: 'market'
@@ -501,7 +501,7 @@ enums:
       doc: 'Bid'
     0x41:
       id: 'offer_ask'
-      doc: 'Offer Ask'
+      doc: 'Offer (Ask)'
     0x20:
       id: 'hidden'
       doc: 'Hidden'
@@ -511,10 +511,10 @@ enums:
       doc: 'None'
     0x41:
       id: 'aon'
-      doc: 'Aon'
+      doc: 'AON'
     0x20:
       id: 'hidden'
-      doc: 'Hidden'
+      doc: 'hidden'
   order_capacity:
     0x43:
       id: 'customer'
@@ -527,10 +527,10 @@ enums:
       doc: 'Firm'
     0x42:
       id: 'broker_dealer_customer'
-      doc: 'Broker Dealer Customer'
+      doc: 'Broker/Dealer - Customer'
     0x4b:
       id: 'broker_dealer_firm'
-      doc: 'Broker Dealer Firm'
+      doc: 'Broker/Dealer - Firm'
     0x45:
       id: 'proprietary'
       doc: 'Proprietary'
@@ -549,5 +549,5 @@ enums:
       doc: 'Auction Update'
     0x45:
       id: 'end_of_auction'
-      doc: 'End Of Auction'
+      doc: 'End of Auction'
 

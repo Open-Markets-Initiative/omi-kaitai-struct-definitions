@@ -98,57 +98,57 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside Of Timestamp Messages The Start Of Day Message Is The First Message Sent Out In A Trading Day'
+      doc: 'Outside of timestamp messages, the start of day message is the first message sent out in a trading day'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Tradelogiq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that Tradelogiq is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Tradelogiq Is Now Closed And Will Not Accept Any New Orders'
+      doc: 'It indicates that Tradelogiq is now closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
     0x42:
       id: 'trading_halted'
-      doc: 'Trading Halted Due To Market Wide Circuit Breaker'
+      doc: 'Trading Halted due to Market-Wide Circuit Breaker'
     0x52:
       id: 'trading_resumed'
-      doc: 'Trading Resumed Following Market Wide Circuit Breaker'
+      doc: 'Trading Resumed following Market-Wide Circuit Breaker'
   market:
     0x74:
       id: 'tsx'
-      doc: 'Tsx'
+      doc: 'TSX'
     0x76:
       id: 'tsx_venture'
-      doc: 'Tsx Venture'
+      doc: 'TSX Venture'
     0x63:
       id: 'cse'
-      doc: 'Cse'
+      doc: 'CSE'
     0x71:
       id: 'nasdaq_canada'
       doc: 'Nasdaq Canada'
     0x6f:
       id: 'omega_ats'
-      doc: 'Omega Ats'
+      doc: 'Omega ATS'
     0x7a:
       id: 'cboe_canada'
-      doc: 'Cboe Canada'
+      doc: 'CBOE Canada'
   shortable:
     0x45:
       id: 'short_exempt'
-      doc: 'Short Exempt'
+      doc: 'short exempt'
     0x53:
       id: 'shortable'
-      doc: 'Shortable'
+      doc: 'shortable'
     0x4e:
       id: 'not_shortable'
-      doc: 'Not Shortable'
+      doc: 'not shortable'
   dividend_indicator:
     0x41:
       id: 'annual'
@@ -168,7 +168,7 @@ enums:
       doc: 'Annual'
     0x53:
       id: 'semi_annual'
-      doc: 'Semi Annual'
+      doc: 'Semi-Annual'
     0x51:
       id: 'quarterly'
       doc: 'Quarterly'
@@ -201,10 +201,10 @@ enums:
   buy_sell_indicator:
     0x42:
       id: 'buy_order'
-      doc: 'Buy Order'
+      doc: 'Buy order'
     0x53:
       id: 'sell_order'
-      doc: 'Sell Order'
+      doc: 'Sell order'
   side:
     0x42:
       id: 'buy'
@@ -218,7 +218,7 @@ enums:
       doc: 'No'
     1:
       id: 'yes_field'
-      doc: 'Yes Represents Midpoint Book Trade On Lynx Ats'
+      doc: 'Yes represents Midpoint Book trade on Lynx ATS'
   cross_type:
     0x44:
       id: 'derivatives_cross'
@@ -231,7 +231,7 @@ enums:
       doc: 'Intentional Cross'
     0x4e:
       id: 'net_asset_value_cross'
-      doc: 'Net Asset Value Nav Cross'
+      doc: 'Net Asset Value (NAV) Cross'
   bypass:
     0x59:
       id: 'bypass'
@@ -245,10 +245,10 @@ enums:
       doc: 'Regular Settlement'
     0x31:
       id: 'cash'
-      doc: 'Cash T 0'
+      doc: 'Cash (T+0)'
     0x32:
       id: 'next_day'
-      doc: 'Next Day T 1'
+      doc: 'Next Day (T+1)'
     0x33:
       id: 'delayed_delivery'
       doc: 'Delayed Delivery'

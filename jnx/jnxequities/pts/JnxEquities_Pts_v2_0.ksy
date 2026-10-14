@@ -385,22 +385,22 @@ enums:
   system_event:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Always The First Message Except For Timestamp Seconds Messages Sent On Any Trading Day'
+      doc: 'Always the first message (except for Timestamp – Seconds Messages) sent on any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Market Is Open And Ready To Start Accepting Orders'
+      doc: 'Market is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Start Of Trading Session'
+      doc: 'Start of trading session.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'End Of Trading Session'
+      doc: 'End of trading session.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'Market Is Closed And Will Not Accept Any New Orders'
+      doc: 'Market is closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'Always The Last Message Sent On Any Trading Day'
+      doc: 'Always the last message sent on any trading day.'
   trading_state:
     0x54:
       id: 'trading'
@@ -411,10 +411,10 @@ enums:
   short_selling_state:
     0x30:
       id: 'no_price_restriction'
-      doc: 'No Price Restriction'
+      doc: 'No price restriction'
     0x31:
       id: 'price_restriction_in_effect'
-      doc: 'Price Restriction In Effect'
+      doc: 'Price restriction in effect'
   buy_sell_indicator:
     0x42:
       id: 'buy'
@@ -425,5 +425,5 @@ enums:
   order_type:
     0x51:
       id: 'dlp_order'
-      doc: 'Dlp Order'
+      doc: 'DLP order'
 

@@ -435,97 +435,97 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Always The First Message Sent In Any Trading Day'
+      doc: 'Always the first message sent in any trading day'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'Indicates that Nasdaq is open and ready to start accepting orders'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Indicates That Market Hours Orders Are Available For Execution'
+      doc: 'Indicates that Market Hours orders are available for execution'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'Indicates That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'Indicates that Market Hours orders are no longer available for execution'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders'
+      doc: 'Indicates that Nasdaq is now closed and will not accept any new orders'
     0x43:
       id: 'end_of_messages'
-      doc: 'Always The Last Message Sent In Any Trading Day'
+      doc: 'Always the last message sent in any trading day'
   market_category:
     0x51:
       id: 'nasdaq_global_select_market'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x47:
       id: 'nasdaq_global_market'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x53:
       id: 'nasdaq_capital_market'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x4e:
       id: 'new_york_stock_exchange'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x41:
       id: 'nyse_american'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x50:
       id: 'nyse_arca'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x4d:
       id: 'nyse_texas'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x5a:
       id: 'bats_bzx_exchange'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x56:
       id: 'investors_exchange_llc'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
     0x46:
       id: 'texas_exchange'
       doc: 'Texas Exchange'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   financial_status_indicator:
     0x44:
       id: 'deficient'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x45:
       id: 'delinquent'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x51:
       id: 'bankrupt'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x53:
       id: 'suspended'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x43:
       id: 'creations_andor_redemptions_suspended_for_exchange_traded_product'
-      doc: 'Nasdaq Listed Instrument'
+      doc: 'Nasdaq-Listed Instrument'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer is not Deficient, Delinquent, or Bankrupt'
     0x20:
       id: 'in_compliance'
-      doc: 'Company Is In Compliance If Nasdaqlisted Issue'
+      doc: 'Company is in compliance, if Nasdaq-listed issue'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
-      doc: 'Only Round Lots Are Accepted In This Stock'
+      doc: 'Only round lots are accepted in this stock'
     0x4e:
       id: 'no_restriction'
-      doc: 'Oddmixed Lots Are Allowed'
+      doc: 'Odd/mixed lots are allowed'
   issue_classification:
     0x41:
       id: 'american_depositary_share'
@@ -541,7 +541,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
-      doc: 'Sec 144 A'
+      doc: 'Sec 144A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -562,7 +562,7 @@ enums:
       doc: 'Right'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -571,97 +571,97 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_benif_int'
-      doc: 'Units Benif Int'
+      doc: 'Units/Benif Int'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
   authenticity:
     0x50:
       id: 'live_production'
-      doc: 'Live Production'
+      doc: 'Live/Production'
     0x54:
       id: 'test'
       doc: 'Test'
   short_sale_threshold_indicator:
     0x59:
       id: 'restricted'
-      doc: 'Issue Is Restricted Under Sec Rule 203 B 3'
+      doc: 'Issue is restricted under SEC Rule 203(b)(3)'
     0x4e:
       id: 'not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'not_available'
-      doc: 'Threshold Indicator Not Available'
+      doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
       id: 'ipo_security'
-      doc: 'Nasdaq Listed Instrument Is Set Up As A New Ipo Security'
+      doc: 'Nasdaq listed instrument is set up as a new IPO security'
     0x4e:
       id: 'not_ipo'
-      doc: 'Nasdaq Listed Instrument Is Not Set Up As A New Ipo Security'
+      doc: 'Nasdaq listed instrument is not set up as a new IPO security'
     0x5a:
       id: 'non_ipo_new_listed'
-      doc: 'Nasdaq Listed Instrument Is A Non Ipo New Listed Security'
+      doc: 'Nasdaq listed instrument is a non-IPO new listed security'
     0x20:
       id: 'not_available'
-      doc: 'Non Nasdaq Listed Instrument'
+      doc: 'Non-Nasdaq-Listed Instrument'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1'
-      doc: 'Tier 1 Nms Stocks And Select Et Ps'
+      doc: 'Tier 1 NMS Stocks and select ETPs'
     0x32:
       id: 'tier_2'
-      doc: 'Tier 2 Nms Stocks'
+      doc: 'Tier 2 NMS Stocks'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   etp_flag:
     0x59:
       id: 'etp'
-      doc: 'Instrument Is An Etp'
+      doc: 'Instrument is an ETP'
     0x4e:
       id: 'not_etp'
-      doc: 'Instrument Is Not An Etp'
+      doc: 'Instrument is not an ETP'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   inverse_indicator:
     0x59:
       id: 'inverse'
-      doc: 'Etp Is An Inverse Etp'
+      doc: 'ETP is an Inverse ETP'
     0x4e:
       id: 'not_inverse'
-      doc: 'Etp Is Not An Inverse Etp'
+      doc: 'ETP is not an Inverse ETP'
   current_trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused'
-      doc: 'Paused Across All Us Equity Markets Sr Os Nasdaqlisted Securities Only'
+      doc: 'Paused across all U.S. equity markets / SROs (Nasdaq-listed securities only)'
     0x51:
       id: 'quotation_only'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on Nasdaq'
   reg_sho_action:
     0x30:
       id: 'no_price_test'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'restriction_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'restriction_remains_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
   primary_market_maker:
     0x59:
       id: 'primary_market_maker'
-      doc: 'Primary Market Maker'
+      doc: 'Primary market maker'
     0x4e:
       id: 'non_primary_market_maker'
-      doc: 'Nonprimary Market Maker'
+      doc: 'Non-primary market maker'
   market_maker_mode:
     0x4e:
       id: 'normal'
@@ -674,7 +674,7 @@ enums:
       doc: 'Syndicate'
     0x52:
       id: 'pre_syndicate'
-      doc: 'Presyndicate'
+      doc: 'Pre-syndicate'
     0x4c:
       id: 'penalty'
       doc: 'Penalty'
@@ -684,7 +684,7 @@ enums:
       doc: 'Active'
     0x45:
       id: 'excused_withdrawn'
-      doc: 'Excused Withdrawn'
+      doc: 'Excused/Withdrawn'
     0x57:
       id: 'withdrawn'
       doc: 'Withdrawn'
@@ -703,34 +703,34 @@ enums:
       doc: 'Nasdaq Texas'
     0x58:
       id: 'psx'
-      doc: 'Psx'
+      doc: 'PSX'
   operational_halt_action:
     0x48:
       id: 'operationally_halted'
-      doc: 'Operationally Halted On The Identified Market'
+      doc: 'Operationally Halted on the identified Market'
     0x54:
       id: 'trading_resumed'
-      doc: 'Operational Halt Has Been Lifted And Trading Resumed'
+      doc: 'Operational Halt has been lifted and Trading resumed'
   market_side:
     0x42:
       id: 'bid_update'
-      doc: 'Bid Update'
+      doc: 'Bid update'
     0x53:
       id: 'offer_ask_update'
-      doc: 'Offerask Update'
+      doc: 'Offer/ask update'
   interest_flag:
     0x42:
       id: 'buy_side'
-      doc: 'Rpi Orders Available On The Buy Side'
+      doc: 'RPI orders available on the buy side'
     0x53:
       id: 'sell_side'
-      doc: 'Rpi Orders Available On The Sell Side'
+      doc: 'RPI orders available on the sell side'
     0x41:
       id: 'both_sides'
-      doc: 'Rpi Orders Available On Both Sides Buy And Sell'
+      doc: 'RPI orders available on both sides (buy and sell)'
     0x4e:
       id: 'no_rpi_orders'
-      doc: 'No Rpi Orders Available'
+      doc: 'No RPI orders available'
   breached_level:
     0x31:
       id: 'level_1'
@@ -744,8 +744,8 @@ enums:
   ipo_quotation_release_qualifier:
     0x41:
       id: 'anticipated_quotation_release_time'
-      doc: 'Used When Nasdaq Market Operations Initially Enters The Ipo Instrument For Release'
+      doc: 'Used when Nasdaq Market Operations initially enters the IPO instrument for release'
     0x43:
       id: 'ipo_release_canceled_postponed'
-      doc: 'Used When Nasdaq Market Operations Cancels Or Postpones The Release Of The Ipo Instrument'
+      doc: 'Used when Nasdaq Market Operations cancels or postpones the release of the IPO instrument'
 

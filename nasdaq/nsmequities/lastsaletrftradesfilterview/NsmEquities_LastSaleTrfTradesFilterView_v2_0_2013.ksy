@@ -322,33 +322,33 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_transmissions'
-      doc: 'Denotes That The Nls System Has Started Its Daily Transmission Schedule'
+      doc: 'Denotes that the NLS system has started its daily transmission schedule.'
     0x43:
       id: 'end_of_transmissions'
-      doc: 'Denotes That The Nls System Has Ended Its Daily Transmission Schedule'
+      doc: 'Denotes that the NLS system has ended its daily transmission schedule.'
   market_center_identifier:
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq Execution System'
+      doc: 'NASDAQ execution system'
     0x4c:
       id: 'trf'
-      doc: 'Nasdaqfinra Trade Reporting Facility Trf'
+      doc: 'NASDAQ/FINRA Trade Reporting Facility (TRF)'
   security_class:
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq Listed Issue'
+      doc: 'NASDAQ-Listed Issue'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse Listed Issue'
+      doc: 'NYSE Listed Issue'
     0x41:
       id: 'nyse_mkt'
-      doc: 'Nyse Mkt Listed Issue'
+      doc: 'NYSE MKT-Listed Issue'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca Listed Issue'
+      doc: 'NYSE Arca-Listed Issue'
     0x5a:
       id: 'bats'
-      doc: 'Bats Listed Issue'
+      doc: 'BATS-Listed Issue'
   settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -374,29 +374,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -412,13 +412,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -430,13 +430,13 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -462,29 +462,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -500,13 +500,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -518,13 +518,13 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -550,29 +550,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -588,13 +588,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -606,11 +606,11 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
 

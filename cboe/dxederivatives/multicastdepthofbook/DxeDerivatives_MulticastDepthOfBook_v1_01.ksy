@@ -866,7 +866,7 @@ types:
       - id: low_price_1
         type: b1
         doc: 'Set if Low Price is valid'
-      - id: unused_1_2
+      - id: second_unused_1
         type: b1
         doc: 'Reserved'
       - id: open_and_close_price

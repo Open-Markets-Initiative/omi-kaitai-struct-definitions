@@ -1165,19 +1165,19 @@ enums:
   time_in_force:
     0x49:
       id: 'ioc'
-      doc: 'Immediate Or Cancel'
+      doc: 'Immediate or Cancel'
     0x44:
       id: 'day'
       doc: 'Day'
     0x46:
       id: 'fok'
-      doc: 'Fill Or Kill'
+      doc: 'Fill or Kill'
     0x43:
       id: 'gtc'
-      doc: 'Good Until Cancel'
+      doc: 'Good until cancel'
     0x58:
       id: 'gtd'
-      doc: 'Good Until Date'
+      doc: 'Good until date'
   login_status:
     0x20:
       id: 'successful'

@@ -754,10 +754,10 @@ enums:
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
   options_closing_type:
     0x4e:
       id: 'normal'
@@ -767,44 +767,44 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing At 1200 Noon'
+      doc: 'WCO Early Closing at 12:00 Noon.'
   tradable:
     0x59:
       id: 'tradable'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'not_tradable'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   mpv:
     0x45:
       id: 'everywhere'
-      doc: 'Penny Everywhere'
+      doc: 'penny Everywhere'
     0x53:
       id: 'scaled'
       doc: 'Scaled'
     0x50:
       id: 'pilot'
-      doc: 'Penny Pilot'
+      doc: 'penny Pilot'
   current_trading_state:
     0x48:
       id: 'halt'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading'
-      doc: 'Trading On Phlx®'
+      doc: 'Trading on PHLX ®'
     0x42:
       id: 'buy_side_trading_suspended_exhausted'
-      doc: 'Buy Side Trading Suspended Exhausted Ie Buy Orders Are Not Executable And Buy Side Book Is Non Firm'
+      doc: 'Buy Side Trading Suspended/Exhausted –i.e. Buy orders are not executable and Buy side book is non Firm.'
     0x53:
       id: 'sell_side_trading_suspended_exhausted'
-      doc: 'Sell Side Trading Suspended Exhausted Ie Sell Orders Are Not Executable And Sell Side Book Is Non Firm'
+      doc: 'Sell Side Trading Suspended/Exhausted –i.e. Sell orders are not executable and Sell side book is non Firm.'
   open_state:
     0x59:
       id: 'open'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   market_side:
     0x42:
       id: 'buy'
@@ -827,37 +827,37 @@ enums:
   printable:
     0x4e:
       id: 'nonprintable'
-      doc: 'Nonprintable'
+      doc: 'non-printable'
     0x59:
       id: 'printable'
-      doc: 'Printable'
+      doc: 'printable'
   change_reason:
     0x55:
       id: 'user'
-      doc: 'User'
+      doc: 'USER'
     0x52:
       id: 'reprice'
-      doc: 'Reprice'
+      doc: 'REPRICE'
     0x53:
       id: 'suspend'
-      doc: 'Suspend'
+      doc: 'SUSPEND'
     0x45:
       id: 'exhausted'
-      doc: 'Exhausted'
+      doc: 'EXHAUSTED'
   trade_indicator:
     0x4f:
       id: 'non_displayable'
-      doc: 'Non Displayable Simple Order Cross'
+      doc: 'Non displayable simple order cross.'
     0x43:
       id: 'complex'
-      doc: 'Complex Order Cross'
+      doc: 'Complex order cross.'
     0x50:
       id: 'pixl'
-      doc: 'Pixl Auction Cross'
+      doc: 'PIXL auction cross.'
   cross_type:
     0x4f:
       id: 'opening_reopening'
-      doc: 'Opening Reopening Auction'
+      doc: 'Opening/Reopening Auction'
   auction_type:
     0x4f:
       id: 'opening'
@@ -871,10 +871,10 @@ enums:
   imbalance_direction:
     0x42:
       id: 'buy'
-      doc: 'Buy Imbalance'
+      doc: 'buy imbalance'
     0x53:
       id: 'sell'
-      doc: 'Sell Imbalance'
+      doc: 'sell imbalance'
   customer_indicator:
     0x43:
       id: 'customer'
@@ -884,11 +884,11 @@ enums:
       doc: 'Firm'
     0x4d:
       id: 'onfloor'
-      doc: 'Onfloor Market Maker'
+      doc: 'On-floor Market Maker'
     0x50:
       id: 'professional'
       doc: 'Professional Customer'
     0x42:
       id: 'non_phlx'
-      doc: 'Broker Dealer Non Phlx'
+      doc: 'Broker Dealer/ Non-PHLX'
 

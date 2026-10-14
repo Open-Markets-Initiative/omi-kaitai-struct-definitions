@@ -308,19 +308,19 @@ enums:
   event_code:
     0x53:
       id: 'start_of_session'
-      doc: 'This Is Always The First Message Sent In Any Session It Indicates That The Nasdaq System Is Open And Ready To Start Accepting Orders'
+      doc: 'This is always the first message sent in any session. It indicates that the NASDAQ system is open and ready to start accepting orders.'
     0x45:
       id: 'end_of_session'
-      doc: 'This Is Always The Last Message Sent In Any Session It Indicates That The Nasdaq System Is Now Closed And Will Not Generate Any New Messages In This Session All Orders That Remain Open In This Session Are Now Dead And Should Be Purged From The Book'
+      doc: 'This is always the last message sent in any session. It indicates that the NASDAQ system is now closed and will not generate any new messages in this session. All orders that remain open in this session are now dead and should be purged from the book.'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order.'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order.'
   display:
     0x59:
       id: 'displayed'
-      doc: 'Displayed In Nasdaq'
+      doc: 'Displayed in NASDAQ'
 

@@ -3398,35 +3398,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid User Namepassword'
+      doc: 'Not authorized (invalid user- name/password)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bitfield_in_login_message'
-      doc: 'Invalid Return Bitfield In Login Message'
+      doc: 'Invalid return bitfield in login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -3446,30 +3446,30 @@ enums:
   capacity:
     0x41:
       id: 'agency'
-      doc: 'Agency Maps To Aotc'
+      doc: 'Agency (maps to ’AOTC’)'
     0x50:
       id: 'principal'
-      doc: 'Principal Maps To Deal'
+      doc: 'Principal (maps to ’DEAL’)'
     0x52:
       id: 'riskless_principal'
-      doc: 'Riskless Principal Maps To Mtch'
+      doc: 'Riskless Principal (maps to ’MTCH’)'
   id_source:
     0x34:
       id: 'isin'
-      doc: 'Isin'
+      doc: 'ISIN'
     0x35:
       id: 'ric'
-      doc: 'Ric'
+      doc: 'RIC'
   transaction_category:
     0x50:
       id: 'regular_trade'
-      doc: 'Regular Trade Aka Plain Vanilla Trade'
+      doc: 'Regular Trade (aka Plain-Vanilla Trade)'
     0x44:
       id: 'dark_trade'
       doc: 'Dark Trade'
     0x52:
       id: 'trade_with_price_improvement'
-      doc: 'Trade With Price Improvement Rpri'
+      doc: 'Trade With Price Improvement (RPRI)'
   trade_report_trans_type:
     0:
       id: 'new_field'
@@ -3523,34 +3523,34 @@ enums:
       doc: 'Continuous Trading'
     5:
       id: 'post_trading'
-      doc: 'Post Trading 10 Out Of Main Session Trading'
+      doc: 'Post Trading 10 = Out of Main Session Trading'
   match_type:
     1:
       id: 'trade_reporting'
-      doc: 'Trade Reporting Off Exchange'
+      doc: 'Trade Reporting (Off-Exchange)'
     3:
       id: 'trade_reporting_3'
-      doc: 'Trade Reporting On Exchange'
+      doc: 'Trade Reporting (On-Exchange)'
     9:
       id: 'trade_reporting_9'
-      doc: 'Trade Reporting Systematic Internalizer'
+      doc: 'Trade Reporting (Systematic Internalizer)'
   trade_price_condition:
     0:
       id: 'cum_dividend'
-      doc: 'Cum Dividend Deprecated'
+      doc: 'Cum Dividend (deprecated)'
     2:
       id: 'ex_dividend'
-      doc: 'Ex Dividend Deprecated 13 Special Dividend Sdiv'
+      doc: 'Ex Dividend (deprecated) 13 = Special Dividend (SDIV)'
   trade_publish_indicator:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish'
+      doc: 'Do not publish'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication'
+      doc: 'Deferred publication'
   execution_method:
     0x41:
       id: 'automated'
@@ -3560,72 +3560,72 @@ enums:
       doc: 'Manual'
     0x55:
       id: 'unspecified'
-      doc: 'Unspecified Default'
+      doc: 'Unspecified (default)'
   order_category:
     0:
       id: 'not_a_negotiated_trade'
-      doc: 'Not A Negotiated Trade'
+      doc: 'Not a Negotiated Trade'
     3:
       id: 'privately_negotiated_trade'
-      doc: 'Privately Negotiated Trade On Return Fields This Field Indicates Whether Bats Deems The Trade As Utilising The Negotiated Transaction Waiver Under Mi Fid'
+      doc: 'Privately Negotiated Trade On return fields, this field indicates whether Bats deems the trade as utilising the Negotiated Transaction waiver under Mi- FID.'
   algorithmic_indicator:
     0x4e:
       id: 'no_algorithm_was_involved'
-      doc: 'No Algorithm Was Involved Default'
+      doc: 'No algorithm was involved (default).'
     0x59:
       id: 'algorithm_was_involved'
-      doc: 'Algorithm Was Involved Algo'
+      doc: 'Algorithm was involved (ALGO).'
   waiver_type:
     0x2d:
       id: 'no_waiver_type'
       doc: 'No Waiver Type'
     0x33:
       id: 'reference_price'
-      doc: 'Reference Price Dark Book For Mtf Only Rfpt'
+      doc: 'Reference Price (Dark Book) (for MTF only) (RFPT)'
     0x34:
       id: 'pre_trade_transparency_waiver_for_illiquid_instrument'
-      doc: 'Pre Trade Transparency Waiver For Illiquid Instrument For Si Only Ilqd'
+      doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD)'
     0x35:
       id: 'pre_trade_transparency_waiver_for_above_standard_mar'
-      doc: 'Pre Trade Transparency Waiver For Above Standard Mar Ket Size For Si Only Size'
+      doc: 'Pre-Trade Transparency Waiver for Above Standard Mar- ket Size (for SI only) (SIZE)'
   deferral_reason:
     0x2d:
       id: 'no_deferral_reason'
       doc: 'No Deferral Reason'
     0x36:
       id: 'deferral_for_large_in_scale'
-      doc: 'Deferral For Large In Scale Lrgs Bats To Participant Only'
+      doc: 'Deferral for Large In Scale (LRGS) (Bats to Participant only)'
     0x37:
       id: 'deferral_for_illiquid_instrument'
-      doc: 'Deferral For Illiquid Instrument For Rts 2 Only Ilqd'
+      doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD)'
     0x38:
       id: 'deferral_for_size_specific'
-      doc: 'Deferral For Size Specific For Rts 2 Only Size'
+      doc: 'Deferral for Size Specific (for RTS2 only) (SIZE)'
   exec_inst:
     0x50:
       id: 'market_peg'
-      doc: 'Market Peg Peg Buy To Pbbo Offer Peg Sell To Pbbo Bid'
+      doc: 'Market Peg (peg buy to PBBO offer, peg sell to PBBO bid)'
     0x52:
       id: 'primary_peg'
-      doc: 'Primary Peg Peg Buy To Pbbo Bid Peg Sell To Pbbo Offer'
+      doc: 'Primary Peg (peg buy to PBBO bid, peg sell to PBBO offer)'
     0x4c:
       id: 'alternate_midpoint'
-      doc: 'Alternate Midpoint Less Aggressive Of Midpoint And 1 Tick Inside Pbbo For Periodic Auction Orders 3'
+      doc: 'Alternate Midpoint (less aggressive of midpoint and 1 tick inside PBBO) for Periodic Auction Orders:3'
     0x4d:
       id: 'midpoint'
-      doc: 'Midpoint Peg To Pbbo Midpoint'
+      doc: 'Midpoint (peg to PBBO midpoint)'
     0x47:
       id: 'guarded_midpoint'
-      doc: 'Guarded Midpoint Peg To Bats Ebbo Midpoint But Sus Pend Order If Primary Market Quote Becomes Onesided Or Dis Appears For Smart Order Routing'
+      doc: 'Guarded Midpoint (peg to Bats EBBO midpoint but sus- pend order if primary market quote becomes one-sided or dis- appears) for Smart Order Routing:'
     0x75:
       id: 'bats_external_dark_only'
-      doc: 'Bats External Dark Only'
+      doc: 'Bats + External Dark Only'
     0x76:
       id: 'bats_external_dark_lit'
-      doc: 'Bats External Dark Lit'
+      doc: 'Bats + External Dark + Lit'
     0x77:
       id: 'bats_external_lit_only'
-      doc: 'Bats External Lit Only Ascii Nul 0 X 00 No Special Handling Default Ascii Nul 0 X 00'
+      doc: 'Bats + External Lit Only ASCII NUL (0x00) = no special handling Default = ASCII NUL (0x00)'
   reason:
     0x41:
       id: 'admin'
@@ -3639,8 +3639,8 @@ enums:
   status:
     0x30:
       id: 'accepted_in_response_to_a_quote_message'
-      doc: 'Accepted In Response To A Quote Message'
+      doc: 'Accepted in response to a Quote message'
     0x31:
       id: 'cancelled_in_response_to_a_quote_cancel'
-      doc: 'Cancelled In Response To A Quote Cancel Message'
+      doc: 'Cancelled in response to a QuoteCancel message'
 

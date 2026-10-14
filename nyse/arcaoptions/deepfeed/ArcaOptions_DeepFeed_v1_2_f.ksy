@@ -1128,34 +1128,34 @@ enums:
   status:
     0x30:
       id: 'accepted'
-      doc: 'Message Was Accepted'
+      doc: 'Message was accepted'
     0x31:
       id: 'rejected'
-      doc: 'Rejected Due To An Invalid Source Id'
+      doc: 'Rejected due to an Invalid Source ID'
     0x32:
       id: 'invalid_sequence_range'
-      doc: 'Rejected Due To Invalid Sequence Range'
+      doc: 'Rejected due to invalid sequence range'
     0x33:
       id: 'maximum_sequence_range'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
+      doc: 'Rejected due to maximum sequence range (see threshold limits)'
     0x34:
       id: 'maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
+      doc: 'Rejected due to maximum request in a day'
     0x35:
       id: 'maximum_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
+      doc: 'Rejected due to maximum number of refresh requests in a day'
     0x36:
       id: 'old_seq_num_ttl'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
+      doc: 'Rejected. Request message SeqNum TTL (Time to live) is too old. Use refresh to recover current state if necessary.'
     0x37:
       id: 'invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
+      doc: 'Rejected due to an Invalid Channel ID'
     0x38:
       id: 'invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
+      doc: 'Rejected due to an Invalid Product ID'
     0x39:
       id: 'invalid_msg_type_or_msg_size'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
+      doc: 'Rejected due to: 1) Invalid MsgType, or 2) Mismatch between MsgType and MsgSize'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -1334,7 +1334,7 @@ enums:
       doc: 'Core Session'
     0x4c:
       id: 'late_session'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1466,10 +1466,10 @@ enums:
   rfq_status:
     0x4f:
       id: 'start'
-      doc: 'Start Of Rfq Auction'
+      doc: 'Start of RFQ Auction'
     0x51:
       id: 'end'
-      doc: 'End Of Rfq Auction'
+      doc: 'End of RFQ Auction'
   printable_flag:
     0:
       id: 'trade_not_included_in_total_volume'

@@ -116,25 +116,25 @@ types:
       - id: mode
         size: 8
         doc: 'Mode of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_999_percentile
+      - id: percentile_99_point_9
         size: 8
         doc: '99.9 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_99_percentile
+      - id: percentile_99
         size: 8
         doc: '99 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_95_percentile
+      - id: percentile_95
         size: 8
         doc: '95 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_90_percentile
+      - id: percentile_90
         size: 8
         doc: '90 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_75_percentile
+      - id: percentile_75
         size: 8
         doc: '75 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_50_percentile_median
+      - id: percentile_50
         size: 8
         doc: '50 percentile of order processing latency (seconds) from Begin Time to End Time'
-      - id: field_25_percentile
+      - id: percentile_25
         size: 8
         doc: '25 percentile of order processing latency (seconds) from Begin Time to End Time'
 

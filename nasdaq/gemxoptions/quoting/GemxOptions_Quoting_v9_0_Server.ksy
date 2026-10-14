@@ -1237,14 +1237,14 @@ enums:
       doc: 'Complex Instruments'
     0x4f:
       id: 'simple_instrument'
-      doc: 'Simple Instrument Underlying Purge And Market Reentry Requests'
+      doc: 'Simple Instrument (Underlying Purge and Market Reentry requests)'
   reentry_indicator:
     0x4e:
       id: 'normal'
-      doc: 'Normal Not Applicable On Complex Quotes'
+      doc: 'Normal (Not Applicable on complex quotes)'
     0x52:
       id: 'reentry'
-      doc: 'Reentry'
+      doc: 'Re-entry'
   stock_leg_short_sale:
     0x4e:
       id: 'not_applicable'
@@ -1261,39 +1261,39 @@ enums:
       doc: 'Auction Response'
     0x4d:
       id: 'market_sweep'
-      doc: 'Sqf Market Sweep'
+      doc: 'SQF Market Sweep'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Side Bought On Quote Executions'
+      doc: 'Buy side (Bought on quote executions)'
     0x53:
       id: 'sell'
-      doc: 'Sell Side Sold On Quote Executions'
+      doc: 'Sell side (Sold on quote executions)'
     0x2a:
       id: 'not_disclosed'
-      doc: 'Not Disclosed Auction Notification'
+      doc: 'Not Disclosed (Auction Notification)'
     0x54:
       id: 'buy_short'
-      doc: 'Buy Book Side Short'
+      doc: 'Buy book side (short)'
     0x58:
       id: 'buy_short_exempt'
-      doc: 'Buy Book Side Short Exempt'
+      doc: 'Buy book side (short exempt)'
     0x59:
       id: 'sell_short'
-      doc: 'Sell Book Side Short'
+      doc: 'Sell book side (short)'
     0x5a:
       id: 'sell_short_exempt'
-      doc: 'Sell Book Side Short Exempt'
+      doc: 'Sell book side (short exempt)'
   debit_credit:
     0x44:
       id: 'debit'
-      doc: 'Sweep Price Is Debit'
+      doc: 'Sweep Price is Debit'
     0x43:
       id: 'credit'
-      doc: 'Sweep Price Is Credit'
+      doc: 'Sweep Price is Credit'
     0x20:
       id: 'zero'
-      doc: 'Sweep Price Is 0.0'
+      doc: 'Sweep Price is 0.0'
   price_protection:
     0x4c:
       id: 'local'
@@ -1339,7 +1339,7 @@ enums:
       doc: 'Invalid Badge'
     0x42:
       id: 'invalid_instrument_underlying'
-      doc: 'Invalid Instrument Underlying'
+      doc: 'Invalid Instrument/Underlying'
     0x43:
       id: 'not_permitted'
       doc: 'Not Permitted'
@@ -1357,16 +1357,16 @@ enums:
       doc: 'Invalid Spread'
     0x48:
       id: 'invalid_indicator_attribute'
-      doc: 'Invalid Indicator Attribute'
+      doc: 'Invalid Indicator/Attribute'
     0x49:
       id: 'reentry_required'
       doc: 'Reentry Required'
     0x4a:
       id: 'opening_rotation_in_progress'
-      doc: 'Opening Rotation In Progress'
+      doc: 'Opening Rotation in Progress'
     0x4b:
       id: 'kill_switch_reentry_required'
-      doc: 'Kill Switch Reentry Required'
+      doc: 'Kill-Switch Reentry Required'
     0x4c:
       id: 'full_replenishment_required'
       doc: 'Full Replenishment Required'
@@ -1378,7 +1378,7 @@ enums:
       doc: 'Too Late To Act'
     0x50:
       id: 'not_in_free_trading'
-      doc: 'Not In Free Trading'
+      doc: 'Not in Free Trading'
     0x51:
       id: 'invalid_auction_information'
       doc: 'Invalid Auction Information'
@@ -1387,13 +1387,13 @@ enums:
       doc: 'Market Closed'
     0x53:
       id: 'post_only_reprice'
-      doc: 'Post Only Reprice'
+      doc: 'Post-Only Reprice'
     0x54:
       id: 'request_pending'
       doc: 'Request Pending'
     0x59:
       id: 'invalid_format_bad_block'
-      doc: 'Invalid Format Bad Block'
+      doc: 'Invalid Format/Bad Block'
     0x5a:
       id: 'system_error'
       doc: 'System Error'
@@ -1407,31 +1407,31 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages This Is Always The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. This is always the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours The System Is Up And Ready To Start Accepting Orders'
+      doc: 'Start of System Hours. The system is up and ready to start accepting orders.'
     0x42:
       id: 'start_of_quote'
-      doc: 'Start Of Quote Quotes Sent To The System Will Now Be Added To The Book And Considered For Execution When Trading Starts On This Option'
+      doc: 'Start of Quote. Quotes sent to the system will now be added to the book and considered for execution when trading starts on this option.'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process.'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing No New Orders Or Changes To Existing Orders On Last Trading Date Of Wco Options'
+      doc: 'End of WCO Early closing. No new orders or changes to existing Orders on last trading date of WCO options.'
     0x4e:
       id: 'end_of_normal_hours_processing'
-      doc: 'End Of Normal Hours Processing'
+      doc: 'End of Normal Hours Processing.'
     0x4c:
       id: 'end_of_late_hours_processing'
-      doc: 'End Of Late Hours Processing'
+      doc: 'End of Late Hours Processing.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours The System Is Now Closed'
+      doc: 'End of System Hours. The system is now closed.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day.'
   option_type:
     0x43:
       id: 'call'
@@ -1448,28 +1448,28 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing 1200 Noon'
+      doc: 'WCO Early Closing 12:00 Noon'
   tradable:
     0x59:
       id: 'tradable'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'not_tradable'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   mpv:
     0x45:
       id: 'penny_everywhere'
-      doc: 'All Prices Are In Penny Increments'
+      doc: 'All prices are in penny increments'
     0x53:
       id: 'scaled'
-      doc: 'Prices Below 3.00 Are In Increments Of 0.05 Prices Above 3.00 In Increments Of 0.10'
+      doc: 'Prices below $3.00 are in increments of $0.05, prices above $3.00 in increments of $0.10'
     0x50:
       id: 'penny_pilot'
-      doc: 'Prices Below 3.00 Are In Increments Of 0.01 Prices Above 3.00 In Increments Of 0.05'
+      doc: 'Prices below $3.00 are in increments of $0.01, prices above $3.00 in increments of $0.05'
   trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in Effect'
     0x54:
       id: 'trading_resumed'
       doc: 'Trading Resumed'
@@ -1533,22 +1533,22 @@ enums:
       doc: 'Regular Maker Against Combo'
     20:
       id: 'combo_taker_against_io'
-      doc: 'Combo Taker Against Io'
+      doc: 'Combo Taker Against IO'
     21:
       id: 'regular_incl_pim_taker_against_io'
-      doc: 'Regular Incl Pim Taker Against Io'
+      doc: 'Regular (incl. PIM) Taker Against IO'
     22:
       id: 'io_maker_against_combo'
-      doc: 'Io Maker Against Combo'
+      doc: 'IO Maker Against Combo'
     23:
       id: 'io_maker_against_regular'
-      doc: 'Io Maker Against Regular'
+      doc: 'IO Maker Against Regular'
     24:
       id: 'regular_maker_against_io_participant'
-      doc: 'Regular Maker Against Io Participant'
+      doc: 'Regular Maker Against IO Participant'
     25:
       id: 'io_participant_taker_against_regular'
-      doc: 'Io Participant Taker Against Regular'
+      doc: 'IO Participant Taker Against Regular'
     26:
       id: 'broken_price_improvement'
       doc: 'Broken Price Improvement'
@@ -1587,7 +1587,7 @@ enums:
       doc: 'Price Improvement'
     38:
       id: 'price_improvement_response'
-      doc: 'Price Improvement Response'
+      doc: 'Price improvement Response'
     39:
       id: 'solicitation'
       doc: 'Solicitation'
@@ -1599,7 +1599,7 @@ enums:
       doc: 'Qualified Contingent Cross'
     42:
       id: 'customer_to_customer'
-      doc: 'Customer To Customer'
+      doc: 'Customer to Customer'
     43:
       id: 'combo_facilitation'
       doc: 'Combo Facilitation'
@@ -1623,7 +1623,7 @@ enums:
       doc: 'Combo Qualified Contingent Cross'
     50:
       id: 'combo_customer_to_customer'
-      doc: 'Combo Customer To Customer'
+      doc: 'Combo Customer to Customer'
     51:
       id: 'sweep_routed_out'
       doc: 'Sweep Routed Out'
@@ -1632,19 +1632,19 @@ enums:
       doc: 'Sweep Trade Report'
     53:
       id: 'combo_taker_against_regular_thru_nbbo'
-      doc: 'Combo Taker Against Regular Thru Nbbo'
+      doc: 'Combo Taker Against Regular - Thru NBBO'
     54:
       id: 'combo_taker_against_io_thru_nbbo'
-      doc: 'Combo Taker Against Io Thru Nbbo'
+      doc: 'Combo Taker Against IO - Thru NBBO'
     55:
       id: 'simple_exposure_order_upon_receipt'
-      doc: 'Simple Exposure Order Upon Receipt'
+      doc: 'Simple Exposure Order - Upon Receipt'
     56:
       id: 'simple_exposure_order_subsequent'
-      doc: 'Simple Exposure Order Subsequent'
+      doc: 'Simple Exposure Order - Subsequent'
     57:
       id: 'simple_exposure_order_responder'
-      doc: 'Simple Exposure Order Responder'
+      doc: 'Simple Exposure Order - Responder'
     58:
       id: 'flex_auction'
       doc: 'Flex Auction'
@@ -1709,7 +1709,7 @@ enums:
       doc: 'Invalid Badge'
     0x42:
       id: 'invalid_instrument_underlying'
-      doc: 'Invalid Instrument Underlying'
+      doc: 'Invalid Instrument/Underlying'
     0x43:
       id: 'not_permitted'
       doc: 'Not Permitted'
@@ -1727,16 +1727,16 @@ enums:
       doc: 'Invalid Spread'
     0x48:
       id: 'invalid_indicator_attribute'
-      doc: 'Invalid Indicator Attribute'
+      doc: 'Invalid Indicator/Attribute'
     0x49:
       id: 'reentry_required'
       doc: 'Reentry Required'
     0x4a:
       id: 'opening_rotation_in_progress'
-      doc: 'Opening Rotation In Progress'
+      doc: 'Opening Rotation in Progress'
     0x4b:
       id: 'kill_switch_reentry_required'
-      doc: 'Kill Switch Reentry Required'
+      doc: 'Kill-Switch Reentry Required'
     0x4c:
       id: 'full_replenishment_required'
       doc: 'Full Replenishment Required'
@@ -1748,7 +1748,7 @@ enums:
       doc: 'Too Late To Act'
     0x50:
       id: 'not_in_free_trading'
-      doc: 'Not In Free Trading'
+      doc: 'Not in Free Trading'
     0x51:
       id: 'invalid_auction_information'
       doc: 'Invalid Auction Information'
@@ -1757,13 +1757,13 @@ enums:
       doc: 'Market Closed'
     0x53:
       id: 'post_only_reprice'
-      doc: 'Post Only Reprice'
+      doc: 'Post-Only Reprice'
     0x54:
       id: 'request_pending'
       doc: 'Request Pending'
     0x59:
       id: 'invalid_format_bad_block'
-      doc: 'Invalid Format Bad Block'
+      doc: 'Invalid Format/Bad Block'
     0x5a:
       id: 'system_error'
       doc: 'System Error'
@@ -1776,7 +1776,7 @@ enums:
       doc: 'Invalid Badge'
     0x42:
       id: 'invalid_instrument_underlying'
-      doc: 'Invalid Instrument Underlying'
+      doc: 'Invalid Instrument/Underlying'
     0x43:
       id: 'not_permitted'
       doc: 'Not Permitted'
@@ -1794,16 +1794,16 @@ enums:
       doc: 'Invalid Spread'
     0x48:
       id: 'invalid_indicator_attribute'
-      doc: 'Invalid Indicator Attribute'
+      doc: 'Invalid Indicator/Attribute'
     0x49:
       id: 'reentry_required'
       doc: 'Reentry Required'
     0x4a:
       id: 'opening_rotation_in_progress'
-      doc: 'Opening Rotation In Progress'
+      doc: 'Opening Rotation in Progress'
     0x4b:
       id: 'kill_switch_reentry_required'
-      doc: 'Kill Switch Reentry Required'
+      doc: 'Kill-Switch Reentry Required'
     0x4c:
       id: 'full_replenishment_required'
       doc: 'Full Replenishment Required'
@@ -1815,7 +1815,7 @@ enums:
       doc: 'Too Late To Act'
     0x50:
       id: 'not_in_free_trading'
-      doc: 'Not In Free Trading'
+      doc: 'Not in Free Trading'
     0x51:
       id: 'invalid_auction_information'
       doc: 'Invalid Auction Information'
@@ -1824,13 +1824,13 @@ enums:
       doc: 'Market Closed'
     0x53:
       id: 'post_only_reprice'
-      doc: 'Post Only Reprice'
+      doc: 'Post-Only Reprice'
     0x54:
       id: 'request_pending'
       doc: 'Request Pending'
     0x59:
       id: 'invalid_format_bad_block'
-      doc: 'Invalid Format Bad Block'
+      doc: 'Invalid Format/Bad Block'
     0x5a:
       id: 'system_error'
       doc: 'System Error'
@@ -1850,7 +1850,7 @@ enums:
       doc: 'None'
     0x31:
       id: 'aon'
-      doc: 'Aon'
+      doc: 'AON'
   order_capacity:
     0x43:
       id: 'customer'
@@ -1863,16 +1863,16 @@ enums:
       doc: 'Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other-Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x50:
       id: 'professional_customer'
       doc: 'Professional Customer'
     0x42:
       id: 'broker_dealer_customer'
-      doc: 'Broker Dealer Customer'
+      doc: 'Broker/Dealer - Customer'
     0x20:
       id: 'not_applicable'
-      doc: 'Na'
+      doc: 'N/A'
   auction_event:
     0x53:
       id: 'start'
@@ -1882,14 +1882,14 @@ enums:
       doc: 'Auction Update'
     0x45:
       id: 'end_of_auction'
-      doc: 'End Of Auction'
+      doc: 'End of Auction'
   auction_type:
     0x42:
       id: 'block_order_auction'
       doc: 'Block Order Auction'
     0x43:
       id: 'combo_exposure_auction'
-      doc: 'Combo Exposure Auction Aka Cola'
+      doc: 'Combo Exposure Auction (aka COLA)'
     0x49:
       id: 'order_exposure'
       doc: 'Order Exposure'
@@ -1898,7 +1898,7 @@ enums:
       doc: 'Opening Auction'
     0x50:
       id: 'pim_auction'
-      doc: 'Pim Auction Pixl'
+      doc: 'PIM Auction (PIXL)'
     0x48:
       id: 'facilitation_auction'
       doc: 'Facilitation Auction'
@@ -1908,36 +1908,36 @@ enums:
   purge_reason:
     0x55:
       id: 'user_requested_simple'
-      doc: 'User Requested Simple'
+      doc: 'User requested (Simple)'
     0x53:
       id: 'system_initiated'
-      doc: 'System Initiated Simple'
+      doc: 'System initiated (Simple)'
     0x4b:
       id: 'auto_killswitch'
-      doc: 'Auto Killswitch Initiated All Instruments'
+      doc: 'Auto Killswitch initiated (All Instruments)'
     0x4d:
       id: 'manual_killswitch'
-      doc: 'Manual Killswitch Initiated All Instruments'
+      doc: 'Manual Killswitch initiated (All Instruments)'
     0x50:
       id: 'purge_on_disconnect'
-      doc: 'Purge On Disconnect All Instruments'
+      doc: 'Purge On Disconnect (All instruments)'
     0x75:
       id: 'user_requested_complex'
-      doc: 'User Requested Complex'
+      doc: 'User requested (Complex)'
     0x73:
       id: 'system_initiated_complex'
-      doc: 'System Initiated Complex'
+      doc: 'System initiated (Complex)'
     0x51:
       id: 'anti_internalize'
-      doc: 'Anti Internalize Instrument Purge Notification'
+      doc: 'Anti-Internalize (Instrument Purge Notification)'
   reentry_scope:
     0x4e:
       id: 'user_requested_simple'
-      doc: 'User Requested Simple Instruments'
+      doc: 'User requested (Simple Instruments)'
     0x6e:
       id: 'user_requested_complex'
-      doc: 'User Requested Complex Instruments'
+      doc: 'User requested (Complex Instruments)'
     0x4b:
       id: 'post_killswitch'
-      doc: 'Post Killswitch All Instruments'
+      doc: 'Post-Killswitch (All Instruments)'
 

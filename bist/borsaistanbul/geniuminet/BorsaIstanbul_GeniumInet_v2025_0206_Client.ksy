@@ -369,14 +369,14 @@ enums:
       doc: 'Day'
     3:
       id: 'immediate_or_cancel'
-      doc: 'Fill And Kill Fa K'
+      doc: 'Fill and Kill (FaK)'
     4:
       id: 'fill_or_kill'
       doc: 'Fill Or Kill'
   open_close:
     0:
       id: 'default_field'
-      doc: 'Default For The Account'
+      doc: 'Default for the account'
     1:
       id: 'open'
       doc: 'Open'
@@ -447,7 +447,7 @@ enums:
       doc: 'Close Net'
     4:
       id: 'default_field'
-      doc: 'Default For The Account'
+      doc: 'Default for the account'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
@@ -669,10 +669,10 @@ enums:
   quote_side:
     0x42:
       id: 'bid'
-      doc: 'Buy Side Bid'
+      doc: 'Buy side (bid)'
     0x53:
       id: 'offer'
-      doc: 'Sell Side Offer'
+      doc: 'Sell side (offer)'
   quote_status:
     0:
       id: 'accept'

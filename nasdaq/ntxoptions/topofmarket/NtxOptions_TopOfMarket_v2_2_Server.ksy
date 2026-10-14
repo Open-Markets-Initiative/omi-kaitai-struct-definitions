@@ -537,35 +537,35 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'end_of_normal_hours_processing'
-      doc: 'End Of Normal Hours Processing'
+      doc: 'End of Normal Hours Processing'
     0x4c:
       id: 'end_of_late_hours_processing'
-      doc: 'End Of Late Hours Processing'
+      doc: 'End of Late Hours Processing'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
   option_type:
     0x43:
       id: 'call_option'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put_option'
-      doc: 'Put Option'
+      doc: 'Put option'
     0x4e:
       id: 'na'
-      doc: 'Na'
+      doc: 'N/A'
   closing_type:
     0x4e:
       id: 'normal_hours'
@@ -576,24 +576,24 @@ enums:
   tradable:
     0x59:
       id: 'instrument_is_tradable'
-      doc: 'Instrument Is Tradable'
+      doc: 'Instrument is tradable'
     0x4e:
       id: 'instrument_is_not_tradable'
-      doc: 'Instrument Is Not Tradable'
+      doc: 'Instrument is not tradable'
   mpv:
     0x45:
       id: 'penny_everywhere'
-      doc: 'Penny Everywhere'
+      doc: 'penny Everywhere'
     0x53:
       id: 'scaled'
       doc: 'Scaled'
     0x50:
       id: 'penny_pilot'
-      doc: 'Penny Pilot'
+      doc: 'penny Pilot'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x42:
       id: 'buy_side_trading_suspended'
       doc: 'Buy Side Trading Suspended'
@@ -608,7 +608,7 @@ enums:
       doc: 'Opening Auction'
     0x52:
       id: 're_opening'
-      doc: 'Re Opening'
+      doc: 'Re-Opening'
     0x54:
       id: 'continuous_trading'
       doc: 'Continuous Trading'
@@ -618,13 +618,13 @@ enums:
   quote_condition:
     0x20:
       id: 'regular_quoteautox_eligible'
-      doc: 'Regular Quoteautox Eligible'
+      doc: 'regular quote/autox eligible'
     0x58:
       id: 'ask_side_not_firm_bid_side_firm'
-      doc: 'Ask Side Not Firm Bid Side Firm'
+      doc: 'Ask side not firm bid side firm'
     0x59:
       id: 'bid_side_not_firm_ask_side_firm'
-      doc: 'Bid Side Not Firm Ask Side Firm'
+      doc: 'Bid side not firm ask side firm'
   message_type:
     0x53:
       id: 'system_event_message'

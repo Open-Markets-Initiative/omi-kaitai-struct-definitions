@@ -514,10 +514,10 @@ enums:
   restricted_option:
     0x59:
       id: 'accept_position_closing'
-      doc: 'Miax Will Accept Position Closing Orders Only'
+      doc: 'MIAX will accept position closing orders only'
     0x4e:
       id: 'accept_open_and_close'
-      doc: 'Miax Will Accept Open And Close Positions'
+      doc: 'MIAX will accept open and close positions'
   long_term_option:
     0x59:
       id: 'far_month_expiration'
@@ -528,30 +528,30 @@ enums:
   active_on_miax:
     0x41:
       id: 'active'
-      doc: 'Active Tradable On Miax'
+      doc: 'Active (tradable) on MIAX'
     0x49:
       id: 'inactive'
-      doc: 'Inactive Not Tradable On Miax'
+      doc: 'Inactive (not tradable) on MIAX'
   miax_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 For All Prices'
+      doc: 'Penny (0.01) for all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
+      doc: 'Penny (0.01) if Price <= $3, Nickel (0.05) if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
+      doc: 'Nickel (0.05) if Price <= $3, Dime (0.10) if Price > $3'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 For All Prices'
+      doc: 'Penny (0.01) for all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
+      doc: 'Penny (0.01) if Price <= $3, Nickel (0.05) if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
+      doc: 'Nickel (0.05) if Price <= $3, Dime (0.10) if Price > $3'
   opening_underlying_market_code:
     0x41:
       id: 'nyse_amex'
@@ -567,7 +567,7 @@ enums:
       doc: 'Finra Adf'
     0x45:
       id: 'market_independent'
-      doc: 'Any Market That Opens First'
+      doc: 'Any market that opens first'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'
@@ -594,10 +594,10 @@ enums:
       doc: 'Nyse Arca Exchange'
     0x51:
       id: 'nasdaq_omx_utp'
-      doc: 'Nasdaq Omx Via Utp Feed'
+      doc: 'Nasdaq OMX via UTP Feed'
     0x54:
       id: 'nasdaq_omx_cta'
-      doc: 'Nasdaq Omx Via Cta Feed'
+      doc: 'Nasdaq OMX via CTA Feed'
     0x55:
       id: 'memx'
       doc: 'Memx'
@@ -606,16 +606,16 @@ enums:
       doc: 'Iex'
     0x57:
       id: 'cboe_stock_exchange'
-      doc: 'Cboe Stock Exchange Cbsx'
+      doc: 'CBOE Stock Exchange (CBSX)'
     0x58:
       id: 'nasdaq_omx_phlx'
       doc: 'Nasdaq Omx Phlx'
     0x59:
       id: 'bats_y'
-      doc: 'Bats Y Exchange Inc'
+      doc: 'BATS Y-Exchange, Inc'
     0x5a:
       id: 'bats'
-      doc: 'Bats Exchange Inc'
+      doc: 'BATS Exchange Inc'
   system_status:
     0x53:
       id: 'start_of_system_hours'
@@ -625,55 +625,55 @@ enums:
       doc: 'End Of System Hours'
     0x31:
       id: 'start_of_test_session'
-      doc: 'Start Of Test Session Sent Before Tests'
+      doc: 'Start of Test Session (sent before tests)'
     0x32:
       id: 'end_of_test_session'
       doc: 'End Of Test Session'
   mbbo_condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority And Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority and Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
-      doc: 'Quote Is Not Firm On This Side'
+      doc: 'Quote is not firm on this side'
     0x52:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
   bid_condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority And Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority and Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
-      doc: 'Quote Is Not Firm On This Side'
+      doc: 'Quote is not firm on this side'
     0x52:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
   offer_condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x42:
       id: 'public_customer_interest'
-      doc: 'Quote Contains Public Customer Interest Priority And Non Priority Customer Interest'
+      doc: 'Quote contains Public Customer interest (Priority and Non-Priority Customer Interest)'
     0x43:
       id: 'not_firm'
-      doc: 'Quote Is Not Firm On This Side'
+      doc: 'Quote is not firm on this side'
     0x52:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
@@ -683,144 +683,144 @@ enums:
       doc: 'Regular'
     0x41:
       id: 'cancel_of_trade_previously_reported_other_than_as_the_last_or_opening'
-      doc: 'Cancel Of Trade Previously Reported Other Than As The Last Or Opening For The Particular Option'
+      doc: 'Cancel of Trade previously reported other than as the last or opening for the particular Option'
     0x42:
       id: 'late_and_is_out_of_sequence'
-      doc: 'Trade That Is Late And Is Out Of Sequence'
+      doc: 'Trade that is Late and is out of sequence'
     0x43:
       id: 'cancel_of_the_last_reported_trade'
-      doc: 'Cancel Of The Last Reported Trade For The Particular Option'
+      doc: 'Cancel of the last reported Trade for the particular Option'
     0x44:
       id: 'late_and_is_in_correct_sequence'
-      doc: 'Trade That Is Late And Is In Correct Sequence'
+      doc: 'Trade that is Late and is in correct sequence'
     0x45:
       id: 'cancel_of_the_first_reported_trade'
-      doc: 'Cancel Of The First Opening Reported Trade For The Particular Option'
+      doc: 'Cancel of the first (opening) reported Trade for the particular Option'
     0x46:
       id: 'late_report_of_the_opening_trade_and_is_out_of_sequence'
-      doc: 'Trade That Is Late Report Of The Opening Trade And Is Out Of Sequence'
+      doc: 'Trade that is late report of the opening trade and is out of sequence'
     0x47:
       id: 'cancel_of_the_only_reported_trade'
-      doc: 'Cancel Of The Only Reported Trade For The Particular Option'
+      doc: 'Cancel of the only reported Trade for the particular Option'
     0x48:
       id: 'late_report_of_the_opening_trade_and_is_in_correct_sequence'
-      doc: 'Trade That Is Late Report Of The Opening Trade And Is In Correct Sequence'
+      doc: 'Trade that is late report of the opening trade and is in correct sequence'
     0x49:
       id: 'auto_field'
       doc: 'Auto'
     0x4a:
       id: 'reopening_of_an_option'
-      doc: 'Trade Due To Reopening Of An Option In Which Trading Has Been Previously Halted Process As A Regular Transaction'
+      doc: 'Trade due to reopening of an Option in which trading has been previously halted; process as a regular transaction.'
     0x4b:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x4c:
       id: 'a_buy_and_a_sell_in_the_same_class'
-      doc: 'Transaction Represents A Trade In Two Options In The Same Class A Buy And A Sell In The Same Class Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in the same class). Prefix appears solely for information; process as a regular transaction.'
     0x4d:
       id: 'a_buy_and_a_sell_in_a_put_and_a_call'
-      doc: 'Transaction Represents A Trade In Two Options In The Same Class A Buy And A Sell In A Put And A Call Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in a put and a call). Prefix appears solely for information; process as a regular transaction.'
     0x4e:
       id: 'reserved_x4e'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x4f:
       id: 'reserved_x4f'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x50:
       id: 'buy_or_sell_of_a_call_or_put'
-      doc: 'Transaction Represents The Option Portion Of An Order Involving A Single Option Leg Buy Or Sell Of A Call Or Put And Stock Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents the option portion of an order involving a single option leg (buy or sell of a call or put) and stock. Prefix appears solely for information: process as a regular transaction'
     0x51:
       id: 'buy_of_a_call_and_a_sell_of_a_put_for_the_same_underlying_stock_or_index'
-      doc: 'Transaction Represents The Buying Of A Call And The Selling Of A Put For The Same Underlying Stock Or Index Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents the buying of a call and the selling of a put for the same underlying stock or index. Prefix appears solely for information; process as a regular transaction'
     0x52:
       id: 'execution_of_an_order_which_was_stopped_at_a_price_that_did_not_constitute_a_trade_through_on_another_market_at_the_time_of_the_stop'
-      doc: 'Trade Was The Execution Of An Order Which Was Stopped At A Price That Did Not Constitute A Trade Through On Another Market At The Time Of The Stop Process Like A Normal Transaction Except Dont Update Last'
+      doc: 'Trade was the execution of an order which was "stopped" at a price that did not constitute a Trade-Through on another market at the time of the stop. Process like a normal transaction except don''t update "last".'
     0x53:
       id: 'execution_of_an_iso_order'
-      doc: 'Trade Was The Execution Of An Order Identified As An Intermarket Sweep Order Iso'
+      doc: 'Trade was the execution of an order identified as an Intermarket Sweep Order (ISO).'
     0x54:
       id: 'reserved_x54'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x58:
       id: 'trade_through_exempt'
-      doc: 'Trade That Is Trade Through Exempt The Trade Should Be Treated Like A Regular Sale'
+      doc: 'Trade that is Trade Through Exempt. The trade should be treated like a regular sale.'
     0x61:
       id: 'paired_prime'
-      doc: 'Trade From A Paired Prime Transaction Non Iso'
+      doc: 'Trade from a Paired PRIME transaction (non-ISO)'
     0x62:
       id: 'iso_paired_prime'
-      doc: 'Trade From A Iso Paired Prime Transaction'
+      doc: 'Trade from a ISO Paired PRIME transaction'
     0x63:
       id: 'prime_customer_to_customer_cross_or_prime_qcc'
-      doc: 'Trade From Prime Customer To Customer Cross Or Prime Qcc Transaction'
+      doc: 'Trade from PRIME Customer to Customer Cross or PRIME QCC transaction'
     0x64:
       id: 'reserved_x64'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x65:
       id: 'reserved_x65'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x66:
       id: 'complex_transaction_that_is_not_complex_stock_tied_and_does_not_involve_legging'
-      doc: 'Trade From A Complex Transaction That Is Not Complex Stocktied And Does Not Involve Legging'
+      doc: 'Trade from a Complex transaction that is not Complex stock-tied and does not involve legging'
     0x67:
       id: 'complex_prime_transaction_that_is_not_complex_stock_tied_and_does_not_involve_legging'
-      doc: 'Trade From A Complex Prime Transaction That Is Not Complex Stocktied And Does Not Involve Legging'
+      doc: 'Trade from a Complex PRIME transaction that is not Complex stock-tied and does not involve legging'
     0x68:
       id: 'complex_prime_customer_to_customer_cross_or_complex_prime_qcc_transaction_that_is_not_complex_stock_tied'
-      doc: 'Trade From A Complex Prime Customer To Customer Cross Or Complex Prime Qcc Transaction That Is Not Complex Stocktied'
+      doc: 'Trade from a Complex PRIME Customer to Customer Cross or Complex PRIME QCC transaction that is not Complex stock-tied'
     0x69:
       id: 'reserved_x69'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x6a:
       id: 'complex_legging_transaction_that_is_not_complex_stock_tied'
-      doc: 'Trade From A Complex Legging Transaction That Is Not Complex Stocktied'
+      doc: 'Trade from a Complex legging transaction that is not Complex stock-tied'
     0x6b:
       id: 'complex_prime_stock_tied_transaction_that_does_not_involve_legging'
-      doc: 'Trade From A Complex Prime Stocktied Transaction That Does Not Involve Legging'
+      doc: 'Trade from a Complex PRIME stock-tied transaction that does not involve legging'
     0x6c:
       id: 'complex_prime_legging_transaction_that_is_not_complex_stock_tied'
-      doc: 'Trade From A Complex Prime Legging Transaction That Is Not Complex Stocktied'
+      doc: 'Trade from a Complex PRIME legging transaction that is not Complex stock-tied'
     0x6d:
       id: 'reserved_x6d'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x6e:
       id: 'complex_stock_tied_transaction_that_does_not_involve_legging'
-      doc: 'Trade From A Complex Stocktied Transaction That Does Not Involve Legging'
+      doc: 'Trade from a Complex stock-tied transaction that does not involve legging'
     0x6f:
       id: 'complex_customer_to_customer_cross_stock_tied_or_complex_qcc_stock_tied_transaction'
-      doc: 'Trade From Complex Customer To Customer Cross Stocktied Or Complex Qcc Stocktied Transaction'
+      doc: 'Trade from Complex Customer to Customer Cross stock-tied or Complex QCC stock-tied transaction'
     0x70:
       id: 'reserved_x70'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x71:
       id: 'reserved_x71'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x72:
       id: 'reserved_x72'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x73:
       id: 'reserved_x73'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     0x74:
       id: 'reserved_x74'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
   trading_status:
     0x48:
       id: 'halted'
-      doc: 'Miax Has Halted Trading For This Underlying Symbol'
+      doc: 'MIAX has halted trading for this Underlying Symbol'
     0x52:
       id: 'resumed'
-      doc: 'Miax Will Resume Trading Reopen For This Underlying Symbol'
+      doc: 'MIAX will resume trading (reopen) for this Underlying Symbol'
     0x4f:
       id: 'opened'
-      doc: 'Miax Will Open Trading For This Underlying Symbol'
+      doc: 'MIAX will open trading for this Underlying Symbol'
   event_reason:
     0x41:
       id: 'automatic'
-      doc: 'This Event Resulted From Automaticmarket Driven Event'
+      doc: 'This event resulted from automatic/market driven event'
     0x4d:
       id: 'manual'
-      doc: 'Miax Manually Initiated This Event'
+      doc: 'MIAX manually initiated this event'
   sesm_packet_type:
     0x73:
       id: 'sequenced_data_packet'

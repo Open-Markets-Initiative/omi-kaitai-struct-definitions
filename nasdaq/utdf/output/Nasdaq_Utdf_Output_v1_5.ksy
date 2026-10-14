@@ -871,16 +871,16 @@ enums:
   market_center_originator_id:
     0x59:
       id: 'byx'
-      doc: 'Cboe Byx'
+      doc: 'Cboe BYX'
     0x5a:
       id: 'bzx'
-      doc: 'Cboe Bzx'
+      doc: 'Cboe BZX'
     0x4a:
       id: 'edga'
-      doc: 'Cboe Edga'
+      doc: 'Cboe EDGA'
     0x4b:
       id: 'edgx'
-      doc: 'Cboe Edgx'
+      doc: 'Cboe EDGX'
     0x57:
       id: 'cboe'
       doc: 'Cboe'
@@ -895,22 +895,22 @@ enums:
       doc: 'Nasdaq'
     0x49:
       id: 'ise'
-      doc: 'Nasdaq Ise'
+      doc: 'Nasdaq ISE'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x41:
       id: 'american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x43:
       id: 'national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x4d:
       id: 'chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x44:
       id: 'finra'
       doc: 'Financial Industry Regulatory Authority'
@@ -922,26 +922,26 @@ enums:
       doc: 'Long Term Stock Exchange'
     0x48:
       id: 'pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX Pearl'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x45:
       id: 'market_independent'
       doc: 'Market Independent'
   sub_market_center_id:
     0x4e:
       id: 'nyse_trf'
-      doc: 'Nyse Trf'
+      doc: 'NYSE TRF'
     0x51:
       id: 'nasdaq_trf_carteret'
-      doc: 'Nasdaq Trf Carteret'
+      doc: 'Nasdaq TRF Carteret'
     0x42:
       id: 'nasdaq_trf_chicago'
-      doc: 'Nasdaq Trf Chicago'
+      doc: 'Nasdaq TRF Chicago'
     0x20:
       id: 'finra_alternative_display_facility'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
   level_1:
     0x40:
       id: 'regular_trade'
@@ -973,7 +973,7 @@ enums:
       doc: 'Derivatively Priced'
     0x35:
       id: 're_opening_prints'
-      doc: 'Re Opening Prints'
+      doc: 'Re-Opening Prints'
     0x36:
       id: 'closing_prints'
       doc: 'Closing Prints'
@@ -1056,53 +1056,53 @@ enums:
   consolidated_price_change_indicator:
     0x30:
       id: 'no_prices_changed'
-      doc: 'No Prices Changed'
+      doc: 'No prices changed'
     0x31:
       id: 'consolidated_last_price_changed'
-      doc: 'Consolidated Last Price Changed'
+      doc: 'Consolidated Last price changed'
     0x32:
       id: 'consolidated_low_price_changed'
-      doc: 'Consolidated Low Price Changed'
+      doc: 'Consolidated Low price changed'
     0x33:
       id: 'consolidated_last_and_consolidated_low_prices_changed'
-      doc: 'Consolidated Last And Consolidated Low Prices Changed'
+      doc: 'Consolidated Last and Consolidated Low prices changed'
     0x34:
       id: 'consolidated_high_price_changed'
-      doc: 'Consolidated High Price Changed'
+      doc: 'Consolidated High price changed'
     0x35:
       id: 'consolidated_last_and_consolidated_high_prices_changed'
-      doc: 'Consolidated Last And Consolidated High Prices Changed'
+      doc: 'Consolidated Last and Consolidated High prices changed'
     0x36:
       id: 'consolidated_high_and_consolidated_low_prices_changed'
-      doc: 'Consolidated High And Consolidated Low Prices Changed'
+      doc: 'Consolidated High and Consolidated Low prices changed'
     0x37:
       id: 'all_consolidated_prices_changed'
-      doc: 'All Consolidated Prices Changed'
+      doc: 'All Consolidated prices changed'
   participant_price_change_indicator:
     0x30:
       id: 'no_prices_changed'
-      doc: 'No Prices Changed'
+      doc: 'No prices changed'
     0x31:
       id: 'participant_last_price_changed'
-      doc: 'Participant Last Price Changed'
+      doc: 'Participant Last price changed'
     0x32:
       id: 'participant_low_price_changed'
-      doc: 'Participant Low Price Changed'
+      doc: 'Participant Low price changed'
     0x33:
       id: 'participant_last_and_low_prices_changed'
-      doc: 'Participant Last And Low Prices Changed'
+      doc: 'Participant Last and Low prices changed'
     0x34:
       id: 'participant_high_price_changed'
-      doc: 'Participant High Price Changed'
+      doc: 'Participant High price changed'
     0x35:
       id: 'participant_last_and_high_prices_changed'
-      doc: 'Participant Last And High Prices Changed'
+      doc: 'Participant Last and High prices changed'
     0x36:
       id: 'participant_high_and_low_prices_changed'
-      doc: 'Participant High And Low Prices Changed'
+      doc: 'Participant High and Low prices changed'
     0x37:
       id: 'all_participant_prices_changed'
-      doc: 'All Participant Prices Changed'
+      doc: 'All Participant prices changed'
   as_of_action:
     0x41:
       id: 'trade_addition'
@@ -1116,7 +1116,7 @@ enums:
       doc: 'Trading Halt'
     0x51:
       id: 'quotation_resumption_including_after_ema'
-      doc: 'Quotation Resumption Including After Ema'
+      doc: 'Quotation Resumption, including after EMA'
     0x54:
       id: 'trading_resumption'
       doc: 'Trading Resumption'
@@ -1138,7 +1138,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'rule_144a'
-      doc: 'Rule 144a'
+      doc: 'Rule144A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -1159,7 +1159,7 @@ enums:
       doc: 'Rights'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -1168,7 +1168,7 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_of_beneficial_interest'
-      doc: 'Units Of Beneficial Interest'
+      doc: 'Units of Beneficial Interest'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
@@ -1198,51 +1198,51 @@ enums:
   short_sale_threshold_indicator:
     0x59:
       id: 'issue_is_restricted'
-      doc: 'Issue Is Restricted'
+      doc: 'Issue is restricted'
     0x4e:
       id: 'issue_is_not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'not available'
   financial_status_indicator:
     0x43:
       id: 'creations_and_or_redemptions_suspended'
-      doc: 'Creations And Or Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and or Redemptions Suspended for Exchange Traded Product'
     0x44:
       id: 'deficient'
-      doc: 'Deficient Issuer Failed To Meet Nasdaq Continued Listing Requirements'
+      doc: 'Deficient Issuer Failed to Meet NASDAQ Continued Listing Requirements'
     0x45:
       id: 'delinquent'
       doc: 'Issuer Missed Regulatory Filing Deadline'
     0x51:
       id: 'bankrupt'
-      doc: 'Issuer Has Filed For Bankruptcy'
+      doc: 'Issuer Has Filed for Bankruptcy'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer Is NOT Deficient, Delinquent, or Bankrupt.'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent, and Bankrupt'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_effect'
-      doc: 'No Price Test In Effect'
+      doc: 'No price test in effect'
     0x31:
       id: 'reg_sho_in_effect_due_to_an_intra_day_price_drop'
-      doc: 'Reg Sho In Effect Due To An Intra Day Price Drop'
+      doc: 'Reg SHO in effect due to an intra day price drop'
     0x32:
       id: 'reg_sho_restriction_remains_in_effect'
-      doc: 'Reg Sho Restriction Remains In Effect'
+      doc: 'Reg SHO Restriction remains in effect'
   luld_price_band_indicator:
     0x41:
       id: 'opening_update'
@@ -1255,16 +1255,16 @@ enums:
       doc: 'Restated Value'
     0x44:
       id: 'suspended_during_trading_halt_or_trading_pause'
-      doc: 'Suspended During Trading Halt Or Trading Pause'
+      doc: 'Suspended during trading halt or trading pause'
     0x45:
       id: 're_opening_update'
-      doc: 'Re Opening Update'
+      doc: 'Re-Opening Update'
     0x46:
       id: 'outside_price_band_rule_hours'
-      doc: 'Outside Price Band Rule Hours'
+      doc: 'Outside price band rule hours'
     0x20:
       id: 'none_provided'
-      doc: 'None Provided'
+      doc: 'None provided'
   mwcb_status_level_indicator:
     0x31:
       id: 'level_1_breached'
@@ -1285,8 +1285,8 @@ enums:
   market_center_close_indicator:
     0x4d:
       id: 'based_on_m_sale_condition'
-      doc: 'Based On M Sale Condition'
+      doc: 'Based on M sale Condition'
     0x20:
       id: 'not_based_on_m_sale_condition'
-      doc: 'Not Based On M Sale Condition'
+      doc: 'Not Based on M sale Condition'
 

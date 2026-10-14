@@ -820,30 +820,30 @@ enums:
   alo_inst:
     0x4e:
       id: 'not_alo'
-      doc: 'Not Alo'
+      doc: 'Not ALO'
     0x59:
       id: 'alo'
-      doc: 'Alo'
+      doc: 'ALO'
   iso:
     0x4e:
       id: 'not_iso'
-      doc: 'Not Iso'
+      doc: 'Not ISO'
     0x49:
       id: 'iso'
-      doc: 'Iso'
+      doc: 'ISO'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Bought On Executions Bid On Auction Notification'
+      doc: 'Buy (Bought on executions, Bid on Auction Notification)'
     0x53:
       id: 'sell'
-      doc: 'Sell Sold On Executions'
+      doc: 'Sell (Sold on executions)'
     0x4f:
       id: 'offer'
-      doc: 'Offer Auction Notification Only'
+      doc: 'Offer (Auction Notification only)'
     0x4e:
       id: 'not_disclosed'
-      doc: 'Not Disclosed Auction Notification Only'
+      doc: 'Not Disclosed (Auction Notification only)'
   order_type:
     0x4c:
       id: 'limit'
@@ -853,17 +853,17 @@ enums:
       doc: 'Market'
     0x4e:
       id: 'not_disclosed'
-      doc: 'Not Disclosed Auction Notification Only'
+      doc: 'Not Disclosed (Auction Notification only)'
   tif:
     0x44:
       id: 'day'
       doc: 'Day'
     0x46:
       id: 'fok'
-      doc: 'Fill Or Kill'
+      doc: 'Fill or Kill'
     0x49:
       id: 'ioc'
-      doc: 'Immediate Or Cancel'
+      doc: 'Immediate or Cancel'
   capacity:
     0x43:
       id: 'customer'
@@ -876,19 +876,19 @@ enums:
       doc: 'Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other-Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x50:
       id: 'professional_customer'
       doc: 'Professional Customer'
     0x42:
       id: 'broker_dealer'
-      doc: 'Broker Dealer'
+      doc: 'Broker/Dealer'
     0x52:
       id: 'retail'
-      doc: 'Retail Placeholder In All Venues'
+      doc: 'Retail. Placeholder in all venues'
     0x20:
       id: 'not_applicable'
-      doc: 'Space Na'
+      doc: 'Space = N/A'
   auction_type:
     0x42:
       id: 'block_order_auction'
@@ -907,7 +907,7 @@ enums:
       doc: 'Flex Auction'
     0x50:
       id: 'pim_pixl_auction'
-      doc: 'Pimpixl Auction'
+      doc: 'PIM/PIXL Auction'
     0x48:
       id: 'facilitation_auction'
       doc: 'Facilitation Auction'
@@ -916,7 +916,7 @@ enums:
       doc: 'Solicitation Auction'
     0x4e:
       id: 'none'
-      doc: 'Order Is Neither An Initiation Nor A Response To An Auction'
+      doc: 'Order is neither an initiation nor a response to an Auction'
   price_protection:
     0x4c:
       id: 'local'
@@ -933,7 +933,7 @@ enums:
       doc: 'Exhaust'
     0x4e:
       id: 'not_applicable'
-      doc: 'Na'
+      doc: 'N/A'
   display_method:
     0x49:
       id: 'initial'
@@ -950,10 +950,10 @@ enums:
       doc: 'Not Applicable'
     0x48:
       id: 'sell_short'
-      doc: 'Sell Short Sold Short On Executions'
+      doc: 'Sell Short (Sold Short on executions)'
     0x45:
       id: 'sell_short_exempt'
-      doc: 'Sell Short Exempt Sold Short Exempt On Executions'
+      doc: 'Sell Short Exempt (Sold Short Exempt on executions)'
   stock_capacity:
     0x50:
       id: 'principal'
@@ -970,7 +970,7 @@ enums:
   instrument_type:
     0x41:
       id: 'all'
-      doc: 'All Mass Cancel Only'
+      doc: 'All (Mass Cancel only)'
     0x4f:
       id: 'simple_instrument'
       doc: 'Simple Instrument'
@@ -983,23 +983,23 @@ enums:
   scope:
     0x50:
       id: 'product'
-      doc: 'Cancel All Open Orders For The Specified Firm Id Product Id Instrument Type'
+      doc: 'Cancel all open orders for the specified FirmID/ProductID/InstrumentType'
     0x49:
       id: 'instrument'
-      doc: 'Cancel All The Open Orders For The Specified Firm Id Instrument Id'
+      doc: 'Cancel all the open orders for the specified FirmID/InstrumentID'
     0x46:
       id: 'firm'
-      doc: 'Cancel All Open Orders For The Specified Firm Id Instrument Type'
+      doc: 'Cancel all open orders for the specified FirmID/InstrumentType'
   cross_type:
     0x41:
       id: 'auction'
       doc: 'Auction'
     0x51:
       id: 'qcc'
-      doc: 'Qcc'
+      doc: 'QCC'
     0x43:
       id: 'ccc'
-      doc: 'Ccc'
+      doc: 'CCC'
   primary_capacity:
     0x43:
       id: 'customer'
@@ -1012,19 +1012,19 @@ enums:
       doc: 'Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other-Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x50:
       id: 'professional_customer'
       doc: 'Professional Customer'
     0x42:
       id: 'broker_dealer'
-      doc: 'Broker Dealer'
+      doc: 'Broker/Dealer'
     0x52:
       id: 'retail'
-      doc: 'Retail Placeholder In All Venues'
+      doc: 'Retail. Placeholder in all venues'
     0x20:
       id: 'not_applicable'
-      doc: 'Space Na'
+      doc: 'Space = N/A'
   primary_stock_leg_short_sale:
     0x4e:
       id: 'not_applicable'
@@ -1067,19 +1067,19 @@ enums:
       doc: 'Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other-Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x50:
       id: 'professional_customer'
       doc: 'Professional Customer'
     0x42:
       id: 'broker_dealer'
-      doc: 'Broker Dealer'
+      doc: 'Broker/Dealer'
     0x52:
       id: 'retail'
-      doc: 'Retail Placeholder In All Venues'
+      doc: 'Retail. Placeholder in all venues'
     0x20:
       id: 'not_applicable'
-      doc: 'Space Na'
+      doc: 'Space = N/A'
   contra_stock_leg_short_sale:
     0x4e:
       id: 'not_applicable'
@@ -1126,17 +1126,17 @@ enums:
       doc: 'Closed'
     0x20:
       id: 'carry_forward'
-      doc: 'Blank Space Carry Forward'
+      doc: 'Blank Space = Carry Forward'
   kill_action:
     0x41:
       id: 'block_and_delete'
-      doc: 'Block Entry Of New Requests And Delete All Open Orders'
+      doc: 'Block Entry of new requests and delete all open orders'
     0x52:
       id: 'block_removed'
-      doc: 'Killswitch Block Removed By Exchange Support Personnel'
+      doc: 'Kill-switch block removed (by Exchange support personnel)'
     0x42:
       id: 'block'
-      doc: 'Block Entry Of New Requests'
+      doc: 'Block entry of new requests'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
@@ -1224,28 +1224,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages This Is Always The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. This is always the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours The System Is Up And Ready To Start Accepting Orders'
+      doc: 'Start of System Hours. The system is up and ready to start accepting orders.'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process The System Has Started Its Opening Process'
+      doc: 'Start of Opening Process. The system has started its opening process.'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing No New Orders Or Changes To Existing Orders On Last Trading Date Of Wco Options'
+      doc: 'End of WCO Early closing. No new orders or changes to existing orders on last trading date of WCO options.'
     0x4e:
       id: 'end_of_normal_hours_processing'
-      doc: 'End Of Normal Hours Processing No New Executions For Options That Trade During Normal Hours'
+      doc: 'End of Normal Hours Processing. No new executions for options that trade during normal hours.'
     0x4c:
       id: 'end_of_late_hours_processing'
-      doc: 'End Of Late Hours Processing No New Executions For Options That Trade During Extended Hours'
+      doc: 'End of Late Hours Processing. No new executions for options that trade during extended hours.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours The System Is Now Closed'
+      doc: 'End of System Hours. The system is now closed.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day.'
   option_type:
     0x43:
       id: 'call'
@@ -1262,7 +1262,7 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing At 1200 Noon'
+      doc: 'WCO Early Closing at 12:00 Noon'
   tradable:
     0x59:
       id: 'tradable'
@@ -1276,7 +1276,7 @@ enums:
       doc: 'Unrestricted'
     0x59:
       id: 'closing_position_only'
-      doc: 'Option Is Closing Position Only Only Mm Origin Orders Can Have Open Position In The Series'
+      doc: 'Option is Closing Position Only. Only MM origin orders can have open position in the series'
   mpv:
     0x45:
       id: 'penny_everywhere'
@@ -1300,7 +1300,7 @@ enums:
       doc: 'None'
     0x31:
       id: 'aon'
-      doc: 'Aon'
+      doc: 'AON'
   order_capacity:
     0x43:
       id: 'customer'
@@ -1313,19 +1313,19 @@ enums:
       doc: 'Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other-Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x50:
       id: 'professional_customer'
       doc: 'Professional Customer'
     0x42:
       id: 'broker_dealer'
-      doc: 'Broker Dealer'
+      doc: 'Broker/Dealer'
     0x52:
       id: 'retail'
-      doc: 'Retail Placeholder In All Venues'
+      doc: 'Retail. Placeholder in all venues'
     0x20:
       id: 'not_applicable'
-      doc: 'Space Na'
+      doc: 'Space = N/A'
   auction_event:
     0x53:
       id: 'start'
@@ -1335,57 +1335,57 @@ enums:
       doc: 'Auction Update'
     0x45:
       id: 'end_of_auction'
-      doc: 'End Of Auction'
+      doc: 'End of Auction'
   cancel_reason:
     0x55:
       id: 'user_requested'
-      doc: 'User Requested Cancel Sent In Response To A Cancel Message'
+      doc: 'User requested cancel. Sent in response to a Cancel Message'
     0x49:
       id: 'immediate_or_cancel'
-      doc: 'Immediate Or Cancel Order No Further Matches Were Available On The Book So The Remaining Unexecuted Contracts Were Immediately Canceled'
+      doc: 'Immediate or Cancel order. No further matches were available on the book so the remaining unexecuted contracts were immediately canceled'
     0x53:
       id: 'supervisory'
-      doc: 'Supervisory This Order Was Manually Canceled By An Exchange Supervisory Terminal'
+      doc: 'Supervisory. This order was manually canceled by an Exchange supervisory terminal'
     0x44:
       id: 'regulatory_restriction'
-      doc: 'This Order Cannot Be Executed Because Of A Regulatory Restriction Eg Trade Through Restrictions'
+      doc: 'This order cannot be executed because of a regulatory restriction (e.g. trade through restrictions)'
     0x51:
       id: 'anti_internalize'
-      doc: 'Anti Internalize The Order Was Cancelled By The System To Avoid Trading With Another Order Or Quote With The Same Firm Id'
+      doc: 'Anti-Internalize. The order was cancelled by the system to avoid trading with another order or quote with the same firm Id'
     0x42:
       id: 'alo_not_displayable'
-      doc: 'Alo Order Canceled To Avoid Being Displayed At The Price Other Than Its Limit'
+      doc: 'ALO Order canceled to avoid being displayed at the price other than its limit'
     0x41:
       id: 'unexecuted_auction_response'
       doc: 'Unexecuted Auction Response'
     0x4b:
       id: 'kill_switch'
-      doc: 'Cancel Triggered By Kill Switch'
+      doc: 'Cancel triggered by Kill Switch'
     0x43:
       id: 'cancel_on_disconnect'
-      doc: 'Cancel On Disconnect'
+      doc: 'Cancel on Disconnect'
     0x4f:
       id: 'open_delay_timer'
       doc: 'Open Delay Timer Cancellation'
     0x50:
       id: 'atr_limit'
-      doc: 'Atr Limit Cancellation'
+      doc: 'ATR Limit Cancellation'
     0x5a:
       id: 'rejected_cancel_replace'
-      doc: 'Original Order Cancel Due To Rejected Cancel Replace Attempt'
+      doc: 'Original Order Cancel due to rejected Cancel Replace Attempt'
   ord_exec_type:
     0x41:
       id: 'simple_instrument'
-      doc: 'Execution Of An Order For A Simple Instrument Option'
+      doc: 'Execution of an order for a simple instrument (option)'
     0x42:
       id: 'complex_instrument'
-      doc: 'Execution Of An Order For A Complex Instrument'
+      doc: 'Execution of an order for a complex instrument'
     0x43:
       id: 'complex_option_leg'
-      doc: 'Execution Of An Option Leg Of A Complex Order'
+      doc: 'Execution of an option leg of a complex order'
     0x44:
       id: 'complex_stock_leg'
-      doc: 'Execution Of A Stock Leg Of A Complex Order'
+      doc: 'Execution of a stock leg of a complex order'
   liquidity_ind:
     0:
       id: 'none'
@@ -1446,22 +1446,22 @@ enums:
       doc: 'Regular Maker Against Combo'
     20:
       id: 'combo_taker_against_io'
-      doc: 'Combo Taker Against Io'
+      doc: 'Combo Taker Against IO'
     21:
       id: 'regular_incl_pim_taker_against_io'
-      doc: 'Regular Incl Pim Taker Against Io'
+      doc: 'Regular (incl. PIM) Taker Against IO'
     22:
       id: 'io_maker_against_combo'
-      doc: 'Io Maker Against Combo'
+      doc: 'IO Maker Against Combo'
     23:
       id: 'io_maker_against_regular'
-      doc: 'Io Maker Against Regular'
+      doc: 'IO Maker Against Regular'
     24:
       id: 'regular_maker_against_io_participant'
-      doc: 'Regular Maker Against Io Participant'
+      doc: 'Regular Maker Against IO Participant'
     25:
       id: 'io_participant_taker_against_regular'
-      doc: 'Io Participant Taker Against Regular'
+      doc: 'IO Participant Taker Against Regular'
     26:
       id: 'broken_price_improvement'
       doc: 'Broken Price Improvement'
@@ -1500,7 +1500,7 @@ enums:
       doc: 'Price Improvement'
     38:
       id: 'price_improvement_response'
-      doc: 'Price Improvement Response'
+      doc: 'Price improvement Response'
     39:
       id: 'solicitation'
       doc: 'Solicitation'
@@ -1512,7 +1512,7 @@ enums:
       doc: 'Qualified Contingent Cross'
     42:
       id: 'customer_to_customer'
-      doc: 'Customer To Customer'
+      doc: 'Customer to Customer'
     43:
       id: 'combo_facilitation'
       doc: 'Combo Facilitation'
@@ -1536,7 +1536,7 @@ enums:
       doc: 'Combo Qualified Contingent Cross'
     50:
       id: 'combo_customer_to_customer'
-      doc: 'Combo Customer To Customer'
+      doc: 'Combo Customer to Customer'
     51:
       id: 'sweep_routed_out'
       doc: 'Sweep Routed Out'
@@ -1545,10 +1545,10 @@ enums:
       doc: 'Sweep Trade Report'
     53:
       id: 'combo_taker_against_regular_thru_nbbo'
-      doc: 'Combo Taker Against Regular Thru Nbbo'
+      doc: 'Combo Taker Against Regular - Thru NBBO'
     54:
       id: 'combo_taker_against_io_thru_nbbo'
-      doc: 'Combo Taker Against Io Thru Nbbo'
+      doc: 'Combo Taker Against IO - Thru NBBO'
     55:
       id: 'simple_exposure_order_initiator_upon_receipt'
       doc: 'Simple Exposure Order Initiator Upon Receipt'
@@ -1625,20 +1625,20 @@ enums:
       doc: 'Manual Trade Entry'
     0x55:
       id: 'trade_modification_user'
-      doc: 'Trade Modification User'
+      doc: 'Trade Modification (user)'
     0x43:
       id: 'trade_modification_contra_side_user'
-      doc: 'Trade Modification Contraside User'
+      doc: 'Trade Modification (contra-side user)'
     0x45:
       id: 'trade_modification_exchange'
-      doc: 'Trade Modification Exchange'
+      doc: 'Trade Modification (exchange)'
     0x42:
       id: 'trade_bust_exchange'
-      doc: 'Trade Bust Exchange'
+      doc: 'Trade Bust (exchange)'
   stock_venue:
     0x58:
       id: 'not_applicable'
-      doc: 'Not Applicable Non Qcc Stock Leg Execution'
+      doc: 'Not Applicable (non-QCC stock leg execution)'
   reject_code:
     10:
       id: 'invalid_firm'
@@ -1648,7 +1648,7 @@ enums:
       doc: 'Invalid Instrument'
     12:
       id: 'invalid_instrument_type'
-      doc: 'Invalid Instrument Type'
+      doc: 'Invalid InstrumentType'
     13:
       id: 'invalid_quantity'
       doc: 'Invalid Quantity'
@@ -1666,25 +1666,25 @@ enums:
       doc: 'Invalid Iso'
     18:
       id: 'invalid_auction_type'
-      doc: 'Invalid Auction Type'
+      doc: 'Invalid AuctionType'
     19:
       id: 'invalid_auction_id'
-      doc: 'Invalid Auction Id'
+      doc: 'Invalid AuctionId'
     20:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type'
+      doc: 'Invalid OrderType'
     21:
       id: 'invalid_pref_party'
-      doc: 'Invalid Pref Party'
+      doc: 'Invalid PrefParty'
     22:
       id: 'invalid_alo'
-      doc: 'Invalid Alo'
+      doc: 'Invalid ALO'
     23:
       id: 'invalid_capacity'
       doc: 'Invalid Capacity'
     24:
       id: 'invalid_reserved_inst'
-      doc: 'Invalid Reserved Inst'
+      doc: 'Invalid ReservedInst'
     25:
       id: 'invalid_trade'
       doc: 'Invalid Trade'
@@ -1693,13 +1693,13 @@ enums:
       doc: 'Invalid Format'
     27:
       id: 'invalid_cross_type'
-      doc: 'Invalid Cross Type'
+      doc: 'Invalid CrossType'
     28:
       id: 'invalid_min_quantity'
-      doc: 'Invalid Min Quantity'
+      doc: 'Invalid MinQuantity'
     29:
       id: 'invalid_price_protection'
-      doc: 'Invalid Price Protection'
+      doc: 'Invalid PriceProtection'
     30:
       id: 'invalid_reserve'
       doc: 'Invalid Reserve'
@@ -1708,7 +1708,7 @@ enums:
       doc: 'Invalid Persist'
     32:
       id: 'invalid_short_sale_ind'
-      doc: 'Invalid Short Sale Ind'
+      doc: 'Invalid ShortSaleInd'
     33:
       id: 'invalid_product'
       doc: 'Invalid Product'
@@ -1723,10 +1723,10 @@ enums:
       doc: 'Invalid Position Effect'
     37:
       id: 'invalid_cross_id'
-      doc: 'Invalid Cross Id'
+      doc: 'Invalid CrossId'
     38:
       id: 'invalid_match_id'
-      doc: 'Invalid Match Id'
+      doc: 'Invalid MatchId'
     39:
       id: 'invalid_client_order_id'
       doc: 'Invalid Client Order Id'
@@ -1759,10 +1759,10 @@ enums:
       doc: 'Post Only Reprice'
     49:
       id: 'un_authorized_give_up'
-      doc: 'Un Authorized Give Up'
+      doc: 'UnAuthorized GiveUp'
     50:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'InvalidSession'
     101:
       id: 'not_free_trading'
       doc: 'Not Free Trading'
@@ -1801,7 +1801,7 @@ enums:
       doc: 'Action Not Allowed'
     113:
       id: 'luld_in_effect'
-      doc: 'Luld In Effect'
+      doc: 'LULD In Effect'
     114:
       id: 'too_many_combos'
       doc: 'Too Many Combos'
@@ -1816,7 +1816,7 @@ enums:
       doc: 'Port Rate Breached'
     118:
       id: 'invalid_trader_id'
-      doc: 'Invalid Trader Id'
+      doc: 'Invalid Trader ID'
     119:
       id: 'stop_price_not_allowed'
       doc: 'Stop Price Not Allowed'
@@ -1843,7 +1843,7 @@ enums:
       doc: 'Invalid Dea'
     127:
       id: 'invalid_client_id'
-      doc: 'Invalid Client Id'
+      doc: 'Invalid ClientId'
     128:
       id: 'invalid_party_role_qualifier'
       doc: 'Invalid Party Role Qualifier'
@@ -1858,7 +1858,7 @@ enums:
       doc: 'Instrument Expired'
     132:
       id: 'invalid_self_match_prev_id'
-      doc: 'Invalid Self Match Prev Id'
+      doc: 'Invalid Self Match PrevId'
     133:
       id: 'spread'
       doc: 'Spread'
@@ -1879,7 +1879,7 @@ enums:
       doc: 'Opening Rotation'
     139:
       id: 'kill_switch_reentry_required'
-      doc: 'Kill Switch Reentry Required'
+      doc: 'KillSwitch Reentry Required'
     140:
       id: 'auction'
       doc: 'Auction'
@@ -1894,7 +1894,7 @@ enums:
       doc: 'System Error'
     144:
       id: 'cancel_on_disconnect'
-      doc: 'Cancel On Disconnect'
+      doc: 'Cancel on Disconnect'
     145:
       id: 'auction_duration'
       doc: 'Auction Duration'

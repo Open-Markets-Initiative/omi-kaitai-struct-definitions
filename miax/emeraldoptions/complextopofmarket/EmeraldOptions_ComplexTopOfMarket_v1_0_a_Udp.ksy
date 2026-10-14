@@ -542,44 +542,44 @@ enums:
   restricted_option:
     0x59:
       id: 'yes_field'
-      doc: 'Miax Will Accept Position Closing Orders Only'
+      doc: 'MIAX will accept position closing orders only'
     0x4e:
       id: 'no_field'
-      doc: 'Miax Will Accept Open And Close Positions'
+      doc: 'MIAX will accept open and close positions'
   long_term_option:
     0x59:
       id: 'yes_field'
-      doc: 'Far Month Expiration As Defined By Emerald Rules'
+      doc: 'Far month expiration (as defined by Emerald rules)'
     0x4e:
       id: 'no_field'
-      doc: 'Near Month Expiration As Defined By Emerald Rules'
+      doc: 'Near month expiration (as defined by Emerald rules)'
   active_on_emerald:
     0x41:
       id: 'active'
-      doc: 'Active Tradable On Emerald'
+      doc: 'Active (tradable) on Emerald'
     0x49:
       id: 'inactive'
-      doc: 'Inactive Not Tradable On Emerald'
+      doc: 'Inactive (not tradable) on Emerald'
   emerald_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 For All Prices'
+      doc: 'Penny (0.01) for all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
+      doc: 'Penny (0.01) if Price <= $3, Nickel (0.05) if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
+      doc: 'Nickel (0.05) if Price <= $3, Dime (0.10) if Price > $3'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 For All Prices'
+      doc: 'Penny (0.01) for all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny 0.01 If Price 3 Nickel 0.05 If Price 3'
+      doc: 'Penny (0.01) if Price <= $3, Nickel (0.05) if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel 0.05 If Price 3 Dime 0.10 If Price 3'
+      doc: 'Nickel (0.05) if Price <= $3, Dime (0.10) if Price > $3'
   opening_underlying_market_code:
     0x41:
       id: 'nyse_amex'
@@ -595,7 +595,7 @@ enums:
       doc: 'Finra Adf'
     0x45:
       id: 'market_independent'
-      doc: 'Any Market That Opens First'
+      doc: 'Any market that opens first'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'
@@ -647,10 +647,10 @@ enums:
   update_reason:
     0x4e:
       id: 'new_strategy_created'
-      doc: 'New Strategy Created'
+      doc: 'New strategy created'
     0x55:
       id: 'updated'
-      doc: 'Strategy Definition Updated'
+      doc: 'Strategy definition updated'
   leg_side:
     0x42:
       id: 'bid'
@@ -667,14 +667,14 @@ enums:
       doc: 'End Of System Hours'
     0x31:
       id: 'start_test_session'
-      doc: 'Start Of Test Session Sent Before Tests'
+      doc: 'Start of Test Session (sent before tests)'
     0x32:
       id: 'end_of_test_session'
       doc: 'End Of Test Session'
   condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
@@ -683,20 +683,20 @@ enums:
       doc: 'Wide Market Protection'
     0x53:
       id: 'simple_auction'
-      doc: 'Simple Market Auction Or Timer In Progress'
+      doc: 'Simple Market Auction or Timer in Progress'
     0x43:
       id: 'complex_auction'
-      doc: 'Complex Auction Or C Prime Auction In Progress'
+      doc: 'Complex Auction or cPRIME auction in Progress'
     0x4d:
       id: 'simple_market_protection'
-      doc: 'Simple Market Protections Strategy Match Blocked'
+      doc: 'Simple Market Protections, Strategy Match Blocked'
     0x4c:
       id: 'leg_market_protection'
-      doc: 'Leg Market Protection Book Match Prevented'
+      doc: 'Leg Market Protection, Book Match Prevented'
   bid_condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
@@ -705,20 +705,20 @@ enums:
       doc: 'Wide Market Protection'
     0x53:
       id: 'simple_auction'
-      doc: 'Simple Market Auction Or Timer In Progress'
+      doc: 'Simple Market Auction or Timer in Progress'
     0x43:
       id: 'complex_auction'
-      doc: 'Complex Auction Or C Prime Auction In Progress'
+      doc: 'Complex Auction or cPRIME auction in Progress'
     0x4d:
       id: 'simple_market_protection'
-      doc: 'Simple Market Protections Strategy Match Blocked'
+      doc: 'Simple Market Protections, Strategy Match Blocked'
     0x4c:
       id: 'leg_market_protection'
-      doc: 'Leg Market Protection Book Match Prevented'
+      doc: 'Leg Market Protection, Book Match Prevented'
   offer_condition:
     0x41:
       id: 'regular'
-      doc: 'Regular Eligible For Automatic Execution'
+      doc: 'Regular (Eligible for Automatic Execution)'
     0x54:
       id: 'trading_halt'
       doc: 'Trading Halt'
@@ -727,33 +727,33 @@ enums:
       doc: 'Wide Market Protection'
     0x53:
       id: 'simple_auction'
-      doc: 'Simple Market Auction Or Timer In Progress'
+      doc: 'Simple Market Auction or Timer in Progress'
     0x43:
       id: 'complex_auction'
-      doc: 'Complex Auction Or C Prime Auction In Progress'
+      doc: 'Complex Auction or cPRIME auction in Progress'
     0x4d:
       id: 'simple_market_protection'
-      doc: 'Simple Market Protections Strategy Match Blocked'
+      doc: 'Simple Market Protections, Strategy Match Blocked'
     0x4c:
       id: 'leg_market_protection'
-      doc: 'Leg Market Protection Book Match Prevented'
+      doc: 'Leg Market Protection, Book Match Prevented'
   trading_status:
     0x48:
       id: 'halted'
-      doc: 'Emerald Has Halted Trading For This Underlying Symbol'
+      doc: 'Emerald has halted trading for this Underlying Symbol'
     0x52:
       id: 'resumed'
-      doc: 'Emerald Will Resume Trading Reopen For This Underlying Symbol'
+      doc: 'Emerald will resume trading (reopen) for this Underlying Symbol'
     0x4f:
       id: 'opened'
-      doc: 'Emerald Will Open Trading For This Underlying Symbol'
+      doc: 'Emerald will open trading for this Underlying Symbol'
   event_reason:
     0x41:
       id: 'automatic'
-      doc: 'This Event Resulted From Automaticmarket Driven Event'
+      doc: 'This event resulted from automatic/market driven event'
     0x4d:
       id: 'manual'
-      doc: 'Emerald Manually Initiated This Event'
+      doc: 'Emerald manually initiated this event'
   sesm_packet_type:
     0x73:
       id: 'sequenced_data_packet'

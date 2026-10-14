@@ -7,7 +7,7 @@
 #   Encoding: Miax Express Orders
 #   Version: 2.7.b
 #   Date: 02/04/2026
-#   Specification: Miax.PearlEquities.ExpressOrders.Meo.v2.6.pdf
+#   Specification: miax express orders meo.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -1844,10 +1844,10 @@ enums:
       doc: 'Not Applicable'
     1:
       id: 'single_contra_order'
-      doc: 'Only Single Contra Order Can Fulfill Min Qty Requirement'
+      doc: 'Only single contra order can fulfill MinQty requirement'
     2:
       id: 'multiple_contra_orders'
-      doc: 'Only Single Contra Order Can Fulfill Min Qty Requirement'
+      doc: 'Only single contra order can fulfill MinQty requirement'
   cancel_order_if_not_a_nbbo_setter:
     0:
       id: 'no_field'
@@ -1880,7 +1880,7 @@ enums:
       doc: 'Good Until Time'
     0x45:
       id: 'good_until_extended_day'
-      doc: 'Gtx'
+      doc: 'GTX'
   order_type:
     0x31:
       id: 'limit'
@@ -2083,16 +2083,16 @@ enums:
       doc: 'Cancelled Due To Market Impact Collar'
     0x31:
       id: 'cancel_newest_instruction'
-      doc: 'Full Cancel Due To Self Trade Protection'
+      doc: 'Full cancel due to Self Trade Protection'
     0x32:
       id: 'cancel_oldest_instruction'
-      doc: 'Full Cancel Due To Self Trade Protection'
+      doc: 'Full cancel due to Self Trade Protection'
     0x33:
       id: 'cancel_both_instruction'
-      doc: 'Full Cancel Due To Self Trade Protection'
+      doc: 'Full cancel due to Self Trade Protection'
     0x34:
       id: 'decrement_and_cancel_instruction'
-      doc: 'Full Partial Cancel Due To Self Trade Protection'
+      doc: 'Full/Partial cancel due to Self-Trade Protection'
     0x35:
       id: 'cancelled_due_to_drop_copy_acod_event'
       doc: 'Cancelled Due To Drop Copy Acod Event'
@@ -2114,7 +2114,7 @@ enums:
   pending_cancel_status:
     0x20:
       id: 'completed_or_not_applicable'
-      doc: 'Pending Cancellation Is Completed Or Pending State Is Not Applicable'
+      doc: 'Pending Cancellation is completed OR Pending State is Not Applicable'
     0x58:
       id: 'pending_cancellation_request_is_rejected'
       doc: 'Pending Cancellation Request Is Rejected'
@@ -2234,10 +2234,10 @@ enums:
   action:
     0x42:
       id: 'block_only'
-      doc: 'The System Will Reject All New Orders'
+      doc: 'The system will reject all new orders'
     0x4d:
       id: 'mass_cancel_only'
-      doc: 'The System Will Masscancel All Open Orders New Orders Can Be Accepted'
+      doc: 'The system will mass-cancel all open orders, new orders can be accepted'
     0x58:
       id: 'block_and_mass_cancel'
       doc: 'Block And Mass Cancel'

@@ -800,20 +800,20 @@ enums:
   cancel_on_disconnect:
     0:
       id: 'disabled'
-      doc: 'Cancel On Disconnect Disabled'
+      doc: 'Cancel on Disconnect Disabled'
     1:
       id: 'enable_day'
-      doc: 'Enable Cancel On Disconnect Day'
+      doc: 'Enable Cancel on Disconnect Day'
     2:
       id: 'enable_all'
-      doc: 'Enable Cancel On Disconnect All'
+      doc: 'Enable Cancel on Disconnect All*'
   throttle_preference:
     0:
       id: 'queue_orders'
-      doc: 'Queue Orders When Throttled'
+      doc: 'Queue orders when throttled'
     1:
       id: 'reject_orders'
-      doc: 'Reject Orders When Throttled'
+      doc: 'Reject orders when throttled'
   self_trade_prevention:
     1:
       id: 'no_self_trade_prevention'
@@ -833,56 +833,56 @@ enums:
   order_priority_update_ack_subscription:
     0:
       id: 'not_subscribed'
-      doc: 'Not Subscribed To Receive The Unsolicited Order Priority Update Ack Message On The Session'
+      doc: 'Not subscribed to receive the unsolicited Order Priority Update Ack message on the Session'
     1:
       id: 'receive_unsolicited_ack'
-      doc: 'Receive Unsolicited Order Priority Update Ack Message On The Session'
+      doc: 'Receive unsolicited Order Priority Update Ack message on the Session'
   sub_id_indicator:
     0:
       id: 'use_mp_sub_id'
-      doc: 'Use Mp Sub Id For Stp Evaluation'
+      doc: 'Use MPSubID for STP evaluation'
     1:
       id: 'ignore_on_behalf_of_sub_id'
-      doc: 'Ignore The On Behalf Of Sub Id For Stp'
+      doc: 'Ignore the OnBehalfOfSubID for STP'
   special_ord_type:
     0:
       id: 'no_special_ord_type'
-      doc: 'No Special Ord Type'
+      doc: 'No SpecialOrdType'
     1:
       id: 'dmm_auction_aoc'
-      doc: 'Dmm Open Reopen Close With Or Without Auction Aoc'
+      doc: 'DMM Open/Re-open/Close with or without Auction (AOC)'
     2:
       id: 'dmm_preauction'
-      doc: 'Dmm Preauction'
+      doc: 'DMM Pre-auction'
     3:
       id: 'dmm_afterauction'
-      doc: 'Dmm Afterauction'
+      doc: 'DMM After-auction'
     4:
       id: 'qct'
-      doc: 'Qct'
+      doc: 'QCT'
     8:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
   retail_indicator:
     0:
       id: 'not_retail'
-      doc: 'Not Retail'
+      doc: 'Not retail'
     1:
       id: 'retail_order'
-      doc: 'Retail Order'
+      doc: 'Retail order'
   attributed_quote:
     0:
       id: 'not_attributed'
       doc: 'Not Attributed'
     1:
       id: 'market_data_feeds'
-      doc: 'Attributed For Market Data Feeds'
+      doc: 'Attributed for Market Data Feeds'
     2:
       id: 'broker_volume'
-      doc: 'Include In Broker Volume'
+      doc: 'Include in Broker Volume'
     3:
       id: 'market_data_feeds_and_broker_volume'
-      doc: 'Attributed For Market Data Feeds And Include In Broker Volume'
+      doc: 'Attributed for Market Data Feeds, and Include in Broker Volume'
   order_capacity:
     1:
       id: 'agency'
@@ -895,20 +895,20 @@ enums:
       doc: 'Riskless Principal'
     4:
       id: 'error_account'
-      doc: 'Error Account Nyse Floor Broker Only'
+      doc: 'Error Account (NYSE Floor Broker only)'
   interest_type:
     0:
       id: 'no_interest_type'
-      doc: 'No Interest Type'
+      doc: 'No InterestType'
     4:
       id: 'q_order'
-      doc: 'Q Order'
+      doc: 'Q-Order'
     5:
       id: 'cco'
-      doc: 'Capital Commitment Order Cco'
+      doc: 'Capital Commitment Order (CCO)'
     6:
       id: 'cco_partial_fill_contraside'
-      doc: 'Capital Commitment Order Cco Partial Fill Contraside'
+      doc: 'Capital Commitment Order (CCO) – partial fill contra-side'
   trading_session_id:
     0:
       id: 'overnight_trading_session'
@@ -924,90 +924,90 @@ enums:
       doc: 'Late Trading Session'
     4:
       id: 'early_and_core_trading_sessions'
-      doc: 'Early And Core Trading Sessions'
+      doc: 'Early and Core Trading Sessions'
     5:
       id: 'core_and_late_trading_sessions'
-      doc: 'Core And Late Trading Sessions'
+      doc: 'Core and Late Trading Sessions'
     6:
       id: 'early_core_and_late_trading_sessions'
-      doc: 'Early Core And Late Trading Sessions'
+      doc: 'Early, Core and Late Trading Sessions'
     7:
       id: 'overnight_early_core_and_late_trading_sessions'
-      doc: 'Overnight Early Core And Late Trading Sessions'
+      doc: 'Overnight, Early, Core and Late Trading Sessions'
   time_in_force:
     1:
       id: 'day'
       doc: 'Day'
     2:
       id: 'ioc'
-      doc: 'Ioc'
+      doc: 'IOC'
     3:
       id: 'at_the_opening'
-      doc: 'At The Opening'
+      doc: 'At the Opening'
     4:
       id: 'on_close'
       doc: 'On Close'
   proactive_if_locked:
     0:
       id: 'no_proactive_if_locked'
-      doc: 'No Proactive If Locked'
+      doc: 'No ProactiveIfLocked'
     1:
       id: 'proactive_route'
-      doc: 'Proactive Route'
+      doc: 'Proactive route'
     2:
       id: 'proactive_trade_non_display'
-      doc: 'Proactive Trade Non Display'
+      doc: 'Proactive trade non display'
   cancel_instead_of_reprice:
     0:
       id: 'not_applicable'
-      doc: 'Follow Default Order Behavior'
+      doc: 'Follow default order behavior'
     1:
       id: 'cancel_instead_of_repricing_luld_only'
-      doc: 'Cancel Order Instead Of Repricing For Luld Only'
+      doc: 'Cancel order instead of repricing for LULD only'
     3:
       id: 'cancel_instead_of_repricing_any_reason'
-      doc: 'Cancel Order Instead Of Repricing For Any Reason'
+      doc: 'Cancel order instead of repricing for any reason'
   routing_inst:
     0:
       id: 'none'
-      doc: 'No Routing Instruction'
+      doc: 'No routing instruction'
     1:
       id: 'non_routable'
-      doc: 'Order Is Not Routable'
+      doc: 'Order is not routable'
     2:
       id: 'routable'
-      doc: 'Order May Be Routed'
+      doc: 'Order may be routed'
     3:
       id: 'directed_primary'
-      doc: 'Directed To Primary Market Only'
+      doc: 'Directed to primary market only'
     4:
       id: 'directed_routable'
-      doc: 'Directed To Primary Market With Routing Allowed Pos'
+      doc: 'Directed to primary market with routing allowed (PO+S)'
     5:
       id: 'primary_until_0945'
-      doc: 'Route To Primary Market Until 945'
+      doc: 'Route to primary market until 9:45'
     6:
       id: 'primary_after_1555'
-      doc: 'Route To Primary Market After 355'
+      doc: 'Route to primary market after 3:55'
     7:
       id: 'primary_time_windows'
-      doc: 'Route To Primary Market Until 945 And After 355'
+      doc: 'Route to primary market until 9:45 and after 3:55'
     8:
       id: 'minimum_fill'
-      doc: 'Minimum Fill Routing Requires Min Qty Field Populated With A Nonzero Value'
+      doc: 'Minimum fill routing; requires MinQty field populated with a non-zero value'
     10:
       id: 'route_to_ats'
-      doc: 'Route Order To Ats'
+      doc: 'Route order to ATS'
   extended_exec_inst:
     0:
       id: 'none'
-      doc: 'No Extended Execution Instructions'
+      doc: 'No extended execution instructions'
     1:
       id: 'alo'
-      doc: 'Add Liquidity Only Order Will Not Remove Liquidity'
+      doc: 'Add Liquidity Only; order will not remove liquidity'
     3:
       id: 'no_ioi_route'
-      doc: 'Order Will Not Route To Ioi Destinations'
+      doc: 'Order will not route to IOI destinations'
     5:
       id: 'retail_type_1'
       doc: 'Retail Order Type 1'
@@ -1016,29 +1016,29 @@ enums:
       doc: 'Retail Order Type 2'
     7:
       id: 'retail_provider'
-      doc: 'Retail Liquidity Provider Designation'
+      doc: 'Retail Liquidity Provider designation'
     8:
       id: 'imbalance_offset'
-      doc: 'Order Participates As An Imbalance Offset'
+      doc: 'Order participates as an imbalance offset'
     9:
       id: 'discretionary_peg'
-      doc: 'Order Uses Discretionary Peg Pricing Logic'
+      doc: 'Order uses discretionary peg pricing logic'
     10:
       id: 'dark_primary_peg'
-      doc: 'Nondisplayed Order Pegged To The Primary Market'
+      doc: 'Non-displayed order pegged to the primary market'
     14:
       id: 'ido'
-      doc: 'Issuer Direct Offering Order'
+      doc: 'Issuer Direct Offering order'
   exec_inst:
     0:
       id: 'none'
-      doc: 'No Execution Instruction'
+      doc: 'No execution instruction'
     1:
       id: 'reserved_1'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     2:
       id: 'reserved_2'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     3:
       id: 'tracking'
       doc: 'Tracking Order'
@@ -1047,22 +1047,22 @@ enums:
       doc: 'Intermarket Sweep Order'
     5:
       id: 'primary_peg'
-      doc: 'Order Pegged To The Primary Market Price'
+      doc: 'Order pegged to the primary market price'
     6:
       id: 'market_peg'
-      doc: 'Order Pegged To The Market Price'
+      doc: 'Order pegged to the market price'
     7:
       id: 'midpoint'
-      doc: 'Midpoint Liquidity Order'
+      doc: 'Midpoint Liquidity order'
     8:
       id: 'non_displayed'
-      doc: 'Nondisplayed Order Including Retail Price Improvement And Limit Non Displayed Orders'
+      doc: 'Non-displayed order including Retail Price Improvement and Limit Non-Displayed orders'
     9:
       id: 'trade_at_iso'
-      doc: 'Tradeat Intermarket Sweep Order'
+      doc: 'Trade-at Intermarket Sweep Order'
     10:
       id: 'last_sale_peg'
-      doc: 'Order Pegged To The Last Sale Price'
+      doc: 'Order pegged to the last sale price'
   ord_type:
     1:
       id: 'market'
@@ -1072,32 +1072,32 @@ enums:
       doc: 'Limit'
     3:
       id: 'inside_limit'
-      doc: 'Inside Limit'
+      doc: 'Inside limit'
     4:
       id: 'pegged'
       doc: 'Pegged'
   side_bits:
     1:
       id: 'buy'
-      doc: 'Buy'
+      doc: 'buy'
     2:
       id: 'sell'
-      doc: 'Sell'
+      doc: 'sell'
     3:
       id: 'sell_short'
-      doc: 'Sell Short'
+      doc: 'sell short'
     4:
       id: 'sell_short_exempt'
-      doc: 'Sell Short Exempt'
+      doc: 'sell short exempt'
     5:
       id: 'cross'
-      doc: 'Cross'
+      doc: 'cross'
     6:
       id: 'cross_short'
-      doc: 'Cross Short'
+      doc: 'cross short'
     7:
       id: 'cross_short_exempt'
-      doc: 'Cross Short Exempt'
+      doc: 'cross short exempt'
   routing_strategy:
     1:
       id: 'midpoint_ping'
@@ -1118,79 +1118,79 @@ enums:
   side:
     0:
       id: 'no_change_in_side'
-      doc: 'No Change In Side'
+      doc: 'no change in Side'
     1:
       id: 'buy'
-      doc: 'Buy'
+      doc: 'buy'
     2:
       id: 'sell'
-      doc: 'Sell'
+      doc: 'sell'
     3:
       id: 'sell_short'
-      doc: 'Sell Short'
+      doc: 'sell short'
     4:
       id: 'sell_short_exempt'
-      doc: 'Sell Short Exempt'
+      doc: 'sell short exempt'
     5:
       id: 'cross'
-      doc: 'Cross'
+      doc: 'cross'
     6:
       id: 'cross_short'
-      doc: 'Cross Short'
+      doc: 'cross short'
     7:
       id: 'cross_short_exempt'
-      doc: 'Cross Short Exempt'
+      doc: 'cross short exempt'
   locate_reqd_u_81:
     0:
       id: 'no_locate_reqd'
-      doc: 'No Locate Reqd'
+      doc: 'No LocateReqd'
     1:
       id: 'locate_reqd_for_ssh_orders'
-      doc: 'Locate Reqd For Ssh Orders'
+      doc: 'LocateReqd for SSH Orders'
   bulk_cancel_type:
     1:
       id: 'session_day_directed'
-      doc: 'Cancel Orders For The Individual Gateway Session Only Cancel Day Directed Orders'
+      doc: 'Cancel orders for the individual gateway session only. Cancel – Day; Directed Orders'
     2:
       id: 'session_all_orders'
-      doc: 'Cancel Orders For The Individual Gateway Session Only Cancel All Orders'
+      doc: 'Cancel orders for the individual gateway session only. Cancel – ALL orders'
     3:
       id: 'session_opening_day_directed'
-      doc: 'Cancel Orders For The Individual Gateway Session Only Cancel At The Opening Day Directed Orders'
+      doc: 'Cancel orders for the individual gateway session only. Cancel – At the Opening; Day; Directed orders'
     4:
       id: 'mpid_opening_day_directed'
-      doc: 'Cancel Orders For The Mpid Cancel At The Opening Day Directed Orders'
+      doc: 'Cancel orders for the MPID. Cancel – At the Opening; Day; Directed orders'
     5:
       id: 'mpid_day_directed'
-      doc: 'Cancel Orders For The Mpid Cancel Day Directed Orders'
+      doc: 'Cancel orders for the MPID. Cancel – Day; Directed orders'
     6:
       id: 'mpid_gtc'
-      doc: 'Cancel Orders For The Mpid Cancel Gtc Orders Nyse Arca American Options Only'
+      doc: 'Cancel orders for the MPID. Cancel – GTC orders (NYSE Arca & American Options only)'
     7:
       id: 'mpid_opening_close'
-      doc: 'Cancel Orders For The Mpid Cancel At The Opening And On Close Orders'
+      doc: 'Cancel orders for the MPID. Cancel – At the Opening and On Close orders'
     8:
       id: 'mpid_day_orders'
-      doc: 'Cancel Orders For The Mpid Cancel Day Orders'
+      doc: 'Cancel orders for the MPID. Cancel – Day orders'
     9:
       id: 'mpid_cancel_block_new'
-      doc: 'Cancel Orders For The Mpid And Block All New'
+      doc: 'Cancel orders for the MPID, and Block all new'
     10:
       id: 'mpid_block_new'
-      doc: 'Block All New Order Entry For The Mpid'
+      doc: 'Block all new order entry for the MPID'
     11:
       id: 'mpid_unblock_new'
-      doc: 'Unblock New Order Entry For The Mpid'
+      doc: 'Unblock new order entry for the MPID'
     12:
       id: 'mpid_directed_orders'
-      doc: 'Cancel Orders For The Mpid Cancel Directed Orders'
+      doc: 'Cancel orders for the MPID. Cancel – Directed orders'
     13:
       id: 'mpid_capital_commitment'
-      doc: 'Cancel Orders For The Mpid Cancel Capital Commitment Orders'
+      doc: 'Cancel orders for the MPID. Cancel – Capital Commitment Orders'
   self_trade_type_bits:
     0:
       id: 'default_cancel_newest'
-      doc: 'Use Default For All Dbk Gui Streams Cancel Newest'
+      doc: 'Use default for all DBK GUI streams - Cancel Newest'
     1:
       id: 'no_self_trade_prevention'
       doc: 'No Self Trade Prevention'
@@ -1232,101 +1232,101 @@ enums:
       doc: 'Single Order Max Notional Value'
     3:
       id: 'gross_credit_executed'
-      doc: 'Gross Credit Executed'
+      doc: 'Gross Credit – Executed'
     4:
       id: 'gross_credit_open'
-      doc: 'Gross Credit Open'
+      doc: 'Gross Credit – Open'
     5:
       id: 'gross_credit_open_plus_executed'
-      doc: 'Gross Credit Open Executed'
+      doc: 'Gross Credit – Open + Executed'
     6:
       id: 'maximum_duplicative_orders'
       doc: 'Maximum Duplicative Orders'
     7:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     8:
       id: 'activity_rolling_transaction'
-      doc: 'Activitybased Rolling Transaction'
+      doc: 'Activity-based – Rolling Transaction'
     9:
       id: 'activity_rolling_volume'
-      doc: 'Activitybased Rolling Volume'
+      doc: 'Activity-based – Rolling Volume'
     10:
       id: 'activity_rolling_percentage'
-      doc: 'Activitybased Rolling Percentage'
+      doc: 'Activity-based – Rolling Percentage'
     11:
       id: 'activity_global_risk_mitigation'
-      doc: 'Activitybased Global Risk Mitigation Protection For Transaction Volume Percentage'
+      doc: 'Activity-based – Global Risk Mitigation Protection for Transaction/Volume/Percentage'
     12:
       id: 'reserved_2'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     13:
       id: 'reject_market_orders'
-      doc: 'Reject Market Orders Except Moo Moc'
+      doc: 'Reject Market Orders (except MOO & MOC)'
     14:
       id: 'reject_moo_and_moc'
-      doc: 'Reject Moo Moc'
+      doc: 'Reject MOO & MOC'
     15:
       id: 'not_available_15'
-      doc: 'Not Available'
+      doc: 'Not available'
     16:
       id: 'not_available_16'
-      doc: 'Not Available'
+      doc: 'Not available'
     17:
       id: 'reject_early_trading_session'
-      doc: 'Reject Early Trading Session Designation'
+      doc: 'Reject Early Trading Session designation'
     18:
       id: 'reject_late_trading_session'
-      doc: 'Reject Late Trading Session Designation'
+      doc: 'Reject Late Trading Session designation'
     19:
       id: 'reject_restricted_symbol'
       doc: 'Reject Restricted Symbol'
     20:
       id: 'reject_sell_short_for_symbol'
-      doc: 'Reject Sell Short For Symbol'
+      doc: 'Reject Sell Short for Symbol'
     21:
       id: 'reject_sell_short_exempt_for_symbol'
-      doc: 'Reject Sell Short Exempt For Symbol'
+      doc: 'Reject Sell Short Exempt for Symbol'
     22:
       id: 'single_order_max_qty_pct_adv'
-      doc: 'Single Order Maximum Quantity As Percentage Of Symbol Adv'
+      doc: 'Single Order Maximum Quantity as Percentage of Symbol ADV'
     23:
       id: 'lopp_equities_custom_limits'
-      doc: 'Limit Order Price Protection Equities Custom Limits'
+      doc: 'Limit Order Price Protection Equities - Custom Limits'
     24:
       id: 'lopp_equities_early_late_multiplier'
-      doc: 'Limit Order Price Protection Equities Early Late Trading Multiplier'
+      doc: 'Limit Order Price Protection Equities - Early/Late Trading Multiplier'
     25:
       id: 'lopp_equities_closing_only_multiplier'
-      doc: 'Limit Order Price Protection Equities Closing Only Multiplier'
+      doc: 'Limit Order Price Protection Equities - Closing Only Multiplier'
     26:
       id: 'lopp_options_single_leg_custom_limits'
-      doc: 'Limit Order Price Protection Options Single Leg Custom Limits'
+      doc: 'Limit Order Price Protection Options - Single Leg Custom Limits'
     27:
       id: 'lopp_options_complex_custom_limits'
-      doc: 'Limit Order Price Protection Options Complex Custom Limits'
+      doc: 'Limit Order Price Protection Options - Complex Custom Limits'
     28:
       id: 'require_locate_broker'
-      doc: 'Require Locate Broker On Sell Short And Sell Short Exempt Orders'
+      doc: 'Require LocateBroker on Sell Short and Sell Short Exempt orders'
     29:
       id: 'order_rate_threshold'
-      doc: 'Order Rate Threshold Max Orders Across All Symbols'
+      doc: 'Order Rate Threshold – Max Orders across All Symbols'
     30:
       id: 'reject_isoioc'
-      doc: 'Reject Iso Ioc'
+      doc: 'Reject ISO IOC'
     31:
       id: 'reject_iso_day'
-      doc: 'Reject Iso Day'
+      doc: 'Reject ISO Day'
     32:
       id: 'reject_overnight_trading_session'
-      doc: 'Reject Overnight Trading Session Designation'
+      doc: 'Reject Overnight Trading Session designation'
   risk_control_activation:
     0:
       id: 'risk_control_turned_off'
-      doc: 'Risk Control Turned Off'
+      doc: 'Risk Control turned off'
     1:
       id: 'risk_control_turned_on'
-      doc: 'Risk Control Turned On'
+      doc: 'Risk Control turned on'
   breach_action_request:
     0:
       id: 'not_applicable'
@@ -1336,7 +1336,7 @@ enums:
       doc: 'Notifications Only'
     2:
       id: 'cancel_non_auction_orders_and_block'
-      doc: 'Cancel Non Auction Orders And Block'
+      doc: 'Cancel Non-Auction Orders and Block'
     3:
       id: 'block_only'
       doc: 'Block Only'
@@ -1346,51 +1346,51 @@ enums:
       doc: 'Not Applicable'
     1:
       id: 'include_ioc_orders'
-      doc: 'Include Ioc Orders In Activitybased Calculations'
+      doc: 'Include IOC orders in activity-based calculations'
     2:
       id: 'exclude_ioc_orders'
-      doc: 'Exclude Ioc Orders From Activitybased Calculations'
+      doc: 'Exclude IOC orders from activity-based calculations'
   price_scale:
     0:
       id: 'no_decimals'
-      doc: 'No Decimals'
+      doc: 'No decimals'
     2:
       id: 'two_decimals'
-      doc: 'Two Decimals'
+      doc: 'Two decimals'
   risk_action_type:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'query_risk_entity'
-      doc: 'Query Risk Entity For Current Risk Control Configurations Calculations And Status'
+      doc: 'Query risk entity for current risk control configurations, calculations, and status'
     2:
       id: 'kill_switch_block'
-      doc: 'Kill Switch Block'
+      doc: 'Kill switch – block'
     3:
       id: 'kill_switch_unblock'
-      doc: 'Kill Switch Unblock'
+      doc: 'Kill switch – unblock'
     4:
       id: 'kill_switch_cancel_auction_orders'
-      doc: 'Kill Switch Cancel Auction Orders'
+      doc: 'Kill switch – cancel auction orders'
     5:
       id: 'kill_switch_cancel_non_auction_orders'
-      doc: 'Kill Switch Cancel Nonauction Orders'
+      doc: 'Kill switch – cancel non-auction orders'
     6:
       id: 'kill_switch_cancel_gtc_orders'
-      doc: 'Kill Switch Cancel Gtc Orders'
+      doc: 'Kill switch – cancel GTC orders'
     7:
       id: 'approve_reinstatement'
-      doc: 'Approve Reinstatement'
+      doc: 'Approve reinstatement'
     8:
       id: 'risk_entity_reinstated'
-      doc: 'Risk Entity Reinstated After All Required Approvals Are Received And Processed'
+      doc: 'Risk entity reinstated after all required approvals are received and processed'
     9:
       id: 'add_symbol_level_risk_entity'
-      doc: 'Add Symbollevel Risk Entity'
+      doc: 'Add symbol-level risk entity'
     10:
       id: 'remove_symbol_level_risk_entity'
-      doc: 'Remove Symbollevel Risk Entity'
+      doc: 'Remove symbol-level risk entity'
   status:
     0:
       id: 'request_processed_successfully'
@@ -1460,13 +1460,13 @@ enums:
   user_session_type:
     1:
       id: 'customer'
-      doc: 'Customer All Asset Classes Andor Equities Market Maker'
+      doc: 'Customer (all asset classes) and/or Equities Market Maker'
     2:
       id: 'service_bureau'
       doc: 'Service Bureau'
     3:
       id: 'designated_market_maker'
-      doc: 'Designated Market Maker Dmm'
+      doc: 'Designated Market Maker (DMM)'
     4:
       id: 'options_market_maker'
       doc: 'Options Market Maker'
@@ -1476,37 +1476,37 @@ enums:
   user_session_status:
     1:
       id: 'active'
-      doc: 'Permission To Open Streams For Reading And Writing'
+      doc: 'Permission to open streams for reading and writing'
     2:
       id: 'inactive'
-      doc: 'Permission To Open Readonly Streams'
+      doc: 'Permission to open read-only streams'
     3:
       id: 'prospect'
-      doc: 'Permission To Open Readonly Streams'
+      doc: 'Permission to open read-only streams'
   symbol_eligibility:
     1:
       id: 'all_symbols'
-      doc: 'All Symbols Production And Test Symbols'
+      doc: 'All Symbols (Production and Test Symbols)'
     2:
       id: 'test_symbols_only'
-      doc: 'Test Symbols Only'
+      doc: 'Test Symbols only'
   ack_status:
     0:
       id: 'unsolicited'
-      doc: 'Unsolicited Start Of Day'
+      doc: 'Unsolicited / Start of Day'
     1:
       id: 'user_request_valid'
       doc: 'User Request Valid'
     2:
       id: 'user_request_invalid'
-      doc: 'User Request Invalid Rejected'
+      doc: 'User Request Invalid (Rejected)'
   working_away_from_display:
     0:
       id: 'same_as_display'
-      doc: 'Working Price Is Equal To Display Price'
+      doc: 'Working Price is equal to Display Price'
     1:
       id: 'different_from_display'
-      doc: 'Working Price Is Different From Display Price'
+      doc: 'Working Price is different from Display Price'
   reason_code:
     0:
       id: 'ok'
@@ -2432,63 +2432,63 @@ enums:
   ack_type:
     1:
       id: 'new_interest'
-      doc: 'New Interest Acknowledgement'
+      doc: 'New Interest acknowledgement.'
     2:
       id: 'order_priority_update_new_id'
-      doc: 'Order Priority Update With A New Order Id'
+      doc: 'Order priority update with a new OrderID.'
     3:
       id: 'order_priority_update_same_id'
-      doc: 'Order Priority Update With The Same Order Id'
+      doc: 'Order priority update with the same OrderID.'
     4:
       id: 'bulk_cancel_ack'
-      doc: 'Acknowledgement Of A Bulk Cancel Request'
+      doc: 'Acknowledgement of a Bulk Cancel request.'
     5:
       id: 'pending_cancel'
-      doc: 'Cancel Request Is Pending'
+      doc: 'Cancel request is pending.'
     6:
       id: 'pending_replace'
-      doc: 'Cancel Replace Request Is Pending'
+      doc: 'Cancel/Replace request is pending.'
     7:
       id: 'pending_modify'
-      doc: 'Modify Request Is Pending'
+      doc: 'Modify request is pending.'
     8:
       id: 'replaced'
-      doc: 'Order Has Been Replaced'
+      doc: 'Order has been replaced.'
     9:
       id: 'modified'
-      doc: 'Order Has Been Modified'
+      doc: 'Order has been modified.'
     10:
       id: 'eligible_for_cross'
-      doc: 'Order Is Eligible For Cross'
+      doc: 'Order is eligible for cross.'
     11:
       id: 'canceled'
-      doc: 'Order Has Been Canceled'
+      doc: 'Order has been canceled.'
     12:
       id: 'done_for_day'
-      doc: 'Order Is Done For The Trading Day'
+      doc: 'Order is done for the trading day.'
     13:
       id: 'billable_cancel_add_liquidity'
-      doc: 'Billable Cancel While Adding Liquidity'
+      doc: 'Billable cancel while adding liquidity.'
     14:
       id: 'billable_cancel_remove_liquidity'
-      doc: 'Billable Cancel While Removing Liquidity'
+      doc: 'Billable cancel while removing liquidity.'
     15:
       id: 'billable_cancel_sub_dollar_add'
-      doc: 'Billable Cancel Adding Subdollar Liquidity'
+      doc: 'Billable cancel adding sub-dollar liquidity.'
     16:
       id: 'billable_cancel_sub_dollar_remove'
-      doc: 'Billable Cancel Removing Subdollar Liquidity'
+      doc: 'Billable cancel removing sub-dollar liquidity.'
   throttled:
     0:
       id: 'not_throttled'
-      doc: 'Inbound Message Was Not Throttled'
+      doc: 'Inbound message was not throttled'
     1:
       id: 'throttled'
-      doc: 'Inbound Message Was Throttled'
+      doc: 'Inbound message was throttled'
   executed_trading_session:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     4:
       id: 'overnight'
       doc: 'Overnight'
@@ -2498,7 +2498,7 @@ enums:
       doc: 'Customer'
     2:
       id: 'market_maker'
-      doc: 'Market Maker Lmm'
+      doc: 'Market Maker / LMM'
     3:
       id: 'dmm'
       doc: 'Designated Market Maker'
@@ -2507,48 +2507,48 @@ enums:
       doc: 'Supplemental Liquidity Provider'
     5:
       id: 'floor_broker'
-      doc: 'Nyse Floor Broker Nyse Texas Ib'
+      doc: 'NYSE Floor Broker / NYSE Texas IB'
   reject_type:
     1:
       id: 'order_cancel_replace'
-      doc: 'Order Cancel Replace Reject'
+      doc: 'Order/Cancel Replace reject'
     2:
       id: 'modify_request'
-      doc: 'Modify Request Reject'
+      doc: 'Modify Request reject'
     3:
       id: 'cancel_request'
-      doc: 'Cancel Request Reject'
+      doc: 'Cancel Request reject'
     4:
       id: 'bulk_cancel_request'
-      doc: 'Bulk Cancel Request Reject'
+      doc: 'Bulk Cancel Request reject'
     5:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     6:
       id: 'manual_action_response'
-      doc: 'Manual Action Response Reject'
+      doc: 'Manual Action Response reject'
     7:
       id: 'risk_limit_update_request'
-      doc: 'Risk Limit Update Request Reject'
+      doc: 'Risk Limit Update Request reject'
     8:
       id: 'not_applicable_equities'
-      doc: 'Not Applicable For Equities Markets'
+      doc: 'Not applicable for equities markets'
     9:
       id: 'reserved_future'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     10:
       id: 'not_applicable_equities_alt'
-      doc: 'Not Applicable For Equities Markets'
+      doc: 'Not applicable for equities markets'
     11:
       id: 'risk_action_request'
-      doc: 'Risk Action Request Reject'
+      doc: 'Risk Action Request reject'
   subscription_status:
     1:
       id: 'subscribed'
       doc: 'Subscribed'
     2:
       id: 'not_subscribed'
-      doc: 'Not Subscribed Rejected'
+      doc: 'Not Subscribed (Rejected)'
   imbalance_side:
     0:
       id: 'no_imbalance'
@@ -2565,59 +2565,59 @@ enums:
       doc: 'Paired'
     1:
       id: 'buy_not_paired'
-      doc: 'Buy Side Not Paired'
+      doc: 'Buy side not paired'
     2:
       id: 'sell_not_paired'
-      doc: 'Sell Side Not Paired'
+      doc: 'Sell side not paired'
   auction_type:
     0:
       id: 'opening_auction'
       doc: 'Opening Auction'
     1:
       id: 'reopening_auction'
-      doc: 'Reopening Auction'
+      doc: 'Re-opening Auction'
     2:
       id: 'closing_auction'
       doc: 'Closing Auction'
   manual_override:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'alert'
-      doc: 'Alert For Dbk Gui Manual Override'
+      doc: 'Alert for DBK GUI Manual Override'
     2:
       id: 'position_marking'
-      doc: 'Position Marking For Dmm Manual Override'
+      doc: 'Position Marking for DMM Manual Override'
   manual_action_type:
     1:
       id: 'new_manual_dmm_order'
-      doc: 'New Manual Dmm Order Entered Via Dmm Interest Template'
+      doc: 'New Manual DMM Order entered via DMM Interest Template'
     2:
       id: 'reduce_manual_dmm_qty'
-      doc: 'Aggregate Reduction In Manual Dmm Orders Quantity Via Dmm Interest Template'
+      doc: 'Aggregate reduction in Manual DMM Order(s) Quantity via DMM Interest Template'
     3:
       id: 'opening_auction'
-      doc: 'Opening Auction Via Opening Template'
+      doc: 'Opening Auction via Opening Template'
     4:
       id: 'reopening_auction'
-      doc: 'Reopening Auction Via Opening Template'
+      doc: 'Re-opening Auction via Opening Template'
     5:
       id: 'closing_auction'
-      doc: 'Closing Auction Via Closing Template'
+      doc: 'Closing Auction via Closing Template'
     6:
       id: 'manual_cross'
-      doc: 'Manual Cross Dmm Against Nyse Floor Broker Via G Key Template'
+      doc: 'Manual Cross DMM against NYSE Floor Broker via G-Key Template'
     7:
       id: 'cancel_all_manual_orders'
-      doc: 'Cancel All Manual Dmm Orders Per Side Via Dmm Interest Template'
+      doc: 'Cancel all Manual DMM Orders per Side via DMM Interest Template'
   risk_ack_type:
     0:
       id: 'solicited'
-      doc: 'Solicited Acknowledgement'
+      doc: 'Solicited acknowledgement'
     1:
       id: 'unsolicited'
-      doc: 'Unsolicited Acknowledgement'
+      doc: 'Unsolicited acknowledgement'
   breach_action_response:
     0:
       id: 'not_applicable'
@@ -2627,58 +2627,58 @@ enums:
       doc: 'Notifications Only'
     2:
       id: 'cancel_and_block'
-      doc: 'Cancel Non Auction Orders And Block'
+      doc: 'Cancel Non-Auction Orders and Block'
     3:
       id: 'block'
       doc: 'Block'
   blocked_by_breach_indicator:
     0:
       id: 'not_blocked'
-      doc: 'Not Blocked By Breach'
+      doc: 'Not Blocked by Breach'
     1:
       id: 'blocked_by_breach'
-      doc: 'Blocked By Breach'
+      doc: 'Blocked by Breach'
     2:
       id: 'blocked_by_arb_check'
-      doc: 'Blocked By Arbitrage Check Options Market Maker Only'
+      doc: 'Blocked by Arbitrage Check (Options Market Maker only)'
     3:
       id: 'blocked_by_intrinsic'
-      doc: 'Blocked By Intrinsic Value Check Options Market Maker Only'
+      doc: 'Blocked by Intrinsic Value Check (Options Market Maker only)'
   blocked_by_kill_switch_indicator:
     0:
       id: 'not_blocked'
-      doc: 'Not Blocked By Kill Switch'
+      doc: 'Not Blocked by Kill Switch'
     1:
       id: 'blocked'
-      doc: 'Blocked By Kill Switch'
+      doc: 'Blocked by Kill Switch'
   reinstatement_required_by_self:
     0:
       id: 'not_required'
-      doc: 'Reinstatement Approval From Self Is Not Required'
+      doc: 'Reinstatement approval from self is not required'
     1:
       id: 'required'
-      doc: 'Reinstatement Approval From Self Is Required'
+      doc: 'Reinstatement approval from self is required'
   reinstatement_required_by_other:
     0:
       id: 'not_required'
-      doc: 'Reinstatement Approval From Other Risk Users Is Not Required'
+      doc: 'Reinstatement approval from other risk users is not required'
     1:
       id: 'required'
-      doc: 'Reinstatement Approval From Other Risk Users Is Required'
+      doc: 'Reinstatement approval from other risk users is required'
   threshold_breach_level:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'greater_than_50_percent'
-      doc: 'Greater Than 50 Percent'
+      doc: 'Greater than 50 percent'
     2:
       id: 'greater_than_75_percent'
-      doc: 'Greater Than 75 Percent'
+      doc: 'Greater than 75 percent'
     3:
       id: 'greater_than_90_percent'
-      doc: 'Greater Than 90 Percent'
+      doc: 'Greater than 90 percent'
     4:
       id: 'greater_than_100_percent'
-      doc: 'Greater Than 100 Percent'
+      doc: 'Greater than 100 percent'
 

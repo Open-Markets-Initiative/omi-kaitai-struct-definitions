@@ -56,52 +56,52 @@ types:
     seq:
       - id: version
         type: u1
-        doc: 'Designates The Opra Binary Version'
+        doc: 'Designates the OPRA binary version'
       - id: block_size
         type: u2
-        doc: 'Size In Bytes Of Entire Transmission Block'
+        doc: 'Size in bytes of entire transmission block'
       - id: data_feed_indicator
         type: u1
         enum: data_feed_indicator
-        doc: 'Value Is O For Opra'
+        doc: 'Value is ‘O’ for OPRA'
       - id: retransmission_indicator
         type: u1
         enum: retransmission_indicator
-        doc: 'Contains Either A Space Not A Retransmitted Message Or V Indicating A Retransmission Of The Block'
+        doc: 'Contains either a space; not a retransmitted message or V; indicating a retransmission of the block'
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: '0 X 00 For Regular Trading Session'
+        doc: '0x00 for regular trading session'
       - id: block_sequence_number
         type: u4
         doc: 'Packet Sequence Number'
       - id: messages_in_block
         type: u1
-        doc: 'The Number Of Messages Contained In The Block Data Of The Transmission Block'
+        doc: 'The number of messages contained in the block data of the transmission block'
       - id: block_timestamp
         type: block_timestamp
         doc: 'Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
-        doc: 'Lower 16 Bits Of The 32 Bit Sum Of All Bytes In The Block Excluding The Block Checksum Field'
+        doc: 'Lower 16 bits of the 32 bit sum of all bytes in the block, excluding the Block Checksum field'
   block_timestamp:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'Contains the number seconds from epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'The Nanosecond Portion Of The Time Currently Rounded To The Nearest Microsecond. Nanoseconds since Second epoch'
+        doc: 'the nanosecond portion of the time currently rounded to the nearest microsecond. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Ascii Character That Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'ASCII character that identifies the Participant or Processor that initiated the message'
       - id: message_category
         type: u1
         enum: message_category
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: payload
         type:
           switch-on: message_category
@@ -152,60 +152,60 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'The Strike Price Denominator Code field indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
+        doc: 'Represents the stated price per share for which the underlying security may be purchased (in the case of a call) or sold (in the case of a put) by the option holder upon exercise of the option contract'
       - id: volume
         type: u4
-        doc: 'Represents The Total Number Of Contracts Traded For An Option In One Trade Or The Total Number Of Contracts Traded For An Option For The Entire Trading Day'
+        doc: 'Represents the total number of contracts traded for an option in one trade, or the total number of contracts traded for an option for the entire trading day'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day'
+        doc: 'Represents the first price paid for an option during the trading day'
       - id: premium_price
         type: s4
-        doc: 'Represents The Price Of An Option Contract Determined In The Competitive Marketplace Which The Buyer Of The Option Pays To The Option Writer For The Rights Conveyed By The Option Contract'
+        doc: 'Represents the price of an option contract, determined in the competitive marketplace, which the buyer of the option pays to the option writer for the rights conveyed by the option contract'
       - id: trade_identifier
         type: u4
-        doc: 'For Future Use Filled With Hex 0 X 00'
+        doc: 'FOR FUTURE USE. Filled with Hex 0x00'
       - id: reserved_4
         size: 4
-        doc: 'Four Reserved Bytes'
+        doc: 'Four reserved bytes'
   expiration_block:
     seq:
       - id: expiration_month
         type: u1
         enum: expiration_month
-        doc: 'Indicates The Expiration Month And Identifies The Option As A Call Or A Put'
+        doc: 'Indicates the expiration month and identifies the option as a Call or a Put'
       - id: expiration_day
         type: u1
-        doc: 'Contains Hex 0 X 01 To 0 X 1f Decimal 1 To 31 Indicating The Day Of The Month The Series Expires'
+        doc: 'Contains Hex 0x01 to 0x1F (decimal 1 to 31), indicating the day of the month the series expires'
       - id: expiration_year
         type: u1
-        doc: 'Contains Hex 0 X 00 To 0 X 63 Decimal 0 To 99 Represents The Year Starting With Year 2000'
+        doc: 'Contains Hex 0x00 to 0x63 (decimal 0 to 99). Represents the year, starting with year 2000'
   open_interest_category:
     seq:
       - id: open_interest_message_type
@@ -223,35 +223,35 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'The Strike Price Denominator Code field indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
+        doc: 'Represents the stated price per share for which the underlying security may be purchased (in the case of a call) or sold (in the case of a put) by the option holder upon exercise of the option contract'
       - id: open_interest_volume
         type: u4
-        doc: 'Represents The Total Number Of Outstanding Option Contracts That Have Not Been Exercised And Have Not Yet Reached Expiration'
+        doc: 'Represents the total number of outstanding option contracts that have not been exercised and have not yet reached expiration'
   equity_and_index_end_of_day_summary_category:
     seq:
       - id: equity_and_index_end_of_day_summary_message_type
@@ -269,70 +269,70 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'The Strike Price Denominator Code field indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
+        doc: 'Represents the stated price per share for which the underlying security may be purchased (in the case of a call) or sold (in the case of a put) by the option holder upon exercise of the option contract'
       - id: volume
         type: u4
-        doc: 'Represents The Total Number Of Contracts Traded For An Option In One Trade Or The Total Number Of Contracts Traded For An Option For The Entire Trading Day'
+        doc: 'Represents the total number of contracts traded for an option in one trade, or the total number of contracts traded for an option for the entire trading day'
       - id: open_interest_volume
         type: u4
-        doc: 'Represents The Total Number Of Outstanding Option Contracts That Have Not Been Exercised And Have Not Yet Reached Expiration'
+        doc: 'Represents the total number of outstanding option contracts that have not been exercised and have not yet reached expiration'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day'
+        doc: 'Represents the first price paid for an option during the trading day'
       - id: open_price
         type: s4
-        doc: 'Represents The First Price Paid For An Option During The Trading Day'
+        doc: 'Represents the first price paid for an option during the trading day'
       - id: high_price
         type: s4
-        doc: 'Represents The Highest Price Paid For An Option During The Trading Day'
+        doc: 'Represents the highest price paid for an option during the trading day'
       - id: low_price
         type: s4
-        doc: 'Represents The Lowest Price Paid For An Option During The Trading Day'
+        doc: 'Represents the lowest price paid for an option during the trading day'
       - id: last_price
         type: s4
-        doc: 'Represents The Last Price Paid For An Option During The Trading Day'
+        doc: 'Represents the last price paid for an option during the trading day'
       - id: net_change
         type: s4
-        doc: 'Represents The Change In The Price Of An Option From The Closing Price Of One Day To The Closing Price On The Next Day On Which The Option Is Traded'
+        doc: 'Represents the change in the price of an option from the closing price of one day to the closing price on the next day on which the option is traded'
       - id: underlying_price_denominator_code
         type: u1
         enum: underlying_price_denominator_code
-        doc: 'The Underlying Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Underlying Price Field'
+        doc: 'The Underlying Price Denominator Code field indicates the position of the floating decimal point within the Underlying Price field'
       - id: underlying_price
         type: s8
-        doc: 'Represents The Price Of The Underlying Security'
+        doc: 'Represents the price of the underlying security'
       - id: bid_price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: offer_price
         type: s4
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option'
+        doc: 'Represents the price at which a seller is offering to sell an option'
   long_equity_and_index_quote_category:
     seq:
       - id: long_equity_and_index_quote_message_type
@@ -359,48 +359,48 @@ types:
       - id: bbo_indicator
         type: u1
         enum: bbo_indicator
-        doc: 'Indicates The Effect The New Quote Has On The Best Bid Andor The Best Offer'
+        doc: 'Indicates the effect the new quote has on the Best Bid and/or the Best Offer'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'The Strike Price Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'The Strike Price Denominator Code field indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract'
+        doc: 'Represents the stated price per share for which the underlying security may be purchased (in the case of a call) or sold (in the case of a put) by the option holder upon exercise of the option contract'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Represents The First Price Paid For An Option During The Trading Day'
+        doc: 'Represents the first price paid for an option during the trading day'
       - id: bid_price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: bid_size
         type: u4
-        doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
+        doc: 'The Bid Size identifies the number of contracts being bought for an option at the Bid Price'
       - id: offer_price
         type: s4
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option'
+        doc: 'Represents the price at which a seller is offering to sell an option'
       - id: offer_size
         type: u4
-        doc: 'The Offer Size Identifies The Number Of Contracts For Sale For An Option At The Offer Price'
+        doc: 'The Offer Size identifies the number of contracts for sale for an option at the Offer Price'
       - id: best_bid_appendage
         type: best_bid_appendage
         if: bbo_indicator == bbo_indicator::best_bid_appendage_no_best_offer_change or bbo_indicator == bbo_indicator::best_bid_appendage_quote_contains_best_offer or bbo_indicator == bbo_indicator::best_bid_appendage_no_best_offer
@@ -418,67 +418,67 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Ascii Character That Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'ASCII character that identifies the Participant or Processor that initiated the message'
       - id: denominator_code
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
+        doc: 'The Bid Size identifies the number of contracts being bought for an option at the Bid Price'
       - id: price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: size
         type: u4
-        doc: 'Identifies The Number Of Contracts Being Bought For An Option At The Price'
+        doc: 'Identifies the number of contracts being bought for an option at the Price'
   best_offer_appendage:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Ascii Character That Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'ASCII character that identifies the Participant or Processor that initiated the message'
       - id: denominator_code
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
+        doc: 'The Bid Size identifies the number of contracts being bought for an option at the Bid Price'
       - id: price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: size
         type: u4
-        doc: 'Identifies The Number Of Contracts Being Bought For An Option At The Price'
+        doc: 'Identifies the number of contracts being bought for an option at the Price'
   best_bid_and_offer_appendage:
     seq:
       - id: best_bid_participant_id
         type: u1
         enum: best_bid_participant_id
-        doc: 'Identifies The Participant That Entered The Best Bid'
+        doc: 'Identifies the participant that entered the Best Bid'
       - id: best_bid_denominator_code
         type: u1
         enum: best_bid_denominator_code
-        doc: 'The Bed Bid Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Bid Price Field'
+        doc: 'The Bed Bid Denominator Code field indicates the position of the floating decimal point within the Best Bid Price field'
       - id: best_bid_price
         type: s4
-        doc: 'Represents The Best Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the best price at which a buyer is willing to buy an option'
       - id: best_bid_size
         type: u4
-        doc: 'The Best Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Best Bid Price'
+        doc: 'The Best Bid Size identifies the number of contracts being bought for an option at the Best Bid price'
       - id: best_offer_participant_id
         type: u1
         enum: best_offer_participant_id
-        doc: 'Identifies The Participant That Entered The Best Bid'
+        doc: 'Identifies the participant that entered the Best Bid'
       - id: best_offer_denominator_code
         type: u1
         enum: best_offer_denominator_code
-        doc: 'The Bed Offer Denominator Code Field Indicates The Position Of The Floating Decimal Point Within The Best Offer Price Field'
+        doc: 'The Bed OFFER Denominator Code field indicates the position of the floating decimal point within the Best Offer Price field'
       - id: best_offer_price
         type: s4
-        doc: 'Represents The Best Price At Which A Seller Is Offering To Sell An Option'
+        doc: 'Represents the best price at which a seller is offering to sell an option'
       - id: best_offer_size
         type: u4
-        doc: 'The Best Offer Size Identifies The Number Of Contracts Being Bought For An Option At The Best Offer Price'
+        doc: 'The Best Offer Size identifies the number of contracts being bought for an option at the Best Offer price'
   short_equity_and_index_quote_category:
     seq:
       - id: short_equity_and_index_quote_message_type
@@ -505,37 +505,37 @@ types:
       - id: bbo_indicator
         type: u1
         enum: bbo_indicator
-        doc: 'Indicates The Effect The New Quote Has On The Best Bid Andor The Best Offer'
+        doc: 'Indicates the effect the new quote has on the Best Bid and/or the Best Offer'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol_short
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_short
         type: decimal_u2_1
-        doc: 'Represents The Stated Price Per Share For Which The Underlying Security May Be Purchased In The Case Of A Call Or Sold In The Case Of A Put By The Option Holder Upon Exercise Of The Option Contract. Implied decimal with scale 1e-1'
+        doc: 'Represents the stated price per share for which the underlying security may be purchased (in the case of a call) or sold (in the case of a put) by the option holder upon exercise of the option contract. Implied decimal with scale 1e-1'
       - id: bid_price_short
         type: decimal_u2_2
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option. Implied decimal with scale 1e-2'
+        doc: 'Represents the price at which a buyer is willing to buy an option. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
-        doc: 'The Bid Size Identifies The Number Of Contracts Being Bought For An Option At The Bid Price'
+        doc: 'The Bid Size identifies the number of contracts being bought for an option at the Bid Price'
       - id: offer_price_short
         type: decimal_u2_2
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option. Implied decimal with scale 1e-2'
+        doc: 'Represents the price at which a seller is offering to sell an option. Implied decimal with scale 1e-2'
       - id: offer_size_short
         type: u2
-        doc: 'The Offer Size Identifies The Number Of Contracts For Sale For An Option At The Offer Price'
+        doc: 'The Offer Size identifies the number of contracts for sale for an option at the Offer Price'
       - id: best_bid_appendage
         type: best_bid_appendage
         if: bbo_indicator == bbo_indicator::best_bid_appendage_no_best_offer_change or bbo_indicator == bbo_indicator::best_bid_appendage_quote_contains_best_offer or bbo_indicator == bbo_indicator::best_bid_appendage_no_best_offer
@@ -561,23 +561,23 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: message_data_length
         type: u2
-        doc: 'Represents The Length Of The Message Data Field'
+        doc: 'Represents the length of the Message Data field'
       - id: message_data
         type: str
         size: message_data_length
         encoding: ASCII
         pad-right: 0x20
         if: message_data_length > 0
-        doc: 'Represents The Message Data Field'
+        doc: 'Represents the Message Data field'
   control_category:
     seq:
       - id: control_message_type
@@ -609,29 +609,29 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: len_message_data
         type: u2
-        doc: 'Represents The Length Of The Message Data Field'
+        doc: 'Represents the length of the Message Data field'
       - id: message_data
         type: str
         size: len_message_data
         encoding: ASCII
         pad-right: 0x20
         if: len_message_data > 0
-        doc: 'Represents The Message Data Field'
+        doc: 'Represents the Message Data field'
   underlying_value_category:
     seq:
       - id: underlying_value_message_type
         type: u1
         enum: underlying_value_message_type
-        doc: 'Underlying Value Message Type'
+        doc: 'Underlying Value Message type'
       - id: underlying_value_message_payload
         type:
           switch-on: underlying_value_message_type
@@ -644,64 +644,64 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
+        doc: 'Contains the index value using last sale values of index components'
       - id: index_value
         type: s4
-        doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
+        doc: 'Contains the index value using last sale values of index components'
       - id: reserved_4
         size: 4
-        doc: 'Four Reserved Bytes'
+        doc: 'Four reserved bytes'
   underlying_value_bid_and_offer_message:
     seq:
       - id: message_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Message Identifier'
+        doc: 'Message identifier'
       - id: transaction_id
         type: u4
-        doc: 'Reserved For Internal Use Only'
+        doc: 'Reserved for Internal Use only'
       - id: participant_reference_number
         type: u4
-        doc: 'The Prn Is For Optional Use By The Participant'
+        doc: 'The PRN is for optional use by the Participant'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Unique Symbol Assigned To The Underlying Security'
+        doc: 'Identifies the unique symbol assigned to the underlying security'
       - id: reserved_1
         size: 1
-        doc: 'One Reserved Byte'
+        doc: 'One reserved byte'
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Contains The Index Value Using Last Sale Values Of Index Components'
+        doc: 'Contains the index value using last sale values of index components'
       - id: bid_index_value
         type: s4
-        doc: 'The Bid Index Value Represents The Value Of The Indexs Calculation Formula Using The Current Bid Values Of The Component Securities'
+        doc: 'The Bid Index Value represents the value of the index’s calculation formula using the current bid values of the component securities'
       - id: offer_index_value
         type: s8
-        doc: 'The Offer Index Value Represents The Value Of The Indexs Calculation Formula Using The Current Offer Values Of The Component Securities'
+        doc: 'The Offer Index Value represents the value of the index’s calculation formula using the current Offer values of the component securities'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -770,11 +770,11 @@ enums:
       doc: 'Regular Trading Session'
     0x58:
       id: 'pre_market'
-      doc: 'Ascii X For Pre Market Extended Hours Trading Session Only Used During Pre Market Extended Session'
+      doc: 'ASCII ''X'' for Pre-Market extended hours trading session (only used during Pre-Market Extended Session)'
   participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'boston_options_exchange'
       doc: 'Boston Options Exchange'
@@ -783,46 +783,46 @@ enums:
       doc: 'Cboe Options Exchange'
     0x44:
       id: 'miax_emerald'
-      doc: 'Miax Emerald'
+      doc: 'MIAX EMERALD'
     0x45:
       id: 'cboe_edgx_options'
-      doc: 'Cboe Edgx Options'
+      doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
-      doc: 'Nasdaq Gemx'
+      doc: 'Nasdaq GEMX'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'
     0x4a:
       id: 'nasdaq_mrx'
-      doc: 'Nasdaq Mrx'
+      doc: 'Nasdaq MRX'
     0x4d:
       id: 'miami_international_securities_exchange'
       doc: 'Miami International Securities Exchange'
     0x4e:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE ARCA'
     0x4f:
       id: 'options_price_reporting_authority'
       doc: 'Options Price Reporting Authority'
     0x50:
       id: 'miax_pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX PEARL'
     0x51:
       id: 'nasdaq_options_market'
-      doc: 'Nasdaq Options Market'
+      doc: 'NASDAQ Options Market'
     0x54:
       id: 'nasdaq_bx_options'
-      doc: 'Nasdaq Bx Options'
+      doc: 'NASDAQ BX Options'
     0x57:
       id: 'cboe_c_2_options'
-      doc: 'Cboe C 2 Options'
+      doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
-      doc: 'Nasdaq Phlx'
+      doc: 'NASDAQ PHLX'
     0x5a:
       id: 'cboe_bzx_options_exchange'
-      doc: 'Cboe Bzx Options Exchange'
+      doc: 'Cboe BZX Options Exchange'
   message_category:
     0x61:
       id: 'equity_and_index_last_sale'
@@ -851,143 +851,143 @@ enums:
   equity_and_index_last_sale_message_type:
     0x20:
       id: 'regular'
-      doc: 'Indicates That The Transaction Was A Regular Sale And Was Made Without Stated Conditions'
+      doc: 'Indicates that the transaction was a regular sale and was made without stated conditions.'
     0x41:
       id: 'canc'
-      doc: 'Transaction Previously Reported Other Than As The Last Or Opening Report For The Particular Option Contract Is Now To Be Cancelled'
+      doc: 'Transaction previously reported (other than as the last or opening report for the particular option contract) is now to be cancelled.'
     0x42:
       id: 'oseq'
-      doc: 'Transaction Is Being Reported Late And Is Out Of Sequence Ie Later Transactions Have Been Reported For The Particular Option Contract'
+      doc: 'Transaction is being reported late and is out of sequence; i.e., later transactions have been reported for the particular option contract.'
     0x43:
       id: 'cncl'
-      doc: 'Transaction Is The Last Reported For The Particular Option Contract And Is Now Cancelled'
+      doc: 'Transaction is the last reported for the particular option contract and is now cancelled.'
     0x44:
       id: 'late'
-      doc: 'Transaction Is Being Reported Late But Is In The Correct Sequence Ie No Later Transactions Have Been Reported For The Particular Option Contract'
+      doc: 'Transaction is being reported late, but is in the correct sequence; i.e., no later transactions have been reported for the particular option contract.'
     0x45:
       id: 'cnco'
-      doc: 'Transaction Was The First One Opening Reported This Day For The Particular Option Contract Although Later Transactions Have Been Reported This Transaction Is Now To Be Cancelled'
+      doc: 'Transaction was the first one (opening) reported this day for the particular option contract. Although later transactions have been reported, this transaction is now to be cancelled.'
     0x46:
       id: 'open'
-      doc: 'Transaction Is A Late Report Of The Opening Trade And Is Out Of Sequence Ie Other Transactions Have Been Reported For The Particular Option Contract'
+      doc: 'Transaction is a late report of the opening trade and is out of sequence; i.e., other transactions have been reported for the particular option contract.'
     0x47:
       id: 'cnol'
-      doc: 'Transaction Was The Only One Reported This Day For The Particular Option Contract And Is Now To Be Cancelled'
+      doc: 'Transaction was the only one reported this day for the particular option contract and is now to be cancelled.'
     0x48:
       id: 'opnl'
-      doc: 'Transaction Is A Late Report Of The Opening Trade But Is In The Correct Sequence Ie No Other Transactions Have Been Reported For The Particular Option Contract'
+      doc: 'Transaction is a late report of the opening trade, but is in the correct sequence; i.e., no other transactions have been reported for the particular option contract.'
     0x49:
       id: 'auto_field'
-      doc: 'Transaction Was Executed Electronically Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction was executed electronically. Prefix appears solely for information; process as a regular transaction.'
     0x4a:
       id: 'reop'
-      doc: 'Transaction Is A Reopening Of An Option Contract In Which Trading Has Been Previously Halted Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction is a reopening of an option contract in which trading has been previously halted. Prefix appears solely for information; process as a regular transaction.'
     0x4b:
       id: 'ajst'
-      doc: 'Transaction Is An Option Contract For Which The Terms Have Been Adjusted To Reflect A Stock Dividend Stock Split Or Similar Event Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction is an option contract for which the terms have been adjusted to reflect a stock dividend, stock split, or similar event. Prefix appears solely for information; process as a regular transaction.'
     0x4c:
       id: 'sprd'
-      doc: 'Transaction Represents A Trade In Two Options In The Same Class A Buy And A Sell In The Same Class Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in the same class). Prefix appears solely for information; process as a regular transaction.'
     0x4d:
       id: 'stdl'
-      doc: 'Transaction Represents A Trade In Two Options In The Same Class A Buy And A Sell In A Put And A Call Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents a trade in two options in the same class (a buy and a sell in a put and a call). Prefix appears solely for information; process as a regular transaction.'
     0x4e:
       id: 'stpd'
-      doc: 'Transaction Is The Execution Of A Sale At A Price Agreed Upon By The Floor Personnel Involved Where A Condition Of The Trade Is That It Reported Following A Nonstopped Trade Of The Same Series At The Same Price'
+      doc: 'Transaction is the execution of a sale at a price agreed upon by the floor personnel involved, where a condition of the trade is that it reported following a non-stopped trade of the same series at the same price.'
     0x4f:
       id: 'cstp'
-      doc: 'Cancel Stopped Transaction'
+      doc: 'Cancel stopped transaction.'
     0x50:
       id: 'bwrt'
-      doc: 'Transaction Represents The Option Portion Of An Order Involving A Single Option Leg Buy Or Sell Of A Call Or Put And Stock Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents the option portion of an order involving a single option leg (buy or sell of a call or put) and stock. Prefix appears solely for information: process as a regular transaction.'
     0x51:
       id: 'cmbo'
-      doc: 'Transaction Represents The Buying Of A Call And The Selling Of A Put For The Same Underlying Stock Or Index Prefix Appears Solely For Information Process As A Regular Transaction'
+      doc: 'Transaction represents the buying of a call and the selling of a put for the same underlying stock or index. Prefix appears solely for information; process as a regular transaction.'
     0x52:
       id: 'spim'
-      doc: 'Transaction Was The Execution Of An Order Which Was Stopped At A Price That Did Not Constitute A Trade Through On Another Market At The Time Of The Stop Process Like A Normal Transaction'
+      doc: 'Transaction was the execution of an order which was “stopped” at a price that did not constitute a Trade-Through on another market at the time of the stop. Process like a normal transaction.'
     0x53:
       id: 'isoi'
-      doc: 'Transaction Was The Execution Of An Order Identified As An Intermarket Sweep Order Process Like Normal Transaction'
+      doc: 'Transaction was the execution of an order identified as an Intermarket Sweep Order. Process like normal transaction.'
     0x54:
       id: 'bnmt'
-      doc: 'Transaction Reflects The Execution Of A Benchmark Trade A Benchmark Trade Is A Trade Resulting From The Matching Of Benchmark Orders A Benchmark Order Is An Order For Which The Price Is Not Based Directly Or Indirectly On The Quote Price Of The Option At The Time Of The Orders Execution And For Which The Material Terms Were Not Reasonably Determinable At The Time A Commitment To Trade The Order Was Made Process Like A Normal Transaction Except Dont Update Last'
+      doc: 'Transaction reflects the execution of a “benchmark trade”. A “Benchmark Trade” is a trade resulting from the matching of “Benchmark Orders”. A “Benchmark Order” is an order for which the price is not based, directly or indirectly, on the quote price of the option at the time of the order’s execution and for which the material terms were not reasonably determinable at the time a commitment to trade the order was made. Process like a normal transaction except don’t update “last”.'
     0x58:
       id: 'xmpt'
-      doc: 'Transaction Is Trade Through Exempt The Transaction Should Be Treated Like A Regular Sale'
+      doc: 'Transaction is Trade Through Exempt. The transaction should be treated like a regular sale.'
   expiration_month:
     0x41:
       id: 'january'
-      doc: 'January'
+      doc: 'JANUARY'
     0x4d:
       id: 'january_x4d'
-      doc: 'January'
+      doc: 'JANUARY'
     0x42:
       id: 'february'
-      doc: 'February'
+      doc: 'FEBRUARY'
     0x4e:
       id: 'february_x4e'
-      doc: 'February'
+      doc: 'FEBRUARY'
     0x43:
       id: 'march'
-      doc: 'March'
+      doc: 'MARCH'
     0x4f:
       id: 'march_x4f'
-      doc: 'March'
+      doc: 'MARCH'
     0x44:
       id: 'april'
-      doc: 'April'
+      doc: 'APRIL'
     0x50:
       id: 'april_x50'
-      doc: 'April'
+      doc: 'APRIL'
     0x45:
       id: 'may'
-      doc: 'May'
+      doc: 'MAY'
     0x51:
       id: 'may_x51'
-      doc: 'May'
+      doc: 'MAY'
     0x46:
       id: 'june'
-      doc: 'June'
+      doc: 'JUNE'
     0x52:
       id: 'june_x52'
-      doc: 'June'
+      doc: 'JUNE'
     0x47:
       id: 'july'
-      doc: 'July'
+      doc: 'JULY'
     0x53:
       id: 'july_x53'
-      doc: 'July'
+      doc: 'JULY'
     0x48:
       id: 'august'
-      doc: 'August'
+      doc: 'AUGUST'
     0x54:
       id: 'august_x54'
-      doc: 'August'
+      doc: 'AUGUST'
     0x49:
       id: 'september'
-      doc: 'September'
+      doc: 'SEPTEMBER'
     0x55:
       id: 'september_x55'
-      doc: 'September'
+      doc: 'SEPTEMBER'
     0x4a:
       id: 'october'
-      doc: 'October'
+      doc: 'OCTOBER'
     0x56:
       id: 'october_x56'
-      doc: 'October'
+      doc: 'OCTOBER'
     0x4b:
       id: 'november'
-      doc: 'November'
+      doc: 'NOVEMBER'
     0x57:
       id: 'november_x57'
-      doc: 'November'
+      doc: 'NOVEMBER'
     0x4c:
       id: 'december'
-      doc: 'December'
+      doc: 'DECEMBER'
     0x58:
       id: 'december_x58'
-      doc: 'December'
+      doc: 'DECEMBER'
   strike_price_denominator_code:
     0x41:
       id: 'ten'
@@ -1074,7 +1074,7 @@ enums:
       doc: 'Regular Trading'
     0x46:
       id: 'non_firm_quote'
-      doc: 'Non Firm Quote'
+      doc: 'Non-Firm Quote'
     0x49:
       id: 'indicative_value'
       doc: 'Indicative Value'
@@ -1086,22 +1086,22 @@ enums:
       doc: 'Trading Halted'
     0x41:
       id: 'eligible_for_automatic_execution'
-      doc: 'Eligible For Automatic Execution'
+      doc: 'Eligible for Automatic Execution'
     0x42:
       id: 'bid_contains_customer_trading_interest'
-      doc: 'Bid Contains Customer Trading Interest'
+      doc: 'Bid contains Customer Trading Interest'
     0x4f:
       id: 'offer_contains_customer_trading_interest'
-      doc: 'Offer Contains Customer Trading Interest'
+      doc: 'Offer contains Customer Trading Interest'
     0x43:
       id: 'both_bid_and_offer_contain_customer_trading_interest'
-      doc: 'Both Bid And Offer Contain Customer Trading Interest'
+      doc: 'Both Bid and Offer contain Customer Trading Interest'
     0x58:
       id: 'offer_side_of_quote_not_firm_bid_side_firm'
-      doc: 'Offer Side Of Quote Not Firm Bid Side Firm'
+      doc: 'Offer side of Quote Not Firm; Bid Side Firm'
     0x59:
       id: 'bid_side_of_quote_not_firm_offer_side_firm'
-      doc: 'Bid Side Of Quote Not Firm Offer Side Firm'
+      doc: 'Bid Side of Quote Not Firm; Offer Side Firm'
   bbo_indicator:
     0x41:
       id: 'no_best_bid_change_or_best_offer_change'
@@ -1157,7 +1157,7 @@ enums:
   best_bid_participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'boston_options_exchange'
       doc: 'Boston Options Exchange'
@@ -1166,46 +1166,46 @@ enums:
       doc: 'Cboe Options Exchange'
     0x44:
       id: 'miax_emerald'
-      doc: 'Miax Emerald'
+      doc: 'MIAX EMERALD'
     0x45:
       id: 'cboe_edgx_options'
-      doc: 'Cboe Edgx Options'
+      doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
-      doc: 'Nasdaq Gemx'
+      doc: 'Nasdaq GEMX'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'
     0x4a:
       id: 'nasdaq_mrx'
-      doc: 'Nasdaq Mrx'
+      doc: 'Nasdaq MRX'
     0x4d:
       id: 'miami_international_securities_exchange'
       doc: 'Miami International Securities Exchange'
     0x4e:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE ARCA'
     0x4f:
       id: 'options_price_reporting_authority'
       doc: 'Options Price Reporting Authority'
     0x50:
       id: 'miax_pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX PEARL'
     0x51:
       id: 'nasdaq_options_market'
-      doc: 'Nasdaq Options Market'
+      doc: 'NASDAQ Options Market'
     0x54:
       id: 'nasdaq_bx_options'
-      doc: 'Nasdaq Bx Options'
+      doc: 'NASDAQ BX Options'
     0x57:
       id: 'cboe_c_2_options'
-      doc: 'Cboe C 2 Options'
+      doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
-      doc: 'Nasdaq Phlx'
+      doc: 'NASDAQ PHLX'
     0x5a:
       id: 'cboe_bzx_options_exchange'
-      doc: 'Cboe Bzx Options Exchange'
+      doc: 'Cboe BZX Options Exchange'
   best_bid_denominator_code:
     0x41:
       id: 'ten'
@@ -1237,7 +1237,7 @@ enums:
   best_offer_participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'boston_options_exchange'
       doc: 'Boston Options Exchange'
@@ -1246,46 +1246,46 @@ enums:
       doc: 'Cboe Options Exchange'
     0x44:
       id: 'miax_emerald'
-      doc: 'Miax Emerald'
+      doc: 'MIAX EMERALD'
     0x45:
       id: 'cboe_edgx_options'
-      doc: 'Cboe Edgx Options'
+      doc: 'Cboe EDGX Options'
     0x48:
       id: 'nasdaq_gemx'
-      doc: 'Nasdaq Gemx'
+      doc: 'Nasdaq GEMX'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'
     0x4a:
       id: 'nasdaq_mrx'
-      doc: 'Nasdaq Mrx'
+      doc: 'Nasdaq MRX'
     0x4d:
       id: 'miami_international_securities_exchange'
       doc: 'Miami International Securities Exchange'
     0x4e:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE ARCA'
     0x4f:
       id: 'options_price_reporting_authority'
       doc: 'Options Price Reporting Authority'
     0x50:
       id: 'miax_pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX PEARL'
     0x51:
       id: 'nasdaq_options_market'
-      doc: 'Nasdaq Options Market'
+      doc: 'NASDAQ Options Market'
     0x54:
       id: 'nasdaq_bx_options'
-      doc: 'Nasdaq Bx Options'
+      doc: 'NASDAQ BX Options'
     0x57:
       id: 'cboe_c_2_options'
-      doc: 'Cboe C 2 Options'
+      doc: 'Cboe C2 Options'
     0x58:
       id: 'nasdaq_phlx'
-      doc: 'Nasdaq Phlx'
+      doc: 'NASDAQ PHLX'
     0x5a:
       id: 'cboe_bzx_options_exchange'
-      doc: 'Cboe Bzx Options Exchange'
+      doc: 'Cboe BZX Options Exchange'
   best_offer_denominator_code:
     0x41:
       id: 'ten'
@@ -1320,7 +1320,7 @@ enums:
       doc: 'Regular Trading'
     0x46:
       id: 'non_firm_quote'
-      doc: 'Non Firm Quote'
+      doc: 'Non-Firm Quote'
     0x49:
       id: 'indicative_value'
       doc: 'Indicative Value'
@@ -1332,22 +1332,22 @@ enums:
       doc: 'Trading Halted'
     0x41:
       id: 'eligible_for_automatic_execution'
-      doc: 'Eligible For Automatic Execution'
+      doc: 'Eligible for Automatic Execution'
     0x42:
       id: 'bid_contains_customer_trading_interest'
-      doc: 'Bid Contains Customer Trading Interest'
+      doc: 'Bid contains Customer Trading Interest'
     0x4f:
       id: 'offer_contains_customer_trading_interest'
-      doc: 'Offer Contains Customer Trading Interest'
+      doc: 'Offer contains Customer Trading Interest'
     0x43:
       id: 'both_bid_and_offer_contain_customer_trading_interest'
-      doc: 'Both Bid And Offer Contain Customer Trading Interest'
+      doc: 'Both Bid and Offer contain Customer Trading Interest'
     0x58:
       id: 'offer_side_of_quote_not_firm_bid_side_firm'
-      doc: 'Offer Side Of Quote Not Firm Bid Side Firm'
+      doc: 'Offer side of Quote Not Firm; Bid Side Firm'
     0x59:
       id: 'bid_side_of_quote_not_firm_offer_side_firm'
-      doc: 'Bid Side Of Quote Not Firm Offer Side Firm'
+      doc: 'Bid Side of Quote Not Firm; Offer Side Firm'
   administrative_message_type:
     0x20:
       id: 'administrative'
@@ -1355,25 +1355,25 @@ enums:
   control_message_type:
     0x43:
       id: 'start_of_day'
-      doc: 'Start Of Day'
+      doc: 'Start of Day'
     0x45:
       id: 'start_of_summary'
-      doc: 'Start Of Summary'
+      doc: 'Start of Summary'
     0x46:
       id: 'end_of_summary'
-      doc: 'End Of Summary'
+      doc: 'End of Summary'
     0x4a:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x4b:
       id: 'reset_block_sequence_number'
       doc: 'Reset Block Sequence Number'
     0x4c:
       id: 'start_of_open_interest'
-      doc: 'Start Of Open Interest'
+      doc: 'Start of Open Interest'
     0x4d:
       id: 'end_of_open_interest'
-      doc: 'End Of Open Interest'
+      doc: 'End of Open Interest'
     0x4e:
       id: 'line_integrity'
       doc: 'Line Integrity'
@@ -1382,10 +1382,10 @@ enums:
       doc: 'Disaster Recovery Data Center Activation'
     0x41:
       id: 'start_of_test_cycle'
-      doc: 'Start Of Test Cycle'
+      doc: 'Start of Test Cycle'
     0x42:
       id: 'end_of_test_cycle'
-      doc: 'End Of Test Cycle'
+      doc: 'End of Test Cycle'
     0x44:
       id: 'good_morning'
       doc: 'Good Morning'
@@ -1394,7 +1394,7 @@ enums:
       doc: 'Early Market Close'
     0x48:
       id: 'end_of_transaction_reporting'
-      doc: 'End Of Transaction Reporting'
+      doc: 'End of Transaction Reporting'
     0x49:
       id: 'good_night'
       doc: 'Good Night'

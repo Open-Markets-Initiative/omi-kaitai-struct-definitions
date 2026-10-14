@@ -414,28 +414,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early closing'
   strategy_type:
     0x56:
       id: 'vertical_spread'
@@ -467,13 +467,13 @@ enums:
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
     0x20:
       id: 'na'
-      doc: 'Blank For Stock Leg'
+      doc: 'Blank for Stock Leg'
   side:
     0x42:
       id: 'buy'
@@ -483,18 +483,18 @@ enums:
       doc: 'Sell'
     0x20:
       id: 'hidden'
-      doc: 'Not Set Hidden'
+      doc: 'Not set (Hidden)'
   open_state:
     0x59:
       id: 'open'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading_resumed'
       doc: 'Trading Resumed'
@@ -504,5 +504,5 @@ enums:
       doc: 'Regular Quote Auto Execution Eligible'
     0x58:
       id: 'halted'
-      doc: 'Halsted Or Preopen'
+      doc: 'Halsted or Preopen'
 

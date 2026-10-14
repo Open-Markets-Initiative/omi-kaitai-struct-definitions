@@ -117,7 +117,7 @@ types:
       - id: administrative_message_type
         type: u1
         enum: administrative_message_type
-        doc: 'Identifies The Type Of Administrative Message'
+        doc: 'Identifies the type of Administrative message'
       - id: administrative_message_payload
         type:
           switch-on: administrative_message_type
@@ -132,19 +132,19 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   timestamp_1:
     seq:
       - id: seconds
@@ -158,155 +158,155 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   start_of_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   end_of_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   symbol_reference_data_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: prior_security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Prior Security Symbol'
+        doc: 'Contains the prior Security Symbol'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: primary_listing_market_previous_closing_price
         type: decimal_u8_6
-        doc: 'Represents The Previous Closing Price For The Primary Listing Market Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the previous closing price for the primary listing market. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_closing_price
         type: decimal_u8_6
-        doc: 'Represents The Consolidated Closing Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the consolidated closing price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: round_lot_size
         type: u2
-        doc: 'Roundlot Size For A Symbol Can Consist Of 11040 Or 100 Shares'
+        doc: 'Round-lot size for a symbol can consist of 1, 10, 40 or 100 shares'
       - id: minimum_price_increment_indicator
         type: u1
         enum: minimum_price_increment_indicator
-        doc: 'Identifies The Applicable Tick Size For A Symbol'
+        doc: 'Identifies the applicable tick size for a symbol'
       - id: luld_tier
         type: u1
         enum: luld_tier
-        doc: 'Identifies The Limit Up Limit Down Tier Of The Security Symbol'
+        doc: 'Identifies the Limit Up Limit Down tier of the security symbol'
       - id: luld_leverage_ratio
         type: u4
-        doc: 'Represents The Leverage Ratio Associated With The Luld Tier Of The Security Symbol Has Implied 6 Decimal Places'
+        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol. Has implied 6 decimal places'
       - id: test
         type: u1
         enum: test
-        doc: 'Identifies Whether The Security Symbol Is A Test Symbol'
+        doc: 'Identifies whether the security symbol is a test symbol'
       - id: ipo
         type: u1
         enum: ipo
-        doc: 'Identifies Whether The Security Symbol Is An Ipo'
+        doc: 'Identifies whether the security symbol is an IPO'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
       - id: second_reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
       - id: reserved_128
         type: str
         size: 128
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
   control_message:
     seq:
       - id: control_message_type
         type: u1
         enum: control_message_type
-        doc: 'Identifies The Type Of Control Message'
+        doc: 'Identifies the type of Control message'
       - id: control_message_payload
         type:
           switch-on: control_message_type
@@ -321,97 +321,97 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   reset_block_sequence_number_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   disaster_recovery_data_center_activation_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   line_integrity_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   end_of_day_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
   indices_message:
     seq:
       - id: indices_message_type
         type: u1
         enum: indices_message_type
-        doc: 'Identifies The Type Of Index Message'
+        doc: 'Identifies the type of Index message'
       - id: indices_message_payload
         type:
           switch-on: indices_message_type
@@ -423,64 +423,64 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: index_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Index Symbol Left Justified Spacefilled'
+        doc: 'Contains the Index symbol. Left justified, space-filled'
       - id: index_value
         type: s8
-        doc: 'Represents A Statistical Composite That Measures Changes In The Economy Or In Financial Markets Has Implied 6 Decimal Places'
+        doc: 'Represents a statistical composite that measures changes in the economy or in financial markets. Has implied 6 decimal places'
   bid_and_offer_index_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: index_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Index Symbol Left Justified Spacefilled'
+        doc: 'Contains the Index symbol. Left justified, space-filled'
       - id: bid_index_value
         type: s8
-        doc: 'Represents The Value Of The Indexs Calculation Formula Using The Current Bid Values Of The Component Securities Has Implied 6 Decimal Places'
+        doc: 'Represents the value of the index''s calculation formula using the current Bid values of the component securities. Has implied 6 decimal places'
       - id: offer_index_value
         type: s8
-        doc: 'Represents The Value Of The Index Calculation Formula Using The Current Offer Values Of The Component Securities Has Implied 6 Decimal Places'
+        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities. Has implied 6 decimal places'
   market_status_message:
     seq:
       - id: market_status_message_type
         type: u1
         enum: market_status_message_type
-        doc: 'Identifies The Type Of Market Status Message'
+        doc: 'Identifies the type of Market Status message'
       - id: market_status_message_payload
         type:
           switch-on: market_status_message_type
@@ -496,81 +496,81 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 17% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 213% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies the daily established drop level value. Level 2 = 13% of Previous Close S&P 500 Value. Has implied 6 decimal places'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 320% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies the daily established drop level value. Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: market_wide_circuit_breaker_level_indicator
         type: u1
         enum: market_wide_circuit_breaker_level_indicator
-        doc: 'Identifies The Threshold Level That Was Breached'
+        doc: 'Identifies the threshold level that was breached'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
   approximate_adjusted_volume_market_center_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: num_approximate_volume_participant
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
       - id: approximate_volume_participant
         type: approximate_volume_participant
         repeat: expr
@@ -581,31 +581,31 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: trade_total_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Traded For An Individual Security'
+        doc: 'Contains the total number of shares traded for an individual security'
   fractional_approximate_adjusted_volume_market_center_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: num_participant
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
       - id: participant
         type: participant
         repeat: expr
@@ -616,67 +616,67 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: fractional_trade_total_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Traded For Each Participant Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares traded for each Participant. Has implied 6 decimal places'
   approximate_trades_and_total_dollar_value_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: total_trades
         type: u4
-        doc: 'Contains The Total Number Of Trade Transactions Executed From A Market Center'
+        doc: 'Contains the total number of trade transactions executed from a Market Center'
       - id: dollar_value
         type: u8
-        doc: 'Represents The Total Dollar Worth Of The Daily Trade Transactions Has Implied 6 Decimal Places'
+        doc: 'Represents the total dollar worth of the daily trade transactions. Has implied 6 decimal places'
   crossing_session_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: crossing_session_i_total_trades_volume
         type: u8
-        doc: 'Contains The Number Of Shares Traded At The Participants Close Price And Taking Place After The Close Of A Participants Regular Session'
+        doc: 'Contains the number of shares traded at the Participant''s close price and taking place after the close of a Participant''s regular session'
       - id: crossing_session_ii_dollar_value
         type: u8
-        doc: 'Contains The Dollar Value Traded After The Close Of A Participants Regular Session Has Implied 6 Decimal Places'
+        doc: 'Contains the Dollar Value traded after the close of a Participant''s regular session. Has implied 6 decimal places'
       - id: crossing_session_ii_total_trades_volume
         type: u8
-        doc: 'Contains The Number Of Shares Traded After The Close Of A Participants Regular Session'
+        doc: 'Contains the number of shares traded after the close of a Participant''s regular session'
   prior_day_message:
     seq:
       - id: prior_day_message_type
         type: u1
         enum: prior_day_message_type
-        doc: 'Identifies The Type Of Prior Day Message'
+        doc: 'Identifies the type of Prior Day message'
       - id: prior_day_message_payload
         type:
           switch-on: prior_day_message_type
@@ -692,96 +692,96 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Associated With A Trade'
+        doc: 'Corrected sale condition associated with a trade'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_trade_volume
         type: u4
-        doc: 'Corrected Total Number Of Shares Which Traded In A Single Transaction For An Individual Security'
+        doc: 'Corrected total number of shares which traded in a single transaction for an individual security'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Corrected number of days that may elapse before delivery of the security'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Stop Stock Indicator'
+        doc: 'Corrected stop stock indicator'
       - id: corrected_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Trade Through Exempt Indicator'
+        doc: 'Corrected trade through exempt indicator'
       - id: corrected_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Short Sale Restriction Indicator'
+        doc: 'Corrected short sale restriction indicator'
       - id: corrected_prior_day_trade_date_and_time
         type: corrected_prior_day_trade_date_and_time
         doc: 'The corrected prior day trade date and time. Nanoseconds since Unix epoch'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: original_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Original Sale Condition Associated With A Trade'
+        doc: 'Original sale condition associated with a trade'
       - id: original_trade_price
         type: decimal_u8_6
-        doc: 'Original Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Original monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_trade_volume
         type: u4
-        doc: 'Original Total Number Of Shares Which Traded In A Single Transaction For An Individual Security'
+        doc: 'Original total number of shares which traded in a single transaction for an individual security'
       - id: original_sellers_sale_days
         type: u1
-        doc: 'Original Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Original number of days that may elapse before delivery of the security'
       - id: original_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Stop Stock Indicator'
+        doc: 'Original stop stock indicator'
       - id: original_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Trade Through Exempt Indicator'
+        doc: 'Original trade through exempt indicator'
       - id: original_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Short Sale Restriction Indicator'
+        doc: 'Original short sale restriction indicator'
       - id: original_prior_day_trade_date_and_time
         type: original_prior_day_trade_date_and_time
         doc: 'The original prior day trade date and time. Nanoseconds since Unix epoch'
@@ -806,57 +806,57 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'The date and time the prior day trade was executed. Nanoseconds since Unix epoch'
@@ -869,15 +869,15 @@ types:
       - id: category_2
         type: u1
         enum: category_2
-        doc: 'Reason For Trade Through Exemption Other Reason'
+        doc: 'Reason for Trade-Through Exemption / Other Reason'
       - id: category_3
         type: u1
         enum: category_3
-        doc: 'Extended Hours Sequence Type'
+        doc: 'Extended Hours / Sequence Type'
       - id: category_4
         type: u1
         enum: category_4
-        doc: 'Sro Trade Detail'
+        doc: 'SRO Trade Detail'
   prior_day_trade_date_and_time:
     seq:
       - id: seconds
@@ -891,120 +891,120 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'The date and time the prior day trade was executed. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
   fractional_prior_day_trade_correction_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'The date and time the prior day trade was executed. Nanoseconds since Unix epoch'
@@ -1013,57 +1013,57 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'The date and time the prior day trade was executed. Nanoseconds since Unix epoch'
@@ -1072,70 +1072,70 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'The date and time the prior day trade was executed. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
   summary_message:
     seq:
       - id: summary_message_type
         type: u1
         enum: summary_message_type
-        doc: 'Identifies The Type Of Summary Message'
+        doc: 'Identifies the type of Summary message'
       - id: summary_message_payload
         type:
           switch-on: summary_message_type
@@ -1151,336 +1151,336 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: previous_close_price
         type: decimal_u8_6
-        doc: 'Represents The Last Qualifying Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last qualifying price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: number_of_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
   participant_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: previous_close_price
         type: decimal_u8_6
-        doc: 'Represents The Last Qualifying Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last qualifying price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
   consolidated_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Refer To Participant Id Field Description For Participant Codes Spacefilled'
+        doc: 'Refer to Participant ID field description for Participant codes. Space-filled'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: last_price
         type: decimal_u8_6
-        doc: 'Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: number_of_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
   fractional_consolidated_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Refer To Participant Id Field Description For Participant Codes Spacefilled'
+        doc: 'Refer to Participant ID field description for Participant codes. Space-filled'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: last_price
         type: decimal_u8_6
-        doc: 'Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis Has Implied 6 Decimal Places'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: number_of_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
   participant_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: last_price
         type: decimal_u8_6
-        doc: 'Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: open_price
         type: decimal_u8_6
-        doc: 'Represents The First Qualifying Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the first qualifying price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: tick
         type: u1
         enum: tick
-        doc: 'Represents For A Participant The Upward Downward Or Unchanged Price Movement In A Securitys Trades'
+        doc: 'Represents for a Participant the upward, downward or unchanged price movement in a security''s trades'
   fractional_participant_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Represents the date the security last traded. Represented in seconds since Epoch'
       - id: last_price
         type: decimal_u8_6
-        doc: 'Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: open_price
         type: decimal_u8_6
-        doc: 'Represents The First Qualifying Price Paid For A Security During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the first qualifying price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis Has Implied 6 Decimal Places'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places'
       - id: tick
         type: u1
         enum: tick
-        doc: 'Represents For A Participant The Upward Downward Or Unchanged Price Movement In A Securitys Trades'
+        doc: 'Represents for a Participant the upward, downward or unchanged price movement in a security''s trades'
   trade_message:
     seq:
       - id: trade_message_type
         type: u1
         enum: trade_message_type
-        doc: 'Identifies The Type Of Trade Message'
+        doc: 'Identifies the type of Trade message'
       - id: trade_message_payload
         type:
           switch-on: trade_message_type
@@ -1500,213 +1500,213 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'Represents The Price Used By The Exchange To Establish The Auction Collar Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the price used by the exchange to establish the Auction Collar. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Upper Threshold Price Of The Auction Collar Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest upper threshold price of the Auction Collar. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Lower Threshold Price Of The Auction Collar Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest lower threshold price of the Auction Collar. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Identifies The Number Of Manual Or Automatic Extensions The Applicable Auction Has Received'
+        doc: 'Identifies the number of manual or automatic extensions the applicable auction has received'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: reserved_62
         type: str
         size: 62
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Spacefilled Field Is Reserved For Future Use'
+        doc: 'Space-filled. Field is reserved for future use'
   trade_correction_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Associated With A Trade'
+        doc: 'Corrected sale condition associated with a trade'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_trade_volume
         type: u4
-        doc: 'Corrected Total Number Of Shares Which Traded In A Single Transaction For An Individual Security'
+        doc: 'Corrected total number of shares which traded in a single transaction for an individual security'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Corrected number of days that may elapse before delivery of the security'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Stop Stock Indicator'
+        doc: 'Corrected stop stock indicator'
       - id: corrected_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Trade Through Exempt Indicator'
+        doc: 'Corrected trade through exempt indicator'
       - id: corrected_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Short Sale Restriction Indicator'
+        doc: 'Corrected short sale restriction indicator'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Errored'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or errored'
       - id: original_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Original Sale Condition Associated With A Trade'
+        doc: 'Original sale condition associated with a trade'
       - id: original_trade_price
         type: decimal_u8_6
-        doc: 'Original Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Original monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_trade_volume
         type: u4
-        doc: 'Original Total Number Of Shares Which Traded In A Single Transaction For An Individual Security'
+        doc: 'Original total number of shares which traded in a single transaction for an individual security'
       - id: original_sellers_sale_days
         type: u1
-        doc: 'Original Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Original number of days that may elapse before delivery of the security'
       - id: original_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Stop Stock Indicator'
+        doc: 'Original stop stock indicator'
       - id: original_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Trade Through Exempt Indicator'
+        doc: 'Original trade through exempt indicator'
       - id: original_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Short Sale Restriction Indicator'
+        doc: 'Original short sale restriction indicator'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_previous_close_price_date
         type: u4
-        doc: 'Consolidated Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Consolidated date the security last traded. Represented in seconds since Epoch'
       - id: consolidated_last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Last Participant Id'
+        doc: 'Consolidated last participant ID'
       - id: consolidated_last_price
         type: decimal_u8_6
-        doc: 'Consolidated Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_high_price
         type: decimal_u8_6
-        doc: 'Consolidated Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
         type: decimal_u8_6
-        doc: 'Consolidated Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_total_volume
         type: u4
-        doc: 'Contains The Consolidated Total Volume Of Shares Traded For A Security At The Time Of The Trade Correction Or Cancelerror'
+        doc: 'Contains the Consolidated Total Volume of shares traded for a security at the time of the trade correction or cancel/error'
       - id: consolidated_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Tick Direction'
+        doc: 'Consolidated tick direction'
       - id: participant_previous_close_price_date
         type: u4
-        doc: 'Participant Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Participant date the security last traded. Represented in seconds since Epoch'
       - id: participant_last_price
         type: decimal_u8_6
-        doc: 'Participant Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_high_price
         type: decimal_u8_6
-        doc: 'Participant Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_low_price
         type: decimal_u8_6
-        doc: 'Participant Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_open_price
         type: decimal_u8_6
-        doc: 'Participant First Qualifying Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_total_volume
         type: u4
-        doc: 'Contains The Participant Total Volume Of Shares Traded For A Security At The Time Of The Trade Correction Or Cancelerror'
+        doc: 'Contains the Participant Total Volume of shares traded for a security at the time of the trade correction or cancel/error'
       - id: participant_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Participant Tick Direction'
+        doc: 'Participant tick direction'
   timestamp_2:
     seq:
       - id: seconds
@@ -1720,724 +1720,724 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: held_trade_indicator
         type: u1
         enum: held_trade_indicator
-        doc: 'Reflects Whether A Held Trade Qualifies For The Participant Or Consolidated Last Price At The Time It Is Disseminated'
+        doc: 'Reflects whether a held trade qualifies for the Participant or Consolidated Last Price at the time it is disseminated'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   short_trade_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol_5
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: sale_condition_1
         type: u1
         enum: sale_condition_1
-        doc: 'Denotes The Sale Condition Associated With A Trade'
+        doc: 'Denotes the sale condition associated with a trade'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
-        doc: 'In The Short Trade Format Identifies The Sale Condition Category Level Associated With A Trade'
+        doc: 'In the Short Trade format, identifies the Sale Condition Category level associated with a trade'
       - id: trade_price_2
         type: decimal_u2_2
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: trade_volume_2
         type: u2
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security Short Form'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security (short form)'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   trade_cancel_error_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Errored'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or errored'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_previous_close_price_date
         type: u4
-        doc: 'Consolidated Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Consolidated date the security last traded. Represented in seconds since Epoch'
       - id: consolidated_last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Last Participant Id'
+        doc: 'Consolidated last participant ID'
       - id: consolidated_last_price
         type: decimal_u8_6
-        doc: 'Consolidated Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_high_price
         type: decimal_u8_6
-        doc: 'Consolidated Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
         type: decimal_u8_6
-        doc: 'Consolidated Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_total_volume
         type: u4
-        doc: 'Contains The Consolidated Total Volume Of Shares Traded For A Security At The Time Of The Trade Correction Or Cancelerror'
+        doc: 'Contains the Consolidated Total Volume of shares traded for a security at the time of the trade correction or cancel/error'
       - id: consolidated_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Tick Direction'
+        doc: 'Consolidated tick direction'
       - id: participant_previous_close_price_date
         type: u4
-        doc: 'Participant Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Participant date the security last traded. Represented in seconds since Epoch'
       - id: participant_last_price
         type: decimal_u8_6
-        doc: 'Participant Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_high_price
         type: decimal_u8_6
-        doc: 'Participant Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_low_price
         type: decimal_u8_6
-        doc: 'Participant Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_open_price
         type: decimal_u8_6
-        doc: 'Participant First Qualifying Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_total_volume
         type: u4
-        doc: 'Contains The Participant Total Volume Of Shares Traded For A Security At The Time Of The Trade Correction Or Cancelerror'
+        doc: 'Contains the Participant Total Volume of shares traded for a security at the time of the trade correction or cancel/error'
       - id: participant_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Participant Tick Direction'
+        doc: 'Participant tick direction'
   fractional_trade_correction_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Associated With A Trade'
+        doc: 'Corrected sale condition associated with a trade'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
         type: u8
-        doc: 'Corrected Total Number Of Shares Which Traded In A Single Transaction Has Implied 6 Decimal Places'
+        doc: 'Corrected total number of shares which traded in a single transaction. Has implied 6 decimal places'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Corrected number of days that may elapse before delivery of the security'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Stop Stock Indicator'
+        doc: 'Corrected stop stock indicator'
       - id: corrected_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Trade Through Exempt Indicator'
+        doc: 'Corrected trade through exempt indicator'
       - id: corrected_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Corrected Short Sale Restriction Indicator'
+        doc: 'Corrected short sale restriction indicator'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Errored'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or errored'
       - id: original_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Original Sale Condition Associated With A Trade'
+        doc: 'Original sale condition associated with a trade'
       - id: original_trade_price
         type: decimal_u8_6
-        doc: 'Original Monetary Value Of An Individual Share Of Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Original monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_fractional_trade_volume
         type: u8
-        doc: 'Original Total Number Of Shares Which Traded In A Single Transaction Has Implied 6 Decimal Places'
+        doc: 'Original total number of shares which traded in a single transaction. Has implied 6 decimal places'
       - id: original_sellers_sale_days
         type: u1
-        doc: 'Original Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Original number of days that may elapse before delivery of the security'
       - id: original_stop_stock_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Stop Stock Indicator'
+        doc: 'Original stop stock indicator'
       - id: original_trade_through_exempt_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Trade Through Exempt Indicator'
+        doc: 'Original trade through exempt indicator'
       - id: original_short_sale_restriction_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Original Short Sale Restriction Indicator'
+        doc: 'Original short sale restriction indicator'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_previous_close_price_date
         type: u4
-        doc: 'Consolidated Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Consolidated date the security last traded. Represented in seconds since Epoch'
       - id: consolidated_last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Last Participant Id'
+        doc: 'Consolidated last participant ID'
       - id: consolidated_last_price
         type: decimal_u8_6
-        doc: 'Consolidated Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_high_price
         type: decimal_u8_6
-        doc: 'Consolidated Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
         type: decimal_u8_6
-        doc: 'Consolidated Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_fractional_total_volume
         type: u8
-        doc: 'Consolidated Total Volume Of Shares Traded Has Implied 6 Decimal Places'
+        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places'
       - id: consolidated_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Tick Direction'
+        doc: 'Consolidated tick direction'
       - id: participant_previous_close_price_date
         type: u4
-        doc: 'Participant Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Participant date the security last traded. Represented in seconds since Epoch'
       - id: participant_last_price
         type: decimal_u8_6
-        doc: 'Participant Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_high_price
         type: decimal_u8_6
-        doc: 'Participant Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_low_price
         type: decimal_u8_6
-        doc: 'Participant Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_open_price
         type: decimal_u8_6
-        doc: 'Participant First Qualifying Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_fractional_total_volume
         type: u8
-        doc: 'Participant Total Volume Of Shares Traded Has Implied 6 Decimal Places'
+        doc: 'Participant total volume of shares traded. Has implied 6 decimal places'
       - id: participant_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Participant Tick Direction'
+        doc: 'Participant tick direction'
   fractional_long_trade_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: held_trade_indicator
         type: u1
         enum: held_trade_indicator
-        doc: 'Reflects Whether A Held Trade Qualifies For The Participant Or Consolidated Last Price At The Time It Is Disseminated'
+        doc: 'Reflects whether a held trade qualifies for the Participant or Consolidated Last Price at the time it is disseminated'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   trading_status_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_price
         type: decimal_u8_6
-        doc: 'Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: high_indication_price_upper_limit_price_band
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be Or The Upper Price Band Value For A Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the high end Offer price of a security''s trading range may be, or the upper price band value for a security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_indication_price_lower_limit_price_band
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be Or The Lower Price Band Value For A Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the low end Bid price of a security''s trading range may be, or the lower price band value for a security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: buy_volume
         type: u4
-        doc: 'Represents The Reported Imbalance Of Buy Orders Without Matching Sell Orders For The Security For A Participant'
+        doc: 'Represents the reported imbalance of buy orders without matching sell orders for the security for a Participant'
       - id: sell_volume
         type: u4
-        doc: 'Represents The Reported Imbalance Of Sell Orders Without Matching Buy Orders For The Security For A Participant'
+        doc: 'Represents the reported imbalance of sell orders without matching buy orders for the security for a Participant'
       - id: security_status
         type: u1
         enum: security_status
-        doc: 'Identifies The Trading Status Applicable To The Transaction'
+        doc: 'Identifies the trading status applicable to the transaction'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: limit_up_limit_down_luld_indicator
         type: u1
         enum: limit_up_limit_down_luld_indicator
-        doc: 'Identifies The Limit Up Limit Down Action Related To A Security'
+        doc: 'Identifies the Limit Up-Limit Down action related to a security'
   fractional_short_trade_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol_5
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: sale_condition_1
         type: u1
         enum: sale_condition_1
-        doc: 'Denotes The Sale Condition Associated With A Trade'
+        doc: 'Denotes the sale condition associated with a trade'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
-        doc: 'In The Short Trade Format Identifies The Sale Condition Category Level Associated With A Trade'
+        doc: 'In the Short Trade format, identifies the Sale Condition Category level associated with a trade'
       - id: trade_price_2
         type: decimal_u2_2
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 2 Decimal Places. Implied decimal with scale 1e-2'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: fractional_trade_volume_4
         type: u4
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   fractional_trade_cancel_error_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Initiated The Message'
+        doc: 'Identifies the Participant or Processor that initiated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'Identifies The Transaction'
+        doc: 'Identifies the transaction'
       - id: participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number'
+        doc: 'Contains the Participant Reference Number'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies The Security Symbol Left Justified Spacefilled'
+        doc: 'Identifies the Security Symbol. Left justified, space-filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition_4
         type: sale_condition_4
         doc: 'Sale Condition 4'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Represents The Monetary Value Of An Individual Share Of Security At The Time Of The Trade Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Which Traded In A Single Transaction For An Individual Security Has Implied 6 Decimal Places'
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Days'
+        doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether The Transaction Constituted A Stopped Order'
+        doc: 'Identifies whether the transaction constituted a stopped order'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611)'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Errored'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or errored'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_previous_close_price_date
         type: u4
-        doc: 'Consolidated Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Consolidated date the security last traded. Represented in seconds since Epoch'
       - id: consolidated_last_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Last Participant Id'
+        doc: 'Consolidated last participant ID'
       - id: consolidated_last_price
         type: decimal_u8_6
-        doc: 'Consolidated Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_high_price
         type: decimal_u8_6
-        doc: 'Consolidated Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_low_price
         type: decimal_u8_6
-        doc: 'Consolidated Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_fractional_total_volume
         type: u8
-        doc: 'Consolidated Total Volume Of Shares Traded Has Implied 6 Decimal Places'
+        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places'
       - id: consolidated_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Consolidated Tick Direction'
+        doc: 'Consolidated tick direction'
       - id: participant_previous_close_price_date
         type: u4
-        doc: 'Participant Date The Security Last Traded Represented In Seconds Since Epoch'
+        doc: 'Participant date the security last traded. Represented in seconds since Epoch'
       - id: participant_last_price
         type: decimal_u8_6
-        doc: 'Participant Last Price Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant last price. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_high_price
         type: decimal_u8_6
-        doc: 'Participant Highest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant highest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_low_price
         type: decimal_u8_6
-        doc: 'Participant Lowest Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_open_price
         type: decimal_u8_6
-        doc: 'Participant First Qualifying Price Paid During The Trading Day Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_fractional_total_volume
         type: u8
-        doc: 'Participant Total Volume Of Shares Traded Has Implied 6 Decimal Places'
+        doc: 'Participant total volume of shares traded. Has implied 6 decimal places'
       - id: participant_tick
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Participant Tick Direction'
+        doc: 'Participant tick direction'
   nanosecond_timestamp:
     seq:
       - id: time

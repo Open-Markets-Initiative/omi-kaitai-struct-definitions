@@ -2166,10 +2166,10 @@ enums:
       doc: 'Ratio P Spr 1'
     76:
       id: 'hedged_one_by_two_call_spread_to_the_one'
-      doc: 'Ratio C Spr 1 X'
+      doc: 'Ratio C Spr 1x'
     77:
       id: 'hedged_one_by_two_put_spread_to_the_one'
-      doc: 'Ratio P Spr 1 X'
+      doc: 'Ratio P Spr 1x'
     88:
       id: 'discount_spreads'
       doc: 'Discspr'
@@ -2313,13 +2313,13 @@ enums:
       doc: 'Cust Daily Cfd'
     712:
       id: 'custom_daily_7_x_8'
-      doc: 'Cust Daily 7 X 8'
+      doc: 'Cust Daily 7x 8'
     713:
       id: 'custom_daily_7_x_16'
-      doc: 'Cust Daily 7 X 16'
+      doc: 'Cust Daily 7x 16'
     714:
       id: 'custom_daily_7_x_6'
-      doc: 'Cust Daily 7 X 6'
+      doc: 'Cust Daily 7x 6'
     715:
       id: 'custom_daily_off_peak_x_16'
       doc: 'Cust Daily Opx 16'

@@ -209,7 +209,7 @@ enums:
       doc: 'Repo'
     10:
       id: 'synthetic_box_leg_or_reference'
-      doc: 'Synthetic Box Leg Reference'
+      doc: 'Synthetic Box Leg/Reference'
     11:
       id: 'standard_combination'
       doc: 'Standard Combination'
@@ -256,10 +256,10 @@ enums:
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order'
   lot_type:
     0:
       id: 'undefined'
@@ -275,5 +275,5 @@ enums:
       doc: 'Block Lot'
     4:
       id: 'all_or_none_lot'
-      doc: 'All Or None Lot'
+      doc: 'All or None Lot'
 

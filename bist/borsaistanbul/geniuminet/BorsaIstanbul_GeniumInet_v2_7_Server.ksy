@@ -528,7 +528,7 @@ enums:
   short_sale_restriction:
     0:
       id: 'no_restrictions'
-      doc: 'Short Selling Is Allowed With No Price Validation'
+      doc: 'Short selling is allowed with no price validation'
     1:
       id: 'short_selling_not_allowed'
       doc: 'Short Selling Not Allowed'

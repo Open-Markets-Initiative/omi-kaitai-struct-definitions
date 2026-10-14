@@ -321,7 +321,7 @@ enums:
       doc: 'End Of System Hours'
     0x31:
       id: 'start_of_test_session'
-      doc: 'Sent Before Tests'
+      doc: 'Sent before tests.'
     0x32:
       id: 'end_of_test_session'
       doc: 'End Of Test Session'

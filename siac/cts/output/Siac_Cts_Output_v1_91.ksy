@@ -57,48 +57,48 @@ types:
     seq:
       - id: version
         type: u1
-        doc: 'Cqs Binary Protocol Version'
+        doc: 'CQS binary protocol version'
       - id: block_size
         type: u2
-        doc: 'Indicate Size In Bytes Of The Entire Transmission Bloc'
+        doc: 'Indicate size in bytes of the entire transmission bloc'
       - id: data_feed_indicator
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Q For Consolidated Quotation System'
+        doc: 'Q for Consolidated Quotation System'
       - id: retransmission_indicator
         type: u1
         enum: retransmission_indicator
-        doc: 'Indicates An Original Message Or A Retransmitted Block'
+        doc: 'Indicates an original message or a retransmitted block'
       - id: block_sequence_number
         type: u4
-        doc: 'All Transmission Blocks Are Assigned A Sequential Block Sequence Number'
+        doc: 'All transmission blocks are assigned a sequential Block Sequence Number'
       - id: messages_in_block
         type: u1
-        doc: 'The Number Of Messages Contained In The Transmission Block'
+        doc: 'The number of messages contained in the transmission block'
       - id: sip_block_timestamp
         type: sip_block_timestamp
         doc: 'Sip Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
-        doc: 'Lower 2 Bytes Of The 4 Byte Sum Of All The Bytes In The Block Excluding This Block Checksum Field'
+        doc: 'Lower 2 bytes of the 4 byte sum of all the bytes in the block, excluding this Block Checksum field'
   sip_block_timestamp:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'contains the number of seconds from Epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
+        doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_length
         type: u2
-        doc: 'The Message Length Identifies The Total Message Length Inclusive Of The Message Header And Message Body'
+        doc: 'The Message Length identifies the total message length inclusive of the Message Header and Message Body'
       - id: message_category
         type: u1
         enum: message_category
-        doc: 'The Message Category Represents The Message Classification'
+        doc: 'The Message Category represents the message classification'
       - id: category_payload
         size: message_length - 3
         type:
@@ -131,105 +131,105 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   timestamp_1:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'contains the number of seconds from Epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
+        doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
   end_of_end_of_day_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   start_of_start_of_day_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   end_of_start_of_day_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   administrative_unformatted_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: text
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Free Form Administrative Informational Message Text'
+        doc: 'Free Form administrative informational message text'
   control_message:
     seq:
       - id: control_message_type
@@ -252,127 +252,127 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   reset_block_sequence_number_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   start_of_test_cycle_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   end_of_test_cycle_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   disaster_recovery_data_center_activation_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   line_integrity_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   end_of_day_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   indices_message:
     seq:
       - id: indices_message_type
@@ -390,58 +390,58 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: index_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Index Symbol'
+        doc: 'Contains the Index symbol'
       - id: index_value
         type: s8
-        doc: 'The Index Value Represents A Statistical Composite That Measures Changes In The Economy Or In Financial Markets'
+        doc: 'The Index Value represents a statistical composite that measures changes in the economy or in financial markets'
   bid_and_offer_index_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: index_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Index Symbol'
+        doc: 'Contains the Index symbol'
       - id: bid_index_value
         type: s8
-        doc: 'The Bid Index Value Represents The Value Of The Indexs Calculation Formula Using The Current Bid Values Of The Component Securities'
+        doc: 'The Bid Index Value represents the value of the index’s calculation formula using the current Bid values of the component securities'
       - id: offer_index_value
         type: s8
-        doc: 'Represents The Value Of The Index Calculation Formula Using The Current Offer Values Of The Component Securities'
+        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities'
   market_status_message:
     seq:
       - id: market_status_message_type
@@ -462,77 +462,77 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 17% Of Previous Close Sp 500 Value Has Implied 6 Decimal Places'
+        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places'
       - id: mwcb_level_2
         type: s8
-        doc: 'Decline Level 13% Of Previous Close'
+        doc: 'Decline Level 13% of Previous Close'
       - id: mwcb_level_3
         type: s8
-        doc: 'Decline Level 20% Of Previous Close'
+        doc: 'Decline Level 20% of Previous Close'
       - id: reserved
         type: u1
-        doc: 'Field Is Reserved For Future Use'
+        doc: 'Field is reserved for future use'
   market_wide_circuit_breaker_status_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: market_wide_circuit_breaker_level_indicator
         type: u1
         enum: market_wide_circuit_breaker_level_indicator
-        doc: 'Identifies The Threshold Level That Was Breached'
+        doc: 'Identifies the threshold level that was breached'
       - id: reserved
         type: u1
-        doc: 'Field Is Reserved For Future Use'
+        doc: 'Field is reserved for future use'
   approximate_adjusted_volume_market_center_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: num_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
       - id: participants
         type: participants
         repeat: expr
@@ -543,61 +543,61 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: trade_total_volume
         type: u8
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
   approximate_trades_and_total_dollar_value_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: total_trades
         type: u4
-        doc: 'Contains The Total Number Of Trade Transactions Executed From A Market Center'
+        doc: 'Contains the total number of trade transactions executed from a Market Center'
       - id: dollar_value
         type: u8
-        doc: 'The Dollar Value Represents The Total Dollar Worth Of The Daily Trade Transactions'
+        doc: 'The Dollar Value represents the total dollar worth of the daily trade transactions'
   crossing_session_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: crossing_session_1_total_trades_volume
         type: u8
-        doc: 'Contains The Number Of Shares Traded At The Participants Close Price And Taking Place After The Close Of A Participants Regular Session'
+        doc: 'Contains the number of shares traded at the Participant’s close price and taking place after the close of a Participant’s regular session'
       - id: crossing_session_2_dollar_value
         type: u8
-        doc: 'Contains The Dollar Value Traded After The Close Of A Participants Regular Session'
+        doc: 'Contains the Dollar Value traded after the close of a Participant’s regular session'
       - id: crossing_session_2_total_trades_volume
         type: u8
-        doc: 'Contains The Number Of Shares Traded After The Close Of A Participants Regular Session'
+        doc: 'Contains the number of shares traded after the close of a Participant’s regular session'
   prior_day_message:
     seq:
       - id: prior_day_message_type
@@ -616,36 +616,36 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_trade
         type: corrected_trade
         doc: 'Corrected Trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: original_trade
         type: original_trade
         doc: 'Original Trade'
@@ -656,25 +656,25 @@ types:
         doc: 'Sale Conditions'
       - id: trade_price_long
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume_long
         type: u4
-        doc: 'Trade Volume Of The Original Transaction'
+        doc: 'Trade volume of the original transaction'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
@@ -684,27 +684,27 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Denotes The Settlement Type Sale Condition'
+        doc: 'Denotes the Settlement Type sale condition'
       - id: category_2
         type: u1
         enum: category_2
-        doc: 'Denotes The Reason Type Sale Condition'
+        doc: 'Denotes the Reason Type sale condition'
       - id: category_3
         type: u1
         enum: category_3
-        doc: 'Denotes The Sequence Type Sale Condition'
+        doc: 'Denotes the Sequence Type sale condition'
       - id: category_4
         type: u1
         enum: category_4
-        doc: 'Denotes The Trade Detail Sale Condition'
+        doc: 'Denotes the Trade Detail sale condition'
   prior_day_trade_date_and_time:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'contains the number of seconds from Epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
+        doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
   original_trade:
     seq:
       - id: sale_conditions
@@ -712,25 +712,25 @@ types:
         doc: 'Sale Conditions'
       - id: trade_price_long
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume_long
         type: u4
-        doc: 'Trade Volume Of The Original Transaction'
+        doc: 'Trade volume of the original transaction'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
@@ -739,57 +739,57 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_conditions
         type: sale_conditions
         doc: 'Sale Conditions'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
@@ -798,64 +798,64 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_conditions
         type: sale_conditions
         doc: 'Sale Conditions'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Error'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or error'
   summary_message:
     seq:
       - id: summary_message_type
@@ -875,211 +875,211 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: previous_close_price
         type: decimal_u8_6
-        doc: 'The Previous Close Price Represents The Last Qualifying Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Previous Close Price represents the last qualifying price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: number_of_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
   participant_start_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: previous_close_price
         type: decimal_u8_6
-        doc: 'The Previous Close Price Represents The Last Qualifying Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Previous Close Price represents the last qualifying price paid for a security during the trading day. Implied decimal with scale 1e-6'
   consolidated_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_participant_id
         type: u1
         enum: last_participant_id
-        doc: 'Refer To Participant Id Field Description For Participant Codes'
+        doc: 'Refer to Participant ID field description for Participant codes'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: last_price
         type: decimal_u8_6
-        doc: 'The Last Price Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated. Implied decimal with scale 1e-6'
+        doc: 'The Last Price represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'The High Price Represents The Highest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The High Price represents the highest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'The Low Price Represents The Lowest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: number_of_participants
         type: u1
-        doc: 'Represents The Actual Number Of Participants For Which An Issue Will Be Reported'
+        doc: 'Represents the actual number of Participants for which an issue will be reported'
   participant_end_of_day_summary_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: summary_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant Whose Summary Information Is Provided'
+        doc: 'Identifies the Participant whose summary information is provided'
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: last_price
         type: decimal_u8_6
-        doc: 'The Last Price Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated. Implied decimal with scale 1e-6'
+        doc: 'The Last Price represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'The High Price Represents The Highest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The High Price represents the highest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'The Low Price Represents The Lowest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: open_price
         type: decimal_u8_6
-        doc: 'The Open Price Represents The First Qualifying Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Open Price represents the first qualifying price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: tick
         type: u1
         enum: tick
-        doc: 'Represents For A Participant The Upward Downward Or Unchanged Price Movement In A Securitys Trades'
+        doc: 'Represents for a Participant the upward, downward or unchanged price movement in a security''s trades'
   trade_message:
     seq:
       - id: trade_message_type
@@ -1101,111 +1101,111 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'The Auction Collar Reference Price Represents The Price Used By The Exchange To Establish The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'The Auction Collar Reference Price represents the price used by the exchange to establish the Auction Collar. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Upper Threshold Price Of The Auction Collar Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest upper threshold price of the Auction Collar. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Lower Threshold Price Of The Auction Collar The Lower Threshold Price Of The Auction Collar Is The Lowest Price Of The Auction Collar If Any. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest lower threshold price of the Auction Collar. The lower threshold price of the Auction Collar is the lowest price of the auction collar, if any. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Identifies The Number Of Manual Or Automatic Extensions The Applicable Auction Has Received'
+        doc: 'Identifies the number of manual or automatic extensions the applicable auction has received'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: future_use
         type: str
         size: 62
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Field Is Reserved For Future Use'
+        doc: 'Field is reserved for future use'
   trade_correction_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_trade
         type: corrected_trade
         doc: 'Corrected Trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or error'
       - id: original_trade
         type: original_trade
         doc: 'Original Trade'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_data
         type: consolidated_data
         doc: 'Consolidated Data'
@@ -1216,330 +1216,330 @@ types:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'contains the number of seconds from Epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
+        doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
   consolidated_data:
     seq:
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: last_participant_id
         type: u1
         enum: last_participant_id
-        doc: 'Refer To Participant Id Field Description For Participant Codes'
+        doc: 'Refer to Participant ID field description for Participant codes'
       - id: last_price
         type: decimal_u8_6
-        doc: 'The Last Price Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated. Implied decimal with scale 1e-6'
+        doc: 'The Last Price represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'The High Price Represents The Highest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The High Price represents the highest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'The Low Price Represents The Lowest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: tick
         type: u1
         enum: tick
-        doc: 'Represents For A Participant The Upward Downward Or Unchanged Price Movement In A Securitys Trades'
+        doc: 'Represents for a Participant the upward, downward or unchanged price movement in a security''s trades'
   participant_data:
     seq:
       - id: previous_close_price_date
         type: u4
-        doc: 'Represents The Date The Security Last Traded'
+        doc: 'Represents the date the security last traded'
       - id: last_participant_id
         type: u1
         enum: last_participant_id
-        doc: 'Refer To Participant Id Field Description For Participant Codes'
+        doc: 'Refer to Participant ID field description for Participant codes'
       - id: last_price
         type: decimal_u8_6
-        doc: 'The Last Price Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated. Implied decimal with scale 1e-6'
+        doc: 'The Last Price represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: high_price
         type: decimal_u8_6
-        doc: 'The High Price Represents The Highest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The High Price represents the highest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: low_price
         type: decimal_u8_6
-        doc: 'The Low Price Represents The Lowest Price Paid For A Security During The Trading Day. Implied decimal with scale 1e-6'
+        doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: total_volume
         type: u8
-        doc: 'Contains Total Volume Of Shares Traded In A Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated'
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
       - id: tick
         type: u1
         enum: tick
-        doc: 'Represents For A Participant The Upward Downward Or Unchanged Price Movement In A Securitys Trades'
+        doc: 'Represents for a Participant the upward, downward or unchanged price movement in a security''s trades'
   long_trade_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_conditions
         type: sale_conditions
         doc: 'Sale Conditions'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: held_trade_indicator
         type: u1
         enum: held_trade_indicator
-        doc: 'The Held Trade Indicator Reflects Whether This Trade Qualifies For The Participant Or Consolidated Last Price At The Time It Is Disseminated'
+        doc: 'The Held Trade Indicator reflects whether this trade qualifies for the Participant or Consolidated Last Price at the time it is disseminated'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   trading_status_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_price
         type: decimal_u8_6
-        doc: 'The Last Price Represents The Last Price For That Security Either On A Consolidated Or An Individual Participant Basis At The Time It Is Disseminated. Implied decimal with scale 1e-6'
+        doc: 'The Last Price represents the last price for that security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: high_indication_price_upper_limit_price_band
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be Or The Upper Price Band Value For A Security Has Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the high end Offer price of a security''s trading range may be, or the upper price band value for a security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: low_indication_price_lower_limit_price_band
         type: decimal_u8_6
-        doc: 'The Low Indication Price Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be. Implied decimal with scale 1e-6'
+        doc: 'The Low Indication Price represents an approximation of what the low end "Bid" price of a security''s trading range may be. Implied decimal with scale 1e-6'
       - id: buy_volume
         type: u4
-        doc: 'The Buy Volume Represents The Reported Imbalance Of Buy Orders Without Matching Sell Orders For The Security For A Participant'
+        doc: 'The Buy Volume represents the reported imbalance of buy orders without matching sell orders for the security for a Participant'
       - id: sell_volume
         type: u4
-        doc: 'Represents The Reported Imbalance Of Sell Orders Without Matching Buy Orders For The Security For A Participant'
+        doc: 'Represents the reported imbalance of sell orders without matching buy orders for the security for a Participant'
       - id: security_status
         type: u1
         enum: security_status
-        doc: 'Identifies The Trading Status Applicable To The Transaction'
+        doc: 'Identifies the trading status applicable to the transaction'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Opening Delay Or Trading Halt'
+        doc: 'Denotes the reason for the Opening Delay or Trading Halt'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: limit_up_limit_down_indicator
         type: u1
         enum: limit_up_limit_down_indicator
-        doc: 'Identifies The Limit Up Limit Down Action Related To A Security'
+        doc: 'Identifies the Limit Up-Limit Down action related to a security'
   short_trade_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol_short
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: sale_condition
         type: u1
         enum: sale_condition
-        doc: 'Denotes The Sale Condition Associated With A Trade'
+        doc: 'Denotes the sale condition associated with a trade'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
-        doc: 'In The Short Trade Format Identifies The Sale Condition Category Level Associated With A Trade'
+        doc: 'In the Short Trade format, identifies the Sale Condition Category level associated with a trade'
       - id: trade_price_short
         type: decimal_u2_2
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-2'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-2'
       - id: trade_volume_short
         type: u2
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: consolidated_high_low_last_indicator
         type: u1
         enum: consolidated_high_low_last_indicator
-        doc: 'Identifies The Consolidated High Low Last Price Applicable To The Trade'
+        doc: 'Identifies the Consolidated High/Low/Last Price applicable to the trade'
       - id: participant_open_high_low_last_indicator
         type: u1
         enum: participant_open_high_low_last_indicator
-        doc: 'Identifies The Participant Open High Low Last Applicable To The Transaction'
+        doc: 'Identifies the Participant Open/High/Low/Last applicable to the transaction'
   trade_cancel_error_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: timestamp_1
         type: timestamp_1
         doc: 'Timestamp 1. Nanoseconds since Unix epoch'
       - id: message_id
         type: u1
-        doc: 'The Message Id Identifies The Individual Message Within The Block Beginning With Number One'
+        doc: 'The Message ID identifies the individual message within the block beginning with number one'
       - id: transaction_id
         type: u4
-        doc: 'The Transaction Id Will Be Populated By Cqs And Is Reserved For Internal Use Only'
+        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
       - id: participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Is A Passthru Of The Inbound Participant Reference Number Assigned To A Transaction'
+        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_conditions
         type: sale_conditions
         doc: 'Sale Conditions'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'The Trade Price Is The Monetary Value Of An Individual Share Of Security At The Time Of The Trade. Implied decimal with scale 1e-6'
+        doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Contains The Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Contains the total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Specifies The Number Of Days That May Elapse Before Delivery Of The Security'
+        doc: 'Specifies the number of days that may elapse before delivery of the security'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'The Transaction That Constituted The Tradethrough Was The Execution By A Trading Center Of An Order For Which At The Time Of Receipt Of The Order The Trading Center Had Guaranteed An Execution At No Worse Than A Specified Price'
+        doc: 'The transaction that constituted the trade-through was the execution by a trading center of an order for which, at the time of receipt of the order, the trading center had guaranteed an execution at no worse than a specified price'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Will More Fully Describe The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and when used jointly with certain Sale Conditions, will more fully describe the characteristics of a particular trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Has Been Formed'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility has been formed'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Contains The Participant Reference Number Of Transaction To Be Corrected Cancelled Or Error'
+        doc: 'Contains the Participant Reference Number of transaction to be corrected, cancelled or error'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Error'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or error'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect for a security'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market Of The Security Symbol'
+        doc: 'Identifies the Primary Listing Market of the security symbol'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: consolidated_data
         type: consolidated_data
         doc: 'Consolidated Data'
@@ -1607,10 +1607,10 @@ enums:
   retransmission_indicator:
     0x4f:
       id: 'original'
-      doc: 'Original Message'
+      doc: 'Original message'
     0x56:
       id: 'retransmitted'
-      doc: 'Retransmitted Message'
+      doc: 'Retransmitted message'
   message_category:
     0x41:
       id: 'administrative'
@@ -1652,58 +1652,58 @@ enums:
   participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Bx'
+      doc: 'NASDAQ BX'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x44:
       id: 'finra_adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x53:
       id: 'cts'
       doc: 'Consolidated Tape System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x56:
       id: 'iex'
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   control_message_type:
     0x41:
       id: 'start_of_day_message'
@@ -1968,52 +1968,52 @@ enums:
   primary_listing_market_participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Bx'
+      doc: 'NASDAQ BX'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x44:
       id: 'finra_adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4d:
       id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x56:
       id: 'iex'
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   financial_status_indicator:
     0x30:
       id: 'financial_status_not_applicable'
@@ -2038,7 +2038,7 @@ enums:
       doc: 'Below Continuing Listing Standards And Late Filing'
     0x37:
       id: 'bankrupt_below_continuing_listing_standards_and_late_filing'
-      doc: 'Bankrupt Below Continuing Listing Standards And Late Filing'
+      doc: 'Bankrupt, Below Continuing Listing Standards And Late Filing'
     0x38:
       id: 'creations_suspended'
       doc: 'Creations Suspended'
@@ -2051,58 +2051,58 @@ enums:
   last_participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Bx'
+      doc: 'NASDAQ BX'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x44:
       id: 'finra_adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x53:
       id: 'cts'
       doc: 'Consolidated Tape System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x56:
       id: 'iex'
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   tick:
     0x20:
       id: 'not_applicable'
@@ -2314,10 +2314,10 @@ enums:
       doc: 'Limit Up Limit Down Not Applicable'
     0x41:
       id: 'limit_up_limit_down_price_band'
-      doc: 'Limit Up Limit Down Price Band'
+      doc: 'Limit Up-Limit Down Price Band'
     0x42:
       id: 'republished_limit_up_limit_down_price_band'
-      doc: 'Republished Limit Up Limit Down Price Band'
+      doc: 'Republished Limit Up-Limit Down Price Band'
     0x43:
       id: 'national_best_bid_limit_state_entered'
       doc: 'National Best Bid Limit State Entered'
@@ -2332,16 +2332,16 @@ enums:
       doc: 'National Best Offer Limit State Exited'
     0x47:
       id: 'national_best_bid_and_national_best_offer_limit_state_entered'
-      doc: 'National Best Bid And National Best Offer Limit State Entered'
+      doc: 'National Best Bid and National Best Offer Limit State Entered'
     0x48:
       id: 'national_best_bid_and_national_best_offer_limit_state_exited'
-      doc: 'National Best Bid And National Best Offer Limit State Exited'
+      doc: 'National Best Bid and National Best Offer Limit State Exited'
     0x49:
       id: 'national_best_bid_limit_state_entered_and_national_best_offer_limit_state_exited'
-      doc: 'National Best Bid Limit State Entered And National Best Offer Limit State Exited'
+      doc: 'National Best Bid Limit State Entered and National Best Offer Limit State Exited'
     0x4a:
       id: 'national_best_bid_limit_state_exited_and_national_best_offer_limit_state_entered'
-      doc: 'National Best Bid Limit State Exited And National Best Offer Limit State Entered'
+      doc: 'National Best Bid Limit State Exited and National Best Offer Limit State Entered'
   sale_condition:
     0x20:
       id: 'regular_sale'

@@ -249,13 +249,13 @@ enums:
   spin_type:
     1:
       id: 'reference'
-      doc: 'Reference Spin'
+      doc: 'Reference spin'
     2:
       id: 'market_data'
-      doc: 'Market Data Spin'
+      doc: 'Market data spin'
     3:
       id: 'opening'
-      doc: 'Opening Spin'
+      doc: 'Opening spin'
   trade_action:
     2:
       id: 'add'

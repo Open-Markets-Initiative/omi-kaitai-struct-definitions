@@ -630,29 +630,29 @@ enums:
       doc: 'Day'
     0x33:
       id: 'immediate_or_cancel'
-      doc: 'Immediate Or Cancel As Much Of The Order As Possible Must Be Executed Immediately Any Part Of The Order That Is Not Executed Immediately Gets Canceled'
+      doc: 'Immediate or Cancel. As much of the order as possible must be executed immediately. Any part of the order that is not executed immediately gets canceled.'
     0x36:
       id: 'good_till_date'
-      doc: 'Good Till Date Gtd Date Must Be Todays Trading Date This Field Must Be Used In Conjunction With Expire Time'
+      doc: 'Good Till Date (GTD). Date must be today''s trading date. This field must be used in conjunction with ExpireTime.'
     0x38:
       id: 'stream_or_kill'
-      doc: 'Stream Or Kill Sok Order Is Paired In A Stream Immediately Or Is Cancelled Cxd Pure Stream Only'
+      doc: 'Stream Or Kill (SOK). Order is paired in a stream immediately or is cancelled. (CXD PureStream only)'
     0x50:
       id: 'post_only_order'
-      doc: 'Post Only Order'
+      doc: 'Post-Only Order'
   ex_destination:
     0x43:
       id: 'cxc'
-      doc: 'Cxc'
+      doc: 'CXC'
     0x32:
       id: 'cx_2'
-      doc: 'Cx 2'
+      doc: 'CX2'
     0x44:
       id: 'cxd'
-      doc: 'Cxd'
+      doc: 'CXD'
     0x53:
       id: 'smart_order_router'
-      doc: 'Smart Order Router Requires Routing Strategy'
+      doc: 'Smart Order Router (requires RoutingStrategy)'
   enter_order_optional_field:
     37:
       id: 'userrefidx'
@@ -780,53 +780,53 @@ enums:
       doc: 'Seek Price Improvement'
     0x4c:
       id: 'melo'
-      doc: 'Melo Cxc Only'
+      doc: 'M-ELO (CXC Only)'
     0x6f:
       id: 'odd_lot_liquidity_providing'
-      doc: 'Odd Lot Liquidity Providing Olp Cxd Only'
+      doc: 'Odd Lot Liquidity Providing (OLP) (CXD Only)'
   min_qty_type:
     0x4e:
       id: 'maq'
-      doc: 'Maq Minimum Acceptable Quantity Min Qty Must Be Met On Every Partial Execution'
+      doc: 'MAQ (Minimum Acceptable Quantity), MinQty must be met on every partial execution'
     0x6d:
       id: 'maq_at_touch'
-      doc: 'Maq At Touch Cxd Only'
+      doc: 'MAQ at touch (CXD only)'
     0x74:
       id: 'mq_at_touch'
-      doc: 'Mq At Touch Cxd Only'
+      doc: 'MQ at touch (CXD only)'
     0x7a:
       id: 'minimum_quantity'
-      doc: 'Minimum Quantity Mq Min Qty May Be Met In Aggregate'
+      doc: 'Minimum Quantity (MQ), MinQty may be met in aggregate'
   target_strategy:
     1000:
       id: 'liquidity_rate_515'
-      doc: 'Liquidity Rate 515%'
+      doc: 'Liquidity Rate 5-15%'
     1001:
       id: 'liquidity_rate_530'
-      doc: 'Liquidity Rate 530%'
+      doc: 'Liquidity Rate 5-30%'
     1002:
       id: 'mach_two_10200'
-      doc: 'Mach Two 10200%'
+      doc: 'Mach Two 10 - 200%'
     1003:
       id: 'custom_liquidity_rate'
       doc: 'Custom Liquidity Rate'
   order_origination:
     0x35:
       id: 'direct_access_customer'
-      doc: 'Order Received From Direct Access Customer Dea'
+      doc: 'Order received from direct access customer (DEA)'
     0x36:
       id: 'foreign_dealer_equivalent'
-      doc: 'Order Received From Foreign Dealer Equivalent Fde'
+      doc: 'Order received from foreign dealer equivalent (FDE)'
     0x37:
       id: 'executiononly_service'
-      doc: 'Order Received From An Executiononly Service Oeo'
+      doc: 'Order received from an execution-only service (OEO)'
   routing_arrangement_indicator:
     0x30:
       id: 'no_routing_arrangement_in_place'
-      doc: 'No Routing Arrangement In Place'
+      doc: 'No routing arrangement in place'
     0x31:
       id: 'routing_arrangement_in_place'
-      doc: 'Routing Arrangement In Place'
+      doc: 'Routing arrangement in place'
   basket_trade:
     0x4e:
       id: 'no_field'
@@ -878,21 +878,21 @@ enums:
       doc: 'Cancel Oldest'
     0x44:
       id: 'decrement_and_cancel'
-      doc: 'Decrement And Cancel'
+      doc: 'Decrement and Cancel'
     0x45:
       id: 'execute_trade'
       doc: 'Execute Trade'
   short_marking_exempt:
     0x30:
       id: 'sme'
-      doc: 'Sme'
+      doc: 'SME'
   conditional_order:
     0x43:
       id: 'conditional_order'
-      doc: 'Conditional Order Cxd Only'
+      doc: 'Conditional Order (CXD only)'
     0x58:
       id: 'extended_firmup_time_conditional_order'
-      doc: 'E Xtended Firmup Time Xft Conditional Order Cxd Only'
+      doc: 'eXtended Firm-up Time (XFT) conditional order (CXD only)'
   allow_conditional:
     0x4e:
       id: 'no_field'
@@ -917,13 +917,13 @@ enums:
   handl_inst:
     0x66:
       id: 'dao'
-      doc: 'Dao'
+      doc: 'DAO'
     0x31:
       id: 'opr_reprice'
-      doc: 'Opr Reprice'
+      doc: 'OPR Reprice'
     0x35:
       id: 'opr_cancel'
-      doc: 'Opr Cancel'
+      doc: 'OPR Cancel'
   replace_order_request_optional_field:
     37:
       id: 'userrefidx'
@@ -1065,10 +1065,10 @@ enums:
   event_code:
     0x53:
       id: 'start_of_day'
-      doc: 'Start Of Day Indicating That The Exchange Is Open And Is Ready To Accept Orders'
+      doc: 'Start of Day, indicating that the exchange is open and is ready to accept orders'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day Indicating That The Exchange Is Closed And Will No Longer Accept New Orders Note That It Is Still Possible To Receive Breaks And Cancels After This Event'
+      doc: 'End of Day, indicating that the exchange is closed and will no longer accept new orders. Note that it is still possible to receive breaks and cancels after this event.'
   order_state:
     0x4c:
       id: 'order_live'
@@ -1197,20 +1197,20 @@ enums:
   reprice_reason:
     1:
       id: 'repriced_to_prevent_trade'
-      doc: 'Repriced To Prevent Trade'
+      doc: 'Repriced to prevent trade'
     2:
       id: 'repriced_to_prevent_lock'
-      doc: 'Repriced To Prevent Lock'
+      doc: 'Repriced to prevent lock'
     3:
       id: 'repriced_to_prevent_cross'
-      doc: 'Repriced To Prevent Cross'
+      doc: 'Repriced to prevent cross'
     4:
       id: 'repriced_for_marketplace_thresholds'
-      doc: 'Repriced For Marketplace Thresholds'
+      doc: 'Repriced for Marketplace Thresholds'
   nbbo_setter:
     0x59:
       id: 'nbbo_setter'
-      doc: 'Order Is Nbbo Setter'
+      doc: 'Order is NBBO Setter'
   order_replaced_optional_field:
     37:
       id: 'userrefidx'
@@ -1294,52 +1294,52 @@ enums:
   liquidity_flag:
     0x41:
       id: 'order_added_liquidity'
-      doc: 'Order Added Liquidity'
+      doc: 'Order added liquidity'
     0x52:
       id: 'order_removed_liquidity'
-      doc: 'Order Removed Liquidity'
+      doc: 'Order removed liquidity'
     0x61:
       id: 'order_added_hidden_liquidity'
-      doc: 'Order Added Hidden Liquidity'
+      doc: 'Order added hidden liquidity'
     0x72:
       id: 'order_removed_hidden_liquidity'
-      doc: 'Order Removed Hidden Liquidity'
+      doc: 'Order removed hidden liquidity'
     0x64:
       id: 'order_added_hidden_liquidity_atthetouch'
-      doc: 'Order Added Hidden Liquidity Atthetouch'
+      doc: 'Order added hidden liquidity at-the-touch'
     0x44:
       id: 'order_removed_hidden_liquidity_atthetouch'
-      doc: 'Order Removed Hidden Liquidity Atthetouch'
+      doc: 'Order removed hidden liquidity at-the-touch'
     0x67:
       id: 'order_added_gef_liquidity'
-      doc: 'Order Added Gef Liquidity'
+      doc: 'Order added GEF liquidity'
     0x47:
       id: 'order_removed_gef_liquidity'
-      doc: 'Order Removed Gef Liquidity'
+      doc: 'Order removed GEF liquidity'
     0x43:
       id: 'market_on_close'
       doc: 'Market On Close'
     0x53:
       id: 'displayed_liquidityadding_order_improves_the_nbbo'
-      doc: 'Displayed Liquidityadding Order Improves The Nbbo'
+      doc: 'Displayed, liquidity-adding order improves the NBBO'
     0x4f:
       id: 'opening_closing_auction'
-      doc: 'Opening Closing Auction'
+      doc: 'Opening/Closing Auction'
     0x45:
       id: 'last_sale_trading_session'
-      doc: 'Last Sale Trading Session Tsxtsxv'
+      doc: 'Last Sale Trading Session (TSX/TSXV)'
     0x4c:
       id: 'melo'
-      doc: 'Melo'
+      doc: 'M-ELO'
     0x50:
       id: 'cxd_pure_stream_ratebased_execution'
-      doc: 'Cxd Pure Stream Ratebased Execution'
+      doc: 'CXD PureStream rate-based execution'
     0x4d:
       id: 'cxd_pure_stream_ls_midpoint_block_removed_liquidity'
-      doc: 'Cxd Pure Stream Ls Midpoint Block Removed Liquidity'
+      doc: 'CXD PureStream LS mid-point block removed liquidity'
     0x46:
       id: 'xft'
-      doc: 'Xft'
+      doc: 'XFT'
   stp_canceled_optional_field:
     37:
       id: 'userrefidx'
@@ -1350,49 +1350,49 @@ enums:
       doc: 'Unspecified'
     0x41:
       id: 'chix'
-      doc: 'Chix'
+      doc: 'CHIX'
     0x42:
       id: 'cx_2'
-      doc: 'Cx 2'
+      doc: 'CX2'
     0x43:
       id: 'cxd'
-      doc: 'Cxd'
+      doc: 'CXD'
     0x44:
       id: 'tsx'
-      doc: 'Tsx'
+      doc: 'TSX'
     0x45:
       id: 'pure'
-      doc: 'Pure'
+      doc: 'PURE'
     0x46:
       id: 'alph'
-      doc: 'Alph'
+      doc: 'ALPH'
     0x47:
       id: 'match_field'
-      doc: 'Match'
+      doc: 'MATCH'
     0x48:
       id: 'omga'
-      doc: 'Omga'
+      doc: 'OMGA'
     0x49:
       id: 'lynx'
-      doc: 'Lynx'
+      doc: 'LYNX'
     0x4a:
       id: 'aeqn'
-      doc: 'Aeqn'
+      doc: 'AEQN'
     0x4b:
       id: 'aeql'
-      doc: 'Aeql'
+      doc: 'AEQL'
     0x4c:
       id: 'cse_2'
-      doc: 'Cse 2'
+      doc: 'CSE2'
     0x4d:
       id: 'alpx'
-      doc: 'Alpx'
+      doc: 'ALPX'
     0x4e:
       id: 'alpd'
-      doc: 'Alpd'
+      doc: 'ALPD'
     0x4f:
       id: 'icx'
-      doc: 'Icx'
+      doc: 'ICX'
   order_executed_optional_field:
     37:
       id: 'userrefidx'
@@ -1464,7 +1464,7 @@ enums:
       doc: 'Stream Off'
     0x52:
       id: 'conditional_order_firmup_request'
-      doc: 'Conditional Order Firmup Request'
+      doc: 'Conditional order firm-up request'
   order_restated_optional_field:
     37:
       id: 'userrefidx'

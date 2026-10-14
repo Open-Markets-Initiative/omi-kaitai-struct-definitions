@@ -414,10 +414,10 @@ enums:
   md_entry_type_spectrum_entry_type:
     0x39:
       id: 'vwap'
-      doc: 'Volume Weighted Average Traded Price'
+      doc: 'Volume weighted average traded price'
     0x74:
       id: 'twap'
-      doc: 'Average Traded Price'
+      doc: 'Average traded price'
   md_entry_type_ticker_entry_type:
     0x6b:
       id: 'touch_high'
@@ -458,10 +458,10 @@ enums:
   open_close_settl_flag:
     0:
       id: 'current_day'
-      doc: 'Current Day Entry'
+      doc: 'Current day entry'
     4:
       id: 'previous_day'
-      doc: 'Element Entry From Previous Business Day'
+      doc: 'Element entry from previous business day'
   trading_session_id:
     0:
       id: 'gl'
@@ -474,7 +474,7 @@ enums:
       doc: 'Tokyo'
     3:
       id: 'hk'
-      doc: 'Hong Kong Singapore'
+      doc: 'Hong Kong/ Singapore'
     4:
       id: 'ln'
       doc: 'London'
@@ -491,5 +491,5 @@ enums:
   security_trading_event:
     4:
       id: 'global_day_roll'
-      doc: 'Global Day Has Been Rolled And Daily Elements Were Reset'
+      doc: 'Global Day has been rolled and daily elements were reset'
 

@@ -446,138 +446,138 @@ enums:
   restricted_option:
     0x59:
       id: 'yes_field'
-      doc: 'Sapphire Will Accept Position Closing Orders Only'
+      doc: 'Sapphire will accept position closing orders only'
     0x4e:
       id: 'no_field'
-      doc: 'Sapphire Will Accept Open And Close Positions'
+      doc: 'Sapphire will accept open and close positions'
   long_term_option:
     0x59:
       id: 'yes_field'
-      doc: 'Far Month Expiration As Defined By Sapphire Rules'
+      doc: 'Far month expiration (as defined by Sapphire rules)'
     0x4e:
       id: 'no_field'
-      doc: 'Near Month Expiration As Defined By Sapphire Rules'
+      doc: 'Near month expiration (as defined by Sapphire rules)'
   active_on_sapphire:
     0x41:
       id: 'active'
-      doc: 'Active Tradable On Sapphire'
+      doc: 'Active (tradable) on Sapphire'
     0x49:
       id: 'inactive'
-      doc: 'Inactive Not Tradable On Sapphire'
+      doc: 'Inactive (not tradable) on Sapphire'
   sapphire_bbo_posting_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 At All Prices'
+      doc: 'Penny (0.01) at all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny If Price 3 Nickel If Price 3'
+      doc: 'Penny if Price <= $3, Nickel if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel If Price 3 Dime If Price 3'
+      doc: 'Nickel if Price <= $3, Dime if Price > $3'
   liquidity_acceptance_increment_indicator:
     0x50:
       id: 'penny'
-      doc: 'Penny 0.01 At All Prices'
+      doc: 'Penny (0.01) at all prices'
     0x4e:
       id: 'penny_or_nickel'
-      doc: 'Penny If Price 3 Nickel If Price 3'
+      doc: 'Penny if Price <= $3, Nickel if Price > $3'
     0x44:
       id: 'nickel_or_dime'
-      doc: 'Nickel If Price 3 Dime If Price 3'
+      doc: 'Nickel if Price <= $3, Dime if Price > $3'
   opening_underlying_market_code:
     0x41:
       id: 'nyse_amex'
-      doc: 'Nyse Amex'
+      doc: 'NYSE Amex'
     0x42:
       id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'national_stock_exchange'
       doc: 'National Stock Exchange'
     0x44:
       id: 'finra_adf'
-      doc: 'Finra Adf'
+      doc: 'FINRA ADF'
     0x45:
       id: 'market_independent'
-      doc: 'Market Independent Any Market That Opens First'
+      doc: 'Market Independent (Any market that opens first)'
     0x48:
       id: 'miax_pearl_equities'
-      doc: 'Miax Pearl Equities'
+      doc: 'MIAX Pearl Equities'
     0x49:
       id: 'international_securities_exchange'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'edga_exchange_inc'
-      doc: 'Edga Exchange Inc'
+      doc: 'EDGA Exchange, Inc.'
     0x4b:
       id: 'edgx_exchange_inc'
-      doc: 'Edgx Exchange Inc'
+      doc: 'EDGX Exchange, Inc.'
     0x4c:
       id: 'ltse'
-      doc: 'Ltse'
+      doc: 'LTSE'
     0x4d:
       id: 'chicago_stock_exchange'
       doc: 'Chicago Stock Exchange'
     0x4e:
       id: 'nyse_euronext'
-      doc: 'Nyse Euronext'
+      doc: 'NYSE Euronext'
     0x50:
       id: 'nyse_arca_exchange'
-      doc: 'Nyse Arca Exchange'
+      doc: 'NYSE Arca Exchange'
     0x51:
       id: 'nasdaq_omx_utp'
-      doc: 'Nasdaq Omx Via Utp Feed'
+      doc: 'NASDAQ OMX (via UTP Feed)'
     0x54:
       id: 'nasdaq_omx_cta'
-      doc: 'Nasdaq Omx Via Cta Feed'
+      doc: 'NASDAQ OMX (via CTA Feed)'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x57:
       id: 'cboe_stock_exchange'
-      doc: 'Cboe Stock Exchange Cbsx'
+      doc: 'CBOE Stock Exchange (CBSX)'
     0x58:
       id: 'nasdaq_omx_phlx'
-      doc: 'Nasdaq Omx Phlx'
+      doc: 'NASDAQ OMX PHLX'
     0x59:
       id: 'bats_y_exchange_inc'
-      doc: 'Bats Y Exchange Inc'
+      doc: 'BATS Y-Exchange, Inc.'
     0x5a:
       id: 'bats_exchange_inc'
-      doc: 'Bats Exchange Inc'
+      doc: 'BATS Exchange Inc.'
   system_status:
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System hours'
     0x43:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System hours'
     0x31:
       id: 'start_of_test_session'
-      doc: 'Start Of Test Session Sent Before Tests'
+      doc: 'Start of Test Session (sent before tests).'
     0x32:
       id: 'end_of_test_session'
-      doc: 'End Of Test Session'
+      doc: 'End of Test Session.'
   trading_status:
     0x48:
       id: 'halted'
-      doc: 'Sapphire Has Halted Trading For This Underlying Symbol'
+      doc: 'Sapphire has halted trading for this Underlying Symbol'
     0x52:
       id: 'resumed'
-      doc: 'Sapphire Will Resume Trading Reopen For This Underlying Symbol'
+      doc: 'Sapphire will resume trading (reopen) for this Underlying Symbol'
     0x4f:
       id: 'opened'
-      doc: 'Sapphire Will Open Trading For This Underlying Symbol'
+      doc: 'Sapphire will open trading for this Underlying Symbol'
   event_reason:
     0x41:
       id: 'automatic'
-      doc: 'This Event Resulted From Automaticmarket Driven Event'
+      doc: 'This event resulted from automatic/market driven event'
     0x4d:
       id: 'manual'
-      doc: 'Sapphire Manually Initiated This Event'
+      doc: 'Sapphire manually initiated this event'
   action:
     0x4f:
       id: 'open'
@@ -599,7 +599,7 @@ enums:
   time_in_force_tif:
     0x44:
       id: 'day'
-      doc: 'Day'
+      doc: 'DAY'
   origin:
     0x30:
       id: 'priority_customer'
@@ -609,16 +609,16 @@ enums:
       doc: 'Firm'
     0x32:
       id: 'broker_dealer'
-      doc: 'Broker Dealer'
+      doc: 'Broker/Dealer'
     0x34:
       id: 'market_maker'
-      doc: 'Market Maker Mm'
+      doc: 'Market Maker (MM)'
     0x35:
       id: 'non_member_market_maker'
-      doc: 'Non Member Market Maker'
+      doc: 'Non-Member Market Maker'
     0x38:
       id: 'non_priority_customer'
-      doc: 'Non Priority Customer'
+      doc: 'Non-Priority Customer'
   openclose_indicator:
     0x4f:
       id: 'open'
@@ -635,14 +635,14 @@ enums:
       doc: 'Routable'
     0x44:
       id: 'do_not_route'
-      doc: 'Do Not Route Dnr'
+      doc: 'Do Not Route (DNR)'
   update_reason:
     0x4e:
       id: 'new_strategy_created'
-      doc: 'New Strategy Created'
+      doc: 'New strategy created'
     0x55:
       id: 'updated'
-      doc: 'Strategy Definition Updated'
+      doc: 'Strategy definition Updated'
   leg_side:
     0x42:
       id: 'bid'

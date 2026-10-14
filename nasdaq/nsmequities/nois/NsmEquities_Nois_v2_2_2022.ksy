@@ -213,22 +213,22 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. Outside of time stamp messages, the start of day message is the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'Nasdaq Is Now Closed And Will Not Accept Any New Orders Today It Is Still Possible To Receive Broken Trade Messages And Order Delete Messages After The End Of Day'
+      doc: 'Nasdaq is now closed and will not accept any new orders today. It is still possible to receive Broken Trade messages and Order Delete messages after the End of Day'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
   market_category:
     0x51:
       id: 'nasdaq_global_select_market'
@@ -241,23 +241,23 @@ enums:
       doc: 'Nasdaq Capital Market'
     0x4e:
       id: 'new_york_stock_exchange'
-      doc: 'New York Stock Exchange Nyse'
+      doc: 'New York Stock Exchange (NYSE)'
     0x41:
       id: 'nyse_amex'
-      doc: 'Nyse Amex'
+      doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x5a:
       id: 'bats_z_exchange'
-      doc: 'Bats Z Exchange'
+      doc: 'BATS Z Exchange'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
-      doc: 'Nasdaq System Only Accepts Round Lots'
+      doc: 'Nasdaq system only accepts round lots'
     0x4e:
       id: 'no_restrictions'
-      doc: 'Nasdaq System Does Not Have Any Order Size Restrictions For This Security Odd And Mixed Lot Orders Are Allowed'
+      doc: 'Nasdaq system does not have any order size restrictions for this security. Odd and mixed lot orders are allowed.'
   issue_classification:
     0x41:
       id: 'american_depositary_share'
@@ -273,7 +273,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
-      doc: 'Sec 144 A'
+      doc: 'Sec 144A'
     0x4c:
       id: 'limited_partnership'
       doc: 'Limited Partnership'
@@ -294,7 +294,7 @@ enums:
       doc: 'Right'
     0x53:
       id: 'shares_of_beneficial_interest'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible_debenture'
       doc: 'Convertible Debenture'
@@ -303,36 +303,36 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_benif_int'
-      doc: 'Units Benif Int'
+      doc: 'Units/Benif Int'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
   trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused'
-      doc: 'Paused Across All Us Equity Markets Sr Os Nasdaqlisted Securities Only'
+      doc: 'Paused across all U.S. equity markets / SROs (Nasdaq-listed securities only)'
     0x51:
       id: 'quotation_only'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on Nasdaq'
   imbalance_direction:
     0x42:
       id: 'buy'
-      doc: 'Buy Imbalance'
+      doc: 'buy imbalance'
     0x53:
       id: 'sell'
-      doc: 'Sell Imbalance'
+      doc: 'sell imbalance'
     0x4e:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'no imbalance'
     0x4f:
       id: 'insufficient'
-      doc: 'Insufficient Orders To Calculate'
+      doc: 'insufficient orders to calculate'
   cross_type:
     0x4f:
       id: 'open_cross'
@@ -342,5 +342,5 @@ enums:
       doc: 'Close Cross'
     0x48:
       id: 'ipo_halt_cross'
-      doc: 'Intraday Opening Cross For Ipo And Halted Paused Securities'
+      doc: 'Intra-day Opening Cross for IPO and Halted/Paused securities'
 

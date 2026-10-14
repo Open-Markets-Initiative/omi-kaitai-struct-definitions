@@ -252,25 +252,25 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'This Is Always The First Message Sent In Any Trading Day'
+      doc: 'This is always the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x58:
       id: 'clear_noii_opening_cross_data'
-      doc: 'This Message Signals That Firms May Clear Noii Cache For The Regular Opening Cross'
+      doc: 'This message signals that firms may clear NOII cache for the regular Opening Cross.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders'
+      doc: 'It indicates that NASDAQ is now closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
   market_category:
     0x4e:
       id: 'new_york_stock_exchange_nyse'
@@ -317,7 +317,7 @@ enums:
       doc: 'Deficient Delinquent And Bankrupt'
     0x20:
       id: 'company_is_in_compliance'
-      doc: 'Company Is In Compliance If Nasda Qlisted Issue'
+      doc: 'Company is in compliance, if NASDAQ-listed issue.'
   round_lots_only:
     0x59:
       id: 'only_round_lots_are_accepted_in_this_stock'
@@ -380,40 +380,40 @@ enums:
       doc: 'Less Than 1%'
     0x31:
       id: 'one_to_one_point_nine_nine_percent'
-      doc: '1 To 1.99%'
+      doc: '1 to 1.99%'
     0x32:
       id: 'two_to_two_point_nine_nine_percent'
-      doc: '2 To 2.99%'
+      doc: '2 to 2.99%'
     0x33:
       id: 'three_to_three_point_nine_nine_percent'
-      doc: '3 To 3.99%'
+      doc: '3 to 3.99%'
     0x34:
       id: 'four_to_four_point_nine_nine_percent'
-      doc: '4 To 4.99%'
+      doc: '4 to 4.99%'
     0x35:
       id: 'five_to_five_point_nine_nine_percent'
-      doc: '5 To 5.99%'
+      doc: '5 to 5.99%'
     0x36:
       id: 'six_to_six_point_nine_nine_percent'
-      doc: '6 To 6.99%'
+      doc: '6 to 6.99%'
     0x37:
       id: 'seven_to_seven_point_nine_nine_percent'
-      doc: '7 To 7.99%'
+      doc: '7 to 7.99%'
     0x38:
       id: 'eight_to_eight_point_nine_nine_percent'
-      doc: '8 To 8.99%'
+      doc: '8 to 8.99%'
     0x39:
       id: 'nine_to_nine_point_nine_nine_percent'
-      doc: '9 To 9.99%'
+      doc: '9 to 9.99%'
     0x41:
       id: 'ten_to_nineteen_point_nine_nine_percent'
-      doc: '10 To 19.99%'
+      doc: '10 to 19.99%'
     0x42:
       id: 'twenty_to_twenty_nine_point_nine_nine_percent'
-      doc: '20 To 29.99%'
+      doc: '20 to 29.99%'
     0x43:
       id: 'thirty_percent_or_greater'
-      doc: '30% Or Greater'
+      doc: '30% or greater'
     0x20:
       id: 'cannot_be_calculated'
       doc: 'Cannot Be Calculated'

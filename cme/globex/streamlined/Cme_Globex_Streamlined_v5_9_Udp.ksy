@@ -2777,13 +2777,13 @@ enums:
       doc: 'Indicative'
     2:
       id: 'pre_market'
-      doc: 'Pre Market'
+      doc: 'PreMarket'
     3:
       id: 'preliminary_close'
-      doc: 'Preliminary Close'
+      doc: 'PreliminaryClose'
     4:
       id: 'session_close'
-      doc: 'Session Close'
+      doc: 'SessionClose'
     5:
       id: 'close'
       doc: 'Close'

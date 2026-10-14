@@ -4160,7 +4160,7 @@ enums:
   final_ask_bid_type_code:
     0x20:
       id: 'single_price'
-      doc: 'Order Filled With Single Price'
+      doc: 'Order filled with single price.'
     0x30:
       id: 'not_applicable'
       doc: 'Not Applicable'

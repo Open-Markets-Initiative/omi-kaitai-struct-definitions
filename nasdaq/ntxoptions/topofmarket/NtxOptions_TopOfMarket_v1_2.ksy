@@ -427,40 +427,40 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. Outside of time stamp messages, the start of day message is the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'Start of System hours. This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Start Of Market Hours This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'Start of Market hours. This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'End Of Market Hours This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'End of Market hours. This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today It Is Still Possible To Receive Broken Trade Messages And Order Delete Messages After The End Of Day'
+      doc: 'End of System hours. It indicates that NASDAQ is now closed and will not accept any new orders today. It is still possible to receive Broken Trade messages and Order Delete messages after the End of Day.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day.'
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
   tradable:
     0x59:
       id: 'yes_field'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'no_field'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   minimum_price_variation:
     0x45:
       id: 'penny_everywhere'
-      doc: 'Penny Everywhere'
+      doc: 'penny Everywhere'
     0x53:
       id: 'scaled'
       doc: 'Scaled'
@@ -470,30 +470,30 @@ enums:
   current_trading_state:
     0x48:
       id: 'halt'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading'
-      doc: 'Trading On Bx'
+      doc: 'Trading on BX'
   open_state:
     0x59:
       id: 'open'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   quote_condition:
     0x46:
       id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote On Both Bidask Sides'
+      doc: 'Non-firm quote on both bid/ask sides'
     0x52:
       id: 'rotational_quote'
-      doc: 'Rotational Quote'
+      doc: 'Rotational quote'
     0x58:
       id: 'bid_side_firm'
-      doc: 'Ask Side Not Firm Bid Side Firm'
+      doc: 'Ask side not firm, bid side firm'
     0x59:
       id: 'ask_side_firm'
-      doc: 'Bid Side Not Firm Ask Side Firm'
+      doc: 'Bid side not firm, ask side firm'
     0x20:
       id: 'regular_quote'
       doc: 'Regular Quote Autox Eligible'

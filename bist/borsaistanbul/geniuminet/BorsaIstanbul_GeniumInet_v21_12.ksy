@@ -671,7 +671,7 @@ enums:
   short_sale_restriction:
     0:
       id: 'no_restrictions'
-      doc: 'Short Selling Is Allowed With No Price Validation'
+      doc: 'Short selling is allowed with no price validation'
     1:
       id: 'short_selling_not_allowed'
       doc: 'Short Selling Not Allowed'
@@ -699,10 +699,10 @@ enums:
   occurred_at_cross:
     0x4e:
       id: 'no_field'
-      doc: 'Trade Occurred At Continuous Market'
+      doc: 'Trade occurred at continuous market'
     0x59:
       id: 'yes_field'
-      doc: 'Trade Occurred At The Cross'
+      doc: 'Trade occurred at the cross'
   printable:
     0x4e:
       id: 'non_printable'

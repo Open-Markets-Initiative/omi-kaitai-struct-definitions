@@ -4178,35 +4178,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid User Namepassword'
+      doc: 'Not authorized (invalid user- name/password)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bitfield_in_login_message'
-      doc: 'Invalid Return Bitfield In Login Message'
+      doc: 'Invalid return bitfield in login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -4226,24 +4226,24 @@ enums:
   capacity:
     0x41:
       id: 'agency'
-      doc: 'Agency Maps To Aotc'
+      doc: 'Agency (maps to ’AOTC’)'
     0x50:
       id: 'principal'
-      doc: 'Principal Maps To Deal'
+      doc: 'Principal (maps to ’DEAL’)'
     0x52:
       id: 'riskless_principal'
-      doc: 'Riskless Principal Maps To Mtch'
+      doc: 'Riskless Principal (maps to ’MTCH’)'
   id_source:
     0x34:
       id: 'isin'
-      doc: 'Isin'
+      doc: 'ISIN'
     0x35:
       id: 'ric'
-      doc: 'Ric'
+      doc: 'RIC'
   transaction_category:
     0x50:
       id: 'regular_trade'
-      doc: 'Regular Trade Aka Plain Vanilla Trade'
+      doc: 'Regular Trade (aka Plain-Vanilla Trade)'
     0x4f:
       id: 'portfolio_trade'
       doc: 'Portfolio Trade'
@@ -4252,13 +4252,13 @@ enums:
       doc: 'Dark Trade'
     0x52:
       id: 'trade_with_price_improvement'
-      doc: 'Trade With Price Improvement Rpri Deprecated For Uk Apa Only Valid For Eu Apa With Trade Time Set To A Date Before 2 March 2026'
+      doc: 'Trade With Price Improvement (RPRI) (Deprecated for UK APA, only valid for EU APA with TradeTime set to a date before 2 March 2026.'
     0x59:
       id: 'exchange_for_physical'
-      doc: 'Exchange For Physical Xfph Rts 2 Nonequities Only'
+      doc: 'Exchange For Physical (XFPH) (RTS 2 Non-equities only)'
     0x5a:
       id: 'package_trade'
-      doc: 'Package Trade Tpac Rts 2 Nonequities Only'
+      doc: 'Package Trade (TPAC) (RTS 2 Non-equities only)'
   trade_report_trans_type:
     0:
       id: 'new_field'
@@ -4296,7 +4296,7 @@ enums:
       doc: 'Hybrid Market'
     0x7a:
       id: 'other'
-      doc: 'Other Excluding Hybrid'
+      doc: 'Other (Excluding Hybrid)'
   trading_session_sub_id:
     2:
       id: 'scheduled_opening_auction'
@@ -4318,27 +4318,27 @@ enums:
       doc: 'Continuous Trading'
     5:
       id: 'post_trading'
-      doc: 'Post Trading 10 Out Of Main Session Trading'
+      doc: 'Post Trading 10 = Out of Main Session Trading'
   match_type:
     1:
       id: 'trade_reporting'
-      doc: 'Trade Reporting Off Exchange'
+      doc: 'Trade Reporting (Off-Exchange)'
     3:
       id: 'trade_reporting_3'
-      doc: 'Trade Reporting On Exchange'
+      doc: 'Trade Reporting (On-Exchange)'
     9:
       id: 'trade_reporting_9'
-      doc: 'Trade Reporting Systematic Internalizer'
+      doc: 'Trade Reporting (Systematic Internalizer)'
   trade_publish_indicator:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish'
+      doc: 'Do not publish'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication'
+      doc: 'Deferred publication'
   execution_method:
     0x41:
       id: 'automated'
@@ -4348,91 +4348,91 @@ enums:
       doc: 'Manual'
     0x55:
       id: 'unspecified'
-      doc: 'Unspecified Default'
+      doc: 'Unspecified (default)'
   order_category:
     0:
       id: 'not_a_negotiated_trade'
-      doc: 'Not A Negotiated Trade'
+      doc: 'Not a Negotiated Trade'
     3:
       id: 'privately_negotiated_trade'
-      doc: 'Privately Negotiated Trade On Return Fields This Field Indicates Whether Cboe Deems The Trade As Utilising The Negotiated Transaction Waiver Under Mi Fid'
+      doc: 'Privately Negotiated Trade On return fields, this field indicates whether Cboe deems the trade as utilising the Negotiated Transaction waiver under Mi- FID.'
   price_formation:
     0x4a:
       id: 'trade_not_contributing_to_the_price_discovery_process'
-      doc: 'Trade Not Contributing To The Price Discovery Process Tncp Invalid For Eu Apa'
+      doc: 'Trade Not Contributing to the Price Discovery Process (TNCP) (Invalid for EU APA).'
     0x4e:
       id: 'price_is_pending'
-      doc: 'Price Is Pending Pndg'
+      doc: 'Price is Pending (PNDG)'
   algorithmic_indicator:
     0x4e:
       id: 'no_algorithm_was_involved'
-      doc: 'No Algorithm Was Involved Default'
+      doc: 'No algorithm was involved (default).'
     0x59:
       id: 'algorithm_was_involved'
-      doc: 'Algorithm Was Involved Algo'
+      doc: 'Algorithm was involved (ALGO).'
   waiver_type:
     0x2d:
       id: 'no_waiver_type'
       doc: 'No Waiver Type'
     0x30:
       id: 'negotiated_trade_in_liquid_instrument'
-      doc: 'Negotiated Trade In Liquid Instrument For Mtf Only Nliq'
+      doc: 'Negotiated Trade in Liquid Instrument (for MTF only) (NLIQ)'
     0x31:
       id: 'negotiated_trade_in_illiquid_instrument'
-      doc: 'Negotiated Trade In Illiquid Instrument For Mtf Only Oilq'
+      doc: 'Negotiated Trade in Illiquid Instrument (for MTF only) (OILQ)'
     0x32:
       id: 'negotiated_trade_subject_to_conditions_other_than_the'
-      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price For Mtf Only Pric'
+      doc: 'Negotiated Trade Subject to Conditions Other Than the Current Market Price (for MTF only) (PRIC)'
     0x38:
       id: 'negotiated_trade_subject_to_a_pre_trade_transparency'
-      doc: 'Negotiated Trade Subject To A Pre Trade Transparency Waiver For Uk Mtf Only Netw'
+      doc: 'Negotiated Trade Subject to a Pre-Trade Transparency Waiver (for UK MTF only) (NETW)'
     0x63:
       id: 'negotiated_trade_larger_than_lis_brought_onto_a'
-      doc: 'Negotiated Trade Larger Than Lis Brought Onto A Venue For Which Pre Trade Transparency Can Be Waived Ntls Implies Netw For Uk Mtf Only'
+      doc: 'Negotiated Trade Larger Than LIS Brought Onto a Venue for which Pre-Trade Transparency Can be Waived (NTLS). Implies NETW. (For UK MTF only.)'
     0x33:
       id: 'reference_price'
-      doc: 'Reference Price Dark Book For Mtf Only Rfpt'
+      doc: 'Reference Price (Dark Book) (for MTF only) (RFPT)'
     0x34:
       id: 'pre_trade_transparency_waiver_for_illiquid_instrument'
-      doc: 'Pre Trade Transparency Waiver For Illiquid Instrument For Si Only Ilqd Deprecated'
+      doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD) (Deprecated)'
     0x35:
       id: 'pre_trade_transparency_waiver_for_above_standard_mar'
-      doc: 'Pre Trade Transparency Waiver For Above Standard Mar Ket Size For Si Only Size Deprecated'
+      doc: 'Pre-Trade Transparency Waiver for Above Standard Mar- ket Size (for SI only) (SIZE) (Deprecated)'
     0x42:
       id: 'pre_trade_transparency_waiver_for_illiquid_instrument_x42'
-      doc: 'Pre Trade Transparency Waiver For Illiquid Instrument For Si Only Ilqd And Pre Trade Transparency Waiver For Above Standard Market Size For Si Only Size Deprecated Note The Values 45 Or B Can Only Be Used For Eu Apa With Trade Time Set To A Date Before 2 March 2026 Negotiated Trade Indicators And Pre Trade Transparency Waivers Are Mmt Level 3.2 Values Reference Price Is A Mmt Level 3.5 Value All Values Are Mutually Exclusive And So Only One May Be Requested The Negotiated Trade Indicators Nliq Oilq Pric Netw And Reference Price Waiver Rfpt Are Mtf Only For Mtf Reporting To Uk Apa The New Negotiated Trade Subject To A Pre Trade Transparency Waiver Netw Should Be Used Instead Of Nliq Oliq And Pric The Pre Trade Transparency Waivers Ilqd And Size Are Si Only If Both Ilqd And Size Are Required Then The Discrete Value B Must Be Used The Business Confirmation Contains The Waivers That Have Been Appplied'
+      doc: 'Pre-Trade Transparency Waiver for Illiquid Instrument (for SI only) (ILQD) AND Pre-Trade Transparency Waiver for Above Standard Market Size (for SI only) (SIZE) (Deprecated) Note, the values 4, 5 or B can only be used for EU APA with TradeTime set to a date before 2 March 2026 Negotiated Trade Indicators and Pre-Trade Transparency Waivers are MMT Level 3.2 values. Reference Price is a MMT Level 3.5 value. ALL values are mutually exclusive and so only one may be requested. The Negotiated Trade Indicators (NLIQ, OILQ, PRIC, NETW) and Reference Price Waiver (RFPT) are MTF Only. For MTF reporting to UK APA, the new Negotiated Trade Subject to a Pre-Trade Transparency Waiver (NETW) should be used instead of NLIQ, OLIQ and PRIC. The Pre-Trade Transparency Waivers ILQD and SIZE are SI Only. If both ILQD and SIZE are required then the discrete value B must be used. The business confirmation contains the waiver(s) that have been appplied.'
   deferral_reason:
     0x2d:
       id: 'no_deferral_reason'
       doc: 'No Deferral Reason'
     0x36:
       id: 'deferral_for_large_in_scale'
-      doc: 'Deferral For Large In Scale Lrgs'
+      doc: 'Deferral for Large In Scale (LRGS)'
     0x37:
       id: 'deferral_for_illiquid_instrument'
-      doc: 'Deferral For Illiquid Instrument For Rts 2 Only Ilqd Deprecated'
+      doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) (Deprecated)'
     0x38:
       id: 'deferral_for_size_specific'
-      doc: 'Deferral For Size Specific For Rts 2 Only Size Dep Recated'
+      doc: 'Deferral for Size Specific (for RTS2 only) (SIZE) (Dep- recated)'
     0x43:
       id: 'deferral_for_illiquid_instrument_x43'
-      doc: 'Deferral For Illiquid Instrument For Rts 2 Only Ilqd And Deferral For Large In Scale Lrgs Deprecated'
+      doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Large In Scale (LRGS) (Deprecated)'
     0x44:
       id: 'deferral_for_illiquid_instrument_x44'
-      doc: 'Deferral For Illiquid Instrument For Rts 2 Only Ilqd And Deferral For Size Specific For Rts 2 Only Size Deprecated'
+      doc: 'Deferral for Illiquid Instrument (for RTS2 only) (ILQD) AND Deferral for Size Specific (for RTS2 only) (SIZE) (Deprecated)'
     0x47:
       id: 'deferral_for_transactions_in_et_cs_et_ns_etc'
-      doc: 'Deferral For Transactions In Et Cs Et Ns Etc For Rts Only Only Applicable On Eu Apa Deff'
+      doc: 'Deferral for transactions in ETCs, ETNs, etc (for RTS only), only applicable on EU APA (DEFF)'
     0x56:
       id: 'indicates_a_net_asset_value'
-      doc: 'Indicates A Net Asset Value Nav Trade Cboe Will Publish Such Trades Immediately On Receipt And They Will Not Be Considered As Late Reporting Regardless Of The Arrangement Time On The Message Each Deferral Reason Is Represented By A Distinct Value That Can Be Requested Individually Deferrals That Can Be Applied Together Are Represented By Values That Indicates The Deferrals Being Set Together Based Upon What Is Requested The System Calculates Which Of These Are Valid The Business Confirmation Contains The Deferrals That Have Been Appplied The Values 78 C D Are Deprecated And Are Only Valid On Eu Apa With Trade Time Set To A Date Before 2 March 2026'
+      doc: 'Indicates a Net Asset Value (NAV) Trade. Cboe will publish such trades immediately on receipt and they will not be considered as late reporting, regardless of the arrangement time on the message. Each Deferral Reason is represented by a distinct value that can be requested individually. Deferrals that can be applied together are represented by values that indicates the deferrals being set together. Based upon what is requested, the system calculates which of these are valid. The business confirmation contains the deferral(s) that have been appplied. The values 7, 8, C, D are deprecated and are only valid on EU APA with TradeTime set to a date before 2 March 2026.'
   intra_firm_trade_ind:
     0x4e:
       id: 'not_an_intragroup_transaction'
-      doc: 'Not An Intragroup Transaction Default'
+      doc: 'Not an intra-group transaction (default)'
     0x59:
       id: 'is_an_intragroup_transaction'
-      doc: 'Is An Intragroup Transaction'
+      doc: 'Is an intra-group transaction'
   reason:
     0x41:
       id: 'admin'
@@ -4446,18 +4446,18 @@ enums:
   trade_publish_ind:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish'
+      doc: 'Do not publish'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication'
+      doc: 'Deferred publication'
   status:
     0x30:
       id: 'accepted_in_response_to_a_quote_message'
-      doc: 'Accepted In Response To A Quote Message'
+      doc: 'Accepted in response to a Quote message'
     0x31:
       id: 'cancelled_in_response_to_a_quote_cancel'
-      doc: 'Cancelled In Response To A Quote Cancel Message'
+      doc: 'Cancelled in response to a QuoteCancel message'
 

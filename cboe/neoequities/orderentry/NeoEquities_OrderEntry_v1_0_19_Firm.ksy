@@ -119,730 +119,730 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Execution Instruction For The Order. Nullable, No ExecInst = 0'
+        doc: 'Execution Instruction for the order. Nullable, No ExecInst = 0'
       - id: handling_inst
         type: u1
         enum: handling_inst
-        doc: 'Handling Instruction For The Order'
+        doc: 'Handling instruction for the order'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Destination Book Of The Order'
+        doc: 'Destination book of the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Specifies The Utc Date Time Timestamp That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
         enum: lei_order_origin
-        doc: 'Identify The Type Of Customer Sending The Order'
+        doc: 'Identify the type of customer sending the order'
       - id: lei_routing_arrangement_indicator
         type: u1
         enum: lei_routing_arrangement_indicator
-        doc: 'Routing Arrangement Is In Place'
+        doc: 'Routing arrangement is in place'
       - id: umir_account_type
         type: u1
         enum: umir_account_type
-        doc: 'The Capacity For The Order'
+        doc: 'The capacity for the order'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: basket_trade
         type: u4
-        doc: 'Identification For Order As Part Of A Basket Trade'
+        doc: 'Identification for order as part of a basket trade'
       - id: program_trade
         type: u1
         enum: program_trade
-        doc: 'Identify This Order As Part Of A Program Trade'
+        doc: 'Identify this order as part of a program trade'
       - id: jitney
         type: u2
-        doc: 'Broker On Whose Behalf This Order Is Being Submitted If Different Than The Executing Broker'
+        doc: 'Broker on whose behalf this order is being submitted if different than the executing broker'
       - id: anonymous
         type: u1
         enum: anonymous
-        doc: 'Anonymize This Order When Trade Reporting Y Or N'
+        doc: 'Anonymize this order when trade reporting (Y or N)'
       - id: umir_regulation_id
         type: u1
         enum: umir_regulation_id
-        doc: 'Reported To Feeds Does Not Affect Order Handling'
+        doc: 'Reported to feeds, does not affect order handling'
       - id: non_resident
         type: u1
         enum: non_resident
-        doc: 'Identifies An Order As Non Resident'
+        doc: 'Identifies an order as Non-Resident'
       - id: bypass
         type: u1
         enum: bypass
-        doc: 'Identifies An Order As Eligible To Match Against The Displayed Volume Only'
+        doc: 'Identifies an order as eligible to match against the displayed volume only'
       - id: ncib
         type: u1
         enum: ncib
-        doc: 'Identifies Normal Course Issuer Bid Orders'
+        doc: 'Identifies Normal Course Issuer Bid orders'
       - id: no_trade_feat
         type: u1
         enum: no_trade_feat
-        doc: 'Defines How To Prevent A Selftrade'
+        doc: 'Defines how to prevent a self-trade'
       - id: no_trade_key
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifier For Selftrade Prevention'
+        doc: 'Identifier for self-trade prevention'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Account Number For Clients Not Eligible To Obtain An Lei'
+        doc: 'Account number for clients not eligible to obtain an LEI'
       - id: lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Identifier For The Endclient Orders Automatically Generated On A Predetermined Basis'
+        doc: 'Unique identifier for the end-client orders automatically generated on a predetermined basis'
       - id: customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Lei For Clients Eligible To Obtain An Lei'
+        doc: 'LEI for clients eligible to obtain an LEI'
       - id: broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Non Po Iiroc Dealer Member Correspondent Broker'
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
       - id: routing_inst
         type: u1
         enum: routing_inst
-        doc: 'Routing Instruction For The Order'
+        doc: 'Routing instruction for the order'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Visibility Indicator'
+        doc: 'Display visibility indicator'
       - id: matching_state_participation
         type: u1
         enum: matching_state_participation
-        doc: 'Indicates Which Order Flow Type A Passive Dark Order Elects To Interact With'
+        doc: 'Indicates which order flow type a Passive Dark order elects to interact with'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
   new_order_ca_equities_v_2:
     seq:
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Execution Instruction For The Order. Nullable, No ExecInst = 0'
+        doc: 'Execution Instruction for the order. Nullable, No ExecInst = 0'
       - id: handling_inst
         type: u1
         enum: handling_inst
-        doc: 'Handling Instruction For The Order'
+        doc: 'Handling instruction for the order'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Destination Book Of The Order'
+        doc: 'Destination book of the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Specifies The Utc Date Time Timestamp That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
         enum: lei_order_origin
-        doc: 'Identify The Type Of Customer Sending The Order'
+        doc: 'Identify the type of customer sending the order'
       - id: lei_routing_arrangement_indicator
         type: u1
         enum: lei_routing_arrangement_indicator
-        doc: 'Routing Arrangement Is In Place'
+        doc: 'Routing arrangement is in place'
       - id: umir_account_type
         type: u1
         enum: umir_account_type
-        doc: 'The Capacity For The Order'
+        doc: 'The capacity for the order'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: basket_trade
         type: u4
-        doc: 'Identification For Order As Part Of A Basket Trade'
+        doc: 'Identification for order as part of a basket trade'
       - id: program_trade
         type: u1
         enum: program_trade
-        doc: 'Identify This Order As Part Of A Program Trade'
+        doc: 'Identify this order as part of a program trade'
       - id: jitney
         type: u2
-        doc: 'Broker On Whose Behalf This Order Is Being Submitted If Different Than The Executing Broker'
+        doc: 'Broker on whose behalf this order is being submitted if different than the executing broker'
       - id: anonymous
         type: u1
         enum: anonymous
-        doc: 'Anonymize This Order When Trade Reporting Y Or N'
+        doc: 'Anonymize this order when trade reporting (Y or N)'
       - id: umir_regulation_id
         type: u1
         enum: umir_regulation_id
-        doc: 'Reported To Feeds Does Not Affect Order Handling'
+        doc: 'Reported to feeds, does not affect order handling'
       - id: non_resident
         type: u1
         enum: non_resident
-        doc: 'Identifies An Order As Non Resident'
+        doc: 'Identifies an order as Non-Resident'
       - id: bypass
         type: u1
         enum: bypass
-        doc: 'Identifies An Order As Eligible To Match Against The Displayed Volume Only'
+        doc: 'Identifies an order as eligible to match against the displayed volume only'
       - id: ncib
         type: u1
         enum: ncib
-        doc: 'Identifies Normal Course Issuer Bid Orders'
+        doc: 'Identifies Normal Course Issuer Bid orders'
       - id: no_trade_feat
         type: u1
         enum: no_trade_feat
-        doc: 'Defines How To Prevent A Selftrade'
+        doc: 'Defines how to prevent a self-trade'
       - id: no_trade_key
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifier For Selftrade Prevention'
+        doc: 'Identifier for self-trade prevention'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Account Number For Clients Not Eligible To Obtain An Lei'
+        doc: 'Account number for clients not eligible to obtain an LEI'
       - id: lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Identifier For The Endclient Orders Automatically Generated On A Predetermined Basis'
+        doc: 'Unique identifier for the end-client orders automatically generated on a predetermined basis'
       - id: customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Lei For Clients Eligible To Obtain An Lei'
+        doc: 'LEI for clients eligible to obtain an LEI'
       - id: broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Non Po Iiroc Dealer Member Correspondent Broker'
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
       - id: routing_inst
         type: u1
         enum: routing_inst
-        doc: 'Routing Instruction For The Order'
+        doc: 'Routing instruction for the order'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Visibility Indicator'
+        doc: 'Display visibility indicator'
       - id: matching_state_participation
         type: u1
         enum: matching_state_participation
-        doc: 'Indicates Which Order Flow Type A Passive Dark Order Elects To Interact With'
+        doc: 'Indicates which order flow type a Passive Dark order elects to interact with'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
       - id: peg_difference
         type: decimal_s8_4
-        doc: 'Optional Tag For Use With Primary Peg Orders. Implied decimal with scale 1e-4'
+        doc: 'Optional tag for use with Primary Peg orders. Implied decimal with scale 1e-4'
   modify_order_ca_equities_v_1:
     seq:
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Cl Ord Id Of The Order Being Cancelled Or Replaced'
+        doc: 'ClOrdID of the order being cancelled or replaced'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
         enum: lei_order_origin
-        doc: 'Identify The Type Of Customer Sending The Order'
+        doc: 'Identify the type of customer sending the order'
       - id: lei_routing_arrangement_indicator
         type: u1
         enum: lei_routing_arrangement_indicator
-        doc: 'Routing Arrangement Is In Place'
+        doc: 'Routing arrangement is in place'
       - id: umir_account_type
         type: u1
         enum: umir_account_type
-        doc: 'The Capacity For The Order'
+        doc: 'The capacity for the order'
       - id: lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Account Number For Clients Not Eligible To Obtain An Lei'
+        doc: 'Account number for clients not eligible to obtain an LEI'
       - id: lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Identifier For The Endclient Orders Automatically Generated On A Predetermined Basis'
+        doc: 'Unique identifier for the end-client orders automatically generated on a predetermined basis'
       - id: customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Lei For Clients Eligible To Obtain An Lei'
+        doc: 'LEI for clients eligible to obtain an LEI'
       - id: broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Non Po Iiroc Dealer Member Correspondent Broker'
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
       - id: cancel_orig_on_reject
         type: u1
         enum: cancel_orig_on_reject
-        doc: 'Define The Treatment Of The Original Order If A Modify Order Request Is Rejected. Nullable, Apply Port Default = 0'
+        doc: 'Define the treatment of the original order if a Modify Order request is rejected. Nullable, Apply Port Default = 0'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Specifies The Utc Date Time Timestamp That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
   cancel_order_ca_equities_v_1:
     seq:
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Cl Ord Id Of The Order Being Cancelled Or Replaced'
+        doc: 'ClOrdID of the order being cancelled or replaced'
   new_order_cross_ca_equities_v_1:
     seq:
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: cross_cl_ord_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Client Order Identifier For A New Order Cross'
+        doc: 'Client order identifier for a New Order Cross'
       - id: cross_type
         type: u1
         enum: cross_type
-        doc: 'Identifies The Type Of Cross Being Printed'
+        doc: 'Identifies the type of cross being printed'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: basket_trade
         type: u4
-        doc: 'Identification For Order As Part Of A Basket Trade'
+        doc: 'Identification for order as part of a basket trade'
       - id: program_trade
         type: u1
         enum: program_trade
-        doc: 'Identify This Order As Part Of A Program Trade'
+        doc: 'Identify this order as part of a program trade'
       - id: non_resident
         type: u1
         enum: non_resident
-        doc: 'Identifies An Order As Non Resident'
+        doc: 'Identifies an order as Non-Resident'
       - id: bypass
         type: u1
         enum: bypass
-        doc: 'Identifies An Order As Eligible To Match Against The Displayed Volume Only'
+        doc: 'Identifies an order as eligible to match against the displayed volume only'
       - id: ncib
         type: u1
         enum: ncib
-        doc: 'Identifies Normal Course Issuer Bid Orders'
+        doc: 'Identifies Normal Course Issuer Bid orders'
       - id: cross_side
         type: u1
         enum: cross_side
-        doc: 'Side For A New Order Cross'
+        doc: 'Side for a New Order Cross'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: buy_umir_account_type
         type: u1
         enum: buy_umir_account_type
-        doc: 'Umir Account Type For Buy Side'
+        doc: 'UMIRAccountType for Buy side'
       - id: buy_account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Account For Buy Side Of New Order Cross'
+        doc: 'Account for Buy side of New Order Cross'
       - id: buy_umir_regulation_id
         type: u1
         enum: buy_umir_regulation_id
-        doc: 'Umir Regulation Id For Buy Side'
+        doc: 'UMIRRegulationID for Buy side'
       - id: buy_jitney
         type: u2
-        doc: 'Jitney For Buy Side'
+        doc: 'Jitney for Buy side'
       - id: buy_lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Customer Account For Buy Side'
+        doc: 'LEICustomerAccount for Buy side'
       - id: buy_lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Algorithm Id For Buy Side'
+        doc: 'LEIAlgorithmID for Buy side'
       - id: buy_customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Customer Lei For Buy Side'
+        doc: 'CustomerLEI for Buy side'
       - id: buy_broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Broker Lei For Buy Side'
+        doc: 'BrokerLEI for Buy side'
       - id: buy_lei_order_origin
         type: u1
         enum: buy_lei_order_origin
-        doc: 'Lei Order Origin For Buy Side'
+        doc: 'LEIOrderOrigin for Buy side'
       - id: buy_lei_routing_arrangemeant_indicator
         type: u1
         enum: buy_lei_routing_arrangemeant_indicator
-        doc: 'Lei Routing Arrangement Indicator For Buy Side V 1 Typo'
+        doc: 'LEIRoutingArrangementIndicator for Buy side (V1 typo)'
       - id: sell_umir_account_type
         type: u1
         enum: sell_umir_account_type
-        doc: 'Umir Account Type For Sell Side'
+        doc: 'UMIRAccountType for Sell side'
       - id: sell_account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Account For Sell Side Of New Order Cross'
+        doc: 'Account for Sell side of New Order Cross'
       - id: sell_umir_regulation_id
         type: u1
         enum: sell_umir_regulation_id
-        doc: 'Umir Regulation Id For Sell Side'
+        doc: 'UMIRRegulationID for Sell side'
       - id: sell_jitney
         type: u2
-        doc: 'Jitney For Sell Side'
+        doc: 'Jitney for Sell side'
       - id: sell_lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Customer Account For Sell Side'
+        doc: 'LEICustomerAccount for Sell side'
       - id: sell_lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Algorithm Id For Sell Side'
+        doc: 'LEIAlgorithmID for Sell side'
       - id: sell_customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Customer Lei For Sell Side'
+        doc: 'CustomerLEI for Sell side'
       - id: sell_broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Broker Lei For Sell Side'
+        doc: 'BrokerLEI for Sell side'
       - id: sell_lei_order_origin
         type: u1
         enum: sell_lei_order_origin
-        doc: 'Lei Order Origin For Sell Side'
+        doc: 'LEIOrderOrigin for Sell side'
       - id: sell_lei_routing_arrangement_indicator
         type: u1
         enum: sell_lei_routing_arrangement_indicator
-        doc: 'Lei Routing Arrangement Indicator For Sell Side'
+        doc: 'LEIRoutingArrangementIndicator for Sell side'
   new_order_cross_ca_equities_v_2:
     seq:
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: cross_cl_ord_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Client Order Identifier For A New Order Cross'
+        doc: 'Client order identifier for a New Order Cross'
       - id: cross_type
         type: u1
         enum: cross_type
-        doc: 'Identifies The Type Of Cross Being Printed'
+        doc: 'Identifies the type of cross being printed'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: basket_trade
         type: u4
-        doc: 'Identification For Order As Part Of A Basket Trade'
+        doc: 'Identification for order as part of a basket trade'
       - id: program_trade
         type: u1
         enum: program_trade
-        doc: 'Identify This Order As Part Of A Program Trade'
+        doc: 'Identify this order as part of a program trade'
       - id: non_resident
         type: u1
         enum: non_resident
-        doc: 'Identifies An Order As Non Resident'
+        doc: 'Identifies an order as Non-Resident'
       - id: bypass
         type: u1
         enum: bypass
-        doc: 'Identifies An Order As Eligible To Match Against The Displayed Volume Only'
+        doc: 'Identifies an order as eligible to match against the displayed volume only'
       - id: ncib
         type: u1
         enum: ncib
-        doc: 'Identifies Normal Course Issuer Bid Orders'
+        doc: 'Identifies Normal Course Issuer Bid orders'
       - id: cross_side
         type: u1
         enum: cross_side
-        doc: 'Side For A New Order Cross'
+        doc: 'Side for a New Order Cross'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: buy_umir_account_type
         type: u1
         enum: buy_umir_account_type
-        doc: 'Umir Account Type For Buy Side'
+        doc: 'UMIRAccountType for Buy side'
       - id: buy_account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Account For Buy Side Of New Order Cross'
+        doc: 'Account for Buy side of New Order Cross'
       - id: buy_umir_regulation_id
         type: u1
         enum: buy_umir_regulation_id
-        doc: 'Umir Regulation Id For Buy Side'
+        doc: 'UMIRRegulationID for Buy side'
       - id: buy_jitney
         type: u2
-        doc: 'Jitney For Buy Side'
+        doc: 'Jitney for Buy side'
       - id: buy_lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Customer Account For Buy Side'
+        doc: 'LEICustomerAccount for Buy side'
       - id: buy_lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Algorithm Id For Buy Side'
+        doc: 'LEIAlgorithmID for Buy side'
       - id: buy_customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Customer Lei For Buy Side'
+        doc: 'CustomerLEI for Buy side'
       - id: buy_broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Broker Lei For Buy Side'
+        doc: 'BrokerLEI for Buy side'
       - id: buy_lei_order_origin
         type: u1
         enum: buy_lei_order_origin
-        doc: 'Lei Order Origin For Buy Side'
+        doc: 'LEIOrderOrigin for Buy side'
       - id: buy_lei_routing_arrangement_indicator
         type: u1
         enum: buy_lei_routing_arrangement_indicator
-        doc: 'Lei Routing Arrangement Indicator For Buy Side'
+        doc: 'LEIRoutingArrangementIndicator for Buy side'
       - id: sell_umir_account_type
         type: u1
         enum: sell_umir_account_type
-        doc: 'Umir Account Type For Sell Side'
+        doc: 'UMIRAccountType for Sell side'
       - id: sell_account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Account For Sell Side Of New Order Cross'
+        doc: 'Account for Sell side of New Order Cross'
       - id: sell_umir_regulation_id
         type: u1
         enum: sell_umir_regulation_id
-        doc: 'Umir Regulation Id For Sell Side'
+        doc: 'UMIRRegulationID for Sell side'
       - id: sell_jitney
         type: u2
-        doc: 'Jitney For Sell Side'
+        doc: 'Jitney for Sell side'
       - id: sell_lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Customer Account For Sell Side'
+        doc: 'LEICustomerAccount for Sell side'
       - id: sell_lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Lei Algorithm Id For Sell Side'
+        doc: 'LEIAlgorithmID for Sell side'
       - id: sell_customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Customer Lei For Sell Side'
+        doc: 'CustomerLEI for Sell side'
       - id: sell_broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Broker Lei For Sell Side'
+        doc: 'BrokerLEI for Sell side'
       - id: sell_lei_order_origin
         type: u1
         enum: sell_lei_order_origin
-        doc: 'Lei Order Origin For Sell Side'
+        doc: 'LEIOrderOrigin for Sell side'
       - id: sell_lei_routing_arrangement_indicator
         type: u1
         enum: sell_lei_routing_arrangement_indicator
-        doc: 'Lei Routing Arrangement Indicator For Sell Side'
+        doc: 'LEIRoutingArrangementIndicator for Sell side'
       - id: anonymous
         type: u1
         enum: anonymous
-        doc: 'Anonymize This Order When Trade Reporting Y Or N'
+        doc: 'Anonymize this order when trade reporting (Y or N)'
       - id: reserved
         size: 4
         doc: 'Reserved'
@@ -1526,7 +1526,7 @@ enums:
   cancel_reason:
     0x41:
       id: 'admin'
-      doc: 'Most Rejects Due To Field Validation Errors Will Be Reported With A Reason Of Admin'
+      doc: 'Most rejects due to field validation errors will be reported with a reason of Admin'
     0x44:
       id: 'duplicate_identifier'
       doc: 'Duplicate Identifier'

@@ -701,7 +701,7 @@ enums:
       doc: 'Repo'
     10:
       id: 'synthetic_box_leg_or_reference'
-      doc: 'Synthetic Box Leg Reference'
+      doc: 'Synthetic Box Leg/Reference'
     11:
       id: 'standard_combination'
       doc: 'Standard Combination'
@@ -748,20 +748,20 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. Outside of time stamp messages, the start of day message is the first message sent in any trading day'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order'
     0x20:
       id: 'blank'
-      doc: 'Space Set In The Trade Message For Anonymous Markets'
+      doc: 'Space: set in the Trade Message for anonymous markets'
   lot_type:
     0:
       id: 'undefined'
@@ -777,19 +777,19 @@ enums:
       doc: 'Block Lot'
     4:
       id: 'all_or_none_lot'
-      doc: 'All Or None Lot'
+      doc: 'All or None Lot'
   occurred_at_cross:
     0x59:
       id: 'yes_field'
-      doc: 'Yes Trade Occurred At The Cross'
+      doc: 'Yes, trade occurred at the cross'
     0x4e:
       id: 'no_field'
-      doc: 'No Trade Occurred At Continuous Market'
+      doc: 'No, trade occurred at continuous market'
   printable:
     0x4e:
       id: 'non_printable'
-      doc: 'Nonprintable'
+      doc: 'non-printable'
     0x59:
       id: 'printable'
-      doc: 'Printable'
+      doc: 'printable'
 

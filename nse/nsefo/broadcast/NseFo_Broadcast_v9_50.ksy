@@ -1619,11 +1619,11 @@ enums:
       doc: 'Permitted To Trade'
     2:
       id: 'bse_listed'
-      doc: 'Trading Allowed Only In Case Of Outage At Bse'
+      doc: 'Trading allowed only in case of outage at Bse'
   status:
     1:
       id: 'pre_open'
-      doc: 'Only For Normal Market'
+      doc: 'Only for Normal market'
     2:
       id: 'open'
       doc: 'Open'
@@ -1665,16 +1665,16 @@ enums:
       doc: 'Normal Market'
     4:
       id: 'negotiated_order'
-      doc: 'Normal Market Not Used'
+      doc: 'Normal Market, not used'
     5:
       id: 'odd_lot_order'
-      doc: 'Odd Lot Market Not Used'
+      doc: 'Odd Lot Market, not used'
     6:
       id: 'spot_order'
-      doc: 'Spot Market Not Used'
+      doc: 'Spot Market, not used'
     7:
       id: 'auction_order'
-      doc: 'Auction Market Not Used'
+      doc: 'Auction Market, not used'
   trading_status:
     1:
       id: 'preopen'
@@ -1704,7 +1704,7 @@ enums:
   auction_status:
     0:
       id: 'pre_open'
-      doc: 'Only For Normal Market'
+      doc: 'Only for Normal Market'
     1:
       id: 'open'
       doc: 'Open'
@@ -1723,18 +1723,18 @@ enums:
       doc: 'Normal Market'
     2:
       id: 'odd_lot_market'
-      doc: 'Not Used'
+      doc: 'Not used'
     3:
       id: 'spot_market'
-      doc: 'Not Used'
+      doc: 'Not used'
     4:
       id: 'auction_market'
-      doc: 'Not Used'
+      doc: 'Not used'
   warning_type:
     1:
       id: 'turnover_limit_about_to_exceed'
       doc: 'Turnover Limit About To Exceed'
     2:
       id: 'turnover_limit_exceeded'
-      doc: 'The Broker Has Been Deactivated'
+      doc: 'The broker has been deactivated'
 

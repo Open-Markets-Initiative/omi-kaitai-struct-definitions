@@ -404,327 +404,327 @@ enums:
   market_hours_state:
     0:
       id: 'closed_before_hours'
-      doc: 'Markets Are Closed Before Trading Hours'
+      doc: 'Markets are closed before trading hours.'
     1:
       id: 'early_session'
-      doc: 'Early Trading Session Is Active Premarket'
+      doc: 'Early trading session is active (pre-market).'
     2:
       id: 'regular_session'
-      doc: 'Regular Trading Session Is Active'
+      doc: 'Regular trading session is active.'
     3:
       id: 'after_hours_session'
-      doc: 'Afterhours Trading Session Is Active Postmarket'
+      doc: 'After-hours trading session is active (post-market).'
     4:
       id: 'closed_after_hours'
-      doc: 'Markets Are Closed After Trading Hours'
+      doc: 'Markets are closed after trading hours.'
   session_trading_state:
     0:
       id: 'closed'
-      doc: 'Market Session Is Closed Outside Of Trading Hours Or Not Yet Opened'
+      doc: 'Market session is closed - outside of trading hours or not yet opened.'
     1:
       id: 'trading'
-      doc: 'Market Session Is Open And Trading Is Active Individual Symbols May Still Be Haltedpaused'
+      doc: 'Market session is open and trading is active (individual symbols may still be halted/paused).'
     2:
       id: 'halted'
-      doc: 'Marketwide Trading Halt All Symbols Halted Circuit Breaker Or Systemwide Halt'
+      doc: 'Market-wide trading halt - all symbols halted (circuit breaker or system-wide halt).'
   trading_session_status_operational_halt_reason:
     0:
       id: 'administrative'
-      doc: 'Administrative Or Technical Halt Initiated By The Exchange'
+      doc: 'Administrative or technical halt initiated by the Exchange.'
   trading_session_status_regulatory_halt_reason:
     0:
       id: 'reason_not_available'
-      doc: 'Reason Not Available Or Not Applicable Cta Space Utp Space'
+      doc: 'Reason not available or not applicable (CTA: Space, UTP: Space).'
     1:
       id: 'news_pending'
-      doc: 'Trading Halted Pending Release Of Material News Cta P Utp T 1'
+      doc: 'Trading halted pending release of material news (CTA: P, UTP: T1).'
     2:
       id: 'news_dissemination'
-      doc: 'Trading Halted For Dissemination Of Material News Cta D Utp T 2'
+      doc: 'Trading halted for dissemination of material news (CTA: D, UTP: T2).'
     3:
       id: 'info_requested'
-      doc: 'Additional Information Requested By The Listing Exchange Cta A Utp T 12'
+      doc: 'Additional information requested by the listing exchange (CTA: A, UTP: T12).'
     4:
       id: 'order_imbalance'
-      doc: 'Order Imbalance Cta I'
+      doc: 'Order imbalance (CTA: I).'
     5:
       id: 'extraordinary_market_activity'
-      doc: 'Extraordinary Market Activity Utp T 6'
+      doc: 'Extraordinary market activity (UTP: T6).'
     6:
       id: 'luld_pause'
-      doc: 'Limit Up Limit Down Pause Cta M Utp Ludp'
+      doc: 'Limit Up-Limit Down pause (CTA: M, UTP: LUDP).'
     7:
       id: 'non_compliance'
-      doc: 'Noncompliance With Listing Standards Utp H 4'
+      doc: 'Non-compliance with listing standards (UTP: H4).'
     8:
       id: 'filings_not_current'
-      doc: 'Required Filings Not Current Utp H 9'
+      doc: 'Required filings not current (UTP: H9).'
     9:
       id: 'sec_suspension'
-      doc: 'Sec Trading Suspension Utp H 10'
+      doc: 'SEC trading suspension (UTP: H10).'
     10:
       id: 'regulatory_concern'
-      doc: 'Regulatory Concern From Other Markets Cta C Utp H 11'
+      doc: 'Regulatory concern from other markets (CTA: C, UTP: H11).'
     11:
       id: 'sub_penny_trading'
-      doc: 'Subpenny Trading Violation Cta Y'
+      doc: 'Sub-penny trading violation (CTA: Y).'
     12:
       id: 'etf'
-      doc: 'Et Fspecific Halt Cta F Utp T 8'
+      doc: 'ETF-specific halt (CTA: F, UTP: T8).'
     13:
       id: 'ipo_not_trading'
-      doc: 'Ipo Not Yet Trading Utp Ipo 1'
+      doc: 'IPO not yet trading (UTP: IPO1).'
     14:
       id: 'corporate_action'
-      doc: 'Corporate Action In Progress Cta N Utp M 1'
+      doc: 'Corporate action in progress (CTA: N, UTP: M1).'
     15:
       id: 'circuit_breaker_l_1'
-      doc: 'Marketwide Circuit Breaker Level 1 Cta 1 Utp Mwc 1'
+      doc: 'Market-wide circuit breaker Level 1 (CTA: 1, UTP: MWC1).'
     16:
       id: 'circuit_breaker_l_2'
-      doc: 'Marketwide Circuit Breaker Level 2 Cta 2 Utp Mwc 2'
+      doc: 'Market-wide circuit breaker Level 2 (CTA: 2, UTP: MWC2).'
     17:
       id: 'circuit_breaker_l_3'
-      doc: 'Marketwide Circuit Breaker Level 3 Cta 3 Utp Mwc 3'
+      doc: 'Market-wide circuit breaker Level 3 (CTA: 3, UTP: MWC3).'
     18:
       id: 'circuit_breaker_carryover'
-      doc: 'Marketwide Circuit Breaker Halt Carried Over From Previous Trading Day Utp Mwc 0'
+      doc: 'Market-wide circuit breaker halt carried over from previous trading day (UTP: MWC0).'
     19:
       id: 'merger_effective'
-      doc: 'Merger Effective Cta E'
+      doc: 'Merger effective (CTA: E).'
     20:
       id: 'new_security_offering'
-      doc: 'New Security Offering Cta O'
+      doc: 'New security offering (CTA: O).'
     21:
       id: 'indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available Cta V'
+      doc: 'Intraday indicative value not available (CTA: V).'
     22:
       id: 'quotation_not_available'
-      doc: 'Quotation Not Available Utp M 2'
+      doc: 'Quotation not available (UTP: M2).'
     23:
       id: 'single_stock_trading_pause'
-      doc: 'Single Stock Trading Pause Utp T 5'
+      doc: 'Single stock trading pause (UTP: T5).'
     24:
       id: 'operational'
-      doc: 'Nonregulatory Halt Due To Technical Or Operational Reasons Cta X Utp O 1'
+      doc: 'Non-regulatory halt due to technical or operational reasons (CTA: X, UTP: O1).'
     25:
       id: 'luld_pause_straddle'
-      doc: 'Limit Up Limit Down Volatility Pause Straddle Condition Bidoffer Crosses A Band Utp Luds'
+      doc: 'Limit Up-Limit Down volatility pause - straddle condition (bid/offer crosses a band) (UTP: LUDS).'
     26:
       id: 'news_resumption_times'
-      doc: 'News And Resumption Times Announced Utp T 3'
+      doc: 'News and resumption times announced (UTP: T3).'
     27:
       id: 'single_stock_trading_pause_quoting'
-      doc: 'Single Stock Trading Pause Utp T 7'
+      doc: 'Single stock trading pause (UTP: T7).'
     28:
       id: 'qualifications_issues_resolved'
-      doc: 'Qualifications Issues Reviewedresolved Quotationstrading To Resume Utp R 4'
+      doc: 'Qualifications issues reviewed/resolved; quotations/trading to resume (UTP: R4).'
     29:
       id: 'filing_requirements_satisfied'
-      doc: 'Filing Requirements Satisfiedresolved Quotationstrading To Resume Utp R 9'
+      doc: 'Filing requirements satisfied/resolved; quotations/trading to resume (UTP: R9).'
     30:
       id: 'issuer_news_not_forthcoming'
-      doc: 'Issuer News Not Forthcoming Quotationstrading To Resume Utp C 3'
+      doc: 'Issuer news not forthcoming; quotations/trading to resume (UTP: C3).'
     31:
       id: 'qualifications_halt_ended'
-      doc: 'Qualifications Halt Ended Maintenance Requirements Met Resume Utp C 4'
+      doc: 'Qualifications halt ended; maintenance requirements met; resume (UTP: C4).'
     32:
       id: 'qualifications_halt_concluded'
-      doc: 'Qualifications Halt Concluded Filings Met Quotestrades To Resume Utp C 9'
+      doc: 'Qualifications halt concluded; filings met; quotes/trades to resume (UTP: C9).'
     33:
       id: 'regulatory_authority_halt_concluded'
-      doc: 'Trade Halt Concluded By Other Regulatory Authority Quotestrades To Resume Utp C 11'
+      doc: 'Trade halt concluded by other regulatory authority; quotes/trades to resume (UTP: C11).'
     34:
       id: 'new_issue_available'
-      doc: 'New Issue Available Utp R 1'
+      doc: 'New issue available (UTP: R1).'
     35:
       id: 'issue_available'
-      doc: 'Issue Available Utp R 2'
+      doc: 'Issue available (UTP: R2).'
     36:
       id: 'ipo_quotation_released'
-      doc: 'Ipo Security Released For Quotation Utp Ipoq'
+      doc: 'IPO security released for quotation (UTP: IPOQ).'
     37:
       id: 'ipo_positioning_window_extension'
-      doc: 'Ipo Security Positioning Window Extension Utp Ipoe'
+      doc: 'IPO security - positioning window extension (UTP: IPOE).'
     38:
       id: 'circuit_breaker_quotation_resumption'
-      doc: 'Marketwide Circuit Breaker Quotation Resumption Utp Mwcq'
+      doc: 'Market-wide circuit breaker quotation resumption (UTP: MWCQ).'
   symbol_trading_state:
     1:
       id: 'trading'
-      doc: 'Symbol Is Open And Available For Trading'
+      doc: 'Symbol is open and available for trading.'
     2:
       id: 'halted'
-      doc: 'Trading Suspended'
+      doc: 'Trading suspended.'
     3:
       id: 'resume_pending'
-      doc: 'Applies Only When A Symbol Is In A Nontrading State With An Auction Cross Pending To Bring It Back Into Trading'
+      doc: 'Applies only when a symbol is in a non-trading state with an auction cross pending to bring it back into trading.'
   short_sale_restriction_state:
     0:
       id: 'none'
-      doc: 'No Short Sale Restriction In Effect Cta Space Utp 0'
+      doc: 'No short sale restriction in effect (CTA: Space, UTP: 0).'
     1:
       id: 'activated'
-      doc: 'Restriction Activated Intraday Cta A Utp 1'
+      doc: 'Restriction activated intra-day (CTA: A, UTP: 1).'
     2:
       id: 'continued'
-      doc: 'Restriction Carried Over From Previous Trading Day Cta C Utp 2'
+      doc: 'Restriction carried over from previous trading day (CTA: C, UTP: 2).'
     3:
       id: 'deactivated'
-      doc: 'Restriction Deactivated Intraday Cta D'
+      doc: 'Restriction deactivated intra-day (CTA: D).'
     4:
       id: 'in_effect'
-      doc: 'Restriction In Effect Status Unchanged From Previous Close Cta E'
+      doc: 'Restriction in effect, status unchanged from previous close (CTA: E).'
   symbol_status_operational_halt_reason:
     0:
       id: 'administrative'
-      doc: 'Administrative Or Technical Halt Initiated By The Exchange'
+      doc: 'Administrative or technical halt initiated by the Exchange.'
   symbol_status_regulatory_halt_reason:
     0:
       id: 'reason_not_available'
-      doc: 'Reason Not Available Or Not Applicable Cta Space Utp Space'
+      doc: 'Reason not available or not applicable (CTA: Space, UTP: Space).'
     1:
       id: 'news_pending'
-      doc: 'Trading Halted Pending Release Of Material News Cta P Utp T 1'
+      doc: 'Trading halted pending release of material news (CTA: P, UTP: T1).'
     2:
       id: 'news_dissemination'
-      doc: 'Trading Halted For Dissemination Of Material News Cta D Utp T 2'
+      doc: 'Trading halted for dissemination of material news (CTA: D, UTP: T2).'
     3:
       id: 'info_requested'
-      doc: 'Additional Information Requested By The Listing Exchange Cta A Utp T 12'
+      doc: 'Additional information requested by the listing exchange (CTA: A, UTP: T12).'
     4:
       id: 'order_imbalance'
-      doc: 'Order Imbalance Cta I'
+      doc: 'Order imbalance (CTA: I).'
     5:
       id: 'extraordinary_market_activity'
-      doc: 'Extraordinary Market Activity Utp T 6'
+      doc: 'Extraordinary market activity (UTP: T6).'
     6:
       id: 'luld_pause'
-      doc: 'Limit Up Limit Down Pause Cta M Utp Ludp'
+      doc: 'Limit Up-Limit Down pause (CTA: M, UTP: LUDP).'
     7:
       id: 'non_compliance'
-      doc: 'Noncompliance With Listing Standards Utp H 4'
+      doc: 'Non-compliance with listing standards (UTP: H4).'
     8:
       id: 'filings_not_current'
-      doc: 'Required Filings Not Current Utp H 9'
+      doc: 'Required filings not current (UTP: H9).'
     9:
       id: 'sec_suspension'
-      doc: 'Sec Trading Suspension Utp H 10'
+      doc: 'SEC trading suspension (UTP: H10).'
     10:
       id: 'regulatory_concern'
-      doc: 'Regulatory Concern From Other Markets Cta C Utp H 11'
+      doc: 'Regulatory concern from other markets (CTA: C, UTP: H11).'
     11:
       id: 'sub_penny_trading'
-      doc: 'Subpenny Trading Violation Cta Y'
+      doc: 'Sub-penny trading violation (CTA: Y).'
     12:
       id: 'etf'
-      doc: 'Et Fspecific Halt Cta F Utp T 8'
+      doc: 'ETF-specific halt (CTA: F, UTP: T8).'
     13:
       id: 'ipo_not_trading'
-      doc: 'Ipo Not Yet Trading Utp Ipo 1'
+      doc: 'IPO not yet trading (UTP: IPO1).'
     14:
       id: 'corporate_action'
-      doc: 'Corporate Action In Progress Cta N Utp M 1'
+      doc: 'Corporate action in progress (CTA: N, UTP: M1).'
     15:
       id: 'circuit_breaker_l_1'
-      doc: 'Marketwide Circuit Breaker Level 1 Cta 1 Utp Mwc 1'
+      doc: 'Market-wide circuit breaker Level 1 (CTA: 1, UTP: MWC1).'
     16:
       id: 'circuit_breaker_l_2'
-      doc: 'Marketwide Circuit Breaker Level 2 Cta 2 Utp Mwc 2'
+      doc: 'Market-wide circuit breaker Level 2 (CTA: 2, UTP: MWC2).'
     17:
       id: 'circuit_breaker_l_3'
-      doc: 'Marketwide Circuit Breaker Level 3 Cta 3 Utp Mwc 3'
+      doc: 'Market-wide circuit breaker Level 3 (CTA: 3, UTP: MWC3).'
     18:
       id: 'circuit_breaker_carryover'
-      doc: 'Marketwide Circuit Breaker Halt Carried Over From Previous Trading Day Utp Mwc 0'
+      doc: 'Market-wide circuit breaker halt carried over from previous trading day (UTP: MWC0).'
     19:
       id: 'merger_effective'
-      doc: 'Merger Effective Cta E'
+      doc: 'Merger effective (CTA: E).'
     20:
       id: 'new_security_offering'
-      doc: 'New Security Offering Cta O'
+      doc: 'New security offering (CTA: O).'
     21:
       id: 'indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available Cta V'
+      doc: 'Intraday indicative value not available (CTA: V).'
     22:
       id: 'quotation_not_available'
-      doc: 'Quotation Not Available Utp M 2'
+      doc: 'Quotation not available (UTP: M2).'
     23:
       id: 'single_stock_trading_pause'
-      doc: 'Single Stock Trading Pause Utp T 5'
+      doc: 'Single stock trading pause (UTP: T5).'
     24:
       id: 'operational'
-      doc: 'Nonregulatory Halt Due To Technical Or Operational Reasons Cta X Utp O 1'
+      doc: 'Non-regulatory halt due to technical or operational reasons (CTA: X, UTP: O1).'
     25:
       id: 'luld_pause_straddle'
-      doc: 'Limit Up Limit Down Volatility Pause Straddle Condition Bidoffer Crosses A Band Utp Luds'
+      doc: 'Limit Up-Limit Down volatility pause - straddle condition (bid/offer crosses a band) (UTP: LUDS).'
     26:
       id: 'news_resumption_times'
-      doc: 'News And Resumption Times Announced Utp T 3'
+      doc: 'News and resumption times announced (UTP: T3).'
     27:
       id: 'single_stock_trading_pause_quoting'
-      doc: 'Single Stock Trading Pause Utp T 7'
+      doc: 'Single stock trading pause (UTP: T7).'
     28:
       id: 'qualifications_issues_resolved'
-      doc: 'Qualifications Issues Reviewedresolved Quotationstrading To Resume Utp R 4'
+      doc: 'Qualifications issues reviewed/resolved; quotations/trading to resume (UTP: R4).'
     29:
       id: 'filing_requirements_satisfied'
-      doc: 'Filing Requirements Satisfiedresolved Quotationstrading To Resume Utp R 9'
+      doc: 'Filing requirements satisfied/resolved; quotations/trading to resume (UTP: R9).'
     30:
       id: 'issuer_news_not_forthcoming'
-      doc: 'Issuer News Not Forthcoming Quotationstrading To Resume Utp C 3'
+      doc: 'Issuer news not forthcoming; quotations/trading to resume (UTP: C3).'
     31:
       id: 'qualifications_halt_ended'
-      doc: 'Qualifications Halt Ended Maintenance Requirements Met Resume Utp C 4'
+      doc: 'Qualifications halt ended; maintenance requirements met; resume (UTP: C4).'
     32:
       id: 'qualifications_halt_concluded'
-      doc: 'Qualifications Halt Concluded Filings Met Quotestrades To Resume Utp C 9'
+      doc: 'Qualifications halt concluded; filings met; quotes/trades to resume (UTP: C9).'
     33:
       id: 'regulatory_authority_halt_concluded'
-      doc: 'Trade Halt Concluded By Other Regulatory Authority Quotestrades To Resume Utp C 11'
+      doc: 'Trade halt concluded by other regulatory authority; quotes/trades to resume (UTP: C11).'
     34:
       id: 'new_issue_available'
-      doc: 'New Issue Available Utp R 1'
+      doc: 'New issue available (UTP: R1).'
     35:
       id: 'issue_available'
-      doc: 'Issue Available Utp R 2'
+      doc: 'Issue available (UTP: R2).'
     36:
       id: 'ipo_quotation_released'
-      doc: 'Ipo Security Released For Quotation Utp Ipoq'
+      doc: 'IPO security released for quotation (UTP: IPOQ).'
     37:
       id: 'ipo_positioning_window_extension'
-      doc: 'Ipo Security Positioning Window Extension Utp Ipoe'
+      doc: 'IPO security - positioning window extension (UTP: IPOE).'
     38:
       id: 'circuit_breaker_quotation_resumption'
-      doc: 'Marketwide Circuit Breaker Quotation Resumption Utp Mwcq'
+      doc: 'Market-wide circuit breaker quotation resumption (UTP: MWCQ).'
   trade_through_exemption_reason:
     0:
       id: 'none'
-      doc: 'No Tradethrough Exemption'
+      doc: 'No trade-through exemption.'
     1:
       id: 'intermarket_sweep'
-      doc: 'Intermarket Sweep Order Iso Ctautp F'
+      doc: 'Intermarket Sweep Order (ISO) (CTA/UTP: ''F'').'
   auction_type:
     1:
       id: 'opening'
-      doc: 'Scheduled Regularsession Cross That Establishes The Official Opening Price For A Symbol'
+      doc: 'Scheduled regular-session cross that establishes the official opening price for a symbol.'
     2:
       id: 'closing'
-      doc: 'Scheduled Endofday Cross That Establishes The Official Closing Price For A Symbol'
+      doc: 'Scheduled end-of-day cross that establishes the official closing price for a symbol.'
     3:
       id: 'halt'
-      doc: 'Reopening Cross Following A Trading Halt Or Luld Trading Pause'
+      doc: 'Reopening cross following a trading halt or LULD trading pause.'
     4:
       id: 'ipo'
-      doc: 'Cross For A Symbols Initial Public Offering'
+      doc: 'Cross for a symbol''s initial public offering.'
   excess_auction_side:
     0:
       id: 'equal'
-      doc: 'Buy And Sell Auction Only Interest Are Balanced Equal Volume On Each Side Or No Auction Only Interest Is Currently In The Book'
+      doc: 'Buy and sell Auction-Only interest are balanced (equal volume on each side), or no Auction-Only interest is currently in the book.'
     1:
       id: 'buy'
-      doc: 'Buy Interest Exceeds Sell Interest'
+      doc: 'Buy interest exceeds sell interest.'
     2:
       id: 'sell'
-      doc: 'Sell Interest Exceeds Buy Interest'
+      doc: 'Sell interest exceeds buy interest.'
 

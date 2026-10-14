@@ -176,25 +176,25 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages Always The First Message Sent In Any Trading Day After 400 Am'
+      doc: 'Start of Messages. Always the first message sent in any trading day (after ~4:00am).'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours The Exchange Is Ready To Start Accepting Orders 700 Am'
+      doc: 'Start of System Hours. The exchange is ready to start accepting orders (7:00am).'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process The Exchange Has Started Its Opening Process 93000 Am'
+      doc: 'Start of Opening Process. The exchange has started its opening process (9:30:00am).'
     0x4e:
       id: 'end_of_normal_hours_processing'
-      doc: 'End Of Normal Hours Processing No New Orders Or Changes To Existing Orders For Options That Trade During Normal Hours 40000 Pm'
+      doc: 'End of Normal Hours Processing. No new orders or changes to existing orders for options that trade during normal hours (4:00:00pm).'
     0x4c:
       id: 'end_of_late_hours_processing'
-      doc: 'End Of Late Hours Processing No New Orders Or Changes To Existing Orders For Options That Trade During Extended Hours 41500 Pm'
+      doc: 'End of Late Hours Processing. No new orders or changes to existing orders for options that trade during extended hours (4:15:00pm).'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours The System Is Now Closed 530 Pm'
+      doc: 'End of System Hours. The system is now closed (~5:30pm).'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages Always The Last Message Sent In Any Trading Day 535 Pm'
+      doc: 'End of Messages. Always the last message sent in any trading day (~5:35pm).'
   option_kind:
     0x43:
       id: 'call'
@@ -204,69 +204,69 @@ enums:
       doc: 'Put'
     0x20:
       id: 'stock_leg'
-      doc: 'Stock Leg'
+      doc: 'Stock leg'
   option_closing_type:
     0x4e:
       id: 'normal_hours'
-      doc: 'Normal Hours'
+      doc: 'Normal hours'
     0x4c:
       id: 'late_hours'
-      doc: 'Late Hours'
+      doc: 'Late hours'
   tradable:
     0x59:
       id: 'tradable'
       doc: 'Tradable'
     0x4e:
       id: 'non_tradable'
-      doc: 'Non Tradable'
+      doc: 'Non-Tradable'
   mpv:
     0x45:
       id: 'penny_everywhere'
-      doc: 'Penny Everywhere All Prices Are In Penny Increments'
+      doc: 'Penny Everywhere: all prices are in penny increments'
     0x53:
       id: 'scaled'
-      doc: 'Scaled Prices Below 3.00 Are In Increments Of 0.05 Prices Above 3.00 Are In Increments Of 0.10'
+      doc: 'Scaled: prices below $3.00 are in increments of $0.05, prices above $3.00 are in increments of $0.10'
     0x50:
       id: 'penny_pilot'
-      doc: 'Penny Pilot Prices Below 3.00 Are In Increments Of 0.01 Prices Above 3.00 Are In Increments Of 0.05'
+      doc: 'Penny Pilot: prices below $3.00 are in increments of $0.01, prices above $3.00 are in increments of $0.05'
   closing_only:
     0x59:
       id: 'closing_position_only'
-      doc: 'Option Is Closing Position Only Only Mm Origin Orders Can Have Open Position In The Series'
+      doc: 'Option is Closing Position Only. Only MM origin orders can have open position in the series.'
     0x4e:
       id: 'not_closing_position_only'
-      doc: 'Option Is Not Closing Position Only'
+      doc: 'Option is not Closing Position Only'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading_resumed'
-      doc: 'Trading Resumed'
+      doc: 'Trading resumed'
   send_type:
     0x53:
       id: 'send'
-      doc: 'Send Original Transmission'
+      doc: 'Send (original transmission)'
     0x50:
       id: 'possible_duplicate'
-      doc: 'Possible Duplicate Unsolicited Retransmission'
+      doc: 'Possible duplicate (unsolicited retransmission)'
   transaction_type:
     0x58:
       id: 'new_trade'
-      doc: 'New Trade'
+      doc: 'New trade'
     0x59:
       id: 'trade_correction'
-      doc: 'Trade Correction'
+      doc: 'Trade correction'
     0x5a:
       id: 'trade_cancel'
-      doc: 'Trade Cancel If Trade Cancel Messages Are To Be Sent Using This Message'
+      doc: 'Trade cancel (if trade cancel messages are to be sent using this message)'
   liquidity:
     1:
       id: 'add_maker'
-      doc: 'Add Maker'
+      doc: 'Add/Maker'
     2:
       id: 'remove_taker'
-      doc: 'Remove Taker'
+      doc: 'Remove/Taker'
     4:
       id: 'response'
       doc: 'Response'
@@ -317,19 +317,19 @@ enums:
       doc: 'Regular Maker Against Combo'
     20:
       id: 'combo_taker_against_io'
-      doc: 'Combo Taker Against Io'
+      doc: 'Combo Taker Against IO'
     21:
       id: 'regular_taker_against_io'
-      doc: 'Regular Taker Against Io Incl Pim'
+      doc: 'Regular Taker Against IO (incl. PIM)'
     23:
       id: 'io_maker_against_regular'
-      doc: 'Io Maker Against Regular'
+      doc: 'IO Maker Against Regular'
     24:
       id: 'regular_maker_against_io_participant'
-      doc: 'Regular Maker Against Io Participant'
+      doc: 'Regular Maker Against IO Participant'
     25:
       id: 'io_participant_taker_against_regular'
-      doc: 'Io Participant Taker Against Regular'
+      doc: 'IO Participant Taker Against Regular'
     26:
       id: 'broken_price_improvement'
       doc: 'Broken Price Improvement'
@@ -368,7 +368,7 @@ enums:
       doc: 'Price Improvement'
     38:
       id: 'price_improvement_response'
-      doc: 'Price Improvement Response'
+      doc: 'Price improvement Response'
     39:
       id: 'solicitation'
       doc: 'Solicitation'
@@ -380,7 +380,7 @@ enums:
       doc: 'Qualified Contingent Cross'
     42:
       id: 'customer_to_customer'
-      doc: 'Customer To Customer'
+      doc: 'Customer to Customer'
     43:
       id: 'combo_facilitation'
       doc: 'Combo Facilitation'
@@ -404,7 +404,7 @@ enums:
       doc: 'Combo Qualified Contingent Cross'
     50:
       id: 'combo_customer_to_customer'
-      doc: 'Combo Customer To Customer'
+      doc: 'Combo Customer to Customer'
     51:
       id: 'sweep_routed_out'
       doc: 'Sweep Routed Out'
@@ -413,13 +413,13 @@ enums:
       doc: 'Sweep Trade Report'
     53:
       id: 'combo_taker_against_regular_thru_nbbo'
-      doc: 'Combo Taker Against Regular Thru Nbbo'
+      doc: 'Combo Taker Against Regular - Thru NBBO'
     55:
       id: 'simple_exposure_order_upon_receipt'
-      doc: 'Simple Exposure Order Upon Receipt'
+      doc: 'Simple Exposure Order - Upon Receipt'
     57:
       id: 'simple_exposure_order_responder'
-      doc: 'Simple Exposure Order Responder'
+      doc: 'Simple Exposure Order - Responder'
     58:
       id: 'flex_auction'
       doc: 'Flex Auction'
@@ -471,7 +471,7 @@ enums:
   auction_type:
     0x50:
       id: 'simple_order_pixl_prism_pim'
-      doc: 'Simple Order Pixlprismpim'
+      doc: 'Simple Order PIXL/PRISM/PIM'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -497,67 +497,67 @@ enums:
   execution_market:
     0x41:
       id: 'amex'
-      doc: 'Amex'
+      doc: 'AMEX'
     0x42:
       id: 'box_field'
-      doc: 'Box'
+      doc: 'BOX'
     0x43:
       id: 'cboe'
-      doc: 'Cboe'
+      doc: 'CBOE'
     0x44:
       id: 'miax_emerald'
-      doc: 'Miax Emerald'
+      doc: 'MIAX Emerald'
     0x49:
       id: 'ise'
-      doc: 'Ise'
+      doc: 'ISE'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x57:
       id: 'c_2'
-      doc: 'C 2'
+      doc: 'C2'
     0x5a:
       id: 'bats'
-      doc: 'Bats'
+      doc: 'BATS'
     0x58:
       id: 'phlx'
-      doc: 'Phlx'
+      doc: 'PHLX'
     0x54:
       id: 'ntx_options'
-      doc: 'Ntx Options'
+      doc: 'NTX Options'
     0x4d:
       id: 'miax'
-      doc: 'Miax'
+      doc: 'MIAX'
     0x50:
       id: 'miax_pearl'
-      doc: 'Miax Pearl'
+      doc: 'MIAX Pearl'
     0x48:
       id: 'gemx'
-      doc: 'Gemx'
+      doc: 'GEMX'
     0x45:
       id: 'bats_edgx'
-      doc: 'Bats Edgx'
+      doc: 'BATS EDGX'
     0x4a:
       id: 'mrx'
-      doc: 'Mrx'
+      doc: 'MRX'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x53:
       id: 'miax_sapphire'
-      doc: 'Miax Sapphire'
+      doc: 'MIAX Sapphire'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x47:
       id: 'mx_2'
-      doc: 'Mx 2'
+      doc: 'MX2'
     0x20:
       id: 'not_away_trade'
-      doc: 'Not Away Trade Stock Legs On Phlxisemrx'
+      doc: 'Not away trade; stock legs on PHLX/ISE/MRX'
   trade_side:
     0x42:
       id: 'buy'
@@ -568,10 +568,10 @@ enums:
   side_changed:
     0x59:
       id: 'yes_field'
-      doc: 'New Trades And Corrections That Affected This Side Of The Trade'
+      doc: 'New trades and corrections that affected this side of the trade'
     0x4e:
       id: 'no_field'
-      doc: 'Corrections That Affected Only Contra Side'
+      doc: 'Corrections that affected only contra side'
   capacity:
     0x43:
       id: 'customer'
@@ -587,74 +587,74 @@ enums:
       doc: 'Exchange Registered Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable Stock Leg Execution Or Routed Away Execution'
+      doc: 'Not Applicable (stock leg execution or routed away execution)'
     0x4a:
       id: 'joint_back_office'
-      doc: 'Joint Back Office Jbo'
+      doc: 'Joint BackOffice (JBO)'
     0x46:
       id: 'firm'
       doc: 'Firm'
   origin_market:
     0x41:
       id: 'amex'
-      doc: 'Amex'
+      doc: 'AMEX'
     0x42:
       id: 'box_field'
-      doc: 'Box'
+      doc: 'BOX'
     0x43:
       id: 'cboe'
-      doc: 'Cboe'
+      doc: 'CBOE'
     0x44:
       id: 'miax_emerald'
-      doc: 'Miax Emerald'
+      doc: 'MIAX Emerald'
     0x49:
       id: 'ise'
-      doc: 'Ise'
+      doc: 'ISE'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x57:
       id: 'c_2'
-      doc: 'C 2'
+      doc: 'C2'
     0x58:
       id: 'phlx'
-      doc: 'Phlx'
+      doc: 'PHLX'
     0x54:
       id: 'ntx_options'
-      doc: 'Ntx Options'
+      doc: 'NTX Options'
     0x4d:
       id: 'miax'
-      doc: 'Miax'
+      doc: 'MIAX'
     0x48:
       id: 'gemx'
-      doc: 'Gemx'
+      doc: 'GEMX'
     0x45:
       id: 'bats_edgx'
-      doc: 'Bats Edgx'
+      doc: 'BATS EDGX'
     0x4a:
       id: 'mrx'
-      doc: 'Mrx'
+      doc: 'MRX'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x53:
       id: 'miax_sapphire'
-      doc: 'Miax Sapphire'
+      doc: 'MIAX Sapphire'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x47:
       id: 'mx_2'
-      doc: 'Mx 2'
+      doc: 'MX2'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable The Capacity Of This Side Of Trade Is Not O'
+      doc: 'Not Applicable (the capacity of this side of trade is not O)'
   contra_capacity:
     0x43:
       id: 'customer'
@@ -676,13 +676,13 @@ enums:
       doc: 'Exchange Registered Market Maker'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker Farmmawaymm'
+      doc: 'Other Exchange Registered Market Maker (FARMM/AWAYMM)'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable Stock Leg Execution Or Routed Away Execution'
+      doc: 'Not Applicable (stock leg execution or routed away execution)'
     0x4a:
       id: 'joint_back_office'
-      doc: 'Joint Back Office Jbo'
+      doc: 'Joint BackOffice (JBO)'
     0x46:
       id: 'firm'
       doc: 'Firm'
@@ -691,20 +691,20 @@ enums:
       doc: 'Proprietary Firm'
     0x4b:
       id: 'broker_dealer_firm'
-      doc: 'Broker Dealer Firm'
+      doc: 'Broker Dealer - Firm'
   short_sell:
     0x59:
       id: 'short_sale'
       doc: 'Short Sale'
     0x4e:
       id: 'not_a_short_sale'
-      doc: 'Not A Short Sale'
+      doc: 'Not a Short Sale'
     0x45:
       id: 'short_sale_exempt'
       doc: 'Short Sale Exempt'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable Not A Stock Leg'
+      doc: 'Not Applicable (Not a Stock Leg)'
   principal_agent:
     0x41:
       id: 'agency'
@@ -717,23 +717,23 @@ enums:
       doc: 'Riskless Principle'
     0x20:
       id: 'not_a_stock_leg'
-      doc: 'Not A Stock Leg'
+      doc: 'Not a stock leg'
   origin_type:
     0x4f:
       id: 'fix_order'
-      doc: 'Fix Order'
+      doc: 'FIX Order'
     0x54:
       id: 'otto_order'
-      doc: 'Otto Order'
+      doc: 'OTTO Order'
     0x45:
       id: 'otto_sweep'
-      doc: 'Otto Sweep Nom Only'
+      doc: 'OTTO Sweep (NOM only)'
     0x51:
       id: 'sqf_quote'
-      doc: 'Sqf Quote'
+      doc: 'SQF Quote'
     0x57:
       id: 'sqf_sweep'
-      doc: 'Sqf Sweep'
+      doc: 'SQF Sweep'
     0x50:
       id: 'block_order'
       doc: 'Block Order'
@@ -742,25 +742,25 @@ enums:
       doc: 'Block Response'
     0x47:
       id: 'pim_primary_order'
-      doc: 'Pixlprismpim Primary Order'
+      doc: 'PIXL/PRISM/PIM Primary Order'
     0x48:
       id: 'pim_contra_order'
-      doc: 'Pixlprismpim Contra Order'
+      doc: 'PIXL/PRISM/PIM Contra Order'
     0x49:
       id: 'pim_response_order'
-      doc: 'Pixlprismpim Response Order'
+      doc: 'PIXL/PRISM/PIM Response Order'
     0x4a:
       id: 'pim_response_sqf_sweep'
-      doc: 'Pixlprismpim Response Sqf Sweep'
+      doc: 'PIXL/PRISM/PIM Response SQF Sweep'
     0x42:
       id: 'fbms_floor_trade'
-      doc: 'Fbms Floor Trade'
+      doc: 'FBMS Floor Trade'
     0x4b:
       id: 'qcc_primary'
-      doc: 'Qcc Primary'
+      doc: 'QCC Primary'
     0x4c:
       id: 'qcc_contra'
-      doc: 'Qcc Contra'
+      doc: 'QCC Contra'
     0x4d:
       id: 'solicitation_primary_order'
       doc: 'Solicitation Primary Order'
@@ -772,7 +772,7 @@ enums:
       doc: 'Solicitation Response Order'
     0x56:
       id: 'solicitation_response_sqf_sweep'
-      doc: 'Solicitation Response Sqf Sweep'
+      doc: 'Solicitation Response SQF Sweep'
     0x46:
       id: 'facilitation_primary_order'
       doc: 'Facilitation Primary Order'
@@ -784,27 +784,27 @@ enums:
       doc: 'Facilitation Response Order'
     0x59:
       id: 'facilitation_response_sqf_sweep'
-      doc: 'Facilitation Response Sqf Sweep'
+      doc: 'Facilitation Response SQF Sweep'
     0x20:
       id: 'others'
       doc: 'Others'
   tif:
     0x49:
       id: 'ioc_or_fok'
-      doc: 'Ioc Or Fok'
+      doc: 'IOC or FOK'
     0x44:
       id: 'day'
-      doc: 'Day'
+      doc: 'DAY'
     0x47:
       id: 'gtc'
-      doc: 'Gtc'
+      doc: 'GTC'
     0x4f:
       id: 'opg'
-      doc: 'Opg'
+      doc: 'OPG'
     0x54:
       id: 'gtd'
-      doc: 'Gtd'
+      doc: 'GTD'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable Quotes Manual Trades'
+      doc: 'Not Applicable (quotes, manual trades)'
 

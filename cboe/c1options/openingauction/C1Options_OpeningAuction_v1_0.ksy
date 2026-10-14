@@ -399,23 +399,23 @@ enums:
       doc: 'Cboe'
     0x4f:
       id: 'one_chicago_not_supported'
-      doc: 'One Chicago Not Supported'
+      doc: 'One Chicago – Not Supported'
     0x57:
       id: 'cbsx_not_supported'
-      doc: 'Cbsx Not Supported'
+      doc: 'CBSX – Not Supported'
     0x46:
       id: 'cfecof'
-      doc: 'Cfecof'
+      doc: 'CFE/COF'
     0x32:
       id: 'cboe_2_options'
-      doc: 'Cboe 2 Options'
+      doc: 'Cboe2 Options'
   put_or_call:
     0:
       id: 'put'
-      doc: 'Put'
+      doc: 'PUT'
     1:
       id: 'call'
-      doc: 'Call'
+      doc: 'CALL'
   exercise_style:
     0:
       id: 'american'
@@ -426,10 +426,10 @@ enums:
   leg_side:
     0x42:
       id: 'buy_bid'
-      doc: 'Buy Bid'
+      doc: 'Buy (Bid)'
     0x53:
       id: 'sell_ask'
-      doc: 'Sell Ask'
+      doc: 'Sell (Ask)'
   security_trading_status:
     2:
       id: 'halted'
@@ -445,19 +445,19 @@ enums:
       doc: 'Pre Open'
     22:
       id: 'opening_rotation'
-      doc: 'Market In Opening Rotation'
+      doc: 'Market in Opening Rotation'
     23:
       id: 'fast_market'
       doc: 'Fast Market'
     24:
       id: 'strategy_market_in_opening_rotation'
-      doc: 'Strategy Market In Opening Rotation'
+      doc: 'Strategy Market in Opening Rotation'
     25:
       id: 'strategy_market_quotes_non_firm'
-      doc: 'Strategy Market Quotes Non Firm'
+      doc: 'Strategy Market Quotes Non-Firm'
     26:
       id: 'suspended'
-      doc: 'Market Suspended Quotes Are Not Firm'
+      doc: 'Market Suspended (Quotes are not firm)'
   md_entry_type:
     0x30:
       id: 'bid'
@@ -467,22 +467,22 @@ enums:
       doc: 'Ask'
     0x32:
       id: 'trade'
-      doc: 'Trade Last Sale'
+      doc: 'Trade (LastSale)'
     0x33:
       id: 'index_value'
-      doc: 'Index Value Used Only In Index Value Messages'
+      doc: 'Index Value (Used only in Index Value messages)'
     0x34:
       id: 'opening_price'
       doc: 'Opening Price'
     0x36:
       id: 'settlement_value'
-      doc: 'Settlement Value Used Only In Settlement Messages'
+      doc: 'Settlement value (Used only in Settlement messages)'
     0x37:
       id: 'high'
-      doc: 'High Trading Session High Price'
+      doc: 'High (Trading Session High Price)'
     0x38:
       id: 'low'
-      doc: 'Low Trading Session Low Price'
+      doc: 'Low (Trading Session Low Price)'
   md_volume_type:
     0:
       id: 'total_limit'
@@ -492,14 +492,14 @@ enums:
       doc: 'Customer Limit'
     2:
       id: 'total_contingency_all_or_none'
-      doc: 'Total Contingency All Or None'
+      doc: 'Total Contingency (All or None)'
     3:
       id: 'customer_contingency_all_or_none'
-      doc: 'Customer Contingency All Or None'
+      doc: 'Customer Contingency (All or None)'
   eop_type:
     0:
       id: 'undefined'
-      doc: 'Undefined Not Used'
+      doc: 'Undefined – not used.'
     1:
       id: 'opening_price'
       doc: 'Opening Price'
@@ -523,17 +523,17 @@ enums:
       doc: 'Price Not In Quote Range'
     8:
       id: 'need_dpm_quote_to_open'
-      doc: 'Need Dpm Quote To Open'
+      doc: 'Need DPM Quote To Open'
     9:
       id: 'dpm_quote_invalid'
-      doc: 'Dpm Quote Invalid'
+      doc: 'DPM Quote Invalid'
     10:
       id: 'price_not_in_botr_range'
-      doc: 'Price Not In Botr Range'
+      doc: 'Price Not In BOTR Range'
   legal_market:
     0:
       id: 'not_a_legal_market'
-      doc: 'Not A Legal Market'
+      doc: 'Not a Legal Market'
     1:
       id: 'legal_market'
       doc: 'Legal Market'

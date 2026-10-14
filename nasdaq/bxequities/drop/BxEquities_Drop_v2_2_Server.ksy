@@ -779,104 +779,104 @@ enums:
   buy_sell:
     0x42:
       id: 'bought'
-      doc: 'B Bought'
+      doc: 'B = Bought'
     0x53:
       id: 'sold'
-      doc: 'S Sold'
+      doc: 'S = Sold'
     0x54:
       id: 'sold_short'
-      doc: 'T Sold Short'
+      doc: 'T = Sold Short'
     0x45:
       id: 'sold_short_exempt'
-      doc: 'E Sold Short Exempt'
+      doc: 'E = Sold Short Exempt'
   capacity:
     0x41:
       id: 'agency'
-      doc: 'A Agency'
+      doc: 'A = Agency'
     0x50:
       id: 'principal'
-      doc: 'P Principal'
+      doc: 'P = Principal'
     0x52:
       id: 'riskless'
-      doc: 'R Riskless'
+      doc: 'R = Riskless'
   liquidity_code:
     0x41:
       id: 'added_liquidity'
-      doc: 'A Added Liquidity'
+      doc: 'A = Added Liquidity'
     0x52:
       id: 'reduced_liquidity'
-      doc: 'R Reduced Liquidity'
+      doc: 'R = Reduced Liquidity'
     0x4a:
       id: 'nondisplayed_and_added_liquidity'
-      doc: 'J Nondisplayed And Added Liquidity'
+      doc: 'J = Non-displayed and Added Liquidity'
     0x58:
       id: 'routed'
-      doc: 'X Routed'
+      doc: 'X = Routed'
     0x44:
       id: 'dot_routed'
-      doc: 'D Dot Routed'
+      doc: 'D = DOT Routed'
     0x46:
       id: 'opening_trade_on_nyse'
-      doc: 'F Opening Trade On Nyse'
+      doc: 'F = Opening Trade (on NYSE)'
     0x47:
       id: 'on_close_order_on_nyse'
-      doc: 'G On Close Order On Nyse'
+      doc: 'G = On-Close order (on NYSE)'
     0x59:
       id: 're_routed_by_nyse'
-      doc: 'Y Re Routed By Nyse'
+      doc: 'Y = Re-Routed by NYSE'
     0x53:
       id: 'odd_lot_executions_on_nyse'
-      doc: 'S Odd Lot Executions On Nyse'
+      doc: 'S = Odd Lot Executions (on NYSE)'
     0x55:
       id: 'added_liquidity_on_nyse'
-      doc: 'U Added Liquidity On Nyse'
+      doc: 'U = Added Liquidity (on NYSE)'
     0x45:
       id: 'nyse_other'
-      doc: 'E Nyse Other'
+      doc: 'E = NYSE Other'
     0x50:
       id: 'routed_to_psx'
-      doc: 'P Routed To Psx'
+      doc: 'P = Routed to PSX'
     0x54:
       id: 'opening_trade_on_arca'
-      doc: 'T Opening Trade On Arca'
+      doc: 'T = Opening Trade (on ARCA)'
     0x5a:
       id: 'on_close_order_on_arca'
-      doc: 'Z On Close Order On Arca'
+      doc: 'Z = On-Close order (on ARCA)'
     0x51:
       id: 'routed_to_nasdaq'
-      doc: 'Q Routed To Nasdaq'
+      doc: 'Q = Routed to Nasdaq'
     0x6d:
       id: 'removed_liquidity_at_a_midpoint'
-      doc: 'M Removed Liquidity At A Midpoint'
+      doc: 'm = Removed liquidity at a midpoint'
     0x6b:
       id: 'added_liquidity_via_a_midpoint_order'
-      doc: 'K Added Liquidity Via A Midpoint Order'
+      doc: 'k = Added liquidity via a midpoint order'
     0x6a:
       id: 'rpi_retail_price_improving_order_provides_liquidity'
-      doc: 'J Rpi Retail Price Improving Order Provides Liquidity'
+      doc: 'j = RPI (Retail Price Improving) order provides liquidity'
     0x72:
       id: 'rmo_retail_order_removes_rpi_liquidity'
-      doc: 'R Rmo Retail Order Removes Rpi Liquidity'
+      doc: 'r = RMO Retail Order removes RPI liquidity'
     0x74:
       id: 'rmo_retail_order_removes_price_improving_nondisplayed_liquidity_other_than_rpi_liquidity'
-      doc: 'T Rmo Retail Order Removes Price Improving Nondisplayed Liquidity Other Than Rpi Liquidity'
+      doc: 't = RMO Retail Order removes price improving non-displayed liquidity other than RPI liquidity'
     0x71:
       id: 'rmo_retail_order_removes_non_rpi_midpoint_liquidity'
-      doc: 'Q Rmo Retail Order Removes Non Rpi Midpoint Liquidity'
+      doc: 'q = RMO Retail Order removes non-RPI mid-point liquidity'
     0x37:
       id: 'displayed_liquidityadding_order_improves_the_nbbo'
-      doc: '7 Displayed Liquidityadding Order Improves The Nbbo'
+      doc: '7 = Displayed, liquidity-adding order improves the NBBO'
     0x38:
       id: 'displayed_liquidityadding_order_sets_the_bxbbo_while_joining_the_nbbo'
-      doc: '8 Displayed Liquidityadding Order Sets The Bxbbo While Joining The Nbbo'
+      doc: '8 = Displayed, liquidity-adding order sets the BXBBO while joining the NBBO'
     0x70:
       id: 'removed_price_improving_nondisplayed_liquidity'
-      doc: 'P Removed Price Improving Nondisplayed Liquidity'
+      doc: 'p = Removed price improving non-displayed liquidity'
     0x4e:
       id: 'passive_midpoint_execution'
-      doc: 'N Passive Midpoint Execution'
+      doc: 'N = Passive Midpoint Execution'
   clearing_code:
     0x51:
       id: 'qsr'
-      doc: 'Q Qsr'
+      doc: 'Q = QSR'
 

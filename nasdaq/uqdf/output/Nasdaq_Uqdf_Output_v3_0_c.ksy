@@ -460,19 +460,19 @@ types:
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Short Form'
+        doc: 'Odd Lot Price Level Attachment Short Form (Odd Lot Attachment Type = 2). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_long_form
         type: odd_lot_price_level_attachment_long_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Long Form'
+        doc: 'Odd Lot Price Level Attachment Long Form (Odd Lot Attachment Type = 3). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_adf_mpid_form
         type: odd_lot_price_level_attachment_adf_mpid_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form (Odd Lot Attachment Type = 5). Adds ADF Market Participant Identifier to long form fields. Repeats Odd Lot Attachment Count times'
   bolo_appendage_short_form:
     seq:
       - id: bolo_best_bid_market_center
@@ -567,10 +567,10 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: 'Side: B = Bid update, A = Ask update'
+        doc: 'Side'
       - id: odd_lot_price_short
         type: decimal_u2_2
-        doc: 'Odd Lot Price, 2 implied decimal places. Implied decimal with scale 1e-2'
+        doc: 'Odd Lot Price. Implied decimal with scale 1e-2'
       - id: shares_at_odd_lot_price
         type: u2
         doc: 'Shares at Odd Lot Price'
@@ -584,10 +584,10 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: 'Side: B = Bid update, A = Ask update'
+        doc: 'Side'
       - id: odd_lot_price_long
         type: decimal_u8_6
-        doc: 'Odd Lot Price, 6 implied decimal places. Implied decimal with scale 1e-6'
+        doc: 'Odd Lot Price. Implied decimal with scale 1e-6'
       - id: shares_at_odd_lot_price
         type: u2
         doc: 'Shares at Odd Lot Price'
@@ -601,10 +601,10 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: 'Side: B = Bid update, A = Ask update'
+        doc: 'Side'
       - id: odd_lot_price_long
         type: decimal_u8_6
-        doc: 'Odd Lot Price, 6 implied decimal places. Implied decimal with scale 1e-6'
+        doc: 'Odd Lot Price. Implied decimal with scale 1e-6'
       - id: shares_at_odd_lot_price
         type: u2
         doc: 'Shares at Odd Lot Price'
@@ -613,7 +613,7 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'ADF Market Participant Identifier (blank if Market Center is not "D")'
+        doc: 'ADF Market Participant Identifier'
   combined_quote_message_long_form_message:
     seq:
       - id: market_center_originator
@@ -722,19 +722,19 @@ types:
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Short Form'
+        doc: 'Odd Lot Price Level Attachment Short Form (Odd Lot Attachment Type = 2). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_long_form
         type: odd_lot_price_level_attachment_long_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Long Form'
+        doc: 'Odd Lot Price Level Attachment Long Form (Odd Lot Attachment Type = 3). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_adf_mpid_form
         type: odd_lot_price_level_attachment_adf_mpid_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form (Odd Lot Attachment Type = 5). Adds ADF Market Participant Identifier to long form fields. Repeats Odd Lot Attachment Count times'
   finra_adf_mpid_appendage:
     seq:
       - id: bid_adf_mpid
@@ -806,19 +806,19 @@ types:
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Short Form'
+        doc: 'Odd Lot Price Level Attachment Short Form (Odd Lot Attachment Type = 2). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_long_form
         type: odd_lot_price_level_attachment_long_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Long Form'
+        doc: 'Odd Lot Price Level Attachment Long Form (Odd Lot Attachment Type = 3). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_adf_mpid_form
         type: odd_lot_price_level_attachment_adf_mpid_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form (Odd Lot Attachment Type = 5). Adds ADF Market Participant Identifier to long form fields. Repeats Odd Lot Attachment Count times'
   odd_lot_quote_message_long_form_message:
     seq:
       - id: market_center_originator
@@ -879,19 +879,19 @@ types:
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::short_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Short Form'
+        doc: 'Odd Lot Price Level Attachment Short Form (Odd Lot Attachment Type = 2). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_long_form
         type: odd_lot_price_level_attachment_long_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::long_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment Long Form'
+        doc: 'Odd Lot Price Level Attachment Long Form (Odd Lot Attachment Type = 3). Repeats Odd Lot Attachment Count times'
       - id: odd_lot_price_level_attachment_adf_mpid_form
         type: odd_lot_price_level_attachment_adf_mpid_form
         repeat: expr
         repeat-expr: odd_lot_attachment_count
         if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
-        doc: 'Odd Lot Price Level Attachment ADF MPID Form'
+        doc: 'Odd Lot Price Level Attachment ADF MPID Form (Odd Lot Attachment Type = 5). Adds ADF Market Participant Identifier to long form fields. Repeats Odd Lot Attachment Count times'
   administrative_message:
     seq:
       - id: administrative_message_type

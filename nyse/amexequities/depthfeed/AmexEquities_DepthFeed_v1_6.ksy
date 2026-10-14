@@ -495,10 +495,10 @@ enums:
   market_id:
     1:
       id: 'nyse'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
       doc: 'Nyse Arca Options'
@@ -510,13 +510,13 @@ enums:
       doc: 'Nyse American Options'
     9:
       id: 'nyse_american'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
       id: 'nyse_texas'
-      doc: 'Nyse Texas Equities'
+      doc: 'NYSE Texas Equities'
   exchange_code:
     0x41:
       id: 'nyse_american'

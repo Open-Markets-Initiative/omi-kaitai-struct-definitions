@@ -143,98 +143,98 @@ types:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: display_price
         type: decimal_s8_4
-        doc: 'Only Present When Order Is Fully Or Partially Booked. Implied decimal with scale 1e-4'
+        doc: 'Only present when order is fully or partially booked. Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        doc: 'If Price Had To Be Adjusted To A Less Aggressive Value For Some Reason The Adjusted Price Will Be Reported Here Otherwise Equals Price. Implied decimal with scale 1e-4'
+        doc: 'If price had to be adjusted to a less aggressive value for some reason, the adjusted price will be reported here, otherwise equals price. Implied decimal with scale 1e-4'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About An Execution. Nullable, No Additional Information = 0'
+        doc: 'Additional information about an execution. Nullable, No Additional Information = 0'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   cross_order_acknowledgment_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cross_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Dayunique Identifier For The Cross Order Chosen By The Member'
+        doc: 'Day-unique identifier for the cross order chosen by the member'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
       - id: num_acknowledgement_allocation
         type: u1
-        doc: 'Number Of Allocation Party Repeating Groups In The Message'
+        doc: 'Number of allocation party repeating groups in the message'
       - id: acknowledgement_allocation
         type: acknowledgement_allocation
         repeat: expr
@@ -247,31 +247,31 @@ types:
         doc: 'Side'
       - id: alloc_qty
         type: u4
-        doc: 'Number Of Contracts For This Party'
+        doc: 'Number of contracts for this party'
       - id: give_up_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'For The Agency Side This Field Must Equal The Value Of Clearing Firm'
+        doc: 'For the Agency Side, this field must equal the value of ClearingFirm'
   quote_update_acknowledgement_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
       - id: num_quote_acknowledgement
         type: u1
-        doc: 'Number Of Quotes In The Message'
+        doc: 'Number of quotes in the message'
       - id: quote_acknowledgement
         type: quote_acknowledgement
         repeat: expr
@@ -280,260 +280,260 @@ types:
     seq:
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: quote_result
         type: u1
         enum: quote_result
-        doc: 'Result Of The Quote Request'
+        doc: 'Result of the quote request'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About An Execution. Nullable, No Additional Information = 0'
+        doc: 'Additional information about an execution. Nullable, No Additional Information = 0'
       - id: quote_reject_sub_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Subreason Code For The Rejection Of A Quote'
+        doc: 'Single character sub-reason code for the rejection of a quote'
   order_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: order_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of An Order'
+        doc: 'Single character code for the rejection of an order'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   cross_order_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cross_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Dayunique Identifier For The Cross Order Chosen By The Member'
+        doc: 'Day-unique identifier for the cross order chosen by the member'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: order_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of An Order'
+        doc: 'Single character code for the rejection of an order'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   quote_update_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: quote_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of An Order'
+        doc: 'Single character code for the rejection of an order'
   order_modified_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Orig Cl Ord Id'
+        doc: 'OrigClOrdID'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: display_price
         type: decimal_s8_4
-        doc: 'Only Present When Order Is Fully Or Partially Booked. Implied decimal with scale 1e-4'
+        doc: 'Only present when order is fully or partially booked. Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        doc: 'If Price Had To Be Adjusted To A Less Aggressive Value For Some Reason The Adjusted Price Will Be Reported Here Otherwise Equals Price. Implied decimal with scale 1e-4'
+        doc: 'If price had to be adjusted to a less aggressive value for some reason, the adjusted price will be reported here, otherwise equals price. Implied decimal with scale 1e-4'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: secondary_order_id
         type: u8
-        doc: 'Denotes An Alternative Order Id Which Is Present On Cboe Market Data'
+        doc: 'Denotes an alternative OrderID which is present on Cboe market data'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   order_restated_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: order_restatement_reason
         type: u1
         enum: order_restatement_reason
-        doc: 'The Reason For This Order Restated Message'
+        doc: 'The reason for this Order Restated message'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: display_price
         type: decimal_s8_4
-        doc: 'Only Present When Order Is Fully Or Partially Booked. Implied decimal with scale 1e-4'
+        doc: 'Only present when order is fully or partially booked. Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        doc: 'If Price Had To Be Adjusted To A Less Aggressive Value For Some Reason The Adjusted Price Will Be Reported Here Otherwise Equals Price. Implied decimal with scale 1e-4'
+        doc: 'If price had to be adjusted to a less aggressive value for some reason, the adjusted price will be reported here, otherwise equals price. Implied decimal with scale 1e-4'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: secondary_order_id
         type: u8
-        doc: 'Denotes An Alternative Order Id Which Is Present On Cboe Market Data'
+        doc: 'Denotes an alternative OrderID which is present on Cboe market data'
       - id: last_shares
         type: u4
-        doc: 'Executed Share Quantity'
+        doc: 'Executed share quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
   quote_restated_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: working_price
         type: decimal_s8_4
-        doc: 'If Price Had To Be Adjusted To A Less Aggressive Value For Some Reason The Adjusted Price Will Be Reported Here Otherwise Equals Price. Implied decimal with scale 1e-4'
+        doc: 'If price had to be adjusted to a less aggressive value for some reason, the adjusted price will be reported here, otherwise equals price. Implied decimal with scale 1e-4'
       - id: quote_symbol
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol For A Quote Update'
+        doc: 'Entire Cboe format symbol for a quote update'
       - id: side
         type: u1
         enum: side
@@ -541,107 +541,107 @@ types:
       - id: restatement_reason
         type: u1
         enum: restatement_reason
-        doc: 'The Reason For This Quote Restated Message'
+        doc: 'The reason for this Quote Restated message'
   modify_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Orig Cl Ord Id'
+        doc: 'OrigClOrdID'
       - id: modify_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of A Modify'
+        doc: 'Single character code for the rejection of a modify'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   order_cancelled_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: cancel_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancellation Reason'
+        doc: 'Single character code for the cancellation reason'
       - id: cancel_sub_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancellation Subreason'
+        doc: 'Single character code for the cancellation sub-reason'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   quote_cancelled_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: quote_symbol
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol For A Quote Update'
+        doc: 'Entire Cboe format symbol for a quote update'
       - id: side
         type: u1
         enum: side
@@ -650,38 +650,38 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancellation Reason'
+        doc: 'Single character code for the cancellation reason'
       - id: cancel_sub_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancellation Subreason'
+        doc: 'Single character code for the cancellation sub-reason'
   cross_order_cancelled_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cross_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Dayunique Identifier For The Cross Order Chosen By The Member'
+        doc: 'Day-unique identifier for the cross order chosen by the member'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: cancel_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancellation Reason'
+        doc: 'Single character code for the cancellation reason'
       - id: num_allocation_cancelled
         type: u1
-        doc: 'Number Of Allocation Party Repeating Groups In The Message'
+        doc: 'Number of allocation party repeating groups in the message'
       - id: allocation_cancelled
         type: allocation_cancelled
         repeat: expr
@@ -692,83 +692,83 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: give_up_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'For The Agency Side This Field Must Equal The Value Of Clearing Firm'
+        doc: 'For the Agency Side, this field must equal the value of ClearingFirm'
   cancel_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: cancel_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Cancel Rejection Reason'
+        doc: 'Single character code for the cancel rejection reason'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   order_execution_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: exec_id
         type: u8
-        doc: 'Execution Id'
+        doc: 'Execution ID'
       - id: last_shares
         type: u4
-        doc: 'Executed Share Quantity'
+        doc: 'Executed share quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About An Execution. Nullable, No Additional Information = 0'
+        doc: 'Additional information about an execution. Nullable, No Additional Information = 0'
       - id: contra_broker
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Internally Matched Simple Executions Will Identify The Occ Clearing Number Of The Contra On The Execution'
+        doc: 'Internally matched simple executions will identify the OCC clearing number of the contra on the execution'
       - id: side
         type: u1
         enum: side
@@ -777,59 +777,59 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: contra_trader
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Only Present On Local Book Trades Not Present On Routed Trades'
+        doc: 'Only present on local book trades, not present on routed trades'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: contra_capacity
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Capacity Of The Contra For This Execution'
+        doc: 'Capacity of the contra for this execution'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
       - id: marketing_fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Marketing Fee Code'
+        doc: 'MarketingFeeCode'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: cross_exclusion_indicator
         type: u1
         enum: cross_exclusion_indicator
-        doc: 'Cross Exclusion Indicator'
+        doc: 'CrossExclusionIndicator'
       - id: trade_date
         type: u4
-        doc: 'Trade Date'
+        doc: 'TradeDate'
       - id: multileg_reporting_type
         type: u1
         enum: multileg_reporting_type
-        doc: 'Indicates The Type Of Order Execution Message'
+        doc: 'Indicates the type of Order Execution message'
       - id: secondary_exec_id
         type: u8
-        doc: 'Indicates Whether A Fill Or Partial Fill Is A Complex Instrument Fill Or A Single Leg Fill That Comprises A Complex Execution'
+        doc: 'Indicates whether a fill or partial fill is a complex instrument fill or a single leg fill that comprises a complex execution'
       - id: price_type
         type: u1
         enum: price_type
-        doc: 'Price Type'
+        doc: 'PriceType'
       - id: trade_through_alert_type
         type: u1
         enum: trade_through_alert_type
-        doc: 'Indication Of A Type Of Trade Through'
+        doc: 'Indication of a type of trade through'
       - id: sender_location_id
         type: u1
         enum: sender_location_id
@@ -838,66 +838,66 @@ types:
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Floor Acronym Of Member Submitting Trade'
+        doc: 'Floor Acronym of member submitting trade'
       - id: floor_trade_time
         type: nanosecond_timestamp
-        doc: 'Trade Time Reported By The Trading Floor. Nanoseconds since Unix epoch'
+        doc: 'Trade time reported by the trading floor. Nanoseconds since Unix epoch'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Used To Specify The Designated Away Venue'
+        doc: 'Used to specify the designated away venue'
       - id: equity_ex_destination
         type: u1
         enum: equity_ex_destination
-        doc: 'Valid When An Equity Symbol Is Present In The Complex Instrument'
+        doc: 'Valid when an equity symbol is present in the complex instrument'
   quote_execution_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: exec_id
         type: u8
-        doc: 'Execution Id'
+        doc: 'Execution ID'
       - id: quote_symbol
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol For A Quote Update'
+        doc: 'Entire Cboe format symbol for a quote update'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: last_shares
         type: u4
-        doc: 'Executed Share Quantity'
+        doc: 'Executed share quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: contra_trader
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Only Present On Local Book Trades Not Present On Routed Trades'
+        doc: 'Only present on local book trades, not present on routed trades'
       - id: contra_capacity
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Capacity Of The Contra For This Execution'
+        doc: 'Capacity of the contra for this execution'
       - id: side
         type: u1
         enum: side
@@ -905,43 +905,43 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About An Execution. Nullable, No Additional Information = 0'
+        doc: 'Additional information about an execution. Nullable, No Additional Information = 0'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Indicates Fee Associated With An Execution'
+        doc: 'Indicates fee associated with an execution'
       - id: marketing_fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Marketing Fee Code'
+        doc: 'MarketingFeeCode'
       - id: trade_date
         type: u4
-        doc: 'Trade Date'
+        doc: 'TradeDate'
   trade_cancel_correct_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: exec_ref_id
         type: u8
-        doc: 'Refers To The Exec Id Of The Fill Being Cancelled Or Corrected'
+        doc: 'Refers to the ExecID of the fill being cancelled or corrected'
       - id: side
         type: u1
         enum: side
@@ -949,233 +949,233 @@ types:
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Indicates Whether The Trade Added Or Removed Liquidity'
+        doc: 'Indicates whether the trade added or removed liquidity'
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        doc: 'Additional Information About An Execution. Nullable, No Additional Information = 0'
+        doc: 'Additional information about an execution. Nullable, No Additional Information = 0'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: last_shares
         type: u4
-        doc: 'Executed Share Quantity'
+        doc: 'Executed share quantity'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: corrected_price
         type: u8
-        doc: 'Price Of The Trade After Adjustment'
+        doc: 'Price of the trade after adjustment'
       - id: corrected_size
         type: u4
-        doc: 'Number Of Shares After Trade Adjustment'
+        doc: 'Number of shares after trade adjustment'
       - id: orig_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Original Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the original transaction. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: maturity_date
         type: u4
-        doc: 'When Sending Cboe Native Symbology Set Maturity Date To Zero'
+        doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
-        doc: 'Strike Price For Option. Implied decimal with scale 1e-4'
+        doc: 'Strike Price for option. Implied decimal with scale 1e-4'
       - id: put_or_call
         type: u1
         enum: put_or_call
-        doc: 'When Sending Cboe Native Symbology Set Put Or Call To Ascii Nul 0 X 00'
+        doc: 'When sending Cboe native symbology, set PutOrCall to ASCII NUL (0x00)'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: marketing_fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Marketing Fee Code'
+        doc: 'MarketingFeeCode'
       - id: target_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'A Valid Parent Id Of The Directed Market Maker'
+        doc: 'A valid Parent ID of the Directed Market Maker'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
   purge_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: purge_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of A Purge Request'
+        doc: 'Single character code for the rejection of a purge request'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   reset_risk_acknowledgement_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: risk_status_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'User Defined Identifier Of A Reset Risk Message'
+        doc: 'User defined identifier of a Reset Risk message'
       - id: risk_reset_result
         type: u1
         enum: risk_reset_result
-        doc: 'Space Ignored Exceeds 1 Reset Per 100 Milliseconds'
+        doc: '<space> = Ignored; exceeds 1 reset per 100 milliseconds'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   mass_cancel_acknowledgment_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: cancelled_order_count
         type: u4
-        doc: 'Number Of Orders Cancelled By The Mass Cancel Or Purge Operation'
+        doc: 'Number of orders cancelled by the mass cancel or purge operation'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   mass_cancel_rejected_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: mass_cancel_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of A Mass Cancel Reject Request'
+        doc: 'Single character code for the rejection of a mass cancel reject request'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   purge_acknowledgement_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: cancelled_order_count
         type: u4
-        doc: 'Number Of Orders Cancelled By The Mass Cancel Or Purge Operation'
+        doc: 'Number of orders cancelled by the mass cancel or purge operation'
       - id: source_matching_unit
         type: u1
-        doc: 'Matching Unit Originating The Message'
+        doc: 'Matching unit originating the message'
       - id: request_received_time
         type: nanosecond_timestamp
-        doc: 'A Hardware Timestamp Populated With Nanosecond Precision That. Nanoseconds since Unix epoch'
+        doc: 'A hardware timestamp, populated with nanosecond precision, that. Nanoseconds since Unix epoch'
   purge_notification_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: cancelled_order_count
         type: u4
-        doc: 'Number Of Orders Cancelled By The Mass Cancel Or Purge Operation'
+        doc: 'Number of orders cancelled by the mass cancel or purge operation'
       - id: source_matching_unit
         type: u1
-        doc: 'Matching Unit Originating The Message'
+        doc: 'Matching unit originating the message'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: risk_root
         type: str
         size: 6
         encoding: ASCII
-        doc: 'The Underlying Symbol'
+        doc: 'The underlying symbol'
       - id: mass_cancel_lockout
         type: u1
         enum: mass_cancel_lockout
-        doc: 'Reports The Status Of The Mass Cancel Lockout'
+        doc: 'Reports the status of the mass cancel lockout'
   new_complex_instrument_accepted_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: no_of_securities
         type: u4
-        doc: 'Indicates The Number Of Securities Created By The Member In This Trading Session'
+        doc: 'Indicates the number of securities created by the member in this trading session'
       - id: num_complex_leg
         type: u1
-        doc: 'Number Of Leg Repeating Groups In The Message'
+        doc: 'Number of leg repeating groups in the message'
       - id: complex_leg
         type: complex_leg
         repeat: expr
@@ -1186,21 +1186,21 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: maturity_date
         type: u4
-        doc: 'When Sending Cboe Native Symbology Set Maturity Date To Zero'
+        doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
-        doc: 'Strike Price For Option. Implied decimal with scale 1e-4'
+        doc: 'Strike Price for option. Implied decimal with scale 1e-4'
       - id: cfi_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Cfi Code For Leg'
+        doc: 'CFI Code for leg'
       - id: ratio_qty
         type: u4
-        doc: 'Integer Ratio Of A Complex Leg With Respect To The Other Legs Of A'
+        doc: 'Integer ratio of a complex leg with respect to the other legs of a'
       - id: side
         type: u1
         enum: side
@@ -1209,135 +1209,135 @@ types:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: no_of_securities
         type: u4
-        doc: 'Indicates The Number Of Securities Created By The Member In This Trading Session'
+        doc: 'Indicates the number of securities created by the member in this trading session'
       - id: order_reject_reason
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Single Character Code For The Rejection Of An Order'
+        doc: 'Single character code for the rejection of an order'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Printable Ascii Text Null 0 X 00 Terminated'
+        doc: 'Printable ASCII text, null (0x00) terminated'
   carried_restatement_message:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: order_id
         type: u8
-        doc: 'Order Identifier Supplied By Cboe'
+        doc: 'Order identifier supplied by Cboe'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Exec Inst'
+        doc: 'ExecInst'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force'
+        doc: 'TimeInForce'
       - id: min_qty
         type: u4
-        doc: 'Minimum Fill Quantity For Ioc Orders Which Only Interact With Liquidity'
+        doc: 'Minimum fill quantity for IOC orders which only interact with liquidity'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Indicator'
+        doc: 'DisplayIndicator'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: prevent_match
         type: prevent_match
       - id: maturity_date
         type: u4
-        doc: 'When Sending Cboe Native Symbology Set Maturity Date To Zero'
+        doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
-        doc: 'Strike Price For Option. Implied decimal with scale 1e-4'
+        doc: 'Strike Price for option. Implied decimal with scale 1e-4'
       - id: put_or_call
         type: u1
         enum: put_or_call
-        doc: 'When Sending Cboe Native Symbology Set Put Or Call To Ascii Nul 0 X 00'
+        doc: 'When sending Cboe native symbology, set PutOrCall to ASCII NUL (0x00)'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Still Open For Further Execution'
+        doc: 'Quantity still open for further execution'
       - id: display_price
         type: decimal_s8_4
-        doc: 'Only Present When Order Is Fully Or Partially Booked. Implied decimal with scale 1e-4'
+        doc: 'Only present when order is fully or partially booked. Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        doc: 'If Price Had To Be Adjusted To A Less Aggressive Value For Some Reason The Adjusted Price Will Be Reported Here Otherwise Equals Price. Implied decimal with scale 1e-4'
+        doc: 'If price had to be adjusted to a less aggressive value for some reason, the adjusted price will be reported here, otherwise equals price. Implied decimal with scale 1e-4'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC). Nanoseconds since Unix epoch'
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        doc: 'Allows For An Order To Be Attributed To A Firms Executing Broker Id In Cboe Market Data Feeds'
+        doc: 'Allows for an order to be attributed to a firm''s Executing Broker ID in Cboe market data feeds'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: routing_inst
         type: str
         size: 4
@@ -1352,53 +1352,53 @@ types:
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Route Delivery Method'
+        doc: 'RouteDeliveryMethod'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Used To Specify The Designated Away Venue'
+        doc: 'Used to specify the designated away venue'
       - id: target_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'A Valid Parent Id Of The Directed Market Maker'
+        doc: 'A valid Parent ID of the Directed Market Maker'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: clearing_optional_data
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Clearing Optional Data'
+        doc: 'Clearing optional data'
       - id: cum_qty
         type: u4
-        doc: 'The Total Quantity Traded By The Order'
+        doc: 'The total quantity traded by the order'
       - id: drill_thru_protection
         type: decimal_s8_4
-        doc: 'Amount Sender Is Willing To Trade Through The Snbbo. Implied decimal with scale 1e-4'
+        doc: 'Amount sender is willing to trade through the SNBBO. Implied decimal with scale 1e-4'
       - id: equity_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Mpid Used To Clear The Equity Leg Being Cleared Via The Exchange'
+        doc: 'MPID used to clear the equity leg being cleared via the Exchange'
       - id: client_id_attr
         type: str
         size: 4
         encoding: ASCII
-        doc: 'User Defined Identifier For Quote Attribution'
+        doc: 'User defined identifier for quote attribution'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifies The Frequent Trader Program In Which The Order Is Participating'
+        doc: 'Identifies the frequent trader program in which the order is participating'
       - id: session_eligibility
         type: u1
         enum: session_eligibility
@@ -1406,44 +1406,44 @@ types:
       - id: combo_order
         type: u1
         enum: combo_order
-        doc: 'Declare The Order As A Combo'
+        doc: 'Declare the order as a Combo'
       - id: compression
         type: u1
         enum: compression
-        doc: 'Order Is A Compression Trade'
+        doc: 'Order is a compression trade'
       - id: floor_destination
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Specifies A Default Par Workstation Ex'
+        doc: 'Specifies a default PAR workstation (ex'
       - id: floor_routing_inst
         type: u1
         enum: floor_routing_inst
-        doc: 'Floor Routing Inst'
+        doc: 'FloorRoutingInst'
       - id: order_origin
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Floor Acronym Of Market Maker On Whose Behalf This Order Is Being'
+        doc: 'Floor acronym of Market Maker on whose behalf this order is being'
       - id: price_type
         type: u1
         enum: price_type
-        doc: 'Price Type'
+        doc: 'PriceType'
       - id: strategy_id
         type: u1
         enum: strategy_id
-        doc: 'Used To Declare When A Strategy Is Used'
+        doc: 'Used to declare when a strategy is used'
       - id: held
         type: u1
         enum: held
-        doc: 'Indicates If Order Should Be Designated As Held Upon Order Entry'
+        doc: 'Indicates if order should be designated as ''Held'' upon order entry'
   prevent_match:
     seq:
       - id: mtp_modifier
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: unique_id_level
         type: str
         size: 1
@@ -1458,30 +1458,30 @@ types:
     seq:
       - id: in_flight
         type: u2
-        doc: 'Total Number Of Messages Inflight From The Port'
+        doc: 'Total number of messages "in-flight" from the port'
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The Exchange Timestamp Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'The exchange timestamp of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1655,10 +1655,10 @@ enums:
   display_indicator:
     0x56:
       id: 'default_field'
-      doc: 'As Determined By Port Level Setting'
+      doc: 'As determined by port level setting'
     0x53:
       id: 'display_price_sliding'
-      doc: 'This Is To Override A Optout Of Display Price'
+      doc: 'This is to override a opt-out of Display Price'
     0x4c:
       id: 'display_price_sliding_but_reject_if_order_crosses_nbbo_on_entry'
       doc: 'Display Price Sliding But Reject If Order Crosses Nbbo On Entry'
@@ -1960,16 +1960,16 @@ enums:
   posting_instruction:
     0x50:
       id: 'post_only'
-      doc: 'Do Not Remove Liquidity'
+      doc: 'Do not remove liquidity'
     0x42:
       id: 'book_only'
-      doc: 'Allow Removal Of Liquidity'
+      doc: 'Allow removal of liquidity'
     0x4e:
       id: 'book_only_no_slide'
       doc: 'Book Only No Slide'
     0x52:
       id: 'post_only_no_slide'
-      doc: 'Do Not Remove Liquidity'
+      doc: 'Do not remove liquidity'
     0x49:
       id: 'book_only_ioc'
       doc: 'Book Only Ioc'
@@ -2272,13 +2272,13 @@ enums:
       doc: 'Nbbo'
     0x32:
       id: 'bbo'
-      doc: 'Local Best Bid Or Offer'
+      doc: 'local best bid or offer'
     0x33:
       id: 'sbbo'
-      doc: 'Market Quote Of Complex Derived By Legs'
+      doc: 'Market quote of complex derived by legs'
     0x34:
       id: 'book_trade_through'
-      doc: 'Trade Through Customer Size'
+      doc: 'trade through customer size'
     0x35:
       id: 'due_dilligence_trade_through'
       doc: 'Due Dilligence Trade Through'

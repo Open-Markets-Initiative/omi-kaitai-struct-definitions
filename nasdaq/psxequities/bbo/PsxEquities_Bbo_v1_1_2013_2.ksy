@@ -226,56 +226,56 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_transmissions'
-      doc: 'Denotes That Psx Bbo Has Started Its Daily Transmission Schedule'
+      doc: 'Denotes that PSX BBO has started its daily transmission schedule.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Psx Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that PSX is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Psx Is Now Closed And Will Not Accept Any New Orders Today'
+      doc: 'It indicates that PSX is now closed and will not accept any new orders today.'
     0x43:
       id: 'end_of_transmissions'
-      doc: 'Denotes That Psx Bbo Has Completed Its Daily Transmission Schedule'
+      doc: 'Denotes that PSX BBO has completed its daily transmission schedule.'
     0x41:
       id: 'emergency_market_condition_halt'
-      doc: 'This Message Is Sent To Inform Psx Market Participants That The Emc Is In Effect No Trading Is Allowed During The Emc'
+      doc: 'This message is sent to inform PSX market participants that the EMC is in effect. No trading is allowed during the EMC.'
     0x52:
       id: 'emergency_market_condition_quote_only_period'
-      doc: 'This Message Is Sent To Inform Psx Market Participants That The Emc Quotation Only Period Is In Effect'
+      doc: 'This message is sent to inform PSX market participants that the EMC quotation only period is in effect.'
     0x42:
       id: 'emergency_market_condition_resumption'
-      doc: 'This Message Is Sent To Inform Psx Market Participants That Emc Is No Longer In Effect'
+      doc: 'This message is sent to inform PSX market participants that EMC is no longer in effect.'
   market_category:
     0x4e:
       id: 'nyse'
-      doc: 'New York Stock Exchange Nyse'
+      doc: 'New York Stock Exchange (NYSE)'
     0x41:
       id: 'nyse_amex'
-      doc: 'Nyse Amex'
+      doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq_global_select_market'
-      doc: 'Nasdaq Global Select Market'
+      doc: 'NASDAQ Global Select Market'
     0x47:
       id: 'nasdaq_global_market'
-      doc: 'Nasdaq Global Market'
+      doc: 'NASDAQ Global Market'
     0x53:
       id: 'nasdaq_capital_market'
-      doc: 'Nasdaq Capital Market'
+      doc: 'NASDAQ Capital Market'
     0x5a:
       id: 'bats_bzx_exchange'
-      doc: 'Bats Bzx Exchange'
+      doc: 'BATS BZX Exchange'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   financial_status_indicator:
     0x44:
       id: 'deficient'
@@ -288,56 +288,56 @@ enums:
       doc: 'Bankrupt'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent, and Bankrupt'
     0x20:
       id: 'in_compliance_or_not_listed'
-      doc: 'Company Is In Compliance If Nasda Qlisted Issue Or Issue Is Not Listed On Nasdaq'
+      doc: 'Company is in compliance, if NASDAQ-listed issue OR Issue is not listed on NASDAQ'
   security_class:
     0x51:
       id: 'nasdaq_listed_issue'
-      doc: 'Nasdaq Listed Issue'
+      doc: 'NASDAQ Listed Issue'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x41:
       id: 'nyse_amex'
-      doc: 'Nyse Amex'
+      doc: 'NYSE Amex'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x5a:
       id: 'bats'
-      doc: 'Bats'
+      doc: 'BATS'
   current_trading_state:
     0x48:
       id: 'halted_or_paused_on_nasdaq_and_all_utp_participants'
-      doc: 'Halted Paused On Nasdaq And All Utp Participants'
+      doc: 'Halted/Paused on NASDAQ and all UTP participants'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x52:
       id: 'quotation_only_period_for_nasdaq_omx_only_halt_or_pause'
-      doc: 'Quotation Only Period For Nasdaq Omx Only Halt Or Pause'
+      doc: 'Quotation only period for NASDAQ OMX only halt or pause'
     0x54:
       id: 'trading_on_nasdaq'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on NASDAQ'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_place'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'restriction_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'restriction_remains_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
 

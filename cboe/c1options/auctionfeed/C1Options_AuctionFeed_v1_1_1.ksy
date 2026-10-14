@@ -370,17 +370,17 @@ enums:
   customer_indicator:
     0x4e:
       id: 'non_customer'
-      doc: 'Non Customer'
+      doc: 'Non-Customer'
     0x43:
       id: 'customer'
       doc: 'Customer'
   opening_type:
     0x47:
       id: 'gth_opening'
-      doc: 'Gth Opening'
+      doc: 'GTH Opening'
     0x4f:
       id: 'rth_opening'
-      doc: 'Rth Opening'
+      doc: 'RTH Opening'
     0x48:
       id: 'halt_reopening'
       doc: 'Halt Reopening'

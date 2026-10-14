@@ -444,10 +444,10 @@ enums:
   short_selling_state:
     0x30:
       id: 'no_price_restriction'
-      doc: 'No Price Restriction'
+      doc: 'No price restriction'
     0x31:
       id: 'price_restriction_in_effect'
-      doc: 'Price Restriction In Effect'
+      doc: 'Price restriction in effect'
   buy_sell_indicator:
     0x42:
       id: 'buy'
@@ -458,5 +458,5 @@ enums:
   order_type:
     0x51:
       id: 'dlp_order'
-      doc: 'Dlp Order'
+      doc: 'DLP order'
 

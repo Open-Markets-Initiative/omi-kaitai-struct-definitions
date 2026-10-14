@@ -95,7 +95,7 @@ types:
     seq:
       - id: message_length
         type: u2
-        doc: 'The Total Length Of The Message In Bytes'
+        doc: 'The total length of the message in bytes'
       - id: message_category
         type: u1
         enum: message_category
@@ -128,29 +128,29 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
   symbol_reference_data_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol Left Justified Space Filled'
+        doc: 'Contains the security symbol, left justified, space filled'
       - id: prior_security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Prior Security Symbol Left Justified Space Filled'
+        doc: 'Contains the prior security symbol, left justified, space filled'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market For A Security'
+        doc: 'Identifies the Primary Listing Market for a security'
       - id: primary_listing_market_previous_closing_price
         type: decimal_u8_6
         doc: 'Primary Listing Market Previous Closing Price. Implied decimal with scale 1e-6'
@@ -159,295 +159,295 @@ types:
         doc: 'Consolidated Closing Price. Implied decimal with scale 1e-6'
       - id: round_lot_size
         type: u2
-        doc: 'Roundlot Size For A Symbol Can Consist Of 11040 Or 100 Shares'
+        doc: 'Round-lot size for a symbol can consist of 1, 10, 40 or 100 shares'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
       - id: luld_tier
         type: u1
         enum: luld_tier
-        doc: 'Identifies The Limit Up Limit Down Tier Of The Security Symbol'
+        doc: 'Identifies the Limit Up Limit Down tier of the security symbol'
       - id: luld_leverage_ratio
         type: u4
-        doc: 'Represents The Leverage Ratio Associated With The Luld Tier Of The Security Symbol'
+        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol'
       - id: test
         type: u1
         enum: test
-        doc: 'Identifies Whether The Security Symbol Is A Test Symbol'
+        doc: 'Identifies whether the security symbol is a test symbol'
       - id: ipo
         type: u1
         enum: ipo
-        doc: 'Identifies Whether The Security Symbol Is An Ipo'
+        doc: 'Identifies whether the security symbol is an IPO'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether a Short Sale Restriction is in effect'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: second_reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
       - id: third_reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
       - id: fourth_reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
   market_wide_circuit_breaker_decline_level_status_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 17% Of Previous Close Sp 500 Value'
+        doc: 'Identifies the daily established drop level value, Level 1 = 7% of Previous Close S&P 500 Value'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 213% Of Previous Close Sp 500 Value'
+        doc: 'Identifies the daily established drop level value, Level 2 = 13% of Previous Close S&P 500 Value'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Level 320% Of Previous Close Sp 500 Value'
+        doc: 'Identifies the daily established drop level value, Level 3 = 20% of Previous Close S&P 500 Value'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
   consolidated_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol Left Justified Space Filled'
+        doc: 'Contains the security symbol, left justified, space filled'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: lower_limit_price_band
         type: decimal_u8_6
-        doc: 'Represents The Lower Price Band Value For A Security Set To Zero When Price Bands Are Not In Effect. Implied decimal with scale 1e-6'
+        doc: 'Represents the lower price band value for a security, set to zero when Price Bands are not in effect. Implied decimal with scale 1e-6'
       - id: upper_limit_price_band
         type: decimal_u8_6
-        doc: 'Represents The Upper Price Band Value For A Security Set To Zero When Price Bands Are Not In Effect. Implied decimal with scale 1e-6'
+        doc: 'Represents the upper price band value for a security, set to zero when Price Bands are not in effect. Implied decimal with scale 1e-6'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'The Auction Collar Reference Price Represents The Price Used By The Exchange To Establish The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'The Auction Collar Reference Price represents the price used by the exchange to establish the Auction Collar. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Upper Threshold Price Of The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest upper threshold price of the Auction Collar. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Lower Threshold Price Of The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest lower threshold price of the Auction Collar. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Identifies The Number Of Manual Or Automatic Extensions The Applicable Auction Has Received'
+        doc: 'Identifies the number of manual or automatic extensions the applicable auction has received'
       - id: national_best_bid_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant That Submitted The Best Bid On A Consolidated Basis'
+        doc: 'Identifies the Participant that submitted the Best Bid on a consolidated basis'
       - id: national_best_bid_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Quote Condition Associated With The Best Bid Price On A Consolidated Basis'
+        doc: 'Identifies the Quote Condition associated with the Best Bid Price on a consolidated basis'
       - id: national_best_bid_price
         type: decimal_u8_6
-        doc: 'Represents The Best Bid Price On A Consolidated Basis. Implied decimal with scale 1e-6'
+        doc: 'Represents the Best Bid Price on a consolidated basis. Implied decimal with scale 1e-6'
       - id: national_best_bid_size
         type: u4
-        doc: 'Represents The Best Bid Size Associated With The Best Bid Price On A Consolidated Basis'
+        doc: 'Represents the Best Bid Size associated with the Best Bid Price on a consolidated basis'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Market Maker Identifier Of The Market Maker That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Market Maker identifier of the Market Maker that had the FINRA Best Bid (FBBO)'
       - id: national_best_offer_participant_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Participant That Submitted The Best Offer On A Consolidated Basis'
+        doc: 'Identifies the Participant that submitted the Best Offer on a consolidated basis'
       - id: national_best_offer_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Quote Condition Associated With The Best Offer Price On A Consolidated Basis'
+        doc: 'Identifies the Quote Condition associated with the Best Offer Price on a consolidated basis'
       - id: national_best_offer_price
         type: decimal_u8_6
-        doc: 'Represents The Best Offer Price On A Consolidated Basis. Implied decimal with scale 1e-6'
+        doc: 'Represents the Best Offer Price on a consolidated basis. Implied decimal with scale 1e-6'
       - id: national_best_offer_size
         type: u4
-        doc: 'Represents The Best Offer Size Associated With The Best Offer Price On A Consolidated Basis'
+        doc: 'Represents the Best Offer Size associated with the Best Offer Price on a consolidated basis'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Market Maker Identifier Of The Market Maker That Had The Finra Best Offer Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Market Maker identifier of the Market Maker that had the FINRA Best Offer (FBBO)'
       - id: national_bbo_luld_indicator
         type: u1
         enum: national_bbo_luld_indicator
-        doc: 'Indicates The Effect That The Limit Up Limit Down Price Band Changes Have On The National Best Bid And National Best Offer'
+        doc: 'Indicates the effect that the Limit Up-Limit Down Price Band changes have on the National Best Bid and National Best Offer'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market For A Security'
+        doc: 'Identifies the Primary Listing Market for a security'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether a Short Sale Restriction is in effect'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
       - id: reserved
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Spacefilled Reserved For Future Use'
+        doc: 'Space-filled, reserved for future use'
   participant_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol Left Justified Space Filled'
+        doc: 'Contains the security symbol, left justified, space filled'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote Used To Determine Whether A Quote Qualifies For The Best Bid And Best Offer Calculation'
+        doc: 'Denotes a particular condition applicable to the quote, used to determine whether a quote qualifies for the Best Bid and Best Offer calculation'
       - id: bid_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price A Prospective Buyer Is Prepared To Pay At A Particular Time For A Security. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price a prospective buyer is prepared to pay at a particular time for a security. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
-        doc: 'Integer Has A Maximum Size Of 4294967295'
+        doc: 'Integer has a maximum size of 4,294,967,295'
       - id: offer_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Acceptable To A Prospective Seller At A Particular Time For A Security. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price acceptable to a prospective seller at a particular time for a security. Implied decimal with scale 1e-6'
       - id: offer_size
         type: u4
-        doc: 'Identifies The Number Of Shares For A Symbol Rounded Down To The Nearest Multiple Of Its Round Lot Size'
+        doc: 'Identifies the number of shares for a symbol rounded down to the nearest multiple of its Round Lot Size'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'Indicates Retail Price Improvement Rpi Interest Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0.001'
+        doc: 'Indicates Retail Price Improvement (RPI) interest priced better than the Protected Best Bid or Offer (PBBO) by a minimum of $0.001'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security'
+        doc: 'Identifies the market condition of a quote for a security'
       - id: limit_up_limit_down_luld_indicator
         type: u1
         enum: limit_up_limit_down_luld_indicator
-        doc: 'Indicates The Effect The Quote Has On The Limit Up Limit Down Price Band Range'
+        doc: 'Indicates the effect the Quote has on the Limit Up-Limit Down Price Band range'
       - id: high_indication_price
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be Used For Trading Range Indication Or Price Indication Following A Trading Halt. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the high end Offer price of a security''s trading range may be, used for Trading Range Indication or Price Indication following a Trading Halt. Implied decimal with scale 1e-6'
       - id: low_indication_price
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be Used For Trading Range Indication Or Price Indication Following A Trading Halt. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the low end Bid price of a security''s trading range may be, used for Trading Range Indication or Price Indication following a Trading Halt. Implied decimal with scale 1e-6'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
   finra_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Identifies The Participant Or Processor That Generated The Message'
+        doc: 'Identifies the Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol Left Justified Space Filled'
+        doc: 'Contains the security symbol, left justified, space filled'
       - id: finra_best_bid_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Quote Condition Associated With The Finra Best Bid Price That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Quote Condition associated with the FINRA Best Bid Price that had the FINRA Best Bid (FBBO)'
       - id: finra_best_bid_price
         type: decimal_u8_6
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Price That Is The Finra Best Bid Fbbo. Implied decimal with scale 1e-6'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Price that is the FINRA Best Bid (FBBO). Implied decimal with scale 1e-6'
       - id: finra_best_bid_size
         type: u4
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Size Associated With The Finra Best Bid Price That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Size associated with the FINRA Best Bid Price that had the FINRA Best Bid (FBBO)'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Market Maker Identifier Of The Market Maker That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Market Maker identifier of the Market Maker that had the FINRA Best Bid (FBBO)'
       - id: finra_best_offer_quote_condition
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Quote Condition Associated With The Best Finra Offer Price That Had The Finra Best Offer Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Quote Condition associated with the Best FINRA Offer Price that had the FINRA Best Offer (FBBO)'
       - id: finra_best_offer_price
         type: decimal_u8_6
-        doc: 'Contains The Finra Adf Provided Best Finra Offer Price That Is The Finra Best Offer Fbbo. Implied decimal with scale 1e-6'
+        doc: 'Contains the FINRA ADF provided Best FINRA Offer Price that is the FINRA Best Offer (FBBO). Implied decimal with scale 1e-6'
       - id: finra_best_offer_size
         type: u4
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Size Associated With The Finra Best Offer Price That Had The Finra Best Offer Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Size associated with the FINRA Best Offer Price that had the FINRA Best Offer (FBBO)'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Market Maker Identifier Of The Market Maker That Had The Finra Best Offer Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Market Maker identifier of the Market Maker that had the FINRA Best Offer (FBBO)'
       - id: finra_bbo_luld_indicator
         type: u1
         enum: finra_bbo_luld_indicator
-        doc: 'Indicates The Effect That The Limit Up Limit Down Price Bands Have On The Finra Best Bid And Finra Best Offer Fbbo'
+        doc: 'Indicates the effect that the Limit Up-Limit Down Price Bands have on the FINRA Best Bid and FINRA Best Offer (FBBO)'
       - id: high_indication_price
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be Used For Trading Range Indication Or Price Indication Following A Trading Halt. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the high end Offer price of a security''s trading range may be, used for Trading Range Indication or Price Indication following a Trading Halt. Implied decimal with scale 1e-6'
       - id: low_indication_price
         type: decimal_u8_6
-        doc: 'Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be Used For Trading Range Indication Or Price Indication Following A Trading Halt. Implied decimal with scale 1e-6'
+        doc: 'Represents an approximation of what the low end Bid price of a security''s trading range may be, used for Trading Range Indication or Price Indication following a Trading Halt. Implied decimal with scale 1e-6'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -512,67 +512,67 @@ enums:
   participant_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American Llc Nyse American'
+      doc: 'NYSE American, LLC (NYSE American)'
     0x42:
       id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx Inc Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX, Inc. (NASDAQ OMX BX)'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National Inc Nyse National'
+      doc: 'NYSE National, Inc. (NYSE National)'
     0x44:
       id: 'finra_adf'
-      doc: 'Finra Alternative Display Facility Adf'
+      doc: 'FINRA Alternative Display Facility (ADF)'
     0x47:
       id: 'n_24_x'
-      doc: '24 X National Exchange Llc 24 X'
+      doc: '24X National Exchange LLC (24X)'
     0x48:
       id: 'miax'
-      doc: 'Miax Pearl Exchange Llc Miax'
+      doc: 'MIAX Pearl Exchange, LLC (MIAX)'
     0x49:
       id: 'ise'
-      doc: 'International Securities Exchange Llc Ise'
+      doc: 'International Securities Exchange, LLC (ISE)'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange Inc Cboe Edga'
+      doc: 'Cboe EDGA Exchange, Inc. (Cboe EDGA)'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange Inc Cboe Edgx'
+      doc: 'Cboe EDGX Exchange, Inc. (Cboe EDGX)'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange Inc Ltse'
+      doc: 'Long-Term Stock Exchange, Inc. (LTSE)'
     0x4d:
       id: 'nyse_texas'
-      doc: 'Nyse Texas Inc Nyse Texas'
+      doc: 'NYSE Texas, Inc. (NYSE Texas)'
     0x4e:
       id: 'nyse'
-      doc: 'New York Stock Exchange Llc Nyse'
+      doc: 'New York Stock Exchange, LLC (NYSE)'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca Inc Nyse Arca'
+      doc: 'NYSE Arca, Inc. (NYSE Arca)'
     0x53:
       id: 'cqs'
       doc: 'Consolidated Quotation System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market Llc Nasdaq'
+      doc: 'NASDAQ Stock Market, LLC (NASDAQ)'
     0x55:
       id: 'memx'
-      doc: 'Members Exchange Llc Memx'
+      doc: 'Members Exchange, LLC (MEMX)'
     0x56:
       id: 'iex'
-      doc: 'Investors Exchange Llc Iex'
+      doc: 'Investors'' Exchange, LLC. (IEX)'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange Inc Cbsx'
+      doc: 'CBOE Stock Exchange, Inc. (CBSX)'
     0x58:
       id: 'nasdaq_omx_psx'
-      doc: 'Nasdaq Omx Psx Inc Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX, Inc. (NASDAQ OMX PSX)'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange Inc Cboe Byx'
+      doc: 'Cboe BYX Exchange, Inc. (Cboe BYX)'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange Inc Cboe Bzx'
+      doc: 'Cboe BZX Exchange, Inc. (Cboe BZX)'
   primary_listing_market_participant_id:
     0x20:
       id: 'primary_listing_market_participant_id_not_applicable'
@@ -723,16 +723,16 @@ enums:
       doc: 'Regulatory'
     0x49:
       id: 'order_imbalance'
-      doc: 'Non Regulatory'
+      doc: 'Non-Regulatory'
     0x4d:
       id: 'limit_up_limit_down_luld_trading_pause'
       doc: 'Regulatory'
     0x4e:
       id: 'corporate_action'
-      doc: 'Non Regulatory'
+      doc: 'Non-Regulatory'
     0x4f:
       id: 'new_security_offering'
-      doc: 'Non Regulatory'
+      doc: 'Non-Regulatory'
     0x50:
       id: 'news_pending'
       doc: 'Regulatory'
@@ -741,10 +741,10 @@ enums:
       doc: 'Regulatory'
     0x58:
       id: 'operational'
-      doc: 'Non Regulatory'
+      doc: 'Non-Regulatory'
     0x59:
       id: 'sub_penny_trading'
-      doc: 'Non Regulatory'
+      doc: 'Non-Regulatory'
     0x31:
       id: 'market_wide_circuit_breaker_level_1_breached'
       doc: 'Regulatory'
@@ -776,71 +776,71 @@ enums:
       doc: 'National Best Bid Andor National Best Offer Are Executable'
     0x42:
       id: 'national_best_bid_below_lower_limit_price_band'
-      doc: 'National Best Bid Is Non Executable'
+      doc: 'National Best Bid is Non-Executable'
     0x43:
       id: 'national_best_offer_above_upper_limit_price_band'
-      doc: 'National Best Offer Is Non Executable'
+      doc: 'National Best Offer is Non-Executable'
     0x44:
       id: 'national_best_bid_below_lower_limit_price_band_and_national_best_offer_above_upper_limit_price_band'
-      doc: 'National Best Bid And National Best Offer Are Non Executable'
+      doc: 'National Best Bid and National Best Offer are Non-Executable'
     0x45:
       id: 'national_best_bid_equals_upper_limit_price_band'
-      doc: 'National Best Bid Is In Limit State'
+      doc: 'National Best Bid is in Limit State'
     0x46:
       id: 'national_best_offer_equals_lower_limit_price_band'
-      doc: 'National Best Offer Is In Limit State'
+      doc: 'National Best Offer is in Limit State'
     0x47:
       id: 'national_best_bid_equals_upper_limit_price_band_and_national_best_offer_above_upper_limit_price_band'
-      doc: 'National Best Bid Is In Limit State And National Best Offer Is Non Executable'
+      doc: 'National Best Bid is in Limit State and National Best Offer is Non-Executable'
     0x48:
       id: 'national_best_bid_below_lower_limit_price_band_and_national_best_offer_equals_lower_limit_price_band'
-      doc: 'National Best Bid Is Non Executable And National Best Offer Is In Limit State'
+      doc: 'National Best Bid is Non-Executable and National Best Offer is in Limit State'
     0x49:
       id: 'national_best_bid_equals_upper_limit_price_band_and_national_best_offer_equals_lower_limit_price_band'
-      doc: 'Crossed Not In Limit State'
+      doc: 'Crossed - NOT in Limit State'
   quote_condition:
     0x20:
       id: 'quote_condition_not_applicable'
       doc: 'Quote Condition Not Applicable'
     0x41:
       id: 'slow_quote_on_offer_side'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x42:
       id: 'slow_quote_on_bid_side'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x43:
       id: 'closing'
-      doc: 'Not Eligible For Bbo'
+      doc: 'Not eligible for BBO'
     0x45:
       id: 'slow_quote_due_to_lrp_or_gap_quote_on_the_bid_side'
-      doc: 'Only Offer Side Is Eligible For Bbo'
+      doc: 'ONLY OFFER SIDE is eligible for BBO'
     0x46:
       id: 'slow_quote_due_to_lrp_or_gap_quote_on_the_offer_side'
-      doc: 'Only Bid Side Is Eligible For Bbo'
+      doc: 'ONLY BID SIDE is eligible for BBO'
     0x48:
       id: 'slow_quote_on_the_bid_and_offer_sides'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x4c:
       id: 'closed_market_maker_finra'
-      doc: 'Not Eligible For Bbo'
+      doc: 'Not eligible for BBO'
     0x4e:
       id: 'non_firm_quote'
-      doc: 'Not Eligible For Bbo'
+      doc: 'Not eligible for BBO'
     0x4f:
       id: 'opening_quote'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x52:
       id: 'regular_finra_open'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x55:
       id: 'slow_quote_due_to_lrp_or_gap_quote_on_both_the_bid_and_offer_sides'
-      doc: 'Not Eligible For Bbo'
+      doc: 'Not eligible for BBO'
     0x57:
       id: 'slow_quote_due_to_set_slow_list_on_both_the_bid_and_offer_sides'
-      doc: 'Eligible For Bbo'
+      doc: 'Eligible for BBO'
     0x34:
       id: 'on_demand_intra_day_auction'
-      doc: 'Not Eligible For Bbo'
+      doc: 'Not eligible for BBO'
   retail_interest_indicator:
     0x20:
       id: 'retail_interest_indicator_not_applicable'
@@ -880,10 +880,10 @@ enums:
       doc: 'Limit Up Limit Down Not Applicable'
     0x41:
       id: 'bid_price_above_upper_limit_price_band'
-      doc: 'Bid Is Non Executable'
+      doc: 'Bid is Non-Executable'
     0x42:
       id: 'offer_price_below_lower_limit_price_band'
-      doc: 'Offer Is Non Executable'
+      doc: 'Offer is Non-Executable'
   finra_bbo_luld_indicator:
     0x20:
       id: 'limit_up_limit_down_not_applicable'
@@ -893,11 +893,11 @@ enums:
       doc: 'Finra Best Bid Andor Finra Best Offer Are Executable'
     0x42:
       id: 'finra_best_bid_outside_price_band'
-      doc: 'Finra Best Bid Is Non Executable'
+      doc: 'FINRA Best Bid is Non-Executable'
     0x43:
       id: 'finra_best_offer_outside_price_band'
-      doc: 'Finra Best Offer Is Non Executable'
+      doc: 'FINRA Best Offer is Non-Executable'
     0x44:
       id: 'finra_best_bid_and_finra_best_offer_outside_price_band'
-      doc: 'Finra Best Bid And Finra Best Offer Are Non Executable'
+      doc: 'FINRA Best Bid and FINRA Best Offer are Non-Executable'
 

@@ -123,43 +123,43 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: time_in_force
         type: u1
         enum: time_in_force
         doc: 'Time In Force'
       - id: min_qty
         type: u4
-        doc: 'Minimum Fill Quantity For Ioc Orders'
+        doc: 'Minimum fill quantity for IOC orders'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: capacity
         type: u1
         enum: capacity
@@ -168,61 +168,61 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Account Identifier Associated With An Order'
+        doc: 'Unique account identifier associated with an order'
       - id: prevent_match
         type: prevent_match
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC) that the order expires. Nanoseconds since Unix epoch'
       - id: maturity_date
         type: u4
-        doc: 'Used To Specify The Expiration Date Of The Symbol Within The Specified Product Class'
+        doc: 'used to specify the expiration date of the symbol within the specified product class'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: cti_code
         type: u1
         enum: cti_code
-        doc: 'Cti Code'
+        doc: 'CTI code'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Supplemental Customer Identifier Used For Billing Related Programs'
+        doc: 'Supplemental customer identifier used for billing related programs'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'Execution Source Code Provided During Order Entry To Describe Broker Service. Nullable, Apply Default = 0'
+        doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
       - id: country_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Identifies The Country Code Of The Person Or System Submitting The Order Using The Iso 3166 Twocharacter Code'
+        doc: 'Identifies the country code of the person or system submitting the order using the ISO 3166 two-character code'
   prevent_match:
     seq:
       - id: mtp_modifier
         type: u1
         enum: mtp_modifier
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: unique_id_level
         type: u1
         enum: unique_id_level
@@ -238,31 +238,31 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -271,10 +271,10 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Simple Instruments Can Be Specified By Providing The Mapped Symbol Format In The Symbol Field Or By Providing The Product Name E'
+        doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: security_desc
         size: 16
-        doc: 'The Options On Futures Identifier Name'
+        doc: 'The options on futures identifier name'
       - id: capacity
         type: u1
         enum: capacity
@@ -283,163 +283,163 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Account Identifier Associated With An Order'
+        doc: 'Unique account identifier associated with an order'
       - id: prevent_match
         type: prevent_match
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC) that the order expires. Nanoseconds since Unix epoch'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: cti_code
         type: u1
         enum: cti_code
-        doc: 'Cti Code'
+        doc: 'CTI code'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Supplemental Customer Identifier Used For Billing Related Programs'
+        doc: 'Supplemental customer identifier used for billing related programs'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'Execution Source Code Provided During Order Entry To Describe Broker Service. Nullable, Apply Default = 0'
+        doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
       - id: country_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Identifies The Country Code Of The Person Or System Submitting The Order Using The Iso 3166 Twocharacter Code'
+        doc: 'Identifies the country code of the person or system submitting the order using the ISO 3166 two-character code'
       - id: num_leg_position_effect
         type: u1
-        doc: 'For Complex Orders The Number Of Legs Of The Complex Instrument Specified In The Symbol Field'
+        doc: 'For complex orders, the number of legs of the complex instrument specified in the Symbol field'
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
-        doc: 'Indicates Status Of Client Position In The Option For This Leg'
+        doc: 'Indicates status of client position in the option for this leg'
   modify_order:
     seq:
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'The Cl Ord Id Of The Original Order'
+        doc: 'The ClOrdId of the original order'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: cancel_orig_on_reject
         type: u1
         enum: cancel_orig_on_reject
-        doc: 'Cancel Original On Reject'
+        doc: 'Cancel original on reject'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Supplemental Customer Identifier Used For Billing Related Programs'
+        doc: 'Supplemental customer identifier used for billing related programs'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
-        doc: 'Execution Source Code Provided During Order Entry To Describe Broker Service. Nullable, Apply Default = 0'
+        doc: 'Execution source code provided during order entry to describe broker service. Nullable, Apply Default = 0'
   cancel_order:
     seq:
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'The Cl Ord Id Of The Original Order'
+        doc: 'The ClOrdId of the original order'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
   mass_cancel_order:
     seq:
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: product_name
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Used To Specify Product Class E'
+        doc: 'Used to specify product class (e'
       - id: mass_cancel_inst
         type: mass_cancel_inst
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
   mass_cancel_inst:
     seq:
       - id: clearing_firm_filter
         type: u1
         enum: clearing_firm_filter
-        doc: 'Clearing Firm Filter'
+        doc: 'Clearing firm filter'
       - id: acknowledgement_style
         type: u1
         enum: acknowledgement_style
@@ -451,7 +451,7 @@ types:
       - id: instrument_type_filter
         type: u1
         enum: instrument_type_filter
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: gtc_order_filter
         type: u1
         enum: gtc_order_filter
@@ -467,62 +467,62 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Userdefined Identifier Of The Mass Cancel Or Purge Request'
+        doc: 'User-defined identifier of the mass cancel or purge request'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: product_name
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Used To Specify Product Class E'
+        doc: 'Used to specify product class (e'
       - id: mass_cancel_inst
         type: mass_cancel_inst
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: custom_group_id_cnt
         type: u1
-        doc: 'Number Of Repeating Custom Group Ids Included In This Message'
+        doc: 'Number of repeating CustomGroupId’s included in this message'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   quote_update:
     seq:
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Account Identifier Associated With An Order'
+        doc: 'Unique account identifier associated with an order'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: capacity
         type: u1
         enum: capacity
@@ -530,23 +530,23 @@ types:
       - id: cti_code
         type: u1
         enum: cti_code
-        doc: 'Cti Code'
+        doc: 'CTI code'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: size_modifier
         type: u1
         enum: size_modifier
-        doc: 'Controls The Behavior Of The Quote Order Qty Field. Nullable, New Quote Size = 0'
+        doc: 'Controls the behavior of the quote OrderQty field. Nullable, New Quote Size = 0'
       - id: num_quote_update_group
         type: u1
-        doc: 'Number Of Repeating Groups Included In This Message'
+        doc: 'Number of repeating groups included in this message'
       - id: quote_update_group
         type: quote_update_group
         repeat: expr
@@ -557,7 +557,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: side
         type: u1
         enum: side
@@ -565,41 +565,41 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
   quote_update_option:
     seq:
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Supplemental Identifier'
+        doc: 'Supplemental identifier'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Account Identifier Associated With An Order'
+        doc: 'Unique account identifier associated with an order'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: capacity
         type: u1
         enum: capacity
@@ -607,23 +607,23 @@ types:
       - id: cti_code
         type: u1
         enum: cti_code
-        doc: 'Cti Code'
+        doc: 'CTI code'
       - id: manual_order_indicator
         type: u1
         enum: manual_order_indicator
-        doc: 'Y Manual Order Entry N Automated Order Entry'
+        doc: 'Y=Manual order entry N =Automated order entry'
       - id: oeo_id
         type: str
         size: 18
         encoding: ASCII
-        doc: 'Identifies The Order Entry Operator Responsible For This Message'
+        doc: 'Identifies the Order Entry Operator responsible for this message'
       - id: size_modifier
         type: u1
         enum: size_modifier
-        doc: 'Controls The Behavior Of The Quote Order Qty Field. Nullable, New Quote Size = 0'
+        doc: 'Controls the behavior of the quote OrderQty field. Nullable, New Quote Size = 0'
       - id: num_quote_update_option_group
         type: u1
-        doc: 'Number Of Repeating Groups Included In This Message'
+        doc: 'Number of repeating groups included in this message'
       - id: quote_update_option_group
         type: quote_update_option_group
         repeat: expr
@@ -634,7 +634,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Cfe Native Identifier Of The Instrument Being Quoted'
+        doc: 'CFE native identifier of the instrument being quoted'
       - id: side
         type: u1
         enum: side
@@ -642,53 +642,53 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Client Position In A Trade Resulting From The Order. Nullable, None = 0'
+        doc: 'Indicates status of client position in a trade resulting from the order. Nullable, None = 0'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
   reset_risk:
     seq:
       - id: risk_status_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Unique Identifier For This Reset Risk Request'
+        doc: 'Unique identifier for this Reset Risk request'
       - id: risk_reset
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Single Character Values Values May Be Combined S Productlevel Risklockout Reset Futures Only F Firmlevel Risklockout Reset Futures Only C Custom Group Id Lockout Reset Futures Only R Productlevel Risklockout Reset Options Only I Firmlevel Risklockout Reset'
+        doc: 'Single Character Values (Values may be combined) S=Product-level risk/lockout reset (Futures only) F=Firm-level risk/lockout reset (Futures only) C=CustomGroupId lockout reset (Futures only) R=Product-level risk/lockout reset (Options only) I=Firm-level risk/lockout reset'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: product_name
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Used To Specify Product Class E'
+        doc: 'Used to specify product class (e'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Mass Cancels Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   new_complex_instrument_option:
     seq:
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Id Chosen By The Client'
+        doc: 'Unique Id chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: num_option_accepted_leg
         type: u1
-        doc: 'For Complex Orders The Number Of Legs Of The Complex Instrument Specified In The Symbol Field'
+        doc: 'For complex orders, the number of legs of the complex instrument specified in the Symbol field'
       - id: option_accepted_leg
         type: option_accepted_leg
         repeat: expr
@@ -699,13 +699,13 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'The Symbol Id For The Simple Options On Futures Instrument'
+        doc: 'The symbol id for the Simple Options on Futures instrument'
       - id: security_desc
         size: 16
-        doc: 'The Options On Futures Identifier Name'
+        doc: 'The options on futures identifier name'
       - id: leg_ratio_qty
         type: u4
-        doc: 'Ratio Of Number Of Contracts In This Leg Per Order Quantity'
+        doc: 'Ratio of number of contracts in this leg per order quantity'
       - id: leg_side
         type: u1
         enum: leg_side
@@ -802,19 +802,19 @@ enums:
   time_in_force:
     0x30:
       id: 'day'
-      doc: 'Expires At The End Of The Business Day'
+      doc: 'Expires at the end of the business day'
     0x31:
       id: 'gtc'
-      doc: 'Order Remains Until Cancelled Or Contract Expires'
+      doc: 'Order remains until cancelled or contract expires'
     0x33:
       id: 'ioc'
-      doc: 'Portion Not Filled Immediately Is Cancelled'
+      doc: 'Portion not filled immediately is cancelled'
     0x34:
       id: 'fok'
-      doc: 'An Ioc Where The Entire Size Must Be Filled Else The Order Will Be Cancelled Back'
+      doc: 'An IOC where the entire size must be filled, else the order will be cancelled back'
     0x36:
       id: 'gtd'
-      doc: 'Expires At The Datetime Specified In The Expire Time Field'
+      doc: 'Expires at the date-time specified in the ExpireTime field'
   capacity:
     0x43:
       id: 'customer'
@@ -835,13 +835,13 @@ enums:
   unique_id_level:
     0x4e:
       id: 'none'
-      doc: 'Do Not Prevent Match At Any Level'
+      doc: 'Do not prevent match at any level'
     0x46:
       id: 'tph'
       doc: 'Tph'
     0x4d:
       id: 'efid'
-      doc: 'Prevent Match At Efid Level'
+      doc: 'Prevent Match at EFID Level'
   open_close:
     0x4f:
       id: 'open'
@@ -855,16 +855,16 @@ enums:
   cti_code:
     0x31:
       id: 'cti_1'
-      doc: 'Transactions Initiated And Executed By An Individual Tph For The Tp Hs Own Account For An Account The Tph Controls Or For The Account In Which The Tph Has An Ownership Or Financial Interest'
+      doc: 'Transactions initiated and executed by an individual TPH for the TPH’s own account, for an account the TPH controls, or for the account in which the TPH has an ownership or financial interest'
     0x32:
       id: 'cti_2'
-      doc: 'Transactions Executed For The Proprietary Account Of A Clearing Tph Or Nonclearing Tph'
+      doc: 'Transactions executed for the proprietary account of a clearing TPH or non-clearing TPH'
     0x33:
       id: 'cti_3'
-      doc: 'Transactions Where An Individual Tph Or Authorized Trader Executes For The Personal Account Of Another Individual Tph For An Account The Other Individual Tph Controls Or For An Account In Which The Other Individual Tph Has An Ownership Or Financial Interest'
+      doc: 'Transactions where an individual TPH or authorized trader executes for the personal account of another individual TPH, for an account the other individual TPH controls or for an account in which the other individual TPH has an ownership or financial interest'
     0x34:
       id: 'cti_4'
-      doc: 'Any Transaction Not Meeting The Definition Of Cti 12 Or 3'
+      doc: 'Any transaction not meeting the definition of CTI 1, 2 or 3'
   manual_order_indicator:
     0x59:
       id: 'manual'
@@ -875,7 +875,7 @@ enums:
   cust_order_handling_inst:
     0x57:
       id: 'desk'
-      doc: 'High Touch'
+      doc: 'high touch'
     0x59:
       id: 'electronic'
       doc: 'Electronic'
@@ -952,7 +952,7 @@ enums:
   size_modifier:
     0x52:
       id: 'reduced_size'
-      doc: 'Reduce Outstanding Size Of Quote By The Order Qty Provided'
+      doc: 'Reduce outstanding size of quote by the OrderQty provided'
   leg_side:
     0x31:
       id: 'buy'
@@ -1092,7 +1092,7 @@ enums:
       doc: 'Removed Liquidity'
     0x43:
       id: 'market_opening_trade'
-      doc: 'Opening Reopening'
+      doc: 'opening / re-opening'
   sub_liquidity_indicator:
     0x43:
       id: 'carried_order_indicator'
@@ -1564,19 +1564,19 @@ enums:
       doc: 'Modified Loss Of Priority'
     0x52:
       id: 'modified_retains_priority'
-      doc: 'Size Reduction'
+      doc: 'Size reduction'
     0x4e:
       id: 'no_change'
-      doc: 'Matches Existing Quote'
+      doc: 'Matches existing quote'
     0x44:
       id: 'new_quote_x44'
-      doc: 'May Remove Liquidity'
+      doc: 'May remove liquidity'
     0x64:
       id: 'modified_but_may_remove_liquidity'
       doc: 'Modified But May Remove Liquidity'
     0x55:
       id: 'user_cancelled'
-      doc: 'Zero Sizeprice'
+      doc: 'zero size/price'
     0x61:
       id: 'admin'
       doc: 'Admin'

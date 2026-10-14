@@ -127,641 +127,641 @@ types:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: order_id
         type: u8
-        doc: 'Order Id Supplied By Cboe Canada On The Order Acknowledgement'
+        doc: 'OrderID supplied by Cboe Canada on the order acknowledgement'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Execution Instruction For The Order. Nullable, No ExecInst = 0'
+        doc: 'Execution Instruction for the order. Nullable, No ExecInst = 0'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        doc: 'The Effective Working Price Of The Order. Implied decimal with scale 1e-4'
+        doc: 'The effective working price of the order. Implied decimal with scale 1e-4'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Specifies The Utc Date Time Timestamp That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Destination Book Of The Order'
+        doc: 'Destination book of the order'
       - id: no_trade_feat
         type: u1
         enum: no_trade_feat
-        doc: 'Defines How To Prevent A Selftrade'
+        doc: 'Defines how to prevent a self-trade'
       - id: no_trade_key
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifier For Selftrade Prevention'
+        doc: 'Identifier for self-trade prevention'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Trade Added Or Removed Liquidity Indicator'
+        doc: 'Trade added or removed liquidity indicator'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
   order_rejected_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'Reason Code For The Order Rejection'
+        doc: 'Reason code for the order rejection'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Free Format Text String'
+        doc: 'Free format text string'
   order_modified_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: order_id
         type: u8
-        doc: 'Order Id Supplied By Cboe Canada On The Order Acknowledgement'
+        doc: 'OrderID supplied by Cboe Canada on the order acknowledgement'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
         enum: lei_order_origin
-        doc: 'Identify The Type Of Customer Sending The Order'
+        doc: 'Identify the type of customer sending the order'
       - id: lei_routing_arrangement_indicator
         type: u1
         enum: lei_routing_arrangement_indicator
-        doc: 'Routing Arrangement Is In Place'
+        doc: 'Routing arrangement is in place'
       - id: umir_account_type
         type: u1
         enum: umir_account_type
-        doc: 'The Capacity For The Order'
+        doc: 'The capacity for the order'
       - id: lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Account Number For Clients Not Eligible To Obtain An Lei'
+        doc: 'Account number for clients not eligible to obtain an LEI'
       - id: lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Identifier For The Endclient Orders Automatically Generated On A Predetermined Basis'
+        doc: 'Unique identifier for the end-client orders automatically generated on a predetermined basis'
       - id: customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Lei For Clients Eligible To Obtain An Lei'
+        doc: 'LEI for clients eligible to obtain an LEI'
       - id: broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Non Po Iiroc Dealer Member Correspondent Broker'
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Cl Ord Id Of The Order Being Cancelled Or Replaced'
+        doc: 'ClOrdID of the order being cancelled or replaced'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Of Shares Still Open For Further Execution'
+        doc: 'Quantity of shares still open for further execution'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
       - id: secondary_order_id
         type: u8
-        doc: 'Populated On A Self Trade Prevention Triggered Cancelrestatement'
+        doc: 'Populated on a Self-Trade Prevention triggered cancel/restatement'
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Specifies The Utc Date Time Timestamp That The Order Expires. Nanoseconds since Unix epoch'
+        doc: 'Specifies the UTC Date/Time timestamp that the order expires. Nanoseconds since Unix epoch'
   modify_rejected_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Cl Ord Id Of The Order Being Cancelled Or Replaced'
+        doc: 'ClOrdID of the order being cancelled or replaced'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Free Format Text String'
+        doc: 'Free format text string'
       - id: modify_reject_reason
         type: u1
         enum: modify_reject_reason
-        doc: 'Reason Code For The Rejection Of A Modify Order Message'
+        doc: 'Reason code for the rejection of a Modify Order message'
   order_restated_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: order_id
         type: u8
-        doc: 'Order Id Supplied By Cboe Canada On The Order Acknowledgement'
+        doc: 'OrderID supplied by Cboe Canada on the order acknowledgement'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Of Shares Still Open For Further Execution'
+        doc: 'Quantity of shares still open for further execution'
       - id: secondary_order_id
         type: u8
-        doc: 'Populated On A Self Trade Prevention Triggered Cancelrestatement'
+        doc: 'Populated on a Self-Trade Prevention triggered cancel/restatement'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: last_shares
         type: u4
-        doc: 'Quantity Of Shares On This Fill'
+        doc: 'Quantity of shares on this fill'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Trade Added Or Removed Liquidity Indicator'
+        doc: 'Trade added or removed liquidity indicator'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
       - id: restatement_reason
         type: u1
         enum: restatement_reason
-        doc: 'Reason For The Restatement'
+        doc: 'Reason for the restatement'
   order_execution_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: exec_id
         type: u8
-        doc: 'Dayunique Id Of Execution Message'
+        doc: 'Day-unique id of execution message'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: last_shares
         type: u4
-        doc: 'Quantity Of Shares On This Fill'
+        doc: 'Quantity of shares on this fill'
       - id: order_id
         type: u8
-        doc: 'Order Id Supplied By Cboe Canada On The Order Acknowledgement'
+        doc: 'OrderID supplied by Cboe Canada on the order acknowledgement'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: trade_date
         type: u4
-        doc: 'Business Date For The Trade'
+        doc: 'Business date for the trade'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Of Shares Still Open For Further Execution'
+        doc: 'Quantity of shares still open for further execution'
       - id: contra_broker
         type: u2
-        doc: 'Broker Id Of The Contra Party On This Fill'
+        doc: 'Broker ID of the contra party on this fill'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Trade Added Or Removed Liquidity Indicator'
+        doc: 'Trade added or removed liquidity indicator'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: principal_trade
         type: u1
         enum: principal_trade
-        doc: 'Broker Executed A Principal Trade Indicator'
+        doc: 'Broker executed a Principal trade indicator'
       - id: wash_trade
         type: u1
         enum: wash_trade
-        doc: 'Broker Executed A Wash Trade Indicator'
+        doc: 'Broker executed a Wash trade indicator'
       - id: no_trade_feat
         type: u1
         enum: no_trade_feat
-        doc: 'Defines How To Prevent A Selftrade'
+        doc: 'Defines how to prevent a self-trade'
       - id: no_trade_key
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifier For Selftrade Prevention'
+        doc: 'Identifier for self-trade prevention'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: matching_priority
         type: u1
         enum: matching_priority
-        doc: 'The Type Of Priority Used To Match An Order In A Trade'
+        doc: 'The type of priority used to match an order in a trade'
       - id: is_self_trade
         type: u1
         enum: is_self_trade
-        doc: 'Selftrade Indicator'
+        doc: 'Self-trade indicator'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Fee Code Of The Transaction'
+        doc: 'Fee code of the transaction'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Destination Book Of The Order'
+        doc: 'Destination book of the order'
   order_cancelled_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Reason For The Cancellation'
+        doc: 'Reason for the cancellation'
   cancel_rejected_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: text
         type: str
         size: 60
         encoding: ASCII
-        doc: 'Free Format Text String'
+        doc: 'Free format text string'
       - id: cancel_reject_reason
         type: u1
         enum: cancel_reject_reason
-        doc: 'Reason For The Cancel Rejection'
+        doc: 'Reason for the cancel rejection'
   carried_restatement_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: order_id
         type: u8
-        doc: 'Order Id Supplied By Cboe Canada On The Order Acknowledgement'
+        doc: 'OrderID supplied by Cboe Canada on the order acknowledgement'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Execution Instruction For The Order. Nullable, No ExecInst = 0'
+        doc: 'Execution Instruction for the order. Nullable, No ExecInst = 0'
       - id: handling_inst
         type: u1
         enum: handling_inst
-        doc: 'Handling Instruction For The Order'
+        doc: 'Handling instruction for the order'
       - id: order_qty
         type: u4
-        doc: 'Number Of Shares For Order'
+        doc: 'Number of shares for order'
       - id: cum_qty
         type: u4
-        doc: 'Cumulative Quantity Filled On The Order'
+        doc: 'Cumulative quantity filled on the order'
       - id: leaves_qty
         type: u4
-        doc: 'Quantity Of Shares Still Open For Further Execution'
+        doc: 'Quantity of shares still open for further execution'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Order Type'
+        doc: 'Order type'
       - id: price
         type: decimal_s8_4
         doc: 'Limit Price. Implied decimal with scale 1e-4'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'The Trigger Price For Stop And Stop Limit Orders. Implied decimal with scale 1e-4'
+        doc: 'The trigger price for Stop and Stop Limit orders. Implied decimal with scale 1e-4'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force For The Order'
+        doc: 'Time in force for the order'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Destination Book Of The Order'
+        doc: 'Destination book of the order'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display Used For Iceberg Orders'
+        doc: 'Portion of OrderQty to display, used for iceberg orders'
       - id: expire_date
         type: u4
-        doc: 'Specifies The Date On Which A Gtd Order Will Expire'
+        doc: 'Specifies the date on which a GTD order will expire'
       - id: lei_order_origin
         type: u1
         enum: lei_order_origin
-        doc: 'Identify The Type Of Customer Sending The Order'
+        doc: 'Identify the type of customer sending the order'
       - id: lei_routing_arrangement_indicator
         type: u1
         enum: lei_routing_arrangement_indicator
-        doc: 'Routing Arrangement Is In Place'
+        doc: 'Routing arrangement is in place'
       - id: umir_account_type
         type: u1
         enum: umir_account_type
-        doc: 'The Capacity For The Order'
+        doc: 'The capacity for the order'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: basket_trade
         type: u4
-        doc: 'Identification For Order As Part Of A Basket Trade'
+        doc: 'Identification for order as part of a basket trade'
       - id: program_trade
         type: u1
         enum: program_trade
-        doc: 'Identify This Order As Part Of A Program Trade'
+        doc: 'Identify this order as part of a program trade'
       - id: jitney
         type: u2
-        doc: 'Broker On Whose Behalf This Order Is Being Submitted If Different Than The Executing Broker'
+        doc: 'Broker on whose behalf this order is being submitted if different than the executing broker'
       - id: anonymous
         type: u1
         enum: anonymous
-        doc: 'Anonymize This Order When Trade Reporting Y Or N'
+        doc: 'Anonymize this order when trade reporting (Y or N)'
       - id: umir_regulation_id
         type: u1
         enum: umir_regulation_id
-        doc: 'Reported To Feeds Does Not Affect Order Handling'
+        doc: 'Reported to feeds, does not affect order handling'
       - id: non_resident
         type: u1
         enum: non_resident
-        doc: 'Identifies An Order As Non Resident'
+        doc: 'Identifies an order as Non-Resident'
       - id: bypass
         type: u1
         enum: bypass
-        doc: 'Identifies An Order As Eligible To Match Against The Displayed Volume Only'
+        doc: 'Identifies an order as eligible to match against the displayed volume only'
       - id: ncib
         type: u1
         enum: ncib
-        doc: 'Identifies Normal Course Issuer Bid Orders'
+        doc: 'Identifies Normal Course Issuer Bid orders'
       - id: short_marking_exempt
         type: u1
         enum: short_marking_exempt
-        doc: 'Used By Regulators To Identify Directional Neutral Accounts. Nullable, Not Short Marking Exempt = 0'
+        doc: 'Used by regulators to identify directional neutral accounts. Nullable, Not Short Marking Exempt = 0'
       - id: lei_customer_account
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Account Number For Clients Not Eligible To Obtain An Lei'
+        doc: 'Account number for clients not eligible to obtain an LEI'
       - id: lei_algorithm_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Unique Identifier For The Endclient Orders Automatically Generated On A Predetermined Basis'
+        doc: 'Unique identifier for the end-client orders automatically generated on a predetermined basis'
       - id: customer_lei
         type: str
         size: 52
         encoding: ASCII
-        doc: 'Lei For Clients Eligible To Obtain An Lei'
+        doc: 'LEI for clients eligible to obtain an LEI'
       - id: broker_lei
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Non Po Iiroc Dealer Member Correspondent Broker'
+        doc: 'Non-PO IIROC Dealer Member (Correspondent Broker)'
       - id: routing_inst
         type: u1
         enum: routing_inst
-        doc: 'Routing Instruction For The Order'
+        doc: 'Routing instruction for the order'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Visibility Indicator'
+        doc: 'Display visibility indicator'
       - id: matching_state_participation
         type: u1
         enum: matching_state_participation
-        doc: 'Indicates Which Order Flow Type A Passive Dark Order Elects To Interact With'
+        doc: 'Indicates which order flow type a Passive Dark order elects to interact with'
       - id: true_min_qty
         type: u4
-        doc: 'All Fills Must Be At Least Of Size True Min Qty'
+        doc: 'All fills must be at least of size TrueMinQty'
   done_for_day_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: broker_id
         type: u2
-        doc: 'Identifies The Broker'
+        doc: 'Identifies the broker'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
   trade_cancel_correct_ca_equities_v_1:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'Time Of The Transaction. Nanoseconds since Unix epoch'
+        doc: 'Time of the transaction. Nanoseconds since Unix epoch'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on Execution Reports associated with this order'
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Client Order Identifier'
+        doc: 'Client order identifier'
       - id: exec_id
         type: u8
-        doc: 'Dayunique Id Of Execution Message'
+        doc: 'Day-unique id of execution message'
       - id: exec_ref_id
         type: u8
-        doc: 'Refers To The Exec Id Of The Message Being Cancelled Or Corrected'
+        doc: 'Refers to the ExecID of the message being cancelled or corrected'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Price Of This Fill. Implied decimal with scale 1e-4'
+        doc: 'Price of this fill. Implied decimal with scale 1e-4'
       - id: last_shares
         type: u4
-        doc: 'Quantity Of Shares On This Fill'
+        doc: 'Quantity of shares on this fill'
       - id: side
         type: u1
         enum: side
-        doc: 'Side Of The Order'
+        doc: 'Side of the order'
       - id: symbol
         type: str
         size: 14
         encoding: ASCII
-        doc: 'Symbol Upper Case'
+        doc: 'Symbol (upper case)'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        doc: 'Trade Added Or Removed Liquidity Indicator'
+        doc: 'Trade added or removed liquidity indicator'
       - id: corrected_size
         type: u4
-        doc: 'Corrected Size Of A Trade'
+        doc: 'Corrected size of a trade'
       - id: umir_user_id
         type: str
         size: 12
         encoding: ASCII
-        doc: 'Identifies The Trader Responsible For The Order Also Known As Trader Id'
+        doc: 'Identifies the trader responsible for the order, also known as Trader ID'
       - id: corrected_price
         type: decimal_s8_4
-        doc: 'Corrected Price Of A Trade. Implied decimal with scale 1e-4'
+        doc: 'Corrected price of a trade. Implied decimal with scale 1e-4'
       - id: fee_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Fee Code Of The Transaction'
+        doc: 'Fee code of the transaction'
       - id: settlement_type
         type: u1
         enum: settlement_type
-        doc: 'Indicates The Settlement Period'
+        doc: 'Indicates the settlement period'
       - id: fut_settl_date
         type: u4
-        doc: 'Specific Date Of Trade Settlement'
+        doc: 'Specific date of trade settlement'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -1442,7 +1442,7 @@ enums:
   cancel_reason:
     0x41:
       id: 'admin'
-      doc: 'Most Rejects Due To Field Validation Errors Will Be Reported With A Reason Of Admin'
+      doc: 'Most rejects due to field validation errors will be reported with a reason of Admin'
     0x44:
       id: 'duplicate_identifier'
       doc: 'Duplicate Identifier'

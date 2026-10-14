@@ -691,21 +691,21 @@ enums:
       doc: 'Cash'
     11:
       id: 'standard_combination'
-      doc: 'Standard Combination'
+      doc: 'Standard combination'
   leg_side:
     0x42:
       id: 'buy_leg'
-      doc: 'Buy Leg'
+      doc: 'Buy leg'
     0x43:
       id: 'sell_leg'
-      doc: 'Sell Leg'
+      doc: 'Sell leg'
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent Every Trading Day'
+      doc: 'Outside of time stamp messages, the start of day message is the first message sent every trading day.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent Every Trading Day'
+      doc: 'This is always the last message sent every trading day.'
   side:
     0x53:
       id: 'sell'
@@ -728,19 +728,19 @@ enums:
       doc: 'Block Lot'
     4:
       id: 'all_or_none_lot'
-      doc: 'All Or None Lot'
+      doc: 'All or None Lot'
   occurred_at_cross:
     0x59:
       id: 'yes_field'
-      doc: 'Order Executed In An Auction'
+      doc: 'order executed in an auction'
     0x4e:
       id: 'no_field'
-      doc: 'Order Executed In Continuous Matching'
+      doc: 'order executed in continuous matching'
   printable:
     0x59:
       id: 'yes_field'
-      doc: 'Include In Trade Tickers And Volume Calculations'
+      doc: 'include in trade tickers and volume calculations.'
     0x4e:
       id: 'no_field'
-      doc: 'Do Not Include In Trade Tickers And Volume Calculations'
+      doc: 'do not include in trade tickers and volume calculations'
 

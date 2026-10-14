@@ -754,17 +754,17 @@ enums:
   leg_security_type:
     0x4f:
       id: 'option'
-      doc: 'Leg Is An Option Instrument'
+      doc: 'Leg is an option instrument'
     0x45:
       id: 'equity'
-      doc: 'Leg Is An Equity Instrument'
+      doc: 'Leg is an equity instrument'
   symbol_condition:
     0x4e:
       id: 'normal'
       doc: 'Normal'
     0x43:
       id: 'closing_only'
-      doc: 'Closing Only'
+      doc: 'Closing only'
   side_indicator:
     0x42:
       id: 'buy_order'
@@ -775,14 +775,14 @@ enums:
   customer_indicator:
     0x4e:
       id: 'non_customer'
-      doc: 'Non Customer'
+      doc: 'Non-Customer'
     0x43:
       id: 'customer'
       doc: 'Customer'
   trade_condition:
     0x66:
       id: 'complex_to_complex_electronic_trade'
-      doc: 'Complex To Complex Electronic Trade'
+      doc: 'Complex to Complex Electronic Trade'
     0x67:
       id: 'complex_auction_trade'
       doc: 'Complex Auction Trade'
@@ -794,13 +794,13 @@ enums:
       doc: 'Complex Electronic Trade Against Single'
     0x6b:
       id: 'complex_with_stock_options_auction_trade'
-      doc: 'Complex With Stock Options Auction Trade'
+      doc: 'Complex with Stock Options Auction Trade'
     0x6e:
       id: 'complex_with_stock_electronic_trade'
-      doc: 'Complex With Stock Electronic Trade'
+      doc: 'Complex with Stock Electronic Trade'
     0x6f:
       id: 'complex_with_stock_cross'
-      doc: 'Complex With Stock Cross'
+      doc: 'Complex with Stock Cross'
     0x6c:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
@@ -826,7 +826,7 @@ enums:
       doc: 'Halted'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote-Only'
     0x54:
       id: 'trading'
       doc: 'Trading'
@@ -836,17 +836,17 @@ enums:
       doc: 'Halted'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote-Only'
     0x54:
       id: 'trading'
       doc: 'Trading'
   auction_opening_type:
     0x47:
       id: 'gth'
-      doc: 'Gth'
+      doc: 'GTH'
     0x4f:
       id: 'rth'
-      doc: 'Rth'
+      doc: 'RTH'
     0x48:
       id: 'halt_reopening'
       doc: 'Halt Reopening'

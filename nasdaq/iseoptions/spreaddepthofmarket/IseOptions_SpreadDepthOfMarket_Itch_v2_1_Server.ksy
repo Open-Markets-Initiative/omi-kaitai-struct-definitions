@@ -735,28 +735,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early Closing'
   strategy_type:
     0x56:
       id: 'vertical_spread'
@@ -794,10 +794,10 @@ enums:
   option_type:
     0x43:
       id: 'call_option'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put_option'
-      doc: 'Put Option'
+      doc: 'Put option'
     0x20:
       id: 'stock_leg'
       doc: 'Stock Leg'
@@ -811,19 +811,19 @@ enums:
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'continuous_trading'
       doc: 'Continuous Trading'
     0x49:
       id: 'pre_open'
-      doc: 'Pre Open'
+      doc: 'Pre-Open'
     0x4f:
       id: 'opening_auction'
       doc: 'Opening Auction'
     0x52:
       id: 're_opening'
-      doc: 'Re Opening'
+      doc: 'Re-Opening'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -849,7 +849,7 @@ enums:
       doc: 'Firm'
     0x4d:
       id: 'nasdaq_registered_market_maker'
-      doc: 'Nasdaq Registered Market Maker'
+      doc: 'Nasdaq registered Market Maker'
     0x42:
       id: 'broker_dealer_order'
       doc: 'Broker Dealer Order'
@@ -858,10 +858,10 @@ enums:
       doc: 'Professional Order'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker'
+      doc: 'Other exchange registered market maker'
     0x4a:
       id: 'jbo_joint_back_office_only_phlx'
-      doc: 'Jbo Joint Back Office Only Phlx'
+      doc: 'JBO (Joint Back Office, Only PHLX)'
   scope:
     0x4c:
       id: 'local'
@@ -889,10 +889,10 @@ enums:
       doc: 'Opening Auction'
     0x52:
       id: 'reopening_auction'
-      doc: 'Reopening Auction'
+      doc: 'Re-opening Auction'
     0x50:
       id: 'price_improvement_pim_auction'
-      doc: 'Price Improvement Pim Auction'
+      doc: 'Price Improvement (PIM) Auction'
     0x43:
       id: 'facilitation'
       doc: 'Facilitation'
@@ -915,7 +915,7 @@ enums:
       doc: 'Complex Exposure'
     0x50:
       id: 'price_improvement_pim_auction'
-      doc: 'Price Improvement Pim Auction'
+      doc: 'Price Improvement (PIM) Auction'
     0x43:
       id: 'facilitation'
       doc: 'Facilitation'
@@ -934,14 +934,14 @@ enums:
       doc: 'Auction Update'
     0x45:
       id: 'end_of_auction'
-      doc: 'End Of Auction'
+      doc: 'End of Auction'
   exec_flag:
     0x4e:
       id: 'none'
       doc: 'None'
     0x41:
       id: 'aon'
-      doc: 'Aon'
+      doc: 'AON'
   order_capacity:
     0x43:
       id: 'customer_order'
@@ -951,7 +951,7 @@ enums:
       doc: 'Firm Order'
     0x4d:
       id: 'nasdaq_registered_market_maker'
-      doc: 'Nasdaq Registered Market Maker'
+      doc: 'Nasdaq registered Market Maker'
     0x42:
       id: 'broker_dealer_oder'
       doc: 'Broker Dealer Oder'
@@ -960,10 +960,10 @@ enums:
       doc: 'Professional Order'
     0x4f:
       id: 'other_exchange_registered_market_maker'
-      doc: 'Other Exchange Registered Market Maker'
+      doc: 'Other exchange registered market maker'
     0x4a:
       id: 'jbo_joint_back_office_only_phlx'
-      doc: 'Jbo Joint Back Office Only Phlx'
+      doc: 'JBO (Joint Back Office, Only PHLX)'
   message_type:
     0x53:
       id: 'system_event_message'

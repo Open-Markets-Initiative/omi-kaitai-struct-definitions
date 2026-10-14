@@ -507,23 +507,23 @@ enums:
       doc: 'Trading Halted'
     0x34:
       id: 'preopen'
-      doc: 'Preopen'
+      doc: 'Pre-open'
     0x35:
       id: 'rotation_legal_width_quote_pending'
-      doc: 'Rotation Legal Width Quote Pending'
+      doc: 'Rotation, legal width quote pending'
   trade_cond_1:
     0x20:
       id: 'regular_trade'
-      doc: 'Regular Trade'
+      doc: 'regular trade'
     0x49:
       id: 'late_report'
-      doc: 'Late Report'
+      doc: 'Late report'
     0x52:
       id: 'floor_trade'
-      doc: 'Floor Trade'
+      doc: 'Floor trade'
     0x53:
       id: 'so_sweep_trade'
-      doc: 'So Sweep Trade'
+      doc: 'SO sweep trade'
   side:
     0x42:
       id: 'buy'
@@ -534,16 +534,16 @@ enums:
   security_status:
     0x4c:
       id: 'light_up_a_dark_series'
-      doc: 'Light Up A Dark Series'
+      doc: 'Light up a dark series'
     0x4e:
       id: 'open_a_dark_series'
-      doc: 'Open A Dark Series'
+      doc: 'Open a dark series'
     0x4f:
       id: 'open'
-      doc: 'Open Indication'
+      doc: 'Open indication'
     0x58:
       id: 'close'
-      doc: 'Close Indication'
+      doc: 'Close indication'
     0x53:
       id: 'halt'
       doc: 'Halt'
@@ -552,43 +552,43 @@ enums:
       doc: 'Unhalt'
     0x54:
       id: 'unhalt_a_dark_series'
-      doc: 'Unhalt A Dark Series'
+      doc: 'Unhalt a dark series'
     0x51:
       id: 'end_of_rfq_auction'
-      doc: 'End Of Rfq Auction'
+      doc: 'End of RFQ auction'
   market_id:
     1:
       id: 'nyse_cash'
-      doc: 'Nyse Cash'
+      doc: 'NYSE Cash'
     2:
       id: 'europe_cash'
       doc: 'Europe Cash'
     3:
       id: 'nyse_arca_cash'
-      doc: 'Nyse Arca Cash'
+      doc: 'NYSE Arca Cash'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE/Arca Options'
     5:
       id: 'nyse_arca_bonds'
-      doc: 'Nyse Arca Bonds'
+      doc: 'NYSE/Arca Bonds'
     6:
       id: 'arca_edge'
-      doc: 'Arca Edge'
+      doc: 'ArcaEdge'
     7:
       id: 'liffe'
-      doc: 'Liffe'
+      doc: 'LIFFE'
     8:
       id: 'nyse_american_options'
-      doc: 'Nyse American Options'
+      doc: 'NYSE American Options'
     9:
       id: 'nyse_mkt_cash'
-      doc: 'Nyse Mkt Cash'
+      doc: 'NYSE MKT Cash'
   leg_security_type:
     0x4f:
       id: 'options_series_leg'
-      doc: 'Options Series Leg'
+      doc: 'Options Series leg'
     0x45:
       id: 'equity_stock_leg'
-      doc: 'Equity Stock Leg'
+      doc: 'Equity stock leg'
 

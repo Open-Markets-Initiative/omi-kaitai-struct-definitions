@@ -914,7 +914,7 @@ enums:
   source:
     0x48:
       id: 'trading_system'
-      doc: 'Market Alerts Sent Through The Trading System'
+      doc: 'Market Alerts sent through the Trading System'
   last_fragment:
     0x59:
       id: 'complete'
@@ -941,7 +941,7 @@ enums:
       doc: 'Ask'
     2:
       id: 'both'
-      doc: 'Bid And Ask'
+      doc: 'Bid and Ask'
   underlying_type:
     0x53:
       id: 'stock'

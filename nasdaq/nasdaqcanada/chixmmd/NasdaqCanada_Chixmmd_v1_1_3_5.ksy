@@ -530,16 +530,16 @@ enums:
   trade_attribute:
     0x42:
       id: 'bypass'
-      doc: 'Bypass Intentional Crosses Only Trade Message'
+      doc: 'Bypass (intentional crosses only), Trade Message'
     0x43:
       id: 'market_on_close_or_cxd_conditional'
-      doc: 'Market On Close On The Order Execution Message Cxd Conditional On The Trade Message'
+      doc: 'Market On Close on the Order Execution Message; CXD Conditional on the Trade Message'
     0x4c:
       id: 'melo'
-      doc: 'Melo Trade Message'
+      doc: 'M-ELO, Trade Message'
     0x50:
       id: 'cxd_pure_stream'
-      doc: 'Cxd Pure Stream Trade Message'
+      doc: 'CXD PureStream, Trade Message'
   cross_type:
     0x49:
       id: 'internal_field'
@@ -552,7 +552,7 @@ enums:
       doc: 'Contingent'
     0x56:
       id: 'vwap'
-      doc: 'Vwap'
+      doc: 'VWAP'
     0x58:
       id: 'intentional_cross'
       doc: 'Intentional Cross'
@@ -561,7 +561,7 @@ enums:
       doc: 'Derivative Related'
     0x4e:
       id: 'net_asset_value'
-      doc: 'Net Asset Value French Edition 3.6 October 2025'
+      doc: 'Net Asset Value (French edition 3.6, October 2025)'
   settlement_terms:
     0x54:
       id: 'cash_today'
@@ -572,28 +572,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'First Message Of The Day'
+      doc: 'First message of the day'
     0x53:
       id: 'start_of_nasdaq_canada_trading_session'
-      doc: 'Start Of Nasdaq Canada Trading Session'
+      doc: 'Start of Nasdaq Canada Trading Session'
     0x51:
       id: 'start_of_primary_market_trading_session'
-      doc: 'Start Of Primary Market Trading Session'
+      doc: 'Start of Primary Market Trading Session'
     0x4d:
       id: 'end_of_primary_market_trading_session'
-      doc: 'End Of Primary Market Trading Session Indicates That Pegged Orders Are No Longer Available For Execution'
+      doc: 'End of Primary Market Trading Session. Indicates that Pegged orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours Nasdaq Canada Is Closed And Not Accepting Orders It Is Still Possible To Receive Broken Trade Messages And Order Cancel Messages'
+      doc: 'End of System Hours. Nasdaq Canada is closed and not accepting orders. It is still possible to receive Broken Trade messages and Order Cancel Messages.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages Last Message Of The Day'
+      doc: 'End of Messages. Last message of the day.'
     0x57:
       id: 'market_wide_circuit_breaker_halt'
-      doc: 'Trading Halted Due To Market Wide Circuit Breaker'
+      doc: 'Trading Halted due to Market-Wide Circuit Breaker'
     0x52:
       id: 'market_wide_circuit_breaker_resumption'
-      doc: 'Trading Resumed Following Market Wide Circuit Breaker'
+      doc: 'Trading Resumed following Market-Wide Circuit Breaker'
   trading_state:
     0x48:
       id: 'halted'
@@ -604,21 +604,21 @@ enums:
   listing_market:
     0x54:
       id: 'tsx'
-      doc: 'Tsx'
+      doc: 'TSX'
     0x56:
       id: 'tsx_venture'
-      doc: 'Tsx Venture'
+      doc: 'TSX Venture'
     0x43:
       id: 'cse'
-      doc: 'Cse'
+      doc: 'CSE'
     0x4e:
       id: 'neo'
       doc: 'Neo'
   gef_eligible:
     0x59:
       id: 'gef_eligible'
-      doc: 'Gef Eligible'
+      doc: 'GEF Eligible'
     0x4e:
       id: 'not_gef_eligible'
-      doc: 'Not Gef Eligible'
+      doc: 'Not GEF Eligible'
 

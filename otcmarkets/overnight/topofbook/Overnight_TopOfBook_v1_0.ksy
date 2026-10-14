@@ -325,156 +325,156 @@ enums:
   spin_type:
     1:
       id: 'reference'
-      doc: 'Reference'
+      doc: 'Reference.'
   trading_session:
     1:
       id: 'order_acceptance'
-      doc: 'Order Acceptance 700 Pm'
+      doc: 'Order Acceptance (7:00 PM).'
     5:
       id: 'market_close'
-      doc: 'Market Close 745 Am'
+      doc: 'Market Close (7:45 AM).'
     6:
       id: 'overnight'
-      doc: 'Overnight 800 Pm'
+      doc: 'Overnight (8:00 PM).'
   security_action:
     1:
       id: 'update'
-      doc: 'Update'
+      doc: 'Update.'
     2:
       id: 'add'
-      doc: 'Add'
+      doc: 'Add.'
     3:
       id: 'delete_field'
-      doc: 'Delete'
+      doc: 'Delete.'
     4:
       id: 'spin'
-      doc: 'Spin'
+      doc: 'Spin.'
   asset_class:
     1:
       id: 'equity'
-      doc: 'Equity'
+      doc: 'Equity.'
     2:
       id: 'fixed_income'
-      doc: 'Fixed Income'
+      doc: 'Fixed Income.'
   tier:
     0:
       id: 'no_tier'
-      doc: 'No Tier'
+      doc: 'No Tier.'
     2:
       id: 'otcqx_us'
-      doc: 'Otcqx Us'
+      doc: 'OTCQX U.S.'
     6:
       id: 'otcqx_international'
-      doc: 'Otcqx International'
+      doc: 'OTCQX International.'
     10:
       id: 'otcqb'
-      doc: 'Otcqb'
+      doc: 'OTCQB.'
     20:
       id: 'otcid'
-      doc: 'Otcid'
+      doc: 'OTCID.'
     21:
       id: 'pink_limited'
-      doc: 'Pink Limited'
+      doc: 'Pink Limited.'
     30:
       id: 'grey_market'
-      doc: 'Grey Market'
+      doc: 'Grey Market.'
     40:
       id: 'expert_market'
-      doc: 'Expert Market'
+      doc: 'Expert Market.'
     50:
       id: 'otc_bonds'
-      doc: 'Otc Bonds'
+      doc: 'OTC Bonds.'
   reporting_status:
     0x41:
       id: 'alternative_reporting_standard'
-      doc: 'Alternative Reporting Standard'
+      doc: 'Alternative Reporting Standard.'
     0x42:
       id: 'bank_thrift'
-      doc: 'Bank Thrift'
+      doc: 'Bank/Thrift.'
     0x46:
       id: 'sec_reporting'
-      doc: 'Sec Reporting'
+      doc: 'SEC Reporting.'
     0x47:
       id: 'international_reporting'
-      doc: 'International Reporting'
+      doc: 'International Reporting.'
     0x49:
       id: 'insurance_company'
-      doc: 'Insurance Company'
+      doc: 'Insurance Company.'
     0x4e:
       id: 'no_reporting'
-      doc: 'No Reporting'
+      doc: 'No Reporting.'
     0x4f:
       id: 'other_reporting_standard'
-      doc: 'Other Reporting Standard'
+      doc: 'Other Reporting Standard.'
     0x52:
       id: 'finra_reporting'
-      doc: 'Finra Reporting'
+      doc: 'FINRA Reporting.'
     0x56:
       id: 'sec_reporting_investment_company'
-      doc: 'Sec Reporting Investment Company'
+      doc: 'SEC Reporting - Investment Company.'
     0x57:
       id: 'sec_reporting_reg_a'
-      doc: 'Sec Reporting Reg A'
+      doc: 'SEC Reporting - Reg A.'
   security_status:
     0x41:
       id: 'active'
-      doc: 'Active'
+      doc: 'Active.'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote Only.'
     0x53:
       id: 'suspended'
-      doc: 'Suspended'
+      doc: 'Suspended.'
     0x48:
       id: 'halted'
-      doc: 'Halted'
+      doc: 'Halted.'
     0x49:
       id: 'internal_halt'
-      doc: 'Internal Halt'
+      doc: 'Internal Halt.'
     0x52:
       id: 'revoked'
-      doc: 'Revoked'
+      doc: 'Revoked.'
     0x44:
       id: 'deleted'
-      doc: 'Deleted'
+      doc: 'Deleted.'
     0x58:
       id: 'removed_from_idqs'
-      doc: 'Removed From Idqs'
+      doc: 'Removed from IDQS.'
   unsolicited:
     0x59:
       id: 'unsolicited'
-      doc: 'Unsolicited'
+      doc: 'Unsolicited.'
     0x4e:
       id: 'not_unsolicited'
-      doc: 'Not Unsolicited'
+      doc: 'Not Unsolicited.'
   current_inside_imbalance_side:
     0x42:
       id: 'buy_side'
-      doc: 'Imbalance Is On Buy Side'
+      doc: 'imbalance is on buy side.'
     0x53:
       id: 'sell_side'
-      doc: 'Imbalance Is On Sell Side'
+      doc: 'imbalance is on sell side.'
     0x4e:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'no imbalance.'
     0x4f:
       id: 'no_marketable_orders'
-      doc: 'No Marketable Orders'
+      doc: 'no marketable orders.'
   moc_shares_unmatched:
     0x42:
       id: 'buy_moc_not_matched'
-      doc: 'Buy Moc Shares Not Matched'
+      doc: 'Buy MOC shares not matched.'
     0x53:
       id: 'sell_moc_not_matched'
-      doc: 'Sell Moc Shares Not Matched'
+      doc: 'Sell MOC shares not matched.'
     0x4f:
       id: 'no_moc_unmatched'
-      doc: 'No Moc Shares Not Matched'
+      doc: 'no MOC shares not matched.'
   recovery_type:
     83:
       id: 'scheduling_start'
-      doc: 'S Scheduling Of Start Of Recovery Event'
+      doc: '"S" scheduling of start of recovery event.'
     66:
       id: 'recovery_begins'
-      doc: 'B Recovery Begins'
+      doc: '"B" Recovery begins.'
 

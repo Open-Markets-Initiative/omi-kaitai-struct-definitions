@@ -1008,34 +1008,34 @@ enums:
   status:
     0x30:
       id: 'accepted'
-      doc: 'Message Was Accepted'
+      doc: 'Message was accepted'
     0x31:
       id: 'rejected'
-      doc: 'Rejected Due To An Invalid Source Id'
+      doc: 'Rejected due to an Invalid Source ID'
     0x32:
       id: 'invalid_sequence_range'
-      doc: 'Rejected Due To Invalid Sequence Range'
+      doc: 'Rejected due to invalid sequence range'
     0x33:
       id: 'maximum_sequence_range'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
+      doc: 'Rejected due to maximum sequence range (see threshold limits)'
     0x34:
       id: 'maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
+      doc: 'Rejected due to maximum request in a day'
     0x35:
       id: 'maximum_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
+      doc: 'Rejected due to maximum number of refresh requests in a day'
     0x36:
       id: 'old_seq_num_ttl'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
+      doc: 'Rejected. Request message SeqNum TTL (Time to live) is too old. Use refresh to recover current state if necessary.'
     0x37:
       id: 'invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
+      doc: 'Rejected due to an Invalid Channel ID'
     0x38:
       id: 'invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
+      doc: 'Rejected due to an Invalid Product ID'
     0x39:
       id: 'invalid_msg_type_or_msg_size'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
+      doc: 'Rejected due to: 1) Invalid MsgType, or 2) Mismatch between MsgType and MsgSize'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -1214,7 +1214,7 @@ enums:
       doc: 'Core Session'
     0x4c:
       id: 'late_session'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1277,37 +1277,37 @@ enums:
   series:
     0x61:
       id: 'cube'
-      doc: 'Outright Series Orderquote Trading Electronically With A Outright Series Cube Exposed Order Or Outright Series Cube Exposed Order Trading Electronically With Outright Series'
+      doc: 'outright series order/quote trading electronically with a outright series CUBE Exposed order or outright series CUBE Exposed order trading electronically with outright series'
     0x63:
       id: 'occ'
-      doc: 'Trading Of A Outright Series Qcc Order'
+      doc: 'trading of a outright series QCC order'
     0x65:
       id: 'floor_trade'
-      doc: 'Outright Series Floor Trade'
+      doc: 'outright series floor trade'
     0x49:
       id: 'other_outright_series'
-      doc: 'Other Outright Series'
+      doc: 'Other outright series'
     0x53:
       id: 'iso_sweep'
-      doc: 'All Outright Series Trades That Are Generated As Part Of An Intermarket Sweep Order'
+      doc: 'all outright series trades that are generated as part of an Intermarket Sweep order'
     0x44:
       id: 'after_90_seconds'
-      doc: 'Any Of The Above Published After 90 Seconds Of Occurring'
+      doc: 'any of the above published after 90 seconds of occurring'
     0x66:
       id: 'other_complex_orders'
-      doc: 'Complex Order Trades That Were Not Part Of The Following Transactions'
+      doc: 'complex order trades that were not part of the following transactions'
     0x67:
       id: 'complex_cube'
-      doc: 'Complex Order Trading Electronically With A Complex Cube Exposed Order Or Complex Cube Exposed Order Trading Electronically With Complex Cube Covered Order'
+      doc: 'complex order trading electronically with a complex CUBE Exposed order or complex CUBE Exposed order trading electronically with Complex CUBE Covered order'
     0x48:
       id: 'complex_qcc_order'
-      doc: 'Trading Of A Complex Qcc Order'
+      doc: 'trading of a complex QCC order'
     0x69:
       id: 'complex_floor_order'
-      doc: 'Complex Order To Complex Order Floor Trade'
+      doc: 'Complex order to complex order floor trade'
     0x6a:
       id: 'complex_order_trading_with_the_outright_series'
-      doc: 'Complex Order Trading Electronically With The Outright Series Ordersquotes'
+      doc: 'complex order trading electronically with the outright series orders/quotes'
     0x6d:
       id: 'complex_order_to_outright_series_orderfloor_trade'
       doc: 'Complex Order To Outright Series Orderfloor Trade'
@@ -1330,23 +1330,23 @@ enums:
   transaction:
     0x48:
       id: 'opening_trade_in_sequence'
-      doc: 'Transaction Is A Late Report Of The Opening Trade But Is In The Correct Sequence'
+      doc: 'Transaction is a late report of the opening trade, but is in the correct sequence'
     0x46:
       id: 'opening_trade_out_of_sequence'
-      doc: 'Transaction Is A Late Report Of The Opening Trade And Is Out Of Sequence'
+      doc: 'Transaction is a late report of the opening trade and is out of sequence'
     0x44:
       id: 'in_sequence'
-      doc: 'Transaction Is Being Reported Late But Is In The Correct Sequence'
+      doc: 'Transaction is being reported late, but is in the correct sequence'
     0x42:
       id: 'out_of_sequence'
-      doc: 'Transaction Is Being Reported Late And Is Out Of Sequence'
+      doc: 'Transaction is being reported late and is out of sequence'
   auction_type:
     0x4f:
       id: 'opening'
       doc: 'Core Opening Auction'
     0x48:
       id: 'reopening'
-      doc: 'Reopening Auction Halt Resume'
+      doc: 'Reopening Auction (Halt resume)'
   imbalance_side:
     0x42:
       id: 'buy'
@@ -1412,8 +1412,8 @@ enums:
   rfq_status:
     0x4f:
       id: 'start'
-      doc: 'Start Of Rfq Auction'
+      doc: 'Start of RFQ Auction'
     0x51:
       id: 'end'
-      doc: 'End Of Rfq Auction'
+      doc: 'End of RFQ Auction'
 

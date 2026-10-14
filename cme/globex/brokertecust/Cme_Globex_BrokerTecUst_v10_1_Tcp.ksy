@@ -265,7 +265,7 @@ enums:
       doc: 'Trading Session Low Price'
     0x39:
       id: 'vwap'
-      doc: 'Vwap Or Vway'
+      doc: 'VWAP or VWAY'
     0x45:
       id: 'implied_bid'
       doc: 'Implied Bid'

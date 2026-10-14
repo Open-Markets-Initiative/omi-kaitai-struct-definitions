@@ -509,35 +509,35 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early closing'
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
   option_closing_type:
     0x4e:
       id: 'normal'
@@ -547,54 +547,54 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing At 1200 Noon'
+      doc: 'WCO Early Closing at 12:00 Noon.'
   tradable:
     0x59:
       id: 'tradable'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'not_tradable'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   mpv:
     0x45:
       id: 'penny_everywhere'
-      doc: 'Penny Everywhere'
+      doc: 'penny Everywhere'
     0x53:
       id: 'scaled'
       doc: 'Scaled'
     0x50:
       id: 'penny_pilot'
-      doc: 'Penny Pilot'
+      doc: 'penny Pilot'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'trading_resumed'
       doc: 'Trading Resumed'
   open_state:
     0x59:
       id: 'open_for_auto_execution'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed_for_auto_execution'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   quote_condition:
     0x20:
       id: 'regular_quoteautox_eligible'
-      doc: 'Regular Quoteautox Eligible'
+      doc: 'regular quote/autox eligible'
     0x46:
       id: 'non_firm_quote'
-      doc: 'Non Firm Quote On Both Bidask Sides'
+      doc: 'Non-Firm Quote on both bid/ask sides'
     0x52:
       id: 'rotational_quote'
       doc: 'Rotational Quote'
     0x58:
       id: 'bid_side_firm'
-      doc: 'Ask Side Not Firm Bid Side Firm'
+      doc: 'Ask side not firm; bid side firm'
     0x59:
       id: 'ask_side_firm'
-      doc: 'Bid Side Not Firm Ask Side Firm'
+      doc: 'Bid side not firm; ask side firm'
   message_type:
     0x54:
       id: 'timestamp_message'

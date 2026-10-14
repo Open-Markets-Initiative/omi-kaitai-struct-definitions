@@ -763,25 +763,25 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages This Is Always The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. This is always the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'Start of System Hours. This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process This Message Is Intended To Indicate That Nasdaq Has Started Its Opening Auction Process'
+      doc: 'Start of Opening Process. This message is intended to indicate that NASDAQ has started its opening auction process.'
     0x4e:
       id: 'end_of_normal_hours_processing'
-      doc: 'End Of Normal Hours Processing This Message Is Intended To Indicate That Nasdaq Will No Longer Accept Any New Orders Or Changes To Existing Orders For Options That Trade During Normal Trading Hours'
+      doc: 'End of Normal Hours Processing - This message is intended to indicate that NASDAQ will no longer accept any new orders or changes to existing orders for options that trade during normal trading hours.'
     0x4c:
       id: 'end_of_late_hours_processing'
-      doc: 'End Of Late Hours Processing This Message Is Intended To Indicate That Nasdaq Will No Longer Accept Any New Orders Or Changes To Existing Orders For Options That Trade During Extended Hours'
+      doc: 'End of Late Hours Processing - This message is intended to indicate that NASDAQ will no longer accept any new orders or changes to existing orders for options that trade during extended hours.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours This Message Indicates That Nasdaq Options System Is Now Closed'
+      doc: 'End of System Hours. This message indicates that NASDAQ options system is now closed.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day.'
   option_type:
     0x43:
       id: 'call'
@@ -799,10 +799,10 @@ enums:
   tradable:
     0x4e:
       id: 'not_tradable'
-      doc: 'Not Tradable'
+      doc: 'not tradable'
     0x59:
       id: 'is_tradable'
-      doc: 'Is Tradable'
+      doc: 'is tradable'
   mpv:
     0x45:
       id: 'everywhere'
@@ -843,31 +843,31 @@ enums:
   printable:
     0x4e:
       id: 'nonprintable'
-      doc: 'Nonprintable'
+      doc: 'non-printable'
     0x59:
       id: 'printable'
-      doc: 'Printable'
+      doc: 'printable'
   change_reason:
     0x55:
       id: 'user'
-      doc: 'User'
+      doc: 'USER'
     0x52:
       id: 'reprice'
-      doc: 'Reprice'
+      doc: 'REPRICE'
     0x53:
       id: 'suspend'
-      doc: 'Suspend'
+      doc: 'SUSPEND'
   buy_sell_indicator:
     0x42:
       id: 'buy'
-      doc: 'Buy'
+      doc: 'buy'
     0x53:
       id: 'sell'
-      doc: 'Sell'
+      doc: 'sell'
   cross_type:
     0x4f:
       id: 'nasdaq_opening_reopening'
-      doc: 'Nasdaq Opening Reopening'
+      doc: 'NASDAQ Opening/Reopening'
     0x50:
       id: 'price_improvement'
       doc: 'Price Improvement'
@@ -887,26 +887,26 @@ enums:
   imbalance_direction:
     0x42:
       id: 'buy'
-      doc: 'Buy'
+      doc: 'buy'
     0x53:
       id: 'sell'
-      doc: 'Sell'
+      doc: 'sell'
   customer_firm_indicator:
     0x43:
       id: 'customer'
       doc: 'Customer'
     0x46:
       id: 'firm_joint'
-      doc: 'Firm Joint'
+      doc: 'Firm/ Joint'
     0x4d:
       id: 'onfloor'
-      doc: 'Onfloor'
+      doc: 'On-floor'
     0x50:
       id: 'professional'
       doc: 'Professional'
     0x42:
       id: 'broker_dealer_non_registered'
-      doc: 'Broker Dealer Non Registered'
+      doc: 'Broker Dealer/ Non Registered'
   message_type:
     0x53:
       id: 'system_event_message'

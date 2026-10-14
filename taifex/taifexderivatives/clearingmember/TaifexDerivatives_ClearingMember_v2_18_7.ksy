@@ -137,7 +137,7 @@ types:
     seq:
       - id: subhdr
         type: subhdr
-        doc: 'Tmp Expanded Message Header Which Assigns Different Functionalities To A Message Type By Defining Additional Subcategories For It'
+        doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
       - id: statuscode_uint_162
         type: u2
         enum: statuscode_uint_162
@@ -331,10 +331,10 @@ types:
         doc: 'Quantity executed for both legs'
       - id: orgtranstime_msgtime
         type: orgtranstime_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: transact_time_msgtime
         type: transact_time_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: targetid
         type: u1
         enum: targetid
@@ -490,10 +490,10 @@ types:
         doc: 'Quantity executed for both legs'
       - id: orgtranstime_msgtime
         type: orgtranstime_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: transact_time_msgtime
         type: transact_time_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: targetid
         type: u1
         enum: targetid
@@ -633,10 +633,10 @@ types:
         doc: 'Quantity executed for both legs'
       - id: orgtranstime_msgtime
         type: orgtranstime_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: transact_time_msgtime
         type: transact_time_msgtime
-        doc: 'Tmp Time Format The Seconds Since The Epoch And The Thousandth Of A Second. Milliseconds since Unix epoch'
+        doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
       - id: targetid
         type: u1
         enum: targetid
@@ -658,7 +658,7 @@ types:
     seq:
       - id: subhdr
         type: subhdr
-        doc: 'Tmp Expanded Message Header Which Assigns Different Functionalities To A Message Type By Defining Additional Subcategories For It'
+        doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
       - id: partid
         type: u1
         enum: partid
@@ -751,10 +751,10 @@ types:
         doc: 'Remaining order quantity before match'
       - id: orgtranstime_msgtimex
         type: orgtranstime_msgtimex
-        doc: 'Tmp Expanded Time Format The Seconds Since The Epoch And The Billionth Of A Second Which The Flex Reports Carry In Place Of Msgtime. Nanoseconds since Unix epoch'
+        doc: 'Tmp Expanded Time Format, the seconds since the epoch and the billionth of a second, which the FLEX reports carry in place of msg_time. Nanoseconds since Unix epoch'
       - id: transact_time_msgtimex
         type: transact_time_msgtimex
-        doc: 'Tmp Expanded Time Format The Seconds Since The Epoch And The Billionth Of A Second Which The Flex Reports Carry In Place Of Msgtime. Nanoseconds since Unix epoch'
+        doc: 'Tmp Expanded Time Format, the seconds since the epoch and the billionth of a second, which the FLEX reports carry in place of msg_time. Nanoseconds since Unix epoch'
       - id: targetid
         type: u1
         enum: targetid
@@ -804,7 +804,7 @@ types:
     seq:
       - id: legsym_symbolnumx
         type: legsym_symbolnumx
-        doc: 'Flex Numeric Single Product Serial Number Naming A Flex Product By The Serial Number Of The Xp 08 Product And Time Flow Group Definition File'
+        doc: 'FLEX Numeric Single Product Serial number, naming a FLEX product by the serial number of the XP08 product and time flow group definition file'
       - id: legside_uint_81
         type: u1
         enum: legside_uint_81
@@ -835,7 +835,7 @@ types:
     seq:
       - id: legsym_symboltxtx
         type: legsym_symboltxtx
-        doc: 'Flex Textual Single Product Symbol Naming A Flex Product By The Product Symbol Of The Xp 08 Product And Time Flow Group Definition File'
+        doc: 'FLEX Textual Single Product Symbol, naming a FLEX product by the product symbol of the XP08 product and time flow group definition file'
       - id: legside_uint_81
         type: u1
         enum: legside_uint_81
@@ -898,7 +898,7 @@ types:
     seq:
       - id: subhdr
         type: subhdr
-        doc: 'Tmp Expanded Message Header Which Assigns Different Functionalities To A Message Type By Defining Additional Subcategories For It'
+        doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
       - id: partid
         type: u1
         enum: partid
@@ -917,7 +917,7 @@ types:
     seq:
       - id: subhdr
         type: subhdr
-        doc: 'Tmp Expanded Message Header Which Assigns Different Functionalities To A Message Type By Defining Additional Subcategories For It'
+        doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
       - id: partid
         type: u1
         enum: partid

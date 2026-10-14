@@ -404,32 +404,32 @@ enums:
       doc: 'Sell'
     0x54:
       id: 'short_field'
-      doc: 'Sell Short'
+      doc: 'Sell short'
     0x45:
       id: 'short_exempt'
-      doc: 'Sell Short Exempt'
+      doc: 'Sell short exempt'
   display:
     0x59:
       id: 'anonymous_price_to_comply'
-      doc: 'Anonymous Price To Comply'
+      doc: 'Anonymous-Price to Comply'
     0x4e:
       id: 'non_displayed'
-      doc: 'Non Displayed'
+      doc: 'Non-Displayed'
     0x41:
       id: 'attributable_price_to_display'
-      doc: 'Attributable Price To Display'
+      doc: 'Attributable-Price to Display'
     0x49:
       id: 'imbalance_only'
       doc: 'Imbalance Only'
     0x50:
       id: 'post_only'
-      doc: 'Post Only'
+      doc: 'Post-Only'
     0x57:
       id: 'mid_point_peg_post_only'
-      doc: 'Mid Point Peg Post Only'
+      doc: 'Mid-Point Peg Post Only'
     0x4c:
       id: 'post_only_and_attributable_price_to_display'
-      doc: 'Post Only And Attributable Price To Display'
+      doc: 'Post-Only and Attributable - Price to Display'
     0x4f:
       id: 'retail_order_type_1'
       doc: 'Retail Order Type 1'
@@ -441,16 +441,16 @@ enums:
       doc: 'Retail Price Improvement Order'
     0x4d:
       id: 'mid_point_peg'
-      doc: 'Mid Point Peg'
+      doc: 'Mid-Point Peg'
     0x42:
       id: 'm_elo_and_continuous_book_midpoint'
-      doc: 'Melo And Continuous Book Midpoint'
+      doc: 'M-ELO and Continuous Book Midpoint'
     0x43:
       id: 'contra_midpoint_only'
       doc: 'Contra Midpoint Only'
     0x63:
       id: 'contra_midpoint_only_post_only'
-      doc: 'Contra Midpoint Only Post Only'
+      doc: 'Contra Midpoint Only (Post Only)'
     0x64:
       id: 'direct_listing_capital_raise'
       doc: 'Direct Listing Capital Raise'
@@ -472,14 +472,14 @@ enums:
       doc: 'Market Maker Peg'
     0x49:
       id: 'inav_peg'
-      doc: 'Inav Peg'
+      doc: 'INAV Peg'
   peg_difference_sign:
     0x2b:
       id: 'plus'
-      doc: 'Positive Peg Difference'
+      doc: 'Positive peg difference'
     0x2d:
       id: 'minus'
-      doc: 'Negative Peg Difference'
+      doc: 'Negative peg difference'
   discretion_peg_type:
     0x4d:
       id: 'midpoint'
@@ -495,54 +495,54 @@ enums:
       doc: 'Primary'
     0x49:
       id: 'inav_peg'
-      doc: 'Inav Peg'
+      doc: 'INAV Peg'
   discretion_peg_difference_sign:
     0x2b:
       id: 'plus'
-      doc: 'Positive Peg Difference'
+      doc: 'Positive peg difference'
     0x2d:
       id: 'minus'
-      doc: 'Negative Peg Difference'
+      doc: 'Negative peg difference'
   customer_type:
     0x52:
       id: 'retail_designated_order'
-      doc: 'Retail Designated Order'
+      doc: 'Retail designated order'
     0x4e:
       id: 'not_a_retail_designated_order'
-      doc: 'Not A Retail Designated Order'
+      doc: 'Not a retail designated order'
   trade_now:
     0x42:
       id: 'trade_now'
       doc: 'Trade Now'
     0x4e:
       id: 'not_a_trade_now'
-      doc: 'Not A Trade Now Message'
+      doc: 'Not a Trade Now message'
   intermarket_sweep_eligibility:
     0x59:
       id: 'eligible'
       doc: 'Eligible'
     0x4e:
       id: 'not_eligible'
-      doc: 'Not Eligible'
+      doc: 'Not eligible'
     0x79:
       id: 'trade_at_intermarket_sweep_order'
-      doc: 'Tradeat Intermarket Sweep Order'
+      doc: 'Trade-at Intermarket Sweep Order'
   cross_type:
     0x4f:
       id: 'opening_cross'
-      doc: 'Opening Cross'
+      doc: 'Opening cross'
     0x43:
       id: 'closing_cross'
-      doc: 'Closing Cross'
+      doc: 'Closing cross'
     0x49:
       id: 'intraday_cross'
-      doc: 'Intraday Cross'
+      doc: 'Intraday cross'
     0x4e:
       id: 'immediately_live'
-      doc: 'Order Is Immediately Live Dont Wait For A Cross'
+      doc: 'Order is immediately live (don''t wait for a cross)'
     0x52:
       id: 'retail_cross'
-      doc: 'Retail Cross Rpi Orders Can Only Participate In The Retail Cross'
+      doc: 'Retail Cross; RPI orders can only participate in the Retail Cross'
     0x45:
       id: 'extended_life'
       doc: 'Extended Life'
@@ -606,99 +606,99 @@ enums:
   event_code:
     0x53:
       id: 'start_of_day'
-      doc: 'Start Of Day This Is Always The First Message Each Day It Indicates That The System Is Open And Ready To Start Accepting Orders'
+      doc: 'Start of Day. This is always the first message each day. It indicates that the system is open and ready to start accepting orders.'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day This Indicates That The System Is Now Closed And Will Not Accept Any New Orders In This Session There Will Not Be Any More Executions During This Session However It Is Still Possible To Receive Broken Trade Messages And Canceled Order Messages'
+      doc: 'End of Day. This indicates that the system is now closed and will not accept any new orders in this session. There will not be any more executions during this session, however, it is still possible to receive Broken Trade messages and Canceled Order Messages.'
   cancel_reason:
     0x55:
       id: 'user_requested_cancel'
-      doc: 'User Requested Cancel Sent In Response To A Cancel Request Message'
+      doc: 'User requested cancel. Sent in response to a Cancel Request Message.'
     0x49:
       id: 'immediate_or_cancel'
-      doc: 'Immediate Or Cancel Order'
+      doc: 'Immediate or Cancel Order.'
     0x54:
       id: 'timeout'
-      doc: 'Timeout The Time In Force For This Order Has Expired'
+      doc: 'Timeout. The Time In Force for this order has expired'
     0x53:
       id: 'supervisory'
-      doc: 'Supervisory The Order Was Manually Canceled Or Reduced By A Supervisory Terminal'
+      doc: 'Supervisory. The order was manually canceled or reduced by a supervisory terminal.'
     0x44:
       id: 'regulatory_restriction'
-      doc: 'This Order Cannot Be Executed Because Of A Regulatory Restriction Eg Trade Through Restrictions'
+      doc: 'This order cannot be executed because of a regulatory restriction (e.g.: trade through restrictions).'
     0x51:
       id: 'self_match_prevention'
-      doc: 'Self Match Prevention The Order Was Cancelled Because It Would Have Executed With An Existing Order Entered By The Same Mpid'
+      doc: 'Self Match Prevention. The order was cancelled because it would have executed with an existing order entered by the same MPID.'
     0x5a:
       id: 'system_cancel'
-      doc: 'System Cancel This Order Was Cancelled By The System'
+      doc: 'System cancel. This order was cancelled by the system.'
     0x43:
       id: 'cross_cancel'
-      doc: 'Cross Cancel'
+      doc: 'Cross cancel'
     0x71:
       id: 'insufficient_quantity'
-      doc: 'Order Cancelled Due To Insufficient Quantity'
+      doc: 'Order cancelled due to insufficient quantity'
     0x4b:
       id: 'market_collars'
-      doc: 'This Order Cannot Be Executed Because Of Market Collars'
+      doc: 'This order cannot be executed because of Market Collars'
     0x48:
       id: 'halted'
-      doc: 'Halted The Onopen Order Was Canceled Because The Symbol Remained Halted After The Opening Cross Completed'
+      doc: 'Halted. The on-open order was canceled because the symbol remained halted after the opening cross completed.'
     0x58:
       id: 'open_protection'
-      doc: 'Open Protection Orders That Are Cancelled As A Result Of The Opening Price Protection Threshold'
+      doc: 'Open Protection. Orders that are cancelled as a result of the Opening Price Protection Threshold.'
     0x45:
       id: 'closed'
-      doc: 'Closed Any Day Order That Was Received After The Closing Cross Is Complete In A Given Symbol Will Receive This Cancel Reason'
+      doc: 'Closed. Any DAY order that was received after the closing cross is complete in a given symbol will receive this cancel reason.'
     0x4a:
       id: 'rejected_by_away_destination'
-      doc: 'System Cancel This Order Was Cancelled Because It Was Rejected By An Away Destination Includes Midpoint Orders Cancelled Due To A Crossed Market'
+      doc: 'System cancel. This order was cancelled because it was rejected by an away destination; includes midpoint orders cancelled due to a crossed market.'
     0x41:
       id: 'administrative_cancel'
-      doc: 'Administrative Cancel This Order Was Cancelled By The System'
+      doc: 'Administrative cancel. This order was cancelled by the system.'
     0x46:
       id: 'post_only_cancel_nms'
-      doc: 'Post Only Cancel This Post Only Order Was Cancelled Because It Would Have Been Price Slid For Nms'
+      doc: 'Post Only Cancel. This Post Only order was cancelled because it would have been price slid for NMS.'
     0x47:
       id: 'post_only_cancel_contra_displayed_order'
-      doc: 'Post Only Cancel This Post Only Order Was Cancelled Because It Would Have Been Price Slid Due To A Contra Side Displayed Order On The Book'
+      doc: 'Post Only Cancel. This Post Only order was cancelled because it would have been price slid due to a contra side displayed order on the book.'
   reject_reason:
     0x61:
       id: 'risk_restricted_stock'
-      doc: 'Risk Restricted Stock'
+      doc: 'Risk: Restricted Stock'
     0x41:
       id: 'advance_features_not_allowed'
       doc: 'Advance Features Not Allowed'
     0x62:
       id: 'risk_short_sell_restricted'
-      doc: 'Risk Short Sell Restricted'
+      doc: 'Risk: Short Sell Restricted'
     0x42:
       id: 'quote_not_available_for_pegged_order'
-      doc: 'Quote Not Available For Pegged Order'
+      doc: 'Quote not available for pegged order.'
     0x43:
       id: 'nasdaq_omx_psx_is_closed'
-      doc: 'Nasdaq Omx Psx Is Closed'
+      doc: 'NASDAQ OMX PSX is Closed'
     0x64:
       id: 'risk_exceeds_adv_limit'
-      doc: 'Risk Exceeds Adv Limit'
+      doc: 'Risk: Exceeds ADV Limit'
     0x44:
       id: 'invalid_display_value'
-      doc: 'Invalid Display Value'
+      doc: 'Invalid Display value'
     0x65:
       id: 'risk_fat_finger'
-      doc: 'Risk Fat Finger'
+      doc: 'Risk: Fat Finger'
     0x45:
       id: 'invalid_peg'
       doc: 'Invalid Peg'
     0x46:
       id: 'order_not_marketable'
-      doc: 'Order Not Marketable Conflicting Instructions Improper Cross Type'
+      doc: 'Order not marketable; Conflicting instructions; Improper cross type'
     0x47:
       id: 'destination_not_available'
       doc: 'Destination Not Available'
     0x48:
       id: 'security_is_halted'
-      doc: 'Security Is Halted'
+      doc: 'Security is Halted'
     0x49:
       id: 'invalid_order_side'
       doc: 'Invalid Order Side'
@@ -710,46 +710,46 @@ enums:
       doc: 'Invalid Minimum Quantity'
     0x6c:
       id: 'risk_locate_required'
-      doc: 'Risk Locate Required'
+      doc: 'Risk: Locate Required'
     0x4c:
       id: 'invalid_firm'
       doc: 'Invalid Firm'
     0x4d:
       id: 'outside_of_permitted_times_for_clearing_destination'
-      doc: 'Outside Of Permitted Times For Clearing Destination'
+      doc: 'Outside of Permitted Times for Clearing Destination'
     0x6e:
       id: 'risk_max_notional_exceeded'
-      doc: 'Risk Max Notional Exceeded'
+      doc: 'Risk: Max Notional Exceeded'
     0x4e:
       id: 'invalid_routing_instructions'
       doc: 'Invalid Routing Instructions'
     0x6f:
       id: 'risk_order_type_restricted'
-      doc: 'Risk Order Type Restricted'
+      doc: 'Risk: Order Type Restricted'
     0x4f:
       id: 'other'
-      doc: 'Other A Reason Not Contemplated In This Version Of Rash'
+      doc: 'Other. A reason not contemplated in this version of RASH.'
     0x50:
       id: 'pegging_not_allowed'
       doc: 'Pegging Not Allowed'
     0x70:
       id: 'risk_max_shares_exceeded'
-      doc: 'Risk Max Shares Exceeded'
+      doc: 'Risk: Max Shares Exceeded'
     0x71:
       id: 'midpoint_peg_not_accepted_in_crossed_market'
-      doc: 'Midpoint Peg Orders Are Not Accepted In A Crossed Market'
+      doc: 'Midpoint Peg orders are not accepted in a crossed market'
     0x51:
       id: 'invalid_order_quantity'
       doc: 'Invalid Order Quantity'
     0x72:
       id: 'risk_market_impact'
-      doc: 'Risk Market Impact'
+      doc: 'Risk: Market Impact'
     0x52:
       id: 'routing_not_allowed'
       doc: 'Routing Not Allowed'
     0x73:
       id: 'risk_open_exposure_exceeded'
-      doc: 'Risk Open Exposure Exceeded'
+      doc: 'Risk: Open Exposure Exceeded'
     0x53:
       id: 'invalid_symbol'
       doc: 'Invalid Symbol'
@@ -758,34 +758,34 @@ enums:
       doc: 'Test Mode'
     0x75:
       id: 'risk_port_message_rate_exceeded'
-      doc: 'Risk Port Message Rate Exceeded'
+      doc: 'Risk: Port Message Rate Exceeded'
     0x55:
       id: 'possible_duplicate_order'
       doc: 'Possible Duplicate Order'
     0x76:
       id: 'risk_symbol_message_rate_exceeded'
-      doc: 'Risk Symbol Message Rate Exceeded'
+      doc: 'Risk: Symbol Message Rate Exceeded'
     0x77:
       id: 'risk_duplicate_message_rate_exceeded'
-      doc: 'Risk Duplicate Message Rate Exceeded'
+      doc: 'Risk: Duplicate Message Rate Exceeded'
     0x57:
       id: 'invalid_destination'
       doc: 'Invalid Destination'
     0x78:
       id: 'risk_executed_exposure_exceeded'
-      doc: 'Risk Executed Exposure Exceeded'
+      doc: 'Risk: Executed Exposure Exceeded'
     0x58:
       id: 'invalid_price'
       doc: 'Invalid Price'
     0x79:
       id: 'risk_notional_exposure_exceeded'
-      doc: 'Risk Notional Exposure Exceeded'
+      doc: 'Risk: Notional Exposure Exceeded'
     0x56:
       id: 'invalid_order_type'
       doc: 'Invalid Order Type'
     0x59:
       id: 'no_shares_found_for_routing'
-      doc: 'No Shares Found For Routing'
+      doc: 'No Shares Found for Routing'
     0x5a:
       id: 'quantity_exceeds_threshold'
       doc: 'Quantity Exceeds Threshold'
@@ -798,155 +798,155 @@ enums:
       doc: 'Removed'
     0x4a:
       id: 'non_displayed_and_added_liquidity'
-      doc: 'Nondisplayed And Added Liquidity'
+      doc: 'Non-displayed and added liquidity'
     0x58:
       id: 'routed'
       doc: 'Routed'
     0x44:
       id: 'dot'
-      doc: 'Dot'
+      doc: 'DOT'
     0x46:
       id: 'opening_trade'
-      doc: 'Opening Trade On Nyse'
+      doc: 'Opening Trade (on NYSE)'
     0x47:
       id: 'on_close_order'
-      doc: 'On Close Order On Nyse'
+      doc: 'On-Close order (on NYSE)'
     0x4f:
       id: 'opening_cross'
       doc: 'Opening Cross'
     0x4d:
       id: 'opening_cross_x4d'
-      doc: 'Opening Cross Imbalanceonly'
+      doc: 'Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'Closing Cross'
     0x4c:
       id: 'closing_cross_x4c'
-      doc: 'Closing Cross Imbalanceonly'
+      doc: 'Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'
-      doc: 'Halt Ipo Cross'
+      doc: 'Halt/IPO Cross'
     0x4b:
       id: 'halt_cross'
       doc: 'Halt Cross'
     0x59:
       id: 're_routed_by_nyse'
-      doc: 'Re Routed By Nyse'
+      doc: 'Re-Routed by NYSE'
     0x53:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution On Nyse'
+      doc: 'Odd Lot Execution (on NYSE)'
     0x55:
       id: 'added_liquidity'
-      doc: 'Added Liquidity On Nyse'
+      doc: 'Added Liquidity (on NYSE)'
     0x42:
       id: 'routed_to_bx'
-      doc: 'Routed To Bx'
+      doc: 'Routed to BX'
     0x45:
       id: 'nyse_other'
-      doc: 'Nyse Other'
+      doc: 'NYSE Other'
     0x50:
       id: 'routed_to_psx'
-      doc: 'Routed To Psx'
+      doc: 'Routed to PSX'
     0x54:
       id: 'executed_in_open_close_or_re_open_on_arca'
-      doc: 'Executed In Open Close Or Reopen On Arca'
+      doc: 'Executed in Open, Close, or Re-open on ARCA'
     0x4e:
       id: 'passive_midpoint_execution'
       doc: 'Passive Midpoint Execution'
     0x57:
       id: 'added_post_only'
-      doc: 'Added Postonly'
+      doc: 'Added post-only'
     0x6d:
       id: 'removed_liquidity_at_a_midpoint'
-      doc: 'Removed Liquidity At A Midpoint'
+      doc: 'Removed liquidity at a midpoint'
     0x6b:
       id: 'added_liquidity_via_a_midpoint_order'
-      doc: 'Added Liquidity Via A Midpoint Order'
+      doc: 'Added liquidity via a midpoint order'
     0x30:
       id: 'supplemental_order_execution'
-      doc: 'Supplemental Order Execution'
+      doc: 'Supplemental order execution'
     0x37:
       id: 'displayed_liquidity_adding_order_improves_the_nbbo'
-      doc: 'Displayed Liquidityadding Order Improves The Nbbo'
+      doc: 'Displayed, liquidity-adding order improves the NBBO'
     0x38:
       id: 'displayed_liquidity_adding_order_sets_the_qbbo_while_joining_the_nbbo'
-      doc: 'Displayed Liquidityadding Order Sets The Qbbo While Joining The Nbbo'
+      doc: 'Displayed, liquidity-adding order sets the QBBO while joining the NBBO'
     0x64:
       id: 'retail_designated_execution_that_removed_liquidity'
-      doc: 'Retail Designated Execution That Removed Liquidity'
+      doc: 'Retail designated execution that removed liquidity'
     0x65:
       id: 'retail_designated_execution_that_added_displayed_liquidity'
-      doc: 'Retail Designated Execution That Added Displayed Liquidity'
+      doc: 'Retail designated execution that added displayed liquidity'
     0x66:
       id: 'retail_designated_execution_that_added_non_displayed_liquidity'
-      doc: 'Retail Designated Execution That Added Nondisplayed Liquidity'
+      doc: 'Retail designated execution that added non-displayed liquidity'
     0x6a:
       id: 'rpi_order_provides_liquidity'
-      doc: 'Rpi Retail Price Improving Order Provides Liquidity'
+      doc: 'RPI (Retail Price Improving) order provides liquidity'
     0x72:
       id: 'retail_order_removes_rpi_liquidity'
-      doc: 'Retail Order Removes Rpi Liquidity'
+      doc: 'Retail Order removes RPI liquidity'
     0x74:
       id: 'retail_order_removes_price_improving_non_displayed_liquidity_other_than_rpi_liquidity'
-      doc: 'Retail Order Removes Price Improving Nondisplayed Liquidity Other Than Rpi Liquidity'
+      doc: 'Retail Order removes price improving non-displayed liquidity other than RPI liquidity'
     0x34:
       id: 'added_displayed_liquidity_in_a_group_a_symbol'
-      doc: 'Added Displayed Liquidity In A Group A Symbol'
+      doc: 'Added displayed liquidity in a Group A symbol'
     0x35:
       id: 'added_non_displayed_group_a_or_pre_market_improves_nbbo'
-      doc: 'Added Nondisplayed Liquidity In A Group A Symbol Displayed Liquidityadding Order Improves The Nbbo In The Premarket'
+      doc: 'Added non-displayed liquidity in a Group A symbol; Displayed, liquidity-adding order improves the NBBO in the pre-market'
     0x36:
       id: 'removed_liquidity_in_a_group_a_symbol'
-      doc: 'Removed Liquidity In A Group A Symbol'
+      doc: 'Removed liquidity in a Group A symbol'
     0x67:
       id: 'added_non_displayed_mid_point_liquidity_in_a_group_a_symbol'
-      doc: 'Added Nondisplayed Midpoint Liquidity In A Group A Symbol'
+      doc: 'Added non-displayed mid-point liquidity in a Group A symbol'
     0x6e:
       id: 'midpoint_extended_life_order_execution'
-      doc: 'Midpoint Extended Life Order Execution'
+      doc: 'Midpoint Extended Life Order execution'
     0x76:
       id: 'midp_order_executed_on_away_nms_protected_market_center'
-      doc: 'Midp Order Executed On Away Nms Protected Market Center'
+      doc: 'MIDP Order executed on away NMS protected market center'
     0x77:
       id: 'midp_order_executed_on_off_exchange_venue'
-      doc: 'Midp Order Executed On Offexchange Venue'
+      doc: 'MIDP Order executed on off-exchange venue'
     0x69:
       id: 'extended_trading_close_execution'
-      doc: 'Extended Trading Close Execution'
+      doc: 'Extended Trading Close execution'
     0x6f:
       id: 'contra_midpoint_only'
       doc: 'Contra Midpoint Only'
     0x75:
       id: 'added_non_displayed_liquidity_via_a_reserve_order'
-      doc: 'Added Nondisplayed Liquidity Via A Reserve Order'
+      doc: 'Added non-displayed liquidity via a Reserve order'
     0x32:
       id: 'added_in_the_pre_market'
-      doc: 'Added In The Premarket'
+      doc: 'Added in the pre-market'
     0x33:
       id: 'removed_in_the_pre_market'
-      doc: 'Removed In The Premarket'
+      doc: 'Removed in the pre-market'
     0x39:
       id: 'non_displayed_adding_liquidity_in_the_pre_market'
-      doc: 'Nondisplayed Adding Liquidity In The Premarket'
+      doc: 'Non-displayed adding liquidity in the pre-market'
   broken_trade_reason:
     0x45:
       id: 'erroneous'
-      doc: 'Erroneous The Trade Was Deemed Clearly Erroneous'
+      doc: 'Erroneous. The trade was deemed clearly erroneous'
     0x43:
       id: 'consent'
-      doc: 'Consent The Two Parties Mutually Agreed To Break The Trade'
+      doc: 'Consent. The two parties mutually agreed to break the trade'
     0x53:
       id: 'supervisory'
-      doc: 'Supervisory The Trade Was Manually Broken By A Supervisory Terminal'
+      doc: 'Supervisory. The trade was manually broken by a supervisory terminal'
     0x58:
       id: 'external'
-      doc: 'External The Trade Was Broken By An External Third Party'
+      doc: 'External. The trade was broken by an external third party'
   reference_price_type:
     0x49:
       id: 'intraday_indicative_value'
-      doc: 'Intraday Indicative Value The Only Value Currently Supported'
+      doc: 'Intraday Indicative Value; the only value currently supported'
   trade_correction_reason:
     0x4e:
       id: 'adjusted_to_nav'
-      doc: 'Adjusted To Nav The Only Value Currently Allowed'
+      doc: 'Adjusted to NAV; the only value currently allowed'
 

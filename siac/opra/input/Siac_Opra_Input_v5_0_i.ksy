@@ -75,7 +75,7 @@ types:
         doc: 'Reserved for future use'
       - id: block_sequence_number
         type: u4
-        doc: 'Last Block Sequence Number Received On The Input Line'
+        doc: 'Last Block Sequence Number received on the input line'
       - id: messages_in_block
         type: u1
         doc: 'The Number Of Messages Contained In The Block Data'
@@ -168,57 +168,57 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
+        doc: 'The security symbol is used for Equity and Index options. It identifies the unique symbol assigned to the underlying security. Left justified, space filled'
       - id: reserved_1
         size: 1
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'The Strike Price Of The Option Series'
+        doc: 'The Strike Price of the option series'
       - id: volume
         type: u4
-        doc: 'Number Of Contracts Traded'
+        doc: 'Number of contracts traded'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Premium Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Premium Price field'
       - id: premium_price
         type: s4
-        doc: 'Premium Price Of The Option'
+        doc: 'Premium Price of the option'
       - id: trade_identifier
         type: u4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: reserved_4
         size: 4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
   expiration_block:
     seq:
       - id: expiration_month
         type: u1
         enum: expiration_month
-        doc: 'Expiration Month Identifying Call Or Put'
+        doc: 'Expiration Month identifying Call or Put'
       - id: expiration_day
         type: u1
-        doc: 'Day Of The Month The Series Expires Hex 0 X 01 To 0 X 1f'
+        doc: 'Day of the month the series expires. Hex 0x01 to 0x1F'
       - id: expiration_year
         type: u1
-        doc: 'Year Starting With Year 2000 Hex 0 X 00 To 0 X 63'
+        doc: 'Year starting with year 2000. Hex 0x00 to 0x63'
   equity_and_index_end_of_day_summary_category:
     seq:
       - id: equity_and_index_end_of_day_summary_message_type
@@ -235,67 +235,67 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
+        doc: 'The security symbol is used for Equity and Index options. It identifies the unique symbol assigned to the underlying security. Left justified, space filled'
       - id: reserved_1
         size: 1
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'The Strike Price Of The Option Series'
+        doc: 'The Strike Price of the option series'
       - id: volume
         type: u4
-        doc: 'Number Of Contracts Traded'
+        doc: 'Number of contracts traded'
       - id: open_interest_volume
         type: u4
-        doc: 'Total Open Option Contracts'
+        doc: 'Total open option contracts'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Premium Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Premium Price field'
       - id: open_price
         type: s4
-        doc: 'Opening Price For The Day'
+        doc: 'Opening price for the day'
       - id: high_price
         type: s4
-        doc: 'Highest Price Paid During The Day'
+        doc: 'Highest price paid during the day'
       - id: low_price
         type: s4
-        doc: 'Lowest Price Paid During The Day'
+        doc: 'Lowest price paid during the day'
       - id: last_price
         type: s4
-        doc: 'Last Price Paid During The Day'
+        doc: 'Last price paid during the day'
       - id: net_change
         type: s4
-        doc: 'Change From Previous Day Close'
+        doc: 'Change from previous day close'
       - id: underlying_price_denominator_code
         type: u1
         enum: underlying_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Underlying Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Underlying Price field'
       - id: underlying_price
         type: s8
-        doc: 'Price Of The Underlying Security'
+        doc: 'Price of the underlying security'
       - id: bid_price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: offer_price
         type: s4
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option'
+        doc: 'Represents the price at which a seller is offering to sell an option'
   long_equity_and_index_quote_category:
     seq:
       - id: long_equity_and_index_quote_message_type
@@ -322,45 +322,45 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
+        doc: 'The security symbol is used for Equity and Index options. It identifies the unique symbol assigned to the underlying security. Left justified, space filled'
       - id: reserved_1
         size: 1
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_denominator_code
         type: u1
         enum: strike_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Strike Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Strike Price field'
       - id: strike_price
         type: s4
-        doc: 'The Strike Price Of The Option Series'
+        doc: 'The Strike Price of the option series'
       - id: premium_price_denominator_code
         type: u1
         enum: premium_price_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Premium Price Field'
+        doc: 'Indicates the position of the floating decimal point within the Premium Price field'
       - id: bid_price
         type: s4
-        doc: 'Represents The Price At Which A Buyer Is Willing To Buy An Option'
+        doc: 'Represents the price at which a buyer is willing to buy an option'
       - id: bid_size
         type: u4
-        doc: 'Number Of Contracts At The Bid Price'
+        doc: 'Number of contracts at the Bid Price'
       - id: offer_price
         type: s4
-        doc: 'Represents The Price At Which A Seller Is Offering To Sell An Option'
+        doc: 'Represents the price at which a seller is offering to sell an option'
       - id: offer_size
         type: u4
-        doc: 'Number Of Contracts At The Offer Price'
+        doc: 'Number of contracts at the Offer Price'
   short_equity_and_index_quote_category:
     seq:
       - id: short_equity_and_index_quote_message_type
@@ -387,34 +387,34 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol_short
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Security Symbol Restricted To Four Characters For Short Quote Messages Category Q Left Justified Space Filled'
+        doc: 'Security Symbol restricted to four characters for short quote messages (category ''q''). Left justified, space filled'
       - id: expiration_block
         type: expiration_block
         doc: 'Expiration Block'
       - id: strike_price_short
         type: u2
-        doc: 'The Strike Price Of The Option Series With Implied Denominator Code A Short Quote Variant'
+        doc: 'The Strike Price of the option series with implied Denominator Code A. Short quote variant'
       - id: bid_price_short
         type: u2
-        doc: 'Bid Price With Implied Premium Denominator Code B Short Quote Variant'
+        doc: 'Bid Price with implied Premium Denominator Code B. Short quote variant'
       - id: bid_size_short
         type: u2
-        doc: 'Number Of Contracts At The Bid Price Short Quote Variant'
+        doc: 'Number of contracts at the Bid Price. Short quote variant'
       - id: offer_price_short
         type: u2
-        doc: 'Offer Price With Implied Premium Denominator Code B Short Quote Variant'
+        doc: 'Offer Price with implied Premium Denominator Code B. Short quote variant'
       - id: offer_size_short
         type: u2
-        doc: 'Number Of Contracts At The Offer Price Short Quote Variant'
+        doc: 'Number of contracts at the Offer Price. Short quote variant'
   administrative_category:
     seq:
       - id: administrative_message_type
@@ -431,20 +431,20 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: message_data_length
         type: u2
-        doc: 'Length Of The Message Data Field Can Be Zero'
+        doc: 'Length of the Message Data field, can be zero'
       - id: message_data
         type: str
         size: message_data_length
         encoding: ASCII
         pad-right: 0x20
         if: message_data_length > 0
-        doc: 'Variable Length Printable Ascii Text Up To 200 Characters'
+        doc: 'Variable length printable Ascii text up to 200 characters'
   control_category:
     seq:
       - id: control_message_type
@@ -465,10 +465,10 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
   sequence_number_status_category:
     seq:
       - id: sequence_number_status_message_type
@@ -489,55 +489,55 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: reserved_4
         size: 4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: second_reserved_4
         size: 4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
   block_sequence_number_status_response_message:
     seq:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: block_sequence_number
         type: u4
-        doc: 'Last Block Sequence Number Received On The Input Line'
+        doc: 'Last Block Sequence Number received on the input line'
       - id: reserved_4
         size: 4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
   message_count_status_inquiry_request_message:
     seq:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: reserved_8
         size: 8
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
   message_count_status_response_message:
     seq:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: message_count
         type: u8
-        doc: 'Count Of Messages Received On The Line Since Startup'
+        doc: 'Count of messages received on the line since startup'
   underlying_value_message_category:
     seq:
       - id: underlying_value_message_message_type
@@ -556,57 +556,57 @@ types:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
+        doc: 'The security symbol is used for Equity and Index options. It identifies the unique symbol assigned to the underlying security. Left justified, space filled'
       - id: reserved_1
         size: 1
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Index Value Field'
+        doc: 'Indicates the position of the floating decimal point within the Index Value field'
       - id: index_value
         type: s4
         doc: 'Last Sale Index Value'
       - id: reserved_4
         size: 4
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
   underlying_value_bid_and_offer_message:
     seq:
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session Indicator Value On Messages From Participant To Opra 0 X 00 For Regular Trading Session 0 X 01 To 0 X 05 For Pre Market Trading Session Global Trading Hours'
+        doc: 'Session Indicator value on messages from Participant to OPRA. 0x00 for regular trading session, 0x01 to 0x05 for Pre-Market trading session (Global Trading Hours)'
       - id: participant_reference_number
         type: u4
-        doc: 'Optional Reference Number For Use By The Participant Does Not Need To Be Unique On A Per Security Basis'
+        doc: 'Optional reference number for use by the Participant. Does not need to be unique on a per security basis'
       - id: security_symbol
         type: str
         size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'The Security Symbol Is Used For Equity And Index Options It Identifies The Unique Symbol Assigned To The Underlying Security Left Justified Space Filled'
+        doc: 'The security symbol is used for Equity and Index options. It identifies the unique symbol assigned to the underlying security. Left justified, space filled'
       - id: reserved_1
         size: 1
-        doc: 'Reserved For Future Use Filled With Hex 0 X 00'
+        doc: 'Reserved for future use. Filled with Hex 0x00'
       - id: index_value_denominator_code
         type: u1
         enum: index_value_denominator_code
-        doc: 'Indicates The Position Of The Floating Decimal Point Within The Index Value Field'
+        doc: 'Indicates the position of the floating decimal point within the Index Value field'
       - id: bid_index_value
         type: s4
-        doc: 'Index Value Using Current Bid Values Of Component Securities'
+        doc: 'Index value using current bid values of component securities'
       - id: offer_index_value
         type: s4
-        doc: 'Index Value Using Current Offer Values Of Component Securities'
+        doc: 'Index value using current offer values of component securities'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -934,13 +934,13 @@ enums:
       doc: '100'
     0x43:
       id: 'thousand'
-      doc: '1000'
+      doc: '1,000'
     0x44:
       id: 'ten_thousand'
-      doc: '10000'
+      doc: '10,000'
     0x45:
       id: 'hundred_thousand'
-      doc: '100000'
+      doc: '100,000'
     0x49:
       id: 'no_fraction'
       doc: 'No Fraction'
@@ -953,19 +953,19 @@ enums:
       doc: '100'
     0x43:
       id: 'thousand'
-      doc: '1000'
+      doc: '1,000'
     0x44:
       id: 'ten_thousand'
-      doc: '10000'
+      doc: '10,000'
     0x45:
       id: 'hundred_thousand'
-      doc: '100000'
+      doc: '100,000'
     0x46:
       id: 'million'
-      doc: '1000000'
+      doc: '1,000,000'
     0x47:
       id: 'ten_million'
-      doc: '10000000'
+      doc: '10,000,000'
     0x49:
       id: 'no_fraction'
       doc: 'No Fraction'
@@ -982,22 +982,22 @@ enums:
       doc: '100'
     0x43:
       id: 'thousand'
-      doc: '1000'
+      doc: '1,000'
     0x44:
       id: 'ten_thousand'
-      doc: '10000'
+      doc: '10,000'
     0x45:
       id: 'hundred_thousand'
-      doc: '100000'
+      doc: '100,000'
     0x46:
       id: 'million'
-      doc: '1000000'
+      doc: '1,000,000'
     0x47:
       id: 'ten_million'
-      doc: '10000000'
+      doc: '10,000,000'
     0x48:
       id: 'hundred_million'
-      doc: '100000000'
+      doc: '100,000,000'
     0x49:
       id: 'no_fraction'
       doc: 'No Fraction'
@@ -1098,19 +1098,19 @@ enums:
       doc: '100'
     0x43:
       id: 'thousand'
-      doc: '1000'
+      doc: '1,000'
     0x44:
       id: 'ten_thousand'
-      doc: '10000'
+      doc: '10,000'
     0x45:
       id: 'hundred_thousand'
-      doc: '100000'
+      doc: '100,000'
     0x46:
       id: 'million'
-      doc: '1000000'
+      doc: '1,000,000'
     0x47:
       id: 'ten_million'
-      doc: '10000000'
+      doc: '10,000,000'
     0x49:
       id: 'no_fraction'
       doc: 'No Fraction'

@@ -623,176 +623,176 @@ enums:
   buy_sell:
     0x42:
       id: 'bought'
-      doc: 'B Bought'
+      doc: 'B = Bought'
     0x53:
       id: 'sold'
-      doc: 'S Sold'
+      doc: 'S = Sold'
     0x54:
       id: 'sold_short'
-      doc: 'T Sold Short'
+      doc: 'T = Sold Short'
     0x45:
       id: 'sold_short_exempt'
-      doc: 'E Sold Short Exempt'
+      doc: 'E = Sold Short Exempt'
   liquidity_code:
     0x41:
       id: 'added'
-      doc: 'A Added'
+      doc: 'A = Added'
     0x52:
       id: 'removed'
-      doc: 'R Removed'
+      doc: 'R = Removed'
     0x58:
       id: 'routed'
-      doc: 'X Routed'
+      doc: 'X = Routed'
     0x44:
       id: 'dot'
-      doc: 'D Dot'
+      doc: 'D = DOT'
     0x46:
       id: 'opening_trade_on_nyse'
-      doc: 'F Opening Trade On Nyse'
+      doc: 'F = Opening Trade (on NYSE)'
     0x47:
       id: 'on_close_order_on_nyse'
-      doc: 'G On Close Order On Nyse'
+      doc: 'G = On-Close order (on NYSE)'
     0x4f:
       id: 'opening_cross'
-      doc: 'O Opening Cross'
+      doc: 'O = Opening Cross'
     0x4d:
       id: 'opening_cross_imbalanceonly'
-      doc: 'M Opening Cross Imbalanceonly'
+      doc: 'M = Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
-      doc: 'C Closing Cross'
+      doc: 'C = Closing Cross'
     0x4c:
       id: 'closing_cross_imbalanceonly'
-      doc: 'L Closing Cross Imbalanceonly'
+      doc: 'L = Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'
-      doc: 'H Halt Ipo Cross'
+      doc: 'H = Halt/IPO Cross'
     0x4b:
       id: 'halt_cross'
-      doc: 'K Halt Cross'
+      doc: 'K = Halt Cross'
     0x4a:
       id: 'nondisplayed_adding_liquidity'
-      doc: 'J Nondisplayed Adding Liquidity'
+      doc: 'J = Non-displayed adding liquidity'
     0x59:
       id: 're_routed_by_nyse'
-      doc: 'Y Re Routed By Nyse'
+      doc: 'Y = Re-Routed by NYSE'
     0x53:
       id: 'odd_lot_execution_on_nyse'
-      doc: 'S Odd Lot Execution On Nyse'
+      doc: 'S = Odd Lot Execution (on NYSE)'
     0x55:
       id: 'added_liquidity_on_nyse'
-      doc: 'U Added Liquidity On Nyse'
+      doc: 'U = Added Liquidity (On NYSE)'
     0x42:
       id: 'routed_to_bx'
-      doc: 'B Routed To Bx'
+      doc: 'B = Routed to BX'
     0x45:
       id: 'nyse_other'
-      doc: 'E Nyse Other'
+      doc: 'E = NYSE Other'
     0x50:
       id: 'routed_to_psx'
-      doc: 'P Routed To Psx'
+      doc: 'P = Routed to PSX'
     0x54:
       id: 'opening_trade_on_arca'
-      doc: 'T Opening Trade On Arca'
+      doc: 'T = Opening Trade (on ARCA)'
     0x5a:
       id: 'on_close_order_on_arca'
-      doc: 'Z On Close Order On Arca'
+      doc: 'Z = On-Close order (on ARCA)'
     0x57:
       id: 'added_postonly_not_currently_available'
-      doc: 'W Added Postonly Not Currently Available'
+      doc: 'W = Added post-only (not currently available)'
     0x6d:
       id: 'removed_liquidity_at_a_midpoint'
-      doc: 'M Removed Liquidity At A Midpoint'
+      doc: 'm = Removed liquidity at a midpoint'
     0x6b:
       id: 'added_liquidity_via_a_midpoint_order'
-      doc: 'K Added Liquidity Via A Midpoint Order'
+      doc: 'k = Added liquidity via a midpoint order'
     0x30:
       id: 'supplemental_order_execution'
-      doc: '0 Supplemental Order Execution'
+      doc: '0 = Supplemental order execution'
     0x37:
       id: 'displayed_liquidityadding_order_improves_the_nbbo'
-      doc: '7 Displayed Liquidityadding Order Improves The Nbbo'
+      doc: '7 = Displayed, liquidity-adding order improves the NBBO'
     0x38:
       id: 'displayed_liquidityadding_order_sets_the_qbbo_while_joining_the_nbbo'
-      doc: '8 Displayed Liquidityadding Order Sets The Qbbo While Joining The Nbbo'
+      doc: '8 = Displayed, liquidity-adding order sets the QBBO while joining the NBBO'
     0x64:
       id: 'retail_designated_execution_that_removed_liquidity_not_currently_available'
-      doc: 'D Retail Designated Execution That Removed Liquidity Not Currently Available'
+      doc: 'd = Retail designated execution that removed liquidity (not currently available)'
     0x65:
       id: 'retail_designated_execution_that_added_displayed_liquidity'
-      doc: 'E Retail Designated Execution That Added Displayed Liquidity'
+      doc: 'e = Retail designated execution that added displayed liquidity'
     0x66:
       id: 'retail_designated_execution_that_added_nondisplayed_liquidity_not_currently_available'
-      doc: 'F Retail Designated Execution That Added Nondisplayed Liquidity Not Currently Available'
+      doc: 'f = Retail designated execution that added non-displayed liquidity (not currently available)'
     0x6a:
       id: 'rpi_order_that_provides_liquidity'
-      doc: 'J Rpi Order That Provides Liquidity'
+      doc: 'j = RPI order that provides liquidity'
     0x72:
       id: 'retail_order_that_removes_rpi_liquidity'
-      doc: 'R Retail Order That Removes Rpi Liquidity'
+      doc: 'r = Retail order that removes RPI liquidity'
     0x74:
       id: 'retail_order_that_removes_price_improving_nondisplayed_liquidity_other_than_rpi_liquidity'
-      doc: 'T Retail Order That Removes Price Improving Nondisplayed Liquidity Other Than Rpi Liquidity'
+      doc: 't = Retail order that removes price improving non-displayed liquidity other than RPI liquidity'
     0x34:
       id: 'added_displayed_liquidity_in_a_group_a_symbol'
-      doc: '4 Added Displayed Liquidity In A Group A Symbol'
+      doc: '4 = Added displayed liquidity in a Group A symbol'
     0x35:
       id: 'added_nondisplayed_liquidity_in_a_group_a_symbol'
-      doc: '5 Added Nondisplayed Liquidity In A Group A Symbol'
+      doc: '5 = Added non-displayed liquidity in a Group A symbol'
     0x36:
       id: 'liquidity_removing_order_in_a_group_a_symbol'
-      doc: '6 Liquidity Removing Order In A Group A Symbol'
+      doc: '6 = Liquidity Removing Order in a Group A symbol'
     0x67:
       id: 'added_nondisplayed_midpoint_liquidity_in_a_group_a_symbol'
-      doc: 'G Added Nondisplayed Midpoint Liquidity In A Group A Symbol'
+      doc: 'g = Added non-displayed midpoint liquidity in a Group A symbol'
     0x61:
       id: 'added_displayed_liquidity_in_a_scip_symbol'
-      doc: 'A Added Displayed Liquidity In A Scip Symbol'
+      doc: 'a = Added displayed liquidity in a SCIP Symbol'
     0x78:
       id: 'displayed_liquidityadding_order_improves_the_nbbo_in_a_scip_symbol'
-      doc: 'X Displayed Liquidityadding Order Improves The Nbbo In A Scip Symbol'
+      doc: 'x = Displayed, liquidity-adding order improves the NBBO in a SCIP Symbol'
     0x79:
       id: 'displayed_liquidityadding_order_set_the_qbbo_while_joining_the_nbbo_in_a_scip_symbol'
-      doc: 'Y Displayed Liquidityadding Order Set The Qbbo While Joining The Nbbo In A Scip Symbol'
+      doc: 'y = Displayed, liquidity-adding order set the QBBO while joining the NBBO in a SCIP Symbol'
     0x62:
       id: 'displayed_liquidityadding_order_improves_the_nbbo_in_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'
-      doc: 'B Displayed Liquidityadding Order Improves The Nbbo In Pilot Symbol During Specified Luld Pricing Pilot Timeframe'
+      doc: 'b = Displayed, liquidity-adding order improves the NBBO in pilot symbol during specified LULD Pricing Pilot timeframe'
     0x63:
       id: 'added_displayed_liquidity_in_a_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'
-      doc: 'C Added Displayed Liquidity In A Pilot Symbol During Specified Luld Pricing Pilot Timeframe'
+      doc: 'c = Added displayed liquidity in a pilot symbol during specified LULD Pricing Pilot timeframe'
     0x68:
       id: 'removed_liquidity_in_a_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'
-      doc: 'H Removed Liquidity In A Pilot Symbol During Specified Luld Pricing Pilot Timeframe'
+      doc: 'h = Removed liquidity in a pilot symbol during specified LULD Pricing Pilot timeframe'
     0x4e:
       id: 'halt_cross_orders_entered_in_pilot_symbols_during_the_luld_trading_pause'
-      doc: 'N Halt Cross Orders Entered In Pilot Symbols During The Luld Trading Pause'
+      doc: 'N = Halt Cross, orders entered in pilot symbols during the LULD Trading Pause'
   clearing_code:
     0x51:
       id: 'qsr'
-      doc: 'Q Qsr'
+      doc: 'Q = QSR'
   cancel_reason:
     0x55:
       id: 'user_cancel'
-      doc: 'U User Cancel'
+      doc: 'U = User cancel'
     0x49:
       id: 'ioc_cancel'
-      doc: 'I Ioc Cancel'
+      doc: 'I = IOC cancel'
     0x54:
       id: 'timeout'
-      doc: 'T Timeout'
+      doc: 'T = Timeout'
     0x53:
       id: 'supervisory_cancel'
-      doc: 'S Supervisory Cancel'
+      doc: 'S = Supervisory cancel'
     0x44:
       id: 'regulatory_cancel'
-      doc: 'D Regulatory Cancel'
+      doc: 'D = Regulatory cancel'
     0x51:
       id: 'self_match_prevention'
-      doc: 'Q Self Match Prevention'
+      doc: 'Q = Self Match Prevention'
     0x5a:
       id: 'system_cancel'
-      doc: 'Z System Cancel'
+      doc: 'Z = System cancel'
     0x43:
       id: 'cross_cancel'
-      doc: 'C Cross Cancel'
+      doc: 'C = Cross cancel'
 

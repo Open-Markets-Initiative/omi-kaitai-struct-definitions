@@ -748,32 +748,32 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Outside of time stamp messages, the start of day message is the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today It Is Still Possible To Receive Broken Trade Messages And Order Delete Messages After The End Of Day'
+      doc: 'It indicates that NASDAQ is now closed and will not accept any new orders today. It is still possible to receive Broken Trade messages and Order Delete messages after the End of Day.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
   market_category:
     0x51:
       id: 'nasdaq_global_select_market'
-      doc: 'Nasdaq Global Select Market'
+      doc: 'NASDAQ Global Select Market'
     0x47:
       id: 'nasdaq_global_market'
-      doc: 'Nasdaq Global Market'
+      doc: 'NASDAQ Global Market'
     0x53:
       id: 'nasdaq_capital_market'
-      doc: 'Nasdaq Capital Market'
+      doc: 'NASDAQ Capital Market'
     0x4e:
       id: 'nyse'
       doc: 'New York Stock Exchange'
@@ -785,7 +785,7 @@ enums:
       doc: 'New York Stock Exchange Arca'
     0x5a:
       id: 'bats_z'
-      doc: 'Bats Z Exchange'
+      doc: 'BATS Z Exchange'
     0x56:
       id: 'investors_exchange'
       doc: 'Investors Exchange'
@@ -807,139 +807,139 @@ enums:
       doc: 'Suspended'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent and Bankrupt'
     0x43:
       id: 'creations_and_redemptions_suspended'
-      doc: 'Creations Andor Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and/or Redemptions Suspended for Exchange Traded Product'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer Is NOT Deficient, Delinquent, or Bankrupt'
     0x20:
       id: 'na'
-      doc: 'Not Available Firms Should Refer To Siac Feeds For Code If Needed'
+      doc: 'Not available. Firms should refer to SIAC feeds for code if needed.'
   round_lots_only:
     0x59:
       id: 'yes_field'
-      doc: 'Nasdaq System Only Accepts Round Lots'
+      doc: 'Nasdaq system only accepts round lots'
     0x4e:
       id: 'no_field'
-      doc: 'Nasdaq System Does Not Have Any Order Size Restrictions For This Security Odd And Mixed Lot Orders Are Allowed'
+      doc: 'Nasdaq system does not have any order size restrictions for this security. Odd and mixed lot orders are allowed.'
   authenticity:
     0x50:
       id: 'live_production'
-      doc: 'Live Production'
+      doc: 'Live/Production'
     0x54:
       id: 'test'
       doc: 'Test'
   short_sale_threshold_indicator:
     0x59:
       id: 'restricted'
-      doc: 'Issue Is Restricted Under Sec Rule 203 B 3'
+      doc: 'Issue is restricted under SEC Rule 203(b)(3)'
     0x4e:
       id: 'not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'na'
-      doc: 'Threshold Indicator Not Available'
+      doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
       id: 'yes_field'
-      doc: 'Set Up For Ipo Release'
+      doc: 'Set up for IPO release'
     0x4e:
       id: 'no_field'
-      doc: 'Not Set Up For Ipo Release'
+      doc: 'Not set up for IPO release'
     0x20:
       id: 'na'
-      doc: 'Not Available'
+      doc: 'Not available'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1'
-      doc: 'Tier 1 Nms Stocks And Select Et Ps'
+      doc: 'Tier 1 NMS Stocks and select ETPs'
     0x32:
       id: 'tier_2'
-      doc: 'Tier 2 Nms Stocks'
+      doc: 'Tier 2 NMS Stocks'
     0x20:
       id: 'na'
-      doc: 'Not Available'
+      doc: 'Not available'
   etp_flag:
     0x59:
       id: 'etp'
-      doc: 'Instrument Is An Etp'
+      doc: 'Instrument is an ETP'
     0x4e:
       id: 'not_etp'
-      doc: 'Instrument Is Not An Etp'
+      doc: 'Instrument is not an ETP'
     0x20:
       id: 'na'
-      doc: 'Not Available'
+      doc: 'Not available'
   inverse_indicator:
     0x59:
       id: 'inverse_etp'
-      doc: 'Etp Is An Inverse Etp'
+      doc: 'ETP is an Inverse ETP'
     0x4e:
       id: 'not_inverse_etp'
-      doc: 'Etp Is Not An Inverse Etp'
+      doc: 'ETP is not an Inverse ETP'
   trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused'
-      doc: 'Paused Across All Us Equity Markets Sr Os Nasda Qlisted Securities Only'
+      doc: 'Paused across all U.S. equity markets / SROs (NASDAQ-listed securities only)'
     0x51:
       id: 'quotation_only_period'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq Psx'
+      doc: 'Trading on NASDAQ PSX'
   reg_sho_action:
     0x30:
       id: 'no_price_test'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'reg_sho_short_sale_price_test_restriction'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'test_restriction_remains'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
   primary_market_maker:
     0x59:
       id: 'primary'
-      doc: 'Primary Market Maker'
+      doc: 'primary market maker'
     0x4e:
       id: 'non_primary'
-      doc: 'Nonprimary Market Maker'
+      doc: 'non-primary market maker'
   market_maker_mode:
     0x4e:
       id: 'normal'
-      doc: 'Normal'
+      doc: 'normal'
     0x50:
       id: 'passive'
-      doc: 'Passive'
+      doc: 'passive'
     0x53:
       id: 'syndicate'
-      doc: 'Syndicate'
+      doc: 'syndicate'
     0x52:
       id: 'pre_syndicate'
-      doc: 'Presyndicate'
+      doc: 'pre-syndicate'
     0x4c:
       id: 'penalty'
-      doc: 'Penalty'
+      doc: 'penalty'
   market_participant_state:
     0x41:
       id: 'active'
       doc: 'Active'
     0x45:
       id: 'excused_withdrawn'
-      doc: 'Excused Withdrawn'
+      doc: 'Excused/Withdrawn'
     0x57:
       id: 'withdrawn'
       doc: 'Withdrawn'
@@ -965,98 +965,98 @@ enums:
       doc: 'Nasdaq'
     0x42:
       id: 'bx'
-      doc: 'Bx'
+      doc: 'BX'
     0x58:
       id: 'psx'
-      doc: 'Psx'
+      doc: 'PSX'
   operational_halt_action:
     0x48:
       id: 'halted'
-      doc: 'Operationally Halted On The Identified Market'
+      doc: 'Operationally Halted on the identified Market'
     0x54:
       id: 'resumed'
-      doc: 'Operational Halt Has Been Lifted And Trading Resumed'
+      doc: 'Operational Halt has been lifted and Trading resumed'
   buy_sell_indicator:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order.'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order'
   printable:
     0x4e:
       id: 'non_printable'
-      doc: 'Nonprintable'
+      doc: 'non-printable'
     0x59:
       id: 'printable'
-      doc: 'Printable'
+      doc: 'printable'
   cross_type:
     0x4f:
       id: 'opening_cross'
-      doc: 'Nasdaq Psx Opening Cross'
+      doc: 'NASDAQ PSX Opening Cross.'
     0x43:
       id: 'closing_cross'
-      doc: 'Nasdaq Psx Closing Cross'
+      doc: 'NASDAQ PSX Closing Cross.'
     0x48:
       id: 'cross_halted_or_paused'
-      doc: 'Cross For Ipo And Halted Paused Securities'
+      doc: 'Cross for IPO and halted / paused securities.'
     0x49:
       id: 'intraday_cross_and_post_close_cross'
-      doc: 'Nasdaq Psx Cross Network Intraday Cross And Post Close Cross'
+      doc: 'NASDAQ PSX Cross Network: Intraday Cross and Post-Close Cross'
   imbalance_direction:
     0x42:
       id: 'buy'
-      doc: 'Buy Imbalance'
+      doc: 'Buy imbalance'
     0x53:
       id: 'sell'
-      doc: 'Sell Imbalance'
+      doc: 'Sell imbalance'
     0x4e:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'no imbalance'
     0x4f:
       id: 'insufficient_orders'
-      doc: 'Insufficient Orders To Calculate'
+      doc: 'Insufficient orders to calculate'
   price_variation_indicator:
     0x4c:
       id: 'less_than_1'
-      doc: 'Less Than 1%'
+      doc: 'Less than 1%'
     0x31:
       id: 'one_to_one_point_nine_nine_percent'
-      doc: '1 To 1.99%'
+      doc: '1 to 1.99%'
     0x32:
       id: 'two_to_two_point_nine_nine_percent'
-      doc: '2 To 2.99%'
+      doc: '2 to 2.99%'
     0x33:
       id: 'three_to_three_point_nine_nine_percent'
-      doc: '3 To 3.99%'
+      doc: '3 to 3.99%'
     0x34:
       id: 'four_to_four_point_nine_nine_percent'
-      doc: '4 To 4.99%'
+      doc: '4 to 4.99%'
     0x35:
       id: 'five_to_five_point_nine_nine_percent'
-      doc: '5 To 5.99%'
+      doc: '5 to 5.99%'
     0x36:
       id: 'six_to_six_point_nine_nine_percent'
-      doc: '6 To 6.99%'
+      doc: '6 to 6.99%'
     0x37:
       id: 'seven_to_seven_point_nine_nine_percent'
-      doc: '7 To 7.99%'
+      doc: '7 to 7.99%'
     0x38:
       id: 'eight_to_eight_point_nine_nine_percent'
-      doc: '8 To 8.99%'
+      doc: '8 to 8.99%'
     0x39:
       id: 'nine_to_nine_point_nine_nine_percent'
-      doc: '9 To 9.99%'
+      doc: '9 to 9.99%'
     0x41:
       id: 'ten_to_nineteen_point_nine_nine_percent'
-      doc: '10 To 19.99%'
+      doc: '10 to 19.99%'
     0x42:
       id: 'twenty_to_twenty_nine_point_nine_nine_percent'
-      doc: '20 To 29.99%'
+      doc: '20 to 29.99%'
     0x43:
       id: 'thirty_percent_or_greater'
-      doc: '30% Or Greater'
+      doc: '30% or greater'
     0x20:
       id: 'no_calculation'
-      doc: 'Cannot Be Calculated'
+      doc: 'Cannot be calculated'
 

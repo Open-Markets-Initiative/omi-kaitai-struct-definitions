@@ -672,14 +672,14 @@ enums:
   occurred_at_cross:
     0x4e:
       id: 'no_field'
-      doc: 'Trade Occurred At Continuous Market'
+      doc: 'Trade occurred at continuous market'
     0x59:
       id: 'yes_field'
-      doc: 'Trade Occurred At The Cross'
+      doc: 'Trade occurred at the cross'
   printable:
     0x4e:
       id: 'non_printable'
-      doc: 'Nonprintable Ignore For Tickersvolume'
+      doc: 'Non-printable (ignore for tickers/volume)'
     0x59:
       id: 'printable'
       doc: 'Printable'

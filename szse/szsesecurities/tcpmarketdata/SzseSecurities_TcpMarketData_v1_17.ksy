@@ -1765,10 +1765,10 @@ enums:
       doc: 'Password Is Overdue'
     9:
       id: 'msg_seq_num_received_is_too_small'
-      doc: 'Msg Seq Num 34 Received Is Too Small'
+      doc: 'MsgSeqNum(34) received is too small'
     10:
       id: 'next_expected_msg_seq_num_received_is_too_large'
-      doc: 'Next Expected Msg Seq Num 789 Received Is Too Large'
+      doc: 'NextExpectedMsgSeqNum(789) received is too large'
     101:
       id: 'others'
       doc: 'Others'
@@ -1788,7 +1788,7 @@ enums:
       doc: 'Finished'
     2:
       id: 'partly_finished'
-      doc: 'Part Of Requested Data Has Not Been Returned Yet'
+      doc: 'Part of requested data has not been returned yet'
     3:
       id: 'no_authority_rights'
       doc: 'No Authority Rights'
@@ -1798,101 +1798,101 @@ enums:
   amounts_status:
     0x31:
       id: 'quota_unavailable'
-      doc: 'Pos Amt Is Fixed At 0.0000'
+      doc: 'PosAmt is fixed at 0.0000'
     0x32:
       id: 'quota_available'
-      doc: 'The Quota Balance Is Less Than 30% Of The Initial Limit For The Day And Pos Amt Carries The Actual Remaining Credit Limit'
+      doc: 'The Quota Balance is less than 30% of the initial limit for the day and PosAmt carries the actual remaining credit limit'
     0x33:
       id: 'quota_adequate'
-      doc: 'The Quota Balance Is At Or Above 30% Of The Initial Limit For The Day And Pos Amt Is Fixed At 0.0000'
+      doc: 'The Quota Balance is at or above 30% of the initial limit for the day and PosAmt is fixed at 0.0000'
   security_switch_type:
     1:
       id: 'margin_buy'
-      doc: 'Applicable To The Underlying Security Of Margin Buy'
+      doc: 'Applicable to the underlying security of margin buy'
     2:
       id: 'short_sell'
-      doc: 'Applicable To The Underlying Security Of Short Selling'
+      doc: 'Applicable to the underlying security of short selling'
     3:
       id: 'fund_subscription'
-      doc: 'Applicable To Etf Lof And Other Openended Funds Cash Subscription For Gold Et Fs'
+      doc: 'Applicable to ETF, LOF and other open-ended funds; cash subscription for gold ETFs'
     4:
       id: 'fund_redemption'
-      doc: 'Applicable To Etf Lof And Other Openended Funds Cash Redemption For Gold Et Fs'
+      doc: 'Applicable to ETF, LOF and other open-ended funds; cash redemption for gold ETFs'
     5:
       id: 'issue_subscription'
-      doc: 'Applicable To Subscription Code For Online Issuance And To Infrastructure Funds In The Non Targeted Additional Offering Period'
+      doc: 'Applicable to subscription code for online issuance and to infrastructure funds in the Non-Targeted Additional Offering period'
     6:
       id: 'conversion'
-      doc: 'Applicable To Convertible Bonds And Preferred Stocks In Conversion Resale And To Exchangeable Private Bonds And Exchangeable Corporate Bonds In Exchange Period'
+      doc: 'Applicable to convertible bonds and preferred stocks in conversion resale, and to exchangeable private bonds and exchangeable corporate bonds in exchange period'
     7:
       id: 'resale'
-      doc: 'Applicable To Enterprise Bonds Corporate Bonds Convertible Bonds Private Bonds Exchangeable Private Bonds Subordinated Debts Abs Preferred Stocks Security Firm Shortterm Bonds And Exchangeable Corporate Bonds In Conversion Resale'
+      doc: 'Applicable to enterprise bonds, corporate bonds, convertible bonds, private bonds, exchangeable private bonds, subordinated debts, ABS, preferred stocks, security firm short-term bonds and exchangeable corporate bonds in conversion resale'
     8:
       id: 'warrant_exercise'
-      doc: 'Applicable To Warrant Or Options In Exercise Period'
+      doc: 'Applicable to warrant or options in exercise period'
     10:
       id: 'buy_open'
-      doc: 'Applicable To Derivatives Like Options'
+      doc: 'Applicable to derivatives like options'
     11:
       id: 'sell_open'
-      doc: 'Applicable To Derivatives Like Options'
+      doc: 'Applicable to derivatives like options'
     12:
       id: 'subscription_of_gold_etf_in_physical'
-      doc: 'Applicable To Gold Etf'
+      doc: 'Applicable to gold ETF'
     13:
       id: 'redemption_of_gold_etf_in_physical'
-      doc: 'Applicable To Gold Etf'
+      doc: 'Applicable to gold ETF'
     14:
       id: 'pre_accepted_tender_offer'
-      doc: 'Applicable To Equities In Tender Offer'
+      doc: 'Applicable to equities in tender offer'
     15:
       id: 'cancellation_of_tender_offer'
-      doc: 'Applicable To Equities In Tender Offer'
+      doc: 'Applicable to equities in tender offer'
     20:
       id: 'pledge'
-      doc: 'Applicable To Pledgestyle Repo Securities'
+      doc: 'Applicable to Pledge-style Repo securities'
     21:
       id: 'release_of_pledge'
-      doc: 'Applicable To Pledgestyle Repo Securities'
+      doc: 'Applicable to Pledge-style Repo securities'
     22:
       id: 'voting_rights'
-      doc: 'Applicable To Preferred Stocks'
+      doc: 'Applicable to preferred stocks'
     23:
       id: 'equity_pledge_style_repo'
-      doc: 'Applicable To Securities Allowed For Equity Pledgestyle Repo Business'
+      doc: 'Applicable to securities allowed for equity pledge-style repo business'
     26:
       id: 'covered_openning'
-      doc: 'Applicable To Derivatives Like Options'
+      doc: 'Applicable to derivatives like options'
     27:
       id: 'market_maker_quotation'
-      doc: 'Applicable To Securities Supported For Marketmaker Quotation Like Options'
+      doc: 'Applicable to securities supported for market-maker quotation, like options'
     28:
       id: 'round_lot_buy_of_eligible_hk_stocks'
-      doc: 'Applicable To Southbound Eligible Stocks Under Hk Stock Connect'
+      doc: 'Applicable to southbound eligible stocks under HK Stock Connect'
     29:
       id: 'round_lot_sell_of_eligible_hk_stocks'
-      doc: 'Applicable To Southbound Eligible Stocks Under Hk Stock Connect'
+      doc: 'Applicable to southbound eligible stocks under HK Stock Connect'
     30:
       id: 'odd_lot_buy_of_eligible_hk_stocks'
-      doc: 'Applicable To Southbound Eligible Stocks Under Hk Stock Connect'
+      doc: 'Applicable to southbound eligible stocks under HK Stock Connect'
     31:
       id: 'odd_lot_sell_of_eligible_hk_stocks'
-      doc: 'Applicable To Southbound Eligible Stocks Under Hk Stock Connect'
+      doc: 'Applicable to southbound eligible stocks under HK Stock Connect'
     32:
       id: 'options_from_ordinary_to_covered'
-      doc: 'Applicable To Options Transferring From Ordinary To Covered'
+      doc: 'Applicable to options transferring from ordinary to covered'
     33:
       id: 'options_from_covered_to_ordinary'
-      doc: 'Applicable To Options Transferring From Covered To Ordinary'
+      doc: 'Applicable to options transferring from covered to ordinary'
     34:
       id: 'resale_cancellation'
-      doc: 'Applicable To Enterprise Bonds Corporate Bonds Private Bonds Exchangeable Private Bonds Subordinated Debts Abs Security Firm Shortterm Bonds And Exchangeable Corporate Bonds In Resale Cancellation Period'
+      doc: 'Applicable to enterprise bonds, corporate bonds, private bonds, exchangeable private bonds, subordinated debts, ABS, security firm short-term bonds and exchangeable corporate bonds in resale cancellation period'
     35:
       id: 'securities_lending'
-      doc: 'Applicable To Contractual Order Or Noncontractual Order Of Securities Lending Or Borrowing'
+      doc: 'Applicable to contractual order or non-contractual order of securities lending or borrowing'
     36:
       id: 'bond_put_option_and_resale'
-      doc: 'Applicable To Bonds And Assetbacked Securities In The Put Option And Resale Period'
+      doc: 'Applicable to bonds and asset-backed securities in the put option and resale period'
   trading_type:
     1:
       id: 'matching_deal'

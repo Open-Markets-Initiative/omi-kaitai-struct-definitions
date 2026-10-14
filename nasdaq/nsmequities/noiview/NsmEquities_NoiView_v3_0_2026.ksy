@@ -448,17 +448,17 @@ enums:
       doc: 'Creations Andor Redemptions Suspended For Exchange Traded Product'
     0x4e:
       id: 'normal'
-      doc: 'Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Issuer is not deficient, delinquent, or bankrupt'
     0x20:
       id: 'not_available'
-      doc: 'Non Nasdaqlisted Refer To Siac Feeds'
+      doc: 'Non-Nasdaq-listed; refer to SIAC feeds'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
-      doc: 'System Only Accepts Round Lot Orders'
+      doc: 'System only accepts round lot orders'
     0x4e:
       id: 'no_restriction'
-      doc: 'Odd And Mixed Lot Orders Allowed'
+      doc: 'Odd and mixed lot orders allowed'
   issue_classification:
     0x41:
       id: 'american_depositary_share'
@@ -518,7 +518,7 @@ enums:
   short_sale_threshold_indicator:
     0x59:
       id: 'restricted'
-      doc: 'Issue Is Restricted Under Sec Rule 203 B 3'
+      doc: 'Issue is restricted under SEC Rule 203(b)(3)'
     0x4e:
       id: 'not_restricted'
       doc: 'Not Restricted'
@@ -528,16 +528,16 @@ enums:
   ipo_flag:
     0x59:
       id: 'ipo_security'
-      doc: 'Nasdaqlisted Instrument Set Up As New Ipo'
+      doc: 'Nasdaq-listed instrument set up as new IPO'
     0x4e:
       id: 'not_ipo_security'
-      doc: 'Nasdaqlisted Instrument Not Set Up As New Ipo'
+      doc: 'Nasdaq-listed instrument not set up as new IPO'
     0x5a:
       id: 'non_ipo_new_listed_security'
       doc: 'Non Ipo New Listed Security'
     0x20:
       id: 'not_available'
-      doc: 'Non Nasdaqlisted Instruments'
+      doc: 'Non-Nasdaq-listed instruments'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1_nms_stocks_and_select_et_ps'
@@ -571,7 +571,7 @@ enums:
       doc: 'Halted Across All Us Equity Markets Sr Os'
     0x50:
       id: 'paused_across_all_us_equity_markets_sr_os'
-      doc: 'Nasdaqlisted Securities Only'
+      doc: 'Nasdaq-listed securities only'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
       doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
@@ -584,7 +584,7 @@ enums:
       doc: 'No Price Test In Place'
     0x31:
       id: 'restriction_in_effect'
-      doc: 'Due To Intraday Price Drop In Security'
+      doc: 'Due to intra-day price drop in security'
     0x32:
       id: 'restriction_remains_in_effect'
       doc: 'Restriction Remains In Effect'

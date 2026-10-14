@@ -8996,35 +8996,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid User Namepassword'
+      doc: 'Not authorized (invalid user- name/password)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bitfield_in_login_message'
-      doc: 'Invalid Return Bitfield In Login Message'
+      doc: 'Invalid return bitfield in login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -9050,79 +9050,79 @@ enums:
   exec_inst:
     0x4c:
       id: 'alternate_midpoint'
-      doc: 'Alternate Midpoint Less Aggressive Of Midpoint And 1 Tick Inside Pbbo For Periodic Auction Orders 5'
+      doc: 'Alternate Midpoint (less aggressive of midpoint and 1 tick inside PBBO) for Periodic Auction Orders:5'
     0x4d:
       id: 'midpoint'
-      doc: 'Midpoint Peg To Pbbo Midpoint'
+      doc: 'Midpoint (peg to PBBO midpoint)'
     0x47:
       id: 'guarded_midpoint'
-      doc: 'Guarded Midpoint Peg To Cboe Ebbo Midpoint But Suspend Order If Primary Market Quote Becomes Onesided Or Disappears'
+      doc: 'Guarded Midpoint (peg to Cboe EBBO midpoint but suspend order if primary market quote becomes one-sided or disappears)'
     0x52:
       id: 'primary_peg'
-      doc: 'Primary Peg Peg Buy To Pbbo Bid Peg Sell To Pbbo Offer'
+      doc: 'Primary Peg (peg buy to PBBO bid, peg sell to PBBO offer)'
     0x50:
       id: 'market_peg'
-      doc: 'Market Peg Peg Buy To Pbbo Offer Peg Sell To Pbbo Bid'
+      doc: 'Market Peg (peg buy to PBBO offer, peg sell to PBBO bid)'
   ord_type:
     0x31:
       id: 'market'
       doc: 'Market'
     0x32:
       id: 'limit'
-      doc: 'Limit Default'
+      doc: 'Limit (default)'
     0x50:
       id: 'pegged'
-      doc: 'Pegged Pegged Requires Exec Inst Be Set To L M P Or R'
+      doc: 'Pegged Pegged requires ExecInst be set to L, M, P, or R.'
   time_in_force:
     0x30:
       id: 'day'
       doc: 'Day'
     0x31:
       id: 'gtc'
-      doc: 'Gtc'
+      doc: 'GTC'
     0x32:
       id: 'at_the_open'
       doc: 'At The Open'
     0x33:
       id: 'ioc'
-      doc: 'Ioc Portion Not Filled Immediately Is Cancelled Mar Ket Orders Are Implicitly Ioc Treated As Accept Or Cancel For Routing Inst Bp Or Bh'
+      doc: 'IOC (Portion not filled immediately is cancelled. Mar- ket orders are implicitly IOC. Treated as Accept-Or-Cancel for RoutingInst = BP or BH )'
     0x36:
       id: 'gtd'
-      doc: 'Gtd Expires At Specified Expire Time For A Specific Day'
+      doc: 'GTD (expires at specified ExpireTime for a specific day)'
     0x37:
       id: 'at_the_close'
       doc: 'At The Close'
     0x38:
       id: 'good_for_auction'
-      doc: 'Good For Auction Only Valid If Routing Inst Bp Or Bu'
+      doc: 'Good For Auction (only valid if RoutingInst=BP or BU)'
   id_source:
     0x34:
       id: 'isin'
-      doc: 'Isin'
+      doc: 'ISIN'
     0x35:
       id: 'ric'
-      doc: 'Ric'
+      doc: 'RIC'
   capacity:
     0x41:
       id: 'agency'
-      doc: 'Agency Maps To Aotc'
+      doc: 'Agency (maps to ’AOTC’)'
     0x50:
       id: 'principal'
-      doc: 'Principal Maps To Deal'
+      doc: 'Principal (maps to ’DEAL’)'
     0x52:
       id: 'riskless_principal'
-      doc: 'Riskless Principal Maps To Mtch'
+      doc: 'Riskless Principal (maps to ’MTCH’)'
   display_indicator:
     0x58:
       id: 'displayed_order'
       doc: 'Displayed Order'
     0x49:
       id: 'invisible'
-      doc: 'Invisible Invisible Orders Must Meet The Mi Fid Esma Requirements For Large In Scale Lis Unless Routed To The Cboe Dark Book'
+      doc: 'Invisible Invisible orders must meet the MiFID ESMA requirements for Large in Scale (LIS) unless routed to the Cboe Dark Book.'
   liquidity_provision:
     0x4e:
       id: 'not_liquidity_provision'
-      doc: 'Not Liquidity Provision Default'
+      doc: 'Not Liquidity Provision (default)'
     0x59:
       id: 'liquidity_provision'
       doc: 'Liquidity Provision'
@@ -9132,7 +9132,7 @@ enums:
       doc: 'None'
     0x47:
       id: 'all_or_none'
-      doc: 'All Or None Periodic Auction Only'
+      doc: 'All Or None (Periodic Auction Only)'
     0x52:
       id: 'retail_order'
       doc: 'Retail Order'
@@ -9141,61 +9141,61 @@ enums:
       doc: 'Retail All Or None'
     0x4c:
       id: 'retail_liquidity_provision'
-      doc: 'Retail Liquidity Provision The All Or None Instruction Applies To Periodic Auctions Only An Extended Exec Inst Of L Is Only Valid For Attested Retail Liq Uidity Providers This Implies An Order Attribute Types 8015 Value Of 2 Retail Liquidity Provider Orders Cannot Participate In Auctions They Will Be Rejected If Submitted Directly Or Expired If Posted Preauction Transition'
+      doc: 'Retail Liquidity Provision The all or none instruction applies to periodic auctions only. An ExtendedExecInst of L is only valid for attested Retail Liq- uidity Providers. This implies an OrderAttributeTypes (8015) value of 2. Retail liquidity provider orders cannot participate in auctions - they will be rejected if submitted directly, or expired if posted pre-auction transition.'
   client_id:
     0:
       id: 'none'
-      doc: 'None No Client For This Order'
+      doc: 'NONE (No Client for this order)'
     1:
       id: 'aggr'
-      doc: 'Aggr An Aggregation Of Multiple Client Orders'
+      doc: 'AGGR (An aggregation of multiple client orders)'
     2:
       id: 'pnal'
-      doc: 'Pnal Clients Are Pending Allocation'
+      doc: 'PNAL (Clients are pending allocation)'
   order_origination:
     0x35:
       id: 'dea_indicates_dea_activity_as_deemed_by_mi_fid_ii'
-      doc: 'Dea Indicates Dea Activity As Deemed By Mi Fid Ii Is Involved In This Order'
+      doc: '(DEA). Indicates DEA activity (as deemed by MiFID II) is involved in this order.'
     0x30:
       id: 'non_dea'
-      doc: 'Non Dea Default Other Values Are Unsupported And Will Be Rejected'
+      doc: 'Non-DEA. (default) Other values are unsupported and will be rejected.'
   algorithmic_indicator:
     0x4e:
       id: 'no_algorithm_was_involved'
-      doc: 'No Algorithm Was Involved Default'
+      doc: 'No algorithm was involved (default).'
     0x59:
       id: 'algorithm_was_involved'
-      doc: 'Algorithm Was Involved Algo'
+      doc: 'Algorithm was involved (ALGO).'
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
-      doc: 'Leave Original Order Alone'
+      doc: 'Leave original order alone.'
     0x59:
       id: 'cancel_original_order_if_modification_fails'
-      doc: 'Cancel Original Order If Modification Fails'
+      doc: 'Cancel original order if modification fails.'
   party_role:
     0x31:
       id: 'executing_firm'
-      doc: 'Executing Firm Default If Used Must Be Set On Both Sides Is Not Permitted For Bilateral Trades'
+      doc: 'ExecutingFirm (default) (if used, must be set on both sides. Is not permitted for bilateral trades)'
     0x32:
       id: 'entering_firm'
-      doc: 'Entering Firm The Party Reporting The Trade Should Not Be Used For The Second Leg'
+      doc: 'EnteringFirm (the party reporting the trade. Should not be used for the second leg)'
     0x33:
       id: 'contra_firm'
-      doc: 'Contra Firm The Party The Trade Is Alleged Against'
+      doc: 'ContraFirm (the party the trade is alleged against)'
   transaction_category:
     0x50:
       id: 'regular_trade'
-      doc: 'Regular Trade Aka Plain Vanilla Trade'
+      doc: 'Regular Trade (aka Plain-Vanilla Trade)'
     0x4f:
       id: 'portfolio_trade'
       doc: 'Portfolio Trade'
     0x59:
       id: 'exchange_for_physical'
-      doc: 'Exchange For Physical Xfph Rts 2 Nonequities Only'
+      doc: 'Exchange For Physical (XFPH) (RTS 2 Non-equities only)'
     0x5a:
       id: 'package_trade'
-      doc: 'Package Trade Tpac Rts 2 Nonequities Only'
+      doc: 'Package Trade (TPAC) (RTS 2 Non-equities only)'
   trade_report_trans_type:
     0:
       id: 'new_field'
@@ -9230,17 +9230,17 @@ enums:
       doc: 'Continuous Trading'
     5:
       id: 'post_trading'
-      doc: 'Post Trading 10 Out Of Main Session Trading'
+      doc: 'Post Trading 10 = Out of Main Session Trading'
   trade_publish_indicator:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish Deprecated From 4 Th December 2017 In Certification And 2 Nd January 2018 In Production Any Requests To Publish A Trade Using This Indicator Will Not Be Honoured And Will Instead Be Published Im Mediately'
+      doc: 'Do not publish. Deprecated from 4th December 2017 in Certification and 2nd January 2018 in Production. Any requests to publish a trade using this indicator will not be honoured and will instead be published im- mediately.'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication In Order For Rts 1 Based Instruments To Be Considered For A Deferral Capacity P Maps To Deal Must Be Set For Rts 1 And Rts 2 Instruments Delayed Publicationdeferrals Are Ignored If The Trade Does Not Qualify For Delayed Publication'
+      doc: 'Deferred publication In order for RTS 1 based instruments to be considered for a deferral, Capacity = P (maps to ’DEAL’) must be set. For RTS 1 and RTS 2 instruments, delayed publication/deferrals are ignored if the trade does not qualify for delayed publication.'
   execution_method:
     0x41:
       id: 'automated'
@@ -9250,35 +9250,35 @@ enums:
       doc: 'Manual'
     0x55:
       id: 'unspecified'
-      doc: 'Unspecified Default'
+      doc: 'Unspecified (default)'
   trade_report_type:
     0:
       id: 'submit_for_all_new_trade_reports'
-      doc: 'Submit For All New Trade Reports'
+      doc: '(Submit) for all new trade reports'
     6:
       id: 'trade_report_cancel_to_cancel_any_acknowledged_but'
-      doc: 'Trade Report Cancel To Cancel Any Acknowledged But Not Confirmed Trade Reports Entered Where Trade Han Dling Instruction 2'
+      doc: '(Trade Report Cancel) to cancel any acknowledged, but not confirmed trade reports entered where TradeHan- dlingInstruction = 2'
   order_category:
     0:
       id: 'not_a_negotiated_trade'
-      doc: 'Not A Negotiated Trade'
+      doc: 'Not a Negotiated Trade'
     3:
       id: 'privately_negotiated_trade'
-      doc: 'Privately Negotiated Trade On Return Fields This Field Indicates Whether Cboe Deems The Trade As Utilising The Negotiated Transaction Waiver Under Mi Fid'
+      doc: 'Privately Negotiated Trade On return fields, this field indicates whether Cboe deems the trade as utilising the Negotiated Transaction waiver under Mi- FID.'
   price_formation:
     0x33:
       id: 'negotiated_trade_subject_to_conditions_other_than_the'
-      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price Pric Please Note That This Is Not Needed Or Supported On Bxe Or Cxe For Mmt Level 3.8 Contribution To Price Formation Or The Price Discovery Process Supported Values Are Not Specified Or P Plain Vanilla Trade'
+      doc: 'Negotiated Trade Subject to Conditions Other Than The Current Market Price (PRIC) Please note that this is not needed or supported on BXE or CXE. For MMT Level 3.8 ’Contribution to Price Formation or the Price Discovery Process’, supported values are: Not specified or P = Plain-Vanilla Trade'
     0x54:
       id: 'non_price_forming_trade'
-      doc: 'Non Price Forming Trade Npft Effective 1 December 2025 On Bxe And Cxe This Value Will Be Ignored If Used On A Rts 2 Instrument'
+      doc: 'Non-Price Forming Trade (NPFT) Effective 1 December 2025, on BXE and CXE, this value will be ignored if used on a RTS2 instrument.'
   intra_firm_trade_ind:
     0x4e:
       id: 'not_an_intragroup_transaction'
-      doc: 'Not An Intragroup Transaction Default'
+      doc: 'Not an intra-group transaction (default)'
     0x59:
       id: 'is_an_intragroup_transaction'
-      doc: 'Is An Intragroup Transaction'
+      doc: 'Is an intra-group transaction'
   base_liquidity_indicator:
     0x41:
       id: 'added_liquidity'
@@ -9288,29 +9288,29 @@ enums:
       doc: 'Removed Liquidity'
     0x58:
       id: 'routed_to_another_market'
-      doc: 'Routed To Another Market'
+      doc: 'Routed to Another Market'
     0x43:
       id: 'auction_trade'
       doc: 'Auction Trade'
     0x53:
       id: 'self_match'
-      doc: 'Self Match Optin'
+      doc: 'Self Match (opt-in)'
   sub_liquidity_indicator:
     0x44:
       id: 'cboe_dark_pool_execution'
       doc: 'Cboe Dark Pool Execution'
     0x54:
       id: 'removed_liquidity_from_the_cboe_dark_pool_by_ioc_order'
-      doc: 'Removed Liquidity From The Cboe Dark Pool By Ioc Order'
+      doc: 'Removed liquidity from the Cboe Dark Pool by IOC order'
     0x48:
       id: 'trade_added_hidden_liquidity'
-      doc: 'Trade Added Hidden Liquidity Not Eu Equities'
+      doc: 'Trade added hidden liquidity (not EU equities)'
     0x49:
       id: 'trade_added_hidden_liquidity_that_was_price_improved'
-      doc: 'Trade Added Hidden Liquidity That Was Price Improved Not Eu Equities'
+      doc: 'Trade added hidden liquidity that was price improved (not EU equities)'
     0x4b:
       id: 'add_liquidity_from_hidden_reserve'
-      doc: 'Add Liquidity From Hidden Reserve Iceberg Order'
+      doc: 'Add liquidity from Hidden Reserve (Iceberg) order'
     0x50:
       id: 'periodic_auction'
       doc: 'Periodic Auction'
@@ -9319,7 +9319,7 @@ enums:
       doc: 'Cboe Closing Cross'
     0x53:
       id: 'liquidity_alps_bbo'
-      doc: 'Liquidity Alps Bbo'
+      doc: 'Liquidity A-LPS BBO'
     0x4f:
       id: 'open_auction'
       doc: 'Open Auction'
@@ -9344,35 +9344,35 @@ enums:
       doc: 'No Waiver Type'
     0x30:
       id: 'negotiated_trade_in_liquid_instrument'
-      doc: 'Negotiated Trade In Liquid Instrument Nliq'
+      doc: 'Negotiated Trade in Liquid Instrument (NLIQ)'
     0x31:
       id: 'negotiated_trade_in_illiquid_instrument'
-      doc: 'Negotiated Trade In Illiquid Instrument Oilq'
+      doc: 'Negotiated Trade in Illiquid Instrument (OILQ)'
     0x32:
       id: 'negotiated_trade_subject_to_conditions_other_than_the'
-      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price Pric'
+      doc: 'Negotiated Trade Subject to Conditions Other Than the Current Market Price (PRIC)'
     0x33:
       id: 'reference_price'
-      doc: 'Reference Price Dark Book Rfpt Pre Trade Trans Parency Waiver'
+      doc: 'Reference Price (Dark Book) (RFPT) (Pre-Trade Trans- parency Waiver)'
     0x41:
       id: 'order_management_facility'
-      doc: 'Order Management Facility Iceberg Pre Trade Trans Parency Waiver'
+      doc: 'Order Management Facility (Iceberg) (Pre-Trade Trans- parency Waiver)'
     0x38:
       id: 'negotiated_trade_subject_to_a_pre_trade_transparency'
-      doc: 'Negotiated Trade Subject To A Pre Trade Transparency Waiver Netw Replaces Nliq Oliq And Pric For Bxe And Cxe Only'
+      doc: 'Negotiated Trade Subject to a Pre-Trade Transparency Waiver (NETW) (replaces NLIQ, OLIQ, and PRIC for BXE and CXE only)'
     0x63:
       id: 'negotiated_trade_that_is_large_in_scale_subject_to_a_pre'
-      doc: 'Negotiated Trade That Is Large In Scale Subject To A Pre Trade Transparency Waiver Ntls Implies Netw'
+      doc: 'Negotiated Trade that is Large In Scale Subject to a Pre- Trade Transparency Waiver (NTLS) (Implies NETW)'
     0x39:
       id: 'large_in_scale'
-      doc: 'Large In Scale Pre Trade Transparency Waiver On Bxe And Cxe Netw 8 Replaces Nliq Oilq Pric If The Negotiated Trade Is Large In Scale Then Ntls C Applies Too'
+      doc: 'Large In Scale (Pre-Trade Transparency Waiver) On BXE and CXE, NETW (8) replaces NLIQ, OILQ, PRIC. If the negotiated trade is large in scale, then NTLS (c) applies too.'
   order_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9381,13 +9381,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9396,13 +9396,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9411,7 +9411,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9432,7 +9432,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9453,17 +9453,17 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   restatement_reason:
     0x52:
       id: 'reroute'
       doc: 'Reroute'
     0x58:
       id: 'locked_in_cross'
-      doc: 'Locked In Cross'
+      doc: 'Locked in cross'
     0x57:
       id: 'wash'
       doc: 'Wash'
@@ -9472,14 +9472,14 @@ enums:
       doc: 'Reload'
     0x51:
       id: 'liquidity_updated'
-      doc: 'Liquidity Updated Cboe Reserves The Right To Add New Values As Necessary Without Prior Notice'
+      doc: 'Liquidity Updated Cboe reserves the right to add new values as necessary without prior notice.'
   modify_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9488,13 +9488,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9503,13 +9503,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9518,7 +9518,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9539,7 +9539,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9560,17 +9560,17 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   cancel_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9579,13 +9579,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9594,13 +9594,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9609,7 +9609,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9630,7 +9630,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9651,17 +9651,17 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   cancel_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9670,13 +9670,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9685,13 +9685,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9700,7 +9700,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9721,7 +9721,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9742,30 +9742,30 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   central_counterparty:
     0x45:
       id: 'cboe_clear'
       doc: 'Cboe Clear'
     0x4c:
       id: 'lch_ltd'
-      doc: 'Lch Ltd London'
+      doc: 'LCH Ltd (London)'
     0x58:
       id: 'six_xclear'
-      doc: 'Six Xclear'
+      doc: 'SIX x-clear'
     0x4e:
       id: 'none_clearing_suppressed_for_self_match'
-      doc: 'None Clearing Suppressed For Self Match'
+      doc: 'None - Clearing Suppressed for self match.'
   purge_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9774,13 +9774,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9789,13 +9789,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9804,7 +9804,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9825,7 +9825,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9846,17 +9846,17 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -9865,13 +9865,13 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
     0x6b:
       id: 'pending_periodic_auction'
-      doc: 'Pending Periodic Auction Bxe And Dxe Only'
+      doc: 'Pending periodic auction (BXE and DXE only)'
     0x4c:
       id: 'price_exceeds_cross_range'
       doc: 'Price Exceeds Cross Range'
@@ -9880,13 +9880,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -9895,7 +9895,7 @@ enums:
       doc: 'Routing Unavailable'
     0x54:
       id: 'routing_order_would_trade_through_an_away_destination'
-      doc: 'Routing Order Would Trade Through An Away Destination'
+      doc: 'Routing Order Would Trade Through an Away Destination'
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
@@ -9916,7 +9916,7 @@ enums:
       doc: 'Unforeseen Reason'
     0x6c:
       id: 'large_in_scale'
-      doc: 'Large In Scale'
+      doc: 'Large in Scale'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
       doc: 'Market Access Risk Limit Exceeded'
@@ -9937,25 +9937,25 @@ enums:
       doc: 'Crossed Market'
     0x76:
       id: 'mi_fid_ii_double_cap_related'
-      doc: 'Mi Fid Ii Double Cap Related'
+      doc: 'MiFID II Double Cap related'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
   deferral_reason:
     0x2d:
       id: 'no_deferral_reason'
       doc: 'No Deferral Reason'
     0x36:
       id: 'deferral_for_large_in_scale'
-      doc: 'Deferral For Large In Scale Lrgs'
+      doc: 'Deferral for Large In Scale (LRGS)'
   trade_publish_ind:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish Deprecated From 4 Th December 2017 In Certification And 2 Nd January 2018 In Production Any Requests To Publish A Trade Using This Indicator Will Not Be Honoured And Will Instead Be Published Im Mediately'
+      doc: 'Do not publish. Deprecated from 4th December 2017 in Certification and 2nd January 2018 in Production. Any requests to publish a trade using this indicator will not be honoured and will instead be published im- mediately.'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication In Order For Rts 1 Based Instruments To Be Considered For A Deferral Capacity P Maps To Deal Must Be Set For Rts 1 And Rts 2 Instruments Delayed Publicationdeferrals Are Ignored If The Trade Does Not Qualify For Delayed Publication'
+      doc: 'Deferred publication In order for RTS 1 based instruments to be considered for a deferral, Capacity = P (maps to ’DEAL’) must be set. For RTS 1 and RTS 2 instruments, delayed publication/deferrals are ignored if the trade does not qualify for delayed publication.'
 

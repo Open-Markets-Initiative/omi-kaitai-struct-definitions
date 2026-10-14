@@ -742,14 +742,14 @@ enums:
   display:
     0:
       id: 'not_aggregated'
-      doc: 'Order Is Not Aggregated In The Cboe Sip Quote'
+      doc: 'Order is not aggregated in the Cboe SIP quote'
     1:
       id: 'aggregated'
-      doc: 'Order Is Aggregated In The Cboe Sip Quote'
+      doc: 'Order is aggregated in the Cboe SIP quote'
   customer_indicator:
     0x4e:
       id: 'non_customer'
-      doc: 'Non Customer'
+      doc: 'Non-Customer'
     0x43:
       id: 'customer'
       doc: 'Customer'
@@ -759,7 +759,7 @@ enums:
       doc: 'Normal Trade'
     0x53:
       id: 'spread_trade'
-      doc: 'Spread Trade'
+      doc: 'Spread trade'
   maintain_priority:
     0:
       id: 'reset_priority'
@@ -773,17 +773,17 @@ enums:
       doc: 'Normal'
     0x43:
       id: 'closing_only'
-      doc: 'Closing Only'
+      doc: 'Closing only'
   trading_status:
     0x41:
       id: 'accepting_orders'
-      doc: 'Accepting Orders For Queuing Equities Only'
+      doc: 'Accepting Orders for Queuing (equities only)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote-Only'
     0x53:
       id: 'exchange_specific_suspension'
       doc: 'Exchange Specific Suspension'
@@ -793,10 +793,10 @@ enums:
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_effect'
-      doc: 'No Price Test In Effect'
+      doc: 'No price test in effect'
     0x31:
       id: 'reg_sho_price_test_restriction_in_effect'
-      doc: 'Reg Sho Price Test Restriction In Effect'
+      doc: 'Reg SHO price test restriction in effect'
   auction_type:
     0x4f:
       id: 'opening'
@@ -809,27 +809,27 @@ enums:
       doc: 'Halt Auction'
     0x49:
       id: 'ipo'
-      doc: 'Ipo Auction'
+      doc: 'IPO Auction'
     0x4d:
       id: 'close'
       doc: 'Cboe Market Close'
     0x54:
       id: 'sum'
-      doc: 'Step Up Mechanism'
+      doc: 'Step-Up Mechanism'
     0x42:
       id: 'bam'
       doc: 'Bats Auction Mechanism'
   retail_price_improvement:
     0x42:
       id: 'buy_side'
-      doc: 'Buy Side Rpi'
+      doc: 'Buy Side RPI'
     0x53:
       id: 'sell_side'
-      doc: 'Sell Side Rpi'
+      doc: 'Sell Side RPI'
     0x41:
       id: 'buy_and_sell'
-      doc: 'Buy And Sell Rpi'
+      doc: 'Buy and Sell RPI'
     0x4e:
       id: 'no_rpi'
-      doc: 'No Rpi'
+      doc: 'No RPI'
 

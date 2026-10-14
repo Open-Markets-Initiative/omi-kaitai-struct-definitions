@@ -529,25 +529,25 @@ enums:
   reject_reason_code:
     0x41:
       id: 'authentication_failure'
-      doc: 'The Authentication Token Was Not Valid'
+      doc: 'The Authentication Token was not valid'
     0x43:
       id: 'incorrect_channel_id'
-      doc: 'Incorrect Channel Id In The Snapshot Request'
+      doc: 'Incorrect Channel Id in the Snapshot Request'
     0x45:
       id: 'snapshot_request_already_active'
-      doc: 'A Snapshot Request Is Already Active On This Connection'
+      doc: 'A Snapshot Request is already active on this connection'
     0x51:
       id: 'quota_exceeded'
-      doc: 'The Per Channel Daily Snapshot Request Quota Has Been Exceeded'
+      doc: 'The per channel daily Snapshot Request quota has been exceeded'
     0x52:
       id: 'snapshot_not_yet_available'
-      doc: 'No Snapshot At Or Above The Requested Minimum Sequence Number Is Available'
+      doc: 'No snapshot at or above the requested Minimum Sequence Number is available'
     0x53:
       id: 'incorrect_session_id'
-      doc: 'Incorrect Session Id In The Snapshot Request'
+      doc: 'Incorrect Session Id in the Snapshot Request'
     0x55:
       id: 'unknown_message'
-      doc: 'The Message Was Not Recognized By The Server'
+      doc: 'The message was not recognized by the server'
   iex_tp_message_type:
     0x53:
       id: 'system_event_message'

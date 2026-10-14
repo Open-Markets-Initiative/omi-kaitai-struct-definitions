@@ -7225,35 +7225,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid Usernamepwd'
+      doc: 'Not authorized (invalid username/pwd)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bit_field_in_login_message'
-      doc: 'Invalid Return Bit Field In Login Message'
+      doc: 'Invalid return bit field in login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -7273,33 +7273,33 @@ enums:
       doc: 'Market'
     0x32:
       id: 'limit'
-      doc: 'Limit Default'
+      doc: 'Limit (default)'
     0x34:
       id: 'stop_limit'
-      doc: 'Stop Limit Market Implies Time In Force Of Ioc 3 Stop Limit Orders Must Have A Time In Force Of Day 0 Gtc 1 Or Gtd 6'
+      doc: 'Stop Limit Market implies TimeInForce of IOC (3). Stop Limit orders must have a TimeInForce of DAY (0), GTC (1), or GTD (6).'
   time_in_force:
     0x30:
       id: 'day'
-      doc: 'Day Expires At The End Of The Business Day'
+      doc: 'Day (Expires at the end of the business day.)'
     0x31:
       id: 'gtc'
-      doc: 'Gtc Good Till Cancel Order Remains Until Cancelled Or Contract Expires'
+      doc: 'GTC (Good ‘till Cancel. Order remains until cancelled or contract expires).'
     0x33:
       id: 'ioc'
-      doc: 'Ioc Portion Not Filled Immediately Is Cancelled Market Orders Are Implicitly Ioc'
+      doc: 'IOC (Portion not filled immediately is cancelled. Market orders are implicitly IOC.)'
     0x34:
       id: 'fok'
-      doc: 'Fok An Ioc Where The Entire Size Must Be Filled Else The Order Will Be Cancelled Back'
+      doc: 'FOK (An IOC where the entire size must be filled, else the order will be cancelled back)'
     0x36:
       id: 'gtd'
-      doc: 'Gtd Good Till Date Time Expires At The Datetime Specified In The Expire Time Field'
+      doc: 'GTD (Good ‘till Date-Time Expires at the date-time specified in the ExpireTime field).'
   capacity:
     0x43:
       id: 'customer'
       doc: 'Customer'
     0x46:
       id: 'firm'
-      doc: 'Firm The Capacity Refers To The Occ Account Type A Value Of C Denotes An Account That Clears In The Customer Range At Occ A Value Of F Denotes An Account That Clears In The Clearing Firm Range At Occ'
+      doc: 'Firm The Capacity refers to the OCC account type. A value of “C” denotes an account that clears in the Customer range at OCC. A value of “F” denotes an account that clears in the Clearing Firm range at OCC.'
   open_close:
     0x4f:
       id: 'open'
@@ -7309,46 +7309,46 @@ enums:
       doc: 'Close'
     0x4e:
       id: 'none'
-      doc: 'None Same As Not Present'
+      doc: 'None (same as not present)'
   cti_code:
     0x31:
       id: 'cti_1'
-      doc: 'Cti 1 Transactions Initiated And Executed By An Individual Tph For The Tp Hs Own Account For An Account The Tph Controls Or For The Account In Which The Tph Has An Ownership Or Financial Interest'
+      doc: 'CTI 1: Transactions initiated and executed by an individual TPH for the TPH’s own account, for an account the TPH controls, or for the account in which the TPH has an ownership or financial interest.'
     0x32:
       id: 'cti_2'
-      doc: 'Cti 2 Transactions Executed For The Proprietary Account Of A Clearing Tph Or Nonclearing Tph'
+      doc: 'CTI 2: Transactions executed for the proprietary account of a clearing TPH or non-clearing TPH.'
     0x33:
       id: 'cti_3'
-      doc: 'Cti 3 Transactions Where An Individual Tph Or Authorized Trader Executes For The Personal Account Of Another Individual Tph For An Account The Other Individual Tph Controls Or For An Account In Which The Other Individual Tph Has An Ownership Or Financial Interest'
+      doc: 'CTI 3: Transactions where an individual TPH or authorized trader executes for the personal account of another individual TPH, for an account the other individual TPH controls or for an account in which the other individual TPH has an ownership or financial interest.'
     0x34:
       id: 'cti_4'
-      doc: 'Cti 4 Any Transaction Not Meeting The Definition Of Cti 12 Or 3 These Should Be Non Tph Customer Transactions'
+      doc: 'CTI 4: Any transaction not meeting the definition of CTI 1, 2 or 3. (These should be non-TPH customer transactions).'
   cust_order_handling_inst:
     0x57:
       id: 'desk'
-      doc: 'Desk High Touch'
+      doc: 'Desk (high touch)'
     0x59:
       id: 'electronic'
-      doc: 'Electronic Default'
+      doc: 'Electronic (default)'
     0x43:
       id: 'vendorprovided_platform_billed_by_executing_broker'
-      doc: 'Vendorprovided Platform Billed By Executing Broker'
+      doc: 'Vendor-provided platform, billed by Executing Broker'
     0x47:
       id: 'sponsored_access_via_exchange_api_or_fix_provided_by'
-      doc: 'Sponsored Access Via Exchange Api Or Fix Provided By Executing Broker'
+      doc: 'Sponsored Access via Exchange API or FIX, provided by executing broker'
     0x48:
       id: 'premium_algorithmic_trading_provider_billed_by_executing'
-      doc: 'Premium Algorithmic Trading Provider Billed By Executing Broker'
+      doc: 'Premium algorithmic trading provider, billed by executing broker'
     0x44:
       id: 'other_including_otherprovided_screen'
-      doc: 'Other Including Otherprovided Screen'
+      doc: 'Other, including other-provided screen'
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
-      doc: 'Leave Original Order Alone'
+      doc: 'Leave original order alone.'
     0x59:
       id: 'cancel_original_order_if_modification_fails'
-      doc: 'Cancel Original Order If Modification Fails'
+      doc: 'Cancel original order if modification fails.'
   base_liquidity_indicator:
     0x41:
       id: 'added_liquidity'
@@ -7358,51 +7358,51 @@ enums:
       doc: 'Removed Liquidity'
     0x43:
       id: 'market_opening_reopening_trade'
-      doc: 'Market Opening Reopening Trade'
+      doc: 'Market opening / re-opening trade'
   sub_liquidity_indicator:
     0x43:
       id: 'carried_order_indicator'
       doc: 'Carried Order Indicator'
     0x55:
       id: 'qualifying_market_turner_order'
-      doc: 'Qualifying Market Turner Order'
+      doc: 'Qualifying Market Turner order'
   quote_reject_reason:
     0x43:
       id: 'invalid_efid'
-      doc: 'Invalid Efid Clearing Firm'
+      doc: 'Invalid EFID (ClearingFirm)'
     0x44:
       id: 'invalid_wash_id'
-      doc: 'Invalid Wash Id'
+      doc: 'Invalid WashId'
     0x46:
       id: 'not_enabled_for_quotes'
-      doc: 'Not Enabled For Quotes'
+      doc: 'Not enabled for quotes'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4b:
       id: 'message_rate_threshold'
-      doc: 'Message Rate Threshold'
+      doc: 'Message rate threshold'
     0x4c:
       id: 'invalid_quote_cnt'
-      doc: 'Invalid Quote Cnt'
+      doc: 'Invalid QuoteCnt'
     0x4d:
       id: 'symbols_not_on_same_matching_engine'
-      doc: 'Symbols Not On Same Matching Engine'
+      doc: 'Symbols not on same matching engine'
     0x4f:
       id: 'invalid_manual_order_indicator'
-      doc: 'Invalid Manual Order Indicator'
+      doc: 'Invalid ManualOrderIndicator'
     0x51:
       id: 'invalid_quote_update_id'
-      doc: 'Invalid Quote Update Id'
+      doc: 'Invalid QuoteUpdateID'
     0x52:
       id: 'futures_root_does_not_match_across_quotes'
-      doc: 'Futures Root Does Not Match Across Quotes'
+      doc: 'Futures root does not match across quotes'
     0x53:
       id: 'symbol_not_found'
-      doc: 'Symbol Not Found'
+      doc: 'Symbol not found'
     0x57:
       id: 'invalid_wash_prevent_type'
-      doc: 'Invalid Wash Prevent Type'
+      doc: 'Invalid WashPreventType'
     0x61:
       id: 'admin'
       doc: 'Admin'
@@ -7411,25 +7411,25 @@ enums:
       doc: 'Invalid Capacity'
     0x65:
       id: 'invalid_oeoid'
-      doc: 'Invalid Oeoid Order Entry Operator Id'
+      doc: 'Invalid OEOID (Order Entry Operator Id)'
     0x66:
       id: 'risk_management_efid_or_custom_group_id_level'
-      doc: 'Risk Management Efid Or Custom Group Id Level'
+      doc: 'Risk management EFID or Custom Group ID level'
     0x69:
       id: 'invalid_cti_code'
-      doc: 'Invalid Cti Code'
+      doc: 'Invalid CtiCode'
     0x6d:
       id: 'invalid_wash_method'
-      doc: 'Invalid Wash Method'
+      doc: 'Invalid WashMethod'
     0x6e:
       id: 'exceedes_max_notional_value_per_order'
-      doc: 'Exceedes Max Notional Value Per Order'
+      doc: 'Exceedes max notional value per order'
     0x6f:
       id: 'invalid_open_close'
-      doc: 'Invalid Open Close'
+      doc: 'Invalid Open/Close'
     0x70:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x72:
       id: 'invalid_remove'
       doc: 'Invalid Remove'
@@ -7438,492 +7438,492 @@ enums:
       doc: 'Invalid Side'
     0x75:
       id: 'symbol_range_unreachable'
-      doc: 'Symbol Range Unreachable'
+      doc: 'Symbol range unreachable'
     0x78:
       id: 'exceedes_max_size_per_order'
-      doc: 'Exceedes Max Size Per Order'
+      doc: 'Exceedes max size per order'
     0x79:
       id: 'quote_received_by_cfe_during_replay'
-      doc: 'Quote Received By Cfe During Replay'
+      doc: 'Quote received by CFE during replay'
     0x7a:
       id: 'invalid_size_modifier'
-      doc: 'Invalid Size Modifier'
+      doc: 'Invalid SizeModifier'
   quote_result:
     0x41:
       id: 'new_quote'
       doc: 'New Quote'
     0x4c:
       id: 'modified'
-      doc: 'Modified Loss Of Priority'
+      doc: 'Modified; loss of priority'
     0x52:
       id: 'modified_x52'
-      doc: 'Modified Retains Priority Size Reduction'
+      doc: 'Modified; retains priority (size reduction)'
     0x4e:
       id: 'no_change_matches_existing_quote'
-      doc: 'No Change Matches Existing Quote'
+      doc: 'No change, matches existing quote'
     0x44:
       id: 'new_quote_but_may_remove_liquidity'
-      doc: 'New Quote But May Remove Liquidity'
+      doc: 'New Quote, but may remove liquidity'
     0x64:
       id: 'modified_but_may_remove_liquidity'
-      doc: 'Modified But May Remove Liquidity Cancellation'
+      doc: 'Modified, but may remove liquidity Cancellation:'
     0x55:
       id: 'user_cancelled'
-      doc: 'User Cancelled Zero Sizeprice Requested Rejection'
+      doc: 'User cancelled (zero size/price requested) Rejection:'
     0x61:
       id: 'admin'
       doc: 'Admin'
     0x50:
       id: 'rejected_cant_post'
-      doc: 'Rejected Cant Post'
+      doc: 'Rejected, can’t post'
     0x66:
       id: 'risk_management_efid_or_custom_group_id'
-      doc: 'Risk Management Efid Or Custom Group Id Level'
+      doc: 'Risk management EFID or Custom Group ID level'
     0x53:
       id: 'rejected_symbol_not_found'
-      doc: 'Rejected Symbol Not Found'
+      doc: 'Rejected, symbol not found'
     0x70:
       id: 'rejected_invalid_price'
-      doc: 'Rejected Invalid Price'
+      doc: 'Rejected, invalid price'
     0x73:
       id: 'risk_management_product_root_level'
-      doc: 'Risk Management Product Root Level'
+      doc: 'Risk management product root level'
     0x6e:
       id: 'risk_management_configuration_is_not'
-      doc: 'Risk Management Configuration Is Not Sufficient'
+      doc: 'Risk management configuration is not sufficient'
     0x75:
       id: 'rejected_other_reason'
-      doc: 'Rejected Other Reason Additional Reasons Indicating A Reject May Be Added In The Future With No Notice'
+      doc: 'Rejected, other reason Additional reasons indicating a reject may be added in the future with no notice.'
   order_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x42:
       id: 'unknown_maturity_date'
-      doc: 'Unknown Maturity Date'
+      doc: 'Unknown maturity date'
     0x43:
       id: 'unknown_product_name'
-      doc: 'Unknown Product Name'
+      doc: 'Unknown product name'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4d:
       id: 'liquidity_available_exceeds_order_size'
-      doc: 'Liquidity Available Exceeds Order Size'
+      doc: 'Liquidity available exceeds order size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn’t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending'
-      doc: 'Cant Modify An Order That Is Pending'
+      doc: 'can’t modify an order that is pending'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x68:
       id: 'order_persisted'
-      doc: 'Order Persisted'
+      doc: 'Order persisted'
     0x66:
       id: 'risk_management_efid_level_or_custom_group_id_level'
-      doc: 'Risk Management Efid Level Or Custom Group Id Level'
+      doc: 'Risk management EFID level or custom group ID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6e:
       id: 'risk_management_configuration_is_insufficient'
-      doc: 'Risk Management Configuration Is Insufficient'
+      doc: 'Risk management configuration is insufficient'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x73:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x79:
       id: 'order_received_by_cfe_during_replay'
-      doc: 'Order Received By Cfe During Replay'
+      doc: 'Order received by CFE during replay'
     0x7a:
       id: 'session_end'
-      doc: 'Session End'
+      doc: 'Session end'
   restatement_reason:
     0x51:
       id: 'liquidity'
       doc: 'Liquidity'
     0x57:
       id: 'wash'
-      doc: 'Wash Cfe Reserves The Right To Add New Values As Necessary Without Prior Notice'
+      doc: 'Wash CFE reserves the right to add new values as necessary without prior notice.'
   modify_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x42:
       id: 'unknown_maturity_date'
-      doc: 'Unknown Maturity Date'
+      doc: 'Unknown maturity date'
     0x43:
       id: 'unknown_product_name'
-      doc: 'Unknown Product Name'
+      doc: 'Unknown product name'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4d:
       id: 'liquidity_available_exceeds_order_size'
-      doc: 'Liquidity Available Exceeds Order Size'
+      doc: 'Liquidity available exceeds order size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn’t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending'
-      doc: 'Cant Modify An Order That Is Pending'
+      doc: 'can’t modify an order that is pending'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x68:
       id: 'order_persisted'
-      doc: 'Order Persisted'
+      doc: 'Order persisted'
     0x66:
       id: 'risk_management_efid_level_or_custom_group_id_level'
-      doc: 'Risk Management Efid Level Or Custom Group Id Level'
+      doc: 'Risk management EFID level or custom group ID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6e:
       id: 'risk_management_configuration_is_insufficient'
-      doc: 'Risk Management Configuration Is Insufficient'
+      doc: 'Risk management configuration is insufficient'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x73:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x79:
       id: 'order_received_by_cfe_during_replay'
-      doc: 'Order Received By Cfe During Replay'
+      doc: 'Order received by CFE during replay'
     0x7a:
       id: 'session_end'
-      doc: 'Session End'
+      doc: 'Session end'
   cancel_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x42:
       id: 'unknown_maturity_date'
-      doc: 'Unknown Maturity Date'
+      doc: 'Unknown maturity date'
     0x43:
       id: 'unknown_product_name'
-      doc: 'Unknown Product Name'
+      doc: 'Unknown product name'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4d:
       id: 'liquidity_available_exceeds_order_size'
-      doc: 'Liquidity Available Exceeds Order Size'
+      doc: 'Liquidity available exceeds order size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn’t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending'
-      doc: 'Cant Modify An Order That Is Pending'
+      doc: 'can’t modify an order that is pending'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x68:
       id: 'order_persisted'
-      doc: 'Order Persisted'
+      doc: 'Order persisted'
     0x66:
       id: 'risk_management_efid_level_or_custom_group_id_level'
-      doc: 'Risk Management Efid Level Or Custom Group Id Level'
+      doc: 'Risk management EFID level or custom group ID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6e:
       id: 'risk_management_configuration_is_insufficient'
-      doc: 'Risk Management Configuration Is Insufficient'
+      doc: 'Risk management configuration is insufficient'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x73:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x79:
       id: 'order_received_by_cfe_during_replay'
-      doc: 'Order Received By Cfe During Replay'
+      doc: 'Order received by CFE during replay'
     0x7a:
       id: 'session_end'
-      doc: 'Session End'
+      doc: 'Session end'
   cancel_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x42:
       id: 'unknown_maturity_date'
-      doc: 'Unknown Maturity Date'
+      doc: 'Unknown maturity date'
     0x43:
       id: 'unknown_product_name'
-      doc: 'Unknown Product Name'
+      doc: 'Unknown product name'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4d:
       id: 'liquidity_available_exceeds_order_size'
-      doc: 'Liquidity Available Exceeds Order Size'
+      doc: 'Liquidity available exceeds order size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn’t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending'
-      doc: 'Cant Modify An Order That Is Pending'
+      doc: 'can’t modify an order that is pending'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x68:
       id: 'order_persisted'
-      doc: 'Order Persisted'
+      doc: 'Order persisted'
     0x66:
       id: 'risk_management_efid_level_or_custom_group_id_level'
-      doc: 'Risk Management Efid Level Or Custom Group Id Level'
+      doc: 'Risk management EFID level or custom group ID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6e:
       id: 'risk_management_configuration_is_insufficient'
-      doc: 'Risk Management Configuration Is Insufficient'
+      doc: 'Risk management configuration is insufficient'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x73:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x79:
       id: 'order_received_by_cfe_during_replay'
-      doc: 'Order Received By Cfe During Replay'
+      doc: 'Order received by CFE during replay'
     0x7a:
       id: 'session_end'
-      doc: 'Session End'
+      doc: 'Session end'
   pending_status:
     0x4e:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     0x50:
       id: 'pending'
-      doc: 'Pending See Section Error Reference Source Not Found Error Reference Source Not Found For A Description Products For Which Pending Status Is Applicable'
+      doc: 'Pending See ‘Section Error! Reference source not found. – Error! Reference source not found.’ For a description products for which PendingStatus is applicable.'
   multileg_reporting_type:
     0x31:
       id: 'simple_instrument_execution'
-      doc: 'Simple Instrument Execution'
+      doc: 'Simple instrument execution'
     0x32:
       id: 'simple_instrument_execution_that_is_part_of_a_spread'
-      doc: 'Simple Instrument Execution That Is Part Of A Spread Execution'
+      doc: 'Simple instrument execution that is part of a Spread execution'
     0x33:
       id: 'spread_instrument_execution'
-      doc: 'Spread Instrument Execution'
+      doc: 'Spread instrument execution'
   purge_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x42:
       id: 'unknown_maturity_date'
-      doc: 'Unknown Maturity Date'
+      doc: 'Unknown maturity date'
     0x43:
       id: 'unknown_product_name'
-      doc: 'Unknown Product Name'
+      doc: 'Unknown product name'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x49:
       id: 'incorrect_data_center'
-      doc: 'Incorrect Data Center'
+      doc: 'Incorrect data center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
-      doc: 'Order Rate Threshold Exceeded'
+      doc: 'Order rate threshold exceeded'
     0x4d:
       id: 'liquidity_available_exceeds_order_size'
-      doc: 'Liquidity Available Exceeds Order Size'
+      doc: 'Liquidity available exceeds order size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran out of liquidity to execute against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID doesn’t match a known order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending'
-      doc: 'Cant Modify An Order That Is Pending'
+      doc: 'can’t modify an order that is pending'
     0x55:
       id: 'user_requested'
-      doc: 'User Requested'
+      doc: 'User requested'
     0x56:
       id: 'would_wash'
-      doc: 'Would Wash'
+      doc: 'Would wash'
     0x58:
       id: 'order_expired'
-      doc: 'Order Expired'
+      doc: 'Order expired'
     0x59:
       id: 'symbol_not_supported'
-      doc: 'Symbol Not Supported'
+      doc: 'Symbol not supported'
     0x5a:
       id: 'unforeseen_reason'
-      doc: 'Unforeseen Reason'
+      doc: 'Unforeseen reason'
     0x68:
       id: 'order_persisted'
-      doc: 'Order Persisted'
+      doc: 'Order persisted'
     0x66:
       id: 'risk_management_efid_level_or_custom_group_id_level'
-      doc: 'Risk Management Efid Level Or Custom Group Id Level'
+      doc: 'Risk management EFID level or custom group ID level'
     0x6d:
       id: 'market_access_risk_limit_exceeded'
-      doc: 'Market Access Risk Limit Exceeded'
+      doc: 'Market access risk limit exceeded'
     0x6e:
       id: 'risk_management_configuration_is_insufficient'
-      doc: 'Risk Management Configuration Is Insufficient'
+      doc: 'Risk management configuration is insufficient'
     0x6f:
       id: 'max_open_orders_count_exceeded'
-      doc: 'Max Open Orders Count Exceeded'
+      doc: 'Max open orders count exceeded'
     0x73:
       id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
+      doc: 'Risk management product level'
     0x79:
       id: 'order_received_by_cfe_during_replay'
-      doc: 'Order Received By Cfe During Replay'
+      doc: 'Order received by CFE during replay'
     0x7a:
       id: 'session_end'
-      doc: 'Session End'
+      doc: 'Session end'
   risk_reset_result:
     0x20:
       id: 'ignored'
-      doc: 'Ignored Exceeds 1 Reset Per Second'
+      doc: 'Ignored; exceeds 1 reset per second'
     0x59:
       id: 'success'
       doc: 'Success'
     0x46:
       id: 'rejected'
-      doc: 'Rejected Exceeds Firm Reset Limit'
+      doc: 'Rejected; exceeds firm reset limit'
     0x43:
       id: 'rejected_x43'
-      doc: 'Rejected Exceeds Custom Group Id Limit'
+      doc: 'Rejected; exceeds Custom Group ID limit'
     0x45:
       id: 'rejected_x45'
-      doc: 'Rejected Empty Reset Risk Field'
+      doc: 'Rejected; empty ResetRisk field'
     0x49:
       id: 'rejected_x49'
-      doc: 'Rejected Incorrect Data Center'
+      doc: 'Rejected; Incorrect data center'
     0x53:
       id: 'rejected_x53'
-      doc: 'Rejected Exceeds Product Level Reset Limit'
+      doc: 'Rejected; exceeds product level reset limit'
     0x55:
       id: 'rejected_x55'
-      doc: 'Rejected Invalid Risk Root'
+      doc: 'Rejected; invalid RiskRoot'
     0x63:
       id: 'rejected_x63'
-      doc: 'Rejected Invalid Efid Clearing Firm'
+      doc: 'Rejected; invalid EFID/ClearingFirm'
 

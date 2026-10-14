@@ -703,35 +703,35 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early closing'
   option_type:
     0x43:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
     0x50:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
     0x20:
       id: 'stock'
       doc: 'Stock'
@@ -744,14 +744,14 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing At 1200 Noon'
+      doc: 'WCO Early Closing at 12:00 Noon.'
   phlx_tradable:
     0x59:
       id: 'tradable'
-      doc: 'Option Is Tradable'
+      doc: 'Option is tradable'
     0x4e:
       id: 'not_tradable'
-      doc: 'Option Is Not Tradable'
+      doc: 'Option is not tradable'
   action:
     0x41:
       id: 'add'
@@ -768,21 +768,21 @@ enums:
       doc: 'Sell'
     0x2a:
       id: 'hidden'
-      doc: 'Side Is Hidden'
+      doc: 'Side is hidden'
   current_trading_state:
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in effect'
     0x54:
       id: 'phlx_trading_resumed'
-      doc: 'Phlx Trading Resumed'
+      doc: 'PHLX Trading Resumed'
   open_state:
     0x59:
       id: 'open_for_auto_execution'
-      doc: 'Open For Auto Execution'
+      doc: 'Open for auto execution'
     0x4e:
       id: 'closed_for_auto_execution'
-      doc: 'Closed For Auto Execution'
+      doc: 'Closed for auto execution'
   order_status:
     0x4f:
       id: 'open'
@@ -795,7 +795,7 @@ enums:
       doc: 'Cancelled'
     0x52:
       id: 'renotification'
-      doc: 'Renotification'
+      doc: 'Re-notification'
   order_type:
     0x4d:
       id: 'market'
@@ -815,24 +815,24 @@ enums:
       doc: 'Implied Order'
     0x20:
       id: 'na'
-      doc: 'Na'
+      doc: 'N/A'
   all_or_none:
     0x59:
       id: 'all_or_none_order'
-      doc: 'All Or None Order'
+      doc: 'All or None Order'
     0x4e:
       id: 'not_all_or_none_order'
-      doc: 'Not All Or None Order'
+      doc: 'Not All or None Order'
   time_in_force:
     0x44:
       id: 'day_order'
       doc: 'Day Order'
     0x47:
       id: 'gtc'
-      doc: 'Good Till Cancelled'
+      doc: 'Good till cancelled'
     0x49:
       id: 'ioc'
-      doc: 'Immediate Or Cancel'
+      doc: 'Immediate or Cancel'
   customer_firm_indicator:
     0x43:
       id: 'customer_order'
@@ -842,7 +842,7 @@ enums:
       doc: 'Firm Order'
     0x4d:
       id: 'onfloor_market_maker'
-      doc: 'Onfloor Market Maker'
+      doc: 'On-floor Market Maker'
     0x42:
       id: 'broker_dealer_order'
       doc: 'Broker Dealer Order'
@@ -851,17 +851,17 @@ enums:
       doc: 'Professional Order'
     0x20:
       id: 'na_for_implied_order'
-      doc: 'Na For Implied Order'
+      doc: 'N/A (For Implied Order)'
   open_close_indicator:
     0x4f:
       id: 'opens_position'
-      doc: 'Opens Position'
+      doc: 'Opens position'
     0x43:
       id: 'closes_position'
-      doc: 'Closes Position'
+      doc: 'Closes position'
     0x20:
       id: 'na'
-      doc: 'Na For Implied Order'
+      doc: 'N/A (For Implied Order)'
   debit_or_credit:
     0x44:
       id: 'net_debit'
@@ -871,24 +871,24 @@ enums:
       doc: 'Net Credit'
     0x20:
       id: 'even_or_market_order'
-      doc: 'Even Or Market Order'
+      doc: 'Even (or Market Order)'
     0x2a:
       id: 'anonymous'
       doc: 'Anonymous'
   leg_open_close_indicator:
     0x4f:
       id: 'opens_position'
-      doc: 'Opens Position'
+      doc: 'Opens position'
     0x43:
       id: 'closes_position'
-      doc: 'Closes Position'
+      doc: 'Closes position'
     0x20:
       id: 'stock_leg'
       doc: 'Stock Leg'
   auction_type:
     0x43:
       id: 'cola'
-      doc: 'Cola'
+      doc: 'COLA'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -897,7 +897,7 @@ enums:
       doc: 'Reopening'
     0x50:
       id: 'pixl'
-      doc: 'Pixl'
+      doc: 'PIXL'
     0x53:
       id: 'solicitation'
       doc: 'Solicitation'
@@ -913,7 +913,7 @@ enums:
       doc: 'Sell'
     0x2a:
       id: 'solicitation_auction'
-      doc: 'Solicitation Auction'
+      doc: 'Solicitation auction'
   message_type:
     0x53:
       id: 'system_event_message'

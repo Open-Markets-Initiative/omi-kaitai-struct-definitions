@@ -1065,222 +1065,222 @@ enums:
   cancel_on_disconnect:
     1:
       id: 'cancel_day_orders'
-      doc: 'Enable Cancel On Disconnect For Day Orders Only With Standard Exclusions'
+      doc: 'Enable cancel on disconnect for day orders only, with standard exclusions'
     2:
       id: 'cancel_all_orders'
-      doc: 'Enable Cancel On Disconnect For All Orders In The Session'
+      doc: 'Enable cancel on disconnect for all orders in the session'
   throttle_preference:
     0:
       id: 'queue_when_throttled'
-      doc: 'Queue Orders When Throttled'
+      doc: 'Queue orders when throttled'
     1:
       id: 'reject_when_throttled'
-      doc: 'Reject Orders When Throttled'
+      doc: 'Reject orders when throttled'
   self_trade_prevention:
     1:
       id: 'no_self_trade_prevention'
-      doc: 'No Self Trade Prevention'
+      doc: 'No self trade prevention'
     2:
       id: 'cancel_newest'
-      doc: 'Cancel Newest Order'
+      doc: 'Cancel newest order'
     3:
       id: 'cancel_oldest'
-      doc: 'Cancel Oldest Order'
+      doc: 'Cancel oldest order'
     4:
       id: 'cancel_both'
-      doc: 'Cancel Both Orders'
+      doc: 'Cancel both orders'
   order_priority_update_ack_subscription:
     0:
       id: 'not_subscribed'
-      doc: 'No Unsolicited Order Priority Update Or Repricing Acknowledgements'
+      doc: 'No unsolicited order priority update or repricing acknowledgements'
     1:
       id: 'order_priority_update_only'
-      doc: 'Receive Unsolicited Order Priority Update Acknowledgements'
+      doc: 'Receive unsolicited order priority update acknowledgements'
     2:
       id: 'order_priority_update_and_repricing'
-      doc: 'Receive Unsolicited Order Priority Update And Repricing Acknowledgements'
+      doc: 'Receive unsolicited order priority update and repricing acknowledgements'
   bold_designation:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable Or Do Not Change Default'
+      doc: 'Not applicable or do not change default'
   security_type:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'opt'
       doc: 'Option'
     2:
       id: 'mleg'
-      doc: 'Multileg Instrument'
+      doc: 'Multi-leg instrument'
   customer_or_firm:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'customer'
       doc: 'Customer'
     2:
       id: 'options_firm'
-      doc: 'Options Firm'
+      doc: 'Options firm'
     3:
       id: 'options_broker'
-      doc: 'Options Broker'
+      doc: 'Options broker'
     4:
       id: 'options_market_maker'
-      doc: 'Options Market Maker'
+      doc: 'Options market maker'
     5:
       id: 'options_away_market_maker'
-      doc: 'Options Away Market Maker'
+      doc: 'Options away market maker'
     6:
       id: 'prof_customer'
-      doc: 'Professional Customer'
+      doc: 'Professional customer'
   open_close_bits:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'open'
-      doc: 'Open Position'
+      doc: 'Open position'
     2:
       id: 'close'
-      doc: 'Close Position'
+      doc: 'Close position'
   sub_id_indicator:
     0:
       id: 'risk_and_stp'
-      doc: 'Use Mp Sub Id For Both Pretrade Risk Controls And Selftrade Prevention'
+      doc: 'Use MPSubID for both pre-trade risk controls and self-trade prevention'
     1:
       id: 'risk_only'
-      doc: 'Use Mp Sub Id For Pretrade Risk Controls Only Selftrade Prevention At Mpid Level'
+      doc: 'Use MPSubID for pre-trade risk controls only; self-trade prevention at MPID level'
   special_ord_type:
     0:
       id: 'none'
-      doc: 'No Special Order Type'
+      doc: 'No special order type'
     10:
       id: 'qcc'
-      doc: 'Qualified Contingent Cross'
+      doc: 'Qualified contingent cross'
     11:
       id: 'customer_to_customer_cross'
-      doc: 'Customer To Customer Cross'
+      doc: 'Customer to customer cross'
   locate_reqd_bits:
     0:
       id: 'no_locate_reqd'
-      doc: 'No Locate Required'
+      doc: 'No locate required'
   retail_indicator:
     0:
       id: 'not_retail'
-      doc: 'Not A Retail Order'
+      doc: 'Not a retail order'
   attributed_quote:
     0:
       id: 'not_attributed'
-      doc: 'Not Attributed Or Use Current Session Configuration'
+      doc: 'Not attributed or use current session configuration'
   order_capacity:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   interest_type:
     0:
       id: 'none'
-      doc: 'No Interest Type'
+      doc: 'No interest type'
   trading_session_id:
     2:
       id: 'core'
-      doc: 'Core Trading Session'
+      doc: 'Core trading session'
   time_in_force:
     1:
       id: 'day'
-      doc: 'Day Order'
+      doc: 'Day order'
     2:
       id: 'ioc'
-      doc: 'Immediate Or Cancel'
+      doc: 'Immediate or cancel'
     3:
       id: 'at_the_opening'
-      doc: 'At The Opening'
+      doc: 'At the opening'
     5:
       id: 'gtx'
-      doc: 'Good Till Crossing'
+      doc: 'Good till crossing'
     6:
       id: 'gtc'
-      doc: 'Good Till Canceled'
+      doc: 'Good till canceled'
   proactive_if_locked:
     0:
       id: 'none'
-      doc: 'No Proactive Behavior'
+      doc: 'No proactive behavior'
     1:
       id: 'proactive_route'
-      doc: 'Proactively Route Order When Locked'
+      doc: 'Proactively route order when locked'
   self_trade_type_bits:
     0:
       id: 'use_session_configuration'
-      doc: 'Use Session Configuration Selftrade Prevention Setting'
+      doc: 'Use session configuration self-trade prevention setting'
     1:
       id: 'no_self_trade_prevention'
-      doc: 'No Selftrade Prevention'
+      doc: 'No self-trade prevention'
     2:
       id: 'cancel_newest'
-      doc: 'Cancel Newest Order'
+      doc: 'Cancel newest order'
     3:
       id: 'cancel_oldest'
-      doc: 'Cancel Oldest Order'
+      doc: 'Cancel oldest order'
     4:
       id: 'cancel_both'
-      doc: 'Cancel Both Orders'
+      doc: 'Cancel both orders'
   cancel_instead_of_reprice:
     0:
       id: 'not_applicable'
-      doc: 'Follow Default Order Behavior'
+      doc: 'Follow default order behavior'
     3:
       id: 'cancel_for_any_reason'
-      doc: 'Cancel Order Instead Of Repricing For Any Reason'
+      doc: 'Cancel order instead of repricing for any reason'
     4:
       id: 'reprice_once_then_cancel'
-      doc: 'Allow One Reprice Then Cancel Instead Of Repricing'
+      doc: 'Allow one reprice, then cancel instead of repricing'
   routing_inst:
     0:
       id: 'none'
-      doc: 'No Routing Instruction'
+      doc: 'No routing instruction'
     1:
       id: 'non_routable'
-      doc: 'Nonroutable'
+      doc: 'Non-routable'
     2:
       id: 'routable'
       doc: 'Routable'
     9:
       id: 'complex_book_only'
-      doc: 'Complex Book Only Nonlegging Complex Order'
+      doc: 'Complex book only, non-legging complex order'
   extended_exec_inst:
     0:
       id: 'none'
-      doc: 'No Extended Execution Instruction'
+      doc: 'No extended execution instruction'
     8:
       id: 'imbalance_offset'
-      doc: 'Imbalance Offset'
+      doc: 'Imbalance offset'
     13:
       id: 'add_liquidity_only_non_taking'
-      doc: 'Add Liquidity Only Nontaking Alo'
+      doc: 'Add liquidity only non-taking ALO'
     17:
       id: 'complex_order_auction'
-      doc: 'Complex Order Auction'
+      doc: 'Complex order auction'
   exec_inst:
     0:
       id: 'none'
-      doc: 'No Execution Instruction'
+      doc: 'No execution instruction'
     4:
       id: 'iso'
-      doc: 'Intermarket Sweep Order'
+      doc: 'Intermarket sweep order'
   ord_type:
     1:
       id: 'market'
-      doc: 'Market Order'
+      doc: 'Market order'
     2:
       id: 'limit'
-      doc: 'Limit Order'
+      doc: 'Limit order'
     5:
       id: 'stop'
-      doc: 'Stop Order'
+      doc: 'Stop order'
     6:
       id: 'stop_limit'
-      doc: 'Stop Limit Order'
+      doc: 'Stop limit order'
   side_bits:
     1:
       id: 'buy'
@@ -1298,7 +1298,7 @@ enums:
   side:
     0:
       id: 'no_change_in_side'
-      doc: 'No Change In Side'
+      doc: 'no change in Side'
     1:
       id: 'buy'
       doc: 'Buy'
@@ -1308,23 +1308,23 @@ enums:
   locate_reqd:
     0:
       id: 'no_locate_reqd'
-      doc: 'No Locate Required'
+      doc: 'No locate required'
   self_trade_type:
     0:
       id: 'use_session_configuration'
-      doc: 'Use Session Configuration Selftrade Prevention Setting'
+      doc: 'Use session configuration self-trade prevention setting'
     1:
       id: 'no_self_trade_prevention'
-      doc: 'No Selftrade Prevention'
+      doc: 'No self-trade prevention'
     2:
       id: 'cancel_newest'
-      doc: 'Cancel Newest Order'
+      doc: 'Cancel newest order'
     3:
       id: 'cancel_oldest'
-      doc: 'Cancel Oldest Order'
+      doc: 'Cancel oldest order'
     4:
       id: 'cancel_both'
-      doc: 'Cancel Both Orders'
+      doc: 'Cancel both orders'
   quote_side:
     1:
       id: 'buy'
@@ -1335,178 +1335,178 @@ enums:
   mm_quote_type:
     0:
       id: 'standard'
-      doc: 'Standard Market Maker Quote'
+      doc: 'Standard market maker quote'
     1:
       id: 'repricing'
-      doc: 'Repricing Quote'
+      doc: 'Repricing quote'
     2:
       id: 'add_liquidity_only_non_taking'
-      doc: 'Add Liquidity Only Nontaking Quote'
+      doc: 'Add liquidity only non-taking quote'
     4:
       id: 'repricing_add_liquidity_only_non_taking'
-      doc: 'Repricing Add Liquidity Only Nontaking Quote'
+      doc: 'Repricing add liquidity only non-taking quote'
   bulk_action:
     0:
       id: 'not_applicable'
-      doc: 'No Bulk Action Specified'
+      doc: 'No bulk action specified'
     1:
       id: 'cancel_single_leg_only'
-      doc: 'Cancel Singleleg Orders Only'
+      doc: 'Cancel single-leg orders only'
     2:
       id: 'cancel_complex_only'
-      doc: 'Cancel Complex Orders Only'
+      doc: 'Cancel complex orders only'
     3:
       id: 'cancel_single_and_complex'
-      doc: 'Cancel Both Singleleg And Complex Orders'
+      doc: 'Cancel both single-leg and complex orders'
     4:
       id: 'block_and_cancel'
-      doc: 'Block Future Quotes And Cancel Existing Ones Market Maker Sessions Only'
+      doc: 'Block future quotes and cancel existing ones (Market Maker sessions only)'
     5:
       id: 'unblock'
-      doc: 'Unblock Previously Blocked Quotes Market Maker Sessions Only'
+      doc: 'Unblock previously blocked quotes (Market Maker sessions only)'
   cancel_scope:
     0:
       id: 'orders_only'
-      doc: 'Cancel Orders Only'
+      doc: 'Cancel orders only'
     1:
       id: 'quotes_only'
-      doc: 'Cancel Options Market Maker Quotes Only'
+      doc: 'Cancel options market maker quotes only'
     2:
       id: 'orders_and_quotes'
-      doc: 'Cancel Both Orders And Market Maker Quotes'
+      doc: 'Cancel both orders and market maker quotes'
   risk_user_type:
     0x45:
       id: 'entering_firm'
-      doc: 'Entering Firm Owns The Risk Control'
+      doc: 'Entering firm owns the risk control'
     0x43:
       id: 'clearing_firm'
-      doc: 'Clearing Firm Owns The Risk Control'
+      doc: 'Clearing firm owns the risk control'
     0x4f:
       id: 'options_market_maker_firm'
-      doc: 'Options Market Maker Firm Owns The Risk Control'
+      doc: 'Options market maker firm owns the risk control'
   risk_control_type:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'single_order_max_qty'
-      doc: 'Single Order Maximum Quantity'
+      doc: 'Single order maximum quantity'
     2:
       id: 'single_order_max_notional'
-      doc: 'Single Order Maximum Notional Value'
+      doc: 'Single order maximum notional value'
     3:
       id: 'gross_credit_executed'
-      doc: 'Gross Credit Executed'
+      doc: 'Gross credit executed'
     4:
       id: 'gross_credit_open'
-      doc: 'Gross Credit Open'
+      doc: 'Gross credit open'
     5:
       id: 'gross_credit_open_and_executed'
-      doc: 'Gross Credit Open Plus Executed'
+      doc: 'Gross credit open plus executed'
     6:
       id: 'maximum_duplicative_orders'
-      doc: 'Maximum Duplicative Orders'
+      doc: 'Maximum duplicative orders'
     8:
       id: 'activity_rolling_transaction'
-      doc: 'Activitybased Rolling Transaction Limit'
+      doc: 'Activity-based rolling transaction limit'
     9:
       id: 'activity_rolling_volume'
-      doc: 'Activitybased Rolling Volume Limit'
+      doc: 'Activity-based rolling volume limit'
     10:
       id: 'activity_rolling_percentage'
-      doc: 'Activitybased Rolling Percentage Limit'
+      doc: 'Activity-based rolling percentage limit'
     11:
       id: 'global_risk_mitigation_protection'
-      doc: 'Global Risk Mitigation Protection'
+      doc: 'Global risk mitigation protection'
     13:
       id: 'reject_market_orders'
-      doc: 'Reject Market Orders Except Moo And Moc'
+      doc: 'Reject market orders except MOO and MOC'
     14:
       id: 'reject_moo_and_moc'
-      doc: 'Reject Moo And Moc Orders'
+      doc: 'Reject MOO and MOC orders'
     19:
       id: 'reject_restricted_symbol'
-      doc: 'Reject Orders For Restricted Symbol'
+      doc: 'Reject orders for restricted symbol'
     26:
       id: 'limit_order_price_protection_options_single_leg'
-      doc: 'Limit Order Price Protection Options Singleleg Custom Limits'
+      doc: 'Limit order price protection options single-leg custom limits'
     27:
       id: 'limit_order_price_protection_options_complex'
-      doc: 'Limit Order Price Protection Options Complex Custom Limits'
+      doc: 'Limit order price protection options complex custom limits'
     29:
       id: 'order_rate_threshold'
-      doc: 'Order Rate Threshold Across All Symbols'
+      doc: 'Order rate threshold across all symbols'
     30:
       id: 'reject_isoioc'
-      doc: 'Reject Iso Ioc Orders'
+      doc: 'Reject ISO IOC orders'
     31:
       id: 'reject_iso_day'
-      doc: 'Reject Iso Day Orders'
+      doc: 'Reject ISO Day orders'
   risk_control_activation:
     0:
       id: 'off_field'
-      doc: 'Risk Control Turned Off'
+      doc: 'Risk control turned off'
     1:
       id: 'on_field'
-      doc: 'Risk Control Turned On'
+      doc: 'Risk control turned on'
   breach_action_request:
     0:
       id: 'not_applicable'
-      doc: 'No Breach Action'
+      doc: 'No breach action'
     1:
       id: 'notifications_only'
-      doc: 'Send Notifications Only'
+      doc: 'Send notifications only'
     2:
       id: 'cancel_and_block'
-      doc: 'Cancel Nonauction Orders And Block Further Activity'
+      doc: 'Cancel non-auction orders and block further activity'
     3:
       id: 'block_only'
-      doc: 'Block Further Activity Only'
+      doc: 'Block further activity only'
   ioc_attribution:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'include_ioc'
-      doc: 'Include Ioc Orders In Activitybased Calculations'
+      doc: 'Include IOC orders in activity-based calculations'
     2:
       id: 'exclude_ioc'
-      doc: 'Exclude Ioc Orders From Activitybased Calculations'
+      doc: 'Exclude IOC orders from activity-based calculations'
   price_scale:
     0:
       id: 'no_decimals'
-      doc: 'Value Interpreted As Integer'
+      doc: 'Value interpreted as integer'
     2:
       id: 'two_decimals'
-      doc: 'Value Interpreted With Two Decimal Places'
+      doc: 'Value interpreted with two decimal places'
   risk_action_type:
     0:
       id: 'not_applicable'
-      doc: 'No Action Specified'
+      doc: 'No action specified'
     1:
       id: 'query'
-      doc: 'Query Risk Entity For Current Risk Control Configuration Calculations And Status'
+      doc: 'Query risk entity for current risk control configuration, calculations, and status'
     2:
       id: 'kill_switch_block'
-      doc: 'Invoke Kill Switch Block Action'
+      doc: 'Invoke kill switch block action'
     3:
       id: 'kill_switch_unblock'
-      doc: 'Invoke Kill Switch Unblock Action'
+      doc: 'Invoke kill switch unblock action'
     4:
       id: 'kill_switch_cancel_auction_orders'
-      doc: 'Cancel Auction Orders Via Kill Switch'
+      doc: 'Cancel auction orders via kill switch'
     5:
       id: 'kill_switch_cancel_non_auction_orders'
-      doc: 'Cancel Nonauction Orders Via Kill Switch'
+      doc: 'Cancel non-auction orders via kill switch'
     6:
       id: 'kill_switch_cancel_gtc_orders'
-      doc: 'Cancel Goodtilcancel Orders Via Kill Switch'
+      doc: 'Cancel good-til-cancel orders via kill switch'
     7:
       id: 'approve_reinstatement'
-      doc: 'Approve Reinstatement Following A Block Breach'
+      doc: 'Approve reinstatement following a block breach'
     8:
       id: 'risk_entity_reinstated'
-      doc: 'All Reinstatement Approvals Received And Processed'
+      doc: 'All reinstatement approvals received and processed'
   leg_side:
     1:
       id: 'buy'
@@ -1527,16 +1527,16 @@ enums:
       doc: 'American Depositary Receipt'
     0x43:
       id: 'common_stock'
-      doc: 'Common Stock'
+      doc: 'Common stock'
     0x44:
       id: 'debentures'
       doc: 'Debentures'
     0x45:
       id: 'etf'
-      doc: 'Exchange Traded Fund'
+      doc: 'Exchange traded fund'
     0x46:
       id: 'foreign'
-      doc: 'Foreign Security'
+      doc: 'Foreign security'
     0x48:
       id: 'ads'
       doc: 'American Depositary Shares'
@@ -1545,31 +1545,31 @@ enums:
       doc: 'Units'
     0x4d:
       id: 'miscellaneous'
-      doc: 'Miscellaneous Others'
+      doc: 'Miscellaneous others'
     0x4c:
       id: 'index_linked_notes'
-      doc: 'Index Linked Notes'
+      doc: 'Index linked notes'
     0x4e:
       id: 'bonds'
       doc: 'Bonds'
     0x4f:
       id: 'ordinary_shares'
-      doc: 'Ordinary Shares'
+      doc: 'Ordinary shares'
     0x50:
       id: 'preferred_stock'
-      doc: 'Preferred Stock'
+      doc: 'Preferred stock'
     0x52:
       id: 'rights'
       doc: 'Rights'
     0x53:
       id: 'beneficiary_interest'
-      doc: 'Beneficiary Interest'
+      doc: 'Beneficiary interest'
     0x54:
       id: 'structured_notes'
-      doc: 'Structured Notes'
+      doc: 'Structured notes'
     0x55:
       id: 'closed_end_fund'
-      doc: 'Closed End Fund'
+      doc: 'Closed end fund'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
@@ -1582,99 +1582,99 @@ enums:
   test_symbol_indicator:
     0:
       id: 'production'
-      doc: 'Production Symbol'
+      doc: 'Production symbol'
     1:
       id: 'test'
-      doc: 'Test Symbol'
+      doc: 'Test symbol'
   put_or_call:
     0:
       id: 'put'
-      doc: 'Put Option'
+      doc: 'Put option'
     1:
       id: 'call'
-      doc: 'Call Option'
+      doc: 'Call option'
   series_type:
     0:
       id: 'standard'
-      doc: 'Standard Option Series'
+      doc: 'Standard option series'
   closing_only_indicator:
     0:
       id: 'standard_series'
-      doc: 'Standard Series'
+      doc: 'Standard series'
     1:
       id: 'closing_only_series'
-      doc: 'Closingonly Series'
+      doc: 'Closing-only series'
   mpid_status:
     1:
       id: 'active'
-      doc: 'Mpid Is Active'
+      doc: 'MPID is active'
     2:
       id: 'inactive'
-      doc: 'Mpid Is Inactive'
+      doc: 'MPID is inactive'
     3:
       id: 'prospect'
-      doc: 'Mpid Is In Prospect Status'
+      doc: 'MPID is in prospect status'
   mm_type:
     1:
       id: 'nyse_arca_options_lead_market_maker'
-      doc: 'Nyse Arca Options Lead Market Maker'
+      doc: 'NYSE Arca Options Lead Market Maker'
     2:
       id: 'nyse_arca_options_market_maker'
-      doc: 'Nyse Arca Options Market Maker'
+      doc: 'NYSE Arca Options Market Maker'
   appointment_status:
     0:
       id: 'not_appointed'
-      doc: 'Not Appointed For The Underlying Symbol'
+      doc: 'Not appointed for the underlying symbol'
     1:
       id: 'appointed'
-      doc: 'Appointed For The Underlying Symbol'
+      doc: 'Appointed for the underlying symbol'
   user_session_type:
     1:
       id: 'customer'
-      doc: 'Customer Andor Equities Market Maker Session'
+      doc: 'Customer and/or Equities Market Maker session'
     2:
       id: 'service_bureau'
-      doc: 'Service Bureau Session'
+      doc: 'Service Bureau session'
     4:
       id: 'options_market_maker'
-      doc: 'Options Market Maker Session'
+      doc: 'Options Market Maker session'
     12:
       id: 'risk_admin'
-      doc: 'Risk Administrator Session'
+      doc: 'Risk Administrator session'
   user_session_status:
     1:
       id: 'active'
-      doc: 'Permission To Open Readwrite Streams'
+      doc: 'Permission to open read/write streams'
     2:
       id: 'inactive'
-      doc: 'Permission To Open Readonly Streams'
+      doc: 'Permission to open read-only streams'
     3:
       id: 'prospect'
-      doc: 'Prospect Status With Readonly Access'
+      doc: 'Prospect status with read-only access'
   symbol_eligibility:
     1:
       id: 'all_symbols'
-      doc: 'Production And Test Symbols Allowed'
+      doc: 'Production and Test symbols allowed'
     2:
       id: 'test_symbols_only'
-      doc: 'Only Test Symbols Allowed'
+      doc: 'Only Test symbols allowed'
   ack_status:
     0:
       id: 'unsolicited'
-      doc: 'Startofday Or Unsolicited Acknowledgement'
+      doc: 'Start-of-day or unsolicited acknowledgement'
     1:
       id: 'user_request_valid'
-      doc: 'User Request Accepted'
+      doc: 'User request accepted'
     2:
       id: 'user_request_invalid'
-      doc: 'User Request Rejected'
+      doc: 'User request rejected'
   working_away_from_display:
     0:
       id: 'equal_to_display_price'
-      doc: 'Working Price Equals Display Price'
+      doc: 'Working price equals display price'
     1:
       id: 'away_from_display_price'
-      doc: 'Working Price Differs From Display Price'
+      doc: 'Working price differs from display price'
   reason_code:
     0:
       id: 'ok'
@@ -2600,64 +2600,64 @@ enums:
   ack_type:
     1:
       id: 'new_interest'
-      doc: 'New Interest Acknowledgement'
+      doc: 'New Interest acknowledgement'
     2:
       id: 'order_priority_update_new_order_id'
-      doc: 'Order Priority Update With New Order Id'
+      doc: 'Order priority update with new OrderID'
     3:
       id: 'order_priority_update_same_order_id'
-      doc: 'Order Priority Update With Same Order Id'
+      doc: 'Order priority update with same OrderID'
     4:
       id: 'bulk_cancel_ack'
-      doc: 'Bulk Cancel Acknowledgement'
+      doc: 'Bulk cancel acknowledgement'
     5:
       id: 'pending_cancel'
-      doc: 'Cancel Request Is Pending'
+      doc: 'Cancel request is pending'
     6:
       id: 'pending_replace'
-      doc: 'Cancel Replace Request Is Pending'
+      doc: 'Cancel/Replace request is pending'
     7:
       id: 'pending_modify'
-      doc: 'Modify Request Is Pending'
+      doc: 'Modify request is pending'
     8:
       id: 'replaced'
-      doc: 'Order Successfully Replaced'
+      doc: 'Order successfully replaced'
     9:
       id: 'modified'
-      doc: 'Order Successfully Modified'
+      doc: 'Order successfully modified'
     11:
       id: 'canceled'
-      doc: 'Order Canceled'
+      doc: 'Order canceled'
     12:
       id: 'done_for_day'
-      doc: 'Order Done For Day'
+      doc: 'Order done for day'
     17:
       id: 'gtc_renewal_or_restatement'
-      doc: 'Gtc Renewal Or Restatement'
+      doc: 'GTC renewal or restatement'
     18:
       id: 'individual_market_maker_quote_reject'
-      doc: 'Individual Market Maker Quote Reject'
+      doc: 'individual Market Maker quote Reject'
   throttled:
     0:
       id: 'not_throttled'
-      doc: 'Inbound Message Was Not Throttled'
+      doc: 'Inbound message was not throttled'
     1:
       id: 'throttled'
-      doc: 'Inbound Message Was Throttled'
+      doc: 'Inbound message was throttled'
   multileg_reporting_type:
     1:
       id: 'single_leg_security'
-      doc: 'Singleleg Security'
+      doc: 'Single-leg security'
     2:
       id: 'individual_leg_of_multi_leg_security'
-      doc: 'Individual Leg Of A Multileg Security'
+      doc: 'Individual leg of a multi-leg security'
     3:
       id: 'multi_leg_security'
-      doc: 'Multileg Security'
+      doc: 'Multi-leg security'
   participant_type:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   contra_open_close:
     0:
       id: 'not_applicable'
@@ -2689,17 +2689,17 @@ enums:
       doc: 'Away Market Maker'
     6:
       id: 'prof_customer'
-      doc: 'Prof Customer'
+      doc: 'Prof customer'
   contra_cross_type:
     0:
       id: 'not_applicable'
       doc: 'Not Applicable'
     10:
       id: 'qcc'
-      doc: 'Qcc'
+      doc: 'QCC'
     11:
       id: 'customer_to_customer_cross'
-      doc: 'Customer To Customer Cross'
+      doc: 'Customer to Customer Cross'
   contra_covered_or_uncovered:
     0:
       id: 'not_applicable'
@@ -2723,13 +2723,13 @@ enums:
   open_close:
     0:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     1:
       id: 'open'
-      doc: 'Open Position'
+      doc: 'Open position'
     2:
       id: 'close'
-      doc: 'Close Position'
+      doc: 'Close position'
   bust_correct_indicator:
     0:
       id: 'trade_bust'
@@ -2771,30 +2771,30 @@ enums:
       doc: 'Notifications Only'
     2:
       id: 'cancel_non_auction_orders_and_block'
-      doc: 'Cancel Non Auction Orders And Block'
+      doc: 'Cancel Non-Auction Orders and Block'
     3:
       id: 'block'
       doc: 'Block'
   blocked_by_breach_indicator:
     0:
       id: 'not_blocked_by_breach'
-      doc: 'Not Blocked By Breach'
+      doc: 'Not Blocked by Breach'
     1:
       id: 'blocked_by_breach'
-      doc: 'Blocked By Breach'
+      doc: 'Blocked by Breach'
     2:
       id: 'blocked_by_arbitrage_check'
-      doc: 'Blocked By Arbitrage Check Options Market Maker Only'
+      doc: 'Blocked by Arbitrage Check (Options Market Maker only)'
     3:
       id: 'blocked_by_intrinsic_value_check'
-      doc: 'Blocked By Intrinsic Value Check Options Market Maker Only'
+      doc: 'Blocked by Intrinsic Value Check (Options Market Maker only)'
   blocked_by_kill_switch_indicator:
     0:
       id: 'not_blocked_by_kill_switch'
-      doc: 'Not Blocked By Kill Switch'
+      doc: 'Not Blocked by Kill Switch'
     1:
       id: 'blocked_by_kill_switch'
-      doc: 'Blocked By Kill Switch'
+      doc: 'Blocked by Kill Switch'
   reinstatement_required_by_self:
     0:
       id: 'not_required'

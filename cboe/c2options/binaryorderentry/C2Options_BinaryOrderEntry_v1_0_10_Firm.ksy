@@ -125,54 +125,54 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Exec Inst'
+        doc: 'ExecInst'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force'
+        doc: 'TimeInForce'
       - id: min_qty
         type: u4
-        doc: 'Minimum Fill Quantity For Ioc Orders Which Only Interact With Liquidity'
+        doc: 'Minimum fill quantity for IOC orders which only interact with liquidity'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: routing_inst
         type: str
         size: 4
@@ -182,38 +182,38 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Indicator'
+        doc: 'DisplayIndicator'
       - id: prevent_match
         type: prevent_match
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC). Nanoseconds since Unix epoch'
       - id: maturity_date
         type: u4
-        doc: 'When Sending Cboe Native Symbology Set Maturity Date To Zero'
+        doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
-        doc: 'Strike Price For Option. Implied decimal with scale 1e-4'
+        doc: 'Strike Price for option. Implied decimal with scale 1e-4'
       - id: put_or_call
         type: u1
         enum: put_or_call
-        doc: 'When Sending Cboe Native Symbology Set Put Or Call To Ascii Nul 0 X 00'
+        doc: 'When sending Cboe native symbology, set PutOrCall to ASCII NUL (0x00)'
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: target_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'A Valid Parent Id Of The Directed Market Maker'
+        doc: 'A valid Parent ID of the Directed Market Maker'
       - id: session_eligibility
         type: str
         size: 1
@@ -222,13 +222,13 @@ types:
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        doc: 'Allows For An Order To Be Attributed To A Firms Executing Broker Id In Cboe Market Data Feeds'
+        doc: 'Allows for an order to be attributed to a firm''s Executing Broker ID in Cboe market data feeds'
       - id: display_range
         type: u4
-        doc: 'Used For Random Replenishment Of Reserve Orders'
+        doc: 'Used for random replenishment of reserve orders'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: rout_strategy
         type: str
         size: 6
@@ -238,82 +238,82 @@ types:
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Route Delivery Method'
+        doc: 'RouteDeliveryMethod'
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Used To Specify The Designated Away Venue'
+        doc: 'Used to specify the designated away venue'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: clearing_optional_data
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Clearing Optional Data'
+        doc: 'Clearing optional data'
       - id: client_id_attr
         type: str
         size: 4
         encoding: ASCII
-        doc: 'User Defined Identifier For Quote Attribution'
+        doc: 'User defined identifier for quote attribution'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifies The Frequent Trader Program In Which The Order Is Participating'
+        doc: 'Identifies the frequent trader program in which the order is participating'
       - id: compression
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Order Is A Compression Trade'
+        doc: 'Order is a compression trade'
       - id: floor_destination
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Specifies A Default Par Workstation Ex'
+        doc: 'Specifies a default PAR workstation (ex'
       - id: floor_routing_inst
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Floor Routing Inst'
+        doc: 'FloorRoutingInst'
       - id: order_origin
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Floor Acronym Of Market Maker On Whose Behalf This Order Is Being'
+        doc: 'Floor acronym of Market Maker on whose behalf this order is being'
       - id: order_router_subsidy
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Order Router Subsidy Eligibility'
+        doc: 'Order router subsidy eligibility'
       - id: price_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Price Type'
+        doc: 'PriceType'
       - id: held
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Indicates If Order Should Be Designated As Held Upon Order Entry'
+        doc: 'Indicates if order should be designated as ''Held'' upon order entry'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   prevent_match:
     seq:
       - id: mtp_modifier
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: unique_id_level
         type: str
         size: 1
@@ -330,54 +330,54 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Exec Inst'
+        doc: 'ExecInst'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force'
+        doc: 'TimeInForce'
       - id: min_qty
         type: u4
-        doc: 'Minimum Fill Quantity For Ioc Orders Which Only Interact With Liquidity'
+        doc: 'Minimum fill quantity for IOC orders which only interact with liquidity'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: routing_inst
         type: str
         size: 4
@@ -387,20 +387,20 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: display_indicator
         type: u1
         enum: display_indicator
-        doc: 'Display Indicator'
+        doc: 'DisplayIndicator'
       - id: prevent_match
         type: prevent_match
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: session_eligibility
         type: str
         size: 1
@@ -409,7 +409,7 @@ types:
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        doc: 'Allows For An Order To Be Attributed To A Firms Executing Broker Id In Cboe Market Data Feeds'
+        doc: 'Allows for an order to be attributed to a firm''s Executing Broker ID in Cboe market data feeds'
       - id: rout_strategy
         type: str
         size: 6
@@ -418,39 +418,39 @@ types:
       - id: ex_destination
         type: u1
         enum: ex_destination
-        doc: 'Used To Specify The Designated Away Venue'
+        doc: 'Used to specify the designated away venue'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifies The Frequent Trader Program In Which The Order Is Participating'
+        doc: 'Identifies the frequent trader program in which the order is participating'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   new_complex_instrument_message:
     seq:
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_complex_leg
         type: u1
-        doc: 'Number Of Leg Repeating Groups In The Message'
+        doc: 'Number of leg repeating groups in the message'
       - id: complex_leg
         type: complex_leg
         repeat: expr
@@ -461,21 +461,21 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: maturity_date
         type: u4
-        doc: 'When Sending Cboe Native Symbology Set Maturity Date To Zero'
+        doc: 'When sending Cboe native symbology, set MaturityDate to zero'
       - id: strike_price
         type: decimal_s8_4
-        doc: 'Strike Price For Option. Implied decimal with scale 1e-4'
+        doc: 'Strike Price for option. Implied decimal with scale 1e-4'
       - id: cfi_code
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Cfi Code For Leg'
+        doc: 'CFI Code for leg'
       - id: ratio_qty
         type: u4
-        doc: 'Integer Ratio Of A Complex Leg With Respect To The Other Legs Of A'
+        doc: 'Integer ratio of a complex leg with respect to the other legs of a'
       - id: side
         type: u1
         enum: side
@@ -486,48 +486,48 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Exec Inst'
+        doc: 'ExecInst'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force'
+        doc: 'TimeInForce'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: routing_inst
         type: str
         size: 4
@@ -537,58 +537,58 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: prevent_match
         type: prevent_match
       - id: expire_time
         type: nanosecond_timestamp
-        doc: 'Required For Time In Force 6 Orders Specifies The Datetime In Utc. Nanoseconds since Unix epoch'
+        doc: 'Required for TimeInForce = 6 orders, specifies the date-time (in UTC). Nanoseconds since Unix epoch'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: target_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'A Valid Parent Id Of The Directed Market Maker'
+        doc: 'A valid Parent ID of the Directed Market Maker'
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        doc: 'Allows For An Order To Be Attributed To A Firms Executing Broker Id In Cboe Market Data Feeds'
+        doc: 'Allows for an order to be attributed to a firm''s Executing Broker ID in Cboe market data feeds'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: drill_thru_protection
         type: decimal_s8_4
-        doc: 'Amount Sender Is Willing To Trade Through The Snbbo. Implied decimal with scale 1e-4'
+        doc: 'Amount sender is willing to trade through the SNBBO. Implied decimal with scale 1e-4'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: equity_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Mpid Used To Clear The Equity Leg Being Cleared Via The Exchange'
+        doc: 'MPID used to clear the equity leg being cleared via the Exchange'
       - id: clearing_optional_data
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Clearing Optional Data'
+        doc: 'Clearing optional data'
       - id: client_id_attr
         type: str
         size: 4
         encoding: ASCII
-        doc: 'User Defined Identifier For Quote Attribution'
+        doc: 'User defined identifier for quote attribution'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifies The Frequent Trader Program In Which The Order Is Participating'
+        doc: 'Identifies the frequent trader program in which the order is participating'
       - id: session_eligibility
         type: str
         size: 1
@@ -596,128 +596,128 @@ types:
         doc: 'Session Eligibility'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: display_range
         type: u4
-        doc: 'Used For Random Replenishment Of Reserve Orders'
+        doc: 'Used for random replenishment of reserve orders'
       - id: combo_order
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Declare The Order As A Combo'
+        doc: 'Declare the order as a Combo'
       - id: compression
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Order Is A Compression Trade'
+        doc: 'Order is a compression trade'
       - id: equity_ex_destination
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Valid When An Equity Symbol Is Present In The Complex Instrument'
+        doc: 'Valid when an equity symbol is present in the complex instrument'
       - id: equity_leg_short_sell
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Equity Leg Short Sell'
+        doc: 'EquityLegShortSell'
       - id: floor_destination
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Specifies A Default Par Workstation Ex'
+        doc: 'Specifies a default PAR workstation (ex'
       - id: floor_routing_inst
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Floor Routing Inst'
+        doc: 'FloorRoutingInst'
       - id: order_origin
         type: str
         size: 3
         encoding: ASCII
-        doc: 'Floor Acronym Of Market Maker On Whose Behalf This Order Is Being'
+        doc: 'Floor acronym of Market Maker on whose behalf this order is being'
       - id: order_router_subsidy
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Order Router Subsidy Eligibility'
+        doc: 'Order router subsidy eligibility'
       - id: price_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Price Type'
+        doc: 'PriceType'
       - id: strategy_id
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Used To Declare When A Strategy Is Used'
+        doc: 'Used to declare when a strategy is used'
       - id: tied_hedge
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Order Is A Tied Hedge'
+        doc: 'Order is a tied hedge'
       - id: held
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Indicates If Order Should Be Designated As Held Upon Order Entry'
+        doc: 'Indicates if order should be designated as ''Held'' upon order entry'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_leg_position_effect
         type: u1
-        doc: 'Number Of Leg Repeating Groups In The Message'
+        doc: 'Number of leg repeating groups in the message'
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
-        doc: 'Indicates Status Of Member Position In The Option Leg Of A Complex Order'
+        doc: 'Indicates status of member position in the option leg of a complex order'
   new_complex_order_short_message:
     seq:
       - id: cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: side
         type: u1
         enum: side
         doc: 'Side'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        doc: 'Exec Inst'
+        doc: 'ExecInst'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: time_in_force
         type: u1
         enum: time_in_force
-        doc: 'Time In Force'
+        doc: 'TimeInForce'
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol'
+        doc: 'Entire Cboe format symbol'
       - id: capacity
         type: u1
         enum: capacity
-        doc: 'The Capacity Of The Order'
+        doc: 'The capacity of the order'
       - id: routing_inst
         type: str
         size: 4
@@ -727,38 +727,38 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: prevent_match
         type: prevent_match
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: target_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'A Valid Parent Id Of The Directed Market Maker'
+        doc: 'A valid Parent ID of the Directed Market Maker'
       - id: auction_id
         type: u8
-        doc: 'Auction Order Identifier Supplied By Cboe'
+        doc: 'Auction order identifier supplied by Cboe'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: equity_party_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Mpid Used To Clear The Equity Leg Being Cleared Via The Exchange'
+        doc: 'MPID used to clear the equity leg being cleared via the Exchange'
       - id: frequent_trader_id
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Identifies The Frequent Trader Program In Which The Order Is Participating'
+        doc: 'Identifies the frequent trader program in which the order is participating'
       - id: session_eligibility
         type: str
         size: 1
@@ -766,84 +766,84 @@ types:
         doc: 'Session Eligibility'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: floor_destination
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Specifies A Default Par Workstation Ex'
+        doc: 'Specifies a default PAR workstation (ex'
       - id: floor_routing_inst
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Floor Routing Inst'
+        doc: 'FloorRoutingInst'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_leg_position_effect
         type: u1
-        doc: 'Number Of Leg Repeating Groups In The Message'
+        doc: 'Number of leg repeating groups in the message'
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
-        doc: 'Indicates Status Of Member Position In The Option Leg Of A Complex Order'
+        doc: 'Indicates status of member position in the option leg of a complex order'
   cancel_order_message:
     seq:
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Orig Cl Ord Id'
+        doc: 'OrigClOrdID'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   mass_cancel_order_message:
     seq:
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: risk_root
         type: str
         size: 6
         encoding: ASCII
-        doc: 'The Underlying Symbol'
+        doc: 'The underlying symbol'
       - id: mass_cancel_inst
         type: mass_cancel_inst
       - id: send_time
         type: nanosecond_timestamp
-        doc: 'Gmt Timestamp When The Mass Cancel Or Purge Was Sent By The Market Maker To The Exchange. Nanoseconds since Unix epoch'
+        doc: 'GMT timestamp when the mass cancel or purge was sent by the Market Maker to the Exchange. Nanoseconds since Unix epoch'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   mass_cancel_inst:
     seq:
       - id: clearing_firm_filter
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Clearing Firm Filter'
+        doc: 'Clearing firm filter'
       - id: acknowledgement_style
         type: str
         size: 1
@@ -858,7 +858,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Instrument Type Filter'
+        doc: 'Instrument type filter'
       - id: gtc_order_filter
         type: str
         size: 1
@@ -875,83 +875,83 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Id Chosen By The Client'
+        doc: 'ID chosen by the client'
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Orig Cl Ord Id'
+        doc: 'OrigClOrdID'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: ord_type
         type: u1
         enum: ord_type
-        doc: 'Ord Type'
+        doc: 'OrdType'
       - id: max_floor
         type: u4
-        doc: 'Portion Of Order Qty To Display'
+        doc: 'Portion of OrderQty to display'
       - id: stop_px
         type: decimal_s8_4
-        doc: 'Stop Price. Implied decimal with scale 1e-4'
+        doc: 'Stop price. Implied decimal with scale 1e-4'
       - id: cancel_orig_on_reject
         type: u1
         enum: cancel_orig_on_reject
-        doc: 'Indicates Handling Of Original Order On Failure To Modify'
+        doc: 'Indicates handling of original order on failure to modify'
       - id: reserved
         size: 41
         doc: 'Reserved'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   quote_update_message:
     seq:
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: cmta_number
         type: u4
-        doc: 'Cmta Number Of The Firm That Will Clear The Trade'
+        doc: 'CMTA Number of the firm that will clear the trade'
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Reflected Back On Execution Reports Associated With This Order'
+        doc: 'Reflected back on execution reports associated with this order'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: send_time
         type: nanosecond_timestamp
-        doc: 'Gmt Timestamp When The Mass Cancel Or Purge Was Sent By The Market Maker To The Exchange. Nanoseconds since Unix epoch'
+        doc: 'GMT timestamp when the mass cancel or purge was sent by the Market Maker to the Exchange. Nanoseconds since Unix epoch'
       - id: posting_instruction
         type: u1
         enum: posting_instruction
-        doc: 'Posting Instruction'
+        doc: 'PostingInstruction'
       - id: session_eligibility
         type: str
         size: 1
@@ -960,13 +960,13 @@ types:
       - id: size_modifier
         type: u1
         enum: size_modifier
-        doc: 'Controls The Behavior Of The Quote Order Qty Field. Nullable, New Quote Size = 0'
+        doc: 'Controls the behavior of the quote OrderQty field. Nullable, New Quote Size = 0'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_quote
         type: u1
-        doc: 'Number Of Quotes In The Message'
+        doc: 'Number of quotes in the message'
       - id: quote
         type: quote
         repeat: expr
@@ -977,7 +977,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol For A Quote Update'
+        doc: 'Entire Cboe format symbol for a quote update'
       - id: side
         type: u1
         enum: side
@@ -985,43 +985,43 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: price
         type: decimal_s8_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: u4
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   quote_update_short_message:
     seq:
       - id: quote_update_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'Id Chosen By The Member'
+        doc: 'ID chosen by the member'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Corresponds To On Behalf Of Sub Id 116 And Clearing Account 440 In'
+        doc: 'Corresponds to OnBehalfOfSubID (116) and ClearingAccount (440) in'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: send_time
         type: nanosecond_timestamp
-        doc: 'Gmt Timestamp When The Mass Cancel Or Purge Was Sent By The Market Maker To The Exchange. Nanoseconds since Unix epoch'
+        doc: 'GMT timestamp when the mass cancel or purge was sent by the Market Maker to the Exchange. Nanoseconds since Unix epoch'
       - id: posting_instruction
         type: u1
         enum: posting_instruction
-        doc: 'Posting Instruction'
+        doc: 'PostingInstruction'
       - id: session_eligibility
         type: str
         size: 1
@@ -1030,13 +1030,13 @@ types:
       - id: size_modifier
         type: u1
         enum: size_modifier
-        doc: 'Controls The Behavior Of The Quote Order Qty Field. Nullable, New Quote Size = 0'
+        doc: 'Controls the behavior of the quote OrderQty field. Nullable, New Quote Size = 0'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_quote_short
         type: u1
-        doc: 'Number Of Quotes In The Message'
+        doc: 'Number of quotes in the message'
       - id: quote_short
         type: quote_short
         repeat: expr
@@ -1047,7 +1047,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Entire Cboe Format Symbol For A Quote Update'
+        doc: 'Entire Cboe format symbol for a quote update'
       - id: side
         type: u1
         enum: side
@@ -1055,83 +1055,83 @@ types:
       - id: open_close
         type: u1
         enum: open_close
-        doc: 'Indicates Status Of Member Position In The Option'
+        doc: 'Indicates status of member position in the option'
       - id: price_short
         type: decimal_s4_4
-        doc: 'Limit Price. Implied decimal with scale 1e-4'
+        doc: 'Limit price. Implied decimal with scale 1e-4'
       - id: order_qty_short
         type: u2
-        doc: 'Order Quantity'
+        doc: 'Order quantity'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   purge_orders_message:
     seq:
       - id: mass_cancel_id
         type: str
         size: 20
         encoding: ASCII
-        doc: 'If The Populated Value Ends In A Space The Message Will Be Rejected'
+        doc: 'If the populated value ends in a space the message will be rejected'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: routing_firm_id
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Used To Optionally Convey The Routing Firm Of The Order'
+        doc: 'Used to optionally convey the routing firm of the order'
       - id: risk_root
         type: str
         size: 6
         encoding: ASCII
-        doc: 'The Underlying Symbol'
+        doc: 'The underlying symbol'
       - id: mass_cancel_inst
         type: mass_cancel_inst
       - id: send_time
         type: nanosecond_timestamp
-        doc: 'Gmt Timestamp When The Mass Cancel Or Purge Was Sent By The Market Maker To The Exchange. Nanoseconds since Unix epoch'
+        doc: 'GMT timestamp when the mass cancel or purge was sent by the Market Maker to the Exchange. Nanoseconds since Unix epoch'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
       - id: num_custom_group_id
         type: u1
-        doc: 'Number Of Custom Group Id Fields In The Message'
+        doc: 'Number of CustomGroupID fields in the message'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   reset_risk_message:
     seq:
       - id: risk_status_id
         type: str
         size: 16
         encoding: ASCII
-        doc: 'User Defined Identifier Of A Reset Risk Message'
+        doc: 'User defined identifier of a Reset Risk message'
       - id: risk_reset
         type: str
         size: 8
         encoding: ASCII
-        doc: 'For Use By Customers Using Cboes Risk Management Tools To Reset Or Release Efid Group Efid Risk Root Or Custom Group Id Level Lockout Conditions Resulting From Risk Profile Trips Or Selfimposed Lockouts Issued Via Cancel Orderor Purge Orders Messages'
+        doc: 'For use by customers using Cboe''s Risk Management tools to reset or release EFID Group, EFID, Risk Root, or Custom Group ID level lockout conditions resulting from risk profile trips or self-imposed lockouts issued via Cancel Orderor Purge Orders messages'
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Efid That Will Clear The Trade'
+        doc: 'EFID that will clear the trade'
       - id: risk_root
         type: str
         size: 6
         encoding: ASCII
-        doc: 'The Underlying Symbol'
+        doc: 'The underlying symbol'
       - id: target_matching_unit
         type: u1
-        doc: 'Matching Unit To Which The Message Is To Be Directed'
+        doc: 'Matching unit to which the message is to be directed'
       - id: custom_group_id
         type: u2
-        doc: 'Used To Group Orders For Use In Purge Ordersmessages Where Multiple Orders Can Be Cancelled By Specifying A List Of Custom Group Ids'
+        doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
       - id: scratch_pad
         type: u2
-        doc: 'Field Ignored By Cboe Any Value Is Accepted'
+        doc: 'Field ignored by Cboe (any value is accepted)'
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1291,7 +1291,7 @@ enums:
   display_indicator:
     0x56:
       id: 'default_field'
-      doc: 'As Determined By Port Level Setting'
+      doc: 'As determined by port level setting'
     0x50:
       id: 'price_adjust'
       doc: 'Price Adjust'
@@ -1406,16 +1406,16 @@ enums:
   posting_instruction:
     0x50:
       id: 'post_only'
-      doc: 'Do Not Remove Liquidity'
+      doc: 'Do not remove liquidity'
     0x42:
       id: 'book_only'
-      doc: 'Allow Removal Of Liquidity'
+      doc: 'Allow removal of liquidity'
     0x4e:
       id: 'book_only_no_slide'
       doc: 'Book Only No Slide'
     0x52:
       id: 'post_only_no_slide'
-      doc: 'Do Not Remove Liquidity'
+      doc: 'Do not remove liquidity'
     0x49:
       id: 'book_only_ioc'
       doc: 'Book Only Ioc'

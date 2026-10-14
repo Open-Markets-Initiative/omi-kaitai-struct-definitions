@@ -185,22 +185,22 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System hours'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Start Of Market Hours'
+      doc: 'Start of Market hours'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'End Of Market Hours'
+      doc: 'End of Market hours'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
   buy_sell_indicator:
     0x42:
       id: 'buy_order'
@@ -220,25 +220,25 @@ enums:
       doc: 'Nasdaq Capital Market'
     0x4e:
       id: 'new_york_stock_exchange_nyse'
-      doc: 'New York Stock Exchange Nyse'
+      doc: 'New York Stock Exchange (NYSE)'
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x4d:
       id: 'nyse_texas'
-      doc: 'Nyse Texas'
+      doc: 'NYSE Texas'
     0x5a:
       id: 'bats_z_exchange'
-      doc: 'Bats Z Exchange'
+      doc: 'BATS Z Exchange'
     0x56:
       id: 'investors_exchange_llc'
-      doc: 'Investors Exchange Llc'
+      doc: 'Investors'' Exchange, LLC'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   financial_status_indicator:
     0x44:
       id: 'deficient'
@@ -254,68 +254,68 @@ enums:
       doc: 'Suspended'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent and Bankrupt'
     0x43:
       id: 'creations_andor_redemptions_suspended_for_exchange_traded_product'
-      doc: 'Creations Andor Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and/or Redemptions Suspended for Exchange Traded Product'
     0x4e:
       id: 'normal'
       doc: 'Normal'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   authenticity:
     0x50:
       id: 'live_production'
-      doc: 'Live Production'
+      doc: 'Live/Production'
     0x54:
       id: 'test'
       doc: 'Test'
   trading_state:
     0x48:
       id: 'halted_across_all_us_equity_markets_sr_os'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused_across_all_us_equity_markets_sr_os'
-      doc: 'Paused Across All Us Equity Markets Sr Os'
+      doc: 'Paused across all U.S. equity markets / SROs'
     0x51:
       id: 'quotation_only_period_for_cross_sro_halt_or_pause'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading_on_nasdaq'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on Nasdaq'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_place'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'reg_sho_short_sale_price_test_restriction_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect'
     0x32:
       id: 'reg_sho_short_sale_price_test_restriction_remains_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
   interest_flag:
     0x42:
       id: 'rpi_orders_available_on_the_buy_side'
-      doc: 'Rpi Orders Available On The Buy Side'
+      doc: 'RPI orders available on the buy side'
     0x53:
       id: 'rpi_orders_available_on_the_sell_side'
-      doc: 'Rpi Orders Available On The Sell Side'
+      doc: 'RPI orders available on the sell side'
     0x41:
       id: 'rpi_orders_available_on_both_sides_buy_and_sell'
-      doc: 'Rpi Orders Available On Both Sides Buy And Sell'
+      doc: 'RPI orders available on both sides (buy and sell)'
     0x4e:
       id: 'no_rpi_orders_available'
-      doc: 'No Rpi Orders Available'
+      doc: 'No RPI orders available'
   market_code:
     0x51:
       id: 'nasdaq'
@@ -325,12 +325,12 @@ enums:
       doc: 'Nasdaq Texas'
     0x58:
       id: 'psx'
-      doc: 'Psx'
+      doc: 'PSX'
   operational_halt_action:
     0x48:
       id: 'operationally_halted_on_the_identified_market'
-      doc: 'Operationally Halted On The Identified Market'
+      doc: 'Operationally Halted on the identified Market'
     0x54:
       id: 'operational_halt_has_been_lifted_and_trading_resumed'
-      doc: 'Operational Halt Has Been Lifted And Trading Resumed'
+      doc: 'Operational Halt has been lifted and Trading resumed'
 

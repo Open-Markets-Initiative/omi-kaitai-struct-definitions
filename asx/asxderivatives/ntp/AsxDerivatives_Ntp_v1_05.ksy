@@ -1194,16 +1194,16 @@ enums:
   price_method:
     0:
       id: 'net_price'
-      doc: 'Leg Ratios Are Used To Calculate The Net Price'
+      doc: 'Leg ratios are used to calculate the net price'
     2:
       id: 'yield_difference'
-      doc: 'Leg Ratios Greater Than 1 Do Not Affect The Net Price Calculation'
+      doc: 'leg ratios greater than 1 do not affect the net price calculation'
     3:
       id: 'individual'
-      doc: 'First Leg Is Fixed Price Remaining Legs Are Net Price'
+      doc: 'first leg is fixed price, remaining legs are net price'
     4:
       id: 'average_price'
-      doc: 'Legs Are Same Side Ie Bid Buys All Legs Or Ask Sells All Legs'
+      doc: 'legs are same side, i.e. bid buys all legs or ask sells all legs'
   side_leg:
     0x42:
       id: 'buy'
@@ -1213,7 +1213,7 @@ enums:
       doc: 'Sell'
     0x20:
       id: 'not_defined'
-      doc: 'Side Will Be Space Filled For The Legs Not Defined'
+      doc: 'Side will be space filled for the legs not defined'
   session_state:
     0x50:
       id: 'pre_open'
@@ -1243,40 +1243,40 @@ enums:
   trade_type:
     0x54:
       id: 'normal_trade'
-      doc: 'An Outright To Outright Trade'
+      doc: 'an outright to outright trade'
     0x74:
       id: 'normal_cross'
-      doc: 'An Outright To Outright Cross'
+      doc: 'an outright to outright cross'
     0x4c:
       id: 'auction_trade'
-      doc: 'Trade Price May Be Different Than Price Of Resting Order'
+      doc: 'Trade price may be different than price of resting order'
     0x6c:
       id: 'auction_cross'
-      doc: 'Trade Price May Be Different Than Price Of Resting Order'
+      doc: 'Trade price may be different than price of resting order'
     0x53:
       id: 'combination_to_underlying_trade'
-      doc: 'Price Is Based On The Order Price Of An Underlying Order Book Relating To Intraspread Interspread Or User Defined Combination Matching With An Outright Order'
+      doc: 'Price is based on the order price of an underlying order book relating to intra-spread, inter-spread, or user defined combination matching with an outright order'
     0x73:
       id: 'combination_to_underlying_cross'
-      doc: 'Price Is Based On The Order Price Of An Underlying Order Book Relating To Intraspread Interspread Or User Defined Combination Matching With An Outright Order'
+      doc: 'Price is based on the order price of an underlying order book relating to intra-spread, inter-spread, or user defined combination matching with an outright order'
     0x52:
       id: 'combination_to_combination_trade'
-      doc: 'Trade Price Is Based On The Current Indicative Pricing From The Underlying Order Book'
+      doc: 'Trade price is based on the current indicative pricing from the underlying order book'
     0x72:
       id: 'combination_to_combination_cross'
-      doc: 'Cross Price Is Based On The Current Indicative Pricing From The Underlying Order Book'
+      doc: 'Cross price is based on the current indicative pricing from the underlying order book'
     0x41:
       id: 'strip_to_strip_trade'
-      doc: 'Indicates An Average Price Type Combination Order Has Matched With Another Average Price Type Combination Order'
+      doc: 'Indicates an Average Price Type combination order has matched with another Average Price Type combination order'
     0x61:
       id: 'strip_to_strip_cross'
-      doc: 'Indicates An Average Price Type Combination Order Has Matched With Another Average Price Type Combination Order'
+      doc: 'Indicates an Average Price Type combination order has matched with another Average Price Type combination order'
     0x42:
       id: 'strip_to_outright_trade'
-      doc: 'Indicates An Average Price Type Combination Order Has Matched With An Outright Order'
+      doc: 'Indicates an Average Price Type combination order has matched with an outright order'
     0x62:
       id: 'strip_to_outright_cross'
-      doc: 'Indicates An Average Price Type Combination Order Has Matched With An Outright Order'
+      doc: 'Indicates an Average Price Type combination order has matched with an outright order'
   opposite_side:
     0x53:
       id: 'sell'

@@ -466,23 +466,23 @@ enums:
       doc: 'Periodic Indicative Other Securities'
     0x4b:
       id: 'realtime_quotes'
-      doc: 'Realtime Quotes'
+      doc: 'Real-time quotes'
     0x4c:
       id: 'periodic_indicative_quotes'
-      doc: 'Periodic Indicative Quotes'
+      doc: 'Periodic, indicative quotes'
   wanted_indicator:
     0x42:
       id: 'bid'
       doc: 'Bid'
     0x4e:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
     0x4f:
       id: 'offer'
       doc: 'Offer'
     0x57:
       id: 'bid_and_offer'
-      doc: 'Bid And Offer'
+      doc: 'Bid and Offer'
   unsolicited_indicator:
     0x41:
       id: 'unsolicited_ask'
@@ -495,17 +495,17 @@ enums:
       doc: 'Unsolicited Bid And Ask'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   inside_appendage_indicator:
     0x31:
       id: 'no_change_to_inside_quote'
-      doc: 'No Change To Inside Quote'
+      doc: 'No change to Inside Quote'
     0x32:
       id: 'no_inside_exists'
-      doc: 'No Inside Exists'
+      doc: 'No Inside exists'
     0x33:
       id: 'inside_quote_appendage_is_attached'
-      doc: 'Inside Quote Appendage Is Attached'
+      doc: 'Inside Quote Appendage is attached'
   inside_quote_condition:
     0x4f:
       id: 'open'
@@ -523,20 +523,20 @@ enums:
   session_identifier:
     0x41:
       id: 'all_market_sessions_or_session_independent'
-      doc: 'All Market Sessions Or Session Independent'
+      doc: 'All Market Sessions or Session Independent'
     0x55:
       id: 'us_market_session'
-      doc: 'Us Market Session'
+      doc: 'US Market Session'
   market_center_originator_id:
     0x45:
       id: 'market_center_independent'
       doc: 'Market Center Independent'
     0x55:
       id: 'otc_bulletin_board'
-      doc: 'Otc Bulletin Board'
+      doc: 'OTC Bulletin Board'
     0x51:
       id: 'nasdaq_omx_market_system'
-      doc: 'Used For Specific Market System Events Only'
+      doc: 'Used for specific Market System Events only'
   action:
     0x48:
       id: 'trading_halt'

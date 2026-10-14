@@ -57,51 +57,51 @@ types:
     seq:
       - id: version
         type: u1
-        doc: 'Cqs Binary Protocol Version'
+        doc: 'CQS binary protocol version'
       - id: block_size
         type: u2
-        doc: 'Indicate Size In Bytes Of The Entire Transmission Bloc'
+        doc: 'Indicate size in bytes of the entire transmission bloc'
       - id: block_sequence_number
         type: u4
-        doc: 'All Transmission Blocks Are Assigned A Sequential Block Sequence Number'
+        doc: 'All transmission blocks are assigned a sequential Block Sequence Number'
       - id: messages_in_block
         type: u1
-        doc: 'The Number Of Messages Contained In The Transmission Block'
+        doc: 'The number of messages contained in the transmission block'
       - id: delivery_flag
         type: u1
         enum: delivery_flag
-        doc: 'Delivery Flag Field In The Block Header Is Used To Identify All Messages Associated With A Specific Snapshot Request'
+        doc: 'Delivery Flag field in the Block Header is used to identify all messages associated with a specific Snapshot request'
       - id: last_seq_num
         type: str
         size: 1
         encoding: ASCII
-        doc: 'It Indicates The Asof Message Sequence Number For The Symbol Published On The Production Output Line'
+        doc: 'It indicates the as-of Message Sequence Number for the Symbol published on the Production Output line'
       - id: tot_pub_seq_rollover
         type: u1
-        doc: 'Indicates The Number Of Times The Sequence Number Has Previously Rolled Over For The Real Time Output Line On Which The Symbol Resides'
+        doc: 'Indicates the number of times the sequence number has previously rolled over for the Real-Time Output line on which the symbol resides'
       - id: sip_block_timestamp
         type: sip_block_timestamp
         doc: 'Sip Block Timestamp. Nanoseconds since Unix epoch'
       - id: block_checksum
         type: u2
-        doc: 'Lower 2 Bytes Of The 4 Byte Sum Of All The Bytes In The Block Excluding This Block Checksum Field'
+        doc: 'Lower 2 bytes of the 4 byte sum of all the bytes in the block, excluding this Block Checksum field'
   sip_block_timestamp:
     seq:
       - id: seconds
         type: second_timestamp
-        doc: 'Contains The Number Of Seconds From Epoch 111970000000 Utc. Seconds since Unix epoch'
+        doc: 'contains the number of seconds from Epoch 1/1/1970, 00:00:00 UTC. Seconds since Unix epoch'
       - id: nanoseconds
         type: nanosecond_offset
-        doc: 'Nanosecond Portion Of The Time. Nanoseconds since Second epoch'
+        doc: 'Nanosecond portion of the time. Nanoseconds since Second epoch'
   message_struct:
     seq:
       - id: message_length
         type: u2
-        doc: 'The Message Length Identifies The Total Message Length Inclusive Of The Message Header And Message Body'
+        doc: 'The Message Length identifies the total message length inclusive of the Message Header and Message Body'
       - id: message_category
         type: u1
         enum: message_category
-        doc: 'The Message Category Represents The Message Classification'
+        doc: 'The Message Category represents the message classification'
       - id: category_payload
         size: message_length - 3
         type:
@@ -128,237 +128,237 @@ types:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
   market_wide_circuit_breaker_decline_level_status_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: mwcb_level_1
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 7%'
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%'
       - id: mwcb_level_2
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 13%'
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%'
       - id: mwcb_level_3
         type: s8
-        doc: 'Identifies The Daily Established Drop Level Value Trigger Value Associated With Each Decline Level 20%'
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%'
       - id: reserved
         type: u1
-        doc: 'Field Is Reserved For Future Use'
+        doc: 'Field is reserved for future use'
   consolidated_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Quote'
+        doc: 'Identifies the instrument type relevant to the quote'
       - id: lower_limit_price_band
         type: decimal_u8_6
-        doc: 'It Represents The Lower Price Band Value For A Security. Implied decimal with scale 1e-6'
+        doc: 'It represents the lower price band value for a security. Implied decimal with scale 1e-6'
       - id: upper_limit_price_band
         type: decimal_u8_6
-        doc: 'It Represents The Upper Price Band Value For A Security. Implied decimal with scale 1e-6'
+        doc: 'It represents the upper price band value for a security. Implied decimal with scale 1e-6'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'The Auction Collar Reference Price Represents The Price Used By The Exchange To Establish The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'The Auction Collar Reference Price represents the price used by the exchange to establish the Auction Collar. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Upper Threshold Price Of The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest upper threshold price of the Auction Collar. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Represents The Latest Lower Threshold Price Of The Auction Collar. Implied decimal with scale 1e-6'
+        doc: 'Represents the latest lower threshold price of the Auction Collar. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Identifies The Number Of Manual Or Automatic Extensions The Applicable Auction Has Received'
+        doc: 'Identifies the number of manual or automatic extensions the applicable auction has received'
       - id: national_best_bid_participant_id
         type: u1
         enum: national_best_bid_participant_id
-        doc: 'Identifies The Participant That Submitted The Best Bid On A Consolidated Basis'
+        doc: 'Identifies the Participant that submitted the Best Bid on a consolidated basis'
       - id: national_best_bid_quote_condition
         type: u1
         enum: national_best_bid_quote_condition
-        doc: 'Identifies The Quote Condition Associated With The Best Bid Price On A Consolidated Basis'
+        doc: 'Identifies the Quote Condition associated with the Best Bid Price on a consolidated basis'
       - id: national_best_bid_price
         type: decimal_u8_6
-        doc: 'Represents The Best Bid Price On A Consolidated Basis. Implied decimal with scale 1e-6'
+        doc: 'Represents the Best Bid Price on a consolidated basis. Implied decimal with scale 1e-6'
       - id: national_best_bid_size
         type: u4
-        doc: 'Represents The Best Bid Size Associated With The Best Bid Price On A Consolidated Basis'
+        doc: 'Represents the Best Bid Size associated with the Best Bid Price on a consolidated basis'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Market Maker Identifier Of The Market Maker That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Market Maker identifier of the Market Maker that had the FINRA Best Bid (FBBO)'
       - id: national_best_offer_participant_id
         type: u1
         enum: national_best_offer_participant_id
-        doc: 'Identifies The Participant That Submitted The Best Offer On A Consolidated Basis'
+        doc: 'Identifies the Participant that submitted the Best Offer on a consolidated basis'
       - id: national_best_offer_quote_condition
         type: u1
         enum: national_best_offer_quote_condition
-        doc: 'Identifies The Quote Condition Associated With The Best Offer Price On A Consolidated Basis'
+        doc: 'Identifies the Quote Condition associated with the Best Offer Price on a consolidated basis'
       - id: national_best_offer_price
         type: decimal_u8_6
-        doc: 'Represents The Best Bid Price On A Consolidated Basis. Implied decimal with scale 1e-6'
+        doc: 'Represents the Best Bid Price on a consolidated basis. Implied decimal with scale 1e-6'
       - id: national_best_offer_size
         type: u4
-        doc: 'Represents The Best Offer Size Associated With The Best Bid Price On A Consolidated Basis'
+        doc: 'Represents the Best Offer Size associated with the Best Bid Price on a consolidated basis'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Market Maker Identifier Of The Market Maker That Had The Finra Best Offer'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Market Maker identifier of the Market Maker that had the FINRA Best Offer'
       - id: national_bbo_luld_indicator
         type: u1
         enum: national_bbo_luld_indicator
-        doc: 'Indicates The Affect That The Limit Up Limit Down Price Band Changes Have On The National Best Bid And National Best Offer'
+        doc: 'Indicates the affect that the Limit Up-Limit Down Price Band changes have on the National Best Bid and National Best Offer'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
-        doc: 'Identifies The Primary Listing Market For A Security'
+        doc: 'Identifies the Primary Listing Market for a security'
       - id: financial_status_indicator
         type: u1
         enum: financial_status_indicator
-        doc: 'Identifies The Financial Status Of The Security'
+        doc: 'Identifies the financial status of the security'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
       - id: future
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Field Is Reserved For Future Use'
+        doc: 'Field is reserved for future use'
   participant_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: quote_condition
         type: u1
         enum: quote_condition
-        doc: 'Denotes A Particular Condition Applicable To The Quote'
+        doc: 'Denotes a particular condition applicable to the quote'
       - id: bid_price
         type: decimal_u8_6
-        doc: 'Represents The Highest Price A Prospective Buyer Is Prepared To Pay At A Particular Time For A Security. Implied decimal with scale 1e-6'
+        doc: 'Represents the highest price a prospective buyer is prepared to pay at a particular time for a security. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
-        doc: 'The Bid Size Identifies The Number Of Roundlots For A Security'
+        doc: 'The Bid Size identifies the number of round-lots, for a security'
       - id: offer_price
         type: decimal_u8_6
-        doc: 'Represents The Lowest Price Acceptable To A Prospective Seller At A Particular Time For A Security. Implied decimal with scale 1e-6'
+        doc: 'Represents the lowest price acceptable to a prospective seller at a particular time for a security. Implied decimal with scale 1e-6'
       - id: offer_size
         type: u4
-        doc: 'The Offer Size Identifies The Number Of Roundlots For A Security'
+        doc: 'The Offer Size identifies the number of round-lots, for a security'
       - id: retail_interest_indicator
         type: u1
         enum: retail_interest_indicator
-        doc: 'When Retail Price Improvement Rpi Interest Is Priced Better Than The Protected Best Bid Or Offer Pbbo By A Minimum Of 0.001 An Indication Of Interest On The Bid Offer Or Both The Bid And Offer Will Identify That Interest Will Be Eligible To Interact With Incoming Retail Order Interest'
+        doc: 'When Retail Price Improvement (RPI) interest is priced better than the Protected Best Bid or Offer (PBBO) by a minimum of $0.001, an indication of interest on the Bid, Offer, or both the Bid and Offer will identify that interest will be eligible to interact with incoming Retail Order interest'
       - id: settlement_condition
         type: u1
         enum: settlement_condition
-        doc: 'Identifies The Settlement Condition For A Security'
+        doc: 'Identifies the settlement condition for a security'
       - id: market_condition
         type: u1
         enum: market_condition
-        doc: 'Identifies The Market Condition Of A Quote For A Security'
+        doc: 'Identifies the market condition of a quote for a security'
       - id: luld_indicator
         type: u1
         enum: luld_indicator
-        doc: 'Indicates The Affect The Quote Has On The Limit Up Limit Down Price Band Range'
+        doc: 'Indicates the affect the Quote has on the Limit Up-Limit Down Price Band range'
       - id: high_indication_price
         type: decimal_u8_6
-        doc: 'The High Indication Price Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be. Implied decimal with scale 1e-6'
+        doc: 'The High Indication Price represents an approximation of what the high end ‘Offer’ price of a security''s trading range may be. Implied decimal with scale 1e-6'
       - id: low_indication_price
         type: decimal_u8_6
-        doc: 'The Low Indication Price Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be. Implied decimal with scale 1e-6'
+        doc: 'The Low Indication Price represents an approximation of what the low end "Bid" price of a security''s trading range may be. Implied decimal with scale 1e-6'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
   finra_snapshot_message:
     seq:
       - id: participant_id
         type: u1
         enum: participant_id
-        doc: 'Participant Or Processor That Generated The Message'
+        doc: 'Participant or Processor that generated the message'
       - id: security_symbol
         type: str
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Security Symbol'
+        doc: 'Contains the security symbol'
       - id: finra_best_bid_quote_condition
         type: u1
         enum: finra_best_bid_quote_condition
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Price That Is The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Price that is the FINRA Best Bid (FBBO'
       - id: finra_best_bid_price
         type: decimal_u8_6
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Price That Is The Finra Best Bid Fbbo. Implied decimal with scale 1e-6'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Price that is the FINRA Best Bid (FBBO. Implied decimal with scale 1e-6'
       - id: finra_best_bid_size
         type: u4
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Size Associated With The Finra Best Bid Price That Had The Finra Best Bid'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Size associated with the FINRA Best Bid Price that had the FINRA Best Bid'
       - id: finra_best_bid_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Bid Market Maker Identifier Of The Market Maker That Had The Finra Best Bid Fbbo'
+        doc: 'Contains the FINRA ADF provided FINRA Best Bid Market Maker identifier of the Market Maker that had the FINRA Best Bid (FBBO)'
       - id: finra_best_offer_quote_condition
         type: u1
         enum: finra_best_offer_quote_condition
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Quote Condition Associated With The Best Finra Offer Price That Had The Finra Best Offer'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Quote Condition associated with the Best FINRA Offer Price that had the FINRA Best Offer'
       - id: finra_best_offer_price
         type: decimal_u8_6
-        doc: 'Contains The Finraadf Provided Best Finra Offer Price That Is The Finra Best Offer. Implied decimal with scale 1e-6'
+        doc: 'Contains the FINRAADF provided Best FINRA Offer Price that is the FINRA Best Offer. Implied decimal with scale 1e-6'
       - id: finra_best_offer_size
         type: u4
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Size Associated With The Finra Best Offer Price That Had The Finra Best Offer'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Size associated with the FINRA Best Offer Price that had the FINRA Best Offer'
       - id: finra_best_offer_market_maker_id
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Contains The Finra Adf Provided Finra Best Offer Market Maker Identifier Of The Market Maker That Had The Finra Best Offer'
+        doc: 'Contains the FINRA ADF provided FINRA Best Offer Market Maker identifier of the Market Maker that had the FINRA Best Offer'
       - id: finra_bbo_luld_indicator
         type: u1
         enum: finra_bbo_luld_indicator
-        doc: 'Indicates The Affect That The Limit Up Limit Down Price Bands Have On The Finra Best Bid And Finra Best Offer'
+        doc: 'Indicates the affect that the Limit Up-Limit Down Price Bands have on the FINRA Best Bid and FINRA Best Offer'
       - id: high_indication_price
         type: decimal_u8_6
-        doc: 'The High Indication Price Represents An Approximation Of What The High End Offer Price Of A Securitys Trading Range May Be. Implied decimal with scale 1e-6'
+        doc: 'The High Indication Price represents an approximation of what the high end ‘Offer’ price of a security''s trading range may be. Implied decimal with scale 1e-6'
       - id: low_indication_price
         type: decimal_u8_6
-        doc: 'The Low Indication Price Represents An Approximation Of What The Low End Bid Price Of A Securitys Trading Range May Be. Implied decimal with scale 1e-6'
+        doc: 'The Low Indication Price represents an approximation of what the low end "Bid" price of a security''s trading range may be. Implied decimal with scale 1e-6'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Denotes The Reason For The Trading Halt'
+        doc: 'Denotes the reason for the Trading Halt'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -442,28 +442,28 @@ enums:
       doc: 'Nyse American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x48:
       id: 'miax'
-      doc: 'Miax Pearl Exchange'
+      doc: 'MIAX Pearl Exchange'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
       doc: 'Nyse Chicago'
@@ -478,7 +478,7 @@ enums:
       doc: 'Consolidated Quotation System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x55:
       id: 'memx'
       doc: 'Members Exchange'
@@ -487,16 +487,16 @@ enums:
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   instrument_type:
     0x30:
       id: 'cta_eligible_equity'
@@ -516,28 +516,28 @@ enums:
       doc: 'Nyse American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x48:
       id: 'miax'
-      doc: 'Miax Pearl Exchange'
+      doc: 'MIAX Pearl Exchange'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
       doc: 'Nyse Chicago'
@@ -552,7 +552,7 @@ enums:
       doc: 'Consolidated Quotation System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x55:
       id: 'memx'
       doc: 'Members Exchange'
@@ -561,16 +561,16 @@ enums:
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   national_best_bid_quote_condition:
     0x20:
       id: 'quote_condition_not_applicable'
@@ -620,28 +620,28 @@ enums:
       doc: 'Nyse American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x48:
       id: 'miax'
-      doc: 'Miax Pearl Exchange'
+      doc: 'MIAX Pearl Exchange'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
       doc: 'Nyse Chicago'
@@ -656,7 +656,7 @@ enums:
       doc: 'Consolidated Quotation System'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x55:
       id: 'memx'
       doc: 'Members Exchange'
@@ -665,16 +665,16 @@ enums:
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   national_best_offer_quote_condition:
     0x20:
       id: 'quote_condition_not_applicable'
@@ -758,28 +758,28 @@ enums:
       doc: 'Nyse American'
     0x42:
       id: 'nasdaq_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'adf'
-      doc: 'Finra Alternative Display Facility'
+      doc: 'FINRA Alternative Display Facility'
     0x48:
       id: 'miax'
-      doc: 'Miax Pearl Exchange'
+      doc: 'MIAX Pearl Exchange'
     0x49:
       id: 'ise'
       doc: 'International Securities Exchange'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga Exchange'
+      doc: 'Cboe EDGA Exchange'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx Exchange'
+      doc: 'Cboe EDGX Exchange'
     0x4c:
       id: 'ltse'
-      doc: 'Long Term Stock Exchange'
+      doc: 'Long-Term Stock Exchange'
     0x4d:
       id: 'nyse_chicago'
       doc: 'Nyse Chicago'
@@ -791,7 +791,7 @@ enums:
       doc: 'Nyse Arca'
     0x54:
       id: 'nasdaq'
-      doc: 'Nasdaq Stock Market'
+      doc: 'NASDAQ Stock Market'
     0x55:
       id: 'memx'
       doc: 'Members Exchange'
@@ -800,16 +800,16 @@ enums:
       doc: 'Investors Exchange'
     0x57:
       id: 'cbsx'
-      doc: 'Cboe Stock Exchange'
+      doc: 'CBOE Stock Exchange'
     0x58:
       id: 'nasdaq_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx Exchange'
+      doc: 'Cboe BYX Exchange'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'Cboe BZX Exchange'
   financial_status_indicator:
     0x30:
       id: 'financial_status_not_applicable'
@@ -994,10 +994,10 @@ enums:
       doc: 'Limit Up Limit Down Not Applicable'
     0x41:
       id: 'bid_is_non_executable'
-      doc: 'Bid Price Above Upper Limit Price Band Bid Is Non Executable'
+      doc: 'Bid Price above Upper Limit Price Band – Bid is Non-Executable'
     0x42:
       id: 'offer_is_non_executable'
-      doc: 'Offer Price Below Lower Limit Price Band Offer Is Non Executable'
+      doc: 'Offer Price below Lower Limit Price Band - Offer is Non-Executable'
   finra_best_bid_quote_condition:
     0x20:
       id: 'quote_condition_not_applicable'
@@ -1099,5 +1099,5 @@ enums:
       doc: 'Finra Best Offer Above Upper Limit Price Band And Finra Best Offer Is Non Executable'
     0x44:
       id: 'best_bid_below_lower_limit_price_band_and_best_offer_above_upper_limit_price_band_best_bid_and_best_offer_are_non_executable_for_finra'
-      doc: 'Finra Best Bid Below Lower Limit Price Band And Finra Best Offer Above Upper Limit Price Band Finra Best Bid And Finra Best Offer Are Non Executable'
+      doc: 'FINRA Best Bid below Lower Limit Price Band and FINRA Best Offer above Upper Limit Price Band - FINRA Best Bid and FINRA Best Offer are Non-Executable'
 

@@ -190,7 +190,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price -6 implied decimals. Implied decimal with scale 1e-6'
       - id: reserved_4
         type: str
@@ -238,7 +238,7 @@ types:
         type: u4
         doc: 'Qty'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price -6 implied decimals. Implied decimal with scale 1e-6'
   order_executed_message:
     seq:
@@ -264,7 +264,7 @@ types:
         pad-right: 0x20
         doc: 'Reserved for future use'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price -6 implied decimals. Implied decimal with scale 1e-6'
   trade_message:
     seq:
@@ -293,7 +293,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price -6 implied decimals. Implied decimal with scale 1e-6'
       - id: execution_id
         type: u8
@@ -322,10 +322,10 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_u8_6:
+  decimal_s8_6:
     seq:
       - id: mantissa
-        type: u8
+        type: s8
     instances:
       real:
         value: mantissa / 1000000.0

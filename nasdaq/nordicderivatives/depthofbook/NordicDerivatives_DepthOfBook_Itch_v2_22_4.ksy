@@ -761,7 +761,7 @@ enums:
       doc: 'Repo'
     10:
       id: 'synthetic_box_leg_or_reference'
-      doc: 'Synthetic Box Leg Reference'
+      doc: 'Synthetic Box Leg/Reference'
     11:
       id: 'standard_combination'
       doc: 'Standard Combination'
@@ -779,7 +779,7 @@ enums:
       doc: 'Security Lending'
     16:
       id: 'non_deliverable_rolling_spot'
-      doc: 'Non Deliverable Rolling Spot'
+      doc: 'Non-Deliverable Rolling Spot'
     17:
       id: 'strip'
       doc: 'Strip'
@@ -814,37 +814,37 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Start of Messages. Outside of time stamp messages, the start of day message is the first message sent in any trading day'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'End of Messages. This is always the last message sent in any trading day'
   stressed_market:
     0x59:
       id: 'yes_field'
-      doc: 'Yes Stressed Market Is Active'
+      doc: 'Yes, stressed market is active'
     0x4e:
       id: 'no_field'
-      doc: 'No Stressed Market Is Not Active'
+      doc: 'No, stressed market is not active'
   exceptional_market:
     0x59:
       id: 'yes_field'
-      doc: 'Yes Exceptional Market Is Active'
+      doc: 'Yes, exceptional market is active'
     0x4e:
       id: 'no_field'
-      doc: 'No Exceptional Market Is Not Active'
+      doc: 'No, exceptional market is not active'
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order In The Quote Request Message Buy Quote Requested'
+      doc: 'Buy order; in the Quote Request Message, buy quote requested'
     0x53:
       id: 'sell'
-      doc: 'Sell Order In The Quote Request Message Sell Quote Requested'
+      doc: 'Sell order; in the Quote Request Message, sell quote requested'
     0x43:
       id: 'request_for_cross'
-      doc: 'Request For Cross Stated For The Quote Request Message Only'
+      doc: 'Request for cross, stated for the Quote Request Message only'
     0x20:
       id: 'blank'
-      doc: 'Space Set In The Trade Message For Anonymous Markets In The Quote Request Message Doublesided Quote Requested'
+      doc: 'Space: set in the Trade Message for anonymous markets; in the Quote Request Message, double-sided quote requested'
   lot_type:
     0:
       id: 'undefined'
@@ -860,19 +860,19 @@ enums:
       doc: 'Block Lot'
     4:
       id: 'all_or_none_lot'
-      doc: 'All Or None Lot'
+      doc: 'All or None Lot'
   occurred_at_cross:
     0x59:
       id: 'yes_field'
-      doc: 'Yes Trade Occurred At The Cross'
+      doc: 'Yes, trade occurred at the cross'
     0x4e:
       id: 'no_field'
-      doc: 'No Trade Occurred At Continuous Market'
+      doc: 'No, trade occurred at continuous market'
   printable:
     0x4e:
       id: 'non_printable'
-      doc: 'Nonprintable'
+      doc: 'non-printable'
     0x59:
       id: 'printable'
-      doc: 'Printable'
+      doc: 'printable'
 

@@ -415,23 +415,23 @@ enums:
       doc: 'Cboe'
     0x4f:
       id: 'one_chicago_not_supported'
-      doc: 'One Chicago Not Supported'
+      doc: 'One Chicago – Not Supported'
     0x57:
       id: 'cbsx_not_supported'
-      doc: 'Cbsx Not Supported'
+      doc: 'CBSX – Not Supported'
     0x46:
       id: 'cfecof_not_supported'
-      doc: 'Cfecof Not Supported'
+      doc: 'CFE/COF – Not Supported'
     0x32:
       id: 'cboe_2_options_not_supported'
-      doc: 'Cboe 2 Options Not Supported'
+      doc: 'Cboe2 Options – Not Supported'
   put_or_call:
     0:
       id: 'put'
-      doc: 'Put'
+      doc: 'PUT'
     1:
       id: 'call'
-      doc: 'Call'
+      doc: 'CALL'
   exercise_style:
     0:
       id: 'american'
@@ -442,10 +442,10 @@ enums:
   leg_side:
     0x42:
       id: 'buy_bid'
-      doc: 'Buy Bid'
+      doc: 'Buy (Bid)'
     0x53:
       id: 'sell_ask'
-      doc: 'Sell Ask'
+      doc: 'Sell (Ask)'
   security_trading_status:
     2:
       id: 'halted'
@@ -461,33 +461,33 @@ enums:
       doc: 'Pre Open'
     22:
       id: 'opening_rotation'
-      doc: 'Market In Opening Rotation'
+      doc: 'Market in Opening Rotation'
     23:
       id: 'fast_market'
       doc: 'Fast Market'
     24:
       id: 'strategy_market_in_opening_rotation'
-      doc: 'Strategy Market In Opening Rotation'
+      doc: 'Strategy Market in Opening Rotation'
     25:
       id: 'strategy_market_quotes_non_firm'
-      doc: 'Strategy Market Quotes Non Firm'
+      doc: 'Strategy Market Quotes Non-Firm'
     26:
       id: 'suspended'
-      doc: 'Market Suspended Quotes Are Not Firm'
+      doc: 'Market Suspended (Quotes are not firm)'
   refresh_indicator:
     0x59:
       id: 'mandatory_refresh'
-      doc: 'Mandatory Refresh By All Recipients Snapshot Must Be Processed'
+      doc: 'Mandatory refresh by all recipients. Snapshot must be processed.'
     0x4e:
       id: 'process_if_necessary'
-      doc: 'Process If Necessary'
+      doc: 'Process if necessary'
   md_entry_type:
     0x30:
       id: 'buy_bid'
-      doc: 'Buy Bid'
+      doc: 'Buy (Bid)'
     0x31:
       id: 'sell_ask'
-      doc: 'Sell Ask'
+      doc: 'Sell (Ask)'
   md_volume_type:
     0:
       id: 'total_limit'
@@ -497,21 +497,21 @@ enums:
       doc: 'Customer Limit'
     2:
       id: 'total_contingency_all_or_none'
-      doc: 'Total Contingency All Or None'
+      doc: 'Total Contingency (All or None)'
     3:
       id: 'customer_contingency_all_or_none'
-      doc: 'Customer Contingency All Or None'
+      doc: 'Customer Contingency (All or None)'
   md_update_action:
     0:
       id: 'insert'
-      doc: 'Insert New Level'
+      doc: 'Insert (New level)'
     1:
       id: 'change'
-      doc: 'Change Volume Change Of Existing Price'
+      doc: 'Change (volume change of existing price)'
     2:
       id: 'delete_field'
       doc: 'Delete'
     5:
       id: 'overlay'
-      doc: 'Overlay Price And Volume Change Of Existing Level'
+      doc: 'Overlay (price and volume change of existing level)'
 

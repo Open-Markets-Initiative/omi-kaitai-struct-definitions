@@ -12788,35 +12788,35 @@ enums:
       doc: 'Login Accepted'
     0x4e:
       id: 'not_authorized'
-      doc: 'Not Authorized Invalid User Namepassword'
+      doc: 'Not authorized (invalid user- name/password)'
     0x44:
       id: 'session_is_disabled'
-      doc: 'Session Is Disabled'
+      doc: 'Session is disabled'
     0x42:
       id: 'session_in_use'
-      doc: 'Session In Use'
+      doc: 'Session in use'
     0x53:
       id: 'invalid_session'
-      doc: 'Invalid Session'
+      doc: 'Invalid session'
     0x51:
       id: 'sequence_ahead_in_login_message'
-      doc: 'Sequence Ahead In Login Message'
+      doc: 'Sequence ahead in Login message'
     0x49:
       id: 'invalid_unit_given_in_login_message'
-      doc: 'Invalid Unit Given In Login Message'
+      doc: 'Invalid unit given in Login message'
     0x46:
       id: 'invalid_return_bitfield_in_login_message'
-      doc: 'Invalid Return Bitfield In Login Message'
+      doc: 'Invalid return bitfield in login message'
     0x4d:
       id: 'invalid_login_request_message_structure'
-      doc: 'Invalid Login Request Message Structure'
+      doc: 'Invalid Login Request message structure'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
     0x45:
       id: 'end_of_day'
-      doc: 'End Of Day'
+      doc: 'End of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'
@@ -12836,42 +12836,42 @@ enums:
       doc: 'Market'
     0x32:
       id: 'limit'
-      doc: 'Limit Default'
+      doc: 'Limit (default)'
     0x33:
       id: 'stop'
-      doc: 'Stop Options Only'
+      doc: 'Stop (Options only)'
     0x34:
       id: 'stop_limit'
-      doc: 'Stop Limit Market Implies Time In Force Of Ioc 3 Stop Stop Limit Orders Must Have Time In Force 0 Day 1 Gtc Or 6 Gtd'
+      doc: 'Stop Limit Market implies TimeInForce of IOC (3). Stop/Stop Limit orders must have TimeInForce = 0 (DAY), 1 (GTC), or 6 (GTD).'
   time_in_force:
     0x30:
       id: 'day'
       doc: 'Day'
     0x31:
       id: 'gtc'
-      doc: 'Gtc Allowed But Treated As Day'
+      doc: 'GTC (allowed, but treated as Day)'
     0x32:
       id: 'at_the_open'
-      doc: 'At The Open Complex Only'
+      doc: 'At The Open (complex only)'
     0x33:
       id: 'ioc'
-      doc: 'Ioc Portion Not Filled Immediately Is Cancelled Market Orders Are Implicitly Ioc'
+      doc: 'IOC (Portion not filled immediately is cancelled. Market orders are implicitly IOC.)'
     0x34:
       id: 'fok'
-      doc: 'Fok Supported In New Order Only Not Supported In New Complex Order'
+      doc: 'FOK (Supported in New Order only; Not supported in New Complex Order.'
     0x36:
       id: 'gtd'
-      doc: 'Gtd Expires At Earlier Of Specified Expire Time Or End Of Day'
+      doc: 'GTD (expires at earlier of specified ExpireTime or end of day)'
   capacity:
     0x41:
       id: 'agency'
-      doc: 'Agency Maps To Aotc'
+      doc: 'Agency (maps to ’AOTC’)'
     0x50:
       id: 'principal'
-      doc: 'Principal Maps To Deal'
+      doc: 'Principal (maps to ’DEAL’)'
     0x52:
       id: 'riskless_principal'
-      doc: 'Riskless Principal Maps To Mtch'
+      doc: 'Riskless Principal (maps to ’MTCH’)'
   open_close:
     0x4f:
       id: 'open'
@@ -12881,61 +12881,61 @@ enums:
       doc: 'Close'
     0x4e:
       id: 'none'
-      doc: 'None Orders With Account Type Value Of 3 House Trader Are Not Required To Specify Open Close Or May Optionally Specify A Value Of N Otherwise Orders With Orders With Account Type Value Of 1 Customer Account Must Specify Open Close'
+      doc: 'None Orders with AccountType value of 3 (House Trader) are not required to specify OpenClose or may optionally specify a value of “N”. Otherwise, orders with Orders with AccountType value of 1 (Customer Account) must specify OpenClose.'
   liquidity_provision:
     0x4e:
       id: 'not_liquidity_provision'
-      doc: 'Not Liquidity Provision Default'
+      doc: 'Not Liquidity Provision (default)'
     0x59:
       id: 'liquidity_provision'
       doc: 'Liquidity Provision'
   client_id:
     0:
       id: 'none'
-      doc: 'None No Client For This Order'
+      doc: 'NONE (No Client for this order)'
     1:
       id: 'aggr'
-      doc: 'Aggr An Aggregation Of Multiple Client Orders'
+      doc: 'AGGR (An aggregation of multiple client orders)'
     2:
       id: 'pnal'
-      doc: 'Pnal Clients Are Pending Allocation'
+      doc: 'PNAL (Clients are pending allocation)'
   order_origination:
     0x35:
       id: 'dea_indicates_dea_activity_as_deemed_by_mi_fid_ii'
-      doc: 'Dea Indicates Dea Activity As Deemed By Mi Fid Ii Is Involved In This Order'
+      doc: '(DEA). Indicates DEA activity (as deemed by MiFID II) is involved in this order.'
     0x30:
       id: 'non_dea'
-      doc: 'Non Dea Default Other Values Are Unsupported And Will Be Rejected'
+      doc: 'Non-DEA. (default) Other values are unsupported and will be rejected.'
   algorithmic_indicator:
     0x4e:
       id: 'no_algorithm_was_involved'
-      doc: 'No Algorithm Was Involved Default'
+      doc: 'No algorithm was involved (default).'
     0x59:
       id: 'algorithm_was_involved'
-      doc: 'Algorithm Was Involved Algo'
+      doc: 'Algorithm was involved (ALGO).'
   cust_order_handling_inst:
     0x59:
       id: 'electronic'
-      doc: 'Electronic Default'
+      doc: 'Electronic. (Default)'
     0x57:
       id: 'desk'
       doc: 'Desk'
     0x43:
       id: 'vendorprovided_platform_billed_by_executing_broker'
-      doc: 'Vendorprovided Platform Billed By Executing Broker For Complex'
+      doc: 'Vendor-provided Platform billed by Executing Broker (For complex)'
     0x47:
       id: 'sponsored_access_via_exchange_api_or_fix_provided_by'
-      doc: 'Sponsored Access Via Exchange Api Or Fix Provided By Executing Broker For Complex'
+      doc: 'Sponsored Access via Exchange API or FIX, provided by Executing Broker (For complex)'
     0x48:
       id: 'premium_algorithmic_trading_provider_billed_by_execut'
-      doc: 'Premium Algorithmic Trading Provider Billed By Execut Ing Broker For Complex'
+      doc: 'Premium Algorithmic Trading Provider, billed by Execut- ing Broker (For complex)'
     0x44:
       id: 'other_including_otherprovided_screen'
-      doc: 'Other Including Otherprovided Screen For Complex'
+      doc: 'Other, including other-provided screen (For complex)'
   account_type:
     0x31:
       id: 'account_is_carried_on_customer_side_of_the_books'
-      doc: 'Account Is Carried On Customer Side Of The Books'
+      doc: 'Account is carried on customer side of the books.'
     0x33:
       id: 'house_trader'
       doc: 'House Trader'
@@ -12949,7 +12949,7 @@ enums:
   auto_match:
     0x30:
       id: 'disabled'
-      doc: 'Disabled Default'
+      doc: 'Disabled (Default)'
     0x31:
       id: 'market'
       doc: 'Market'
@@ -12966,7 +12966,7 @@ enums:
   last_priority:
     0x30:
       id: 'disabled'
-      doc: 'Disabled Default'
+      doc: 'Disabled (Default)'
     0x31:
       id: 'enabled'
       doc: 'Enabled'
@@ -12979,21 +12979,21 @@ enums:
       doc: 'Close'
     0x4e:
       id: 'none'
-      doc: 'None Orders Must Specify Leg Position Effect How Ever Orders With Account Type Value Of 3 House Trader May Specify A Value Of N For Each Leg For House Trader This Repeating Group Is Only Needed If A Nonzero Value Of No Legs Is Used'
+      doc: 'None Orders must specify LegPositionEffect. How- ever, orders with AccountType value of 3 (House Trader) may specify a value of “N” for each leg. For House Trader, this repeating group is only needed if a non-zero value of NoLegs is used.'
   cancel_orig_on_reject:
     0x4e:
       id: 'leave_original_order_alone'
-      doc: 'Leave Original Order Alone'
+      doc: 'Leave original order alone.'
     0x59:
       id: 'cancel_original_order_if_modification_fails'
-      doc: 'Cancel Original Order If Modification Fails'
+      doc: 'Cancel original order if modification fails.'
   posting_instruction:
     0x50:
       id: 'post_only'
-      doc: 'Post Only Do Not Remove Liquidity'
+      doc: 'Post Only (do not remove liquidity)'
     0x42:
       id: 'book_only'
-      doc: 'Book Only Allow Removal Of Liquidity Avail Able For Market Makers Of Futures Only Note That For Options Only Post Only Is Sup Ported'
+      doc: 'Book Only (allow removal of liquidity, avail- able for Market Makers of futures only). Note that for options, only Post Only is sup- ported.'
   leg_side:
     0x31:
       id: 'buy'
@@ -13004,7 +13004,7 @@ enums:
   transaction_category:
     0x50:
       id: 'regular_trade'
-      doc: 'Regular Trade Aka Plain Vanilla Trade'
+      doc: 'Regular Trade (aka Plain-Vanilla Trade)'
     0x59:
       id: 'exchange_for_physical'
       doc: 'Exchange For Physical'
@@ -13017,20 +13017,20 @@ enums:
       doc: 'New'
     1:
       id: 'cancel'
-      doc: 'Cancel Only On Return'
+      doc: 'Cancel (only on return)'
     2:
       id: 'replace'
-      doc: 'Replace Only On Return'
+      doc: 'Replace (only on return)'
     3:
       id: 'release'
       doc: 'Release'
   order_category:
     0:
       id: 'not_a_negotiated_trade'
-      doc: 'Not A Negotiated Trade'
+      doc: 'Not a Negotiated Trade'
     3:
       id: 'privately_negotiated_trade'
-      doc: 'Privately Negotiated Trade On Return Fields This Field Indicates Whether Cboe Deems The Trade As Utilising The Negotiated Transaction Waiver Under Mi Fid'
+      doc: 'Privately Negotiated Trade On return fields, this field indicates whether Cboe deems the trade as utilising the Negotiated Transaction waiver under Mi- FID.'
   base_liquidity_indicator:
     0x41:
       id: 'added_liquidity'
@@ -13044,56 +13044,56 @@ enums:
   sub_liquidity_indicator:
     0x62:
       id: 'automated_improvement_mechanism'
-      doc: 'Automated Improvement Mechanism Aim'
+      doc: 'Automated Improvement Mechanism (AIM)'
     0x55:
       id: 'qualifying_market_turner_order'
-      doc: 'Qualifying Market Turner Order Only Set When Base Liq Uidity Indicator A'
+      doc: 'Qualifying Market Turner order. Only set when BaseLiq- uidityIndicator = A.'
     0x67:
       id: 'aggressive_hold'
-      doc: 'Aggressive Hold Order Held By Speed Bump'
+      doc: 'Aggressive Hold. Order held by speed bump.'
   quote_reject_reason:
     0x43:
       id: 'invalid_clearing_firm'
-      doc: 'Invalid Clearing Firm'
+      doc: 'Invalid ClearingFirm'
     0x44:
       id: 'invalid_wash_id'
-      doc: 'Invalid Wash Id'
+      doc: 'Invalid WashId'
     0x46:
       id: 'not_enabled_for_quotes'
-      doc: 'Not Enabled For Quotes'
+      doc: 'Not enabled for quotes'
     0x49:
       id: 'incorrect_data_center'
       doc: 'Incorrect Data Center'
     0x4c:
       id: 'invalid_quote_cnt'
-      doc: 'Invalid Quote Cnt'
+      doc: 'Invalid QuoteCnt'
     0x4d:
       id: 'symbols_not_on_same_matching_engine'
-      doc: 'Symbols Not On Same Matching Engine'
+      doc: 'Symbols not on same matching engine'
     0x50:
       id: 'invalid_posting_instruction'
-      doc: 'Invalid Posting Instruction'
+      doc: 'Invalid PostingInstruction'
     0x51:
       id: 'invalid_quote_update_id'
-      doc: 'Invalid Quote Update Id'
+      doc: 'Invalid QuoteUpdateID'
     0x52:
       id: 'product_code_does_not_match_across_quotes'
-      doc: 'Product Code Does Not Match Across Quotes'
+      doc: 'Product Code does not match across quotes'
     0x53:
       id: 'symbol_not_found'
-      doc: 'Symbol Not Found'
+      doc: 'Symbol not found'
     0x55:
       id: 'symbol_range_unreachable'
-      doc: 'Symbol Range Unreachable'
+      doc: 'Symbol range unreachable'
     0x57:
       id: 'invalid_wash_prevent_type'
-      doc: 'Invalid Wash Prevent Type'
+      doc: 'Invalid WashPreventType'
     0x61:
       id: 'admin'
       doc: 'Admin'
     0x62:
       id: 'invalid_account_type'
-      doc: 'Invalid Account Type'
+      doc: 'Invalid AccountType'
     0x63:
       id: 'invalid_capacity'
       doc: 'Invalid Capacity'
@@ -13102,28 +13102,28 @@ enums:
       doc: 'Risk Management Trading Firm Level'
     0x6c:
       id: 'liquidity_provision_quotes_require_active_lpp_registration_for_product'
-      doc: 'Liquidity Provision Quotes Require Active Lpp Registration For Product'
+      doc: 'Liquidity Provision quotes require active LPP registration for product'
     0x6d:
       id: 'invalid_wash_method'
-      doc: 'Invalid Wash Method'
+      doc: 'Invalid WashMethod'
     0x6e:
       id: 'exceed_max_notional_value_per_order'
-      doc: 'Exceed Max Notional Value Per Order'
+      doc: 'Exceed max notional value per order'
     0x6f:
       id: 'invalid_open_close'
-      doc: 'Invalid Open Close'
+      doc: 'Invalid OpenClose'
     0x73:
       id: 'invalid_side'
       doc: 'Invalid Side'
     0x76:
       id: 'invalid_eu_record_keeping_info_such_as_order_origination_algorithmic_indicator_liquidity_provision'
-      doc: 'Invalid Eu Record Keeping Info Such As Order Origination Algorithmic Indicator Liquidity Provision'
+      doc: 'Invalid EU Record Keeping info, such as OrderOrigination, AlgorithmicIndicator, LiquidityProvision,'
     0x78:
       id: 'exceed_max_size_per_order'
-      doc: 'Exceed Max Size Per Order'
+      doc: 'Exceed max size per order'
     0x79:
       id: 'quote_received_by_cboe_during_replay'
-      doc: 'Quote Received By Cboe During Replay'
+      doc: 'Quote Received by Cboe During Replay'
     0x7a:
       id: 'session_end'
       doc: 'Session End'
@@ -13133,90 +13133,90 @@ enums:
       doc: 'New Quote'
     0x4c:
       id: 'modified'
-      doc: 'Modified Loss Of Priority'
+      doc: 'Modified; loss of priority'
     0x52:
       id: 'modified_x52'
-      doc: 'Modified Retains Priority Size Reduction'
+      doc: 'Modified; retains priority (size reduction)'
     0x4e:
       id: 'no_change_matches_existing_quote'
-      doc: 'No Change Matches Existing Quote'
+      doc: 'No change, matches existing quote'
     0x44:
       id: 'new_quote_but_may_remove_liquidity'
-      doc: 'New Quote But May Remove Liquidity'
+      doc: 'New Quote, but may remove liquidity'
     0x64:
       id: 'modified_but_may_remove_liquidity'
-      doc: 'Modified But May Remove Liquidity Cancellation'
+      doc: 'Modified, but may remove liquidity Cancellation:'
     0x55:
       id: 'user_cancelled'
-      doc: 'User Cancelled Zero Sizeprice Requested Rejection'
+      doc: 'User cancelled (zero size/price requested) Rejection:'
     0x61:
       id: 'admin'
       doc: 'Admin'
     0x50:
       id: 'rejected_cannot_post'
-      doc: 'Rejected Cannot Post'
+      doc: 'Rejected, cannot post'
     0x66:
       id: 'risk_management_firm_or_custom_group_id'
-      doc: 'Risk Management Firm Or Custom Group Id Level'
+      doc: 'Risk management firm or Custom Group ID level'
     0x53:
       id: 'rejected_symbol_not_found'
-      doc: 'Rejected Symbol Not Found'
+      doc: 'Rejected, symbol not found'
     0x70:
       id: 'rejected_invalid_price'
-      doc: 'Rejected Invalid Price'
+      doc: 'Rejected, invalid price'
     0x72:
       id: 'invalid_remove'
       doc: 'Invalid Remove'
     0x73:
       id: 'risk_management_underlying_level'
-      doc: 'Risk Management Underlying Level'
+      doc: 'Risk management underlying level'
     0x75:
       id: 'rejected_other_reason'
-      doc: 'Rejected Other Reason Additional Reasons Indicating A Reject May Be Added In The Future With No Notice'
+      doc: 'Rejected, other reason Additional reasons indicating a reject may be added in the future with no notice.'
   subreason:
     0x41:
       id: 'purge_mass_cancel_trading_firm_level_by_user'
-      doc: 'Purge Mass Cancel Trading Firm Level By User'
+      doc: 'Purge/Mass Cancel Trading Firm Level by user'
     0x42:
       id: 'purge_mass_cancel_symbol_level_by_user'
-      doc: 'Purge Mass Cancel Symbol Level By User'
+      doc: 'Purge/Mass Cancel Symbol Level by user'
     0x43:
       id: 'purge_mass_cancel_custom_group_id_level_by_user'
-      doc: 'Purge Mass Cancel Custom Group Id Level By User'
+      doc: 'Purge/Mass Cancel Custom Group ID Level by user'
     0x45:
       id: 'trading_firm_level_lockout_by_cboe_trade_desk_admin'
-      doc: 'Trading Firm Level Lockout By Cboe Trade Desk Admin'
+      doc: 'Trading Firm Level lockout by Cboe Trade Desk Admin'
     0x4a:
       id: 'firm_disconnect'
-      doc: 'Firm Disconnect'
+      doc: 'Firm disconnect'
     0x4b:
       id: 'matching_engine_disconnect'
-      doc: 'Matching Engine Disconnect'
+      doc: 'Matching engine disconnect'
     0x54:
       id: 'cboe_trade_desk_admin'
-      doc: 'Cboe Trade Desk Admin'
+      doc: 'Cboe Trade Desk admin'
     0x66:
       id: 'risk_management_trading_firm_level_by_rule'
-      doc: 'Risk Management Trading Firm Level By Rule'
+      doc: 'Risk Management Trading Firm Level by rule'
     0x73:
       id: 'risk_management_symbol_level_by_rule'
-      doc: 'Risk Management Symbol Level By Rule'
+      doc: 'Risk Management Symbol Level by rule'
     0x2b:
       id: 'risk_management_trading_firm_group_level_by_rule'
-      doc: 'Risk Management Trading Firm Group Level By Rule'
+      doc: 'Risk Management Trading Firm Group Level by rule'
     0x6c:
       id: 'limit_order_collar_breach'
-      doc: 'Limit Order Collar Breach'
+      doc: 'Limit order collar breach'
     0x70:
       id: 'spike_protection_collar_breach'
-      doc: 'Spike Protection Collar Breach'
+      doc: 'Spike protection collar breach'
   order_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13225,7 +13225,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13237,13 +13237,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13285,7 +13285,7 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
@@ -13302,7 +13302,7 @@ enums:
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13311,7 +13311,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13323,13 +13323,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13371,7 +13371,7 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
@@ -13381,7 +13381,7 @@ enums:
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13390,7 +13390,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13402,13 +13402,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13450,54 +13450,54 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
   cancel_subreason:
     0x41:
       id: 'purge_mass_cancel_trading_firm_level_by_user'
-      doc: 'Purge Mass Cancel Trading Firm Level By User'
+      doc: 'Purge/Mass Cancel Trading Firm Level by user'
     0x42:
       id: 'purge_mass_cancel_symbol_level_by_user'
-      doc: 'Purge Mass Cancel Symbol Level By User'
+      doc: 'Purge/Mass Cancel Symbol Level by user'
     0x43:
       id: 'purge_mass_cancel_custom_group_id_level_by_user'
-      doc: 'Purge Mass Cancel Custom Group Id Level By User'
+      doc: 'Purge/Mass Cancel Custom Group ID Level by user'
     0x45:
       id: 'trading_firm_level_lockout_by_cboe_trade_desk_admin'
-      doc: 'Trading Firm Level Lockout By Cboe Trade Desk Admin'
+      doc: 'Trading Firm Level lockout by Cboe Trade Desk Admin'
     0x4a:
       id: 'firm_disconnect'
-      doc: 'Firm Disconnect'
+      doc: 'Firm disconnect'
     0x4b:
       id: 'matching_engine_disconnect'
-      doc: 'Matching Engine Disconnect'
+      doc: 'Matching engine disconnect'
     0x54:
       id: 'cboe_trade_desk_admin'
-      doc: 'Cboe Trade Desk Admin'
+      doc: 'Cboe Trade Desk admin'
     0x66:
       id: 'risk_management_trading_firm_level_by_rule'
-      doc: 'Risk Management Trading Firm Level By Rule'
+      doc: 'Risk Management Trading Firm Level by rule'
     0x73:
       id: 'risk_management_symbol_level_by_rule'
-      doc: 'Risk Management Symbol Level By Rule'
+      doc: 'Risk Management Symbol Level by rule'
     0x2b:
       id: 'risk_management_trading_firm_group_level_by_rule'
-      doc: 'Risk Management Trading Firm Group Level By Rule'
+      doc: 'Risk Management Trading Firm Group Level by rule'
     0x6c:
       id: 'limit_order_collar_breach'
-      doc: 'Limit Order Collar Breach'
+      doc: 'Limit order collar breach'
     0x70:
       id: 'spike_protection_collar_breach'
-      doc: 'Spike Protection Collar Breach'
+      doc: 'Spike protection collar breach'
   cancel_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13506,7 +13506,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13518,13 +13518,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13566,27 +13566,27 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
   multileg_reporting_type:
     0x31:
       id: 'singleleg_simple_instrument'
-      doc: 'Singleleg Simple Instrument'
+      doc: 'Single-leg /Simple instrument'
     0x32:
       id: 'individual_leg_of_multileg_instrument'
-      doc: 'Individual Leg Of Multileg Instrument Options Or Sim Ple Instrument Execution That Is Part Of A Spread Instrument Execution Futures'
+      doc: 'Individual leg of multi-leg instrument (Options), or Sim- ple instrument execution that is part of a Spread instrument execution (Futures)'
     0x33:
       id: 'entire_multileg_spread_instrument_package'
-      doc: 'Entire Multileg Spread Instrument Package'
+      doc: 'Entire multi-leg / Spread instrument package'
   purge_reject_reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13595,7 +13595,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13607,13 +13607,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13655,58 +13655,58 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
   risk_reset_result:
     0x20:
       id: 'ignored'
-      doc: 'Ignored Exceeds 1 Reset Per Second'
+      doc: 'Ignored; exceeds 1 reset per second'
     0x59:
       id: 'success'
       doc: 'Success'
     0x46:
       id: 'rejected'
-      doc: 'Rejected Exceeds Firm Reset Limit'
+      doc: 'Rejected; exceeds firm reset limit'
     0x43:
       id: 'rejected_x43'
-      doc: 'Rejected Exceeds Custom Group Id Limit'
+      doc: 'Rejected; exceeds Custom Group ID limit'
     0x44:
       id: 'rejected_x44'
-      doc: 'Rejected Automatic Risk Resets Are Disabled'
+      doc: 'Rejected; automatic risk resets are disabled'
     0x45:
       id: 'rejected_x45'
-      doc: 'Rejected Empty Reset Risk Field'
+      doc: 'Rejected; empty ResetRisk field'
     0x49:
       id: 'rejected_x49'
-      doc: 'Rejected Incorrect Data Center'
+      doc: 'Rejected; Incorrect data center'
     0x53:
       id: 'rejected_x53'
-      doc: 'Rejected Exceeds Risk Root Reset Limit'
+      doc: 'Rejected; exceeds risk root reset limit'
     0x55:
       id: 'rejected_x55'
-      doc: 'Rejected Invalid Underlying'
+      doc: 'Rejected; invalid underlying'
     0x63:
       id: 'rejected_x63'
-      doc: 'Rejected Invalid Clearing Firm'
+      doc: 'Rejected; invalid ClearingFirm'
     0x79:
       id: 'rejected_x79'
-      doc: 'Rejected In Replay Additional Reject Values May Be Added In The Fu Ture With No Notice'
+      doc: 'Rejected; in replay Additional reject values may be added in the fu- ture with no notice.'
   revised_legs:
     0x31:
       id: 'legs_were_not_reordered'
-      doc: 'Legs Were Not Reordered'
+      doc: 'Legs were not reordered'
     0x32:
       id: 'legs_were_reordered'
-      doc: 'Legs Were Reordered'
+      doc: 'Legs were reordered'
   reason:
     0x41:
       id: 'admin'
       doc: 'Admin'
     0x44:
       id: 'duplicate_identifier'
-      doc: 'Duplicate Identifier Eg Cl Ord Id'
+      doc: 'Duplicate Identifier (e.g., ClOrdID)'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -13715,7 +13715,7 @@ enums:
       doc: 'Incorrect Data Center'
     0x4a:
       id: 'too_late_to_cancel'
-      doc: 'Too Late To Cancel'
+      doc: 'Too late to cancel'
     0x4b:
       id: 'order_rate_threshold_exceeded'
       doc: 'Order Rate Threshold Exceeded'
@@ -13727,13 +13727,13 @@ enums:
       doc: 'Liquidity Available Exceeds Order Size'
     0x4e:
       id: 'ran_out_of_liquidity_to_execute_against'
-      doc: 'Ran Out Of Liquidity To Execute Against'
+      doc: 'Ran Out of Liquidity to Execute Against'
     0x4f:
       id: 'cl_ord_id_doesnt_match_a_known_order'
-      doc: 'Cl Ord Id Doesnt Match A Known Order'
+      doc: 'ClOrdID Doesn’t Match a Known Order'
     0x50:
       id: 'cant_modify_an_order_that_is_pending_fill'
-      doc: 'Cant Modify An Order That Is Pending Fill'
+      doc: 'Can’t Modify an Order That is Pending Fill'
     0x51:
       id: 'waiting_for_first_trade'
       doc: 'Waiting For First Trade'
@@ -13775,7 +13775,7 @@ enums:
       doc: 'Crossed Market'
     0x79:
       id: 'order_received_by_cboe_during_replay'
-      doc: 'Order Received By Cboe During Replay'
+      doc: 'Order Received by Cboe During Replay'
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
@@ -13785,15 +13785,15 @@ enums:
       doc: 'No Deferral Reason'
     0x36:
       id: 'deferral_for_large_in_scale'
-      doc: 'Deferral For Large In Scale Lrgs'
+      doc: 'Deferral for Large In Scale (LRGS)'
   trade_publish_ind:
     0:
       id: 'do_not_publish'
-      doc: 'Do Not Publish'
+      doc: 'Do not publish'
     1:
       id: 'publish_trade'
-      doc: 'Publish Trade'
+      doc: 'Publish trade'
     2:
       id: 'deferred_publication'
-      doc: 'Deferred Publication'
+      doc: 'Deferred publication'
 

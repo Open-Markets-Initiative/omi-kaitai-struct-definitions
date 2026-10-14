@@ -428,26 +428,26 @@ enums:
   side:
     0x42:
       id: 'buy_order'
-      doc: 'Buy Order'
+      doc: 'Buy order'
     0x53:
       id: 'sell_order'
-      doc: 'Sell Order'
+      doc: 'Sell order'
     0x54:
       id: 'short_sell_order'
-      doc: 'Short Sell Order'
+      doc: 'Short Sell order'
     0x43:
       id: 'combination_buy_order'
-      doc: 'Buy Order In A Combination Where The Sell Legs Are Short Sells'
+      doc: 'Buy order in a Combination where the sell leg(s) are short sell(s).'
   time_in_force:
     0:
       id: 'day'
       doc: 'Day'
     3:
       id: 'fill_and_kill'
-      doc: 'Fill And Kill'
+      doc: 'Fill and Kill'
     4:
       id: 'fill_or_kill'
-      doc: 'Fill Or Kill'
+      doc: 'Fill or Kill'
   capacity_of_participant:
     0x41:
       id: 'agency'
@@ -457,45 +457,45 @@ enums:
       doc: 'Principal'
     0x4d:
       id: 'mixed'
-      doc: 'Mixed Agency And Principal'
+      doc: 'Mixed Agency and Principal'
   directed_wholesale:
     0x59:
       id: 'true_field'
       doc: 'True'
     0x4e:
       id: 'false_field'
-      doc: 'False Default'
+      doc: 'False (default)'
   ouch_order_type:
     0x59:
       id: 'limit_order'
-      doc: 'Limit Order'
+      doc: 'Limit order'
     0x4e:
       id: 'centre_point_order'
-      doc: 'Centre Point Order Midpoint Only'
+      doc: 'Centre Point order (mid-point only)'
     0x44:
       id: 'centre_point_order_x44'
-      doc: 'Centre Point Order Dark Limit Order'
+      doc: 'Centre Point order (dark limit order)'
     0x53:
       id: 'sweep_order'
-      doc: 'Sweep Order Can Be Dualposted If Entered Price Is At Halftick'
+      doc: 'Sweep order (can be dual-posted if entered price is at half-tick)'
     0x50:
       id: 'dualposted_sweep_order'
-      doc: 'Dualposted Sweep Order Midtick Flag Enabled'
+      doc: 'Dual-posted Sweep order (mid-tick flag enabled)'
     0x42:
       id: 'centre_point_block_order_with_single_fill_maq'
-      doc: 'Centre Point Block Order Midpoint Only With Single Fill Maq'
+      doc: 'Centre Point Block order (mid-point only) with single fill MAQ'
     0x46:
       id: 'centre_point_order_with_single_fill_maq'
-      doc: 'Centre Point Order Dark Limit Order With Single Fill Maq'
+      doc: 'Centre Point order (dark limit order) with single fill MAQ'
     0x54:
       id: 'limit_sweep_order_with_single_fill_maq'
-      doc: 'Limit Sweep Order Can Be Dualposted If Entered Price Is At Halftick With Single Fill Maq'
+      doc: 'Limit Sweep order (can be dual-posted if entered price is at half-tick) with single fill MAQ'
     0x43:
       id: 'any_price_block_order'
-      doc: 'Any Price Block Order'
+      doc: 'Any Price Block order'
     0x45:
       id: 'any_price_block_order_with_single_fill_maq'
-      doc: 'Any Price Block Order With Single Fill Maq'
+      doc: 'Any Price Block order with single fill MAQ'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
@@ -541,63 +541,63 @@ enums:
   order_state:
     1:
       id: 'on_book'
-      doc: 'On Book'
+      doc: 'On book'
     2:
       id: 'not_on_book'
-      doc: 'Not On Book'
+      doc: 'Not on book'
   reason:
     1:
       id: 'cancelled_by_user'
-      doc: 'Cancelled By User'
+      doc: 'Cancelled by user'
     4:
       id: 'order_inactivated_due_to_connection_loss'
-      doc: 'Order Inactivated Due To Connection Loss'
+      doc: 'Order inactivated due to connection loss'
     9:
       id: 'fill_and_kill_order_deleted_in_auction'
-      doc: 'Fill And Kill Order That Was Deleted In An Auction'
+      doc: 'Fill and Kill order that was deleted in an auction'
     10:
       id: 'order_deleted_by_asx'
-      doc: 'Order Deleted By Asx On Behalf Of The Customer'
+      doc: 'Order deleted by ASX on behalf of the customer'
     20:
       id: 'deleted_due_to_session_change'
-      doc: 'Deleted By System Due To Instrument Session Change'
+      doc: 'Deleted by system due to instrument session change'
     21:
       id: 'inactivated_due_to_session_change'
-      doc: 'Inactivated By System Due To Instrument Session Change'
+      doc: 'Inactivated by system due to instrument session change'
     24:
       id: 'inactivated_day_order'
-      doc: 'Inactivated Day Order'
+      doc: 'Inactivated Day order'
   deal_source:
     1:
       id: 'continuous_automatch'
-      doc: 'Single Series To Single Series Automatched During Continuous Trading'
+      doc: 'Single series to single series auto-matched during continuous trading'
     20:
       id: 'auction_automatch'
-      doc: 'Single Series To Single Series Automatched During An Auction'
+      doc: 'Single series to single series auto-matched during an auction'
     36:
       id: 'tailor_made_combination_match'
-      doc: 'Tailor Made Combination Match'
+      doc: 'Tailor made combination match'
     10:
       id: 'deleted_by_asx'
-      doc: 'Order Deleted By Asx On Behalf Of The Customer'
+      doc: 'Order deleted by ASX on behalf of the customer'
     44:
       id: 'booked_ucp_transaction'
-      doc: 'Booked Transaction Resulting From Unintentional Crossing Prevention'
+      doc: 'Booked transaction resulting from Unintentional Crossing Prevention'
     45:
       id: 'booked_ucp_auction_transaction'
-      doc: 'Booked Transaction Resulting From Unintentional Crossing Prevention During An Auction'
+      doc: 'Booked transaction resulting from Unintentional Crossing Prevention during an auction'
     46:
       id: 'centre_point_preference_matched_trade'
-      doc: 'Centre Point Preference Matched Trade'
+      doc: 'Centre Point Preference Matched trade'
     47:
       id: 'centre_point_trade'
-      doc: 'Centre Point Trade'
+      doc: 'Centre Point trade'
     48:
       id: 'centre_point_booked_ucp'
-      doc: 'Centre Point Booked Transaction Resulting From Unintentional Crossing Prevention'
+      doc: 'Centre Point booked transaction resulting from Unintentional Crossing Prevention'
     49:
       id: 'reserved'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
     50:
       id: 'block_trade'
       doc: 'Block Trade'
@@ -606,18 +606,18 @@ enums:
       doc: 'Preference Block Trade'
     52:
       id: 'reserved_52'
-      doc: 'Reserved For Future Use'
+      doc: 'Reserved for future use'
   crossing_dealing_capacity:
     0:
       id: 'not_crossed'
-      doc: 'Order Was Not Crossed Or Crossed With An Order That Was Not Defined As Principal Agency Or Mixed'
+      doc: 'Order was not crossed or crossed with an order that was not defined as Principal, Agency or Mixed'
     1:
       id: 'principal_order'
-      doc: 'Order Crossed With A Principal Order'
+      doc: 'Order crossed with a Principal order'
     2:
       id: 'agency_order'
-      doc: 'Order Crossed With An Agency Order'
+      doc: 'Order crossed with an Agency order'
     3:
       id: 'mixed_agency_and_principal_order'
-      doc: 'Order Crossed With A Mixed Agency And Principal Order'
+      doc: 'Order crossed with a Mixed Agency and Principal order'
 

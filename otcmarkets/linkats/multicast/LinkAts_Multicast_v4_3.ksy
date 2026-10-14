@@ -845,55 +845,55 @@ enums:
   spin_type:
     1:
       id: 'reference'
-      doc: 'Reference Spin Cycle'
+      doc: 'Reference spin cycle'
     2:
       id: 'market_data'
-      doc: 'Market Data Spin Cycle'
+      doc: 'Market data spin cycle'
     3:
       id: 'opening'
-      doc: 'Opening Spin Cycle'
+      doc: 'Opening spin cycle'
   security_action:
     1:
       id: 'update'
-      doc: 'Update Existing Security'
+      doc: 'Update existing security'
     2:
       id: 'add'
-      doc: 'Add New Security'
+      doc: 'Add new security'
     3:
       id: 'delete_field'
-      doc: 'Delete Security'
+      doc: 'Delete security'
     4:
       id: 'spin'
-      doc: 'Spin Refresh Event'
+      doc: 'Spin refresh event'
   asset_class:
     1:
       id: 'equity'
-      doc: 'Equity Security'
+      doc: 'Equity security'
     2:
       id: 'fixed_income'
-      doc: 'Fixed Income Security'
+      doc: 'Fixed income security'
   tier:
     0:
       id: 'no_tier'
-      doc: 'No Tier Assigned'
+      doc: 'No tier assigned'
     1:
       id: 'otcqxus_premier'
-      doc: 'Otcqx Us Premier'
+      doc: 'OTCQX U.S. Premier'
     2:
       id: 'otcqxus'
-      doc: 'Otcqx Us'
+      doc: 'OTCQX U.S.'
     5:
       id: 'otcqx_international_premier'
-      doc: 'Otcqx International Premier'
+      doc: 'OTCQX International Premier'
     6:
       id: 'otcqx_international'
-      doc: 'Otcqx International'
+      doc: 'OTCQX International'
     10:
       id: 'otcqb'
-      doc: 'Otcqb Market'
+      doc: 'OTCQB market'
     11:
       id: 'otcbb_only'
-      doc: 'Otc Bulletin Board Only'
+      doc: 'OTC Bulletin Board only'
     20:
       id: 'pink_current'
       doc: 'Pink Current Information'
@@ -911,17 +911,17 @@ enums:
       doc: 'Expert Market'
     50:
       id: 'otc_bonds'
-      doc: 'Otc Bonds'
+      doc: 'OTC Bonds'
   reporting_status:
     0x41:
       id: 'alternative_reporting'
       doc: 'Alternative Reporting Standard'
     0x42:
       id: 'bank_thrift'
-      doc: 'Bank Or Thrift'
+      doc: 'Bank or Thrift'
     0x46:
       id: 'sec_reporting'
-      doc: 'Sec Reporting'
+      doc: 'SEC Reporting'
     0x47:
       id: 'international_reporting'
       doc: 'International Reporting'
@@ -936,70 +936,70 @@ enums:
       doc: 'Other Reporting Standard'
     0x52:
       id: 'finra_reporting'
-      doc: 'Finra Reporting'
+      doc: 'FINRA Reporting'
     0x56:
       id: 'sec_investment_company'
-      doc: 'Sec Reporting Investment Company'
+      doc: 'SEC Reporting Investment Company'
     0x57:
       id: 'sec_reg_a'
-      doc: 'Sec Reporting Reg A'
+      doc: 'SEC Reporting Reg A'
   security_status:
     0x41:
       id: 'active'
-      doc: 'Security Is Active'
+      doc: 'Security is active'
     0x51:
       id: 'quote_only'
-      doc: 'Quote Only'
+      doc: 'Quote only'
     0x53:
       id: 'suspended'
-      doc: 'Security Suspended'
+      doc: 'Security suspended'
     0x48:
       id: 'halted'
-      doc: 'Security Halted'
+      doc: 'Security halted'
     0x49:
       id: 'internal_halt'
-      doc: 'Internal Halt'
+      doc: 'Internal halt'
     0x52:
       id: 'revoked'
-      doc: 'Security Revoked'
+      doc: 'Security revoked'
     0x44:
       id: 'deleted'
-      doc: 'Security Deleted'
+      doc: 'Security deleted'
   inside_action:
     2:
       id: 'add'
-      doc: 'Add Inside Quote'
+      doc: 'Add inside quote'
     3:
       id: 'delete_field'
-      doc: 'Delete Inside Quote'
+      doc: 'Delete inside quote'
     4:
       id: 'spin'
-      doc: 'Spin Refresh'
+      doc: 'Spin refresh'
   reference_price_action:
     2:
       id: 'add'
-      doc: 'Add Reference Price'
+      doc: 'Add reference price'
     3:
       id: 'delete_field'
-      doc: 'Delete Reference Price'
+      doc: 'Delete reference price'
     4:
       id: 'spin'
-      doc: 'Spin Refresh'
+      doc: 'Spin refresh'
   disclosure_status:
     0:
       id: 'no_disclosure'
-      doc: 'No Disclosure Status'
+      doc: 'No disclosure status'
     2:
       id: 'current_information'
-      doc: 'Current Information'
+      doc: 'Current information'
     3:
       id: 'limited_information'
-      doc: 'Limited Information'
+      doc: 'Limited information'
     4:
       id: 'no_information'
-      doc: 'No Information'
+      doc: 'No information'
   trade_action:
     2:
       id: 'add'
-      doc: 'Add Trade'
+      doc: 'Add trade'
 

@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe DxeDerivatives MulticastDepthOfBook Pitch v6.67
+# Kaitai struct definition for: Cboe CxeEquities MulticastDepthOfBook Pitch v6.68
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
-#   Protocol: Europe Derivatives Multicast Depth Of Book
+#   Protocol: Multicast Depth Of Book
 #   Encoding: Pitch
-#   Version: 6.67
-#   Date: 04/02/2026
+#   Version: 6.68
+#   Date: 07/08/2026
 #   Specification: BATS_Europe_MC_PITCH_Specification.pdf
 #
 # Script:
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_dxederivatives_multicastdepthofbook_pitch_v6_67
-  title: Cboe DxeDerivatives MulticastDepthOfBook Pitch v6.67
+  id: cboe_cxeequities_multicastdepthofbook_pitch_v6_68
+  title: Cboe CxeEquities MulticastDepthOfBook Pitch v6.68
   license: GPL-3.0
   endian: le
 
-doc: 'Chicago Board Options Exchange Cboe Europe Derivatives Europe Derivatives Multicast Depth Of Book Pitch v6.67'
+doc: 'Chicago Board Options Exchange Cboe CXE Multicast Depth Of Book Pitch v6.68'
 doc-ref: https://www.cboe.com/europe/equities/support/technical
 
 seq:
@@ -925,28 +925,28 @@ enums:
   cboe_trade_flags:
     0x34:
       id: 'on_time_in_the_main_session'
-      doc: 'The Trade Was Reported To Cboe On Time And In The Main Session'
+      doc: 'The trade was reported to Cboe on time and in the Main Session'
     0x35:
       id: 'late'
-      doc: 'The Trade Was Reported To Cboe Late'
+      doc: 'The trade was reported to Cboe ''late'''
     0x36:
       id: 'out_of_the_main_session'
-      doc: 'The Trade Was Reported To Cboe Out Of The Main Session'
+      doc: 'The trade was reported to Cboe out of the Main Session'
     0x37:
       id: 'late_and_out_of_the_main_session'
-      doc: 'The Trade Was Reported To Cboe Late And Out Of The Main Session'
+      doc: 'The trade was reported to Cboe late and out of the Main Session'
     0x43:
       id: 'on_time_in_the_main_session_3_rd_country_venue'
-      doc: 'The Trade Was Reported To Cboe On Time In The Main Session And Trade Venue Is An Esma Nonrecognised 3 Rd Country Venue'
+      doc: 'The trade was reported to Cboe on time, in the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
     0x44:
       id: 'late_3_rd_country_venue'
-      doc: 'The Trade Was Reported To Cboe Late And Trade Venue Is An Esma Nonrecognised 3 Rd Country Venue'
+      doc: 'The trade was reported to Cboe ''late'' and trade venue is an ESMA non-recognised 3rd Country venue'
     0x45:
       id: 'out_of_the_main_session_3_rd_country_venue'
-      doc: 'The Trade Was Reported To Cboe Out Of The Main Session And Trade Venue Is An Esma Nonrecognised 3 Rd Country Venue'
+      doc: 'The trade was reported to Cboe out of the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
     0x46:
       id: 'late_and_out_of_the_main_session_3_rd_country_venue'
-      doc: 'The Trade Was Reported To Cboe Late Out Of The Main Session And Trade Venue Is An Esma Nonrecognised 3 Rd Country Venue'
+      doc: 'The trade was reported to Cboe late, out of the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
     0x2d:
       id: 'uk_the_trade_was_reported_to_cboe_on_time_and_in_the_main_session'
       doc: 'Uk The Trade Was Reported To Cboe On Time And In The Main Session'

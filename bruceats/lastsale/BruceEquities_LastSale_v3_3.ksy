@@ -251,66 +251,66 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_transmissions'
-      doc: 'Denotes That Bls Has Started Its Daily Transmission Schedule'
+      doc: 'Denotes that BLS has started its daily transmission schedule'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Denotes That Bruce Ats Is Open And Ready To Start Accepting Orders'
+      doc: 'Denotes that Bruce ATS is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Denotes That Market Hours Orders Are Available For Execution'
+      doc: 'Denotes that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'Denotes That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'Denotes that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'Denotes That Bruce Ats Is Now Closed And Will Not Accept Any New Orders Today'
+      doc: 'Denotes that Bruce ATS is now closed and will not accept any new orders today.'
     0x43:
       id: 'end_of_transmissions'
-      doc: 'Denotes That Bls Has Completed Its Daily Transmission Schedule'
+      doc: 'Denotes that BLS has completed its daily transmission schedule.'
   market_category:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE ARCA'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x56:
       id: 'investors_exchange_llc'
-      doc: 'Investors Exchange Llc'
+      doc: 'Investors Exchange LLC'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx Exchange'
+      doc: 'CBOE BZX Exchange'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
   authenticity:
     0x50:
       id: 'live_production'
-      doc: 'Live Production'
+      doc: 'Live/Production'
     0x54:
       id: 'test'
       doc: 'Test'
   trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Paused On Bruce Ats'
+      doc: 'Halted / Paused on Bruce ATS'
     0x54:
       id: 'trading'
       doc: 'Trading'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_place'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'reg_sho_restriction_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'reg_sho_restriction_remains_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
 

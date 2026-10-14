@@ -134,7 +134,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Administrative Message'
+        doc: 'Identifies the type of Administrative message'
       - id: administrative_message_payload
         type:
           switch-on: administrative_message_type
@@ -145,7 +145,7 @@ types:
     seq:
       - id: error_code
         type: u1
-        doc: 'Error Code Indicating The First Error Encountered While Validating The Rejected Participant Input Message'
+        doc: 'Error code indicating the first error encountered while validating the rejected Participant input message'
       - id: block_sequence_number
         type: u4
         doc: 'Sequential block sequence number; rolls over after 4,294,967,295'
@@ -159,17 +159,17 @@ types:
     seq:
       - id: previous_block_sequence_number
         type: u4
-        doc: 'Block Sequence Number Prior To The Gap That Triggered The Warning'
+        doc: 'Block Sequence Number prior to the gap that triggered the Warning'
       - id: previous_participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Prior To The Gap That Triggered The Warning'
+        doc: 'Participant Reference Number prior to the gap that triggered the Warning'
   control_message:
     seq:
       - id: control_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Control Message'
+        doc: 'Identifies the type of Control message'
       - id: control_message_payload
         type:
           switch-on: control_message_type
@@ -180,13 +180,13 @@ types:
     seq:
       - id: current_block_sequence_number
         type: u4
-        doc: 'Next Expected Participant Block Sequence Number Returned By Cts In A Sequence Information And Message Count Response'
+        doc: 'Next expected Participant Block Sequence Number returned by CTS in a Sequence Information and Message Count Response'
       - id: last_participant_reference_number
         type: s8
-        doc: 'Last Participant Reference Number Received By Cts On The Individual Line'
+        doc: 'Last Participant Reference Number received by CTS on the individual line'
       - id: message_count
         type: u8
-        doc: 'Count Of Messages Received On The Individual Line Since Startup Excludes Line Integrity And Sequence Information And Message Count Inquiry Messages'
+        doc: 'Count of messages received on the individual line since startup. Excludes Line Integrity and Sequence Information and Message Count Inquiry messages'
   test_message:
     seq:
       - id: data
@@ -194,14 +194,14 @@ types:
         size: 256
         encoding: ASCII
         pad-right: 0x20
-        doc: 'All Ascii Characters Starting With Hex 0 And Ending Hex Ff In Sequential Order'
+        doc: 'All ASCII characters starting with hex 0 and ending hex FF, in sequential order'
   indices_message:
     seq:
       - id: indices_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Index Message'
+        doc: 'Identifies the type of Index message'
       - id: indices_message_payload
         type:
           switch-on: indices_message_type
@@ -215,10 +215,10 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Contains The Index Symbol'
+        doc: 'Left justified, space-filled. Contains the Index symbol'
       - id: index_value
         type: s8
-        doc: 'Index Value Not A Price With Implied 6 Decimal Places'
+        doc: 'Index value (not a price) with implied 6 decimal places'
   bid_and_offer_index_message:
     seq:
       - id: index_symbol
@@ -226,20 +226,20 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Contains The Index Symbol'
+        doc: 'Left justified, space-filled. Contains the Index symbol'
       - id: bid_index_value
         type: s8
-        doc: 'Index Value Not A Price Representing The Indexs Calculation Formula Using Current Bid Values Of The Component Securities Implied 6 Decimal Places'
+        doc: 'Index value (not a price) representing the index''s calculation formula using current Bid values of the component securities. Implied 6 decimal places'
       - id: offer_index_value
         type: s8
-        doc: 'Index Value Not A Price Representing The Indexs Calculation Formula Using Current Offer Values Of The Component Securities Implied 6 Decimal Places'
+        doc: 'Index value (not a price) representing the index''s calculation formula using current Offer values of the component securities. Implied 6 decimal places'
   market_status_message:
     seq:
       - id: market_status_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Market Status Message'
+        doc: 'Identifies the type of Market Status message'
       - id: market_status_message_payload
         type:
           switch-on: market_status_message_type
@@ -250,28 +250,28 @@ types:
     seq:
       - id: total_trades
         type: u4
-        doc: 'Total Number Of Trade Transactions Executed From A Participant Optional Set To Zero'
+        doc: 'Total number of trade transactions executed from a Participant. Optional set to zero'
       - id: dollar_value
         type: u8
-        doc: 'Total Dollar Worth Of The Daily Trade Transactions Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Total dollar worth of the daily trade transactions. Implied 6 decimal places. Optional set to zero'
   crossing_session_message:
     seq:
       - id: crossing_session_i_total_trades_volume
         type: u8
-        doc: 'Shares Traded At The Participants Close Price After The Close Of The Participants Regular Session Optional Set To Zero'
+        doc: 'Shares traded at the Participant''s close price after the close of the Participant''s regular session. Optional set to zero'
       - id: crossing_session_ii_dollar_value
         type: u8
-        doc: 'Dollar Value Traded After The Close Of The Participants Regular Session Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Dollar Value traded after the close of the Participant''s regular session. Implied 6 decimal places. Optional set to zero'
       - id: crossing_session_ii_total_trades_volume
         type: u8
-        doc: 'Shares Traded After The Close Of The Participants Regular Session Optional Set To Zero'
+        doc: 'Shares traded after the close of the Participant''s regular session. Optional set to zero'
   prior_day_message:
     seq:
       - id: prior_day_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Prior Day Message'
+        doc: 'Identifies the type of Prior Day message'
       - id: prior_day_message_payload
         type:
           switch-on: prior_day_message_type
@@ -289,26 +289,26 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Corrected Sale Condition. Four positional Category levels per Sale Condition table'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_trade_volume
         type: u4
-        doc: 'Corrected Total Number Of Shares Traded'
+        doc: 'Corrected total number of shares traded'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
@@ -330,22 +330,22 @@ types:
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: original_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Original Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Original Sale Condition. Four positional Category levels per Sale Condition table'
       - id: original_trade_price
         type: decimal_u8_6
-        doc: 'Original Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Original monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_trade_volume
         type: u4
-        doc: 'Original Total Number Of Shares Traded'
+        doc: 'Original total number of shares traded'
       - id: original_sellers_sale_days
         type: u1
-        doc: 'Original Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Original Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: original_stop_stock_indicator
         type: str
         size: 1
@@ -387,26 +387,26 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Corrected Sale Condition. Four positional Category levels per Sale Condition table'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
         type: u8
-        doc: 'Corrected Total Number Of Shares Represented In Fraction Traded Implied 6 Decimal Places'
+        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
@@ -428,22 +428,22 @@ types:
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: original_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Original Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Original Sale Condition. Four positional Category levels per Sale Condition table'
       - id: original_trade_price
         type: decimal_u8_6
-        doc: 'Original Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Original monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_fractional_trade_volume
         type: u8
-        doc: 'Original Total Number Of Shares Represented In Fraction Traded Implied 6 Decimal Places'
+        doc: 'Original total number of shares (represented in fraction) traded. Implied 6 decimal places'
       - id: original_sellers_sale_days
         type: u1
-        doc: 'Original Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Original Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: original_stop_stock_indicator
         type: str
         size: 1
@@ -469,42 +469,42 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect By The Primary Listing Market For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect by the Primary Listing Market for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
@@ -523,42 +523,42 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Total Number Of Shares Represented In Fraction Traded In A Single Transaction Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect By The Primary Listing Market For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect by the Primary Listing Market for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
@@ -569,49 +569,49 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect By The Primary Listing Market For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect by the Primary Listing Market for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
   fractional_prior_day_trade_cancel_error_message:
     seq:
       - id: security_symbol
@@ -619,56 +619,56 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Total Number Of Shares Represented In Fraction Traded In A Single Transaction Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect By The Primary Listing Market For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect by the Primary Listing Market for a security'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: prior_day_trade_date_and_time
         type: prior_day_trade_date_and_time
         doc: 'Prior Day Trade Date and Time. Nanoseconds since Unix epoch'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
   trade_message:
     seq:
       - id: trade_message_type
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Identifies The Type Of Trade Message'
+        doc: 'Identifies the type of Trade message'
       - id: trade_message_payload
         type:
           switch-on: trade_message_type
@@ -689,29 +689,29 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: auction_collar_reference_price
         type: decimal_u8_6
-        doc: 'Price Used By The Exchange To Establish The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Price used by the exchange to establish the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: auction_collar_upper_threshold_price
         type: decimal_u8_6
-        doc: 'Latest Upper Threshold Price Of The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Latest upper threshold price of the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: auction_collar_lower_threshold_price
         type: decimal_u8_6
-        doc: 'Latest Lower Threshold Price Of The Auction Collar Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Latest lower threshold price of the Auction Collar. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: number_of_extensions
         type: u1
-        doc: 'Number Of Manual Or Automatic Extensions The Applicable Auction Has Received Optional Set To Zero'
+        doc: 'Number of manual or automatic extensions the applicable auction has received. Optional set to zero'
       - id: reserved_62
         type: str
         size: 62
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   trade_correction_message:
     seq:
       - id: security_symbol
@@ -719,26 +719,26 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Corrected Sale Condition. Four positional Category levels per Sale Condition table'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_trade_volume
         type: u4
-        doc: 'Corrected Total Number Of Shares Traded'
+        doc: 'Corrected total number of shares traded'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
@@ -757,13 +757,13 @@ types:
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
+        doc: 'Participant Reference Number of the original transaction being corrected, cancelled or errored'
   timestamp_2:
     seq:
       - id: seconds
@@ -779,26 +779,26 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: corrected_sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Corrected Sale Condition Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Corrected Sale Condition. Four positional Category levels per Sale Condition table'
       - id: corrected_trade_price
         type: decimal_u8_6
-        doc: 'Corrected Monetary Value Of An Individual Share Implied 6 Decimal Places. Implied decimal with scale 1e-6'
+        doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
         type: u8
-        doc: 'Corrected Total Number Of Shares Represented In Fraction Traded Implied 6 Decimal Places'
+        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places'
       - id: corrected_sellers_sale_days
         type: u1
-        doc: 'Corrected Sellers Sale Days Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
       - id: corrected_stop_stock_indicator
         type: str
         size: 1
@@ -817,13 +817,13 @@ types:
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
+        doc: 'Participant Reference Number of the original transaction being corrected, cancelled or errored'
   long_trade_message:
     seq:
       - id: security_symbol
@@ -831,38 +831,38 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Total number of shares traded in a single transaction for an individual security'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
@@ -873,38 +873,38 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Total Number Of Shares Represented In Fraction Traded In A Single Transaction Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
       - id: sellers_sale_days
         type: u1
-        doc: 'Number Of Days That May Elapse Before Delivery Of The Security Allowed Values 2 Through 60 Optional Set To Zero'
+        doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
       - id: stop_stock_indicator
         type: u1
         enum: stop_stock_indicator
-        doc: 'Identifies Whether A Trade Is Considered A Stop Stock At The Time Of The Trade'
+        doc: 'Identifies whether a trade is considered a stop stock at the time of the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
@@ -915,41 +915,41 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: last_price_opening_reopening_luld_reference_price
         type: decimal_u8_6
-        doc: 'Last Price For A Security When Security Status Is Set To Luld Reference Price Contains The Opening Reopening Luld Reference Price Reported By The Listing Exchange Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Last price for a security; when Security Status is set to LULD Reference Price, contains the Opening (Reopening) LULD Reference Price reported by the listing exchange. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: high_indication_price_upper_limit_price_band
         type: decimal_u8_6
-        doc: 'High Indication Price For Trading Range Or When Paired With Luld Trading Pause The Upper Limit Price Band Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'High Indication Price for trading range or, when paired with LULD Trading Pause, the Upper Limit Price Band. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: low_indication_price_lower_limit_price_band
         type: decimal_u8_6
-        doc: 'Low Indication Price For Trading Range Or When Paired With Luld Trading Pause The Lower Limit Price Band Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Low Indication Price for trading range or, when paired with LULD Trading Pause, the Lower Limit Price Band. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: buy_volume
         type: u4
-        doc: 'Reported Imbalance Of Buy Orders Without Matching Sell Orders For The Security For A Participant Optional Set To Zero'
+        doc: 'Reported imbalance of buy orders without matching sell orders for the security for a Participant. Optional set to zero'
       - id: sell_volume
         type: u4
-        doc: 'Reported Imbalance Of Sell Orders Without Matching Buy Orders For The Security For A Participant'
+        doc: 'Reported imbalance of sell orders without matching buy orders for the security for a Participant'
       - id: security_status
         type: u1
         enum: security_status
-        doc: 'Trading Action Related To The Transaction'
+        doc: 'Trading action related to the transaction'
       - id: halt_reason
         type: u1
         enum: halt_reason
-        doc: 'Reason For A Trading Halt'
+        doc: 'Reason for a Trading Halt'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
-        doc: 'Identifies Whether Or Not A Short Sale Restriction Is In Effect By The Primary Listing Market For A Security'
+        doc: 'Identifies whether or not a Short Sale Restriction is in effect by the Primary Listing Market for a security'
       - id: trading_status_id
         type: u4
-        doc: 'Unique Identifier For Each Trading Status Message Used To Eliminate Duplicate Trading Status Messages Received Over Cqs And Cts Input Lines'
+        doc: 'Unique identifier for each Trading Status Message; used to eliminate duplicate Trading Status messages received over CQS and CTS input lines'
   short_trade_message:
     seq:
       - id: security_symbol
@@ -957,29 +957,29 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
-        doc: 'Identifies The Sale Condition Category Level Associated With A Short Trade'
+        doc: 'Identifies the Sale Condition Category level associated with a Short Trade'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: trade_volume
         type: u4
-        doc: 'Total Number Of Shares Traded In A Single Transaction For An Individual Security'
+        doc: 'Total number of shares traded in a single transaction for an individual security'
       - id: reserved_3
         type: str
         size: 3
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   fractional_short_trade_message:
     seq:
       - id: security_symbol
@@ -987,29 +987,29 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: sale_condition
         type: str
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Sale Condition For Longform Messages Four Positional Category Levels Per Sale Condition Table'
+        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
-        doc: 'Identifies The Sale Condition Category Level Associated With A Short Trade'
+        doc: 'Identifies the Sale Condition Category level associated with a Short Trade'
       - id: trade_price
         type: decimal_u8_6
-        doc: 'Monetary Value Of An Individual Share At The Time Of The Trade Implied 6 Decimal Places Optional Set To Zero. Implied decimal with scale 1e-6'
+        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
         type: u8
-        doc: 'Total Number Of Shares Represented In Fraction Traded In A Single Transaction Implied 6 Decimal Places Optional Set To Zero'
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
       - id: reserved_3
         type: str
         size: 3
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Reserved For Future Use Tbd'
+        doc: 'Reserved for future use (TBD)'
   trade_cancel_error_message:
     seq:
       - id: security_symbol
@@ -1017,29 +1017,29 @@ types:
         size: 11
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left Justified Spacefilled Root Symbol May Be 1 To 6 Characters With Remaining Characters Available For Possible Suffixes'
+        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
       - id: instrument_type
         type: u1
         enum: instrument_type
-        doc: 'Identifies The Instrument Type Relevant To The Trade'
+        doc: 'Identifies the instrument type relevant to the trade'
       - id: trade_through_exempt_indicator
         type: u1
         enum: trade_through_exempt_indicator
-        doc: 'Denotes Whether Or Not A Trade Is Exempt Rule 611 And When Used Jointly With Certain Sale Conditions Describes The Characteristics Of A Particular Trade'
+        doc: 'Denotes whether or not a trade is exempt (Rule 611) and, when used jointly with certain Sale Conditions, describes the characteristics of a particular trade'
       - id: trade_reporting_facility_id
         type: u1
         enum: trade_reporting_facility_id
-        doc: 'Identifies The Participant With Whom A Trade Reporting Facility Trf Has Been Formed Spacefilled When Trf Not Applicable'
+        doc: 'Identifies the Participant with whom a Trade Reporting Facility (TRF) has been formed. Space-filled when TRF Not Applicable'
       - id: original_participant_reference_number
         type: s8
-        doc: 'Participant Reference Number Of The Original Transaction Being Corrected Cancelled Or Errored'
+        doc: 'Participant Reference Number of the original transaction being corrected, cancelled or errored'
       - id: timestamp_2
         type: timestamp_2
         doc: 'Timestamp 2. Nanoseconds since Unix epoch. Nullable, Not Applicable = 0'
       - id: cancel_error_action
         type: u1
         enum: cancel_error_action
-        doc: 'Denotes Whether The Referenced Transaction Is To Be Cancelled Or Errored'
+        doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
   nanosecond_timestamp:
     seq:
       - id: time

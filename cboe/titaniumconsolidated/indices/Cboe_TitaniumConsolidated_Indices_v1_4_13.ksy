@@ -321,13 +321,13 @@ enums:
   message_type:
     0x58:
       id: 'market_data_incremental_refresh'
-      doc: 'Shared By Contributor Value Index Summary Index Value And Index Value With Status Messages Body Determined By Template Id'
+      doc: 'Shared by Contributor Value, Index Summary, Index Value, and Index Value With Status messages. Body determined by Template ID.'
     0x44:
       id: 'index_definition'
-      doc: 'Index Definition Message'
+      doc: 'Index Definition Message.'
     0x30:
       id: 'heartbeat'
-      doc: 'Heartbeat Message'
+      doc: 'Heartbeat Message.'
   md_entry_type:
     0x30:
       id: 'bid'
@@ -343,14 +343,14 @@ enums:
       doc: 'Close Value'
     0x36:
       id: 'settlement'
-      doc: 'Settlement Edsp Price'
+      doc: 'Settlement / EDSP Price'
   summary_type:
     0x31:
       id: 'sod'
-      doc: 'Start Of Day'
+      doc: 'Start of Day'
     0x32:
       id: 'eod'
-      doc: 'End Of Day'
+      doc: 'End of Day'
   index_status:
     0x4e:
       id: 'normal'
@@ -361,11 +361,11 @@ enums:
   status:
     1:
       id: 'active'
-      doc: 'Active Loaded And A Business Day'
+      doc: 'Active - loaded and a business day'
     2:
       id: 'inactive'
-      doc: 'Inactive Loaded And Not A Business Day'
+      doc: 'Inactive - loaded and not a business day'
     3:
       id: 'deleted'
-      doc: 'Deleted No Longer Distributed Removed From The Feed After 30 Days'
+      doc: 'Deleted - no longer distributed; removed from the feed after 30 days'
 

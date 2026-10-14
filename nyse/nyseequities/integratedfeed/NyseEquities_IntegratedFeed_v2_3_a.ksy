@@ -937,109 +937,109 @@ enums:
   market_id:
     1:
       id: 'nyse_equities'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     5:
       id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
+      doc: 'NYSE Bonds'
     8:
       id: 'nyse_amex_options'
-      doc: 'Nyse Amex Options'
+      doc: 'NYSE Amex Options'
     9:
       id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
       id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
   exchange_code:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x4c:
       id: 'ltse'
-      doc: 'Ltse'
+      doc: 'LTSE'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x5a:
       id: 'cboe'
-      doc: 'Cboe'
+      doc: 'CBOE'
   security_type:
     0x41:
       id: 'adr'
-      doc: 'Adr'
+      doc: 'ADR'
     0x43:
       id: 'common_stock'
-      doc: 'Common Stock'
+      doc: 'COMMON STOCK'
     0x44:
       id: 'debentures'
-      doc: 'Debentures'
+      doc: 'DEBENTURES'
     0x45:
       id: 'etf'
-      doc: 'Etf'
+      doc: 'ETF'
     0x46:
       id: 'foreign'
-      doc: 'Foreign'
+      doc: 'FOREIGN'
     0x48:
       id: 'us_depositary_shares'
-      doc: 'Us Depositary Shares'
+      doc: 'US DEPOSITARY SHARES'
     0x49:
       id: 'units'
-      doc: 'Units'
+      doc: 'UNITS'
     0x4c:
       id: 'index_linked_notes'
-      doc: 'Index Linked Notes'
+      doc: 'INDEX LINKED NOTES'
     0x4d:
       id: 'miscliquid_trust'
-      doc: 'Miscliquid Trust'
+      doc: 'MISC/LIQUID TRUST'
     0x4f:
       id: 'ordinary_shares'
-      doc: 'Ordinary Shares'
+      doc: 'ORDINARY SHARES'
     0x50:
       id: 'preferred_stock'
-      doc: 'Preferred Stock'
+      doc: 'PREFERRED STOCK'
     0x52:
       id: 'rights'
-      doc: 'Rights'
+      doc: 'RIGHTS'
     0x53:
       id: 'shares_of_beneficiary_interest'
-      doc: 'Shares Of Beneficiary Interest'
+      doc: 'SHARES OF BENEFICIARY INTEREST'
     0x54:
       id: 'test'
-      doc: 'Test'
+      doc: 'TEST'
     0x55:
       id: 'closed_end_fund'
       doc: 'Closed End Fund'
     0x57:
       id: 'warrant'
-      doc: 'Warrant'
+      doc: 'WARRANT'
   price_resolution:
     0:
       id: 'all_penny'
       doc: 'All Penny'
     1:
       id: 'penny_nickel'
-      doc: 'Penny Nickel'
+      doc: 'Penny/Nickel'
     5:
       id: 'nickel_dime'
-      doc: 'Nickel Dime'
+      doc: 'Nickel/Dime'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -1050,35 +1050,35 @@ enums:
   status:
     0x30:
       id: 'message_was_accepted'
-      doc: 'Message Was Accepted'
+      doc: 'Message was accepted'
     0x31:
       id: 'rejected_due_to_an_invalid_source_id'
-      doc: 'Rejected Due To An Invalid Source Id'
+      doc: 'Rejected due to an Invalid Source ID'
     0x33:
       id: 'maximum_sequence_range'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
+      doc: 'Rejected due to maximum sequence range (see threshold limits)'
     0x34:
       id: 'maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
+      doc: 'Rejected due to maximum request in a day'
     0x35:
       id: 'maximum_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
+      doc: 'Rejected due to maximum number of refresh requests in a day'
     0x36:
       id: 'old_seq_num_ttl'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
+      doc: 'Rejected. Request message SeqNum TTL (Time to live) is too old. Use refresh to recover current state if necessary.'
     0x37:
       id: 'invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
+      doc: 'Rejected due to an Invalid Channel ID'
     0x38:
       id: 'invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
+      doc: 'Rejected due to an Invalid Product ID'
     0x39:
       id: 'invalid_msg_type_or_msg_size_mismatch'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
+      doc: 'Rejected due to: 1) Invalid MsgType, or 2) Mismatch between MsgType and MsgSize'
   retransmit_method:
     0:
       id: 'udp'
-      doc: 'Deliver Via Udp'
+      doc: 'deliver via UDP'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -1088,25 +1088,25 @@ enums:
       doc: 'Resume'
     0x41:
       id: 'short_sale_restriction_activated_day_1'
-      doc: 'Short Sale Restriction Activated Day 1'
+      doc: 'Short Sale Restriction Activated (Day 1)'
     0x43:
       id: 'short_sale_restriction_continued_day_2'
-      doc: 'Short Sale Restriction Continued Day 2'
+      doc: 'Short Sale Restriction Continued (Day 2)'
     0x44:
       id: 'short_sale_restriction_deactivated'
       doc: 'Short Sale Restriction Deactivated'
     0x50:
       id: 'preopening'
-      doc: 'Preopening'
+      doc: 'Pre-opening'
     0x45:
       id: 'early_session'
-      doc: 'Early Session'
+      doc: 'Early session'
     0x4f:
       id: 'core_session'
-      doc: 'Core Session'
+      doc: 'Core session'
     0x4c:
       id: 'late_session_non_nyse_only'
-      doc: 'Late Session Non Nyse Only'
+      doc: 'Late session (Non-NYSE only)'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1115,26 +1115,26 @@ enums:
       doc: 'Price Indication'
     0x47:
       id: 'pre_opening_price_indication'
-      doc: 'Pre Opening Price Indication'
+      doc: 'Pre-Opening Price Indication'
   halt_condition:
     0x7e:
       id: 'security_not_delayedhalted'
-      doc: 'Security Not Delayedhalted'
+      doc: 'Security not delayed/halted'
     0x44:
       id: 'news_dissemination'
-      doc: 'News Dissemination'
+      doc: 'News dissemination'
     0x49:
       id: 'order_imbalance'
-      doc: 'Order Imbalance'
+      doc: 'Order imbalance'
     0x50:
       id: 'news_pending'
-      doc: 'News Pending'
+      doc: 'News pending'
     0x4d:
       id: 'luld_pause'
-      doc: 'Luld Pause'
+      doc: 'LULD pause'
     0x58:
       id: 'equipment_changeover'
-      doc: 'Equipment Changeover'
+      doc: 'Equipment changeover'
     0x41:
       id: 'additional_information_requested'
       doc: 'Additional Information Requested'
@@ -1146,7 +1146,7 @@ enums:
       doc: 'Merger Effective'
     0x46:
       id: 'etf_component_prices_not_available'
-      doc: 'Etf Component Prices Not Available'
+      doc: 'ETF Component Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -1168,84 +1168,84 @@ enums:
   ssr_triggering_exchange_id:
     0x41:
       id: 'nyse_american'
-      doc: 'Nyse American'
+      doc: 'NYSE American'
     0x42:
       id: 'nasdaq_omx_bx'
-      doc: 'Nasdaq Omx Bx'
+      doc: 'NASDAQ OMX BX'
     0x43:
       id: 'nyse_national'
-      doc: 'Nyse National'
+      doc: 'NYSE National'
     0x48:
       id: 'miami_pearl'
       doc: 'Miami Pearl'
     0x49:
       id: 'nasdaq_ise'
-      doc: 'Nasdaq Ise'
+      doc: 'Nasdaq ISE'
     0x4a:
       id: 'cboe_edga'
-      doc: 'Cboe Edga'
+      doc: 'CBOE EDGA'
     0x4b:
       id: 'cboe_edgx'
-      doc: 'Cboe Edgx'
+      doc: 'CBOE EDGX'
     0x4c:
       id: 'ltse'
-      doc: 'Ltse'
+      doc: 'LTSE'
     0x4d:
       id: 'nyse_chicago'
-      doc: 'Nyse Chicago'
+      doc: 'NYSE Chicago'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse'
+      doc: 'NYSE'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq'
+      doc: 'NASDAQ'
     0x54:
       id: 'nasdaq_omx'
-      doc: 'Nasdaq Omx'
+      doc: 'NASDAQ OMX'
     0x55:
       id: 'memx'
-      doc: 'Memx'
+      doc: 'MEMX'
     0x56:
       id: 'iex'
-      doc: 'Iex'
+      doc: 'IEX'
     0x57:
       id: 'cbsx'
-      doc: 'Cbsx'
+      doc: 'CBSX'
     0x58:
       id: 'nasdaq_omx_psx'
-      doc: 'Nasdaq Omx Psx'
+      doc: 'NASDAQ OMX PSX'
     0x59:
       id: 'cboe_byx'
-      doc: 'Cboe Byx'
+      doc: 'CBOE BYX'
     0x5a:
       id: 'cboe_bzx'
-      doc: 'Cboe Bzx'
+      doc: 'CBOE BZX'
     0x20:
       id: 'no_value'
       doc: 'Default (0x20) when the field is not populated'
   ssr_state:
     0x7e:
       id: 'no_short_sale_restriction_in_effect'
-      doc: 'No Short Sale Restriction In Effect'
+      doc: 'No Short Sale Restriction in Effect'
     0x45:
       id: 'short_sale_restriction_in_effect'
-      doc: 'Short Sale Restriction In Effect'
+      doc: 'Short Sale Restriction in Effect'
   market_state:
     0x50:
       id: 'preopening'
-      doc: 'Preopening'
+      doc: 'Pre-opening'
     0x45:
       id: 'early_session'
-      doc: 'Early Session'
+      doc: 'Early session'
     0x4f:
       id: 'core_session'
-      doc: 'Core Session'
+      doc: 'Core session'
     0x4c:
       id: 'late_session'
-      doc: 'Late Session'
+      doc: 'Late session'
     0x58:
       id: 'closed'
       doc: 'Closed'
@@ -1259,30 +1259,30 @@ enums:
   position_change:
     0:
       id: 'kept'
-      doc: 'Kept Position In Book'
+      doc: 'Kept position in book'
     1:
       id: 'lost'
-      doc: 'Lost Position In Book'
+      doc: 'Lost position in book'
   printable_flag:
     0:
       id: 'not_printed'
-      doc: 'Not Printed To The Sip'
+      doc: 'Not Printed to the SIP'
     1:
       id: 'printed'
-      doc: 'Printed To The Sip'
+      doc: 'Printed to the SIP'
   rpi_indicator:
     0x20:
       id: 'no_retail_interest'
-      doc: 'No Retail Interest'
+      doc: 'No retail interest'
     0x41:
       id: 'retail_interest_on_the_bid_side'
-      doc: 'Retail Interest On The Bid Side'
+      doc: 'Retail interest on the bid side'
     0x42:
       id: 'retail_interest_on_the_offer_side'
-      doc: 'Retail Interest On The Offer Side'
+      doc: 'Retail interest on the offer side'
     0x43:
       id: 'retail_interest_on_the_bid_and_offer_sides'
-      doc: 'Retail Interest On The Bid And Offer Sides'
+      doc: 'Retail interest on the bid and offer sides'
   cross_type:
     0x45:
       id: 'market_center_early_opening_auction'
@@ -1299,13 +1299,13 @@ enums:
   auction_type:
     0x4f:
       id: 'early_opening_auction_non_nyse_only'
-      doc: 'Early Opening Auction Non Nyse Only'
+      doc: 'Early Opening Auction (non-NYSE only)'
     0x4d:
       id: 'core_opening_auction'
       doc: 'Core Opening Auction'
     0x48:
       id: 'reopening_auction_halt_resume'
-      doc: 'Reopening Auction Halt Resume'
+      doc: 'Reopening Auction (Halt resume)'
     0x43:
       id: 'closing_auction'
       doc: 'Closing Auction'
@@ -1318,48 +1318,48 @@ enums:
   imbalance_side:
     0x20:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'No imbalance'
     0x42:
       id: 'buy_side'
-      doc: 'Buy Side'
+      doc: 'Buy side'
     0x53:
       id: 'sell_side'
-      doc: 'Sell Side'
+      doc: 'Sell side'
   auction_status:
     0:
       id: 'will_run_as_always_for_open_and_close'
-      doc: 'Will Run As Always For Open And Close'
+      doc: 'Will run as always for Open and Close'
     1:
       id: 'will_run_interest_exists_inside_or_at_the_collars_or_is_fully_paired_off'
-      doc: 'Will Run Interest Exists Inside Or At The Collars Or Is Fully Paired Off'
+      doc: 'Will run, interest exists inside or at the collars or is fully paired off'
     2:
       id: 'will_not_run_because_there_is_an_imbalance_through_the_collars'
-      doc: 'Will Not Run Because There Is An Imbalance Through The Collars'
+      doc: 'Will not run because there is an imbalance through the collars'
     3:
       id: 'will_not_run_will_transition_to_the_closing_auction_instead'
-      doc: 'Will Not Run Will Transition To The Closing Auction Instead'
+      doc: 'Will not run, will transition to the Closing auction instead'
   freeze_status:
     0:
       id: 'imbalance_freeze_not_in_effect'
-      doc: 'Imbalance Freeze Not In Effect'
+      doc: 'Imbalance freeze not in effect'
     1:
       id: 'imbalance_freeze_is_in_effect'
-      doc: 'Imbalance Freeze Is In Effect'
+      doc: 'Imbalance freeze is in effect'
   unpaired_side:
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'not applicable'
     0x42:
       id: 'buy_side'
-      doc: 'Buy Side'
+      doc: 'Buy side'
     0x53:
       id: 'sell_side'
-      doc: 'Sell Side'
+      doc: 'Sell side'
   significant_imbalance:
     0x20:
       id: 'default_field'
       doc: 'Default'
     0x59:
       id: 'the_current_imbalance_is_significant'
-      doc: 'The Current Imbalance Is Significant'
+      doc: 'the current Imbalance is significant'
 

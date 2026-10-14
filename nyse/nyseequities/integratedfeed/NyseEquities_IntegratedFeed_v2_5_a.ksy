@@ -1088,29 +1088,29 @@ enums:
       doc: 'Rejected Due To An Invalid Source Id'
     0x33:
       id: 'maximum_sequence_range'
-      doc: 'Rejected Due To Maximum Sequence Range See Threshold Limits'
+      doc: 'Rejected due to maximum sequence range (see threshold limits)'
     0x34:
       id: 'maximum_request_in_a_day'
-      doc: 'Rejected Due To Maximum Request In A Day'
+      doc: 'Rejected due to maximum request in a day'
     0x35:
       id: 'maximum_refresh_requests_in_a_day'
-      doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
+      doc: 'Rejected due to maximum number of refresh requests in a day'
     0x36:
       id: 'old_seq_num_ttl'
-      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
+      doc: 'Rejected. Request message SeqNum TTL (Time to live) is too old. Use refresh to recover current state if necessary.'
     0x37:
       id: 'invalid_channel_id'
-      doc: 'Rejected Due To An Invalid Channel Id'
+      doc: 'Rejected due to an Invalid Channel ID'
     0x38:
       id: 'invalid_product_id'
-      doc: 'Rejected Due To An Invalid Product Id'
+      doc: 'Rejected due to an Invalid Product ID'
     0x39:
       id: 'invalid_msg_type_or_msg_size_mismatch'
-      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
+      doc: 'Rejected due to: 1) Invalid MsgType, or 2) Mismatch between MsgType and MsgSize'
   retransmit_method:
     0:
       id: 'udp'
-      doc: 'Deliver Via Udp'
+      doc: 'deliver via UDP'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -1230,7 +1230,7 @@ enums:
       doc: 'Nyse'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x51:
       id: 'nasdaq'
       doc: 'Nasdaq'
@@ -1291,17 +1291,17 @@ enums:
   position_change:
     0:
       id: 'kept'
-      doc: 'Kept Position In Book'
+      doc: 'Kept position in book'
     1:
       id: 'lost'
-      doc: 'Lost Position In Book'
+      doc: 'Lost position in book'
   printable_flag:
     0:
       id: 'not_printed'
-      doc: 'Not Printed To The Sip'
+      doc: 'Not Printed to the SIP'
     1:
       id: 'printed'
-      doc: 'Printed To The Sip'
+      doc: 'Printed to the SIP'
   trade_cond_1:
     0x40:
       id: 'regular_sale'

@@ -518,45 +518,45 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_transmissions'
-      doc: 'Denotes That The Nls System Has Started Its Daily Transmission Schedule'
+      doc: 'Denotes that the NLS system has started its daily transmission schedule.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'Denotes The Start Of The Regular Us Market Session'
+      doc: 'Denotes the start of the regular US market session.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'Denotes The End Of The Regular Us Session'
+      doc: 'Denotes the end of the regular US session.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today'
+      doc: 'Indicates that NASDAQ is now closed and will not accept any new orders today.'
     0x43:
       id: 'end_of_transmissions'
-      doc: 'Denotes That The Nls System Has Ended Its Daily Transmission Schedule'
+      doc: 'Denotes that the NLS system has ended its daily transmission schedule.'
   market_center_identifier:
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq Execution System'
+      doc: 'NASDAQ execution system'
     0x4c:
       id: 'trf'
-      doc: 'Nasdaqfinra Trade Reporting Facility Trf'
+      doc: 'NASDAQ/FINRA Trade Reporting Facility (TRF)'
   security_class:
     0x51:
       id: 'nasdaq'
-      doc: 'Nasdaq Listed Issue'
+      doc: 'NASDAQ-Listed Issue'
     0x4e:
       id: 'nyse'
-      doc: 'Nyse Listed Issue'
+      doc: 'NYSE Listed Issue'
     0x41:
       id: 'nyse_mkt'
-      doc: 'Nyse Mkt Listed Issue'
+      doc: 'NYSE MKT-Listed Issue'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca Listed Issue'
+      doc: 'NYSE Arca-Listed Issue'
     0x5a:
       id: 'bats'
-      doc: 'Bats Listed Issue'
+      doc: 'BATS-Listed Issue'
   settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -582,29 +582,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -620,13 +620,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -638,13 +638,13 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -670,29 +670,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   original_special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -708,13 +708,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -726,13 +726,13 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_settlement_type:
     0x40:
       id: 'regular_settlement'
@@ -758,29 +758,29 @@ enums:
       doc: 'Derivative Priced'
     0x35:
       id: 're_opening_print'
-      doc: 'Re Opening Print'
+      doc: 'Re-Opening Print'
     0x36:
       id: 'closing_print'
       doc: 'Closing Print'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_extended_hours_or_sold_code:
     0x54:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
     0x55:
       id: 'extended_hours_trade_reported_late_or_out_of_sequence'
-      doc: 'Extended Hours Trade Reported Late Or Out Of Sequence'
+      doc: 'Extended Hours Trade - Reported Late or Out of Sequence'
     0x4c:
       id: 'sold_last_reported_late_but_in_sequence'
-      doc: 'Sold Last Reported Late But In Sequence'
+      doc: 'Sold Last - Reported Late But In Sequence'
     0x5a:
       id: 'sold_out_of_sequence'
-      doc: 'Sold Out Of Sequence'
+      doc: 'Sold - Out of Sequence'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   corrected_special_sale_condition:
     0x41:
       id: 'acquisition'
@@ -796,13 +796,13 @@ enums:
       doc: 'Price Variation Transaction'
     0x4d:
       id: 'official_close_price'
-      doc: 'Nasdaq Official Close Price Nocp'
+      doc: 'NASDAQ Official Close Price (NOCP)'
     0x50:
       id: 'prior_reference_price'
       doc: 'Prior Reference Price'
     0x51:
       id: 'official_opening_price'
-      doc: 'Nasdaq Official Opening Price Noop'
+      doc: 'NASDAQ Official Opening Price (NOOP)'
     0x53:
       id: 'split_trade'
       doc: 'Split Trade'
@@ -814,61 +814,61 @@ enums:
       doc: 'Cross Trade'
     0x6f:
       id: 'odd_lot_execution'
-      doc: 'Odd Lot Execution'
+      doc: 'Odd lot execution'
     0x78:
       id: 'odd_lot_cross_execution'
-      doc: 'Odd Lot Cross Execution'
+      doc: 'Odd Lot Cross execution'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   current_trading_state:
     0x48:
       id: 'halted'
-      doc: 'Halted Across All Us Equity Markets Sr Os'
+      doc: 'Halted across all U.S. equity markets / SROs'
     0x50:
       id: 'paused'
-      doc: 'Paused Across All Us Equity Markets Sr Os Nasda Qlisted Securities Only'
+      doc: 'Paused across all U.S. equity markets / SROs (NASDAQ-listed securities only)'
     0x51:
       id: 'quotation_only'
-      doc: 'Quotation Only Period For Cross Sro Halt Or Pause'
+      doc: 'Quotation only period for cross-SRO halt or pause'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on NASDAQ'
   reg_sho_action:
     0x30:
       id: 'no_price_test'
-      doc: 'No Price Test In Place'
+      doc: 'No price test in place'
     0x31:
       id: 'restriction_in_effect'
-      doc: 'Reg Sho Short Sale Price Test Restriction In Effect Due To An Intraday Price Drop In Security'
+      doc: 'Reg SHO Short Sale Price Test Restriction in effect due to an intra-day price drop in security'
     0x32:
       id: 'restriction_remains'
-      doc: 'Reg Sho Short Sale Price Test Restriction Remains In Effect'
+      doc: 'Reg SHO Short Sale Price Test Restriction remains in effect'
   market_category:
     0x51:
       id: 'nasdaq_global_select_market'
-      doc: 'Nasdaq Global Select Market'
+      doc: 'NASDAQ Global Select Market'
     0x47:
       id: 'nasdaq_global_market'
-      doc: 'Nasdaq Global Market'
+      doc: 'NASDAQ Global Market'
     0x53:
       id: 'nasdaq_capital_market'
-      doc: 'Nasdaq Capital Market'
+      doc: 'NASDAQ Capital Market'
     0x4e:
       id: 'nyse'
-      doc: 'New York Stock Exchange Nyse'
+      doc: 'New York Stock Exchange (NYSE)'
     0x41:
       id: 'nyse_mkt'
-      doc: 'Nyse Mkt'
+      doc: 'NYSE MKT'
     0x50:
       id: 'nyse_arca'
-      doc: 'Nyse Arca'
+      doc: 'NYSE Arca'
     0x5a:
       id: 'bats_z'
-      doc: 'Bats Z Exchange'
+      doc: 'BATS Z Exchange'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   financial_status_indicator:
     0x44:
       id: 'deficient'
@@ -884,32 +884,32 @@ enums:
       doc: 'Suspended'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent, and Bankrupt'
     0x43:
       id: 'creations_redemptions_suspended'
-      doc: 'Creations Andor Redemptions Suspended For Exchange Traded Product'
+      doc: 'Creations and/or Redemptions Suspended for Exchange Traded Product'
     0x4e:
       id: 'normal'
-      doc: 'Normal Default Issuer Is Not Deficient Delinquent Or Bankrupt'
+      doc: 'Normal (Default): Issuer Is NOT Deficient, Delinquent, or Bankrupt'
     0x20:
       id: 'not_available'
-      doc: 'Not Available Firms Should Refer To Siac Feeds For Code If Needed'
+      doc: 'Not available. Firms should refer to SIAC feeds for code if needed.'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
-      doc: 'Nasdaq Omx System Only Accepts Round Lots Orders For This Security'
+      doc: 'NASDAQ OMX system only accepts round lots orders for this security.'
     0x4e:
       id: 'no_restrictions'
-      doc: 'Nasdaq Omx System Does Not Have Any Order Size Restrictions For This Security Odd And Mixed Lot Orders Are Allowed'
+      doc: 'NASDAQ OMX system does not have any order size restrictions for this security. Odd and mixed lot orders are allowed.'
   issue_classification:
     0x41:
       id: 'ads'
@@ -925,7 +925,7 @@ enums:
       doc: 'Depository Receipt'
     0x49:
       id: 'sec_144_a'
-      doc: '144 A'
+      doc: '144A'
     0x4c:
       id: 'limited'
       doc: 'Limited Partnership'
@@ -946,7 +946,7 @@ enums:
       doc: 'Right'
     0x53:
       id: 'shares'
-      doc: 'Shares Of Beneficial Interest'
+      doc: 'Shares of Beneficial Interest'
     0x54:
       id: 'convertible'
       doc: 'Convertible Debenture'
@@ -955,64 +955,64 @@ enums:
       doc: 'Unit'
     0x56:
       id: 'units_bi'
-      doc: 'Units Benif Int'
+      doc: 'Units/Benif Int'
     0x57:
       id: 'warrant'
       doc: 'Warrant'
   authenticity:
     0x50:
       id: 'live_production'
-      doc: 'Live Production'
+      doc: 'Live/Production'
     0x54:
       id: 'test'
       doc: 'Test'
   short_sale_threshold_indicator:
     0x59:
       id: 'restricted'
-      doc: 'Issue Is Restricted Under Sec Rule 203 B 3'
+      doc: 'Issue is restricted under SEC Rule 203(b)(3)'
     0x4e:
       id: 'not_restricted'
-      doc: 'Issue Is Not Restricted'
+      doc: 'Issue is not restricted'
     0x20:
       id: 'not_available'
-      doc: 'Threshold Indicator Not Available'
+      doc: 'Threshold Indicator not available'
   ipo_flag:
     0x59:
       id: 'yes_field'
-      doc: 'Nasdaq Listed Instrument Is Set Up As A New Ipo Security'
+      doc: 'NASDAQ listed instrument is set up as a new IPO security'
     0x4e:
       id: 'no_field'
-      doc: 'Nasdaq Listed Instrument Is Not Set Up As A New Ipo Security'
+      doc: 'NASDAQ listed instrument is not set up as a new IPO security'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1'
-      doc: 'Tier 1 Nms Stocks And Select Et Ps'
+      doc: 'Tier 1 NMS Stocks and select ETPs'
     0x32:
       id: 'tier_2'
-      doc: 'Tier 2 Nms Stocks'
+      doc: 'Tier 2 NMS Stocks'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   etp_flag:
     0x59:
       id: 'etp'
-      doc: 'Instrument Is An Etp'
+      doc: 'Instrument is an ETP'
     0x4e:
       id: 'not_etp'
-      doc: 'Instrument Is Not An Etp'
+      doc: 'Instrument is not an ETP'
     0x20:
       id: 'not_available'
-      doc: 'Not Available'
+      doc: 'Not available'
   inverse_indicator:
     0x59:
       id: 'inverse_etp'
-      doc: 'Etp Is An Inverse Etp'
+      doc: 'ETP is an Inverse ETP'
     0x4e:
       id: 'not_inverse_etp'
-      doc: 'Etp Is Not An Inverse Etp'
+      doc: 'ETP is not an Inverse ETP'
   breached_level:
     0x31:
       id: 'level_1'
@@ -1026,8 +1026,8 @@ enums:
   ipo_quotation_release_qualifier:
     0x41:
       id: 'anticipated'
-      doc: 'Anticipated Quotation Release Time'
+      doc: 'Anticipated quotation release time'
     0x43:
       id: 'canceled_postponed'
-      doc: 'Ipo Release Canceledpostponed'
+      doc: 'IPO release canceled/postponed'
 

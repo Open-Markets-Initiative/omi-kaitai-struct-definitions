@@ -799,10 +799,10 @@ enums:
   session_identifier:
     0x41:
       id: 'all_market_sessions_or_session_independent'
-      doc: 'All Market Sessions Or Session Independent'
+      doc: 'All Market Sessions or Session Independent'
     0x55:
       id: 'us_market_session'
-      doc: 'Us Market Session'
+      doc: 'US Market Session'
   sale_condition_level_1:
     0x40:
       id: 'regular_trade'
@@ -819,48 +819,48 @@ enums:
   price_change_indicator:
     0x30:
       id: 'no_price_change'
-      doc: 'No Price Change'
+      doc: 'No price change'
     0x31:
       id: 'last_price_changed'
-      doc: 'Last Price Changed'
+      doc: 'Last price changed'
     0x32:
       id: 'low_price_changed'
-      doc: 'Low Price Changed'
+      doc: 'Low price changed'
     0x33:
       id: 'last_and_low_prices_changed'
-      doc: 'Last And Low Prices Changed'
+      doc: 'Last and low prices changed'
     0x34:
       id: 'high_price_changed'
-      doc: 'High Price Changed'
+      doc: 'High price changed'
     0x35:
       id: 'last_and_high_prices_changed'
-      doc: 'Last And High Prices Changed'
+      doc: 'Last and High prices changed'
     0x36:
       id: 'high_and_low_prices_changed'
-      doc: 'High And Low Prices Changed'
+      doc: 'High and Low prices changed'
     0x37:
       id: 'all_prices_changed'
-      doc: 'All Prices Changed'
+      doc: 'All prices changed'
   as_of_indicator:
     0x41:
       id: 'as_of'
-      doc: 'As Of'
+      doc: 'As-Of'
     0x52:
       id: 'reversal'
       doc: 'Reversal'
     0x20:
       id: 'current_day_transaction'
-      doc: 'Current Day Transaction'
+      doc: 'Current Day transaction'
   sale_condition_level_3:
     0x54:
       id: 'executed_outside_normal_market_hours'
       doc: 'Executed Outside Normal Market Hours'
     0x55:
       id: 'executed_outside_normal_market_hours_and_trade_reported_late'
-      doc: 'Executed Outside Normal Market Hours And Trade Reported Late'
+      doc: 'Executed Outside Normal Market Hours and Trade Reported Late'
     0x5a:
       id: 'executed_during_normal_market_hours_and_trade_reported_late'
-      doc: 'Executed During Normal Market Hours And Trade Reported Late'
+      doc: 'Executed During Normal Market Hours and Trade Reported Late'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
@@ -890,13 +890,13 @@ enums:
   last_sale_price_market_center:
     0x55:
       id: 'otcbb'
-      doc: 'Otcbb'
+      doc: 'OTCBB'
     0x75:
       id: 'ootc'
-      doc: 'Ootc'
+      doc: 'OOTC'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   administrative_message_type:
     0x41:
       id: 'general_administrative_message'
@@ -913,23 +913,23 @@ enums:
   closing_price_market_center:
     0x55:
       id: 'otcbb'
-      doc: 'Otcbb'
+      doc: 'OTCBB'
     0x75:
       id: 'ootc'
-      doc: 'Ootc'
+      doc: 'OOTC'
     0x20:
       id: 'not_applicable'
-      doc: 'Not Applicable'
+      doc: 'Not applicable'
   net_change_direction:
     0x2b:
       id: 'positive_or_zero_net_change'
-      doc: 'Positive Or Zero Net Change'
+      doc: 'Positive or zero net change'
     0x2d:
       id: 'negative_net_change'
-      doc: 'Negative Net Change'
+      doc: 'Negative net change'
     0x20:
       id: 'no_trade_or_unaffected'
-      doc: 'No Trade Or Unaffected'
+      doc: 'No Trade or Unaffected'
   action:
     0x48:
       id: 'trading_halt'
@@ -942,7 +942,7 @@ enums:
       doc: 'Trading Resumption'
     0x58:
       id: 'quotation_and_trading_resumption'
-      doc: 'Quotation And Trading Resumption'
+      doc: 'Quotation and Trading Resumption'
   control_message_type:
     0x49:
       id: 'start_of_day_message'

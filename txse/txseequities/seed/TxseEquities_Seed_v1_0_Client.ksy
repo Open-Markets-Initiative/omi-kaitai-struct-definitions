@@ -717,131 +717,131 @@ enums:
   side:
     0:
       id: 'buy'
-      doc: 'Order Is A Buy Order'
+      doc: 'Order is a buy order.'
     1:
       id: 'long_sell'
-      doc: 'Sell Order Of Existing Inventory'
+      doc: 'Sell order of existing inventory.'
     2:
       id: 'short_sell'
-      doc: 'Sell Order Of Borrowed Shares'
+      doc: 'Sell order of borrowed shares.'
     3:
       id: 'short_exempt'
-      doc: 'Sell Order Of Borrowed Shares Exempt From Certain Regulations Of Regulation Sho'
+      doc: 'Sell order of borrowed shares exempt from certain regulations of Regulation SHO.'
   time_in_force:
     1:
       id: 'sys'
-      doc: 'Accepted During Any Session'
+      doc: 'Accepted during any session.'
     2:
       id: 'ioc'
-      doc: 'Similar To Sys But Canceled Immediately After Trading With Resting Liquidity On The Exchange'
+      doc: 'Similar to SYS, but canceled immediately, after trading with resting liquidity on the Exchange.'
     3:
       id: 'gtt'
-      doc: 'Similar To Sys But Canceled After The Requested Time Has Passed Or The End Of The After Hours Session Whichever Comes First'
+      doc: 'Similar to SYS, but canceled after the requested time has passed or the end of the After Hours Session, whichever comes first.'
     4:
       id: 'day'
-      doc: 'Accepted During The Early And Regular Sessions Rejected During The After Hours Session'
+      doc: 'Accepted during the Early and Regular Sessions; rejected during the After Hours Session.'
     5:
       id: 'rho'
-      doc: 'Regular Hours Only Limit Order'
+      doc: 'Regular-Hours-Only limit order.'
     6:
       id: 'at_the_open'
-      doc: 'Auctiononly Tif For The Opening Auction Cross'
+      doc: 'Auction-only TIF for the Opening Auction cross.'
     7:
       id: 'at_the_close'
-      doc: 'Auctiononly Tif For The Closing Auction Cross'
+      doc: 'Auction-only TIF for the Closing Auction cross.'
   order_capacity:
     1:
       id: 'agency'
-      doc: 'Acting On Behalf Of Clients'
+      doc: 'Acting on behalf of clients.'
     2:
       id: 'principal'
-      doc: 'Acting On Behalf Of Broker Dealer'
+      doc: 'Acting on behalf of Broker-Dealer.'
     3:
       id: 'riskless_principal'
-      doc: 'Order To Offset Client Order'
+      doc: 'Order to offset client order.'
   limit_order_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   limit_order_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   market_order_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   replace_order_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   replace_order_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   mass_cancel_scope:
     0:
       id: 'by_member_owned_sender_comps'
@@ -871,1143 +871,1143 @@ enums:
   market_hours_state:
     0:
       id: 'closed_before_hours'
-      doc: 'Markets Are Closed Before Trading Hours'
+      doc: 'Markets are closed before trading hours.'
     1:
       id: 'early_session'
-      doc: 'Early Trading Session Is Active Premarket'
+      doc: 'Early trading session is active (pre-market).'
     2:
       id: 'regular_session'
-      doc: 'Regular Trading Session Is Active'
+      doc: 'Regular trading session is active.'
     3:
       id: 'after_hours_session'
-      doc: 'Afterhours Trading Session Is Active Postmarket'
+      doc: 'After-hours trading session is active (post-market).'
     4:
       id: 'closed_after_hours'
-      doc: 'Markets Are Closed After Trading Hours'
+      doc: 'Markets are closed after trading hours.'
   session_trading_state:
     0:
       id: 'closed'
-      doc: 'Market Session Is Closed Outside Of Trading Hours Or Not Yet Opened'
+      doc: 'Market session is closed, outside of trading hours or not yet opened.'
     1:
       id: 'trading'
-      doc: 'Market Session Is Open And Trading Is Active'
+      doc: 'Market session is open and trading is active.'
     2:
       id: 'halted'
-      doc: 'Marketwide Trading Halt'
+      doc: 'Market-wide trading halt.'
   trading_session_status_operational_halt_reason:
     0:
       id: 'administrative'
-      doc: 'Administrative Or Technical Halt Initiated By The Exchange'
+      doc: 'Administrative or technical halt initiated by the Exchange.'
   trading_session_status_regulatory_halt_reason:
     0:
       id: 'reason_not_available'
-      doc: 'Reason Not Available Or Not Applicable Cta Space Utp Space'
+      doc: 'Reason not available or not applicable (CTA: Space, UTP: Space).'
     1:
       id: 'news_pending'
-      doc: 'Trading Halted Pending Release Of Material News Cta P Utp T 1'
+      doc: 'Trading halted pending release of material news (CTA: P, UTP: T1).'
     2:
       id: 'news_dissemination'
-      doc: 'Trading Halted For Dissemination Of Material News Cta D Utp T 2'
+      doc: 'Trading halted for dissemination of material news (CTA: D, UTP: T2).'
     3:
       id: 'info_requested'
-      doc: 'Additional Information Requested By The Listing Exchange Cta A Utp T 12'
+      doc: 'Additional information requested by the listing exchange (CTA: A, UTP: T12).'
     4:
       id: 'order_imbalance'
-      doc: 'Order Imbalance Cta I'
+      doc: 'Order imbalance (CTA: I).'
     5:
       id: 'extraordinary_market_activity'
-      doc: 'Extraordinary Market Activity Utp T 6'
+      doc: 'Extraordinary market activity (UTP: T6).'
     6:
       id: 'luld_pause'
-      doc: 'Limit Up Limit Down Pause Cta M Utp Ludp'
+      doc: 'Limit Up-Limit Down pause (CTA: M, UTP: LUDP).'
     7:
       id: 'non_compliance'
-      doc: 'Noncompliance With Listing Standards Utp H 4'
+      doc: 'Non-compliance with listing standards (UTP: H4).'
     8:
       id: 'filings_not_current'
-      doc: 'Required Filings Not Current Utp H 9'
+      doc: 'Required filings not current (UTP: H9).'
     9:
       id: 'sec_suspension'
-      doc: 'Sec Trading Suspension Utp H 10'
+      doc: 'SEC trading suspension (UTP: H10).'
     10:
       id: 'regulatory_concern'
-      doc: 'Regulatory Concern From Other Markets Cta C Utp H 11'
+      doc: 'Regulatory concern from other markets (CTA: C, UTP: H11).'
     11:
       id: 'sub_penny_trading'
-      doc: 'Subpenny Trading Violation Cta Y'
+      doc: 'Sub-penny trading violation (CTA: Y).'
     12:
       id: 'etf'
-      doc: 'Et Fspecific Halt Cta F Utp T 8'
+      doc: 'ETF-specific halt (CTA: F, UTP: T8).'
     13:
       id: 'ipo_not_trading'
-      doc: 'Ipo Not Yet Trading Utp Ipo 1'
+      doc: 'IPO not yet trading (UTP: IPO1).'
     14:
       id: 'corporate_action'
-      doc: 'Corporate Action In Progress Cta N Utp M 1'
+      doc: 'Corporate action in progress (CTA: N, UTP: M1).'
     15:
       id: 'circuit_breaker_l_1'
-      doc: 'Marketwide Circuit Breaker Level 1 Cta 1 Utp Mwc 1'
+      doc: 'Market-wide circuit breaker Level 1 (CTA: 1, UTP: MWC1).'
     16:
       id: 'circuit_breaker_l_2'
-      doc: 'Marketwide Circuit Breaker Level 2 Cta 2 Utp Mwc 2'
+      doc: 'Market-wide circuit breaker Level 2 (CTA: 2, UTP: MWC2).'
     17:
       id: 'circuit_breaker_l_3'
-      doc: 'Marketwide Circuit Breaker Level 3 Cta 3 Utp Mwc 3'
+      doc: 'Market-wide circuit breaker Level 3 (CTA: 3, UTP: MWC3).'
     18:
       id: 'circuit_breaker_carryover'
-      doc: 'Marketwide Circuit Breaker Halt Carried Over From Previous Trading Day Utp Mwc 0'
+      doc: 'Market-wide circuit breaker halt carried over from previous trading day (UTP: MWC0).'
     19:
       id: 'merger_effective'
-      doc: 'Merger Effective Cta E'
+      doc: 'Merger effective (CTA: E).'
     20:
       id: 'new_security_offering'
-      doc: 'New Security Offering Cta O'
+      doc: 'New security offering (CTA: O).'
     21:
       id: 'indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available Cta V'
+      doc: 'Intraday indicative value not available (CTA: V).'
     22:
       id: 'quotation_not_available'
-      doc: 'Quotation Not Available Utp M 2'
+      doc: 'Quotation not available (UTP: M2).'
     23:
       id: 'single_stock_trading_pause'
-      doc: 'Single Stock Trading Pause Utp T 5'
+      doc: 'Single stock trading pause (UTP: T5).'
     24:
       id: 'operational'
-      doc: 'Nonregulatory Halt Due To Technical Or Operational Reasons Cta X Utp O 1'
+      doc: 'Non-regulatory halt due to technical or operational reasons (CTA: X, UTP: O1).'
     25:
       id: 'luld_pause_straddle'
-      doc: 'Limit Up Limit Down Volatility Pause Straddle Condition Bidoffer Crosses A Band Utp Luds'
+      doc: 'Limit Up-Limit Down volatility pause - straddle condition (bid/offer crosses a band) (UTP: LUDS).'
     26:
       id: 'news_resumption_times'
-      doc: 'News And Resumption Times Announced Utp T 3'
+      doc: 'News and resumption times announced (UTP: T3).'
     27:
       id: 'single_stock_trading_pause_quoting'
-      doc: 'Single Stock Trading Pause Utp T 7'
+      doc: 'Single stock trading pause (UTP: T7).'
     28:
       id: 'qualifications_issues_resolved'
-      doc: 'Qualifications Issues Reviewedresolved Quotationstrading To Resume Utp R 4'
+      doc: 'Qualifications issues reviewed/resolved; quotations/trading to resume (UTP: R4).'
     29:
       id: 'filing_requirements_satisfied'
-      doc: 'Filing Requirements Satisfiedresolved Quotationstrading To Resume Utp R 9'
+      doc: 'Filing requirements satisfied/resolved; quotations/trading to resume (UTP: R9).'
     30:
       id: 'issuer_news_not_forthcoming'
-      doc: 'Issuer News Not Forthcoming Quotationstrading To Resume Utp C 3'
+      doc: 'Issuer news not forthcoming; quotations/trading to resume (UTP: C3).'
     31:
       id: 'qualifications_halt_ended'
-      doc: 'Qualifications Halt Ended Maintenance Requirements Met Resume Utp C 4'
+      doc: 'Qualifications halt ended; maintenance requirements met; resume (UTP: C4).'
     32:
       id: 'qualifications_halt_concluded'
-      doc: 'Qualifications Halt Concluded Filings Met Quotestrades To Resume Utp C 9'
+      doc: 'Qualifications halt concluded; filings met; quotes/trades to resume (UTP: C9).'
     33:
       id: 'regulatory_authority_halt_concluded'
-      doc: 'Trade Halt Concluded By Other Regulatory Authority Quotestrades To Resume Utp C 11'
+      doc: 'Trade halt concluded by other regulatory authority; quotes/trades to resume (UTP: C11).'
     34:
       id: 'new_issue_available'
-      doc: 'New Issue Available Utp R 1'
+      doc: 'New issue available (UTP: R1).'
     35:
       id: 'issue_available'
-      doc: 'Issue Available Utp R 2'
+      doc: 'Issue available (UTP: R2).'
     36:
       id: 'ipo_quotation_released'
-      doc: 'Ipo Security Released For Quotation Utp Ipoq'
+      doc: 'IPO security released for quotation (UTP: IPOQ).'
     37:
       id: 'ipo_positioning_window_extension'
-      doc: 'Ipo Security Positioning Window Extension Utp Ipoe'
+      doc: 'IPO security - positioning window extension (UTP: IPOE).'
     38:
       id: 'circuit_breaker_quotation_resumption'
-      doc: 'Marketwide Circuit Breaker Quotation Resumption Utp Mwcq'
+      doc: 'Market-wide circuit breaker quotation resumption (UTP: MWCQ).'
   listing_market:
     0:
       id: 'not_available'
-      doc: 'Txse Is Not The Listing Market For This Symbol'
+      doc: 'TXSE is not the listing market for this symbol.'
     70:
       id: 'txse'
-      doc: 'Texas Stock Exchange Llc'
+      doc: 'Texas Stock Exchange, LLC.'
   symbol_trading_state:
     1:
       id: 'trading'
-      doc: 'Symbol Is Open And Available For Trading'
+      doc: 'Symbol is open and available for trading.'
     2:
       id: 'halted'
-      doc: 'Trading Suspended'
+      doc: 'Trading suspended.'
     3:
       id: 'resume_pending'
-      doc: 'Applies Only When A Symbol Is In A Nontrading State With An Auction Cross Pending To Bring It Back Into Trading'
+      doc: 'Applies only when a symbol is in a non-trading state with an auction cross pending to bring it back into trading.'
   short_sale_restriction_state:
     0:
       id: 'none'
-      doc: 'No Short Sale Restriction In Effect Cta Space Utp 0'
+      doc: 'No short sale restriction in effect (CTA: Space, UTP: 0).'
     1:
       id: 'activated'
-      doc: 'Restriction Activated Intraday Cta A Utp 1'
+      doc: 'Restriction activated intra-day (CTA: A, UTP: 1).'
     2:
       id: 'continued'
-      doc: 'Restriction Carried Over From Previous Trading Day Cta C Utp 2'
+      doc: 'Restriction carried over from previous trading day (CTA: C, UTP: 2).'
     3:
       id: 'deactivated'
-      doc: 'Restriction Deactivated Intraday Cta D'
+      doc: 'Restriction deactivated intra-day (CTA: D).'
     4:
       id: 'in_effect'
-      doc: 'Restriction In Effect Status Unchanged From Previous Close Cta E'
+      doc: 'Restriction in effect, status unchanged from previous close (CTA: E).'
   symbol_status_operational_halt_reason:
     0:
       id: 'administrative'
-      doc: 'Administrative Or Technical Halt Initiated By The Exchange'
+      doc: 'Administrative or technical halt initiated by the Exchange.'
   symbol_status_regulatory_halt_reason:
     0:
       id: 'reason_not_available'
-      doc: 'Reason Not Available Or Not Applicable Cta Space Utp Space'
+      doc: 'Reason not available or not applicable (CTA: Space, UTP: Space).'
     1:
       id: 'news_pending'
-      doc: 'Trading Halted Pending Release Of Material News Cta P Utp T 1'
+      doc: 'Trading halted pending release of material news (CTA: P, UTP: T1).'
     2:
       id: 'news_dissemination'
-      doc: 'Trading Halted For Dissemination Of Material News Cta D Utp T 2'
+      doc: 'Trading halted for dissemination of material news (CTA: D, UTP: T2).'
     3:
       id: 'info_requested'
-      doc: 'Additional Information Requested By The Listing Exchange Cta A Utp T 12'
+      doc: 'Additional information requested by the listing exchange (CTA: A, UTP: T12).'
     4:
       id: 'order_imbalance'
-      doc: 'Order Imbalance Cta I'
+      doc: 'Order imbalance (CTA: I).'
     5:
       id: 'extraordinary_market_activity'
-      doc: 'Extraordinary Market Activity Utp T 6'
+      doc: 'Extraordinary market activity (UTP: T6).'
     6:
       id: 'luld_pause'
-      doc: 'Limit Up Limit Down Pause Cta M Utp Ludp'
+      doc: 'Limit Up-Limit Down pause (CTA: M, UTP: LUDP).'
     7:
       id: 'non_compliance'
-      doc: 'Noncompliance With Listing Standards Utp H 4'
+      doc: 'Non-compliance with listing standards (UTP: H4).'
     8:
       id: 'filings_not_current'
-      doc: 'Required Filings Not Current Utp H 9'
+      doc: 'Required filings not current (UTP: H9).'
     9:
       id: 'sec_suspension'
-      doc: 'Sec Trading Suspension Utp H 10'
+      doc: 'SEC trading suspension (UTP: H10).'
     10:
       id: 'regulatory_concern'
-      doc: 'Regulatory Concern From Other Markets Cta C Utp H 11'
+      doc: 'Regulatory concern from other markets (CTA: C, UTP: H11).'
     11:
       id: 'sub_penny_trading'
-      doc: 'Subpenny Trading Violation Cta Y'
+      doc: 'Sub-penny trading violation (CTA: Y).'
     12:
       id: 'etf'
-      doc: 'Et Fspecific Halt Cta F Utp T 8'
+      doc: 'ETF-specific halt (CTA: F, UTP: T8).'
     13:
       id: 'ipo_not_trading'
-      doc: 'Ipo Not Yet Trading Utp Ipo 1'
+      doc: 'IPO not yet trading (UTP: IPO1).'
     14:
       id: 'corporate_action'
-      doc: 'Corporate Action In Progress Cta N Utp M 1'
+      doc: 'Corporate action in progress (CTA: N, UTP: M1).'
     15:
       id: 'circuit_breaker_l_1'
-      doc: 'Marketwide Circuit Breaker Level 1 Cta 1 Utp Mwc 1'
+      doc: 'Market-wide circuit breaker Level 1 (CTA: 1, UTP: MWC1).'
     16:
       id: 'circuit_breaker_l_2'
-      doc: 'Marketwide Circuit Breaker Level 2 Cta 2 Utp Mwc 2'
+      doc: 'Market-wide circuit breaker Level 2 (CTA: 2, UTP: MWC2).'
     17:
       id: 'circuit_breaker_l_3'
-      doc: 'Marketwide Circuit Breaker Level 3 Cta 3 Utp Mwc 3'
+      doc: 'Market-wide circuit breaker Level 3 (CTA: 3, UTP: MWC3).'
     18:
       id: 'circuit_breaker_carryover'
-      doc: 'Marketwide Circuit Breaker Halt Carried Over From Previous Trading Day Utp Mwc 0'
+      doc: 'Market-wide circuit breaker halt carried over from previous trading day (UTP: MWC0).'
     19:
       id: 'merger_effective'
-      doc: 'Merger Effective Cta E'
+      doc: 'Merger effective (CTA: E).'
     20:
       id: 'new_security_offering'
-      doc: 'New Security Offering Cta O'
+      doc: 'New security offering (CTA: O).'
     21:
       id: 'indicative_value_not_available'
-      doc: 'Intraday Indicative Value Not Available Cta V'
+      doc: 'Intraday indicative value not available (CTA: V).'
     22:
       id: 'quotation_not_available'
-      doc: 'Quotation Not Available Utp M 2'
+      doc: 'Quotation not available (UTP: M2).'
     23:
       id: 'single_stock_trading_pause'
-      doc: 'Single Stock Trading Pause Utp T 5'
+      doc: 'Single stock trading pause (UTP: T5).'
     24:
       id: 'operational'
-      doc: 'Nonregulatory Halt Due To Technical Or Operational Reasons Cta X Utp O 1'
+      doc: 'Non-regulatory halt due to technical or operational reasons (CTA: X, UTP: O1).'
     25:
       id: 'luld_pause_straddle'
-      doc: 'Limit Up Limit Down Volatility Pause Straddle Condition Bidoffer Crosses A Band Utp Luds'
+      doc: 'Limit Up-Limit Down volatility pause - straddle condition (bid/offer crosses a band) (UTP: LUDS).'
     26:
       id: 'news_resumption_times'
-      doc: 'News And Resumption Times Announced Utp T 3'
+      doc: 'News and resumption times announced (UTP: T3).'
     27:
       id: 'single_stock_trading_pause_quoting'
-      doc: 'Single Stock Trading Pause Utp T 7'
+      doc: 'Single stock trading pause (UTP: T7).'
     28:
       id: 'qualifications_issues_resolved'
-      doc: 'Qualifications Issues Reviewedresolved Quotationstrading To Resume Utp R 4'
+      doc: 'Qualifications issues reviewed/resolved; quotations/trading to resume (UTP: R4).'
     29:
       id: 'filing_requirements_satisfied'
-      doc: 'Filing Requirements Satisfiedresolved Quotationstrading To Resume Utp R 9'
+      doc: 'Filing requirements satisfied/resolved; quotations/trading to resume (UTP: R9).'
     30:
       id: 'issuer_news_not_forthcoming'
-      doc: 'Issuer News Not Forthcoming Quotationstrading To Resume Utp C 3'
+      doc: 'Issuer news not forthcoming; quotations/trading to resume (UTP: C3).'
     31:
       id: 'qualifications_halt_ended'
-      doc: 'Qualifications Halt Ended Maintenance Requirements Met Resume Utp C 4'
+      doc: 'Qualifications halt ended; maintenance requirements met; resume (UTP: C4).'
     32:
       id: 'qualifications_halt_concluded'
-      doc: 'Qualifications Halt Concluded Filings Met Quotestrades To Resume Utp C 9'
+      doc: 'Qualifications halt concluded; filings met; quotes/trades to resume (UTP: C9).'
     33:
       id: 'regulatory_authority_halt_concluded'
-      doc: 'Trade Halt Concluded By Other Regulatory Authority Quotestrades To Resume Utp C 11'
+      doc: 'Trade halt concluded by other regulatory authority; quotes/trades to resume (UTP: C11).'
     34:
       id: 'new_issue_available'
-      doc: 'New Issue Available Utp R 1'
+      doc: 'New issue available (UTP: R1).'
     35:
       id: 'issue_available'
-      doc: 'Issue Available Utp R 2'
+      doc: 'Issue available (UTP: R2).'
     36:
       id: 'ipo_quotation_released'
-      doc: 'Ipo Security Released For Quotation Utp Ipoq'
+      doc: 'IPO security released for quotation (UTP: IPOQ).'
     37:
       id: 'ipo_positioning_window_extension'
-      doc: 'Ipo Security Positioning Window Extension Utp Ipoe'
+      doc: 'IPO security - positioning window extension (UTP: IPOE).'
     38:
       id: 'circuit_breaker_quotation_resumption'
-      doc: 'Marketwide Circuit Breaker Quotation Resumption Utp Mwcq'
+      doc: 'Market-wide circuit breaker quotation resumption (UTP: MWCQ).'
   limit_order_accepted_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   limit_order_accepted_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   limit_order_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
   limit_order_rejected_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   limit_order_rejected_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   market_order_accepted_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   market_order_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
   market_order_rejected_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   cancel_reason:
     1:
       id: 'requested_by_user'
-      doc: 'Cancel Due To Request By Client'
+      doc: 'Cancel due to request by client.'
     2:
       id: 'related_to_time_in_force'
-      doc: 'Cancel Due To Time In Force Expiration'
+      doc: 'Cancel due to time in force expiration.'
     3:
       id: 'related_to_min_qty'
-      doc: 'Cancel Due To Inability To Meet Minimum Quantity'
+      doc: 'Cancel due to inability to meet minimum quantity.'
     4:
       id: 'reg_nms_violation_no_slide'
-      doc: 'Canceled As Order Would Violate Regulation Nms Rule 610 D By Creating A Locked Or Crossed Market And Price Sliding Was Either Not Selected Or Not Applicable'
+      doc: 'Canceled as order would violate Regulation NMS Rule 610(d) by creating a locked or crossed market, and price sliding was either not selected or not applicable.'
     5:
       id: 'marketable_reserve'
-      doc: 'Reserve Orders Will Be Canceled When Deemed Marketable At Another Exchange Either At New Order Entry Or Replenishment'
+      doc: 'Reserve orders will be canceled when deemed marketable at another exchange either at new order entry or replenishment.'
     6:
       id: 'self_match_prevention'
-      doc: 'Cancel Due To Selfmatch Prevention Instructions'
+      doc: 'Cancel due to self-match prevention instructions.'
     7:
       id: 'replenishment_canceled_due_to_reserve'
-      doc: 'Replenishment Canceled Related To The Reserve Order Being Canceled Or Replaced'
+      doc: 'Replenishment canceled related to the Reserve order being canceled or replaced.'
     8:
       id: 'related_to_order_type'
-      doc: 'Cancel Due To Order Type Eg'
+      doc: 'Cancel due to order type e.g.'
     9:
       id: 'canceled_due_to_crossed_markets'
-      doc: 'Cancel Due To Client Instruction On Crossed Markets'
+      doc: 'Cancel due to client instruction on crossed markets.'
     10:
       id: 'canceled_due_to_mass_cancel_request'
-      doc: 'Cancel Due To A Mass Cancel Request'
+      doc: 'Cancel due to a mass cancel request.'
     11:
       id: 'exchange_locked_or_crossed_no_slide'
-      doc: 'Canceled As Order Would Lock Or Cross The Exchange Book And Price Sliding Was Either Not Selected Or Not Applicable'
+      doc: 'Canceled as order would lock or cross the Exchange book, and price sliding was either not selected or not applicable.'
     12:
       id: 'reg_sho_violation_no_slide'
-      doc: 'Canceled As Order Would Violate Regulation Sho Rule 201 By Display At Or Below The National Best Bid During A Short Sale Price Test Restriction And Price Sliding Was Either Not Selected Or Not Applicable'
+      doc: 'Canceled as order would violate Regulation SHO Rule 201 by display at or below the National Best Bid during a short sale price test restriction, and price sliding was either not selected or not applicable.'
     13:
       id: 'luld_breached_no_slide'
-      doc: 'Canceled As Order Would Violate Luld Limit Up Limit Down Price Bands Per Sec Rule 608 And Price Sliding Was Either Not Selected Or Not Applicable'
+      doc: 'Canceled as order would violate LULD (Limit Up-Limit Down) price bands per SEC Rule 608, and price sliding was either not selected or not applicable.'
     14:
       id: 'canceled_as_price_breached_luld'
-      doc: 'Canceled As The Orders Limit Price Is Now Outside Luld Limit Up Limit Down Price Bands After Bands Narrowed'
+      doc: 'Canceled as the order''s limit price is now outside LULD (Limit Up-Limit Down) price bands after bands narrowed.'
     15:
       id: 'canceled_on_disconnect'
-      doc: 'Cancel Due To Client Disconnect From A Port With Cancelondisconnect Instructions'
+      doc: 'Cancel due to client disconnect from a port with cancel-on-disconnect instructions.'
     16:
       id: 'auction_order_post_cross'
-      doc: 'Auction Order Is Canceled Because The Auction It Was Eligible For Has Concluded'
+      doc: 'Auction order is canceled because the auction it was eligible for has concluded.'
     17:
       id: 'peg_reference_price_breaches_limit_price'
-      doc: 'Pegged Order Canceled Because Its Calculated Reference Price Moved Beyond The Orders Limit Price The Limit Price Collared The Peg'
+      doc: 'Pegged order canceled because its calculated reference price moved beyond the order''s limit price (the limit price collared the peg).'
     18:
       id: 'odd_lot_not_executable'
-      doc: 'Canceled As The Order Is Of Odd Lot Size And Could Not Be Executed Against The Contraside Liquidity On The Txse Book'
+      doc: 'Canceled as the order is of odd lot size and could not be executed against the contra-side liquidity on the TXSE Book.'
   cancel_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
   modify_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
   order_replaced_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   order_replaced_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   replace_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
   replace_rejected_self_match_instruction:
     0:
       id: 'no_self_match_prevention'
-      doc: 'Selfmatch Prevention Is Disabled'
+      doc: 'Self-match prevention is disabled.'
     1:
       id: 'cancel_newest'
-      doc: 'Cancels The Incoming Order'
+      doc: 'Cancels the incoming order.'
     2:
       id: 'cancel_oldest'
-      doc: 'Cancels The Resting Order'
+      doc: 'Cancels the resting order.'
     3:
       id: 'cancel_both'
-      doc: 'Cancels Both Orders Entirely Regardless Of Size'
+      doc: 'Cancels both orders entirely regardless of size.'
     4:
       id: 'cancel_smallest'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
     5:
       id: 'decrement_and_cancel'
-      doc: 'If Orders Are Equal Size Cancels Both'
+      doc: 'If orders are equal size: cancels both.'
   replace_rejected_price_slide_instruction:
     0:
       id: 'no_price_slide'
-      doc: 'No Display Price Slide Instruction'
+      doc: 'No Display-Price Slide instruction.'
     1:
       id: 'single_price_slide_on_lock_and_cross'
-      doc: 'Single Price Slide Applied To Both Locking And Crossing Quotations'
+      doc: 'Single price slide applied to both locking and crossing quotations.'
     2:
       id: 'multiple_price_slides_on_lock_and_cross'
-      doc: 'Multiple Price Slides Applied To Both Locking And Crossing Quotations'
+      doc: 'Multiple price slides applied to both locking and crossing quotations.'
     3:
       id: 'single_price_slide_lock_only'
-      doc: 'Single Price Slide Applied Only To Locking Quotations'
+      doc: 'Single price slide applied only to locking quotations.'
   liquidity_indicator:
     0:
       id: 'removed_hidden_liquidity'
-      doc: 'Removed Hidden Liquidity'
+      doc: 'Removed hidden liquidity.'
     1:
       id: 'removed_displayed_liquidity'
-      doc: 'Removed Displayed Liquidity'
+      doc: 'Removed displayed liquidity.'
     2:
       id: 'added_hidden_liquidity'
-      doc: 'Added Hidden Liquidity'
+      doc: 'Added hidden liquidity.'
     3:
       id: 'added_displayed_liquidity'
-      doc: 'Added Displayed Liquidity'
+      doc: 'Added displayed liquidity.'
     4:
       id: 'auction'
-      doc: 'Execution From An Auction Cross'
+      doc: 'Execution from an auction cross.'
   restatement_reason:
     1:
       id: 'reserve_replenished'
-      doc: 'A New Displayed Slice Of A Reserve Order Has Been Added To The Displayed Book'
+      doc: 'A new displayed slice of a reserve order has been added to the displayed book.'
     2:
       id: 'repriced'
-      doc: 'A Repriceeligible Order Has Been Repriced To A New Price'
+      doc: 'A reprice-eligible order has been repriced to a new price.'
     3:
       id: 'post_auction'
-      doc: 'Orders Staged Awaiting The Result Of The Auction With Unfilled Residual Have Been Reinstated Into Continuous Book'
+      doc: 'Orders staged awaiting the result of the auction with unfilled residual have been reinstated into continuous book.'
   mass_cancel_accepted_scope:
     0:
       id: 'by_member_owned_sender_comps'
@@ -2025,119 +2025,119 @@ enums:
   mass_cancel_rejected_reason:
     1:
       id: 'invalid_client_order_id'
-      doc: 'Client Order Id Is Invalid'
+      doc: 'Client Order Id is invalid.'
     2:
       id: 'duplicate_client_order_id'
-      doc: 'Client Order Id Has Already Been Used For The Current Session On This Port'
+      doc: 'Client Order Id has already been used for the current session on this port.'
     3:
       id: 'unknown_original_client_order_id'
-      doc: 'Attempt To Modify Or Replace A Client Order That Was Not Found For The Current Session On This Port'
+      doc: 'Attempt to modify or replace a client order that was not found for the current session on this port.'
     4:
       id: 'no_longer_on_book'
-      doc: 'Attempt To Modify Replace Or Cancel An Order That Has Already Canceled Or Fully Executed'
+      doc: 'Attempt to modify, replace, or cancel an order that has already canceled or fully executed.'
     5:
       id: 'invalid_symbol'
-      doc: 'Symbol Id Is Not Valid For The Current Session'
+      doc: 'Symbol ID is not valid for the current session.'
     6:
       id: 'invalid_price'
-      doc: 'Invalid Limit Price'
+      doc: 'Invalid limit price.'
     7:
       id: 'invalid_order_quantity'
-      doc: 'Invalid Order Quantity'
+      doc: 'Invalid order quantity.'
     8:
       id: 'invalid_reference_price_target'
-      doc: 'Invalid Reference Price Target Related To The Order Attributes'
+      doc: 'Invalid reference price target related to the order attributes.'
     9:
       id: 'invalid_is_hidden_flag'
-      doc: 'Invalid Is Hidden Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Hidden'' flag related to the order attributes.'
     10:
       id: 'invalid_order_type'
-      doc: 'Invalid Order Type Related To The Order Attributes'
+      doc: 'Invalid order type related to the order attributes.'
     11:
       id: 'invalid_side'
-      doc: 'Invalid Side'
+      doc: 'Invalid side.'
     12:
       id: 'invalid_max_floor_quantity'
-      doc: 'Invalid Max Floor Quantity Related To The Order Attributes'
+      doc: 'Invalid max floor quantity related to the order attributes.'
     13:
       id: 'invalid_max_replenish_quantity_range'
-      doc: 'Invalid Maximum Replenish Quantity Range'
+      doc: 'Invalid maximum replenish quantity range.'
     14:
       id: 'invalid_max_replenish_time_range'
-      doc: 'Invalid Maximum Replenish Time Range'
+      doc: 'Invalid maximum replenish time range.'
     15:
       id: 'invalid_minimum_quantity'
-      doc: 'Invalid Minimum Quantity'
+      doc: 'Invalid minimum quantity.'
     16:
       id: 'invalid_locate_required_flag'
-      doc: 'Invalid Locaterequired Flag Related To The Order Attributes'
+      doc: 'Invalid locate-required flag related to the order attributes.'
     17:
       id: 'invalid_time_in_force'
-      doc: 'Invalid Time In Force'
+      doc: 'Invalid time in force.'
     18:
       id: 'modification_not_permitted'
-      doc: 'Order Modification Not Permitted'
+      doc: 'Order modification not permitted.'
     19:
       id: 'invalid_mpid'
-      doc: 'Invalid Market Participant Identifier'
+      doc: 'Invalid market participant identifier.'
     20:
       id: 'invalid_sender_comp'
-      doc: 'Invalid Sender Comp'
+      doc: 'Invalid sender comp.'
     21:
       id: 'invalid_is_post_only_flag'
-      doc: 'Invalid Is Post Only Flag Related To The Order Attributes'
+      doc: 'Invalid ''Is Post Only'' flag related to the order attributes.'
     22:
       id: 'invalid_expire_time'
-      doc: 'Invalid Expire Time'
+      doc: 'Invalid expire time.'
     23:
       id: 'invalid_for_trading_session'
-      doc: 'Not Permitted During The Current Trading Session'
+      doc: 'Not permitted during the current trading session.'
     24:
       id: 'invalid_for_trading_status'
-      doc: 'Not Permitted During The Current Trading Status'
+      doc: 'Not permitted during the current trading status.'
     25:
       id: 'invalid_for_symbol_status'
-      doc: 'Not Permitted During The Current Symbol Status'
+      doc: 'Not permitted during the current symbol status.'
     26:
       id: 'invalid_is_iso_flag'
-      doc: 'Invalid Is Iso Flag Related To The Order Attributes Iso Intermarket Sweep Order'
+      doc: 'Invalid ''Is ISO'' flag related to the order attributes (ISO = Intermarket Sweep Order).'
     27:
       id: 'trading_disabled_for_mpid_on_port'
-      doc: 'Trading Is Disabled For The Mpid On This Port Based On Port Mpid Settings Configuration'
+      doc: 'Trading is disabled for the MPID on this port based on port MPID settings configuration.'
     28:
       id: 'trading_disabled_for_non_test_symbols'
-      doc: 'Trading Is Restricted To Test Symbols Only Based On Port Settings Configuration'
+      doc: 'Trading is restricted to test symbols only based on port settings configuration.'
     29:
       id: 'trading_disabled_for_order_capacity'
-      doc: 'Trading Is Disabled For The Specified Order Capacity Based On Port Settings Configuration'
+      doc: 'Trading is disabled for the specified order capacity based on port settings configuration.'
     30:
       id: 'trading_disabled_for_iso'
-      doc: 'Iso Intermarket Sweep Order Trading Is Disabled Based On Port Settings Configuration'
+      doc: 'ISO (Intermarket Sweep Order) trading is disabled based on port settings configuration.'
     31:
       id: 'maximum_order_quantity_breached'
-      doc: 'Order Quantity Exceeds The Maximum Shares Limit Configured In Port Settings'
+      doc: 'Order quantity exceeds the maximum shares limit configured in port settings.'
     32:
       id: 'maximum_price_breached'
-      doc: 'Limit Price Exceeds The Maximum Acceptable Price For The Exchange'
+      doc: 'Limit price exceeds the maximum acceptable price for the Exchange.'
     33:
       id: 'maximum_notional_breached'
-      doc: 'Order Notional Value Exceeds The Maximum Notional Limit Configured In Port Settings'
+      doc: 'Order notional value exceeds the maximum notional limit configured in port settings.'
     34:
       id: 'invalid_mass_cancel_request_id'
-      doc: 'Mass Cancel Request Id Is Invalid'
+      doc: 'Mass Cancel Request Id is invalid.'
     35:
       id: 'symbol_on_restricted_list'
-      doc: 'Symbol Is On The Restricted List For This Port Mpid Based On Port Settings Configuration'
+      doc: 'Symbol is on the restricted list for this port/MPID based on port settings configuration.'
     36:
       id: 'luld_band_breached'
-      doc: 'Order Limit Price Is Outside Luld Limit Up Limit Down Bands And Port Settings Require Rejection'
+      doc: 'Order limit price is outside LULD (Limit Up-Limit Down) bands and port settings require rejection.'
     37:
       id: 'invalid_price_increment'
-      doc: 'Price Does Not Conform To The Minimum Price Variation Tick Size'
+      doc: 'Price does not conform to the minimum price variation (tick size).'
     38:
       id: 'auction_order_not_cancelable'
-      doc: 'Auction Only Orders For The Open And Close Cannot Be Cancelled Modified Or Replaced Once The Band Window Begins'
+      doc: 'Auction-Only orders for the Open and Close cannot be cancelled, modified, or replaced once the Band Window begins.'
     39:
       id: 'invalid_for_auction_order'
-      doc: 'Order Property Is Incompatible With An Auctionclassed Order'
+      doc: 'Order property is incompatible with an auction-classed order.'
 

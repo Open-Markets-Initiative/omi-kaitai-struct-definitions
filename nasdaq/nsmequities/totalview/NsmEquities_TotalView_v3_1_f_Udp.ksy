@@ -615,44 +615,44 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside Of Time Stamp Messages The Start Of Day Message Is The First Message Sent In Any Trading Day'
+      doc: 'Outside of time stamp messages, the start of day message is the first message sent in any trading day.'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This Message Indicates That Nasdaq Is Open And Ready To Start Accepting Orders'
+      doc: 'This message indicates that NASDAQ is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This Message Is Intended To Indicate That Market Hours Orders Are No Longer Available For Execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It Indicates That Nasdaq Is Now Closed And Will Not Accept Any New Orders Today It Is Still Possible To Receive Broken Trade Messages And Order Delete Messages After The End Of Day'
+      doc: 'It indicates that NASDAQ is now closed and will not accept any new orders today. It is still possible to receive Broken Trade messages and Order Delete messages after the End of Day.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This Is Always The Last Message Sent In Any Trading Day'
+      doc: 'This is always the last message sent in any trading day.'
     0x41:
       id: 'emergency_market_condition_halt'
-      doc: 'This Message Is Sent To Inform Nasdaq Market Participants That The Emc Is In Effect No Trading Is Allowed During The Emc'
+      doc: 'This message is sent to inform NASDAQ market participants that the EMC is in effect. No trading is allowed during the EMC.'
     0x52:
       id: 'emergency_market_condition_quote_only_period'
-      doc: 'This Message Is Sent To Inform Nasdaq Market Participants That The Emc Quotation Only Period Is In Effect'
+      doc: 'This message is sent to inform NASDAQ market participants that the EMC quotation only period is in effect.'
     0x42:
       id: 'emergency_market_condition_resumption'
-      doc: 'This Message Is Sent To Inform Nasdaq Market Participants That Emc Is No Longer In Effect'
+      doc: 'This message is sent to inform NASDAQ market participants that EMC is no longer in effect.'
   market_category:
     0x54:
       id: 'cqs'
-      doc: 'Cqs Nyse Amex Or Regional Exchange'
+      doc: 'CQS (NYSE, Amex or regional exchange)'
     0x51:
       id: 'nasdaq_global_select_market'
-      doc: 'Nasdaq Global Select Market'
+      doc: 'NASDAQ Global Select Market'
     0x47:
       id: 'nasdaq_global_market'
-      doc: 'Nasdaq Global Market'
+      doc: 'NASDAQ Global Market'
     0x53:
       id: 'nasdaq_capital_market'
-      doc: 'Nasdaq Capital Market'
+      doc: 'NASDAQ Capital Market'
   financial_status_indicator:
     0x44:
       id: 'deficient'
@@ -668,43 +668,43 @@ enums:
       doc: 'Suspended'
     0x47:
       id: 'deficient_and_bankrupt'
-      doc: 'Deficient And Bankrupt'
+      doc: 'Deficient and Bankrupt'
     0x48:
       id: 'deficient_and_delinquent'
-      doc: 'Deficient And Delinquent'
+      doc: 'Deficient and Delinquent'
     0x4a:
       id: 'delinquent_and_bankrupt'
-      doc: 'Delinquent And Bankrupt'
+      doc: 'Delinquent and Bankrupt'
     0x4b:
       id: 'deficient_delinquent_and_bankrupt'
-      doc: 'Deficient Delinquent And Bankrupt'
+      doc: 'Deficient, Delinquent and Bankrupt'
     0x20:
       id: 'in_compliance'
-      doc: 'Company Is In Compliance If Nasda Qlisted Issue For Cqs Issues This Field Will Also Be Spacefilled'
+      doc: 'Company is in compliance, if NASDAQ-listed issue. For CQS issues, this field will also be space-filled.'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
-      doc: 'Only Round Lots Are Accepted In This Stock'
+      doc: 'Only round lots are accepted in this stock'
     0x4e:
       id: 'odd_and_mixed_lots_allowed'
-      doc: 'Oddmixed Lots Are Allowed'
+      doc: 'Odd/mixed lots are allowed'
   trading_state:
     0x48:
       id: 'halted'
       doc: 'Halted'
     0x51:
       id: 'quotation_only_period'
-      doc: 'Quotation Only Period'
+      doc: 'Quotation only period'
     0x54:
       id: 'trading'
-      doc: 'Trading On Nasdaq'
+      doc: 'Trading on NASDAQ'
   primary_market_maker:
     0x59:
       id: 'primary'
-      doc: 'Primary Market Maker'
+      doc: 'Primary market maker'
     0x4e:
       id: 'non_primary'
-      doc: 'Nonprimary Market Maker'
+      doc: 'Non-primary market maker'
   market_maker_mode:
     0x4e:
       id: 'normal'
@@ -717,7 +717,7 @@ enums:
       doc: 'Syndicate'
     0x52:
       id: 'pre_syndicate'
-      doc: 'Presyndicate'
+      doc: 'Pre-syndicate'
     0x4c:
       id: 'penalty'
       doc: 'Penalty'
@@ -727,7 +727,7 @@ enums:
       doc: 'Active'
     0x45:
       id: 'excused'
-      doc: 'Excused Withdrawn'
+      doc: 'Excused/Withdrawn'
     0x57:
       id: 'withdrawn'
       doc: 'Withdrawn'
@@ -740,91 +740,91 @@ enums:
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order.'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order.'
   display:
     0x59:
       id: 'displayable'
-      doc: 'Displayable Order Type On All Nasdaq Data Feeds'
+      doc: 'Displayable order type on all NASDAQ data feeds'
     0x53:
       id: 'flash_order'
-      doc: 'Flash Order Displayable On Total View Itch Only'
+      doc: 'Flash order displayable on TotalView-ITCH only'
   printable:
     0x4e:
       id: 'non_printable'
-      doc: 'Nonprintable'
+      doc: 'Non-printable'
     0x59:
       id: 'printable'
       doc: 'Printable'
   cross_type:
     0x4f:
       id: 'opening_cross'
-      doc: 'Nasdaq Opening Cross'
+      doc: 'NASDAQ Opening Cross'
     0x43:
       id: 'closing_cross'
-      doc: 'Nasdaq Closing Cross'
+      doc: 'NASDAQ Closing Cross'
     0x48:
       id: 'ipo_and_halted_cross'
-      doc: 'Cross For Ipo And Halted Securities'
+      doc: 'Cross for IPO and halted securities'
     0x49:
       id: 'cross_network'
-      doc: 'Nasdaq Cross Network Intraday Cross And Post Close Cross Cross Trade Message Only'
+      doc: 'NASDAQ Cross Network: Intraday Cross and Post-Close Cross. Cross Trade Message only.'
   imbalance_direction:
     0x42:
       id: 'buy_imbalance'
-      doc: 'Buy Imbalance'
+      doc: 'Buy imbalance'
     0x53:
       id: 'sell_imbalance'
-      doc: 'Sell Imbalance'
+      doc: 'Sell imbalance'
     0x4e:
       id: 'no_imbalance'
-      doc: 'No Imbalance'
+      doc: 'No imbalance'
     0x4f:
       id: 'insufficient_orders'
-      doc: 'Insufficient Orders To Calculate'
+      doc: 'Insufficient orders to calculate'
   price_variation_indicator:
     0x4c:
       id: 'less_than_one_percent'
-      doc: 'Less Than 1%'
+      doc: 'Less than 1%'
     0x31:
       id: 'one_to_one_point_nine_nine_percent'
-      doc: '1 To 1.99%'
+      doc: '1 to 1.99%'
     0x32:
       id: 'two_to_two_point_nine_nine_percent'
-      doc: '2 To 2.99%'
+      doc: '2 to 2.99%'
     0x33:
       id: 'three_to_three_point_nine_nine_percent'
-      doc: '3 To 3.99%'
+      doc: '3 to 3.99%'
     0x34:
       id: 'four_to_four_point_nine_nine_percent'
-      doc: '4 To 4.99%'
+      doc: '4 to 4.99%'
     0x35:
       id: 'five_to_five_point_nine_nine_percent'
-      doc: '5 To 5.99%'
+      doc: '5 to 5.99%'
     0x36:
       id: 'six_to_six_point_nine_nine_percent'
-      doc: '6 To 6.99%'
+      doc: '6 to 6.99%'
     0x37:
       id: 'seven_to_seven_point_nine_nine_percent'
-      doc: '7 To 7.99%'
+      doc: '7 to 7.99%'
     0x38:
       id: 'eight_to_eight_point_nine_nine_percent'
-      doc: '8 To 8.99%'
+      doc: '8 to 8.99%'
     0x39:
       id: 'nine_to_nine_point_nine_nine_percent'
-      doc: '9 To 9.99%'
+      doc: '9 to 9.99%'
     0x41:
       id: 'ten_to_nineteen_point_nine_nine_percent'
-      doc: '10 To 19.99%'
+      doc: '10 to 19.99%'
     0x42:
       id: 'twenty_to_twenty_nine_point_nine_nine_percent'
-      doc: '20 To 29.99%'
+      doc: '20 to 29.99%'
     0x43:
       id: 'thirty_percent_or_greater'
-      doc: '30% Or Greater'
+      doc: '30% or greater'
     0x20:
       id: 'cannot_be_calculated'
-      doc: 'Cannot Be Calculated'
+      doc: 'Cannot be calculated'
 

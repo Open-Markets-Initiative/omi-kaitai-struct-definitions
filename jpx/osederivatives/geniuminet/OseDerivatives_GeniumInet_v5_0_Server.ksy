@@ -374,40 +374,40 @@ enums:
   side:
     0x42:
       id: 'buy'
-      doc: 'Buy Order'
+      doc: 'Buy order.'
     0x53:
       id: 'sell'
-      doc: 'Sell Order'
+      doc: 'Sell order.'
   time_in_force:
     0:
       id: 'day'
-      doc: 'Order Is Valid For The Trading Day'
+      doc: 'Order is valid for the trading day.'
     3:
       id: 'immediate_or_cancel'
-      doc: 'Immediate Or Cancel Fill And Kill'
+      doc: 'Immediate or Cancel (Fill and Kill).'
     4:
       id: 'fill_or_kill'
-      doc: 'Fill Or Kill'
+      doc: 'Fill or Kill.'
   open_close:
     0:
       id: 'no_change'
-      doc: 'No Change To The Current Position'
+      doc: 'No change to the current position.'
     1:
       id: 'open'
-      doc: 'Open Position'
+      doc: 'Open position.'
     2:
       id: 'close_net'
-      doc: 'Close Or Net The Position'
+      doc: 'Close or net the position.'
     3:
       id: 'mandatory_close'
-      doc: 'Mandatory Close Of The Position'
+      doc: 'Mandatory close of the position.'
     4:
       id: 'default_field'
-      doc: 'Default Behavior For The Account'
+      doc: 'Default behavior for the account.'
   scope:
     1:
       id: 'participant'
-      doc: 'Applies To All Orders For The Participant'
+      doc: 'Applies to all orders for the participant.'
   server_packet_type:
     0x2b:
       id: 'debug_packet'
@@ -456,55 +456,55 @@ enums:
   order_state:
     1:
       id: 'on_book'
-      doc: 'Order Is Currently On The Order Book'
+      doc: 'Order is currently on the order book.'
     2:
       id: 'not_on_book'
-      doc: 'Order Is Not Currently On The Order Book'
+      doc: 'Order is not currently on the order book.'
   cancel_reason:
     1:
       id: 'canceled_by_user'
-      doc: 'Order Was Canceled By The User'
+      doc: 'Order was canceled by the user.'
     4:
       id: 'order_inactivated'
-      doc: 'Order Was Inactivated By The System'
+      doc: 'Order was inactivated by the system.'
     9:
       id: 'canceled_by_system'
-      doc: 'Order Was Canceled By The System'
+      doc: 'Order was canceled by the system.'
     10:
       id: 'canceled_by_proxy'
-      doc: 'Order Was Canceled By A Proxy'
+      doc: 'Order was canceled by a proxy.'
     15:
       id: 'canceled_by_system_limit_change'
-      doc: 'Order Was Canceled Due To A System Limit Change'
+      doc: 'Order was canceled due to a system limit change.'
     19:
       id: 'deleted_by_time_validity_expiration'
-      doc: 'Order Was Deleted After Time Validity Expiration'
+      doc: 'Order was deleted after time validity expiration.'
     20:
       id: 'canceled_due_to_iss'
-      doc: 'Order Was Canceled Due To Iss'
+      doc: 'Order was canceled due to ISS.'
     21:
       id: 'inactivated_due_to_iss'
-      doc: 'Order Was Inactivated Due To Iss'
+      doc: 'Order was inactivated due to ISS.'
     34:
       id: 'canceled_after_auction'
-      doc: 'Order Was Canceled After The Auction'
+      doc: 'Order was canceled after the auction.'
     41:
       id: 'canceled_by_system_delta_protection'
-      doc: 'Order Was Canceled By System Delta Protection'
+      doc: 'Order was canceled by system delta protection.'
     42:
       id: 'canceled_by_system_quantity_protection'
-      doc: 'Order Was Canceled By System Quantity Protection'
+      doc: 'Order was canceled by system quantity protection.'
     43:
       id: 'self_trade_prevention'
-      doc: 'Order Was Canceled Because The Trader Is Not Allowed To Trade With Himself'
+      doc: 'Order was canceled because the trader is not allowed to trade with himself.'
   deal_source:
     1:
       id: 'system_matched'
-      doc: 'Matched By The System Automatically'
+      doc: 'Matched by the system automatically.'
     7:
       id: 'combination_matched'
-      doc: 'Combination Order Matched Against Another Combination Order When Matched Electronically By The Exchange'
+      doc: 'Combination order matched against another combination order when matched electronically by the Exchange.'
     20:
       id: 'auction_end_deal'
-      doc: 'Deal Made At The End Of An Auction'
+      doc: 'Deal made at the end of an auction.'
 

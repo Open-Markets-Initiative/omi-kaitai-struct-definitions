@@ -2969,13 +2969,13 @@ enums:
       doc: 'Halted Trading'
     0x52:
       id: 'reserved'
-      doc: 'Goes Into A State As Preopening Where Orders Can Be Sent Modified Or Canceled'
+      doc: 'Goes into a state as preopening where orders can be sent, modified, or canceled'
     0x53:
       id: 'suspended'
-      doc: 'Goes Into A State As Preopening Where Orders Can Be Sent Modified Or Cancelled'
+      doc: 'goes into a state as pre-opening where orders can be sent, modified, or cancelled'
     0x41:
       id: 'surveillance_intervention'
-      doc: 'Consultation Phase'
+      doc: 'Consultation phase'
     0x43:
       id: 'endof_day_inquiries'
       doc: 'Endof Day Inquiries'
@@ -3107,13 +3107,13 @@ enums:
       doc: 'Halted Trading'
     0x52:
       id: 'reserved'
-      doc: 'Goes Into A State As Preopening Where Orders Can Be Sent Modified Or Canceled'
+      doc: 'Goes into a state as preopening where orders can be sent, modified, or canceled'
     0x53:
       id: 'suspended'
-      doc: 'Goes Into A State As Preopening Where Orders Can Be Sent Modified Or Cancelled'
+      doc: 'goes into a state as pre-opening where orders can be sent, modified, or cancelled'
     0x41:
       id: 'surveillance_intervention'
-      doc: 'Consultation Phase'
+      doc: 'Consultation phase'
     0x43:
       id: 'endof_day_inquiries'
       doc: 'Endof Day Inquiries'

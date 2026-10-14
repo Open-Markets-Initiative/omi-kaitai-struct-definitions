@@ -474,28 +474,28 @@ enums:
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start Of Messages'
+      doc: 'Start of Messages'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'Start Of System Hours'
+      doc: 'Start of System Hours'
     0x51:
       id: 'start_of_opening_process'
-      doc: 'Start Of Opening Process'
+      doc: 'Start of Opening Process'
     0x4e:
       id: 'start_of_normal_hours_closing_process'
-      doc: 'Start Of Normal Hours Closing Process'
+      doc: 'Start of Normal Hours Closing Process'
     0x4c:
       id: 'start_of_late_hours_closing_process'
-      doc: 'Start Of Late Hours Closing Process'
+      doc: 'Start of Late Hours Closing Process'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'End Of System Hours'
+      doc: 'End of System Hours'
     0x43:
       id: 'end_of_messages'
-      doc: 'End Of Messages'
+      doc: 'End of Messages'
     0x57:
       id: 'end_of_wco_early_closing'
-      doc: 'End Of Wco Early Closing'
+      doc: 'End of WCO Early Closing'
   option_type:
     0x43:
       id: 'call'
@@ -515,7 +515,7 @@ enums:
       doc: 'Late Hours'
     0x57:
       id: 'wco_early_closing'
-      doc: 'Wco Early Closing'
+      doc: 'WCO Early Closing'
   tradable:
     0x59:
       id: 'tradable'
@@ -539,35 +539,35 @@ enums:
       doc: 'Buy Side Suspended'
     0x53:
       id: 'sell_side_suspended'
-      doc: 'Sell Side Suspended'
+      doc: 'Sell-Side Suspended'
     0x48:
       id: 'halt_in_effect'
-      doc: 'Halt In Effect'
+      doc: 'Halt in Effect'
     0x54:
       id: 'continuous_trading'
       doc: 'Continuous Trading'
     0x49:
       id: 'pre_open'
-      doc: 'Pre Open'
+      doc: 'Pre-Open'
     0x4f:
       id: 'opening_auction'
       doc: 'Opening Auction'
     0x52:
       id: 're_opening'
-      doc: 'Re Opening'
+      doc: 'Re-Opening'
     0x58:
       id: 'closed'
       doc: 'Closed'
   quote_condition:
     0x20:
       id: 'regular_quote_autox_eligible'
-      doc: 'Regular Quote Autox Eligible'
+      doc: 'Regular Quote/Autox Eligible'
     0x58:
       id: 'ask_side_not_firm_bid_side_firm'
-      doc: 'Ask Side Not Firm Bid Side Firm'
+      doc: 'Ask Side Not Firm, Bid Side Firm'
     0x59:
       id: 'bid_side_not_firm_ask_side_firm'
-      doc: 'Bid Side Not Firm Ask Side Firm'
+      doc: 'Bid Side Not Firm, Ask Side Firm'
   message_type:
     0x53:
       id: 'system_event_message'

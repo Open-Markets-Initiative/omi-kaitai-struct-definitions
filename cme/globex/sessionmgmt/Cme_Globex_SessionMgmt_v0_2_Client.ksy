@@ -336,40 +336,40 @@ enums:
   error_codes:
     0:
       id: 'hmac_reject'
-      doc: 'Failed Authentication'
+      doc: 'Failed authentication'
     1:
       id: 'invalid_value'
-      doc: 'Failed Required Field Validation'
+      doc: 'Failed required field validation'
     2:
       id: 'slow_connection'
-      doc: 'Slow Connection'
+      doc: 'Slow connection'
     3:
       id: 'other'
-      doc: 'Unexpected Request See Reason Field For Details'
+      doc: 'Unexpected request, see Reason field for details'
   subscription_req_type:
     0:
       id: 'snapshot'
       doc: 'Snapshot'
     1:
       id: 'snapshot_and_updates'
-      doc: 'Snapshot And Updates'
+      doc: 'Snapshot and updates'
     2:
       id: 'unsubscribe'
-      doc: 'Disable Previous Subscription'
+      doc: 'Disable previous subscription'
   md_req_id_status:
     0:
       id: 'full_ack'
-      doc: 'Requested Subscription Scope Is Fully Acknowledged'
+      doc: 'Requested subscription scope is fully acknowledged'
     1:
       id: 'partial_ack'
-      doc: 'Requested Subscription Scope Is Partially Acknowledged'
+      doc: 'Requested subscription scope is partially acknowledged'
   md_req_rej_reason:
     0:
       id: 'unknown_security'
       doc: 'Unknown Security'
     1:
       id: 'unknown_message'
-      doc: 'Unknown Or Invalid Message'
+      doc: 'Unknown or Invalid Message'
     2:
       id: 'unsupported_scope'
       doc: 'Unsupported Scope'
