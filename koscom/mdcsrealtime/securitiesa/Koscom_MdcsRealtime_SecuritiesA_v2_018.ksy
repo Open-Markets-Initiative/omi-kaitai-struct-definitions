@@ -2920,8 +2920,8 @@ types:
         pad-right: 0x20
         doc: 'When a company implements a right/bonus issue or an issue is suspended in the long-term, such issue will use an opening price as a base price instead of closing price. Y/N refers to yes/no to this dec'
       - id: rights_type_code
-        type: str_1_nullable
-        doc: '(Option) Rights_Type Code C: Call P: Put. Nullable, No Value ='
+        type: str_2_nullable
+        doc: 'Rights Type Code (spot) is the same as adjustment code (derivatives) 00: N/A 01: Ex-rights 02: Ex-dividends 03: Ex-distribution 04: Ex-rights and Ex-dividends 05: Interim(quarterly) ex-dividend 06: In. Nullable, No Value ='
       - id: par_value_type_code
         type: str
         size: 2
@@ -3065,8 +3065,8 @@ types:
         pad-right: 0x20
         doc: 'Y/N to discrete-time trading. (Eligibility for periodic discrete-time trading execution)'
       - id: rights_type_code
-        type: str_1_nullable
-        doc: '(Option) Rights_Type Code C: Call P: Put. Nullable, No Value ='
+        type: str_2_nullable
+        doc: 'Rights Type Code (spot) is the same as adjustment code (derivatives) 00: N/A 01: Ex-rights 02: Ex-dividends 03: Ex-distribution 04: Ex-rights and Ex-dividends 05: Interim(quarterly) ex-dividend 06: In. Nullable, No Value ='
       - id: par_value_type_code
         type: str
         size: 2
@@ -4441,9 +4441,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Index ID comprising of 6 digits'
-      - id: rights_type_code
-        type: str_1_nullable
-        doc: '(Option) Rights_Type Code C: Call P: Put. Nullable, No Value ='
+      - id: option_rights_type_code
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: '(Option) Rights_Type Code C: Call P: Put'
       - id: rights_execution_type_code
         type: str
         size: 1

@@ -274,7 +274,7 @@ types:
         doc: 'timeInForce'
       - id: cancel_instead_of_slide_optional
         type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: display_inst
         type: s1
         enum: display_inst
@@ -359,7 +359,7 @@ types:
         doc: 'clearingAccount'
       - id: cancel_instead_of_slide_optional
         type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: send_time
         type: u8
         doc: 'sendTime'
@@ -508,10 +508,10 @@ types:
         doc: 'clOrdId'
       - id: risk_control_optional
         type: s1_nullable
-        doc: 'riskControl. Nullable, No Value = 128'
+        doc: 'riskControl. Nullable, No Value = -128'
       - id: risk_control_status_optional
         type: s1_nullable
-        doc: 'riskControlStatus. Nullable, No Value = 128'
+        doc: 'riskControlStatus. Nullable, No Value = -128'
       - id: time_limit
         type: u8_nullable
         doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
@@ -523,7 +523,7 @@ types:
         doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
         type: s1_nullable
-        doc: 'iocAttribution. Nullable, No Value = 128'
+        doc: 'iocAttribution. Nullable, No Value = -128'
       - id: cust_capacity_weight_optional
         type: u1_nullable
         doc: 'custCapacityWeight. Nullable, No Value = 255'

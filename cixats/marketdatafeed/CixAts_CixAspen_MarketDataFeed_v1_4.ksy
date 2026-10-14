@@ -184,7 +184,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price - 6 implied decimals. Implied decimal with scale 1e-6'
       - id: broker
         type: str
@@ -236,7 +236,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price - 6 implied decimals. Implied decimal with scale 1e-6'
       - id: broker
         type: str
@@ -275,7 +275,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price - 6 implied decimals. Implied decimal with scale 1e-6'
       - id: execution_id
         type: u8
@@ -319,7 +319,7 @@ types:
         pad-right: 0x20
         doc: 'Stock Symbol'
       - id: price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price - 6 implied decimals. Implied decimal with scale 1e-6'
       - id: execution_id
         type: u8
@@ -378,13 +378,13 @@ types:
         type: u8
         doc: 'Execution ID of the original trade being corrected'
       - id: original_trade_price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price of the trade being corrected. Implied decimal with scale 1e-6'
       - id: original_trade_quantity
         type: decimal_u8_6
         doc: 'Quantity of the trade being corrected. Implied decimal with scale 1e-6'
       - id: corrected_trade_price
-        type: decimal_u8_6
+        type: decimal_s8_6
         doc: 'Price the trade is being amended/corrected to. Implied decimal with scale 1e-6'
       - id: corrected_trade_quantity
         type: decimal_u8_6
@@ -406,6 +406,13 @@ types:
     seq:
       - id: mantissa
         type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
     instances:
       real:
         value: mantissa / 1000000.0

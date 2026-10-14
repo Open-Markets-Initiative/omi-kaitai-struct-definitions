@@ -252,10 +252,10 @@ types:
         doc: 'cancelInsteadOfSlide'
       - id: display_inst
         type: s1_nullable
-        doc: 'displayInst. Nullable, No Value = 128'
+        doc: 'displayInst. Nullable, No Value = -128'
       - id: exec_inst
         type: s1_nullable
-        doc: 'execInst. Nullable, No Value = 128'
+        doc: 'execInst. Nullable, No Value = -128'
       - id: ord_type
         type: s1
         enum: ord_type
@@ -868,7 +868,7 @@ types:
         doc: 'rejectType'
       - id: throttle_indicator_optional
         type: s1_nullable
-        doc: 'throttleIndicator. Nullable, No Value = 128'
+        doc: 'throttleIndicator. Nullable, No Value = -128'
   underlying_ref_data_message:
     seq:
       - id: transact_time
@@ -1034,7 +1034,7 @@ types:
         doc: 'mic'
       - id: cancel_on_disconnect
         type: s1_nullable
-        doc: 'cancelOnDisconnect. Nullable, No Value = 128'
+        doc: 'cancelOnDisconnect. Nullable, No Value = -128'
       - id: aiq_default
         type: str_3_nullable
         doc: 'aiqDefault. Nullable, No Value = 0'
@@ -1046,13 +1046,13 @@ types:
         doc: 'quoteUnsolicitedAckSubscription. Nullable, No Value = 255'
       - id: default_attributed_quote
         type: s1_nullable
-        doc: 'defaultAttributedQuote. Nullable, No Value = 128'
+        doc: 'defaultAttributedQuote. Nullable, No Value = -128'
       - id: default_cancel_instead_of_slide
         type: u1_nullable
         doc: 'defaultCancelInsteadOfSlide. Nullable, No Value = 255'
       - id: trading_ring_optional
         type: s1_nullable
-        doc: 'tradingRing. Nullable, No Value = 128'
+        doc: 'tradingRing. Nullable, No Value = -128'
   risk_control_acknowledgment_message:
     seq:
       - id: transact_time
@@ -1078,14 +1078,14 @@ types:
         doc: 'riskAckType'
       - id: risk_control_status
         type: s1_nullable
-        doc: 'riskControlStatus. Nullable, No Value = 128'
+        doc: 'riskControlStatus. Nullable, No Value = -128'
       - id: risk_control
         type: s1
         enum: risk_control
         doc: 'riskControl'
       - id: risk_action_optional
         type: s1_nullable
-        doc: 'riskAction. Nullable, No Value = 128'
+        doc: 'riskAction. Nullable, No Value = -128'
       - id: time_limit
         type: u8_nullable
         doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
@@ -1097,10 +1097,10 @@ types:
         doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
         type: s1_nullable
-        doc: 'iocAttribution. Nullable, No Value = 128'
+        doc: 'iocAttribution. Nullable, No Value = -128'
       - id: blocked_by_breach_indicator
         type: s1_nullable
-        doc: 'blockedByBreachIndicator. Nullable, No Value = 128'
+        doc: 'blockedByBreachIndicator. Nullable, No Value = -128'
       - id: cust_capacity_weight
         type: u1_nullable
         doc: 'custCapacityWeight. Nullable, No Value = 255'

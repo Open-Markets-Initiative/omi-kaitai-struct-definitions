@@ -33,7 +33,7 @@ meta:
   id: nasdaq_nsmequities_nois_itch_v2_2_2026
   title: Nasdaq NsmEquities Nois Itch v2.2.2026
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Net Order Imbalance Snapshot Itch v2.2.2026'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
@@ -66,11 +66,22 @@ types:
         doc: 'Number of messages to follow this header'
   message:
     seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Mold Udp Message Header'
       - id: payload
-        size: message_header.message_length - 9
+        size: _parent.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
@@ -80,9 +91,6 @@ types:
             'message_type::nois_message': nois_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Number of nanoseconds past midnight. Nanoseconds since Midnight epoch'
@@ -177,7 +185,7 @@ types:
   nanosecond_timestamp:
     seq:
       - id: time
-        type: s8
+        type: s8be
     instances:
       hour:
         value: time / 3600000000000 % 24

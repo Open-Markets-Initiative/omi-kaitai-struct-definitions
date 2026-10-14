@@ -246,10 +246,8 @@ types:
         encoding: ASCII
         doc: 'Message Sequence Number, at the beginning of each operational cycle, this number will be set to 00000000 of each data channel'
       - id: market_center_originator_id
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: market_center_originator_id
         doc: 'This field indicates the market center or system that originated the message that follows'
       - id: datetime
         type: datetime
@@ -529,6 +527,16 @@ enums:
     0x55:
       id: 'us_market_session'
       doc: 'Us Market Session'
+  market_center_originator_id:
+    0x45:
+      id: 'market_center_independent'
+      doc: 'Market Center Independent'
+    0x55:
+      id: 'otc_bulletin_board'
+      doc: 'Otc Bulletin Board'
+    0x51:
+      id: 'nasdaq_omx_market_system'
+      doc: 'Used For Specific Market System Events Only'
   action:
     0x48:
       id: 'trading_halt'

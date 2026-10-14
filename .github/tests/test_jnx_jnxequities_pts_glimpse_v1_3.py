@@ -15,42 +15,42 @@ class JnxJnxequitiesPtsGlimpseV13ServerTests(unittest.TestCase):
 
     def test_loginacceptedpacket(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/LoginAcceptedPacket.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_loginrequestpacket(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/LoginRequestPacket.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Client.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_orderbookdirectorymessage(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/OrderbookDirectoryMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_priceticksizemessage(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/PriceTickSizeMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_secondsmessage(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/SecondsMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_systemeventmessage(self):
         for payload in payloads.of("omi-data-packets/Jnx/JnxEquities.Pts.Glimpse.v1.3/SystemEventMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "big", False):
+            if payloads.partial(payload, 0, 2, "big", 2):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = JnxJnxequitiesPtsGlimpseV13Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

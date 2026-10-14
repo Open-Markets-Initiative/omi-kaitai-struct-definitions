@@ -406,7 +406,7 @@ types:
         type: b1
       - id: return_bitfield_9_cmta_number
         type: b1
-      - id: return_bitfield_9_reserved_64
+      - id: return_bitfield_9_cross_type
         type: b1
       - id: return_bitfield_9_reserved_128
         type: b1
@@ -544,11 +544,11 @@ types:
         type: b1
       - id: return_bitfield_16_reserved_16
         type: b1
-      - id: return_bitfield_16_reserved_32
+      - id: return_bitfield_16_floor_routing_inst
         type: b1
       - id: return_bitfield_16_reserved_64
         type: b1
-      - id: return_bitfield_16_reserved_128
+      - id: return_bitfield_16_order_origin
         type: b1
   return_bitfield_17:
     meta:
@@ -564,7 +564,7 @@ types:
         type: b1
       - id: return_bitfield_17_reserved_16
         type: b1
-      - id: return_bitfield_17_reserved_32
+      - id: return_bitfield_17_floor_trader_acronym
         type: b1
       - id: return_bitfield_17_reserved_64
         type: b1
@@ -742,6 +742,10 @@ types:
         size: 3
         encoding: ASCII
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_prevent_match
+      - id: expire_time
+        type: nanosecond_timestamp
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_expire_time
+        doc: 'Nanoseconds since Unix epoch'
       - id: maturity_date
         type: yyyymmdd_date
         if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_maturity_date
@@ -773,12 +777,6 @@ types:
         type: u1
         enum: attributed_quote
         if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_attributed_quote
-      - id: ext_exec_inst
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_ext_exec_inst
-        doc: 'Optional appendage, present when New Order bitfield 5 bit 8 is set'
       - id: display_range
         type: u4
         if: number_of_new_order_bitfields >= 6 and new_order_bitfield_6.new_order_bitfield_6_display_range
@@ -818,6 +816,16 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_new_order_bitfields >= 8 and new_order_bitfield_8.new_order_bitfield_8_client_id_attr
+      - id: floor_routing_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_new_order_bitfields >= 8 and new_order_bitfield_8.new_order_bitfield_8_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_new_order_bitfields >= 9 and new_order_bitfield_9.new_order_bitfield_9_order_origin
   new_order_bitfield_1:
     meta:
       bit-endian: le
@@ -976,13 +984,13 @@ types:
         type: b1
       - id: new_order_bitfield_8_reserved_64
         type: b1
-      - id: new_order_bitfield_8_reserved_128
+      - id: new_order_bitfield_8_floor_routing_inst
         type: b1
   new_order_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_9_reserved_1
+      - id: new_order_bitfield_9_order_origin
         type: b1
       - id: new_order_bitfield_9_reserved_2
         type: b1
@@ -1667,16 +1675,9 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
+      - id: cmta_number
+        type: u4
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
       - id: clearing_optional_data
         type: str
         size: 16
@@ -1691,6 +1692,16 @@ types:
         type: u1
         enum: session_eligibility
         if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_session_eligibility
+      - id: floor_routing_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
   quote_update_acknowledgment_message:
     seq:
       - id: transaction_time
@@ -1950,19 +1961,9 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
       - id: client_id_attr
         type: str
         size: 4
@@ -1972,11 +1973,16 @@ types:
         type: u1
         enum: session_eligibility
         if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_session_eligibility
-      - id: compression
+      - id: floor_routing_inst
         type: str
         size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_compression
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
   quote_update_rejected_message:
     seq:
       - id: transaction_time
@@ -2113,10 +2119,6 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
@@ -2148,24 +2150,6 @@ types:
         size: 3
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_prevent_match
-      - id: maturity_date
-        type: yyyymmdd_date
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_maturity_date
-      - id: strike_price
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_strike_price
-        doc: 'Implied decimal with scale 1e-4'
-      - id: put_or_call
-        type: u1
-        enum: put_or_call
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_put_or_call
-      - id: open_close
-        type: u1
-        enum: open_close
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
-      - id: corrected_size
-        type: u4
-        if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_corrected_size
       - id: orig_cl_ord_id
         type: str
         size: 20
@@ -2210,10 +2194,6 @@ types:
         type: u1
         enum: attributed_quote
         if: number_of_return_bitfields >= 6 and return_bitfield_6.return_bitfield_6_attributed_quote
-      - id: sub_liquidity_indicator
-        type: u1
-        enum: sub_liquidity_indicator
-        if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator
       - id: echo_text
         type: str
         size: 64
@@ -2242,30 +2222,19 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
+      - id: cmta_number
+        type: u4
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
+      - id: floor_routing_inst
         type: str
-        size: 2
+        size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
-      - id: cross_id
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
         type: str
-        size: 20
+        size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
-      - id: clearing_optional_data
-        type: str
-        size: 16
-        encoding: ASCII
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_optional_data
-      - id: client_id_attr
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_client_id_attr
-      - id: session_eligibility
-        type: u1
-        enum: session_eligibility
-        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_session_eligibility
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
   order_restated_message:
     seq:
       - id: transaction_time
@@ -2514,24 +2483,24 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
       - id: client_id_attr
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_client_id_attr
+      - id: floor_routing_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
   quote_restated_message:
     seq:
       - id: transaction_time
@@ -2657,11 +2626,6 @@ types:
         type: return_bitfield_17
         if: number_of_return_bitfields >= 17
         doc: 'BitSet OrderAcknowledgment byte 17'
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
   order_cancelled_message:
     seq:
       - id: transact_time
@@ -2907,19 +2871,19 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
+      - id: floor_routing_inst
         type: str
-        size: 20
+        size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
   quote_cancelled_message:
     seq:
       - id: transaction_time
@@ -3102,19 +3066,9 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
       - id: mass_cancel_id
         type: str
         size: 20
@@ -3180,6 +3134,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        doc: 'Corresponds to MarketingFeeCode (5937) in Cboe FIX'
   trade_cancel_or_correct_message:
     seq:
       - id: transaction_time
@@ -3330,11 +3285,6 @@ types:
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
   purge_rejected_message:
     seq:
       - id: transaction_time
@@ -3693,19 +3643,14 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: marketing_fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_marketing_fee_code
       - id: cmta_number
         type: u4
         if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cmta_number
-      - id: cross_id
+      - id: cross_type
         type: str
-        size: 20
+        size: 1
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and return_bitfield_10.return_bitfield_10_cross_id
+        if: number_of_return_bitfields >= 9 and return_bitfield_9.return_bitfield_9_cross_type
       - id: clearing_optional_data
         type: str
         size: 16
@@ -3724,11 +3669,30 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_avg_px
         doc: 'Implied decimal with scale 1e-4'
+      - id: day_avg_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 13 and return_bitfield_13.return_bitfield_13_day_avg_px
+        doc: 'Implied decimal with scale 1e-4'
       - id: client_id_attr
         type: str
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_client_id_attr
+      - id: floor_routing_inst
+        type: str
+        size: 1
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_floor_routing_inst
+      - id: order_origin
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 16 and return_bitfield_16.return_bitfield_16_order_origin
+      - id: floor_trader_acronym
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 17 and return_bitfield_17.return_bitfield_17_floor_trader_acronym
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -3736,17 +3700,6 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
-  yyyymmdd_date:
-    seq:
-      - id: packed
-        type: s4
-    instances:
-      year:
-        value: packed / 10000
-      month:
-        value: packed / 100 % 100
-      day:
-        value: packed % 100
   nanosecond_timestamp:
     seq:
       - id: time
@@ -3760,6 +3713,17 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  yyyymmdd_date:
+    seq:
+      - id: packed
+        type: s4
+    instances:
+      year:
+        value: packed / 10000
+      month:
+        value: packed / 100 % 100
+      day:
+        value: packed % 100
   decimal_s4_4:
     seq:
       - id: mantissa

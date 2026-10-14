@@ -33,7 +33,7 @@ meta:
   id: nasdaq_phlxoptions_orders_itch_v1_91
   title: Nasdaq PhlxOptions Orders Itch v1.91
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX PHLX Orders Itch v1.91'
 doc-ref: https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
@@ -62,14 +62,25 @@ types:
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
       - id: message_count
-        type: u2le
+        type: u2
         doc: 'Number of messages to follow this header'
   message:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
     seq:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 1
+        size: _parent.message_length - 1
         type:
           switch-on: message_header.message_type
           cases:
@@ -86,9 +97,6 @@ types:
             'message_type::complex_auction_notification_message': complex_auction_notification_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: message_type
         type: u1
         enum: message_type
@@ -119,7 +127,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -171,7 +179,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
-        type: u4
+        type: u4be
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
       - id: source
         type: u1
@@ -197,7 +205,7 @@ types:
   complex_order_strategy_leg:
     seq:
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -220,7 +228,7 @@ types:
         enum: side
         doc: 'Indicates the side of the order'
       - id: leg_ratio
-        type: u4
+        type: u4be
         doc: 'Strategy Leg Ratio'
   security_trading_action_message:
     seq:
@@ -228,7 +236,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -256,7 +264,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
-        type: u4
+        type: u4be
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
       - id: current_trading_state
         type: u1
@@ -268,7 +276,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -296,7 +304,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
-        type: u4
+        type: u4be
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
       - id: open_state
         type: u1
@@ -308,7 +316,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -327,17 +335,17 @@ types:
         enum: option_type
         doc: 'Option Type'
       - id: order_id
-        type: u4
+        type: u4be
         doc: 'PHLX assigned order id'
       - id: side
         type: u1
         enum: side
         doc: 'Indicates the side of the order'
       - id: original_order_volume
-        type: u4
+        type: u4be
         doc: 'Original Order Volume for this order'
       - id: executable_order_volume
-        type: u4
+        type: u4be
         doc: 'Volume available for execution at PHLX'
       - id: order_status
         type: u1
@@ -376,20 +384,20 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
-        type: u4
+        type: u4be
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
       - id: order_id
-        type: u4
+        type: u4be
         doc: 'PHLX assigned order id'
       - id: side
         type: u1
         enum: side
         doc: 'Indicates the side of the order'
       - id: original_order_volume
-        type: u4
+        type: u4be
         doc: 'Original Order Volume for this order'
       - id: executable_order_volume
-        type: u4
+        type: u4be
         doc: 'Volume available for execution at PHLX'
       - id: order_status
         type: u1
@@ -439,7 +447,7 @@ types:
         enum: leg_open_close_indicator
         doc: 'Indicates whether this Order opens or closes a position for leg:'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -462,7 +470,7 @@ types:
         enum: side
         doc: 'Indicates the side of the order'
       - id: leg_ratio
-        type: u4
+        type: u4be
         doc: 'Strategy Leg Ratio'
   auction_notification_message:
     seq:
@@ -470,7 +478,7 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: option_id
-        type: u4
+        type: u4be
         doc: 'PHLX Option ID assigned daily, valid for the trading day'
       - id: security_symbol
         type: str
@@ -489,7 +497,7 @@ types:
         enum: option_type
         doc: 'Option Type'
       - id: auction_id
-        type: u4
+        type: u4be
         doc: 'Uniquely identifies the Auction for the trading day. Presently the Auction ID will be zero for non-PIXL auctions'
       - id: auction_type
         type: u1
@@ -503,10 +511,10 @@ types:
         enum: auction_side
         doc: 'Indicates the side of the auction:'
       - id: matched_volume
-        type: u4
+        type: u4be
         doc: 'Volume that can be traded at Price. For Order Exposure, Matched Volume is zero'
       - id: imbalance_volume
-        type: u4
+        type: u4be
         doc: 'Total number of contracts better than Price (includes Orders that cannot be filled). The Exposed Order size'
       - id: customer_firm_indicator
         type: u1
@@ -521,10 +529,10 @@ types:
         type: timestamp
         doc: 'Time the message was sent: seconds after midnight and the nanosecond portion, U.S. Eastern Time. Nanoseconds since Midnight epoch'
       - id: strategy_id
-        type: u4
+        type: u4be
         doc: 'PHLX Strategy ID assigned daily, valid while there are any open complex orders for the day'
       - id: auction_id
-        type: u4
+        type: u4be
         doc: 'Uniquely identifies the Auction for the trading day. Presently the Auction ID will be zero for non-PIXL auctions'
       - id: auction_type
         type: u1
@@ -542,7 +550,7 @@ types:
         enum: debit_or_credit
         doc: 'Price Debit or Credit value'
       - id: volume
-        type: u4
+        type: u4be
         doc: 'Total volume available in COLA/PIXL/Solicitation. This field will be 0 under certain conditions for COLA when the strategy is opening'
   nanosecond_timestamp:
     seq:
@@ -560,7 +568,7 @@ types:
   second_timestamp:
     seq:
       - id: time
-        type: s4
+        type: s4be
     instances:
       hour:
         value: time / 3600 % 24
@@ -571,7 +579,7 @@ types:
   nanosecond_offset:
     seq:
       - id: time
-        type: s4
+        type: s4be
     instances:
       millisecond:
         value: time / 1000000 % 1000
@@ -582,7 +590,7 @@ types:
   decimal_u4_4:
     seq:
       - id: mantissa
-        type: u4
+        type: u4be
     instances:
       real:
         value: mantissa / 10000.0

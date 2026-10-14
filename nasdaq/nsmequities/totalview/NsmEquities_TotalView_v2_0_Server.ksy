@@ -33,7 +33,7 @@ meta:
   id: nasdaq_nsmequities_totalview_asciiitch_v2_0_server
   title: Nasdaq NsmEquities TotalView AsciiItch v2.0
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch AsciiItch v2.0'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs

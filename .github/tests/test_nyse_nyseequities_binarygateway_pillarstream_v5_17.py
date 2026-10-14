@@ -14,7 +14,7 @@ class NyseNyseequitiesBinarygatewayPillarstreamV517ServerpillarmessageTests(unit
 
     def test_newordersingleandcancelreplacerequestmessage(self):
         for payload in payloads.of("omi-data-packets/Nyse/NyseEquities.BinaryGateway.PillarStream.v5.17/NewOrderSingleAndCancelReplaceRequestMessage.pcap"):
-            if payloads.partial(payload, 2, 2, "little", True):
+            if payloads.partial(payload, 2, 2, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = NyseNyseequitiesBinarygatewayPillarstreamV517Clientpillarmessage.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

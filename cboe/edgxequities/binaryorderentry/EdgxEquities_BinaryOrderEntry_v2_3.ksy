@@ -718,6 +718,9 @@ types:
         type: u1
         enum: display_indicator
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_display_indicator
+      - id: max_remove_pct
+        type: u1
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_max_remove_pct
       - id: discretion_amount
         type: u2
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_discretion_amount
@@ -829,7 +832,7 @@ types:
         type: b1
       - id: new_order_bitfield_3_display_indicator
         type: b1
-      - id: new_order_bitfield_3_reserved_4
+      - id: new_order_bitfield_3_max_remove_pct
         type: b1
       - id: new_order_bitfield_3_discretion_amount
         type: b1
@@ -1391,11 +1394,6 @@ types:
         type: u1
         enum: sub_liquidity_indicator
         if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator
-      - id: fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_fee_code
       - id: echo_text
         type: str
         size: 64
@@ -1424,11 +1422,6 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: mass_cancel_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id
   order_rejected_message:
     seq:
       - id: transaction_time
@@ -1763,15 +1756,6 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol
-      - id: symbol_sfx
-        type: str
-        size: 8
-        encoding: ASCII
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_symbol_sfx
-      - id: capacity
-        type: u1
-        enum: capacity
-        if: number_of_return_bitfields >= 2 and return_bitfield_2.return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
@@ -1877,11 +1861,6 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: mass_cancel_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id
   order_restated_message:
     seq:
       - id: transaction_time
@@ -2123,11 +2102,6 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: mass_cancel_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id
   user_modify_rejected_message:
     seq:
       - id: transaction_time
@@ -2221,10 +2195,6 @@ types:
         type: return_bitfield_17
         if: number_of_return_bitfields >= 17
         doc: 'BitSet OrderAcknowledgment byte 17'
-      - id: sub_liquidity_indicator
-        type: u1
-        enum: sub_liquidity_indicator
-        if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator
   order_cancelled_message:
     seq:
       - id: transact_time
@@ -2463,11 +2433,6 @@ types:
         type: u1
         enum: ex_destination
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_ex_destination
-      - id: mass_cancel_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 15 and return_bitfield_15.return_bitfield_15_mass_cancel_id
   cancel_rejected_message:
     seq:
       - id: transaction_time
@@ -2615,11 +2580,6 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
-      - id: rout_strategy
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_return_bitfields >= 8 and return_bitfield_8.return_bitfield_8_rout_strategy
   order_execution_message:
     seq:
       - id: transaction_time
@@ -3082,10 +3042,6 @@ types:
         type: return_bitfield_17
         if: number_of_return_bitfields >= 17
         doc: 'BitSet OrderAcknowledgment byte 17'
-      - id: sub_liquidity_indicator
-        type: u1
-        enum: sub_liquidity_indicator
-        if: number_of_return_bitfields >= 7 and return_bitfield_7.return_bitfield_7_sub_liquidity_indicator
       - id: mass_cancel_id
         type: str
         size: 20

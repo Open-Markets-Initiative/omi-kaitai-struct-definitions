@@ -1008,6 +1008,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -1129,7 +1133,7 @@ types:
         type: b1
       - id: order_acknowledgment_return_bitfield_1_exec_inst
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_order_type
+      - id: order_acknowledgment_return_bitfield_1_ord_type
         type: b1
       - id: order_acknowledgment_return_bitfield_1_time_in_force
         type: b1
@@ -1623,6 +1627,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -1712,7 +1720,7 @@ types:
         type: b1
       - id: order_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: order_rejected_return_bitfield_1_order_type
+      - id: order_rejected_return_bitfield_1_ord_type
         type: b1
       - id: order_rejected_return_bitfield_1_time_in_force
         type: b1
@@ -2177,6 +2185,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -2283,7 +2295,7 @@ types:
         type: b1
       - id: order_modified_return_bitfield_1_exec_inst
         type: b1
-      - id: order_modified_return_bitfield_1_order_type
+      - id: order_modified_return_bitfield_1_ord_type
         type: b1
       - id: order_modified_return_bitfield_1_time_in_force
         type: b1
@@ -3220,6 +3232,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -3332,7 +3348,7 @@ types:
         type: b1
       - id: order_cancelled_return_bitfield_1_exec_inst
         type: b1
-      - id: order_cancelled_return_bitfield_1_order_type
+      - id: order_cancelled_return_bitfield_1_ord_type
         type: b1
       - id: order_cancelled_return_bitfield_1_time_in_force
         type: b1
@@ -3812,6 +3828,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -3876,7 +3896,7 @@ types:
         type: b1
       - id: cancel_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: cancel_rejected_return_bitfield_1_order_type
+      - id: cancel_rejected_return_bitfield_1_ord_type
         type: b1
       - id: cancel_rejected_return_bitfield_1_time_in_force
         type: b1
@@ -4342,6 +4362,10 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -4474,7 +4498,7 @@ types:
         type: b1
       - id: order_execution_return_bitfield_1_exec_inst
         type: b1
-      - id: order_execution_return_bitfield_1_order_type
+      - id: order_execution_return_bitfield_1_ord_type
         type: b1
       - id: order_execution_return_bitfield_1_time_in_force
         type: b1
@@ -5953,6 +5977,10 @@ types:
         type: decimal_s8_4
         if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_tas_restatement_bitfields >= 1 and tas_restatement_bitfield_1.tas_restatement_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -6075,7 +6103,7 @@ types:
         type: b1
       - id: tas_restatement_bitfield_1_exec_inst
         type: b1
-      - id: tas_restatement_bitfield_1_order_type
+      - id: tas_restatement_bitfield_1_ord_type
         type: b1
       - id: tas_restatement_bitfield_1_time_in_force
         type: b1
@@ -6523,6 +6551,10 @@ types:
         type: decimal_s8_4
         if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
+      - id: ord_type
+        type: u1
+        enum: ord_type
+        if: number_of_variance_restatement_bitfields >= 1 and variance_restatement_bitfield_1.variance_restatement_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
@@ -6648,7 +6680,7 @@ types:
         type: b1
       - id: variance_restatement_bitfield_1_exec_inst
         type: b1
-      - id: variance_restatement_bitfield_1_order_type
+      - id: variance_restatement_bitfield_1_ord_type
         type: b1
       - id: variance_restatement_bitfield_1_time_in_force
         type: b1

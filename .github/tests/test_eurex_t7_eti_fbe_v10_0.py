@@ -14,7 +14,7 @@ class EurexT7EtiFbeV100ServerTests(unittest.TestCase):
 
     def test_orderexecresponse(self):
         for payload in payloads.of("omi-data-packets/Eurex/T7.Eti.Fbe.v10.0/OrderExecResponse.pcap"):
-            if payloads.partial(payload, 0, 4, "little", True):
+            if payloads.partial(payload, 0, 4, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = EurexT7EtiFbeV100Server.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

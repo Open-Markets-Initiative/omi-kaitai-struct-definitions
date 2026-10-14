@@ -355,9 +355,9 @@ types:
       - id: contracts_short
         type: u2
         doc: 'Number of contracts associated with this order after this modify'
-      - id: symbol_long
+      - id: symbol
         type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
@@ -406,10 +406,8 @@ types:
         pad-right: 0x20
         doc: 'Traded currency'
       - id: cboe_trade_flags
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: cboe_trade_flags
         doc: 'Cboe Trade Flags'
       - id: extended_trade_flags
         type: extended_trade_flags
@@ -525,6 +523,7 @@ types:
         doc: 'Product'
       - id: is_fast
         type: u1
+        enum: is_fast
         doc: 'LPP obligations'
   auction_summary_message:
     seq:
@@ -580,10 +579,8 @@ types:
         type: decimal_u8_4
         doc: 'Uncollared VMIM price. Implied decimal with scale 1e-4'
       - id: opening_condition
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: opening_condition
         doc: 'O = Would open Q = Need quote to open B = Need more buyers S = Need more sellers C = Crossed Composite Market'
       - id: composite_market_bid_price
         type: decimal_u8_4
@@ -622,10 +619,8 @@ types:
         type: u2
         doc: 'Number of contracts associated with this order after this modify'
       - id: customer_indicator
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: customer_indicator
         doc: 'Customer Indicator'
       - id: participant_id
         type: str
@@ -880,24 +875,24 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: open_and_close_price
-        type: b1
-        doc: 'Set if both Open and Close Price fields contain valid values'
-      - id: low_price_1
-        type: b1
-        doc: 'Set if Low Price is valid'
       - id: high_price_1
         type: b1
-        doc: 'High Price'
-      - id: unused_3
-        type: b3
-        doc: 'Reserved 1-7 Bits'
+        doc: 'Set if High Price is valid'
       - id: unused_1
         type: b1
         doc: 'Reserved'
+      - id: low_price_1
+        type: b1
+        doc: 'Set if Low Price is valid'
       - id: second_unused_1
         type: b1
         doc: 'Reserved'
+      - id: open_and_close_price
+        type: b1
+        doc: 'Set if both Open and Close Price fields contain valid values'
+      - id: unused_3
+        type: b3
+        doc: 'Reserved 5-7 Bits'
   second_timestamp:
     seq:
       - id: time
@@ -1143,6 +1138,19 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+  cboe_trade_flags:
+    0x34:
+      id: 'eu_the_trade_was_reported_to_cboe_on_time_and_in_the_main_session'
+      doc: 'Eu The Trade Was Reported To Cboe On Time And In The Main Session'
+    0x35:
+      id: 'eu_the_trade_was_reported_to_cboe_late'
+      doc: 'Eu The Trade Was Reported To Cboe Late'
+    0x36:
+      id: 'eu_the_trade_was_reported_to_cboe_out_of_the_main_session'
+      doc: 'Eu The Trade Was Reported To Cboe Out Of The Main Session'
+    0x37:
+      id: 'eu_the_trade_was_reported_to_cboe_late_and_out_of_the_main_session'
+      doc: 'Eu The Trade Was Reported To Cboe Late And Out Of The Main Session'
   negotiated_trade:
     0x31:
       id: 'negotiated_trade_in_liquid_financial_instruments'
@@ -1293,6 +1301,13 @@ enums:
     0x48:
       id: 'halted'
       doc: 'Halted'
+  is_fast:
+    0:
+      id: 'normal'
+      doc: 'Normal'
+    1:
+      id: 'fast'
+      doc: 'Fast'
   auction_type:
     0x4f:
       id: 'opening_auction'
@@ -1303,6 +1318,29 @@ enums:
     0x43:
       id: 'crfq'
       doc: 'Crfq'
+  opening_condition:
+    0x4f:
+      id: 'would_open'
+      doc: 'Would Open'
+    0x51:
+      id: 'need_quote_to_open'
+      doc: 'Need Quote To Open'
+    0x42:
+      id: 'need_more_buyers'
+      doc: 'Need More Buyers'
+    0x53:
+      id: 'need_more_sellers'
+      doc: 'Need More Sellers'
+    0x43:
+      id: 'crossed_composite_market'
+      doc: 'Crossed Composite Market'
+  customer_indicator:
+    0x4e:
+      id: 'non_customer'
+      doc: 'Non Customer'
+    0x43:
+      id: 'customer'
+      doc: 'Customer'
   width_type:
     0x52:
       id: 'regular'

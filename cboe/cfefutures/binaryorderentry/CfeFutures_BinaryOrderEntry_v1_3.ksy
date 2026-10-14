@@ -619,11 +619,6 @@ types:
         type: u1
         enum: cancel_orig_on_reject
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_cancel_orig_on_reject
-      - id: side
-        type: u1
-        enum: side
-        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_side
-        doc: 'Corresponds to Side (54) in Cboe FIX'
       - id: stop_px
         type: decimal_s8_4
         if: number_of_modify_order_bitfields >= 2 and modify_order_bitfield_2.modify_order_bitfield_2_stop_px
@@ -2109,6 +2104,12 @@ types:
         type: u1
         enum: open_close
         if: number_of_return_bitfields >= 4 and return_bitfield_4.return_bitfield_4_open_close
+      - id: orig_cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_orig_cl_ord_id
+        doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel. For mass cancel requests, must be empty (all zeroes)'
       - id: leaves_qty
         type: u4
         if: number_of_return_bitfields >= 5 and return_bitfield_5.return_bitfield_5_leaves_qty
@@ -2998,10 +2999,6 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_clearing_account
-      - id: order_qty
-        type: u4
-        if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
-        doc: 'Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
@@ -3059,9 +3056,6 @@ types:
         type: decimal_s8_4
         if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_price
         doc: 'Implied decimal with scale 1e-4'
-      - id: clearing_size
-        type: u4
-        if: number_of_return_bitfields >= 12 and return_bitfield_12.return_bitfield_12_clearing_size
       - id: clearing_symbol
         type: str
         size: 8

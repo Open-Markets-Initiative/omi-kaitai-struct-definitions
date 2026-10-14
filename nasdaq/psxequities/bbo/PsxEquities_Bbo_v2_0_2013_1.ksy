@@ -33,7 +33,7 @@ meta:
   id: nasdaq_psxequities_bbo_asciiitch_v2_0_2013_1
   title: Nasdaq PsxEquities Bbo AsciiItch v2.0.2013.1
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer AsciiItch v2.0.2013.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
@@ -62,14 +62,25 @@ types:
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
       - id: message_count
-        type: u2le
+        type: u2
         doc: 'Number of messages to follow this header'
   message:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
     seq:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 9
+        size: _parent.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
@@ -82,9 +93,6 @@ types:
             'message_type::quotation_message': quotation_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: timestamp
         type: millisecond_ascii_timestamp
         doc: 'Milliseconds past midnight Eastern the message was generated. Milliseconds since Midnight epoch'

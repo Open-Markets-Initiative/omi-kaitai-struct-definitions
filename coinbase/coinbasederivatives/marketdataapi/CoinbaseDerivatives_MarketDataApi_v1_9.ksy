@@ -44,7 +44,8 @@ seq:
     doc: 'Coinbase Udp Common Header'
   - id: sbe_message
     type: sbe_message_struct
-    repeat: eos
+    repeat: expr
+    repeat-expr: packet_header.message_count
     doc: 'Sbe Message'
 
 types:

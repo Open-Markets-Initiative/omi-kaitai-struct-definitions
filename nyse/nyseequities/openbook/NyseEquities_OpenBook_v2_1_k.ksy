@@ -43,9 +43,11 @@ seq:
     type: packet_header_struct
     doc: 'OpenBook Ultra packet header'
   - id: payload
+    size: packet_header.packet_size + 2 - 16
     type:
       switch-on: packet_header.message_type
       cases:
+        'message_type::symbol_index_mapping_response_message': symbol_index_mapping_response_messages
         'message_type::sequence_number_reset_message': sequence_number_reset_message
         'message_type::unavailable_message': unavailable_message
         'message_type::request_response_message': request_response_message
@@ -54,7 +56,6 @@ seq:
         'message_type::heartbeat_response_message': heartbeat_response_message
         'message_type::extended_book_refresh_request_message': extended_book_refresh_request_message
         'message_type::symbol_index_mapping_request_message': symbol_index_mapping_request_message
-        'message_type::symbol_index_mapping_response_message': symbol_index_mapping_response_message
         'message_type::full_update_message': full_update_messages
         'message_type::delta_update_message': delta_update_messages
 
@@ -88,6 +89,26 @@ types:
       - id: link_flag
         type: u1
         doc: 'The sequence number of this packet in a refresh sequence. If RetransFlag is not 5 or 6, this field is set to 0'
+  symbol_index_mapping_response_messages:
+    seq:
+      - id: symbol_index_mapping_response_message
+        type: symbol_index_mapping_response_message
+        repeat: expr
+        repeat-expr: _root.packet_header.message_count
+        doc: 'This message is sent by the NYSE in response to a Symbol Index Request'
+  symbol_index_mapping_response_message:
+    seq:
+      - id: symbol_11
+        type: str
+        size: 11
+        encoding: ASCII
+        doc: 'The stock symbol in NYSE Symbology, right-padded with NULLs'
+      - id: filler_1
+        size: 1
+        doc: 'Ignore any content'
+      - id: symbol_index
+        type: s4
+        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
   sequence_number_reset_message:
     seq:
       - id: next_seq_number
@@ -177,24 +198,12 @@ types:
       - id: symbol_index
         type: s4
         doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
-  symbol_index_mapping_response_message:
-    seq:
-      - id: symbol_11
-        type: str
-        size: 11
-        encoding: ASCII
-        doc: 'The stock symbol in NYSE Symbology, right-padded with NULLs'
-      - id: filler_1
-        size: 1
-        doc: 'Ignore any content'
-      - id: symbol_index
-        type: s4
-        doc: 'The ID (from the last Full Refresh Update) of the symbol for which information is requested. 0 = Requesting all symbols in this channel'
   full_update_messages:
     seq:
       - id: full_update_message
         type: full_update_message
-        repeat: eos
+        repeat: expr
+        repeat-expr: _root.packet_header.message_count
         doc: 'This message contains the complete order book for a single symbol, with all price points, an aggregated quantity at each price point and symbol mapping information'
   full_update_message:
     seq:
@@ -270,7 +279,8 @@ types:
     seq:
       - id: delta_update_message
         type: delta_update_message
-        repeat: eos
+        repeat: expr
+        repeat-expr: _root.packet_header.message_count
         doc: 'A Delta Update message is published in response to events that occur in the book such as interest being added, executions, cancellations and interest routed to a different market'
   delta_update_message:
     seq:

@@ -249,87 +249,95 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_clearing_firm
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_clearing_account
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_clearing_account
       - id: price
         type: decimal_s8_4
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_price
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_exec_inst
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_ord_type
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_time_in_force
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_min_qty
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_min_qty
       - id: max_floor
         type: u4
-        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_max_floor
+        if: number_of_new_order_bitfields >= 1 and new_order_bitfield_1.new_order_bitfield_1_max_floor
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_symbol
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_symbol_sfx
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_capacity
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_capacity
       - id: routing_inst
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_routing_inst
+        if: number_of_new_order_bitfields >= 2 and new_order_bitfield_2.new_order_bitfield_2_routing_inst
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_account
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_display_indicator
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_display_indicator
       - id: discretion_amount
         type: u2
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_discretion_amount
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_discretion_amount
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_peg_difference
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_prevent_match
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_prevent_match
       - id: locate_reqd
         type: u1
         enum: locate_reqd
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_locate_reqd
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_locate_reqd
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_expire_time
+        if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: risk_reset
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_risk_reset
+        if: number_of_new_order_bitfields >= 4 and new_order_bitfield_4.new_order_bitfield_4_risk_reset
+      - id: attributed_quote
+        type: u1
+        enum: attributed_quote
+        if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_attributed_quote
+      - id: ext_exec_inst
+        type: u1
+        enum: ext_exec_inst
+        if: number_of_new_order_bitfields >= 5 and new_order_bitfield_5.new_order_bitfield_5_ext_exec_inst
       - id: display_range
         type: u4
         if: number_of_new_order_bitfields >= 6 and new_order_bitfield_6.new_order_bitfield_6_display_range
@@ -359,131 +367,123 @@ types:
       - id: risk_group_id
         type: u2
         if: number_of_new_order_bitfields >= 7 and new_order_bitfield_7.new_order_bitfield_7_risk_group_id
-      - id: attributed_quote
-        type: u1
-        enum: attributed_quote
-        if: number_of_new_order_bitfields >= 10 and new_order_bitfield_10.new_order_bitfield_10_attributed_quote
-      - id: ext_exec_inst
-        type: u1
-        enum: ext_exec_inst
-        if: number_of_new_order_bitfields >= 10 and new_order_bitfield_10.new_order_bitfield_10_ext_exec_inst
       - id: cross_trade_flag
         type: u1
         enum: cross_trade_flag
-        if: number_of_new_order_bitfields >= 11 and new_order_bitfield_11.new_order_bitfield_11_cross_trade_flag
+        if: number_of_new_order_bitfields >= 9 and new_order_bitfield_9.new_order_bitfield_9_cross_trade_flag
       - id: locate_broker
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 12 and new_order_bitfield_12.new_order_bitfield_12_locate_broker
+        if: number_of_new_order_bitfields >= 10 and new_order_bitfield_10.new_order_bitfield_10_locate_broker
       - id: cmc_sessions
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_new_order_bitfields >= 12 and new_order_bitfield_12.new_order_bitfield_12_cmc_sessions
+        if: number_of_new_order_bitfields >= 10 and new_order_bitfield_10.new_order_bitfield_10_cmc_sessions
       - id: step_up_amount
         type: decimal_s8_4
-        if: number_of_new_order_bitfields >= 12 and new_order_bitfield_12.new_order_bitfield_12_step_up_amount
+        if: number_of_new_order_bitfields >= 10 and new_order_bitfield_10.new_order_bitfield_10_step_up_amount
         doc: 'Implied decimal with scale 1e-4'
   new_order_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_1_new_order_input_bitfields
+      - id: new_order_bitfield_1_clearing_firm
         type: b1
-      - id: new_order_bitfield_1_reserved_2
+      - id: new_order_bitfield_1_clearing_account
         type: b1
-      - id: new_order_bitfield_1_reserved_4
+      - id: new_order_bitfield_1_price
         type: b1
-      - id: new_order_bitfield_1_reserved_8
+      - id: new_order_bitfield_1_exec_inst
         type: b1
-      - id: new_order_bitfield_1_reserved_16
+      - id: new_order_bitfield_1_ord_type
         type: b1
-      - id: new_order_bitfield_1_reserved_32
+      - id: new_order_bitfield_1_time_in_force
         type: b1
-      - id: new_order_bitfield_1_reserved_64
+      - id: new_order_bitfield_1_min_qty
         type: b1
-      - id: new_order_bitfield_1_reserved_128
+      - id: new_order_bitfield_1_max_floor
         type: b1
   new_order_bitfield_2:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_2_clearing_firm
+      - id: new_order_bitfield_2_symbol
         type: b1
-      - id: new_order_bitfield_2_clearing_account
+      - id: new_order_bitfield_2_symbol_sfx
         type: b1
-      - id: new_order_bitfield_2_price
+      - id: new_order_bitfield_2_currency
         type: b1
-      - id: new_order_bitfield_2_exec_inst
+      - id: new_order_bitfield_2_id_source
         type: b1
-      - id: new_order_bitfield_2_ord_type
+      - id: new_order_bitfield_2_security_id
         type: b1
-      - id: new_order_bitfield_2_time_in_force
+      - id: new_order_bitfield_2_security_exchange
         type: b1
-      - id: new_order_bitfield_2_min_qty
+      - id: new_order_bitfield_2_capacity
         type: b1
-      - id: new_order_bitfield_2_max_floor
+      - id: new_order_bitfield_2_routing_inst
         type: b1
   new_order_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_3_symbol
+      - id: new_order_bitfield_3_account
         type: b1
-      - id: new_order_bitfield_3_symbol_sfx
+      - id: new_order_bitfield_3_display_indicator
         type: b1
-      - id: new_order_bitfield_3_currency
+      - id: new_order_bitfield_3_reserved_4
         type: b1
-      - id: new_order_bitfield_3_id_source
+      - id: new_order_bitfield_3_discretion_amount
         type: b1
-      - id: new_order_bitfield_3_security_id
+      - id: new_order_bitfield_3_peg_difference
         type: b1
-      - id: new_order_bitfield_3_security_exchange
+      - id: new_order_bitfield_3_prevent_match
         type: b1
-      - id: new_order_bitfield_3_capacity
+      - id: new_order_bitfield_3_locate_reqd
         type: b1
-      - id: new_order_bitfield_3_routing_inst
+      - id: new_order_bitfield_3_expire_time
         type: b1
   new_order_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_4_account
+      - id: new_order_bitfield_4_maturity_date
         type: b1
-      - id: new_order_bitfield_4_display_indicator
+      - id: new_order_bitfield_4_strike_price
         type: b1
-      - id: new_order_bitfield_4_reserved_4
+      - id: new_order_bitfield_4_put_or_call
         type: b1
-      - id: new_order_bitfield_4_discretion_amount
+      - id: new_order_bitfield_4_risk_reset
         type: b1
-      - id: new_order_bitfield_4_peg_difference
+      - id: new_order_bitfield_4_open_close
         type: b1
-      - id: new_order_bitfield_4_prevent_match
+      - id: new_order_bitfield_4_cmta_number
         type: b1
-      - id: new_order_bitfield_4_locate_reqd
+      - id: new_order_bitfield_4_target_party_id
         type: b1
-      - id: new_order_bitfield_4_expire_time
+      - id: new_order_bitfield_4_reserved_128
         type: b1
   new_order_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_5_maturity_date
+      - id: new_order_bitfield_5_session_eligibility
         type: b1
-      - id: new_order_bitfield_5_strike_price
+      - id: new_order_bitfield_5_attributed_quote
         type: b1
-      - id: new_order_bitfield_5_put_or_call
+      - id: new_order_bitfield_5_booking_type
         type: b1
-      - id: new_order_bitfield_5_risk_reset
+      - id: new_order_bitfield_5_ext_exec_inst
         type: b1
-      - id: new_order_bitfield_5_reserved_16
+      - id: new_order_bitfield_5_client_id
         type: b1
-      - id: new_order_bitfield_5_reserved_32
+      - id: new_order_bitfield_5_investor_id
         type: b1
-      - id: new_order_bitfield_5_reserved_64
+      - id: new_order_bitfield_5_executor_id
         type: b1
-      - id: new_order_bitfield_5_reserved_128
+      - id: new_order_bitfield_5_order_origination
         type: b1
   new_order_bitfield_6:
     meta:
@@ -557,11 +557,11 @@ types:
         type: b1
       - id: new_order_bitfield_9_reserved_8
         type: b1
-      - id: new_order_bitfield_9_open_close
+      - id: new_order_bitfield_9_reserved_16
         type: b1
-      - id: new_order_bitfield_9_cmta_number
+      - id: new_order_bitfield_9_reserved_32
         type: b1
-      - id: new_order_bitfield_9_target_party_id
+      - id: new_order_bitfield_9_cross_trade_flag
         type: b1
       - id: new_order_bitfield_9_reserved_128
         type: b1
@@ -569,21 +569,21 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_10_session_eligibility
+      - id: new_order_bitfield_10_held
         type: b1
-      - id: new_order_bitfield_10_attributed_quote
+      - id: new_order_bitfield_10_locate_broker
         type: b1
-      - id: new_order_bitfield_10_booking_type
+      - id: new_order_bitfield_10_cmc_sessions
         type: b1
-      - id: new_order_bitfield_10_ext_exec_inst
+      - id: new_order_bitfield_10_step_up_amount
         type: b1
-      - id: new_order_bitfield_10_client_id
+      - id: new_order_bitfield_10_reserved_16
         type: b1
-      - id: new_order_bitfield_10_investor_id
+      - id: new_order_bitfield_10_reserved_32
         type: b1
-      - id: new_order_bitfield_10_executor_id
+      - id: new_order_bitfield_10_reserved_64
         type: b1
-      - id: new_order_bitfield_10_order_origination
+      - id: new_order_bitfield_10_reserved_128
         type: b1
   new_order_bitfield_11:
     meta:
@@ -601,7 +601,7 @@ types:
         type: b1
       - id: new_order_bitfield_11_reserved_32
         type: b1
-      - id: new_order_bitfield_11_cross_trade_flag
+      - id: new_order_bitfield_11_reserved_64
         type: b1
       - id: new_order_bitfield_11_reserved_128
         type: b1
@@ -609,13 +609,13 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: new_order_bitfield_12_held
+      - id: new_order_bitfield_12_reserved_1
         type: b1
-      - id: new_order_bitfield_12_locate_broker
+      - id: new_order_bitfield_12_reserved_2
         type: b1
-      - id: new_order_bitfield_12_cmc_sessions
+      - id: new_order_bitfield_12_reserved_4
         type: b1
-      - id: new_order_bitfield_12_step_up_amount
+      - id: new_order_bitfield_12_reserved_8
         type: b1
       - id: new_order_bitfield_12_reserved_16
         type: b1
@@ -711,6 +711,15 @@ types:
         type: modify_order_bitfield_2
         if: number_of_modify_order_bitfields >= 2
         doc: 'BitSet ModifyOrder byte 2'
+      - id: clearing_firm
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_clearing_firm
+      - id: order_qty
+        type: u4
+        if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_order_qty
+        doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: price
         type: decimal_s8_4
         if: number_of_modify_order_bitfields >= 1 and modify_order_bitfield_1.modify_order_bitfield_1_price
@@ -748,11 +757,11 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: modify_order_bitfield_1_reserved_1
+      - id: modify_order_bitfield_1_clearing_firm
         type: b1
       - id: modify_order_bitfield_1_reserved_2
         type: b1
-      - id: modify_order_bitfield_1_reserved_4
+      - id: modify_order_bitfield_1_order_qty
         type: b1
       - id: modify_order_bitfield_1_price
         type: b1
@@ -990,189 +999,189 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_acknowledgment_return_bitfield_1.order_acknowledgment_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_symbol_sfx
+        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_capacity
+        if: number_of_return_bitfields >= 2 and order_acknowledgment_return_bitfield_2.order_acknowledgment_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_account
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_clearing_account
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_display_indicator
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_max_floor
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_order_qty
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_acknowledgment_return_bitfield_4.order_acknowledgment_return_bitfield_4_prevent_match
+        if: number_of_return_bitfields >= 3 and order_acknowledgment_return_bitfield_3.order_acknowledgment_return_bitfield_3_prevent_match
+      - id: orig_cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_orig_cl_ord_id
+        doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
+      - id: leaves_qty
+        type: u4
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_leaves_qty
+      - id: last_shares
+        type: u4
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_last_shares
+      - id: last_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_last_px
+        doc: 'Implied decimal with scale 1e-4'
+      - id: display_price
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_display_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: working_price
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_working_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: base_liquidity_indicator
+        type: u1
+        enum: base_liquidity_indicator
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_base_liquidity_indicator
+      - id: expire_time
+        type: nanosecond_timestamp
+        if: number_of_return_bitfields >= 5 and order_acknowledgment_return_bitfield_5.order_acknowledgment_return_bitfield_5_expire_time
+        doc: 'Nanoseconds since Unix epoch'
+      - id: secondary_order_id
+        type: u8
+        if: number_of_return_bitfields >= 6 and order_acknowledgment_return_bitfield_6.order_acknowledgment_return_bitfield_6_secondary_order_id
+      - id: attributed_quote
+        type: u1
+        enum: attributed_quote
+        if: number_of_return_bitfields >= 6 and order_acknowledgment_return_bitfield_6.order_acknowledgment_return_bitfield_6_attributed_quote
+      - id: ext_exec_inst
+        type: u1
+        enum: ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_acknowledgment_return_bitfield_6.order_acknowledgment_return_bitfield_6_ext_exec_inst
       - id: sub_liquidity_indicator
         type: u1
         enum: sub_liquidity_indicator
-        if: number_of_return_bitfields >= 6 and order_acknowledgment_return_bitfield_6.order_acknowledgment_return_bitfield_6_sub_liquidity_indicator
+        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_sub_liquidity_indicator
       - id: echo_text
         type: str
         size: 64
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_echo_text
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_echo_text
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_stop_px
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: routing_inst
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_routing_inst
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_routing_inst
       - id: rout_strategy
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_rout_strategy
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_rout_strategy
       - id: route_delivery_method
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_route_delivery_method
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_route_delivery_method
       - id: ex_destination
         type: u1
         enum: ex_destination
-        if: number_of_return_bitfields >= 7 and order_acknowledgment_return_bitfield_7.order_acknowledgment_return_bitfield_7_ex_destination
-      - id: orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_orig_cl_ord_id
-        doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
-      - id: leaves_qty
-        type: u4
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_leaves_qty
-      - id: last_shares
-        type: u4
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_last_shares
-      - id: last_px
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_last_px
-        doc: 'Implied decimal with scale 1e-4'
-      - id: display_price
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_display_price
-        doc: 'Implied decimal with scale 1e-4'
-      - id: working_price
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_working_price
-        doc: 'Implied decimal with scale 1e-4'
-      - id: base_liquidity_indicator
-        type: u1
-        enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_base_liquidity_indicator
-      - id: expire_time
-        type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 14 and order_acknowledgment_return_bitfield_14.order_acknowledgment_return_bitfield_14_expire_time
-        doc: 'Nanoseconds since Unix epoch'
-      - id: secondary_order_id
-        type: u8
-        if: number_of_return_bitfields >= 15 and order_acknowledgment_return_bitfield_15.order_acknowledgment_return_bitfield_15_secondary_order_id
-      - id: attributed_quote
-        type: u1
-        enum: attributed_quote
-        if: number_of_return_bitfields >= 15 and order_acknowledgment_return_bitfield_15.order_acknowledgment_return_bitfield_15_attributed_quote
-      - id: ext_exec_inst
-        type: u1
-        enum: ext_exec_inst
-        if: number_of_return_bitfields >= 15 and order_acknowledgment_return_bitfield_15.order_acknowledgment_return_bitfield_15_ext_exec_inst
+        if: number_of_return_bitfields >= 8 and order_acknowledgment_return_bitfield_8.order_acknowledgment_return_bitfield_8_ex_destination
       - id: cross_trade_flag
         type: u1
         enum: cross_trade_flag
-        if: number_of_return_bitfields >= 21 and order_acknowledgment_return_bitfield_21.order_acknowledgment_return_bitfield_21_cross_trade_flag
+        if: number_of_return_bitfields >= 18 and order_acknowledgment_return_bitfield_18.order_acknowledgment_return_bitfield_18_cross_trade_flag
       - id: locate_broker
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 21 and order_acknowledgment_return_bitfield_21.order_acknowledgment_return_bitfield_21_locate_broker
+        if: number_of_return_bitfields >= 18 and order_acknowledgment_return_bitfield_18.order_acknowledgment_return_bitfield_18_locate_broker
       - id: cmc_sessions
         type: str
         size: 2
         encoding: ASCII
-        if: number_of_return_bitfields >= 22 and order_acknowledgment_return_bitfield_22.order_acknowledgment_return_bitfield_22_cmc_sessions
+        if: number_of_return_bitfields >= 19 and order_acknowledgment_return_bitfield_19.order_acknowledgment_return_bitfield_19_cmc_sessions
       - id: step_up_amount
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 22 and order_acknowledgment_return_bitfield_22.order_acknowledgment_return_bitfield_22_step_up_amount
+        if: number_of_return_bitfields >= 19 and order_acknowledgment_return_bitfield_19.order_acknowledgment_return_bitfield_19_step_up_amount
         doc: 'Implied decimal with scale 1e-4'
   order_acknowledgment_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_1_order_acknowledgment_return_bitfields
+      - id: order_acknowledgment_return_bitfield_1_side
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_2
+      - id: order_acknowledgment_return_bitfield_1_peg_difference
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_4
+      - id: order_acknowledgment_return_bitfield_1_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_8
+      - id: order_acknowledgment_return_bitfield_1_exec_inst
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_16
+      - id: order_acknowledgment_return_bitfield_1_ord_type
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_32
+      - id: order_acknowledgment_return_bitfield_1_time_in_force
         type: b1
-      - id: order_acknowledgment_return_bitfield_1_reserved_64
+      - id: order_acknowledgment_return_bitfield_1_min_qty
         type: b1
       - id: order_acknowledgment_return_bitfield_1_reserved_128
         type: b1
@@ -1180,381 +1189,381 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_2_side
+      - id: order_acknowledgment_return_bitfield_2_symbol
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_peg_difference
+      - id: order_acknowledgment_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_price
+      - id: order_acknowledgment_return_bitfield_2_currency
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_exec_inst
+      - id: order_acknowledgment_return_bitfield_2_id_source
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_ord_type
+      - id: order_acknowledgment_return_bitfield_2_security_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_time_in_force
+      - id: order_acknowledgment_return_bitfield_2_security_exchange
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_min_qty
+      - id: order_acknowledgment_return_bitfield_2_capacity
         type: b1
-      - id: order_acknowledgment_return_bitfield_2_reserved_128
+      - id: order_acknowledgment_return_bitfield_2_contra_trader
         type: b1
   order_acknowledgment_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_3_symbol
+      - id: order_acknowledgment_return_bitfield_3_account
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_symbol_sfx
+      - id: order_acknowledgment_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_currency
+      - id: order_acknowledgment_return_bitfield_3_clearing_account
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_id_source
+      - id: order_acknowledgment_return_bitfield_3_display_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_security_id
+      - id: order_acknowledgment_return_bitfield_3_max_floor
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_security_exchange
+      - id: order_acknowledgment_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_capacity
+      - id: order_acknowledgment_return_bitfield_3_order_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_3_contra_trader
+      - id: order_acknowledgment_return_bitfield_3_prevent_match
         type: b1
   order_acknowledgment_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_4_account
+      - id: order_acknowledgment_return_bitfield_4_maturity_date
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_clearing_firm
+      - id: order_acknowledgment_return_bitfield_4_strike_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_clearing_account
+      - id: order_acknowledgment_return_bitfield_4_put_or_call
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_display_indicator
+      - id: order_acknowledgment_return_bitfield_4_open_close
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_max_floor
+      - id: order_acknowledgment_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_discretion_amount
+      - id: order_acknowledgment_return_bitfield_4_corrected_size
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_order_qty
+      - id: order_acknowledgment_return_bitfield_4_party_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_4_prevent_match
+      - id: order_acknowledgment_return_bitfield_4_access_fee
         type: b1
   order_acknowledgment_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_5_maturity_date
+      - id: order_acknowledgment_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_strike_price
+      - id: order_acknowledgment_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_4
+      - id: order_acknowledgment_return_bitfield_5_last_shares
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_8
+      - id: order_acknowledgment_return_bitfield_5_last_px
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_16
+      - id: order_acknowledgment_return_bitfield_5_display_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_32
+      - id: order_acknowledgment_return_bitfield_5_working_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_64
+      - id: order_acknowledgment_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_5_reserved_128
+      - id: order_acknowledgment_return_bitfield_5_expire_time
         type: b1
   order_acknowledgment_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_6_sub_liquidity_indicator
+      - id: order_acknowledgment_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_trade_report_type_return
+      - id: order_acknowledgment_return_bitfield_6_ccp
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_trade_publish_ind_return
+      - id: order_acknowledgment_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_text
+      - id: order_acknowledgment_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_bid
+      - id: order_acknowledgment_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_offer
+      - id: order_acknowledgment_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_large_size
+      - id: order_acknowledgment_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_acknowledgment_return_bitfield_6_last_mkt
+      - id: order_acknowledgment_return_bitfield_6_party_role
         type: b1
   order_acknowledgment_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_7_fee_code
+      - id: order_acknowledgment_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_echo_text
+      - id: order_acknowledgment_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_stop_px
+      - id: order_acknowledgment_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_routing_inst
+      - id: order_acknowledgment_return_bitfield_7_text
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_rout_strategy
+      - id: order_acknowledgment_return_bitfield_7_bid
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_route_delivery_method
+      - id: order_acknowledgment_return_bitfield_7_offer
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_ex_destination
+      - id: order_acknowledgment_return_bitfield_7_large_size
         type: b1
-      - id: order_acknowledgment_return_bitfield_7_trade_report_ref_id
+      - id: order_acknowledgment_return_bitfield_7_last_mkt
         type: b1
   order_acknowledgment_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_8_marketing_fee_code
+      - id: order_acknowledgment_return_bitfield_8_fee_code
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_target_party_id
+      - id: order_acknowledgment_return_bitfield_8_echo_text
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_auction_id
+      - id: order_acknowledgment_return_bitfield_8_stop_px
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_order_category
+      - id: order_acknowledgment_return_bitfield_8_routing_inst
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_liquidity_provision
+      - id: order_acknowledgment_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_cmta_number
+      - id: order_acknowledgment_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_cross_type
+      - id: order_acknowledgment_return_bitfield_8_ex_destination
         type: b1
-      - id: order_acknowledgment_return_bitfield_8_cross_prioritization
+      - id: order_acknowledgment_return_bitfield_8_trade_report_ref_id
         type: b1
   order_acknowledgment_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_9_cross_id
+      - id: order_acknowledgment_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_alloc_qty
+      - id: order_acknowledgment_return_bitfield_9_target_party_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_4
+      - id: order_acknowledgment_return_bitfield_9_auction_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_8
+      - id: order_acknowledgment_return_bitfield_9_order_category
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_16
+      - id: order_acknowledgment_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_32
+      - id: order_acknowledgment_return_bitfield_9_cmta_number
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_64
+      - id: order_acknowledgment_return_bitfield_9_cross_type
         type: b1
-      - id: order_acknowledgment_return_bitfield_9_reserved_128
+      - id: order_acknowledgment_return_bitfield_9_cross_prioritization
         type: b1
   order_acknowledgment_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_10_cum_qty
+      - id: order_acknowledgment_return_bitfield_10_cross_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_day_order_qty
+      - id: order_acknowledgment_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_day_cum_qty
+      - id: order_acknowledgment_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_avg_px
+      - id: order_acknowledgment_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_day_avg_px
+      - id: order_acknowledgment_return_bitfield_10_waiver_type
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_pending_status
+      - id: order_acknowledgment_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_drill_thru_protection
+      - id: order_acknowledgment_return_bitfield_10_price_formation
         type: b1
-      - id: order_acknowledgment_return_bitfield_10_multileg_reporting_typ
+      - id: order_acknowledgment_return_bitfield_10_client_qualified_role
         type: b1
   order_acknowledgment_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_11_leg_cfi_code
+      - id: order_acknowledgment_return_bitfield_11_client_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_leg_maturity_date
+      - id: order_acknowledgment_return_bitfield_11_investor_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_leg_strike_price
+      - id: order_acknowledgment_return_bitfield_11_executor_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_room_id
+      - id: order_acknowledgment_return_bitfield_11_order_origination
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_secondary_exec_id
+      - id: order_acknowledgment_return_bitfield_11_algo
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_user_request_id
+      - id: order_acknowledgment_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_sis_username
+      - id: order_acknowledgment_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_acknowledgment_return_bitfield_11_user_status
+      - id: order_acknowledgment_return_bitfield_11_executor_qualified_role
         type: b1
   order_acknowledgment_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_12_trade_reporting_indica
+      - id: order_acknowledgment_return_bitfield_12_cti_code
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_equity_party_id
+      - id: order_acknowledgment_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_equity_nbbo_protect
+      - id: order_acknowledgment_return_bitfield_12_operator_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_mass_cancel_id
+      - id: order_acknowledgment_return_bitfield_12_trade_date
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_trade_publish_ind
+      - id: order_acknowledgment_return_bitfield_12_clearing_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_report_time
+      - id: order_acknowledgment_return_bitfield_12_clearing_size
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_leg_symbol_sfx
+      - id: order_acknowledgment_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_acknowledgment_return_bitfield_12_client_id_attr
+      - id: order_acknowledgment_return_bitfield_12_clearing_optional_data
         type: b1
   order_acknowledgment_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_13_frequent_trader_id
+      - id: order_acknowledgment_return_bitfield_13_cum_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_session_eligibility
+      - id: order_acknowledgment_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_put_or_call
+      - id: order_acknowledgment_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_open_close
+      - id: order_acknowledgment_return_bitfield_13_avg_px
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_cl_ord_id_batch
+      - id: order_acknowledgment_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_corrected_size
+      - id: order_acknowledgment_return_bitfield_13_pending_status
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_party_id
+      - id: order_acknowledgment_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_acknowledgment_return_bitfield_13_access_fee
+      - id: order_acknowledgment_return_bitfield_13_multileg_reporting_type
         type: b1
   order_acknowledgment_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_14_orig_cl_ord_id
+      - id: order_acknowledgment_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_leaves_qty
+      - id: order_acknowledgment_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_last_shares
+      - id: order_acknowledgment_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_last_px
+      - id: order_acknowledgment_return_bitfield_14_room_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_display_price
+      - id: order_acknowledgment_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_working_price
+      - id: order_acknowledgment_return_bitfield_14_user_request_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_base_liquidity_indicator
+      - id: order_acknowledgment_return_bitfield_14_sis_username
         type: b1
-      - id: order_acknowledgment_return_bitfield_14_expire_time
+      - id: order_acknowledgment_return_bitfield_14_user_status
         type: b1
   order_acknowledgment_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_15_secondary_order_id
+      - id: order_acknowledgment_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_ccp
+      - id: order_acknowledgment_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_contra_capacity
+      - id: order_acknowledgment_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_attributed_quote
+      - id: order_acknowledgment_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_ext_exec_inst
+      - id: order_acknowledgment_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_bulk_order_ids
+      - id: order_acknowledgment_return_bitfield_15_report_time
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_bulk_reject_reasons
+      - id: order_acknowledgment_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_acknowledgment_return_bitfield_15_party_role
+      - id: order_acknowledgment_return_bitfield_15_client_id_attr
         type: b1
   order_acknowledgment_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_16_reserved_1
+      - id: order_acknowledgment_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_reserved_2
+      - id: order_acknowledgment_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_give_up_firm_id
+      - id: order_acknowledgment_return_bitfield_16_combo_order
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_routing_firm_id
+      - id: order_acknowledgment_return_bitfield_16_compression
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_waiver_type
+      - id: order_acknowledgment_return_bitfield_16_floor_destination
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_cross_exclusion_indicator
+      - id: order_acknowledgment_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_price_formation
+      - id: order_acknowledgment_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_acknowledgment_return_bitfield_16_client_qualified_role
+      - id: order_acknowledgment_return_bitfield_16_order_origin
         type: b1
   order_acknowledgment_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_17_client_id
+      - id: order_acknowledgment_return_bitfield_17_price_type
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_investor_id
+      - id: order_acknowledgment_return_bitfield_17_strategy_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_executor_id
+      - id: order_acknowledgment_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_order_origination
+      - id: order_acknowledgment_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_algo
+      - id: order_acknowledgment_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_deferral_reason
+      - id: order_acknowledgment_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_investor_qualified_role
+      - id: order_acknowledgment_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_acknowledgment_return_bitfield_17_executor_qualified_role
+      - id: order_acknowledgment_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_acknowledgment_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_18_cti_code
+      - id: order_acknowledgment_return_bitfield_18_reserved_1
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_manual_order_indicator
+      - id: order_acknowledgment_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_operator_id
+      - id: order_acknowledgment_return_bitfield_18_subreason
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_trade_date
+      - id: order_acknowledgment_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_clearing_price
+      - id: order_acknowledgment_return_bitfield_18_reserved_16
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_clearing_size
+      - id: order_acknowledgment_return_bitfield_18_held
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_clearing_symbol
+      - id: order_acknowledgment_return_bitfield_18_locate_broker
         type: b1
-      - id: order_acknowledgment_return_bitfield_18_clearing_optional_data
+      - id: order_acknowledgment_return_bitfield_18_reserved_128
         type: b1
   order_acknowledgment_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_19_reserved_1
+      - id: order_acknowledgment_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_reserved_2
+      - id: order_acknowledgment_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_combo_order
+      - id: order_acknowledgment_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_compression
+      - id: order_acknowledgment_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_floor_destination
+      - id: order_acknowledgment_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_floor_routing_inst
+      - id: order_acknowledgment_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_multi_class_sprd
+      - id: order_acknowledgment_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_acknowledgment_return_bitfield_19_order_origin
+      - id: order_acknowledgment_return_bitfield_19_reserved_128
         type: b1
   order_acknowledgment_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_20_price_type
+      - id: order_acknowledgment_return_bitfield_20_reserved_1
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_strategy_id
+      - id: order_acknowledgment_return_bitfield_20_reserved_2
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_trading_session_id
+      - id: order_acknowledgment_return_bitfield_20_reserved_4
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_trade_through_alert_ty
+      - id: order_acknowledgment_return_bitfield_20_reserved_8
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_sender_location_id
+      - id: order_acknowledgment_return_bitfield_20_reserved_16
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_floor_trader_acronym
+      - id: order_acknowledgment_return_bitfield_20_reserved_32
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_exec_leg_cfi_code
+      - id: order_acknowledgment_return_bitfield_20_reserved_64
         type: b1
-      - id: order_acknowledgment_return_bitfield_20_cust_order_handling_in
+      - id: order_acknowledgment_return_bitfield_20_reserved_128
         type: b1
   order_acknowledgment_return_bitfield_21:
     meta:
@@ -1562,17 +1571,17 @@ types:
     seq:
       - id: order_acknowledgment_return_bitfield_21_reserved_1
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_cross_initiator
+      - id: order_acknowledgment_return_bitfield_21_reserved_2
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_subreason
+      - id: order_acknowledgment_return_bitfield_21_reserved_4
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_cross_trade_flag
+      - id: order_acknowledgment_return_bitfield_21_reserved_8
         type: b1
       - id: order_acknowledgment_return_bitfield_21_reserved_16
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_held
+      - id: order_acknowledgment_return_bitfield_21_reserved_32
         type: b1
-      - id: order_acknowledgment_return_bitfield_21_locate_broker
+      - id: order_acknowledgment_return_bitfield_21_reserved_64
         type: b1
       - id: order_acknowledgment_return_bitfield_21_reserved_128
         type: b1
@@ -1580,19 +1589,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_acknowledgment_return_bitfield_22_floor_trade_time
+      - id: order_acknowledgment_return_bitfield_22_reserved_1
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_equity_ex_destination
+      - id: order_acknowledgment_return_bitfield_22_reserved_2
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_acknowledgment_return_bitfield_22_reserved_4
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_cmc_sessions
+      - id: order_acknowledgment_return_bitfield_22_reserved_8
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_intra_firm_trade_ind
+      - id: order_acknowledgment_return_bitfield_22_reserved_16
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_cmc_match_qty
+      - id: order_acknowledgment_return_bitfield_22_reserved_32
         type: b1
-      - id: order_acknowledgment_return_bitfield_22_step_up_amount
+      - id: order_acknowledgment_return_bitfield_22_reserved_64
         type: b1
       - id: order_acknowledgment_return_bitfield_22_reserved_128
         type: b1
@@ -1712,135 +1721,135 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_rejected_return_bitfield_1.order_rejected_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_rejected_return_bitfield_5.order_rejected_return_bitfield_5_symbol
+        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_rejected_return_bitfield_5.order_rejected_return_bitfield_5_symbol_sfx
+        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 5 and order_rejected_return_bitfield_5.order_rejected_return_bitfield_5_capacity
+        if: number_of_return_bitfields >= 2 and order_rejected_return_bitfield_2.order_rejected_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_account
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_clearing_account
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_display_indicator
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_max_floor
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_order_qty
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_prevent_match
+        if: number_of_return_bitfields >= 3 and order_rejected_return_bitfield_3.order_rejected_return_bitfield_3_prevent_match
       - id: secondary_order_id
         type: u8
-        if: number_of_return_bitfields >= 9 and order_rejected_return_bitfield_9.order_rejected_return_bitfield_9_secondary_order_id
+        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_secondary_order_id
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        if: number_of_return_bitfields >= 9 and order_rejected_return_bitfield_9.order_rejected_return_bitfield_9_attributed_quote
+        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_attributed_quote
       - id: ext_exec_inst
         type: u1
         enum: ext_exec_inst
-        if: number_of_return_bitfields >= 9 and order_rejected_return_bitfield_9.order_rejected_return_bitfield_9_ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_rejected_return_bitfield_6.order_rejected_return_bitfield_6_ext_exec_inst
       - id: echo_text
         type: str
         size: 64
         encoding: ASCII
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_echo_text
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_echo_text
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_stop_px
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: routing_inst
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_routing_inst
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_routing_inst
       - id: rout_strategy
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_rout_strategy
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_rout_strategy
       - id: route_delivery_method
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_route_delivery_method
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_route_delivery_method
       - id: ex_destination
         type: u1
         enum: ex_destination
-        if: number_of_return_bitfields >= 11 and order_rejected_return_bitfield_11.order_rejected_return_bitfield_11_ex_destination
+        if: number_of_return_bitfields >= 8 and order_rejected_return_bitfield_8.order_rejected_return_bitfield_8_ex_destination
   order_rejected_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_1_order_rejected_return_bitfields
+      - id: order_rejected_return_bitfield_1_side
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_2
+      - id: order_rejected_return_bitfield_1_peg_difference
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_4
+      - id: order_rejected_return_bitfield_1_price
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_8
+      - id: order_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_16
+      - id: order_rejected_return_bitfield_1_ord_type
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_32
+      - id: order_rejected_return_bitfield_1_time_in_force
         type: b1
-      - id: order_rejected_return_bitfield_1_reserved_64
+      - id: order_rejected_return_bitfield_1_min_qty
         type: b1
       - id: order_rejected_return_bitfield_1_reserved_128
         type: b1
@@ -1848,381 +1857,381 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_2_side
+      - id: order_rejected_return_bitfield_2_symbol
         type: b1
-      - id: order_rejected_return_bitfield_2_peg_difference
+      - id: order_rejected_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_rejected_return_bitfield_2_price
+      - id: order_rejected_return_bitfield_2_currency
         type: b1
-      - id: order_rejected_return_bitfield_2_exec_inst
+      - id: order_rejected_return_bitfield_2_id_source
         type: b1
-      - id: order_rejected_return_bitfield_2_ord_type
+      - id: order_rejected_return_bitfield_2_security_id
         type: b1
-      - id: order_rejected_return_bitfield_2_time_in_force
+      - id: order_rejected_return_bitfield_2_security_exchange
         type: b1
-      - id: order_rejected_return_bitfield_2_min_qty
+      - id: order_rejected_return_bitfield_2_capacity
         type: b1
-      - id: order_rejected_return_bitfield_2_reserved_128
+      - id: order_rejected_return_bitfield_2_contra_trader
         type: b1
   order_rejected_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_3_sub_liquidity_indicator
+      - id: order_rejected_return_bitfield_3_account
         type: b1
-      - id: order_rejected_return_bitfield_3_trade_report_type_return
+      - id: order_rejected_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_rejected_return_bitfield_3_trade_publish_ind_return
+      - id: order_rejected_return_bitfield_3_clearing_account
         type: b1
-      - id: order_rejected_return_bitfield_3_text
+      - id: order_rejected_return_bitfield_3_display_indicator
         type: b1
-      - id: order_rejected_return_bitfield_3_bid
+      - id: order_rejected_return_bitfield_3_max_floor
         type: b1
-      - id: order_rejected_return_bitfield_3_offer
+      - id: order_rejected_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_rejected_return_bitfield_3_large_size
+      - id: order_rejected_return_bitfield_3_order_qty
         type: b1
-      - id: order_rejected_return_bitfield_3_reserved_128
+      - id: order_rejected_return_bitfield_3_prevent_match
         type: b1
   order_rejected_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_4_cum_qty
+      - id: order_rejected_return_bitfield_4_maturity_date
         type: b1
-      - id: order_rejected_return_bitfield_4_day_order_qty
+      - id: order_rejected_return_bitfield_4_strike_price
         type: b1
-      - id: order_rejected_return_bitfield_4_day_cum_qty
+      - id: order_rejected_return_bitfield_4_put_or_call
         type: b1
-      - id: order_rejected_return_bitfield_4_avg_px
+      - id: order_rejected_return_bitfield_4_open_close
         type: b1
-      - id: order_rejected_return_bitfield_4_day_avg_px
+      - id: order_rejected_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_rejected_return_bitfield_4_pending_status
+      - id: order_rejected_return_bitfield_4_corrected_size
         type: b1
-      - id: order_rejected_return_bitfield_4_drill_thru_protection
+      - id: order_rejected_return_bitfield_4_party_id
         type: b1
-      - id: order_rejected_return_bitfield_4_reserved_128
+      - id: order_rejected_return_bitfield_4_access_fee
         type: b1
   order_rejected_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_5_symbol
+      - id: order_rejected_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_rejected_return_bitfield_5_symbol_sfx
+      - id: order_rejected_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_rejected_return_bitfield_5_currency
+      - id: order_rejected_return_bitfield_5_last_shares
         type: b1
-      - id: order_rejected_return_bitfield_5_id_source
+      - id: order_rejected_return_bitfield_5_last_px
         type: b1
-      - id: order_rejected_return_bitfield_5_security_id
+      - id: order_rejected_return_bitfield_5_display_price
         type: b1
-      - id: order_rejected_return_bitfield_5_security_exchange
+      - id: order_rejected_return_bitfield_5_working_price
         type: b1
-      - id: order_rejected_return_bitfield_5_capacity
+      - id: order_rejected_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_rejected_return_bitfield_5_contra_trader
+      - id: order_rejected_return_bitfield_5_expire_time
         type: b1
   order_rejected_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_6_account
+      - id: order_rejected_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_rejected_return_bitfield_6_clearing_firm
+      - id: order_rejected_return_bitfield_6_ccp
         type: b1
-      - id: order_rejected_return_bitfield_6_clearing_account
+      - id: order_rejected_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_rejected_return_bitfield_6_display_indicator
+      - id: order_rejected_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_rejected_return_bitfield_6_max_floor
+      - id: order_rejected_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_rejected_return_bitfield_6_discretion_amount
+      - id: order_rejected_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_rejected_return_bitfield_6_order_qty
+      - id: order_rejected_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_rejected_return_bitfield_6_prevent_match
+      - id: order_rejected_return_bitfield_6_party_role
         type: b1
   order_rejected_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_7_maturity_date
+      - id: order_rejected_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_rejected_return_bitfield_7_strike_price
+      - id: order_rejected_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_rejected_return_bitfield_7_put_or_call
+      - id: order_rejected_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_rejected_return_bitfield_7_open_close
+      - id: order_rejected_return_bitfield_7_text
         type: b1
-      - id: order_rejected_return_bitfield_7_cl_ord_id_batch
+      - id: order_rejected_return_bitfield_7_bid
         type: b1
-      - id: order_rejected_return_bitfield_7_corrected_size
+      - id: order_rejected_return_bitfield_7_offer
         type: b1
-      - id: order_rejected_return_bitfield_7_party_id
+      - id: order_rejected_return_bitfield_7_large_size
         type: b1
-      - id: order_rejected_return_bitfield_7_access_fee
+      - id: order_rejected_return_bitfield_7_last_mkt
         type: b1
   order_rejected_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_8_orig_cl_ord_id
+      - id: order_rejected_return_bitfield_8_fee_code
         type: b1
-      - id: order_rejected_return_bitfield_8_leaves_qty
+      - id: order_rejected_return_bitfield_8_echo_text
         type: b1
-      - id: order_rejected_return_bitfield_8_last_shares
+      - id: order_rejected_return_bitfield_8_stop_px
         type: b1
-      - id: order_rejected_return_bitfield_8_last_px
+      - id: order_rejected_return_bitfield_8_routing_inst
         type: b1
-      - id: order_rejected_return_bitfield_8_display_price
+      - id: order_rejected_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_rejected_return_bitfield_8_working_price
+      - id: order_rejected_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_rejected_return_bitfield_8_base_liquidity_indicator
+      - id: order_rejected_return_bitfield_8_ex_destination
         type: b1
-      - id: order_rejected_return_bitfield_8_expire_time
+      - id: order_rejected_return_bitfield_8_trade_report_ref_id
         type: b1
   order_rejected_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_9_secondary_order_id
+      - id: order_rejected_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_rejected_return_bitfield_9_ccp
+      - id: order_rejected_return_bitfield_9_target_party_id
         type: b1
-      - id: order_rejected_return_bitfield_9_contra_capacity
+      - id: order_rejected_return_bitfield_9_auction_id
         type: b1
-      - id: order_rejected_return_bitfield_9_attributed_quote
+      - id: order_rejected_return_bitfield_9_order_category
         type: b1
-      - id: order_rejected_return_bitfield_9_ext_exec_inst
+      - id: order_rejected_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_rejected_return_bitfield_9_bulk_order_ids
+      - id: order_rejected_return_bitfield_9_cmta_number
         type: b1
-      - id: order_rejected_return_bitfield_9_bulk_reject_reasons
+      - id: order_rejected_return_bitfield_9_cross_type
         type: b1
-      - id: order_rejected_return_bitfield_9_party_role
+      - id: order_rejected_return_bitfield_9_cross_prioritization
         type: b1
   order_rejected_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_10_reserved_1
+      - id: order_rejected_return_bitfield_10_cross_id
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_2
+      - id: order_rejected_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_4
+      - id: order_rejected_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_8
+      - id: order_rejected_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_16
+      - id: order_rejected_return_bitfield_10_waiver_type
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_32
+      - id: order_rejected_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_rejected_return_bitfield_10_reserved_64
+      - id: order_rejected_return_bitfield_10_price_formation
         type: b1
-      - id: order_rejected_return_bitfield_10_last_mkt
+      - id: order_rejected_return_bitfield_10_client_qualified_role
         type: b1
   order_rejected_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_11_fee_code
+      - id: order_rejected_return_bitfield_11_client_id
         type: b1
-      - id: order_rejected_return_bitfield_11_echo_text
+      - id: order_rejected_return_bitfield_11_investor_id
         type: b1
-      - id: order_rejected_return_bitfield_11_stop_px
+      - id: order_rejected_return_bitfield_11_executor_id
         type: b1
-      - id: order_rejected_return_bitfield_11_routing_inst
+      - id: order_rejected_return_bitfield_11_order_origination
         type: b1
-      - id: order_rejected_return_bitfield_11_rout_strategy
+      - id: order_rejected_return_bitfield_11_algo
         type: b1
-      - id: order_rejected_return_bitfield_11_route_delivery_method
+      - id: order_rejected_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_rejected_return_bitfield_11_ex_destination
+      - id: order_rejected_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_rejected_return_bitfield_11_trade_report_ref_id
+      - id: order_rejected_return_bitfield_11_executor_qualified_role
         type: b1
   order_rejected_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_12_marketing_fee_code
+      - id: order_rejected_return_bitfield_12_cti_code
         type: b1
-      - id: order_rejected_return_bitfield_12_target_party_id
+      - id: order_rejected_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_rejected_return_bitfield_12_auction_id
+      - id: order_rejected_return_bitfield_12_operator_id
         type: b1
-      - id: order_rejected_return_bitfield_12_order_category
+      - id: order_rejected_return_bitfield_12_trade_date
         type: b1
-      - id: order_rejected_return_bitfield_12_liquidity_provision
+      - id: order_rejected_return_bitfield_12_clearing_price
         type: b1
-      - id: order_rejected_return_bitfield_12_cmta_number
+      - id: order_rejected_return_bitfield_12_clearing_size
         type: b1
-      - id: order_rejected_return_bitfield_12_cross_type
+      - id: order_rejected_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_rejected_return_bitfield_12_cross_prioritization
+      - id: order_rejected_return_bitfield_12_clearing_optional_data
         type: b1
   order_rejected_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_13_cross_id
+      - id: order_rejected_return_bitfield_13_cum_qty
         type: b1
-      - id: order_rejected_return_bitfield_13_alloc_qty
+      - id: order_rejected_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_rejected_return_bitfield_13_give_up_firm_id
+      - id: order_rejected_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_rejected_return_bitfield_13_routing_firm_id
+      - id: order_rejected_return_bitfield_13_avg_px
         type: b1
-      - id: order_rejected_return_bitfield_13_waiver_type
+      - id: order_rejected_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_rejected_return_bitfield_13_cross_exclusion_indicator
+      - id: order_rejected_return_bitfield_13_pending_status
         type: b1
-      - id: order_rejected_return_bitfield_13_price_formation
+      - id: order_rejected_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_rejected_return_bitfield_13_client_qualified_role
+      - id: order_rejected_return_bitfield_13_multileg_reporting_type
         type: b1
   order_rejected_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_14_client_id
+      - id: order_rejected_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_rejected_return_bitfield_14_investor_id
+      - id: order_rejected_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_rejected_return_bitfield_14_executor_id
+      - id: order_rejected_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_rejected_return_bitfield_14_order_origination
+      - id: order_rejected_return_bitfield_14_room_id
         type: b1
-      - id: order_rejected_return_bitfield_14_algo
+      - id: order_rejected_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_rejected_return_bitfield_14_deferral_reason
+      - id: order_rejected_return_bitfield_14_user_request_id
         type: b1
-      - id: order_rejected_return_bitfield_14_investor_qualified_role
+      - id: order_rejected_return_bitfield_14_sis_username
         type: b1
-      - id: order_rejected_return_bitfield_14_executor_qualified_role
+      - id: order_rejected_return_bitfield_14_user_status
         type: b1
   order_rejected_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_15_cti_code
+      - id: order_rejected_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_rejected_return_bitfield_15_manual_order_indicator
+      - id: order_rejected_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_rejected_return_bitfield_15_operator_id
+      - id: order_rejected_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_rejected_return_bitfield_15_trade_date
+      - id: order_rejected_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_rejected_return_bitfield_15_clearing_price
+      - id: order_rejected_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_rejected_return_bitfield_15_clearing_size
+      - id: order_rejected_return_bitfield_15_report_time
         type: b1
-      - id: order_rejected_return_bitfield_15_clearing_symbol
+      - id: order_rejected_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_rejected_return_bitfield_15_clearing_optional_data
+      - id: order_rejected_return_bitfield_15_client_id_attr
         type: b1
   order_rejected_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_16_reserved_1
+      - id: order_rejected_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_2
+      - id: order_rejected_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_4
+      - id: order_rejected_return_bitfield_16_combo_order
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_8
+      - id: order_rejected_return_bitfield_16_compression
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_16
+      - id: order_rejected_return_bitfield_16_floor_destination
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_32
+      - id: order_rejected_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_rejected_return_bitfield_16_reserved_64
+      - id: order_rejected_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_rejected_return_bitfield_16_multileg_reporting_typ
+      - id: order_rejected_return_bitfield_16_order_origin
         type: b1
   order_rejected_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_17_leg_cfi_code
+      - id: order_rejected_return_bitfield_17_price_type
         type: b1
-      - id: order_rejected_return_bitfield_17_leg_maturity_date
+      - id: order_rejected_return_bitfield_17_strategy_id
         type: b1
-      - id: order_rejected_return_bitfield_17_leg_strike_price
+      - id: order_rejected_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_rejected_return_bitfield_17_room_id
+      - id: order_rejected_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_rejected_return_bitfield_17_secondary_exec_id
+      - id: order_rejected_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_rejected_return_bitfield_17_user_request_id
+      - id: order_rejected_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_rejected_return_bitfield_17_sis_username
+      - id: order_rejected_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_rejected_return_bitfield_17_user_status
+      - id: order_rejected_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_rejected_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_18_trade_reporting_indica
+      - id: order_rejected_return_bitfield_18_reserved_1
         type: b1
-      - id: order_rejected_return_bitfield_18_equity_party_id
+      - id: order_rejected_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_rejected_return_bitfield_18_equity_nbbo_protect
+      - id: order_rejected_return_bitfield_18_subreason
         type: b1
-      - id: order_rejected_return_bitfield_18_mass_cancel_id
+      - id: order_rejected_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_rejected_return_bitfield_18_trade_publish_ind
+      - id: order_rejected_return_bitfield_18_reserved_16
         type: b1
-      - id: order_rejected_return_bitfield_18_report_time
+      - id: order_rejected_return_bitfield_18_held
         type: b1
-      - id: order_rejected_return_bitfield_18_leg_symbol_sfx
+      - id: order_rejected_return_bitfield_18_locate_broker
         type: b1
-      - id: order_rejected_return_bitfield_18_client_id_attr
+      - id: order_rejected_return_bitfield_18_reserved_128
         type: b1
   order_rejected_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_19_frequent_trader_id
+      - id: order_rejected_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_rejected_return_bitfield_19_session_eligibility
+      - id: order_rejected_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_rejected_return_bitfield_19_combo_order
+      - id: order_rejected_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_rejected_return_bitfield_19_compression
+      - id: order_rejected_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_rejected_return_bitfield_19_floor_destination
+      - id: order_rejected_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_rejected_return_bitfield_19_floor_routing_inst
+      - id: order_rejected_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_rejected_return_bitfield_19_multi_class_sprd
+      - id: order_rejected_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_rejected_return_bitfield_19_order_origin
+      - id: order_rejected_return_bitfield_19_reserved_128
         type: b1
   order_rejected_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_20_price_type
+      - id: order_rejected_return_bitfield_20_reserved_1
         type: b1
-      - id: order_rejected_return_bitfield_20_strategy_id
+      - id: order_rejected_return_bitfield_20_reserved_2
         type: b1
-      - id: order_rejected_return_bitfield_20_trading_session_id
+      - id: order_rejected_return_bitfield_20_reserved_4
         type: b1
-      - id: order_rejected_return_bitfield_20_trade_through_alert_ty
+      - id: order_rejected_return_bitfield_20_reserved_8
         type: b1
-      - id: order_rejected_return_bitfield_20_sender_location_id
+      - id: order_rejected_return_bitfield_20_reserved_16
         type: b1
-      - id: order_rejected_return_bitfield_20_floor_trader_acronym
+      - id: order_rejected_return_bitfield_20_reserved_32
         type: b1
-      - id: order_rejected_return_bitfield_20_exec_leg_cfi_code
+      - id: order_rejected_return_bitfield_20_reserved_64
         type: b1
-      - id: order_rejected_return_bitfield_20_cust_order_handling_in
+      - id: order_rejected_return_bitfield_20_reserved_128
         type: b1
   order_rejected_return_bitfield_21:
     meta:
@@ -2230,17 +2239,17 @@ types:
     seq:
       - id: order_rejected_return_bitfield_21_reserved_1
         type: b1
-      - id: order_rejected_return_bitfield_21_cross_initiator
+      - id: order_rejected_return_bitfield_21_reserved_2
         type: b1
-      - id: order_rejected_return_bitfield_21_subreason
+      - id: order_rejected_return_bitfield_21_reserved_4
         type: b1
-      - id: order_rejected_return_bitfield_21_cross_trade_flag
+      - id: order_rejected_return_bitfield_21_reserved_8
         type: b1
       - id: order_rejected_return_bitfield_21_reserved_16
         type: b1
-      - id: order_rejected_return_bitfield_21_held
+      - id: order_rejected_return_bitfield_21_reserved_32
         type: b1
-      - id: order_rejected_return_bitfield_21_locate_broker
+      - id: order_rejected_return_bitfield_21_reserved_64
         type: b1
       - id: order_rejected_return_bitfield_21_reserved_128
         type: b1
@@ -2248,19 +2257,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_rejected_return_bitfield_22_floor_trade_time
+      - id: order_rejected_return_bitfield_22_reserved_1
         type: b1
-      - id: order_rejected_return_bitfield_22_equity_ex_destination
+      - id: order_rejected_return_bitfield_22_reserved_2
         type: b1
-      - id: order_rejected_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_rejected_return_bitfield_22_reserved_4
         type: b1
-      - id: order_rejected_return_bitfield_22_cmc_sessions
+      - id: order_rejected_return_bitfield_22_reserved_8
         type: b1
-      - id: order_rejected_return_bitfield_22_intra_firm_trade_ind
+      - id: order_rejected_return_bitfield_22_reserved_16
         type: b1
-      - id: order_rejected_return_bitfield_22_cmc_match_qty
+      - id: order_rejected_return_bitfield_22_reserved_32
         type: b1
-      - id: order_rejected_return_bitfield_22_step_up_amount
+      - id: order_rejected_return_bitfield_22_reserved_64
         type: b1
       - id: order_rejected_return_bitfield_22_reserved_128
         type: b1
@@ -2374,172 +2383,172 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_modified_return_bitfield_1.order_modified_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_symbol_sfx
+        if: number_of_return_bitfields >= 2 and order_modified_return_bitfield_2.order_modified_return_bitfield_2_symbol_sfx
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_account
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_clearing_account
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_display_indicator
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_max_floor
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_order_qty
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_modified_return_bitfield_4.order_modified_return_bitfield_4_prevent_match
+        if: number_of_return_bitfields >= 3 and order_modified_return_bitfield_3.order_modified_return_bitfield_3_prevent_match
+      - id: orig_cl_ord_id
+        type: str
+        size: 20
+        encoding: ASCII
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_orig_cl_ord_id
+        doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
+      - id: leaves_qty
+        type: u4
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_leaves_qty
+      - id: last_shares
+        type: u4
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_last_shares
+      - id: last_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_last_px
+        doc: 'Implied decimal with scale 1e-4'
+      - id: display_price
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_display_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: working_price
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_working_price
+        doc: 'Implied decimal with scale 1e-4'
+      - id: base_liquidity_indicator
+        type: u1
+        enum: base_liquidity_indicator
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_base_liquidity_indicator
+      - id: expire_time
+        type: nanosecond_timestamp
+        if: number_of_return_bitfields >= 5 and order_modified_return_bitfield_5.order_modified_return_bitfield_5_expire_time
+        doc: 'Nanoseconds since Unix epoch'
+      - id: secondary_order_id
+        type: u8
+        if: number_of_return_bitfields >= 6 and order_modified_return_bitfield_6.order_modified_return_bitfield_6_secondary_order_id
+      - id: attributed_quote
+        type: u1
+        enum: attributed_quote
+        if: number_of_return_bitfields >= 6 and order_modified_return_bitfield_6.order_modified_return_bitfield_6_attributed_quote
+      - id: ext_exec_inst
+        type: u1
+        enum: ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_modified_return_bitfield_6.order_modified_return_bitfield_6_ext_exec_inst
       - id: echo_text
         type: str
         size: 64
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_echo_text
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_echo_text
       - id: stop_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_stop_px
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_stop_px
         doc: 'Implied decimal with scale 1e-4'
       - id: routing_inst
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_routing_inst
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_routing_inst
       - id: rout_strategy
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_rout_strategy
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_rout_strategy
       - id: route_delivery_method
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_route_delivery_method
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_route_delivery_method
       - id: ex_destination
         type: u1
         enum: ex_destination
-        if: number_of_return_bitfields >= 7 and order_modified_return_bitfield_7.order_modified_return_bitfield_7_ex_destination
-      - id: orig_cl_ord_id
-        type: str
-        size: 20
-        encoding: ASCII
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_orig_cl_ord_id
-        doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
-      - id: leaves_qty
-        type: u4
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_leaves_qty
-      - id: last_shares
-        type: u4
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_last_shares
-      - id: last_px
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_last_px
-        doc: 'Implied decimal with scale 1e-4'
-      - id: display_price
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_display_price
-        doc: 'Implied decimal with scale 1e-4'
-      - id: working_price
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_working_price
-        doc: 'Implied decimal with scale 1e-4'
-      - id: base_liquidity_indicator
-        type: u1
-        enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_base_liquidity_indicator
-      - id: expire_time
-        type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 14 and order_modified_return_bitfield_14.order_modified_return_bitfield_14_expire_time
-        doc: 'Nanoseconds since Unix epoch'
-      - id: secondary_order_id
-        type: u8
-        if: number_of_return_bitfields >= 15 and order_modified_return_bitfield_15.order_modified_return_bitfield_15_secondary_order_id
-      - id: attributed_quote
-        type: u1
-        enum: attributed_quote
-        if: number_of_return_bitfields >= 15 and order_modified_return_bitfield_15.order_modified_return_bitfield_15_attributed_quote
-      - id: ext_exec_inst
-        type: u1
-        enum: ext_exec_inst
-        if: number_of_return_bitfields >= 15 and order_modified_return_bitfield_15.order_modified_return_bitfield_15_ext_exec_inst
+        if: number_of_return_bitfields >= 8 and order_modified_return_bitfield_8.order_modified_return_bitfield_8_ex_destination
       - id: cross_trade_flag
         type: u1
         enum: cross_trade_flag
-        if: number_of_return_bitfields >= 21 and order_modified_return_bitfield_21.order_modified_return_bitfield_21_cross_trade_flag
+        if: number_of_return_bitfields >= 18 and order_modified_return_bitfield_18.order_modified_return_bitfield_18_cross_trade_flag
       - id: locate_broker
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 21 and order_modified_return_bitfield_21.order_modified_return_bitfield_21_locate_broker
+        if: number_of_return_bitfields >= 18 and order_modified_return_bitfield_18.order_modified_return_bitfield_18_locate_broker
   order_modified_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_1_order_modified_return_bitfields
+      - id: order_modified_return_bitfield_1_side
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_2
+      - id: order_modified_return_bitfield_1_peg_difference
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_4
+      - id: order_modified_return_bitfield_1_price
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_8
+      - id: order_modified_return_bitfield_1_exec_inst
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_16
+      - id: order_modified_return_bitfield_1_ord_type
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_32
+      - id: order_modified_return_bitfield_1_time_in_force
         type: b1
-      - id: order_modified_return_bitfield_1_reserved_64
+      - id: order_modified_return_bitfield_1_min_qty
         type: b1
       - id: order_modified_return_bitfield_1_reserved_128
         type: b1
@@ -2547,381 +2556,381 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_2_side
+      - id: order_modified_return_bitfield_2_symbol
         type: b1
-      - id: order_modified_return_bitfield_2_peg_difference
+      - id: order_modified_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_modified_return_bitfield_2_price
+      - id: order_modified_return_bitfield_2_currency
         type: b1
-      - id: order_modified_return_bitfield_2_exec_inst
+      - id: order_modified_return_bitfield_2_id_source
         type: b1
-      - id: order_modified_return_bitfield_2_ord_type
+      - id: order_modified_return_bitfield_2_security_id
         type: b1
-      - id: order_modified_return_bitfield_2_time_in_force
+      - id: order_modified_return_bitfield_2_security_exchange
         type: b1
-      - id: order_modified_return_bitfield_2_min_qty
+      - id: order_modified_return_bitfield_2_capacity
         type: b1
-      - id: order_modified_return_bitfield_2_reserved_128
+      - id: order_modified_return_bitfield_2_contra_trader
         type: b1
   order_modified_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_3_symbol
+      - id: order_modified_return_bitfield_3_account
         type: b1
-      - id: order_modified_return_bitfield_3_symbol_sfx
+      - id: order_modified_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_modified_return_bitfield_3_currency
+      - id: order_modified_return_bitfield_3_clearing_account
         type: b1
-      - id: order_modified_return_bitfield_3_id_source
+      - id: order_modified_return_bitfield_3_display_indicator
         type: b1
-      - id: order_modified_return_bitfield_3_security_id
+      - id: order_modified_return_bitfield_3_max_floor
         type: b1
-      - id: order_modified_return_bitfield_3_security_exchange
+      - id: order_modified_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_modified_return_bitfield_3_capacity
+      - id: order_modified_return_bitfield_3_order_qty
         type: b1
-      - id: order_modified_return_bitfield_3_contra_trader
+      - id: order_modified_return_bitfield_3_prevent_match
         type: b1
   order_modified_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_4_account
+      - id: order_modified_return_bitfield_4_maturity_date
         type: b1
-      - id: order_modified_return_bitfield_4_clearing_firm
+      - id: order_modified_return_bitfield_4_strike_price
         type: b1
-      - id: order_modified_return_bitfield_4_clearing_account
+      - id: order_modified_return_bitfield_4_put_or_call
         type: b1
-      - id: order_modified_return_bitfield_4_display_indicator
+      - id: order_modified_return_bitfield_4_open_close
         type: b1
-      - id: order_modified_return_bitfield_4_max_floor
+      - id: order_modified_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_modified_return_bitfield_4_discretion_amount
+      - id: order_modified_return_bitfield_4_corrected_size
         type: b1
-      - id: order_modified_return_bitfield_4_order_qty
+      - id: order_modified_return_bitfield_4_party_id
         type: b1
-      - id: order_modified_return_bitfield_4_prevent_match
+      - id: order_modified_return_bitfield_4_access_fee
         type: b1
   order_modified_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_5_maturity_date
+      - id: order_modified_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_modified_return_bitfield_5_strike_price
+      - id: order_modified_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_modified_return_bitfield_5_put_or_call
+      - id: order_modified_return_bitfield_5_last_shares
         type: b1
-      - id: order_modified_return_bitfield_5_open_close
+      - id: order_modified_return_bitfield_5_last_px
         type: b1
-      - id: order_modified_return_bitfield_5_cl_ord_id_batch
+      - id: order_modified_return_bitfield_5_display_price
         type: b1
-      - id: order_modified_return_bitfield_5_corrected_size
+      - id: order_modified_return_bitfield_5_working_price
         type: b1
-      - id: order_modified_return_bitfield_5_reserved_64
+      - id: order_modified_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_modified_return_bitfield_5_reserved_128
+      - id: order_modified_return_bitfield_5_expire_time
         type: b1
   order_modified_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_6_sub_liquidity_indicator
+      - id: order_modified_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_modified_return_bitfield_6_trade_report_type_return
+      - id: order_modified_return_bitfield_6_ccp
         type: b1
-      - id: order_modified_return_bitfield_6_trade_publish_ind_return
+      - id: order_modified_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_modified_return_bitfield_6_text
+      - id: order_modified_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_modified_return_bitfield_6_bid
+      - id: order_modified_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_modified_return_bitfield_6_offer
+      - id: order_modified_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_modified_return_bitfield_6_large_size
+      - id: order_modified_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_modified_return_bitfield_6_last_mkt
+      - id: order_modified_return_bitfield_6_party_role
         type: b1
   order_modified_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_7_fee_code
+      - id: order_modified_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_modified_return_bitfield_7_echo_text
+      - id: order_modified_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_modified_return_bitfield_7_stop_px
+      - id: order_modified_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_modified_return_bitfield_7_routing_inst
+      - id: order_modified_return_bitfield_7_text
         type: b1
-      - id: order_modified_return_bitfield_7_rout_strategy
+      - id: order_modified_return_bitfield_7_bid
         type: b1
-      - id: order_modified_return_bitfield_7_route_delivery_method
+      - id: order_modified_return_bitfield_7_offer
         type: b1
-      - id: order_modified_return_bitfield_7_ex_destination
+      - id: order_modified_return_bitfield_7_large_size
         type: b1
-      - id: order_modified_return_bitfield_7_trade_report_ref_id
+      - id: order_modified_return_bitfield_7_last_mkt
         type: b1
   order_modified_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_8_marketing_fee_code
+      - id: order_modified_return_bitfield_8_fee_code
         type: b1
-      - id: order_modified_return_bitfield_8_target_party_id
+      - id: order_modified_return_bitfield_8_echo_text
         type: b1
-      - id: order_modified_return_bitfield_8_auction_id
+      - id: order_modified_return_bitfield_8_stop_px
         type: b1
-      - id: order_modified_return_bitfield_8_order_category
+      - id: order_modified_return_bitfield_8_routing_inst
         type: b1
-      - id: order_modified_return_bitfield_8_liquidity_provision
+      - id: order_modified_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_modified_return_bitfield_8_cmta_number
+      - id: order_modified_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_modified_return_bitfield_8_cross_type
+      - id: order_modified_return_bitfield_8_ex_destination
         type: b1
-      - id: order_modified_return_bitfield_8_cross_prioritization
+      - id: order_modified_return_bitfield_8_trade_report_ref_id
         type: b1
   order_modified_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_9_cross_id
+      - id: order_modified_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_modified_return_bitfield_9_alloc_qty
+      - id: order_modified_return_bitfield_9_target_party_id
         type: b1
-      - id: order_modified_return_bitfield_9_give_up_firm_id
+      - id: order_modified_return_bitfield_9_auction_id
         type: b1
-      - id: order_modified_return_bitfield_9_routing_firm_id
+      - id: order_modified_return_bitfield_9_order_category
         type: b1
-      - id: order_modified_return_bitfield_9_waiver_type
+      - id: order_modified_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_modified_return_bitfield_9_cross_exclusion_indicator
+      - id: order_modified_return_bitfield_9_cmta_number
         type: b1
-      - id: order_modified_return_bitfield_9_reserved_64
+      - id: order_modified_return_bitfield_9_cross_type
         type: b1
-      - id: order_modified_return_bitfield_9_reserved_128
+      - id: order_modified_return_bitfield_9_cross_prioritization
         type: b1
   order_modified_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_10_cum_qty
+      - id: order_modified_return_bitfield_10_cross_id
         type: b1
-      - id: order_modified_return_bitfield_10_day_order_qty
+      - id: order_modified_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_modified_return_bitfield_10_day_cum_qty
+      - id: order_modified_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_modified_return_bitfield_10_avg_px
+      - id: order_modified_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_modified_return_bitfield_10_day_avg_px
+      - id: order_modified_return_bitfield_10_waiver_type
         type: b1
-      - id: order_modified_return_bitfield_10_pending_status
+      - id: order_modified_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_modified_return_bitfield_10_drill_thru_protection
+      - id: order_modified_return_bitfield_10_price_formation
         type: b1
-      - id: order_modified_return_bitfield_10_multileg_reporting_typ
+      - id: order_modified_return_bitfield_10_client_qualified_role
         type: b1
   order_modified_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_11_leg_cfi_code
+      - id: order_modified_return_bitfield_11_client_id
         type: b1
-      - id: order_modified_return_bitfield_11_leg_maturity_date
+      - id: order_modified_return_bitfield_11_investor_id
         type: b1
-      - id: order_modified_return_bitfield_11_leg_strike_price
+      - id: order_modified_return_bitfield_11_executor_id
         type: b1
-      - id: order_modified_return_bitfield_11_room_id
+      - id: order_modified_return_bitfield_11_order_origination
         type: b1
-      - id: order_modified_return_bitfield_11_secondary_exec_id
+      - id: order_modified_return_bitfield_11_algo
         type: b1
-      - id: order_modified_return_bitfield_11_user_request_id
+      - id: order_modified_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_modified_return_bitfield_11_sis_username
+      - id: order_modified_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_modified_return_bitfield_11_user_status
+      - id: order_modified_return_bitfield_11_executor_qualified_role
         type: b1
   order_modified_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_12_trade_reporting_indica
+      - id: order_modified_return_bitfield_12_cti_code
         type: b1
-      - id: order_modified_return_bitfield_12_equity_party_id
+      - id: order_modified_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_modified_return_bitfield_12_equity_nbbo_protect
+      - id: order_modified_return_bitfield_12_operator_id
         type: b1
-      - id: order_modified_return_bitfield_12_mass_cancel_id
+      - id: order_modified_return_bitfield_12_trade_date
         type: b1
-      - id: order_modified_return_bitfield_12_trade_publish_ind
+      - id: order_modified_return_bitfield_12_clearing_price
         type: b1
-      - id: order_modified_return_bitfield_12_report_time
+      - id: order_modified_return_bitfield_12_clearing_size
         type: b1
-      - id: order_modified_return_bitfield_12_leg_symbol_sfx
+      - id: order_modified_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_modified_return_bitfield_12_client_id_attr
+      - id: order_modified_return_bitfield_12_clearing_optional_data
         type: b1
   order_modified_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_13_frequent_trader_id
+      - id: order_modified_return_bitfield_13_cum_qty
         type: b1
-      - id: order_modified_return_bitfield_13_session_eligibility
+      - id: order_modified_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_modified_return_bitfield_13_combo_order
+      - id: order_modified_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_modified_return_bitfield_13_compression
+      - id: order_modified_return_bitfield_13_avg_px
         type: b1
-      - id: order_modified_return_bitfield_13_floor_destination
+      - id: order_modified_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_modified_return_bitfield_13_floor_routing_inst
+      - id: order_modified_return_bitfield_13_pending_status
         type: b1
-      - id: order_modified_return_bitfield_13_party_id
+      - id: order_modified_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_modified_return_bitfield_13_access_fee
+      - id: order_modified_return_bitfield_13_multileg_reporting_type
         type: b1
   order_modified_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_14_orig_cl_ord_id
+      - id: order_modified_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_modified_return_bitfield_14_leaves_qty
+      - id: order_modified_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_modified_return_bitfield_14_last_shares
+      - id: order_modified_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_modified_return_bitfield_14_last_px
+      - id: order_modified_return_bitfield_14_room_id
         type: b1
-      - id: order_modified_return_bitfield_14_display_price
+      - id: order_modified_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_modified_return_bitfield_14_working_price
+      - id: order_modified_return_bitfield_14_user_request_id
         type: b1
-      - id: order_modified_return_bitfield_14_base_liquidity_indicator
+      - id: order_modified_return_bitfield_14_sis_username
         type: b1
-      - id: order_modified_return_bitfield_14_expire_time
+      - id: order_modified_return_bitfield_14_user_status
         type: b1
   order_modified_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_15_secondary_order_id
+      - id: order_modified_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_modified_return_bitfield_15_ccp
+      - id: order_modified_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_modified_return_bitfield_15_contra_capacity
+      - id: order_modified_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_modified_return_bitfield_15_attributed_quote
+      - id: order_modified_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_modified_return_bitfield_15_ext_exec_inst
+      - id: order_modified_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_modified_return_bitfield_15_bulk_order_ids
+      - id: order_modified_return_bitfield_15_report_time
         type: b1
-      - id: order_modified_return_bitfield_15_bulk_reject_reasons
+      - id: order_modified_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_modified_return_bitfield_15_party_role
+      - id: order_modified_return_bitfield_15_client_id_attr
         type: b1
   order_modified_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_16_reserved_1
+      - id: order_modified_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_modified_return_bitfield_16_reserved_2
+      - id: order_modified_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_modified_return_bitfield_16_reserved_4
+      - id: order_modified_return_bitfield_16_combo_order
         type: b1
-      - id: order_modified_return_bitfield_16_reserved_8
+      - id: order_modified_return_bitfield_16_compression
         type: b1
-      - id: order_modified_return_bitfield_16_reserved_16
+      - id: order_modified_return_bitfield_16_floor_destination
         type: b1
-      - id: order_modified_return_bitfield_16_reserved_32
+      - id: order_modified_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_modified_return_bitfield_16_price_formation
+      - id: order_modified_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_modified_return_bitfield_16_client_qualified_role
+      - id: order_modified_return_bitfield_16_order_origin
         type: b1
   order_modified_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_17_client_id
+      - id: order_modified_return_bitfield_17_price_type
         type: b1
-      - id: order_modified_return_bitfield_17_investor_id
+      - id: order_modified_return_bitfield_17_strategy_id
         type: b1
-      - id: order_modified_return_bitfield_17_executor_id
+      - id: order_modified_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_modified_return_bitfield_17_order_origination
+      - id: order_modified_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_modified_return_bitfield_17_algo
+      - id: order_modified_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_modified_return_bitfield_17_deferral_reason
+      - id: order_modified_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_modified_return_bitfield_17_investor_qualified_role
+      - id: order_modified_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_modified_return_bitfield_17_executor_qualified_role
+      - id: order_modified_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_modified_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_18_cti_code
+      - id: order_modified_return_bitfield_18_reserved_1
         type: b1
-      - id: order_modified_return_bitfield_18_manual_order_indicator
+      - id: order_modified_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_modified_return_bitfield_18_operator_id
+      - id: order_modified_return_bitfield_18_subreason
         type: b1
-      - id: order_modified_return_bitfield_18_trade_date
+      - id: order_modified_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_modified_return_bitfield_18_clearing_price
+      - id: order_modified_return_bitfield_18_reserved_16
         type: b1
-      - id: order_modified_return_bitfield_18_clearing_size
+      - id: order_modified_return_bitfield_18_held
         type: b1
-      - id: order_modified_return_bitfield_18_clearing_symbol
+      - id: order_modified_return_bitfield_18_locate_broker
         type: b1
-      - id: order_modified_return_bitfield_18_clearing_optional_data
+      - id: order_modified_return_bitfield_18_reserved_128
         type: b1
   order_modified_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_19_reserved_1
+      - id: order_modified_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_modified_return_bitfield_19_reserved_2
+      - id: order_modified_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_modified_return_bitfield_19_reserved_4
+      - id: order_modified_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_modified_return_bitfield_19_reserved_8
+      - id: order_modified_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_modified_return_bitfield_19_reserved_16
+      - id: order_modified_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_modified_return_bitfield_19_reserved_32
+      - id: order_modified_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_modified_return_bitfield_19_multi_class_sprd
+      - id: order_modified_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_modified_return_bitfield_19_order_origin
+      - id: order_modified_return_bitfield_19_reserved_128
         type: b1
   order_modified_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_20_price_type
+      - id: order_modified_return_bitfield_20_reserved_1
         type: b1
-      - id: order_modified_return_bitfield_20_strategy_id
+      - id: order_modified_return_bitfield_20_reserved_2
         type: b1
-      - id: order_modified_return_bitfield_20_trading_session_id
+      - id: order_modified_return_bitfield_20_reserved_4
         type: b1
-      - id: order_modified_return_bitfield_20_trade_through_alert_ty
+      - id: order_modified_return_bitfield_20_reserved_8
         type: b1
-      - id: order_modified_return_bitfield_20_sender_location_id
+      - id: order_modified_return_bitfield_20_reserved_16
         type: b1
-      - id: order_modified_return_bitfield_20_floor_trader_acronym
+      - id: order_modified_return_bitfield_20_reserved_32
         type: b1
-      - id: order_modified_return_bitfield_20_exec_leg_cfi_code
+      - id: order_modified_return_bitfield_20_reserved_64
         type: b1
-      - id: order_modified_return_bitfield_20_cust_order_handling_in
+      - id: order_modified_return_bitfield_20_reserved_128
         type: b1
   order_modified_return_bitfield_21:
     meta:
@@ -2929,17 +2938,17 @@ types:
     seq:
       - id: order_modified_return_bitfield_21_reserved_1
         type: b1
-      - id: order_modified_return_bitfield_21_cross_initiator
+      - id: order_modified_return_bitfield_21_reserved_2
         type: b1
-      - id: order_modified_return_bitfield_21_subreason
+      - id: order_modified_return_bitfield_21_reserved_4
         type: b1
-      - id: order_modified_return_bitfield_21_cross_trade_flag
+      - id: order_modified_return_bitfield_21_reserved_8
         type: b1
       - id: order_modified_return_bitfield_21_reserved_16
         type: b1
-      - id: order_modified_return_bitfield_21_held
+      - id: order_modified_return_bitfield_21_reserved_32
         type: b1
-      - id: order_modified_return_bitfield_21_locate_broker
+      - id: order_modified_return_bitfield_21_reserved_64
         type: b1
       - id: order_modified_return_bitfield_21_reserved_128
         type: b1
@@ -2947,19 +2956,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_modified_return_bitfield_22_floor_trade_time
+      - id: order_modified_return_bitfield_22_reserved_1
         type: b1
-      - id: order_modified_return_bitfield_22_equity_ex_destination
+      - id: order_modified_return_bitfield_22_reserved_2
         type: b1
-      - id: order_modified_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_modified_return_bitfield_22_reserved_4
         type: b1
-      - id: order_modified_return_bitfield_22_cmc_sessions
+      - id: order_modified_return_bitfield_22_reserved_8
         type: b1
-      - id: order_modified_return_bitfield_22_intra_firm_trade_ind
+      - id: order_modified_return_bitfield_22_reserved_16
         type: b1
-      - id: order_modified_return_bitfield_22_cmc_match_qty
+      - id: order_modified_return_bitfield_22_reserved_32
         type: b1
-      - id: order_modified_return_bitfield_22_step_up_amount
+      - id: order_modified_return_bitfield_22_reserved_64
         type: b1
       - id: order_modified_return_bitfield_22_reserved_128
         type: b1
@@ -3077,167 +3086,174 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_restated_return_bitfield_1.order_restated_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_symbol_sfx
-      - id: echo_text
-        type: str
-        size: 64
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_echo_text
-      - id: stop_px
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_stop_px
-        doc: 'Implied decimal with scale 1e-4'
+        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 7 and order_restated_return_bitfield_7.order_restated_return_bitfield_7_capacity
+        if: number_of_return_bitfields >= 2 and order_restated_return_bitfield_2.order_restated_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_account
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_clearing_account
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_display_indicator
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_max_floor
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_order_qty
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_prevent_match
+        if: number_of_return_bitfields >= 3 and order_restated_return_bitfield_3.order_restated_return_bitfield_3_prevent_match
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_orig_cl_ord_id
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_orig_cl_ord_id
         doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
       - id: leaves_qty
         type: u4
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_leaves_qty
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_leaves_qty
       - id: last_shares
         type: u4
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_last_shares
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_last_shares
       - id: last_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_last_px
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
       - id: display_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_display_price
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_working_price
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_base_liquidity_indicator
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_base_liquidity_indicator
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 10 and order_restated_return_bitfield_10.order_restated_return_bitfield_10_expire_time
+        if: number_of_return_bitfields >= 5 and order_restated_return_bitfield_5.order_restated_return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: secondary_order_id
         type: u8
-        if: number_of_return_bitfields >= 11 and order_restated_return_bitfield_11.order_restated_return_bitfield_11_secondary_order_id
+        if: number_of_return_bitfields >= 6 and order_restated_return_bitfield_6.order_restated_return_bitfield_6_secondary_order_id
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        if: number_of_return_bitfields >= 11 and order_restated_return_bitfield_11.order_restated_return_bitfield_11_attributed_quote
+        if: number_of_return_bitfields >= 6 and order_restated_return_bitfield_6.order_restated_return_bitfield_6_attributed_quote
       - id: ext_exec_inst
         type: u1
         enum: ext_exec_inst
-        if: number_of_return_bitfields >= 11 and order_restated_return_bitfield_11.order_restated_return_bitfield_11_ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_restated_return_bitfield_6.order_restated_return_bitfield_6_ext_exec_inst
+      - id: echo_text
+        type: str
+        size: 64
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_echo_text
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_stop_px
+        doc: 'Implied decimal with scale 1e-4'
       - id: routing_inst
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and order_restated_return_bitfield_12.order_restated_return_bitfield_12_routing_inst
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_routing_inst
       - id: rout_strategy
         type: str
         size: 6
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and order_restated_return_bitfield_12.order_restated_return_bitfield_12_rout_strategy
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_rout_strategy
       - id: route_delivery_method
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 12 and order_restated_return_bitfield_12.order_restated_return_bitfield_12_route_delivery_method
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_route_delivery_method
       - id: ex_destination
         type: u1
         enum: ex_destination
-        if: number_of_return_bitfields >= 12 and order_restated_return_bitfield_12.order_restated_return_bitfield_12_ex_destination
+        if: number_of_return_bitfields >= 8 and order_restated_return_bitfield_8.order_restated_return_bitfield_8_ex_destination
+      - id: cmc_match_qty
+        type: u4
+        if: number_of_return_bitfields >= 19 and order_restated_return_bitfield_19.order_restated_return_bitfield_19_cmc_match_qty
+      - id: step_up_amount
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 19 and order_restated_return_bitfield_19.order_restated_return_bitfield_19_step_up_amount
+        doc: 'Implied decimal with scale 1e-4'
   order_restated_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_1_order_restated_return_bitfields
+      - id: order_restated_return_bitfield_1_side
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_2
+      - id: order_restated_return_bitfield_1_peg_difference
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_4
+      - id: order_restated_return_bitfield_1_price
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_8
+      - id: order_restated_return_bitfield_1_exec_inst
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_16
+      - id: order_restated_return_bitfield_1_ord_type
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_32
+      - id: order_restated_return_bitfield_1_time_in_force
         type: b1
-      - id: order_restated_return_bitfield_1_reserved_64
+      - id: order_restated_return_bitfield_1_min_qty
         type: b1
       - id: order_restated_return_bitfield_1_reserved_128
         type: b1
@@ -3245,381 +3261,381 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_2_side
+      - id: order_restated_return_bitfield_2_symbol
         type: b1
-      - id: order_restated_return_bitfield_2_peg_difference
+      - id: order_restated_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_restated_return_bitfield_2_price
+      - id: order_restated_return_bitfield_2_currency
         type: b1
-      - id: order_restated_return_bitfield_2_exec_inst
+      - id: order_restated_return_bitfield_2_id_source
         type: b1
-      - id: order_restated_return_bitfield_2_ord_type
+      - id: order_restated_return_bitfield_2_security_id
         type: b1
-      - id: order_restated_return_bitfield_2_time_in_force
+      - id: order_restated_return_bitfield_2_security_exchange
         type: b1
-      - id: order_restated_return_bitfield_2_min_qty
+      - id: order_restated_return_bitfield_2_capacity
         type: b1
-      - id: order_restated_return_bitfield_2_reserved_128
+      - id: order_restated_return_bitfield_2_contra_trader
         type: b1
   order_restated_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_3_symbol
+      - id: order_restated_return_bitfield_3_account
         type: b1
-      - id: order_restated_return_bitfield_3_symbol_sfx
+      - id: order_restated_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_restated_return_bitfield_3_currency
+      - id: order_restated_return_bitfield_3_clearing_account
         type: b1
-      - id: order_restated_return_bitfield_3_reserved_8
+      - id: order_restated_return_bitfield_3_display_indicator
         type: b1
-      - id: order_restated_return_bitfield_3_reserved_16
+      - id: order_restated_return_bitfield_3_max_floor
         type: b1
-      - id: order_restated_return_bitfield_3_reserved_32
+      - id: order_restated_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_restated_return_bitfield_3_reserved_64
+      - id: order_restated_return_bitfield_3_order_qty
         type: b1
-      - id: order_restated_return_bitfield_3_reserved_128
+      - id: order_restated_return_bitfield_3_prevent_match
         type: b1
   order_restated_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_4_sub_liquidity_indicator
+      - id: order_restated_return_bitfield_4_maturity_date
         type: b1
-      - id: order_restated_return_bitfield_4_trade_report_type_return
+      - id: order_restated_return_bitfield_4_strike_price
         type: b1
-      - id: order_restated_return_bitfield_4_trade_publish_ind_return
+      - id: order_restated_return_bitfield_4_put_or_call
         type: b1
-      - id: order_restated_return_bitfield_4_text
+      - id: order_restated_return_bitfield_4_open_close
         type: b1
-      - id: order_restated_return_bitfield_4_bid
+      - id: order_restated_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_restated_return_bitfield_4_offer
+      - id: order_restated_return_bitfield_4_corrected_size
         type: b1
-      - id: order_restated_return_bitfield_4_large_size
+      - id: order_restated_return_bitfield_4_party_id
         type: b1
-      - id: order_restated_return_bitfield_4_last_mkt
+      - id: order_restated_return_bitfield_4_access_fee
         type: b1
   order_restated_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_5_fee_code
+      - id: order_restated_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_restated_return_bitfield_5_echo_text
+      - id: order_restated_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_restated_return_bitfield_5_stop_px
+      - id: order_restated_return_bitfield_5_last_shares
         type: b1
-      - id: order_restated_return_bitfield_5_reserved_8
+      - id: order_restated_return_bitfield_5_last_px
         type: b1
-      - id: order_restated_return_bitfield_5_reserved_16
+      - id: order_restated_return_bitfield_5_display_price
         type: b1
-      - id: order_restated_return_bitfield_5_reserved_32
+      - id: order_restated_return_bitfield_5_working_price
         type: b1
-      - id: order_restated_return_bitfield_5_reserved_64
+      - id: order_restated_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_restated_return_bitfield_5_reserved_128
+      - id: order_restated_return_bitfield_5_expire_time
         type: b1
   order_restated_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_6_cum_qty
+      - id: order_restated_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_restated_return_bitfield_6_day_order_qty
+      - id: order_restated_return_bitfield_6_ccp
         type: b1
-      - id: order_restated_return_bitfield_6_day_cum_qty
+      - id: order_restated_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_restated_return_bitfield_6_avg_px
+      - id: order_restated_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_restated_return_bitfield_6_day_avg_px
+      - id: order_restated_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_restated_return_bitfield_6_pending_status
+      - id: order_restated_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_restated_return_bitfield_6_drill_thru_protection
+      - id: order_restated_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_restated_return_bitfield_6_multileg_reporting_typ
+      - id: order_restated_return_bitfield_6_party_role
         type: b1
   order_restated_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_7_leg_cfi_code
+      - id: order_restated_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_restated_return_bitfield_7_leg_maturity_date
+      - id: order_restated_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_restated_return_bitfield_7_leg_strike_price
+      - id: order_restated_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_restated_return_bitfield_7_id_source
+      - id: order_restated_return_bitfield_7_text
         type: b1
-      - id: order_restated_return_bitfield_7_security_id
+      - id: order_restated_return_bitfield_7_bid
         type: b1
-      - id: order_restated_return_bitfield_7_security_exchange
+      - id: order_restated_return_bitfield_7_offer
         type: b1
-      - id: order_restated_return_bitfield_7_capacity
+      - id: order_restated_return_bitfield_7_large_size
         type: b1
-      - id: order_restated_return_bitfield_7_contra_trader
+      - id: order_restated_return_bitfield_7_last_mkt
         type: b1
   order_restated_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_8_account
+      - id: order_restated_return_bitfield_8_fee_code
         type: b1
-      - id: order_restated_return_bitfield_8_clearing_firm
+      - id: order_restated_return_bitfield_8_echo_text
         type: b1
-      - id: order_restated_return_bitfield_8_clearing_account
+      - id: order_restated_return_bitfield_8_stop_px
         type: b1
-      - id: order_restated_return_bitfield_8_display_indicator
+      - id: order_restated_return_bitfield_8_routing_inst
         type: b1
-      - id: order_restated_return_bitfield_8_max_floor
+      - id: order_restated_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_restated_return_bitfield_8_discretion_amount
+      - id: order_restated_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_restated_return_bitfield_8_order_qty
+      - id: order_restated_return_bitfield_8_ex_destination
         type: b1
-      - id: order_restated_return_bitfield_8_prevent_match
+      - id: order_restated_return_bitfield_8_trade_report_ref_id
         type: b1
   order_restated_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_9_maturity_date
+      - id: order_restated_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_restated_return_bitfield_9_strike_price
+      - id: order_restated_return_bitfield_9_target_party_id
         type: b1
-      - id: order_restated_return_bitfield_9_put_or_call
+      - id: order_restated_return_bitfield_9_auction_id
         type: b1
-      - id: order_restated_return_bitfield_9_open_close
+      - id: order_restated_return_bitfield_9_order_category
         type: b1
-      - id: order_restated_return_bitfield_9_cl_ord_id_batch
+      - id: order_restated_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_restated_return_bitfield_9_corrected_size
+      - id: order_restated_return_bitfield_9_cmta_number
         type: b1
-      - id: order_restated_return_bitfield_9_party_id
+      - id: order_restated_return_bitfield_9_cross_type
         type: b1
-      - id: order_restated_return_bitfield_9_access_fee
+      - id: order_restated_return_bitfield_9_cross_prioritization
         type: b1
   order_restated_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_10_orig_cl_ord_id
+      - id: order_restated_return_bitfield_10_cross_id
         type: b1
-      - id: order_restated_return_bitfield_10_leaves_qty
+      - id: order_restated_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_restated_return_bitfield_10_last_shares
+      - id: order_restated_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_restated_return_bitfield_10_last_px
+      - id: order_restated_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_restated_return_bitfield_10_display_price
+      - id: order_restated_return_bitfield_10_waiver_type
         type: b1
-      - id: order_restated_return_bitfield_10_working_price
+      - id: order_restated_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_restated_return_bitfield_10_base_liquidity_indicator
+      - id: order_restated_return_bitfield_10_price_formation
         type: b1
-      - id: order_restated_return_bitfield_10_expire_time
+      - id: order_restated_return_bitfield_10_client_qualified_role
         type: b1
   order_restated_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_11_secondary_order_id
+      - id: order_restated_return_bitfield_11_client_id
         type: b1
-      - id: order_restated_return_bitfield_11_ccp
+      - id: order_restated_return_bitfield_11_investor_id
         type: b1
-      - id: order_restated_return_bitfield_11_contra_capacity
+      - id: order_restated_return_bitfield_11_executor_id
         type: b1
-      - id: order_restated_return_bitfield_11_attributed_quote
+      - id: order_restated_return_bitfield_11_order_origination
         type: b1
-      - id: order_restated_return_bitfield_11_ext_exec_inst
+      - id: order_restated_return_bitfield_11_algo
         type: b1
-      - id: order_restated_return_bitfield_11_bulk_order_ids
+      - id: order_restated_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_restated_return_bitfield_11_bulk_reject_reasons
+      - id: order_restated_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_restated_return_bitfield_11_party_role
+      - id: order_restated_return_bitfield_11_executor_qualified_role
         type: b1
   order_restated_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_12_reserved_1
+      - id: order_restated_return_bitfield_12_cti_code
         type: b1
-      - id: order_restated_return_bitfield_12_reserved_2
+      - id: order_restated_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_restated_return_bitfield_12_reserved_4
+      - id: order_restated_return_bitfield_12_operator_id
         type: b1
-      - id: order_restated_return_bitfield_12_routing_inst
+      - id: order_restated_return_bitfield_12_trade_date
         type: b1
-      - id: order_restated_return_bitfield_12_rout_strategy
+      - id: order_restated_return_bitfield_12_clearing_price
         type: b1
-      - id: order_restated_return_bitfield_12_route_delivery_method
+      - id: order_restated_return_bitfield_12_clearing_size
         type: b1
-      - id: order_restated_return_bitfield_12_ex_destination
+      - id: order_restated_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_restated_return_bitfield_12_trade_report_ref_id
+      - id: order_restated_return_bitfield_12_clearing_optional_data
         type: b1
   order_restated_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_13_marketing_fee_code
+      - id: order_restated_return_bitfield_13_cum_qty
         type: b1
-      - id: order_restated_return_bitfield_13_target_party_id
+      - id: order_restated_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_restated_return_bitfield_13_auction_id
+      - id: order_restated_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_restated_return_bitfield_13_order_category
+      - id: order_restated_return_bitfield_13_avg_px
         type: b1
-      - id: order_restated_return_bitfield_13_liquidity_provision
+      - id: order_restated_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_restated_return_bitfield_13_cmta_number
+      - id: order_restated_return_bitfield_13_pending_status
         type: b1
-      - id: order_restated_return_bitfield_13_cross_type
+      - id: order_restated_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_restated_return_bitfield_13_cross_prioritization
+      - id: order_restated_return_bitfield_13_multileg_reporting_type
         type: b1
   order_restated_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_14_cross_id
+      - id: order_restated_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_restated_return_bitfield_14_alloc_qty
+      - id: order_restated_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_restated_return_bitfield_14_give_up_firm_id
+      - id: order_restated_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_restated_return_bitfield_14_routing_firm_id
+      - id: order_restated_return_bitfield_14_room_id
         type: b1
-      - id: order_restated_return_bitfield_14_waiver_type
+      - id: order_restated_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_restated_return_bitfield_14_cross_exclusion_indicator
+      - id: order_restated_return_bitfield_14_user_request_id
         type: b1
-      - id: order_restated_return_bitfield_14_price_formation
+      - id: order_restated_return_bitfield_14_sis_username
         type: b1
-      - id: order_restated_return_bitfield_14_client_qualified_role
+      - id: order_restated_return_bitfield_14_user_status
         type: b1
   order_restated_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_15_client_id
+      - id: order_restated_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_restated_return_bitfield_15_investor_id
+      - id: order_restated_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_restated_return_bitfield_15_executor_id
+      - id: order_restated_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_restated_return_bitfield_15_order_origination
+      - id: order_restated_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_restated_return_bitfield_15_algo
+      - id: order_restated_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_restated_return_bitfield_15_deferral_reason
+      - id: order_restated_return_bitfield_15_report_time
         type: b1
-      - id: order_restated_return_bitfield_15_investor_qualified_role
+      - id: order_restated_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_restated_return_bitfield_15_executor_qualified_role
+      - id: order_restated_return_bitfield_15_client_id_attr
         type: b1
   order_restated_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_16_cti_code
+      - id: order_restated_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_restated_return_bitfield_16_manual_order_indicator
+      - id: order_restated_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_restated_return_bitfield_16_operator_id
+      - id: order_restated_return_bitfield_16_combo_order
         type: b1
-      - id: order_restated_return_bitfield_16_trade_date
+      - id: order_restated_return_bitfield_16_compression
         type: b1
-      - id: order_restated_return_bitfield_16_clearing_price
+      - id: order_restated_return_bitfield_16_floor_destination
         type: b1
-      - id: order_restated_return_bitfield_16_clearing_size
+      - id: order_restated_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_restated_return_bitfield_16_clearing_symbol
+      - id: order_restated_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_restated_return_bitfield_16_clearing_optional_data
+      - id: order_restated_return_bitfield_16_order_origin
         type: b1
   order_restated_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_17_reserved_1
+      - id: order_restated_return_bitfield_17_price_type
         type: b1
-      - id: order_restated_return_bitfield_17_reserved_2
+      - id: order_restated_return_bitfield_17_strategy_id
         type: b1
-      - id: order_restated_return_bitfield_17_reserved_4
+      - id: order_restated_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_restated_return_bitfield_17_room_id
+      - id: order_restated_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_restated_return_bitfield_17_secondary_exec_id
+      - id: order_restated_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_restated_return_bitfield_17_user_request_id
+      - id: order_restated_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_restated_return_bitfield_17_sis_username
+      - id: order_restated_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_restated_return_bitfield_17_user_status
+      - id: order_restated_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_restated_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_18_trade_reporting_indica
+      - id: order_restated_return_bitfield_18_reserved_1
         type: b1
-      - id: order_restated_return_bitfield_18_equity_party_id
+      - id: order_restated_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_restated_return_bitfield_18_equity_nbbo_protect
+      - id: order_restated_return_bitfield_18_subreason
         type: b1
-      - id: order_restated_return_bitfield_18_mass_cancel_id
+      - id: order_restated_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_restated_return_bitfield_18_trade_publish_ind
+      - id: order_restated_return_bitfield_18_reserved_16
         type: b1
-      - id: order_restated_return_bitfield_18_report_time
+      - id: order_restated_return_bitfield_18_held
         type: b1
-      - id: order_restated_return_bitfield_18_leg_symbol_sfx
+      - id: order_restated_return_bitfield_18_locate_broker
         type: b1
-      - id: order_restated_return_bitfield_18_client_id_attr
+      - id: order_restated_return_bitfield_18_reserved_128
         type: b1
   order_restated_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_19_frequent_trader_id
+      - id: order_restated_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_restated_return_bitfield_19_session_eligibility
+      - id: order_restated_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_restated_return_bitfield_19_combo_order
+      - id: order_restated_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_restated_return_bitfield_19_compression
+      - id: order_restated_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_restated_return_bitfield_19_floor_destination
+      - id: order_restated_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_restated_return_bitfield_19_floor_routing_inst
+      - id: order_restated_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_restated_return_bitfield_19_multi_class_sprd
+      - id: order_restated_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_restated_return_bitfield_19_order_origin
+      - id: order_restated_return_bitfield_19_reserved_128
         type: b1
   order_restated_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_20_price_type
+      - id: order_restated_return_bitfield_20_reserved_1
         type: b1
-      - id: order_restated_return_bitfield_20_strategy_id
+      - id: order_restated_return_bitfield_20_reserved_2
         type: b1
-      - id: order_restated_return_bitfield_20_trading_session_id
+      - id: order_restated_return_bitfield_20_reserved_4
         type: b1
-      - id: order_restated_return_bitfield_20_trade_through_alert_ty
+      - id: order_restated_return_bitfield_20_reserved_8
         type: b1
-      - id: order_restated_return_bitfield_20_sender_location_id
+      - id: order_restated_return_bitfield_20_reserved_16
         type: b1
-      - id: order_restated_return_bitfield_20_floor_trader_acronym
+      - id: order_restated_return_bitfield_20_reserved_32
         type: b1
-      - id: order_restated_return_bitfield_20_exec_leg_cfi_code
+      - id: order_restated_return_bitfield_20_reserved_64
         type: b1
-      - id: order_restated_return_bitfield_20_cust_order_handling_in
+      - id: order_restated_return_bitfield_20_reserved_128
         type: b1
   order_restated_return_bitfield_21:
     meta:
@@ -3627,17 +3643,17 @@ types:
     seq:
       - id: order_restated_return_bitfield_21_reserved_1
         type: b1
-      - id: order_restated_return_bitfield_21_cross_initiator
+      - id: order_restated_return_bitfield_21_reserved_2
         type: b1
-      - id: order_restated_return_bitfield_21_subreason
+      - id: order_restated_return_bitfield_21_reserved_4
         type: b1
-      - id: order_restated_return_bitfield_21_cross_trade_flag
+      - id: order_restated_return_bitfield_21_reserved_8
         type: b1
       - id: order_restated_return_bitfield_21_reserved_16
         type: b1
-      - id: order_restated_return_bitfield_21_held
+      - id: order_restated_return_bitfield_21_reserved_32
         type: b1
-      - id: order_restated_return_bitfield_21_locate_broker
+      - id: order_restated_return_bitfield_21_reserved_64
         type: b1
       - id: order_restated_return_bitfield_21_reserved_128
         type: b1
@@ -3645,15 +3661,15 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_restated_return_bitfield_22_floor_trade_time
+      - id: order_restated_return_bitfield_22_reserved_1
         type: b1
-      - id: order_restated_return_bitfield_22_equity_ex_destination
+      - id: order_restated_return_bitfield_22_reserved_2
         type: b1
-      - id: order_restated_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_restated_return_bitfield_22_reserved_4
         type: b1
-      - id: order_restated_return_bitfield_22_cmc_sessions
+      - id: order_restated_return_bitfield_22_reserved_8
         type: b1
-      - id: order_restated_return_bitfield_22_intra_firm_trade_ind
+      - id: order_restated_return_bitfield_22_reserved_16
         type: b1
       - id: order_restated_return_bitfield_22_reserved_32
         type: b1
@@ -3778,19 +3794,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_1_user_modify_rejected_return_bitfields
+      - id: user_modify_rejected_return_bitfield_1_side
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_2
+      - id: user_modify_rejected_return_bitfield_1_peg_difference
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_4
+      - id: user_modify_rejected_return_bitfield_1_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_8
+      - id: user_modify_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_16
+      - id: user_modify_rejected_return_bitfield_1_ord_type
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_32
+      - id: user_modify_rejected_return_bitfield_1_time_in_force
         type: b1
-      - id: user_modify_rejected_return_bitfield_1_reserved_64
+      - id: user_modify_rejected_return_bitfield_1_min_qty
         type: b1
       - id: user_modify_rejected_return_bitfield_1_reserved_128
         type: b1
@@ -3798,101 +3814,101 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_2_side
+      - id: user_modify_rejected_return_bitfield_2_symbol
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_peg_difference
+      - id: user_modify_rejected_return_bitfield_2_symbol_sfx
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_price
+      - id: user_modify_rejected_return_bitfield_2_currency
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_exec_inst
+      - id: user_modify_rejected_return_bitfield_2_id_source
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_ord_type
+      - id: user_modify_rejected_return_bitfield_2_security_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_time_in_force
+      - id: user_modify_rejected_return_bitfield_2_security_exchange
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_min_qty
+      - id: user_modify_rejected_return_bitfield_2_capacity
         type: b1
-      - id: user_modify_rejected_return_bitfield_2_reserved_128
+      - id: user_modify_rejected_return_bitfield_2_contra_trader
         type: b1
   user_modify_rejected_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_3_symbol
+      - id: user_modify_rejected_return_bitfield_3_account
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_symbol_sfx
+      - id: user_modify_rejected_return_bitfield_3_clearing_firm
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_currency
+      - id: user_modify_rejected_return_bitfield_3_clearing_account
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_id_source
+      - id: user_modify_rejected_return_bitfield_3_display_indicator
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_security_id
+      - id: user_modify_rejected_return_bitfield_3_max_floor
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_security_exchange
+      - id: user_modify_rejected_return_bitfield_3_discretion_amount
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_capacity
+      - id: user_modify_rejected_return_bitfield_3_order_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_3_contra_trader
+      - id: user_modify_rejected_return_bitfield_3_prevent_match
         type: b1
   user_modify_rejected_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_4_account
+      - id: user_modify_rejected_return_bitfield_4_maturity_date
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_clearing_firm
+      - id: user_modify_rejected_return_bitfield_4_strike_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_clearing_account
+      - id: user_modify_rejected_return_bitfield_4_put_or_call
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_display_indicator
+      - id: user_modify_rejected_return_bitfield_4_open_close
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_max_floor
+      - id: user_modify_rejected_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_discretion_amount
+      - id: user_modify_rejected_return_bitfield_4_corrected_size
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_order_qty
+      - id: user_modify_rejected_return_bitfield_4_party_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_4_prevent_match
+      - id: user_modify_rejected_return_bitfield_4_access_fee
         type: b1
   user_modify_rejected_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_5_maturity_date
+      - id: user_modify_rejected_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_strike_price
+      - id: user_modify_rejected_return_bitfield_5_leaves_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_put_or_call
+      - id: user_modify_rejected_return_bitfield_5_last_shares
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_open_close
+      - id: user_modify_rejected_return_bitfield_5_last_px
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_cl_ord_id_batch
+      - id: user_modify_rejected_return_bitfield_5_display_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_corrected_size
+      - id: user_modify_rejected_return_bitfield_5_working_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_party_id
+      - id: user_modify_rejected_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: user_modify_rejected_return_bitfield_5_access_fee
+      - id: user_modify_rejected_return_bitfield_5_expire_time
         type: b1
   user_modify_rejected_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_6_orig_cl_ord_id
+      - id: user_modify_rejected_return_bitfield_6_secondary_order_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_leaves_qty
+      - id: user_modify_rejected_return_bitfield_6_ccp
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_4
+      - id: user_modify_rejected_return_bitfield_6_contra_capacity
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_8
+      - id: user_modify_rejected_return_bitfield_6_attributed_quote
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_16
+      - id: user_modify_rejected_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_32
+      - id: user_modify_rejected_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_64
+      - id: user_modify_rejected_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: user_modify_rejected_return_bitfield_6_reserved_128
+      - id: user_modify_rejected_return_bitfield_6_party_role
         type: b1
   user_modify_rejected_return_bitfield_7:
     meta:
@@ -3982,137 +3998,137 @@ types:
         type: b1
       - id: user_modify_rejected_return_bitfield_11_investor_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_4
+      - id: user_modify_rejected_return_bitfield_11_executor_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_8
+      - id: user_modify_rejected_return_bitfield_11_order_origination
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_16
+      - id: user_modify_rejected_return_bitfield_11_algo
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_32
+      - id: user_modify_rejected_return_bitfield_11_deferral_reason
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_64
+      - id: user_modify_rejected_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: user_modify_rejected_return_bitfield_11_reserved_128
+      - id: user_modify_rejected_return_bitfield_11_executor_qualified_role
         type: b1
   user_modify_rejected_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_12_cum_qty
+      - id: user_modify_rejected_return_bitfield_12_cti_code
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_day_order_qty
+      - id: user_modify_rejected_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_day_cum_qty
+      - id: user_modify_rejected_return_bitfield_12_operator_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_avg_px
+      - id: user_modify_rejected_return_bitfield_12_trade_date
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_day_avg_px
+      - id: user_modify_rejected_return_bitfield_12_clearing_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_pending_status
+      - id: user_modify_rejected_return_bitfield_12_clearing_size
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_drill_thru_protection
+      - id: user_modify_rejected_return_bitfield_12_clearing_symbol
         type: b1
-      - id: user_modify_rejected_return_bitfield_12_multileg_reporting_typ
+      - id: user_modify_rejected_return_bitfield_12_clearing_optional_data
         type: b1
   user_modify_rejected_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_13_leg_cfi_code
+      - id: user_modify_rejected_return_bitfield_13_cum_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_leg_maturity_date
+      - id: user_modify_rejected_return_bitfield_13_day_order_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_leg_strike_price
+      - id: user_modify_rejected_return_bitfield_13_day_cum_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_room_id
+      - id: user_modify_rejected_return_bitfield_13_avg_px
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_secondary_exec_id
+      - id: user_modify_rejected_return_bitfield_13_day_avg_px
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_user_request_id
+      - id: user_modify_rejected_return_bitfield_13_pending_status
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_sis_username
+      - id: user_modify_rejected_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: user_modify_rejected_return_bitfield_13_user_status
+      - id: user_modify_rejected_return_bitfield_13_multileg_reporting_type
         type: b1
   user_modify_rejected_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_14_trade_reporting_indica
+      - id: user_modify_rejected_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_equity_party_id
+      - id: user_modify_rejected_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_equity_nbbo_protect
+      - id: user_modify_rejected_return_bitfield_14_leg_strike_price
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_mass_cancel_id
+      - id: user_modify_rejected_return_bitfield_14_room_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_trade_publish_ind
+      - id: user_modify_rejected_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_report_time
+      - id: user_modify_rejected_return_bitfield_14_user_request_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_leg_symbol_sfx
+      - id: user_modify_rejected_return_bitfield_14_sis_username
         type: b1
-      - id: user_modify_rejected_return_bitfield_14_client_id_attr
+      - id: user_modify_rejected_return_bitfield_14_user_status
         type: b1
   user_modify_rejected_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_15_frequent_trader_id
+      - id: user_modify_rejected_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_session_eligibility
+      - id: user_modify_rejected_return_bitfield_15_equity_party_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_combo_order
+      - id: user_modify_rejected_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_compression
+      - id: user_modify_rejected_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_floor_destination
+      - id: user_modify_rejected_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_floor_routing_inst
+      - id: user_modify_rejected_return_bitfield_15_report_time
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_multi_class_sprd
+      - id: user_modify_rejected_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: user_modify_rejected_return_bitfield_15_order_origin
+      - id: user_modify_rejected_return_bitfield_15_client_id_attr
         type: b1
   user_modify_rejected_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_16_price_type
+      - id: user_modify_rejected_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_strategy_id
+      - id: user_modify_rejected_return_bitfield_16_session_eligibility
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_last_shares
+      - id: user_modify_rejected_return_bitfield_16_combo_order
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_last_px
+      - id: user_modify_rejected_return_bitfield_16_compression
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_display_price
+      - id: user_modify_rejected_return_bitfield_16_floor_destination
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_working_price
+      - id: user_modify_rejected_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_base_liquidity_indicator
+      - id: user_modify_rejected_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: user_modify_rejected_return_bitfield_16_expire_time
+      - id: user_modify_rejected_return_bitfield_16_order_origin
         type: b1
   user_modify_rejected_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_17_secondary_order_id
+      - id: user_modify_rejected_return_bitfield_17_price_type
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_ccp
+      - id: user_modify_rejected_return_bitfield_17_strategy_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_contra_capacity
+      - id: user_modify_rejected_return_bitfield_17_trading_session_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_attributed_quote
+      - id: user_modify_rejected_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_ext_exec_inst
+      - id: user_modify_rejected_return_bitfield_17_sender_location_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_bulk_order_ids
+      - id: user_modify_rejected_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_bulk_reject_reasons
+      - id: user_modify_rejected_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: user_modify_rejected_return_bitfield_17_party_role
+      - id: user_modify_rejected_return_bitfield_17_cust_order_handling_inst
         type: b1
   user_modify_rejected_return_bitfield_18:
     meta:
@@ -4120,39 +4136,39 @@ types:
     seq:
       - id: user_modify_rejected_return_bitfield_18_reserved_1
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_reserved_2
+      - id: user_modify_rejected_return_bitfield_18_cross_initiator
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_executor_id
+      - id: user_modify_rejected_return_bitfield_18_subreason
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_order_origination
+      - id: user_modify_rejected_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_algo
+      - id: user_modify_rejected_return_bitfield_18_reserved_16
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_deferral_reason
+      - id: user_modify_rejected_return_bitfield_18_held
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_investor_qualified_role
+      - id: user_modify_rejected_return_bitfield_18_locate_broker
         type: b1
-      - id: user_modify_rejected_return_bitfield_18_executor_qualified_role
+      - id: user_modify_rejected_return_bitfield_18_reserved_128
         type: b1
   user_modify_rejected_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_19_cti_code
+      - id: user_modify_rejected_return_bitfield_19_floor_trade_time
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_manual_order_indicator
+      - id: user_modify_rejected_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_operator_id
+      - id: user_modify_rejected_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_trade_date
+      - id: user_modify_rejected_return_bitfield_19_cmc_sessions
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_clearing_price
+      - id: user_modify_rejected_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_clearing_size
+      - id: user_modify_rejected_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_clearing_symbol
+      - id: user_modify_rejected_return_bitfield_19_step_up_amount
         type: b1
-      - id: user_modify_rejected_return_bitfield_19_clearing_optional_data
+      - id: user_modify_rejected_return_bitfield_19_reserved_128
         type: b1
   user_modify_rejected_return_bitfield_20:
     meta:
@@ -4162,17 +4178,17 @@ types:
         type: b1
       - id: user_modify_rejected_return_bitfield_20_reserved_2
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_trading_session_id
+      - id: user_modify_rejected_return_bitfield_20_reserved_4
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_trade_through_alert_ty
+      - id: user_modify_rejected_return_bitfield_20_reserved_8
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_sender_location_id
+      - id: user_modify_rejected_return_bitfield_20_reserved_16
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_floor_trader_acronym
+      - id: user_modify_rejected_return_bitfield_20_reserved_32
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_exec_leg_cfi_code
+      - id: user_modify_rejected_return_bitfield_20_reserved_64
         type: b1
-      - id: user_modify_rejected_return_bitfield_20_cust_order_handling_in
+      - id: user_modify_rejected_return_bitfield_20_reserved_128
         type: b1
   user_modify_rejected_return_bitfield_21:
     meta:
@@ -4180,17 +4196,17 @@ types:
     seq:
       - id: user_modify_rejected_return_bitfield_21_reserved_1
         type: b1
-      - id: user_modify_rejected_return_bitfield_21_cross_initiator
+      - id: user_modify_rejected_return_bitfield_21_reserved_2
         type: b1
-      - id: user_modify_rejected_return_bitfield_21_subreason
+      - id: user_modify_rejected_return_bitfield_21_reserved_4
         type: b1
-      - id: user_modify_rejected_return_bitfield_21_cross_trade_flag
+      - id: user_modify_rejected_return_bitfield_21_reserved_8
         type: b1
       - id: user_modify_rejected_return_bitfield_21_reserved_16
         type: b1
-      - id: user_modify_rejected_return_bitfield_21_held
+      - id: user_modify_rejected_return_bitfield_21_reserved_32
         type: b1
-      - id: user_modify_rejected_return_bitfield_21_locate_broker
+      - id: user_modify_rejected_return_bitfield_21_reserved_64
         type: b1
       - id: user_modify_rejected_return_bitfield_21_reserved_128
         type: b1
@@ -4198,19 +4214,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: user_modify_rejected_return_bitfield_22_floor_trade_time
+      - id: user_modify_rejected_return_bitfield_22_reserved_1
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_equity_ex_destination
+      - id: user_modify_rejected_return_bitfield_22_reserved_2
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_cross_on_behalf_of_id
+      - id: user_modify_rejected_return_bitfield_22_reserved_4
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_cmc_sessions
+      - id: user_modify_rejected_return_bitfield_22_reserved_8
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_intra_firm_trade_ind
+      - id: user_modify_rejected_return_bitfield_22_reserved_16
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_cmc_match_qty
+      - id: user_modify_rejected_return_bitfield_22_reserved_32
         type: b1
-      - id: user_modify_rejected_return_bitfield_22_step_up_amount
+      - id: user_modify_rejected_return_bitfield_22_reserved_64
         type: b1
       - id: user_modify_rejected_return_bitfield_22_reserved_128
         type: b1
@@ -4325,171 +4341,171 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_cancelled_return_bitfield_1.order_cancelled_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_symbol_sfx
+        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_capacity
-      - id: echo_text
-        type: str
-        size: 64
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_echo_text
-      - id: stop_px
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_stop_px
-        doc: 'Implied decimal with scale 1e-4'
-      - id: routing_inst
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_routing_inst
-      - id: rout_strategy
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_rout_strategy
-      - id: route_delivery_method
-        type: str
-        size: 3
-        encoding: ASCII
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_route_delivery_method
-      - id: ex_destination
-        type: u1
-        enum: ex_destination
-        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_ex_destination
+        if: number_of_return_bitfields >= 2 and order_cancelled_return_bitfield_2.order_cancelled_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_account
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_clearing_account
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_display_indicator
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_max_floor
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_order_qty
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_prevent_match
+        if: number_of_return_bitfields >= 3 and order_cancelled_return_bitfield_3.order_cancelled_return_bitfield_3_prevent_match
       - id: orig_cl_ord_id
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_orig_cl_ord_id
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_orig_cl_ord_id
         doc: 'Corresponds to OrigClOrdID (41) in Cboe FIX. ClOrdID of the order to cancel'
       - id: leaves_qty
         type: u4
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_leaves_qty
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_leaves_qty
       - id: last_shares
         type: u4
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_last_shares
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_last_shares
       - id: last_px
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_last_px
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_last_px
         doc: 'Implied decimal with scale 1e-4'
       - id: display_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_display_price
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_display_price
         doc: 'Implied decimal with scale 1e-4'
       - id: working_price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_working_price
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_working_price
         doc: 'Implied decimal with scale 1e-4'
       - id: base_liquidity_indicator
         type: u1
         enum: base_liquidity_indicator
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_base_liquidity_indicator
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_base_liquidity_indicator
       - id: expire_time
         type: nanosecond_timestamp
-        if: number_of_return_bitfields >= 10 and order_cancelled_return_bitfield_10.order_cancelled_return_bitfield_10_expire_time
+        if: number_of_return_bitfields >= 5 and order_cancelled_return_bitfield_5.order_cancelled_return_bitfield_5_expire_time
         doc: 'Nanoseconds since Unix epoch'
       - id: secondary_order_id
         type: u8
-        if: number_of_return_bitfields >= 11 and order_cancelled_return_bitfield_11.order_cancelled_return_bitfield_11_secondary_order_id
+        if: number_of_return_bitfields >= 6 and order_cancelled_return_bitfield_6.order_cancelled_return_bitfield_6_secondary_order_id
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        if: number_of_return_bitfields >= 11 and order_cancelled_return_bitfield_11.order_cancelled_return_bitfield_11_attributed_quote
+        if: number_of_return_bitfields >= 6 and order_cancelled_return_bitfield_6.order_cancelled_return_bitfield_6_attributed_quote
       - id: ext_exec_inst
         type: u1
         enum: ext_exec_inst
-        if: number_of_return_bitfields >= 11 and order_cancelled_return_bitfield_11.order_cancelled_return_bitfield_11_ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_cancelled_return_bitfield_6.order_cancelled_return_bitfield_6_ext_exec_inst
+      - id: echo_text
+        type: str
+        size: 64
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_echo_text
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_stop_px
+        doc: 'Implied decimal with scale 1e-4'
+      - id: routing_inst
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_routing_inst
+      - id: rout_strategy
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_rout_strategy
+      - id: route_delivery_method
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_route_delivery_method
+      - id: ex_destination
+        type: u1
+        enum: ex_destination
+        if: number_of_return_bitfields >= 8 and order_cancelled_return_bitfield_8.order_cancelled_return_bitfield_8_ex_destination
       - id: cross_trade_flag
         type: u1
         enum: cross_trade_flag
-        if: number_of_return_bitfields >= 21 and order_cancelled_return_bitfield_21.order_cancelled_return_bitfield_21_cross_trade_flag
+        if: number_of_return_bitfields >= 18 and order_cancelled_return_bitfield_18.order_cancelled_return_bitfield_18_cross_trade_flag
   order_cancelled_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_1_order_cancelled_return_bitfields
+      - id: order_cancelled_return_bitfield_1_side
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_2
+      - id: order_cancelled_return_bitfield_1_peg_difference
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_4
+      - id: order_cancelled_return_bitfield_1_price
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_8
+      - id: order_cancelled_return_bitfield_1_exec_inst
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_16
+      - id: order_cancelled_return_bitfield_1_ord_type
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_32
+      - id: order_cancelled_return_bitfield_1_time_in_force
         type: b1
-      - id: order_cancelled_return_bitfield_1_reserved_64
+      - id: order_cancelled_return_bitfield_1_min_qty
         type: b1
       - id: order_cancelled_return_bitfield_1_reserved_128
         type: b1
@@ -4497,381 +4513,381 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_2_side
+      - id: order_cancelled_return_bitfield_2_symbol
         type: b1
-      - id: order_cancelled_return_bitfield_2_peg_difference
+      - id: order_cancelled_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_cancelled_return_bitfield_2_price
+      - id: order_cancelled_return_bitfield_2_currency
         type: b1
-      - id: order_cancelled_return_bitfield_2_exec_inst
+      - id: order_cancelled_return_bitfield_2_id_source
         type: b1
-      - id: order_cancelled_return_bitfield_2_ord_type
+      - id: order_cancelled_return_bitfield_2_security_id
         type: b1
-      - id: order_cancelled_return_bitfield_2_time_in_force
+      - id: order_cancelled_return_bitfield_2_security_exchange
         type: b1
-      - id: order_cancelled_return_bitfield_2_min_qty
+      - id: order_cancelled_return_bitfield_2_capacity
         type: b1
-      - id: order_cancelled_return_bitfield_2_reserved_128
+      - id: order_cancelled_return_bitfield_2_contra_trader
         type: b1
   order_cancelled_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_3_symbol
+      - id: order_cancelled_return_bitfield_3_account
         type: b1
-      - id: order_cancelled_return_bitfield_3_symbol_sfx
+      - id: order_cancelled_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_cancelled_return_bitfield_3_currency
+      - id: order_cancelled_return_bitfield_3_clearing_account
         type: b1
-      - id: order_cancelled_return_bitfield_3_id_source
+      - id: order_cancelled_return_bitfield_3_display_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_3_security_id
+      - id: order_cancelled_return_bitfield_3_max_floor
         type: b1
-      - id: order_cancelled_return_bitfield_3_security_exchange
+      - id: order_cancelled_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_cancelled_return_bitfield_3_capacity
+      - id: order_cancelled_return_bitfield_3_order_qty
         type: b1
-      - id: order_cancelled_return_bitfield_3_reserved_128
+      - id: order_cancelled_return_bitfield_3_prevent_match
         type: b1
   order_cancelled_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_4_sub_liquidity_indicator
+      - id: order_cancelled_return_bitfield_4_maturity_date
         type: b1
-      - id: order_cancelled_return_bitfield_4_trade_report_type_return
+      - id: order_cancelled_return_bitfield_4_strike_price
         type: b1
-      - id: order_cancelled_return_bitfield_4_trade_publish_ind_return
+      - id: order_cancelled_return_bitfield_4_put_or_call
         type: b1
-      - id: order_cancelled_return_bitfield_4_text
+      - id: order_cancelled_return_bitfield_4_open_close
         type: b1
-      - id: order_cancelled_return_bitfield_4_bid
+      - id: order_cancelled_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_cancelled_return_bitfield_4_offer
+      - id: order_cancelled_return_bitfield_4_corrected_size
         type: b1
-      - id: order_cancelled_return_bitfield_4_large_size
+      - id: order_cancelled_return_bitfield_4_party_id
         type: b1
-      - id: order_cancelled_return_bitfield_4_last_mkt
+      - id: order_cancelled_return_bitfield_4_access_fee
         type: b1
   order_cancelled_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_5_fee_code
+      - id: order_cancelled_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_cancelled_return_bitfield_5_echo_text
+      - id: order_cancelled_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_cancelled_return_bitfield_5_stop_px
+      - id: order_cancelled_return_bitfield_5_last_shares
         type: b1
-      - id: order_cancelled_return_bitfield_5_routing_inst
+      - id: order_cancelled_return_bitfield_5_last_px
         type: b1
-      - id: order_cancelled_return_bitfield_5_rout_strategy
+      - id: order_cancelled_return_bitfield_5_display_price
         type: b1
-      - id: order_cancelled_return_bitfield_5_route_delivery_method
+      - id: order_cancelled_return_bitfield_5_working_price
         type: b1
-      - id: order_cancelled_return_bitfield_5_ex_destination
+      - id: order_cancelled_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_5_reserved_128
+      - id: order_cancelled_return_bitfield_5_expire_time
         type: b1
   order_cancelled_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_6_cum_qty
+      - id: order_cancelled_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_cancelled_return_bitfield_6_day_order_qty
+      - id: order_cancelled_return_bitfield_6_ccp
         type: b1
-      - id: order_cancelled_return_bitfield_6_day_cum_qty
+      - id: order_cancelled_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_cancelled_return_bitfield_6_avg_px
+      - id: order_cancelled_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_cancelled_return_bitfield_6_day_avg_px
+      - id: order_cancelled_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_cancelled_return_bitfield_6_pending_status
+      - id: order_cancelled_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_cancelled_return_bitfield_6_drill_thru_protection
+      - id: order_cancelled_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_cancelled_return_bitfield_6_multileg_reporting_typ
+      - id: order_cancelled_return_bitfield_6_party_role
         type: b1
   order_cancelled_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_7_leg_cfi_code
+      - id: order_cancelled_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_7_leg_maturity_date
+      - id: order_cancelled_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_cancelled_return_bitfield_7_leg_strike_price
+      - id: order_cancelled_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_cancelled_return_bitfield_7_room_id
+      - id: order_cancelled_return_bitfield_7_text
         type: b1
-      - id: order_cancelled_return_bitfield_7_secondary_exec_id
+      - id: order_cancelled_return_bitfield_7_bid
         type: b1
-      - id: order_cancelled_return_bitfield_7_user_request_id
+      - id: order_cancelled_return_bitfield_7_offer
         type: b1
-      - id: order_cancelled_return_bitfield_7_sis_username
+      - id: order_cancelled_return_bitfield_7_large_size
         type: b1
-      - id: order_cancelled_return_bitfield_7_contra_trader
+      - id: order_cancelled_return_bitfield_7_last_mkt
         type: b1
   order_cancelled_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_8_account
+      - id: order_cancelled_return_bitfield_8_fee_code
         type: b1
-      - id: order_cancelled_return_bitfield_8_clearing_firm
+      - id: order_cancelled_return_bitfield_8_echo_text
         type: b1
-      - id: order_cancelled_return_bitfield_8_clearing_account
+      - id: order_cancelled_return_bitfield_8_stop_px
         type: b1
-      - id: order_cancelled_return_bitfield_8_display_indicator
+      - id: order_cancelled_return_bitfield_8_routing_inst
         type: b1
-      - id: order_cancelled_return_bitfield_8_max_floor
+      - id: order_cancelled_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_cancelled_return_bitfield_8_discretion_amount
+      - id: order_cancelled_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_cancelled_return_bitfield_8_order_qty
+      - id: order_cancelled_return_bitfield_8_ex_destination
         type: b1
-      - id: order_cancelled_return_bitfield_8_prevent_match
+      - id: order_cancelled_return_bitfield_8_trade_report_ref_id
         type: b1
   order_cancelled_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_9_maturity_date
+      - id: order_cancelled_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_cancelled_return_bitfield_9_strike_price
+      - id: order_cancelled_return_bitfield_9_target_party_id
         type: b1
-      - id: order_cancelled_return_bitfield_9_put_or_call
+      - id: order_cancelled_return_bitfield_9_auction_id
         type: b1
-      - id: order_cancelled_return_bitfield_9_open_close
+      - id: order_cancelled_return_bitfield_9_order_category
         type: b1
-      - id: order_cancelled_return_bitfield_9_cl_ord_id_batch
+      - id: order_cancelled_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_cancelled_return_bitfield_9_corrected_size
+      - id: order_cancelled_return_bitfield_9_cmta_number
         type: b1
-      - id: order_cancelled_return_bitfield_9_party_id
+      - id: order_cancelled_return_bitfield_9_cross_type
         type: b1
-      - id: order_cancelled_return_bitfield_9_access_fee
+      - id: order_cancelled_return_bitfield_9_cross_prioritization
         type: b1
   order_cancelled_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_10_orig_cl_ord_id
+      - id: order_cancelled_return_bitfield_10_cross_id
         type: b1
-      - id: order_cancelled_return_bitfield_10_leaves_qty
+      - id: order_cancelled_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_cancelled_return_bitfield_10_last_shares
+      - id: order_cancelled_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_cancelled_return_bitfield_10_last_px
+      - id: order_cancelled_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_cancelled_return_bitfield_10_display_price
+      - id: order_cancelled_return_bitfield_10_waiver_type
         type: b1
-      - id: order_cancelled_return_bitfield_10_working_price
+      - id: order_cancelled_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_10_base_liquidity_indicator
+      - id: order_cancelled_return_bitfield_10_price_formation
         type: b1
-      - id: order_cancelled_return_bitfield_10_expire_time
+      - id: order_cancelled_return_bitfield_10_client_qualified_role
         type: b1
   order_cancelled_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_11_secondary_order_id
+      - id: order_cancelled_return_bitfield_11_client_id
         type: b1
-      - id: order_cancelled_return_bitfield_11_ccp
+      - id: order_cancelled_return_bitfield_11_investor_id
         type: b1
-      - id: order_cancelled_return_bitfield_11_contra_capacity
+      - id: order_cancelled_return_bitfield_11_executor_id
         type: b1
-      - id: order_cancelled_return_bitfield_11_attributed_quote
+      - id: order_cancelled_return_bitfield_11_order_origination
         type: b1
-      - id: order_cancelled_return_bitfield_11_ext_exec_inst
+      - id: order_cancelled_return_bitfield_11_algo
         type: b1
-      - id: order_cancelled_return_bitfield_11_bulk_order_ids
+      - id: order_cancelled_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_cancelled_return_bitfield_11_bulk_reject_reasons
+      - id: order_cancelled_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_cancelled_return_bitfield_11_party_role
+      - id: order_cancelled_return_bitfield_11_executor_qualified_role
         type: b1
   order_cancelled_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_12_reserved_1
+      - id: order_cancelled_return_bitfield_12_cti_code
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_2
+      - id: order_cancelled_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_4
+      - id: order_cancelled_return_bitfield_12_operator_id
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_8
+      - id: order_cancelled_return_bitfield_12_trade_date
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_16
+      - id: order_cancelled_return_bitfield_12_clearing_price
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_32
+      - id: order_cancelled_return_bitfield_12_clearing_size
         type: b1
-      - id: order_cancelled_return_bitfield_12_reserved_64
+      - id: order_cancelled_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_cancelled_return_bitfield_12_trade_report_ref_id
+      - id: order_cancelled_return_bitfield_12_clearing_optional_data
         type: b1
   order_cancelled_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_13_marketing_fee_code
+      - id: order_cancelled_return_bitfield_13_cum_qty
         type: b1
-      - id: order_cancelled_return_bitfield_13_target_party_id
+      - id: order_cancelled_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_cancelled_return_bitfield_13_auction_id
+      - id: order_cancelled_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_cancelled_return_bitfield_13_order_category
+      - id: order_cancelled_return_bitfield_13_avg_px
         type: b1
-      - id: order_cancelled_return_bitfield_13_liquidity_provision
+      - id: order_cancelled_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_cancelled_return_bitfield_13_cmta_number
+      - id: order_cancelled_return_bitfield_13_pending_status
         type: b1
-      - id: order_cancelled_return_bitfield_13_cross_type
+      - id: order_cancelled_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_cancelled_return_bitfield_13_cross_prioritization
+      - id: order_cancelled_return_bitfield_13_multileg_reporting_type
         type: b1
   order_cancelled_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_14_cross_id
+      - id: order_cancelled_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_cancelled_return_bitfield_14_alloc_qty
+      - id: order_cancelled_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_cancelled_return_bitfield_14_give_up_firm_id
+      - id: order_cancelled_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_cancelled_return_bitfield_14_routing_firm_id
+      - id: order_cancelled_return_bitfield_14_room_id
         type: b1
-      - id: order_cancelled_return_bitfield_14_waiver_type
+      - id: order_cancelled_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_cancelled_return_bitfield_14_cross_exclusion_indicator
+      - id: order_cancelled_return_bitfield_14_user_request_id
         type: b1
-      - id: order_cancelled_return_bitfield_14_price_formation
+      - id: order_cancelled_return_bitfield_14_sis_username
         type: b1
-      - id: order_cancelled_return_bitfield_14_client_qualified_role
+      - id: order_cancelled_return_bitfield_14_user_status
         type: b1
   order_cancelled_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_15_client_id
+      - id: order_cancelled_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_cancelled_return_bitfield_15_investor_id
+      - id: order_cancelled_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_cancelled_return_bitfield_15_executor_id
+      - id: order_cancelled_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_cancelled_return_bitfield_15_order_origination
+      - id: order_cancelled_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_cancelled_return_bitfield_15_algo
+      - id: order_cancelled_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_cancelled_return_bitfield_15_deferral_reason
+      - id: order_cancelled_return_bitfield_15_report_time
         type: b1
-      - id: order_cancelled_return_bitfield_15_investor_qualified_role
+      - id: order_cancelled_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_cancelled_return_bitfield_15_executor_qualified_role
+      - id: order_cancelled_return_bitfield_15_client_id_attr
         type: b1
   order_cancelled_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_16_cti_code
+      - id: order_cancelled_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_cancelled_return_bitfield_16_manual_order_indicator
+      - id: order_cancelled_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_cancelled_return_bitfield_16_operator_id
+      - id: order_cancelled_return_bitfield_16_combo_order
         type: b1
-      - id: order_cancelled_return_bitfield_16_trade_date
+      - id: order_cancelled_return_bitfield_16_compression
         type: b1
-      - id: order_cancelled_return_bitfield_16_clearing_price
+      - id: order_cancelled_return_bitfield_16_floor_destination
         type: b1
-      - id: order_cancelled_return_bitfield_16_clearing_size
+      - id: order_cancelled_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_cancelled_return_bitfield_16_clearing_symbol
+      - id: order_cancelled_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_cancelled_return_bitfield_16_clearing_optional_data
+      - id: order_cancelled_return_bitfield_16_order_origin
         type: b1
   order_cancelled_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_17_reserved_1
+      - id: order_cancelled_return_bitfield_17_price_type
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_2
+      - id: order_cancelled_return_bitfield_17_strategy_id
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_4
+      - id: order_cancelled_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_8
+      - id: order_cancelled_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_16
+      - id: order_cancelled_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_32
+      - id: order_cancelled_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_cancelled_return_bitfield_17_reserved_64
+      - id: order_cancelled_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_cancelled_return_bitfield_17_user_status
+      - id: order_cancelled_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_cancelled_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_18_trade_reporting_indica
+      - id: order_cancelled_return_bitfield_18_reserved_1
         type: b1
-      - id: order_cancelled_return_bitfield_18_equity_party_id
+      - id: order_cancelled_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_cancelled_return_bitfield_18_equity_nbbo_protect
+      - id: order_cancelled_return_bitfield_18_subreason
         type: b1
-      - id: order_cancelled_return_bitfield_18_mass_cancel_id
+      - id: order_cancelled_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_cancelled_return_bitfield_18_trade_publish_ind
+      - id: order_cancelled_return_bitfield_18_reserved_16
         type: b1
-      - id: order_cancelled_return_bitfield_18_report_time
+      - id: order_cancelled_return_bitfield_18_held
         type: b1
-      - id: order_cancelled_return_bitfield_18_leg_symbol_sfx
+      - id: order_cancelled_return_bitfield_18_locate_broker
         type: b1
-      - id: order_cancelled_return_bitfield_18_client_id_attr
+      - id: order_cancelled_return_bitfield_18_reserved_128
         type: b1
   order_cancelled_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_19_frequent_trader_id
+      - id: order_cancelled_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_cancelled_return_bitfield_19_session_eligibility
+      - id: order_cancelled_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_cancelled_return_bitfield_19_combo_order
+      - id: order_cancelled_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_cancelled_return_bitfield_19_compression
+      - id: order_cancelled_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_cancelled_return_bitfield_19_floor_destination
+      - id: order_cancelled_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_cancelled_return_bitfield_19_floor_routing_inst
+      - id: order_cancelled_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_cancelled_return_bitfield_19_multi_class_sprd
+      - id: order_cancelled_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_cancelled_return_bitfield_19_order_origin
+      - id: order_cancelled_return_bitfield_19_reserved_128
         type: b1
   order_cancelled_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_20_price_type
+      - id: order_cancelled_return_bitfield_20_reserved_1
         type: b1
-      - id: order_cancelled_return_bitfield_20_strategy_id
+      - id: order_cancelled_return_bitfield_20_reserved_2
         type: b1
-      - id: order_cancelled_return_bitfield_20_trading_session_id
+      - id: order_cancelled_return_bitfield_20_reserved_4
         type: b1
-      - id: order_cancelled_return_bitfield_20_trade_through_alert_ty
+      - id: order_cancelled_return_bitfield_20_reserved_8
         type: b1
-      - id: order_cancelled_return_bitfield_20_sender_location_id
+      - id: order_cancelled_return_bitfield_20_reserved_16
         type: b1
-      - id: order_cancelled_return_bitfield_20_floor_trader_acronym
+      - id: order_cancelled_return_bitfield_20_reserved_32
         type: b1
-      - id: order_cancelled_return_bitfield_20_exec_leg_cfi_code
+      - id: order_cancelled_return_bitfield_20_reserved_64
         type: b1
-      - id: order_cancelled_return_bitfield_20_cust_order_handling_in
+      - id: order_cancelled_return_bitfield_20_reserved_128
         type: b1
   order_cancelled_return_bitfield_21:
     meta:
@@ -4879,17 +4895,17 @@ types:
     seq:
       - id: order_cancelled_return_bitfield_21_reserved_1
         type: b1
-      - id: order_cancelled_return_bitfield_21_cross_initiator
+      - id: order_cancelled_return_bitfield_21_reserved_2
         type: b1
-      - id: order_cancelled_return_bitfield_21_subreason
+      - id: order_cancelled_return_bitfield_21_reserved_4
         type: b1
-      - id: order_cancelled_return_bitfield_21_cross_trade_flag
+      - id: order_cancelled_return_bitfield_21_reserved_8
         type: b1
       - id: order_cancelled_return_bitfield_21_reserved_16
         type: b1
-      - id: order_cancelled_return_bitfield_21_held
+      - id: order_cancelled_return_bitfield_21_reserved_32
         type: b1
-      - id: order_cancelled_return_bitfield_21_locate_broker
+      - id: order_cancelled_return_bitfield_21_reserved_64
         type: b1
       - id: order_cancelled_return_bitfield_21_reserved_128
         type: b1
@@ -4897,19 +4913,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_cancelled_return_bitfield_22_floor_trade_time
+      - id: order_cancelled_return_bitfield_22_reserved_1
         type: b1
-      - id: order_cancelled_return_bitfield_22_equity_ex_destination
+      - id: order_cancelled_return_bitfield_22_reserved_2
         type: b1
-      - id: order_cancelled_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_cancelled_return_bitfield_22_reserved_4
         type: b1
-      - id: order_cancelled_return_bitfield_22_cmc_sessions
+      - id: order_cancelled_return_bitfield_22_reserved_8
         type: b1
-      - id: order_cancelled_return_bitfield_22_intra_firm_trade_ind
+      - id: order_cancelled_return_bitfield_22_reserved_16
         type: b1
-      - id: order_cancelled_return_bitfield_22_cmc_match_qty
+      - id: order_cancelled_return_bitfield_22_reserved_32
         type: b1
-      - id: order_cancelled_return_bitfield_22_step_up_amount
+      - id: order_cancelled_return_bitfield_22_reserved_64
         type: b1
       - id: order_cancelled_return_bitfield_22_reserved_128
         type: b1
@@ -5029,45 +5045,45 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and cancel_rejected_return_bitfield_1.cancel_rejected_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and cancel_rejected_return_bitfield_3.cancel_rejected_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and cancel_rejected_return_bitfield_3.cancel_rejected_return_bitfield_3_symbol_sfx
+        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 3 and cancel_rejected_return_bitfield_3.cancel_rejected_return_bitfield_3_capacity
+        if: number_of_return_bitfields >= 2 and cancel_rejected_return_bitfield_2.cancel_rejected_return_bitfield_2_capacity
       - id: echo_text
         type: str
         size: 64
@@ -5081,19 +5097,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_1_cancel_rejected_return_bitfields
+      - id: cancel_rejected_return_bitfield_1_side
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_2
+      - id: cancel_rejected_return_bitfield_1_peg_difference
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_4
+      - id: cancel_rejected_return_bitfield_1_price
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_8
+      - id: cancel_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_16
+      - id: cancel_rejected_return_bitfield_1_ord_type
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_32
+      - id: cancel_rejected_return_bitfield_1_time_in_force
         type: b1
-      - id: cancel_rejected_return_bitfield_1_reserved_64
+      - id: cancel_rejected_return_bitfield_1_min_qty
         type: b1
       - id: cancel_rejected_return_bitfield_1_reserved_128
         type: b1
@@ -5101,101 +5117,101 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_2_side
+      - id: cancel_rejected_return_bitfield_2_symbol
         type: b1
-      - id: cancel_rejected_return_bitfield_2_peg_difference
+      - id: cancel_rejected_return_bitfield_2_symbol_sfx
         type: b1
-      - id: cancel_rejected_return_bitfield_2_price
+      - id: cancel_rejected_return_bitfield_2_currency
         type: b1
-      - id: cancel_rejected_return_bitfield_2_exec_inst
+      - id: cancel_rejected_return_bitfield_2_id_source
         type: b1
-      - id: cancel_rejected_return_bitfield_2_ord_type
+      - id: cancel_rejected_return_bitfield_2_security_id
         type: b1
-      - id: cancel_rejected_return_bitfield_2_time_in_force
+      - id: cancel_rejected_return_bitfield_2_security_exchange
         type: b1
-      - id: cancel_rejected_return_bitfield_2_min_qty
+      - id: cancel_rejected_return_bitfield_2_capacity
         type: b1
-      - id: cancel_rejected_return_bitfield_2_reserved_128
+      - id: cancel_rejected_return_bitfield_2_contra_trader
         type: b1
   cancel_rejected_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_3_symbol
+      - id: cancel_rejected_return_bitfield_3_account
         type: b1
-      - id: cancel_rejected_return_bitfield_3_symbol_sfx
+      - id: cancel_rejected_return_bitfield_3_clearing_firm
         type: b1
-      - id: cancel_rejected_return_bitfield_3_currency
+      - id: cancel_rejected_return_bitfield_3_clearing_account
         type: b1
-      - id: cancel_rejected_return_bitfield_3_id_source
+      - id: cancel_rejected_return_bitfield_3_display_indicator
         type: b1
-      - id: cancel_rejected_return_bitfield_3_security_id
+      - id: cancel_rejected_return_bitfield_3_max_floor
         type: b1
-      - id: cancel_rejected_return_bitfield_3_security_exchange
+      - id: cancel_rejected_return_bitfield_3_discretion_amount
         type: b1
-      - id: cancel_rejected_return_bitfield_3_capacity
+      - id: cancel_rejected_return_bitfield_3_order_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_3_contra_trader
+      - id: cancel_rejected_return_bitfield_3_prevent_match
         type: b1
   cancel_rejected_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_4_account
+      - id: cancel_rejected_return_bitfield_4_maturity_date
         type: b1
-      - id: cancel_rejected_return_bitfield_4_clearing_firm
+      - id: cancel_rejected_return_bitfield_4_strike_price
         type: b1
-      - id: cancel_rejected_return_bitfield_4_clearing_account
+      - id: cancel_rejected_return_bitfield_4_put_or_call
         type: b1
-      - id: cancel_rejected_return_bitfield_4_display_indicator
+      - id: cancel_rejected_return_bitfield_4_open_close
         type: b1
-      - id: cancel_rejected_return_bitfield_4_max_floor
+      - id: cancel_rejected_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: cancel_rejected_return_bitfield_4_discretion_amount
+      - id: cancel_rejected_return_bitfield_4_corrected_size
         type: b1
-      - id: cancel_rejected_return_bitfield_4_order_qty
+      - id: cancel_rejected_return_bitfield_4_party_id
         type: b1
-      - id: cancel_rejected_return_bitfield_4_prevent_match
+      - id: cancel_rejected_return_bitfield_4_access_fee
         type: b1
   cancel_rejected_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_5_maturity_date
+      - id: cancel_rejected_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: cancel_rejected_return_bitfield_5_strike_price
+      - id: cancel_rejected_return_bitfield_5_leaves_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_5_put_or_call
+      - id: cancel_rejected_return_bitfield_5_last_shares
         type: b1
-      - id: cancel_rejected_return_bitfield_5_open_close
+      - id: cancel_rejected_return_bitfield_5_last_px
         type: b1
-      - id: cancel_rejected_return_bitfield_5_cl_ord_id_batch
+      - id: cancel_rejected_return_bitfield_5_display_price
         type: b1
-      - id: cancel_rejected_return_bitfield_5_corrected_size
+      - id: cancel_rejected_return_bitfield_5_working_price
         type: b1
-      - id: cancel_rejected_return_bitfield_5_party_id
+      - id: cancel_rejected_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: cancel_rejected_return_bitfield_5_access_fee
+      - id: cancel_rejected_return_bitfield_5_expire_time
         type: b1
   cancel_rejected_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_6_orig_cl_ord_id
+      - id: cancel_rejected_return_bitfield_6_secondary_order_id
         type: b1
-      - id: cancel_rejected_return_bitfield_6_leaves_qty
+      - id: cancel_rejected_return_bitfield_6_ccp
         type: b1
-      - id: cancel_rejected_return_bitfield_6_last_shares
+      - id: cancel_rejected_return_bitfield_6_contra_capacity
         type: b1
-      - id: cancel_rejected_return_bitfield_6_last_px
+      - id: cancel_rejected_return_bitfield_6_attributed_quote
         type: b1
-      - id: cancel_rejected_return_bitfield_6_display_price
+      - id: cancel_rejected_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: cancel_rejected_return_bitfield_6_working_price
+      - id: cancel_rejected_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: cancel_rejected_return_bitfield_6_base_liquidity_indicator
+      - id: cancel_rejected_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: cancel_rejected_return_bitfield_6_reserved_128
+      - id: cancel_rejected_return_bitfield_6_party_role
         type: b1
   cancel_rejected_return_bitfield_7:
     meta:
@@ -5295,127 +5311,127 @@ types:
         type: b1
       - id: cancel_rejected_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: cancel_rejected_return_bitfield_11_reserved_128
+      - id: cancel_rejected_return_bitfield_11_executor_qualified_role
         type: b1
   cancel_rejected_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_12_cum_qty
+      - id: cancel_rejected_return_bitfield_12_cti_code
         type: b1
-      - id: cancel_rejected_return_bitfield_12_day_order_qty
+      - id: cancel_rejected_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: cancel_rejected_return_bitfield_12_day_cum_qty
+      - id: cancel_rejected_return_bitfield_12_operator_id
         type: b1
-      - id: cancel_rejected_return_bitfield_12_avg_px
+      - id: cancel_rejected_return_bitfield_12_trade_date
         type: b1
-      - id: cancel_rejected_return_bitfield_12_day_avg_px
+      - id: cancel_rejected_return_bitfield_12_clearing_price
         type: b1
-      - id: cancel_rejected_return_bitfield_12_pending_status
+      - id: cancel_rejected_return_bitfield_12_clearing_size
         type: b1
-      - id: cancel_rejected_return_bitfield_12_drill_thru_protection
+      - id: cancel_rejected_return_bitfield_12_clearing_symbol
         type: b1
-      - id: cancel_rejected_return_bitfield_12_multileg_reporting_typ
+      - id: cancel_rejected_return_bitfield_12_clearing_optional_data
         type: b1
   cancel_rejected_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_13_leg_cfi_code
+      - id: cancel_rejected_return_bitfield_13_cum_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_13_leg_maturity_date
+      - id: cancel_rejected_return_bitfield_13_day_order_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_13_leg_strike_price
+      - id: cancel_rejected_return_bitfield_13_day_cum_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_13_room_id
+      - id: cancel_rejected_return_bitfield_13_avg_px
         type: b1
-      - id: cancel_rejected_return_bitfield_13_secondary_exec_id
+      - id: cancel_rejected_return_bitfield_13_day_avg_px
         type: b1
-      - id: cancel_rejected_return_bitfield_13_user_request_id
+      - id: cancel_rejected_return_bitfield_13_pending_status
         type: b1
-      - id: cancel_rejected_return_bitfield_13_sis_username
+      - id: cancel_rejected_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: cancel_rejected_return_bitfield_13_user_status
+      - id: cancel_rejected_return_bitfield_13_multileg_reporting_type
         type: b1
   cancel_rejected_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_14_trade_reporting_indica
+      - id: cancel_rejected_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: cancel_rejected_return_bitfield_14_equity_party_id
+      - id: cancel_rejected_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: cancel_rejected_return_bitfield_14_equity_nbbo_protect
+      - id: cancel_rejected_return_bitfield_14_leg_strike_price
         type: b1
-      - id: cancel_rejected_return_bitfield_14_mass_cancel_id
+      - id: cancel_rejected_return_bitfield_14_room_id
         type: b1
-      - id: cancel_rejected_return_bitfield_14_trade_publish_ind
+      - id: cancel_rejected_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: cancel_rejected_return_bitfield_14_report_time
+      - id: cancel_rejected_return_bitfield_14_user_request_id
         type: b1
-      - id: cancel_rejected_return_bitfield_14_leg_symbol_sfx
+      - id: cancel_rejected_return_bitfield_14_sis_username
         type: b1
-      - id: cancel_rejected_return_bitfield_14_client_id_attr
+      - id: cancel_rejected_return_bitfield_14_user_status
         type: b1
   cancel_rejected_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_15_frequent_trader_id
+      - id: cancel_rejected_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: cancel_rejected_return_bitfield_15_session_eligibility
+      - id: cancel_rejected_return_bitfield_15_equity_party_id
         type: b1
-      - id: cancel_rejected_return_bitfield_15_combo_order
+      - id: cancel_rejected_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: cancel_rejected_return_bitfield_15_compression
+      - id: cancel_rejected_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: cancel_rejected_return_bitfield_15_floor_destination
+      - id: cancel_rejected_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: cancel_rejected_return_bitfield_15_floor_routing_inst
+      - id: cancel_rejected_return_bitfield_15_report_time
         type: b1
-      - id: cancel_rejected_return_bitfield_15_multi_class_sprd
+      - id: cancel_rejected_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: cancel_rejected_return_bitfield_15_order_origin
+      - id: cancel_rejected_return_bitfield_15_client_id_attr
         type: b1
   cancel_rejected_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_16_price_type
+      - id: cancel_rejected_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: cancel_rejected_return_bitfield_16_strategy_id
+      - id: cancel_rejected_return_bitfield_16_session_eligibility
         type: b1
-      - id: cancel_rejected_return_bitfield_16_trading_session_id
+      - id: cancel_rejected_return_bitfield_16_combo_order
         type: b1
-      - id: cancel_rejected_return_bitfield_16_trade_through_alert_typ
+      - id: cancel_rejected_return_bitfield_16_compression
         type: b1
-      - id: cancel_rejected_return_bitfield_16_sender_location_id
+      - id: cancel_rejected_return_bitfield_16_floor_destination
         type: b1
-      - id: cancel_rejected_return_bitfield_16_floor_trader_acronym
+      - id: cancel_rejected_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: cancel_rejected_return_bitfield_16_exec_leg_cfi_code
+      - id: cancel_rejected_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: cancel_rejected_return_bitfield_16_expire_time
+      - id: cancel_rejected_return_bitfield_16_order_origin
         type: b1
   cancel_rejected_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_17_secondary_order_id
+      - id: cancel_rejected_return_bitfield_17_price_type
         type: b1
-      - id: cancel_rejected_return_bitfield_17_ccp
+      - id: cancel_rejected_return_bitfield_17_strategy_id
         type: b1
-      - id: cancel_rejected_return_bitfield_17_contra_capacity
+      - id: cancel_rejected_return_bitfield_17_trading_session_id
         type: b1
-      - id: cancel_rejected_return_bitfield_17_attributed_quote
+      - id: cancel_rejected_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: cancel_rejected_return_bitfield_17_ext_exec_inst
+      - id: cancel_rejected_return_bitfield_17_sender_location_id
         type: b1
-      - id: cancel_rejected_return_bitfield_17_bulk_order_ids
+      - id: cancel_rejected_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: cancel_rejected_return_bitfield_17_bulk_reject_reasons
+      - id: cancel_rejected_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: cancel_rejected_return_bitfield_17_party_role
+      - id: cancel_rejected_return_bitfield_17_cust_order_handling_inst
         type: b1
   cancel_rejected_return_bitfield_18:
     meta:
@@ -5423,39 +5439,39 @@ types:
     seq:
       - id: cancel_rejected_return_bitfield_18_reserved_1
         type: b1
-      - id: cancel_rejected_return_bitfield_18_reserved_2
+      - id: cancel_rejected_return_bitfield_18_cross_initiator
         type: b1
-      - id: cancel_rejected_return_bitfield_18_reserved_4
+      - id: cancel_rejected_return_bitfield_18_subreason
         type: b1
-      - id: cancel_rejected_return_bitfield_18_reserved_8
+      - id: cancel_rejected_return_bitfield_18_cross_trade_flag
         type: b1
       - id: cancel_rejected_return_bitfield_18_reserved_16
         type: b1
-      - id: cancel_rejected_return_bitfield_18_reserved_32
+      - id: cancel_rejected_return_bitfield_18_held
         type: b1
-      - id: cancel_rejected_return_bitfield_18_reserved_64
+      - id: cancel_rejected_return_bitfield_18_locate_broker
         type: b1
-      - id: cancel_rejected_return_bitfield_18_executor_qualified_role
+      - id: cancel_rejected_return_bitfield_18_reserved_128
         type: b1
   cancel_rejected_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_19_cti_code
+      - id: cancel_rejected_return_bitfield_19_floor_trade_time
         type: b1
-      - id: cancel_rejected_return_bitfield_19_manual_order_indicator
+      - id: cancel_rejected_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: cancel_rejected_return_bitfield_19_operator_id
+      - id: cancel_rejected_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: cancel_rejected_return_bitfield_19_trade_date
+      - id: cancel_rejected_return_bitfield_19_cmc_sessions
         type: b1
-      - id: cancel_rejected_return_bitfield_19_clearing_price
+      - id: cancel_rejected_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: cancel_rejected_return_bitfield_19_clearing_size
+      - id: cancel_rejected_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: cancel_rejected_return_bitfield_19_clearing_symbol
+      - id: cancel_rejected_return_bitfield_19_step_up_amount
         type: b1
-      - id: cancel_rejected_return_bitfield_19_clearing_optional_data
+      - id: cancel_rejected_return_bitfield_19_reserved_128
         type: b1
   cancel_rejected_return_bitfield_20:
     meta:
@@ -5475,7 +5491,7 @@ types:
         type: b1
       - id: cancel_rejected_return_bitfield_20_reserved_64
         type: b1
-      - id: cancel_rejected_return_bitfield_20_cust_order_handling_ins
+      - id: cancel_rejected_return_bitfield_20_reserved_128
         type: b1
   cancel_rejected_return_bitfield_21:
     meta:
@@ -5483,17 +5499,17 @@ types:
     seq:
       - id: cancel_rejected_return_bitfield_21_reserved_1
         type: b1
-      - id: cancel_rejected_return_bitfield_21_cross_initiator
+      - id: cancel_rejected_return_bitfield_21_reserved_2
         type: b1
-      - id: cancel_rejected_return_bitfield_21_subreason
+      - id: cancel_rejected_return_bitfield_21_reserved_4
         type: b1
-      - id: cancel_rejected_return_bitfield_21_cross_trade_flag
+      - id: cancel_rejected_return_bitfield_21_reserved_8
         type: b1
       - id: cancel_rejected_return_bitfield_21_reserved_16
         type: b1
-      - id: cancel_rejected_return_bitfield_21_held
+      - id: cancel_rejected_return_bitfield_21_reserved_32
         type: b1
-      - id: cancel_rejected_return_bitfield_21_locate_broker
+      - id: cancel_rejected_return_bitfield_21_reserved_64
         type: b1
       - id: cancel_rejected_return_bitfield_21_reserved_128
         type: b1
@@ -5501,19 +5517,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: cancel_rejected_return_bitfield_22_floor_trade_time
+      - id: cancel_rejected_return_bitfield_22_reserved_1
         type: b1
-      - id: cancel_rejected_return_bitfield_22_equity_ex_destination
+      - id: cancel_rejected_return_bitfield_22_reserved_2
         type: b1
-      - id: cancel_rejected_return_bitfield_22_cross_on_behalf_of_id
+      - id: cancel_rejected_return_bitfield_22_reserved_4
         type: b1
-      - id: cancel_rejected_return_bitfield_22_cmc_sessions
+      - id: cancel_rejected_return_bitfield_22_reserved_8
         type: b1
-      - id: cancel_rejected_return_bitfield_22_intra_firm_trade_ind
+      - id: cancel_rejected_return_bitfield_22_reserved_16
         type: b1
-      - id: cancel_rejected_return_bitfield_22_cmc_match_qty
+      - id: cancel_rejected_return_bitfield_22_reserved_32
         type: b1
-      - id: cancel_rejected_return_bitfield_22_step_up_amount
+      - id: cancel_rejected_return_bitfield_22_reserved_64
         type: b1
       - id: cancel_rejected_return_bitfield_22_reserved_128
         type: b1
@@ -5645,146 +5661,146 @@ types:
       - id: side
         type: u1
         enum: side
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_side
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_side
         doc: 'Corresponds to Side (54) in Cboe FIX. 1=Buy 2=Sell 5=Sell Short (client affirms ability to borrow) 6=Sell Short Exempt'
       - id: peg_difference
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_peg_difference
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_peg_difference
         doc: 'Implied decimal with scale 1e-4'
       - id: price
         type: decimal_s8_4
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_price
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_price
         doc: 'Implied decimal with scale 1e-4'
       - id: exec_inst
         type: u1
         enum: exec_inst
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_exec_inst
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_exec_inst
       - id: ord_type
         type: u1
         enum: ord_type
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_ord_type
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_ord_type
       - id: time_in_force
         type: u1
         enum: time_in_force
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_time_in_force
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_time_in_force
       - id: min_qty
         type: u4
-        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_min_qty
+        if: number_of_return_bitfields >= 1 and order_execution_return_bitfield_1.order_execution_return_bitfield_1_min_qty
       - id: symbol
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_symbol
+        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_symbol
       - id: symbol_sfx
         type: str
         size: 8
         encoding: ASCII
-        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_symbol_sfx
+        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_symbol_sfx
       - id: capacity
         type: u1
         enum: capacity
-        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_capacity
+        if: number_of_return_bitfields >= 2 and order_execution_return_bitfield_2.order_execution_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_execution_return_bitfield_4.order_execution_return_bitfield_4_account
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_account
       - id: clearing_firm
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_execution_return_bitfield_4.order_execution_return_bitfield_4_clearing_firm
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_clearing_firm
       - id: clearing_account
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 4 and order_execution_return_bitfield_4.order_execution_return_bitfield_4_clearing_account
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_clearing_account
       - id: display_indicator
         type: u1
         enum: display_indicator
-        if: number_of_return_bitfields >= 4 and order_execution_return_bitfield_4.order_execution_return_bitfield_4_display_indicator
-      - id: fee_code
-        type: str
-        size: 2
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_fee_code
-      - id: echo_text
-        type: str
-        size: 64
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_echo_text
-      - id: stop_px
-        type: decimal_s8_4
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_stop_px
-        doc: 'Implied decimal with scale 1e-4'
-      - id: routing_inst
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_routing_inst
-      - id: rout_strategy
-        type: str
-        size: 6
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_rout_strategy
-      - id: route_delivery_method
-        type: str
-        size: 3
-        encoding: ASCII
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_route_delivery_method
-      - id: ex_destination
-        type: u1
-        enum: ex_destination
-        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_ex_destination
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_display_indicator
       - id: max_floor
         type: u4
-        if: number_of_return_bitfields >= 10 and order_execution_return_bitfield_10.order_execution_return_bitfield_10_max_floor
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_max_floor
       - id: discretion_amount
         type: u2
-        if: number_of_return_bitfields >= 10 and order_execution_return_bitfield_10.order_execution_return_bitfield_10_discretion_amount
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_discretion_amount
       - id: order_qty
         type: u4
-        if: number_of_return_bitfields >= 10 and order_execution_return_bitfield_10.order_execution_return_bitfield_10_order_qty
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_order_qty
         doc: 'Corresponds to OrderQty (38) in Cboe FIX. Order quantity. System limit is 999,999 shares'
       - id: prevent_match
         type: str
         size: 3
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and order_execution_return_bitfield_10.order_execution_return_bitfield_10_prevent_match
+        if: number_of_return_bitfields >= 3 and order_execution_return_bitfield_3.order_execution_return_bitfield_3_prevent_match
       - id: attributed_quote
         type: u1
         enum: attributed_quote
-        if: number_of_return_bitfields >= 13 and order_execution_return_bitfield_13.order_execution_return_bitfield_13_attributed_quote
+        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_attributed_quote
       - id: ext_exec_inst
         type: u1
         enum: ext_exec_inst
-        if: number_of_return_bitfields >= 13 and order_execution_return_bitfield_13.order_execution_return_bitfield_13_ext_exec_inst
+        if: number_of_return_bitfields >= 6 and order_execution_return_bitfield_6.order_execution_return_bitfield_6_ext_exec_inst
+      - id: fee_code
+        type: str
+        size: 2
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_fee_code
+      - id: echo_text
+        type: str
+        size: 64
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_echo_text
+      - id: stop_px
+        type: decimal_s8_4
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_stop_px
+        doc: 'Implied decimal with scale 1e-4'
+      - id: routing_inst
+        type: str
+        size: 4
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_routing_inst
+      - id: rout_strategy
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_rout_strategy
+      - id: route_delivery_method
+        type: str
+        size: 3
+        encoding: ASCII
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_route_delivery_method
+      - id: ex_destination
+        type: u1
+        enum: ex_destination
+        if: number_of_return_bitfields >= 8 and order_execution_return_bitfield_8.order_execution_return_bitfield_8_ex_destination
       - id: cross_trade_flag
         type: u1
         enum: cross_trade_flag
-        if: number_of_return_bitfields >= 21 and order_execution_return_bitfield_21.order_execution_return_bitfield_21_cross_trade_flag
+        if: number_of_return_bitfields >= 18 and order_execution_return_bitfield_18.order_execution_return_bitfield_18_cross_trade_flag
       - id: locate_broker
         type: str
         size: 4
         encoding: ASCII
-        if: number_of_return_bitfields >= 21 and order_execution_return_bitfield_21.order_execution_return_bitfield_21_locate_broker
+        if: number_of_return_bitfields >= 18 and order_execution_return_bitfield_18.order_execution_return_bitfield_18_locate_broker
   order_execution_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_1_order_execution_return_bitfields
+      - id: order_execution_return_bitfield_1_side
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_2
+      - id: order_execution_return_bitfield_1_peg_difference
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_4
+      - id: order_execution_return_bitfield_1_price
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_8
+      - id: order_execution_return_bitfield_1_exec_inst
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_16
+      - id: order_execution_return_bitfield_1_ord_type
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_32
+      - id: order_execution_return_bitfield_1_time_in_force
         type: b1
-      - id: order_execution_return_bitfield_1_reserved_64
+      - id: order_execution_return_bitfield_1_min_qty
         type: b1
       - id: order_execution_return_bitfield_1_reserved_128
         type: b1
@@ -5792,321 +5808,321 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_2_side
+      - id: order_execution_return_bitfield_2_symbol
         type: b1
-      - id: order_execution_return_bitfield_2_peg_difference
+      - id: order_execution_return_bitfield_2_symbol_sfx
         type: b1
-      - id: order_execution_return_bitfield_2_price
+      - id: order_execution_return_bitfield_2_currency
         type: b1
-      - id: order_execution_return_bitfield_2_exec_inst
+      - id: order_execution_return_bitfield_2_id_source
         type: b1
-      - id: order_execution_return_bitfield_2_ord_type
+      - id: order_execution_return_bitfield_2_security_id
         type: b1
-      - id: order_execution_return_bitfield_2_time_in_force
+      - id: order_execution_return_bitfield_2_security_exchange
         type: b1
-      - id: order_execution_return_bitfield_2_min_qty
+      - id: order_execution_return_bitfield_2_capacity
         type: b1
-      - id: order_execution_return_bitfield_2_reserved_128
+      - id: order_execution_return_bitfield_2_contra_trader
         type: b1
   order_execution_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_3_symbol
+      - id: order_execution_return_bitfield_3_account
         type: b1
-      - id: order_execution_return_bitfield_3_symbol_sfx
+      - id: order_execution_return_bitfield_3_clearing_firm
         type: b1
-      - id: order_execution_return_bitfield_3_currency
+      - id: order_execution_return_bitfield_3_clearing_account
         type: b1
-      - id: order_execution_return_bitfield_3_id_source
+      - id: order_execution_return_bitfield_3_display_indicator
         type: b1
-      - id: order_execution_return_bitfield_3_security_id
+      - id: order_execution_return_bitfield_3_max_floor
         type: b1
-      - id: order_execution_return_bitfield_3_security_exchange
+      - id: order_execution_return_bitfield_3_discretion_amount
         type: b1
-      - id: order_execution_return_bitfield_3_capacity
+      - id: order_execution_return_bitfield_3_order_qty
         type: b1
-      - id: order_execution_return_bitfield_3_contra_trader
+      - id: order_execution_return_bitfield_3_prevent_match
         type: b1
   order_execution_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_4_account
+      - id: order_execution_return_bitfield_4_maturity_date
         type: b1
-      - id: order_execution_return_bitfield_4_clearing_firm
+      - id: order_execution_return_bitfield_4_strike_price
         type: b1
-      - id: order_execution_return_bitfield_4_clearing_account
+      - id: order_execution_return_bitfield_4_put_or_call
         type: b1
-      - id: order_execution_return_bitfield_4_display_indicator
+      - id: order_execution_return_bitfield_4_open_close
         type: b1
-      - id: order_execution_return_bitfield_4_reserved_16
+      - id: order_execution_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: order_execution_return_bitfield_4_reserved_32
+      - id: order_execution_return_bitfield_4_corrected_size
         type: b1
-      - id: order_execution_return_bitfield_4_reserved_64
+      - id: order_execution_return_bitfield_4_party_id
         type: b1
-      - id: order_execution_return_bitfield_4_reserved_128
+      - id: order_execution_return_bitfield_4_access_fee
         type: b1
   order_execution_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_5_sub_liquidity_indicator
+      - id: order_execution_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: order_execution_return_bitfield_5_trade_report_type_return
+      - id: order_execution_return_bitfield_5_leaves_qty
         type: b1
-      - id: order_execution_return_bitfield_5_trade_publish_ind_return
+      - id: order_execution_return_bitfield_5_last_shares
         type: b1
-      - id: order_execution_return_bitfield_5_text
+      - id: order_execution_return_bitfield_5_last_px
         type: b1
-      - id: order_execution_return_bitfield_5_bid
+      - id: order_execution_return_bitfield_5_display_price
         type: b1
-      - id: order_execution_return_bitfield_5_offer
+      - id: order_execution_return_bitfield_5_working_price
         type: b1
-      - id: order_execution_return_bitfield_5_large_size
+      - id: order_execution_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: order_execution_return_bitfield_5_last_mkt
+      - id: order_execution_return_bitfield_5_expire_time
         type: b1
   order_execution_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_6_fee_code
+      - id: order_execution_return_bitfield_6_secondary_order_id
         type: b1
-      - id: order_execution_return_bitfield_6_echo_text
+      - id: order_execution_return_bitfield_6_ccp
         type: b1
-      - id: order_execution_return_bitfield_6_stop_px
+      - id: order_execution_return_bitfield_6_contra_capacity
         type: b1
-      - id: order_execution_return_bitfield_6_routing_inst
+      - id: order_execution_return_bitfield_6_attributed_quote
         type: b1
-      - id: order_execution_return_bitfield_6_rout_strategy
+      - id: order_execution_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: order_execution_return_bitfield_6_route_delivery_method
+      - id: order_execution_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: order_execution_return_bitfield_6_ex_destination
+      - id: order_execution_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: order_execution_return_bitfield_6_trade_report_ref_id
+      - id: order_execution_return_bitfield_6_party_role
         type: b1
   order_execution_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_7_marketing_fee_code
+      - id: order_execution_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: order_execution_return_bitfield_7_target_party_id
+      - id: order_execution_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: order_execution_return_bitfield_7_auction_id
+      - id: order_execution_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: order_execution_return_bitfield_7_order_category
+      - id: order_execution_return_bitfield_7_text
         type: b1
-      - id: order_execution_return_bitfield_7_reserved_16
+      - id: order_execution_return_bitfield_7_bid
         type: b1
-      - id: order_execution_return_bitfield_7_reserved_32
+      - id: order_execution_return_bitfield_7_offer
         type: b1
-      - id: order_execution_return_bitfield_7_reserved_64
+      - id: order_execution_return_bitfield_7_large_size
         type: b1
-      - id: order_execution_return_bitfield_7_reserved_128
+      - id: order_execution_return_bitfield_7_last_mkt
         type: b1
   order_execution_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_8_cum_qty
+      - id: order_execution_return_bitfield_8_fee_code
         type: b1
-      - id: order_execution_return_bitfield_8_day_order_qty
+      - id: order_execution_return_bitfield_8_echo_text
         type: b1
-      - id: order_execution_return_bitfield_8_day_cum_qty
+      - id: order_execution_return_bitfield_8_stop_px
         type: b1
-      - id: order_execution_return_bitfield_8_avg_px
+      - id: order_execution_return_bitfield_8_routing_inst
         type: b1
-      - id: order_execution_return_bitfield_8_day_avg_px
+      - id: order_execution_return_bitfield_8_rout_strategy
         type: b1
-      - id: order_execution_return_bitfield_8_pending_status
+      - id: order_execution_return_bitfield_8_route_delivery_method
         type: b1
-      - id: order_execution_return_bitfield_8_drill_thru_protection
+      - id: order_execution_return_bitfield_8_ex_destination
         type: b1
-      - id: order_execution_return_bitfield_8_multileg_reporting_typ
+      - id: order_execution_return_bitfield_8_trade_report_ref_id
         type: b1
   order_execution_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_9_leg_cfi_code
+      - id: order_execution_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: order_execution_return_bitfield_9_leg_maturity_date
+      - id: order_execution_return_bitfield_9_target_party_id
         type: b1
-      - id: order_execution_return_bitfield_9_leg_strike_price
+      - id: order_execution_return_bitfield_9_auction_id
         type: b1
-      - id: order_execution_return_bitfield_9_room_id
+      - id: order_execution_return_bitfield_9_order_category
         type: b1
-      - id: order_execution_return_bitfield_9_secondary_exec_id
+      - id: order_execution_return_bitfield_9_liquidity_provision
         type: b1
-      - id: order_execution_return_bitfield_9_user_request_id
+      - id: order_execution_return_bitfield_9_cmta_number
         type: b1
-      - id: order_execution_return_bitfield_9_sis_username
+      - id: order_execution_return_bitfield_9_cross_type
         type: b1
-      - id: order_execution_return_bitfield_9_user_status
+      - id: order_execution_return_bitfield_9_cross_prioritization
         type: b1
   order_execution_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_10_trade_reporting_indica
+      - id: order_execution_return_bitfield_10_cross_id
         type: b1
-      - id: order_execution_return_bitfield_10_equity_party_id
+      - id: order_execution_return_bitfield_10_alloc_qty
         type: b1
-      - id: order_execution_return_bitfield_10_equity_nbbo_protect
+      - id: order_execution_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: order_execution_return_bitfield_10_mass_cancel_id
+      - id: order_execution_return_bitfield_10_routing_firm_id
         type: b1
-      - id: order_execution_return_bitfield_10_max_floor
+      - id: order_execution_return_bitfield_10_waiver_type
         type: b1
-      - id: order_execution_return_bitfield_10_discretion_amount
+      - id: order_execution_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: order_execution_return_bitfield_10_order_qty
+      - id: order_execution_return_bitfield_10_price_formation
         type: b1
-      - id: order_execution_return_bitfield_10_prevent_match
+      - id: order_execution_return_bitfield_10_client_qualified_role
         type: b1
   order_execution_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_11_maturity_date
+      - id: order_execution_return_bitfield_11_client_id
         type: b1
-      - id: order_execution_return_bitfield_11_strike_price
+      - id: order_execution_return_bitfield_11_investor_id
         type: b1
-      - id: order_execution_return_bitfield_11_put_or_call
+      - id: order_execution_return_bitfield_11_executor_id
         type: b1
-      - id: order_execution_return_bitfield_11_open_close
+      - id: order_execution_return_bitfield_11_order_origination
         type: b1
-      - id: order_execution_return_bitfield_11_cl_ord_id_batch
+      - id: order_execution_return_bitfield_11_algo
         type: b1
-      - id: order_execution_return_bitfield_11_corrected_size
+      - id: order_execution_return_bitfield_11_deferral_reason
         type: b1
-      - id: order_execution_return_bitfield_11_party_id
+      - id: order_execution_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: order_execution_return_bitfield_11_access_fee
+      - id: order_execution_return_bitfield_11_executor_qualified_role
         type: b1
   order_execution_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_12_orig_cl_ord_id
+      - id: order_execution_return_bitfield_12_cti_code
         type: b1
-      - id: order_execution_return_bitfield_12_leaves_qty
+      - id: order_execution_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: order_execution_return_bitfield_12_last_shares
+      - id: order_execution_return_bitfield_12_operator_id
         type: b1
-      - id: order_execution_return_bitfield_12_last_px
+      - id: order_execution_return_bitfield_12_trade_date
         type: b1
-      - id: order_execution_return_bitfield_12_display_price
+      - id: order_execution_return_bitfield_12_clearing_price
         type: b1
-      - id: order_execution_return_bitfield_12_working_price
+      - id: order_execution_return_bitfield_12_clearing_size
         type: b1
-      - id: order_execution_return_bitfield_12_base_liquidity_indicator
+      - id: order_execution_return_bitfield_12_clearing_symbol
         type: b1
-      - id: order_execution_return_bitfield_12_expire_time
+      - id: order_execution_return_bitfield_12_clearing_optional_data
         type: b1
   order_execution_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_13_secondary_order_id
+      - id: order_execution_return_bitfield_13_cum_qty
         type: b1
-      - id: order_execution_return_bitfield_13_ccp
+      - id: order_execution_return_bitfield_13_day_order_qty
         type: b1
-      - id: order_execution_return_bitfield_13_contra_capacity
+      - id: order_execution_return_bitfield_13_day_cum_qty
         type: b1
-      - id: order_execution_return_bitfield_13_attributed_quote
+      - id: order_execution_return_bitfield_13_avg_px
         type: b1
-      - id: order_execution_return_bitfield_13_ext_exec_inst
+      - id: order_execution_return_bitfield_13_day_avg_px
         type: b1
-      - id: order_execution_return_bitfield_13_bulk_order_ids
+      - id: order_execution_return_bitfield_13_pending_status
         type: b1
-      - id: order_execution_return_bitfield_13_bulk_reject_reasons
+      - id: order_execution_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: order_execution_return_bitfield_13_party_role
+      - id: order_execution_return_bitfield_13_multileg_reporting_type
         type: b1
   order_execution_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_14_reserved_1
+      - id: order_execution_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: order_execution_return_bitfield_14_reserved_2
+      - id: order_execution_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: order_execution_return_bitfield_14_reserved_4
+      - id: order_execution_return_bitfield_14_leg_strike_price
         type: b1
-      - id: order_execution_return_bitfield_14_reserved_8
+      - id: order_execution_return_bitfield_14_room_id
         type: b1
-      - id: order_execution_return_bitfield_14_liquidity_provision
+      - id: order_execution_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: order_execution_return_bitfield_14_cmta_number
+      - id: order_execution_return_bitfield_14_user_request_id
         type: b1
-      - id: order_execution_return_bitfield_14_cross_type
+      - id: order_execution_return_bitfield_14_sis_username
         type: b1
-      - id: order_execution_return_bitfield_14_cross_prioritization
+      - id: order_execution_return_bitfield_14_user_status
         type: b1
   order_execution_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_15_cross_id
+      - id: order_execution_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: order_execution_return_bitfield_15_alloc_qty
+      - id: order_execution_return_bitfield_15_equity_party_id
         type: b1
-      - id: order_execution_return_bitfield_15_give_up_firm_id
+      - id: order_execution_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: order_execution_return_bitfield_15_routing_firm_id
+      - id: order_execution_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: order_execution_return_bitfield_15_waiver_type
+      - id: order_execution_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: order_execution_return_bitfield_15_cross_exclusion_indicator
+      - id: order_execution_return_bitfield_15_report_time
         type: b1
-      - id: order_execution_return_bitfield_15_price_formation
+      - id: order_execution_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: order_execution_return_bitfield_15_client_qualified_role
+      - id: order_execution_return_bitfield_15_client_id_attr
         type: b1
   order_execution_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_16_client_id
+      - id: order_execution_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: order_execution_return_bitfield_16_investor_id
+      - id: order_execution_return_bitfield_16_session_eligibility
         type: b1
-      - id: order_execution_return_bitfield_16_executor_id
+      - id: order_execution_return_bitfield_16_combo_order
         type: b1
-      - id: order_execution_return_bitfield_16_order_origination
+      - id: order_execution_return_bitfield_16_compression
         type: b1
-      - id: order_execution_return_bitfield_16_algo
+      - id: order_execution_return_bitfield_16_floor_destination
         type: b1
-      - id: order_execution_return_bitfield_16_deferral_reason
+      - id: order_execution_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: order_execution_return_bitfield_16_investor_qualified_role
+      - id: order_execution_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: order_execution_return_bitfield_16_executor_qualified_role
+      - id: order_execution_return_bitfield_16_order_origin
         type: b1
   order_execution_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_17_cti_code
+      - id: order_execution_return_bitfield_17_price_type
         type: b1
-      - id: order_execution_return_bitfield_17_manual_order_indicator
+      - id: order_execution_return_bitfield_17_strategy_id
         type: b1
-      - id: order_execution_return_bitfield_17_operator_id
+      - id: order_execution_return_bitfield_17_trading_session_id
         type: b1
-      - id: order_execution_return_bitfield_17_trade_date
+      - id: order_execution_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: order_execution_return_bitfield_17_clearing_price
+      - id: order_execution_return_bitfield_17_sender_location_id
         type: b1
-      - id: order_execution_return_bitfield_17_clearing_size
+      - id: order_execution_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: order_execution_return_bitfield_17_clearing_symbol
+      - id: order_execution_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: order_execution_return_bitfield_17_clearing_optional_data
+      - id: order_execution_return_bitfield_17_cust_order_handling_inst
         type: b1
   order_execution_return_bitfield_18:
     meta:
@@ -6114,59 +6130,59 @@ types:
     seq:
       - id: order_execution_return_bitfield_18_reserved_1
         type: b1
-      - id: order_execution_return_bitfield_18_reserved_2
+      - id: order_execution_return_bitfield_18_cross_initiator
         type: b1
-      - id: order_execution_return_bitfield_18_reserved_4
+      - id: order_execution_return_bitfield_18_subreason
         type: b1
-      - id: order_execution_return_bitfield_18_reserved_8
+      - id: order_execution_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: order_execution_return_bitfield_18_trade_publish_ind
+      - id: order_execution_return_bitfield_18_reserved_16
         type: b1
-      - id: order_execution_return_bitfield_18_report_time
+      - id: order_execution_return_bitfield_18_held
         type: b1
-      - id: order_execution_return_bitfield_18_leg_symbol_sfx
+      - id: order_execution_return_bitfield_18_locate_broker
         type: b1
-      - id: order_execution_return_bitfield_18_client_id_attr
+      - id: order_execution_return_bitfield_18_reserved_128
         type: b1
   order_execution_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_19_frequent_trader_id
+      - id: order_execution_return_bitfield_19_floor_trade_time
         type: b1
-      - id: order_execution_return_bitfield_19_session_eligibility
+      - id: order_execution_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: order_execution_return_bitfield_19_combo_order
+      - id: order_execution_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: order_execution_return_bitfield_19_compression
+      - id: order_execution_return_bitfield_19_cmc_sessions
         type: b1
-      - id: order_execution_return_bitfield_19_floor_destination
+      - id: order_execution_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: order_execution_return_bitfield_19_floor_routing_inst
+      - id: order_execution_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: order_execution_return_bitfield_19_multi_class_sprd
+      - id: order_execution_return_bitfield_19_step_up_amount
         type: b1
-      - id: order_execution_return_bitfield_19_order_origin
+      - id: order_execution_return_bitfield_19_reserved_128
         type: b1
   order_execution_return_bitfield_20:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_20_price_type
+      - id: order_execution_return_bitfield_20_reserved_1
         type: b1
-      - id: order_execution_return_bitfield_20_strategy_id
+      - id: order_execution_return_bitfield_20_reserved_2
         type: b1
-      - id: order_execution_return_bitfield_20_trading_session_id
+      - id: order_execution_return_bitfield_20_reserved_4
         type: b1
-      - id: order_execution_return_bitfield_20_trade_through_alert_typ
+      - id: order_execution_return_bitfield_20_reserved_8
         type: b1
-      - id: order_execution_return_bitfield_20_sender_location_id
+      - id: order_execution_return_bitfield_20_reserved_16
         type: b1
-      - id: order_execution_return_bitfield_20_floor_trader_acronym
+      - id: order_execution_return_bitfield_20_reserved_32
         type: b1
-      - id: order_execution_return_bitfield_20_exec_leg_cfi_code
+      - id: order_execution_return_bitfield_20_reserved_64
         type: b1
-      - id: order_execution_return_bitfield_20_cust_order_handling_ins
+      - id: order_execution_return_bitfield_20_reserved_128
         type: b1
   order_execution_return_bitfield_21:
     meta:
@@ -6174,17 +6190,17 @@ types:
     seq:
       - id: order_execution_return_bitfield_21_reserved_1
         type: b1
-      - id: order_execution_return_bitfield_21_cross_initiator
+      - id: order_execution_return_bitfield_21_reserved_2
         type: b1
-      - id: order_execution_return_bitfield_21_subreason
+      - id: order_execution_return_bitfield_21_reserved_4
         type: b1
-      - id: order_execution_return_bitfield_21_cross_trade_flag
+      - id: order_execution_return_bitfield_21_reserved_8
         type: b1
       - id: order_execution_return_bitfield_21_reserved_16
         type: b1
-      - id: order_execution_return_bitfield_21_held
+      - id: order_execution_return_bitfield_21_reserved_32
         type: b1
-      - id: order_execution_return_bitfield_21_locate_broker
+      - id: order_execution_return_bitfield_21_reserved_64
         type: b1
       - id: order_execution_return_bitfield_21_reserved_128
         type: b1
@@ -6192,19 +6208,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: order_execution_return_bitfield_22_floor_trade_time
+      - id: order_execution_return_bitfield_22_reserved_1
         type: b1
-      - id: order_execution_return_bitfield_22_equity_ex_destination
+      - id: order_execution_return_bitfield_22_reserved_2
         type: b1
-      - id: order_execution_return_bitfield_22_cross_on_behalf_of_id
+      - id: order_execution_return_bitfield_22_reserved_4
         type: b1
-      - id: order_execution_return_bitfield_22_cmc_sessions
+      - id: order_execution_return_bitfield_22_reserved_8
         type: b1
-      - id: order_execution_return_bitfield_22_intra_firm_trade_ind
+      - id: order_execution_return_bitfield_22_reserved_16
         type: b1
-      - id: order_execution_return_bitfield_22_cmc_match_qty
+      - id: order_execution_return_bitfield_22_reserved_32
         type: b1
-      - id: order_execution_return_bitfield_22_step_up_amount
+      - id: order_execution_return_bitfield_22_reserved_64
         type: b1
       - id: order_execution_return_bitfield_22_reserved_128
         type: b1
@@ -6354,11 +6370,15 @@ types:
         type: u1
         enum: capacity
         if: number_of_return_bitfields >= 2 and trade_cancelor_correct_return_bitfield_2.trade_cancelor_correct_return_bitfield_2_capacity
+      - id: sub_liquidity_indicator
+        type: u1
+        enum: sub_liquidity_indicator
+        if: number_of_return_bitfields >= 7 and trade_cancelor_correct_return_bitfield_7.trade_cancelor_correct_return_bitfield_7_sub_liquidity_indicator
   trade_cancelor_correct_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_1_reserved_1
+      - id: trade_cancelor_correct_return_bitfield_1_side
         type: b1
       - id: trade_cancelor_correct_return_bitfield_1_peg_difference
         type: b1
@@ -6464,21 +6484,21 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_6_contra_capacity
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_6_reserved_8
+      - id: trade_cancelor_correct_return_bitfield_6_attributed_quote
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_6_reserved_16
+      - id: trade_cancelor_correct_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_6_reserved_32
+      - id: trade_cancelor_correct_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_6_reserved_64
+      - id: trade_cancelor_correct_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_6_reserved_128
+      - id: trade_cancelor_correct_return_bitfield_6_party_role
         type: b1
   trade_cancelor_correct_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_7_reserved_1
+      - id: trade_cancelor_correct_return_bitfield_7_sub_liquidity_indicator
         type: b1
       - id: trade_cancelor_correct_return_bitfield_7_trade_report_type_return
         type: b1
@@ -6584,21 +6604,21 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_12_operator_id
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_12_reserved_8
+      - id: trade_cancelor_correct_return_bitfield_12_trade_date
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_12_reserved_16
+      - id: trade_cancelor_correct_return_bitfield_12_clearing_price
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_12_reserved_32
+      - id: trade_cancelor_correct_return_bitfield_12_clearing_size
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_12_reserved_64
+      - id: trade_cancelor_correct_return_bitfield_12_clearing_symbol
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_12_reserved_128
+      - id: trade_cancelor_correct_return_bitfield_12_clearing_optional_data
         type: b1
   trade_cancelor_correct_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_13_reserved_1
+      - id: trade_cancelor_correct_return_bitfield_13_cum_qty
         type: b1
       - id: trade_cancelor_correct_return_bitfield_13_day_order_qty
         type: b1
@@ -6612,7 +6632,7 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_13_multileg_reporting_typ
+      - id: trade_cancelor_correct_return_bitfield_13_multileg_reporting_type
         type: b1
   trade_cancelor_correct_return_bitfield_14:
     meta:
@@ -6638,7 +6658,7 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_15_trade_reporting_indica
+      - id: trade_cancelor_correct_return_bitfield_15_trade_reporting_indicator
         type: b1
       - id: trade_cancelor_correct_return_bitfield_15_equity_party_id
         type: b1
@@ -6684,7 +6704,7 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_17_trading_session_id
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_17_trade_through_alert_ty
+      - id: trade_cancelor_correct_return_bitfield_17_trade_through_alert_type
         type: b1
       - id: trade_cancelor_correct_return_bitfield_17_sender_location_id
         type: b1
@@ -6692,7 +6712,7 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_17_cust_order_handling_in
+      - id: trade_cancelor_correct_return_bitfield_17_cust_order_handling_inst
         type: b1
   trade_cancelor_correct_return_bitfield_18:
     meta:
@@ -6704,35 +6724,35 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_18_subreason
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_18_attributed_quote
+      - id: trade_cancelor_correct_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_18_ext_exec_inst
+      - id: trade_cancelor_correct_return_bitfield_18_reserved_16
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_18_bulk_order_ids
+      - id: trade_cancelor_correct_return_bitfield_18_held
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_18_bulk_reject_reasons
+      - id: trade_cancelor_correct_return_bitfield_18_locate_broker
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_18_party_role
+      - id: trade_cancelor_correct_return_bitfield_18_reserved_128
         type: b1
   trade_cancelor_correct_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_19_reserved_1
+      - id: trade_cancelor_correct_return_bitfield_19_floor_trade_time
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_reserved_2
+      - id: trade_cancelor_correct_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_reserved_4
+      - id: trade_cancelor_correct_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_trade_date
+      - id: trade_cancelor_correct_return_bitfield_19_cmc_sessions
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_clearing_price
+      - id: trade_cancelor_correct_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_clearing_size
+      - id: trade_cancelor_correct_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_clearing_symbol
+      - id: trade_cancelor_correct_return_bitfield_19_step_up_amount
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_19_clearing_optional_data
+      - id: trade_cancelor_correct_return_bitfield_19_reserved_128
         type: b1
   trade_cancelor_correct_return_bitfield_20:
     meta:
@@ -6744,13 +6764,13 @@ types:
         type: b1
       - id: trade_cancelor_correct_return_bitfield_20_reserved_4
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_20_cross_trade_flag
+      - id: trade_cancelor_correct_return_bitfield_20_reserved_8
         type: b1
       - id: trade_cancelor_correct_return_bitfield_20_reserved_16
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_20_held
+      - id: trade_cancelor_correct_return_bitfield_20_reserved_32
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_20_locate_broker
+      - id: trade_cancelor_correct_return_bitfield_20_reserved_64
         type: b1
       - id: trade_cancelor_correct_return_bitfield_20_reserved_128
         type: b1
@@ -6758,19 +6778,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: trade_cancelor_correct_return_bitfield_21_floor_trade_time
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_1
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_equity_ex_destination
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_2
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_cross_on_behalf_of_id
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_4
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_cmc_sessions
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_8
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_intra_firm_trade_ind
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_16
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_cmc_match_qty
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_32
         type: b1
-      - id: trade_cancelor_correct_return_bitfield_21_step_up_amount
+      - id: trade_cancelor_correct_return_bitfield_21_reserved_64
         type: b1
       - id: trade_cancelor_correct_return_bitfield_21_reserved_128
         type: b1
@@ -6893,24 +6913,24 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        if: number_of_return_bitfields >= 10 and purge_rejected_return_bitfield_10.purge_rejected_return_bitfield_10_mass_cancel_id
+        if: number_of_return_bitfields >= 15 and purge_rejected_return_bitfield_15.purge_rejected_return_bitfield_15_mass_cancel_id
   purge_rejected_return_bitfield_1:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_1_purge_rejected_return_bitfields
+      - id: purge_rejected_return_bitfield_1_side
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_2
+      - id: purge_rejected_return_bitfield_1_peg_difference
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_4
+      - id: purge_rejected_return_bitfield_1_price
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_8
+      - id: purge_rejected_return_bitfield_1_exec_inst
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_16
+      - id: purge_rejected_return_bitfield_1_ord_type
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_32
+      - id: purge_rejected_return_bitfield_1_time_in_force
         type: b1
-      - id: purge_rejected_return_bitfield_1_reserved_64
+      - id: purge_rejected_return_bitfield_1_min_qty
         type: b1
       - id: purge_rejected_return_bitfield_1_reserved_128
         type: b1
@@ -6918,359 +6938,359 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_2_side
+      - id: purge_rejected_return_bitfield_2_symbol
         type: b1
-      - id: purge_rejected_return_bitfield_2_peg_difference
+      - id: purge_rejected_return_bitfield_2_symbol_sfx
         type: b1
-      - id: purge_rejected_return_bitfield_2_price
+      - id: purge_rejected_return_bitfield_2_currency
         type: b1
-      - id: purge_rejected_return_bitfield_2_exec_inst
+      - id: purge_rejected_return_bitfield_2_id_source
         type: b1
-      - id: purge_rejected_return_bitfield_2_ord_type
+      - id: purge_rejected_return_bitfield_2_security_id
         type: b1
-      - id: purge_rejected_return_bitfield_2_time_in_force
+      - id: purge_rejected_return_bitfield_2_security_exchange
         type: b1
-      - id: purge_rejected_return_bitfield_2_min_qty
+      - id: purge_rejected_return_bitfield_2_capacity
         type: b1
-      - id: purge_rejected_return_bitfield_2_reserved_128
+      - id: purge_rejected_return_bitfield_2_contra_trader
         type: b1
   purge_rejected_return_bitfield_3:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_3_symbol
+      - id: purge_rejected_return_bitfield_3_account
         type: b1
-      - id: purge_rejected_return_bitfield_3_symbol_sfx
+      - id: purge_rejected_return_bitfield_3_clearing_firm
         type: b1
-      - id: purge_rejected_return_bitfield_3_currency
+      - id: purge_rejected_return_bitfield_3_clearing_account
         type: b1
-      - id: purge_rejected_return_bitfield_3_id_source
+      - id: purge_rejected_return_bitfield_3_display_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_3_security_id
+      - id: purge_rejected_return_bitfield_3_max_floor
         type: b1
-      - id: purge_rejected_return_bitfield_3_security_exchange
+      - id: purge_rejected_return_bitfield_3_discretion_amount
         type: b1
-      - id: purge_rejected_return_bitfield_3_capacity
+      - id: purge_rejected_return_bitfield_3_order_qty
         type: b1
-      - id: purge_rejected_return_bitfield_3_contra_trader
+      - id: purge_rejected_return_bitfield_3_prevent_match
         type: b1
   purge_rejected_return_bitfield_4:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_4_account
+      - id: purge_rejected_return_bitfield_4_maturity_date
         type: b1
-      - id: purge_rejected_return_bitfield_4_clearing_firm
+      - id: purge_rejected_return_bitfield_4_strike_price
         type: b1
-      - id: purge_rejected_return_bitfield_4_clearing_account
+      - id: purge_rejected_return_bitfield_4_put_or_call
         type: b1
-      - id: purge_rejected_return_bitfield_4_display_indicator
+      - id: purge_rejected_return_bitfield_4_open_close
         type: b1
-      - id: purge_rejected_return_bitfield_4_max_floor
+      - id: purge_rejected_return_bitfield_4_cl_ord_id_batch
         type: b1
-      - id: purge_rejected_return_bitfield_4_discretion_amount
+      - id: purge_rejected_return_bitfield_4_corrected_size
         type: b1
-      - id: purge_rejected_return_bitfield_4_order_qty
+      - id: purge_rejected_return_bitfield_4_party_id
         type: b1
-      - id: purge_rejected_return_bitfield_4_prevent_match
+      - id: purge_rejected_return_bitfield_4_access_fee
         type: b1
   purge_rejected_return_bitfield_5:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_5_sub_liquidity_indicator
+      - id: purge_rejected_return_bitfield_5_orig_cl_ord_id
         type: b1
-      - id: purge_rejected_return_bitfield_5_trade_report_type_return
+      - id: purge_rejected_return_bitfield_5_leaves_qty
         type: b1
-      - id: purge_rejected_return_bitfield_5_trade_publish_ind_return
+      - id: purge_rejected_return_bitfield_5_last_shares
         type: b1
-      - id: purge_rejected_return_bitfield_5_text
+      - id: purge_rejected_return_bitfield_5_last_px
         type: b1
-      - id: purge_rejected_return_bitfield_5_bid
+      - id: purge_rejected_return_bitfield_5_display_price
         type: b1
-      - id: purge_rejected_return_bitfield_5_offer
+      - id: purge_rejected_return_bitfield_5_working_price
         type: b1
-      - id: purge_rejected_return_bitfield_5_large_size
+      - id: purge_rejected_return_bitfield_5_base_liquidity_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_5_last_mkt
+      - id: purge_rejected_return_bitfield_5_expire_time
         type: b1
   purge_rejected_return_bitfield_6:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_6_fee_code
+      - id: purge_rejected_return_bitfield_6_secondary_order_id
         type: b1
-      - id: purge_rejected_return_bitfield_6_echo_text
+      - id: purge_rejected_return_bitfield_6_ccp
         type: b1
-      - id: purge_rejected_return_bitfield_6_stop_px
+      - id: purge_rejected_return_bitfield_6_contra_capacity
         type: b1
-      - id: purge_rejected_return_bitfield_6_routing_inst
+      - id: purge_rejected_return_bitfield_6_attributed_quote
         type: b1
-      - id: purge_rejected_return_bitfield_6_rout_strategy
+      - id: purge_rejected_return_bitfield_6_ext_exec_inst
         type: b1
-      - id: purge_rejected_return_bitfield_6_route_delivery_method
+      - id: purge_rejected_return_bitfield_6_bulk_order_ids
         type: b1
-      - id: purge_rejected_return_bitfield_6_ex_destination
+      - id: purge_rejected_return_bitfield_6_bulk_reject_reasons
         type: b1
-      - id: purge_rejected_return_bitfield_6_trade_report_ref_id
+      - id: purge_rejected_return_bitfield_6_party_role
         type: b1
   purge_rejected_return_bitfield_7:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_7_marketing_fee_code
+      - id: purge_rejected_return_bitfield_7_sub_liquidity_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_7_target_party_id
+      - id: purge_rejected_return_bitfield_7_trade_report_type_return
         type: b1
-      - id: purge_rejected_return_bitfield_7_auction_id
+      - id: purge_rejected_return_bitfield_7_trade_publish_ind_return
         type: b1
-      - id: purge_rejected_return_bitfield_7_order_category
+      - id: purge_rejected_return_bitfield_7_text
         type: b1
-      - id: purge_rejected_return_bitfield_7_liquidity_provision
+      - id: purge_rejected_return_bitfield_7_bid
         type: b1
-      - id: purge_rejected_return_bitfield_7_cmta_number
+      - id: purge_rejected_return_bitfield_7_offer
         type: b1
-      - id: purge_rejected_return_bitfield_7_cross_type
+      - id: purge_rejected_return_bitfield_7_large_size
         type: b1
-      - id: purge_rejected_return_bitfield_7_cross_prioritization
+      - id: purge_rejected_return_bitfield_7_last_mkt
         type: b1
   purge_rejected_return_bitfield_8:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_8_cum_qty
+      - id: purge_rejected_return_bitfield_8_fee_code
         type: b1
-      - id: purge_rejected_return_bitfield_8_day_order_qty
+      - id: purge_rejected_return_bitfield_8_echo_text
         type: b1
-      - id: purge_rejected_return_bitfield_8_day_cum_qty
+      - id: purge_rejected_return_bitfield_8_stop_px
         type: b1
-      - id: purge_rejected_return_bitfield_8_avg_px
+      - id: purge_rejected_return_bitfield_8_routing_inst
         type: b1
-      - id: purge_rejected_return_bitfield_8_day_avg_px
+      - id: purge_rejected_return_bitfield_8_rout_strategy
         type: b1
-      - id: purge_rejected_return_bitfield_8_pending_status
+      - id: purge_rejected_return_bitfield_8_route_delivery_method
         type: b1
-      - id: purge_rejected_return_bitfield_8_drill_thru_protection
+      - id: purge_rejected_return_bitfield_8_ex_destination
         type: b1
-      - id: purge_rejected_return_bitfield_8_multileg_reporting_typ
+      - id: purge_rejected_return_bitfield_8_trade_report_ref_id
         type: b1
   purge_rejected_return_bitfield_9:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_9_leg_cfi_code
+      - id: purge_rejected_return_bitfield_9_marketing_fee_code
         type: b1
-      - id: purge_rejected_return_bitfield_9_leg_maturity_date
+      - id: purge_rejected_return_bitfield_9_target_party_id
         type: b1
-      - id: purge_rejected_return_bitfield_9_leg_strike_price
+      - id: purge_rejected_return_bitfield_9_auction_id
         type: b1
-      - id: purge_rejected_return_bitfield_9_room_id
+      - id: purge_rejected_return_bitfield_9_order_category
         type: b1
-      - id: purge_rejected_return_bitfield_9_secondary_exec_id
+      - id: purge_rejected_return_bitfield_9_liquidity_provision
         type: b1
-      - id: purge_rejected_return_bitfield_9_user_request_id
+      - id: purge_rejected_return_bitfield_9_cmta_number
         type: b1
-      - id: purge_rejected_return_bitfield_9_sis_username
+      - id: purge_rejected_return_bitfield_9_cross_type
         type: b1
-      - id: purge_rejected_return_bitfield_9_user_status
+      - id: purge_rejected_return_bitfield_9_cross_prioritization
         type: b1
   purge_rejected_return_bitfield_10:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_10_trade_reporting_indica
+      - id: purge_rejected_return_bitfield_10_cross_id
         type: b1
-      - id: purge_rejected_return_bitfield_10_equity_party_id
+      - id: purge_rejected_return_bitfield_10_alloc_qty
         type: b1
-      - id: purge_rejected_return_bitfield_10_equity_nbbo_protect
+      - id: purge_rejected_return_bitfield_10_give_up_firm_id
         type: b1
-      - id: purge_rejected_return_bitfield_10_mass_cancel_id
+      - id: purge_rejected_return_bitfield_10_routing_firm_id
         type: b1
-      - id: purge_rejected_return_bitfield_10_trade_publish_ind
+      - id: purge_rejected_return_bitfield_10_waiver_type
         type: b1
-      - id: purge_rejected_return_bitfield_10_report_time
+      - id: purge_rejected_return_bitfield_10_cross_exclusion_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_10_leg_symbol_sfx
+      - id: purge_rejected_return_bitfield_10_price_formation
         type: b1
-      - id: purge_rejected_return_bitfield_10_client_id_attr
+      - id: purge_rejected_return_bitfield_10_client_qualified_role
         type: b1
   purge_rejected_return_bitfield_11:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_11_maturity_date
+      - id: purge_rejected_return_bitfield_11_client_id
         type: b1
-      - id: purge_rejected_return_bitfield_11_strike_price
+      - id: purge_rejected_return_bitfield_11_investor_id
         type: b1
-      - id: purge_rejected_return_bitfield_11_put_or_call
+      - id: purge_rejected_return_bitfield_11_executor_id
         type: b1
-      - id: purge_rejected_return_bitfield_11_open_close
+      - id: purge_rejected_return_bitfield_11_order_origination
         type: b1
-      - id: purge_rejected_return_bitfield_11_cl_ord_id_batch
+      - id: purge_rejected_return_bitfield_11_algo
         type: b1
-      - id: purge_rejected_return_bitfield_11_corrected_size
+      - id: purge_rejected_return_bitfield_11_deferral_reason
         type: b1
-      - id: purge_rejected_return_bitfield_11_party_id
+      - id: purge_rejected_return_bitfield_11_investor_qualified_role
         type: b1
-      - id: purge_rejected_return_bitfield_11_access_fee
+      - id: purge_rejected_return_bitfield_11_executor_qualified_role
         type: b1
   purge_rejected_return_bitfield_12:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_12_orig_cl_ord_id
+      - id: purge_rejected_return_bitfield_12_cti_code
         type: b1
-      - id: purge_rejected_return_bitfield_12_leaves_qty
+      - id: purge_rejected_return_bitfield_12_manual_order_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_12_last_shares
+      - id: purge_rejected_return_bitfield_12_operator_id
         type: b1
-      - id: purge_rejected_return_bitfield_12_last_px
+      - id: purge_rejected_return_bitfield_12_trade_date
         type: b1
-      - id: purge_rejected_return_bitfield_12_display_price
+      - id: purge_rejected_return_bitfield_12_clearing_price
         type: b1
-      - id: purge_rejected_return_bitfield_12_working_price
+      - id: purge_rejected_return_bitfield_12_clearing_size
         type: b1
-      - id: purge_rejected_return_bitfield_12_base_liquidity_indicator
+      - id: purge_rejected_return_bitfield_12_clearing_symbol
         type: b1
-      - id: purge_rejected_return_bitfield_12_expire_time
+      - id: purge_rejected_return_bitfield_12_clearing_optional_data
         type: b1
   purge_rejected_return_bitfield_13:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_13_secondary_order_id
+      - id: purge_rejected_return_bitfield_13_cum_qty
         type: b1
-      - id: purge_rejected_return_bitfield_13_ccp
+      - id: purge_rejected_return_bitfield_13_day_order_qty
         type: b1
-      - id: purge_rejected_return_bitfield_13_contra_capacity
+      - id: purge_rejected_return_bitfield_13_day_cum_qty
         type: b1
-      - id: purge_rejected_return_bitfield_13_attributed_quote
+      - id: purge_rejected_return_bitfield_13_avg_px
         type: b1
-      - id: purge_rejected_return_bitfield_13_ext_exec_inst
+      - id: purge_rejected_return_bitfield_13_day_avg_px
         type: b1
-      - id: purge_rejected_return_bitfield_13_bulk_order_ids
+      - id: purge_rejected_return_bitfield_13_pending_status
         type: b1
-      - id: purge_rejected_return_bitfield_13_bulk_reject_reasons
+      - id: purge_rejected_return_bitfield_13_drill_thru_protection
         type: b1
-      - id: purge_rejected_return_bitfield_13_party_role
+      - id: purge_rejected_return_bitfield_13_multileg_reporting_type
         type: b1
   purge_rejected_return_bitfield_14:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_14_cross_id
+      - id: purge_rejected_return_bitfield_14_leg_cfi_code
         type: b1
-      - id: purge_rejected_return_bitfield_14_alloc_qty
+      - id: purge_rejected_return_bitfield_14_leg_maturity_date
         type: b1
-      - id: purge_rejected_return_bitfield_14_give_up_firm_id
+      - id: purge_rejected_return_bitfield_14_leg_strike_price
         type: b1
-      - id: purge_rejected_return_bitfield_14_routing_firm_id
+      - id: purge_rejected_return_bitfield_14_room_id
         type: b1
-      - id: purge_rejected_return_bitfield_14_waiver_type
+      - id: purge_rejected_return_bitfield_14_secondary_exec_id
         type: b1
-      - id: purge_rejected_return_bitfield_14_cross_exclusion_indicator
+      - id: purge_rejected_return_bitfield_14_user_request_id
         type: b1
-      - id: purge_rejected_return_bitfield_14_price_formation
+      - id: purge_rejected_return_bitfield_14_sis_username
         type: b1
-      - id: purge_rejected_return_bitfield_14_client_qualified_role
+      - id: purge_rejected_return_bitfield_14_user_status
         type: b1
   purge_rejected_return_bitfield_15:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_15_client_id
+      - id: purge_rejected_return_bitfield_15_trade_reporting_indicator
         type: b1
-      - id: purge_rejected_return_bitfield_15_investor_id
+      - id: purge_rejected_return_bitfield_15_equity_party_id
         type: b1
-      - id: purge_rejected_return_bitfield_15_executor_id
+      - id: purge_rejected_return_bitfield_15_equity_nbbo_protect
         type: b1
-      - id: purge_rejected_return_bitfield_15_order_origination
+      - id: purge_rejected_return_bitfield_15_mass_cancel_id
         type: b1
-      - id: purge_rejected_return_bitfield_15_algo
+      - id: purge_rejected_return_bitfield_15_trade_publish_ind
         type: b1
-      - id: purge_rejected_return_bitfield_15_deferral_reason
+      - id: purge_rejected_return_bitfield_15_report_time
         type: b1
-      - id: purge_rejected_return_bitfield_15_investor_qualified_role
+      - id: purge_rejected_return_bitfield_15_leg_symbol_sfx
         type: b1
-      - id: purge_rejected_return_bitfield_15_executor_qualified_role
+      - id: purge_rejected_return_bitfield_15_client_id_attr
         type: b1
   purge_rejected_return_bitfield_16:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_16_cti_code
+      - id: purge_rejected_return_bitfield_16_frequent_trader_id
         type: b1
-      - id: purge_rejected_return_bitfield_16_manual_order_indicator
+      - id: purge_rejected_return_bitfield_16_session_eligibility
         type: b1
-      - id: purge_rejected_return_bitfield_16_operator_id
+      - id: purge_rejected_return_bitfield_16_combo_order
         type: b1
-      - id: purge_rejected_return_bitfield_16_trade_date
+      - id: purge_rejected_return_bitfield_16_compression
         type: b1
-      - id: purge_rejected_return_bitfield_16_clearing_price
+      - id: purge_rejected_return_bitfield_16_floor_destination
         type: b1
-      - id: purge_rejected_return_bitfield_16_clearing_size
+      - id: purge_rejected_return_bitfield_16_floor_routing_inst
         type: b1
-      - id: purge_rejected_return_bitfield_16_clearing_symbol
+      - id: purge_rejected_return_bitfield_16_multi_class_sprd
         type: b1
-      - id: purge_rejected_return_bitfield_16_clearing_optional_data
+      - id: purge_rejected_return_bitfield_16_order_origin
         type: b1
   purge_rejected_return_bitfield_17:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_17_frequent_trader_id
+      - id: purge_rejected_return_bitfield_17_price_type
         type: b1
-      - id: purge_rejected_return_bitfield_17_session_eligibility
+      - id: purge_rejected_return_bitfield_17_strategy_id
         type: b1
-      - id: purge_rejected_return_bitfield_17_combo_order
+      - id: purge_rejected_return_bitfield_17_trading_session_id
         type: b1
-      - id: purge_rejected_return_bitfield_17_compression
+      - id: purge_rejected_return_bitfield_17_trade_through_alert_type
         type: b1
-      - id: purge_rejected_return_bitfield_17_floor_destination
+      - id: purge_rejected_return_bitfield_17_sender_location_id
         type: b1
-      - id: purge_rejected_return_bitfield_17_floor_routing_inst
+      - id: purge_rejected_return_bitfield_17_floor_trader_acronym
         type: b1
-      - id: purge_rejected_return_bitfield_17_multi_class_sprd
+      - id: purge_rejected_return_bitfield_17_exec_leg_cfi_code
         type: b1
-      - id: purge_rejected_return_bitfield_17_order_origin
+      - id: purge_rejected_return_bitfield_17_cust_order_handling_inst
         type: b1
   purge_rejected_return_bitfield_18:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_18_price_type
+      - id: purge_rejected_return_bitfield_18_reserved_1
         type: b1
-      - id: purge_rejected_return_bitfield_18_strategy_id
+      - id: purge_rejected_return_bitfield_18_cross_initiator
         type: b1
-      - id: purge_rejected_return_bitfield_18_trading_session_id
+      - id: purge_rejected_return_bitfield_18_subreason
         type: b1
-      - id: purge_rejected_return_bitfield_18_trade_through_alert_typ
+      - id: purge_rejected_return_bitfield_18_cross_trade_flag
         type: b1
-      - id: purge_rejected_return_bitfield_18_sender_location_id
+      - id: purge_rejected_return_bitfield_18_reserved_16
         type: b1
-      - id: purge_rejected_return_bitfield_18_floor_trader_acronym
+      - id: purge_rejected_return_bitfield_18_held
         type: b1
-      - id: purge_rejected_return_bitfield_18_exec_leg_cfi_code
+      - id: purge_rejected_return_bitfield_18_locate_broker
         type: b1
-      - id: purge_rejected_return_bitfield_18_cust_order_handling_ins
+      - id: purge_rejected_return_bitfield_18_reserved_128
         type: b1
   purge_rejected_return_bitfield_19:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_19_reserved_1
+      - id: purge_rejected_return_bitfield_19_floor_trade_time
         type: b1
-      - id: purge_rejected_return_bitfield_19_cross_initiator
+      - id: purge_rejected_return_bitfield_19_equity_ex_destination
         type: b1
-      - id: purge_rejected_return_bitfield_19_subreason
+      - id: purge_rejected_return_bitfield_19_cross_on_behalf_of_id
         type: b1
-      - id: purge_rejected_return_bitfield_19_cross_trade_flag
+      - id: purge_rejected_return_bitfield_19_cmc_sessions
         type: b1
-      - id: purge_rejected_return_bitfield_19_reserved_16
+      - id: purge_rejected_return_bitfield_19_intra_firm_trade_ind
         type: b1
-      - id: purge_rejected_return_bitfield_19_held
+      - id: purge_rejected_return_bitfield_19_cmc_match_qty
         type: b1
-      - id: purge_rejected_return_bitfield_19_locate_broker
+      - id: purge_rejected_return_bitfield_19_step_up_amount
         type: b1
       - id: purge_rejected_return_bitfield_19_reserved_128
         type: b1
@@ -7278,19 +7298,19 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: purge_rejected_return_bitfield_20_floor_trade_time
+      - id: purge_rejected_return_bitfield_20_reserved_1
         type: b1
-      - id: purge_rejected_return_bitfield_20_equity_ex_destination
+      - id: purge_rejected_return_bitfield_20_reserved_2
         type: b1
-      - id: purge_rejected_return_bitfield_20_cross_on_behalf_of_id
+      - id: purge_rejected_return_bitfield_20_reserved_4
         type: b1
-      - id: purge_rejected_return_bitfield_20_cmc_sessions
+      - id: purge_rejected_return_bitfield_20_reserved_8
         type: b1
-      - id: purge_rejected_return_bitfield_20_intra_firm_trade_ind
+      - id: purge_rejected_return_bitfield_20_reserved_16
         type: b1
-      - id: purge_rejected_return_bitfield_20_cmc_match_qty
+      - id: purge_rejected_return_bitfield_20_reserved_32
         type: b1
-      - id: purge_rejected_return_bitfield_20_step_up_amount
+      - id: purge_rejected_return_bitfield_20_reserved_64
         type: b1
       - id: purge_rejected_return_bitfield_20_reserved_128
         type: b1
@@ -7590,6 +7610,32 @@ enums:
     0x59:
       id: 'client_does_not_affirm_ability_to_borrow'
       doc: 'Client Does Not Affirm Ability To Borrow Results In Reject'
+  attributed_quote:
+    0x4e:
+      id: 'do_not_attribute_firm_mpid_to_this_order'
+      doc: 'Do Not Attribute Firm Mpid To This Order'
+    0x59:
+      id: 'attribute_firm_mpid_to_this_order'
+      doc: 'Attribute Firm Mpid To This Order'
+    0x52:
+      id: 'attribute_rtal_to_this_order'
+      doc: 'Attribute Rtal To This Order'
+  ext_exec_inst:
+    0x4e:
+      id: 'none'
+      doc: 'None'
+    0x52:
+      id: 'retail_order_eligible_for_retail_rebate'
+      doc: 'Retail Order Eligible For Retail Rebate Byx And Edgx'
+    0x50:
+      id: 'retail_order'
+      doc: 'Retail Order Price Improvement Only'
+    0x54:
+      id: 'retail_price_improving_order'
+      doc: 'Retail Price Improving Order Edgx'
+    0x58:
+      id: 'retail_priority_order'
+      doc: 'Retail Priority Order Eligible For Retail Priority And Retail Rebate Rate'
   ex_destination:
     0x41:
       id: 'nyse_american'
@@ -7648,32 +7694,6 @@ enums:
     0x5a:
       id: 'bzx_1'
       doc: 'Bzx 11 Post To Away Option Available For Rout And Roux Only 2 Post To Edgx For Rout Roux Rouz Rdot'
-  attributed_quote:
-    0x4e:
-      id: 'do_not_attribute_firm_mpid_to_this_order'
-      doc: 'Do Not Attribute Firm Mpid To This Order'
-    0x59:
-      id: 'attribute_firm_mpid_to_this_order'
-      doc: 'Attribute Firm Mpid To This Order'
-    0x52:
-      id: 'attribute_rtal_to_this_order'
-      doc: 'Attribute Rtal To This Order'
-  ext_exec_inst:
-    0x4e:
-      id: 'none'
-      doc: 'None'
-    0x52:
-      id: 'retail_order_eligible_for_retail_rebate'
-      doc: 'Retail Order Eligible For Retail Rebate Byx And Edgx'
-    0x50:
-      id: 'retail_order'
-      doc: 'Retail Order Price Improvement Only'
-    0x54:
-      id: 'retail_price_improving_order'
-      doc: 'Retail Price Improving Order Edgx'
-    0x58:
-      id: 'retail_priority_order'
-      doc: 'Retail Priority Order Eligible For Retail Priority And Retail Rebate Rate'
   cross_trade_flag:
     0x30:
       id: 'none'
@@ -7691,6 +7711,22 @@ enums:
     0x59:
       id: 'cancel_original_order_if_modification_fails'
       doc: 'Cancel Original Order If Modification Fails'
+  base_liquidity_indicator:
+    0x41:
+      id: 'added_liquidity'
+      doc: 'Added Liquidity'
+    0x43:
+      id: 'auction_uncrossing'
+      doc: 'Auction Uncrossing'
+    0x52:
+      id: 'removed_liquidity'
+      doc: 'Removed Liquidity'
+    0x57:
+      id: 'waiting_for_execution_at_premarket_time_as'
+      doc: 'Waiting For Execution At Premarket Time As Defined By Time In Force Value And Hold Early To 7 Am Port Setting Only Applied On The Initial Order Acknowledgment'
+    0x58:
+      id: 'routed_to_another_market'
+      doc: 'Routed To Another Market'
   sub_liquidity_indicator:
     0x45:
       id: 'trade_added_rpi_liquidity'
@@ -7719,22 +7755,6 @@ enums:
     0x73:
       id: 'order_set_the_nbbo_but_is_not_fee_eligible'
       doc: 'Order Set The Nbbo But Is Not Fee Eligible'
-  base_liquidity_indicator:
-    0x41:
-      id: 'added_liquidity'
-      doc: 'Added Liquidity'
-    0x43:
-      id: 'auction_uncrossing'
-      doc: 'Auction Uncrossing'
-    0x52:
-      id: 'removed_liquidity'
-      doc: 'Removed Liquidity'
-    0x57:
-      id: 'waiting_for_execution_at_premarket_time_as'
-      doc: 'Waiting For Execution At Premarket Time As Defined By Time In Force Value And Hold Early To 7 Am Port Setting Only Applied On The Initial Order Acknowledgment'
-    0x58:
-      id: 'routed_to_another_market'
-      doc: 'Routed To Another Market'
   order_reject_reason:
     0x41:
       id: 'admin'

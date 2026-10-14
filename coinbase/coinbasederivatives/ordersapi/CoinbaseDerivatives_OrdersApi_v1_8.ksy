@@ -423,7 +423,7 @@ types:
         doc: 'goodTilDate. Nullable, No Value = 0'
       - id: time_in_force
         type: s1_nullable
-        doc: 'timeInForce. Nullable, No Value = 128'
+        doc: 'timeInForce. Nullable, No Value = -128'
   obsolete_stream_order_message:
     seq:
       - id: client_order_id

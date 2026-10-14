@@ -202,12 +202,12 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: si_quote
-        type: b1
-        doc: 'Add represents SI Quote'
       - id: unused_1
         type: b1
         doc: 'Reserved'
+      - id: si_quote
+        type: b1
+        doc: 'Add represents SI Quote'
       - id: unused_6
         type: b6
         doc: 'Reserved 2-7 Bits'
@@ -396,7 +396,7 @@ types:
       - id: contracts_short
         type: u2
         doc: 'Incremental number of contracts executed'
-      - id: symbol_short
+      - id: symbol_alphanumeric_6
         type: str
         size: 6
         encoding: ASCII
@@ -634,7 +634,7 @@ types:
         type: decimal_u8_4
         doc: 'Reference price used in tie-breaker situations. Implied decimal with scale 1e-4'
       - id: indicative_price
-        type: decimal_u4_4
+        type: decimal_u8_4
         doc: 'Price at which the auction would match if executed at the time of the message. Implied decimal with scale 1e-4'
       - id: indicative_shares
         type: u4
@@ -670,9 +670,9 @@ types:
         doc: 'Number of shares associated with this order after this modify'
   index_quote_message:
     seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: index_timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight'
       - id: index_ticker
         type: str
         size: 10
@@ -688,9 +688,9 @@ types:
         doc: 'Index Status'
   index_quote_edsp_message:
     seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: index_timestamp
+        type: u8
+        doc: 'Nanoseconds since midnight'
       - id: index_ticker
         type: str
         size: 10
@@ -736,13 +736,6 @@ types:
     instances:
       real:
         value: mantissa / 100.0
-  decimal_u4_4:
-    seq:
-      - id: mantissa
-        type: u4
-    instances:
-      real:
-        value: mantissa / 10000.0
 
 enums:
   message_type:
@@ -850,6 +843,12 @@ enums:
     0x37:
       id: 'any_other_including_hybrid'
       doc: 'Any Other Including Hybrid'
+    0x38:
+      id: 'hybrid_system_revised_esma_definition'
+      doc: 'Hybrid System Revised Esma Definition'
+    0x39:
+      id: 'any_other_excluding_hybrid_revised_esma_definition'
+      doc: 'Any Other Excluding Hybrid Revised Esma Definition'
   trading_mode:
     0x31:
       id: 'undefined_auction'
@@ -884,6 +883,9 @@ enums:
     0x55:
       id: 'unscheduled_auction'
       doc: 'Unscheduled Auction'
+    0x50:
+      id: 'on_demand_auction'
+      doc: 'On Demand Auction'
   ex_cum_dividend:
     0x45:
       id: 'ex_cum_special_dividend_if_optionally_set_by_reporting_party'
@@ -914,6 +916,12 @@ enums:
     0x2d:
       id: 'none_of_the_above_apply'
       doc: 'None Of The Above Apply'
+    0x48:
+      id: 'exchange_for_physicals_trade_give'
+      doc: 'Exchange For Physicals Trade Give'
+    0x47:
+      id: 'none_of_the_above_apply_give'
+      doc: 'None Of The Above Apply Give'
   cboe_trade_flags:
     0x34:
       id: 'on_time_in_the_main_session'
@@ -939,6 +947,24 @@ enums:
     0x46:
       id: 'late_and_out_of_the_main_session_3_rd_country_venue'
       doc: 'The Trade Was Reported To Cboe Late Out Of The Main Session And Trade Venue Is An Esma Nonrecognised 3 Rd Country Venue'
+    0x2d:
+      id: 'uk_the_trade_was_reported_to_cboe_on_time_and_in_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe On Time And In The Main Session'
+    0x31:
+      id: 'uk_the_trade_was_reported_to_cboe_late'
+      doc: 'Uk The Trade Was Reported To Cboe Late'
+    0x32:
+      id: 'uk_the_trade_was_reported_to_cboe_out_of_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe Out Of The Main Session'
+    0x33:
+      id: 'uk_the_trade_was_reported_to_cboe_late_and_out_of_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe Late And Out Of The Main Session'
+    0x47:
+      id: 'uk_the_trade_was_an_execution_against_retailonly_liquidity'
+      doc: 'Uk The Trade Was An Execution Against Retailonly Liquidity'
+    0x4b:
+      id: 'eu_the_trade_was_an_execution_against_retailonly_liquidity'
+      doc: 'Eu The Trade Was An Execution Against Retailonly Liquidity'
   negotiated_trade:
     0x31:
       id: 'negotiated_trade_in_liquid_financial_instruments'
@@ -964,6 +990,24 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+    0x37:
+      id: 'ntls_negotiated_trade_larger_than_lis_brought_onto_a_venue'
+      doc: 'Ntls Negotiated Trade Larger Than Lis Brought Onto A Venue'
+    0x38:
+      id: 'netw_negotiated_trade_with_pre_trade_transparency_waiver'
+      doc: 'Netw Negotiated Trade With Pre Trade Transparency Waiver'
+    0x39:
+      id: 'nliq_negotiated_trade_in_liquid_finan_ntls_negotiated_trade_larger_than_lis_cial_instruments_brought_onto_a_venue'
+      doc: 'Nliq Negotiated Trade In Liquid Finan Ntls Negotiated Trade Larger Than Lis Cial Instruments Brought Onto A Venue'
+    0x61:
+      id: 'oilq_negotiated_trade_in_illiquid_finan_ntls_negotiated_trade_larger_than_lis_cial_instruments_brought_onto_a_venue'
+      doc: 'Oilq Negotiated Trade In Illiquid Finan Ntls Negotiated Trade Larger Than Lis Cial Instruments Brought Onto A Venue'
+    0x62:
+      id: 'pric_negotiated_trade_subject_to_con_ntls_negotiated_trade_larger_than_lis_ditions_other_than_the_current_market_brought_onto_a_venue_price'
+      doc: 'Pric Negotiated Trade Subject To Con Ntls Negotiated Trade Larger Than Lis Ditions Other Than The Current Market Brought Onto A Venue Price'
+    0x63:
+      id: 'netw_negotiated_trade_with_pre_ntls_negotiated_trade_larger_than_lis_trade_transparency_waiver_brought_onto_a_venue'
+      doc: 'Netw Negotiated Trade With Pre Ntls Negotiated Trade Larger Than Lis Trade Transparency Waiver Brought Onto A Venue'
   crossing_trade:
     0x58:
       id: 'crossing_trade'
@@ -991,6 +1035,36 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+    0x43:
+      id: 'cont'
+      doc: 'Cont'
+    0x4d:
+      id: 'benc_cont'
+      doc: 'Benc Cont'
+    0x4e:
+      id: 'port_cont'
+      doc: 'Port Cont'
+    0x4f:
+      id: 'benc_port_cont'
+      doc: 'Benc Port Cont'
+    0x50:
+      id: 'port'
+      doc: 'Port'
+    0x59:
+      id: 'benc_port'
+      doc: 'Benc Port'
+    0x31:
+      id: 'clse'
+      doc: 'Clse'
+    0x32:
+      id: 'clse_port'
+      doc: 'Clse Port'
+    0x33:
+      id: 'clse_cont'
+      doc: 'Clse Cont'
+    0x34:
+      id: 'clse_port_cont'
+      doc: 'Clse Port Cont'
   off_book_automated_indicator:
     0x51:
       id: 'automated'
@@ -1014,6 +1088,9 @@ enums:
     0x4e:
       id: 'price_is_currently_not_available_but_pending'
       doc: 'Price Is Currently Not Available But Pending'
+    0x5a:
+      id: 'noap_price_is_not_applicable'
+      doc: 'Noap Price Is Not Applicable'
   publication_mode_deferral_reason:
     0x31:
       id: 'trade_report_reported_late_without_permitted_deferral'
@@ -1036,6 +1113,9 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+    0x47:
+      id: 'deff'
+      doc: 'Deff'
   deferral_or_enrichment_type:
     0x31:
       id: 'limited_details_trade'
@@ -1080,6 +1160,24 @@ enums:
     0x2d:
       id: 'unique_trade_report'
       doc: 'Unique Trade Report'
+    0x32:
+      id: 'igrp'
+      doc: 'Igrp'
+    0x33:
+      id: 'dupl_igrp'
+      doc: 'Dupl Igrp'
+    0x34:
+      id: 'xbdt'
+      doc: 'Xbdt'
+    0x35:
+      id: 'dupl_xbdt'
+      doc: 'Dupl Xbdt'
+    0x36:
+      id: 'dupl_xbdt_igrp'
+      doc: 'Dupl Xbdt Igrp'
+    0x37:
+      id: 'xbdt_igrp'
+      doc: 'Xbdt Igrp'
   trading_status:
     0x54:
       id: 'trading'
@@ -1117,6 +1215,12 @@ enums:
     0x55:
       id: 'cboe_closing_cross'
       doc: 'Cboe Closing Cross'
+    0x49:
+      id: 'volatility_auction'
+      doc: 'Volatility Auction'
+    0x59:
+      id: 'halt_auction'
+      doc: 'Halt Auction'
   statistic_type:
     0x43:
       id: 'closing_price'

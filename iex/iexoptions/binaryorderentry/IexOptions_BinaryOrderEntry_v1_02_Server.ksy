@@ -1081,7 +1081,7 @@ types:
         doc: 'mic'
       - id: cancel_on_disconnect
         type: s1_nullable
-        doc: 'cancelOnDisconnect. Nullable, No Value = 128'
+        doc: 'cancelOnDisconnect. Nullable, No Value = -128'
       - id: aiq_default
         type: str_3_nullable
         doc: 'aiqDefault. Nullable, No Value = 0'
@@ -1095,7 +1095,7 @@ types:
         doc: 'quoteUnsolicitedAckSubscription'
       - id: default_attributed_quote
         type: s1_nullable
-        doc: 'defaultAttributedQuote. Nullable, No Value = 128'
+        doc: 'defaultAttributedQuote. Nullable, No Value = -128'
       - id: default_cancel_instead_of_slide
         type: u1_nullable
         doc: 'defaultCancelInsteadOfSlide. Nullable, No Value = 255'
@@ -1148,10 +1148,10 @@ types:
         doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
         type: s1_nullable
-        doc: 'iocAttribution. Nullable, No Value = 128'
+        doc: 'iocAttribution. Nullable, No Value = -128'
       - id: blocked_by_breach_indicator
         type: s1_nullable
-        doc: 'blockedByBreachIndicator. Nullable, No Value = 128'
+        doc: 'blockedByBreachIndicator. Nullable, No Value = -128'
       - id: cust_capacity_weight
         type: u1
         doc: 'custCapacityWeight'

@@ -33,7 +33,7 @@ meta:
   id: nasdaq_nsmequities_totalview_asciiitch_v3_0_udp
   title: Nasdaq NsmEquities TotalView AsciiItch v3.0
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market TotalView Itch AsciiItch v3.0'
 doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
@@ -62,14 +62,25 @@ types:
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
       - id: message_count
-        type: u2le
+        type: u2
         doc: 'Number of messages to follow this header'
   message:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
     seq:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 1
+        size: _parent.message_length - 1
         type:
           switch-on: message_header.message_type
           cases:
@@ -91,9 +102,6 @@ types:
             'message_type::net_order_imbalance_indicator_message': net_order_imbalance_indicator_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: message_type
         type: u1
         enum: message_type

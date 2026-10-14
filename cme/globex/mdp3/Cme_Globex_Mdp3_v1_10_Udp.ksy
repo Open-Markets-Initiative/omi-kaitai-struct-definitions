@@ -386,6 +386,7 @@ types:
     seq:
       - id: block_length
         type: u2
+        doc: 'Length'
       - id: padding_5
         size: 5
         doc: '5 bytes padding'

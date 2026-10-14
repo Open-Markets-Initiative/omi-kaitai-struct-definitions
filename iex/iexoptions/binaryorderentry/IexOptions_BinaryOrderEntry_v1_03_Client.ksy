@@ -166,20 +166,20 @@ types:
         doc: 'openClose'
       - id: attributed_quote_optional
         type: s1_nullable
-        doc: 'attributedQuote. Nullable, No Value = 128'
+        doc: 'attributedQuote. Nullable, No Value = -128'
       - id: time_in_force
         type: s1
         enum: time_in_force
         doc: 'timeInForce'
       - id: cancel_instead_of_slide_optional
         type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: display_inst
         type: s1_nullable
-        doc: 'displayInst. Nullable, No Value = 128'
+        doc: 'displayInst. Nullable, No Value = -128'
       - id: exec_inst
         type: s1_nullable
-        doc: 'execInst. Nullable, No Value = 128'
+        doc: 'execInst. Nullable, No Value = -128'
       - id: ord_type
         type: s1
         enum: ord_type
@@ -234,28 +234,28 @@ types:
         doc: 'origClOrdId'
       - id: customer_or_firm_optional
         type: s1_nullable
-        doc: 'customerOrFirm. Nullable, No Value = 128'
+        doc: 'customerOrFirm. Nullable, No Value = -128'
       - id: open_close_optional
         type: s1_nullable
-        doc: 'openClose. Nullable, No Value = 128'
+        doc: 'openClose. Nullable, No Value = -128'
       - id: attributed_quote_optional
         type: s1_nullable
-        doc: 'attributedQuote. Nullable, No Value = 128'
+        doc: 'attributedQuote. Nullable, No Value = -128'
       - id: time_in_force_optional
         type: s1_nullable
-        doc: 'timeInForce. Nullable, No Value = 128'
+        doc: 'timeInForce. Nullable, No Value = -128'
       - id: cancel_instead_of_slide_optional
         type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: display_inst
         type: s1_nullable
-        doc: 'displayInst. Nullable, No Value = 128'
+        doc: 'displayInst. Nullable, No Value = -128'
       - id: exec_inst
         type: s1_nullable
-        doc: 'execInst. Nullable, No Value = 128'
+        doc: 'execInst. Nullable, No Value = -128'
       - id: ord_type_optional
         type: s1_nullable
-        doc: 'ordType. Nullable, No Value = 128'
+        doc: 'ordType. Nullable, No Value = -128'
       - id: target_party_id
         type: str_4_nullable
         doc: 'targetPartyId. Nullable, No Value = 0'
@@ -276,7 +276,7 @@ types:
         doc: 'aiq. Nullable, No Value = 0'
       - id: side_optional
         type: s1_nullable
-        doc: 'side. Nullable, No Value = 128'
+        doc: 'side. Nullable, No Value = -128'
       - id: price_price_8_optional
         type: decimal_s8_8_nullable
         doc: 'price. Implied decimal with scale 1e-8. Nullable, No Value = -9223372036854775808'
@@ -313,7 +313,7 @@ types:
         doc: 'clearingAccount. Nullable, No Value = 0'
       - id: cancel_instead_of_slide_optional
         type: s1_nullable
-        doc: 'cancelInsteadOfSlide. Nullable, No Value = 128'
+        doc: 'cancelInsteadOfSlide. Nullable, No Value = -128'
       - id: send_time
         type: u8
         doc: 'sendTime'
@@ -366,7 +366,7 @@ types:
         doc: 'Type of quote'
       - id: reserved
         type: s1_nullable
-        doc: 'Scratchpad – not validated. Nullable, No Value = 128'
+        doc: 'Scratchpad – not validated. Nullable, No Value = -128'
   mass_cancel_request_message:
     seq:
       - id: underlying_id_optional
@@ -454,10 +454,10 @@ types:
         doc: 'clOrdId'
       - id: risk_control_optional
         type: s1_nullable
-        doc: 'riskControl. Nullable, No Value = 128'
+        doc: 'riskControl. Nullable, No Value = -128'
       - id: risk_control_status
         type: s1_nullable
-        doc: 'riskControlStatus. Nullable, No Value = 128'
+        doc: 'riskControlStatus. Nullable, No Value = -128'
       - id: time_limit
         type: u8_nullable
         doc: 'timeLimit. Nullable, No Value = 18446744073709551615'
@@ -469,7 +469,7 @@ types:
         doc: 'countLimit. Nullable, No Value = 4294967295'
       - id: ioc_attribution
         type: s1_nullable
-        doc: 'iocAttribution. Nullable, No Value = 128'
+        doc: 'iocAttribution. Nullable, No Value = -128'
       - id: cust_capacity_weight
         type: u1_nullable
         doc: 'custCapacityWeight. Nullable, No Value = 255'

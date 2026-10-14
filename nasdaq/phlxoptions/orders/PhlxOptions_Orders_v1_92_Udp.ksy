@@ -59,17 +59,28 @@ types:
         pad-right: 0x20
         doc: 'Identity of the multicast session the payload relates to'
       - id: sequence_number
-        type: u4
+        type: u4le
         doc: 'Sequence Number of the first message to follow this header'
       - id: message_count
         type: u2le
         doc: 'Number of messages to follow this header'
   message:
     seq:
+      - id: message_length
+        type: u2le
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
+    seq:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 1
+        size: _parent.message_length - 1
         type:
           switch-on: message_header.message_type
           cases:
@@ -86,9 +97,6 @@ types:
             'message_type::complex_auction_notification_message': complex_auction_notification_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: message_type
         type: u1
         enum: message_type

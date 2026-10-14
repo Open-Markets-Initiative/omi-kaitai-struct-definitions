@@ -14,28 +14,28 @@ class CboeGaprequestproxyPitchV1Tests(unittest.TestCase):
 
     def test_gaprequestmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/GapRequestProxy.Pitch.v1/GapRequestMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "little", True):
+            if payloads.partial(payload, 0, 2, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeGaprequestproxyPitchV1.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_gapresponsemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/GapRequestProxy.Pitch.v1/GapResponseMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "little", True):
+            if payloads.partial(payload, 0, 2, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeGaprequestproxyPitchV1.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_loginmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/GapRequestProxy.Pitch.v1/LoginMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "little", True):
+            if payloads.partial(payload, 0, 2, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeGaprequestproxyPitchV1.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
     def test_loginresponsemessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/GapRequestProxy.Pitch.v1/LoginResponseMessage.pcap"):
-            if payloads.partial(payload, 0, 2, "little", True):
+            if payloads.partial(payload, 0, 2, "little", 0):
                 self.skipTest("capture ends mid message; tcp reassembly required")
             parsed = CboeGaprequestproxyPitchV1.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())

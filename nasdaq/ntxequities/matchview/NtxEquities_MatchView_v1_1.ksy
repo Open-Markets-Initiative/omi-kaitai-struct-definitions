@@ -33,7 +33,7 @@ meta:
   id: nasdaq_ntxequities_matchview_asciiitch_v1_1
   title: Nasdaq NtxEquities MatchView AsciiItch v1.1
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Match View AsciiItch v1.1'
 doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=dpspecs
@@ -62,23 +62,31 @@ types:
         type: u4
         doc: 'Sequence Number of the first message to follow this header'
       - id: message_count
-        type: u2le
+        type: u2
         doc: 'Number of messages to follow this header'
   message:
+    seq:
+      - id: message_length
+        type: u2
+        doc: 'Length of data message not including this field'
+      - id: message_body
+        size: message_length + 2 - 2
+        type:
+          switch-on: message_length
+          cases:
+            _: message_data
+  message_data:
     seq:
       - id: message_header
         type: message_header
       - id: payload
-        size: message_header.message_length - 9
+        size: _parent.message_length - 9
         type:
           switch-on: message_header.message_type
           cases:
             'message_type::quote_update_message': quote_update_message
   message_header:
     seq:
-      - id: message_length
-        type: u2
-        doc: 'Length of data message not including this field'
       - id: timestamp
         type: millisecond_ascii_timestamp
         doc: 'Milliseconds past midnight Eastern the message was generated. Milliseconds since Midnight epoch'

@@ -334,12 +334,12 @@ types:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   settl_price_type:
     meta:
       bit-endian: le
@@ -373,243 +373,243 @@ types:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   coupon_rate_optional:
     seq:
       - id: mantissa_32
         type: s4
         doc: 'mantissa. Nullable, No Value = 2147483647'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa_32 * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   fair_coupon_pct:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   leg_purchase_rate:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   fixed_npv:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   float_npv:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   npv:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   accrued_coupons:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   daily_incremental_eris_pai:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   eris_pai:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   fed_funds_rate:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   min_price_increment_optional:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   fixed_payment:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   floating_payment:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   next_fixed_payment_amount:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   next_floating_payment_amount:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   previous_eris_pai:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   leg_contract_multiplier:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   p_v_01:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   d_v_01:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   settlement_npv:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   final_settlement_futures_price:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   eris_security_alt_id_groups:
     seq:
       - id: group_size
@@ -1262,7 +1262,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1273,7 +1273,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1284,7 +1284,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1295,7 +1295,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1306,7 +1306,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1469,7 +1469,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1577,7 +1577,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1851,7 +1851,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1862,7 +1862,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -1993,7 +1993,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2092,7 +2092,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2103,7 +2103,7 @@ types:
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
       - id: exponent
         type: s1
-        doc: 'exponent. Nullable, No Value = 127'
+        doc: 'exponent'
     instances:
       real:
         value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
@@ -2264,23 +2264,23 @@ types:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   strike_price_decimal_optional:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   trade_blocks_legs_groups:
     seq:
       - id: group_size
@@ -2357,23 +2357,23 @@ types:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   leg_unit_of_measure_qty_decimal_64_null:
     seq:
       - id: mantissa
         type: s8
         doc: 'mantissa. Nullable, No Value = 9223372036854775807'
-      - id: exponent
+      - id: exponent_optional
         type: s1
         doc: 'exponent. Nullable, No Value = 127'
     instances:
       real:
-        value: 'mantissa * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+        value: 'mantissa * (exponent_optional == 9 ? 1000000000.0 : exponent_optional == 8 ? 100000000.0 : exponent_optional == 7 ? 10000000.0 : exponent_optional == 6 ? 1000000.0 : exponent_optional == 5 ? 100000.0 : exponent_optional == 4 ? 10000.0 : exponent_optional == 3 ? 1000.0 : exponent_optional == 2 ? 100.0 : exponent_optional == 1 ? 10.0 : exponent_optional == 0 ? 1.0 : exponent_optional == -1 ? 0.1 : exponent_optional == -2 ? 0.01 : exponent_optional == -3 ? 0.001 : exponent_optional == -4 ? 0.0001 : exponent_optional == -5 ? 0.00001 : exponent_optional == -6 ? 0.000001 : exponent_optional == -7 ? 0.0000001 : exponent_optional == -8 ? 0.00000001 : exponent_optional == -9 ? 0.000000001 : 1.0)'
   md_incremental_refresh_ot_c_366:
     seq:
       - id: transact_time

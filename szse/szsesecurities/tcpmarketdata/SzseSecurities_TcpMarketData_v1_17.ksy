@@ -287,10 +287,10 @@ types:
         doc: 'Ending time of a trading session, reserved'
       - id: thredhold_amount
         type: decimal_s8_4
-        doc: 'Daily initial amount. Implied decimal with scale 1e4'
+        doc: 'Daily initial amount. Implied decimal with scale 1e-4'
       - id: pos_amt
         type: decimal_s8_4
-        doc: 'Intraday remaining amount, fixed at 0.0000 when the amount is not available. Implied decimal with scale 1e4'
+        doc: 'Intraday remaining amount, fixed at 0.0000 when the amount is not available. Implied decimal with scale 1e-4'
       - id: amounts_status
         type: u1
         enum: amounts_status
@@ -404,16 +404,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -432,10 +432,10 @@ types:
         doc: 'Type of market data entries'
       - id: md_entry_px
         type: decimal_s8_6
-        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e6'
+        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e-6'
       - id: md_entry_size
         type: decimal_s8_2
-        doc: 'Quantity. Implied decimal with scale 1e2'
+        doc: 'Quantity. Implied decimal with scale 1e-2'
       - id: md_price_level
         type: u2
         doc: 'Level of a bid or offer in the order book'
@@ -454,7 +454,7 @@ types:
     seq:
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
   snapshot_data_of_spot_bond_trading_message:
     seq:
       - id: orig_time
@@ -489,16 +489,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -517,10 +517,10 @@ types:
         doc: 'One entry per trading phase subdivision, giving its code and trading type'
       - id: auction_volume_trade
         type: decimal_s8_2
-        doc: 'Auction Volume of matching deal. Implied decimal with scale 1e2'
+        doc: 'Auction Volume of matching deal. Implied decimal with scale 1e-2'
       - id: auction_value_trade
         type: decimal_s8_4
-        doc: 'Auction value of matching deal. Implied decimal with scale 1e4'
+        doc: 'Auction value of matching deal. Implied decimal with scale 1e-4'
   sub_trading_phase_codes:
     seq:
       - id: sub_trading_phase_code
@@ -567,16 +567,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_trade_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -595,10 +595,10 @@ types:
         doc: 'Type of market data entries'
       - id: md_entry_px
         type: decimal_s8_6
-        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e6'
+        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e-6'
       - id: md_entry_size
         type: decimal_s8_2
-        doc: 'Quantity. Implied decimal with scale 1e2'
+        doc: 'Quantity. Implied decimal with scale 1e-2'
   snapshot_data_of_after_hour_trading_message:
     seq:
       - id: orig_time
@@ -633,16 +633,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_trade_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -685,16 +685,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_hk_stocks_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -721,10 +721,10 @@ types:
         doc: 'Type of market data entries'
       - id: md_entry_px
         type: decimal_s8_6
-        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e6'
+        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e-6'
       - id: md_entry_size
         type: decimal_s8_2
-        doc: 'Quantity. Implied decimal with scale 1e2'
+        doc: 'Quantity. Implied decimal with scale 1e-2'
       - id: md_price_level
         type: u2
         doc: 'Level of a bid or offer in the order book'
@@ -770,16 +770,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_index_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -798,7 +798,7 @@ types:
         doc: 'Type of market data entries'
       - id: md_entry_px
         type: decimal_s8_6
-        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e6'
+        doc: 'Price, carrying eighteen digits of which six are decimal. Implied decimal with scale 1e-6'
   statistic_indicator_snapshot_message:
     seq:
       - id: orig_time
@@ -833,16 +833,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: stock_num
         type: u4
         doc: 'Number of stocks'
@@ -880,16 +880,16 @@ types:
         doc: 'Trading phase code of the product. The No.0 digit carries the trading phase, S=start before the market opened, O=Opening call auction, T=Continuous bidding, B=Closed, C=Closing call auction, E=Closed market, H=Temporary trading halts, A=After-hours Dealing, V=Volatility interruption. The No.1 digit carries the sub phase, 0=normal status, 1=All day suspension'
       - id: prev_close_px
         type: decimal_s8_4
-        doc: 'Previous close price. Implied decimal with scale 1e4'
+        doc: 'Previous close price. Implied decimal with scale 1e-4'
       - id: num_trades
         type: s8
         doc: 'Number of trades'
       - id: total_volume_trade
         type: decimal_s8_2
-        doc: 'Total volume of trades. Implied decimal with scale 1e2'
+        doc: 'Total volume of trades. Implied decimal with scale 1e-2'
       - id: total_value_trade
         type: decimal_s8_4
-        doc: 'Total value of trades. Implied decimal with scale 1e4'
+        doc: 'Total value of trades. Implied decimal with scale 1e-4'
       - id: num_index_md_entries
         type: u4
         doc: 'Number of market data entries'
@@ -926,10 +926,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -969,10 +969,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -1026,10 +1026,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -1072,10 +1072,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -1115,10 +1115,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -1177,7 +1177,7 @@ types:
         doc: 'Memo'
       - id: min_qty
         type: decimal_s8_2
-        doc: 'Minimum number of transactions, applicable to Click Deal market data. Implied decimal with scale 1e2'
+        doc: 'Minimum number of transactions, applicable to Click Deal market data. Implied decimal with scale 1e-2'
   order_tick_data_of_bid_quotation_message:
     seq:
       - id: channel_no
@@ -1206,10 +1206,10 @@ types:
         doc: 'Source of security code'
       - id: price
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: order_qty
         type: decimal_s8_2
-        doc: 'Quantity of orders. Implied decimal with scale 1e2'
+        doc: 'Quantity of orders. Implied decimal with scale 1e-2'
       - id: side
         type: u1
         enum: side
@@ -1276,13 +1276,13 @@ types:
         doc: 'Bid transaction method'
       - id: low_limit_price
         type: decimal_s8_4
-        doc: 'Low limit price. Implied decimal with scale 1e4'
+        doc: 'Low limit price. Implied decimal with scale 1e-4'
       - id: high_limit_price
         type: decimal_s8_4
-        doc: 'High limit price, 0 means no high limit price. Implied decimal with scale 1e4'
+        doc: 'High limit price, 0 means no high limit price. Implied decimal with scale 1e-4'
       - id: min_qty
         type: decimal_s8_2
-        doc: 'Minimum number of transactions, applicable to Click Deal market data. Implied decimal with scale 1e2'
+        doc: 'Minimum number of transactions, applicable to Click Deal market data. Implied decimal with scale 1e-2'
       - id: trade_date
         type: yyyymmdd_date
         doc: 'Trade date'
@@ -1320,10 +1320,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1365,10 +1365,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1410,10 +1410,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1455,10 +1455,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1500,10 +1500,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1552,10 +1552,10 @@ types:
         doc: 'Source of security code'
       - id: last_px
         type: decimal_s8_4
-        doc: 'Order price. Implied decimal with scale 1e4'
+        doc: 'Order price. Implied decimal with scale 1e-4'
       - id: last_qty
         type: decimal_s8_2
-        doc: 'Order volume. Implied decimal with scale 1e2'
+        doc: 'Order volume. Implied decimal with scale 1e-2'
       - id: exec_type
         type: u1
         enum: exec_type
@@ -1582,7 +1582,7 @@ types:
         doc: 'Bid transaction method'
       - id: margin_price
         type: decimal_s8_4
-        doc: 'Marginal price. Reveals the marginal price of a bidding transaction won by multiple entities at a single price or at multiple prices; meaningless for other bidding transaction methods, fixed fill -999999999.9999. Implied decimal with scale 1e4'
+        doc: 'Marginal price. Reveals the marginal price of a bidding transaction won by multiple entities at a single price or at multiple prices; meaningless for other bidding transaction methods, fixed fill -999999999.9999. Implied decimal with scale 1e-4'
   message_tail_struct:
     seq:
       - id: checksum

@@ -44,7 +44,8 @@ seq:
     doc: 'Order Book Feed PacketHeader Header'
   - id: sbe_frame
     type: sbe_frame_struct
-    repeat: eos
+    repeat: expr
+    repeat-expr: packet_header.message_count
     doc: 'Sbe Frame'
 
 types:

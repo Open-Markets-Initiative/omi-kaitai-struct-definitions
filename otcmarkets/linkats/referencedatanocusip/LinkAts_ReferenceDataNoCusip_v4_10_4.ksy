@@ -43,7 +43,7 @@ seq:
     type: packet_header_struct
   - id: message_block
     repeat: expr
-    repeat-expr: packet_header.messages
+    repeat-expr: packet_header.message_count
     type:
       switch-on: packet_header.packet_flag.heartbeat
       cases:
@@ -61,7 +61,7 @@ types:
       - id: packet_flag
         type: packet_flag
         doc: 'Packet Flags'
-      - id: messages
+      - id: message_count
         type: u1
         doc: 'Number of messages in packet'
       - id: packet_milli
