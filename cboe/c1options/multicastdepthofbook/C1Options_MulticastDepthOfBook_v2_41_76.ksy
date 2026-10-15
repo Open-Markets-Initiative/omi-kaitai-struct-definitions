@@ -131,6 +131,9 @@ types:
       - id: time
         type: second_timestamp
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds. On Daylight Saving Time transition days, Time reflects wall clock seconds and does not adjust for the UTC offset change. On a DST spring-forward day, the maximum value will be 82,799 (23 hours). On a DST fall-back day, values between 3,600 and 7,199 will appear twice. Recipients requiring unambiguous absolute timestamps should use Epoch Time (where available) or Midnight Reference in the Time Reference message. Seconds since Midnight epoch'
+      - id: epoch_time
+        type: u4
+        doc: 'C1 Options Only and effective 11/02/26 for BZX/EDGX Equities. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
   unit_clear_message:
     seq:
       - id: time_offset
@@ -946,7 +949,7 @@ enums:
     0x76:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
-    0x6c:
+    0x49:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4b:

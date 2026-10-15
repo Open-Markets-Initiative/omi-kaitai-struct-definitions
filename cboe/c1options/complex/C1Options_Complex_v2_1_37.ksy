@@ -818,9 +818,6 @@ enums:
     0x6f:
       id: 'complex_with_stock_cross'
       doc: 'Complex With Stock Cross'
-    0x6c:
-      id: 'electronic_trade'
-      doc: 'Electronic Trade'
     0x70:
       id: 'complex_with_stock_floor_trade'
       doc: 'Complex With Stock Floor Trade'
@@ -831,7 +828,7 @@ enums:
       id: 'extended_hours_trade'
       doc: 'Transaction represents a trade executed during the Curb session'
     0x49:
-      id: 'electronic_trade_x49'
+      id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4f:
       id: 'opening_trade'

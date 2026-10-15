@@ -892,7 +892,7 @@ enums:
     0x76:
       id: 'extended_hours_trade_transaction_represents_a_trade_executed_during_the_curb_session'
       doc: 'Extended Hours Trade Transaction Represents A Trade Executed During The Curb Session'
-    0x6c:
+    0x49:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4f:

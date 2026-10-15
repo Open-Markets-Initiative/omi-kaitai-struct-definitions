@@ -263,8 +263,9 @@ types:
         encoding: ASCII
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_display_indicator
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: peg_difference
         type: decimal_s8_4
         if: number_of_new_order_bitfields >= 3 and new_order_bitfield_3.new_order_bitfield_3_peg_difference
@@ -962,8 +963,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -1621,8 +1623,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -1831,8 +1834,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -2094,8 +2098,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -2454,8 +2459,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -2884,8 +2890,9 @@ types:
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_max_floor
       - id: discretion_amount
-        type: u2
+        type: decimal_s2_2
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_discretion_amount
+        doc: 'Implied decimal with scale 1e-2'
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and return_bitfield_3.return_bitfield_3_order_qty
@@ -3219,6 +3226,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  decimal_s2_2:
+    seq:
+      - id: mantissa
+        type: s2
+    instances:
+      real:
+        value: mantissa / 100.0
   nanosecond_timestamp:
     seq:
       - id: time

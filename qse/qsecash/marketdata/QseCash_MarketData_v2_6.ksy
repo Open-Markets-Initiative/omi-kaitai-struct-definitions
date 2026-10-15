@@ -124,8 +124,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -136,19 +136,13 @@ types:
         size: 2
         doc: 'For future use'
       - id: start_date_halting
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date when suspension of trading started for an instrument'
       - id: start_time_halting
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'Time when suspension of trading started for an instrument'
       - id: prog_opening_time
-        type: str
-        size: 6
-        encoding: ASCII
+        type: hhmmss_ascii_time
         doc: 'Instrument opening time that has been programmed by the Cash Market Operations'
       - id: order_entry_rejection
         type: u1
@@ -187,8 +181,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -222,8 +216,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -282,8 +276,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: im_price
         type: u4
         doc: 'Indicative Matching Price: Price at which transaction on a security would occur if Opening occurred at this moment (To be calculated with the PriceScaleCode)'
@@ -314,8 +308,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: high_collar
         type: u4
         doc: 'Higher bound of the collar price range (To be calculated with the HighScaleCode)'
@@ -347,8 +341,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -423,8 +417,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -475,8 +469,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: last_adj_price
         type: u4
         doc: 'Last traded price of the previous trading day after application of the adjustment coefficient (To be calculated with the LastAdjPriceScaleCode)'
@@ -542,9 +536,7 @@ types:
         encoding: ASCII
         doc: 'Isin Code, International Securities Identification Number, according to the ISO-6166'
       - id: date_of_last_trade
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Date of the last trading day during which a trade was executed for the instrument'
       - id: underlying_repo_isin_code
         type: str
@@ -557,9 +549,7 @@ types:
         encoding: ASCII
         doc: 'Represents the inclusive date until which a lending/borrowing contract can be traded'
       - id: first_settlement_date
-        type: str
-        size: 8
-        encoding: ASCII
+        type: yyyymmdd_ascii_date
         doc: 'Represents the first possible settlement date for a given instrument with the instrument''s depository'
       - id: type_of_derivatives
         type: u1
@@ -775,8 +765,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: trade_id_number
         type: u4
         doc: 'Unique numeric and increasing Identifier of the trade, set by the trading engine'
@@ -827,8 +817,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -850,8 +840,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: trade_id_number
         type: u4
         doc: 'Unique numeric and increasing Identifier of the trade, set by the trading engine'
@@ -924,8 +914,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -966,8 +956,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -1019,8 +1009,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -1063,8 +1053,8 @@ types:
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: quote_link_id
         type: u4
         doc: 'Identifies a unique quote that the Trade executed against'
@@ -1117,8 +1107,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -1169,7 +1159,7 @@ types:
         type: u4
         doc: 'Date giving the priority of the order (YYYYMMDD)'
       - id: order_priority_time
-        type: u4
+        type: hhmmssmmm_time
         doc: 'Time giving the priority of the order (HHMMSSsss)'
       - id: order_priority_micro_secs
         type: u2
@@ -1185,8 +1175,8 @@ types:
   orderbook_retransmission_delimiter_message:
     seq:
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: source_seq_num
         type: u4
         doc: 'This field specifies the sequence number assigned by the source system to this message'
@@ -1209,8 +1199,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: index_level
         type: u4
         doc: 'The value of the last level for the index that is the subject of this message To be calculated with the LevelScaleCode)'
@@ -1270,32 +1260,32 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: preliminary_opening_level
         type: u4
         doc: 'Preliminary Opening index level(To be calculated with the LevelScaleCode)'
       - id: preliminary_opening_time
-        type: u4
-        doc: 'Time of provisional opening index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional opening index level. Milliseconds since Midnight epoch'
       - id: first_level
         type: u4
         doc: 'First index level broadcast (To be calculated with the LevelScaleCode)'
       - id: first_time
-        type: u4
-        doc: 'Time of provisional first index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional first index level. Milliseconds since Midnight epoch'
       - id: opening_reference_level
         type: u4
         doc: 'Reference opening index level (To be calculated with the LevelScaleCode)'
       - id: opening_reference_time
-        type: u4
-        doc: 'Time of provisional opening reference index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional opening reference index level. Milliseconds since Midnight epoch'
       - id: closing_reference_level
         type: u4
         doc: 'Reference closing index level (To be calculated with the LevelScaleCode)'
       - id: closing_reference_time
-        type: u4
-        doc: 'Time of provisional closing reference index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional closing reference index level. Milliseconds since Midnight epoch'
       - id: percent_variation_prev_clos
         type: u4
         doc: 'Percentage of variation for last index level vs'
@@ -1303,26 +1293,26 @@ types:
         type: u4
         doc: 'Highest index level (To be calculated with the LevelScaleCode)'
       - id: high_time
-        type: u4
-        doc: 'Time of provisional highest index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional highest index level. Milliseconds since Midnight epoch'
       - id: low_level
         type: u4
         doc: 'Lowest index level (To be calculated with the LevelScaleCode)'
       - id: low_time
-        type: u4
-        doc: 'Time of provisional lowest index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional lowest index level. Milliseconds since Midnight epoch'
       - id: clearing_level
         type: u4
         doc: 'Reference daily settlement index level (To be calculated with the LevelScaleCode)'
       - id: clearing_time
-        type: u4
-        doc: 'Time of provisional daily settlement index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional daily settlement index level. Milliseconds since Midnight epoch'
       - id: liquidation_level
         type: u4
         doc: 'Reference at-expiration settlement index level (To be calculated with the LevelScaleCode)'
       - id: liquidation_time
-        type: u4
-        doc: 'Time of provisional expiation settlement index level'
+        type: millisecond_timestamp
+        doc: 'Time of provisional expiation settlement index level. Milliseconds since Midnight epoch'
       - id: system_id
         type: u4
         doc: 'The ID of the originating Exchange/System of the message'
@@ -1349,8 +1339,8 @@ types:
         type: u4
         doc: 'UTP-MD proprietary identification of the instrument'
       - id: source_time
-        type: u4
-        doc: 'This field specifies the message generation time'
+        type: millisecond_timestamp
+        doc: 'This field specifies the message generation time. Milliseconds since Midnight epoch'
       - id: instrument_weight
         type: u4
         doc: 'Instrument''s weight (in %) in previous day''s reference capitalization of the index (To be calculated with the PriceScaleCode)'
@@ -1400,6 +1390,58 @@ types:
       - id: last_seq_num
         type: u4
         doc: 'Contains the last cached PacketSeqNum that the Refresh is valid to'
+  millisecond_timestamp:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 3600000 % 24
+      minute:
+        value: time / 60000 % 60
+      second:
+        value: time / 1000 % 60
+      millisecond:
+        value: time % 1000
+  yyyymmdd_ascii_date:
+    seq:
+      - id: text
+        type: str
+        size: 8
+        encoding: ASCII
+    instances:
+      year:
+        value: text.substring(0, 4).to_i
+      month:
+        value: text.substring(4, 6).to_i
+      day:
+        value: text.substring(6, 8).to_i
+  hhmmss_ascii_time:
+    seq:
+      - id: text
+        type: str
+        size: 6
+        encoding: ASCII
+    instances:
+      hour:
+        value: text.substring(0, 2).to_i
+      minute:
+        value: text.substring(2, 4).to_i
+      second:
+        value: text.substring(4, 6).to_i
+  hhmmssmmm_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000000 % 100
+      minute:
+        value: time / 100000 % 100
+      second:
+        value: time / 1000 % 100
+      millisecond:
+        value: time % 1000
 
 enums:
   packet_type:
@@ -1839,7 +1881,7 @@ enums:
       doc: 'Indicative Price'
   type_of_last_price:
     4:
-      id: 'value_4'
+      id: 'first_traded_price'
       doc: '1 Traded Price'
     7:
       id: 'n_traded_price_resume_after_reservation'

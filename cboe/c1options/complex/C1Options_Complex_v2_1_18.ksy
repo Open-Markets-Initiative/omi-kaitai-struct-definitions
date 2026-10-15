@@ -801,7 +801,7 @@ enums:
     0x6f:
       id: 'complex_with_stock_cross'
       doc: 'Complex with Stock Cross'
-    0x6c:
+    0x49:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4f:

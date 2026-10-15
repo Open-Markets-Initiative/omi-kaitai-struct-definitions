@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe BzxEquities Top AsciiPitch v1.3.9
+# Kaitai struct definition for: Cboe BzxEquities Top AsciiPitch v1.3.8
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
 #   Protocol: Top
 #   Encoding: Ascii Pitch
-#   Version: 1.3.9
+#   Version: 1.3.8
 #   Date: 01/15/2025
-#   Specification: Cboe_US_Equities_Summary_Depth_Feed_Specification.pdf
+#   Specification: Cboe US Equities TOP Specification (2025-08-29).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_bzxequities_top_asciipitch_v1_3_9
-  title: Cboe BzxEquities Top AsciiPitch v1.3.9
+  id: cboe_bzxequities_top_asciipitch_v1_3_8
+  title: Cboe BzxEquities Top AsciiPitch v1.3.8
   license: GPL-3.0
   endian: be
 
-doc: 'Chicago Board Options Exchange Cboe Bzx Equities Top AsciiPitch v1.3.9'
+doc: 'Chicago Board Options Exchange Cboe Bzx Equities Top AsciiPitch v1.3.8'
 doc-ref: http://markets.cboe.com/us/equities/support/technical
 
 seq:

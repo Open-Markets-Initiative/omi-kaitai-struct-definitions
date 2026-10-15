@@ -96,9 +96,9 @@ types:
         size: 10
         encoding: ASCII
         doc: 'The password associated with the SessionId and SessionSubId'
-      - id: replay_unspecified_unit
+      - id: replay_instruction
         type: u1
-        enum: replay_unspecified_unit
+        enum: replay_instruction
         doc: 'Controls replay behavior for unknown units'
       - id: num_unit_sequence
         type: u1
@@ -618,7 +618,7 @@ types:
     seq:
       - id: quote_symbol
         type: str
-        size: 1
+        size: 6
         encoding: ASCII
         doc: 'Entire Cboe format symbol for a quote update'
       - id: side
@@ -688,7 +688,7 @@ types:
     seq:
       - id: quote_symbol
         type: str
-        size: 1
+        size: 6
         encoding: ASCII
         doc: 'Entire Cboe format symbol for a quote update'
       - id: side
@@ -841,7 +841,10 @@ enums:
     0x07de:
       id: 'reset_risk_message'
       doc: 'Reset or release Firm, Risk Root, or Custom Group ID level lockout conditions resulting from risk profile trips or self-imposed lockouts issued via Cancel Order or Purge Orders messages'
-  replay_unspecified_unit:
+  replay_instruction:
+    0x44:
+      id: 'deep_replay_of_specified_unit'
+      doc: 'Deep Replay Of Specified Unit'
     0x46:
       id: 'fail_if_unit_not_specified'
       doc: 'Fail If Unit Not Specified'
@@ -922,7 +925,16 @@ enums:
   display_indicator:
     0x56:
       id: 'default_field'
-      doc: 'As determined by port level setting'
+      doc: 'As determined by port level setting (default to S)'
+    0x53:
+      id: 'display_price_sliding'
+      doc: 'This is to override a opt-out of Display Price Sliding at the port level'
+    0x4c:
+      id: 'display_price_sliding_but_reject_if_order_crosses_nbbo_on_entry'
+      doc: 'Display Price Sliding But Reject If Order Crosses Nbbo On Entry'
+    0x4d:
+      id: 'multiple_display_price_sliding'
+      doc: 'Multiple Display Price Sliding'
     0x50:
       id: 'price_adjust'
       doc: 'Price Adjust'
@@ -930,8 +942,11 @@ enums:
       id: 'multiple_price_adjust'
       doc: 'Multiple Price Adjust'
     0x52:
-      id: 'reject_the_order_if_it_cannot_be_booked_and_displayed_without'
-      doc: 'Reject The Order If It Cannot Be Booked And Displayed Without'
+      id: 'reject_the_order_if_it_cannot_be_booked_and_displayed_without_adjustment'
+      doc: 'Reject The Order If It Cannot Be Booked And Displayed Without Adjustment'
+    0x4e:
+      id: 'no_rescrape_at_limit'
+      doc: 'No Rescrape At Limit'
   put_or_call:
     0x30:
       id: 'put'
@@ -1145,13 +1160,22 @@ enums:
     0x51:
       id: 'sequence_ahead'
       doc: 'Sequence Ahead'
+    0x52:
+      id: 'replay_too_deep'
+      doc: 'Replay Too Deep'
     0x53:
       id: 'invalid_session'
       doc: 'Invalid Session'
+    0x58:
+      id: 'invalid_replay_instruction'
+      doc: 'Invalid Replay Instruction'
   logout_reason:
     0x55:
       id: 'user_requested'
       doc: 'User Requested'
+    0x45:
+      id: 'end_of_day'
+      doc: 'End Of Day'
     0x41:
       id: 'administrative'
       doc: 'Administrative'

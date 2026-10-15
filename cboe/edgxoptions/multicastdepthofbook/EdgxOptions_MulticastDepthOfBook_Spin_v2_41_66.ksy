@@ -1047,7 +1047,7 @@ enums:
     0x76:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
-    0x6c:
+    0x49:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4b:

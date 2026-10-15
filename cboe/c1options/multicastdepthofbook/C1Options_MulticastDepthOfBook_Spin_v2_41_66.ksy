@@ -200,6 +200,9 @@ types:
       - id: time
         type: u4
         doc: 'Number of whole seconds elapsed since the start of the current Eastern Time calendar day, derived by converting the current Eastern wall clock time (HH:MM:SS) to seconds'
+      - id: epoch_time
+        type: u4
+        doc: 'C1 Options Only. Number of whole seconds since the Epoch (midnight January 1, 1970 UTC)'
   unit_clear_message:
     seq:
       - id: time_offset
@@ -1047,7 +1050,7 @@ enums:
     0x76:
       id: 'extended_hours_trade'
       doc: 'Extended Hours Trade'
-    0x6c:
+    0x49:
       id: 'electronic_trade'
       doc: 'Electronic Trade'
     0x4b:

@@ -395,12 +395,12 @@ enums:
     0x4e:
       id: 'not_set_up_for_ipo_release'
       doc: 'Nasdaq listed instrument is not set up as a new IPO security'
-    0x5a:
-      id: 'non_ipo_new_listed_security'
-      doc: 'Nasdaq listed instrument is a non-IPO new listed security'
     0x20:
       id: 'not_available'
       doc: 'Not Available'
+    0x5a:
+      id: 'non_ipo_new_listed_security'
+      doc: 'Nasdaq listed instrument is a non-IPO new listed security'
   luld_reference_price_tier:
     0x31:
       id: 'tier_1'
@@ -558,12 +558,12 @@ enums:
     0x48:
       id: 'halted_or_paused'
       doc: 'Cross for IPO and halted / paused securities'
-    0x41:
-      id: 'extended_close'
-      doc: 'Extended Trading Close'
     0x49:
       id: 'intraday_or_post_close'
       doc: 'Nasdaq Cross Network: Intraday Cross and Post-Close Cross'
+    0x41:
+      id: 'extended_close'
+      doc: 'Extended Trading Close'
   imbalance_direction:
     0x42:
       id: 'buy'

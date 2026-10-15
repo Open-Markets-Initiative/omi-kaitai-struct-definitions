@@ -1146,6 +1146,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1219,6 +1222,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1309,6 +1315,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1382,6 +1391,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1455,6 +1467,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1528,6 +1543,9 @@ enums:
     0x5a:
       id: 'unforeseen_reason'
       doc: 'Unforeseen Reason'
+    0x63:
+      id: 'only_close_transactions_accepted'
+      doc: 'Only Close Transactions Accepted'
     0x68:
       id: 'order_persisted'
       doc: 'Order Persisted'
@@ -1644,6 +1662,9 @@ enums:
     0x63:
       id: 'invalid_capacity'
       doc: 'Invalid Capacity'
+    0x64:
+      id: 'close_only'
+      doc: 'Close Only'
     0x65:
       id: 'invalid_oeoid'
       doc: 'Invalid Oeoid'
@@ -1662,16 +1683,13 @@ enums:
     0x6f:
       id: 'invalid_open_close'
       doc: 'Invalid Open Close'
-    0x70:
-      id: 'risk_management_product_level'
-      doc: 'Risk Management Product Level'
     0x72:
       id: 'invalid_remove'
       doc: 'Invalid Remove'
     0x73:
       id: 'invalid_side'
       doc: 'Invalid Side'
-    0x75:
+    0x55:
       id: 'symbol_range_unreachable'
       doc: 'Symbol Range Unreachable'
     0x78:
