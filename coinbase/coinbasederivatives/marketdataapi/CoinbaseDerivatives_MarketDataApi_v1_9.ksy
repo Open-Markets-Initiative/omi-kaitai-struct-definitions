@@ -149,7 +149,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -159,7 +159,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: tick_size
         type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
@@ -172,7 +172,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'currency'
+        doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
         doc: 'firstTradingSessionDate'
@@ -224,10 +224,10 @@ types:
     seq:
       - id: instrument_flags
         type: u1
-        doc: 'Total message size in bytes including this header'
+        doc: 'Bitset marking where the transaction begins and ends: 0x01 start of transaction, 0x02 end of transaction, 0x04 clear book'
       - id: instrument_side
         type: s1
-        doc: 'Instrument Side'
+        doc: '1 buy, -1 sell, 0 opening fill, and -128 where side does not apply to the message'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
@@ -239,7 +239,7 @@ types:
         doc: 'tradingSessionDate'
       - id: reserved
         type: s2
-        doc: 'reserved'
+        doc: 'Two bytes of padding, reserved for future use'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
@@ -288,7 +288,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -298,7 +298,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: tick_size
         type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
@@ -311,7 +311,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'currency'
+        doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
         doc: 'firstTradingSessionDate'
@@ -369,7 +369,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -379,7 +379,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: small_tick
         type: decimal_s8_9
         doc: 'smallTick. Implied decimal with scale 1e-9'
@@ -458,10 +458,10 @@ types:
         doc: 'orderId'
       - id: price
         type: decimal_s8_9
-        doc: 'price. Implied decimal with scale 1e-9'
+        doc: 'Price encoded with 9 decimal places. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity encoded with 0 decimal places'
   order_delete_message:
     seq:
       - id: instr_header
@@ -506,7 +506,7 @@ types:
         doc: 'deepestPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity encoded with 0 decimal places'
   trade_message:
     seq:
       - id: instr_header
@@ -523,10 +523,10 @@ types:
         doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
       - id: price
         type: decimal_s8_9
-        doc: 'price. Implied decimal with scale 1e-9'
+        doc: 'Price encoded with 9 decimal places. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity encoded with 0 decimal places'
   trade_amend_message:
     seq:
       - id: instr_header
@@ -600,7 +600,7 @@ types:
         doc: 'Instrument Header'
       - id: price
         type: decimal_s8_9
-        doc: 'price. Implied decimal with scale 1e-9'
+        doc: 'Price encoded with 9 decimal places. Implied decimal with scale 1e-9'
       - id: stat_type
         type: u1
         enum: stat_type
@@ -623,7 +623,7 @@ types:
         doc: 'Instrument Header'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity encoded with 0 decimal places'
   funding_rate_message:
     seq:
       - id: instr_header
@@ -672,7 +672,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -682,7 +682,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: tick_size
         type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
@@ -695,7 +695,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'currency'
+        doc: 'Currency used for price'
       - id: product_id
         type: s4
         doc: 'productId'
@@ -746,7 +746,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -756,7 +756,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: tick_size
         type: decimal_s8_9
         doc: 'tickSize. Implied decimal with scale 1e-9'
@@ -769,7 +769,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
-        doc: 'currency'
+        doc: 'Currency used for price'
       - id: product_id
         type: s4
         doc: 'productId'
@@ -821,7 +821,7 @@ types:
         type: str
         size: 24
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument name or symbol'
       - id: product_code
         type: str
         size: 8
@@ -831,7 +831,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'description'
+        doc: 'Instrument name'
       - id: small_tick
         type: decimal_s8_9
         doc: 'smallTick. Implied decimal with scale 1e-9'
@@ -892,7 +892,7 @@ types:
         doc: 'snapshotSeqNum'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity encoded with 0 decimal places'
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'transactTime. Nanoseconds since Unix epoch'
@@ -901,7 +901,7 @@ types:
         doc: 'orderId'
       - id: price
         type: decimal_s8_9
-        doc: 'price. Implied decimal with scale 1e-9'
+        doc: 'Price encoded with 9 decimal places. Implied decimal with scale 1e-9'
   end_of_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -1022,11 +1022,11 @@ types:
         type: str
         size: 40
         encoding: ASCII
-        doc: 'details'
+        doc: 'Retransmit reject reason in text'
       - id: reason
         type: s1
         enum: reason
-        doc: 'reason'
+        doc: 'Why the retransmit was rejected: 1 sequence too low, 2 sequence too high, 3 rate limit exceeded, 4 other error'
   nanosecond_timestamp:
     seq:
       - id: time

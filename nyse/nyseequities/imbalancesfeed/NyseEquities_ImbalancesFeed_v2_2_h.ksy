@@ -368,11 +368,10 @@ types:
       - id: total_refresh_pkts
         type: u2
         doc: 'The total number of refresh packets you should expect in the update'
-      - id: refresh_header_layout
-        type:
-          switch-on: current_refresh_pkt
-          cases:
-            1: full_refresh_header
+      - id: full_refresh_header
+        type: full_refresh_header
+        if: current_refresh_pkt == 1
+        doc: 'Sequence number fields that only the full Refresh Header carries'
   full_refresh_header:
     seq:
       - id: last_seq_num

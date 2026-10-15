@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe DxeDerivatives BinaryOrderEntry Boe v2.32
+# Kaitai struct definition for: Cboe CedxDerivatives BinaryOrderEntry Boe v2.32
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
@@ -30,8 +30,8 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_dxederivatives_binaryorderentry_boe_v2_32
-  title: Cboe DxeDerivatives BinaryOrderEntry Boe v2.32
+  id: cboe_cedxderivatives_binaryorderentry_boe_v2_32
+  title: Cboe CedxDerivatives BinaryOrderEntry Boe v2.32
   license: GPL-3.0
   endian: le
 

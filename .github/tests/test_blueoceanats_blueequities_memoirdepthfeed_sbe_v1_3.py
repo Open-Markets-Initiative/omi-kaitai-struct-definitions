@@ -12,6 +12,16 @@ from blueoceanats_blueequities_memoirdepthfeed_sbe_v1_3 import BlueoceanatsBluee
 
 class BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
 
+    def test_heartbeat(self):
+        for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/Heartbeat.pcap"):
+            parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_instrumentdirectorymessage(self):
+        for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/InstrumentDirectoryMessage.pcap"):
+            parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderaddedmessage(self):
         for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/OrderAddedMessage.pcap"):
             parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
@@ -29,6 +39,16 @@ class BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
 
     def test_orderreducedmessage(self):
         for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/OrderReducedMessage.pcap"):
+            parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_securitytradingstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/SecurityTradingStatusMessage.pcap"):
+            parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_tradingsessionstatusmessage(self):
+        for payload in payloads.of("omi-data-packets/BlueOceanAts/BlueEquities.MemoirDepthFeed.Sbe.v1.3/TradingSessionStatusMessage.pcap"):
             parsed = BlueoceanatsBlueequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

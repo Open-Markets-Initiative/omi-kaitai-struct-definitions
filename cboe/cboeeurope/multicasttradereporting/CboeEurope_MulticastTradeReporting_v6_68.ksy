@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe DxeDerivatives MulticastDepthOfBook Pitch v1.11
+# Kaitai struct definition for: Cboe CboeEurope MulticastTradeReporting Pitch v6.68
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
-#   Protocol: Europe Derivatives Multicast Depth Of Book
+#   Protocol: Multicast Trade Reporting
 #   Encoding: Pitch
-#   Version: 1.11
-#   Date: 2/27/2023
-#   Specification: Cboe_Europe_CEDX_MCP_Specification.pdf
+#   Version: 6.68
+#   Date: 07/08/2026
+#   Specification: BATS_Europe_MC_PITCH_Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,13 +30,13 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_dxederivatives_multicastdepthofbook_pitch_v1_11
-  title: Cboe DxeDerivatives MulticastDepthOfBook Pitch v1.11
+  id: cboe_cboeeurope_multicasttradereporting_pitch_v6_68
+  title: Cboe CboeEurope MulticastTradeReporting Pitch v6.68
   license: GPL-3.0
   endian: le
 
-doc: 'Chicago Board Options Exchange Cboe Europe Derivatives Europe Derivatives Multicast Depth Of Book Pitch v1.11'
-doc-ref: https://www.cboe.com/europe/derivatives/support/technical
+doc: 'Chicago Board Options Exchange Cboe Europe Multicast Trade Reporting Pitch v6.68'
+doc-ref: https://www.cboe.com/europe/equities/support/technical
 
 seq:
   - id: packet_header
@@ -77,6 +77,7 @@ types:
             'message_type::unit_clear_message': unit_clear_message
             'message_type::add_order_long_message': add_order_long_message
             'message_type::add_order_short_message': add_order_short_message
+            'message_type::add_order_expanded_message': add_order_expanded_message
             'message_type::order_executed_message': order_executed_message
             'message_type::order_executed_at_price_size_message': order_executed_at_price_size_message
             'message_type::reduce_size_long_message': reduce_size_long_message
@@ -87,24 +88,16 @@ types:
             'message_type::trade_long_message': trade_long_message
             'message_type::trade_short_message': trade_short_message
             'message_type::trade_extended_message': trade_extended_message
+            'message_type::trade_unknown_symbol_message': trade_unknown_symbol_message
             'message_type::end_of_session': end_of_session
             'message_type::transaction_begin_message': transaction_begin_message
             'message_type::transaction_end_message': transaction_end_message
             'message_type::trading_status_message': trading_status_message
-            'message_type::fast_status_message': fast_status_message
+            'message_type::statistics_message': statistics_message
+            'message_type::auction_update_message': auction_update_message
             'message_type::auction_summary_message': auction_summary_message
-            'message_type::opening_auction_update_message': opening_auction_update_message
-            'message_type::auction_notification_message': auction_notification_message
-            'message_type::auction_cancel_message': auction_cancel_message
-            'message_type::auction_trade_message': auction_trade_message
-            'message_type::auction_liquidity_message': auction_liquidity_message
-            'message_type::width_update_message': width_update_message
-            'message_type::futures_instrument_definition_message': futures_instrument_definition_message
-            'message_type::options_instrument_definition_message': options_instrument_definition_message
-            'message_type::complex_instrument_definition_message': complex_instrument_definition_message
-            'message_type::trade_break_message': trade_break_message
-            'message_type::settlement_message': settlement_message
-            'message_type::end_of_day_summary_message': end_of_day_summary_message
+            'message_type::index_quote_message': index_quote_message
+            'message_type::index_quote_edsp_message': index_quote_edsp_message
   message_header:
     seq:
       - id: message_length
@@ -138,14 +131,14 @@ types:
         doc: 'Order Side'
       - id: quantity
         type: u4
-        doc: 'Instrument quantity added to the complex book (may be less than the number entered)'
-      - id: symbol_long
+        doc: 'Number of shares added to the complex book (may be less than the number entered)'
+      - id: symbol_short
         type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
-      - id: price
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
   add_order_short_message:
@@ -162,7 +155,7 @@ types:
         doc: 'Order Side'
       - id: quantity_short
         type: u2
-        doc: 'Instrument quantity being added to the complex book (may be less than the number entered)'
+        doc: 'Number of shares being added to the complex book (may be less than the number entered)'
       - id: symbol_short
         type: str
         size: 6
@@ -172,6 +165,52 @@ types:
       - id: price_short
         type: decimal_u2_2
         doc: 'The limit order price. Implied decimal with scale 1e-2'
+  add_order_expanded_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: order_id
+        type: u8
+        doc: 'Day-specific identifier assigned to this order'
+      - id: side_indicator
+        type: u1
+        enum: side_indicator
+        doc: 'Order Side'
+      - id: quantity
+        type: u4
+        doc: 'Number of shares added to the complex book (may be less than the number entered)'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: price_long
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: add_order_flags
+        type: add_order_flags
+        doc: 'Add Order Flags'
+      - id: participant_id
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Attributes this quote to a particular participant'
+  add_order_flags:
+    meta:
+      bit-endian: le
+    seq:
+      - id: unused_1
+        type: b1
+        doc: 'Reserved'
+      - id: si_quote
+        type: b1
+        doc: 'Add represents SI Quote'
+      - id: unused_6
+        type: b6
+        doc: 'Reserved 2-7 Bits'
   order_executed_message:
     seq:
       - id: time_offset
@@ -180,9 +219,9 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: executed_quantity
+      - id: executed_shares
         type: u4
-        doc: 'Number of shares/contracts executed'
+        doc: 'Number of shares executed'
       - id: execution_id
         type: u8
         doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
@@ -215,16 +254,16 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: executed_quantity
+      - id: executed_shares
         type: u4
-        doc: 'Number of shares/contracts executed'
-      - id: remaining_quantity
+        doc: 'Number of shares executed'
+      - id: remaining_shares
         type: u4
-        doc: 'Number of shares/contracts remaining after the execution'
+        doc: 'Number of shares remaining after the execution'
       - id: execution_id
         type: u8
         doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
-      - id: price
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: execution_flags
@@ -238,9 +277,9 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: canceled_contracts_long
+      - id: canceled_shares_long
         type: u4
-        doc: 'Number of contracts canceled'
+        doc: 'Number of shares canceled'
   reduce_size_short_message:
     seq:
       - id: time_offset
@@ -249,9 +288,9 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: canceled_contracts_short
+      - id: canceled_shares_short
         type: u2
-        doc: 'Number of contracts canceled'
+        doc: 'Number of shares canceled'
   modify_order_long_message:
     seq:
       - id: time_offset
@@ -260,10 +299,10 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: contracts_short
-        type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-      - id: price
+      - id: shares_long
+        type: u4
+        doc: 'Number of shares associated with this order after this modify'
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
   modify_order_short_message:
@@ -274,9 +313,9 @@ types:
       - id: order_id
         type: u8
         doc: 'Day-specific identifier assigned to this order'
-      - id: contracts_short
+      - id: shares_short
         type: u2
-        doc: 'Number of contracts associated with this order after this modify'
+        doc: 'Number of shares associated with this order after this modify'
       - id: price_short
         type: decimal_u2_2
         doc: 'The limit order price. Implied decimal with scale 1e-2'
@@ -300,16 +339,16 @@ types:
         type: u1
         enum: side_indicator
         doc: 'Order Side'
-      - id: contracts_short
-        type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-      - id: symbol_long
+      - id: shares_long
+        type: u4
+        doc: 'Number of shares associated with this order after this modify'
+      - id: symbol_short
         type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
-      - id: price
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: execution_id
@@ -331,11 +370,13 @@ types:
       - id: transaction_category
         type: u1
         enum: transaction_category
-        doc: 'MMT Levels 3.1'
-      - id: benchmark_reference_price_indicator
-        type: u1
-        enum: benchmark_reference_price_indicator
-        doc: 'MMT Levels 3.5'
+        doc: 'MMT Level 3.1 and 3.13'
+      - id: trade_types
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'MMT Levels 3.5, 3.11, and 3.12'
       - id: algorithmic_trade
         type: u1
         enum: algorithmic_trade
@@ -354,8 +395,8 @@ types:
         doc: 'Order Side'
       - id: contracts_short
         type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-      - id: symbol
+        doc: 'Incremental number of contracts executed'
+      - id: symbol_alphanumeric_6
         type: str
         size: 6
         encoding: ASCII
@@ -375,16 +416,16 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: contracts_long
+      - id: shares_extended
         type: u8
-        doc: 'Number of contracts executed'
-      - id: symbol_long
+        doc: 'Number of shares executed'
+      - id: symbol_short
         type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
-      - id: price
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
       - id: trade_id
@@ -398,7 +439,7 @@ types:
         size: 4
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Always CEDX'
+        doc: 'The venue on which the trade executed, when applicable'
       - id: currency
         type: str
         size: 3
@@ -425,7 +466,7 @@ types:
       - id: transaction_category
         type: u1
         enum: transaction_category
-        doc: 'MMT Levels 3.1'
+        doc: 'MMT Level 3.1 and 3.13'
       - id: negotiated_trade
         type: u1
         enum: negotiated_trade
@@ -441,7 +482,7 @@ types:
       - id: benchmark_reference_price_indicator
         type: u1
         enum: benchmark_reference_price_indicator
-        doc: 'MMT Levels 3.5'
+        doc: 'MMT Level 3.5'
       - id: special_dividend
         type: str
         size: 1
@@ -474,6 +515,48 @@ types:
         type: u1
         enum: duplicative_indicator
         doc: 'MMT Level 5'
+  trade_unknown_symbol_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: shares_extended
+        type: u8
+        doc: 'Number of shares executed'
+      - id: symbol_long
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol in ISIN'
+      - id: price_long
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: trade_id
+        type: u8
+        doc: 'Cboe generated identifier of this trade. This identifier is guaranteed to be unique for at least 7 calendar days'
+      - id: trade_timestamp
+        type: u8
+        doc: 'Date/Time on which the trade occurred, encoded as the number of nanoseconds since the January 1st 1970 UTC (also known as the Unix epoch)'
+      - id: execution_venue
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The venue on which the trade executed, when applicable'
+      - id: currency
+        type: str
+        size: 3
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Traded currency'
+      - id: cboe_trade_flags
+        type: u1
+        enum: cboe_trade_flags
+        doc: 'Cboe Trade Flags'
+      - id: extended_trade_flags
+        type: extended_trade_flags
+        doc: 'Extended Trade Flags'
   end_of_session:
     seq:
       - id: time_offset
@@ -494,15 +577,15 @@ types:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_long
+      - id: symbol_short
         type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
-      - id: status
+      - id: trading_status
         type: u1
-        enum: status
+        enum: trading_status
         doc: 'Trading Status'
       - id: reserved_3
         type: str
@@ -510,389 +593,113 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reserved'
-  fast_status_message:
+  statistics_message:
     seq:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: product_code_short
+      - id: symbol_short
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Product'
-      - id: is_fast
+        doc: 'Symbol'
+      - id: price_long
+        type: decimal_u8_4
+        doc: 'The limit order price. Implied decimal with scale 1e-4'
+      - id: statistic_type
         type: u1
-        enum: is_fast
-        doc: 'LPP obligations'
+        enum: statistic_type
+        doc: 'Statistic Type'
+      - id: price_determination
+        type: u1
+        enum: price_determination
+        doc: 'Price Determination'
+  auction_update_message:
+    seq:
+      - id: time_offset
+        type: nanosecond_offset
+        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
+      - id: symbol_short
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol'
+      - id: auction_type
+        type: u1
+        enum: auction_type
+        doc: 'Auction Type'
+      - id: reference_price
+        type: decimal_u8_4
+        doc: 'Reference price used in tie-breaker situations. Implied decimal with scale 1e-4'
+      - id: indicative_price
+        type: decimal_u8_4
+        doc: 'Price at which the auction would match if executed at the time of the message. Implied decimal with scale 1e-4'
+      - id: indicative_shares
+        type: u4
+        doc: 'Number of shares at the Indicative Price'
+      - id: outside_tolerance
+        type: u1
+        enum: outside_tolerance
+        doc: 'Indicates whether the price on this update is outside the Cboe EBBO collar'
+      - id: includes_primary
+        type: u1
+        enum: includes_primary
+        doc: 'Indicates whether the Cboe EBBO used to collar this update includes the Primary Market quotes'
   auction_summary_message:
     seq:
       - id: time_offset
         type: nanosecond_offset
         doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_long
+      - id: symbol_short
         type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: auction_opening_type
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Auction Opening Type'
-      - id: price
-        type: decimal_u8_4
-        doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-  opening_auction_update_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol_long
-        type: str
-        size: 8
+        size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Symbol'
       - id: auction_type
         type: u1
         enum: auction_type
-        doc: 'O = Regular Opening'
-      - id: reference_price
-        type: decimal_u8_4
-        doc: 'Collared VMIM price. Implied decimal with scale 1e-4'
-      - id: buy_contracts
-        type: u4
-        doc: 'Cumulative buy contracts at the Reference Price and above'
-      - id: sell_contracts
-        type: u4
-        doc: 'Cumulative sell contracts at the Reference Price and below'
-      - id: indicative_price
-        type: decimal_u8_4
-        doc: 'Equal to Reference Price. Implied decimal with scale 1e-4'
-      - id: auction_only_price
-        type: decimal_u8_4
-        doc: 'Uncollared VMIM price. Implied decimal with scale 1e-4'
-      - id: opening_condition
-        type: u1
-        enum: opening_condition
-        doc: 'O = Would open Q = Need quote to open B = Need more buyers S = Need more sellers C = Crossed Composite Market'
-      - id: composite_market_bid_price
-        type: decimal_u8_4
-        doc: 'Bid Price of the prevailing Composite Market. Implied decimal with scale 1e-4'
-      - id: composite_market_offer_price
-        type: decimal_u8_4
-        doc: 'Offer Price of the prevailing Composite Market. Implied decimal with scale 1e-4'
-  auction_notification_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: auction_id
-        type: u8
-        doc: 'Day specific identifier assigned to this auction'
-      - id: auction_type
-        type: u1
-        enum: auction_type
-        doc: 'O = Regular Opening'
-      - id: side
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Side'
-      - id: price
+        doc: 'Auction Type'
+      - id: price_long
         type: decimal_u8_4
         doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-      - id: customer_indicator
-        type: u1
-        enum: customer_indicator
-        doc: 'Customer Indicator'
-      - id: participant_id
-        type: str
-        size: 4
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Executing Broker (optional) of firm attributed to this quote'
-      - id: auction_end_offset
+      - id: shares_long
         type: u4
-        doc: 'Nanosecond offset from last timestamp'
-  auction_cancel_message:
+        doc: 'Number of shares associated with this order after this modify'
+  index_quote_message:
     seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: auction_id
+      - id: index_timestamp
         type: u8
-        doc: 'Day specific identifier assigned to this auction'
-  auction_trade_message:
+        doc: 'Nanoseconds since midnight'
+      - id: index_ticker
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Index ticker code'
+      - id: index_price
+        type: decimal_u8_4
+        doc: 'Price of the index. Implied decimal with scale 1e-4'
+      - id: index_status
+        type: u1
+        enum: index_status
+        doc: 'Index Status'
+  index_quote_edsp_message:
     seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: auction_id
+      - id: index_timestamp
         type: u8
-        doc: 'Day specific identifier assigned to this auction'
-      - id: execution_id
-        type: u8
-        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
-      - id: price
-        type: decimal_u8_4
-        doc: 'The limit order price. Implied decimal with scale 1e-4'
-      - id: contracts_short
-        type: u2
-        doc: 'Number of contracts associated with this order after this modify'
-      - id: execution_flags
-        type: execution_flags
-        doc: 'Execution Flags'
-  auction_liquidity_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: auction_id
-        type: u8
-        doc: 'Day specific identifier assigned to this auction'
-      - id: num_price_level_group
-        type: u1
-        doc: 'Number of price levels present in this auction'
-      - id: price_level_group
-        type: price_level_group
-        repeat: expr
-        repeat-expr: num_price_level_group
-        doc: 'Price Level'
-  price_level_group:
-    seq:
-      - id: price_level
-        type: decimal_u8_4
-        doc: 'Price Level. Implied decimal with scale 1e-4'
-      - id: volume
-        type: u4
-        doc: 'Total volume of responses at this Price Level'
-  width_update_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: product_code_long
+        doc: 'Nanoseconds since midnight'
+      - id: index_ticker
         type: str
-        size: 8
+        size: 10
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Cboe Symbol for underlying Product'
-      - id: width_type
-        type: u1
-        enum: width_type
-        doc: 'R = Regular'
-      - id: multiplier
-        type: decimal_u4_1
-        doc: 'Width Multiplier. Implied decimal with scale 1e-1'
-  futures_instrument_definition_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: product_code_long
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Cboe Symbol for underlying Product'
-      - id: expiration_date
-        type: u4
-        doc: 'Expiration Date of Instrument'
-      - id: contract_size
-        type: u2
-        doc: 'Contract size of Instrument'
-      - id: listing_state
-        type: u1
-        enum: listing_state
-        doc: 'Listing State'
-      - id: price_increment
+        doc: 'Index ticker code'
+      - id: index_price
         type: decimal_u8_4
-        doc: 'Minimum Price Increment. Implied decimal with scale 1e-4'
-  options_instrument_definition_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: product_code_long
-        type: str
-        size: 8
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Cboe Symbol for underlying Product'
-      - id: call_put
-        type: u1
-        enum: call_put
-        doc: 'Call/Put'
-      - id: expiration_date
-        type: u4
-        doc: 'Expiration Date of Instrument'
-      - id: strike_price
-        type: decimal_u8_4
-        doc: 'Strike Price of Instrument. Implied decimal with scale 1e-4'
-      - id: contract_size
-        type: u2
-        doc: 'Contract size of Instrument'
-      - id: listing_state
-        type: u1
-        enum: listing_state
-        doc: 'Listing State'
-      - id: price_increment
-        type: decimal_u8_4
-        doc: 'Minimum Price Increment. Implied decimal with scale 1e-4'
-  complex_instrument_definition_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: complex_instrument_id
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Complex Instrument Id'
-      - id: reference_price
-        type: decimal_u8_4
-        doc: 'Collared VMIM price. Implied decimal with scale 1e-4'
-      - id: num_leg_group
-        type: u1
-        doc: 'The number of legs in the complex instrument'
-      - id: leg_group
-        type: leg_group
-        repeat: expr
-        repeat-expr: num_leg_group
-        doc: 'Leg'
-  leg_group:
-    seq:
-      - id: leg_symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option, Future or Equity Symbol of leg'
-      - id: leg_ratio
-        type: s4
-        doc: 'Leg Ratio'
-  trade_break_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: execution_id
-        type: u8
-        doc: 'Cboe generated day-unique execution identifier of this execution. Execution Id is also referenced in the Trade Break message'
-  settlement_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: trade_date
-        type: u4
-        doc: 'Trade Date for the settlement'
-      - id: settlement_price
-        type: decimal_u8_4
-        doc: 'Settlement Price. Implied decimal with scale 1e-4'
-      - id: issue
-        type: u1
-        enum: issue
-        doc: 'S = Initial Settlement R = Re-issued Settlement'
-  end_of_day_summary_message:
-    seq:
-      - id: time_offset
-        type: nanosecond_offset
-        doc: 'Nanosecond offset from last unit timestamp. Nanoseconds since Second epoch'
-      - id: symbol
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Symbol'
-      - id: trade_date
-        type: u4
-        doc: 'Trade Date for the settlement'
-      - id: open_interest
-        type: u4
-        doc: 'Unused in CEDX'
-      - id: high_price
-        type: decimal_u8_4
-        doc: 'Highest trade price or best bid for the day. Implied decimal with scale 1e-4'
-      - id: low_price
-        type: decimal_u8_4
-        doc: 'Lowest trade price or best offer for the day. Implied decimal with scale 1e-4'
-      - id: open_price
-        type: decimal_u8_4
-        doc: 'If Total Volume greater than 0, represents the first trade of the day. Implied decimal with scale 1e-4'
-      - id: close_price
-        type: decimal_u8_4
-        doc: 'For futures represents a calculated price based upon VWAP, last traded or mid-point price. For options represents a price provided by an external vendor. Implied decimal with scale 1e-4'
-      - id: total_volume
-        type: u4
-        doc: 'Total number of contracts traded'
-      - id: block_volume
-        type: u4
-        doc: 'Total number of block contracts traded'
-      - id: ecrp_volume
-        type: u4
-        doc: 'Unused in CEDX'
-      - id: summary_flags
-        type: summary_flags
-        doc: 'Summary Flags'
-  summary_flags:
-    meta:
-      bit-endian: le
-    seq:
-      - id: high_price_1
-        type: b1
-        doc: 'Set if High Price is valid'
-      - id: unused_1
-        type: b1
-        doc: 'Reserved'
-      - id: low_price_1
-        type: b1
-        doc: 'Set if Low Price is valid'
-      - id: second_unused_1
-        type: b1
-        doc: 'Reserved'
-      - id: open_and_close_price
-        type: b1
-        doc: 'Set if both Open and Close Price fields contain valid values'
-      - id: unused_3
-        type: b3
-        doc: 'Reserved 5-7 Bits'
+        doc: 'Price of the index. Implied decimal with scale 1e-4'
   second_timestamp:
     seq:
       - id: time
@@ -929,13 +736,6 @@ types:
     instances:
       real:
         value: mantissa / 100.0
-  decimal_u4_1:
-    seq:
-      - id: mantissa
-        type: u4
-    instances:
-      real:
-        value: mantissa / 10.0
 
 enums:
   message_type:
@@ -951,6 +751,9 @@ enums:
     0x22:
       id: 'add_order_short_message'
       doc: 'An Add Order message represents a newly accepted visible order on the Cboe book.'
+    0x2f:
+      id: 'add_order_expanded_message'
+      doc: 'An Add Order message represents a newly accepted visible order on the Cboe book. Expanded version accommodates larger symbol sizes possible through the ISRA plan.'
     0x23:
       id: 'order_executed_message'
       doc: 'Order Executed messages are sent when a visible order on the Cboe book is executed in whole or in part'
@@ -981,6 +784,9 @@ enums:
     0x32:
       id: 'trade_extended_message'
       doc: 'The Trade message provides information about executions of complex order auctions on the Cboe complex book.'
+    0x35:
+      id: 'trade_unknown_symbol_message'
+      doc: 'This message provides details of trades reported to Cboe, but traded on a symbol not currently known to Cboe'
     0x2d:
       id: 'end_of_session'
       doc: 'The End of Session message is sent for each unit when the unit shuts down'
@@ -993,48 +799,21 @@ enums:
     0x31:
       id: 'trading_status_message'
       doc: 'The Trading Status message is used to indicate the current trading status of a complex instrument.'
-    0xe2:
-      id: 'fast_status_message'
-      doc: 'The Fast Status Message is used to indicate that Cboe Europe now consider the given product to be in a Fast Market'
+    0x34:
+      id: 'statistics_message'
+      doc: 'The Statistics Message is used to disseminate the statistics prices: opening, closing, high, low'
+    0xac:
+      id: 'auction_update_message'
+      doc: 'Auction Update messages are used to disseminate indicative price and size information during auctions for Cboe auction eligible securities'
     0x96:
       id: 'auction_summary_message'
       doc: 'Auction Summary messages are used to disseminate the results of an auction in a Cboe auction eligible security'
-    0xd1:
-      id: 'opening_auction_update_message'
-      doc: 'Opening Auction Update messages are used to disseminate price and size information during the Opening and Re-Opening (halt) auctions'
-    0xad:
-      id: 'auction_notification_message'
-      doc: 'Auction Notification messages are used to disseminate order details of an auction'
-    0xae:
-      id: 'auction_cancel_message'
-      doc: 'Auction Cancel messages are used to disseminate the cancellation of an earlier Auction Notification message as a result of a user cancellation of the original order, a user modification request to change the price or increase the original order quantity, or a fading of the NBBO'
-    0xdf:
-      id: 'auction_trade_message'
-      doc: 'Auction Trade messages are used to disseminate executions resulting from an options auction'
-    0xde:
-      id: 'auction_liquidity_message'
-      doc: 'An Auction Liquidity Message is sent out for all AIM Auctions to give an indication of the level of response to a given Auction'
-    0xd2:
-      id: 'width_update_message'
-      doc: 'The Width Update message is used to communicate the opening quote width multiplier'
-    0xda:
-      id: 'futures_instrument_definition_message'
-      doc: 'Futures Instrument Definition'
-    0xdb:
-      id: 'options_instrument_definition_message'
-      doc: 'Options Instrument Definition'
-    0xdc:
-      id: 'complex_instrument_definition_message'
-      doc: 'A Complex Instrument Definition message represents a complex instrument that is available to place orders'
-    0x2c:
-      id: 'trade_break_message'
-      doc: 'The Trade Break message is sent whenever an execution is broken'
-    0xb9:
-      id: 'settlement_message'
-      doc: 'Settlement messages are normally sent once per day per instrument after settlement prices have been calculated for all applicable instruments on a given business date'
-    0xba:
-      id: 'end_of_day_summary_message'
-      doc: 'The End of Day Summary is sent out right after trading ends for a symbol and contains a summary of trading activity for that symbol for the day'
+    0xd8:
+      id: 'index_quote_message'
+      doc: 'Index Quote Messages are sent every second'
+    0xd9:
+      id: 'index_quote_edsp_message'
+      doc: 'Index Quote EDSP Messages are sent at end of day'
   side_indicator:
     0x42:
       id: 'buy_order'
@@ -1064,6 +843,12 @@ enums:
     0x37:
       id: 'any_other_including_hybrid'
       doc: 'Any Other Including Hybrid'
+    0x38:
+      id: 'hybrid_system_revised_esma_definition'
+      doc: 'Hybrid System Revised Esma Definition'
+    0x39:
+      id: 'any_other_excluding_hybrid_revised_esma_definition'
+      doc: 'Any Other Excluding Hybrid Revised Esma Definition'
   trading_mode:
     0x31:
       id: 'undefined_auction'
@@ -1098,6 +883,9 @@ enums:
     0x55:
       id: 'unscheduled_auction'
       doc: 'Unscheduled Auction'
+    0x50:
+      id: 'on_demand_auction'
+      doc: 'On Demand Auction'
   ex_cum_dividend:
     0x45:
       id: 'ex_cum_special_dividend_if_optionally_set_by_reporting_party'
@@ -1128,29 +916,55 @@ enums:
     0x2d:
       id: 'none_of_the_above_apply'
       doc: 'None Of The Above Apply'
-  benchmark_reference_price_indicator:
-    0x42:
-      id: 'benchmark_trade_if_optionally_set_by_reporting_party'
-      doc: 'Benchmark Trade If Optionally Set By Reporting Party'
-    0x53:
-      id: 'reference_price_trade'
-      doc: 'Reference Price Trade'
-    0x2d:
-      id: 'not_specified'
-      doc: 'Not Specified'
+    0x48:
+      id: 'exchange_for_physicals_trade_give'
+      doc: 'Exchange For Physicals Trade Give'
+    0x47:
+      id: 'none_of_the_above_apply_give'
+      doc: 'None Of The Above Apply Give'
   cboe_trade_flags:
     0x34:
-      id: 'eu_the_trade_was_reported_to_cboe_on_time_and_in_the_main_session'
-      doc: 'Eu The Trade Was Reported To Cboe On Time And In The Main Session'
+      id: 'on_time_in_the_main_session'
+      doc: 'The trade was reported to Cboe on time and in the Main Session'
     0x35:
-      id: 'eu_the_trade_was_reported_to_cboe_late'
-      doc: 'Eu The Trade Was Reported To Cboe Late'
+      id: 'late'
+      doc: 'The trade was reported to Cboe ''late'''
     0x36:
-      id: 'eu_the_trade_was_reported_to_cboe_out_of_the_main_session'
-      doc: 'Eu The Trade Was Reported To Cboe Out Of The Main Session'
+      id: 'out_of_the_main_session'
+      doc: 'The trade was reported to Cboe out of the Main Session'
     0x37:
-      id: 'eu_the_trade_was_reported_to_cboe_late_and_out_of_the_main_session'
-      doc: 'Eu The Trade Was Reported To Cboe Late And Out Of The Main Session'
+      id: 'late_and_out_of_the_main_session'
+      doc: 'The trade was reported to Cboe late and out of the Main Session'
+    0x43:
+      id: 'on_time_in_the_main_session_3_rd_country_venue'
+      doc: 'The trade was reported to Cboe on time, in the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
+    0x44:
+      id: 'late_3_rd_country_venue'
+      doc: 'The trade was reported to Cboe ''late'' and trade venue is an ESMA non-recognised 3rd Country venue'
+    0x45:
+      id: 'out_of_the_main_session_3_rd_country_venue'
+      doc: 'The trade was reported to Cboe out of the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
+    0x46:
+      id: 'late_and_out_of_the_main_session_3_rd_country_venue'
+      doc: 'The trade was reported to Cboe late, out of the Main Session and trade venue is an ESMA non-recognised 3rd Country venue'
+    0x2d:
+      id: 'uk_the_trade_was_reported_to_cboe_on_time_and_in_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe On Time And In The Main Session'
+    0x31:
+      id: 'uk_the_trade_was_reported_to_cboe_late'
+      doc: 'Uk The Trade Was Reported To Cboe Late'
+    0x32:
+      id: 'uk_the_trade_was_reported_to_cboe_out_of_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe Out Of The Main Session'
+    0x33:
+      id: 'uk_the_trade_was_reported_to_cboe_late_and_out_of_the_main_session'
+      doc: 'Uk The Trade Was Reported To Cboe Late And Out Of The Main Session'
+    0x47:
+      id: 'uk_the_trade_was_an_execution_against_retailonly_liquidity'
+      doc: 'Uk The Trade Was An Execution Against Retailonly Liquidity'
+    0x4b:
+      id: 'eu_the_trade_was_an_execution_against_retailonly_liquidity'
+      doc: 'Eu The Trade Was An Execution Against Retailonly Liquidity'
   negotiated_trade:
     0x31:
       id: 'negotiated_trade_in_liquid_financial_instruments'
@@ -1176,6 +990,24 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+    0x37:
+      id: 'ntls_negotiated_trade_larger_than_lis_brought_onto_a_venue'
+      doc: 'Ntls Negotiated Trade Larger Than Lis Brought Onto A Venue'
+    0x38:
+      id: 'netw_negotiated_trade_with_pre_trade_transparency_waiver'
+      doc: 'Netw Negotiated Trade With Pre Trade Transparency Waiver'
+    0x39:
+      id: 'nliq_negotiated_trade_in_liquid_finan_ntls_negotiated_trade_larger_than_lis_cial_instruments_brought_onto_a_venue'
+      doc: 'Nliq Negotiated Trade In Liquid Finan Ntls Negotiated Trade Larger Than Lis Cial Instruments Brought Onto A Venue'
+    0x61:
+      id: 'oilq_negotiated_trade_in_illiquid_finan_ntls_negotiated_trade_larger_than_lis_cial_instruments_brought_onto_a_venue'
+      doc: 'Oilq Negotiated Trade In Illiquid Finan Ntls Negotiated Trade Larger Than Lis Cial Instruments Brought Onto A Venue'
+    0x62:
+      id: 'pric_negotiated_trade_subject_to_con_ntls_negotiated_trade_larger_than_lis_ditions_other_than_the_current_market_brought_onto_a_venue_price'
+      doc: 'Pric Negotiated Trade Subject To Con Ntls Negotiated Trade Larger Than Lis Ditions Other Than The Current Market Brought Onto A Venue Price'
+    0x63:
+      id: 'netw_negotiated_trade_with_pre_ntls_negotiated_trade_larger_than_lis_trade_transparency_waiver_brought_onto_a_venue'
+      doc: 'Netw Negotiated Trade With Pre Ntls Negotiated Trade Larger Than Lis Trade Transparency Waiver Brought Onto A Venue'
   crossing_trade:
     0x58:
       id: 'crossing_trade'
@@ -1193,6 +1025,46 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+  benchmark_reference_price_indicator:
+    0x42:
+      id: 'benchmark_trade_if_optionally_set_by_reporting_party'
+      doc: 'Benchmark Trade If Optionally Set By Reporting Party'
+    0x53:
+      id: 'reference_price_trade'
+      doc: 'Reference Price Trade'
+    0x2d:
+      id: 'not_specified'
+      doc: 'Not Specified'
+    0x43:
+      id: 'cont'
+      doc: 'Cont'
+    0x4d:
+      id: 'benc_cont'
+      doc: 'Benc Cont'
+    0x4e:
+      id: 'port_cont'
+      doc: 'Port Cont'
+    0x4f:
+      id: 'benc_port_cont'
+      doc: 'Benc Port Cont'
+    0x50:
+      id: 'port'
+      doc: 'Port'
+    0x59:
+      id: 'benc_port'
+      doc: 'Benc Port'
+    0x31:
+      id: 'clse'
+      doc: 'Clse'
+    0x32:
+      id: 'clse_port'
+      doc: 'Clse Port'
+    0x33:
+      id: 'clse_cont'
+      doc: 'Clse Cont'
+    0x34:
+      id: 'clse_port_cont'
+      doc: 'Clse Port Cont'
   off_book_automated_indicator:
     0x51:
       id: 'automated'
@@ -1216,6 +1088,9 @@ enums:
     0x4e:
       id: 'price_is_currently_not_available_but_pending'
       doc: 'Price Is Currently Not Available But Pending'
+    0x5a:
+      id: 'noap_price_is_not_applicable'
+      doc: 'Noap Price Is Not Applicable'
   publication_mode_deferral_reason:
     0x31:
       id: 'trade_report_reported_late_without_permitted_deferral'
@@ -1238,6 +1113,9 @@ enums:
     0x2d:
       id: 'not_specified'
       doc: 'Not Specified'
+    0x47:
+      id: 'deff'
+      doc: 'Deff'
   deferral_or_enrichment_type:
     0x31:
       id: 'limited_details_trade'
@@ -1282,91 +1160,137 @@ enums:
     0x2d:
       id: 'unique_trade_report'
       doc: 'Unique Trade Report'
-  status:
-    0x43:
-      id: 'closed'
-      doc: 'Closed'
-    0x51:
-      id: 'queuing'
-      doc: 'Queuing'
-    0x4f:
-      id: 'opening_auction'
-      doc: 'Opening Auction'
+    0x32:
+      id: 'igrp'
+      doc: 'Igrp'
+    0x33:
+      id: 'dupl_igrp'
+      doc: 'Dupl Igrp'
+    0x34:
+      id: 'xbdt'
+      doc: 'Xbdt'
+    0x35:
+      id: 'dupl_xbdt'
+      doc: 'Dupl Xbdt'
+    0x36:
+      id: 'dupl_xbdt_igrp'
+      doc: 'Dupl Xbdt Igrp'
+    0x37:
+      id: 'xbdt_igrp'
+      doc: 'Xbdt Igrp'
+  trading_status:
     0x54:
       id: 'trading'
       doc: 'Trading'
+    0x52:
+      id: 'off_book_reporting'
+      doc: 'Off Book Reporting'
+    0x43:
+      id: 'closed'
+      doc: 'Closed'
     0x53:
       id: 'suspension'
       doc: 'Suspension'
+    0x4e:
+      id: 'no_reference_price'
+      doc: 'No Reference Price'
+    0x56:
+      id: 'volatility_interruption'
+      doc: 'Volatility Interruption'
+    0x4f:
+      id: 'opening_auction'
+      doc: 'Opening Auction'
+    0x45:
+      id: 'closing_auction'
+      doc: 'Closing Auction'
     0x48:
       id: 'halted'
       doc: 'Halted'
-  is_fast:
-    0:
+    0x4d:
+      id: 'market_order_imbalance_extension'
+      doc: 'Market Order Imbalance Extension'
+    0x50:
+      id: 'price_monitoring_extension'
+      doc: 'Price Monitoring Extension'
+    0x55:
+      id: 'cboe_closing_cross'
+      doc: 'Cboe Closing Cross'
+    0x49:
+      id: 'volatility_auction'
+      doc: 'Volatility Auction'
+    0x59:
+      id: 'halt_auction'
+      doc: 'Halt Auction'
+  statistic_type:
+    0x43:
+      id: 'closing_price'
+      doc: 'Closing Price'
+    0x48:
+      id: 'high_price'
+      doc: 'High Price'
+    0x4c:
+      id: 'low_price'
+      doc: 'Low Price'
+    0x4f:
+      id: 'opening_price'
+      doc: 'Opening Price'
+    0x50:
+      id: 'previous_closing_price'
+      doc: 'Previous Closing Price'
+  price_determination:
+    0x30:
       id: 'normal'
       doc: 'Normal'
-    1:
-      id: 'fast'
-      doc: 'Fast'
+    0x31:
+      id: 'manual'
+      doc: 'Manual'
   auction_type:
     0x4f:
       id: 'opening_auction'
       doc: 'Opening Auction'
-    0x42:
-      id: 'aim'
-      doc: 'Aim'
     0x43:
-      id: 'crfq'
-      doc: 'Crfq'
-  opening_condition:
-    0x4f:
-      id: 'would_open'
-      doc: 'Would Open'
-    0x51:
-      id: 'need_quote_to_open'
-      doc: 'Need Quote To Open'
-    0x42:
-      id: 'need_more_buyers'
-      doc: 'Need More Buyers'
-    0x53:
-      id: 'need_more_sellers'
-      doc: 'Need More Sellers'
-    0x43:
-      id: 'crossed_composite_market'
-      doc: 'Crossed Composite Market'
-  customer_indicator:
-    0x4e:
-      id: 'non_customer'
-      doc: 'Non Customer'
-    0x43:
-      id: 'customer'
-      doc: 'Customer'
-  width_type:
-    0x52:
-      id: 'regular'
-      doc: 'Regular'
-  listing_state:
-    0x41:
-      id: 'active'
-      doc: 'Active'
-    0x49:
-      id: 'inactive'
-      doc: 'Inactive'
-    0x54:
-      id: 'test'
-      doc: 'Test'
-  call_put:
+      id: 'closing_auction'
+      doc: 'Closing Auction'
+    0x48:
+      id: 'halt_auction'
+      doc: 'Halt Auction'
+    0x56:
+      id: 'volatility_auction'
+      doc: 'Volatility Auction'
     0x50:
-      id: 'put'
-      doc: 'Put'
+      id: 'periodic_auction'
+      doc: 'Periodic Auction'
+    0x55:
+      id: 'cboe_closing_cross'
+      doc: 'Cboe Closing Cross'
+  outside_tolerance:
+    0x4f:
+      id: 'outside_tolerance'
+      doc: 'Outside Tolerance'
+    0x49:
+      id: 'inside_tolerance'
+      doc: 'Inside Tolerance'
+    0x2d:
+      id: 'not_specified'
+      doc: 'Not Specified'
+  includes_primary:
+    0x50:
+      id: 'includes_primary'
+      doc: 'Includes Primary'
+    0x4e:
+      id: 'excludes_primary'
+      doc: 'Excludes Primary'
+    0x2d:
+      id: 'not_specified'
+      doc: 'Not Specified'
+  index_status:
+    0x4e:
+      id: 'normal'
+      doc: 'Normal'
+    0x49:
+      id: 'indicative'
+      doc: 'Indicative'
     0x43:
-      id: 'call'
-      doc: 'Call'
-  issue:
-    0x53:
-      id: 'initial_settlement'
-      doc: 'Initial Settlement'
-    0x52:
-      id: 'reissued_settlement'
-      doc: 'Reissued Settlement'
+      id: 'closing'
+      doc: 'Closing'
 

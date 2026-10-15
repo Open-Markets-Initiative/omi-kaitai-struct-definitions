@@ -132,6 +132,9 @@ types:
       - id: version
         type: u2
         doc: 'The version number of the message schema that was used to encode a message'
+      - id: num_groups
+        type: u1
+        doc: 'A count of repeating groups at the root level of the message'
   new_order_single_message:
     seq:
       - id: clordid

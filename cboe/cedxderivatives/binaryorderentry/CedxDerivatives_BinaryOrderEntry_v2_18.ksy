@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cboe DxeDerivatives BinaryOrderEntry Boe v2.6
+# Kaitai struct definition for: Cboe CedxDerivatives BinaryOrderEntry Boe v2.18
 #
 # Protocol:
 #   Organization: Chicago Board Options Exchange
 #   Protocol: Europe Derivatives Binary Order Entry
 #   Encoding: Cboe Binary Order Entry
-#   Version: 2.6
-#   Date: 5/4/2021
+#   Version: 2.18
+#   Date: 5/9/2022
 #   Specification: Cboe_Europe_CEDX_BOE2_Specification.pdf
 #
 # Script:
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cboe_dxederivatives_binaryorderentry_boe_v2_6
-  title: Cboe DxeDerivatives BinaryOrderEntry Boe v2.6
+  id: cboe_cedxderivatives_binaryorderentry_boe_v2_18
+  title: Cboe CedxDerivatives BinaryOrderEntry Boe v2.18
   license: GPL-3.0
   endian: le
 
-doc: 'Chicago Board Options Exchange Cboe Europe Derivatives Europe Derivatives Binary Order Entry Boe v2.6'
+doc: 'Chicago Board Options Exchange Cboe Europe Derivatives Europe Derivatives Binary Order Entry Boe v2.18'
 doc-ref: https://www.cboe.com/europe/derivatives/support/technical
 
 seq:
@@ -209,7 +209,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: side
         type: u1
         enum: side
@@ -616,6 +616,10 @@ types:
         size: 16
         encoding: ASCII
         if: number_of_new_order_cross_bitfields >= 1 and new_order_cross_bitfield_1.new_order_cross_bitfield_1_security_id
+      - id: liquidity_provision
+        type: u1
+        enum: liquidity_provision
+        if: number_of_new_order_cross_bitfields >= 1 and new_order_cross_bitfield_1.new_order_cross_bitfield_1_liquidity_provision
       - id: prevent_match
         type: str
         size: 3
@@ -709,7 +713,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: capacity
         type: u1
         enum: capacity
@@ -738,10 +742,6 @@ types:
         type: u1
         enum: cust_order_handling_inst
         if: _parent.number_of_new_order_cross_bitfields >= 1 and _parent.new_order_cross_bitfield_1.new_order_cross_bitfield_1_cust_order_handling_inst
-      - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        if: _parent.number_of_new_order_cross_bitfields >= 1 and _parent.new_order_cross_bitfield_1.new_order_cross_bitfield_1_liquidity_provision
       - id: order_origination
         type: u1
         enum: order_origination
@@ -775,7 +775,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: side
         type: u1
         enum: side
@@ -816,7 +816,7 @@ types:
         doc: 'BitSet NewComplexOrder byte 7'
       - id: num_complex_leg_order_info
         type: u1
-        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 12. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
+        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 13. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
       - id: complex_leg_order_info
         type: complex_leg_order_info
         repeat: expr
@@ -1127,6 +1127,10 @@ types:
         size: 8
         encoding: ASCII
         if: number_of_new_order_cross_multileg_bitfields >= 1 and new_order_cross_multileg_bitfield_1.new_order_cross_multileg_bitfield_1_symbol
+      - id: liquidity_provision
+        type: u1
+        enum: liquidity_provision
+        if: number_of_new_order_cross_multileg_bitfields >= 1 and new_order_cross_multileg_bitfield_1.new_order_cross_multileg_bitfield_1_liquidity_provision
       - id: prevent_match
         type: str
         size: 3
@@ -1216,7 +1220,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: capacity
         type: u1
         enum: capacity
@@ -1242,15 +1246,11 @@ types:
         size: 12
         encoding: ASCII
         if: _parent.number_of_new_order_cross_multileg_bitfields >= 3 and _parent.new_order_cross_multileg_bitfield_3.new_order_cross_multileg_bitfield_3_leg_position_effects
-        doc: 'See List of Optional Fields (§ 6, p. 156)'
+        doc: 'See List of Optional Fields (§ 6, p. 159)'
       - id: cust_order_handling_inst
         type: u1
         enum: cust_order_handling_inst
         if: _parent.number_of_new_order_cross_multileg_bitfields >= 1 and _parent.new_order_cross_multileg_bitfield_1.new_order_cross_multileg_bitfield_1_cust_order_handling_inst
-      - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        if: _parent.number_of_new_order_cross_multileg_bitfields >= 1 and _parent.new_order_cross_multileg_bitfield_1.new_order_cross_multileg_bitfield_1_liquidity_provision
       - id: order_origination
         type: u1
         enum: order_origination
@@ -1301,6 +1301,11 @@ types:
         size: 4
         encoding: ASCII
         if: number_of_cancel_order_v_2_bitfields >= 1 and cancel_order_v_2_bitfield_1.cancel_order_v_2_bitfield_1_clearing_firm
+      - id: product_code
+        type: str
+        size: 6
+        encoding: ASCII
+        if: number_of_cancel_order_v_2_bitfields >= 1 and cancel_order_v_2_bitfield_1.cancel_order_v_2_bitfield_1_product_code
       - id: mass_cancel_id
         type: str
         size: 20
@@ -1357,7 +1362,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: orig_cl_ord_id
         type: str
         size: 20
@@ -1633,7 +1638,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: number_of_new_complex_instrument_bitfields
         type: u1
         doc: 'Number of bitfields that follow; the fields they gate are appended'
@@ -1643,7 +1648,7 @@ types:
         doc: 'BitSet NewComplexInstrument byte 1'
       - id: num_complex_leg
         type: u1
-        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 12. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
+        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 13. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
       - id: complex_leg
         type: complex_leg
         repeat: expr
@@ -1657,7 +1662,7 @@ types:
       - id: leg_price
         type: decimal_s8_4
         if: number_of_new_complex_instrument_bitfields >= 1 and new_complex_instrument_bitfield_1.new_complex_instrument_bitfield_1_leg_price
-        doc: 'Implied decimal with scale 1e-4'
+        doc: 'Corresponds to LegPrice (566) in Cboe FIX. Reference price for the future leg of a Volatility Strategy. Mandatory for this case, otherwise ig- nored. See the Volatility Strategies section (p. 7) for more details. Implied decimal with scale 1e-4'
   new_complex_instrument_bitfield_1:
     meta:
       bit-endian: le
@@ -1685,6 +1690,9 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Corresponds to LegSymbol (600) in Cboe FIX'
+      - id: leg_price
+        type: decimal_s8_4
+        doc: 'Corresponds to LegPrice (566) in Cboe FIX. Reference price for the future leg of a Volatility Strategy. Mandatory for this case, otherwise ig- nored. See the Volatility Strategies section (p. 7) for more details. Implied decimal with scale 1e-4'
       - id: leg_ratio_qty
         type: u4
         doc: 'Corresponds to LegRatioQty (623) in Cboe FIX. Ratio of number of contracts in this leg per order quantity. Must be between 1 and 99,999'
@@ -1701,7 +1709,7 @@ types:
         doc: 'Corresponds to TradeReportID (571) in Cboe FIX. Day-unique ID chosen by client. Cboe will en- force port level day-uniqueness. 20 characters or less. Characters in ASCII range 33–126 are allowed, except for comma, semi- colon, and pipe. If the TradeReportID matches a live trade report (one that has been acked, but not confirmed or declined), it will be rejected as duplicate'
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_trade_price_8
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
@@ -1795,24 +1803,9 @@ types:
       - id: trd_sub_type
         type: u1
         if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trd_sub_type
-      - id: secondary_trd_type
-        type: u1
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_secondary_trd_type
-      - id: trade_price_condition
-        type: u1
-        enum: trade_price_condition
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_price_condition
       - id: trade_publish_indicator
         type: u1
         if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_trade_publish_indicator
-      - id: large_size
-        type: u8
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_large_size
-      - id: execution_method
-        type: str
-        size: 1
-        encoding: ASCII
-        if: number_of_trade_capture_report_v_2_bitfields >= 3 and trade_capture_report_v_2_bitfield_3.trade_capture_report_v_2_bitfield_3_execution_method
       - id: trade_report_type
         type: u1
         if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_trade_report_type
@@ -1836,8 +1829,9 @@ types:
         enum: order_category
         if: number_of_trade_capture_report_v_2_bitfields >= 4 and trade_capture_report_v_2_bitfield_4.trade_capture_report_v_2_bitfield_4_order_category
       - id: price_formation
-        type: u1
-        enum: price_formation
+        type: str
+        size: 1
+        encoding: ASCII
         if: number_of_trade_capture_report_v_2_bitfields >= 5 and trade_capture_report_v_2_bitfield_5.trade_capture_report_v_2_bitfield_5_price_formation
       - id: algorithmic_indicator
         type: u1
@@ -1984,7 +1978,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -2150,7 +2144,7 @@ types:
       - id: last_shares
         type: u4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_shares
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_acknowledgment_v_2_return_bitfield_5.order_acknowledgment_v_2_return_bitfield_5_last_px
@@ -2194,10 +2188,6 @@ types:
         type: u1
         enum: liquidity_provision
         if: number_of_return_bitfields >= 9 and order_acknowledgment_v_2_return_bitfield_9.order_acknowledgment_v_2_return_bitfield_9_liquidity_provision
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and order_acknowledgment_v_2_return_bitfield_10.order_acknowledgment_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and order_acknowledgment_v_2_return_bitfield_10.order_acknowledgment_v_2_return_bitfield_10_client_qualified_role
@@ -2723,6 +2713,10 @@ types:
         size: 3
         encoding: ASCII
         if: number_of_return_bitfields >= 3 and cross_order_acknowledgment_return_bitfield_3.cross_order_acknowledgment_return_bitfield_3_prevent_match
+      - id: liquidity_provision
+        type: u1
+        enum: liquidity_provision
+        if: number_of_return_bitfields >= 9 and cross_order_acknowledgment_return_bitfield_9.cross_order_acknowledgment_return_bitfield_9_liquidity_provision
       - id: cross_type
         type: str
         size: 1
@@ -2734,10 +2728,6 @@ types:
         enum: cross_prioritization
         if: number_of_return_bitfields >= 9 and cross_order_acknowledgment_return_bitfield_9.cross_order_acknowledgment_return_bitfield_9_cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be pri- oritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and cross_order_acknowledgment_return_bitfield_10.cross_order_acknowledgment_return_bitfield_10_waiver_type
       - id: drill_thru_protection
         type: decimal_s8_4
         if: number_of_return_bitfields >= 13 and cross_order_acknowledgment_return_bitfield_13.cross_order_acknowledgment_return_bitfield_13_drill_thru_protection
@@ -3108,7 +3098,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -3151,10 +3141,6 @@ types:
         type: u1
         enum: account_type
         if: _parent.number_of_return_bitfields >= 18 and _parent.cross_order_acknowledgment_return_bitfield_18.cross_order_acknowledgment_return_bitfield_18_account_type
-      - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        if: _parent.number_of_return_bitfields >= 9 and _parent.cross_order_acknowledgment_return_bitfield_9.cross_order_acknowledgment_return_bitfield_9_liquidity_provision
       - id: order_origination
         type: u1
         enum: order_origination
@@ -3195,7 +3181,7 @@ types:
       - id: quote_reject_reason
         type: u1
         enum: quote_reject_reason
-        doc: 'Reason for rejection of an entire Quote Up- date message by the matching engine. If an error is indicated, then no quotes were entered or updated. QuoteCnt will be 0. <space> = Success See Quote Reason Codes (§ 7.2, p. 173) for a list of possible quote reject codes. Additional reasons may be added in the future without warning'
+        doc: 'Reason for rejection of an entire Quote Up- date message by the matching engine. If an error is indicated, then no quotes were entered or updated. QuoteCnt will be 0. <space> = Success See Quote Reason Codes (§ 7.2, p. 176) for a list of possible quote reject codes. Additional reasons may be added in the future without warning'
       - id: reserved_17
         size: 17
         doc: 'Reserved for Cboe internal use. Filled with 0'
@@ -3234,11 +3220,11 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -3822,7 +3808,7 @@ types:
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -4322,7 +4308,7 @@ types:
       - id: quote_reject_reason
         type: u1
         enum: quote_reject_reason
-        doc: 'Reason for rejection of an entire Quote Up- date message by the matching engine. If an error is indicated, then no quotes were entered or updated. QuoteCnt will be 0. <space> = Success See Quote Reason Codes (§ 7.2, p. 173) for a list of possible quote reject codes. Additional reasons may be added in the future without warning'
+        doc: 'Reason for rejection of an entire Quote Up- date message by the matching engine. If an error is indicated, then no quotes were entered or updated. QuoteCnt will be 0. <space> = Success See Quote Reason Codes (§ 7.2, p. 176) for a list of possible quote reject codes. Additional reasons may be added in the future without warning'
       - id: reserved_17
         size: 17
         doc: 'Reserved for Cboe internal use. Filled with 0'
@@ -4335,7 +4321,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -4478,7 +4464,7 @@ types:
       - id: last_shares
         type: u4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_shares
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_modified_v_2_return_bitfield_5.order_modified_v_2_return_bitfield_5_last_px
@@ -4518,10 +4504,6 @@ types:
         type: u1
         enum: liquidity_provision
         if: number_of_return_bitfields >= 9 and order_modified_v_2_return_bitfield_9.order_modified_v_2_return_bitfield_9_liquidity_provision
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and order_modified_v_2_return_bitfield_10.order_modified_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and order_modified_v_2_return_bitfield_10.order_modified_v_2_return_bitfield_10_client_qualified_role
@@ -4922,7 +4904,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -5092,7 +5074,7 @@ types:
       - id: last_shares
         type: u4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_shares
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_restated_v_2_return_bitfield_5.order_restated_v_2_return_bitfield_5_last_px
@@ -5135,10 +5117,6 @@ types:
         encoding: ASCII
         if: number_of_return_bitfields >= 10 and order_restated_v_2_return_bitfield_10.order_restated_v_2_return_bitfield_10_cross_id
         doc: 'Corresponds to CrossID (548) in Cboe FIX. Day-unique identifier for the cross order chosen by the client. Characters in the ASCII range 33– 126 are allowed, except for comma, semicolon, and pipe'
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and order_restated_v_2_return_bitfield_10.order_restated_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and order_restated_v_2_return_bitfield_10.order_restated_v_2_return_bitfield_10_client_qualified_role
@@ -5574,11 +5552,11 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: modify_reject_reason
         type: u1
         enum: modify_reject_reason
-        doc: 'Reason for a modify rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for a modify rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -6031,11 +6009,11 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: reserved_1
         size: 1
         doc: 'Reserved for Cboe internal use. To maintain for- ward compatibility, fill with 0'
@@ -6198,7 +6176,7 @@ types:
       - id: last_shares
         type: u4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_shares
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         if: number_of_return_bitfields >= 5 and order_cancelled_v_2_return_bitfield_5.order_cancelled_v_2_return_bitfield_5_last_px
@@ -6235,10 +6213,6 @@ types:
         type: u1
         enum: liquidity_provision
         if: number_of_return_bitfields >= 9 and order_cancelled_v_2_return_bitfield_9.order_cancelled_v_2_return_bitfield_9_liquidity_provision
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and order_cancelled_v_2_return_bitfield_10.order_cancelled_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and order_cancelled_v_2_return_bitfield_10.order_cancelled_v_2_return_bitfield_10_client_qualified_role
@@ -6659,11 +6633,11 @@ types:
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: cancel_subreason
         type: u1
         enum: cancel_subreason
-        doc: 'Additional detail for a quote cancellation. See Subreason Codes (§ 7.3, p. 174) for a list of possible subreasons'
+        doc: 'Additional detail for a quote cancellation. See Subreason Codes (§ 7.3, p. 177) for a list of possible subreasons'
   cross_order_cancelled_message:
     seq:
       - id: transaction_time
@@ -6677,7 +6651,7 @@ types:
       - id: cancel_reason
         type: u1
         enum: cancel_reason
-        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for the order cancellation. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: reserved_1
         size: 1
         doc: 'Reserved for Cboe internal use. To maintain for- ward compatibility, fill with 0'
@@ -6795,6 +6769,10 @@ types:
       - id: auction_id
         type: u8
         if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_auction_id
+      - id: liquidity_provision
+        type: u1
+        enum: liquidity_provision
+        if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_liquidity_provision
       - id: cross_type
         type: str
         size: 1
@@ -6806,14 +6784,6 @@ types:
         enum: cross_prioritization
         if: number_of_return_bitfields >= 9 and cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_cross_prioritization
         doc: 'Corresponds to CrossPrioritization (550) in Cboe FIX. Indicates which side of the cross order will be pri- oritized for execution. This identifies the Agency side. 1 = Buy 2 = Sell'
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and cross_order_cancelled_return_bitfield_10.cross_order_cancelled_return_bitfield_10_waiver_type
-      - id: deferral_reason
-        type: u1
-        enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and cross_order_cancelled_return_bitfield_11.cross_order_cancelled_return_bitfield_11_deferral_reason
   cross_order_cancelled_return_bitfield_1:
     meta:
       bit-endian: le
@@ -7180,7 +7150,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -7222,10 +7192,7 @@ types:
       - id: account_type
         type: u1
         enum: account_type
-      - id: liquidity_provision
-        type: u1
-        enum: liquidity_provision
-        if: _parent.number_of_return_bitfields >= 9 and _parent.cross_order_cancelled_return_bitfield_9.cross_order_cancelled_return_bitfield_9_liquidity_provision
+        if: _parent.number_of_return_bitfields >= 18 and _parent.cross_order_cancelled_return_bitfield_18.cross_order_cancelled_return_bitfield_18_account_type
       - id: order_origination
         type: u1
         enum: order_origination
@@ -7262,11 +7229,11 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: cancel_reject_reason
         type: u1
         enum: cancel_reject_reason
-        doc: 'Reason for a cancel rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for a cancel rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -7410,10 +7377,6 @@ types:
       - id: alloc_qty
         type: u4
         if: number_of_return_bitfields >= 10 and cancel_rejected_v_2_return_bitfield_10.cancel_rejected_v_2_return_bitfield_10_alloc_qty
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and cancel_rejected_v_2_return_bitfield_10.cancel_rejected_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and cancel_rejected_v_2_return_bitfield_10.cancel_rejected_v_2_return_bitfield_10_client_qualified_role
@@ -7815,13 +7778,13 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: exec_id
         type: u8
         doc: 'Corresponds to ExecID (17) in Cboe FIX. Execution ID. Unique across all matching units on a given day. Note: ExecIDs will be rep- resented on ODROP, FIXDROP and standard DROP ports as base 36 ASCII. Example conversion: Decimal Base 36 28294005440239 A1234B567 76335905726621 R248BC23H 728557228187 09AP05V2Z'
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
@@ -8027,10 +7990,6 @@ types:
       - id: alloc_qty
         type: u4
         if: number_of_return_bitfields >= 10 and order_execution_v_2_return_bitfield_10.order_execution_v_2_return_bitfield_10_alloc_qty
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and order_execution_v_2_return_bitfield_10.order_execution_v_2_return_bitfield_10_waiver_type
       - id: client_qualified_role
         type: u1
         if: number_of_return_bitfields >= 10 and order_execution_v_2_return_bitfield_10.order_execution_v_2_return_bitfield_10_client_qualified_role
@@ -8464,7 +8423,7 @@ types:
         encoding: ASCII
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
@@ -8497,7 +8456,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_id
         type: u8
         doc: 'Corresponds to OrderID (37) in Cboe FIX. Order identifier supplied by Cboe. This identi- fier corresponds to the identifiers used in Cboe market data products'
@@ -8521,7 +8480,7 @@ types:
         encoding: ASCII
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_binary_price_8
         type: decimal_s8_4
         doc: 'Implied decimal with scale 1e-4'
@@ -9012,7 +8971,7 @@ types:
       - id: purge_reject_reason
         type: u1
         enum: purge_reject_reason
-        doc: 'Reason for a purge rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for a purge rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -9496,7 +9455,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: symbol_alphanumeric_8
         type: str
         size: 8
@@ -9588,7 +9547,7 @@ types:
         doc: 'BitSet ComplexInstrumentAccepted byte 18'
       - id: num_complex_leg
         type: u1
-        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 12. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
+        doc: 'Corresponds to NoLegs (555) in Cboe FIX. Indicates the number of repeating groups to fol- low. Must be a minimum of 2 and a maximum of 13. However, for orders with AccountType value of 3 (House Trader), it is possible to specify 0 here. In that case, the repeating group ComplexLe- gOrderInfo should not follow, and the LegPosi- tionEffect is defaulted to None (“N”) for each leg'
       - id: complex_leg
         type: complex_leg
         repeat: expr
@@ -9597,7 +9556,7 @@ types:
       - id: leg_price
         type: decimal_s8_4
         if: number_of_return_bitfields >= 18 and complex_instrument_accepted_return_bitfield_18.complex_instrument_accepted_return_bitfield_18_leg_price
-        doc: 'Implied decimal with scale 1e-4'
+        doc: 'Corresponds to LegPrice (566) in Cboe FIX. Reference price for the future leg of a Volatility Strategy. Mandatory for this case, otherwise ig- nored. See the Volatility Strategies section (p. 7) for more details. Implied decimal with scale 1e-4'
   complex_instrument_accepted_return_bitfield_1:
     meta:
       bit-endian: le
@@ -9967,11 +9926,11 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
+        doc: 'Corresponds to ClOrdID (11) in Cboe FIX. Day-unique ID chosen by the client. Characters in the ASCII range 33–126 are allowed, except for comma, semicolon, and pipe. A leading tilde (˜) cannot be sent on any ClOrdId and will result in a reject. These are reserved for internal use by Cboe and could be received as a result of a system generated ClOrdId. If the ClOrdID matches a live order, the order will be rejected as duplicate. Note: Cboe only enforces uniqueness of ClOrdID values among currently live orders. However, we strongly recommend that you keep your ClOrdID values day-unique'
       - id: order_reject_reason
         type: u1
         enum: order_reject_reason
-        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for an order rejection. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -10555,8 +10514,9 @@ types:
         enum: liquidity_provision
         if: number_of_return_bitfields >= 9 and trade_capture_report_acknowledgment_v_2_return_bitfield_9.trade_capture_report_acknowledgment_v_2_return_bitfield_9_liquidity_provision
       - id: price_formation
-        type: u1
-        enum: price_formation
+        type: str
+        size: 1
+        encoding: ASCII
         if: number_of_return_bitfields >= 10 and trade_capture_report_acknowledgment_v_2_return_bitfield_10.trade_capture_report_acknowledgment_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
@@ -10974,7 +10934,7 @@ types:
       - id: reason
         type: u1
         enum: reason
-        doc: 'Reason for a Trade Capture Report reject or decline. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for a Trade Capture Report reject or decline. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -11101,8 +11061,9 @@ types:
         if: number_of_return_bitfields >= 7 and trade_capture_report_reject_v_2_return_bitfield_7.trade_capture_report_reject_v_2_return_bitfield_7_trade_publish_ind_return
         doc: 'Nanoseconds since Unix epoch'
       - id: price_formation
-        type: u1
-        enum: price_formation
+        type: str
+        size: 1
+        encoding: ASCII
         if: number_of_return_bitfields >= 10 and trade_capture_report_reject_v_2_return_bitfield_10.trade_capture_report_reject_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
@@ -11525,7 +11486,7 @@ types:
         type: u8
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_trade_price_8
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
@@ -11635,11 +11596,6 @@ types:
         size: 16
         encoding: ASCII
         if: number_of_return_bitfields >= 2 and trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_security_id
-      - id: clearing_firm
-        type: str
-        size: 4
-        encoding: ASCII
-        if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_clearing_firm
       - id: order_qty
         type: u4
         if: number_of_return_bitfields >= 3 and trade_capture_confirm_v_2_return_bitfield_3.trade_capture_confirm_v_2_return_bitfield_3_order_qty
@@ -11669,13 +11625,10 @@ types:
         type: u1
         enum: order_category
         if: number_of_return_bitfields >= 9 and trade_capture_confirm_v_2_return_bitfield_9.trade_capture_confirm_v_2_return_bitfield_9_order_category
-      - id: waiver_type
-        type: u1
-        enum: waiver_type
-        if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_waiver_type
       - id: price_formation
-        type: u1
-        enum: price_formation
+        type: str
+        size: 1
+        encoding: ASCII
         if: number_of_return_bitfields >= 10 and trade_capture_confirm_v_2_return_bitfield_10.trade_capture_confirm_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
@@ -12063,6 +12016,7 @@ types:
       - id: capacity
         type: u1
         enum: capacity
+        if: _parent.number_of_return_bitfields >= 2 and _parent.trade_capture_confirm_v_2_return_bitfield_2.trade_capture_confirm_v_2_return_bitfield_2_capacity
       - id: account
         type: str
         size: 16
@@ -12120,7 +12074,7 @@ types:
         type: u8
       - id: last_shares
         type: u4
-        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed share quantity. If the LargeSize op- tional field is specified, that value holds pre- cedance over this field'
+        doc: 'Corresponds to LastShares (32) in Cboe FIX. Executed contract quantity. System limit is 999,999 contracts'
       - id: last_px_trade_price_8
         type: decimal_u8_7
         doc: 'Corresponds to LastPx (31) in Cboe FIX. Price of this fill. Note the use of Binary Price to represent positive and negative prices, which can occur with complex/spread instruments. Implied decimal with scale 1e-7'
@@ -12132,7 +12086,7 @@ types:
       - id: reason
         type: u1
         enum: reason
-        doc: 'Reason for a Trade Capture Report reject or decline. See Reason Codes (§ 7.1, p. 172) for a list of possible reasons'
+        doc: 'Reason for a Trade Capture Report reject or decline. See Reason Codes (§ 7.1, p. 175) for a list of possible reasons'
       - id: text
         type: str
         size: 60
@@ -12259,17 +12213,14 @@ types:
         if: number_of_return_bitfields >= 7 and trade_capture_report_decline_v_2_return_bitfield_7.trade_capture_report_decline_v_2_return_bitfield_7_trade_publish_ind_return
         doc: 'Nanoseconds since Unix epoch'
       - id: price_formation
-        type: u1
-        enum: price_formation
+        type: str
+        size: 1
+        encoding: ASCII
         if: number_of_return_bitfields >= 10 and trade_capture_report_decline_v_2_return_bitfield_10.trade_capture_report_decline_v_2_return_bitfield_10_price_formation
       - id: algorithmic_indicator
         type: u1
         enum: algorithmic_indicator
         if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_algorithmic_indicator
-      - id: deferral_reason
-        type: u1
-        enum: deferral_reason
-        if: number_of_return_bitfields >= 11 and trade_capture_report_decline_v_2_return_bitfield_11.trade_capture_report_decline_v_2_return_bitfield_11_deferral_reason
   trade_capture_report_decline_v_2_return_bitfield_1:
     meta:
       bit-endian: le
@@ -13066,20 +13017,13 @@ enums:
       doc: 'New'
     1:
       id: 'cancel'
-      doc: 'Cancel'
+      doc: 'Cancel (only on return)'
     2:
       id: 'replace'
-      doc: 'Replace'
+      doc: 'Replace (only on return)'
     3:
       id: 'release'
       doc: 'Release'
-  trade_price_condition:
-    0:
-      id: 'cum_dividend'
-      doc: 'Cum Dividend (deprecated)'
-    2:
-      id: 'ex_dividend'
-      doc: 'Ex Dividend (deprecated) 13 = Special Dividend (SDIV)'
   order_category:
     0:
       id: 'not_a_negotiated_trade'
@@ -13087,13 +13031,6 @@ enums:
     3:
       id: 'privately_negotiated_trade'
       doc: 'Privately Negotiated Trade On return fields, this field indicates whether Cboe deems the trade as utilising the Negotiated Transaction waiver under Mi- FID.'
-  price_formation:
-    0x4a:
-      id: 'trade_not_contributing_to_the_price_discovery_process'
-      doc: 'Trade Not Contributing to the Price Discovery Process (TNCP)'
-    0x4e:
-      id: 'price_is_pending'
-      doc: 'Price is Pending (PNDG)'
   base_liquidity_indicator:
     0x41:
       id: 'added_liquidity'
@@ -13114,28 +13051,6 @@ enums:
     0x67:
       id: 'aggressive_hold'
       doc: 'Aggressive Hold. Order held by speed bump.'
-  waiver_type:
-    0x2d:
-      id: 'no_waiver_type'
-      doc: 'No Waiver Type'
-    0x30:
-      id: 'negotiated_trade_in_liquid_instrument'
-      doc: 'Negotiated Trade in Liquid Instrument (NLIQ)'
-    0x31:
-      id: 'negotiated_trade_in_illiquid_instrument'
-      doc: 'Negotiated Trade in Illiquid Instrument (OILQ)'
-    0x32:
-      id: 'negotiated_trade_subject_to_conditions_other_than_the'
-      doc: 'Negotiated Trade Subject to Conditions Other Than the Current Market Price (PRIC)'
-    0x33:
-      id: 'reference_price'
-      doc: 'Reference Price (Dark Book) (RFPT) (Pre-Trade Trans- parency Waiver)'
-    0x41:
-      id: 'order_management_facility'
-      doc: 'Order Management Facility (Iceberg) (Pre-Trade Trans- parency Waiver)'
-    0x39:
-      id: 'large_in_scale'
-      doc: 'Large In Scale (Pre-Trade Transparency Waiver)'
   quote_reject_reason:
     0x43:
       id: 'invalid_clearing_firm'
@@ -13289,6 +13204,12 @@ enums:
     0x2b:
       id: 'risk_management_trading_firm_group_level_by_rule'
       doc: 'Risk Management Trading Firm Group Level by rule'
+    0x6c:
+      id: 'limit_order_collar_breach'
+      doc: 'Limit order collar breach'
+    0x70:
+      id: 'spike_protection_collar_breach'
+      doc: 'Spike protection collar breach'
   order_reject_reason:
     0x41:
       id: 'admin'
@@ -13564,13 +13485,12 @@ enums:
     0x2b:
       id: 'risk_management_trading_firm_group_level_by_rule'
       doc: 'Risk Management Trading Firm Group Level by rule'
-  deferral_reason:
-    0x2d:
-      id: 'no_deferral_reason'
-      doc: 'No Deferral Reason'
-    0x36:
-      id: 'deferral_for_large_in_scale'
-      doc: 'Deferral for Large In Scale (LRGS)'
+    0x6c:
+      id: 'limit_order_collar_breach'
+      doc: 'Limit order collar breach'
+    0x70:
+      id: 'spike_protection_collar_breach'
+      doc: 'Spike protection collar breach'
   cancel_reject_reason:
     0x41:
       id: 'admin'
@@ -13859,6 +13779,13 @@ enums:
     0x2b:
       id: 'risk_management_trading_firm_group_level'
       doc: 'Risk Management Trading Firm Group Level'
+  deferral_reason:
+    0x2d:
+      id: 'no_deferral_reason'
+      doc: 'No Deferral Reason'
+    0x36:
+      id: 'deferral_for_large_in_scale'
+      doc: 'Deferral for Large In Scale (LRGS)'
   trade_publish_ind:
     0:
       id: 'do_not_publish'

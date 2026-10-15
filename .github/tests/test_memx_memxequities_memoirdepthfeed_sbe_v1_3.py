@@ -17,6 +17,11 @@ class MemxMemxequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_instrumentdirectorymessage(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/InstrumentDirectoryMessage.pcap"):
+            parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderaddedmessage(self):
         for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/OrderAddedMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
@@ -44,6 +49,16 @@ class MemxMemxequitiesMemoirdepthfeedSbeV13Tests(unittest.TestCase):
 
     def test_securitytradingstatusmessage(self):
         for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/SecurityTradingStatusMessage.pcap"):
+            parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_sessionshutdown(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/SessionShutdown.pcap"):
+            parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
+    def test_trademessage(self):
+        for payload in payloads.of("omi-data-packets/Memx/MemxEquities.MemoirDepthFeed.Sbe.v1.3/TradeMessage.pcap"):
             parsed = MemxMemxequitiesMemoirdepthfeedSbeV13.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 

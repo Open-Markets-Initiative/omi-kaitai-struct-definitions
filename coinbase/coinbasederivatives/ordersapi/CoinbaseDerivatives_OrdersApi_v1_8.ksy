@@ -128,12 +128,12 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'username'
+        doc: 'Logon username'
       - id: password
         type: str
         size: 32
         encoding: ASCII
-        doc: 'password'
+        doc: 'Logon password'
       - id: reset_seq_num
         type: s1
         enum: reset_seq_num
@@ -196,7 +196,7 @@ types:
         type: str
         size: 64
         encoding: ASCII
-        doc: 'details'
+        doc: 'Logout details'
   order_message:
     seq:
       - id: order_payload
@@ -304,7 +304,7 @@ types:
         type: str
         size: 32
         encoding: ASCII
-        doc: 'symbol'
+        doc: 'Instrument symbol'
   set_account_message:
     seq:
       - id: correlation_id
@@ -314,7 +314,7 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'account'
+        doc: 'Account, a zero padded ascii string'
   set_trader_message:
     seq:
       - id: correlation_id
@@ -324,7 +324,7 @@ types:
         type: str
         size: 16
         encoding: ASCII
-        doc: 'trader'
+        doc: 'Trader, a zero padded ascii string'
   set_ack_message:
     seq:
       - id: correlation_id
@@ -343,14 +343,14 @@ types:
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity with 0 decimal places'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
       - id: side
         type: s1
         enum: side
-        doc: 'side'
+        doc: '1 buy, -1 sell'
       - id: flags
         type: flags
         doc: 'NewOrderFlags bit set'
@@ -370,7 +370,7 @@ types:
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity with 0 decimal places'
       - id: min_qty
         type: s4_nullable
         doc: 'minQty. Nullable, No Value = -2147483648'
@@ -380,12 +380,12 @@ types:
       - id: side
         type: s1
         enum: side
-        doc: 'side'
+        doc: '1 buy, -1 sell'
   order_entered_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -440,19 +440,19 @@ types:
         doc: 'limitPrice. Implied decimal with scale 1e-9'
       - id: quantity
         type: s4
-        doc: 'quantity'
+        doc: 'Quantity with 0 decimal places'
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
       - id: side
         type: s1
         enum: side
-        doc: 'side'
+        doc: '1 buy, -1 sell'
   order_reject_message:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -475,7 +475,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -515,7 +515,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -545,7 +545,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: client_order_id
         type: s8
         doc: 'clientOrderId'
@@ -578,7 +578,7 @@ types:
       - id: side
         type: s1
         enum: side
-        doc: 'side'
+        doc: '1 buy, -1 sell'
       - id: current_session_only
         type: s1
         enum: current_session_only
@@ -591,7 +591,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -613,7 +613,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -635,7 +635,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -646,7 +646,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -659,7 +659,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -701,7 +701,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: exec_id
         type: s8
         doc: 'execId'
@@ -754,7 +754,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: last_exec_id
         type: s8
         doc: 'lastExecId'
@@ -806,7 +806,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
         doc: 'correlationId'
@@ -817,7 +817,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'timestamp. Nanoseconds since Unix epoch'
+        doc: 'Nanoseconds since epoch. Nanoseconds since Unix epoch'
       - id: correlation_id
         type: s8
         doc: 'correlationId'

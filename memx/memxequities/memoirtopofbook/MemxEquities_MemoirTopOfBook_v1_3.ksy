@@ -41,7 +41,7 @@ doc-ref: https://memxtrading.com/
 seq:
   - id: common_header
     type: common_header_struct
-    doc: 'Memx Udp Common Header'
+    doc: 'Common Header'
   - id: sequenced_messages
     type:
       switch-on: common_header.message_type
@@ -54,13 +54,13 @@ types:
       - id: message_type
         type: u1
         enum: message_type
-        doc: 'Memx Udp Message Type'
+        doc: 'Message Type'
       - id: header_length
         type: u1
         doc: 'Total bytes in this header'
       - id: session_id
         type: u8
-        doc: 'session identifier'
+        doc: 'Session identifier'
       - id: sequence_number
         type: u8
         doc: 'Sequence Number'
@@ -73,7 +73,7 @@ types:
         type: message
         repeat: expr
         repeat-expr: num_message
-        doc: 'Memx Udp Message'
+        doc: 'Message List Element'
   message:
     seq:
       - id: message_length
@@ -306,13 +306,13 @@ enums:
   message_type:
     0:
       id: 'heartbeat_message'
-      doc: 'Memx Udp Heartbeat Message'
+      doc: 'Heartbeat'
     1:
       id: 'session_shutdown_message'
-      doc: 'Memx Udp Session Shutdown Message'
+      doc: 'Session Shutdown'
     2:
       id: 'sequenced_message'
-      doc: 'Memx Udp Sequenced Message'
+      doc: 'Sequenced Message'
   template_id:
     1:
       id: 'instrument_directory_message'
