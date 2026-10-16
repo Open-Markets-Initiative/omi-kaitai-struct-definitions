@@ -36,9 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Canada CHIXMD Market Data AsciiItch v3.4.1.23'
-doc-ref:
-  - https://www.nasdaq.com/docs/2026/01/20/Nasdaq%20Canada%20Market%20Data%20Specification%20-%20CHIXMD%203.4%20V1.23.pdf
-  - https://www.nasdaq.com/products/north-american-markets/canada/connectivity
+doc-ref: https://www.nasdaq.com/products/north-american-markets/canada/connectivity
 
 seq:
   - id: server_frame

@@ -407,6 +407,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: volume
         type: str
         size: 8
@@ -520,6 +521,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: requested_size
         type: str
         size: 8
@@ -601,6 +603,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: series_status
         type: str
         size: 1
@@ -740,6 +743,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: bid_price_sign
         type: str
         size: 1
@@ -898,6 +902,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: instrument_status_marker
         type: str
         size: 1
@@ -1083,6 +1088,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: volume
         type: str
         size: 8
@@ -1176,6 +1182,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: option_marker
         type: str
         size: 2
@@ -1271,6 +1278,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: contract_size
         type: str
         size: 8
@@ -1325,6 +1333,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
   futures_instrument_keys_message:
     seq:
       - id: long_message_header
@@ -1386,6 +1395,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: contract_size
         type: str
         size: 8
@@ -1445,6 +1455,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: expiry_year
         type: str
         size: 2
@@ -1502,6 +1513,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: strategy_allow_implied
         type: str
         size: 1
@@ -1877,6 +1889,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: bid_price_sign
         type: str
         size: 1
@@ -2114,6 +2127,7 @@ types:
         type: str
         size: 79
         encoding: ASCII
+        pad-right: 0x20
       - id: continue_marker
         type: str
         size: 1
@@ -2124,10 +2138,12 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
       - id: special_bulletin_contents
         type: str
         size: 49
         encoding: ASCII
+        pad-right: 0x20
       - id: continue_marker
         type: str
         size: 1

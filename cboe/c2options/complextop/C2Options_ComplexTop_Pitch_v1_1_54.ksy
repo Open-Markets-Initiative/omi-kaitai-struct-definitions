@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe C2 Options Complex Top Pitch v1.1.54'
-doc-ref: http://markets.cboe.com/us/options/support/technical/
 
 seq:
   - id: packet_header

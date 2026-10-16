@@ -36,9 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Ouch 5 Order Entry Ouch v5.02.11'
-doc-ref:
-  - https://www.nasdaq.com/docs/2026/09/23/OUCH5-for-Nasdaq-Nordic-5.02.11.pdf
-  - https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
+doc-ref: https://www.nasdaq.com/products/european-markets/inet-nordic-protocol-specifications
 
 seq:
   - id: server_soup_bin_tcp_packet

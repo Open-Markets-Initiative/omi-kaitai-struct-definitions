@@ -36,7 +36,6 @@ meta:
   endian: be
 
 doc: 'Nextrade Nextrade Nextrade Etp Market Data Common NxtAscii v2.12'
-doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
   - id: packet

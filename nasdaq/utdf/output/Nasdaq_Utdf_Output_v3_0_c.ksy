@@ -36,7 +36,6 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq UTP Trade Data Feed Output Utp v3.0.c'
-doc-ref: https://www.utpplan.com/technical
 
 seq:
   - id: packet_header

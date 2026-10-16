@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'CIX Trading Inc. CIX Aspen CIX Udp Rerequest Aspen v1.1'
-doc-ref: https://www.thecix.ca/market-data
 
 seq:
   - id: rerequest_header

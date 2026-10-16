@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'Nextrade Nextrade Nextrade Stock Market Data 3 Level NxtBinary v2.12'
-doc-ref: https://nextrade.co.kr/en/main.do
 
 seq:
   - id: packet

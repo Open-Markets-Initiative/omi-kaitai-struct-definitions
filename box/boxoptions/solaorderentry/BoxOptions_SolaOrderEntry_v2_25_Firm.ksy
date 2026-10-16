@@ -237,10 +237,8 @@ types:
         type: str_8_nullable
         doc: 'Stated inline as Numeric (8). Nullable, No Value = 0'
       - id: post_trading_instructions
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
   clearing_data:
     seq:
       - id: clearing_instruction
@@ -271,13 +269,13 @@ types:
     seq:
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
       - id: pound_sign
         type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field'
   global_cancellation:
     seq:
       - id: group
@@ -385,21 +383,17 @@ types:
         type: str_8_nullable
         doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: buying_post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: selling_post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: buying_additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: selling_additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -459,24 +453,24 @@ types:
     seq:
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
       - id: pound_sign
         type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field'
   selling_owner_data:
     seq:
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
       - id: pound_sign
         type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field'
   directed_order_acceptation:
     seq:
       - id: group
@@ -509,16 +503,14 @@ types:
         enum: quantity_term
         doc: 'B: Surrender Quantity for Solicitation, Facilitation and Floor Trade J: Indicates that the Auction type as MIP Space: None The above value indicates that the InitO is willing to surrender a portion of the total number of contracts'
       - id: post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: additional_quantity
         type: str_8_nullable
         doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
   clearing_data_dealer:
     seq:
       - id: clearing_instruction
@@ -549,13 +541,13 @@ types:
     seq:
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
       - id: pound_sign
         type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field'
   order_entry:
     seq:
       - id: group
@@ -612,13 +604,11 @@ types:
         type: owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
       - id: post_trading_instructions
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -658,13 +648,11 @@ types:
         type: owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
       - id: post_trading_instructions
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -735,13 +723,11 @@ types:
         type: owner_data
         doc: 'The guide states these fields once, as Owner Data, for every message that carries them'
       - id: post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -833,21 +819,17 @@ types:
         type: str_8_nullable
         doc: 'For OA Auction Entry, indicates the number of contracts the InitO is willing to surrender. For Solicitation, Facilitation and Floor Trade it is used when the field Quantity Term is set to ’B’. It must contain a quantity less than or equal to the quantity being auctioned. Nullable, No Value = 0'
       - id: buying_post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: selling_post_trading_instruction
-        type: str
-        size: 50
-        encoding: ASCII
-        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close. Nullable, No Value = 0'
+        type: str_50_nullable
+        doc: 'String of characters This field is used for 4 reasons: Specify a CMTA Specify a Give-Up Firm Specify a SubAccount at OCC. The SubAccount represents the Market Maker ID (MMID) at OCC. Specify the Open Close of a Complex Order The information can be specified as follows: To specify a CMTA, enclose the CMTA Firm ID (up to 4 digits) between 2 ''C'' To specify a Give-Up Firm, enclose the Give-Up Firm ID (up to 4 digits) between 2 ''G'' To specify a SubAccount (ClearingAccount at OCC), enclose the SubAccount between 2 ‘#’ (pound sign). SubAccount is defined as a string up to 3 AlphaNumeric as is currently supported by OCC). Any preceeding space is allowed, but any trailing space is ignored. o #ABC# means ‘ABC’ will be sent to OCC (Sent as is) o # AB# means ‘ AB’ will be sent to OCC (Preceding space conserved) o #AB # means ‘AB’ will be sent to OCC (Trailing space removed) o #ABCD# means ‘ABC’ (truncated to 3) will be sent to OCC To specify the OpenClose of a Complex Order, enclose the Open (O) or Close (C) position of each leg between 2 ''P'' - up to 16 legs Open/Close are supported. For example: "C950CG980G#ABC#POOCCOCOCCCP" is interpreted as follows: The CMTA is 950 The Give-Up is 980 The SubAccount is ABC The Open/Close of the 10 legs of the strategy is as follows: . Leg 1: Open . Leg 2: Open . Leg 3: Close . Leg 4: Close . Leg 5: Open . Leg 6: Close . Leg 7: Open . Leg 8: Close . Leg 9: Close . Leg 10: Close'
       - id: buying_additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: selling_additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -1003,7 +985,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_1_nullable:
     seq:
       - id: value
@@ -1021,7 +1003,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_8_nullable:
     seq:
       - id: value
@@ -1048,7 +1030,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
 
 enums:
   disconnection_instruction_note_cancel_quotes_only_q_quotes_only:

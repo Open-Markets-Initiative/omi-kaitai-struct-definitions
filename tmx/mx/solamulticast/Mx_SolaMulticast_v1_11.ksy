@@ -401,7 +401,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -686,7 +686,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -1187,7 +1187,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -1607,7 +1607,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -2013,7 +2013,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -2541,7 +2541,7 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Option symbol'
       - id: associated_product_delivery_month
         type: str
         size: 1
@@ -3977,7 +3977,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -4175,6 +4175,7 @@ types:
         type: str
         size: 79
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
         type: str
@@ -4183,15 +4184,17 @@ types:
         doc: 'Continue Marker'
   special_text_bulletin:
     seq:
-      - id: symbol_bulletin
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
       - id: special_bulletin_contents
         type: str
         size: 49
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
         type: str

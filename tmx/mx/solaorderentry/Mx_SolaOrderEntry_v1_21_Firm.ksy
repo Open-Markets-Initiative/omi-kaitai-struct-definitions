@@ -56,6 +56,7 @@ seq:
         '"TA"': disconnection_instruction
         '"TI"': heartbeat_response
         '"TD"': user_disconnection
+        '"AF"': order_request
         '"BD"': bulk_quote_data
         '"CR"': firm_risk_config
         '"GC"': global_cancellation
@@ -184,6 +185,26 @@ types:
       - id: session_id
         type: str_4_nullable
         doc: 'Identifies the current Session ID. If set to blank spaces, means that the Participant wants to connect to the current Session ID. Nullable, No Value = 0'
+  order_request:
+    seq:
+      - id: incoming_messages_header
+        type: incoming_messages_header
+        doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
+  incoming_messages_header:
+    seq:
+      - id: user_timestamp_local_hhmmss
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'User message or trading engine timestamp, Local, HHMMSS'
+      - id: trader_id
+        type: str
+        size: 8
+        encoding: ASCII
+        doc: 'Identifies the Trader: 4 first characters = Firm identifier 4 last characters = Trader identifier'
+      - id: user_sequence_id
+        type: str_8_nullable
+        doc: 'Identifies all the incoming business messages for one connection. Must be sequential and start at 1 at the beginning of the day. Used by SOLA® to track gaps in message sequence. Nullable, No Value = 0'
   bulk_quote_data:
     seq:
       - id: incoming_messages_header
@@ -230,21 +251,6 @@ types:
       - id: filler_20
         size: 20
         doc: 'Stated inline as String (20). Nullable, No Value = 0'
-  incoming_messages_header:
-    seq:
-      - id: user_timestamp_local_hhmmss
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'User message or trading engine timestamp, Local, HHMMSS'
-      - id: trader_id
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Identifies the Trader: 4 first characters = Firm identifier 4 last characters = Trader identifier'
-      - id: user_sequence_id
-        type: str_8_nullable
-        doc: 'Identifies all the incoming business messages for one connection. Must be sequential and start at 1 at the beginning of the day. Used by SOLA® to track gaps in message sequence. Nullable, No Value = 0'
   clearing_data:
     seq:
       - id: clearing_instruction
@@ -274,7 +280,7 @@ types:
     seq:
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field'
   firm_risk_config:
     seq:
       - id: incoming_messages_header
@@ -778,12 +784,12 @@ types:
     seq:
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field'
   selling_owner_data:
     seq:
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field'
   bulk_quote:
     seq:
       - id: incoming_messages_header
@@ -937,7 +943,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_10_nullable:
     seq:
       - id: value

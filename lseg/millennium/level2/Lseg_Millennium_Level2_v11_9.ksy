@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'London Stock Exchange Millennium Exchange Level 2 Mitch v11.9'
-doc-ref: https://docs.londonstockexchange.com/sites/default/files/documents/mit303issue119.pdf
 
 seq:
   - id: unit_header

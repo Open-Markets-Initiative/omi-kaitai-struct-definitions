@@ -176,11 +176,13 @@ types:
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Stated inline as String (100)'
       - id: start_of_message_in_error
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Stated inline as String (100)'
   disconnection_instruction_acknowledgement:
     seq:
@@ -238,6 +240,7 @@ types:
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Stated inline as String (100)'
       - id: group
         type: str_2_nullable
@@ -258,10 +261,10 @@ types:
         doc: 'Type of Message'
       - id: error_detail
         type: str_200_nullable
-        doc: 'Free format text string used to provide additional detail on errors. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up. Nullable, No Value = 0'
+        doc: 'Free format text string used to provide additional detail on errors. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up'
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
   bulk_quote_data_acknowledgement:
     seq:
       - id: group
@@ -325,7 +328,7 @@ types:
         doc: 'Stated inline as Numeric (6)'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -359,13 +362,13 @@ types:
     seq:
       - id: client_order_id
         type: str_20_nullable
-        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant. Nullable, No Value = 0'
+        doc: 'Client Order Id Unique identifier for orders as assigned by participants. Trailing blanks are not significant'
       - id: pound_sign
         type: str_1_nullable
         doc: 'Printed by the guide as a field named #. Separates the ClientOrderId from the Memo within Owner Data: anything before it is the ClientOrderId, anything after it the Memo. # Pound sign'
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone can be used to transmit additional information for processing. No validations are carried out on this field'
   global_cancellation_confirmation:
     seq:
       - id: group
@@ -432,7 +435,7 @@ types:
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -486,7 +489,7 @@ types:
         doc: 'Stated inline as Numeric (6)'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -599,7 +602,7 @@ types:
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction. Nullable, No Value = 0'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -705,7 +708,7 @@ types:
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -908,7 +911,7 @@ types:
         doc: 'Identifies the trade number for an instrument and one day'
       - id: trade_memo
         type: str_50_nullable
-        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+        doc: 'Stated inline as String (50)'
       - id: original_reference_id
         type: str
         size: 8
@@ -945,7 +948,7 @@ types:
         doc: '6: Public Customer 7: Broker Dealer 8: Market Maker T: Professional Customer W: Broker Dealer cleared as Customer X: Away Market Maker'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
@@ -1073,7 +1076,7 @@ types:
         doc: 'Identifies the trade number for an instrument and one day'
       - id: trade_memo
         type: str_50_nullable
-        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+        doc: 'Stated inline as String (50)'
       - id: original_reference_id
         type: str
         size: 8
@@ -1094,7 +1097,7 @@ types:
         doc: '6: Public Customer 7: Broker Dealer 8: Market Maker T: Professional Customer W: Broker Dealer cleared as Customer X: Away Market Maker'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
@@ -1222,7 +1225,7 @@ types:
         doc: 'Identifies the trade number for an instrument and one day'
       - id: trade_memo
         type: str_50_nullable
-        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+        doc: 'Stated inline as String (50)'
       - id: original_reference_id
         type: str
         size: 8
@@ -1243,7 +1246,7 @@ types:
         doc: '6: Public Customer 7: Broker Dealer 8: Market Maker T: Professional Customer W: Broker Dealer cleared as Customer X: Away Market Maker'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
@@ -1313,7 +1316,7 @@ types:
         doc: 'Identifies the trade number for an instrument and one day'
       - id: trade_memo
         type: str_50_nullable
-        doc: 'Stated inline as String (50). Nullable, No Value = 0'
+        doc: 'Stated inline as String (50)'
       - id: original_reference_id
         type: str
         size: 8
@@ -1350,7 +1353,7 @@ types:
         doc: '6: Public Customer 7: Broker Dealer 8: Market Maker T: Professional Customer W: Broker Dealer cleared as Customer X: Away Market Maker'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_1
         size: 1
         doc: 'Stated inline as String (1)'
@@ -1409,7 +1412,7 @@ types:
         doc: 'Identifies the number of an auction (Improvement Phase). It is a sequential number which is unique per Instrument and per Trading Day. Current Auction identifier if the trade occurred during an auction'
       - id: additional_client_memo
         type: str_16_nullable
-        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted. Nullable, No Value = 0'
+        doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
         doc: 'Stated inline as String (4). Nullable, No Value = 0'
@@ -1466,7 +1469,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_1_nullable:
     seq:
       - id: value
@@ -1484,7 +1487,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_16_nullable:
     seq:
       - id: value
@@ -1493,7 +1496,7 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
   str_10_nullable:
     seq:
       - id: value

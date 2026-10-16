@@ -171,11 +171,13 @@ types:
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'First 100 characters of an erroneous message'
       - id: start_of_message_in_error
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Stated inline as String (100)'
   disconnection_acknowledgement:
     seq:
@@ -296,7 +298,7 @@ types:
     seq:
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field'
   error_notice:
     seq:
       - id: outgoing_messages_header
@@ -311,6 +313,7 @@ types:
         type: str
         size: 100
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Stated inline as String (100)'
   bulk_quote_data_acknowledgement:
     seq:
@@ -813,6 +816,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Text entered by the MOD when it is a manual trade entry'
       - id: original_reference_id
         type: str
@@ -897,7 +901,7 @@ types:
     seq:
       - id: memo
         type: str_50_nullable
-        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field. Nullable, No Value = 0'
+        doc: 'Free text zone, which can be used to transmit additional information for processing. No validations are carried out on this field'
   cancellation_of_all_quotes_notice:
     seq:
       - id: outgoing_messages_header
@@ -993,6 +997,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Text entered by the MOD when it is a manual trade entry'
       - id: original_reference_id
         type: str
@@ -1075,6 +1080,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Text entered by the MOD when it is a manual trade entry'
       - id: original_reference_id
         type: str
@@ -1157,6 +1163,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Text entered by the MOD when it is a manual trade entry'
       - id: original_reference_id
         type: str
@@ -1306,5 +1313,5 @@ types:
       text:
         value: value.to_s("ASCII")
       is_null:
-        value: text == "0"
+        value: value[0] == 32
 

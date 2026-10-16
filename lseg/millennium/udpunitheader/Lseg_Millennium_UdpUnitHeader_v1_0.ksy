@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'London Stock Exchange Millennium Exchange Udp Unit Header Mitch v1.0'
-doc-ref: https://www.londonstockexchange.com/resources/trade-resources
 
 seq:
   - id: unit_header

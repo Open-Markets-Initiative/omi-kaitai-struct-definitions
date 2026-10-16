@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 1.04
 #   Date: 8/14/2026
-#   Specification: IEX Options Market Data Transport Protocol Specification
+#   Specification: IEX Options Market Data Transport Protocol Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

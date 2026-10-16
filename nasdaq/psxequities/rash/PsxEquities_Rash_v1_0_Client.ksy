@@ -36,9 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Rash AsciiRash v1.0'
-doc-ref:
-  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/psxrashsb10.pdf
-  - https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
+doc-ref: https://www.nasdaqtrader.com/Trader.aspx?id=TradingSpecs
 
 seq:
   - id: client_soup_bin_tcp_packet

@@ -188,6 +188,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
         type: u1
@@ -269,6 +270,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: symbol_month
         type: str
@@ -355,6 +357,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: symbol_month
         type: str
@@ -377,7 +380,7 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -490,7 +493,7 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -709,7 +712,7 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -877,7 +880,7 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -1069,7 +1072,7 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: symbol_strategy
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
@@ -1486,6 +1489,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: symbol_month
         type: str
@@ -2476,6 +2480,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: group_status
         type: str
@@ -2569,6 +2574,7 @@ types:
         type: str
         size: 79
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
         type: str
@@ -2577,15 +2583,17 @@ types:
         doc: 'Continue Marker'
   special_text_bulletin:
     seq:
-      - id: symbol_bulletin
+      - id: symbol
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
       - id: special_bulletin_contents
         type: str
         size: 49
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
         type: str

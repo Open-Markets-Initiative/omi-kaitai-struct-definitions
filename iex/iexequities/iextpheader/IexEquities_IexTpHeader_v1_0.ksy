@@ -36,7 +36,6 @@ meta:
   endian: le
 
 doc: 'Investors Exchange IEX Equities IexTp Header Udp v1.0'
-doc-ref: https://iextrading.com/trading/market-data/
 
 seq:
   - id: iextp_header
