@@ -37,8 +37,8 @@ meta:
 
 doc: 'Databento Databento Market Data Historical Dbn v3'
 doc-ref:
-  - https://databento.com/docs/standards-and-conventions/databento-binary-encoding
   - https://github.com/databento/dbn
+  - https://databento.com/docs/standards-and-conventions/databento-binary-encoding
 
 seq:
   - id: metadata

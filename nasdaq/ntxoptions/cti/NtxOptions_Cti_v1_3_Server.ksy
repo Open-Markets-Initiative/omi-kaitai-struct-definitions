@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Options Clearing Trade Interface Itch v1.3'
 doc-ref:
-  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/tradingproducts/Options_CTI.pdf
   - https://www.nasdaq.com/docs/ClearingTradeInterface.pdf
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/tradingproducts/Options_CTI.pdf
 
 seq:
   - id: server_soup_bin_tcp_packet

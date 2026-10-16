@@ -37,8 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Stock Market Drop AsciiDrop v2.3'
 doc-ref:
-  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/DROP_2.3_NextShares.pdf
   - https://www.nasdaqtrader.com/content/technicalsupport/specifications/Tradingproducts/DROPETMF.pdf
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/TradingProducts/DROP_2.3_NextShares.pdf
 
 seq:
   - id: client_frame

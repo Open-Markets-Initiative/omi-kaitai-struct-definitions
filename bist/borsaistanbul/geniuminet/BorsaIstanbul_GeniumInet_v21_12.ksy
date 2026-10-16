@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'Borsa İstanbul A.Ş. Borsa Istanbul Genium Inet Itch v21.12'
-doc-ref: https://www.borsaistanbul.com/en/technical-resources/technical-documents
+doc-ref:
+  - https://www.borsaistanbul.com/en/technical-resources/technical-documents
+  - https://www.borsaistanbul.com/en/technical-resources/technical-documents
 
 seq:
   - id: packet_header

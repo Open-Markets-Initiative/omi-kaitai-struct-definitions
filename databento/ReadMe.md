@@ -32,4 +32,4 @@
 [Databento.MarketData.Historical]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Protocols/MarketData/Historical.md "Historical"
 
 [Databento.MarketData.Historical.Dbn.v3.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/historical/Databento_MarketData_Historical_v3.ksy "Databento Historical Dbn v3 Kaitai Struct Definition"
-[Databento.MarketData.Historical.Dbn.v3.Url]: https://databento.com/docs/standards-and-conventions/databento-binary-encoding "Databento 3 Url"
+[Databento.MarketData.Historical.Dbn.v3.Url]: https://github.com/databento/dbn "Databento 3 Url"

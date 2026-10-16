@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'Borsa İstanbul A.Ş. Borsa Istanbul Genium Inet Glimpse v2.7'
-doc-ref: https://www.borsaistanbul.com/en/technical-resources/technical-documents
+doc-ref:
+  - https://www.borsaistanbul.com/en/technical-resources/technical-documents
+  - https://www.borsaistanbul.com/en/technical-resources/technical-documents
 
 seq:
   - id: client_soup_bin_tcp_packet

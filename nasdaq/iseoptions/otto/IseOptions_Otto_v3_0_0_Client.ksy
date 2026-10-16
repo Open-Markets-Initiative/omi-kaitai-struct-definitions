@@ -37,9 +37,9 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq ISE Ouch to Trade Options Ouch v3.0.0'
 doc-ref:
-  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
   - https://www.nasdaq.com/Options_ETH_OTTO
   - https://www.nasdaq.com/Options_OTTO
+  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
 
 seq:
   - id: client_soup_bin_tcp_packet

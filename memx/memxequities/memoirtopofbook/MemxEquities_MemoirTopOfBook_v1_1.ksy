@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'The Members Exchange Memx Equities Memoir Top Of Book Sbe v1.1'
-doc-ref: https://memxtrading.com/
+doc-ref:
+  - https://memxtrading.com/
+  - https://memxtrading.com/
 
 seq:
   - id: common_header

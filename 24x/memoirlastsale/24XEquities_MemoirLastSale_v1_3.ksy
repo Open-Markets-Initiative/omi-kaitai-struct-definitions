@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: '24 National Exchange 24X Equities Member Order Information Record Last Sale Sbe v1.3'
-doc-ref: https://equities.24exchange.com/exchange
+doc-ref:
+  - https://equities.24exchange.com/technical-resources
+  - https://equities.24exchange.com/exchange
 
 seq:
   - id: common_header

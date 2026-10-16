@@ -37,9 +37,9 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Options Market Clearing Trade Interface Itch v3.0'
 doc-ref:
-  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
   - https://www.nasdaq.com/Options_ETH_CTI
   - https://www.nasdaq.com/Options_CTI
+  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
 
 seq:
   - id: server_soup_bin_tcp_packet
