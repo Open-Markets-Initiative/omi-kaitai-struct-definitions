@@ -125,5 +125,6 @@ types:
         type: str
         size: 80
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Error Message'
 

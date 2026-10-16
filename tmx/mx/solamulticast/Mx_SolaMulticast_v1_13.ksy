@@ -7,7 +7,7 @@
 #   Encoding: High Speed Vender Feed
 #   Version: 1.13
 #   Date: 10/5/2022
-#   Specification: hsvf-mx-005e-mx-sola-hsvf-multicast-specifications-guide-v1-13-3d7.pdf
+#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.13.3).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -1256,6 +1256,7 @@ types:
         type: str
         size: 12
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: contract_size
         type: str
@@ -1527,6 +1528,7 @@ types:
         type: str
         size: 12
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: delivery_type
         type: u1
@@ -2451,6 +2453,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Tick Table name'
       - id: tick_table_short_name
         type: str

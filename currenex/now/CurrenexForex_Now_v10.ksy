@@ -7,7 +7,7 @@
 #   Encoding: Currenex Binary Protocol
 #   Version: 10
 #   Date: 5/7/2018
-#   Specification: Currenex_NOW_Itch_Specification.pdf
+#   Specification: Currenex NOW ITCH Specification (2018-05-07).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

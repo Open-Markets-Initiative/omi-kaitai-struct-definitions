@@ -7,7 +7,7 @@
 #   Encoding: High Speed Vender Feed
 #   Version: 1.11
 #   Date: 01/23/2019
-#   Specification: hsvf-mx-005e-mx-sola-hsvf-multicast-specifications-guide-v1-11d5.pdf
+#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.11).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -2243,6 +2243,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: contract_size
         type: str
@@ -2745,6 +2746,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
         doc: 'External identifier used by traders when entering an order'
       - id: contract_size
         type: str
@@ -2984,6 +2986,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: settlement_price
         type: str
@@ -3483,6 +3486,7 @@ types:
         type: str
         size: 30
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identification of the underlying (also referred to as HSVF Symbol)'
   swap_future_summary_message:
     seq:
@@ -4222,6 +4226,7 @@ types:
         type: str
         size: 50
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Tick Table name'
       - id: tick_table_short_name
         type: str

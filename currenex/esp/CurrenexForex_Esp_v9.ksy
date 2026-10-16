@@ -7,7 +7,7 @@
 #   Encoding: Currenex Binary Protocol
 #   Version: 9
 #   Date: 3/24/2021
-#   Specification: ITCH-Spec.pdf
+#   Specification: Currenex ITCH Market Data Service (2021-03-24).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

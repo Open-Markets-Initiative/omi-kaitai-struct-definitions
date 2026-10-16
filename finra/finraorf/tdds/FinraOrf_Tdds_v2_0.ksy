@@ -7,7 +7,7 @@
 #   Encoding: Data Feed Interface
 #   Version: 2.0
 #   Date: 9/24/2018
-#   Specification: TDDS2.0.pdf
+#   Specification: FINRA TDDS 2.0 Data Feed Interface Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

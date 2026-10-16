@@ -991,8 +991,8 @@ enums:
       id: 'floor_broker_dealer'
       doc: 'Floor Broker Dealer'
     0x5a:
-      id: 'floor_market_maker_flex_symbology_symbol_is_prefixed_by_one_of_the_following'
-      doc: 'Floor Market Maker Flex Symbology Symbol Is Prefixed By One Of The Following'
+      id: 'floor_market_maker'
+      doc: 'Floor Market Maker'
   open_close:
     0x4f:
       id: 'open'

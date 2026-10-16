@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 1.12
 #   Date: 12/13/2023
-#   Specification: (v1.12) LTSE MEMO SBE.pdf
+#   Specification: LTSE MEMO SBE v1.12.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

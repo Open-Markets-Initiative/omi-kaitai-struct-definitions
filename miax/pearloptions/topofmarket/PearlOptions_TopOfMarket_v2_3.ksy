@@ -7,7 +7,7 @@
 #   Encoding: Mach
 #   Version: 2.3
 #   Date: 06/10/2019
-#   Specification: Top_Of_Market_Feed_ToM_v2.3.pdf
+#   Specification: Top Of Market Feed ToM v2.3.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

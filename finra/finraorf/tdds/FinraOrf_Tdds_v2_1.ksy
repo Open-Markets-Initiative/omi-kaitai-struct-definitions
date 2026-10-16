@@ -7,7 +7,7 @@
 #   Encoding: Data Feed Interface
 #   Version: 2.1
 #   Date: 5/10/2022
-#   Specification: TDDS-2.1-MOLD.pdf
+#   Specification: FINRA TDDS 2.1 MOLD-UDP64.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

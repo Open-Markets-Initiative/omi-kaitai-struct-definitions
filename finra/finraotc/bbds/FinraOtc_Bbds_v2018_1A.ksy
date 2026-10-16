@@ -7,7 +7,7 @@
 #   Encoding: Data Feed Interface
 #   Version: 2018.1A
 #   Date: 5/14/2018
-#   Specification: BBDS_Specs_v2018-1.pdf
+#   Specification: FINRA BBDS Data Feed Interface Specification (2018-1A).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
