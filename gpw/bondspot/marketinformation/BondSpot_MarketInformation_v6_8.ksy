@@ -405,11 +405,10 @@ types:
         pad-right: 0x20
         doc: 'Gives the ISIN Code of a warrant or a derivatives instrument'
       - id: depositary_list
-        type: str
-        size: 25
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Identifies the possible main depository organizations (max 5 characters padded with zeros) for the shares or bonds for an instrument. Nullable, Not Significant = 0'
+        type: depositary_list
+        repeat: expr
+        repeat-expr: 5
+        doc: 'The possible main depository organizations of an instrument. Section 1.2.10.3 gives the entry width, max 5 characters padded with zeros, and the field width, 25 bytes, so the run is five entries; the document does not state the count in words. Used by the clearing house to determine the relevant system for settling trades'
       - id: main_depositary
         type: str
         size: 5
@@ -665,6 +664,14 @@ types:
       - id: max_value
         type: u8
         doc: 'Maximum order value allowed for orders on that instrument'
+  depositary_list:
+    seq:
+      - id: depositary
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'A depository organization of the instrument, 5 characters padded with zeros. The document gives Null - Not significant for an entry that is not populated, without stating its form on the wire, so no sentinel is declared. Nullable, Not Significant = 0'
   session_summary_message:
     seq:
       - id: symbol_index
