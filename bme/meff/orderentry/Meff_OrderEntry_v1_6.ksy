@@ -1120,9 +1120,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
@@ -1201,8 +1200,7 @@ types:
         doc: 'Derivative type'
       - id: delta_protection_time
         type: u1
-        enum: delta_protection_time
-        doc: 'Number of seconds for Delta Protection control'
+        doc: 'Number of seconds for Delta Protection control. Valid values: 0-60'
       - id: delta_protection_volume
         type: u4
         doc: 'Total maximum volume during DeltaProtectionTime'
@@ -1215,9 +1213,8 @@ types:
         type: u4
         doc: 'Instrument (or Book) code'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: order_id
         type: u4
         doc: 'Application Order ID (unique at security level)'
@@ -1345,9 +1342,8 @@ types:
         type: u4
         doc: 'Total order volume'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   simple_order_modification_with_client_data_message:
     seq:
       - id: request_id
@@ -1450,9 +1446,8 @@ types:
         type: u4
         doc: 'Instrument (or Book) code'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: bid_size_1
         type: u4
         doc: 'Buy volume'
@@ -1474,9 +1469,8 @@ types:
         type: u4
         doc: 'Instrument (or Book) code'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: bid_px_1
         type: decimal_s8_6
         doc: 'Buy price. Implied decimal with scale 1e-6'
@@ -1492,9 +1486,8 @@ types:
         type: u4
         doc: 'Instrument (or Book) code'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   mass_orderquote_cancellation_message:
     seq:
       - id: request_id
@@ -1539,9 +1532,8 @@ types:
         enum: status
         doc: 'Request accepted or rejected'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
@@ -1627,8 +1619,7 @@ types:
         doc: 'Derivative type'
       - id: delta_protection_time
         type: u1
-        enum: delta_protection_time
-        doc: 'Number of seconds for Delta Protection control'
+        doc: 'Number of seconds for Delta Protection control. Valid values: 0-60'
       - id: delta_protection_volume
         type: u4
         doc: 'Total maximum volume during DeltaProtectionTime'
@@ -1687,9 +1678,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   quote_status_message:
     seq:
       - id: sequence_number
@@ -1771,9 +1761,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   order_cancel_reject_message:
     seq:
       - id: sequence_number
@@ -1945,9 +1934,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: secondary_order_id_2
         type: u4
         doc: 'System Order Number'
@@ -1988,9 +1976,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id_2
-        type: u2
-        enum: client_data_id_2
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   trade_trade_amendment_or_cancellation_1_leg_buy_private_information_message:
     seq:
       - id: sequence_number
@@ -2148,9 +2135,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
@@ -2399,9 +2385,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
@@ -2650,9 +2635,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator
         type: u1
         enum: algorithmic_trade_indicator
@@ -2784,9 +2768,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id_2
-        type: u2
-        enum: client_data_id_2
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
       - id: algorithmic_trade_indicator_2
         type: u1
         enum: algorithmic_trade_indicator_2
@@ -2973,9 +2956,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   execution_private_information_1_leg_sell_order_entry_message:
     seq:
       - id: sequence_number
@@ -3071,9 +3053,8 @@ types:
         type: u4
         doc: 'Request ID (for application feedback)'
       - id: client_data_id
-        type: u2
-        enum: client_data_id
-        doc: 'Client Data ID (to be used as a shortcode in orders and quotes)'
+        type: u2_nullable
+        doc: 'Client Data ID (to be used as a shortcode in orders and quotes). Valid values: 1-65535 (in response messages, 0 means no ClientDataID used). Nullable, No Value = 0'
   epoch_date:
     seq:
       - id: days
@@ -3108,6 +3089,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 0
 
 enums:
   message_type:
@@ -3630,10 +3618,6 @@ enums:
     0x4d:
       id: 'medium_order_requested'
       doc: 'Medium Order Requested'
-  client_data_id:
-    1:
-      id: 'value_1'
-      doc: '65535 In Response Messages 0 Means No Client Data Id Used'
   algorithmic_trade_indicator:
     0:
       id: 'false_field'
@@ -3697,10 +3681,6 @@ enums:
     0x34:
       id: 'no_order_gets_cancelled_both_aggressive_and_passive_orders_remain_only_valid_for_spain_at_mid_direct_orders'
       doc: 'No Order Gets Cancelled Both Aggressive And Passive Orders Remain Only Valid For Spain At Mid Direct Orders'
-  delta_protection_time:
-    0:
-      id: 'value_0'
-      doc: '60'
   order_or_quote_cancel:
     0x4e:
       id: 'orders_only'
@@ -4343,10 +4323,6 @@ enums:
     0x41:
       id: 'aggressive'
       doc: 'Aggressive'
-  client_data_id_2:
-    1:
-      id: 'value_1'
-      doc: '65535 In Response Messages 0 Means No Client Data Id Used'
   last_change_flag:
     0:
       id: 'false_field'

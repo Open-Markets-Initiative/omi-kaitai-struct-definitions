@@ -571,9 +571,6 @@ enums:
     0x4f:
       id: 'other_exchange_market_maker_order'
       doc: 'Other Exchange Market Maker Order'
-    0x4a:
-      id: 'joint_back_office'
-      doc: 'Joint Back Office'
     0x20:
       id: 'na'
       doc: 'N/A'

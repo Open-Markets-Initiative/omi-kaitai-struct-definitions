@@ -890,9 +890,6 @@ enums:
     0x4f:
       id: 'other_exchange_market_maker_order'
       doc: 'Other Exchange Market Maker Order'
-    0x4a:
-      id: 'joint_back_office'
-      doc: 'Joint Back Office'
     0x20:
       id: 'na'
       doc: 'N/A'
@@ -952,15 +949,6 @@ enums:
     0x52:
       id: 'reopening'
       doc: 'Reopening'
-    0x50:
-      id: 'price_improvement_auction'
-      doc: 'Price Improvement Auction'
-    0x49:
-      id: 'order_exposure'
-      doc: 'Order Exposure'
-    0x42:
-      id: 'block_auction'
-      doc: 'Block Auction'
   side_imbalance_direction:
     0x42:
       id: 'buy'

@@ -1136,8 +1136,8 @@ enums:
       doc: 'Not An Ats Trade'
   change_indicator:
     0x30:
-      id: 'no_price_changed'
-      doc: 'No Price Changed'
+      id: 'no_changed'
+      doc: 'No Changed'
     0x31:
       id: 'last_price_changed'
       doc: 'Last Price Changed'

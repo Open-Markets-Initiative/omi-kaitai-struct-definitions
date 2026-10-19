@@ -1632,8 +1632,8 @@ enums:
       doc: 'Real Base'
   calculation_method:
     0x30:
-      id: 'value_x30'
-      doc: '30360 Usnasd'
+      id: 'thirty_360_us_nasd'
+      doc: '30/360 (US-NASD)'
     0x31:
       id: 'actual_actual'
       doc: 'Actual Actual'
@@ -1644,8 +1644,8 @@ enums:
       id: 'actual_365'
       doc: 'Actual 365'
     0x34:
-      id: 'value_x34'
-      doc: '30360 European'
+      id: 'thirty_360_european'
+      doc: '30/360 (European)'
     0x35:
       id: 'if_days_to_maturity_365_actual_360_else_actual_365'
       doc: 'If Days To Maturity 365 Actual 360 Else Actual 365'

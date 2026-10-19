@@ -942,6 +942,9 @@ enums:
     0x49:
       id: 'order_exposure'
       doc: 'Order Exposure'
+    0x42:
+      id: 'block_auction'
+      doc: 'Block Auction'
   imbalance_direction:
     0x42:
       id: 'buy_imbalance'

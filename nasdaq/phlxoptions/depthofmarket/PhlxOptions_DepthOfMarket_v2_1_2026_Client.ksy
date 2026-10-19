@@ -396,12 +396,6 @@ enums:
     0x52:
       id: 'reopening'
       doc: 'Reopening'
-    0x50:
-      id: 'price_improvement_auction'
-      doc: 'Price Improvement Auction'
-    0x42:
-      id: 'block_auction'
-      doc: 'Block Auction'
   side_imbalance_direction:
     0x42:
       id: 'buy'

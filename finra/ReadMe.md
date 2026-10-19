@@ -12,6 +12,7 @@
 | [Trace][Trace.Exchange] | [Btds][Finra.Trace.Btds] | [Dfi][Omi.Encoding.Dfi] | [2.1][Finra.Trace.Btds.Dfi.v2.1.Definition] | 3/21/2024 | 1323 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Finra.Trace.Btds.Dfi.v2.1.Url] - [pdf][Finra.Trace.Btds.Dfi.v2.1.Pdf] |
 | [Trace][Trace.Exchange] | [Btds144A][Finra.Trace.Btds144A] | [Dfi][Omi.Encoding.Dfi] | [2.1][Finra.Trace.Btds144A.Dfi.v2.1.Definition] | 3/21/2024 | 1323 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Finra.Trace.Btds144A.Dfi.v2.1.Url] - [pdf][Finra.Trace.Btds144A.Dfi.v2.1.Pdf] |
 | [Trace][Trace.Exchange] | [Spds][Finra.Trace.Spds] | [Dfi][Omi.Encoding.Dfi] | [2.1][Finra.Trace.Spds.Dfi.v2.1.Definition] | 11/19/2024 | 1211 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Finra.Trace.Spds.Dfi.v2.1.Url] - [pdf][Finra.Trace.Spds.Dfi.v2.1.Pdf] |
+| [Trace][Trace.Exchange] | [Spds144A][Finra.Trace.Spds144A] | [Dfi][Omi.Encoding.Dfi] | [2.1][Finra.Trace.Spds144A.Dfi.v2.1.Definition] | 11/19/2024 | 890 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Finra.Trace.Spds144A.Dfi.v2.1.Url] - [pdf][Finra.Trace.Spds144A.Dfi.v2.1.Pdf] |
 
 
 <p align="center"><a href="https://www.finra.org" title="Financial Industry Regulatory Authority Website"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/Website.png" alt="Website" width="32" height="32"></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/finra" title="Financial Industry Regulatory Authority on LinkedIn"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/LinkedIn.png" alt="LinkedIn" width="32" height="32"></a>&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Financial_Industry_Regulatory_Authority" title="Financial Industry Regulatory Authority on Wikipedia"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/Wikipedia.png" alt="Wikipedia" width="32" height="32"></a></p>
@@ -43,6 +44,7 @@
 [Finra.Trace.Btds]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Protocols/Trace/Btds.md "Bond Trade Dissemination Service"
 [Finra.Trace.Btds144A]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Protocols/Trace/Btds144A.md "Bond Trade Dissemination Service for 144A Transactions"
 [Finra.Trace.Spds]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Protocols/Trace/Spds.md "Securitized Products Dissemination Service"
+[Finra.Trace.Spds144A]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Protocols/Trace/Spds144A.md "Securitized Products Dissemination Service for 144A Transactions"
 
 [Finra.FinraOrf.Tdds.Dfi.v2.0.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/finra/finraorf/tdds/FinraOrf_Tdds_v2_0.ksy "Finra FinraOrf Tdds Dfi v2.0 Kaitai Struct Definition"
 [Finra.FinraOrf.Tdds.Dfi.v2.0.Url]: https://www.finra.org/filing-reporting/orf/orf-forms-and-documentation "Financial Industry Regulatory Authority 2.0 Url"
@@ -65,3 +67,6 @@
 [Finra.Trace.Spds.Dfi.v2.1.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/finra/trace/spds/Trace_Spds_v2_1.ksy "Finra Trace Spds Dfi v2.1 Kaitai Struct Definition"
 [Finra.Trace.Spds.Dfi.v2.1.Url]: https://www.finra.org/filing-reporting/trace/documentation "Financial Industry Regulatory Authority 2.1 Url"
 [Finra.Trace.Spds.Dfi.v2.1.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Specifications/Trace/Finra.Trace.Spds.Dfi.v2.1.pdf "Financial Industry Regulatory Authority 2.1 Pdf"
+[Finra.Trace.Spds144A.Dfi.v2.1.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/finra/trace/spds144a/Trace_Spds144A_v2_1.ksy "Finra Trace Spds144A Dfi v2.1 Kaitai Struct Definition"
+[Finra.Trace.Spds144A.Dfi.v2.1.Url]: https://www.finra.org/filing-reporting/trace/documentation "Financial Industry Regulatory Authority 2.1 Url"
+[Finra.Trace.Spds144A.Dfi.v2.1.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Finra/Specifications/Trace/Finra.Trace.Spds144A.Dfi.v2.1.pdf "Financial Industry Regulatory Authority 2.1 Pdf"
