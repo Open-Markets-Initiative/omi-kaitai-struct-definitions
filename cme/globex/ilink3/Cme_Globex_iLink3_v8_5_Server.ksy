@@ -2735,7 +2735,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=?Product Group? (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope="Product Group" (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
       - id: security_type
         type: str
         size: 6
@@ -2748,7 +2748,7 @@ types:
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
         type: s4_nullable
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
+        doc: 'Conditionally required if MassActionScope="Instrument" (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: currency
         type: str
         size: 3
@@ -2887,7 +2887,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=?Product Group? (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope="Product Group" (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
       - id: location
         type: str
         size: 5
@@ -2895,7 +2895,7 @@ types:
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
         type: s4_nullable
-        doc: 'Conditionally required if MassActionScope=?Instrument? (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
+        doc: 'Conditionally required if MassActionScope="Instrument" (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: delay_duration
         type: u2_nullable
         doc: 'Not being currently used. Nullable, No Value = 65535'
@@ -2923,10 +2923,10 @@ types:
         doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0. Nullable, No Value = 255'
       - id: market_segment_id
         type: u1_nullable
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=?Market Segment? (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope="Market Segment" (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
       - id: mass_cancel_request_type
         type: u1_nullable
-        doc: 'If present ? specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
+        doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
       - id: side_optional
         type: u1_nullable
         doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled. Nullable, No Value = 255'
@@ -3562,10 +3562,10 @@ enums:
   mass_cancel_request_type:
     100:
       id: 'sender_sub_id'
-      doc: 'Sender Sub ID'
+      doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
     101:
       id: 'account'
-      doc: 'Account'
+      doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
   side_optional:
     1:
       id: 'buy'
@@ -3603,10 +3603,10 @@ enums:
   ord_status_req_type:
     100:
       id: 'sender_sub_id'
-      doc: 'SenderSubID'
+      doc: 'If present — specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination'
     101:
       id: 'account'
-      doc: 'Account'
+      doc: 'If present — specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination'
   mass_status_tif:
     0:
       id: 'day'

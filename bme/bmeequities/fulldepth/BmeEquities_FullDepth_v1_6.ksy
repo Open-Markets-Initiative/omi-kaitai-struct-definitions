@@ -98,9 +98,8 @@ types:
         encoding: ASCII
         doc: 'Identification of the binary protocol version'
       - id: test_production_ind
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: test_production_ind
         doc: 'T: Test P: Production'
       - id: environment_code
         type: str
@@ -185,8 +184,8 @@ types:
         encoding: ASCII
         doc: 'Segment MIC Code'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: symbol
         type: str
         size: 22
@@ -203,19 +202,28 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
-      - id: data_count
+      - id: num_statistics_repeating_group
         type: u1
         doc: 'Number of data values'
+      - id: statistics_repeating_group
+        type: statistics_repeating_group
+        repeat: expr
+        repeat-expr: num_statistics_repeating_group
+        doc: 'Repeating group of the Statistics message, one entry per data value, DataCount entries'
+  statistics_repeating_group:
+    seq:
       - id: data_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: data_code
         doc: 'Data field code'
+      - id: data_value
+        type: s8
+        doc: 'Data field value. Its type follows DataCode: P (price, 6 implicit decimals) for D, d, G, H, h, M, Q, Z, z, j, k and n; V (volume, 6 implicit decimals) for J, V, v and W; A (amount, 4 implicit decimals) for E and e; R (rate, 4 implicit decimals) for l, m and R; U (unsigned integer) for f (0 if not end of session) and N'
   security_list_message:
     seq:
       - id: sequence_number
@@ -232,8 +240,8 @@ types:
         encoding: ASCII
         doc: 'Segment MIC Code'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: symbol
         type: str
         size: 22
@@ -291,13 +299,11 @@ types:
         type: decimal_s8_4
         doc: 'SSTI posttransparency threshold. Implied decimal with scale 1e-4'
       - id: liquid_instrument
-        type: u1
-        enum: liquid_instrument
-        doc: 'Liquid Instrument'
+        type: u1_nullable
+        doc: 'Liquid Instrument. Nullable, No Value = 255'
       - id: admission_requested_by_issuer
-        type: u1
-        enum: admission_requested_by_issuer
-        doc: 'Security request for admission to trading by the issuer'
+        type: u1_nullable
+        doc: 'Security request for admission to trading by the issuer. Nullable, No Value = 255'
       - id: min_trade_vol
         type: u4
         doc: 'Minimum Tradeable Volume'
@@ -318,9 +324,8 @@ types:
         encoding: ASCII
         doc: 'Security Description'
       - id: trading_obligation
-        type: u1
-        enum: trading_obligation
-        doc: 'Trading obligation'
+        type: u1_nullable
+        doc: 'Trading obligation. Indicates whether the security has to be traded in a regulated exchange. Nullable, No Value = 255'
       - id: security_name
         type: str
         size: 40
@@ -347,10 +352,10 @@ types:
         doc: 'Security Status'
       - id: strike_price
         type: decimal_s8_6
-        doc: 'Exercise price. Implied decimal with scale 1e-6'
+        doc: 'Exercise price. Only present for warrants. Implied decimal with scale 1e-6'
       - id: strike_value
         type: decimal_s8_4
-        doc: 'Trading Unit. Implied decimal with scale 1e-4'
+        doc: 'Trading Unit. Number of shares for each security. Implied decimal with scale 1e-4'
       - id: exercise_style
         type: u1
         enum: exercise_style
@@ -366,14 +371,11 @@ types:
         type: u8
         doc: 'Volume of listed securities (Near Term Position Limit)'
       - id: issuer
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'Issuer'
+        type: str_12_nullable
+        doc: 'Issuer. Nullable, Not Specified = ????????????'
       - id: cp_reg_type
-        type: u1
-        enum: cp_reg_type
-        doc: 'Indicates if it is an institutional security or not'
+        type: u1_nullable
+        doc: 'Indicates if it is an institutional security or not. Nullable, No Value = 255'
       - id: barrier
         type: decimal_s8_6
         doc: 'Barrier. Implied decimal with scale 1e-6'
@@ -381,9 +383,8 @@ types:
         type: epoch_date
         doc: 'Last Trading Day'
       - id: automatic_expiration
-        type: u1
-        enum: automatic_expiration
-        doc: 'Automatic Expiration'
+        type: u1_nullable
+        doc: 'Automatic Expiration. Nullable, No Value = 255'
       - id: fee_type
         type: str
         size: 2
@@ -411,9 +412,8 @@ types:
         encoding: ASCII
         doc: 'SICAV/Fund Counterparty Member'
       - id: net_asset_value_indicator
-        type: u1
-        enum: net_asset_value_indicator
-        doc: 'Net Asset Value Indicator'
+        type: u1_nullable
+        doc: 'Net Asset Value Indicator. Nullable, No Value = 255'
       - id: reference_trading_venue
         type: u1
         enum: reference_trading_venue
@@ -461,9 +461,8 @@ types:
         type: u1
         doc: 'Number of Decimals in Order Entry'
       - id: investment_fund_class
-        type: u1
-        enum: investment_fund_class
-        doc: 'Investment Fund Class'
+        type: u1_nullable
+        doc: 'Investment Fund Class. Nullable, No Value = 255'
       - id: master_fund_name
         type: str
         size: 80
@@ -505,9 +504,8 @@ types:
         enum: commodity_derivative_indicator
         doc: 'Commodity Derivative Indicator'
       - id: double_volume_cap_reached
-        type: u1
-        enum: double_volume_cap_reached
-        doc: 'Double Volume Cap Reached'
+        type: u1_nullable
+        doc: 'Double Volume Cap Reached. Nullable, No Value = 255'
       - id: adt
         type: decimal_s8_4
         doc: 'Average Daily Turnover. Implied decimal with scale 1e-4'
@@ -531,6 +529,7 @@ types:
         doc: 'Average Daily Number of Trades. Implied decimal with scale 1e-4'
       - id: price_tick_rule
         type: u1
+        enum: price_tick_rule
         doc: 'Price Tick rules for security'
       - id: underlying_symbol
         type: str
@@ -551,13 +550,11 @@ types:
         type: u4
         doc: 'Minimum Display Volume'
       - id: retail_service_flag
-        type: u1
-        enum: retail_service_flag
-        doc: 'Availability of Retail Service for the security'
+        type: u1_nullable
+        doc: 'Availability of Retail Service for the security. Nullable, No Value = 255'
       - id: self_match_prevention
-        type: u1
-        enum: self_match_prevention
-        doc: 'Indicates whether the security admits self- match prevention'
+        type: u1_nullable
+        doc: 'Indicates whether the security admits self- match prevention. Nullable, No Value = 255'
   security_list_update_report_message:
     seq:
       - id: sequence_number
@@ -574,8 +571,8 @@ types:
         encoding: ASCII
         doc: 'Segment MIC Code'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: symbol
         type: str
         size: 22
@@ -633,13 +630,11 @@ types:
         type: decimal_s8_4
         doc: 'SSTI posttransparency threshold. Implied decimal with scale 1e-4'
       - id: liquid_instrument
-        type: u1
-        enum: liquid_instrument
-        doc: 'Liquid Instrument'
+        type: u1_nullable
+        doc: 'Liquid Instrument. Nullable, No Value = 255'
       - id: admission_requested_by_issuer
-        type: u1
-        enum: admission_requested_by_issuer
-        doc: 'Security request for admission to trading by the issuer'
+        type: u1_nullable
+        doc: 'Security request for admission to trading by the issuer. Nullable, No Value = 255'
       - id: min_trade_vol
         type: u4
         doc: 'Minimum Tradeable Volume'
@@ -660,9 +655,8 @@ types:
         encoding: ASCII
         doc: 'Security Description'
       - id: trading_obligation
-        type: u1
-        enum: trading_obligation
-        doc: 'Trading obligation'
+        type: u1_nullable
+        doc: 'Trading obligation. Indicates whether the security has to be traded in a regulated exchange. Nullable, No Value = 255'
       - id: security_name
         type: str
         size: 40
@@ -689,10 +683,10 @@ types:
         doc: 'Security Status'
       - id: strike_price
         type: decimal_s8_6
-        doc: 'Exercise price. Implied decimal with scale 1e-6'
+        doc: 'Exercise price. Only present for warrants. Implied decimal with scale 1e-6'
       - id: strike_value
         type: decimal_s8_4
-        doc: 'Trading Unit. Implied decimal with scale 1e-4'
+        doc: 'Trading Unit. Number of shares for each security. Implied decimal with scale 1e-4'
       - id: exercise_style
         type: u1
         enum: exercise_style
@@ -708,14 +702,11 @@ types:
         type: u8
         doc: 'Volume of listed securities (Near Term Position Limit)'
       - id: issuer
-        type: str
-        size: 12
-        encoding: ASCII
-        doc: 'Issuer'
+        type: str_12_nullable
+        doc: 'Issuer. Nullable, Not Specified = ????????????'
       - id: cp_reg_type
-        type: u1
-        enum: cp_reg_type
-        doc: 'Indicates if it is an institutional security or not'
+        type: u1_nullable
+        doc: 'Indicates if it is an institutional security or not. Nullable, No Value = 255'
       - id: barrier
         type: decimal_s8_6
         doc: 'Barrier. Implied decimal with scale 1e-6'
@@ -723,9 +714,8 @@ types:
         type: epoch_date
         doc: 'Last Trading Day'
       - id: automatic_expiration
-        type: u1
-        enum: automatic_expiration
-        doc: 'Automatic Expiration'
+        type: u1_nullable
+        doc: 'Automatic Expiration. Nullable, No Value = 255'
       - id: fee_type
         type: str
         size: 2
@@ -753,9 +743,8 @@ types:
         encoding: ASCII
         doc: 'SICAV/Fund Counterparty Member'
       - id: net_asset_value_indicator
-        type: u1
-        enum: net_asset_value_indicator
-        doc: 'Net Asset Value Indicator'
+        type: u1_nullable
+        doc: 'Net Asset Value Indicator. Nullable, No Value = 255'
       - id: reference_trading_venue
         type: u1
         enum: reference_trading_venue
@@ -803,9 +792,8 @@ types:
         type: u1
         doc: 'Number of Decimals in Order Entry'
       - id: investment_fund_class
-        type: u1
-        enum: investment_fund_class
-        doc: 'Investment Fund Class'
+        type: u1_nullable
+        doc: 'Investment Fund Class. Nullable, No Value = 255'
       - id: master_fund_name
         type: str
         size: 80
@@ -847,9 +835,8 @@ types:
         enum: commodity_derivative_indicator
         doc: 'Commodity Derivative Indicator'
       - id: double_volume_cap_reached
-        type: u1
-        enum: double_volume_cap_reached
-        doc: 'Double Volume Cap Reached'
+        type: u1_nullable
+        doc: 'Double Volume Cap Reached. Nullable, No Value = 255'
       - id: adt
         type: decimal_s8_4
         doc: 'Average Daily Turnover. Implied decimal with scale 1e-4'
@@ -873,6 +860,7 @@ types:
         doc: 'Average Daily Number of Trades. Implied decimal with scale 1e-4'
       - id: price_tick_rule
         type: u1
+        enum: price_tick_rule
         doc: 'Price Tick rules for security'
       - id: underlying_symbol
         type: str
@@ -893,21 +881,19 @@ types:
         type: u4
         doc: 'Minimum Display Volume'
       - id: retail_service_flag
-        type: u1
-        enum: retail_service_flag
-        doc: 'Availability of Retail Service for the security'
+        type: u1_nullable
+        doc: 'Availability of Retail Service for the security. Nullable, No Value = 255'
       - id: self_match_prevention
-        type: u1
-        enum: self_match_prevention
-        doc: 'Indicates whether the security admits self- match prevention'
+        type: u1_nullable
+        doc: 'Indicates whether the security admits self- match prevention. Nullable, No Value = 255'
   security_status_message:
     seq:
       - id: sequence_number
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -933,9 +919,8 @@ types:
         type: epoch_date
         doc: 'Date of the Net Asset Value'
       - id: bonus_warrants_with_active_bonus
-        type: u1
-        enum: bonus_warrants_with_active_bonus
-        doc: 'Indicates whether the bonus is active or not (bonus)'
+        type: u1_nullable
+        doc: 'Indicates whether the bonus is active or not (bonus). Nullable, No Value = 255'
       - id: security_trading_status
         type: u1
         enum: security_trading_status
@@ -980,8 +965,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -991,8 +976,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1003,13 +988,12 @@ types:
         type: epoch_date
         doc: 'System order entry date (when System Order Number was assigned)'
       - id: retail_flag
-        type: u1
-        enum: retail_flag
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
       - id: side
         type: u1
         enum: side
-        doc: 'Side'
+        doc: 'Side. Nullable, No Value = ?'
       - id: priority
         type: u4
         doc: 'Priority'
@@ -1025,8 +1009,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1037,9 +1021,8 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: retail_flag
-        type: u1
-        enum: retail_flag
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
       - id: priority
         type: u4
         doc: 'Priority'
@@ -1064,8 +1047,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1076,17 +1059,16 @@ types:
         type: epoch_date
         doc: 'System order entry date (when System Order Number was assigned)'
       - id: retail_flag
-        type: u1
-        enum: retail_flag
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
   quote_cancellation_market_member_message:
     seq:
       - id: sequence_number
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1097,17 +1079,16 @@ types:
         type: u4
         doc: 'System Order Number'
       - id: retail_flag
-        type: u1
-        enum: retail_flag
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
   trade_market_post_transparency_information_topofbook_message:
     seq:
       - id: sequence_number
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1145,9 +1126,8 @@ types:
         enum: market_mechanism
         doc: 'Market Mechanism'
       - id: algo_flag
-        type: u1
-        enum: algo_flag
-        doc: 'Algorithmic flag indicator'
+        type: u1_nullable
+        doc: 'Algorithmic flag indicator. Nullable, No Value = 255'
       - id: buyer_bolsa_code
         type: u1
         enum: buyer_bolsa_code
@@ -1165,8 +1145,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1204,9 +1184,8 @@ types:
         enum: market_mechanism
         doc: 'Market Mechanism'
       - id: algo_flag
-        type: u1
-        enum: algo_flag
-        doc: 'Algorithmic flag indicator'
+        type: u1_nullable
+        doc: 'Algorithmic flag indicator. Nullable, No Value = 255'
       - id: buyer_bolsa_code
         type: u1
         enum: buyer_bolsa_code
@@ -1219,9 +1198,8 @@ types:
         enum: transaction_category
         doc: 'Transaction Category'
       - id: last_change_flag
-        type: u1
-        enum: last_change_flag
-        doc: 'Indicates if this trade changes the instrument Last price'
+        type: u1_nullable
+        doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
       - id: bencrfpt_flag
         type: u1
         enum: bencrfpt_flag
@@ -1253,7 +1231,7 @@ types:
       - id: sicav_fund_counterparty_side
         type: u1
         enum: sicav_fund_counterparty_side
-        doc: 'Indicates the side of the Counterparty member in a SICAV or Mutual Fund'
+        doc: 'Indicates the side of the Counterparty member in a SICAV or Mutual Fund. Nullable, Not Applicable ='
       - id: amended_trade_type
         type: u1
         enum: amended_trade_type
@@ -1270,8 +1248,8 @@ types:
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1309,9 +1287,8 @@ types:
         enum: market_mechanism
         doc: 'Market Mechanism'
       - id: algo_flag
-        type: u1
-        enum: algo_flag
-        doc: 'Algorithmic flag indicator'
+        type: u1_nullable
+        doc: 'Algorithmic flag indicator. Nullable, No Value = 255'
       - id: buyer_bolsa_code
         type: u1
         enum: buyer_bolsa_code
@@ -1339,9 +1316,8 @@ types:
         type: u4
         doc: 'Visible pending volume'
       - id: retail_flag
-        type: u1
-        enum: retail_flag
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
       - id: secondary_order_id_2
         type: u4
         doc: 'System Order Number'
@@ -1358,17 +1334,16 @@ types:
         type: u4
         doc: 'Visible pending volume'
       - id: retail_flag_2
-        type: u1
-        enum: retail_flag_2
-        doc: 'Order/Quote only for retailers'
+        type: u1_nullable
+        doc: 'Order/Quote only for retailers. Nullable, No Value = 255'
   topofbook_message:
     seq:
       - id: sequence_number
         type: u4
         doc: 'Message sequence number'
       - id: security_code
-        type: u4
-        doc: 'Instrument (or Book) code'
+        type: u4_nullable
+        doc: 'Instrument (or Book) code. Nullable, Not Specified = 0'
       - id: transaction_date_and_time
         type: nanosecond_timestamp
         doc: 'Transaction Date and Time in nanoseconds since 1-jan-1970 UTC. Nanoseconds since Unix epoch'
@@ -1379,8 +1354,8 @@ types:
         type: u4
         doc: 'Buy volume'
       - id: bid_px_1
-        type: decimal_s8_6
-        doc: 'Buy price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Buy price. Implied decimal with scale 1e-6. Nullable, Market Orders = -9223372036854775808'
       - id: ask_orders_1
         type: u2
         doc: 'Sell number of orders'
@@ -1388,8 +1363,8 @@ types:
         type: u4
         doc: 'Sell volume'
       - id: ask_px_1
-        type: decimal_s8_6
-        doc: 'Sell price. Implied decimal with scale 1e-6'
+        type: decimal_s8_6_nullable
+        doc: 'Sell price. Implied decimal with scale 1e-6. Nullable, Market Orders = -9223372036854775808'
   epoch_date:
     seq:
       - id: days
@@ -1410,6 +1385,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   decimal_s8_4:
     seq:
       - id: mantissa
@@ -1417,6 +1399,13 @@ types:
     instances:
       real:
         value: mantissa / 10000.0
+  u1_nullable:
+    seq:
+      - id: value
+        type: u1
+    instances:
+      is_null:
+        value: value == 255
   decimal_s8_6:
     seq:
       - id: mantissa
@@ -1424,6 +1413,15 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "????????????"
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -1431,6 +1429,13 @@ types:
     instances:
       real:
         value: mantissa / 1000000.0
+  decimal_s8_6_nullable:
+    seq:
+      - id: value
+        type: decimal_s8_6
+    instances:
+      is_null:
+        value: value.mantissa == -9223372036854775808
 
 enums:
   message_type:
@@ -1457,13 +1462,13 @@ enums:
       doc: 'Message sent by the server for cancelling previously defined securities'
     0x84:
       id: 'statistics_message'
-      doc: 'Message sent by the server to inform about closing prices and other statistics. Le n'
+      doc: 'Message sent by the server to inform about closing prices and other statistics'
     0x79:
       id: 'security_list_message'
-      doc: 'Message sent by the server for reporting updates, during the session, to the security definition. T Le y n'
+      doc: 'Message sent by the server to provide the definition of one security. It shares the same layout as the Security List Update Report message, but with a different Message Type'
     0x80:
       id: 'security_list_update_report_message'
-      doc: 'Message sent by the server for reporting updates, during the session, to the security definition. T Le y n'
+      doc: 'Message sent by the server for reporting updates, during the session, to the security definition'
     0x66:
       id: 'security_status_message'
       doc: 'Message sent by the server to inform on the status of one security'
@@ -1494,6 +1499,13 @@ enums:
     0x82:
       id: 'topofbook_message'
       doc: 'Used by the UDP Servers to communicate Top-of-book price information during auctions. When there is an indicative match price, the fields BidPx1 and AskPx1 will have the same value'
+  test_production_ind:
+    0x54:
+      id: 'test'
+      doc: 'T: Test'
+    0x50:
+      id: 'production'
+      doc: 'P: Production'
   logout_reason:
     0:
       id: 'termination_after_a_solicited_logout_request'
@@ -1580,8 +1592,8 @@ enums:
       id: 'trading_period_at_closing_price_tal'
       doc: 'Trading Period At Closing Price Tal'
     101:
-      id: 'end_of_closing_auction_and_beginning_of_tal_period_for_instruments_without_extension'
-      doc: 'End Of Closing Auction And Beginning Of Tal Period For Instruments Without Extension'
+      id: 'end_of_closing_auction_beginning_of_tal'
+      doc: 'End of closing auction and beginning of TAL period for instruments without extension'
     201:
       id: 'publication_of_previous_day_special_operations'
       doc: 'Publication Of Previous Day Special Operations'
@@ -1613,6 +1625,76 @@ enums:
     6:
       id: 'request_rejected'
       doc: 'Request Rejected'
+  data_code:
+    0x44:
+      id: 'average_price'
+      doc: 'Average Price'
+    0x64:
+      id: 'previous_forward_price'
+      doc: 'Previous forward price'
+    0x45:
+      id: 'published_cash_amount'
+      doc: 'Published cash amount'
+    0x65:
+      id: 'order_modality_cash_amount'
+      doc: 'Order modality cash amount'
+    0x66:
+      id: 'end_of_session_indicator'
+      doc: 'End of session indicator'
+    0x47:
+      id: 'first'
+      doc: 'First'
+    0x48:
+      id: 'high'
+      doc: 'High'
+    0x68:
+      id: 'maximum_bid'
+      doc: 'Maximum Bid'
+    0x4a:
+      id: 'not_published_volume'
+      doc: 'Not published volume'
+    0x4d:
+      id: 'last'
+      doc: 'Last'
+    0x4e:
+      id: 'number_of_trades'
+      doc: 'Number of trades'
+    0x51:
+      id: 'previous_closing_price'
+      doc: 'Previous Closing Price'
+    0x52:
+      id: 'opening_volatility'
+      doc: 'Opening volatility'
+    0x56:
+      id: 'published_volume'
+      doc: 'Published volume'
+    0x76:
+      id: 'published_volume_order_modality'
+      doc: 'Published volume order modality'
+    0x57:
+      id: 'volume_of_last_trade'
+      doc: 'Volume of Last trade'
+    0x5a:
+      id: 'low'
+      doc: 'Low'
+    0x7a:
+      id: 'minimum_ask'
+      doc: 'Minimum Ask'
+    0x6a:
+      id: 'closing_price'
+      doc: 'Closing price'
+    0x6b:
+      id: 'closing_yield'
+      doc: 'Closing yield'
+    0x6c:
+      id: 'volatility'
+      doc: 'Volatility'
+    0x6d:
+      id: 'delta'
+      doc: 'Delta'
+    0x6e:
+      id: 'forward_price'
+      doc: 'Forward price'
   liquid_instrument:
     0:
       id: 'false_field'
@@ -1620,9 +1702,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   admission_requested_by_issuer:
     0:
       id: 'false_field'
@@ -1630,9 +1709,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   trading_obligation:
     0:
       id: 'false_field'
@@ -1640,9 +1716,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   security_status:
     0x31:
       id: 'active'
@@ -1680,9 +1753,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   automatic_expiration:
     0:
       id: 'false_field'
@@ -1690,9 +1760,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   trading_scope:
     1:
       id: 'valencia'
@@ -1728,9 +1795,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   reference_trading_venue:
     0x31:
       id: 'valencia'
@@ -1758,9 +1822,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   nav_communication_term:
     0x31:
       id: 'd_1'
@@ -1788,9 +1849,28 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
+  price_tick_rule:
+    1:
+      id: 'tick_rule_1'
+      doc: '1/10^Numdeci'
+    2:
+      id: 'tick_rule_2'
+      doc: 'P < 50: 1/10^Numdeci; P >= 50: 5/10^Numdeci'
+    3:
+      id: 'tick_rule_3'
+      doc: '5/10^Numdeci'
+    4:
+      id: 'tick_rule_4'
+      doc: 'P < 10: 1/10^Numdeci; 10 <= P > 50: 5/10^Numdeci; 50 <= P > 100: 1/10^(Numdeci-1); P >= 100: 5/10^(Numdeci-1)'
+    5:
+      id: 'tick_rule_5'
+      doc: 'According Tick Size Table in ESMA RTS-11. Tick size depends on Average daily number of transactions (ADNT)'
+    6:
+      id: 'tick_rule_6'
+      doc: 'According Tick Size Table in ESMA RTS-11. ADNT is assumed to be always 0.'
+    7:
+      id: 'tick_rule_7'
+      doc: 'According Tick Size Table in ESMA RTS-11. ADNT is assumed to be always above 9000'
   retail_service_flag:
     0:
       id: 'false_field'
@@ -1798,9 +1878,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   self_match_prevention:
     0:
       id: 'false_field'
@@ -1808,9 +1885,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   bonus_warrants_with_active_bonus:
     0:
       id: 'false_field'
@@ -1818,9 +1892,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   security_trading_status:
     17:
       id: 'ready_to_trade'
@@ -1908,9 +1979,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   side:
     0x31:
       id: 'buy'
@@ -1921,9 +1989,6 @@ enums:
     0x37:
       id: 'undisclosed'
       doc: 'Undisclosed'
-    0x3f:
-      id: 'notspecified'
-      doc: 'Notspecified'
   trade_type:
     0x4d:
       id: 'market'
@@ -1955,6 +2020,81 @@ enums:
     0x36:
       id: 'validation_communicated'
       doc: 'Validation Communicated'
+    0x37:
+      id: 'authorised_validation_trades'
+      doc: 'Authorised validation (trades)'
+    0x38:
+      id: 'authorised_validation_corporate_interest'
+      doc: 'Authorised validation (corporate interest)'
+    0x39:
+      id: 'authorised_validation_execution_of_contracts'
+      doc: 'Authorised validation (execution of contracts)'
+    0x30:
+      id: 'authorised_validation_other_causes'
+      doc: 'Authorised validation (other causes)'
+    0x41:
+      id: 'transaction_between_members_communicated'
+      doc: 'Transaction between members (communicated)'
+    0x42:
+      id: 'transaction_between_members_trades'
+      doc: 'Transaction between members (trades)'
+    0x43:
+      id: 'transaction_between_members_corporate_interest'
+      doc: 'Transaction between members (corporate interest)'
+    0x46:
+      id: 'transaction_between_members_execution_of_contracts'
+      doc: 'Transaction between members (execution of contracts)'
+    0x47:
+      id: 'transaction_between_members_other_causes'
+      doc: 'Transaction between members (other causes)'
+    0x49:
+      id: 'application_to_cater_for_a_linked_position'
+      doc: 'Application to cater for a linked position'
+    0x4a:
+      id: 'transaction_to_cater_for_a_linked_position'
+      doc: 'Transaction to cater for a linked position'
+    0x45:
+      id: 'transaction_of_exercise_of_options'
+      doc: 'Transaction of exercise of options'
+    0x4e:
+      id: 'public_share_bid_offer_type_transaction'
+      doc: 'Public share bid offer type transaction'
+    0x4f:
+      id: 'public_share_ask_offer_type_transaction'
+      doc: 'Public share Ask offer type transaction'
+    0x50:
+      id: 'public_share_subscription_offer_type_transaction'
+      doc: 'Public share subscription offer type transaction'
+    0x4c:
+      id: 'special_trades_delta_type'
+      doc: 'Special trades delta type'
+    0x61:
+      id: 'net_asset_value_special_trade_d_plus_1'
+      doc: 'Net asset value special trade D+1'
+    0x62:
+      id: 'net_asset_value_special_trade_d_plus_2'
+      doc: 'Net asset value special trade D+2'
+    0x63:
+      id: 'net_asset_value_special_trade_d_plus_3'
+      doc: 'Net asset value special trade D+3'
+    0x44:
+      id: 'application_without_ccp'
+      doc: 'Application (without CCP)'
+    0x4b:
+      id: 'transaction_without_ccp'
+      doc: 'Transaction (without CCP)'
+    0x64:
+      id: 'investment_fund_d_plus_1'
+      doc: 'Investment Fund D + 1'
+    0x65:
+      id: 'investment_fund_d_plus_2'
+      doc: 'Investment Fund D + 2'
+    0x66:
+      id: 'investment_fund_d_plus_3'
+      doc: 'Investment Fund D + 3'
+    0x57:
+      id: 'vwap'
+      doc: 'VWAP'
   designation:
     0x31:
       id: 'trade_during_open_market'
@@ -2003,9 +2143,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   buyer_bolsa_code:
     0x33:
       id: 'valencia'
@@ -2033,9 +2170,6 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
   bencrfpt_flag:
     0x20:
       id: 'normal_trade'
@@ -2060,8 +2194,8 @@ enums:
       id: 'non_price_forming_trade_formerly_defined_as_a_technical_trade_npft'
       doc: 'Non Price Forming Trade Formerly Defined As A Technical Trade Npft'
     0x36:
-      id: 'trade_not_contributing_to_the_price_discovery_process_formerly_defined_as_a_technical_trade_tncp_to_be_discontinued_as_of_1_st_january_2024'
-      doc: 'Trade Not Contributing To The Price Discovery Process Formerly Defined As A Technical Trade Tncp To Be Discontinued As Of 1 St January 2024'
+      id: 'trade_not_contributing_to_price_discovery_tncp'
+      doc: 'Trade not Contributing to the Price Discovery Process (formerly defined as a Technical Trade) "TNCP" to be discontinued as of 1st January 2024'
   pre_trade_transparency_waiver:
     0x30:
       id: 'negotiated_trade_in_liquid_financial_instruments_nliq'
@@ -2070,8 +2204,8 @@ enums:
       id: 'negotiated_trade_in_illiquid_financial_instruments_oilq'
       doc: 'Negotiated Trade In Illiquid Financial Instruments Oilq'
     0x32:
-      id: 'negotiated_trade_subject_to_conditions_other_than_the_current_market_price_pric'
-      doc: 'Negotiated Trade Subject To Conditions Other Than The Current Market Price Pric'
+      id: 'negotiated_trade_other_than_current_market_price_pric'
+      doc: 'Negotiated Trade Subject to Conditions Other Than The Current Market Price "PRIC"'
   deferral_waiver:
     0x20:
       id: 'immediate_publication'
@@ -2083,9 +2217,6 @@ enums:
     0x32:
       id: 'seller'
       doc: 'Seller'
-    0x20:
-      id: 'na'
-      doc: 'Na'
   amended_trade_type:
     0x4d:
       id: 'market'
@@ -2117,6 +2248,81 @@ enums:
     0x36:
       id: 'validation_communicated'
       doc: 'Validation Communicated'
+    0x37:
+      id: 'authorised_validation_trades'
+      doc: 'Authorised validation (trades)'
+    0x38:
+      id: 'authorised_validation_corporate_interest'
+      doc: 'Authorised validation (corporate interest)'
+    0x39:
+      id: 'authorised_validation_execution_of_contracts'
+      doc: 'Authorised validation (execution of contracts)'
+    0x30:
+      id: 'authorised_validation_other_causes'
+      doc: 'Authorised validation (other causes)'
+    0x41:
+      id: 'transaction_between_members_communicated'
+      doc: 'Transaction between members (communicated)'
+    0x42:
+      id: 'transaction_between_members_trades'
+      doc: 'Transaction between members (trades)'
+    0x43:
+      id: 'transaction_between_members_corporate_interest'
+      doc: 'Transaction between members (corporate interest)'
+    0x46:
+      id: 'transaction_between_members_execution_of_contracts'
+      doc: 'Transaction between members (execution of contracts)'
+    0x47:
+      id: 'transaction_between_members_other_causes'
+      doc: 'Transaction between members (other causes)'
+    0x49:
+      id: 'application_to_cater_for_a_linked_position'
+      doc: 'Application to cater for a linked position'
+    0x4a:
+      id: 'transaction_to_cater_for_a_linked_position'
+      doc: 'Transaction to cater for a linked position'
+    0x45:
+      id: 'transaction_of_exercise_of_options'
+      doc: 'Transaction of exercise of options'
+    0x4e:
+      id: 'public_share_bid_offer_type_transaction'
+      doc: 'Public share bid offer type transaction'
+    0x4f:
+      id: 'public_share_ask_offer_type_transaction'
+      doc: 'Public share Ask offer type transaction'
+    0x50:
+      id: 'public_share_subscription_offer_type_transaction'
+      doc: 'Public share subscription offer type transaction'
+    0x4c:
+      id: 'special_trades_delta_type'
+      doc: 'Special trades delta type'
+    0x61:
+      id: 'net_asset_value_special_trade_d_plus_1'
+      doc: 'Net asset value special trade D+1'
+    0x62:
+      id: 'net_asset_value_special_trade_d_plus_2'
+      doc: 'Net asset value special trade D+2'
+    0x63:
+      id: 'net_asset_value_special_trade_d_plus_3'
+      doc: 'Net asset value special trade D+3'
+    0x44:
+      id: 'application_without_ccp'
+      doc: 'Application (without CCP)'
+    0x4b:
+      id: 'transaction_without_ccp'
+      doc: 'Transaction (without CCP)'
+    0x64:
+      id: 'investment_fund_d_plus_1'
+      doc: 'Investment Fund D + 1'
+    0x65:
+      id: 'investment_fund_d_plus_2'
+      doc: 'Investment Fund D + 2'
+    0x66:
+      id: 'investment_fund_d_plus_3'
+      doc: 'Investment Fund D + 3'
+    0x57:
+      id: 'vwap'
+      doc: 'VWAP'
   retail_flag_2:
     0:
       id: 'false_field'
@@ -2124,7 +2330,4 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-    255:
-      id: 'undefined'
-      doc: 'Undefined'
 

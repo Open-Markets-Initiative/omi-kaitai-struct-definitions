@@ -46,8 +46,10 @@ seq:
     type:
       switch-on: tcp_packet_header.packet_type
       cases:
-        'packet_type::login_request_message': login_request_message
-        'packet_type::login_result_message': login_result_message
+        'packet_type::login_request_retransmission_message': login_request_retransmission_message
+        'packet_type::login_request_snapshot_message': login_request_snapshot_message
+        'packet_type::login_result_accepted_message': login_result_accepted_message
+        'packet_type::login_result_rejected_message': login_result_rejected_message
         'packet_type::message_response_message': message_response_message
         'packet_type::end_of_message_message': end_of_message_message
 
@@ -61,7 +63,7 @@ types:
         type: u1
         enum: packet_type
         doc: 'First byte of the Tcp packet identifying the packet type used as dispatch key'
-  login_request_message:
+  login_request_retransmission_message:
     seq:
       - id: user_id
         type: str
@@ -81,7 +83,36 @@ types:
       - id: requested_message_count
         size: 3
         doc: 'For retransmission set to the number of messages from the first sequence number; for snapshot set to 0'
-  login_result_message:
+  login_request_snapshot_message:
+    seq:
+      - id: user_id
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'User ID for login authentication'
+      - id: multicast_group_number
+        type: u1
+        doc: 'Multicast Group Number for the request target'
+      - id: number_of_system_reboots
+        type: u1
+        doc: 'For retransmission set to the number of times the system has been rebooted; for snapshot set to 0'
+      - id: sequence_number
+        type: u4
+        doc: 'For retransmission set to the first sequence number for the request; for snapshot set to 0'
+      - id: requested_message_count
+        size: 3
+        doc: 'For retransmission set to the number of messages from the first sequence number; for snapshot set to 0'
+  login_result_accepted_message:
+    seq:
+      - id: multicast_group_number
+        type: u1
+        doc: 'Multicast Group Number for the request target'
+      - id: result_code
+        type: u1
+        enum: result_code
+        doc: 'Set to the result code of the login request'
+  login_result_rejected_message:
     seq:
       - id: multicast_group_number
         type: u1
@@ -257,11 +288,17 @@ enums:
       doc: 'Communication End'
   packet_type:
     0x52:
-      id: 'login_request_message'
-      doc: 'Tcp login request for retransmission or snapshot. Packet Type R selects retransmission and L selects snapshot.'
+      id: 'login_request_retransmission_message'
+      doc: 'Tcp login request selecting retransmission, sent by the user. One of the two Packet Type codes the document gives the 18 byte Login Request.'
+    0x4c:
+      id: 'login_request_snapshot_message'
+      doc: 'Tcp login request selecting snapshot, sent by the user. Same layout as the retransmission request; Number of System Reboots, Sequence Number and Requested Message Count are all set to 0.'
     0x41:
-      id: 'login_result_message'
-      doc: 'Tcp login response. Packet Type A indicates accepted and J indicates rejected.'
+      id: 'login_result_accepted_message'
+      doc: 'Tcp login response accepting the request. Result Code carries A.'
+    0x4a:
+      id: 'login_result_rejected_message'
+      doc: 'Tcp login response rejecting the request. Same layout as the accepted response; Result Code carries the reason the request failed.'
     0x53:
       id: 'message_response_message'
       doc: 'Tcp message response carrying tag data including their packet headers in response to a retransmission or snapshot request.'

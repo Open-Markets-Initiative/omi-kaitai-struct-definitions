@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cme Globex BrokerTecUst Sbe v10.1
+# Kaitai struct definition for: Cme BrokerTec UsTreasury Sbe v10.1
 #
 # Protocol:
 #   Organization: CME Group
-#   Protocol: BrokerTec Us Treasuries
+#   Protocol: Us Treasuries
 #   Encoding: Simple Binary Encoding
 #   Version: 10.1
 #   Date: 4/13/2023
@@ -30,42 +30,49 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_brokertecust_sbe_v10_1_udp
-  title: Cme Globex BrokerTecUst Sbe v10.1
+  id: cme_brokertec_ustreasury_sbe_v10_1_tcp
+  title: Cme BrokerTec UsTreasury Sbe v10.1
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group CME Globex BrokerTec Us Treasuries Sbe v10.1'
+doc: 'CME Group BrokerTec Us Treasuries Sbe v10.1'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/BrokerTec+U.S.+Treasury+Market+Data
 
 seq:
-  - id: binary_packet_header
-    type: binary_packet_header_struct
-    doc: 'Cme Mdp Packet Header'
-  - id: message
-    type: message_struct
+  - id: tcp_frame
+    type: tcp_frame_struct
     repeat: eos
-    doc: 'Cme Market Data Message'
+    doc: 'One technical header framed Cme Sbe message'
 
 types:
-  binary_packet_header_struct:
+  tcp_frame_struct:
     seq:
-      - id: packet_sequence_number
+      - id: technical_header
+        type: technical_header
+        doc: 'Cme Technical Header. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+      - id: tcp_message
+        type: tcp_message
+        doc: 'Cme Market Data Message'
+  technical_header:
+    seq:
+      - id: encoding_type
+        type: u2
+        doc: 'Encoding Type'
+      - id: message_sequence_number
         type: u4
         doc: 'Packet Sequence Number'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
-  message_struct:
-    seq:
-      - id: message_size
+      - id: tcp_sending_time
+        type: u8
+        doc: 'Packet Sending Time'
+      - id: tcp_message_size
         type: u2
         doc: 'Message Size'
+  tcp_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Template ID and length of message root'
       - id: payload
-        size: message_size - 10
         type:
           switch-on: message_header.template_id
           cases:
@@ -181,6 +188,13 @@ types:
     instances:
       real:
         value: 'mantissa_32 * (exponent == 9 ? 1000000000.0 : exponent == 8 ? 100000000.0 : exponent == 7 ? 10000000.0 : exponent == 6 ? 1000000.0 : exponent == 5 ? 100000.0 : exponent == 4 ? 10000.0 : exponent == 3 ? 1000.0 : exponent == 2 ? 100.0 : exponent == 1 ? 10.0 : exponent == 0 ? 1.0 : exponent == -1 ? 0.1 : exponent == -2 ? 0.01 : exponent == -3 ? 0.001 : exponent == -4 ? 0.0001 : exponent == -5 ? 0.00001 : exponent == -6 ? 0.000001 : exponent == -7 ? 0.0000001 : exponent == -8 ? 0.00000001 : exponent == -9 ? 0.000000001 : 1.0)'
+  u2_nullable:
+    seq:
+      - id: value
+        type: u2
+    instances:
+      is_null:
+        value: value == 65535
   nanosecond_timestamp:
     seq:
       - id: time
@@ -194,13 +208,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  u2_nullable:
-    seq:
-      - id: value
-        type: u2
-    instances:
-      is_null:
-        value: value == 65535
   u4_nullable:
     seq:
       - id: value

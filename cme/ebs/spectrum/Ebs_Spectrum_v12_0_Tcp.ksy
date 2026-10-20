@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Cme Globex EbsSpectrum Sbe v12.0
+# Kaitai struct definition for: Cme Ebs Spectrum Sbe v12.0
 #
 # Protocol:
 #   Organization: CME Group
-#   Protocol: Ebs Spectrum Market Data
+#   Protocol: Spectrum Market Data
 #   Encoding: Simple Binary Encoding
 #   Version: 12.0
 #   Date: 4/8/2022
@@ -30,42 +30,49 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: cme_globex_ebsspectrum_sbe_v12_0_udp
-  title: Cme Globex EbsSpectrum Sbe v12.0
+  id: cme_ebs_spectrum_sbe_v12_0_tcp
+  title: Cme Ebs Spectrum Sbe v12.0
   license: GPL-3.0
   endian: le
 
-doc: 'CME Group CME Globex Ebs Spectrum Market Data Sbe v12.0'
+doc: 'CME Group EBS Market Spectrum Market Data Sbe v12.0'
 doc-ref: https://www.cmegroup.com/confluence/display/EPICSANDBOX/EBS+Spectrum+Market+Data
 
 seq:
-  - id: binary_packet_header
-    type: binary_packet_header_struct
-    doc: 'Cme Mdp Packet Header'
-  - id: message
-    type: message_struct
+  - id: tcp_frame
+    type: tcp_frame_struct
     repeat: eos
-    doc: 'Cme Market Data Message'
+    doc: 'One technical header framed Cme Sbe message'
 
 types:
-  binary_packet_header_struct:
+  tcp_frame_struct:
     seq:
-      - id: packet_sequence_number
+      - id: technical_header
+        type: technical_header
+        doc: 'Cme Technical Header. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+      - id: tcp_message
+        type: tcp_message
+        doc: 'Cme Market Data Message'
+  technical_header:
+    seq:
+      - id: encoding_type
+        type: u2
+        doc: 'Encoding Type'
+      - id: message_sequence_number
         type: u4
         doc: 'Packet Sequence Number'
-      - id: sending_time
-        type: nanosecond_timestamp
-        doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
-  message_struct:
-    seq:
-      - id: message_size
+      - id: tcp_sending_time
+        type: u8
+        doc: 'Packet Sending Time'
+      - id: tcp_message_size
         type: u2
         doc: 'Message Size'
+  tcp_message:
+    seq:
       - id: message_header
         type: message_header
         doc: 'Template ID and length of message root'
       - id: payload
-        size: message_size - 10
         type:
           switch-on: message_header.template_id
           cases:

@@ -452,11 +452,17 @@ enums:
       doc: 'Communication End'
   packet_type:
     0x52:
-      id: 'login_request_message'
-      doc: 'Tcp login request for retransmission or snapshot. Packet Type R selects retransmission and L selects snapshot.'
+      id: 'login_request_retransmission_message'
+      doc: 'Tcp login request selecting retransmission, sent by the user. One of the two Packet Type codes the document gives the 18 byte Login Request.'
+    0x4c:
+      id: 'login_request_snapshot_message'
+      doc: 'Tcp login request selecting snapshot, sent by the user. Same layout as the retransmission request; Number of System Reboots, Sequence Number and Requested Message Count are all set to 0.'
     0x41:
-      id: 'login_result_message'
-      doc: 'Tcp login response. Packet Type A indicates accepted and J indicates rejected.'
+      id: 'login_result_accepted_message'
+      doc: 'Tcp login response accepting the request. Result Code carries A.'
+    0x4a:
+      id: 'login_result_rejected_message'
+      doc: 'Tcp login response rejecting the request. Same layout as the accepted response; Result Code carries the reason the request failed.'
     0x53:
       id: 'message_response_message'
       doc: 'Tcp message response carrying tag data including their packet headers in response to a retransmission or snapshot request.'

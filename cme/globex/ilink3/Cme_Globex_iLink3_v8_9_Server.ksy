@@ -89,8 +89,6 @@ types:
             'template_id::security_definition_response': security_definition_response
             'template_id::order_mass_action_report': order_mass_action_report
             'template_id::quote_cancel_ack': quote_cancel_ack
-            'template_id::execution_report_pending_cancel': execution_report_pending_cancel
-            'template_id::execution_report_pending_replace': execution_report_pending_replace
             'template_id::mass_quote_response': mass_quote_response
   simple_open_framing_header:
     seq:
@@ -2977,7 +2975,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=Product Group (Tag 1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope="Product Group" (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
       - id: security_type
         type: str
         size: 6
@@ -2990,7 +2988,7 @@ types:
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
         type: s4_nullable
-        doc: 'Conditionally required if MassActionScope=Instrument (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
+        doc: 'Conditionally required if MassActionScope="Instrument" (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: currency
         type: str
         size: 3
@@ -3159,7 +3157,7 @@ types:
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope=Product Group (Tag 1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
+        doc: 'Specifies the Product Group for which working orders should be cancelled. Conditionally required if MassActionScope="Product Group" (Tag1374=10). Will be ignored if present for any other criteria specified in MassActionScope besides Product Group'
       - id: location
         type: str
         size: 5
@@ -3167,7 +3165,7 @@ types:
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
       - id: security_id_optional
         type: s4_nullable
-        doc: 'Conditionally required if MassActionScope=Instrument (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
+        doc: 'Conditionally required if MassActionScope="Instrument" (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
       - id: delay_duration
         type: u2_nullable
         doc: 'Not being currently used. Nullable, No Value = 65535'
@@ -3195,10 +3193,10 @@ types:
         doc: 'Reason Order Mass Action Request was rejected. Required if Mass Action Response=0. Nullable, No Value = 255'
       - id: market_segment_id
         type: u1_nullable
-        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope=Market Segment (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
+        doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope="Market Segment" (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
       - id: mass_cancel_request_type
         type: u1_nullable
-        doc: 'If present specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
+        doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope. Nullable, No Value = 255'
       - id: side_optional
         type: u1_nullable
         doc: 'If provided then only orders belonging to one side will be cancelled. If absent then orders belonging to both sides will be cancelled. Nullable, No Value = 255'
@@ -3402,224 +3400,6 @@ types:
       - id: quote_error_code
         type: u2
         doc: 'Reason (error code) quote set cancel has been rejected'
-  execution_report_pending_cancel:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: exec_id
-        type: str
-        size: 40
-        encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
-      - id: price
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
-      - id: sending_time_epoch
-        type: nanosecond_timestamp
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: order_request_id
-        type: u8
-        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: security_id
-        type: s4
-        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: order_qty
-        type: u4
-        doc: 'Number of shares or contracts ordered'
-      - id: cum_qty
-        type: u4
-        doc: 'Total quantity filled'
-      - id: leaves_qty_optional
-        type: u4_nullable
-        doc: 'Amount of shares open for further execution, or unexecuted. Will not be rolled back in case of trade cancel. Will not be returned in trade cancels and leg fills. Nullable, No Value = 4294967295'
-      - id: min_qty
-        type: u4_nullable
-        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
-      - id: expire_date
-        type: u2_nullable
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
-      - id: ord_type_optional
-        type: u1
-        enum: ord_type_optional
-        doc: 'Order type'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of order'
-      - id: time_in_force
-        type: u1_nullable
-        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: split_msg
-        type: u1_nullable
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
-      - id: liquidity_flag
-        type: u1_nullable
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments. Nullable, No Value = 255'
-      - id: delay_to_time
-        type: u8_nullable
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
-      - id: discretion_price
-        type: decimal_s8_9_nullable
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: reservation_price
-        type: decimal_s8_9_nullable
-        doc: 'This field specifies the highest (for a buy) or lowest (for a sell) price at which the order may trade. This price must be better than the limit price and should be multiple of reservation price tick. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: priority_indicator
-        type: u1_nullable
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority. Nullable, No Value = 255'
-      - id: orig_order_user
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the original sender comp for whom orders or quotes are to be cancelled'
-      - id: cancel_text
-        type: str
-        size: 8
-        encoding: ASCII
-        doc: 'Represents the sender comp which initiated the cancellation of orders or quotes for the original sender comp'
-  execution_report_pending_replace:
-    seq:
-      - id: seq_num
-        type: u4
-        doc: 'Sequence number as assigned to message'
-      - id: uuid
-        type: u8
-        doc: 'Session Identifier defined as type long (uInt64); recommended to use timestamp as number of microseconds since epoch (Jan 1, 1970)'
-      - id: exec_id
-        type: str
-        size: 40
-        encoding: ASCII
-        doc: 'Unique identifier of execution message as assigned by the exchange and is unique per day across all instruments and across all good till orders'
-      - id: sender_id
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Operator ID. Should be unique per Firm ID. Assigned value used to identify specific message originator. Represents last individual or team in charge of the system which modifies the order before submission to the Globex platform, or if not modified from initiator (party role=118), last individual or team in charge of the system, which submit the order to the Globex platform'
-      - id: clordid
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Unique identifier for Order as assigned by the buy-side (institution, broker, intermediary etc.). Uniqueness must be guaranteed within a single trading day. Firms, particularly those which electronically submit multi-day orders, trade globally or throughout market close periods, should ensure uniqueness across days, for example by embedding a date within the ClOrdID field'
-      - id: party_details_list_req_id
-        type: u8
-        doc: 'Refers to the ID of the related PartyDetailsDefinitionRequest message which will logically be tied to this message'
-      - id: order_id
-        type: u8
-        doc: 'Unique identifier for order as assigned by the exchange. Uniqueness is guaranteed within a single trading day across all instruments'
-      - id: price
-        type: decimal_s8_9
-        doc: 'Price per share or contract. Implied decimal with scale 1e-9'
-      - id: transact_time
-        type: nanosecond_timestamp
-        doc: 'Time the transaction represented by this ExecutionReport (35=8) occurred. Expressed as nanoseconds since epoch time. Nanoseconds since Unix epoch'
-      - id: sending_time_epoch
-        type: nanosecond_timestamp
-        doc: 'Time when the message is sent. 64-bit integer expressing the number of nano seconds since midnight January 1, 1970. Nanoseconds since Unix epoch'
-      - id: order_request_id
-        type: u8
-        doc: 'Use OrderRequestID to identify a request to enter, modify or delete an order and echo the value on the ExecutionReport representing the response'
-      - id: location
-        type: str
-        size: 5
-        encoding: ASCII
-        doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
-      - id: security_id
-        type: s4
-        doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
-      - id: order_qty
-        type: u4
-        doc: 'Number of shares or contracts ordered'
-      - id: cum_qty
-        type: u4
-        doc: 'Total quantity filled'
-      - id: leaves
-        type: u4
-        doc: 'Quantity open for further execution; LeavesQty = OrderQty (38) - CumQty (14); Only present for outrights and spreads and not spread legs'
-      - id: min_qty
-        type: u4_nullable
-        doc: 'Minimum quantity of an order to be executed. Nullable, No Value = 4294967295'
-      - id: display_qty
-        type: u4_nullable
-        doc: 'The quantity to be displayed . Required for iceberg orders. On orders specifies the qty to be displayed, on execution reports the currently displayed quantity. Nullable, No Value = 4294967295'
-      - id: expire_date
-        type: u2_nullable
-        doc: 'Date of order expiration (last day the order can trade), always expressed in terms of the local market date. Applicable only to GTD orders which expire at the end of the trading session specified. This has to be a future or current session date and cannot be in the past. Nullable, No Value = 65535'
-      - id: ord_type_optional
-        type: u1
-        enum: ord_type_optional
-        doc: 'Order type'
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of order'
-      - id: time_in_force
-        type: u1_nullable
-        doc: 'Specifies how long the order remains in effect. Nullable, No Value = 255'
-      - id: manual_order_indicator
-        type: u1
-        enum: manual_order_indicator
-        doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
-      - id: poss_retrans_flag
-        type: u1
-        enum: poss_retrans_flag
-        doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
-      - id: split_msg
-        type: u1_nullable
-        doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
-      - id: liquidity_flag
-        type: u1_nullable
-        doc: 'Field added to capture if an order was submitted for market making obligation or not. Applicable only for EU BrokerTec and EBS MiFID regulated instruments. Nullable, No Value = 255'
-      - id: short_sale_type
-        type: u1_nullable
-        doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
-      - id: delay_to_time
-        type: u8_nullable
-        doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
-      - id: discretion_price
-        type: decimal_s8_9_nullable
-        doc: 'The presence of DiscretionPrice on an order indicates that the trader wishes to display one price but will accept trades at another price. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: priority_indicator
-        type: u1_nullable
-        doc: 'This field is being added to report whether incoming new order/cancel replace entered the book or subsequently rests on the book with either large or standard order size priority. Nullable, No Value = 255'
   mass_quote_response:
     seq:
       - id: seq_num
@@ -4233,10 +4013,10 @@ enums:
   mass_cancel_request_type:
     100:
       id: 'sender_sub_id'
-      doc: 'Sender Sub ID'
+      doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
     101:
       id: 'account'
-      doc: 'Account'
+      doc: 'If present — specifies the scope of the OrderMassActionRequest within the context of Session and Firm. If absent then all orders belonging to Session and Firm combination will be cancelled for specified MassActionScope'
   side_optional:
     1:
       id: 'buy'
@@ -4277,10 +4057,10 @@ enums:
   ord_status_req_type:
     100:
       id: 'sender_sub_id'
-      doc: 'SenderSubID'
+      doc: 'If present — specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination'
     101:
       id: 'account'
-      doc: 'Account'
+      doc: 'If present — specifies the scope of the OrderMassStatusRequest within the context of MassStatusRequestType (585) and Session and Firm for working orders only. Status will be returned for all orders matching the criteria specified here for Session and Firm combination'
   mass_status_tif:
     0:
       id: 'day'

@@ -97,7 +97,7 @@ types:
     seq:
       - id: last_update_timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -112,7 +112,7 @@ types:
     seq:
       - id: last_update_timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -151,7 +151,7 @@ types:
     seq:
       - id: last_update_timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -172,7 +172,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: market_center
         type: u1
         enum: market_center
@@ -189,7 +189,7 @@ types:
     seq:
       - id: last_update_timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of the last matching engine message that updated the quote information for this symbol in the Cboe One server''s cache. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -272,7 +272,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -291,7 +291,7 @@ types:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The time the trade occurred on the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'The time the trade occurred on the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -333,7 +333,7 @@ types:
     seq:
       - id: transaction_time
         type: nanosecond_timestamp
-        doc: 'The time the trade occurred on the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'The time the trade occurred on the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -367,7 +367,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -390,7 +390,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
@@ -412,7 +412,7 @@ types:
     seq:
       - id: timestamp
         type: nanosecond_timestamp
-        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Midnight epoch'
+        doc: 'Timestamp of when the Market Status changed for the specified Market Center. Encoded as the number of nanoseconds since midnight. Nanoseconds since Unix epoch'
       - id: symbol
         type: str
         size: 8
