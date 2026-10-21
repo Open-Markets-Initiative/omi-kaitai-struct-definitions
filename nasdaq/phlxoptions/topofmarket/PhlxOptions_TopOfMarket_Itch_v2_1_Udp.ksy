@@ -131,8 +131,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -192,8 +192,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the bid side'
       - id: bid_price_short
-        type: u2
-        doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
@@ -207,8 +207,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the ask side'
       - id: ask_price_short
-        type: u2
-        doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
@@ -237,8 +237,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the bid side'
       - id: bid_price_long
-        type: u4
-        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_s4_4
+        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
@@ -252,8 +252,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the ask side'
       - id: ask_price_long
-        type: u4
-        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_s4_4
+        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
@@ -282,8 +282,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_short
-        type: u2
-        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -312,8 +312,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_short
-        type: u2
-        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -342,8 +342,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_long
-        type: u4
-        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+        type: decimal_s4_4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -372,8 +372,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_long
-        type: u4
-        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+        type: decimal_s4_4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -396,6 +396,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   client_packet_type:

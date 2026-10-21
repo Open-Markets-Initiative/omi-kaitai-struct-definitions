@@ -253,8 +253,8 @@ types:
         type: u4
         doc: 'Unique security ID issued by OTC Markets'
       - id: ask_price
-        type: u8
-        doc: 'Ask price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Ask price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
         doc: 'Number of shares at the ask'
@@ -262,8 +262,8 @@ types:
         type: u8
         doc: 'Ask timestamp in milliseconds since UTC epoch'
       - id: bid_price
-        type: u8
-        doc: 'Bid price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Bid price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Number of shares at the bid'
@@ -316,8 +316,8 @@ types:
         type: quote_flags
         doc: 'Inside Quote Information'
       - id: price
-        type: u8
-        doc: 'Price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: size
         type: u4
         doc: 'Number of shares at the inside price level'
@@ -340,6 +340,13 @@ types:
         value: time / 1000 % 60
       millisecond:
         value: time % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   message_type:

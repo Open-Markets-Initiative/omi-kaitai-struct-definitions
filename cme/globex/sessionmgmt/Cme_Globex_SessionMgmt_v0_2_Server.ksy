@@ -112,6 +112,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   negotiation_response:
     seq:
       - id: uuid
@@ -126,6 +129,9 @@ types:
       - id: padding_4
         size: 4
         doc: '4 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   terminate:
     seq:
       - id: reason
@@ -146,6 +152,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   request_ack:
     seq:
       - id: md_req_id
@@ -159,6 +168,9 @@ types:
         type: u1
         enum: md_req_id_status
         doc: 'Status of the request acknowledgement'
+      - id: block_extension
+        size: _parent.message_header.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
       - id: request_ack_security_groups
         type: request_ack_security_groups
         doc: 'NoSecurityGroups Block'
@@ -188,6 +200,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Security Group'
+      - id: block_extension
+        size: _parent.group_size.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
   request_ack_related_symbol_groups:
     seq:
       - id: group_size
@@ -203,6 +218,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   request_reject:
     seq:
       - id: md_req_id_optional
@@ -217,6 +235,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'Reject reason details'
+      - id: block_extension
+        size: _parent.message_header.block_length - 105
+        doc: 'Bytes the stated block holds beyond the 105 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

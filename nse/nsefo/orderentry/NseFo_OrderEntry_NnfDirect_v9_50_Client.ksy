@@ -30,7 +30,7 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsefo_orderentry_nnfdirect_v9_50
+  id: nse_nsefo_orderentry_nnfdirect_v9_50_client
   title: Nse NseFo OrderEntry NnfDirect v9.50
   license: GPL-3.0
   endian: be
@@ -39,20 +39,81 @@ doc: 'National Stock Exchange of India Ltd NSE Futures & Options Order Entry Nnf
 doc-ref: https://www.nseindia.com/trade/members-trading-software-vendors-api-download
 
 seq:
-  - id: direct_packet
-    type: direct_packet_struct
+  - id: client_direct_packet
+    type: client_direct_packet_struct
     repeat: eos
-    doc: 'One framed interactive message'
+    doc: 'One framed interactive message sent by the firm'
 
 types:
-  direct_packet_struct:
+  client_direct_packet_struct:
     seq:
       - id: packet_header
         type: packet_header
-        doc: 'Chapter 11 twenty two byte packet header'
+        doc: 'Direct interface twenty two byte packet header'
       - id: message_header
         type: message_header
         doc: 'MESSAGE_HEADER'
+      - id: client_message_payload
+        size: packet_header.packet_length - 62
+        type:
+          switch-on: message_header.transaction_code
+          cases:
+            'transaction_code::sign_on_request_in_message': sign_on_request_in_message
+            'transaction_code::system_information_in_message': system_information_in_message
+            'transaction_code::gateway_router_request_message': gateway_router_request_message
+            'transaction_code::update_local_database_in_message': update_local_database_in_message
+            'transaction_code::download_request_message': download_request_message
+            'transaction_code::order_entry_request_message': order_entry_request_message
+            'transaction_code::order_modification_request_message': order_modification_request_message
+            'transaction_code::order_cancellation_request_message': order_cancellation_request_message
+            'transaction_code::order_confirmation_message': order_confirmation_message
+            'transaction_code::order_modification_confirmation_message': order_modification_confirmation_message
+            'transaction_code::order_entry_message': order_entry_message
+            'transaction_code::order_entry_message_2042': order_entry_message
+            'transaction_code::order_entry_message_2062': order_entry_message
+            'transaction_code::order_entry_message_2072': order_entry_message
+            'transaction_code::order_entry_message_2170': order_entry_message
+            'transaction_code::order_entry_message_2231': order_entry_message
+            'transaction_code::order_entry_message_9002': order_entry_message
+            'transaction_code::price_modification_message': price_modification_message
+            'transaction_code::price_modification_message_20406': price_modification_message
+            'transaction_code::trade_inquiry_message': trade_inquiry_message
+            'transaction_code::trade_inquiry_message_5440': trade_inquiry_message
+            'transaction_code::trade_inquiry_message_5441': trade_inquiry_message
+            'transaction_code::trade_inquiry_message_2223': trade_inquiry_message
+            'transaction_code::spread_order_entry_message': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2102': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2104': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2106': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2118': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2124': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2125': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2126': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2127': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2130': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2131': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2132': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2133': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2136': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2154': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2155': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_2156': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_9004': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_20408': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_20410': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_20412': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_20414': spread_order_entry_message
+            'transaction_code::spread_order_entry_message_20416': spread_order_entry_message
+            'transaction_code::secure_box_registration_request_in_message': secure_box_registration_request_in_message
+            'transaction_code::box_sign_on_request_in_message': box_sign_on_request_in_message
+            'transaction_code::box_sign_off_message': box_sign_off_message
+            'transaction_code::branch_order_value_limit_update_message': branch_order_value_limit_update_message
+            'transaction_code::user_order_value_limit_update_message': user_order_value_limit_update_message
+            'transaction_code::normal_order_limit_update_message': normal_order_limit_update_message
+            'transaction_code::reset_user_password_message': reset_user_password_message
+            'transaction_code::collateral_user_status_change_request_message': collateral_user_status_change_request_message
+            'transaction_code::user_trade_modify_cancel_status_change_request_message': user_trade_modify_cancel_status_change_request_message
+            'transaction_code::user_address_unlock_request_message': user_address_unlock_request_message
   packet_header:
     seq:
       - id: packet_length
@@ -104,6 +165,1171 @@ types:
       - id: message_length
         type: s2
         doc: 'Length of the record including this header'
+  sign_on_request_in_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: reserved_8
+        size: 8
+        doc: 'Reserved'
+      - id: password
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Password of the user'
+      - id: second_reserved_8
+        size: 8
+        doc: 'Reserved'
+      - id: new_password
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'New password when the user is changing it'
+      - id: trader_name
+        type: str
+        size: 26
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Name of the trader'
+      - id: last_password_change_date
+        type: dos_second_timestamp
+        doc: 'Date the password was last changed. Seconds since Dos epoch'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: version_number
+        type: s4
+        doc: 'Version number of the front end'
+      - id: batch_2_start_time
+        type: dos_second_timestamp
+        doc: 'Start time of the second batch. Seconds since Dos epoch'
+      - id: host_switch_context
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Host switch context'
+      - id: colour
+        type: str
+        size: 50
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Colour'
+      - id: second_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: user_type
+        type: s2
+        doc: 'Type of the user'
+      - id: sequence_number
+        type: floating_point_integer
+        doc: 'Sequence number'
+      - id: ws_class_name
+        type: str
+        size: 14
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Workstation class name'
+      - id: broker_status
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Status of the trading member'
+      - id: show_index
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the index is shown'
+      - id: st_broker_eligibility_per_mkt
+        type: st_broker_eligibility_per_mkt
+        doc: 'Markets the trading member may place orders in'
+      - id: member_type
+        type: s2
+        doc: 'Type of the trading member'
+      - id: clearing_status
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Clearing status of the trading member'
+      - id: broker_name
+        type: str
+        size: 25
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Name of the trading member'
+      - id: reserved_16
+        size: 16
+        doc: 'Reserved'
+      - id: second_reserved_16
+        size: 16
+        doc: 'Reserved'
+      - id: third_reserved_16
+        size: 16
+        doc: 'Reserved'
+  st_broker_eligibility_per_mkt:
+    seq:
+      - id: normal_market
+        type: b1
+        doc: 'Eligible for the normal market'
+      - id: oddlot_market
+        type: b1
+        doc: 'Eligible for the odd lot market'
+      - id: spot_market
+        type: b1
+        doc: 'Eligible for the spot market'
+      - id: auction_market
+        type: b1
+        doc: 'Eligible for the auction market'
+      - id: reserved_212
+        type: b11
+        doc: 'Reserved'
+      - id: pre_open
+        type: b1
+        doc: 'Eligible for the pre open market'
+  system_information_in_message:
+    seq:
+      - id: last_update_portfolio_t_ime
+        type: dos_second_timestamp
+        doc: 'Time the portfolio was last updated. Seconds since Dos epoch'
+  gateway_router_request_message:
+    seq:
+      - id: box_id
+        type: s2
+        doc: 'Exchange provided box Id used for this connection'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: filler
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+  update_local_database_in_message:
+    seq:
+      - id: last_update_security_time
+        type: dos_second_timestamp
+        doc: 'Time the security master was last updated. Seconds since Dos epoch'
+      - id: last_update_participant_time
+        type: dos_second_timestamp
+        doc: 'Time the participant master was last updated. Seconds since Dos epoch'
+      - id: last_update_instrument_time
+        type: dos_second_timestamp
+        doc: 'Time the instrument master was last updated. Seconds since Dos epoch'
+      - id: last_update_index_time
+        type: dos_second_timestamp
+        doc: 'Time the index master was last updated. Seconds since Dos epoch'
+      - id: request_for_open_orders
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether open orders are also requested'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: st_market_status
+        type: st_market_status
+        doc: 'ST_MARKET_STATUS'
+      - id: st_ex_market_status
+        type: st_ex_market_status
+        doc: 'ST_EX_MARKET_STATUS'
+      - id: st_pl_market_status
+        type: st_pl_market_status
+        doc: 'ST_PL_MARKET_STATUS'
+  st_market_status:
+    seq:
+      - id: market_status_normal
+        type: s2
+        enum: market_status_normal
+        doc: 'Status of the normal market'
+      - id: market_status_oddlot
+        type: s2
+        enum: market_status_oddlot
+        doc: 'Status of the odd lot market'
+      - id: market_status_spot
+        type: s2
+        enum: market_status_spot
+        doc: 'Status of the spot market'
+      - id: market_status_auction
+        type: s2
+        enum: market_status_auction
+        doc: 'Status of the auction market'
+  st_ex_market_status:
+    seq:
+      - id: ex_market_status_normal
+        type: s2
+        enum: ex_market_status_normal
+        doc: 'Status of the normal market'
+      - id: ex_market_status_oddlot
+        type: s2
+        enum: ex_market_status_oddlot
+        doc: 'Status of the odd lot market'
+      - id: ex_market_status_spot
+        type: s2
+        enum: ex_market_status_spot
+        doc: 'Status of the spot market'
+      - id: ex_market_status_auction
+        type: s2
+        enum: ex_market_status_auction
+        doc: 'Status of the auction market'
+  st_pl_market_status:
+    seq:
+      - id: pl_market_status_normal
+        type: s2
+        enum: pl_market_status_normal
+        doc: 'Status of the normal market'
+      - id: pl_market_status_oddlot
+        type: s2
+        enum: pl_market_status_oddlot
+        doc: 'Status of the odd lot market'
+      - id: pl_market_status_spot
+        type: s2
+        enum: pl_market_status_spot
+        doc: 'Status of the spot market'
+      - id: pl_market_status_auction
+        type: s2
+        enum: pl_market_status_auction
+        doc: 'Status of the auction market'
+  download_request_message:
+    seq:
+      - id: sequence_number
+        type: floating_point_integer
+        doc: 'Sequence number'
+  order_entry_request_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_entry_body:
+    seq:
+      - id: participant_type
+        type: u1
+        enum: participant_type
+        doc: 'Type of participant the order belongs to'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: competitor_period
+        type: s2
+        doc: 'Competitor period'
+      - id: solicitor_period
+        type: s2
+        doc: 'Solicitor period'
+      - id: modified_cancelled_by
+        type: u1
+        enum: modified_cancelled_by
+        doc: 'Who modified or cancelled the order'
+      - id: second_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: reason_code
+        type: s2
+        enum: reason_code
+        doc: 'Reason the give up was rejected'
+      - id: reserved_4
+        size: 4
+        doc: 'Reserved'
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: contract_desc
+        type: contract_desc
+        doc: 'CONTRACT_DESC'
+      - id: counter_party_broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id of the counter party'
+      - id: third_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: closeout_flag
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the broker is in closeout status'
+      - id: fourth_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: order_type
+        type: s2
+        doc: 'Type of the order'
+      - id: order_number
+        type: floating_point_integer
+        doc: 'Order number of the order being modified'
+      - id: account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: book_type
+        type: s2
+        enum: book_type
+        doc: 'Book the order belonged to'
+      - id: buy_sell_indicator
+        type: s2
+        enum: buy_sell_indicator
+        doc: 'Whether the order is a buy or a sell'
+      - id: disclosed_volume
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: disclosed_volume_remaining
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: total_volume_remaining
+        type: s4
+        doc: 'Total quantity still outstanding'
+      - id: volume
+        type: s4
+        doc: 'Quantity of the order'
+      - id: volume_filled_today
+        type: s4
+        doc: 'Quantity traded today'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: trigger_price
+        type: decimal_s4_2
+        doc: 'Price at which a stop loss order triggers. Implied decimal with scale 1e-2'
+      - id: good_till_date
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: entry_date_time
+        type: dos_second_timestamp
+        doc: 'Time the order entered the system. Seconds since Dos epoch'
+      - id: minimum_fill_aon_volume
+        type: s4
+        doc: 'Minimum quantity that must be filled'
+      - id: last_modified
+        type: s4
+        doc: 'Time the order was last modified'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: c_ord_filler
+        type: str
+        size: 24
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the trade opens or closes a position'
+      - id: settlor
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Settlor of the order'
+      - id: pro_client_indicator
+        type: s2
+        doc: 'Whether the order is proprietary or for a client'
+      - id: settlement_period
+        type: s2
+        doc: 'Settlement period'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: fifth_reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_116
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Sixteen filler bits carrying no meaning'
+      - id: filler_17
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: filler_18
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: nnf_field
+        type: floating_point_integer
+        doc: 'Non Neat front end identifier supplied by the member'
+      - id: mkt_replay
+        type: s8
+        doc: 'Market replay reference'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: second_reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_52
+        size: 52
+        doc: 'Reserved'
+  contract_desc:
+    seq:
+      - id: instrument_name
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Instrument the contract belongs to'
+      - id: symbol
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Symbol of the underlying security'
+      - id: expiry_date
+        type: dos_second_timestamp
+        doc: 'Date the contract expires. Seconds since Dos epoch'
+      - id: strike_price
+        type: decimal_s4_2
+        doc: 'Strike price of an option contract. Implied decimal with scale 1e-2'
+      - id: option_type
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the option is a call or a put'
+      - id: ca_level
+        type: s2
+        doc: 'Corporate action level'
+  st_order_flags:
+    seq:
+      - id: ato
+        type: b1
+        doc: 'At the open order'
+      - id: market
+        type: b1
+        doc: 'Market order'
+      - id: sl
+        type: b1
+        doc: 'Stop loss order'
+      - id: mit
+        type: b1
+        doc: 'Market if touched order'
+      - id: day
+        type: b1
+        doc: 'Day order'
+      - id: gtc
+        type: b1
+        doc: 'Good till cancelled order'
+      - id: ioc
+        type: b1
+        doc: 'Immediate or cancel order'
+      - id: aon
+        type: b1
+        doc: 'All or none order'
+      - id: mf
+        type: b1
+        doc: 'Minimum fill order'
+      - id: matched_ind
+        type: b1
+        doc: 'Order has been matched'
+      - id: traded
+        type: b1
+        doc: 'Order has traded at least partly'
+      - id: modified
+        type: b1
+        doc: 'Order has been modified'
+      - id: frozen
+        type: b1
+        doc: 'Order has resulted in a freeze awaiting approval'
+      - id: order_pre_open
+        type: b1
+        doc: 'Order belongs to the pre open session'
+      - id: reserved_12
+        type: b2
+        doc: 'Reserved'
+  additional_order_flags:
+    meta:
+      bit-endian: le
+    seq:
+      - id: boc
+        type: b1
+        doc: 'Book or cancel order'
+      - id: col
+        type: b1
+        doc: 'Collateral order'
+      - id: reserved_34
+        type: b2
+        doc: 'Reserved'
+      - id: stpc
+        type: b1
+        doc: 'Self trade prevention check'
+      - id: reserved_68
+        type: b3
+        doc: 'Reserved'
+  order_modification_request_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_cancellation_request_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_confirmation_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_modification_confirmation_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  order_entry_message:
+    seq:
+      - id: order_entry_body
+        type: order_entry_body
+        doc: 'Order Entry Body'
+  price_modification_message:
+    seq:
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: order_number
+        type: floating_point_integer
+        doc: 'Order number of the order being modified'
+      - id: buy_sell
+        type: s2
+        enum: buy_sell
+        doc: 'Whether the order is a buy or a sell'
+      - id: price
+        type: decimal_s4_2
+        doc: 'New price of the order. Implied decimal with scale 1e-2'
+      - id: volume
+        type: s4
+        doc: 'Quantity of the order'
+      - id: last_modified
+        type: s4
+        doc: 'Time the order was last modified'
+      - id: reference
+        type: str
+        size: 4
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Reference supplied with the request'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_24
+        size: 24
+        doc: 'Reserved'
+  trade_inquiry_message:
+    seq:
+      - id: token_no
+        type: s4
+        doc: 'Token number of the contract the order was placed for'
+      - id: contract_desc
+        type: contract_desc
+        doc: 'CONTRACT_DESC'
+      - id: fill_number
+        type: s4
+        doc: 'Number of the trade'
+      - id: fill_quantity
+        type: s4
+        doc: 'Quantity traded'
+      - id: fill_price
+        type: decimal_s4_2
+        doc: 'Price the trade occurred at. Implied decimal with scale 1e-2'
+      - id: mkt_type
+        type: u1
+        enum: mkt_type
+        doc: 'Market the trade belongs to'
+      - id: buy_open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the buy opens or closes a position'
+      - id: reserved_4
+        size: 4
+        doc: 'Reserved'
+      - id: buy_broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id on the buy side'
+      - id: sell_broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id on the sell side'
+      - id: trader_id
+        type: s4
+        doc: 'Trader Id of the connected user'
+      - id: requested_by
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Which side requested the change'
+      - id: sell_open_close
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the sell opens or closes a position'
+      - id: buy_account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number on the buy side'
+      - id: sell_account_number
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number on the sell side'
+      - id: reserved_24
+        size: 24
+        doc: 'Reserved'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: second_reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: buy_pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number on the buy side'
+      - id: sell_pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number on the sell side'
+      - id: reserved_60
+        size: 60
+        doc: 'Reserved'
+  spread_order_entry_message:
+    seq:
+      - id: spread_order_body
+        type: spread_order_body
+        doc: 'Spread Order Body'
+  spread_order_body:
+    seq:
+      - id: participant_type_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Type of participant the first leg belongs to'
+      - id: filler_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: competitor_period_1
+        type: s2
+        doc: 'Competitor period'
+      - id: solicitor_period_1
+        type: s2
+        doc: 'Solicitor period'
+      - id: mod_cxl_by_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Who modified or cancelled the order'
+      - id: filler_9
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: reason_code_1
+        type: s2
+        doc: 'Reason the request was rejected or the order changed'
+      - id: start_alpha_1
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Start of the alpha range'
+      - id: end_alpha_1
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'End of the alpha range'
+      - id: token_1
+        type: s4
+        doc: 'Token number of the first leg'
+      - id: contract_desc
+        type: contract_desc
+        doc: 'CONTRACT_DESC'
+      - id: op_broker_id_1
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Counter party trading member Id'
+      - id: fillerx_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: filler_options_1
+        type: str
+        size: 3
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: fillery_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: order_type_1
+        type: s2
+        doc: 'Type of the first leg order'
+      - id: order_number_1
+        type: floating_point_integer
+        doc: 'Order number of the first leg'
+      - id: account_number_1
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Account number the order is for'
+      - id: book_type_1
+        type: s2
+        enum: book_type_1
+        doc: 'Book the first leg belongs to'
+      - id: buy_sell_1
+        type: s2
+        doc: 'Whether the first leg is a buy or a sell'
+      - id: disclosed_vol_1
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: disclosed_vol_remaining_1
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: total_vol_remaining_1
+        type: s4
+        doc: 'Total quantity still outstanding'
+      - id: volume_1
+        type: s4
+        doc: 'Quantity of the first leg'
+      - id: volume_filled_today_1
+        type: s4
+        doc: 'Quantity traded today'
+      - id: price_1
+        type: decimal_s4_2
+        doc: 'Price of the first leg. Implied decimal with scale 1e-2'
+      - id: trigger_price_1
+        type: decimal_s4_2
+        doc: 'Price at which a stop loss order triggers. Implied decimal with scale 1e-2'
+      - id: good_till_date_1
+        type: s4
+        doc: 'Number of days a good till date order remains, from two to the maximum the market allows'
+      - id: entry_date_time_1
+        type: dos_second_timestamp
+        doc: 'Time the order entered the system. Seconds since Dos epoch'
+      - id: min_fill_aon_1
+        type: s4
+        doc: 'Minimum quantity that must be filled'
+      - id: last_modified_1
+        type: s4
+        doc: 'Time the order was last modified'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: branch_id_1
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: trader_id_1
+        type: s4
+        doc: 'User Id that entered the order'
+      - id: broker_id_1
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: c_ord_filler
+        type: str
+        size: 24
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: open_close_1
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the first leg opens or closes a position'
+      - id: settlor_1
+        type: str
+        size: 12
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Settlor of the order'
+      - id: pro_client_1
+        type: s2
+        doc: 'Whether the order is proprietary or for a client'
+      - id: settlement_period_1
+        type: s2
+        doc: 'Settlement period'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_116
+        type: str
+        size: 2
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Sixteen filler bits carrying no meaning'
+      - id: filler_17
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: filler_18
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: nnf_field
+        type: floating_point_integer
+        doc: 'Non Neat front end identifier supplied by the member'
+      - id: mkt_replay
+        type: s8
+        doc: 'Market replay reference'
+      - id: pan
+        type: str
+        size: 10
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Permanent account number'
+      - id: algo_id
+        type: s4
+        doc: 'Identifier of the algorithm that generated the order'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: last_activity_reference
+        type: s8
+        doc: 'Reference of the last activity on the order'
+      - id: reserved_52
+        size: 52
+        doc: 'Reserved'
+      - id: price_diff
+        type: decimal_s4_2
+        doc: 'Price difference between the legs. Implied decimal with scale 1e-2'
+      - id: ms_spd_leg_info
+        type: ms_spd_leg_info
+        repeat: expr
+        repeat-expr: 2
+        doc: 'MS_SPD_LEG_INFO'
+  ms_spd_leg_info:
+    seq:
+      - id: token_2
+        type: s4
+        doc: 'Token number of the leg'
+      - id: contract_desc
+        type: contract_desc
+        doc: 'CONTRACT_DESC'
+      - id: op_broker_id_2
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Counter party trading member Id'
+      - id: fillerx_2
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+      - id: order_type_2
+        type: s2
+        doc: 'Type of the leg order'
+      - id: buy_sell_2
+        type: s2
+        doc: 'Whether the leg is a buy or a sell'
+      - id: disclosed_vol_2
+        type: s4
+        doc: 'Quantity disclosed to the market'
+      - id: disclosed_vol_remaining_2
+        type: s4
+        doc: 'Disclosed quantity still outstanding'
+      - id: total_vol_remaining_2
+        type: s4
+        doc: 'Total quantity still outstanding'
+      - id: volume_2
+        type: s4
+        doc: 'Quantity of the leg'
+      - id: volume_filled_today_2
+        type: s4
+        doc: 'Quantity traded today'
+      - id: price_2
+        type: decimal_s4_2
+        doc: 'Price of the leg. Implied decimal with scale 1e-2'
+      - id: trigger_price_2
+        type: decimal_s4_2
+        doc: 'Price at which a stop loss order triggers. Implied decimal with scale 1e-2'
+      - id: min_fill_aon_2
+        type: s4
+        doc: 'Minimum quantity that must be filled'
+      - id: st_order_flags
+        type: st_order_flags
+        doc: 'Terms attached to the order'
+      - id: open_close_2
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Whether the leg opens or closes a position'
+      - id: additional_order_flags
+        type: additional_order_flags
+        doc: 'Further terms attached to the order'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: filler_y
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Filler'
+  secure_box_registration_request_in_message:
+    seq:
+      - id: box_id
+        type: s2
+        doc: 'Exchange provided box Id used for this connection'
+  box_sign_on_request_in_message:
+    seq:
+      - id: box_id
+        type: s2
+        doc: 'Exchange provided box Id used for this connection'
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_5
+        size: 5
+        doc: 'Reserved'
+      - id: session_key
+        type: str
+        size: 8
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Session key to be used for authentication'
+  box_sign_off_message:
+    seq:
+      - id: box_id
+        type: s2
+        doc: 'Exchange provided box Id used for this connection'
+  branch_order_value_limit_update_message:
+    seq:
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_25
+        size: 25
+        doc: 'Reserved'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: branch_limits
+        type: branch_limits
+        repeat: expr
+        repeat-expr: 2
+        doc: 'BRANCH_LIMITS'
+  branch_limits:
+    seq:
+      - id: branch_buy_value_limit
+        type: floating_point_integer
+        doc: 'Branch buy value limit'
+      - id: branch_sell_value_limit
+        type: floating_point_integer
+        doc: 'Branch sell value limit'
+      - id: reserved_16
+        size: 16
+        doc: 'Reserved'
+  user_order_value_limit_update_message:
+    seq:
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: branch_id
+        type: s2
+        doc: 'Branch Id of the trading member'
+      - id: reserved_26
+        size: 26
+        doc: 'Reserved'
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
+      - id: user_limits
+        type: user_limits
+        repeat: expr
+        repeat-expr: 2
+        doc: 'USER_LIMITS'
+  user_limits:
+    seq:
+      - id: reserved_32
+        size: 32
+        doc: 'Reserved'
+      - id: user_order_buy_value_limit
+        type: floating_point_integer
+        doc: 'User order buy value limit'
+      - id: user_order_sell_value_limit
+        type: floating_point_integer
+        doc: 'User order sell value limit'
+      - id: reserved_16
+        size: 16
+        doc: 'Reserved'
+  normal_order_limit_update_message:
+    seq:
+      - id: broker_id
+        type: str
+        size: 5
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trading member Id'
+      - id: reserved_1
+        size: 1
+        doc: 'Reserved'
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: order_qty_limit
+        type: floating_point_integer
+        doc: 'Maximum order quantity'
+      - id: order_val_limit
+        type: floating_point_integer
+        doc: 'Maximum order value'
+  reset_user_password_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: reserved_14
+        size: 14
+        doc: 'Reserved'
+  collateral_user_status_change_request_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: col_user_bit
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Collateral status of the user'
+      - id: reserved_7
+        size: 7
+        doc: 'Reserved'
+  user_trade_modify_cancel_status_change_request_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: trd_mod_cxl_bit
+        type: str
+        size: 1
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Trade modify and cancel permission'
+      - id: reserved_7
+        size: 7
+        doc: 'Reserved'
+  user_address_unlock_request_message:
+    seq:
+      - id: user_id
+        type: s4
+        doc: 'Id of the user signing on'
+      - id: reserved_70
+        size: 70
+        doc: 'Reserved'
   dos_second_timestamp:
     seq:
       - id: time
@@ -132,6 +1358,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  floating_point_integer:
+    seq:
+      - id: value
+        type: f8
+    instances:
+      integer:
+        value: value.as<s8>
+  decimal_s4_2:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   transaction_code:
@@ -1165,4 +2405,352 @@ enums:
     17184:
       id: 'err_user_having_null_rights'
       doc: 'Order Rejected as user has NO trading rights'
+  market_status_normal:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  market_status_oddlot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  market_status_spot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  market_status_auction:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  ex_market_status_normal:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  ex_market_status_oddlot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  ex_market_status_spot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  ex_market_status_auction:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  pl_market_status_normal:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  pl_market_status_oddlot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  pl_market_status_spot:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  pl_market_status_auction:
+    0:
+      id: 'pre_open'
+      doc: 'Pre Open'
+    1:
+      id: 'open'
+      doc: 'Open'
+    2:
+      id: 'closed'
+      doc: 'Closed'
+    3:
+      id: 'pre_open_ended'
+      doc: 'Pre Open Ended'
+    4:
+      id: 'postclose'
+      doc: 'Postclose'
+  participant_type:
+    0x49:
+      id: 'initiator'
+      doc: 'Initiator'
+    0x43:
+      id: 'competitor'
+      doc: 'Competitor'
+    0x53:
+      id: 'solicitor'
+      doc: 'Solicitor'
+  modified_cancelled_by:
+    0x54:
+      id: 'trader'
+      doc: 'Trader'
+    0x42:
+      id: 'branch_manager'
+      doc: 'Branch Manager'
+    0x4d:
+      id: 'corporate_manager'
+      doc: 'Corporate Manager'
+    0x43:
+      id: 'exchange'
+      doc: 'Exchange'
+  reason_code:
+    2:
+      id: 'exercise'
+      doc: 'Exercise'
+    3:
+      id: 'position_liquidation'
+      doc: 'Position Liquidation'
+    5:
+      id: 'security'
+      doc: 'Security'
+    6:
+      id: 'broker'
+      doc: 'Broker'
+    7:
+      id: 'branch'
+      doc: 'Branch'
+    8:
+      id: 'user'
+      doc: 'User'
+    9:
+      id: 'participant'
+      doc: 'Participant'
+    10:
+      id: 'counter_party'
+      doc: 'Counter Party'
+    11:
+      id: 'order_number'
+      doc: 'Order Number'
+    12:
+      id: 'market_status'
+      doc: 'Market Status'
+    15:
+      id: 'auction_number'
+      doc: 'Auction Number'
+    16:
+      id: 'order_type'
+      doc: 'Order Type'
+    17:
+      id: 'price_freeze'
+      doc: 'Price Freeze'
+    18:
+      id: 'quantity_freeze'
+      doc: 'Quantity Freeze'
+    20:
+      id: 'contract'
+      doc: 'Contract'
+    30:
+      id: 'exercise_mode_mismatch'
+      doc: 'Exercise Mode Mismatch'
+  book_type:
+    1:
+      id: 'regular_lot_order'
+      doc: 'Regular Lot Order'
+    2:
+      id: 'special_terms_order'
+      doc: 'Special Terms Order'
+    3:
+      id: 'stop_loss_or_mit_order'
+      doc: 'Stop Loss Or Mit Order'
+    4:
+      id: 'negotiated_order'
+      doc: 'Negotiated Order'
+    5:
+      id: 'odd_lot_order'
+      doc: 'Odd Lot Order'
+    6:
+      id: 'spot_order'
+      doc: 'Spot Order'
+    7:
+      id: 'auction_order'
+      doc: 'Auction Order'
+  buy_sell_indicator:
+    1:
+      id: 'buy_order'
+      doc: 'Buy Order'
+    2:
+      id: 'sell_order'
+      doc: 'Sell Order'
+  order_pre_open:
+    0:
+      id: 'normal_market_order'
+      doc: 'Normal Market Order'
+    1:
+      id: 'preopen_session_order'
+      doc: 'Preopen Session Order'
+  market:
+    0:
+      id: 'market_order'
+      doc: 'Market Order'
+    1:
+      id: 'not_a_market_order'
+      doc: 'Not A Market Order'
+  stpc:
+    0:
+      id: 'cancel_order_resulting_in_self_trade_by_exchange_default'
+      doc: 'Cancel Order Resulting In Self Trade By Exchange Default'
+    1:
+      id: 'cancel_active_order_resulting_in_self_trade'
+      doc: 'Cancel Active Order Resulting In Self Trade'
+  buy_sell:
+    1:
+      id: 'buy_order'
+      doc: 'Buy Order'
+    2:
+      id: 'sell_order'
+      doc: 'Sell Order'
+  mkt_type:
+    0x31:
+      id: 'normal_market'
+      doc: 'Normal Market'
+    0x32:
+      id: 'odd_lot_market'
+      doc: 'Odd Lot Market'
+    0x33:
+      id: 'spot_market'
+      doc: 'Spot Market'
+    0x34:
+      id: 'auction_market'
+      doc: 'Auction Market'
+  book_type_1:
+    1:
+      id: 'regular_lot_order'
+      doc: 'Regular Lot Order'
+    2:
+      id: 'special_terms_order'
+      doc: 'Special Terms Order'
+  status:
+    0:
+      id: 'end_of_outage'
+      doc: 'End Of Outage'
+    1:
+      id: 'start_of_outage'
+      doc: 'Start Of Outage'
 

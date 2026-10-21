@@ -110,19 +110,19 @@ types:
   add_order_message:
     seq:
       - id: time
-        type: u4le
+        type: u4
         doc: 'Message creation timestamp in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: order_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per order book (system code) assigned to this order'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'The size of the order'
       - id: price
-        type: u4le
+        type: u4
         doc: 'The limit price of the bond order. See Bond Price Types'
       - id: price_scale_code
         type: u1
@@ -177,24 +177,24 @@ types:
         encoding: ASCII
         doc: 'Not used'
       - id: minimum_quantity
-        type: u4le
+        type: u4
         doc: 'For an All or None order the size of the order, for a Minimum Quantity order the minimum size of the order, and 0 for other order types'
   modify_order_message:
     seq:
       - id: time
-        type: u4le
+        type: u4
         doc: 'Message creation timestamp in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: order_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per order book (system code) assigned to this order'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'The size of the order'
       - id: price
-        type: u4le
+        type: u4
         doc: 'The limit price of the bond order. See Bond Price Types'
       - id: price_scale_code
         type: u1
@@ -249,18 +249,18 @@ types:
         encoding: ASCII
         doc: 'Not used'
       - id: minimum_quantity
-        type: u4le
+        type: u4
         doc: 'For an All or None order the size of the order, for a Minimum Quantity order the minimum size of the order, and 0 for other order types'
   delete_order_message:
     seq:
       - id: time
-        type: u4le
+        type: u4
         doc: 'Message creation timestamp in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: order_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per order book (system code) assigned to this order'
       - id: exchange_code
         type: u1
@@ -308,22 +308,22 @@ types:
   imbalance_message:
     seq:
       - id: time
-        type: u4le
+        type: u4
         doc: 'Message creation timestamp in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: match_quantity
-        type: u4le
+        type: u4
         doc: 'The indicative match volume'
       - id: total_imbalance
-        type: u4le
+        type: u4
         doc: 'The total imbalance volume'
       - id: market_imbalance
-        type: u4le
+        type: u4
         doc: 'The market imbalance volume'
       - id: price
-        type: u4le
+        type: u4
         doc: 'The limit price of the bond order. See Bond Price Types'
       - id: price_scale_code
         type: u1
@@ -374,13 +374,13 @@ types:
   system_event_message:
     seq:
       - id: time
-        type: u4le
+        type: u4
         doc: 'Message creation timestamp in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: next_expected_sequence_number
-        type: u4le
+        type: u4
         doc: 'The sequence number that subscribers should expect next'
       - id: event_code
         type: u1

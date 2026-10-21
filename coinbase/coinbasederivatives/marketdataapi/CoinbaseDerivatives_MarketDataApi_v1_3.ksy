@@ -205,6 +205,9 @@ types:
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 158
+        doc: 'Bytes the stated block holds beyond the 158 this version reads'
   instr_header:
     seq:
       - id: instrument_flags
@@ -322,6 +325,9 @@ types:
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 167
+        doc: 'Bytes the stated block holds beyond the 167 this version reads'
   option_instrument_definition_message:
     seq:
       - id: instr_header
@@ -388,6 +394,9 @@ types:
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 158
+        doc: 'Bytes the stated block holds beyond the 158 this version reads'
   trading_status_update_message:
     seq:
       - id: instr_header
@@ -403,6 +412,9 @@ types:
         type: s1
         enum: trading_status
         doc: 'tradingStatus'
+      - id: block_extension
+        size: _parent.message_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
   order_put_message:
     seq:
       - id: instr_header
@@ -417,6 +429,9 @@ types:
       - id: quantity
         type: s4
         doc: 'Quantity encoded with 0 decimal places'
+      - id: block_extension
+        size: _parent.message_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   order_delete_message:
     seq:
       - id: instr_header
@@ -425,6 +440,9 @@ types:
       - id: order_id
         type: s8
         doc: 'orderId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   implied_order_update_message:
     seq:
       - id: instr_header
@@ -442,6 +460,9 @@ types:
       - id: next_qty
         type: s4
         doc: 'nextQty'
+      - id: block_extension
+        size: _parent.message_header.block_length - 46
+        doc: 'Bytes the stated block holds beyond the 46 this version reads'
   trade_summary_message:
     seq:
       - id: instr_header
@@ -462,6 +483,9 @@ types:
       - id: quantity
         type: s4
         doc: 'Quantity encoded with 0 decimal places'
+      - id: block_extension
+        size: _parent.message_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   trade_message:
     seq:
       - id: instr_header
@@ -482,6 +506,9 @@ types:
       - id: quantity
         type: s4
         doc: 'Quantity encoded with 0 decimal places'
+      - id: block_extension
+        size: _parent.message_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   trade_amend_message:
     seq:
       - id: instr_header
@@ -502,6 +529,9 @@ types:
       - id: new_price
         type: decimal_s8_9
         doc: 'newPrice. Implied decimal with scale 1e-9'
+      - id: block_extension
+        size: _parent.message_header.block_length - 62
+        doc: 'Bytes the stated block holds beyond the 62 this version reads'
   spread_trade_amend_message:
     seq:
       - id: instr_header
@@ -534,6 +564,9 @@ types:
       - id: new_leg_2_price
         type: decimal_s8_9
         doc: 'newLeg2Price. Implied decimal with scale 1e-9'
+      - id: block_extension
+        size: _parent.message_header.block_length - 94
+        doc: 'Bytes the stated block holds beyond the 94 this version reads'
   trade_bust_message:
     seq:
       - id: instr_header
@@ -548,6 +581,9 @@ types:
       - id: sell_order_id
         type: s8_nullable
         doc: 'sellOrderId. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 46
+        doc: 'Bytes the stated block holds beyond the 46 this version reads'
   market_stat_message:
     seq:
       - id: instr_header
@@ -560,6 +596,9 @@ types:
         type: u1
         enum: stat_type
         doc: 'statType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
   trade_session_volume_message:
     seq:
       - id: instr_header
@@ -571,6 +610,9 @@ types:
       - id: trade_volume
         type: s4
         doc: 'tradeVolume'
+      - id: block_extension
+        size: _parent.message_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   open_interest_message:
     seq:
       - id: instr_header
@@ -579,6 +621,9 @@ types:
       - id: quantity
         type: s4
         doc: 'Quantity encoded with 0 decimal places'
+      - id: block_extension
+        size: _parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   start_of_outright_instrument_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -641,6 +686,9 @@ types:
         type: s1
         enum: trading_status
         doc: 'tradingStatus'
+      - id: block_extension
+        size: _parent.message_header.block_length - 114
+        doc: 'Bytes the stated block holds beyond the 114 this version reads'
   start_of_spread_instrument_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -713,6 +761,9 @@ types:
         type: s1
         enum: spread_buy_convention
         doc: 'spreadBuyConvention'
+      - id: block_extension
+        size: _parent.message_header.block_length - 123
+        doc: 'Bytes the stated block holds beyond the 123 this version reads'
   start_of_option_instrument_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -782,6 +833,9 @@ types:
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 132
+        doc: 'Bytes the stated block holds beyond the 132 this version reads'
   order_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -799,6 +853,9 @@ types:
       - id: price
         type: decimal_s8_9
         doc: 'Price encoded with 9 decimal places. Implied decimal with scale 1e-9'
+      - id: block_extension
+        size: _parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   end_of_snapshot_message:
     seq:
       - id: snapshot_seq_num
@@ -876,6 +933,9 @@ types:
       - id: definition_flags
         type: definition_flags
         doc: 'InstrumentDefinitionFlags bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 160
+        doc: 'Bytes the stated block holds beyond the 160 this version reads'
   retransmit_request_message:
     seq:
       - id: begin_seq_num
@@ -884,6 +944,9 @@ types:
       - id: message_count
         type: u1
         doc: 'messageCount'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   retransmit_reject_message:
     seq:
       - id: retry_delay_nanos
@@ -898,6 +961,9 @@ types:
         type: s1
         enum: reason
         doc: 'Why the retransmit was rejected: 1 sequence too low, 2 sequence too high, 3 rate limit exceeded, 4 other error'
+      - id: block_extension
+        size: _parent.message_header.block_length - 49
+        doc: 'Bytes the stated block holds beyond the 49 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

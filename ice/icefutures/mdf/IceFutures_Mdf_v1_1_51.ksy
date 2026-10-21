@@ -1528,14 +1528,14 @@ types:
         type: millisecond_timestamp
         doc: 'Date time the settlement price is for. Milliseconds since Unix epoch'
       - id: volatility
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
       - id: settlement_price
         type: s8
         doc: 'SettlePriceDenominator for the market should be applied to get the real settlement price'
       - id: delta
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
   market_snapshot_order_message:
     seq:
       - id: market_id
@@ -1694,7 +1694,7 @@ types:
         doc: 'Aggregate offer quantity'
       - id: usd_price
         type: s8
-        doc: 'Auctioneers price for the round in USD. Use 2 decimal places for USD Price'
+        doc: 'Auctioneers price for the round in USD. Please apply OrderPriceDenominator. Use 2 decimal places for USD Price for Gold and 3 decimal places for Silver'
       - id: is_balanced
         type: u1
         enum: is_balanced
@@ -1886,13 +1886,13 @@ types:
   accrued_distribution_value:
     seq:
       - id: accrued_distribution
-        type: s1
-        doc: 'The sum of all daily distributions'
+        type: decimal_s8_2
+        doc: 'The sum of all daily distributions. Daily Distribution on a given day is equal to the latest UKXCD value (published the business day prior) subtracted from the prior value of UKXCD. Daily Distributions (t) = Distribution Index (t) - Distribution Index (t-1) NumDecimals will be 2. Implied decimal with scale 1e-2'
   accrued_funding_value:
     seq:
       - id: accrued_funding
-        type: s1
-        doc: 'The sum of all daily funding values'
+        type: decimal_s8_6
+        doc: 'The sum of all daily funding values. Daily Funding is calculated on a given day using the following formula: Daily Funding(t) = Index Close (t-1) * Funding Rate (t-1) * (Funding Days (t) / Annualization Factor) NumDecimals will be 6. Implied decimal with scale 1e-6'
   annualization_factor_value:
     seq:
       - id: annualization_factor
@@ -1947,6 +1947,20 @@ types:
         value: text.substring(5, 7).to_i
       day:
         value: text.substring(8, 10).to_i
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   mdy_date:
     seq:
       - id: text
@@ -3072,10 +3086,10 @@ enums:
       doc: 'Order is All-Or-None'
     18:
       id: 'accrued_distribution'
-      doc: 'The sum of all daily distributions'
+      doc: 'The sum of all daily distributions. Daily Distribution on a given day is equal to the latest UKXCD value (published the business day prior) subtracted from the prior value of UKXCD. Daily Distributions (t) = Distribution Index (t) - Distribution Index (t-1) NumDecimals will be 2.'
     19:
       id: 'accrued_funding'
-      doc: 'The sum of all daily funding values'
+      doc: 'The sum of all daily funding values. Daily Funding is calculated on a given day using the following formula: Daily Funding(t) = Index Close (t-1) * Funding Rate (t-1) * (Funding Days (t) / Annualization Factor) NumDecimals will be 6'
     20:
       id: 'annualization_factor'
       doc: 'The number of periods used to annualize a return'

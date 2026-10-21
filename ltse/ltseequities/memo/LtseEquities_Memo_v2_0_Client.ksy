@@ -233,6 +233,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 98
+        doc: 'Bytes the stated block holds beyond the 98 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -295,6 +298,9 @@ types:
         type: u1
         enum: party_role
         doc: 'PartyRole'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   order_cancel_replace_request_message:
     seq:
       - id: origclordid
@@ -341,6 +347,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 71
+        doc: 'Bytes the stated block holds beyond the 71 this version reads'
   order_cancel_request_message:
     seq:
       - id: origclordid_optional
@@ -362,6 +371,9 @@ types:
       - id: symbol_sfx
         type: str_6_nullable
         doc: 'SymbolSfx. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -390,6 +402,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   str_6_nullable:
     seq:
       - id: value

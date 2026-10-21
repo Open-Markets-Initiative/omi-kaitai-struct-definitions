@@ -203,6 +203,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -254,6 +257,9 @@ types:
         type: u1
         enum: party_role
         doc: 'Identifies the type or role of the PartyID (448) specified. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 14 3.3.7 Execution Allocations Group (Repeating Group 124) The Execution Allocations Group repeating group allows for identification of the original Exchange Trade that post trade allocations are occurring on. Though this is denoted as a repeating group, at the current time, this group will always contain a single entry. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. (Always set to 1) Field Offset Length Type Tag Ref Num Req''d Description'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   short_two_sided_bulk_quote_message:
     seq:
       - id: sending_time
@@ -287,6 +293,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -325,6 +334,9 @@ types:
       - id: offer_px
         type: decimal_u2_2
         doc: 'Ask side price of the quote. Price per unit of quantity. 3.3.3 Long Two Sided Quote Group The Two Sided Quote repeating group allows for up to 20 two sided quotes in messages. This group is used within the LongTwoSidedBulkQuote message. All quotes in a Long Two Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by a RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-2'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   long_two_sided_bulk_quote_message:
     seq:
       - id: sending_time
@@ -358,6 +370,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -397,6 +412,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -433,6 +451,9 @@ types:
       - id: price_short
         type: decimal_u2_2
         doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-2'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   long_one_sided_bulk_quote_message:
     seq:
       - id: sending_time
@@ -466,6 +487,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -512,6 +536,9 @@ types:
       - id: price_optional
         type: decimal_u8_8_nullable
         doc: 'Price of the quote. Price per unit of quantity. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 13 3.3.5 Long One Sided Quote Group The One Sided Quote repeating group allows for up to 20 one sided quotes in messages. This group is used within the LongOneSidedBulkQuote message. All quotes in a Long One Sided Quote repeating group must be for the same Underlier. The OptionsSecurityID of the first quote in the repeating group identifies the Underlier that is used to validate all of the following quotes in the repeating group. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of them expected in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 79
+        doc: 'Bytes the stated block holds beyond the 79 this version reads'
   order_cancel_request_message:
     seq:
       - id: sending_time
@@ -540,6 +567,9 @@ types:
         type: u1
         enum: side_optional
         doc: 'Side of the quote. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 66
+        doc: 'Bytes the stated block holds beyond the 66 this version reads'
   mass_cancel_request_message:
     seq:
       - id: sending_time
@@ -568,6 +598,9 @@ types:
       - id: mass_cancel_inst
         type: mass_cancel_inst
         doc: 'MassCancelInstType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   mass_cancel_inst:
     meta:
       bit-endian: le
@@ -597,6 +630,9 @@ types:
       - id: lockout_id
         type: u8
         doc: 'The LockoutID of a previous lockout, returned in a PendingMassCancel message. 5.1.10 MassCancelBulkClearAllLockoutsRequest The mass cancel clear all lockouts request message requests the clearing of previously placed lockouts. A lockout can be requested as part of a MassCancelRequest using the MassCancelInst field. The MassCancelBulkClearAllLockoutsRequest will clear all existing lockouts for the FIRM associated with the port. A MassCancelBulkClearLockoutAccepted message will be sent on the requesting port if the request is deemed valid else a MassCancelBulkClearLockoutReject will be sent instead with the appropriate reject reason code. note: Lockouts initiated via a different port sent in parallel to this request may be cleared as part of this operation as well. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 49 Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 32'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   allocation_instruction_message:
     seq:
       - id: sending_time
@@ -641,6 +677,9 @@ types:
         size: 8
         encoding: ASCII
         doc: 'YYYYMMDD NoExecs - - RepeatingGroupDimensions 124 Y Number of Trades being allocated (always 1) MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 77 Field Offset Length Type Tag Ref Num Req''d Description ExecutionAllocations - - ExecutionAllocationsGroup N/A Y Specifies the Trade being allocated NoAllocs - - RepeatingGroupDimensions 78 Y The dimensions of the Allocations Repeating Group. ReportedAllocations - - ReportAllocationsGroup N/A Y The allocations assigned to the trade - NOTE: this group contains IndividualAllocIDs for each unit of allocation, used to make further changes on those units. 5.2.12 UserNotification The UserNotification message is used to notify the user of an event or information about the exchange. This message will be used to provide a logical session shutdown warning. This message corresponds to FIX message type CB Field Offset Length Type Tag Ref Num Req’d Meaning SBE Header 0 7 SBE Header Y SBE Header templateID = 29'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
       - id: allocation_instruction_message_allocations_groups
         type: allocation_instruction_message_allocations_groups
         doc: 'Allocations Block'
@@ -667,6 +706,9 @@ types:
         type: u1
         enum: open_or_close
         doc: 'OpenOrClose'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
       - id: nested_parties_groups
         type: nested_parties_groups
         doc: 'Parties Block'
@@ -696,6 +738,9 @@ types:
         type: u1
         enum: party_role
         doc: 'Identifies the type or role of the PartyID (448) specified. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 14 3.3.7 Execution Allocations Group (Repeating Group 124) The Execution Allocations Group repeating group allows for identification of the original Exchange Trade that post trade allocations are occurring on. Though this is denoted as a repeating group, at the current time, this group will always contain a single entry. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. (Always set to 1) Field Offset Length Type Tag Ref Num Req''d Description'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

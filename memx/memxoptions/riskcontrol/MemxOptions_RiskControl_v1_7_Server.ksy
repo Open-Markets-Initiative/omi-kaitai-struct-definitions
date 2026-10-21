@@ -208,6 +208,9 @@ types:
       - id: unacked_quantity
         type: u4
         doc: 'UnackedQuantity'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   active_risk_threshold_change_rejected_message:
     seq:
       - id: cl_ord_id_active_risk_threshold_change_rejected_cl_ord_id
@@ -228,6 +231,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   active_risk_acknowledged_message:
     seq:
       - id: clordid
@@ -251,6 +257,9 @@ types:
       - id: unacked_quantity
         type: u4
         doc: 'UnackedQuantity'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   active_risk_acknowledge_rejected_message:
     seq:
       - id: cl_ord_id_active_risk_acknowledge_rejected_cl_ord_id
@@ -275,6 +284,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   active_risk_quantity_update_notification_message:
     seq:
       - id: sending_time
@@ -317,6 +329,9 @@ types:
       - id: unacked_quantity
         type: u4
         doc: 'UnackedQuantity'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
   cp_volume_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -337,6 +352,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_executed_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -357,6 +375,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_total_executions_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -377,6 +398,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_percent_outstanding_contracts_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -394,6 +418,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   cp_breach_count_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -414,6 +441,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   manual_cp_breach_trigger_pending_message:
     seq:
       - id: clordid
@@ -430,6 +460,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   manual_cp_breach_trigger_done_message:
     seq:
       - id: clordid
@@ -452,6 +485,9 @@ types:
       - id: total_affected_orders
         type: u4
         doc: 'TotalAffectedOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   risk_threshold_update_rejected_message:
     seq:
       - id: cl_ord_id_risk_threshold_update_rejected_cl_ord_id
@@ -467,6 +503,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   passive_risk_threshold_notification_message:
     seq:
       - id: underlier_optional
@@ -491,6 +530,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'TransactTime'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   single_order_allow_iso_orders_state_message:
     seq:
       - id: clordid_optional
@@ -509,6 +551,9 @@ types:
         type: u1
         enum: allow_iso_orders
         doc: 'AllowISOOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_allow_orders_in_crossed_market_state_message:
     seq:
       - id: clordid_optional
@@ -527,6 +572,9 @@ types:
         type: u1
         enum: allow_orders
         doc: 'AllowOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_max_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -544,6 +592,9 @@ types:
       - id: max_notional_in_dollars
         type: u8
         doc: 'MaxNotionalInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   single_order_max_contracts_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -561,6 +612,9 @@ types:
       - id: max_contracts
         type: u4
         doc: 'MaxContracts'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   single_order_allow_market_orders_state_message:
     seq:
       - id: cl_ord_id_single_order_allow_market_orders_state_cl_ord_id_optional
@@ -579,6 +633,9 @@ types:
         type: u1
         enum: market_orders
         doc: 'MarketOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_restricted_underlier_state_message:
     seq:
       - id: cl_ord_id_single_order_restricted_underlier_state_cl_ord_id_optional
@@ -599,6 +656,9 @@ types:
         type: u1
         enum: restricted
         doc: 'Restricted'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   risk_settings_query_done_message:
     seq:
       - id: clordid
@@ -609,6 +669,9 @@ types:
       - id: number_msgs_sent
         type: u4
         doc: 'NumberMsgsSent'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   risk_settings_query_rejected_message:
     seq:
       - id: cl_ord_id_risk_settings_query_rejected_cl_ord_id
@@ -620,6 +683,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   manual_cp_breach_trigger_rejected_message:
     seq:
       - id: cl_ord_id_manual_cp_breach_trigger_rejected_cl_ord_id
@@ -640,6 +706,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   breach_clear_rejected_message:
     seq:
       - id: cl_ord_id_breach_clear_rejected_cl_ord_id
@@ -654,6 +723,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   breach_cleared_message:
     seq:
       - id: clordid_optional
@@ -662,6 +734,9 @@ types:
       - id: breach_id_optional
         type: u8_nullable
         doc: 'BreachID. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   breach_clear_all_accepted_message:
     seq:
       - id: cl_ord_id_breach_clear_all_accepted_cl_ord_id
@@ -669,6 +744,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   breach_clear_all_rejected_message:
     seq:
       - id: cl_ord_id_breach_clear_all_rejected_cl_ord_id
@@ -680,6 +758,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   breach_clear_all_by_efid_or_underlier_accepted_message:
     seq:
       - id: cl_ord_id_breach_clear_all_by_efid_or_underlier_accepted_cl_ord_id
@@ -693,6 +774,9 @@ types:
       - id: efid_breach_clear_all_by_efid_or_underlier_accepted_efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   breach_clear_all_by_efid_or_underlier_rejected_message:
     seq:
       - id: cl_ord_id_breach_clear_all_by_efid_or_underlier_rejected_cl_ord_id
@@ -710,6 +794,9 @@ types:
         type: u2
         enum: reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   cp_gross_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -727,6 +814,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_gross_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -744,6 +834,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_net_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -761,6 +854,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_net_notional_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -778,6 +874,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_duplicate_order_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -802,6 +901,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   cp_order_rate_threshold_state_message:
     seq:
       - id: clordid_optional
@@ -822,6 +924,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   str_20_nullable:
     seq:
       - id: value

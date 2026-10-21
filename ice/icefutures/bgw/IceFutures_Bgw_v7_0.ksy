@@ -146,6 +146,9 @@ types:
       - id: framing_header
         type: framing_header
         doc: 'SimpleOpenFramingHeaderMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   framing_header:
     seq:
       - id: message_length
@@ -192,6 +195,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'ipSessionToken'
+      - id: block_extension
+        size: _parent.message_header.block_length - 236
+        doc: 'Bytes the stated block holds beyond the 236 this version reads'
   logon_report_message:
     seq:
       - id: user_id
@@ -214,6 +220,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 127
+        doc: 'Bytes the stated block holds beyond the 127 this version reads'
   logout_request_message:
     seq:
       - id: user_id
@@ -221,6 +230,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'userID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   logout_report_message:
     seq:
       - id: user_id
@@ -236,6 +248,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 124
+        doc: 'Bytes the stated block holds beyond the 124 this version reads'
   error_message:
     seq:
       - id: ref_sequence_id
@@ -258,6 +273,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 129
+        doc: 'Bytes the stated block holds beyond the 129 this version reads'
   news_message:
     seq:
       - id: user_id
@@ -268,6 +286,9 @@ types:
       - id: exchange_code
         type: s4
         doc: 'exchangeCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
       - id: text_var_string_16_null
         type: text_var_string_16_null
         doc: 'text data struct'
@@ -411,6 +432,9 @@ types:
       - id: block_tick_value
         type: s8
         doc: 'blockTickValue'
+      - id: block_extension
+        size: _parent.message_header.block_length - 146
+        doc: 'Bytes the stated block holds beyond the 146 this version reads'
       - id: security_definition_report_strategy_message_no_block_details_groups
         type: security_definition_report_strategy_message_no_block_details_groups
         doc: 'noBlockDetails Block'
@@ -488,6 +512,9 @@ types:
       - id: block_details_min_qty
         type: s8
         doc: 'blockDetailsMinQty'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   security_definition_report_strategy_message_no_security_alt_i_d_groups:
     seq:
       - id: group_size_encoding
@@ -510,6 +537,9 @@ types:
         size: 3
         encoding: ASCII
         doc: 'securityAltIDSource'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   security_definition_report_strategy_message_no_legs_groups:
     seq:
       - id: group_size_encoding
@@ -554,6 +584,9 @@ types:
       - id: leg_ratio_price_numerator
         type: s2
         doc: 'legRatioPriceNumerator'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   security_id:
     seq:
       - id: len_security_id_data
@@ -880,6 +913,9 @@ types:
         type: u1
         enum: non_commoditized_market
         doc: 'nonCommoditizedMarket'
+      - id: block_extension
+        size: _parent.message_header.block_length - 237
+        doc: 'Bytes the stated block holds beyond the 237 this version reads'
       - id: security_definition_report_message_no_block_details_groups
         type: security_definition_report_message_no_block_details_groups
         doc: 'noBlockDetails Block'
@@ -946,6 +982,9 @@ types:
       - id: block_details_min_qty
         type: s8
         doc: 'blockDetailsMinQty'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   security_definition_report_message_no_security_alt_i_d_groups:
     seq:
       - id: group_size_encoding
@@ -968,6 +1007,9 @@ types:
         size: 3
         encoding: ASCII
         doc: 'securityAltIDSource'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   home_exchange:
     seq:
       - id: len_home_exchange_data
@@ -1005,6 +1047,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 115
+        doc: 'Bytes the stated block holds beyond the 115 this version reads'
   security_definition_request_message:
     seq:
       - id: security_req_id
@@ -1017,6 +1062,9 @@ types:
       - id: market_type_i_d_int_32
         type: s4
         doc: 'marketTypeID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   security_definition_report_product_message:
     seq:
       - id: security_req_id
@@ -1094,6 +1142,9 @@ types:
         type: u1
         enum: self_block_allowed
         doc: 'selfBlockAllowed'
+      - id: block_extension
+        size: _parent.message_header.block_length - 49
+        doc: 'Bytes the stated block holds beyond the 49 this version reads'
       - id: product_name
         type: product_name
         doc: 'productName data struct'
@@ -1135,6 +1186,9 @@ types:
       - id: client_id
         type: s4
         doc: 'clientID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
       - id: i_p_request_message_no_users_groups
         type: i_p_request_message_no_users_groups
         doc: 'noUsers Block'
@@ -1155,6 +1209,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'userID'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   ip_report_message:
     seq:
       - id: exchange_code
@@ -1165,6 +1222,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 104
+        doc: 'Bytes the stated block holds beyond the 104 this version reads'
       - id: i_p_report_message_no_users_groups
         type: i_p_report_message_no_users_groups
         doc: 'noUsers Block'
@@ -1202,6 +1262,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'ipSessionToken'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 88
+        doc: 'Bytes the stated block holds beyond the 88 this version reads'
   trader_logon_request_message:
     seq:
       - id: originator_user_id
@@ -1242,6 +1305,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'rawData'
+      - id: block_extension
+        size: _parent.message_header.block_length - 106
+        doc: 'Bytes the stated block holds beyond the 106 this version reads'
   trader_logon_report_message:
     seq:
       - id: originator_user_id
@@ -1260,6 +1326,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 128
+        doc: 'Bytes the stated block holds beyond the 128 this version reads'
   trader_logout_request_message:
     seq:
       - id: originator_user_id
@@ -1267,6 +1336,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   trader_logout_report_message:
     seq:
       - id: originator_user_id
@@ -1282,6 +1354,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 124
+        doc: 'Bytes the stated block holds beyond the 124 this version reads'
   new_order_request_message:
     seq:
       - id: price_decimal_9_null
@@ -1422,6 +1497,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfLocationID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 327
+        doc: 'Bytes the stated block holds beyond the 327 this version reads'
   cancel_replace_request_message:
     seq:
       - id: price_decimal_9_null
@@ -1557,6 +1635,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfLocationID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 333
+        doc: 'Bytes the stated block holds beyond the 333 this version reads'
   cancel_request_message:
     seq:
       - id: symbol_int_32
@@ -1577,6 +1658,9 @@ types:
         type: u1
         enum: side_side_enum
         doc: 'side'
+      - id: block_extension
+        size: _parent.message_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   quote_request_message:
     seq:
       - id: originator_user_id
@@ -1620,6 +1704,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfLocationID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 182
+        doc: 'Bytes the stated block holds beyond the 182 this version reads'
   new_order_cross_request_message:
     seq:
       - id: price_decimal_9
@@ -1687,6 +1774,9 @@ types:
       - id: transact_time_utc_timestamp
         type: u8
         doc: 'transactTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 175
+        doc: 'Bytes the stated block holds beyond the 175 this version reads'
       - id: new_order_cross_request_message_no_sides_groups
         type: new_order_cross_request_message_no_sides_groups
         doc: 'noSides Block'
@@ -1804,6 +1894,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfLocationID'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 265
+        doc: 'Bytes the stated block holds beyond the 265 this version reads'
   new_order_cross_request_message_no_legs_groups:
     seq:
       - id: group_size_encoding
@@ -1845,6 +1938,9 @@ types:
         size: 75
         encoding: ASCII
         doc: 'legSecurityID'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 113
+        doc: 'Bytes the stated block holds beyond the 113 this version reads'
   order_mass_cancel_request_message:
     seq:
       - id: originator_user_id
@@ -1885,6 +1981,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfSubID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 89
+        doc: 'Bytes the stated block holds beyond the 89 this version reads'
   mass_quote_request_message:
     seq:
       - id: quote_id
@@ -1934,6 +2033,9 @@ types:
       - id: mifid_id
         type: s8
         doc: 'mifidID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 74
+        doc: 'Bytes the stated block holds beyond the 74 this version reads'
       - id: mass_quote_request_message_no_quote_sets_groups
         type: mass_quote_request_message_no_quote_sets_groups
         doc: 'noQuoteSets Block'
@@ -1973,6 +2075,9 @@ types:
       - id: offer_sz
         type: s8
         doc: 'offerSz'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   quote_cancel_request_message:
     seq:
       - id: quote_id
@@ -1987,6 +2092,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'originatorUserID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 29
+        doc: 'Bytes the stated block holds beyond the 29 this version reads'
       - id: quote_cancel_request_message_no_quote_entries_groups
         type: quote_cancel_request_message_no_quote_entries_groups
         doc: 'noQuoteEntries Block'
@@ -2011,6 +2119,9 @@ types:
       - id: underlying_product
         type: s4
         doc: 'underlyingProduct'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   security_definition_request_create_strategy_message:
     seq:
       - id: security_req_id
@@ -2039,6 +2150,9 @@ types:
         type: u1
         enum: security_type_security_type_enum
         doc: 'securityType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
       - id: security_definition_request_create_strategy_message_no_legs_groups
         type: security_definition_request_create_strategy_message_no_legs_groups
         doc: 'noLegs Block'
@@ -2077,6 +2191,9 @@ types:
       - id: leg_option_delta
         type: s4
         doc: 'Required if legSecurityType is FUT or CS'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   security_definition_request_create_flex_message:
     seq:
       - id: security_req_id
@@ -2105,6 +2222,9 @@ types:
       - id: strike_price
         type: s8
         doc: 'strikePrice'
+      - id: block_extension
+        size: _parent.message_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   execution_report_new_message:
     seq:
       - id: originator_user_id
@@ -2153,6 +2273,9 @@ types:
         size: 30
         encoding: ASCII
         doc: 'memo'
+      - id: block_extension
+        size: _parent.message_header.block_length - 133
+        doc: 'Bytes the stated block holds beyond the 133 this version reads'
   exec_i_d_order_exec_id:
     seq:
       - id: system_id
@@ -2241,6 +2364,9 @@ types:
         size: 30
         encoding: ASCII
         doc: 'memo'
+      - id: block_extension
+        size: _parent.message_header.block_length - 153
+        doc: 'Bytes the stated block holds beyond the 153 this version reads'
   order_modification_flags:
     meta:
       bit-endian: le
@@ -2317,6 +2443,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 199
+        doc: 'Bytes the stated block holds beyond the 199 this version reads'
   execution_report_reject_message:
     seq:
       - id: originator_user_id
@@ -2372,6 +2501,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 215
+        doc: 'Bytes the stated block holds beyond the 215 this version reads'
   execution_report_snapshot_message:
     seq:
       - id: originator_user_id
@@ -2528,6 +2660,9 @@ types:
         size: 41
         encoding: ASCII
         doc: 'onBehalfOfLocationID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 380
+        doc: 'Bytes the stated block holds beyond the 380 this version reads'
   execution_report_trade_message:
     seq:
       - id: originator_user_id
@@ -2633,6 +2768,9 @@ types:
         size: 3
         encoding: ASCII
         doc: 'tradeType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 227
+        doc: 'Bytes the stated block holds beyond the 227 this version reads'
   trade_flags:
     meta:
       bit-endian: le
@@ -2695,6 +2833,9 @@ types:
         type: u1
         enum: quote_reject_reason
         doc: 'quoteRejectReason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
   new_order_cross_report_message:
     seq:
       - id: originator_user_id
@@ -2723,6 +2864,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 145
+        doc: 'Bytes the stated block holds beyond the 145 this version reads'
   order_mass_cancel_report_message:
     seq:
       - id: originator_user_id
@@ -2762,6 +2906,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 151
+        doc: 'Bytes the stated block holds beyond the 151 this version reads'
   mass_quote_report_message:
     seq:
       - id: quote_id
@@ -2798,6 +2945,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 152
+        doc: 'Bytes the stated block holds beyond the 152 this version reads'
       - id: mass_quote_report_message_no_quote_sets_groups
         type: mass_quote_report_message_no_quote_sets_groups
         doc: 'noQuoteSets Block'
@@ -2837,6 +2987,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'quoteEntryRejectReasonText'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 121
+        doc: 'Bytes the stated block holds beyond the 121 this version reads'
   resend_request_message:
     seq:
       - id: begin_seq_no
@@ -2845,6 +2998,9 @@ types:
       - id: end_seq_no
         type: u4
         doc: 'endSeqNo'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   resend_report_message:
     seq:
       - id: begin_seq_no
@@ -2865,6 +3021,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'text'
+      - id: block_extension
+        size: _parent.message_header.block_length - 113
+        doc: 'Bytes the stated block holds beyond the 113 this version reads'
   sequence_reset_message:
     seq:
       - id: new_seq_no
@@ -2874,6 +3033,9 @@ types:
         type: u1
         enum: gap_fill_flag
         doc: 'gapFillFlag'
+      - id: block_extension
+        size: _parent.message_header.block_length - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

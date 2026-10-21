@@ -111,10 +111,8 @@ types:
         pad-right: 0x20
         doc: 'Orderbook group identifier; blank if system wide event'
       - id: system_event
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: system_event
         doc: 'Refer to the System Events table below'
   price_tick_size_message:
     seq:
@@ -369,6 +367,25 @@ enums:
     0x55:
       id: 'order_replaced_message'
       doc: 'Order Replaced Message is sent whenever an order in the book has been replaced.'
+  system_event:
+    0x4f:
+      id: 'start_of_messages'
+      doc: 'Always the first message sent in any trading day excepting Timestamp – Seconds Messages.'
+    0x53:
+      id: 'start_of_system_hours'
+      doc: 'Indicates the market is open and ready to start accepting orders.'
+    0x51:
+      id: 'start_of_market_hours'
+      doc: 'Start of trading session.'
+    0x4d:
+      id: 'end_of_market_hours'
+      doc: 'End of trading session.'
+    0x45:
+      id: 'end_of_system_hours'
+      doc: 'Indicates the market is closed and will not accept any new orders.'
+    0x43:
+      id: 'end_of_messages'
+      doc: 'Always the last message sent in any trading day.'
   trading_state:
     0x54:
       id: 'trading'

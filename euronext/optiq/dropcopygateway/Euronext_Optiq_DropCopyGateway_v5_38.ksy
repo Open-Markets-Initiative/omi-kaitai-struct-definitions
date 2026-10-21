@@ -188,6 +188,9 @@ types:
       - id: price_limit_style
         type: u1_nullable
         doc: 'priceLimitStyle. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 79
+        doc: 'Bytes the stated block holds beyond the 79 this version reads'
   phase_qualifier:
     meta:
       bit-endian: le
@@ -268,6 +271,9 @@ types:
       - id: imbalance_qty_side
         type: u1_nullable
         doc: 'imbalanceQtySide. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
   long_order_message:
     seq:
       - id: msg_seq_num
@@ -452,6 +458,9 @@ types:
       - id: order_sweep_reason
         type: u1_nullable
         doc: 'orderSweepReason. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 270
+        doc: 'Bytes the stated block holds beyond the 270 this version reads'
       - id: long_order_free_text_section_groups
         type: long_order_free_text_section_groups
         doc: 'FreeTextSection Block'
@@ -651,6 +660,9 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   long_order_optional_fields_groups:
     seq:
       - id: group_size_encoding
@@ -690,6 +702,9 @@ types:
       - id: undisclosed_iceberg_type
         type: u1_nullable
         doc: 'undisclosedIcebergType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   trading_session:
     meta:
       bit-endian: le
@@ -742,6 +757,9 @@ types:
       - id: clearing_instruction_optional
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   open_close:
     meta:
       bit-endian: le
@@ -800,6 +818,9 @@ types:
       - id: account_type_cross
         type: u1_nullable
         doc: 'accountTypeCross. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   long_order_non_modifiable_short_codes_groups:
     seq:
       - id: group_size_encoding
@@ -824,6 +845,9 @@ types:
       - id: original_non_exec_broker_short_code
         type: s4_nullable
         doc: 'originalNonExecBrokerShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   long_order_modifiable_short_codes_groups:
     seq:
       - id: group_size_encoding
@@ -842,6 +866,9 @@ types:
       - id: event_exec_w_firm_short_code
         type: s4_nullable
         doc: 'eventExecWFirmShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   long_order_commercial_fields_groups:
     seq:
       - id: group_size_encoding
@@ -872,6 +899,9 @@ types:
       - id: desk_id
         type: str_11_nullable
         doc: 'deskID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   long_order_modifiable_commercial_investor_field_groups:
     seq:
       - id: group_size_encoding
@@ -887,6 +917,9 @@ types:
       - id: event_investor_id
         type: str_16_nullable
         doc: 'eventInvestorID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   long_order_non_modifiable_commercial_investor_field_groups:
     seq:
       - id: group_size_encoding
@@ -902,6 +935,9 @@ types:
       - id: original_investor_id
         type: str_16_nullable
         doc: 'originalInvestorID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   long_order_extended_clearing_account_groups:
     seq:
       - id: group_size_encoding
@@ -917,6 +953,9 @@ types:
       - id: clearing_account
         type: str_16_nullable
         doc: 'clearingAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   long_order_strategy_fields_groups:
     seq:
       - id: group_size_encoding
@@ -947,6 +986,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   long_order_optional_fields_derivatives_groups:
     seq:
       - id: group_size_encoding
@@ -971,6 +1013,9 @@ types:
       - id: final_execution_id
         type: u4_nullable
         doc: 'finalExecutionID. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   long_order_additional_infos_groups:
     seq:
       - id: group_size_encoding
@@ -986,6 +1031,9 @@ types:
       - id: long_client_id
         type: str_16_nullable
         doc: 'longClientID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   long_order_short_codes_details_non_modifiable_groups:
     seq:
       - id: group_size_encoding
@@ -1007,6 +1055,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   long_order_short_codes_details_modifiable_groups:
     seq:
       - id: group_size_encoding
@@ -1028,6 +1079,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   dc_short_order_reject_message:
     seq:
       - id: msg_seq_num
@@ -1100,6 +1154,9 @@ types:
       - id: time_in_force_optional
         type: u1_nullable
         doc: 'timeInForce. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 113
+        doc: 'Bytes the stated block holds beyond the 113 this version reads'
       - id: d_c_short_order_reject_message_modifiable_short_codes_groups
         type: d_c_short_order_reject_message_modifiable_short_codes_groups
         doc: 'ModifiableShortCodes Block'
@@ -1149,6 +1206,9 @@ types:
       - id: event_exec_w_firm_short_code
         type: s4_nullable
         doc: 'eventExecWFirmShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   d_c_short_order_reject_message_short_codes_details_modifiable_groups:
     seq:
       - id: group_size_encoding
@@ -1170,6 +1230,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   dc_short_trade_cancellation_message:
     seq:
       - id: msg_seq_num
@@ -1206,6 +1269,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 77
+        doc: 'Bytes the stated block holds beyond the 77 this version reads'
   dc_static_collars_message:
     seq:
       - id: msg_seq_num
@@ -1224,6 +1290,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
       - id: d_c_static_collars_message_static_collarsrep_groups
         type: d_c_static_collars_message_static_collarsrep_groups
         doc: 'StaticCollarsrep Block'
@@ -1246,6 +1315,9 @@ types:
       - id: price
         type: s8
         doc: 'price'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   trade_bust_notification_message:
     seq:
       - id: msg_seq_num
@@ -1384,6 +1456,9 @@ types:
       - id: parent_trade_unique_identifier
         type: str_16_nullable
         doc: 'parentTradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 237
+        doc: 'Bytes the stated block holds beyond the 237 this version reads'
       - id: trade_bust_notification_short_codes_details_non_modifiable_groups
         type: trade_bust_notification_short_codes_details_non_modifiable_groups
         doc: 'ShortCodesDetailsNonModifiable Block'
@@ -1439,6 +1514,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   trade_bust_notification_short_codes_details_modifiable_groups:
     seq:
       - id: group_size_encoding
@@ -1460,6 +1538,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   dc_quote_message:
     seq:
       - id: msg_seq_num
@@ -1519,6 +1600,9 @@ types:
       - id: stpid
         type: u2_nullable
         doc: 'sTPID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 73
+        doc: 'Bytes the stated block holds beyond the 73 this version reads'
       - id: d_c_quote_message_bid_quoterep_groups
         type: d_c_quote_message_bid_quoterep_groups
         doc: 'BidQuoterep Block'
@@ -1607,6 +1691,9 @@ types:
       - id: bid_previous_px
         type: s8_nullable
         doc: 'bidPreviousPx. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   d_c_quote_message_offer_quoterep_groups:
     seq:
       - id: group_size_encoding
@@ -1652,6 +1739,9 @@ types:
       - id: offer_previous_px
         type: s8_nullable
         doc: 'offerPreviousPx. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   d_c_quote_message_clearing_dataset_groups:
     seq:
       - id: group_size_encoding
@@ -1685,6 +1775,9 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   d_c_quote_message_non_modifiable_short_codes_groups:
     seq:
       - id: group_size_encoding
@@ -1709,6 +1802,9 @@ types:
       - id: original_non_exec_broker_short_code
         type: s4_nullable
         doc: 'originalNonExecBrokerShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   d_c_quote_message_modifiable_short_codes_groups:
     seq:
       - id: group_size_encoding
@@ -1727,6 +1823,9 @@ types:
       - id: event_exec_w_firm_short_code
         type: s4_nullable
         doc: 'eventExecWFirmShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   dcafqrfe_message:
     seq:
       - id: msg_seq_num
@@ -1765,6 +1864,9 @@ types:
       - id: oe_session_id
         type: u8
         doc: 'oESessionID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 59
+        doc: 'Bytes the stated block holds beyond the 59 this version reads'
   dc_declaration_new_message:
     seq:
       - id: msg_seq_num
@@ -1878,6 +1980,9 @@ types:
       - id: transaction_price_type
         type: u1_nullable
         doc: 'transactionPriceType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 221
+        doc: 'Bytes the stated block holds beyond the 221 this version reads'
   dc_short_declaration_reject_message:
     seq:
       - id: msg_seq_num
@@ -1935,6 +2040,9 @@ types:
       - id: rejected_message_id
         type: u2
         doc: 'rejectedMessageID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 102
+        doc: 'Bytes the stated block holds beyond the 102 this version reads'
   dc_short_declaration_cancel_message:
     seq:
       - id: msg_seq_num
@@ -1993,6 +2101,9 @@ types:
         type: u1
         enum: declaration_kill_reason
         doc: 'declarationKillReason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 107
+        doc: 'Bytes the stated block holds beyond the 107 this version reads'
   dc_short_trade_declaration_message:
     seq:
       - id: msg_seq_num
@@ -2041,6 +2152,9 @@ types:
       - id: guarantee_flag_optional
         type: u1_nullable
         doc: 'guaranteeFlag. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 59
+        doc: 'Bytes the stated block holds beyond the 59 this version reads'
       - id: d_c_short_trade_declaration_message_short_trade_declarations_groups
         type: d_c_short_trade_declaration_message_short_trade_declarations_groups
         doc: 'ShortTradeDeclarations Block'
@@ -2112,6 +2226,9 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 139
+        doc: 'Bytes the stated block holds beyond the 139 this version reads'
   dc_short_trade_declaration_cancellation_message:
     seq:
       - id: msg_seq_num
@@ -2145,6 +2262,9 @@ types:
       - id: quantity
         type: u8
         doc: 'quantity'
+      - id: block_extension
+        size: _parent.message_header.block_length - 61
+        doc: 'Bytes the stated block holds beyond the 61 this version reads'
   dc_trade_bust_declaration_message:
     seq:
       - id: msg_seq_num
@@ -2239,6 +2359,9 @@ types:
       - id: clearing_account
         type: str_16_nullable
         doc: 'clearingAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 208
+        doc: 'Bytes the stated block holds beyond the 208 this version reads'
   dc_trade_message:
     seq:
       - id: msg_seq_num
@@ -2302,6 +2425,9 @@ types:
       - id: trade_type
         type: u1_nullable
         doc: 'tradeType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 78
+        doc: 'Bytes the stated block holds beyond the 78 this version reads'
       - id: d_c_trade_message_matched_orders_groups
         type: d_c_trade_message_matched_orders_groups
         doc: 'MatchedOrders Block'
@@ -2395,6 +2521,9 @@ types:
         type: u2
         enum: clearing_instruction
         doc: 'clearingInstruction'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 140
+        doc: 'Bytes the stated block holds beyond the 140 this version reads'
   d_c_trade_message_matched_declarations_groups:
     seq:
       - id: group_size_encoding
@@ -2459,6 +2588,9 @@ types:
       - id: investor_id
         type: str_16_nullable
         doc: 'investorID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 124
+        doc: 'Bytes the stated block holds beyond the 124 this version reads'
   dc_short_declaration_fill_message:
     seq:
       - id: msg_seq_num
@@ -2580,6 +2712,9 @@ types:
       - id: guarantee_flag_optional
         type: u1_nullable
         doc: 'guaranteeFlag. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 228
+        doc: 'Bytes the stated block holds beyond the 228 this version reads'
   dc_quote_request_message:
     seq:
       - id: msg_seq_num
@@ -2652,6 +2787,9 @@ types:
       - id: sequence_time
         type: u8_nullable
         doc: 'sequenceTime. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 136
+        doc: 'Bytes the stated block holds beyond the 136 this version reads'
       - id: d_c_quote_request_message_non_modifiable_short_codes_groups
         type: d_c_quote_request_message_non_modifiable_short_codes_groups
         doc: 'NonModifiableShortCodes Block'
@@ -2682,6 +2820,9 @@ types:
       - id: original_non_exec_broker_short_code
         type: s4_nullable
         doc: 'originalNonExecBrokerShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   d_c_quote_request_message_short_codes_details_non_modifiable_groups:
     seq:
       - id: group_size_encoding
@@ -2703,6 +2844,9 @@ types:
       - id: short_code_role_qualifier
         type: u1_nullable
         doc: 'shortCodeRoleQualifier. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 3
+        doc: 'Bytes the stated block holds beyond the 3 this version reads'
   dc_clear_book_message:
     seq:
       - id: produce_time
@@ -2724,6 +2868,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
   u1_nullable:
     seq:
       - id: value

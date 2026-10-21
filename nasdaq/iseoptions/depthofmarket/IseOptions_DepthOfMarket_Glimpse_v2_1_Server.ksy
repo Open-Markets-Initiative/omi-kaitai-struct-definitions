@@ -153,8 +153,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -218,8 +218,8 @@ types:
         enum: order_capacity
         doc: 'Order Capacity'
       - id: price_short
-        type: u2
-        doc: 'The display price of the new order being added to the book'
+        type: decimal_u2_2
+        doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-2'
       - id: volume_short
         type: u2
         doc: 'The total quantity of the new order being added to the book'
@@ -249,8 +249,8 @@ types:
         enum: order_capacity
         doc: 'Order Capacity'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order being added to the book'
+        type: decimal_s4_4
+        doc: 'The display price of the new order being added to the book. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The total quantity of the new order being added to the book'
@@ -275,14 +275,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the new quote'
       - id: bid_price_short
-        type: u2
-        doc: 'The display bid price of the new quote'
+        type: decimal_u2_2
+        doc: 'The display bid price of the new quote. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The bid quantity of the new quote'
       - id: ask_price_short
-        type: u2
-        doc: 'The display ask price of the new quote'
+        type: decimal_u2_2
+        doc: 'The display ask price of the new quote. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'The ask quantity of the new quote'
@@ -304,14 +304,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the new quote'
       - id: bid_price_long
-        type: u4
-        doc: 'The display bid price of the new quote'
+        type: decimal_s4_4
+        doc: 'The display bid price of the new quote. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'The bid quantity of the new quote'
       - id: ask_price_long
-        type: u4
-        doc: 'The display ask price of the new quote'
+        type: decimal_s4_4
+        doc: 'The display ask price of the new quote. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'The ask quantity of the new quote'
@@ -336,6 +336,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   client_packet_type:

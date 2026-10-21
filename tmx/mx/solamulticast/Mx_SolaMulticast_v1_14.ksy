@@ -4,7 +4,7 @@
 # Protocol:
 #   Organization: TMX Group
 #   Protocol: Sola Multicast
-#   Encoding: High Speed Vender Feed
+#   Encoding: High Speed Vendor Feed
 #   Version: 1.14
 #   Date: 2/5/2024
 #   Specification: MX SOLA HSVF Multicast Specifications Guide (1.14).pdf
@@ -119,7 +119,7 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        doc: 'Sequence numbers will range from ascii decimal 000000001 to 999999999'
+        doc: 'The sequence numbers will range from 0000000001 to 9999999999 (decimal, ASCII)'
       - id: message_type
         type: str
         size: 2
@@ -130,7 +130,7 @@ types:
         type: str
         size: 20
         encoding: ASCII
-        doc: 'System timestamp'
+        doc: 'System timestamp, YYYYMMDDHHMMSSmmmuuu'
   option_trade_message:
     seq:
       - id: exchange_id
@@ -155,9 +155,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -184,7 +183,7 @@ types:
         doc: 'Identifier of an auction'
   option_symbol:
     seq:
-      - id: root
+      - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
@@ -193,7 +192,7 @@ types:
       - id: expiry_month
         type: u1
         enum: expiry_month
-        doc: 'Contract expiry month from the first expiring leg'
+        doc: 'Option expiry month code Refer to Month Codes'
       - id: strike_price
         type: str
         size: 7
@@ -241,15 +240,14 @@ types:
         enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -266,16 +264,15 @@ types:
         doc: 'Identifier of an auction'
   future_option_symbol:
     seq:
-      - id: root
+      - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: symbol_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: symbol_month
         doc: 'Option symbol month code'
       - id: symbol_year
         type: str
@@ -324,15 +321,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -353,16 +349,15 @@ types:
         doc: 'Identifier of an auction'
   future_product:
     seq:
-      - id: root
+      - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Future base symbol'
       - id: symbol_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: symbol_month
         doc: 'Option symbol month code'
       - id: symbol_year
         type: str
@@ -385,16 +380,15 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: volume
         type: str
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: trade_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_sign
         doc: 'For Trade Price field (sign)'
       - id: trade_price
         type: str
@@ -406,9 +400,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -498,7 +491,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: requested_size
         type: str
         size: 8
@@ -514,8 +507,8 @@ types:
         type: u1
         enum: exchange_id
         doc: 'Exchange on which the trade occurred'
-      - id: option_symbol
-        type: option_symbol
+      - id: option_symbol_schedule_notice
+        type: option_symbol_schedule_notice
         doc: 'Option symbology'
       - id: series_status
         type: u1
@@ -526,6 +519,37 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Time at which the status change is scheduled. HHMMSS'
+  option_symbol_schedule_notice:
+    seq:
+      - id: root_symbol
+        type: str
+        size: 6
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'Option base symbol (symbol of the underlying)'
+      - id: expiry_month
+        type: u1
+        enum: expiry_month
+        doc: 'Option expiry month code Refer to Month Codes'
+      - id: strike_price_schedule_notice
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Strike price of the option in full'
+      - id: strike_price_fraction_indicator
+        type: u1
+        enum: strike_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+      - id: expiry_year
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Last two digits of the option expiry year'
+      - id: expiry_day
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Expiry day of the option'
   instrument_schedule_notice_futures_option_message:
     seq:
       - id: exchange_id
@@ -573,7 +597,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identification of the strategy. The legs (underlying) are defined in message type NS'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: series_status
         type: u1
         enum: series_status
@@ -588,33 +612,29 @@ types:
       - id: exchange_id
         type: u1
         enum: exchange_id
-        doc: 'Exchange on which the trade occurred'
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: option_symbol
         type: option_symbol
         doc: 'Option symbology'
       - id: bid_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -624,16 +644,9 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
-  future_options_quote_message:
+  bid_price_quote_opening_pair:
     seq:
-      - id: exchange_id
-        type: u1
-        enum: exchange_id
-        doc: 'Exchange on which the trade occurred'
-      - id: future_option_symbol
-        type: future_option_symbol
-        doc: 'Option on future symbology'
-      - id: bid_price_quote
+      - id: bid_price_quote_opening
         type: str
         size: 7
         encoding: ASCII
@@ -642,12 +655,20 @@ types:
         type: u1
         enum: bid_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-      - id: bid_size
+  bid_price_quote_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
         type: str
-        size: 5
+        size: 7
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
-      - id: ask_price_quote
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
         type: str
         size: 7
         encoding: ASCII
@@ -656,6 +677,45 @@ types:
         type: u1
         enum: ask_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  future_options_quote_message:
+    seq:
+      - id: exchange_id
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: future_option_symbol
+        type: future_option_symbol
+        doc: 'Option on future symbology'
+      - id: bid_price_quote
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
+      - id: bid_size
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
+      - id: ask_price_quote
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -674,38 +734,78 @@ types:
       - id: future_product
         type: future_product
         doc: 'Future product symbology'
-      - id: bid_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+      - id: bid_price_quote_futures_quote_message
+        type:
+          switch-on: bid_price_quote_futures_quote_message.bid_price_quote_futures_quote_message_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_futures_quote_message_opening_pair
+            '"0"': bid_price_quote_futures_quote_message_opening_pair
+            _: bid_price_quote_futures_quote_message_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
-      - id: ask_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: ask_price_quote_futures_quote_message
+        type:
+          switch-on: ask_price_quote_futures_quote_message.ask_price_quote_futures_quote_message_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_futures_quote_message_opening_pair
+            '"0"': ask_price_quote_futures_quote_message_opening_pair
+            _: ask_price_quote_futures_quote_message_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of futures contracts represented by the Ask Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: instrument_status_marker
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
+  bid_price_quote_futures_quote_message_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_futures_quote_message_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_futures_quote_message_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask Price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_futures_quote_message_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask Price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   strategy_quote_message:
     seq:
       - id: exchange_id
@@ -717,45 +817,39 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_sign
         doc: 'For Bid Price field'
       - id: bid_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_sign
         doc: 'For Ask Price field'
       - id: ask_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of futures contracts represented by the Ask Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: instrument_status_marker
         type: u1
         enum: instrument_status_marker
@@ -786,48 +880,87 @@ types:
   market_depth_level:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Level of market depth. 1 to 5 and A (Implied)'
-      - id: bid_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
         type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: level_of_market_depth
+        doc: 'Level of market depth. 1 to 5 and A (Implied)'
+      - id: bid_price_quote_market_depth_level
+        type:
+          switch-on: bid_price_quote_market_depth_level.bid_price_quote_market_depth_level_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_market_depth_level_opening_pair
+            '"0"': bid_price_quote_market_depth_level_opening_pair
+            _: bid_price_quote_market_depth_level_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'Number of option contracts represented by the Bid Price For Implied, it represents the indicative quantity at the best (1st limit) implied bid price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: number_of_bid_orders
         type: str
         size: 2
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
-      - id: ask_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+      - id: ask_price_quote_market_depth_level
+        type:
+          switch-on: ask_price_quote_market_depth_level.ask_price_quote_market_depth_level_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_market_depth_level_opening_pair
+            '"0"': ask_price_quote_market_depth_level_opening_pair
+            _: ask_price_quote_market_depth_level_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'Number of option contracts represented by the Ask Price For Implied, it represents the indicative quantity at the best (1st limit) implied ask price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: number_of_ask_orders
         type: str
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+  bid_price_quote_market_depth_level_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the option series For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_market_depth_level_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the option series For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_market_depth_level_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the option series For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_market_depth_level_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the option series For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   future_options_market_depth_message:
     seq:
       - id: exchange_id
@@ -841,16 +974,100 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
-      - id: num_market_depth_level
+      - id: num_future_options_market_depth_level
         type: str
         size: 1
         encoding: ASCII
         doc: 'Number of level for the trading instrument. 1 to 5'
-      - id: market_depth_level
-        type: market_depth_level
+      - id: future_options_market_depth_level
+        type: future_options_market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level.to_i
+        repeat-expr: num_future_options_market_depth_level.to_i
         doc: 'Option Market Depth'
+  future_options_market_depth_level:
+    seq:
+      - id: level_of_market_depth
+        type: u1
+        enum: level_of_market_depth
+        doc: 'Level of market depth. 1 to 5 and A (Implied)'
+      - id: bid_price_quote_market_depth_level_hb
+        type:
+          switch-on: bid_price_quote_market_depth_level_hb.bid_price_quote_market_depth_level_hb_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_market_depth_level_hb_opening_pair
+            '"0"': bid_price_quote_market_depth_level_hb_opening_pair
+            _: bid_price_quote_market_depth_level_hb_numeric_pair
+      - id: bid_size
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Total number of contracts being bid at this price For Implied, it represents the indicative quantity at the best (1st limit) implied bid price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: number_of_bid_orders
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
+      - id: ask_price_quote_market_depth_level_hb
+        type:
+          switch-on: ask_price_quote_market_depth_level_hb.ask_price_quote_market_depth_level_hb_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_market_depth_level_hb_opening_pair
+            '"0"': ask_price_quote_market_depth_level_hb_opening_pair
+            _: ask_price_quote_market_depth_level_hb_numeric_pair
+      - id: ask_size
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Total number of contracts being offered at this price For Implied, it represents the indicative quantity at the best (1st limit) implied ask price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: number_of_ask_orders
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+  bid_price_quote_market_depth_level_hb_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid Price for the series. For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_market_depth_level_hb_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid Price for the series. For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_market_depth_level_hb_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the series For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_market_depth_level_hb_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the series For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   futures_market_depth_message:
     seq:
       - id: exchange_id
@@ -864,16 +1081,100 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
-      - id: num_market_depth_level
+      - id: num_futures_market_depth_level
         type: str
         size: 1
         encoding: ASCII
         doc: 'Number of level for the trading instrument. 1 to 5'
-      - id: market_depth_level
-        type: market_depth_level
+      - id: futures_market_depth_level
+        type: futures_market_depth_level
         repeat: expr
-        repeat-expr: num_market_depth_level.to_i
+        repeat-expr: num_futures_market_depth_level.to_i
         doc: 'Option Market Depth'
+  futures_market_depth_level:
+    seq:
+      - id: level_of_market_depth
+        type: u1
+        enum: level_of_market_depth
+        doc: 'Level of market depth. 1 to 5 and A (Implied)'
+      - id: bid_price_quote_market_depth_level_hf
+        type:
+          switch-on: bid_price_quote_market_depth_level_hf.bid_price_quote_market_depth_level_hf_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_market_depth_level_hf_opening_pair
+            '"0"': bid_price_quote_market_depth_level_hf_opening_pair
+            _: bid_price_quote_market_depth_level_hf_numeric_pair
+      - id: bid_size
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'Number of futures contracts represented by the Bid Price For Implied, it represents he indicative quantity at the best (1st limit) implied bid price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: number_of_bid_orders
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
+      - id: ask_price_futures_depth_market_depth_level_hf
+        type:
+          switch-on: ask_price_futures_depth_market_depth_level_hf.ask_price_futures_depth_market_depth_level_hf_opening_pair.ask_price_futures_depth_opening
+          cases:
+            '"OUV"': ask_price_futures_depth_market_depth_level_hf_opening_pair
+            '"0"': ask_price_futures_depth_market_depth_level_hf_opening_pair
+            _: ask_price_futures_depth_market_depth_level_hf_numeric_pair
+      - id: ask_size
+        type: str
+        size: 5
+        encoding: ASCII
+        doc: 'The number of futures contracts represented by the Ask Price For Implied, it represents the indicative quantity at the best (1st limit) implied ask price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: number_of_ask_orders
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+  bid_price_quote_market_depth_level_hf_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the future contract For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_market_depth_level_hf_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the future contract For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_futures_depth_market_depth_level_hf_opening_pair:
+    seq:
+      - id: ask_price_futures_depth_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask Price for the future contract For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_futures_depth_market_depth_level_hf_numeric_pair:
+    seq:
+      - id: ask_price_futures_depth_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask Price for the future contract For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   strategy_market_depth_message:
     seq:
       - id: exchange_id
@@ -885,7 +1186,7 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: instrument_status_marker
         type: u1
         enum: instrument_status_marker
@@ -903,58 +1204,95 @@ types:
   strategy_market_depth_level:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: level_of_market_depth
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'For Bid Price field'
-      - id: bid_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
         type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: bid_price_sign
+        doc: 'For Bid Price field'
+      - id: bid_price_quote_strategy_market_depth_level
+        type:
+          switch-on: bid_price_quote_strategy_market_depth_level.bid_price_quote_strategy_market_depth_level_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_strategy_market_depth_level_opening_pair
+            '"0"': bid_price_quote_strategy_market_depth_level_opening_pair
+            _: bid_price_quote_strategy_market_depth_level_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'Number of strategy units represented by the Bid Price For Implied, it represents the indicative quantity at the best (1st limit) implied bid price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: number_of_bid_orders
         type: str
         size: 2
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'For Ask Price field'
-      - id: ask_price_quote
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
         type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: ask_price_sign
+        doc: 'For Ask Price field'
+      - id: ask_price_quote_strategy_market_depth_level
+        type:
+          switch-on: ask_price_quote_strategy_market_depth_level.ask_price_quote_strategy_market_depth_level_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_strategy_market_depth_level_opening_pair
+            '"0"': ask_price_quote_strategy_market_depth_level_opening_pair
+            _: ask_price_quote_strategy_market_depth_level_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of strategy units represented by the Ask Price For Implied, it represents the indicative quantity at the best (1st limit) implied ask price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: number_of_ask_orders
         type: str
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+  bid_price_quote_strategy_market_depth_level_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the strategy instrument For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_strategy_market_depth_level_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Bid price for the strategy instrument For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_strategy_market_depth_level_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the strategy instrument For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_strategy_market_depth_level_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Ask price for the strategy instrument For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   option_trade_cancellation_message:
     seq:
       - id: exchange_id
@@ -1006,14 +1344,14 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
-      - id: price
+      - id: trade_price
         type: str
         size: 7
         encoding: ASCII
         doc: 'Price at which the transaction took place'
-      - id: price_fraction_indicator
+      - id: trade_price_fraction_indicator
         type: u1
-        enum: price_fraction_indicator
+        enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: price_indicator_marker
         type: u1
@@ -1077,16 +1415,15 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with ".","+","-"'
       - id: volume
         type: str
         size: 8
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: trade_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_sign
         doc: 'For Trade Price field (sign)'
       - id: trade_price
         type: str
@@ -1151,14 +1488,33 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: option_type
         type: u1
         enum: option_type
@@ -1194,7 +1550,6 @@ types:
         type: str
         size: 12
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: contract_size
         type: str
@@ -1225,6 +1580,28 @@ types:
         size: 14
         encoding: ASCII
         doc: 'Indicates when the instrument stops trading'
+  tick_increment_numeric_pair:
+    seq:
+      - id: tick_increment_numeric
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+  tick_increment_raw_pair:
+    seq:
+      - id: tick_increment_raw
+        type: str
+        size: 7
+        encoding: ASCII
+        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
   future_options_instrument_keys_message:
     seq:
       - id: exchange_id
@@ -1274,14 +1651,33 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -1334,9 +1730,8 @@ types:
         pad-right: 0x20
         doc: 'Root symbol of the underlying future'
       - id: underlying_symbol_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: underlying_symbol_month
         doc: 'Symbol month of the underlying futures contract'
       - id: underlying_symbol_year
         type: str
@@ -1399,7 +1794,7 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Minimum authorized number of contract per order'
-      - id: maximum_threshold_price
+      - id: maximum_threshold_price_futures
         type: str
         size: 7
         encoding: ASCII
@@ -1408,7 +1803,7 @@ types:
         type: u1
         enum: maximum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-      - id: minimum_threshold_price_instrument
+      - id: minimum_threshold_price_futures
         type: str
         size: 7
         encoding: ASCII
@@ -1418,14 +1813,33 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -1471,7 +1885,6 @@ types:
         type: str
         size: 12
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: delivery_type
         type: u1
@@ -1494,9 +1907,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: symbol_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: symbol_month
         doc: 'Option symbol month code'
       - id: symbol_year
         type: str
@@ -1524,16 +1936,17 @@ types:
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
-      - id: expiry_month
-        type: u1
-        enum: expiry_month
-        doc: 'Contract expiry month from the first expiring leg'
+        doc: 'Last two digits of the contract expiry year from the first expiring leg'
+      - id: expiry_month_strategy
+        type: str
+        size: 1
+        encoding: ASCII
+        doc: 'Contract expiry month from the first expiring leg Refer to Month Codes'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Contract expiry day from the first expiring leg'
       - id: maximum_number_of_contracts_per_order
         type: str
         size: 6
@@ -1563,14 +1976,33 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 7
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::times_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -1802,7 +2234,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'This field contains current outstanding number of contracts in the series Updated on a trade by trade basis Refer to Indicator Code'
       - id: open_interest_date
         type: str
         size: 6
@@ -1818,15 +2250,14 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price – previous settlement price Net change will be zero if the option did not trade on the last business day or did not trade today'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -1936,7 +2367,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Outstanding number of contracts in the series as of the previous day'
       - id: open_interest_date
         type: str
         size: 6
@@ -1952,15 +2383,14 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price – previous settlement price If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -2097,15 +2527,14 @@ types:
         enum: settlement_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last Trade Price – previous Settlement Price If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -2128,7 +2557,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Previous day’s outstanding number of contracts in the series Refer to Indicator Code'
       - id: open_interest_date
         type: str
         size: 6
@@ -2158,11 +2587,10 @@ types:
         size: 30
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Identification of the strategy. The legs (underlying) are defined in message type NS'
+        doc: 'Identifies the strategy The legs are defined in message type JS Alphanumeric with “.”,”+”,”-“'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_sign
         doc: 'For Bid Price field'
       - id: bid_price_summary
         type: str
@@ -2179,9 +2607,8 @@ types:
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_sign
         doc: 'For Ask Price field'
       - id: ask_price_summary
         type: str
@@ -2198,9 +2625,8 @@ types:
         encoding: ASCII
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: last_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: last_price_sign
         doc: 'For the Last Price field'
       - id: last_price
         type: str
@@ -2212,9 +2638,8 @@ types:
         enum: last_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: open_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: open_price_sign
         doc: 'For the Open Price field'
       - id: open_price
         type: str
@@ -2226,9 +2651,8 @@ types:
         enum: open_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: high_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: high_price_sign
         doc: 'For the High Price field'
       - id: high_price
         type: str
@@ -2240,9 +2664,8 @@ types:
         enum: high_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: low_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: low_price_sign
         doc: 'For the Low Price field'
       - id: low_price
         type: str
@@ -2254,15 +2677,14 @@ types:
         enum: low_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price – previous close If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -2450,15 +2872,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 7
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price – previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -2477,17 +2898,15 @@ types:
       - id: exchange_id
         type: u1
         enum: exchange_id
-        doc: 'Exchange on which the trade occurred'
-      - id: root
+        doc: 'Identifies the exchange Q = Montreal'
+      - id: root_symbol_group
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Root of the instrument group'
       - id: group_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: group_status
         doc: 'Group status of the trading instrument'
   group_status_strategies_message:
     seq:
@@ -2501,9 +2920,8 @@ types:
         encoding: ASCII
         doc: 'group of the instrument'
       - id: group_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: group_status
         doc: 'Group status of the trading instrument'
   future_deliverables_message:
     seq:
@@ -2579,9 +2997,8 @@ types:
         pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: continue_marker
         doc: 'Continue Marker'
   special_text_bulletin:
     seq:
@@ -2598,9 +3015,8 @@ types:
         pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: continue_marker
         doc: 'Continue Marker'
   end_of_sales_message:
     seq:
@@ -2622,7 +3038,6 @@ types:
         type: str
         size: 50
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Tick Table name'
       - id: tick_table_short_name
         type: str
@@ -2696,41 +3111,77 @@ enums:
       doc: 'Montreal'
   expiry_month:
     0x41:
-      id: 'january'
-      doc: 'January'
+      id: 'january_call'
+      doc: 'January Call'
     0x42:
-      id: 'february'
-      doc: 'February'
+      id: 'february_call'
+      doc: 'February Call'
     0x43:
-      id: 'march'
-      doc: 'March'
+      id: 'march_call'
+      doc: 'March Call'
     0x44:
-      id: 'april'
-      doc: 'April'
+      id: 'april_call'
+      doc: 'April Call'
     0x45:
-      id: 'may'
-      doc: 'May'
+      id: 'may_call'
+      doc: 'May Call'
     0x46:
-      id: 'june'
-      doc: 'June'
+      id: 'june_call'
+      doc: 'June Call'
     0x47:
-      id: 'july'
-      doc: 'July'
+      id: 'july_call'
+      doc: 'July Call'
     0x48:
-      id: 'august'
-      doc: 'August'
+      id: 'august_call'
+      doc: 'August Call'
     0x49:
-      id: 'september'
-      doc: 'September'
+      id: 'september_call'
+      doc: 'September Call'
     0x4a:
-      id: 'october'
-      doc: 'October'
+      id: 'october_call'
+      doc: 'October Call'
     0x4b:
-      id: 'november'
-      doc: 'November'
+      id: 'november_call'
+      doc: 'November Call'
     0x4c:
-      id: 'december'
-      doc: 'December'
+      id: 'december_call'
+      doc: 'December Call'
+    0x4d:
+      id: 'january_put'
+      doc: 'January Put'
+    0x4e:
+      id: 'february_put'
+      doc: 'February Put'
+    0x4f:
+      id: 'march_put'
+      doc: 'March Put'
+    0x50:
+      id: 'april_put'
+      doc: 'April Put'
+    0x51:
+      id: 'may_put'
+      doc: 'May Put'
+    0x52:
+      id: 'june_put'
+      doc: 'June Put'
+    0x53:
+      id: 'july_put'
+      doc: 'July Put'
+    0x54:
+      id: 'august_put'
+      doc: 'August Put'
+    0x55:
+      id: 'september_put'
+      doc: 'September Put'
+    0x56:
+      id: 'october_put'
+      doc: 'October Put'
+    0x57:
+      id: 'november_put'
+      doc: 'November Put'
+    0x58:
+      id: 'december_put'
+      doc: 'December Put'
   strike_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -2783,6 +3234,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   trade_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -2835,6 +3307,34 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  net_change_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
   net_change_fraction_indicator:
     0x30:
       id: 'whole'
@@ -2887,6 +3387,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   price_indicator_marker:
     0x41:
       id: 'asof_trade'
@@ -2895,8 +3416,8 @@ enums:
       id: 'block_trade'
       doc: 'Block Trade'
     0x20:
-      id: 'transaction'
-      doc: 'Transaction'
+      id: 'actual_transaction_took_place'
+      doc: 'Actual Transaction Took Place'
     0x44:
       id: 'crossed'
       doc: 'Crossed'
@@ -2921,15 +3442,24 @@ enums:
     0x4c:
       id: 'late_trade'
       doc: 'Late Trade'
+    0x4d:
+      id: 'for_future_use'
+      doc: 'For Future Use'
+    0x4e:
+      id: 'for_future_use_x4e'
+      doc: 'For Future Use'
     0x50:
       id: 'strategy_reporting'
       doc: 'Strategy Reporting'
+    0x51:
+      id: 'for_future_use_x51'
+      doc: 'For Future Use'
     0x52:
       id: 'efr_reporting'
       doc: 'Efr Reporting'
     0x53:
       id: 'reference_price'
-      doc: 'Reference Price'
+      doc: 'Reference Price (volume field zero filled)'
     0x74:
       id: 'trade_correction'
       doc: 'Trade Correction'
@@ -2942,6 +3472,49 @@ enums:
     0x56:
       id: 'price_volume_adjustment'
       doc: 'Price Volume Adjustment'
+    0x59:
+      id: 'for_future_use_x59'
+      doc: 'For Future Use'
+    0x5a:
+      id: 'for_future_use_x5a'
+      doc: 'For Future Use'
+  symbol_month:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
   call_put_code:
     0x43:
       id: 'call'
@@ -2949,6 +3522,13 @@ enums:
     0x50:
       id: 'put'
       doc: 'Put'
+  trade_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
   requested_market_side:
     0x42:
       id: 'buy'
@@ -2980,19 +3560,19 @@ enums:
       doc: 'Halted Trading'
     0x52:
       id: 'reserved'
-      doc: 'Goes into a state as preopening where orders can be sent, modified, or canceled'
+      doc: 'Reserved (goes into a state as pre-opening where orders can be sent, modified, or canceled)'
     0x53:
       id: 'suspended'
-      doc: 'goes into a state as pre-opening where orders can be sent, modified, or cancelled'
+      doc: 'Suspended (goes into a state as pre-opening where orders can be sent, modified, or cancelled)'
     0x41:
       id: 'surveillance_intervention'
-      doc: 'Consultation phase'
+      doc: 'Surveillance intervention (Consultation phase)'
     0x43:
       id: 'endof_day_inquiries'
       doc: 'Endof Day Inquiries'
     0x20:
-      id: 'not_available'
-      doc: 'Not Available'
+      id: 'if_not_used'
+      doc: 'If Not Used'
   bid_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3045,6 +3625,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   ask_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3097,6 +3698,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   instrument_status_marker:
     0x59:
       id: 'preopening'
@@ -3118,71 +3740,52 @@ enums:
       doc: 'Halted Trading'
     0x52:
       id: 'reserved'
-      doc: 'Goes into a state as preopening where orders can be sent, modified, or canceled'
+      doc: 'Reserved (goes into a state as pre-opening where orders can be sent, modified, or canceled)'
     0x53:
       id: 'suspended'
-      doc: 'goes into a state as pre-opening where orders can be sent, modified, or cancelled'
+      doc: 'Suspended (goes into a state as pre-opening where orders can be sent, modified, or cancelled)'
     0x41:
       id: 'surveillance_intervention'
-      doc: 'Consultation phase'
+      doc: 'Surveillance intervention (Consultation phase)'
     0x43:
       id: 'endof_day_inquiries'
       doc: 'Endof Day Inquiries'
     0x20:
-      id: 'not_available'
-      doc: 'Not Available'
-  price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
+      id: 'if_not_used'
+      doc: 'If Not Used'
+  bid_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  ask_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  level_of_market_depth:
     0x31:
-      id: 'ten'
-      doc: '1/10'
+      id: 'level_1'
+      doc: 'Level 1'
     0x32:
-      id: 'hundred'
-      doc: '1/100'
+      id: 'level_2'
+      doc: 'Level 2'
     0x33:
-      id: 'thousand'
-      doc: '1/1,000'
+      id: 'level_3'
+      doc: 'Level 3'
     0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
+      id: 'level_4'
+      doc: 'Level 4'
     0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
+      id: 'level_5'
+      doc: 'Level 5'
     0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
+      id: 'implied'
+      doc: 'Implied'
   maximum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3235,6 +3838,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   minimum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3287,6 +3911,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick_increment_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3339,6 +3984,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   option_type:
     0x41:
       id: 'american'
@@ -3398,6 +4064,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   delivery_type:
     0x43:
       id: 'cash'
@@ -3405,6 +4092,43 @@ enums:
     0x50:
       id: 'physical'
       doc: 'Physical'
+  underlying_symbol_month:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
   strategy_allow_implied:
     0x59:
       id: 'yes_field'
@@ -3480,6 +4204,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   leg_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3532,6 +4277,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   initial_order_side:
     0x42:
       id: 'buy'
@@ -3591,6 +4357,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   last_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3643,6 +4430,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick:
     0x2b:
       id: 'uptick'
@@ -3702,6 +4510,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   high_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3754,6 +4583,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   low_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3806,6 +4656,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   closing_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3858,6 +4729,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   previous_closing_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -3910,6 +4802,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   reason:
     0x53:
       id: 'start_of_day'
@@ -3975,6 +4888,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   settlement_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4027,6 +4961,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   previous_settlement_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4079,6 +5034,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   previous_settlement_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4131,6 +5107,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   external_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4183,6 +5180,55 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  last_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  open_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  high_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  low_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
   order_side:
     0x42:
       id: 'buy'
@@ -4242,6 +5288,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   order_type:
     0x41:
       id: 'initial_order'
@@ -4249,6 +5316,34 @@ enums:
     0x42:
       id: 'improvement_order'
       doc: 'Improvement Order'
+  group_status:
+    0x59:
+      id: 'preopening'
+      doc: 'Preopening'
+    0x4f:
+      id: 'opening'
+      doc: 'Opening'
+    0x54:
+      id: 'continuous_trading'
+      doc: 'Continuous Trading'
+    0x46:
+      id: 'forbidden'
+      doc: 'Forbidden'
+    0x45:
+      id: 'intervention_before_opening'
+      doc: 'Intervention Before Opening'
+    0x48:
+      id: 'halted_trading'
+      doc: 'Halted Trading'
+    0x41:
+      id: 'surveillance_intervention'
+      doc: 'Surveillance intervention (Consultation phase)'
+    0x43:
+      id: 'endof_day_inquiries'
+      doc: 'Endof Day Inquiries'
+    0x20:
+      id: 'if_not_used'
+      doc: 'If Not Used'
   coupon_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4301,6 +5396,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   conversion_factor_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4353,6 +5469,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   bulletin_type:
     0x31:
       id: 'regular_text_bulletin'
@@ -4360,6 +5497,13 @@ enums:
     0x32:
       id: 'special_text_bulletin'
       doc: 'Special Text Bulletin'
+  continue_marker:
+    0x30:
+      id: 'bulletin_continues_in_next_record'
+      doc: 'Bulletin Continues In Next Record'
+    0x31:
+      id: 'bulletin_ended'
+      doc: 'Bulletin Ended'
   min_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4412,6 +5556,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4464,4 +5629,25 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
 

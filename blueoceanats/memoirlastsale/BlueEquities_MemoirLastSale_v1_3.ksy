@@ -144,6 +144,9 @@ types:
       - id: mpv
         type: decimal_s8_6
         doc: 'The minimum price variation for an instrument, the smallest price increment of the stock. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
@@ -156,6 +159,9 @@ types:
         type: u1
         enum: short_sale_restriction
         doc: 'Identifies if this security is subject to the Regulation SHO short sales restrictions'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   security_trading_status_message:
     seq:
       - id: timestamp
@@ -172,6 +178,9 @@ types:
         type: u1
         enum: security_trading_status_reason
         doc: 'The source of the trading status change'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   trading_session_status_message:
     seq:
       - id: timestamp
@@ -181,6 +190,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'The trading session which was entered'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   trade_report_message:
     seq:
       - id: timestamp
@@ -214,6 +226,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'The sale condition code level 4, Sro Trade Detail Type, the self regulatory organization trade reporting category'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   trade_cancel_message:
     seq:
       - id: timestamp
@@ -247,6 +262,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'The sale condition code level 4, Sro Trade Detail Type, the self regulatory organization trade reporting category'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   trade_correct_message:
     seq:
       - id: timestamp
@@ -302,6 +320,9 @@ types:
         type: u1
         enum: corrected_sale_condition_4
         doc: 'The corrected sale condition code level 4, Sro Trade Detail Type'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   decimal_s8_6:
     seq:
       - id: mantissa

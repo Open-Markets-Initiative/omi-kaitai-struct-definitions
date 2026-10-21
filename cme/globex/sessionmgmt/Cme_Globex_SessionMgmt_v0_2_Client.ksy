@@ -120,6 +120,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Firm ID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 78
+        doc: 'Bytes the stated block holds beyond the 78 this version reads'
   terminate:
     seq:
       - id: reason
@@ -140,6 +143,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   market_data_request:
     seq:
       - id: md_req_id
@@ -149,6 +155,9 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
+      - id: block_extension
+        size: _parent.message_header.block_length - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: market_data_request_security_groups
         type: market_data_request_security_groups
         doc: 'NoSecurityGroups Block'
@@ -178,6 +187,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Security Group'
+      - id: block_extension
+        size: _parent.group_size.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
   market_data_request_related_symbol_groups:
     seq:
       - id: group_size
@@ -193,6 +205,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   security_list_request:
     seq:
       - id: md_req_id
@@ -202,6 +217,9 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
+      - id: block_extension
+        size: _parent.message_header.block_length - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: security_list_request_security_groups
         type: security_list_request_security_groups
         doc: 'NoSecurityGroups Block'
@@ -225,6 +243,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Security Group'
+      - id: block_extension
+        size: _parent.group_size.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
   security_list_request_related_symbol_groups:
     seq:
       - id: group_size
@@ -240,6 +261,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   security_status_request:
     seq:
       - id: md_req_id
@@ -249,6 +273,9 @@ types:
         type: u1
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
+      - id: block_extension
+        size: _parent.message_header.block_length - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: security_status_request_security_groups
         type: security_status_request_security_groups
         doc: 'NoSecurityGroups Block'
@@ -272,6 +299,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Security Group'
+      - id: block_extension
+        size: _parent.group_size.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
   security_status_request_related_symbol_groups:
     seq:
       - id: group_size
@@ -287,6 +317,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

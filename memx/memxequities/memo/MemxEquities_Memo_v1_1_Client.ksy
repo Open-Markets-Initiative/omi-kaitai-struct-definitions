@@ -230,6 +230,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'RiskGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 92
+        doc: 'Bytes the stated block holds beyond the 92 this version reads'
   exec_inst:
     seq:
       - id: reserved_13
@@ -286,6 +289,9 @@ types:
       - id: locate_reqd
         type: str_1_nullable
         doc: 'Required on Short Sell and Short Sell Exempt orders only. Only acceptable value is ''N'' which indicates the member has secured the required locate. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 63
+        doc: 'Bytes the stated block holds beyond the 63 this version reads'
   order_cancel_request_message:
     seq:
       - id: origclordid
@@ -311,6 +317,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.)'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -341,6 +350,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   decimal_s8_6:
     seq:
       - id: mantissa

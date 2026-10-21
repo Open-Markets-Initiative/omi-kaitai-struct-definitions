@@ -282,6 +282,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 125
+        doc: 'Bytes the stated block holds beyond the 125 this version reads'
   exec_inst:
     seq:
       - id: reserved_13
@@ -414,6 +417,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 133
+        doc: 'Bytes the stated block holds beyond the 133 this version reads'
   execution_report_rejected_message:
     seq:
       - id: sending_time
@@ -451,6 +457,9 @@ types:
         type: u1
         enum: order_reject_reason
         doc: 'Reason code for order rejection'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 54
+        doc: 'Bytes the stated block holds beyond the 54 this version reads'
   execution_report_trade_message:
     seq:
       - id: sending_time
@@ -497,6 +506,9 @@ types:
       - id: trd_matching_id
         type: u8
         doc: 'TrdMatchingID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 79
+        doc: 'Bytes the stated block holds beyond the 79 this version reads'
   execution_report_pending_cancel_message:
     seq:
       - id: sending_time
@@ -538,6 +550,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 77
+        doc: 'Bytes the stated block holds beyond the 77 this version reads'
   pending_mass_cancel_message:
     seq:
       - id: sending_time
@@ -570,6 +585,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   execution_report_canceled_message:
     seq:
       - id: sending_time
@@ -607,6 +625,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 74
+        doc: 'Bytes the stated block holds beyond the 74 this version reads'
   mass_cancel_done_message:
     seq:
       - id: sending_time
@@ -617,6 +638,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   execution_report_pending_replace_message:
     seq:
       - id: sending_time
@@ -678,6 +702,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 96
+        doc: 'Bytes the stated block holds beyond the 96 this version reads'
   execution_report_replaced_message:
     seq:
       - id: sending_time
@@ -742,6 +769,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 104
+        doc: 'Bytes the stated block holds beyond the 104 this version reads'
   execution_report_trade_correction_message:
     seq:
       - id: sending_time
@@ -780,6 +810,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 77
+        doc: 'Bytes the stated block holds beyond the 77 this version reads'
   execution_report_trade_break_message:
     seq:
       - id: sending_time
@@ -812,6 +845,9 @@ types:
       - id: cum_qty
         type: u4
         doc: 'Total quantity (e.g. number of shares) filled'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 65
+        doc: 'Bytes the stated block holds beyond the 65 this version reads'
   execution_report_restatement_message:
     seq:
       - id: sending_time
@@ -851,6 +887,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   order_cancel_reject_message:
     seq:
       - id: sending_time
@@ -869,6 +908,9 @@ types:
         type: u1
         enum: cxl_rej_reason
         doc: 'Code to identify reason for cancel rejection'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -905,6 +947,9 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'Reason code for order rejection'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

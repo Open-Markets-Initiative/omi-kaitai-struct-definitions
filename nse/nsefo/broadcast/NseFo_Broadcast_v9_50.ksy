@@ -50,6 +50,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Identifies the segment, 2 for Equity Derivative'
       - id: num_packed_packet
         type: s2
@@ -75,9 +76,7 @@ types:
         encoding: ASCII
         doc: 'Market the broadcast belongs to, 2 for Futures and Options'
       - id: bcast_reserved
-        type: str
         size: 7
-        encoding: ASCII
         doc: 'Ignored, the header begins at the ninth byte'
       - id: bcast_header
         type: bcast_header
@@ -112,14 +111,10 @@ types:
   bcast_header:
     seq:
       - id: reserved_0
-        type: str
         size: 2
-        encoding: ASCII
         doc: 'Reserved'
       - id: reserved_2
-        type: str
         size: 2
-        encoding: ASCII
         doc: 'Reserved'
       - id: log_time
         type: s4
@@ -128,6 +123,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'First two characters of Symbol when the message carries one'
       - id: transaction_code
         type: s2
@@ -140,24 +136,19 @@ types:
         type: s4
         doc: 'Broadcast sequence number, used to detect a gap in the stream'
       - id: reserved_18
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved'
       - id: reserved_19
-        type: str
         size: 3
-        encoding: ASCII
         doc: 'Reserved'
       - id: time_stamp_2
         type: str
         size: 8
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Time the message reached the gateway'
       - id: filler_2
-        type: str
         size: 8
-        encoding: ASCII
         doc: 'Padding, documented as Byte but eight bytes wide'
       - id: message_length
         type: s2
@@ -229,8 +220,8 @@ types:
         type: s4
         doc: 'Token number of the security'
       - id: opening_price
-        type: s4
-        doc: 'Price at which the security opened'
+        type: decimal_s4_2
+        doc: 'Price at which the security opened. Implied decimal with scale 1e-2'
   security_master_change_message:
     seq:
       - id: token
@@ -309,11 +300,11 @@ types:
         type: s4
         doc: 'Record date'
       - id: low_price_range
-        type: s4
-        doc: 'Lowest price allowed'
+        type: decimal_s4_2
+        doc: 'Lowest price allowed. Implied decimal with scale 1e-2'
       - id: high_price_range
-        type: s4
-        doc: 'Highest price allowed'
+        type: decimal_s4_2
+        doc: 'Highest price allowed. Implied decimal with scale 1e-2'
       - id: expiry_date
         type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
@@ -379,8 +370,8 @@ types:
         pad-right: 0x20
         doc: 'Remark'
       - id: base_price
-        type: s4
-        doc: 'Base price of the security'
+        type: decimal_s4_2
+        doc: 'Base price of the security. Implied decimal with scale 1e-2'
   sec_info:
     seq:
       - id: instrument_name
@@ -405,8 +396,8 @@ types:
         type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: strike_price
-        type: s4
-        doc: 'Strike price of an option'
+        type: decimal_s4_2
+        doc: 'Strike price of an option. Implied decimal with scale 1e-2'
       - id: option_type
         type: str
         size: 2
@@ -594,17 +585,17 @@ types:
         type: st_indicator
         doc: 'Side and last trade direction indicators'
       - id: closing_price
-        type: s4
-        doc: 'Closing price'
+        type: decimal_s4_2
+        doc: 'Closing price. Implied decimal with scale 1e-2'
       - id: open_price
-        type: s4
-        doc: 'Opening price'
+        type: decimal_s4_2
+        doc: 'Opening price. Implied decimal with scale 1e-2'
       - id: high_price
-        type: s4
-        doc: 'Highest price'
+        type: decimal_s4_2
+        doc: 'Highest price. Implied decimal with scale 1e-2'
       - id: low_price
-        type: s4
-        doc: 'Lowest price'
+        type: decimal_s4_2
+        doc: 'Lowest price. Implied decimal with scale 1e-2'
   st_interactive_mbo_data:
     seq:
       - id: token
@@ -622,15 +613,15 @@ types:
         type: u4
         doc: 'Quantity traded today'
       - id: last_traded_price
-        type: s4
-        doc: 'Price of the last trade'
+        type: decimal_s4_2
+        doc: 'Price of the last trade. Implied decimal with scale 1e-2'
       - id: net_change_indicator
         type: u1
         enum: net_change_indicator
         doc: 'Direction of the net price change'
       - id: net_price_change_from_closing_price
-        type: s4
-        doc: 'Net price change from the closing price'
+        type: decimal_s4_2
+        doc: 'Net price change from the closing price. Implied decimal with scale 1e-2'
       - id: last_trade_quantity
         type: s4
         doc: 'Quantity of the last trade'
@@ -638,8 +629,8 @@ types:
         type: s4
         doc: 'Time of the last trade'
       - id: average_trade_price
-        type: s4
-        doc: 'Average trade price'
+        type: decimal_s4_2
+        doc: 'Average trade price. Implied decimal with scale 1e-2'
       - id: auction_number
         type: s2
         doc: 'Auction number'
@@ -651,14 +642,14 @@ types:
         type: s2
         doc: 'Type of the auction initiator'
       - id: initiator_price
-        type: s4
-        doc: 'Price offered by the initiator'
+        type: decimal_s4_2
+        doc: 'Price offered by the initiator. Implied decimal with scale 1e-2'
       - id: initiator_quantity
         type: s4
         doc: 'Quantity offered by the initiator'
       - id: auction_price
-        type: s4
-        doc: 'Price of the auction'
+        type: decimal_s4_2
+        doc: 'Price of the auction. Implied decimal with scale 1e-2'
       - id: auction_quantity
         type: s4
         doc: 'Quantity of the auction'
@@ -676,8 +667,8 @@ types:
         type: s4
         doc: 'Quantity of the order'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
       - id: st_mbo_mbp_terms
         type: st_mbo_mbp_terms
         doc: 'Terms attached to an order in the book'
@@ -701,8 +692,8 @@ types:
         type: s4
         doc: 'Quantity of the order'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
       - id: no_of_orders
         type: s2
         doc: 'Number of orders at this price'
@@ -750,8 +741,8 @@ types:
         type: u4
         doc: 'Quantity traded today'
       - id: last_traded_price
-        type: s4
-        doc: 'Price of the last trade'
+        type: decimal_s4_2
+        doc: 'Price of the last trade. Implied decimal with scale 1e-2'
       - id: net_change_indicator
         type: u1
         enum: net_change_indicator
@@ -763,8 +754,8 @@ types:
         pad-right: 0x20
         doc: 'Whether the traded volume exceeded the field width'
       - id: net_price_change_from_closing_price
-        type: s4
-        doc: 'Net price change from the closing price'
+        type: decimal_s4_2
+        doc: 'Net price change from the closing price. Implied decimal with scale 1e-2'
       - id: last_trade_quantity
         type: s4
         doc: 'Quantity of the last trade'
@@ -772,8 +763,8 @@ types:
         type: s4
         doc: 'Time of the last trade'
       - id: average_trade_price
-        type: s4
-        doc: 'Average trade price'
+        type: decimal_s4_2
+        doc: 'Average trade price. Implied decimal with scale 1e-2'
       - id: auction_number
         type: s2
         doc: 'Auction number'
@@ -785,14 +776,14 @@ types:
         type: s2
         doc: 'Type of the auction initiator'
       - id: initiator_price
-        type: s4
-        doc: 'Price offered by the initiator'
+        type: decimal_s4_2
+        doc: 'Price offered by the initiator. Implied decimal with scale 1e-2'
       - id: initiator_quantity
         type: s4
         doc: 'Quantity offered by the initiator'
       - id: auction_price
-        type: s4
-        doc: 'Price of the auction'
+        type: decimal_s4_2
+        doc: 'Price of the auction. Implied decimal with scale 1e-2'
       - id: auction_quantity
         type: s4
         doc: 'Quantity of the auction'
@@ -817,25 +808,25 @@ types:
         type: st_indicator
         doc: 'Side and last trade direction indicators'
       - id: closing_price
-        type: s4
-        doc: 'Closing price'
+        type: decimal_s4_2
+        doc: 'Closing price. Implied decimal with scale 1e-2'
       - id: open_price
-        type: s4
-        doc: 'Opening price'
+        type: decimal_s4_2
+        doc: 'Opening price. Implied decimal with scale 1e-2'
       - id: high_price
-        type: s4
-        doc: 'Highest price'
+        type: decimal_s4_2
+        doc: 'Highest price. Implied decimal with scale 1e-2'
       - id: low_price
-        type: s4
-        doc: 'Lowest price'
+        type: decimal_s4_2
+        doc: 'Lowest price. Implied decimal with scale 1e-2'
   mbp_information:
     seq:
       - id: quantity_short
         type: s4
         doc: 'Quantity at this price'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
       - id: number_of_orders
         type: s2
         doc: 'Number of orders at this price'
@@ -869,8 +860,8 @@ types:
         type: s8
         doc: 'Quantity traded today'
       - id: last_traded_price
-        type: s4
-        doc: 'Price of the last trade'
+        type: decimal_s4_2
+        doc: 'Price of the last trade. Implied decimal with scale 1e-2'
       - id: net_change_indicator
         type: u1
         enum: net_change_indicator
@@ -879,8 +870,8 @@ types:
         size: 1
         doc: 'Reserved'
       - id: net_price_change_from_closing_price
-        type: s4
-        doc: 'Net price change from the closing price'
+        type: decimal_s4_2
+        doc: 'Net price change from the closing price. Implied decimal with scale 1e-2'
       - id: last_trade_quantity
         type: s4
         doc: 'Quantity of the last trade'
@@ -888,8 +879,8 @@ types:
         type: s4
         doc: 'Time of the last trade'
       - id: average_trade_price
-        type: s4
-        doc: 'Average trade price'
+        type: decimal_s4_2
+        doc: 'Average trade price. Implied decimal with scale 1e-2'
       - id: reserved_14
         size: 14
         doc: 'Reserved'
@@ -917,25 +908,25 @@ types:
         type: st_indicator
         doc: 'Side and last trade direction indicators'
       - id: closing_price
-        type: s4
-        doc: 'Closing price'
+        type: decimal_s4_2
+        doc: 'Closing price. Implied decimal with scale 1e-2'
       - id: open_price
-        type: s4
-        doc: 'Opening price'
+        type: decimal_s4_2
+        doc: 'Opening price. Implied decimal with scale 1e-2'
       - id: high_price
-        type: s4
-        doc: 'Highest price'
+        type: decimal_s4_2
+        doc: 'Highest price. Implied decimal with scale 1e-2'
       - id: low_price
-        type: s4
-        doc: 'Lowest price'
+        type: decimal_s4_2
+        doc: 'Lowest price. Implied decimal with scale 1e-2'
   enhncd_mbp_information:
     seq:
       - id: quantity_long
         type: s8
         doc: 'Quantity at this price'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
       - id: number_of_orders
         type: s2
         doc: 'Number of orders at this price'
@@ -962,8 +953,8 @@ types:
         enum: market_type
         doc: 'Market the contract trades in'
       - id: fill_price
-        type: s4
-        doc: 'Price the trade occurred at'
+        type: decimal_s4_2
+        doc: 'Price the trade occurred at. Implied decimal with scale 1e-2'
       - id: fill_volume
         type: s4
         doc: 'Quantity traded'
@@ -996,8 +987,8 @@ types:
         enum: market_type
         doc: 'Market the contract trades in'
       - id: fill_price
-        type: s4
-        doc: 'Price the trade occurred at'
+        type: decimal_s4_2
+        doc: 'Price the trade occurred at. Implied decimal with scale 1e-2'
       - id: fill_volume
         type: s4
         doc: 'Quantity traded'
@@ -1042,17 +1033,17 @@ types:
         type: s8
         doc: 'Quantity at the best buy price'
       - id: buy_price
-        type: s4
-        doc: 'Best buy price'
+        type: decimal_s4_2
+        doc: 'Best buy price. Implied decimal with scale 1e-2'
       - id: sell_volume_long
         type: s8
         doc: 'Quantity at the best sell price'
       - id: sell_price
-        type: s4
-        doc: 'Best sell price'
+        type: decimal_s4_2
+        doc: 'Best sell price. Implied decimal with scale 1e-2'
       - id: last_trade_price
-        type: s4
-        doc: 'Price of the last trade'
+        type: decimal_s4_2
+        doc: 'Price of the last trade. Implied decimal with scale 1e-2'
       - id: last_trade_time
         type: s4
         doc: 'Time of the last trade'
@@ -1088,17 +1079,17 @@ types:
         type: s4
         doc: 'Quantity at the best buy price'
       - id: buy_price
-        type: s4
-        doc: 'Best buy price'
+        type: decimal_s4_2
+        doc: 'Best buy price. Implied decimal with scale 1e-2'
       - id: sell_volume_short
         type: s4
         doc: 'Quantity at the best sell price'
       - id: sell_price
-        type: s4
-        doc: 'Best sell price'
+        type: decimal_s4_2
+        doc: 'Best sell price. Implied decimal with scale 1e-2'
       - id: last_trade_price
-        type: s4
-        doc: 'Price of the last trade'
+        type: decimal_s4_2
+        doc: 'Price of the last trade. Implied decimal with scale 1e-2'
       - id: last_trade_time
         type: s4
         doc: 'Time of the last trade'
@@ -1218,17 +1209,17 @@ types:
         type: total_order_volume
         doc: 'TotalOrderVolume'
       - id: open_price_difference
-        type: s4
-        doc: 'Opening price difference'
+        type: decimal_s4_2
+        doc: 'Opening price difference. Implied decimal with scale 1e-2'
       - id: day_high_price_difference
-        type: s4
-        doc: 'Highest price difference of the day'
+        type: decimal_s4_2
+        doc: 'Highest price difference of the day. Implied decimal with scale 1e-2'
       - id: day_low_price_difference
-        type: s4
-        doc: 'Lowest price difference of the day'
+        type: decimal_s4_2
+        doc: 'Lowest price difference of the day. Implied decimal with scale 1e-2'
       - id: last_traded_price_difference
-        type: s4
-        doc: 'Last traded price difference'
+        type: decimal_s4_2
+        doc: 'Last traded price difference. Implied decimal with scale 1e-2'
       - id: last_update_time
         type: s4
         doc: 'Time the record was last updated'
@@ -1241,8 +1232,8 @@ types:
         type: s4
         doc: 'Quantity at this level'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
   mbp_sells:
     seq:
       - id: no_orders
@@ -1252,8 +1243,8 @@ types:
         type: s4
         doc: 'Quantity at this level'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
   total_order_volume:
     seq:
       - id: total_order_volume_buy
@@ -1299,17 +1290,17 @@ types:
         type: total_order_volume
         doc: 'TotalOrderVolume'
       - id: open_price_difference
-        type: s4
-        doc: 'Opening price difference'
+        type: decimal_s4_2
+        doc: 'Opening price difference. Implied decimal with scale 1e-2'
       - id: day_high_price_difference
-        type: s4
-        doc: 'Highest price difference of the day'
+        type: decimal_s4_2
+        doc: 'Highest price difference of the day. Implied decimal with scale 1e-2'
       - id: day_low_price_difference
-        type: s4
-        doc: 'Lowest price difference of the day'
+        type: decimal_s4_2
+        doc: 'Lowest price difference of the day. Implied decimal with scale 1e-2'
       - id: last_traded_price_difference
-        type: s4
-        doc: 'Last traded price difference'
+        type: decimal_s4_2
+        doc: 'Last traded price difference. Implied decimal with scale 1e-2'
       - id: last_update_time
         type: s4
         doc: 'Time the record was last updated'
@@ -1322,8 +1313,8 @@ types:
         type: s8
         doc: 'Quantity at this level'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
   enhncd_mbp_sells:
     seq:
       - id: no_orders
@@ -1333,8 +1324,8 @@ types:
         type: s8
         doc: 'Quantity at this level'
       - id: price
-        type: s4
-        doc: 'Price of the order'
+        type: decimal_s4_2
+        doc: 'Price of the order. Implied decimal with scale 1e-2'
   asset_open_interest_message:
     seq:
       - id: asset_open_interest
@@ -1386,11 +1377,11 @@ types:
         type: s4
         doc: 'Token number of the contract'
       - id: high_exec_band
-        type: s4
-        doc: 'Upper execution band'
+        type: decimal_s4_2
+        doc: 'Upper execution band. Implied decimal with scale 1e-2'
       - id: low_exec_band
-        type: s4
-        doc: 'Lower execution band'
+        type: decimal_s4_2
+        doc: 'Lower execution band. Implied decimal with scale 1e-2'
   cas_reference_price_message:
     seq:
       - id: number_of_records
@@ -1410,8 +1401,8 @@ types:
         type: s4
         doc: 'Token number of the security'
       - id: reference_price
-        type: s4
-        doc: 'Call auction reference price'
+        type: decimal_s4_2
+        doc: 'Call auction reference price. Implied decimal with scale 1e-2'
   turnover_exceeded_message:
     seq:
       - id: turnover_body
@@ -1462,8 +1453,8 @@ types:
         type: dos_second_timestamp
         doc: 'Date the contract expires. Seconds since Dos epoch'
       - id: strike_price
-        type: s4
-        doc: 'Strike price of an option'
+        type: decimal_s4_2
+        doc: 'Strike price of an option. Implied decimal with scale 1e-2'
       - id: option_type
         type: str
         size: 2
@@ -1477,8 +1468,8 @@ types:
         type: s4
         doc: 'Number of the trade'
       - id: trade_price
-        type: s4
-        doc: 'Price of the trade'
+        type: decimal_s4_2
+        doc: 'Price of the trade. Implied decimal with scale 1e-2'
       - id: trade_volume
         type: s4
         doc: 'Quantity of the trade'
@@ -1518,6 +1509,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Text of the broadcast message'
+  decimal_s4_2:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100.0
   dos_second_timestamp:
     seq:
       - id: time

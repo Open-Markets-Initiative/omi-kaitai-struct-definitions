@@ -89,6 +89,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
       - id: incremental_refresh_btec_groups
         type: incremental_refresh_btec_groups
         doc: 'NoMDEntries Block'
@@ -159,6 +162,9 @@ types:
       - id: price_type
         type: u1_nullable
         doc: 'Price type condition. 9=Yield. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 62
+        doc: 'Bytes the stated block holds beyond the 62 this version reads'
   md_entry_px:
     seq:
       - id: mantissa

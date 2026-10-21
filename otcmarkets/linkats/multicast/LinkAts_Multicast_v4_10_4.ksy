@@ -265,8 +265,8 @@ types:
         encoding: ASCII
         doc: 'Market Participant ID owning the quote (always 4 characters)'
       - id: ask_price
-        type: u8
-        doc: 'Ask price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Ask price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
         doc: 'Number of shares on the ask'
@@ -277,8 +277,8 @@ types:
         type: u8
         doc: 'Milliseconds since UTC epoch'
       - id: bid_price
-        type: u8
-        doc: 'Bid price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Bid price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Number of shares on the bid'
@@ -353,8 +353,8 @@ types:
         type: quote_flags
         doc: 'Quote Information'
       - id: price
-        type: u8
-        doc: 'Price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: size
         type: u4
         doc: 'Number of shares'
@@ -389,8 +389,8 @@ types:
         type: u4
         doc: 'Unique security ID issued by OTC Markets'
       - id: ask_price
-        type: u8
-        doc: 'Ask price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Ask price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
         doc: 'Number of shares on the ask'
@@ -398,8 +398,8 @@ types:
         type: u8
         doc: 'Milliseconds since UTC epoch'
       - id: bid_price
-        type: u8
-        doc: 'Bid price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Bid price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Number of shares on the bid'
@@ -424,8 +424,8 @@ types:
         type: quote_flags
         doc: 'Quote Information'
       - id: price
-        type: u8
-        doc: 'Price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: size
         type: u4
         doc: 'Number of shares'
@@ -454,8 +454,8 @@ types:
         type: u4
         doc: 'Unique security ID issued by OTC Markets'
       - id: ask_price
-        type: u8
-        doc: 'Ask price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Ask price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
         doc: 'Number of shares on the ask'
@@ -463,8 +463,8 @@ types:
         type: u8
         doc: 'Milliseconds since UTC epoch'
       - id: bid_price
-        type: u8
-        doc: 'Bid price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Bid price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Number of shares on the bid'
@@ -483,8 +483,8 @@ types:
         type: quote_flags
         doc: 'Quote Information'
       - id: price
-        type: u8
-        doc: 'Price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: size
         type: u4
         doc: 'Number of shares'
@@ -558,11 +558,11 @@ types:
         enum: security_status
         doc: 'Current security status'
       - id: par_value
-        type: u8
-        doc: 'Par value with 6 decimal places assumed. Zero indicates not available'
+        type: decimal_u8_6
+        doc: 'Par value with 6 decimal places assumed. Zero indicates not available. Implied decimal with scale 1e-6'
       - id: coupon
-        type: u8
-        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only'
+        type: decimal_u8_6
+        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only. Implied decimal with scale 1e-6'
       - id: maturity_date_milli
         type: u8
         doc: 'Maturity date in milliseconds since UTC epoch. Fixed income only'
@@ -570,8 +570,8 @@ types:
         type: u8
         doc: 'Callable date in milliseconds since UTC epoch. Fixed income only'
       - id: adr_ratio
-        type: u8
-        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only'
+        type: decimal_u8_6
+        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only. Implied decimal with scale 1e-6'
       - id: adr_level
         type: str
         size: 15
@@ -715,11 +715,11 @@ types:
         enum: security_status
         doc: 'Current security status'
       - id: par_value
-        type: u8
-        doc: 'Par value with 6 decimal places assumed. Zero indicates not available'
+        type: decimal_u8_6
+        doc: 'Par value with 6 decimal places assumed. Zero indicates not available. Implied decimal with scale 1e-6'
       - id: coupon
-        type: u8
-        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only'
+        type: decimal_u8_6
+        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only. Implied decimal with scale 1e-6'
       - id: maturity_date_milli
         type: u8
         doc: 'Maturity date in milliseconds since UTC epoch. Fixed income only'
@@ -727,8 +727,8 @@ types:
         type: u8
         doc: 'Callable date in milliseconds since UTC epoch. Fixed income only'
       - id: adr_ratio
-        type: u8
-        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only'
+        type: decimal_u8_6
+        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only. Implied decimal with scale 1e-6'
       - id: adr_level
         type: str
         size: 15
@@ -772,8 +772,8 @@ types:
         encoding: ASCII
         doc: 'Deprecated field. Spaces will be sent in message'
       - id: trade_price
-        type: u8
-        doc: 'Trade price. Six decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Trade price. Six decimal places assumed. Implied decimal with scale 1e-6'
       - id: trade_size_unsigned_integer_4
         type: u4
         doc: 'Number of shares'
@@ -821,12 +821,12 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Deprecated field. Spaces will be sent in message'
-      - id: trade_price
-        type: u8
-        doc: 'Trade price. Six decimal places assumed'
+      - id: extended_trade_price
+        type: decimal_u8_8
+        doc: 'Trade price. Eight decimal places assumed. Implied decimal with scale 1e-8'
       - id: trade_size_unsigned_integer_8
-        type: u8
-        doc: 'Number of shares. Eight decimal places assumed for fractional shares'
+        type: decimal_u8_8
+        doc: 'Number of shares. Eight decimal places assumed for fractional shares. Implied decimal with scale 1e-8'
       - id: trade_time_milli
         type: u8
         doc: 'Milliseconds from UTC epoch'
@@ -843,6 +843,20 @@ types:
         value: time / 1000 % 60
       millisecond:
         value: time % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_u8_8:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000000.0
 
 enums:
   message_type:

@@ -331,7 +331,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   clearing_data:
     seq:
       - id: clearing_instruction
@@ -438,7 +438,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   order_modification_acknowledgement:
     seq:
       - id: group
@@ -492,7 +492,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   new_complex_order_instrument_acknowledgement:
     seq:
       - id: strategy_group
@@ -605,7 +605,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   auction_or_improvement_cancellation_acknowledgement:
     seq:
       - id: group
@@ -711,7 +711,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   bulk_quote_acknowledgement:
     seq:
       - id: group
@@ -954,7 +954,7 @@ types:
         doc: 'Stated inline as String (1)'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   cancellation_of_all_quotes_notices:
     seq:
       - id: group
@@ -1103,7 +1103,7 @@ types:
         doc: 'Stated inline as String (1)'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   quote_notice:
     seq:
       - id: group
@@ -1252,7 +1252,7 @@ types:
         doc: 'Stated inline as String (1)'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   leg_execution_cancellation_notice:
     seq:
       - id: group
@@ -1359,7 +1359,7 @@ types:
         doc: 'Stated inline as String (1)'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   order_cancellation_notice_by_system:
     seq:
       - id: group
@@ -1415,7 +1415,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   str_6_nullable:
     seq:
       - id: value

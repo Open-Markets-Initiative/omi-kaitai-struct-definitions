@@ -131,6 +131,9 @@ types:
       - id: previous_uuid
         type: u8
         doc: 'Refers to the UUID sent in the previous message before this one from CME'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
       - id: credentials
         type: credentials
         doc: 'Not used and will be set to 0'
@@ -165,6 +168,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   establishment_ack:
     seq:
       - id: uuid
@@ -194,6 +200,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   establishment_reject:
     seq:
       - id: reason
@@ -219,6 +228,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 72
+        doc: 'Bytes the stated block holds beyond the 72 this version reads'
   sequence:
     seq:
       - id: uuid
@@ -234,6 +246,9 @@ types:
         type: u1
         enum: keep_alive_interval_lapsed
         doc: 'This indicates if the Sequence message being sent by CME is to warn that one keep alive interval has lapsed without any message received from customer (this can also be sent from customer to CME)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   terminate:
     seq:
       - id: reason
@@ -253,6 +268,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
   retransmission:
     seq:
       - id: uuid
@@ -273,6 +291,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
   retransmit_reject:
     seq:
       - id: reason
@@ -295,6 +316,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
   not_applied:
     seq:
       - id: uuid
@@ -309,6 +333,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   party_details_definition_request_ack:
     seq:
       - id: seq_num
@@ -383,6 +410,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 159
+        doc: 'Bytes the stated block holds beyond the 159 this version reads'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -416,6 +446,9 @@ types:
         type: u2
         enum: party_detail_role
         doc: 'Identifies the type of PartyDetailID. Required when NoPartyDetails(1671) > 0'
+      - id: block_extension
+        size: _parent.group_size.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   trd_reg_publications_groups:
     seq:
       - id: group_size
@@ -434,6 +467,9 @@ types:
       - id: trd_reg_publication_reason
         type: u1
         doc: 'Additional reason for trade publication type specified in TrdRegPublicationType (2669). Reasons may be specific to regulatory trade publication rules. 12=Exempted due to European System of Central Banks (ESCB) policy transaction'
+      - id: block_extension
+        size: _parent.group_size.block_length - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   business_reject:
     seq:
       - id: seq_num
@@ -490,6 +526,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 330
+        doc: 'Bytes the stated block holds beyond the 330 this version reads'
   execution_report_new:
     seq:
       - id: seq_num
@@ -608,6 +647,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 209
+        doc: 'Bytes the stated block holds beyond the 209 this version reads'
   exec_inst:
     meta:
       bit-endian: le
@@ -762,6 +804,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 467
+        doc: 'Bytes the stated block holds beyond the 467 this version reads'
   execution_report_elimination:
     seq:
       - id: seq_num
@@ -874,6 +919,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 202
+        doc: 'Bytes the stated block holds beyond the 202 this version reads'
   execution_report_trade_outright:
     seq:
       - id: seq_num
@@ -1015,6 +1063,9 @@ types:
       - id: ownership
         type: u1
         doc: 'Specifies the owner of the work up private phase'
+      - id: block_extension
+        size: _parent.message_header.block_length - 235
+        doc: 'Bytes the stated block holds beyond the 235 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -1047,6 +1098,9 @@ types:
       - id: fill_yield_type
         type: u1
         doc: 'Enumeration of the Fill Reason field using Integer. This identifies the type of match algorithm'
+      - id: block_extension
+        size: _parent.group_size.block_length - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   outright_order_events_groups:
     seq:
       - id: group_size
@@ -1079,6 +1133,9 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
+      - id: block_extension
+        size: _parent.group_size.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   execution_report_trade_spread:
     seq:
       - id: seq_num
@@ -1214,6 +1271,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 230
+        doc: 'Bytes the stated block holds beyond the 230 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -1254,6 +1314,9 @@ types:
         type: u1
         enum: leg_side
         doc: 'The side of this individual leg of a multileg security'
+      - id: block_extension
+        size: _parent.group_size.block_length - 29
+        doc: 'Bytes the stated block holds beyond the 29 this version reads'
   spread_order_events_groups:
     seq:
       - id: group_size
@@ -1286,6 +1349,9 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
+      - id: block_extension
+        size: _parent.group_size.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   execution_report_trade_spread_leg:
     seq:
       - id: seq_num
@@ -1378,6 +1444,9 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
+      - id: block_extension
+        size: _parent.message_header.block_length - 199
+        doc: 'Bytes the stated block holds beyond the 199 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -1460,6 +1529,9 @@ types:
       - id: order_event_reason
         type: u1
         doc: 'Action that caused the event to ocurr. 100=Binary Trade Reporting'
+      - id: block_extension
+        size: _parent.group_size.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   execution_report_modify:
     seq:
       - id: seq_num
@@ -1584,6 +1656,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 217
+        doc: 'Bytes the stated block holds beyond the 217 this version reads'
   execution_report_status:
     seq:
       - id: seq_num
@@ -1717,6 +1792,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 480
+        doc: 'Bytes the stated block holds beyond the 480 this version reads'
   execution_report_cancel:
     seq:
       - id: seq_num
@@ -1841,6 +1919,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 214
+        doc: 'Bytes the stated block holds beyond the 214 this version reads'
   order_cancel_reject:
     seq:
       - id: seq_num
@@ -1912,6 +1993,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 409
+        doc: 'Bytes the stated block holds beyond the 409 this version reads'
   order_cancel_replace_reject:
     seq:
       - id: seq_num
@@ -1983,6 +2067,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 409
+        doc: 'Bytes the stated block holds beyond the 409 this version reads'
   party_details_list_report:
     seq:
       - id: seq_num
@@ -2056,6 +2143,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 93
+        doc: 'Bytes the stated block holds beyond the 93 this version reads'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -2140,6 +2230,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 350
+        doc: 'Bytes the stated block holds beyond the 350 this version reads'
       - id: quote_ack_entries_groups
         type: quote_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -2167,6 +2260,9 @@ types:
       - id: quote_entry_reject_reason
         type: u1
         doc: 'Reason (error code) quote has been rejected'
+      - id: block_extension
+        size: _parent.group_size.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   request_for_quote_ack:
     seq:
       - id: seq_num
@@ -2231,6 +2327,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 358
+        doc: 'Bytes the stated block holds beyond the 358 this version reads'
   execution_report_trade_addendum_outright:
     seq:
       - id: seq_num
@@ -2331,6 +2430,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 181
+        doc: 'Bytes the stated block holds beyond the 181 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -2373,6 +2475,9 @@ types:
       - id: original_order_event_exec_id
         type: u4_nullable
         doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   execution_report_trade_addendum_spread:
     seq:
       - id: seq_num
@@ -2483,6 +2588,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 187
+        doc: 'Bytes the stated block holds beyond the 187 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -2529,6 +2637,9 @@ types:
         type: u1
         enum: leg_side
         doc: 'The side of this individual leg of a multileg security'
+      - id: block_extension
+        size: _parent.group_size.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   spread_trade_events_groups:
     seq:
       - id: group_size
@@ -2565,6 +2676,9 @@ types:
       - id: original_order_event_exec_id
         type: u4_nullable
         doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   execution_report_trade_addendum_spread_leg:
     seq:
       - id: seq_num
@@ -2649,6 +2763,9 @@ types:
         type: u1
         enum: side
         doc: 'Side of order'
+      - id: block_extension
+        size: _parent.message_header.block_length - 176
+        doc: 'Bytes the stated block holds beyond the 176 this version reads'
       - id: fills_groups
         type: fills_groups
         doc: 'NoFills Block'
@@ -2691,6 +2808,9 @@ types:
       - id: original_order_event_exec_id
         type: u4_nullable
         doc: 'Contains the previous OrderEventExecID value (Tag 1797) of the trade being adjusted or busted. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   security_definition_response:
     seq:
       - id: seq_num
@@ -2799,6 +2919,9 @@ types:
         type: u1
         enum: poss_retrans_flag
         doc: 'Flags message as possible retransmission. This will convey whether a message is an original transmission or duplicate in response to RetransmissionRequest. This will become pertinent when original messages get interleaved with Retransmission responses'
+      - id: block_extension
+        size: _parent.message_header.block_length - 429
+        doc: 'Bytes the stated block holds beyond the 429 this version reads'
       - id: response_legs_groups
         type: response_legs_groups
         doc: 'NoLegs Block'
@@ -2844,6 +2967,9 @@ types:
       - id: leg_ratio_qty
         type: u1_nullable
         doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   leg_option_delta:
     seq:
       - id: mantissa_32
@@ -2950,6 +3076,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 114
+        doc: 'Bytes the stated block holds beyond the 114 this version reads'
       - id: affected_orders_groups
         type: affected_orders_groups
         doc: 'NoAffectedOrders Block'
@@ -2976,6 +3105,9 @@ types:
       - id: cxl_quantity
         type: u4
         doc: 'Total quantity cancelled for this order'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   quote_cancel_ack:
     seq:
       - id: seq_num
@@ -3056,6 +3188,9 @@ types:
       - id: delay_to_time
         type: u8_nullable
         doc: 'Indicates the amount of time that a message was delayed as a result of being split (9553=0) or as a result of being out of order due to TCP retransmission (9553=1) or as a result of being queued behind a split message (9553=2). Represented as number of nanoseconds in unix epoch format (since Jan 1, 1970). Subtracting this number from FIFO time will represent original received time of delayed message. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 351
+        doc: 'Bytes the stated block holds beyond the 351 this version reads'
       - id: quote_cancel_ack_entries_groups
         type: quote_cancel_ack_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -3083,6 +3218,9 @@ types:
       - id: quote_entry_reject_reason
         type: u1
         doc: 'Reason (error code) quote has been rejected'
+      - id: block_extension
+        size: _parent.group_size.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   quote_cancel_ack_sets_groups:
     seq:
       - id: group_size
@@ -3101,6 +3239,9 @@ types:
       - id: quote_error_code
         type: u2
         doc: 'Reason (error code) quote set cancel has been rejected'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

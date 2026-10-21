@@ -92,38 +92,38 @@ types:
   sequence_number_reset_message:
     seq:
       - id: next_seq_number
-        type: u4le
+        type: u4
         doc: 'The sequence number the recipient should expect in the immediately succeeding data packet'
   message_unavailable_message:
     seq:
       - id: begin_seq_num
-        type: u4le
+        type: u4
         doc: 'The first sequence number that is unavailable'
       - id: end_seq_num
-        type: u4le
+        type: u4
         doc: 'The last sequence number that is unavailable'
   refresh_quote_message:
     seq:
       - id: symbol_index
-        type: u4le
+        type: u4
         doc: 'The numerical representation of the symbol'
       - id: source_time
-        type: u4le
+        type: u4
         doc: 'The quote generation time, in milliseconds since midnight of the same day'
       - id: quote_link_id
-        type: u4le
+        type: u4
         doc: 'Identifies a unique quote, allowing quotes to be correlated to the last sale. For future use'
       - id: ask_price_numerator
-        type: u4le
+        type: u4
         doc: 'Ask price for the quote, scaled by the PriceScaleCode'
       - id: ask_size
-        type: u4le
+        type: u4
         doc: 'Size of the quote on the ask side, in shares'
       - id: bid_price_numerator
-        type: u4le
+        type: u4
         doc: 'Bid price for the quote, scaled by the PriceScaleCode'
       - id: bid_size
-        type: u4le
+        type: u4
         doc: 'Size of the quote on the bid side, in shares'
       - id: price_scale_code
         type: u1
@@ -166,7 +166,7 @@ types:
   symbol_index_mapping_message:
     seq:
       - id: symbol_index
-        type: u4le
+        type: u4
         doc: 'The numerical representation of the symbol'
       - id: symbol
         type: str
@@ -186,25 +186,25 @@ types:
   quote_message:
     seq:
       - id: symbol_index
-        type: u4le
+        type: u4
         doc: 'The numerical representation of the symbol'
       - id: source_time
-        type: u4le
+        type: u4
         doc: 'The quote generation time, in milliseconds since midnight of the same day'
       - id: quote_link_id
-        type: u4le
+        type: u4
         doc: 'Identifies a unique quote, allowing quotes to be correlated to the last sale. For future use'
       - id: ask_price_numerator
-        type: u4le
+        type: u4
         doc: 'Ask price for the quote, scaled by the PriceScaleCode'
       - id: ask_size
-        type: u4le
+        type: u4
         doc: 'Size of the quote on the ask side, in shares'
       - id: bid_price_numerator
-        type: u4le
+        type: u4
         doc: 'Bid price for the quote, scaled by the PriceScaleCode'
       - id: bid_size
-        type: u4le
+        type: u4
         doc: 'Size of the quote on the bid side, in shares'
       - id: price_scale_code
         type: u1

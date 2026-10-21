@@ -50,11 +50,13 @@ types:
       - id: frame_header
         type: frame_header_struct
         doc: 'Xmt Udp Packet Frame Header'
-      - id: body
-        type: body_struct
-        repeat: expr
-        repeat-expr: frame_header.num_body
-        doc: 'Xmt Body'
+      - id: packet_body
+        size: frame_header.message_length + 5 - 11
+        type:
+          switch-on: packet_body.heartbeat_body.body_header.msg_type
+          cases:
+            'msg_type::heartbeat': heartbeat_body
+            _: business_bodies
   frame_header_struct:
     seq:
       - id: start_of_frame
@@ -83,15 +85,21 @@ types:
       - id: num_body
         type: u1
         doc: 'Num Body'
-  body_struct:
+  heartbeat_body:
     seq:
       - id: body_header
         type: body_header
         doc: 'Xmt Body Header'
-      - id: body_message
-        type: body_message
-        size: body_header.msg_length - 3
-        doc: 'Xmt Body Header'
+      - id: admin_id
+        type: u1
+        doc: 'Admin ID for short window (1 to 255). Note: 0 is not allowed as a value'
+      - id: hb_interval
+        type: u2
+        doc: 'Heartbeat interval in milliseconds (1 to 65536)'
+      - id: admin_body
+        type: admin_body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
   body_header:
     seq:
       - id: msg_length
@@ -100,7 +108,38 @@ types:
       - id: msg_type
         type: u1
         enum: msg_type
-        doc: 'Business message type'
+        doc: 'Msg Type'
+  admin_body:
+    seq:
+      - id: source_id
+        type: u1
+        enum: source_id
+        doc: 'Source Id of the Business message'
+      - id: stream_id
+        type: u2
+        doc: 'Stream Id per Source Id of the Business message'
+      - id: sequence_0
+        type: u1
+        doc: 'Reserved for future expansion, Value is 0'
+      - id: sequence_1
+        type: u4
+        doc: 'Sequence per Stream Id of the Business message'
+  business_bodies:
+    seq:
+      - id: body
+        type: body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
+        doc: 'Xmt Body'
+  body:
+    seq:
+      - id: body_header
+        type: body_header
+        doc: 'Xmt Body Header'
+      - id: body_message
+        type: body_message
+        size: body_header.msg_length - 3
+        doc: 'Xmt Body Header'
   body_message:
     seq:
       - id: business_header
@@ -122,9 +161,8 @@ types:
         type: u1
         doc: 'Message version number'
       - id: source_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: source_id
         doc: 'Source Id of the Business message'
       - id: stream_id
         type: u2
@@ -373,7 +411,16 @@ enums:
     0x30:
       id: 'unused'
       doc: 'None'
+    0x41:
+      id: 'ack_required'
+      doc: 'Receiver needs to ack'
+    0x44:
+      id: 'poss_dup'
+      doc: 'Possible duplicates'
   msg_type:
+    0x30:
+      id: 'heartbeat'
+      doc: 'The Heartbeat message is sent by either side during idle periods for the opposite side to detect whether the session is still alive.'
     0x4a:
       id: 'symbol_status_message'
       doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for the Alpha market. One message is disseminated for each valid symbol at the beginning of each trading day.'
@@ -389,6 +436,19 @@ enums:
     0x77:
       id: 'equity_quote_message'
       doc: 'An Equity Quote message contains the latest Bid and Ask information for a symbol.'
+  source_id:
+    0x30:
+      id: 'non_source_related'
+      doc: '“0” for non-source-related.'
+    0x51:
+      id: 'tsx'
+      doc: 'Q for TSX'
+    0x56:
+      id: 'tsx_venture'
+      doc: 'V for TSX Venture'
+    0x41:
+      id: 'alpha'
+      doc: 'A for Alpha'
   listing_market:
     0x54:
       id: 'tsx'

@@ -50,11 +50,13 @@ types:
       - id: frame_header
         type: frame_header_struct
         doc: 'Xmt Udp Packet Frame Header'
-      - id: body
-        type: body_struct
-        repeat: expr
-        repeat-expr: frame_header.num_body
-        doc: 'Xmt Body'
+      - id: packet_body
+        size: frame_header.message_length + 5 - 11
+        type:
+          switch-on: packet_body.heartbeat_body.body_header.msg_type
+          cases:
+            'msg_type::heartbeat': heartbeat_body
+            _: business_bodies
   frame_header_struct:
     seq:
       - id: start_of_frame
@@ -83,15 +85,21 @@ types:
       - id: num_body
         type: u1
         doc: 'Num Body'
-  body_struct:
+  heartbeat_body:
     seq:
       - id: body_header
         type: body_header
         doc: 'Xmt Body Header'
-      - id: body_message
-        type: body_message
-        size: body_header.msg_length - 3
-        doc: 'Xmt Body Header'
+      - id: admin_id
+        type: u1
+        doc: 'Admin ID for short window (1 to 255). Note: 0 is not allowed as a value'
+      - id: hb_interval
+        type: u2
+        doc: 'Heartbeat interval in milliseconds (1 to 65536)'
+      - id: admin_body
+        type: admin_body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
   body_header:
     seq:
       - id: msg_length
@@ -100,7 +108,38 @@ types:
       - id: msg_type
         type: u1
         enum: msg_type
-        doc: 'Business message type'
+        doc: 'Msg Type'
+  admin_body:
+    seq:
+      - id: source_id
+        type: u1
+        enum: source_id
+        doc: 'Source Id of the Business message'
+      - id: stream_id
+        type: u2
+        doc: 'Stream Id per Source Id of the Business message'
+      - id: sequence_0
+        type: u1
+        doc: 'Reserved for future expansion, Value is 0'
+      - id: sequence_1
+        type: u4
+        doc: 'Sequence per Stream Id of the Business message'
+  business_bodies:
+    seq:
+      - id: body
+        type: body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
+        doc: 'Xmt Body'
+  body:
+    seq:
+      - id: body_header
+        type: body_header
+        doc: 'Xmt Body Header'
+      - id: body_message
+        type: body_message
+        size: body_header.msg_length - 3
+        doc: 'Xmt Body Header'
   body_message:
     seq:
       - id: business_header
@@ -130,9 +169,8 @@ types:
         type: u1
         doc: 'Message version number'
       - id: source_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: source_id
         doc: 'Source Id of the Business message'
       - id: stream_id
         type: u2
@@ -161,7 +199,7 @@ types:
       - id: product_type
         type: u1
         enum: product_type
-        doc: 'The Product Type For A Symbol'
+        doc: 'The Product Type Of The Symbol'
       - id: cusip
         type: str
         size: 12
@@ -217,10 +255,10 @@ types:
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: priority_time_stamp
         type: microsecond_timestamp_nullable
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
+        doc: 'Time Stamp Assigned By The Trading Engine To Specify Time Priority Of An Order Orders Are Sequenced In The Order Book Based On Symbol Price And Priority Time Stamp. Microseconds since Unix epoch. Nullable, No Value = 0'
   market_state_update_message:
     seq:
       - id: market_state
@@ -256,10 +294,10 @@ types:
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: priority_time_stamp
         type: microsecond_timestamp_nullable
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
+        doc: 'Time Stamp Assigned By The Trading Engine To Specify Time Priority Of An Order Orders Are Sequenced In The Order Book Based On Symbol Price And Priority Time Stamp. Microseconds since Unix epoch. Nullable, No Value = 0'
       - id: trading_system_time_stamp
         type: nanosecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
@@ -307,10 +345,10 @@ types:
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: priority_time_stamp
         type: microsecond_timestamp_nullable
-        doc: 'Timestamp Assigned By The Trading Engine To Specify Time Priority Of An Order. Microseconds since Unix epoch. Nullable, No Value = 0'
+        doc: 'Time Stamp Assigned By The Trading Engine To Specify Time Priority Of An Order Orders Are Sequenced In The Order Book Based On Symbol Price And Priority Time Stamp. Microseconds since Unix epoch. Nullable, No Value = 0'
       - id: trading_system_time_stamp
         type: nanosecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
@@ -347,13 +385,13 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: price
         type: decimal_u8_6_nullable
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
         doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
@@ -402,13 +440,13 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: price
         type: decimal_u8_6_nullable
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
         doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
@@ -454,7 +492,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: trading_system_time_stamp
         type: nanosecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
@@ -468,7 +506,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: trading_system_time_stamp
         type: nanosecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
@@ -482,13 +520,13 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: price
         type: decimal_u8_6_nullable
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
         doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
@@ -532,13 +570,13 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: trade_number
         type: u4_nullable
-        doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
+        doc: 'Unique Identifier Assigned To Each Trade On A Per Stock Basis. Nullable, No Value = 0'
       - id: price
         type: decimal_u8_6_nullable
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
-        doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+        doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
         doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
@@ -695,13 +733,22 @@ enums:
     0x30:
       id: 'unused'
       doc: 'None'
+    0x41:
+      id: 'ack_required'
+      doc: 'Receiver needs to ack'
+    0x44:
+      id: 'poss_dup'
+      doc: 'Possible duplicates'
   msg_type:
+    0x30:
+      id: 'heartbeat'
+      doc: 'The Heartbeat message is sent by either side during idle periods for the opposite side to detect whether the session is still alive.'
     0x4a:
       id: 'symbol_status_message'
-      doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for the Alpha market. One message is disseminated for each valid symbol at the beginning of each trading day.'
+      doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for Alpha. One message is disseminated for each valid symbol at the beginning of each trading day.'
     0x47:
       id: 'order_book_message'
-      doc: 'An Order Book message provides public information for all open non-terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day'
+      doc: 'An Order Book message provides public information for all open non-terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day. Feed clients can use the Order Book message to initialize their order book for the current trading day.'
     0x45:
       id: 'market_state_update_message'
       doc: 'A Market State Update message is disseminated each time a notice of a market state change or a trading session change is sent from the Trading Engine'
@@ -719,22 +766,35 @@ enums:
       doc: 'A Stock Status notification is disseminated in response to a change in stock status from the Trading Engine'
     0x53:
       id: 'trade_report_message'
-      doc: 'A Trade Report is produced when a trade occurs that has no settlement terms'
+      doc: 'A Trade Report is generated when a trade occurs that has no settlement terms.'
     0x70:
       id: 'trade_report_terms_message'
-      doc: 'A Trade Report – Terms is produced when a trade occurs that and has settlement terms and has Non-Resident participation with or without settlement terms'
+      doc: 'A Trade Report – Terms is generated when a trade occurs that has settlement terms.'
     0x54:
       id: 'trade_cancelled_message'
-      doc: 'A Trade Cancelled message is produced when a trade with no settlement terms is cancelled.'
+      doc: 'A Trade Cancelled message is generated when a trade with no settlement terms is cancelled.'
     0x71:
       id: 'trade_cancelled_terms_message'
-      doc: 'A Trade Cancelled – Terms message is produced when a trade with settlement terms is cancelled.'
+      doc: 'A Trade Cancelled – Terms message is generated when a trade with settlement terms is cancelled.'
     0x55:
       id: 'trade_correction_message'
-      doc: 'A Trade Correction message is produced when a trade with no settlement terms is corrected'
+      doc: 'A Trade Correction message is generated when a trade with no settlement terms is corrected'
     0x72:
       id: 'trade_correction_terms_message'
-      doc: 'A Trade Correction – Terms message is produced when a trade with settlement terms is corrected'
+      doc: 'A Trade Correction – Terms message is generated when a trade with settlement terms is corrected.'
+  source_id:
+    0x30:
+      id: 'non_source_related'
+      doc: '“0” for non-source-related.'
+    0x51:
+      id: 'tsx'
+      doc: 'Q for TSX'
+    0x56:
+      id: 'tsx_venture'
+      doc: 'V for TSX Venture'
+    0x41:
+      id: 'alpha'
+      doc: 'A for Alpha'
   listing_market:
     0x54:
       id: 'tsx'
@@ -838,7 +898,7 @@ enums:
       doc: 'Volume Weighted Average Price'
     0x20:
       id: 'default_field'
-      doc: 'Trade Was Not A Cross'
+      doc: 'Default Trade Is Not A Cross'
   settlement_terms:
     0x43:
       id: 'cash'
@@ -853,8 +913,8 @@ enums:
       id: 'ct'
       doc: 'Ct'
     0x44:
-      id: 'xalid_settlement_date'
-      doc: 'Xalid Settlement Date'
+      id: 'valid_settlement_date'
+      doc: 'Valid Settlement Date'
     0x20:
       id: 'no_settlement_terms'
       doc: 'No Settlement Terms'

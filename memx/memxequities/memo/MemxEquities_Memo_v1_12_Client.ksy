@@ -231,6 +231,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker (MPID) that the member shall borrow shares from. Customer ports can be configured to require this field to be set on short sale orders, otherwise it is optional. 5.1.2 OrderCancelReplaceRequest The order cancel/replace request is used to change the parameters of an existing order. This message corresponds to FIX message type G Field Offset Length Type Tag Ref Num Req''d Description SBE. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
   exec_inst:
     seq:
       - id: reserved_13
@@ -291,6 +294,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker (MPID) that the member shall borrow shares from. Customer ports can be configured to require this field to be set on short sale orders, otherwise it is optional. 5.1.2 OrderCancelReplaceRequest The order cancel/replace request is used to change the parameters of an existing order. This message corresponds to FIX message type G Field Offset Length Type Tag Ref Num Req''d Description SBE. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 71
+        doc: 'Bytes the stated block holds beyond the 71 this version reads'
   order_cancel_request_message:
     seq:
       - id: origclordid_optional
@@ -312,6 +318,9 @@ types:
       - id: symbol_sfx
         type: str_6_nullable
         doc: 'CMS symbol suffix. Additional information about the security (e.g. preferred, warrants, etc.). Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   mass_cancel_request_message:
     seq:
       - id: clordid
@@ -340,6 +349,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   str_4_nullable:
     seq:
       - id: value

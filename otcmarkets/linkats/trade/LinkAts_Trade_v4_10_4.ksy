@@ -197,8 +197,8 @@ types:
         encoding: ASCII
         doc: 'Deprecated field. Spaces will be sent in message'
       - id: trade_price
-        type: u8
-        doc: 'Trade price. Six decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Trade price. Six decimal places assumed. Implied decimal with scale 1e-6'
       - id: trade_size
         type: u4
         doc: 'Number of shares'
@@ -228,6 +228,13 @@ types:
         value: time / 1000 % 60
       millisecond:
         value: time % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   message_type:

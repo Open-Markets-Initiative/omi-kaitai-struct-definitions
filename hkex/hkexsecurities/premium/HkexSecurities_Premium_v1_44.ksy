@@ -57,9 +57,7 @@ types:
         type: u1
         doc: 'Number of messages included in the packet'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved filler byte (OMD does not use payload compression)'
       - id: seq_num
         type: u4
@@ -113,10 +111,7 @@ types:
         type: u4
         doc: 'Uniquely identifies a security available for trading'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_book_entry
         type: u1
@@ -149,10 +144,7 @@ types:
         enum: update_action
         doc: 'Type of market data update action'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   closing_price_message:
     seq:
@@ -213,19 +205,13 @@ types:
         enum: last_fragment
         doc: 'Indicates whether this message is the last in a sequence of messages'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: release_time
         type: u8
         doc: 'Release time of the news. Nanoseconds since Unix epoch UTC, precision to the nearest second'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_news_market
         type: u2
@@ -236,10 +222,7 @@ types:
         repeat-expr: num_news_market
         doc: 'Repeating group of market codes referenced by this news item'
       - id: second_filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_news_security
         type: u2
@@ -250,10 +233,7 @@ types:
         repeat-expr: num_news_security
         doc: 'Repeating group of security codes referenced by this news item'
       - id: third_filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_news_line_item
         type: u2
@@ -299,19 +279,13 @@ types:
         enum: order_imbalance_direction
         doc: 'Indicates the imbalance direction when the matchable buy quantity and sell quantity at IEP are not equal'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: order_imbalance_quantity
         type: u8
         doc: 'The absolute difference between the matchable buy quantity and sell quantity at IEP. Value should be ignored if Order Imbalance Direction is space'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   market_definition_message:
     seq:
@@ -364,10 +338,7 @@ types:
         enum: product_type
         doc: 'Product type of the security'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: spread_table_code
         type: str
@@ -397,10 +368,7 @@ types:
         type: u4
         doc: 'Board lot size for the security'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: previous_closing_price
         type: decimal_s4_3
@@ -426,20 +394,14 @@ types:
         enum: dummy_security_flag
         doc: 'Dummy Security Flag'
       - id: second_filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: stamp_duty_flag
         type: u1
         enum: stamp_duty_flag
         doc: 'Indicator for stamp duty requirement'
       - id: third_filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: listing_date
         type: u4
@@ -454,10 +416,7 @@ types:
         pad-right: 0x20
         doc: 'Free text associated to the security. When there is no free text, spaces are present instead'
       - id: filler_62
-        type: str
         size: 62
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: pos_flag
         type: u1
@@ -473,10 +432,7 @@ types:
         type: u4
         doc: 'Security code of the corresponding Domain Settlement Counter. Value is 0 if the security itself is already the domain settlement counter'
       - id: filler_37
-        type: str
         size: 37
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: efn_flag
         type: u1
@@ -489,10 +445,7 @@ types:
         type: decimal_u4_3
         doc: 'Coupon rate of a bond security. 3 implied decimal places. Implied decimal with scale 1e-3'
       - id: fourth_filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: face_value
         type: u8
@@ -514,10 +467,7 @@ types:
         enum: investor_type
         doc: 'Investor type of a bond security'
       - id: filler_44
-        type: str
         size: 44
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: conversion_ratio
         type: decimal_u4_3
@@ -540,10 +490,7 @@ types:
         enum: style
         doc: 'Style of the warrant'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: warrant_type
         type: u1
@@ -565,10 +512,7 @@ types:
         type: u4
         doc: 'Number of warrants per entitlement. Not applicable if Entitlement = 0'
       - id: filler_63
-        type: str
         size: 63
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_underlying_security
         type: u2
@@ -584,10 +528,7 @@ types:
         type: u4
         doc: '5-digit code identifying the underlying security'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   liquidity_provider_message:
     seq:
@@ -616,19 +557,13 @@ types:
         pad-right: 0x20
         doc: 'Base currency code of the market segment'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: currency_factor
         type: u2
         doc: 'Currency factor conversion. A non-zero value n means all price fields for this security should be interpreted as a value equal to the price multiplied by 10^n'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: currency_rate
         type: u4
@@ -691,10 +626,7 @@ types:
         pad-right: 0x20
         doc: 'Base currency code of the market segment'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: turnover
         type: decimal_s8_3
@@ -716,10 +648,7 @@ types:
         pad-right: 0x20
         doc: 'Market segment identifier'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: trading_session_sub_id
         type: u1
@@ -734,10 +663,7 @@ types:
         enum: trading_ses_control_flag
         doc: 'Indicates how control of trading session and sub-session transitions are performed'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: start_date_time
         type: u8
@@ -755,10 +681,7 @@ types:
         enum: suspension_indicator
         doc: 'Indicate whether the security is currently halted/suspended for trading. ''Resume'' means the security is now available for trading'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   trade_message:
     seq:
@@ -779,10 +702,7 @@ types:
         enum: trd_type
         doc: 'Public trade type'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: trade_time
         type: u8

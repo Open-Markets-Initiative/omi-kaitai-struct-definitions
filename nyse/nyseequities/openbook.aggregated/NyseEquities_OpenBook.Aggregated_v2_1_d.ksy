@@ -344,12 +344,6 @@ types:
         doc: 'The last symbol sequence number sent for this symbol. The refresh is the symbol state of this symbol as of this symbol sequence number'
   request_response_message:
     seq:
-      - id: msg_size
-        type: u2
-        doc: 'Size of the message: 21 Bytes'
-      - id: msg_type
-        type: u2
-        doc: 'This field identifies the type of message. 11 - Request Response message'
       - id: request_seq_num
         type: u4
         doc: 'The sequence number of the request message sent by the client. This can be used by the client to couple this response with the original request message'
@@ -377,12 +371,6 @@ types:
         doc: 'The ID of the client making the request. This field is up to 9 characters, null terminated'
   orderbook_snapshot_message:
     seq:
-      - id: msg_size
-        type: u2
-        doc: 'Size of the message: 21 Bytes'
-      - id: msg_type
-        type: u2
-        doc: 'This field identifies the type of message. 11 - Request Response message'
       - id: source_time
         type: u4
         doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH)'
@@ -413,11 +401,13 @@ types:
       - id: mpv
         type: u2
         doc: 'This field contains the minimum price variation'
-      - id: update_count
+      - id: num_snapshot_price_point
         type: u1
         doc: 'Number of updates. Indicates number of times the following group of fields (Price, Volume, Side, NumOrders) will be repeated in the message. Default value is 1'
       - id: snapshot_price_point
         type: snapshot_price_point
+        repeat: expr
+        repeat-expr: num_snapshot_price_point
         doc: 'Snapshot Message Price Point'
   snapshot_price_point:
     seq:
@@ -436,12 +426,6 @@ types:
         doc: 'This field contains the number of orders at the current price point'
   orderbook_delta_update_message:
     seq:
-      - id: msg_size
-        type: u2
-        doc: 'Size of the message: 21 Bytes'
-      - id: msg_type
-        type: u2
-        doc: 'This field identifies the type of message. 11 - Request Response message'
       - id: source_time
         type: u4
         doc: 'This field specifies the time when the msg was generated in the order book. The number represents the number of seconds in UTC time (EPOCH)'
@@ -461,11 +445,13 @@ types:
       - id: remaining_count
         type: u2
         doc: 'Number of updates remaining in the event'
-      - id: update_count
+      - id: num_delta_price_point
         type: u1
         doc: 'Number of updates. Indicates number of times the following group of fields (Price, Volume, Side, NumOrders) will be repeated in the message. Default value is 1'
       - id: delta_price_point
         type: delta_price_point
+        repeat: expr
+        repeat-expr: num_delta_price_point
         doc: 'Delta Message Price Point'
   delta_price_point:
     seq:

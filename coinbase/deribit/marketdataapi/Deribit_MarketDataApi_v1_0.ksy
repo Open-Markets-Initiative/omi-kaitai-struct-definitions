@@ -250,6 +250,9 @@ types:
       - id: threshold_price
         type: decimal_s8_9
         doc: 'thresholdPrice. Implied decimal with scale 1e-9'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   instrument_definition_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -268,6 +271,9 @@ types:
       - id: ratio
         type: s1
         doc: 'ratio'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   index_definition_message:
     seq:
       - id: index_id

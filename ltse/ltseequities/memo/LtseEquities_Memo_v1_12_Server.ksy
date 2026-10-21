@@ -285,6 +285,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 133
+        doc: 'Bytes the stated block holds beyond the 133 this version reads'
   exec_inst:
     seq:
       - id: reserved_13
@@ -420,6 +423,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 141
+        doc: 'Bytes the stated block holds beyond the 141 this version reads'
   execution_report_rejected_message:
     seq:
       - id: sending_time
@@ -458,6 +464,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   execution_report_trade_message:
     seq:
       - id: sending_time
@@ -512,6 +521,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'SecurityGroup'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 84
+        doc: 'Bytes the stated block holds beyond the 84 this version reads'
   execution_report_pending_cancel_message:
     seq:
       - id: sending_time
@@ -552,6 +564,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 81
+        doc: 'Bytes the stated block holds beyond the 81 this version reads'
   pending_mass_cancel_message:
     seq:
       - id: sending_time
@@ -583,6 +598,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   execution_report_canceled_message:
     seq:
       - id: sending_time
@@ -621,6 +639,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 78
+        doc: 'Bytes the stated block holds beyond the 78 this version reads'
   mass_cancel_done_message:
     seq:
       - id: sending_time
@@ -631,6 +652,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   execution_report_pending_replace_message:
     seq:
       - id: sending_time
@@ -694,6 +718,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 104
+        doc: 'Bytes the stated block holds beyond the 104 this version reads'
   execution_report_replaced_message:
     seq:
       - id: sending_time
@@ -760,6 +787,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 112
+        doc: 'Bytes the stated block holds beyond the 112 this version reads'
   execution_report_trade_correction_message:
     seq:
       - id: sending_time
@@ -806,6 +836,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'SecurityGroup'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 82
+        doc: 'Bytes the stated block holds beyond the 82 this version reads'
   execution_report_trade_break_message:
     seq:
       - id: sending_time
@@ -846,6 +879,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'SecurityGroup'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   execution_report_restatement_message:
     seq:
       - id: sending_time
@@ -891,6 +927,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
   order_cancel_reject_message:
     seq:
       - id: sending_time
@@ -912,6 +951,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -947,6 +989,9 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

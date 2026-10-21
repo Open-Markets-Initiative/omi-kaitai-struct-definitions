@@ -57,9 +57,7 @@ types:
         type: u1
         doc: 'Number of messages included in the packet'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved filler byte (OMD does not use payload compression)'
       - id: seq_num
         type: u4
@@ -121,10 +119,7 @@ types:
         pad-right: 0x20
         doc: 'Currency code of Index Turnover. Can be blank if not defined by third party index compilers'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   index_data_message:
     seq:
@@ -179,10 +174,7 @@ types:
         enum: exception
         doc: 'Exception indicator'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   refresh_complete_message:
     seq:

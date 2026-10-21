@@ -160,6 +160,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   active_risk_threshold_change_request_message:
     seq:
       - id: cl_ord_id_active_risk_threshold_change_request_cl_ord_id
@@ -176,6 +179,9 @@ types:
       - id: threshold_quantity
         type: u4
         doc: 'ThresholdQuantity'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   active_risk_acknowledgement_request_message:
     seq:
       - id: cl_ord_id_active_risk_acknowledgement_request_cl_ord_id
@@ -196,6 +202,9 @@ types:
       - id: quantity
         type: u4
         doc: 'Quantity'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   cp_volume_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_volume_threshold_change_request_cl_ord_id
@@ -218,6 +227,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_executed_notional_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_executed_notional_threshold_change_request_cl_ord_id
@@ -240,6 +252,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   cp_total_executions_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_total_executions_threshold_change_request_cl_ord_id
@@ -262,6 +277,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_percent_outstanding_contracts_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_percent_outstanding_contracts_threshold_change_request_cl_ord_id
@@ -281,6 +299,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   cp_breach_count_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_breach_count_threshold_change_request_cl_ord_id
@@ -303,6 +324,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   manual_cp_breach_trigger_request_message:
     seq:
       - id: cl_ord_id_manual_cp_breach_trigger_request_cl_ord_id
@@ -322,6 +346,9 @@ types:
       - id: send_cancels
         type: u1_nullable
         doc: 'SendCancels. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   cp_clear_breach_request_message:
     seq:
       - id: cl_ord_id_cp_clear_breach_request_cl_ord_id
@@ -332,6 +359,9 @@ types:
       - id: breach_id
         type: u8
         doc: 'BreachID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   single_order_allow_iso_orders_change_request_message:
     seq:
       - id: cl_ord_id_single_order_allow_iso_orders_change_request_cl_ord_id
@@ -352,6 +382,9 @@ types:
         type: u1
         enum: allow_iso_orders
         doc: 'AllowISOOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_allow_orders_in_crossed_market_change_request_message:
     seq:
       - id: cl_ord_id_single_order_allow_orders_in_crossed_market_change_request_cl_ord_id
@@ -372,6 +405,9 @@ types:
         type: u1
         enum: allow_orders
         doc: 'AllowOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_max_notional_change_request_message:
     seq:
       - id: cl_ord_id_single_order_max_notional_change_request_cl_ord_id
@@ -391,6 +427,9 @@ types:
       - id: max_notional_in_dollars
         type: u8
         doc: 'MaxNotionalInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   single_order_max_contracts_change_request_message:
     seq:
       - id: cl_ord_id_single_order_max_contracts_change_request_cl_ord_id
@@ -410,6 +449,9 @@ types:
       - id: max_contracts
         type: u4
         doc: 'MaxContracts'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   single_order_allow_market_orders_change_request_message:
     seq:
       - id: cl_ord_id_single_order_allow_market_orders_change_request_cl_ord_id
@@ -430,6 +472,9 @@ types:
         type: u1
         enum: allow_market_orders
         doc: 'AllowMarketOrders'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   single_order_restricted_underlier_change_request_message:
     seq:
       - id: cl_ord_id_single_order_restricted_underlier_change_request_cl_ord_id
@@ -452,6 +497,9 @@ types:
         type: u1
         enum: restricted
         doc: 'Restricted'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   cp_gross_notional_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_gross_notional_threshold_change_request_cl_ord_id
@@ -471,6 +519,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_gross_notional_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_market_order_gross_notional_threshold_change_request_cl_ord_id
@@ -490,6 +541,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_net_notional_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_net_notional_threshold_change_request_cl_ord_id
@@ -509,6 +563,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_market_order_net_notional_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_market_order_net_notional_threshold_change_request_cl_ord_id
@@ -528,6 +585,9 @@ types:
       - id: price_in_dollars
         type: u8
         doc: 'PriceInDollars'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_duplicate_order_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_duplicate_order_threshold_change_request_cl_ord_id
@@ -553,6 +613,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   cp_order_rate_threshold_change_request_message:
     seq:
       - id: cl_ord_id_cp_order_rate_threshold_change_request_cl_ord_id
@@ -575,6 +638,9 @@ types:
       - id: period_in_milli_seconds
         type: u4
         doc: 'PeriodInMilliSeconds'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   cp_clear_all_breaches_request_message:
     seq:
       - id: cl_ord_id_cp_clear_all_breaches_request_cl_ord_id
@@ -582,6 +648,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   cp_clear_all_breaches_by_efid_or_underlier_request_message:
     seq:
       - id: cl_ord_id_cp_clear_all_breaches_by_efid_or_underlier_request_cl_ord_id
@@ -595,6 +664,9 @@ types:
       - id: efid_cp_clear_all_breaches_by_efid_or_underlier_request_efid_optional
         type: str_4_nullable
         doc: 'EFID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   active_risk_acknowledge_all_request_message:
     seq:
       - id: cl_ord_id_active_risk_acknowledge_all_request_cl_ord_id
@@ -612,6 +684,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'EFID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   str_6_nullable:
     seq:
       - id: value

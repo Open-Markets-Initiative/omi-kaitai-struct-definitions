@@ -441,6 +441,9 @@ types:
       - id: ask_flags
         type: ask_flags
         doc: 'OrderFlags bit set'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 46
+        doc: 'Bytes the stated block holds beyond the 46 this version reads'
   bid_qty:
     seq:
       - id: mantissa
@@ -656,6 +659,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   fill_qty:
     seq:
       - id: mantissa
@@ -695,6 +701,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   new_order_reject_message:
     seq:
       - id: timestamp
@@ -792,6 +801,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   amend_order_response_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -820,6 +832,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   amend_order_reject_message:
     seq:
       - id: timestamp
@@ -984,6 +999,9 @@ types:
         type: s1
         enum: ask_reject_reason
         doc: 'askRejectReason'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 80
+        doc: 'Bytes the stated block holds beyond the 80 this version reads'
   bid_filled_qty:
     seq:
       - id: mantissa
@@ -1030,6 +1048,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   mass_quote_response_message_ask_fills_groups:
     seq:
       - id: group_size_encoding
@@ -1054,6 +1075,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   mass_quote_response_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -1082,6 +1106,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   mass_quote_reject_message:
     seq:
       - id: timestamp
@@ -1247,6 +1274,9 @@ types:
       - id: flags_fill_flags
         type: flags_fill_flags
         doc: 'FillFlags bit set'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
   flags_fill_flags:
     meta:
       bit-endian: le
@@ -1288,6 +1318,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   orders_canceled_message:
     seq:
       - id: timestamp
@@ -1343,6 +1376,9 @@ types:
       - id: flags_cancel_flags
         type: flags_cancel_flags
         doc: 'CancelFlags bit set'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   flags_cancel_flags:
     meta:
       bit-endian: le
@@ -1423,6 +1459,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   order_placed_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -1451,6 +1490,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   mass_quote_orders_placed_message:
     seq:
       - id: timestamp
@@ -1516,6 +1558,9 @@ types:
         type: s1
         enum: cancel_reason
         doc: 'cancelReason'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 62
+        doc: 'Bytes the stated block holds beyond the 62 this version reads'
   mass_quote_orders_placed_message_fills_groups:
     seq:
       - id: group_size_encoding
@@ -1540,6 +1585,9 @@ types:
       - id: fill_qty
         type: fill_qty
         doc: 'fills'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   mass_quote_orders_placed_message_legs_groups:
     seq:
       - id: group_size_encoding
@@ -1568,6 +1616,9 @@ types:
         type: s1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   mass_quote_mmp_triggered_message:
     seq:
       - id: timestamp

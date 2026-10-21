@@ -137,11 +137,17 @@ types:
         type: s1
         enum: reset_seq_num
         doc: 'resetSeqNum'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 49
+        doc: 'Bytes the stated block holds beyond the 49 this version reads'
   logon_conf_message:
     seq:
       - id: heartbeat_interval_seconds
         type: s4
         doc: 'heartbeatIntervalSeconds'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   logout_message:
     seq:
       - id: reason
@@ -149,6 +155,9 @@ types:
         size: 64
         encoding: ASCII
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   logged_out_message:
     seq:
       - id: reason
@@ -156,16 +165,25 @@ types:
         size: 64
         encoding: ASCII
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   heartbeat_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   test_request_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   resend_request_message:
     seq:
       - id: from_sequence_number
@@ -174,6 +192,9 @@ types:
       - id: to_sequence_number
         type: u4
         doc: 'toSequenceNumber'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   gap_fill_message:
     seq:
       - id: new_sequence_number
@@ -182,6 +203,9 @@ types:
       - id: gap_fill_padding
         type: u4
         doc: 'padding'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   order_message:
     seq:
       - id: order_payload
@@ -226,6 +250,9 @@ types:
       - id: request_time
         type: nanosecond_timestamp
         doc: 'requestTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
       - id: data
         type: data
         doc: 'data data struct'
@@ -251,6 +278,9 @@ types:
         type: s1
         enum: trading_instrument_status
         doc: 'status'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
       - id: data
         type: data
         doc: 'data data struct'
@@ -259,6 +289,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   instrument_info_message:
     seq:
       - id: correlation_id
@@ -287,6 +320,9 @@ types:
         size: 32
         encoding: ASCII
         doc: 'Instrument symbol'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   set_account_message:
     seq:
       - id: correlation_id
@@ -297,6 +333,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'Account, a zero padded ascii string'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   set_trader_message:
     seq:
       - id: correlation_id
@@ -307,11 +346,17 @@ types:
         size: 16
         encoding: ASCII
         doc: 'Trader, a zero padded ascii string'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   set_ack_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   new_order_message:
     seq:
       - id: client_order_id
@@ -339,6 +384,9 @@ types:
       - id: good_til_date
         type: u2_nullable
         doc: 'goodTilDate. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   new_ioc_order_message:
     seq:
       - id: client_order_id
@@ -363,6 +411,9 @@ types:
         type: s1
         enum: side
         doc: '1 buy, -1 sell'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
   order_entered_message:
     seq:
       - id: timestamp
@@ -383,6 +434,9 @@ types:
       - id: receive_time
         type: nanosecond_timestamp
         doc: 'receiveTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   replace_order_message:
     seq:
       - id: client_order_id
@@ -406,6 +460,9 @@ types:
       - id: time_in_force
         type: s1_nullable
         doc: 'timeInForce. Nullable, No Value = -128'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   obsolete_stream_order_message:
     seq:
       - id: client_order_id
@@ -430,6 +487,9 @@ types:
         type: s1
         enum: side
         doc: '1 buy, -1 sell'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   order_reject_message:
     seq:
       - id: timestamp
@@ -453,6 +513,9 @@ types:
         size: 47
         encoding: ASCII
         doc: 'details'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 80
+        doc: 'Bytes the stated block holds beyond the 80 this version reads'
   order_replaced_message:
     seq:
       - id: timestamp
@@ -482,6 +545,9 @@ types:
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
   cancel_order_message:
     seq:
       - id: client_order_id
@@ -493,6 +559,9 @@ types:
       - id: instrument_id
         type: s4
         doc: 'instrumentId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   order_canceled_message:
     seq:
       - id: timestamp
@@ -523,6 +592,9 @@ types:
         type: u1
         enum: cancel_reason
         doc: 'cancelReason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
   cancel_order_reject_message:
     seq:
       - id: timestamp
@@ -546,6 +618,9 @@ types:
         size: 31
         encoding: ASCII
         doc: 'details'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   mass_cancel_order_message:
     seq:
       - id: correlation_id
@@ -569,6 +644,9 @@ types:
         type: s1
         enum: request_trading_lock
         doc: 'requestTradingLock'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   mass_cancel_order_ack_message:
     seq:
       - id: timestamp
@@ -591,6 +669,9 @@ types:
         type: s1
         enum: trading_lock_applied
         doc: 'tradingLockApplied'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   mass_cancel_order_reject_message:
     seq:
       - id: timestamp
@@ -604,6 +685,9 @@ types:
         size: 32
         encoding: ASCII
         doc: 'errorMessage'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   unlock_trading_message:
     seq:
       - id: correlation_id
@@ -613,6 +697,9 @@ types:
         type: s1
         enum: current_session_only
         doc: 'currentSessionOnly'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   unlock_trading_ack_message:
     seq:
       - id: timestamp
@@ -624,6 +711,9 @@ types:
       - id: num_users_affected
         type: s4
         doc: 'numUsersAffected'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   unlock_trading_reject_message:
     seq:
       - id: timestamp
@@ -637,6 +727,9 @@ types:
         size: 32
         encoding: ASCII
         doc: 'errorMessage'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   order_filled_message:
     seq:
       - id: timestamp
@@ -679,6 +772,9 @@ types:
         type: s1
         enum: is_aggressor
         doc: 'isAggressor'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 81
+        doc: 'Bytes the stated block holds beyond the 81 this version reads'
   spread_order_filled_message:
     seq:
       - id: timestamp
@@ -727,11 +823,17 @@ types:
         type: s1
         enum: is_aggressor
         doc: 'isAggressor'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 97
+        doc: 'Bytes the stated block holds beyond the 97 this version reads'
   last_exec_id_request_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   last_exec_id_message:
     seq:
       - id: timestamp
@@ -743,6 +845,9 @@ types:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   event_resend_request_message:
     seq:
       - id: correlation_id
@@ -754,6 +859,9 @@ types:
       - id: end_exec_id
         type: s8
         doc: 'endExecId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   event_resend_complete_message:
     seq:
       - id: correlation_id
@@ -762,6 +870,9 @@ types:
       - id: resent_event_count
         type: s4
         doc: 'resentEventCount'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   event_resend_reject_message:
     seq:
       - id: correlation_id
@@ -776,6 +887,9 @@ types:
         size: 55
         encoding: ASCII
         doc: 'details'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

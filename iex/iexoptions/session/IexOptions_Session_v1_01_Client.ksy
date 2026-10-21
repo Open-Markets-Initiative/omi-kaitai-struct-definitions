@@ -97,6 +97,9 @@ types:
         size: 32
         encoding: ASCII
         doc: 'token'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   sequenced_message_header_message:
     seq:
       - id: subsession_id
@@ -108,6 +111,9 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   subsession_join_message:
     seq:
       - id: subsession_id
@@ -119,11 +125,17 @@ types:
       - id: end_sequence
         type: u4
         doc: 'endSequence'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   subsession_leave_message:
     seq:
       - id: subsession_id
         type: u8
         doc: 'subsessionId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
 
 enums:
   template_id:

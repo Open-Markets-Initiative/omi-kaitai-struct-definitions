@@ -129,11 +129,17 @@ types:
         type: s1
         enum: reset_seq_num
         doc: 'resetSeqNum'
+      - id: block_extension
+        size: _parent.message_header.block_length - 49
+        doc: 'Bytes the stated block holds beyond the 49 this version reads'
   logon_conf_message:
     seq:
       - id: heartbeat_interval_seconds
         type: s4
         doc: 'heartbeatIntervalSeconds'
+      - id: block_extension
+        size: _parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   logout_message:
     seq:
       - id: reason_string_64
@@ -141,6 +147,9 @@ types:
         size: 64
         encoding: ASCII
         doc: 'reason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   logged_out_message:
     seq:
       - id: reason_string_64
@@ -148,16 +157,25 @@ types:
         size: 64
         encoding: ASCII
         doc: 'reason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   heartbeat_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   test_request_message:
     seq:
       - id: correlation_id
         type: s8
         doc: 'correlationId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   resend_request_message:
     seq:
       - id: from_sequence_number
@@ -166,6 +184,9 @@ types:
       - id: to_sequence_number
         type: u4
         doc: 'toSequenceNumber'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   gap_fill_message:
     seq:
       - id: new_sequence_number
@@ -174,6 +195,9 @@ types:
       - id: gap_fill_padding
         type: u4
         doc: 'padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   reject_message:
     seq:
       - id: ref_sequence_number
@@ -188,6 +212,9 @@ types:
         size: 64
         encoding: ASCII
         doc: 'details'
+      - id: block_extension
+        size: _parent.message_header.block_length - 72
+        doc: 'Bytes the stated block holds beyond the 72 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

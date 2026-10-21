@@ -232,11 +232,11 @@ types:
         enum: security_status
         doc: 'Current security status'
       - id: par_value
-        type: u8
-        doc: 'Par value with 6 decimal places assumed. Zero indicates not available'
+        type: decimal_u8_6
+        doc: 'Par value with 6 decimal places assumed. Zero indicates not available. Implied decimal with scale 1e-6'
       - id: coupon
-        type: u8
-        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only'
+        type: decimal_u8_6
+        doc: 'Coupon rate with 6 decimal places assumed. Fixed income only. Implied decimal with scale 1e-6'
       - id: maturity_date_milli
         type: u8
         doc: 'Maturity date in milliseconds since UTC epoch. Fixed income only'
@@ -244,8 +244,8 @@ types:
         type: u8
         doc: 'Callable date in milliseconds since UTC epoch. Fixed income only'
       - id: adr_ratio
-        type: u8
-        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only'
+        type: decimal_u8_6
+        doc: 'ADR ratio with 6 decimal places assumed. Equity ADR/GDR only. Implied decimal with scale 1e-6'
       - id: adr_level
         type: str
         size: 15
@@ -330,6 +330,13 @@ types:
         value: time / 1000 % 60
       millisecond:
         value: time % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   message_type:

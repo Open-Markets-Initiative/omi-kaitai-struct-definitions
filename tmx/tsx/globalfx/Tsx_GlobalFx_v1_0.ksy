@@ -78,8 +78,8 @@ types:
         type: u4
         doc: 'Sequence Number within this Stream Id'
       - id: valid_for_seconds
-        type: u2_nullable
-        doc: 'Time to live for the prices in this datagram, zero if periodic refresh is not enabled. Nullable, No Value = 0'
+        type: u2
+        doc: 'Time to live for the prices in this datagram, zero if periodic refresh is not enabled'
       - id: unused_2
         size: 1
         doc: 'Reserved for future use'
@@ -147,13 +147,6 @@ types:
         value: time / 1000 % 1000
       microsecond:
         value: time % 1000
-  u2_nullable:
-    seq:
-      - id: value
-        type: u2
-    instances:
-      is_null:
-        value: value == 0
 
 enums:
   tier_status:

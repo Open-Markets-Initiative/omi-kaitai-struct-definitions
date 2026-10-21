@@ -147,6 +147,9 @@ types:
       - id: incremental_message_instructions
         type: incremental_message_instructions
         doc: 'IncrementalMessageInstructions bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   incremental_message_instructions:
     meta:
       bit-endian: le
@@ -208,6 +211,9 @@ types:
       - id: total_volume_quantity
         type: decimal_s8_0
         doc: 'TotalVolume. Implied decimal with scale 1e0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
       - id: incremental_trade_groups
         type: incremental_trade_groups
         doc: 'NoTrades Block'
@@ -253,6 +259,9 @@ types:
       - id: trade_conditions
         type: trade_conditions
         doc: 'TradeConditions bit set'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 43
+        doc: 'Bytes the stated block holds beyond the 43 this version reads'
   trade_conditions:
     meta:
       bit-endian: le
@@ -299,6 +308,9 @@ types:
       - id: total_volume_quantity
         type: decimal_s8_0
         doc: 'TotalVolume. Implied decimal with scale 1e0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
       - id: trade_correct_groups
         type: trade_correct_groups
         doc: 'NoTrades Block'
@@ -343,6 +355,9 @@ types:
       - id: trade_conditions
         type: trade_conditions
         doc: 'TradeConditions bit set'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   trade_bust_message:
     seq:
       - id: instrument_id
@@ -376,6 +391,9 @@ types:
       - id: total_volume_quantity
         type: decimal_s8_0
         doc: 'TotalVolume. Implied decimal with scale 1e0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
       - id: trade_bust_groups
         type: trade_bust_groups
         doc: 'NoTrades Block'
@@ -416,6 +434,9 @@ types:
       - id: trade_conditions
         type: trade_conditions
         doc: 'TradeConditions bit set'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   order_book_incremental_message:
     seq:
       - id: instrument_id
@@ -437,6 +458,9 @@ types:
       - id: incremental_message_instructions
         type: incremental_message_instructions
         doc: 'IncrementalMessageInstructions bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
       - id: incremetal_orders_groups
         type: incremetal_orders_groups
         doc: 'NoOrders Block'
@@ -478,6 +502,9 @@ types:
       - id: order_attributes
         type: order_attributes
         doc: 'OrderAttributes bit set'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   order_attributes:
     meta:
       bit-endian: le
@@ -535,6 +562,9 @@ types:
         type: u1
         enum: settlement_price_type
         doc: 'SettlementPriceType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
   order_book_snapshot_message:
     seq:
       - id: instrument_id
@@ -562,6 +592,9 @@ types:
       - id: last_incremental_message_seq
         type: s8
         doc: 'LastIncrementalMessageSeq'
+      - id: block_extension
+        size: _parent.message_header.block_length - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
       - id: snaphot_orders_groups
         type: snaphot_orders_groups
         doc: 'NoOrders Block'
@@ -633,6 +666,9 @@ types:
       - id: time
         type: s8
         doc: 'Trade timestamp'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 43
+        doc: 'Bytes the stated block holds beyond the 43 this version reads'
   market_summary_snapshot_message:
     seq:
       - id: instrument_id
@@ -698,6 +734,9 @@ types:
         type: u1
         enum: settlement_price_type
         doc: 'SettlementPriceType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 119
+        doc: 'Bytes the stated block holds beyond the 119 this version reads'
   index_value_snapshot_message:
     seq:
       - id: instrument_id
@@ -735,6 +774,9 @@ types:
       - id: close_price
         type: decimal_s8_7_nullable
         doc: 'ClosePrice. Implied decimal with scale 1e-7. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 80
+        doc: 'Bytes the stated block holds beyond the 80 this version reads'
   single_instrument_definition_incremental_v_2_message:
     seq:
       - id: instrument_id
@@ -837,6 +879,9 @@ types:
         type: u1
         enum: delivery
         doc: 'Delivery'
+      - id: block_extension
+        size: _parent.message_header.block_length - 262
+        doc: 'Bytes the stated block holds beyond the 262 this version reads'
   multileg_definition_incremental_v_2_message:
     seq:
       - id: instrument_id
@@ -908,6 +953,9 @@ types:
         type: u1
         enum: strategy_type
         doc: 'StrategyType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 301
+        doc: 'Bytes the stated block holds beyond the 301 this version reads'
       - id: legs_groups
         type: legs_groups
         doc: 'NoLegs Block'
@@ -943,6 +991,9 @@ types:
         type: u1
         enum: leg_side
         doc: 'Leg side'
+      - id: block_extension
+        size: _parent.group_dimension.block_length - 46
+        doc: 'Bytes the stated block holds beyond the 46 this version reads'
   single_instrument_definition_snapshot_v_2_message:
     seq:
       - id: instrument_id
@@ -1047,6 +1098,9 @@ types:
         type: u1
         enum: delivery
         doc: 'Delivery'
+      - id: block_extension
+        size: _parent.message_header.block_length - 273
+        doc: 'Bytes the stated block holds beyond the 273 this version reads'
   multileg_definition_snapshot_v_2_message:
     seq:
       - id: instrument_id
@@ -1120,6 +1174,9 @@ types:
         type: u1
         enum: strategy_type
         doc: 'StrategyType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 312
+        doc: 'Bytes the stated block holds beyond the 312 this version reads'
       - id: legs_groups
         type: legs_groups
         doc: 'NoLegs Block'

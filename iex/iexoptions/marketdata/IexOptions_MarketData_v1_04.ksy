@@ -126,6 +126,9 @@ types:
         type: s1
         enum: close_indicator
         doc: 'closeIndicator'
+      - id: block_extension
+        size: _parent.message_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
   symbol_mapping_message:
     seq:
       - id: time
@@ -165,6 +168,9 @@ types:
         type: s1
         enum: orp_enablement
         doc: 'orpEnablement'
+      - id: block_extension
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   instrument_clear_message:
     seq:
       - id: time
@@ -173,6 +179,9 @@ types:
       - id: instrument_id
         type: u4
         doc: 'instrumentId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   trading_status_message:
     seq:
       - id: time
@@ -185,6 +194,9 @@ types:
         type: s1
         enum: trading_status
         doc: 'tradingStatus'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   options_auction_summary_message:
     seq:
       - id: time
@@ -203,6 +215,9 @@ types:
       - id: contracts
         type: u4
         doc: 'contracts'
+      - id: block_extension
+        size: _parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   options_auction_width_update_message:
     seq:
       - id: time
@@ -214,6 +229,9 @@ types:
       - id: quote_relief_multiplier
         type: u1
         doc: 'quoteReliefMultiplier'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   liquidity_event_notification_message:
     seq:
       - id: time
@@ -251,6 +269,9 @@ types:
       - id: event_end_offset
         type: u4
         doc: 'eventEndOffset'
+      - id: block_extension
+        size: _parent.message_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
   liquidity_event_execution_message:
     seq:
       - id: time
@@ -271,6 +292,9 @@ types:
       - id: contracts
         type: u4
         doc: 'contracts'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   liquidity_event_cancel_message:
     seq:
       - id: time
@@ -282,6 +306,9 @@ types:
       - id: event_id
         type: u4
         doc: 'eventId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   add_order_non_customer_message:
     seq:
       - id: time
@@ -303,6 +330,9 @@ types:
       - id: contracts
         type: u4
         doc: 'contracts'
+      - id: block_extension
+        size: _parent.message_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   add_order_customer_message:
     seq:
       - id: time
@@ -328,6 +358,9 @@ types:
         type: s1
         enum: customer_indicator
         doc: 'customerIndicator'
+      - id: block_extension
+        size: _parent.message_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   modify_order_message:
     seq:
       - id: time
@@ -349,6 +382,9 @@ types:
         type: s1
         enum: mod_flag
         doc: 'modFlag'
+      - id: block_extension
+        size: _parent.message_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   delete_order_message:
     seq:
       - id: time
@@ -360,6 +396,9 @@ types:
       - id: order_id
         type: u8
         doc: 'orderId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   order_execution_message:
     seq:
       - id: time
@@ -388,6 +427,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'tradeCondition'
+      - id: block_extension
+        size: _parent.message_header.block_length - 45
+        doc: 'Bytes the stated block holds beyond the 45 this version reads'
   deep_trade_break_message:
     seq:
       - id: time
@@ -399,6 +441,9 @@ types:
       - id: trade_id
         type: u8
         doc: 'tradeId'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   quote_update_no_customer_interest_message:
     seq:
       - id: time
@@ -423,6 +468,9 @@ types:
         type: s1
         enum: status_status_type
         doc: 'status'
+      - id: block_extension
+        size: _parent.message_header.block_length - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
   quote_update_customer_interest_message:
     seq:
       - id: time
@@ -453,6 +501,9 @@ types:
         type: s1
         enum: status_status_type
         doc: 'status'
+      - id: block_extension
+        size: _parent.message_header.block_length - 45
+        doc: 'Bytes the stated block holds beyond the 45 this version reads'
   trade_message:
     seq:
       - id: time
@@ -475,6 +526,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'tradeCondition'
+      - id: block_extension
+        size: _parent.message_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   trade_correction_message:
     seq:
       - id: time
@@ -500,6 +554,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'tradeCondition'
+      - id: block_extension
+        size: _parent.message_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   tops_trade_break_message:
     seq:
       - id: time
@@ -516,6 +573,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'tradeCondition'
+      - id: block_extension
+        size: _parent.message_header.block_length - 21
+        doc: 'Bytes the stated block holds beyond the 21 this version reads'
   heartbeat_message:
     seq:
       - id: channel_id
@@ -524,6 +584,9 @@ types:
       - id: sequence_number
         type: u8
         doc: 'sequenceNumber'
+      - id: block_extension
+        size: _parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   sequenced_packet_message:
     seq:
       - id: channel_id
@@ -535,6 +598,9 @@ types:
       - id: sequence_time
         type: u8
         doc: 'sequenceTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
       - id: sequenced_packet_message_messages_groups
         type: sequenced_packet_message_messages_groups
         doc: 'messages Block'
@@ -576,6 +642,9 @@ types:
       - id: sequence_number
         type: u8
         doc: 'sequenceNumber'
+      - id: block_extension
+        size: _parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   sequence_number_reset_message:
     seq:
       - id: channel_id
@@ -587,6 +656,9 @@ types:
       - id: sequence_time
         type: u8
         doc: 'sequenceTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   retransmission_request_message:
     seq:
       - id: begin_sequence
@@ -610,6 +682,9 @@ types:
         type: s1
         enum: feed
         doc: 'feed'
+      - id: block_extension
+        size: _parent.message_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   retransmission_response_message:
     seq:
       - id: logon_id
@@ -631,6 +706,9 @@ types:
         type: u1
         enum: status_retransmission_status_type
         doc: 'status'
+      - id: block_extension
+        size: _parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   snapshot_header_message:
     seq:
       - id: snapshot_id
@@ -645,6 +723,9 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'asOfSequenceNumber'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   decimal_s8_8:
     seq:
       - id: mantissa

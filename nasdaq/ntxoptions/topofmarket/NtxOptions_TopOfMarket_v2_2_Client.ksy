@@ -185,6 +185,8 @@ enums:
     0x4d:
       id: 'end_of_replay_sequence_message'
       doc: 'The End of replay Sequence message reflects the sequence number at the time replay of existing messages is complete.'
+    0x61: 'best_ask_update_short_form_message'
+    0x41: 'best_ask_update_long_form_message'
   event_code:
     0x4f:
       id: 'start_of_messages'
@@ -304,4 +306,6 @@ enums:
     0x58:
       id: 'broken_trade_report_message'
       doc: 'Broken Trade Report Message indicates that a previously reported trade has been broken.'
+    0x61: 'best_ask_update_short_form_message'
+    0x41: 'best_ask_update_long_form_message'
 

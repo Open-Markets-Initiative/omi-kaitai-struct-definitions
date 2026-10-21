@@ -204,6 +204,9 @@ types:
       - id: ioi_id_optional
         type: s8_nullable
         doc: 'iOIID. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 74
+        doc: 'Bytes the stated block holds beyond the 74 this version reads'
       - id: free_text_groups
         type: free_text_groups
         doc: 'FreeTextSection Block'
@@ -323,6 +326,9 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   mifid_short_codes_groups:
     seq:
       - id: group_size_encoding
@@ -344,6 +350,9 @@ types:
       - id: client_identification_shortcode
         type: s4_nullable
         doc: 'clientIdentificationShortcode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   order_optional_fields_groups:
     seq:
       - id: group_size_encoding
@@ -389,6 +398,9 @@ types:
       - id: stop_triggered_time_in_force
         type: u1_nullable
         doc: 'stopTriggeredTimeInForce. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   trading_session:
     meta:
       bit-endian: le
@@ -447,6 +459,9 @@ types:
       - id: trading_capacity_cross
         type: u1_nullable
         doc: 'tradingCapacityCross. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   open_close:
     meta:
       bit-endian: le
@@ -513,6 +528,9 @@ types:
       - id: long_client_id
         type: str_16_nullable
         doc: 'longClientID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   ack_message:
     seq:
       - id: msg_seq_num
@@ -582,6 +600,9 @@ types:
       - id: ack_qualifiers
         type: ack_qualifiers
         doc: 'AckQualifiers_set bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 125
+        doc: 'Bytes the stated block holds beyond the 125 this version reads'
       - id: mifid_fields_groups
         type: mifid_fields_groups
         doc: 'MiFIDFields Block'
@@ -634,6 +655,9 @@ types:
       - id: mifid_indicators_optional
         type: mifid_indicators_optional
         doc: 'MiFIDIndicators_set bit set. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   mifid_indicators_optional:
     meta:
       bit-endian: le
@@ -730,6 +754,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 118
+        doc: 'Bytes the stated block holds beyond the 118 this version reads'
       - id: fill_optional_field_groups
         type: fill_optional_field_groups
         doc: 'OptionalFieldsFill Block'
@@ -794,6 +821,9 @@ types:
       - id: underlying_instrument_id
         type: u4_nullable
         doc: 'underlyingInstrumentID. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   fill_strategy_field_groups:
     seq:
       - id: group_size_encoding
@@ -824,6 +854,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   fill_derivatives_field_groups:
     seq:
       - id: group_size_encoding
@@ -848,6 +881,9 @@ types:
       - id: final_execution_id
         type: u4_nullable
         doc: 'finalExecutionID. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   kill_message:
     seq:
       - id: msg_seq_num
@@ -902,6 +938,9 @@ types:
       - id: ack_qualifiers_optional
         type: ack_qualifiers_optional
         doc: 'AckQualifiers_set bit set. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
       - id: mifid_fields_groups
         type: mifid_fields_groups
         doc: 'MiFIDFields Block'
@@ -1004,6 +1043,9 @@ types:
       - id: stpid
         type: u2_nullable
         doc: 'sTPID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 83
+        doc: 'Bytes the stated block holds beyond the 83 this version reads'
       - id: free_text_groups
         type: free_text_groups
         doc: 'FreeTextSection Block'
@@ -1061,6 +1103,9 @@ types:
       - id: undisclosed_iceberg_type
         type: u1_nullable
         doc: 'undisclosedIcebergType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   cancel_replace_clearing_fields_groups:
     seq:
       - id: group_size_encoding
@@ -1091,6 +1136,9 @@ types:
       - id: clearing_instruction
         type: u2_nullable
         doc: 'clearingInstruction. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   reject_message:
     seq:
       - id: msg_seq_num
@@ -1144,6 +1192,9 @@ types:
       - id: ack_qualifiers_optional
         type: ack_qualifiers_optional
         doc: 'AckQualifiers_set bit set. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 95
+        doc: 'Bytes the stated block holds beyond the 95 this version reads'
       - id: collar_fields_groups
         type: collar_fields_groups
         doc: 'CollarFields Block'
@@ -1168,6 +1219,9 @@ types:
       - id: breached_collar_price
         type: s8_nullable
         doc: 'breachedCollarPrice. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   quotes_message:
     seq:
       - id: cl_msg_seq_num
@@ -1211,6 +1265,9 @@ types:
       - id: stpid
         type: u2_nullable
         doc: 'sTPID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
       - id: mifid_short_codes_groups
         type: mifid_short_codes_groups
         doc: 'MiFIDShortcodes Block'
@@ -1281,6 +1338,9 @@ types:
       - id: free_text
         type: str_18_nullable
         doc: 'freeText. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   quotes_rep_groups:
     seq:
       - id: group_size_encoding
@@ -1312,6 +1372,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
   quote_ack_message:
     seq:
       - id: msg_seq_num
@@ -1360,6 +1423,9 @@ types:
       - id: ack_qualifiers_optional
         type: ack_qualifiers_optional
         doc: 'AckQualifiers_set bit set. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 83
+        doc: 'Bytes the stated block holds beyond the 83 this version reads'
       - id: quote_acks_groups
         type: quote_acks_groups
         doc: 'QuoteAcks Block'
@@ -1400,6 +1466,9 @@ types:
       - id: offer_error_code
         type: u2_nullable
         doc: 'offerErrorCode. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   quote_request_message:
     seq:
       - id: cl_msg_seq_num
@@ -1450,6 +1519,9 @@ types:
       - id: account_type_optional
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 72
+        doc: 'Bytes the stated block holds beyond the 72 this version reads'
   cancel_request_message:
     seq:
       - id: cl_msg_seq_num
@@ -1496,6 +1568,9 @@ types:
       - id: order_category
         type: u1_nullable
         doc: 'orderCategory. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -1560,6 +1635,9 @@ types:
       - id: target_execution_within_firm_short_code
         type: s4_nullable
         doc: 'targetExecutionWithinFirmShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.message_header.block_length - 69
+        doc: 'Bytes the stated block holds beyond the 69 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -1642,6 +1720,9 @@ types:
       - id: target_execution_within_firm_short_code
         type: s4_nullable
         doc: 'targetExecutionWithinFirmShortCode. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.message_header.block_length - 114
+        doc: 'Bytes the stated block holds beyond the 114 this version reads'
       - id: mifid_fields_groups
         type: mifid_fields_groups
         doc: 'MiFIDFields Block'
@@ -1683,6 +1764,9 @@ types:
       - id: order_category
         type: u1_nullable
         doc: 'orderCategory. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   ownership_request_ack_message:
     seq:
       - id: msg_seq_num
@@ -1714,6 +1798,9 @@ types:
       - id: order_category
         type: u1_nullable
         doc: 'orderCategory. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 43
+        doc: 'Bytes the stated block holds beyond the 43 this version reads'
   ownership_request_message:
     seq:
       - id: cl_msg_seq_num
@@ -1758,6 +1845,9 @@ types:
       - id: order_category
         type: u1_nullable
         doc: 'orderCategory. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   trade_bust_notification_message:
     seq:
       - id: msg_seq_num
@@ -1811,6 +1901,9 @@ types:
       - id: parent_trade_unique_identifier
         type: str_16_nullable
         doc: 'parentTradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 113
+        doc: 'Bytes the stated block holds beyond the 113 this version reads'
   collar_breach_confirmation_message:
     seq:
       - id: cl_msg_seq_num
@@ -1846,6 +1939,9 @@ types:
       - id: orig_client_order_id
         type: s8_nullable
         doc: 'origClientOrderID. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
   price_input_message:
     seq:
       - id: cl_msg_seq_num
@@ -1882,6 +1978,9 @@ types:
       - id: price_optional
         type: s8_nullable
         doc: 'price. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   liquidity_provider_command_message:
     seq:
       - id: cl_msg_seq_num
@@ -1915,6 +2014,9 @@ types:
         type: u1
         enum: lp_action_code
         doc: 'lPActionCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   ask_for_quote_message:
     seq:
       - id: msg_seq_num
@@ -1936,6 +2038,9 @@ types:
         type: u1
         enum: afq_reason
         doc: 'aFQReason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   request_for_execution_message:
     seq:
       - id: msg_seq_num
@@ -1953,6 +2058,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   rfq_notification_message:
     seq:
       - id: msg_seq_num
@@ -2010,6 +2118,9 @@ types:
       - id: account_type_optional
         type: u1_nullable
         doc: 'accountType. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 96
+        doc: 'Bytes the stated block holds beyond the 96 this version reads'
   rfq_matching_status_message:
     seq:
       - id: msg_seq_num
@@ -2059,6 +2170,9 @@ types:
         type: u1
         enum: recipient_type
         doc: 'recipientType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
   rfqlp_matching_status_message:
     seq:
       - id: msg_seq_num
@@ -2098,6 +2212,9 @@ types:
         type: u1
         enum: side
         doc: 'side'
+      - id: block_extension
+        size: _parent.message_header.block_length - 66
+        doc: 'Bytes the stated block holds beyond the 66 this version reads'
   user_notification_message:
     seq:
       - id: msg_seq_num
@@ -2136,6 +2253,9 @@ types:
       - id: exposure_side
         type: u1_nullable
         doc: 'exposureSide. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 54
+        doc: 'Bytes the stated block holds beyond the 54 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -2192,6 +2312,9 @@ types:
       - id: long_client_id
         type: str_16_nullable
         doc: 'longClientID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 102
+        doc: 'Bytes the stated block holds beyond the 102 this version reads'
   mm_sign_in_ack_message:
     seq:
       - id: msg_seq_num
@@ -2263,6 +2386,9 @@ types:
       - id: long_client_id
         type: str_16_nullable
         doc: 'longClientID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 150
+        doc: 'Bytes the stated block holds beyond the 150 this version reads'
   instrument_synchronization_list_message:
     seq:
       - id: msg_seq_num
@@ -2274,6 +2400,9 @@ types:
       - id: resynchronization_id
         type: u2
         doc: 'resynchronizationID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
       - id: instrument_synchronization_groups
         type: instrument_synchronization_groups
         doc: 'InstrumentSynchronizationSection Block'
@@ -2296,6 +2425,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
   synchronization_time_message:
     seq:
       - id: msg_seq_num
@@ -2310,6 +2442,9 @@ types:
       - id: last_book_in_time
         type: u8
         doc: 'lastBookInTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   security_definition_request_message:
     seq:
       - id: cl_msg_seq_num
@@ -2333,6 +2468,9 @@ types:
         type: u1
         enum: strategy_code
         doc: 'strategyCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
       - id: strategy_legs_groups
         type: strategy_legs_groups
         doc: 'StrategyLegs Block'
@@ -2374,6 +2512,9 @@ types:
         type: u1
         enum: leg_side
         doc: 'legSide'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   security_definition_ack_message:
     seq:
       - id: msg_seq_num
@@ -2411,6 +2552,9 @@ types:
       - id: symbol_index
         type: u4
         doc: 'symbolIndex'
+      - id: block_extension
+        size: _parent.message_header.block_length - 80
+        doc: 'Bytes the stated block holds beyond the 80 this version reads'
   mm_protection_request_message:
     seq:
       - id: cl_msg_seq_num
@@ -2441,6 +2585,9 @@ types:
         type: u1
         enum: request_type
         doc: 'requestType'
+      - id: block_extension
+        size: _parent.message_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
       - id: mmp_request_groups
         type: mmp_request_groups
         doc: 'MMPSection Block'
@@ -2466,6 +2613,9 @@ types:
       - id: breach_action
         type: u1_nullable
         doc: 'breachAction. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   mm_protection_ack_message:
     seq:
       - id: msg_seq_num
@@ -2513,6 +2663,9 @@ types:
       - id: mmp_execution_type
         type: mmp_execution_type
         doc: 'MMPExecutionType_set bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 86
+        doc: 'Bytes the stated block holds beyond the 86 this version reads'
       - id: mmp_ack_groups
         type: mmp_ack_groups
         doc: 'MMPSection2 Block'
@@ -2559,6 +2712,9 @@ types:
       - id: breach_status
         type: u1_nullable
         doc: 'breachStatus. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   new_wholesale_order_message:
     seq:
       - id: cl_msg_seq_num
@@ -2611,6 +2767,9 @@ types:
       - id: message_price_notation
         type: u1_nullable
         doc: 'messagePriceNotation. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 62
+        doc: 'Bytes the stated block holds beyond the 62 this version reads'
       - id: wholesale_legs_groups
         type: wholesale_legs_groups
         doc: 'WholesaleLegsRep Block'
@@ -2660,6 +2819,9 @@ types:
       - id: leg_last_trading_date
         type: str_8_nullable
         doc: 'legLastTradingDate. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   wholesale_client_groups:
     seq:
       - id: group_size_encoding
@@ -2719,6 +2881,9 @@ types:
       - id: trading_capacity_optional
         type: u1_nullable
         doc: 'tradingCapacity. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 80
+        doc: 'Bytes the stated block holds beyond the 80 this version reads'
   wholesale_order_ack_message:
     seq:
       - id: msg_seq_num
@@ -2796,6 +2961,9 @@ types:
       - id: ack_qualifiers
         type: ack_qualifiers
         doc: 'AckQualifiers_set bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 113
+        doc: 'Bytes the stated block holds beyond the 113 this version reads'
       - id: wholesale_ack_legs_groups
         type: wholesale_ack_legs_groups
         doc: 'WholesaleAckLegsRep Block'
@@ -2829,6 +2997,9 @@ types:
       - id: leg_error_code
         type: u2_nullable
         doc: 'legErrorCode. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   wholesale_ack_clearing_groups:
     seq:
       - id: group_size_encoding
@@ -2860,6 +3031,9 @@ types:
       - id: non_executing_client_id
         type: u2_nullable
         doc: 'nonExecutingClientID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   request_for_implied_execution_message:
     seq:
       - id: cl_msg_seq_num
@@ -2895,6 +3069,9 @@ types:
       - id: mifid_indicators
         type: mifid_indicators
         doc: 'MiFIDIndicators_set bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   cross_order_message:
     seq:
       - id: cl_msg_seq_num
@@ -2948,6 +3125,9 @@ types:
       - id: message_price_notation
         type: u1_nullable
         doc: 'messagePriceNotation. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
       - id: free_text_groups
         type: free_text_groups
         doc: 'FreeTextSection Block'
@@ -2997,6 +3177,9 @@ types:
       - id: trading_capacity_optional
         type: u1_nullable
         doc: 'tradingCapacity. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 43
+        doc: 'Bytes the stated block holds beyond the 43 this version reads'
   cross_strategy_fields_groups:
     seq:
       - id: group_size_encoding
@@ -3018,6 +3201,9 @@ types:
       - id: leg_instrument_id
         type: u4_nullable
         doc: 'legInstrumentID. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   rfq_audit_message:
     seq:
       - id: msg_seq_num
@@ -3050,6 +3236,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
       - id: rfq_counterparts_groups
         type: rfq_counterparts_groups
         doc: 'RFQCounterparts Block'
@@ -3080,6 +3269,9 @@ types:
       - id: minimum_order_quantity
         type: u8_nullable
         doc: 'minimumOrderQuantity. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   dark_execution_instruction_optional:
     meta:
       bit-endian: le
@@ -3149,6 +3341,9 @@ types:
       - id: ioi_quality_indication
         type: u1_nullable
         doc: 'iOIQualityIndication. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   target_counterparties:
     meta:
       bit-endian: le
@@ -3253,6 +3448,9 @@ types:
       - id: error_code_optional
         type: u2_nullable
         doc: 'errorCode. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 111
+        doc: 'Bytes the stated block holds beyond the 111 this version reads'
   clear_book_message:
     seq:
       - id: msg_seq_num
@@ -3268,6 +3466,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   logon_message:
     seq:
       - id: logical_access_id
@@ -3285,6 +3486,9 @@ types:
       - id: queueing_indicator
         type: u1
         doc: 'queueingIndicator'
+      - id: block_extension
+        size: _parent.message_header.block_length - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   logon_ack_message:
     seq:
       - id: exchange_id
@@ -3295,6 +3499,9 @@ types:
       - id: last_cl_msg_seq_num
         type: u4
         doc: 'lastClMsgSeqNum'
+      - id: block_extension
+        size: _parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   logon_reject_message:
     seq:
       - id: exchange_id
@@ -3312,12 +3519,18 @@ types:
       - id: last_msg_seq_num
         type: u4
         doc: 'lastMsgSeqNum'
+      - id: block_extension
+        size: _parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   logout_message:
     seq:
       - id: log_out_reason_code
         type: u1
         enum: log_out_reason_code
         doc: 'logOutReasonCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   technical_reject_message:
     seq:
       - id: oeg_out_to_member_optional
@@ -3335,6 +3548,9 @@ types:
       - id: rejected_message_id
         type: u2_nullable
         doc: 'rejectedMessageID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   declaration_entry_message:
     seq:
       - id: cl_msg_seq_num
@@ -3453,6 +3669,9 @@ types:
       - id: client_identification_short_code_cross
         type: s4_nullable
         doc: 'clientIdentificationShortCodeCross. Nullable, No Value = -2147483648'
+      - id: block_extension
+        size: _parent.message_header.block_length - 198
+        doc: 'Bytes the stated block holds beyond the 198 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -3492,6 +3711,9 @@ types:
       - id: waiver_indicator
         type: waiver_indicator
         doc: 'WaiverIndicator_set bit set. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -3647,6 +3869,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 218
+        doc: 'Bytes the stated block holds beyond the 218 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -3686,6 +3911,9 @@ types:
       - id: trade_unique_identifier
         type: str_16_nullable
         doc: 'tradeUniqueIdentifier. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   fund_price_input_message:
     seq:
       - id: cl_msg_seq_num
@@ -3715,6 +3943,9 @@ types:
       - id: bypass_indicator
         type: u1_nullable
         doc: 'bypassIndicator. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   fund_price_input_ack_message:
     seq:
       - id: msg_seq_num
@@ -3741,6 +3972,9 @@ types:
       - id: bypass_indicator
         type: u1_nullable
         doc: 'bypassIndicator. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   declaration_entry_reject_message:
     seq:
       - id: msg_seq_num
@@ -3776,6 +4010,9 @@ types:
       - id: rejected_message_id
         type: u2_nullable
         doc: 'rejectedMessageID. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'

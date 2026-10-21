@@ -88,12 +88,18 @@ types:
         doc: 'Why the login was rejected'
   sequenced_data_packet:
     seq:
+      - id: sequenced_message
+        type: sequenced_message
+        if: _parent.server_packet_header.packet_length > 1
+        doc: 'The higher-level protocol message carried by a Sequenced Data Packet'
+  sequenced_message:
+    seq:
       - id: message_type
         type: u1
         enum: message_type
         doc: 'Code identifying this message type'
       - id: payload
-        size: _parent.server_packet_header.packet_length - 2
+        size: _parent._parent.server_packet_header.packet_length - 2
         type:
           switch-on: message_type
           cases:

@@ -165,8 +165,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -277,8 +277,8 @@ types:
         pad-right: 0x20
         doc: 'Order Capacity'
       - id: price_short
-        type: u2
-        doc: 'The display price of the new order'
+        type: decimal_u2_2
+        doc: 'The display price of the new order. Implied decimal with scale 1e-2'
       - id: volume_short
         type: u2
         doc: 'The display quantity of the new order'
@@ -310,8 +310,8 @@ types:
         pad-right: 0x20
         doc: 'Order Capacity'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order'
+        type: decimal_s4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The display quantity of the new order'
@@ -336,14 +336,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the quote'
       - id: bid_price_short
-        type: u2
-        doc: 'The display bid price of the quote'
+        type: decimal_u2_2
+        doc: 'The display bid price of the quote. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The display bid quantity of the quote'
       - id: ask_price_short
-        type: u2
-        doc: 'The display ask price of the quote'
+        type: decimal_u2_2
+        doc: 'The display ask price of the quote. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'The display ask quantity of the quote'
@@ -365,14 +365,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the quote'
       - id: bid_price_long
-        type: u4
-        doc: 'The display bid price of the quote'
+        type: decimal_s4_4
+        doc: 'The display bid price of the quote. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'The display bid quantity of the quote'
       - id: ask_price_long
-        type: u4
-        doc: 'The display ask price of the quote'
+        type: decimal_s4_4
+        doc: 'The display ask price of the quote. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'The display ask quantity of the quote'
@@ -430,8 +430,8 @@ types:
         enum: printable
         doc: 'Printable'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order'
+        type: decimal_s4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The display quantity of the new order'
@@ -470,8 +470,8 @@ types:
         type: u8
         doc: 'The new reference number assigned to the replacement order'
       - id: price_short
-        type: u2
-        doc: 'The display price of the new order'
+        type: decimal_u2_2
+        doc: 'The display price of the new order. Implied decimal with scale 1e-2'
       - id: volume_short
         type: u2
         doc: 'The display quantity of the new order'
@@ -493,8 +493,8 @@ types:
         type: u8
         doc: 'The new reference number assigned to the replacement order'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order'
+        type: decimal_s4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The display quantity of the new order'
@@ -531,8 +531,8 @@ types:
         enum: change_reason
         doc: 'Change Reason'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order'
+        type: decimal_s4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The display quantity of the new order'
@@ -560,14 +560,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the quote'
       - id: bid_price_short
-        type: u2
-        doc: 'The display bid price of the quote'
+        type: decimal_u2_2
+        doc: 'The display bid price of the quote. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'The display bid quantity of the quote'
       - id: ask_price_short
-        type: u2
-        doc: 'The display ask price of the quote'
+        type: decimal_u2_2
+        doc: 'The display ask price of the quote. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'The display ask quantity of the quote'
@@ -595,14 +595,14 @@ types:
         type: u8
         doc: 'The ask reference number associated with the quote'
       - id: bid_price_long
-        type: u4
-        doc: 'The display bid price of the quote'
+        type: decimal_s4_4
+        doc: 'The display bid price of the quote. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'The display bid quantity of the quote'
       - id: ask_price_long
-        type: u4
-        doc: 'The display ask price of the quote'
+        type: decimal_s4_4
+        doc: 'The display ask price of the quote. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'The display ask quantity of the quote'
@@ -648,8 +648,8 @@ types:
         enum: cross_type
         doc: 'Cross Type'
       - id: price_long
-        type: u4
-        doc: 'The display price of the new order'
+        type: decimal_s4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
       - id: volume_long
         type: u4
         doc: 'The display quantity of the new order'
@@ -687,8 +687,8 @@ types:
         enum: imbalance_direction
         doc: 'Indicates the market side of the imbalance'
       - id: imbalance_price
-        type: u4
-        doc: 'Imbalance Price'
+        type: decimal_s4_4
+        doc: 'Imbalance Price. Implied decimal with scale 1e-4'
       - id: imbalance_volume
         type: u4
         doc: 'Imbalance volume'
@@ -699,14 +699,14 @@ types:
         pad-right: 0x20
         doc: 'Customer Firm Indicator'
       - id: best_bid_price
-        type: u4
-        doc: 'Best Bid Price'
+        type: decimal_s4_4
+        doc: 'Best Bid Price. Implied decimal with scale 1e-4'
       - id: best_bid_quantity
         type: u4
         doc: 'Best Bid Quantity'
       - id: best_ask_price
-        type: u4
-        doc: 'Best Ask Price'
+        type: decimal_s4_4
+        doc: 'Best Ask Price. Implied decimal with scale 1e-4'
       - id: best_ask_quantity
         type: u4
         doc: 'Best Ask Quantity'
@@ -731,6 +731,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   client_packet_type:

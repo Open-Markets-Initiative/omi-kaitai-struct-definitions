@@ -262,6 +262,9 @@ types:
       - id: risk_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom risk control set to be applied to this order. The UINT16 Null value (0xFFFF) disables custom risk controls. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.1.2 ShortTwoSidedBulkQuote The two sided bulk quote message type is used by market makers wishing to electronically submit multiple quotes with similar semantics to the exchange for execution. This messages supports two sided quotes with smaller field sizes for quantities and prices. This message corresponds to FIX message type i. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 2 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 39 Field Offset Length Type Tag Ref Num Req''d Description. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 98
+        doc: 'Bytes the stated block holds beyond the 98 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -313,6 +316,9 @@ types:
         type: u1
         enum: party_role
         doc: 'Identifies the type or role of the PartyID (448) specified. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 14 3.3.7 Execution Allocations Group (Repeating Group 124) The Execution Allocations Group repeating group allows for identification of the original Exchange Trade that post trade allocations are occurring on. Though this is denoted as a repeating group, at the current time, this group will always contain a single entry. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. (Always set to 1) Field Offset Length Type Tag Ref Num Req''d Description'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   execution_report_bulk_quote_pending_new_message:
     seq:
       - id: clordid
@@ -357,6 +363,9 @@ types:
       - id: number_of_orders
         type: u1
         doc: 'The number of orders/quote entries in the request. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A Y The parties associated with the quotes. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 55 5.2.1.3 ExecutionReport_BulkQuote_ComponentNew The ExecutionReport_BulkQuote_ComponentNew is a response to bulk quote requests (ShortTwoSidedBulkQuote, LongTwoSidedBulkQuote, ShortOneSidedBulkQuote, LongOneSidedBulkQuote). This message gives state information about an individual single sided quote within the bulk quote request. The requester will receive a component new message for each side of a two-sided entry. This message echos back to the requester fields configured on the individual single sided quote with additional information about the state of the individual quote handling. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 13'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 54
+        doc: 'Bytes the stated block holds beyond the 54 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -407,6 +416,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 83
+        doc: 'Bytes the stated block holds beyond the 83 this version reads'
   execution_report_rejected_message:
     seq:
       - id: clordid
@@ -446,6 +458,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 57
+        doc: 'Bytes the stated block holds beyond the 57 this version reads'
   execution_report_trade_message:
     seq:
       - id: order_id
@@ -517,6 +532,9 @@ types:
         type: u1
         enum: contra_trading_capacity
         doc: 'TradingCapacity of the contra order. This field is provided for MEMX exchange executions. This field will not be provided for executions on remote exchanges. NoPartyIDs - - RepeatingGroupDimensions 453 Y The dimensions of the Repeating Group. Parties - - Parties Group N/A N The parties associated with the quotes. 5.2.1.6 ExecutionReport_PendingCancel The ExecutionReport_PendingCancel is a response to OrderCancelRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 16 MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 60 Field Offset Length Type Tag Ref Num Req''d Description'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 99
+        doc: 'Bytes the stated block holds beyond the 99 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -560,6 +578,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
   execution_report_canceled_message:
     seq:
       - id: order_id
@@ -611,6 +632,9 @@ types:
       - id: orig_list_seq_no
         type: u1
         doc: 'Original list sequence number MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 62 When the client has requested ExecutionRequest_Canceled messages as a result of a mass cancel request the cancels will be reported back to customers as Unsolicited cancel i.e. the ClOrdIDandOrigClOrdIDfields will contain the canceled order identifier. 5.2.1.8 ExecutionReport_PendingReplace The ExecutionReport_PendingReplace message is a response to OrderCancelReplaceRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 18'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 93
+        doc: 'Bytes the stated block holds beyond the 93 this version reads'
   execution_report_pending_replace_message:
     seq:
       - id: order_id
@@ -664,6 +688,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 96
+        doc: 'Bytes the stated block holds beyond the 96 this version reads'
   execution_report_replaced_message:
     seq:
       - id: order_id
@@ -723,6 +750,9 @@ types:
       - id: orig_list_seq_no
         type: u1
         doc: 'Original list sequence number MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 62 When the client has requested ExecutionRequest_Canceled messages as a result of a mass cancel request the cancels will be reported back to customers as Unsolicited cancel i.e. the ClOrdIDandOrigClOrdIDfields will contain the canceled order identifier. 5.2.1.8 ExecutionReport_PendingReplace The ExecutionReport_PendingReplace message is a response to OrderCancelReplaceRequest request indicating the request has been received by the exchange and is in the process of being handled. Field Offset Length Type Tag Ref Num Req''d Description SBE Header 0 7 SBE Header N/A Y SBE Header with templateID = 18'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 105
+        doc: 'Bytes the stated block holds beyond the 105 this version reads'
   execution_report_trade_correction_message:
     seq:
       - id: order_id
@@ -766,6 +796,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 89
+        doc: 'Bytes the stated block holds beyond the 89 this version reads'
   execution_report_trade_break_message:
     seq:
       - id: order_id
@@ -803,6 +836,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 77
+        doc: 'Bytes the stated block holds beyond the 77 this version reads'
   execution_report_restatement_message:
     seq:
       - id: order_id
@@ -857,6 +893,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 85
+        doc: 'Bytes the stated block holds beyond the 85 this version reads'
   pending_mass_cancel_message:
     seq:
       - id: clordid
@@ -891,6 +930,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
   mass_cancel_inst:
     meta:
       bit-endian: le
@@ -939,6 +981,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   mass_cancel_done_message:
     seq:
       - id: clordid
@@ -955,6 +1000,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   order_cancel_reject_message:
     seq:
       - id: clordid
@@ -983,6 +1031,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   allocation_instruction_ack_message:
     seq:
       - id: sending_time
@@ -1016,6 +1067,9 @@ types:
       - id: alloc_rej_code
         type: u2_nullable
         doc: 'AllocRejCode. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 73
+        doc: 'Bytes the stated block holds beyond the 73 this version reads'
       - id: reported_allocations_groups
         type: reported_allocations_groups
         doc: 'ReportedAllocations Block'
@@ -1043,6 +1097,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Unique identifier for this allocation instruction message - supplied by customer, similar to ClOrdId. Printable characters only (ascii HEX 0x20 to 0x7E), with the exception of &, <, >, ” and ’'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
       - id: nested_parties_groups
         type: nested_parties_groups
         doc: 'Parties Block'
@@ -1072,6 +1129,9 @@ types:
         type: u1
         enum: nested_party_role
         doc: 'Identifies the type or role of the NestedPartyID (524) specified. 3.3.9 Request Allocations Group (Repeating Group 78) The Request Allocations Group repeating group allows for multiple allocations to be supplied in a post-trade request message. MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 15 This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   allocation_instruction_alert_message:
     seq:
       - id: sending_time
@@ -1110,6 +1170,9 @@ types:
         size: 8
         encoding: ASCII
         doc: 'YYYYMMDD NoExecs - - RepeatingGroupDimensions 124 Y Number of Trades being allocated (always 1) MEMO for Options - SBE - v1.10 COPYRIGHT MEMX LLC 2025. ALL RIGHTS RESERVED. 77 Field Offset Length Type Tag Ref Num Req''d Description ExecutionAllocations - - ExecutionAllocationsGroup N/A Y Specifies the Trade being allocated NoAllocs - - RepeatingGroupDimensions 78 Y The dimensions of the Allocations Repeating Group. ReportedAllocations - - ReportAllocationsGroup N/A Y The allocations assigned to the trade - NOTE: this group contains IndividualAllocIDs for each unit of allocation, used to make further changes on those units. 5.2.12 UserNotification The UserNotification message is used to notify the user of an event or information about the exchange. This message will be used to provide a logical session shutdown warning. This message corresponds to FIX message type CB Field Offset Length Type Tag Ref Num Req’d Meaning SBE Header 0 7 SBE Header Y SBE Header templateID = 29'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 69
+        doc: 'Bytes the stated block holds beyond the 69 this version reads'
       - id: execution_allocations_groups
         type: execution_allocations_groups
         doc: 'ExecutionAllocations Block'
@@ -1137,6 +1200,9 @@ types:
       - id: last_px
         type: decimal_u8_8
         doc: 'Price of original Trade 3.3.8 Nested Parties Group (Repeating Group 539) The Nested Parties Group repeating group allows for multiple party identifiers to be supplied inside a Allocation Group entry in post trade allocation messages. This group is always preceded by RepeatingGroupDimensions field that denotes the length of this group and the number of the items in the group in the message. Field Offset Length Type Tag Ref Num Req''d Description. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   user_notification_message:
     seq:
       - id: sending_time
@@ -1146,6 +1212,9 @@ types:
         type: u1
         enum: user_status
         doc: 'Reason for notification'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   mass_cancel_clear_lockout_reject_message:
     seq:
       - id: clordid
@@ -1168,6 +1237,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   mass_cancel_clear_lockout_done_message:
     seq:
       - id: clordid
@@ -1189,6 +1261,9 @@ types:
       - id: transact_time
         type: u8
         doc: 'The time at which the transaction occurred. UTC timestamp since epoch with nanosecond precision'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   mass_cancel_bulk_clear_lockout_reject_message:
     seq:
       - id: clordid
@@ -1203,6 +1278,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   mass_cancel_bulk_clear_lockout_accepted_message:
     seq:
       - id: clordid
@@ -1213,6 +1291,9 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Time of message transmission always expressed in UTC (Universal Time Coordinated, also known as GMT). Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   decimal_u8_8:
     seq:
       - id: mantissa

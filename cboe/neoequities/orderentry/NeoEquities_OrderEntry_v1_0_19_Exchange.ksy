@@ -694,9 +694,9 @@ types:
       - id: broker_id
         type: u2
         doc: 'Identifies the broker'
-      - id: symbol
+      - id: symbol_8
         type: str
-        size: 14
+        size: 8
         encoding: ASCII
         doc: 'Symbol (upper case)'
   trade_cancel_correct_ca_equities_v_1:

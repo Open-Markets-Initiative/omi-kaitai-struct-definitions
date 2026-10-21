@@ -142,6 +142,9 @@ types:
         type: u1
         enum: is_test_symbol
         doc: 'IsTestSymbol'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
@@ -154,6 +157,9 @@ types:
         type: u1
         enum: short_sale_restriction
         doc: 'ShortSaleRestriction'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   security_trading_status_message:
     seq:
       - id: timestamp
@@ -174,6 +180,9 @@ types:
         type: u1
         enum: halt_reason
         doc: 'HaltReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   trading_session_status_message:
     seq:
       - id: timestamp
@@ -183,6 +192,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'TradingSession'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   trade_report_message:
     seq:
       - id: timestamp
@@ -216,6 +228,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'SaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   trade_cancel_message:
     seq:
       - id: timestamp
@@ -249,6 +264,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'SaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   trade_correct_message:
     seq:
       - id: timestamp
@@ -304,6 +322,9 @@ types:
         type: u1
         enum: corrected_sale_condition_4
         doc: 'CorrectedSaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   auction_trade_message:
     seq:
       - id: timestamp
@@ -344,6 +365,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'SaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   broken_auction_trade_message:
     seq:
       - id: timestamp
@@ -364,6 +388,9 @@ types:
       - id: original_auction_price
         type: decimal_s8_6
         doc: 'OriginalAuctionPrice. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   corrected_auction_trade_message:
     seq:
       - id: timestamp
@@ -422,6 +449,9 @@ types:
         type: u1
         enum: corrected_sale_condition_4
         doc: 'CorrectedSaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 66
+        doc: 'Bytes the stated block holds beyond the 66 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

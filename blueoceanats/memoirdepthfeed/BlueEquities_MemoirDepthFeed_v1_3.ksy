@@ -153,6 +153,9 @@ types:
       - id: mpv
         type: decimal_s8_6
         doc: 'The minimum price variation for an instrument, the smallest price increment of the stock. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
@@ -165,6 +168,9 @@ types:
         type: u1
         enum: short_sale_restriction
         doc: 'Identifies if this security is subject to the Regulation SHO short sales restrictions'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   security_trading_status_message:
     seq:
       - id: timestamp
@@ -181,6 +187,9 @@ types:
         type: u1
         enum: security_trading_status_reason
         doc: 'The source of the trading status change'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   trading_session_status_message:
     seq:
       - id: timestamp
@@ -190,6 +199,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'The trading session which was entered'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   order_added_message:
     seq:
       - id: timestamp
@@ -211,6 +223,9 @@ types:
       - id: price
         type: decimal_s8_6
         doc: 'The price of the event, a signed mantissa scaled by a constant exponent of -6; an execution price may differ from the displayed order price through price improvement or price sliding. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
   order_deleted_message:
     seq:
       - id: timestamp
@@ -222,6 +237,9 @@ types:
       - id: order_id
         type: u8
         doc: 'The trading session unique reference number assigned to the order by the Order Added message'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   order_reduced_message:
     seq:
       - id: timestamp
@@ -236,6 +254,9 @@ types:
       - id: quantity
         type: u4
         doc: 'The total quantity of the event, added, reduced, executed or traded; a reduction is always greater than zero'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   order_executed_message:
     seq:
       - id: timestamp
@@ -256,6 +277,9 @@ types:
       - id: price
         type: decimal_s8_6
         doc: 'The price of the event, a signed mantissa scaled by a constant exponent of -6; an execution price may differ from the displayed order price through price improvement or price sliding. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   trade_message:
     seq:
       - id: timestamp
@@ -273,6 +297,9 @@ types:
       - id: price
         type: decimal_s8_6
         doc: 'The price of the event, a signed mantissa scaled by a constant exponent of -6; an execution price may differ from the displayed order price through price improvement or price sliding. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   broken_trade_message:
     seq:
       - id: timestamp
@@ -290,6 +317,9 @@ types:
       - id: original_price
         type: decimal_s8_6
         doc: 'The original price of the trade being broken or corrected, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   corrected_trade_message:
     seq:
       - id: timestamp
@@ -313,6 +343,9 @@ types:
       - id: corrected_price
         type: decimal_s8_6
         doc: 'The new price of the trade, a signed mantissa scaled by a constant exponent of -6. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   clear_book_message:
     seq:
       - id: timestamp
@@ -321,6 +354,9 @@ types:
       - id: security_id
         type: u2
         doc: 'An instrument code uniquely identifying the security from the Instrument Directory'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   snapshot_complete_message:
     seq:
       - id: timestamp
@@ -329,6 +365,9 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'The sequence number on the real time multicast channel the snapshot is based upon; discard buffered messages at or below it and apply those above it'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   decimal_s8_6:
     seq:
       - id: mantissa

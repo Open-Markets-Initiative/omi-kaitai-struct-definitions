@@ -98,12 +98,18 @@ types:
         type: u1
         enum: status
         doc: 'status'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   gateway_heartbeat_message:
     seq:
       - id: keep_alive
         type: u1
         enum: keep_alive
         doc: 'keepAlive'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
       - id: sub_sessions_groups
         type: sub_sessions_groups
         doc: 'SubSessions Block'
@@ -141,12 +147,18 @@ types:
       - id: next_seq_no
         type: u4
         doc: 'nextSeqNo'
+      - id: block_extension
+        size: _parent.session_info_group_encoding.block_length_short - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   terminate_message:
     seq:
       - id: reason
         type: u1
         enum: reason
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   sequenced_message_header_message:
     seq:
       - id: subsession_id
@@ -158,6 +170,9 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   subsession_join_response_message:
     seq:
       - id: subsession_id
@@ -167,6 +182,9 @@ types:
         type: u1
         enum: status
         doc: 'status'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   subsession_leave_response_message:
     seq:
       - id: subsession_id
@@ -176,6 +194,9 @@ types:
         type: u1
         enum: reason
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
 
 enums:
   template_id:

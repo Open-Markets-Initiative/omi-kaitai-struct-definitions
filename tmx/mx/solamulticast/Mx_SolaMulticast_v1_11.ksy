@@ -4,7 +4,7 @@
 # Protocol:
 #   Organization: TMX Group
 #   Protocol: Sola Multicast
-#   Encoding: High Speed Vender Feed
+#   Encoding: High Speed Vendor Feed
 #   Version: 1.11
 #   Date: 01/23/2019
 #   Specification: MX SOLA HSVF Multicast Specifications Guide (1.11).pdf
@@ -109,12 +109,13 @@ types:
             '"XS"': strategy_trade_correction_message
             '"XW"': swap_future_trade_correction_message
             '"GR"': group_status_message
-            '"GS"': strategies_message
+            '"GS"': group_status_strategies_message
             '"L"': bulletins_message
             '"S"': end_of_sales_message
             '"TT"': tick_table_message
             '"U"': end_of_transmission_message
             '"V"': circuit_assurance_message
+            '"Z"': timebeat_message
       - id: hsvf_etx
         type: u1
         doc: 'End of Hsvf message'
@@ -134,9 +135,8 @@ types:
   option_trade_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -145,9 +145,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -186,9 +185,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -211,14 +209,13 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'This field contains the outstanding number of contracts in the series Updated on a trade by trade basis Refer to Indicator Code'
       - id: second_filler_1
         size: 1
         doc: 'Filler'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -228,9 +225,8 @@ types:
   future_options_trade_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -239,9 +235,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -281,20 +276,18 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -311,7 +304,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Outstanding number of contracts in the series as of previous day Refer to Indicator Code'
       - id: filler_2
         size: 2
         doc: 'Filler'
@@ -323,20 +316,18 @@ types:
   futures_trade_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Futures series symbol'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -363,15 +354,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -385,9 +375,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -397,9 +386,8 @@ types:
   strategy_trade_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: symbol
         type: str
@@ -413,9 +401,8 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: trade_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_sign
         doc: 'For Trade Price field (sign)'
       - id: trade_price
         type: str
@@ -427,9 +414,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -449,9 +435,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -461,31 +446,28 @@ types:
   swap_future_trade_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_swap_future
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Last two digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -515,15 +497,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -534,9 +515,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -546,10 +526,9 @@ types:
   option_rfq_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -557,9 +536,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -595,10 +573,9 @@ types:
   future_options_rfq_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -606,9 +583,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -645,20 +621,18 @@ types:
   futures_rfq_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Symbol for the Future series'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -682,10 +656,9 @@ types:
   strategy_rfq_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: symbol
         type: str
         size: 30
@@ -704,31 +677,28 @@ types:
   swap_future_rfq_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_swap_future
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -755,10 +725,9 @@ types:
   instrument_schedule_notice_option_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -766,9 +735,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -793,9 +761,8 @@ types:
         encoding: ASCII
         doc: 'Expiry day of the option'
       - id: series_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: series_status
         doc: 'Series status of the trading instrument'
       - id: scheduled_status_change_time
         type: str
@@ -805,10 +772,9 @@ types:
   instrument_schedule_notice_futures_option_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -816,9 +782,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -844,9 +809,8 @@ types:
         enum: strike_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: series_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: series_status
         doc: 'Series status of the trading instrument'
       - id: scheduled_status_change_time
         type: str
@@ -856,20 +820,18 @@ types:
   instrument_schedule_notice_future_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Symbol for the Future Series'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -882,9 +844,8 @@ types:
         encoding: ASCII
         doc: 'Delivery day of the future series'
       - id: series_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: series_status
         doc: 'Series status of the trading instrument'
       - id: scheduled_status_change_time
         type: str
@@ -894,10 +855,9 @@ types:
   instrument_schedule_notice_strategy_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: strategy_symbol
         type: str
         size: 30
@@ -905,9 +865,8 @@ types:
         pad-right: 0x20
         doc: 'Identification of the strategy. The legs (underlying) are defined in message type NS'
       - id: series_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: series_status
         doc: 'Series status of the trading instrument'
       - id: scheduled_status_change_time
         type: str
@@ -917,31 +876,29 @@ types:
   instrument_schedule_notice_swap_future_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -957,9 +914,8 @@ types:
         enum: fixed_rate_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: series_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: series_status
         doc: 'Series status of the trading instrument'
       - id: scheduled_status_change_time
         type: str
@@ -969,10 +925,9 @@ types:
   option_quote_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -980,9 +935,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -1007,28 +961,24 @@ types:
         encoding: ASCII
         doc: 'Expiry day of the option'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1038,17 +988,59 @@ types:
         size: 1
         doc: 'Filler'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
+  bid_price_quote_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the option series'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the option series'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   future_options_quote_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -1056,9 +1048,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -1084,37 +1075,32 @@ types:
         enum: strike_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: filler_1
         size: 1
@@ -1122,20 +1108,18 @@ types:
   futures_quote_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Symbol for the Future series'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -1147,46 +1131,84 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Delivery day of the future series'
-      - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+      - id: bid_price_quote_futures_quote_message
+        type:
+          switch-on: bid_price_quote_futures_quote_message.bid_price_quote_futures_quote_message_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_futures_quote_message_opening_pair
+            '"0"': bid_price_quote_futures_quote_message_opening_pair
+            _: bid_price_quote_futures_quote_message_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
-      - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: ask_price_quote_futures_quote_message
+        type:
+          switch-on: ask_price_quote_futures_quote_message.ask_price_quote_futures_quote_message_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_futures_quote_message_opening_pair
+            '"0"': ask_price_quote_futures_quote_message_opening_pair
+            _: ask_price_quote_futures_quote_message_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of futures contracts represented by the Ask Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
+  bid_price_quote_futures_quote_message_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_futures_quote_message_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_futures_quote_message_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask Price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_futures_quote_message_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask Price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   strategy_quote_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: symbol
         type: str
         size: 30
@@ -1194,76 +1216,110 @@ types:
         pad-right: 0x20
         doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'For Bid Price field'
-      - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
         type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: bid_price_sign
+        doc: 'For Bid Price field'
+      - id: bid_price_quote_strategy_quote_message
+        type:
+          switch-on: bid_price_quote_strategy_quote_message.bid_price_quote_strategy_quote_message_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_strategy_quote_message_opening_pair
+            '"0"': bid_price_quote_strategy_quote_message_opening_pair
+            _: bid_price_quote_strategy_quote_message_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'For Ask Price field'
-      - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
         type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: ask_price_sign
+        doc: 'For Ask Price field'
+      - id: ask_price_quote_strategy_quote_message
+        type:
+          switch-on: ask_price_quote_strategy_quote_message.ask_price_quote_strategy_quote_message_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_strategy_quote_message_opening_pair
+            '"0"': ask_price_quote_strategy_quote_message_opening_pair
+            _: ask_price_quote_strategy_quote_message_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of futures contracts represented by the Ask Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
-  swap_future_quote_message:
+  bid_price_quote_strategy_quote_message_opening_pair:
     seq:
-      - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+      - id: bid_price_quote_opening
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
+        doc: 'Bid Price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_strategy_quote_message_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
         type: str
-        size: 1
+        size: 6
         encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Bid Price for the future contract'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_strategy_quote_message_opening_pair:
+    seq:
+      - id: ask_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_quote_strategy_quote_message_numeric_pair:
+    seq:
+      - id: ask_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask price for the future contract'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  swap_future_quote_message:
+    seq:
+      - id: exchange_id
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_swap_future
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -1278,46 +1334,40 @@ types:
         type: u1
         enum: fixed_rate_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
-      - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+      - id: bid_price_quote_futures_quote_message
+        type:
+          switch-on: bid_price_quote_futures_quote_message.bid_price_quote_futures_quote_message_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_futures_quote_message_opening_pair
+            '"0"': bid_price_quote_futures_quote_message_opening_pair
+            _: bid_price_quote_futures_quote_message_numeric_pair
       - id: bid_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
-      - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
+      - id: ask_price_quote_strategy_quote_message
+        type:
+          switch-on: ask_price_quote_strategy_quote_message.ask_price_quote_strategy_quote_message_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_strategy_quote_message_opening_pair
+            '"0"': ask_price_quote_strategy_quote_message_opening_pair
+            _: ask_price_quote_strategy_quote_message_numeric_pair
       - id: ask_size
         type: str
         size: 5
         encoding: ASCII
-        doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
+        doc: 'The number of futures contracts represented by the Ask Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
   option_market_depth_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -1325,9 +1375,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -1352,9 +1401,8 @@ types:
         encoding: ASCII
         doc: 'Expiry day of the option'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: num_option_market_depth_trading_instrument
         type: str
@@ -1369,19 +1417,16 @@ types:
   option_market_depth_trading_instrument:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: level_of_market_depth
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1393,14 +1438,12 @@ types:
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1414,10 +1457,9 @@ types:
   future_options_market_depth_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
@@ -1425,9 +1467,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -1453,9 +1494,8 @@ types:
         enum: strike_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: num_future_options_market_depth_trading_instrument
         type: str
@@ -1470,19 +1510,16 @@ types:
   future_options_market_depth_trading_instrument:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: level_of_market_depth
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1494,14 +1531,12 @@ types:
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1515,20 +1550,18 @@ types:
   futures_market_depth_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Symbol for the Future series'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -1541,9 +1574,8 @@ types:
         encoding: ASCII
         doc: 'Delivery day of the future series'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: num_futures_market_depth_trading_instrument
         type: str
@@ -1558,19 +1590,16 @@ types:
   futures_market_depth_trading_instrument:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Level of market depth. 1 to 5 and A (Implied)'
-      - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
         type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        enum: level_of_market_depth
+        doc: 'Level of market depth. 1 to 5 and A (Implied)'
+      - id: bid_price_quote_futures_market_depth_trading_instrument
+        type:
+          switch-on: bid_price_quote_futures_market_depth_trading_instrument.bid_price_quote_futures_market_depth_trading_instrument_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
+            '"0"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
+            _: bid_price_quote_futures_market_depth_trading_instrument_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1581,15 +1610,13 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
-      - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+      - id: ask_price_futures_depth_futures_market_depth_trading_instrument
+        type:
+          switch-on: ask_price_futures_depth_futures_market_depth_trading_instrument.ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair.ask_price_futures_depth_opening
+          cases:
+            '"OUV"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
+            '"0"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
+            _: ask_price_futures_depth_futures_market_depth_trading_instrument_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1600,13 +1627,56 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+  bid_price_quote_futures_market_depth_trading_instrument_opening_pair:
+    seq:
+      - id: bid_price_quote_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the future contract For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  bid_price_quote_futures_market_depth_trading_instrument_numeric_pair:
+    seq:
+      - id: bid_price_quote_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Bid price for the future contract For Implied, it represents the best (1st limit) indicative implied bid price'
+      - id: bid_price_fraction_indicator
+        type: u1
+        enum: bid_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair:
+    seq:
+      - id: ask_price_futures_depth_opening
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask Price for the future contract For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
+  ask_price_futures_depth_futures_market_depth_trading_instrument_numeric_pair:
+    seq:
+      - id: ask_price_futures_depth_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Ask Price for the future contract For Implied, it represents the best (1st limit) indicative implied ask price'
+      - id: ask_price_fraction_indicator
+        type: u1
+        enum: ask_price_fraction_indicator
+        doc: 'Defines number of decimal places or fraction positions'
   strategy_market_depth_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: symbol
         type: str
         size: 30
@@ -1614,9 +1684,8 @@ types:
         pad-right: 0x20
         doc: 'Identifies the strategy. The legs (underlying) are defined in message type NS. Alphanumeric with ".", "+", "-"'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: num_strategy_market_depth_trading_instrument
         type: str
@@ -1631,24 +1700,20 @@ types:
   strategy_market_depth_trading_instrument:
     seq:
       - id: level_of_market_depth
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: level_of_market_depth
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_sign
         doc: 'For Bid Price field'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1660,19 +1725,16 @@ types:
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_sign
         doc: 'For Ask Price field'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1686,31 +1748,28 @@ types:
   swap_future_market_depth_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_swap_future
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -1726,9 +1785,8 @@ types:
         enum: fixed_rate_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: instrument_status_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: instrument_status_marker
         doc: 'Indicates instrument status'
       - id: num_swap_future_market_depth_trading_instrument
         type: str
@@ -1743,19 +1801,16 @@ types:
   swap_future_market_depth_trading_instrument:
     seq:
       - id: level
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: level
         doc: 'Level of market depth. 1 - 5 and A (Implied)'
       - id: bid_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Bid price for the option series'
-      - id: bid_price_fraction_indicator
-        type: u1
-        enum: bid_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          cases:
+            '"OUV"': bid_price_quote_opening_pair
+            '"0"': bid_price_quote_opening_pair
+            _: bid_price_quote_numeric_pair
       - id: bid_size
         type: str
         size: 5
@@ -1767,14 +1822,12 @@ types:
         encoding: ASCII
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_quote
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Ask price for the option series'
-      - id: ask_price_fraction_indicator
-        type: u1
-        enum: ask_price_fraction_indicator
-        doc: 'Defines number of decimal places or fraction positions'
+        type:
+          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          cases:
+            '"OUV"': ask_price_quote_opening_pair
+            '"0"': ask_price_quote_opening_pair
+            _: ask_price_quote_numeric_pair
       - id: ask_size
         type: str
         size: 5
@@ -1788,9 +1841,8 @@ types:
   option_trade_cancellation_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -1799,9 +1851,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -1846,19 +1897,18 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Time of transaction (HHMMSSmmm)'
+        doc: 'Time of cancellation transaction HHMMSSmmm'
       - id: open_interest
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Open long position of the option series, as of the trade Refer to Indicator Code'
       - id: second_filler_1
         size: 1
         doc: 'Filler'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -1868,9 +1918,8 @@ types:
   future_options_trade_cancellation_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -1879,9 +1928,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -1921,9 +1969,8 @@ types:
         enum: price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: filler_6
         size: 6
@@ -1932,12 +1979,12 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Time of transaction (HHMMSSmmm)'
+        doc: 'Time of cancellation transaction HHMMSSmmm'
       - id: open_interest
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Outstanding number of contracts in the series as of the previous day Refer to Indicator Code'
       - id: filler_2
         size: 2
         doc: 'Filler'
@@ -1949,20 +1996,18 @@ types:
   futures_trade_cancellation_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Futures series symbol'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -1995,11 +2040,10 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Time of transaction (HHMMSSmmm)'
+        doc: 'Time of cancellation transaction HHMMSSmmm'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -2009,9 +2053,8 @@ types:
   strategy_trade_cancellation_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: symbol
         type: str
@@ -2025,9 +2068,8 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: trade_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_sign
         doc: 'For Trade Price field (sign)'
       - id: trade_price
         type: str
@@ -2045,7 +2087,7 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Time of transaction (HHMMSSmmm)'
+        doc: 'Time of cancellation transaction HHMMSSmmm'
       - id: filler_1
         size: 1
         doc: 'Filler'
@@ -2057,31 +2099,28 @@ types:
   swap_future_trade_cancellation_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+      - id: root_symbol_swap_future
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -2114,11 +2153,10 @@ types:
         type: str
         size: 9
         encoding: ASCII
-        doc: 'Time of transaction (HHMMSSmmm)'
+        doc: 'Time of cancellation transaction HHMMSSmmm'
       - id: market_price_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: market_price_indicator
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -2128,9 +2166,8 @@ types:
   option_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -2139,9 +2176,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -2200,14 +2236,27 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: option_type
         type: u1
         enum: option_type
@@ -2243,7 +2292,6 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: contract_size
         type: str
@@ -2269,12 +2317,33 @@ types:
         type: u1
         enum: delivery_type
         doc: 'Indicates the delivery type of the instrument'
+  tick_increment_numeric_pair:
+    seq:
+      - id: tick_increment_numeric
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+  tick_increment_raw_pair:
+    seq:
+      - id: tick_increment_raw
+        type: str
+        size: 6
+        encoding: ASCII
+        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
+      - id: tick_increment_fraction_indicator
+        type: u1
+        enum: tick_increment_fraction_indicator
+        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
   future_options_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -2283,9 +2352,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -2345,14 +2413,27 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -2401,9 +2482,8 @@ types:
   underlying_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: group_instrument
         type: str
@@ -2424,20 +2504,18 @@ types:
   futures_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Futures series symbol'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -2448,7 +2526,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the contract The Expiry Day for the S&P/TSX futures contracts (SXA/SXB/SXH/SXF & SXY) is set up as the third Friday of the month in our system. But the real last trading day for these instruments is the day before the 3rd Friday of the month (the 3rd Thursday)'
       - id: maximum_number_of_contracts_per_order
         type: str
         size: 6
@@ -2478,14 +2556,27 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -2542,11 +2633,10 @@ types:
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option symbol'
+        doc: 'Associated product’s class symbol'
       - id: associated_product_delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: associated_product_delivery_month
         doc: 'Delivery month for the contract'
       - id: associated_product_delivery_year
         type: str
@@ -2561,9 +2651,8 @@ types:
   strategy_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: strategy_symbol
         type: str
@@ -2576,11 +2665,11 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Last two digits of the option expiry year'
-      - id: delivery_month
+      - id: delivery_month_strategy
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Delivery month for the contract'
+        doc: 'Delivery month for the contract Refer to Month Codes'
       - id: expiry_day
         type: str
         size: 2
@@ -2615,14 +2704,27 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow_indicator
         type: str
         size: 2
@@ -2651,31 +2753,29 @@ types:
   swap_future_instrument_keys_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -2719,14 +2819,27 @@ types:
         enum: minimum_threshold_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: tick_increment
-        type: str
-        size: 6
-        encoding: ASCII
-        doc: 'Contains the Tick Table Short Name if available. If so, field starts with TT=. Otherwise, indicates precision with which the price of an order limit can be expressed'
-      - id: tick_increment_fraction_indicator
-        type: u1
-        enum: tick_increment_fraction_indicator
-        doc: 'If Tick Increment starts with TT= (Table Name available), Fraction Indicator is blank. Otherwise, defines number of decimal places or fraction positions'
+        type:
+          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          cases:
+            'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::ten_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::hundred_million': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::billion': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_whole': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_ten_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_hundred_thousand': tick_increment_numeric_pair
+            'tick_increment_fraction_indicator::negative_million': tick_increment_numeric_pair
+            _: tick_increment_raw_pair
       - id: market_flow
         type: str
         size: 2
@@ -2746,7 +2859,6 @@ types:
         type: str
         size: 30
         encoding: ASCII
-        pad-right: 0x20
         doc: 'External identifier used by traders when entering an order'
       - id: contract_size
         type: str
@@ -2802,9 +2914,8 @@ types:
         encoding: ASCII
         doc: 'Value of the contract'
       - id: notional_principal_amount_faction_indicator
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: notional_principal_amount_faction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: day_count_convention
         type: u1
@@ -2847,9 +2958,8 @@ types:
   option_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -2858,9 +2968,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -2925,7 +3034,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'This field contains current outstanding number of contracts in the series. Updated on a trade by trade basis. Refer to Indicator Code'
       - id: tick
         type: u1
         enum: tick
@@ -2936,9 +3045,8 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -2986,7 +3094,6 @@ types:
         type: str
         size: 10
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Symbol root for the underlying security'
       - id: settlement_price
         type: str
@@ -3013,9 +3120,8 @@ types:
   future_options_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -3024,9 +3130,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -3092,7 +3197,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Outstanding number of contracts in the series as of the previous day'
       - id: tick
         type: u1
         enum: tick
@@ -3103,15 +3208,14 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3153,9 +3257,8 @@ types:
         pad-right: 0x20
         doc: 'Base symbol of the underlying future'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_underlying
         type: str
@@ -3187,20 +3290,18 @@ types:
   futures_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Symbol for the Future Series'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -3286,15 +3387,14 @@ types:
         enum: settlement_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last Trade Price - previous Settlement Price If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3317,7 +3417,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Previous day''s outstanding number of contracts in the series Refer to Indicator Code'
       - id: reason
         type: u1
         enum: reason
@@ -3334,9 +3434,8 @@ types:
   strategy_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: strategy_symbol
         type: str
@@ -3345,9 +3444,8 @@ types:
         pad-right: 0x20
         doc: 'Identification of the strategy. The legs (underlying) are defined in message type NS'
       - id: bid_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: bid_price_sign
         doc: 'For Bid Price field'
       - id: bid_price_summary
         type: str
@@ -3364,9 +3462,8 @@ types:
         encoding: ASCII
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: ask_price_sign
         doc: 'For Ask Price field'
       - id: ask_price_summary
         type: str
@@ -3383,9 +3480,8 @@ types:
         encoding: ASCII
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: last_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: last_price_sign
         doc: 'For the Last Price field'
       - id: last_price
         type: str
@@ -3397,9 +3493,8 @@ types:
         enum: last_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: open_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: open_price_sign
         doc: 'For the Open Price field'
       - id: open_price
         type: str
@@ -3411,9 +3506,8 @@ types:
         enum: open_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: high_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: high_price_sign
         doc: 'For the High Price field'
       - id: high_price
         type: str
@@ -3425,9 +3519,8 @@ types:
         enum: high_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: low_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: low_price_sign
         doc: 'For the Low Price field'
       - id: low_price
         type: str
@@ -3439,15 +3532,14 @@ types:
         enum: low_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous close If no previous settlement price (new series) then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3486,36 +3578,33 @@ types:
         type: str
         size: 30
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Identification of the underlying (also referred to as HSVF Symbol)'
   swap_future_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Two last digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -3631,15 +3720,14 @@ types:
         enum: price_alignment_interest_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous close Expiry month code of the swap future If no previous settlement price, then net change is zero'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3671,7 +3759,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'This field contains the outstanding number of contracts in the swap Updated on a trade by trade basis Refer to Indicator Code'
       - id: reason
         type: u1
         enum: reason
@@ -3679,44 +3767,38 @@ types:
   beginning_of_options_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
   beginning_of_future_options_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
   beginning_of_futures_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
   beginning_of_strategy_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
   swap_future_beginning_of_summary_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
   option_trade_correction_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -3725,9 +3807,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: expiry_month
         doc: 'Expiry month code of the option'
       - id: filler_1
         size: 1
@@ -3766,9 +3847,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -3791,14 +3871,13 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'This field contains the outstanding number of contracts in the series Updated on a trade by trade basis Refer to Indicator Code'
       - id: second_filler_1
         size: 1
         doc: 'Filler'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -3808,9 +3887,8 @@ types:
   future_options_trade_correction_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
@@ -3819,9 +3897,8 @@ types:
         pad-right: 0x20
         doc: 'Option base symbol (symbol of the underlying)'
       - id: contract_month_code
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: contract_month_code
         doc: 'Option month code'
       - id: expiry_year
         type: str
@@ -3861,20 +3938,18 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3891,7 +3966,7 @@ types:
         type: str
         size: 7
         encoding: ASCII
-        doc: 'This field contains the outstanding number of contracts in the series'
+        doc: 'Outstanding number of contracts in the series as of previous day Refer to Indicator Code'
       - id: filler_2
         size: 2
         doc: 'Filler'
@@ -3903,20 +3978,18 @@ types:
   futures_trade_correction_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: root_symbol
         type: str
         size: 6
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Futures series symbol'
       - id: delivery_month
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: delivery_month
         doc: 'Delivery month for the contract'
       - id: delivery_year_futures
         type: str
@@ -3943,15 +4016,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -3965,9 +4037,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -3977,9 +4048,8 @@ types:
   strategy_trade_correction_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: symbol
         type: str
@@ -3993,9 +4063,8 @@ types:
         encoding: ASCII
         doc: 'Number of contracts for the trade'
       - id: trade_price_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: trade_price_sign
         doc: 'For Trade Price field (sign)'
       - id: trade_price
         type: str
@@ -4007,9 +4076,8 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
@@ -4029,9 +4097,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -4041,31 +4108,28 @@ types:
   swap_future_trade_correction_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_swap_future
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
-      - id: expiry_month
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Expiry month code of the option'
+        doc: 'Swap future base symbol'
+      - id: expiry_month_swap_future
+        type: u1
+        enum: expiry_month_swap_future
+        doc: 'Expiry month code of the swap future Refer to Month Codes'
       - id: expiry_year
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Last two digits of the option expiry year'
+        doc: 'Last two digits of the expiry year of the swap future'
       - id: expiry_day
         type: str
         size: 2
         encoding: ASCII
-        doc: 'Expiry day of the option'
+        doc: 'Expiry day of the swap future'
       - id: tenor
         type: str
         size: 2
@@ -4095,15 +4159,14 @@ types:
         enum: trade_price_fraction_indicator
         doc: 'Defines number of decimal places or fraction positions'
       - id: net_change_sign
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: net_change_sign
         doc: 'For the net change field'
       - id: net_change
         type: str
         size: 6
         encoding: ASCII
-        doc: 'Net change = last trade price - previous close'
+        doc: 'Net change = last trade price - previous settlement price'
       - id: net_change_fraction_indicator
         type: u1
         enum: net_change_fraction_indicator
@@ -4114,9 +4177,8 @@ types:
         encoding: ASCII
         doc: 'Time of transaction (HHMMSSmmm)'
       - id: price_indicator_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: price_indicator_marker
         doc: 'Identifies the type of transaction'
       - id: trade_number
         type: str
@@ -4126,37 +4188,32 @@ types:
   group_status_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
-      - id: root_symbol
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
+      - id: root_symbol_group
         type: str
         size: 6
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Option base symbol (symbol of the underlying)'
+        doc: 'Root of the instrument group'
       - id: group_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: group_status
         doc: 'group status of the trading instrument'
-  strategies_message:
+  group_status_strategies_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Exchange on which the trade occurred Q = Montreal'
+        type: u1
+        enum: exchange_id
+        doc: 'Exchange on which the quote occurred Q = Montreal'
       - id: group_instrument
         type: str
         size: 2
         encoding: ASCII
         doc: 'group of the instrument'
       - id: group_status
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: group_status
         doc: 'group status of the trading instrument'
   bulletins_message:
     seq:
@@ -4182,9 +4239,8 @@ types:
         pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: continue_marker
         doc: 'Continue Marker'
   special_text_bulletin:
     seq:
@@ -4201,9 +4257,8 @@ types:
         pad-right: 0x20
         doc: 'Bulletin in textual form'
       - id: continue_marker
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: continue_marker
         doc: 'Continue Marker'
   end_of_sales_message:
     seq:
@@ -4218,15 +4273,13 @@ types:
   tick_table_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: tick_table_name
         type: str
         size: 50
         encoding: ASCII
-        pad-right: 0x20
         doc: 'Tick Table name'
       - id: tick_table_short_name
         type: str
@@ -4266,9 +4319,8 @@ types:
   end_of_transmission_message:
     seq:
       - id: exchange_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: exchange_id
         doc: 'Exchange on which the trade occurred Q = Montreal'
       - id: time
         type: str
@@ -4282,8 +4334,92 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Time at which the message is transmitted. HHMMSS'
+  timebeat_message:
+    seq:
+      - id: time_with_milliseconds
+        type: str
+        size: 9
+        encoding: ASCII
+        doc: 'Time at which the message is transmitted HHMMSSmmm'
 
 enums:
+  exchange_id:
+    0x51:
+      id: 'montreal'
+      doc: 'Montreal'
+  expiry_month:
+    0x41:
+      id: 'january_call'
+      doc: 'January Call'
+    0x42:
+      id: 'february_call'
+      doc: 'February Call'
+    0x43:
+      id: 'march_call'
+      doc: 'March Call'
+    0x44:
+      id: 'april_call'
+      doc: 'April Call'
+    0x45:
+      id: 'may_call'
+      doc: 'May Call'
+    0x46:
+      id: 'june_call'
+      doc: 'June Call'
+    0x47:
+      id: 'july_call'
+      doc: 'July Call'
+    0x48:
+      id: 'august_call'
+      doc: 'August Call'
+    0x49:
+      id: 'september_call'
+      doc: 'September Call'
+    0x4a:
+      id: 'october_call'
+      doc: 'October Call'
+    0x4b:
+      id: 'november_call'
+      doc: 'November Call'
+    0x4c:
+      id: 'december_call'
+      doc: 'December Call'
+    0x4d:
+      id: 'january_put'
+      doc: 'January Put'
+    0x4e:
+      id: 'february_put'
+      doc: 'February Put'
+    0x4f:
+      id: 'march_put'
+      doc: 'March Put'
+    0x50:
+      id: 'april_put'
+      doc: 'April Put'
+    0x51:
+      id: 'may_put'
+      doc: 'May Put'
+    0x52:
+      id: 'june_put'
+      doc: 'June Put'
+    0x53:
+      id: 'july_put'
+      doc: 'July Put'
+    0x54:
+      id: 'august_put'
+      doc: 'August Put'
+    0x55:
+      id: 'september_put'
+      doc: 'September Put'
+    0x56:
+      id: 'october_put'
+      doc: 'October Put'
+    0x57:
+      id: 'november_put'
+      doc: 'November Put'
+    0x58:
+      id: 'december_put'
+      doc: 'December Put'
   strike_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4388,6 +4524,13 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  net_change_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
   net_change_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4440,6 +4583,113 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  price_indicator_marker:
+    0x41:
+      id: 'asoftrade'
+      doc: 'Asoftrade'
+    0x42:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    0x20:
+      id: 'actual_transaction_took_place'
+      doc: 'Actual Transaction Took Place'
+    0x44:
+      id: 'crossed'
+      doc: 'Crossed'
+    0x45:
+      id: 'efp_reporting'
+      doc: 'Efp Reporting'
+    0x47:
+      id: 'contingent_trade'
+      doc: 'Contingent Trade'
+    0x48:
+      id: 'riskless_basis_cross'
+      doc: 'Riskless Basis Cross'
+    0x49:
+      id: 'implied_trade'
+      doc: 'Implied Trade'
+    0x4a:
+      id: 'delta_trade'
+      doc: 'Delta Trade'
+    0x4b:
+      id: 'committed_block'
+      doc: 'Committed Block'
+    0x4c:
+      id: 'late_trade'
+      doc: 'Late Trade'
+    0x4d:
+      id: 'for_future_use'
+      doc: 'For Future Use'
+    0x4e:
+      id: 'for_future_use_x4e'
+      doc: 'For Future Use'
+    0x50:
+      id: 'strategy_reporting'
+      doc: 'Strategy Reporting'
+    0x51:
+      id: 'for_future_use_x51'
+      doc: 'For Future Use'
+    0x52:
+      id: 'efr_reporting'
+      doc: 'Efr Reporting'
+    0x53:
+      id: 'reference_price'
+      doc: 'Reference price (volume field zero filled)'
+    0x74:
+      id: 'trade_correction'
+      doc: 'Trade Correction'
+    0x54:
+      id: 'committed'
+      doc: 'Committed'
+    0x55:
+      id: 'basis_on_close'
+      doc: 'Basis On Close'
+    0x56:
+      id: 'price_volume_adjustment'
+      doc: 'Price Volume Adjustment'
+    0x59:
+      id: 'for_future_use_x59'
+      doc: 'For Future Use'
+    0x5a:
+      id: 'for_future_use_x5a'
+      doc: 'For Future Use'
+  contract_month_code:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
   call_put_code:
     0x43:
       id: 'call'
@@ -4447,6 +4697,87 @@ enums:
     0x50:
       id: 'put'
       doc: 'Put'
+  delivery_month:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
+  trade_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  expiry_month_swap_future:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
   fixed_rate_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4509,6 +4840,43 @@ enums:
     0x32:
       id: 'both'
       doc: 'Both'
+  series_status:
+    0x59:
+      id: 'preopening_phase'
+      doc: 'Preopening Phase'
+    0x4f:
+      id: 'opening_phase'
+      doc: 'Opening Phase'
+    0x54:
+      id: 'opened_for_trading'
+      doc: 'Opened For Trading'
+    0x46:
+      id: 'forbidden_phase'
+      doc: 'Forbidden Phase'
+    0x45:
+      id: 'intervention_before_opening'
+      doc: 'Intervention Before Opening'
+    0x48:
+      id: 'trading_halted'
+      doc: 'Trading Halted'
+    0x52:
+      id: 'reserved_phase'
+      doc: 'Reserved phase (goes into a state as pre-opening where orders can be sent, modified, or canceled)'
+    0x53:
+      id: 'suspended_phase'
+      doc: 'Suspended phase (goes into a state as pre-opening where orders can be sent, modified, or cancelled)'
+    0x5a:
+      id: 'frozen'
+      doc: 'Frozen. No longer in use.'
+    0x41:
+      id: 'surveillance_intervention_phase'
+      doc: 'Surveillance Intervention phase (Consultation phase)'
+    0x43:
+      id: 'endof_day_inquiries_phase'
+      doc: 'Endof Day Inquiries Phase'
+    0x20:
+      id: 'if_not_used'
+      doc: 'If Not Used'
   bid_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4613,6 +4981,95 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  instrument_status_marker:
+    0x59:
+      id: 'preopening_phase'
+      doc: 'Preopening Phase'
+    0x4f:
+      id: 'opening_phase'
+      doc: 'Opening Phase'
+    0x54:
+      id: 'opened_for_trading'
+      doc: 'Opened For Trading'
+    0x46:
+      id: 'forbidden_phase'
+      doc: 'Forbidden Phase'
+    0x45:
+      id: 'intervention_before_opening'
+      doc: 'Intervention Before Opening'
+    0x48:
+      id: 'trading_halted'
+      doc: 'Trading Halted'
+    0x52:
+      id: 'reserved_phase'
+      doc: 'Reserved phase (goes into a state as pre-opening where orders can be sent, modified, or canceled)'
+    0x53:
+      id: 'suspended_phase'
+      doc: 'Suspended phase (goes into a state as pre-opening where orders can be sent, modified, or cancelled)'
+    0x5a:
+      id: 'frozen'
+      doc: 'Frozen. No longer in use.'
+    0x41:
+      id: 'surveillance_intervention_phase'
+      doc: 'Surveillance Intervention phase (Consultation phase)'
+    0x43:
+      id: 'endof_day_inquiries_phase'
+      doc: 'Endof Day Inquiries Phase'
+    0x20:
+      id: 'if_not_used'
+      doc: 'If Not Used'
+  bid_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  ask_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  level_of_market_depth:
+    0x31:
+      id: 'level_1'
+      doc: 'Level 1'
+    0x32:
+      id: 'level_2'
+      doc: 'Level 2'
+    0x33:
+      id: 'level_3'
+      doc: 'Level 3'
+    0x34:
+      id: 'level_4'
+      doc: 'Level 4'
+    0x35:
+      id: 'level_5'
+      doc: 'Level 5'
+    0x41:
+      id: 'implied'
+      doc: 'Implied'
+  level:
+    0x31:
+      id: 'level_1'
+      doc: 'Level 1'
+    0x32:
+      id: 'level_2'
+      doc: 'Level 2'
+    0x33:
+      id: 'level_3'
+      doc: 'Level 3'
+    0x34:
+      id: 'level_4'
+      doc: 'Level 4'
+    0x35:
+      id: 'level_5'
+      doc: 'Level 5'
+    0x41:
+      id: 'implied'
+      doc: 'Implied'
   price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4665,6 +5122,76 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  market_price_indicator:
+    0x41:
+      id: 'asoftrade'
+      doc: 'Asoftrade'
+    0x42:
+      id: 'block_trade'
+      doc: 'Block Trade'
+    0x20:
+      id: 'actual_transaction_took_place'
+      doc: 'Actual Transaction Took Place'
+    0x44:
+      id: 'crossed'
+      doc: 'Crossed'
+    0x45:
+      id: 'efp_reporting'
+      doc: 'Efp Reporting'
+    0x47:
+      id: 'contingent_trade'
+      doc: 'Contingent Trade'
+    0x48:
+      id: 'riskless_basis_cross'
+      doc: 'Riskless Basis Cross'
+    0x49:
+      id: 'implied_trade'
+      doc: 'Implied Trade'
+    0x4a:
+      id: 'delta_trade'
+      doc: 'Delta Trade'
+    0x4b:
+      id: 'committed_block'
+      doc: 'Committed Block'
+    0x4c:
+      id: 'late_trade'
+      doc: 'Late Trade'
+    0x4d:
+      id: 'for_future_use'
+      doc: 'For Future Use'
+    0x4e:
+      id: 'for_future_use_x4e'
+      doc: 'For Future Use'
+    0x50:
+      id: 'strategy_reporting'
+      doc: 'Strategy Reporting'
+    0x51:
+      id: 'for_future_use_x51'
+      doc: 'For Future Use'
+    0x52:
+      id: 'efr_reporting'
+      doc: 'Efr Reporting'
+    0x53:
+      id: 'reference_price'
+      doc: 'Reference price (volume field zero filled)'
+    0x74:
+      id: 'trade_correction'
+      doc: 'Trade Correction'
+    0x54:
+      id: 'committed'
+      doc: 'Committed'
+    0x55:
+      id: 'basis_on_close'
+      doc: 'Basis On Close'
+    0x56:
+      id: 'price_volume_adjustment'
+      doc: 'Price Volume Adjustment'
+    0x59:
+      id: 'for_future_use_x59'
+      doc: 'For Future Use'
+    0x5a:
+      id: 'for_future_use_x5a'
+      doc: 'For Future Use'
   maximum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -4887,6 +5414,43 @@ enums:
     0x50:
       id: 'physical'
       doc: 'Physical'
+  associated_product_delivery_month:
+    0x46:
+      id: 'january'
+      doc: 'January'
+    0x47:
+      id: 'february'
+      doc: 'February'
+    0x48:
+      id: 'march'
+      doc: 'March'
+    0x4a:
+      id: 'april'
+      doc: 'April'
+    0x4b:
+      id: 'may'
+      doc: 'May'
+    0x4d:
+      id: 'june'
+      doc: 'June'
+    0x4e:
+      id: 'july'
+      doc: 'July'
+    0x51:
+      id: 'august'
+      doc: 'August'
+    0x55:
+      id: 'september'
+      doc: 'September'
+    0x56:
+      id: 'october'
+      doc: 'October'
+    0x58:
+      id: 'november'
+      doc: 'November'
+    0x5a:
+      id: 'december'
+      doc: 'December'
   strategy_allow_implied:
     0x59:
       id: 'yes_field'
@@ -4894,6 +5458,58 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
+  notional_principal_amount_faction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
   day_count_convention:
     0x41:
       id: 'act_365'
@@ -5392,6 +6008,34 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  last_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  open_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  high_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
+  low_price_sign:
+    0x2b:
+      id: 'positive'
+      doc: 'Positive'
+    0x2d:
+      id: 'negative'
+      doc: 'Negative'
   leg_ratio_sign:
     0x2b:
       id: 'buy_of_the_underlying'
@@ -5607,6 +6251,34 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+  group_status:
+    0x59:
+      id: 'preopening_phase'
+      doc: 'Preopening Phase'
+    0x4f:
+      id: 'opening_phase'
+      doc: 'Opening Phase'
+    0x54:
+      id: 'opened_for_trading'
+      doc: 'Opened For Trading'
+    0x46:
+      id: 'forbidden_phase'
+      doc: 'Forbidden Phase'
+    0x45:
+      id: 'intervention_before_opening'
+      doc: 'Intervention Before Opening'
+    0x48:
+      id: 'trading_halted'
+      doc: 'Trading Halted'
+    0x41:
+      id: 'surveillance_intervention_phase'
+      doc: 'Surveillance Intervention phase (Consultation phase)'
+    0x43:
+      id: 'endof_day_inquiries_phase'
+      doc: 'Endof Day Inquiries Phase'
+    0x20:
+      id: 'if_not_used'
+      doc: 'If Not Used'
   bulletin_type:
     0x31:
       id: 'regular_text_bulletin'
@@ -5614,6 +6286,13 @@ enums:
     0x32:
       id: 'special_text_bulletin'
       doc: 'Special Text Bulletin'
+  continue_marker:
+    0x30:
+      id: 'bulletin_continues_in_next_record'
+      doc: 'Bulletin Continues In Next Record'
+    0x31:
+      id: 'bulletin_ended'
+      doc: 'Bulletin Ended'
   min_price_fraction_indicator:
     0x30:
       id: 'whole'

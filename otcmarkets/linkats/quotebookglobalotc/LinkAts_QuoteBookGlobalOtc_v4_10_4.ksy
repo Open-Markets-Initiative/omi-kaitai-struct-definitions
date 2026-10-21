@@ -257,8 +257,8 @@ types:
         encoding: ASCII
         doc: 'Market Participant ID owning the quote (always 4 characters)'
       - id: ask_price
-        type: u8
-        doc: 'Ask price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Ask price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: ask_size
         type: u4
         doc: 'Number of shares on the ask'
@@ -269,8 +269,8 @@ types:
         type: u8
         doc: 'Milliseconds since UTC epoch'
       - id: bid_price
-        type: u8
-        doc: 'Bid price, 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Bid price, 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: bid_size
         type: u4
         doc: 'Number of shares on the bid'
@@ -345,8 +345,8 @@ types:
         type: quote_flags
         doc: 'Quote Information'
       - id: price
-        type: u8
-        doc: 'Price with 6 decimal places assumed'
+        type: decimal_u8_6
+        doc: 'Price with 6 decimal places assumed. Implied decimal with scale 1e-6'
       - id: size
         type: u4
         doc: 'Number of shares'
@@ -375,6 +375,13 @@ types:
         value: time / 1000 % 60
       millisecond:
         value: time % 1000
+  decimal_u8_6:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   message_type:

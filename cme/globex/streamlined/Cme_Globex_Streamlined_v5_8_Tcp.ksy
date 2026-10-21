@@ -105,6 +105,9 @@ types:
       - id: heart_bt_int
         type: s1
         doc: 'Heartbeat interval (seconds)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   admin_logout:
     seq:
       - id: text
@@ -112,6 +115,9 @@ types:
         size: 180
         encoding: ASCII
         doc: 'Free format text string. May include logout confirmation or reason for logout'
+      - id: block_extension
+        size: _parent.message_header.block_length - 180
+        doc: 'Bytes the stated block holds beyond the 180 this version reads'
   md_incremental_refresh_eris_reference_data_and_daily_statistics:
     seq:
       - id: transact_time
@@ -123,6 +129,9 @@ types:
       - id: batch_total_messages_optional
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_reference_data_groups
         type: eris_reference_data_groups
         doc: 'NoMDEntries Block'
@@ -325,6 +334,9 @@ types:
         size: 30
         encoding: ASCII
         doc: 'Ticker symbol. Common, &amp;quot;human understood&amp;quot; representation of the security'
+      - id: block_extension
+        size: _parent.group_size.block_length - 419
+        doc: 'Bytes the stated block holds beyond the 419 this version reads'
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
@@ -637,6 +649,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies class or source of the SecurityAltID (455) value'
+      - id: block_extension
+        size: _parent.group_size.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   incremental_refresh_eris_related_instruments_groups:
     seq:
       - id: group_size
@@ -662,6 +677,9 @@ types:
         size: 26
         encoding: ASCII
         doc: 'Instrument Symbol Suffix for T+1 (Next Trading day)'
+      - id: block_extension
+        size: _parent.group_size.block_length - 77
+        doc: 'Bytes the stated block holds beyond the 77 this version reads'
   events_groups:
     seq:
       - id: group_size
@@ -680,6 +698,9 @@ types:
       - id: event_time_optional
         type: u8_nullable
         doc: 'Time of event. This is number of days since unix epoch. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.group_size.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   md_news_indices:
     seq:
       - id: headline
@@ -695,6 +716,9 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Describes a class of service for a given data feed'
+      - id: block_extension
+        size: _parent.message_header.block_length - 60
+        doc: 'Bytes the stated block holds beyond the 60 this version reads'
       - id: news_indices_related_sym_groups
         type: news_indices_related_sym_groups
         doc: 'NoRelatedSym Block'
@@ -718,6 +742,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'Instrument Name or Symbol'
+      - id: block_extension
+        size: _parent.group_size.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   lines_of_text_groups:
     seq:
       - id: group_size
@@ -735,6 +762,9 @@ types:
         size: 500
         encoding: ASCII
         doc: 'This general purpose text field could contain any post-trade instructions used by customers based on mutual understanding with their clearing firm. If incoming value is greater than max length then take the right most fifty bytes. No validation is done for valid values and this is a pass through to clearing. After any right justification if applicable the incoming value is flipped back in the execution report and also becomes an attribute of the order'
+      - id: block_extension
+        size: _parent.group_size.block_length - 500
+        doc: 'Bytes the stated block holds beyond the 500 this version reads'
   md_incremental_refresh_trade_blocks_340:
     seq:
       - id: transact_time
@@ -746,6 +776,9 @@ types:
       - id: batch_total_messages
         type: u2
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: trade_blocks_original_groups
         type: trade_blocks_original_groups
         doc: 'NoMDEntries Block'
@@ -875,6 +908,9 @@ types:
         size: 17
         encoding: ASCII
         doc: 'Used to correlate leg instrument definitions with their executions. Cross referenced to Tag 1788'
+      - id: block_extension
+        size: _parent.group_size.block_length - 327
+        doc: 'Bytes the stated block holds beyond the 327 this version reads'
       - id: trade_blocks_underlyings_groups
         type: trade_blocks_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -928,6 +964,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Underlying Security''s SecurityExchange'
+      - id: block_extension
+        size: _parent.group_size.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   underlying_maturity_month_year:
     seq:
       - id: year
@@ -964,6 +1003,9 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Identifies the type or role of the PartyID specified'
+      - id: block_extension
+        size: _parent.group_size.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   trade_blocks_original_legs_groups:
     seq:
       - id: group_size
@@ -1035,6 +1077,9 @@ types:
         size: 3
         encoding: ASCII
         doc: 'Indicates the currency of the unit of measure. Conditionally required when LegUnitOfMeasure(999) = Ccy'
+      - id: block_extension
+        size: _parent.group_size.block_length - 135
+        doc: 'Bytes the stated block holds beyond the 135 this version reads'
   leg_maturity_month_year:
     seq:
       - id: year
@@ -1062,6 +1107,9 @@ types:
         size: 26
         encoding: ASCII
         doc: 'Quote request ID defined by the exchange'
+      - id: block_extension
+        size: _parent.message_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
       - id: quote_request_related_sym_groups
         type: quote_request_related_sym_groups
         doc: 'NoRelatedSym Block'
@@ -1112,6 +1160,9 @@ types:
       - id: quote_type
         type: u1_nullable
         doc: 'Type of quote requested. A tradable quote can trade against other orders and quotes upon acceptance. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1147,6 +1198,9 @@ types:
       - id: appl_id
         type: u2_nullable
         doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 63
+        doc: 'Bytes the stated block holds beyond the 63 this version reads'
       - id: inst_attrib_groups
         type: inst_attrib_groups
         doc: 'NoInstAttrib Block'
@@ -1179,6 +1233,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'Attribute value appropriate to the InstrAttribType (871) field'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 101
+        doc: 'Bytes the stated block holds beyond the 101 this version reads'
   md_incremental_refresh_indices:
     seq:
       - id: transact_time
@@ -1195,6 +1252,9 @@ types:
       - id: batch_total_messages_optional
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: incremental_refresh_indices_groups
         type: incremental_refresh_indices_groups
         doc: 'NoMDEntries Block'
@@ -1262,6 +1322,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'For future use'
+      - id: block_extension
+        size: _parent.group_size.block_length - 176
+        doc: 'Bytes the stated block holds beyond the 176 this version reads'
   md_entry_px_decimal:
     seq:
       - id: mantissa
@@ -1331,6 +1394,9 @@ types:
       - id: trade_date
         type: u2_nullable
         doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: trade_blocks_legacy_groups
         type: trade_blocks_legacy_groups
         doc: 'NoMDEntries Block'
@@ -1460,6 +1526,9 @@ types:
         size: 17
         encoding: ASCII
         doc: 'Used to correlate leg instrument definitions with their executions. Cross referenced to Tag 1788'
+      - id: block_extension
+        size: _parent.group_size.block_length - 328
+        doc: 'Bytes the stated block holds beyond the 328 this version reads'
       - id: trade_blocks_underlyings_groups
         type: trade_blocks_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -1491,6 +1560,9 @@ types:
       - id: batch_total_messages_optional
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_original_groups
         type: eris_original_groups
         doc: 'NoMDEntries Block'
@@ -1571,6 +1643,9 @@ types:
         size: 50
         encoding: ASCII
         doc: 'For future use'
+      - id: block_extension
+        size: _parent.group_size.block_length - 187
+        doc: 'Bytes the stated block holds beyond the 187 this version reads'
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
@@ -1599,6 +1674,9 @@ types:
       - id: batch_total_messages_optional
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_groups
         type: eris_groups
         doc: 'NoMDEntries Block'
@@ -1682,6 +1760,9 @@ types:
       - id: md_quote_type
         type: u1_nullable
         doc: 'Identifies the type of quote. 0=Indicative, 1=Tradeable. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 188
+        doc: 'Bytes the stated block holds beyond the 188 this version reads'
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'
@@ -1702,6 +1783,9 @@ types:
       - id: batch_total_messages_optional
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: otc_original_groups
         type: otc_original_groups
         doc: 'NoMDEntries Block'
@@ -1845,6 +1929,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'For future use'
+      - id: block_extension
+        size: _parent.group_size.block_length - 338
+        doc: 'Bytes the stated block holds beyond the 338 this version reads'
       - id: otc_underlyings_groups
         type: otc_underlyings_groups
         doc: 'NoUnderlyings Block'
@@ -1903,6 +1990,9 @@ types:
         size: 4
         encoding: ASCII
         doc: 'Underlying Security''s SecurityExchange and it can be used to identify the underlying security'
+      - id: block_extension
+        size: _parent.group_size.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   otc_security_alt_id_groups:
     seq:
       - id: group_size
@@ -1925,6 +2015,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies class or source of the SecurityAltID (455) value'
+      - id: block_extension
+        size: _parent.group_size.block_length - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   md_instrument_definition_eris:
     seq:
       - id: security_group_12
@@ -1981,6 +2074,9 @@ types:
       - id: appl_id
         type: u2_nullable
         doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 95
+        doc: 'Bytes the stated block holds beyond the 95 this version reads'
       - id: eris_feed_types_groups
         type: eris_feed_types_groups
         doc: 'NoMDFeedTypes Block'
@@ -2024,6 +2120,9 @@ types:
       - id: market_depth
         type: u1_nullable
         doc: 'Indicated the level on the book traded. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   eris_legs_groups:
     seq:
       - id: group_size
@@ -2089,6 +2188,9 @@ types:
       - id: interpolation_factor
         type: interpolation_factor
         doc: 'Number of legs (repeating groups)'
+      - id: block_extension
+        size: _parent.group_size.block_length - 115
+        doc: 'Bytes the stated block holds beyond the 115 this version reads'
       - id: eris_security_alt_id_groups
         type: eris_security_alt_id_groups
         doc: 'NoSecurityAltID Block'

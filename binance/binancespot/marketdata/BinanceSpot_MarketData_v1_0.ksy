@@ -86,6 +86,9 @@ types:
       - id: qty_exponent
         type: s1
         doc: 'qtyExponent'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
       - id: trades_stream_event_message_trades_groups
         type: trades_stream_event_message_trades_groups
         doc: 'trades Block'
@@ -125,6 +128,9 @@ types:
         type: u1
         enum: is_buyer_maker
         doc: 'isBuyerMaker'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   symbol:
     seq:
       - id: len_symbol_data
@@ -160,6 +166,9 @@ types:
       - id: ask_qty
         type: s8
         doc: 'askQty'
+      - id: block_extension
+        size: _parent.message_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
       - id: symbol
         type: symbol
         doc: 'symbol data struct'
@@ -177,6 +186,9 @@ types:
       - id: qty_exponent
         type: s1
         doc: 'qtyExponent'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
       - id: depth_snapshot_stream_event_message_bids_groups
         type: depth_snapshot_stream_event_message_bids_groups
         doc: 'bids Block'
@@ -212,6 +224,9 @@ types:
       - id: qty
         type: s8
         doc: 'qty'
+      - id: block_extension
+        size: _parent.group_size_16_encoding.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   depth_snapshot_stream_event_message_asks_groups:
     seq:
       - id: group_size_16_encoding
@@ -230,6 +245,9 @@ types:
       - id: qty
         type: s8
         doc: 'qty'
+      - id: block_extension
+        size: _parent.group_size_16_encoding.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   depth_diff_stream_event_message:
     seq:
       - id: event_time
@@ -247,6 +265,9 @@ types:
       - id: qty_exponent
         type: s1
         doc: 'qtyExponent'
+      - id: block_extension
+        size: _parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
       - id: depth_diff_stream_event_message_bids_groups
         type: depth_diff_stream_event_message_bids_groups
         doc: 'bids Block'
@@ -274,6 +295,9 @@ types:
       - id: qty
         type: s8
         doc: 'qty'
+      - id: block_extension
+        size: _parent.group_size_16_encoding.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   depth_diff_stream_event_message_asks_groups:
     seq:
       - id: group_size_16_encoding
@@ -292,6 +316,9 @@ types:
       - id: qty
         type: s8
         doc: 'qty'
+      - id: block_extension
+        size: _parent.group_size_16_encoding.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   microsecond_timestamp:
     seq:
       - id: time

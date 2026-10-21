@@ -137,6 +137,9 @@ types:
       - id: onbehalf_firm
         type: u4_nullable
         doc: 'onbehalfFirm. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
       - id: credentials
         type: credentials
         doc: 'credentials data struct'
@@ -210,6 +213,9 @@ types:
       - id: semantic_version
         type: semantic_version
         doc: 'NegotiateResponseMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   semantic_version:
     seq:
       - id: major_number
@@ -248,6 +254,9 @@ types:
       - id: current_session_ver_id
         type: u8_nullable
         doc: 'currentSessionVerID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   establish_message:
     seq:
       - id: session_id
@@ -275,6 +284,9 @@ types:
       - id: cod_timeout_window
         type: u8
         doc: 'codTimeoutWindow'
+      - id: block_extension
+        size: _parent.message_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
       - id: credentials
         type: credentials
         doc: 'credentials data struct'
@@ -301,6 +313,9 @@ types:
       - id: semantic_version
         type: semantic_version
         doc: 'NegotiateResponseMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   establish_reject_message:
     seq:
       - id: session_id
@@ -322,6 +337,9 @@ types:
       - id: last_incoming_seq_no_optional
         type: u4_nullable
         doc: 'lastIncomingSeqNo. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   terminate_message:
     seq:
       - id: session_id
@@ -334,6 +352,9 @@ types:
         type: u1
         enum: termination_code
         doc: 'terminationCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   not_applied_message:
     seq:
       - id: from_seq_no
@@ -342,11 +363,17 @@ types:
       - id: count
         type: u4
         doc: 'count'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   sequence_message:
     seq:
       - id: next_seq_no
         type: u4
         doc: 'nextSeqNo'
+      - id: block_extension
+        size: _parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   retransmit_request_message:
     seq:
       - id: session_id
@@ -361,6 +388,9 @@ types:
       - id: count
         type: u4
         doc: 'count'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   retransmission_message:
     seq:
       - id: session_id
@@ -375,6 +405,9 @@ types:
       - id: count
         type: u4
         doc: 'count'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   retransmit_reject_message:
     seq:
       - id: session_id
@@ -387,6 +420,9 @@ types:
         type: u1
         enum: retransmit_reject_code
         doc: 'retransmitRejectCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   simple_new_order_message:
     seq:
       - id: inbound_business_header
@@ -446,6 +482,9 @@ types:
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 84
+        doc: 'Bytes the stated block holds beyond the 84 this version reads'
       - id: memo
         type: memo
         doc: 'memo data struct'
@@ -555,6 +594,9 @@ types:
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
       - id: memo
         type: memo
         doc: 'memo data struct'
@@ -641,6 +683,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 135
+        doc: 'Bytes the stated block holds beyond the 135 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -761,6 +806,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 152
+        doc: 'Bytes the stated block holds beyond the 152 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -810,6 +858,9 @@ types:
       - id: executing_trader_optional
         type: str_5_nullable
         doc: 'executingTrader. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -865,6 +916,9 @@ types:
       - id: max_sweep_qty
         type: u8_nullable
         doc: 'maxSweepQty. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 84
+        doc: 'Bytes the stated block holds beyond the 84 this version reads'
       - id: cross_sides_groups
         type: cross_sides_groups
         doc: 'noSides Block'
@@ -913,6 +967,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   execution_report_new_message:
     seq:
       - id: outbound_business_header
@@ -1023,6 +1080,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 176
+        doc: 'Bytes the stated block holds beyond the 176 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1156,6 +1216,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 190
+        doc: 'Bytes the stated block holds beyond the 190 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1265,6 +1328,9 @@ types:
       - id: action_requested_from_session_id
         type: u4_nullable
         doc: 'actionRequestedFromSessionID. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 184
+        doc: 'Bytes the stated block holds beyond the 184 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1390,6 +1456,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 174
+        doc: 'Bytes the stated block holds beyond the 174 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1495,6 +1564,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 166
+        doc: 'Bytes the stated block holds beyond the 166 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1608,6 +1680,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 159
+        doc: 'Bytes the stated block holds beyond the 159 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1635,6 +1710,9 @@ types:
       - id: business_reject_reason
         type: u4
         doc: 'businessRejectReason'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
       - id: memo
         type: memo
         doc: 'memo data struct'
@@ -1659,6 +1737,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
+      - id: block_extension
+        size: _parent.message_header.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
       - id: legs_groups
         type: legs_groups
         doc: 'noLegs Block'
@@ -1689,6 +1770,9 @@ types:
       - id: padding_1
         size: 1
         doc: '1 bytes padding'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   security_definition_response_message:
     seq:
       - id: outbound_business_header
@@ -1728,6 +1812,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
+      - id: block_extension
+        size: _parent.message_header.block_length - 83
+        doc: 'Bytes the stated block holds beyond the 83 this version reads'
   quote_request_message:
     seq:
       - id: bidirectional_business_header
@@ -1786,6 +1873,9 @@ types:
       - id: days_to_settlement
         type: u2
         doc: 'daysToSettlement'
+      - id: block_extension
+        size: _parent.message_header.block_length - 107
+        doc: 'Bytes the stated block holds beyond the 107 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'
@@ -1839,6 +1929,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   quote_status_report_message:
     seq:
       - id: bidirectional_business_header
@@ -1918,6 +2011,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 122
+        doc: 'Bytes the stated block holds beyond the 122 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -1989,6 +2085,9 @@ types:
       - id: trading_sub_account
         type: u4_nullable
         doc: 'tradingSubAccount. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 108
+        doc: 'Bytes the stated block holds beyond the 108 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2027,6 +2126,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'executingTrader'
+      - id: block_extension
+        size: _parent.message_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2090,6 +2192,9 @@ types:
       - id: days_to_settlement_optional
         type: u2_nullable
         doc: 'daysToSettlement. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 110
+        doc: 'Bytes the stated block holds beyond the 110 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'noSides Block'
@@ -2129,6 +2234,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
+      - id: block_extension
+        size: _parent.message_header.block_length - 65
+        doc: 'Bytes the stated block holds beyond the 65 this version reads'
   position_maintenance_request_message:
     seq:
       - id: inbound_business_header
@@ -2170,6 +2278,9 @@ types:
       - id: long_qty
         type: u8
         doc: 'longQty'
+      - id: block_extension
+        size: _parent.message_header.block_length - 73
+        doc: 'Bytes the stated block holds beyond the 73 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2235,6 +2346,9 @@ types:
         type: u1
         enum: contrary_instruction_indicator
         doc: 'contraryInstructionIndicator'
+      - id: block_extension
+        size: _parent.message_header.block_length - 95
+        doc: 'Bytes the stated block holds beyond the 95 this version reads'
       - id: positions_groups
         type: positions_groups
         doc: 'noPositions Block'
@@ -2269,6 +2383,9 @@ types:
       - id: short_qty
         type: u8_nullable
         doc: 'Short Quantity. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   allocation_instruction_message:
     seq:
       - id: inbound_business_header
@@ -2320,6 +2437,9 @@ types:
       - id: alloc_qty
         type: u8
         doc: 'allocQty'
+      - id: block_extension
+        size: _parent.message_header.block_length - 86
+        doc: 'Bytes the stated block holds beyond the 86 this version reads'
       - id: desk_id
         type: desk_id
         doc: 'deskID data struct'
@@ -2382,6 +2502,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'enteringTrader'
+      - id: block_extension
+        size: _parent.message_header.block_length - 84
+        doc: 'Bytes the stated block holds beyond the 84 this version reads'
   order_mass_action_request_message:
     seq:
       - id: inbound_business_header
@@ -2419,6 +2542,9 @@ types:
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 54
+        doc: 'Bytes the stated block holds beyond the 54 this version reads'
   order_mass_action_report_message:
     seq:
       - id: outbound_business_header
@@ -2469,6 +2595,9 @@ types:
       - id: investor_id
         type: investor_id
         doc: 'SimpleNewOrderMessage'
+      - id: block_extension
+        size: _parent.message_header.block_length - 72
+        doc: 'Bytes the stated block holds beyond the 72 this version reads'
       - id: text
         type: text
         doc: 'text data struct'

@@ -83,6 +83,8 @@ types:
             'message_type::best_bid_or_ask_update_long_form_message': best_bid_or_ask_update_long_form_message
             'message_type::trade_report_message': trade_report_message
             'message_type::broken_trade_report_message': broken_trade_report_message
+            'message_type::best_ask_update_short_form_message': best_bid_or_ask_update_short_form_message
+            'message_type::best_ask_update_long_form_message': best_bid_or_ask_update_long_form_message
   message_header:
     seq:
       - id: message_length
@@ -131,8 +133,8 @@ types:
         type: u1
         doc: 'Day of the Month of expiration (1-31)'
       - id: explicit_strike_price
-        type: u4
-        doc: 'Explicit strike price. Refer to Data Types for field processing notes'
+        type: decimal_s4_4
+        doc: 'Explicit strike price. Refer to Data Types for field processing notes. Implied decimal with scale 1e-4'
       - id: option_type
         type: u1
         enum: option_type
@@ -237,8 +239,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the bid side'
       - id: bid_price_short
-        type: u2
-        doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best bid price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: bid_size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
@@ -252,8 +254,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the ask side'
       - id: ask_price_short
-        type: u2
-        doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best ask price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: ask_size_short
         type: u2
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
@@ -282,8 +284,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the bid side'
       - id: bid_price_long
-        type: u4
-        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_s4_4
+        doc: 'Best bid price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: bid_size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid side being displayed in the options market at the current time'
@@ -297,8 +299,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the ask side'
       - id: ask_price_long
-        type: u4
-        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits'
+        type: decimal_s4_4
+        doc: 'Best ask price in fixed point format with 6 whole number places followed by 4 decimal digits. Implied decimal with scale 1e-4'
       - id: ask_size_long
         type: u4
         doc: 'Aggregated number of contracts on the ask side being displayed in the options market at the current time'
@@ -327,8 +329,8 @@ types:
         type: u2
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_short
-        type: u2
-        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits'
+        type: decimal_u2_2
+        doc: 'Best bid or Ask price in fixed point format with 3 whole number places followed by 2 decimal digits. Implied decimal with scale 1e-2'
       - id: size_short
         type: u2
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -357,8 +359,8 @@ types:
         type: u4
         doc: 'Number of market order contracts on the bid or ask side'
       - id: price_long
-        type: u4
-        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+        type: decimal_s4_4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: size_long
         type: u4
         doc: 'Aggregated number of contracts on the bid or ask side being displayed in the options market at the current time'
@@ -389,8 +391,8 @@ types:
         pad-right: 0x20
         doc: 'Trade condition of the execution'
       - id: price_long
-        type: u4
-        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type'
+        type: decimal_s4_4
+        doc: 'Best bid or ask price in fixed point format with 6 whole number places followed by 4 decimal digits, the side determined by Message Type. Implied decimal with scale 1e-4'
       - id: volume
         type: u4
         doc: 'The number of contracts executed'
@@ -409,8 +411,8 @@ types:
         type: u4
         doc: 'The Cross ID of the original trade that is being broken'
       - id: original_price
-        type: u4
-        doc: 'The price of the original trade that is being broken'
+        type: decimal_s4_4
+        doc: 'The price of the original trade that is being broken. Implied decimal with scale 1e-4'
       - id: original_volume
         type: u4
         doc: 'The number of contracts of the original trade that is being broken'
@@ -427,6 +429,20 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  decimal_s4_4:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 10000.0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   client_packet_type:
@@ -502,6 +518,8 @@ enums:
     0x4d:
       id: 'end_of_replay_sequence_message'
       doc: 'The End of replay Sequence message reflects the sequence number at the time replay of existing messages is complete.'
+    0x61: 'best_ask_update_short_form_message'
+    0x41: 'best_ask_update_long_form_message'
   event_code:
     0x4f:
       id: 'start_of_messages'
@@ -621,4 +639,6 @@ enums:
     0x58:
       id: 'broken_trade_report_message'
       doc: 'Broken Trade Report Message indicates that a previously reported trade has been broken.'
+    0x61: 'best_ask_update_short_form_message'
+    0x41: 'best_ask_update_long_form_message'
 

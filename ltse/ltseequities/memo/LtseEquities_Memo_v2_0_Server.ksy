@@ -289,6 +289,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 139
+        doc: 'Bytes the stated block holds beyond the 139 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -351,6 +354,9 @@ types:
         type: u1
         enum: party_role
         doc: 'PartyRole'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   execution_report_rejected_message:
     seq:
       - id: sending_time
@@ -389,6 +395,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -457,6 +466,9 @@ types:
       - id: auction_id
         type: u8_nullable
         doc: 'AuctionId. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 98
+        doc: 'Bytes the stated block holds beyond the 98 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -541,6 +553,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 81
+        doc: 'Bytes the stated block holds beyond the 81 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -575,6 +590,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'CancelGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   execution_report_canceled_message:
     seq:
       - id: sending_time
@@ -613,6 +631,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 78
+        doc: 'Bytes the stated block holds beyond the 78 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -626,6 +647,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'ClOrdID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   execution_report_pending_replace_message:
     seq:
       - id: sending_time
@@ -689,6 +713,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 104
+        doc: 'Bytes the stated block holds beyond the 104 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -758,6 +785,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'LocateBroker. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 112
+        doc: 'Bytes the stated block holds beyond the 112 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -817,6 +847,9 @@ types:
       - id: auction_id
         type: u8_nullable
         doc: 'AuctionId. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 93
+        doc: 'Bytes the stated block holds beyond the 93 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -870,6 +903,9 @@ types:
       - id: auction_id
         type: u8_nullable
         doc: 'AuctionId. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 81
+        doc: 'Bytes the stated block holds beyond the 81 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -918,6 +954,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'Parties Block'
@@ -942,6 +981,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'LnkId. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -977,6 +1019,9 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'RejectReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

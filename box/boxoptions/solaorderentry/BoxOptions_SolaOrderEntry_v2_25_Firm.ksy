@@ -396,7 +396,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   buying_clearing_data:
     seq:
       - id: clearing_instruction
@@ -611,7 +611,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   improvement_order_entry:
     seq:
       - id: group
@@ -655,7 +655,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   order_modification:
     seq:
       - id: group
@@ -730,7 +730,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
   new_complex_order_instrument:
     seq:
       - id: enabled_y_yes_n_no
@@ -832,7 +832,7 @@ types:
         doc: 'Free format text string can be used to transmit additional information for processing. Left justified, right blank filled Format rules: None of the following ascii characters: ‘%’ (percent sign), ‘,’ (comma), ‘;’ (semi-colon), ‘#’ (pound sign), ‘ “ ’ (double-quote) and ‘|’ (pipe) ASCII characters in the decimal code ranges between 0 and 31 and 127 and up are not permitted'
       - id: reserved_4
         size: 4
-        doc: 'Stated inline as String (4). Nullable, No Value = 0'
+        doc: 'Stated inline as String (4)'
       - id: num_complex_order_auction_entry_occurrence
         type: str
         size: 2

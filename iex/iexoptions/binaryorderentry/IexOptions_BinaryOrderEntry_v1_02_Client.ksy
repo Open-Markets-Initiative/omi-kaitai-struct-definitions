@@ -98,6 +98,9 @@ types:
         size: 32
         encoding: ASCII
         doc: 'token'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   sequenced_message_header_message:
     seq:
       - id: subsession_id
@@ -109,6 +112,9 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   subsession_join_message:
     seq:
       - id: subsession_id
@@ -120,11 +126,17 @@ types:
       - id: end_sequence
         type: u4
         doc: 'endSequence'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   subsession_leave_message:
     seq:
       - id: subsession_id
         type: u8
         doc: 'subsessionId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   client_business_message:
     seq:
       - id: client_business_payload
@@ -230,6 +242,9 @@ types:
       - id: order_qty_quantity_non_zero
         type: u4
         doc: 'orderQty'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 92
+        doc: 'Bytes the stated block holds beyond the 92 this version reads'
   order_cancel_replace_request_message:
     seq:
       - id: account_account
@@ -323,6 +338,9 @@ types:
       - id: order_qty_quantity_non_zero
         type: u4
         doc: 'orderQty'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
   order_cancel_request_message:
     seq:
       - id: instrument_id
@@ -339,6 +357,9 @@ types:
       - id: orig_cl_ord_id
         type: u8
         doc: 'origClOrdId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   new_bulk_quote_message:
     seq:
       - id: market_participant_id
@@ -372,6 +393,9 @@ types:
         type: s1
         enum: time_in_force
         doc: 'timeInForce'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
       - id: new_bulk_quote_message_quote_updates_groups
         type: new_bulk_quote_message_quote_updates_groups
         doc: 'quoteUpdates Block'
@@ -415,6 +439,9 @@ types:
       - id: reserved
         type: s1
         doc: 'Reserved for future use'
+      - id: block_extension
+        size: _parent.quote_updates_group_encoding.block_length_short - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   mass_cancel_request_message:
     seq:
       - id: underlying_id_optional
@@ -443,6 +470,9 @@ types:
         type: u1
         enum: bulk_action
         doc: 'bulkAction'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   purge_request_message:
     seq:
       - id: underlying_id
@@ -467,6 +497,9 @@ types:
         type: u1
         enum: bulk_action
         doc: 'bulkAction'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
       - id: purge_request_message_custom_group_ids_groups
         type: purge_request_message_custom_group_ids_groups
         doc: 'customGroupIds Block'
@@ -493,6 +526,9 @@ types:
       - id: custom_group_id
         type: u2
         doc: 'customGroupId'
+      - id: block_extension
+        size: _parent.custom_group_ids_group_encoding.block_length_short - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   risk_limit_update_request_message:
     seq:
       - id: underlying_id_optional
@@ -527,6 +563,9 @@ types:
       - id: cust_capacity_weight_optional
         type: u1_nullable
         doc: 'custCapacityWeight. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   risk_action_request_message:
     seq:
       - id: underlying_id_optional
@@ -551,6 +590,9 @@ types:
       - id: custom_group_id_optional
         type: u2_nullable
         doc: 'customGroupId. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   decimal_s8_8:
     seq:
       - id: mantissa

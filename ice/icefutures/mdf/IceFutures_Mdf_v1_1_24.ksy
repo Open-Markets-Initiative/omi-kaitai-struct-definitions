@@ -934,8 +934,8 @@ types:
         type: s4
         doc: 'Aggregate offer quantity'
       - id: usd_price
-        type: s8
-        doc: 'Auctioneers price for the round in USD. Use 2 decimal places for USD Price'
+        type: decimal_s8_2
+        doc: 'Auctioneers price for the round in USD. Use 2 decimal places for USD Price. Implied decimal with scale 1e-2'
       - id: is_balanced
         type: u1
         enum: is_balanced
@@ -945,11 +945,11 @@ types:
         enum: is_final
         doc: '‘Y’/’N’'
       - id: gbp_price
-        type: s8
-        doc: 'Auctioneers price for the round in GBP. Use 3 decimal places for GBP Price'
+        type: decimal_s8_3
+        doc: 'Auctioneers price for the round in GBP. Use 3 decimal places for GBP Price. Implied decimal with scale 1e-3'
       - id: eur_price
-        type: s8
-        doc: 'Auctioneers price for the round in EUR. Use 3 decimal places for EUR Price'
+        type: decimal_s8_3
+        doc: 'Auctioneers price for the round in EUR. Use 3 decimal places for EUR Price. Implied decimal with scale 1e-3'
   market_snapshot_price_level_message:
     seq:
       - id: market_id
@@ -1320,14 +1320,14 @@ types:
         type: millisecond_timestamp
         doc: 'Date time the settlement price is for. Milliseconds since Unix epoch'
       - id: volatility
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
       - id: settlement_price
         type: s8
         doc: 'SettlePriceDenominator for the market should be applied to get the real settlement price'
       - id: delta
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
   old_style_options_trade_and_market_stats_message:
     seq:
       - id: underlying_market_id
@@ -1416,6 +1416,20 @@ types:
         value: text.substring(3, 5).to_i
       year:
         value: text.substring(6, 10).to_i
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_s8_3:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000.0
 
 enums:
   message_type:

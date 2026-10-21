@@ -146,6 +146,9 @@ types:
         type: u1
         enum: is_test_symbol
         doc: 'IsTestSymbol'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
@@ -158,6 +161,9 @@ types:
         type: u1
         enum: short_sale_restriction
         doc: 'ShortSaleRestriction'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   security_trading_status_message:
     seq:
       - id: timestamp
@@ -178,6 +184,9 @@ types:
         type: u1
         enum: halt_reason
         doc: 'HaltReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
   snapshot_complete_message:
     seq:
       - id: timestamp
@@ -186,6 +195,9 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'AsOfSequenceNumber'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   trading_session_status_message:
     seq:
       - id: timestamp
@@ -195,6 +207,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'TradingSession'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   best_bid_offer_message:
     seq:
       - id: timestamp
@@ -221,6 +236,9 @@ types:
       - id: offer_flags
         type: offer_flags
         doc: 'OfferFlagsType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   bid_flags:
     meta:
       bit-endian: le
@@ -258,6 +276,9 @@ types:
       - id: bid_flags
         type: bid_flags
         doc: 'BidFlagsType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   best_offer_message:
     seq:
       - id: timestamp
@@ -275,6 +296,9 @@ types:
       - id: offer_flags
         type: offer_flags
         doc: 'OfferFlagsType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   best_bid_short_message:
     seq:
       - id: timestamp
@@ -292,6 +316,9 @@ types:
       - id: bid_flags
         type: bid_flags
         doc: 'BidFlagsType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   best_offer_short_message:
     seq:
       - id: timestamp
@@ -309,6 +336,9 @@ types:
       - id: offer_flags
         type: offer_flags
         doc: 'OfferFlagsType bit set'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   clear_book_message:
     seq:
       - id: timestamp
@@ -317,6 +347,9 @@ types:
       - id: security_id
         type: u2
         doc: 'SecurityID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   auction_trade_message:
     seq:
       - id: timestamp
@@ -357,6 +390,9 @@ types:
         type: u1
         enum: sale_condition_4
         doc: 'SaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   broken_auction_trade_message:
     seq:
       - id: timestamp
@@ -377,6 +413,9 @@ types:
       - id: original_auction_price
         type: decimal_s8_6
         doc: 'OriginalAuctionPrice. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   corrected_auction_trade_message:
     seq:
       - id: timestamp
@@ -435,6 +474,9 @@ types:
         type: u1
         enum: corrected_sale_condition_4
         doc: 'CorrectedSaleCondition4'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 66
+        doc: 'Bytes the stated block holds beyond the 66 this version reads'
   decimal_s8_6:
     seq:
       - id: mantissa

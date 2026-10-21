@@ -119,6 +119,9 @@ types:
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: channel_reset_groups
         type: channel_reset_groups
         doc: 'NoMDEntries Block'
@@ -171,11 +174,17 @@ types:
       - id: appl_id
         type: s2
         doc: 'The channel ID as defined in the XML Configuration file'
+      - id: block_extension
+        size: _parent.group_size.block_length - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   admin_login:
     seq:
       - id: heart_bt_int
         type: s1
         doc: 'Heartbeat interval (seconds)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   admin_logout:
     seq:
       - id: text
@@ -183,6 +192,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'Reject reason details'
+      - id: block_extension
+        size: _parent.message_header.block_length - 100
+        doc: 'Bytes the stated block holds beyond the 100 this version reads'
   md_instrument_definition_future:
     seq:
       - id: match_event_indicator
@@ -340,6 +352,9 @@ types:
       - id: trading_reference_date
         type: u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 216
+        doc: 'Bytes the stated block holds beyond the 216 this version reads'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -413,6 +428,9 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'Date and Time of instument Activation or Expiration event sent as number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.group_size.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   feed_types_groups:
     seq:
       - id: group_size
@@ -433,6 +451,9 @@ types:
       - id: market_depth
         type: s1
         doc: 'Book depth'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   inst_attrib_groups:
     seq:
       - id: group_size
@@ -448,6 +469,9 @@ types:
       - id: inst_attrib_value
         type: inst_attrib_value
         doc: 'InstAttribValue bit set'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   inst_attrib_value:
     meta:
       bit-endian: le
@@ -533,6 +557,9 @@ types:
       - id: min_lot_size
         type: decimal_s4_4_nullable
         doc: 'Minimum quantity accepted for order entry. If tag 1093-LotType=4, this value is the minimum quantity for order entry expressed in the applicable units, specified in tag 996-UnitOfMeasure, e.g. megawatts. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
+      - id: block_extension
+        size: _parent.group_size.block_length - 5
+        doc: 'Bytes the stated block holds beyond the 5 this version reads'
   md_instrument_definition_spread:
     seq:
       - id: match_event_indicator
@@ -672,6 +699,9 @@ types:
       - id: trading_reference_date
         type: u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 195
+        doc: 'Bytes the stated block holds beyond the 195 this version reads'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -715,6 +745,9 @@ types:
       - id: leg_option_delta
         type: decimal_s4_4_nullable
         doc: 'Delta used to calculate the quantity of futures used to cover the option or option strategy. Implied decimal with scale 1e-4. Nullable, No Value = 2147483647'
+      - id: block_extension
+        size: _parent.group_size.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   security_status:
     seq:
       - id: transact_time
@@ -750,6 +783,9 @@ types:
         type: u1
         enum: security_trading_event
         doc: 'Identifies an additional event or a rule related to the status'
+      - id: block_extension
+        size: _parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   md_incremental_refresh_book:
     seq:
       - id: transact_time
@@ -761,6 +797,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_book_groups
         type: incremental_refresh_book_groups
         doc: 'NoMDEntries Block'
@@ -808,6 +847,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   incremental_refresh_book_order_id_groups:
     seq:
       - id: group_size_8_byte
@@ -850,6 +892,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.group_size_8_byte.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   md_incremental_refresh_daily_statistics:
     seq:
       - id: transact_time
@@ -861,6 +906,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_daily_statistics_groups
         type: incremental_refresh_daily_statistics_groups
         doc: 'NoMDEntries Block'
@@ -905,6 +953,9 @@ types:
       - id: padding_7
         size: 7
         doc: '7 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   md_incremental_refresh_limits_banding:
     seq:
       - id: transact_time
@@ -916,6 +967,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_limits_banding_groups
         type: incremental_refresh_limits_banding_groups
         doc: 'NoMDEntries Block'
@@ -946,6 +1000,9 @@ types:
       - id: rpt_seq
         type: u4
         doc: 'Sequence number of the last Market Data entry processed for the instrument'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   md_incremental_refresh_session_statistics:
     seq:
       - id: transact_time
@@ -957,6 +1014,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_session_statistics_groups
         type: incremental_refresh_session_statistics_groups
         doc: 'NoMDEntries Block'
@@ -998,6 +1058,9 @@ types:
       - id: padding_1
         size: 1
         doc: '1 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   md_incremental_refresh_trade:
     seq:
       - id: transact_time
@@ -1009,6 +1072,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_trade_groups
         type: incremental_refresh_trade_groups
         doc: 'NoMDEntries Block'
@@ -1052,6 +1118,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   md_incremental_refresh_volume:
     seq:
       - id: transact_time
@@ -1063,6 +1132,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_volume_groups
         type: incremental_refresh_volume_groups
         doc: 'NoMDEntries Block'
@@ -1094,6 +1166,9 @@ types:
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   snapshot_full_refresh:
     seq:
       - id: last_msg_seq_num_processed
@@ -1129,6 +1204,9 @@ types:
       - id: max_price_variation
         type: decimal_s8_7_nullable
         doc: 'Differential value for price banding. Implied decimal with scale 1e-7. Nullable, No Value = 9223372036854775807'
+      - id: block_extension
+        size: _parent.message_header.block_length - 59
+        doc: 'Bytes the stated block holds beyond the 59 this version reads'
       - id: snapshot_full_refresh_groups
         type: snapshot_full_refresh_groups
         doc: 'NoMDEntries Block'
@@ -1169,6 +1247,9 @@ types:
         type: u1
         enum: md_entry_type
         doc: 'Market Data entry type'
+      - id: block_extension
+        size: _parent.group_size.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   quote_request:
     seq:
       - id: transact_time
@@ -1185,6 +1266,9 @@ types:
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
       - id: related_sym_groups
         type: related_sym_groups
         doc: 'NoRelatedSym Block'
@@ -1220,6 +1304,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   md_instrument_definition_option:
     seq:
       - id: match_event_indicator
@@ -1374,6 +1461,9 @@ types:
       - id: trading_reference_date
         type: u2_nullable
         doc: 'Indicates session date corresponding to the settlement price in tag 1150-TradingReferencePrice. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.message_header.block_length - 213
+        doc: 'Bytes the stated block holds beyond the 213 this version reads'
       - id: events_groups
         type: events_groups
         doc: 'NoEvents Block'
@@ -1412,6 +1502,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Underlying Instrument Symbol (Contract Name)'
+      - id: block_extension
+        size: _parent.group_size.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   option_related_instruments_groups:
     seq:
       - id: group_size
@@ -1432,6 +1525,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Related instrument Symbol'
+      - id: block_extension
+        size: _parent.group_size.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   md_incremental_refresh_trade_summary:
     seq:
       - id: transact_time
@@ -1443,6 +1539,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_trade_summary_groups
         type: incremental_refresh_trade_summary_groups
         doc: 'NoMDEntries Block'
@@ -1489,6 +1588,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   incremental_refresh_trade_summary_order_id_groups:
     seq:
       - id: group_size_8_byte
@@ -1510,6 +1612,9 @@ types:
       - id: padding_4
         size: 4
         doc: '4 bytes padding'
+      - id: block_extension
+        size: _parent.group_size_8_byte.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   md_incremental_refresh_order_book:
     seq:
       - id: transact_time
@@ -1521,6 +1626,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_order_book_groups
         type: incremental_refresh_order_book_groups
         doc: 'NoMDEntries Block'
@@ -1562,6 +1670,9 @@ types:
       - id: padding_6
         size: 6
         doc: '6 bytes padding'
+      - id: block_extension
+        size: _parent.group_size.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   snapshot_full_refresh_order_book:
     seq:
       - id: last_msg_seq_num_processed
@@ -1582,6 +1693,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
       - id: snapshot_full_refresh_order_book_groups
         type: snapshot_full_refresh_order_book_groups
         doc: 'NoMDEntries Block'
@@ -1613,6 +1727,9 @@ types:
         type: u1
         enum: md_entry_type_book
         doc: 'Market Data entry type'
+      - id: block_extension
+        size: _parent.group_size.block_length - 29
+        doc: 'Bytes the stated block holds beyond the 29 this version reads'
   negotiation_reject:
     seq:
       - id: reason
@@ -1633,6 +1750,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   negotiation_response:
     seq:
       - id: uuid
@@ -1647,6 +1767,9 @@ types:
       - id: padding_4
         size: 4
         doc: '4 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   terminate:
     seq:
       - id: reason
@@ -1667,6 +1790,9 @@ types:
       - id: padding_5
         size: 5
         doc: '5 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
   request_ack:
     seq:
       - id: md_req_id
@@ -1680,6 +1806,9 @@ types:
         type: u1
         enum: md_req_id_status
         doc: 'Status of the request acknowledgement'
+      - id: block_extension
+        size: _parent.message_header.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
       - id: request_ack_security_groups
         type: request_ack_security_groups
         doc: 'NoSecurityGroups Block'
@@ -1703,6 +1832,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Security Group'
+      - id: block_extension
+        size: _parent.group_size.block_length - 6
+        doc: 'Bytes the stated block holds beyond the 6 this version reads'
   request_ack_related_symbol_groups:
     seq:
       - id: group_size
@@ -1718,6 +1850,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID'
+      - id: block_extension
+        size: _parent.group_size.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   request_reject:
     seq:
       - id: md_req_id_optional
@@ -1732,6 +1867,9 @@ types:
         size: 100
         encoding: ASCII
         doc: 'Reject reason details'
+      - id: block_extension
+        size: _parent.message_header.block_length - 105
+        doc: 'Bytes the stated block holds beyond the 105 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

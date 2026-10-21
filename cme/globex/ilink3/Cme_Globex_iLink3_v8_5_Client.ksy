@@ -122,6 +122,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Firm ID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: credentials
         type: credentials
         doc: 'Not used and will be set to 0'
@@ -181,6 +184,9 @@ types:
       - id: keep_alive_interval
         type: u2
         doc: 'The longest time in milliseconds the customer or CME could remain silent before sending a keep alive message'
+      - id: block_extension
+        size: _parent.message_header.block_length - 132
+        doc: 'Bytes the stated block holds beyond the 132 this version reads'
       - id: credentials
         type: credentials
         doc: 'Not used and will be set to 0'
@@ -199,6 +205,9 @@ types:
         type: u1
         enum: keep_alive_interval_lapsed
         doc: 'This indicates if the Sequence message being sent by CME is to warn that one keep alive interval has lapsed without any message received from customer (this can also be sent from customer to CME)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   terminate:
     seq:
       - id: reason
@@ -218,6 +227,9 @@ types:
       - id: split_msg
         type: u1_nullable
         doc: 'Indicates whether a message was delayed as a result of being split among multiple packets (0) or if a message was delayed as a result of TCP re-transmission (1) or if a complete message was delayed due to a previously submitted split or out of order message (2). If absent then the message was not delayed and was neither split nor received out of order. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
   retransmit_request:
     seq:
       - id: uuid
@@ -235,6 +247,9 @@ types:
       - id: msg_count_16
         type: u2
         doc: 'Count of business messages requested'
+      - id: block_extension
+        size: _parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   new_order_single:
     seq:
       - id: price_optional
@@ -317,6 +332,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 116
+        doc: 'Bytes the stated block holds beyond the 116 this version reads'
   exec_inst:
     meta:
       bit-endian: le
@@ -434,6 +452,9 @@ types:
       - id: short_sale_type
         type: u1_nullable
         doc: 'Indicates the type of short sale. Will not be used for Buy orders but Sell orders should have this tag populated for MiFID. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 125
+        doc: 'Bytes the stated block holds beyond the 125 this version reads'
   order_cancel_request:
     seq:
       - id: order_id
@@ -480,6 +501,9 @@ types:
       - id: liquidity_flag
         type: u1_nullable
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 88
+        doc: 'Bytes the stated block holds beyond the 88 this version reads'
   mass_quote:
     seq:
       - id: party_details_list_req_id
@@ -529,6 +553,9 @@ types:
         size: 30
         encoding: ASCII
         doc: 'Reserved for future use'
+      - id: block_extension
+        size: _parent.message_header.block_length - 92
+        doc: 'Bytes the stated block holds beyond the 92 this version reads'
       - id: quote_entries_groups
         type: quote_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -574,6 +601,9 @@ types:
       - id: quote_set_id
         type: u2
         doc: 'Unique id for the Quote Set'
+      - id: block_extension
+        size: _parent.group_size.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   party_details_definition_request:
     seq:
       - id: party_details_list_req_id
@@ -632,6 +662,9 @@ types:
       - id: idm_short_code
         type: u8_nullable
         doc: 'Represents the Investment Decision Maker Short Code. Applicable for EU fixed income markets only. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 147
+        doc: 'Bytes the stated block holds beyond the 147 this version reads'
       - id: party_details_groups
         type: party_details_groups
         doc: 'NoPartyDetails Block'
@@ -659,6 +692,9 @@ types:
         type: u2
         enum: party_detail_role
         doc: 'Identifies the type of PartyDetailID. Required when NoPartyDetails(1671) > 0'
+      - id: block_extension
+        size: _parent.group_size.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   trd_reg_publications_groups:
     seq:
       - id: group_size
@@ -677,6 +713,9 @@ types:
       - id: trd_reg_publication_reason
         type: u1
         doc: 'Additional reason for trade publication type specified in TrdRegPublicationType (2669). Reasons may be specific to regulatory trade publication rules. 12=Exempted due to European System of Central Banks (ESCB) policy transaction'
+      - id: block_extension
+        size: _parent.group_size.block_length - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   quote_cancel:
     seq:
       - id: party_details_list_req_id
@@ -712,6 +751,9 @@ types:
       - id: liquidity_flag
         type: u1_nullable
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
       - id: quote_cancel_entries_groups
         type: quote_cancel_entries_groups
         doc: 'NoQuoteEntries Block'
@@ -738,6 +780,9 @@ types:
       - id: security_id_optional
         type: s4_nullable
         doc: 'Conditionally required if MassActionScope="Instrument" (Tag 1374=1). Will be ignored if present for any other criteria specified in MassActionScope besides Instrument. Nullable, No Value = 2147483647'
+      - id: block_extension
+        size: _parent.group_size.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   quote_cancel_sets_groups:
     seq:
       - id: group_size
@@ -759,6 +804,9 @@ types:
       - id: quote_set_id
         type: u2
         doc: 'Unique id for the Quote Set'
+      - id: block_extension
+        size: _parent.group_size.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   order_mass_action_request:
     seq:
       - id: party_details_list_req_id
@@ -818,6 +866,9 @@ types:
       - id: liquidity_flag
         type: u1_nullable
         doc: 'New field added to capture if an order was submitted for market making obligation or not. Applicable only for EU fixed income markets. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 71
+        doc: 'Bytes the stated block holds beyond the 71 this version reads'
   order_mass_status_request:
     seq:
       - id: party_details_list_req_id
@@ -867,6 +918,9 @@ types:
       - id: market_segment_id
         type: u1_nullable
         doc: 'Specifies the market segment (physical match engine partition) for which working orders should be cancelled. Conditionally Required if MassActionScope="Market Segment" (Tag 1374=9). Will be ignored if present for any other criteria specified in MassActionScope besides Market Segment. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   order_status_request:
     seq:
       - id: party_details_list_req_id
@@ -898,6 +952,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Text describing sender''s location (i.e. geopraphic location and/or desk)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 62
+        doc: 'Bytes the stated block holds beyond the 62 this version reads'
   party_details_list_request:
     seq:
       - id: party_details_list_req_id
@@ -909,6 +966,9 @@ types:
       - id: seq_num
         type: u4
         doc: 'Sequence number as assigned to message'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
       - id: requesting_party_ids_groups
         type: requesting_party_ids_groups
         doc: 'NoRequestingPartyIDs Block'
@@ -942,6 +1002,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Identifies the type or role of the RequestingPartyID(1658) specified. Constant value'
+      - id: block_extension
+        size: _parent.group_size.block_length - 7
+        doc: 'Bytes the stated block holds beyond the 7 this version reads'
   party_ids_groups:
     seq:
       - id: group_size
@@ -965,6 +1028,9 @@ types:
       - id: party_role
         type: u2
         doc: 'Required if NoPartyIDs(453) > 0. Identifies the type of PartyID(448)'
+      - id: block_extension
+        size: _parent.group_size.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   execution_ack:
     seq:
       - id: party_details_list_req_id
@@ -1022,6 +1088,9 @@ types:
         type: u1
         enum: manual_order_indicator
         doc: 'Indicates if the order was initially received manually (as opposed to electronically)'
+      - id: block_extension
+        size: _parent.message_header.block_length - 101
+        doc: 'Bytes the stated block holds beyond the 101 this version reads'
   request_for_quote:
     seq:
       - id: party_details_list_req_id
@@ -1053,6 +1122,9 @@ types:
       - id: quote_type
         type: u1_nullable
         doc: 'Type of quote requested. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
       - id: related_sym_groups
         type: related_sym_groups
         doc: 'NoRelatedSym Block'
@@ -1077,6 +1149,9 @@ types:
       - id: rfq_side
         type: u1_nullable
         doc: 'RFQ side. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   new_order_cross:
     seq:
       - id: cross_id
@@ -1114,6 +1189,9 @@ types:
       - id: security_id
         type: s4
         doc: 'Security ID as defined by CME. For the security ID list, see the security definition messages'
+      - id: block_extension
+        size: _parent.message_header.block_length - 74
+        doc: 'Bytes the stated block holds beyond the 74 this version reads'
       - id: sides_groups
         type: sides_groups
         doc: 'NoSides Block'
@@ -1148,6 +1226,9 @@ types:
         type: u1
         enum: side_time_in_force
         doc: 'Indicates how long the order as specified in the side stays in effect. SideTimeInForce allows a two-sided cross order to specify order behavior separately for each side. Defaults to Day if absent'
+      - id: block_extension
+        size: _parent.group_size.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   security_definition_request:
     seq:
       - id: party_details_list_req_id
@@ -1193,6 +1274,9 @@ types:
       - id: source_repo_id
         type: s4_nullable
         doc: 'Represents the source repo instrument on which the new tailor made repo should be modeled on. Nullable, No Value = 2147483647'
+      - id: block_extension
+        size: _parent.message_header.block_length - 71
+        doc: 'Bytes the stated block holds beyond the 71 this version reads'
       - id: request_legs_groups
         type: request_legs_groups
         doc: 'NoLegs Block'
@@ -1224,6 +1308,9 @@ types:
       - id: leg_ratio_qty
         type: u1_nullable
         doc: 'Specifies ratio for the instrument defined in this repeating group. Required for any UDS options leg. Optional for Covereds leg. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   leg_option_delta:
     seq:
       - id: mantissa_32

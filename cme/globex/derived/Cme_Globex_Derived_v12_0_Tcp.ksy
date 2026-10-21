@@ -100,6 +100,9 @@ types:
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'EventIndicator bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_spectrum_groups
         type: incremental_refresh_spectrum_groups
         doc: 'NoMDEntries Block'
@@ -178,6 +181,9 @@ types:
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.group_size.block_length - 92
+        doc: 'Bytes the stated block holds beyond the 92 this version reads'
   md_incremental_refresh_ticker:
     seq:
       - id: transact_time
@@ -186,6 +192,9 @@ types:
       - id: match_event_indicator
         type: match_event_indicator
         doc: 'EventIndicator bit set'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_ticker_groups
         type: incremental_refresh_ticker_groups
         doc: 'NoMDEntries Block'
@@ -240,6 +249,9 @@ types:
       - id: aggressor_side
         type: u1_nullable
         doc: 'Indicates which side is aggressor of the trade. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 95
+        doc: 'Bytes the stated block holds beyond the 95 this version reads'
   md_snapshot_refresh_spectrum:
     seq:
       - id: transact_time
@@ -264,6 +276,9 @@ types:
       - id: security_id
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
+      - id: block_extension
+        size: _parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_spectrum_groups
         type: snapshot_refresh_spectrum_groups
         doc: 'NoMDEntries Block'
@@ -292,6 +307,9 @@ types:
       - id: md_entry_time
         type: nanosecond_timestamp
         doc: 'Time of the last market event that contributed to element calculation or publication. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.group_size.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   md_snapshot_refresh_ticker:
     seq:
       - id: transact_time
@@ -316,6 +334,9 @@ types:
       - id: security_id
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
+      - id: block_extension
+        size: _parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_ticker_groups
         type: snapshot_refresh_ticker_groups
         doc: 'NoMDEntries Block'
@@ -354,6 +375,9 @@ types:
       - id: aggressor_side
         type: u1_nullable
         doc: 'Indicates which side is aggressor of the trade. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   global_day_roll:
     seq:
       - id: transact_time
@@ -363,6 +387,9 @@ types:
         type: u1
         enum: security_trading_event
         doc: 'Signals the start of the next Global day or a Global day roll'
+      - id: block_extension
+        size: _parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

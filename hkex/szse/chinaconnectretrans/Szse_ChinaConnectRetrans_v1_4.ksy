@@ -57,9 +57,7 @@ types:
         type: u1
         doc: 'Number of messages included in the packet'
       - id: filler
-        type: str
         size: 1
-        encoding: ASCII
         doc: 'Reserved filler byte (OMD does not use payload compression)'
       - id: seq_num
         type: u4
@@ -145,10 +143,7 @@ types:
         enum: session_status
         doc: 'Status of the session'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   retransmission_request_message:
     seq:
@@ -156,10 +151,7 @@ types:
         type: u2
         doc: 'Multicast Channel ID with which the retransmission relates'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: begin_seq_num
         type: u4
@@ -177,10 +169,7 @@ types:
         enum: retrans_status
         doc: 'Status of the Retransmission response'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: begin_seq_num
         type: u4
@@ -212,10 +201,7 @@ types:
         pad-right: 0x20
         doc: 'Instrument type of the security'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: security_short_name
         type: str
@@ -230,10 +216,7 @@ types:
         pad-right: 0x20
         doc: 'Base currency code of the market'
       - id: filler_60
-        type: str
         size: 60
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: security_name_gb
         size: 60
@@ -245,29 +228,20 @@ types:
         type: decimal_s4_3
         doc: 'Previous closing price of the security. 3 implied decimal places. May be 0 on first day of listing. Implied decimal with scale 1e-3'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: shortsell_flag
         type: u1
         enum: shortsell_flag
         doc: 'Indicator for short-sell authorization'
       - id: filler_6
-        type: str
         size: 6
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: listing_date
         type: u4
         doc: 'Date of security listing. YYYYMMDD. Value is 19000101 for unknown listing date'
       - id: filler_7
-        type: str
         size: 7
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   security_status_message:
     seq:
@@ -279,10 +253,7 @@ types:
         enum: security_trading_status
         doc: 'Identifies the trading status of a security'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: trading_phase_code
         type: str
@@ -314,10 +285,7 @@ types:
         type: decimal_s4_3
         doc: 'Opening price for a security. 3 implied decimal places. Implied decimal with scale 1e-3'
       - id: filler_12
-        type: str
         size: 12
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   top_of_book_message:
     seq:
@@ -337,10 +305,7 @@ types:
         type: decimal_s4_3
         doc: 'The ask price. Provides Virtual Auction Price during Call Auction period. 3 implied decimal places. 0 means N/A. Implied decimal with scale 1e-3'
       - id: filler_8
-        type: str
         size: 8
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   nanosecond_timestamp:
     seq:

@@ -147,6 +147,9 @@ types:
       - id: mpv
         type: decimal_s8_6
         doc: 'MPV. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   reg_sho_restriction_message:
     seq:
       - id: timestamp
@@ -159,6 +162,9 @@ types:
         type: u1
         enum: short_sale_restriction
         doc: 'ShortSaleRestriction'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 11
+        doc: 'Bytes the stated block holds beyond the 11 this version reads'
   security_trading_status_message:
     seq:
       - id: timestamp
@@ -175,6 +181,9 @@ types:
         type: u1
         enum: security_trading_status_reason
         doc: 'SecurityTradingStatusReason'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   snapshot_complete_message:
     seq:
       - id: timestamp
@@ -183,6 +192,9 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'AsOfSequenceNumber'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   trading_session_status_message:
     seq:
       - id: timestamp
@@ -192,6 +204,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'TradingSession'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   best_bid_offer_message:
     seq:
       - id: timestamp
@@ -212,6 +227,9 @@ types:
       - id: offer_price
         type: decimal_s8_6
         doc: 'OfferPrice. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   best_bid_message:
     seq:
       - id: timestamp
@@ -226,6 +244,9 @@ types:
       - id: bid_price
         type: decimal_s8_6
         doc: 'BidPrice. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   best_offer_message:
     seq:
       - id: timestamp
@@ -240,6 +261,9 @@ types:
       - id: offer_price
         type: decimal_s8_6
         doc: 'OfferPrice. Implied decimal with scale 1e-6'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   best_bid_short_message:
     seq:
       - id: timestamp
@@ -254,6 +278,9 @@ types:
       - id: bid_price_short
         type: decimal_s2_2
         doc: 'BidPrice. Implied decimal with scale 1e-2'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   best_offer_short_message:
     seq:
       - id: timestamp
@@ -268,6 +295,9 @@ types:
       - id: offer_price_short
         type: decimal_s2_2
         doc: 'OfferPrice. Implied decimal with scale 1e-2'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   clear_book_message:
     seq:
       - id: timestamp
@@ -276,6 +306,9 @@ types:
       - id: security_id
         type: u2
         doc: 'SecurityID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

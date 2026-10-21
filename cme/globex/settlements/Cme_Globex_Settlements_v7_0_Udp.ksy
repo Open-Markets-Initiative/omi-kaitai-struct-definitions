@@ -88,6 +88,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
       - id: incremental_refresh_settle_groups
         type: incremental_refresh_settle_groups
         doc: 'NoMDEntries Block'
@@ -194,6 +197,9 @@ types:
         size: 40
         encoding: ASCII
         doc: 'An optional textual description for a statistic'
+      - id: block_extension
+        size: _parent.group_size.block_length - 182
+        doc: 'Bytes the stated block holds beyond the 182 this version reads'
   maturity_month_year:
     seq:
       - id: year
@@ -277,6 +283,9 @@ types:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
       - id: incremental_refresh_voi_groups
         type: incremental_refresh_voi_groups
         doc: 'NoMDEntries Block'
@@ -364,11 +373,17 @@ types:
       - id: trading_reference_date
         type: u2_nullable
         doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size.block_length - 131
+        doc: 'Bytes the stated block holds beyond the 131 this version reads'
   md_incremental_refresh_high_low:
     seq:
       - id: transact_time
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
       - id: incremental_refresh_high_low_groups
         type: incremental_refresh_high_low_groups
         doc: 'NoMDEntries Block'
@@ -460,6 +475,9 @@ types:
       - id: trading_reference_date
         type: u2_nullable
         doc: 'Business date corresponding to a statistic entry. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.group_size.block_length - 142
+        doc: 'Bytes the stated block holds beyond the 142 this version reads'
   low_px:
     seq:
       - id: mantissa

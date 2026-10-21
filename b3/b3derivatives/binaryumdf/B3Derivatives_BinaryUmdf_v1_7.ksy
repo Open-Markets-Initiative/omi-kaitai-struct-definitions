@@ -133,6 +133,9 @@ types:
       - id: next_seq_no
         type: u4
         doc: 'nextSeqNo'
+      - id: block_extension
+        size: _parent.message_header.block_length - 4
+        doc: 'Bytes the stated block holds beyond the 4 this version reads'
   empty_book_message:
     seq:
       - id: security_id
@@ -147,6 +150,9 @@ types:
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   match_event_indicator:
     meta:
       bit-endian: le
@@ -186,6 +192,9 @@ types:
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 12
+        doc: 'Bytes the stated block holds beyond the 12 this version reads'
   security_status_3_message:
     seq:
       - id: security_id
@@ -220,6 +229,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   security_group_phase_10_message:
     seq:
       - id: security_group
@@ -256,6 +268,9 @@ types:
       - id: transact_time
         type: u8_nullable
         doc: 'transactTime. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   deprecated_security_definition_message:
     seq:
       - id: security_id
@@ -427,6 +442,9 @@ types:
       - id: min_cross_qty
         type: s8_nullable
         doc: 'minCrossQty. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 230
+        doc: 'Bytes the stated block holds beyond the 230 this version reads'
       - id: deprecated_underlyings_groups
         type: deprecated_underlyings_groups
         doc: 'noUnderlyings Block'
@@ -501,6 +519,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Underlying instrument''s ticker symbol'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   deprecated_legs_groups:
     seq:
       - id: group_size_encoding
@@ -532,6 +553,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Leg symbol'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   deprecated_instr_attribs_groups:
     seq:
       - id: group_size_encoding
@@ -552,6 +576,9 @@ types:
         type: u1
         enum: instr_attrib_value
         doc: 'Attribute value appropriate to the InstrAttribType (871) field'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   security_desc:
     seq:
       - id: len_security_desc_data
@@ -734,6 +761,9 @@ types:
       - id: min_cross_qty
         type: s8_nullable
         doc: 'minCrossQty. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 230
+        doc: 'Bytes the stated block holds beyond the 230 this version reads'
       - id: underlyings_groups
         type: underlyings_groups
         doc: 'noUnderlyings Block'
@@ -766,6 +796,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Underlying instrument''s ticker symbol'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   legs_groups:
     seq:
       - id: group_size_encoding
@@ -797,6 +830,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Leg symbol'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   instr_attribs_groups:
     seq:
       - id: group_size_encoding
@@ -817,6 +853,9 @@ types:
         type: u1
         enum: instr_attrib_value
         doc: 'Attribute value appropriate to the InstrAttribType (871) field'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   news_5_message:
     seq:
       - id: security_id_optional
@@ -847,6 +886,9 @@ types:
       - id: total_text_length
         type: u4
         doc: 'totalTextLength'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
       - id: headline
         type: headline
         doc: 'headline data struct'
@@ -926,6 +968,9 @@ types:
       - id: padding_2
         size: 2
         doc: '2 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   theoretical_opening_price_16_message:
     seq:
       - id: security_id
@@ -953,6 +998,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   closing_price_17_message:
     seq:
       - id: security_id
@@ -983,6 +1031,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   auction_imbalance_19_message:
     seq:
       - id: security_id
@@ -1007,6 +1058,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   imbalance_condition:
     meta:
       bit-endian: le
@@ -1076,6 +1130,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   quantity_band_21_message:
     seq:
       - id: security_id
@@ -1099,6 +1156,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   price_band_22_message:
     seq:
       - id: security_id
@@ -1131,6 +1191,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   high_price_24_message:
     seq:
       - id: security_id
@@ -1155,6 +1218,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   low_price_25_message:
     seq:
       - id: security_id
@@ -1179,6 +1245,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   last_trade_price_27_message:
     seq:
       - id: security_id
@@ -1230,6 +1299,9 @@ types:
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   trade_condition:
     meta:
       bit-endian: le
@@ -1308,6 +1380,9 @@ types:
       - id: last_rpt_seq
         type: u4_nullable
         doc: 'lastRptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 32
+        doc: 'Bytes the stated block holds beyond the 32 this version reads'
   order_mb_o_50_message:
     seq:
       - id: security_id
@@ -1351,6 +1426,9 @@ types:
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   delete_order_mb_o_51_message:
     seq:
       - id: security_id
@@ -1384,6 +1462,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 44
+        doc: 'Bytes the stated block holds beyond the 44 this version reads'
   mass_delete_orders_mb_o_52_message:
     seq:
       - id: security_id
@@ -1412,6 +1493,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 28
+        doc: 'Bytes the stated block holds beyond the 28 this version reads'
   trade_53_message:
     seq:
       - id: security_id
@@ -1457,6 +1541,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   forward_trade_54_message:
     seq:
       - id: security_id
@@ -1508,6 +1595,9 @@ types:
       - id: padding_3
         size: 3
         doc: '3 bytes padding'
+      - id: block_extension
+        size: _parent.message_header.block_length - 68
+        doc: 'Bytes the stated block holds beyond the 68 this version reads'
   execution_summary_55_message:
     seq:
       - id: security_id
@@ -1544,6 +1634,9 @@ types:
       - id: md_entry_timestamp
         type: nanosecond_timestamp_nullable
         doc: 'mDEntryTimestamp. Nanoseconds since Unix epoch. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 64
+        doc: 'Bytes the stated block holds beyond the 64 this version reads'
   execution_statistics_56_message:
     seq:
       - id: security_id
@@ -1577,6 +1670,9 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
   trade_bust_57_message:
     seq:
       - id: security_id
@@ -1613,11 +1709,17 @@ types:
       - id: rpt_seq
         type: u4_nullable
         doc: 'rptSeq. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   snapshot_full_refresh_orders_mb_o_71_message:
     seq:
       - id: security_id
         type: u8
         doc: 'securityID'
+      - id: block_extension
+        size: _parent.message_header.block_length - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
       - id: snapshot_full_refresh_orders_mb_o_71_message_no_m_d_entries_groups
         type: snapshot_full_refresh_orders_mb_o_71_message_no_m_d_entries_groups
         doc: 'noMDEntries Block'
@@ -1655,6 +1757,9 @@ types:
         type: u1
         enum: md_entry_type
         doc: 'mDEntryType'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length - 41
+        doc: 'Bytes the stated block holds beyond the 41 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

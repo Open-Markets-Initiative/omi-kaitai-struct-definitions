@@ -6,7 +6,7 @@
 #   Protocol: Quantum Feed Level 1
 #   Encoding: eXtreme Message Transfer
 #   Version: 2.6
-#   Date: 10/20/2020
+#   Date: 8/10/2021
 #   Specification: TSX TSXV Level 1 QuantumFeed Business Message Specification (2.6.0).pdf
 #
 # Script:
@@ -50,11 +50,13 @@ types:
       - id: frame_header
         type: frame_header_struct
         doc: 'Xmt Udp Packet Frame Header'
-      - id: body
-        type: body_struct
-        repeat: expr
-        repeat-expr: frame_header.num_body
-        doc: 'Xmt Body'
+      - id: packet_body
+        size: frame_header.message_length + 5 - 11
+        type:
+          switch-on: packet_body.heartbeat_body.body_header.msg_type
+          cases:
+            'msg_type::heartbeat': heartbeat_body
+            _: business_bodies
   frame_header_struct:
     seq:
       - id: start_of_frame
@@ -83,15 +85,21 @@ types:
       - id: num_body
         type: u1
         doc: 'Num Body'
-  body_struct:
+  heartbeat_body:
     seq:
       - id: body_header
         type: body_header
         doc: 'Xmt Body Header'
-      - id: body_message
-        type: body_message
-        size: body_header.msg_length - 3
-        doc: 'Xmt Body Header'
+      - id: admin_id
+        type: u1
+        doc: 'Admin ID for short window (1 to 255). Note: 0 is not allowed as a value'
+      - id: hb_interval
+        type: u2
+        doc: 'Heartbeat interval in milliseconds (1 to 65536)'
+      - id: admin_body
+        type: admin_body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
   body_header:
     seq:
       - id: msg_length
@@ -100,7 +108,38 @@ types:
       - id: msg_type
         type: u1
         enum: msg_type
-        doc: 'Business message type'
+        doc: 'Msg Type'
+  admin_body:
+    seq:
+      - id: source_id
+        type: u1
+        enum: source_id
+        doc: 'Source Id of the Business message'
+      - id: stream_id
+        type: u2
+        doc: 'Stream Id per Source Id of the Business message'
+      - id: sequence_0
+        type: u1
+        doc: 'Reserved for future expansion, Value is 0'
+      - id: sequence_1
+        type: u4
+        doc: 'Sequence per Stream Id of the Business message'
+  business_bodies:
+    seq:
+      - id: body
+        type: body
+        repeat: expr
+        repeat-expr: _parent.frame_header.num_body
+        doc: 'Xmt Body'
+  body:
+    seq:
+      - id: body_header
+        type: body_header
+        doc: 'Xmt Body Header'
+      - id: body_message
+        type: body_message
+        size: body_header.msg_length - 3
+        doc: 'Xmt Body Header'
   body_message:
     seq:
       - id: business_header
@@ -123,9 +162,8 @@ types:
         type: u1
         doc: 'Message version number'
       - id: source_id
-        type: str
-        size: 1
-        encoding: ASCII
+        type: u1
+        enum: source_id
         doc: 'Source Id of the Business message'
       - id: stream_id
         type: u2
@@ -241,7 +279,7 @@ types:
       - id: opening_trade
         type: u1
         enum: opening_trade
-        doc: 'Indicates Whether The Trade Occurred At The Opening Or Was The First Board Lot Trade Of The Day'
+        doc: 'Indicates Whether The Trade Occurred At The Opening Or Was The First Board Lot Trade Of The Day Note That This Field Is Set To Y On Auction Trades That Occur When A Symbol Is Unhalted And On Closing Trades'
       - id: listing_market
         type: u1
         enum: listing_market
@@ -255,7 +293,7 @@ types:
         doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trade_date
         type: yyyymmdd_date_nullable
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
+        doc: 'Effective Date Of The Trade Will Be Filled Only When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
       - id: is_mid_only
         type: u1
         enum: is_mid_only
@@ -263,7 +301,7 @@ types:
       - id: is_dark
         type: u1
         enum: is_dark
-        doc: 'Indicates At Least One Side Of The Trade Is Dark'
+        doc: 'Indicates The Passive Side Of The Trade Is Dark'
       - id: is_conditional
         type: u1
         enum: is_conditional
@@ -276,12 +314,12 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'A Unique Alphanumeric Identifier For A Security'
-      - id: price
-        type: decimal_u8_6_nullable
-        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: volume
         type: u4_nullable
         doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
+      - id: price
+        type: decimal_u8_6_nullable
+        doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
         doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
@@ -307,7 +345,7 @@ types:
         doc: 'A Unique Identifier Per Stock Assigned To Each Trade. Nullable, No Value = 0'
       - id: trade_date
         type: yyyymmdd_date_nullable
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
+        doc: 'Effective Date Of The Trade Will Be Filled Only When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
   moc_imbalance_message:
     seq:
       - id: symbol
@@ -319,7 +357,7 @@ types:
       - id: imbalance_side
         type: u1
         enum: imbalance_side
-        doc: 'Marker To Indicate Which Side Has An Imbalance Volume For Market On Close'
+        doc: 'Indicates Which Side Has An Imbalance Volume For Market On Close'
       - id: imbalance_volume
         type: u4_nullable
         doc: 'Identifies The Volume Of Shares Of The Imbalance Side For Market On Close. Nullable, No Value = 0'
@@ -328,10 +366,10 @@ types:
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: imbalance_reference_price
         type: decimal_u8_6_nullable
-        doc: 'The Price That Determines If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
+        doc: 'The Price That Establishes If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: paired_volume
         type: u4_nullable
-        doc: 'The Number Of Moc And Loc Shares That Are Able Be Matched At The Reference Price. Nullable, No Value = 0'
+        doc: 'The Number Of Moc And Loc Shares That Can Be Matched At The Reference Price. Nullable, No Value = 0'
       - id: market_order_imbalance_volume
         type: u4_nullable
         doc: 'Indicates The Share Imbalance When Considering Moc Orders Only Note This Will Not Change From Freeze Period As Moc Orders Are Not Allowed After This Time. Nullable, No Value = 0'
@@ -361,7 +399,7 @@ types:
         size: 40
         encoding: ASCII
         pad-right: 0x20
-        doc: 'A Text Field Corresponding To A Reason Code Entered When A Stock Is Halted Or The Initiator Of A Delayed Opening On A Stock Or When There Is A Change To The Oddlot Trader On A Stock'
+        doc: 'A Text Field Corresponding To A Reason Code Entered When A Stock Is Halted Or The Initiator Of A Delayed Opening On A Stock Or When There Is A Change To The Rt Oddlot Trader On A Stock As Well This Is A Systemproduced Text Field To Describe The Disabling Of The Moc Session By Tsx Trading Services'
       - id: stock_state
         type: str
         size: 2
@@ -373,7 +411,7 @@ types:
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: calculated_closing_price
         type: decimal_u8_6_nullable
-        doc: 'The Price At Which Moc Orders Will Trade At Closing. Implied decimal with scale 1e-6. Nullable, No Value = 0'
+        doc: 'The Price At Which Moc Orders Will Trade At Closing It Is Published Only When Outside Acceptable Limits Set By The Exchange Triggering An Extension To The Moc Limit Order Entry Session. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: vwap
         type: decimal_u8_6_nullable
         doc: 'Volume Weighted Average Price Based On Trades Occurring In The Continuous Market For Moc. Implied decimal with scale 1e-6. Nullable, No Value = 0'
@@ -519,25 +557,47 @@ enums:
     0x30:
       id: 'unused'
       doc: 'None'
+    0x41:
+      id: 'ack_required'
+      doc: 'Receiver needs to ack'
+    0x44:
+      id: 'poss_dup'
+      doc: 'Possible duplicates'
   msg_type:
+    0x30:
+      id: 'heartbeat'
+      doc: 'The Heartbeat message is sent by either side during idle periods for the opposite side to detect whether the session is still alive.'
     0x4a:
       id: 'symbol_status_message'
-      doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for the Alpha market. One message is disseminated for each valid symbol at the beginning of each trading day.'
+      doc: 'Symbol Status messages contain information regarding equity, debenture, mutual fund, or trading Instruments for the current trading day for both TSX and TSXV markets. One message is disseminated for each valid symbol at the beginning of each trading day.'
     0x73:
       id: 'trade_report_message'
       doc: 'A trade message is produced each time a trade occurs'
     0x74:
       id: 'trade_cancelled_message'
-      doc: 'A trade Cancelled message is produced when a trade with no settlement terms is cancelled.'
+      doc: 'A Trade Cancelled message is produced each time a trade is cancelled.'
     0x75:
       id: 'moc_imbalance_message'
-      doc: 'The MOC Imbalance message is disseminated for MOC eligible symbols every 10 seconds starting from the beginning of the MOC Imbalance trading session'
+      doc: 'A MOC Imbalance message is disseminated for every MOC-eligible stock every 10 seconds starting from the beginning of the MOC Imbalance session at 3:50 p.m., or as notified by TSX Equities Trading. The message will also be disseminated at 4:00 p.m. for closing delayed stocks.'
     0x76:
       id: 'stock_status_message'
-      doc: 'A Stock Status notification is disseminated in response to a change in stock status from the Trading Engine'
+      doc: 'A Stock Status message is disseminated in response to a change in stock status from the Trading Engine. It contains information regarding the current state of the stock, MOC Price movement delays, and so on.'
     0x77:
       id: 'quote_message'
-      doc: 'A Stock Status notification is disseminated in response to a change in stock status from the Trading Engine'
+      doc: 'A Quote message contains the latest Bid and Ask information for a symbol.'
+  source_id:
+    0x30:
+      id: 'non_source_related'
+      doc: '“0” for non-source-related.'
+    0x51:
+      id: 'tsx'
+      doc: 'Q for TSX'
+    0x56:
+      id: 'tsx_venture'
+      doc: 'V for TSX Venture'
+    0x41:
+      id: 'alpha'
+      doc: 'A for Alpha'
   currency:
     0x55:
       id: 'usd'
@@ -565,8 +625,8 @@ enums:
       id: 'nyse_mkt'
       doc: 'Nyse Mkt'
     0x58:
-      id: 'n_no_market'
-      doc: 'N No Market'
+      id: 'no_market'
+      doc: 'No Market'
   product_type:
     0x42:
       id: 'debenture'

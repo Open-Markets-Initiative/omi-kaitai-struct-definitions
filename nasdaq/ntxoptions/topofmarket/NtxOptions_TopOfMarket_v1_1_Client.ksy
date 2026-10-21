@@ -179,6 +179,8 @@ enums:
     0x4d:
       id: 'snapshot_message'
       doc: 'The Snapshot message reflects the Top of Market sequence number at the time the GLIMPSE spin was requested.'
+    0x61: 'best_ask_update_short_form_message'
+    0x41: 'best_ask_update_long_form_message'
   event_code:
     0x4f:
       id: 'start_of_messages'

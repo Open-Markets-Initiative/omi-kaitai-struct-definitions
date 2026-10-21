@@ -150,6 +150,9 @@ types:
       - id: session_trading_day
         type: u2
         doc: 'sessionTradingDay'
+      - id: block_extension
+        size: _parent.message_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   end_of_day_message:
     seq:
       - id: md_seq_num
@@ -158,6 +161,9 @@ types:
       - id: session_trading_day
         type: u2
         doc: 'sessionTradingDay'
+      - id: block_extension
+        size: _parent.message_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
   health_status_message:
     seq:
       - id: md_seq_num
@@ -166,6 +172,9 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'eventTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   technical_notification_message:
     seq:
       - id: md_seq_num_optional
@@ -187,6 +196,9 @@ types:
       - id: symbol_index_optional
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   market_update_message:
     seq:
       - id: md_seq_num
@@ -202,6 +214,9 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'eventTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
       - id: market_updates_groups
         type: market_updates_groups
         doc: 'Updates Block'
@@ -241,6 +256,9 @@ types:
       - id: quantity_optional
         type: u8_nullable
         doc: 'quantity. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   order_update_message:
     seq:
       - id: md_seq_num
@@ -256,6 +274,9 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'eventTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
       - id: order_updates_groups
         type: order_updates_groups
         doc: 'Orders Block'
@@ -299,6 +320,9 @@ types:
       - id: peg_offset
         type: s1_nullable
         doc: 'pegOffset. Nullable, No Value = -128'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 40
+        doc: 'Bytes the stated block holds beyond the 40 this version reads'
   price_update_message:
     seq:
       - id: md_seq_num
@@ -314,6 +338,9 @@ types:
       - id: event_time
         type: nanosecond_timestamp
         doc: 'eventTime. Nanoseconds since Unix epoch'
+      - id: block_extension
+        size: _parent.message_header.block_length - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
       - id: price_updates_groups
         type: price_updates_groups
         doc: 'Prices Block'
@@ -348,6 +375,9 @@ types:
       - id: imbalance_qty_side
         type: u1_nullable
         doc: 'imbalanceQtySide. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   full_trade_information_message:
     seq:
       - id: md_seq_num
@@ -516,6 +546,9 @@ types:
       - id: message_price_notation
         type: u1_nullable
         doc: 'messagePriceNotation. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 400
+        doc: 'Bytes the stated block holds beyond the 400 this version reads'
       - id: not_used_groups
         type: not_used_groups
         doc: 'NotUsedGroup1 Block'
@@ -566,6 +599,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.message_header.block_length - 10
+        doc: 'Bytes the stated block holds beyond the 10 this version reads'
       - id: market_states_groups
         type: market_states_groups
         doc: 'MarketStates Block'
@@ -628,6 +664,9 @@ types:
       - id: instrument_state
         type: u1_nullable
         doc: 'instrumentState. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   phase_qualifier:
     meta:
       bit-endian: le
@@ -670,6 +709,9 @@ types:
       - id: symbol_index_optional
         type: u4_nullable
         doc: 'symbolIndex. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
       - id: timetables_groups
         type: timetables_groups
         doc: 'Timetables Block'
@@ -709,6 +751,9 @@ types:
       - id: scheduled_event
         type: u1_nullable
         doc: 'scheduledEvent. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   standing_data_message:
     seq:
       - id: md_seq_num
@@ -906,6 +951,9 @@ types:
       - id: threshold_lis_post_trade_eod
         type: u8_nullable
         doc: 'thresholdLISPostTradeEOD. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 409
+        doc: 'Bytes the stated block holds beyond the 409 this version reads'
       - id: emm_pattern_rep_groups
         type: emm_pattern_rep_groups
         doc: 'EMMPatternRep Block'
@@ -940,6 +988,9 @@ types:
       - id: inst_unit_exp
         type: u1_nullable
         doc: 'instUnitExp. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   real_time_index_message:
     seq:
       - id: md_seq_num
@@ -978,6 +1029,9 @@ types:
         type: u1
         enum: index_price_code
         doc: 'indexPriceCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   statistics_message:
     seq:
       - id: md_seq_num
@@ -989,6 +1043,9 @@ types:
       - id: symbol_index
         type: u4
         doc: 'symbolIndex'
+      - id: block_extension
+        size: _parent.message_header.block_length - 13
+        doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: new_stats_groups
         type: new_stats_groups
         doc: 'NewStats Block'
@@ -1011,6 +1068,9 @@ types:
       - id: stats_update_value
         type: s8_nullable
         doc: 'statsUpdateValue. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   index_summary_message:
     seq:
       - id: md_seq_num
@@ -1068,6 +1128,9 @@ types:
       - id: liquidation_time
         type: u8_nullable
         doc: 'liquidationTime. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 126
+        doc: 'Bytes the stated block holds beyond the 126 this version reads'
   strategy_standing_data_message:
     seq:
       - id: md_seq_num
@@ -1107,6 +1170,9 @@ types:
       - id: cfi_optional
         type: str_6_nullable
         doc: 'cFI. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 52
+        doc: 'Bytes the stated block holds beyond the 52 this version reads'
       - id: strategy_standing_data_groups
         type: strategy_standing_data_groups
         doc: 'StrategyStandingDatarep1 Block'
@@ -1135,6 +1201,9 @@ types:
         type: u1
         enum: leg_buy_sell
         doc: 'legBuySell'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   contract_standing_data_message:
     seq:
       - id: md_seq_num
@@ -1285,6 +1354,9 @@ types:
         type: u1
         enum: pricing_algorithm
         doc: 'pricingAlgorithm'
+      - id: block_extension
+        size: _parent.message_header.block_length - 183
+        doc: 'Bytes the stated block holds beyond the 183 this version reads'
       - id: contract_emm_properties_groups
         type: contract_emm_properties_groups
         doc: 'ContractEMMProperties Block'
@@ -1362,6 +1434,9 @@ types:
       - id: collar_unhalt_delay
         type: u4_nullable
         doc: 'collarUnhaltDelay. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 27
+        doc: 'Bytes the stated block holds beyond the 27 this version reads'
   strategy_authorized:
     meta:
       bit-endian: le
@@ -1573,6 +1648,9 @@ types:
       - id: trading_unit
         type: u8_nullable
         doc: 'tradingUnit. Nullable, No Value = 18446744073709551615'
+      - id: block_extension
+        size: _parent.message_header.block_length - 115
+        doc: 'Bytes the stated block holds beyond the 115 this version reads'
       - id: outright_rep_groups
         type: outright_rep_groups
         doc: 'OutrightRep Block'
@@ -1592,6 +1670,9 @@ types:
         type: u1
         enum: emm
         doc: 'eMM'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   lis_package_structure_message:
     seq:
       - id: md_seq_num
@@ -1619,6 +1700,9 @@ types:
         type: u1
         enum: strategy_code
         doc: 'strategyCode'
+      - id: block_extension
+        size: _parent.message_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
       - id: package_components_groups
         type: package_components_groups
         doc: 'PackageComponents Block'
@@ -1640,6 +1724,9 @@ types:
       - id: leg_ratio
         type: u4
         doc: 'legRatio'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 8
+        doc: 'Bytes the stated block holds beyond the 8 this version reads'
   apa_quotes_message:
     seq:
       - id: md_seq_num_optional
@@ -1690,6 +1777,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'mifidQuantity'
+      - id: block_extension
+        size: _parent.message_header.block_length - 101
+        doc: 'Bytes the stated block holds beyond the 101 this version reads'
   apa_standing_data_message:
     seq:
       - id: md_seq_num_optional
@@ -1756,6 +1846,9 @@ types:
       - id: settlement_method
         type: str_1_nullable
         doc: 'settlementMethod. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 217
+        doc: 'Bytes the stated block holds beyond the 217 this version reads'
   apa_full_trade_information_message:
     seq:
       - id: md_seq_num
@@ -1901,6 +1994,9 @@ types:
       - id: long_trade_reference
         type: str_52_nullable
         doc: 'longTradeReference. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 385
+        doc: 'Bytes the stated block holds beyond the 385 this version reads'
   bf_instrument_reference_message:
     seq:
       - id: md_seq_num_optional
@@ -2026,6 +2122,9 @@ types:
       - id: ratio_multiplier_decimals
         type: u1_nullable
         doc: 'ratioMultiplierDecimals. Nullable, No Value = 255'
+      - id: block_extension
+        size: _parent.message_header.block_length - 656
+        doc: 'Bytes the stated block holds beyond the 656 this version reads'
       - id: interest_payment_date_rep_groups
         type: interest_payment_date_rep_groups
         doc: 'InterestPaymentDateRep Block'
@@ -2044,6 +2143,9 @@ types:
       - id: interest_payment_date
         type: u2
         doc: 'interestPaymentDate'
+      - id: block_extension
+        size: _parent.group_size_encoding.block_length_short - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   bf_trade_message:
     seq:
       - id: md_seq_num_optional
@@ -2108,6 +2210,9 @@ types:
       - id: trading_currency_optional
         type: str_3_nullable
         doc: 'tradingCurrency. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 148
+        doc: 'Bytes the stated block holds beyond the 148 this version reads'
   bfnav_message:
     seq:
       - id: md_seq_num_optional
@@ -2144,6 +2249,9 @@ types:
       - id: nav_offer_price
         type: s8_nullable
         doc: 'nAVOfferPrice. Nullable, No Value = -9223372036854775808'
+      - id: block_extension
+        size: _parent.message_header.block_length - 109
+        doc: 'Bytes the stated block holds beyond the 109 this version reads'
   bf_instrument_suspension_message:
     seq:
       - id: md_seq_num_optional
@@ -2162,6 +2270,9 @@ types:
         type: u1
         enum: security_condition
         doc: 'securityCondition. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.message_header.block_length - 22
+        doc: 'Bytes the stated block holds beyond the 22 this version reads'
   start_of_snapshot_message:
     seq:
       - id: last_md_seq_num
@@ -2170,6 +2281,9 @@ types:
       - id: snapshot_time
         type: u8
         doc: 'snapshotTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   end_of_snapshot_message:
     seq:
       - id: last_md_seq_num
@@ -2178,6 +2292,9 @@ types:
       - id: snapshot_time
         type: u8
         doc: 'snapshotTime'
+      - id: block_extension
+        size: _parent.message_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

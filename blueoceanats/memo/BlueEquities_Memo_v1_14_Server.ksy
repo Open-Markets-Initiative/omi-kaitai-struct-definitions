@@ -287,6 +287,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 129
+        doc: 'Bytes the stated block holds beyond the 129 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -338,6 +341,9 @@ types:
         type: u1
         enum: party_role
         doc: 'Identifies the type or role of the Party Id specified'
+      - id: block_extension
+        size: _parent.repeating_group_dimensions.block_length_short - 18
+        doc: 'Bytes the stated block holds beyond the 18 this version reads'
   execution_report_new_message:
     seq:
       - id: sending_time
@@ -456,6 +462,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 137
+        doc: 'Bytes the stated block holds beyond the 137 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -497,6 +506,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 58
+        doc: 'Bytes the stated block holds beyond the 58 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -555,6 +567,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Security listing tape indicator, A, B or C'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 87
+        doc: 'Bytes the stated block holds beyond the 87 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -598,6 +613,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 81
+        doc: 'Bytes the stated block holds beyond the 81 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -632,6 +650,9 @@ types:
       - id: cancel_group_id
         type: u2_nullable
         doc: 'Unique identifier of a custom cancel group. Nullable, No Value = 65535'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   execution_report_canceled_message:
     seq:
       - id: sending_time
@@ -670,6 +691,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 78
+        doc: 'Bytes the stated block holds beyond the 78 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -683,6 +707,9 @@ types:
         size: 16
         encoding: ASCII
         doc: 'Unique identifier of the order as assigned by the client, unique within a single trading day'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 24
+        doc: 'Bytes the stated block holds beyond the 24 this version reads'
   execution_report_pending_replace_message:
     seq:
       - id: sending_time
@@ -746,6 +773,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 104
+        doc: 'Bytes the stated block holds beyond the 104 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -815,6 +845,9 @@ types:
       - id: locate_broker_optional
         type: str_4_nullable
         doc: 'For a short sell order, the broker Mpid the member borrows shares from; a port may be configured to require it. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 112
+        doc: 'Bytes the stated block holds beyond the 112 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -864,6 +897,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Security listing tape indicator, A, B or C'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 82
+        doc: 'Bytes the stated block holds beyond the 82 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -907,6 +943,9 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Security listing tape indicator, A, B or C'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 70
+        doc: 'Bytes the stated block holds beyond the 70 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -955,6 +994,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 75
+        doc: 'Bytes the stated block holds beyond the 75 this version reads'
       - id: parties_groups
         type: parties_groups
         doc: 'The parties associated with the order, a repeating group of party identifiers'
@@ -979,6 +1021,9 @@ types:
       - id: link_id_optional
         type: str_4_nullable
         doc: 'A link identifier clients assign for their own order tracking. Nullable, No Value = 0'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
   mass_cancel_reject_message:
     seq:
       - id: sending_time
@@ -1014,6 +1059,9 @@ types:
         type: u1
         enum: mass_cancel_reject_reason
         doc: 'Code identifying the reason a mass cancellation request was rejected'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

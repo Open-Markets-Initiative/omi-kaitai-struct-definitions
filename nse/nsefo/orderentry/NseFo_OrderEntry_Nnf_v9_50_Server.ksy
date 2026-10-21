@@ -456,6 +456,7 @@ types:
         type: str
         size: 16
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Initialisation vector for encryption and decryption with the gateway'
   new_encryption_tail:
     seq:
@@ -463,6 +464,7 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Fixed half of the initialisation vector'
       - id: dynamic_cryptographic_iv
         type: s8
@@ -471,6 +473,7 @@ types:
         type: str
         size: 12
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Additional authenticated data key'
   update_local_database_header_message:
     seq:
@@ -503,6 +506,7 @@ types:
         type: str
         size: 2
         encoding: ASCII
+        pad-right: 0x20
         doc: 'First two characters of Symbol when the record carries one'
       - id: inner_transaction_code
         type: s2
@@ -517,11 +521,13 @@ types:
         type: str
         size: 8
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Reserved for the host'
       - id: inner_time_stamp_2
         type: str
         size: 8
         encoding: ASCII
+        pad-right: 0x20
         doc: 'Time the record reached the gateway'
       - id: inner_message_length
         type: s2

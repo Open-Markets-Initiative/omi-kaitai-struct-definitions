@@ -166,6 +166,9 @@ types:
         type: u1
         enum: is_test_symbol
         doc: 'IsTestSymbol'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 56
+        doc: 'Bytes the stated block holds beyond the 56 this version reads'
   options_instrument_status_message:
     seq:
       - id: timestamp
@@ -188,6 +191,9 @@ types:
         type: u1
         enum: trading_session
         doc: 'TradingSession'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 19
+        doc: 'Bytes the stated block holds beyond the 19 this version reads'
   underlier_instrument_status_message:
     seq:
       - id: timestamp
@@ -202,6 +208,9 @@ types:
         size: 6
         encoding: ASCII
         doc: 'Underlier'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 15
+        doc: 'Bytes the stated block holds beyond the 15 this version reads'
   broken_trade_message:
     seq:
       - id: timestamp
@@ -221,6 +230,9 @@ types:
       - id: original_price
         type: decimal_u8_8
         doc: 'OriginalPrice. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 36
+        doc: 'Bytes the stated block holds beyond the 36 this version reads'
   corrected_trade_message:
     seq:
       - id: timestamp
@@ -246,6 +258,9 @@ types:
       - id: corrected_price
         type: decimal_u8_8
         doc: 'CorrectedPrice. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 48
+        doc: 'Bytes the stated block holds beyond the 48 this version reads'
   snapshot_complete_message:
     seq:
       - id: timestamp
@@ -254,6 +269,9 @@ types:
       - id: as_of_sequence_number
         type: u8
         doc: 'AsOfSequenceNumber'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   order_added_short_message:
     seq:
       - id: timestamp
@@ -277,6 +295,9 @@ types:
       - id: price_short
         type: decimal_u2_2
         doc: 'Price. Implied decimal with scale 1e-2'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 29
+        doc: 'Bytes the stated block holds beyond the 29 this version reads'
   order_added_long_message:
     seq:
       - id: timestamp
@@ -300,6 +321,9 @@ types:
       - id: price
         type: decimal_u8_8
         doc: 'Price. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 37
+        doc: 'Bytes the stated block holds beyond the 37 this version reads'
   order_added_extended_message:
     seq:
       - id: timestamp
@@ -327,6 +351,9 @@ types:
       - id: price
         type: decimal_u8_8
         doc: 'Price. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 38
+        doc: 'Bytes the stated block holds beyond the 38 this version reads'
   order_deleted_message:
     seq:
       - id: timestamp
@@ -344,6 +371,9 @@ types:
       - id: order_id
         type: u8
         doc: 'OrderID'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   order_reduced_message:
     seq:
       - id: timestamp
@@ -374,6 +404,9 @@ types:
       - id: quantity_reduced
         type: u4
         doc: 'QuantityReduced'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 42
+        doc: 'Bytes the stated block holds beyond the 42 this version reads'
   order_executed_message:
     seq:
       - id: timestamp
@@ -403,6 +436,9 @@ types:
       - id: price
         type: decimal_u8_8
         doc: 'Price. Implied decimal with scale 1e-8'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 46
+        doc: 'Bytes the stated block holds beyond the 46 this version reads'
   trade_conditions:
     meta:
       bit-endian: le
@@ -423,6 +459,9 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Symbol'
+      - id: block_extension
+        size: _parent.sbe_header.block_length - 16
+        doc: 'Bytes the stated block holds beyond the 16 this version reads'
   nanosecond_timestamp:
     seq:
       - id: time

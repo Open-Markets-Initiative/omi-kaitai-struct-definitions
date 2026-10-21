@@ -132,10 +132,7 @@ types:
         type: u4
         doc: 'Order rank information for the order position within the order book'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   aggregate_implied_order:
     seq:
@@ -153,10 +150,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   aggregate_order_book_update_message:
     seq:
@@ -164,10 +158,7 @@ types:
         type: u4
         doc: 'Uniquely identifies an instrument available for trading'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_book_entry
         type: u1
@@ -193,10 +184,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: price_level
         type: u1
@@ -214,10 +202,7 @@ types:
         type: s8
         doc: 'Calculated Opening Price'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: calculated_opening_quantity
         type: u8
@@ -255,10 +240,7 @@ types:
         enum: day_indicator
         doc: 'Session indicator used to'
       - id: filler_6
-        type: str
         size: 6
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: orderbook_id
         type: u4
@@ -313,10 +295,7 @@ types:
         enum: effective_tomorrow
         doc: 'Declaration for instrument to be traded the next day'
       - id: filler_5
-        type: str
         size: 5
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   class_definition:
     seq:
@@ -361,10 +340,7 @@ types:
         type: u4
         doc: 'A short-cut key of the Instrument Type'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: price_quotation_factor
         type: u4
@@ -405,10 +381,7 @@ types:
         enum: effective_tomorrow
         doc: 'Declaration for instrument to be traded the next day'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   instrument_definition:
     seq:
@@ -455,10 +428,7 @@ types:
         type: u8
         doc: 'The first trading time (UTC timestamp)'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: instrument_status_code
         type: u1
@@ -488,10 +458,7 @@ types:
         enum: effective_tomorrow
         doc: 'Declaration for instrument to be traded the next day'
       - id: second_filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   combination_definition:
     seq:
@@ -502,10 +469,7 @@ types:
         type: u4
         doc: 'Uniquely identifies a leg instrument'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: leg_side
         type: u1
@@ -535,10 +499,7 @@ types:
         type: u4
         doc: 'A short-cut key of the Instrument Class'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: actual_start_time
         type: u8
@@ -550,10 +511,7 @@ types:
         type: u2
         doc: 'Numeric identification of the State Type'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   instrument_status:
     seq:
@@ -569,10 +527,7 @@ types:
         enum: instrument_status_code
         doc: 'The actual status of the instrument'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   commodity_and_class_status:
     seq:
@@ -587,10 +542,7 @@ types:
         enum: suspended
         doc: 'Defines if the commodity or instrument class is suspended or not'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   vcm_trigger:
     seq:
@@ -613,10 +565,7 @@ types:
         type: s8
         doc: 'Upper price in the price band allowed during the cooling off period'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   vcm_end:
     seq:
@@ -635,10 +584,7 @@ types:
         type: u4
         doc: 'A short-cut key of the Instrument Class'
       - id: filler_10
-        type: str
         size: 10
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   trade_statistics_message:
     seq:
@@ -668,10 +614,7 @@ types:
         type: u8
         doc: 'Cumulative volume for the respective Session'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   nanosecond_timestamp:
     seq:

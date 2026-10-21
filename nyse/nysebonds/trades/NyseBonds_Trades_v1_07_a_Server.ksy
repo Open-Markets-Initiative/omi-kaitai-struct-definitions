@@ -108,19 +108,19 @@ types:
   last_sale_message:
     seq:
       - id: last_sale_time
-        type: u4le
+        type: u4
         doc: 'Time the trade occurred, in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: trade_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per trading platform (system code) assigned to this trade'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of bonds traded'
       - id: price
-        type: u4le
+        type: u4
         doc: 'Trade price. Divide by the denominator the Price Scale Code names'
       - id: price_scale_code
         type: u1
@@ -159,19 +159,19 @@ types:
   trade_bust_or_correction_message:
     seq:
       - id: last_sale_time
-        type: u4le
+        type: u4
         doc: 'Time the trade occurred, in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: trade_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per trading platform (system code) assigned to this trade'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of bonds traded'
       - id: price
-        type: u4le
+        type: u4
         doc: 'Trade price. Divide by the denominator the Price Scale Code names'
       - id: price_scale_code
         type: u1
@@ -214,19 +214,19 @@ types:
   nyse_bond_closing_price_message:
     seq:
       - id: closing_time
-        type: u4le
+        type: u4
         doc: 'Time the closing price was set, in milliseconds since midnight'
       - id: sequence_number
-        type: u4le
+        type: u4
         doc: 'Message sequence number, 1 to 2147483647'
       - id: trade_reference_number
-        type: u4le
+        type: u4
         doc: 'The unique reference number per trading platform (system code) assigned to this trade'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of bonds traded'
       - id: closing_price
-        type: u4le
+        type: u4
         doc: 'The closing price'
       - id: price_scale_code
         type: u1

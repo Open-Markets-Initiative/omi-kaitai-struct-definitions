@@ -1230,7 +1230,7 @@ types:
         doc: 'Aggregate offer quantity'
       - id: usd_price
         type: s8
-        doc: 'Auctioneers price for the round in USD. Use 2 decimal places for USD Price'
+        doc: 'Auctioneers price for the round in USD. Please apply OrderPriceDenominator. Use 2 decimal places for USD Price for Gold and 3 decimal places for Silver'
       - id: is_balanced
         type: u1
         enum: is_balanced
@@ -1796,14 +1796,14 @@ types:
         type: millisecond_timestamp
         doc: 'Date time the settlement price is for. Milliseconds since Unix epoch'
       - id: volatility
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, volatility of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
       - id: settlement_price
         type: s8
         doc: 'SettlePriceDenominator for the market should be applied to get the real settlement price'
       - id: delta
-        type: s8
-        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300'
+        type: decimal_s8_2
+        doc: 'Apply 2 as the denominator to get the real value. For example, delta of 3.00 will be sent as 300. Implied decimal with scale 1e-2'
   old_style_options_trade_and_market_stats_message:
     seq:
       - id: underlying_market_id
@@ -1938,6 +1938,13 @@ types:
         value: text.substring(3, 5).to_i
       year:
         value: text.substring(6, 10).to_i
+  decimal_s8_2:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 100.0
 
 enums:
   message_type:

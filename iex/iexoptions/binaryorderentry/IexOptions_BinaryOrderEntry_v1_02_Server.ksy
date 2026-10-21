@@ -99,12 +99,18 @@ types:
         type: u1
         enum: status
         doc: 'status'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 17
+        doc: 'Bytes the stated block holds beyond the 17 this version reads'
   gateway_heartbeat_message:
     seq:
       - id: keep_alive
         type: u1
         enum: keep_alive
         doc: 'keepAlive'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
       - id: sub_sessions_groups
         type: sub_sessions_groups
         doc: 'SubSessions Block'
@@ -142,12 +148,18 @@ types:
       - id: next_seq_no
         type: u4
         doc: 'nextSeqNo'
+      - id: block_extension
+        size: _parent.session_info_group_encoding.block_length_short - 14
+        doc: 'Bytes the stated block holds beyond the 14 this version reads'
   terminate_message:
     seq:
       - id: reason
         type: u1
         enum: reason
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 1
+        doc: 'Bytes the stated block holds beyond the 1 this version reads'
   sequenced_message_header_message:
     seq:
       - id: subsession_id
@@ -159,6 +171,9 @@ types:
       - id: timestamp
         type: u8
         doc: 'timestamp'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 20
+        doc: 'Bytes the stated block holds beyond the 20 this version reads'
   subsession_join_response_message:
     seq:
       - id: subsession_id
@@ -168,6 +183,9 @@ types:
         type: u1
         enum: status
         doc: 'status'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   subsession_leave_response_message:
     seq:
       - id: subsession_id
@@ -177,6 +195,9 @@ types:
         type: u1
         enum: reason
         doc: 'reason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 9
+        doc: 'Bytes the stated block holds beyond the 9 this version reads'
   server_business_message:
     seq:
       - id: server_business_payload
@@ -323,6 +344,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 139
+        doc: 'Bytes the stated block holds beyond the 139 this version reads'
   unsolicited_modify_ack_message:
     seq:
       - id: transact_time
@@ -369,6 +393,9 @@ types:
         type: s1
         enum: ack_type
         doc: 'ackType'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 67
+        doc: 'Bytes the stated block holds beyond the 67 this version reads'
   order_cancel_ack_message:
     seq:
       - id: transact_time
@@ -409,6 +436,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 55
+        doc: 'Bytes the stated block holds beyond the 55 this version reads'
   mass_cancel_ack_message:
     seq:
       - id: transact_time
@@ -448,6 +478,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 33
+        doc: 'Bytes the stated block holds beyond the 33 this version reads'
   bulk_quote_ack_message:
     seq:
       - id: transact_time
@@ -478,6 +511,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 30
+        doc: 'Bytes the stated block holds beyond the 30 this version reads'
       - id: bulk_quote_ack_message_quote_acks_groups
         type: bulk_quote_ack_message_quote_acks_groups
         doc: 'quoteAcks Block'
@@ -525,6 +561,9 @@ types:
         type: u1
         enum: reason_code
         doc: 'reasonCode'
+      - id: block_extension
+        size: _parent.quote_acks_group_encoding.block_length_short - 23
+        doc: 'Bytes the stated block holds beyond the 23 this version reads'
   new_ioc_quote_ack_message:
     seq:
       - id: transact_time
@@ -576,6 +615,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 51
+        doc: 'Bytes the stated block holds beyond the 51 this version reads'
   quote_restated_message:
     seq:
       - id: transact_time
@@ -613,6 +655,9 @@ types:
       - id: delta
         size: 4
         doc: 'delta'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   quote_canceled_message:
     seq:
       - id: transact_time
@@ -647,6 +692,9 @@ types:
       - id: delta
         size: 4
         doc: 'delta'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 39
+        doc: 'Bytes the stated block holds beyond the 39 this version reads'
   purge_ack_message:
     seq:
       - id: transact_time
@@ -678,6 +726,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 31
+        doc: 'Bytes the stated block holds beyond the 31 this version reads'
       - id: purge_ack_message_custom_group_ids_groups
         type: purge_ack_message_custom_group_ids_groups
         doc: 'customGroupIds Block'
@@ -704,6 +755,9 @@ types:
       - id: custom_group_id
         type: u2
         doc: 'customGroupId'
+      - id: block_extension
+        size: _parent.custom_group_ids_group_encoding.block_length_short - 2
+        doc: 'Bytes the stated block holds beyond the 2 this version reads'
   execution_report_message:
     seq:
       - id: account_account
@@ -833,6 +887,9 @@ types:
         size: 5
         encoding: ASCII
         doc: 'contraOccId'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 154
+        doc: 'Bytes the stated block holds beyond the 154 this version reads'
   trade_bust_correct_message:
     seq:
       - id: transact_time
@@ -880,6 +937,9 @@ types:
         type: s1
         enum: bust_or_correction
         doc: 'bustOrCorrection'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 86
+        doc: 'Bytes the stated block holds beyond the 86 this version reads'
   application_layer_reject_message:
     seq:
       - id: transact_time
@@ -916,6 +976,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 47
+        doc: 'Bytes the stated block holds beyond the 47 this version reads'
   underlying_ref_data_message:
     seq:
       - id: transact_time
@@ -938,6 +1001,9 @@ types:
         type: s1
         enum: mpv_group
         doc: 'mpvGroup'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 25
+        doc: 'Bytes the stated block holds beyond the 25 this version reads'
   instrument_ref_data_message:
     seq:
       - id: transact_time
@@ -980,6 +1046,9 @@ types:
       - id: matching_unit
         type: s2
         doc: 'matchingUnit'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 59
+        doc: 'Bytes the stated block holds beyond the 59 this version reads'
   mpid_configuration_acknowledgement_message:
     seq:
       - id: transact_time
@@ -1026,6 +1095,9 @@ types:
       - id: max_duplicative
         type: u4_nullable
         doc: 'maxDuplicative. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 76
+        doc: 'Bytes the stated block holds beyond the 76 this version reads'
   market_maker_symbol_appointment_message:
     seq:
       - id: transact_time
@@ -1053,6 +1125,9 @@ types:
       - id: quote_relief_mult
         type: u4_nullable
         doc: 'quoteReliefMult. Nullable, No Value = 4294967295'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 26
+        doc: 'Bytes the stated block holds beyond the 26 this version reads'
   session_configuration_acknowledgement_message:
     seq:
       - id: transact_time
@@ -1102,6 +1177,9 @@ types:
       - id: trading_ring
         type: s1
         doc: 'tradingRing'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 35
+        doc: 'Bytes the stated block holds beyond the 35 this version reads'
   risk_control_acknowledgment_message:
     seq:
       - id: transact_time
@@ -1159,6 +1237,9 @@ types:
         type: s1
         enum: throttle_indicator
         doc: 'throttleIndicator'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 50
+        doc: 'Bytes the stated block holds beyond the 50 this version reads'
   risk_control_alert_message:
     seq:
       - id: transact_time
@@ -1189,6 +1270,9 @@ types:
         type: s1
         enum: notification_reason
         doc: 'notificationReason'
+      - id: block_extension
+        size: _parent._parent.message_header.block_length - 34
+        doc: 'Bytes the stated block holds beyond the 34 this version reads'
   decimal_s8_8:
     seq:
       - id: mantissa

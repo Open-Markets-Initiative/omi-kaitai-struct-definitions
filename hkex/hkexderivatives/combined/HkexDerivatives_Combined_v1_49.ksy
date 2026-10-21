@@ -115,10 +115,7 @@ types:
         type: u4
         doc: 'Uniquely identifies a series'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: num_book_entry
         type: u1
@@ -144,10 +141,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: price_level
         type: u1
@@ -157,10 +151,7 @@ types:
         enum: update_action
         doc: 'Type of market data update action'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   calculated_opening_price_message:
     seq:
@@ -171,10 +162,7 @@ types:
         type: s4
         doc: 'Calculated Opening Price'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: quantity
         type: u8
@@ -208,10 +196,7 @@ types:
         enum: source
         doc: 'Source ID for this alert message'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: header
         size: 320
@@ -241,10 +226,7 @@ types:
         enum: day_indicator
         doc: 'Session indicator used to'
       - id: filler_6
-        type: str
         size: 6
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: orderbook_id
         type: u4
@@ -362,10 +344,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: order_type
         type: order_type
@@ -386,10 +365,7 @@ types:
         enum: side
         doc: 'Side of the order'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   orderbook_clear_message:
     seq:
@@ -409,10 +385,7 @@ types:
         enum: bid_ask_flag
         doc: 'Indicates if the quote request is for a Bid or Ask or both'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   commodity_definition_message:
     seq:
@@ -468,10 +441,7 @@ types:
         pad-right: 0x20
         doc: 'Commodity ID of the underlying'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   class_definition_message:
     seq:
@@ -493,10 +463,7 @@ types:
         type: u2
         doc: 'Numerical identifier of the Underlying This'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: price_quotation_factor
         type: s4
@@ -561,10 +528,7 @@ types:
         type: s4
         doc: 'Minimum Fluctuation of the'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   series_definition_base_message:
     seq:
@@ -604,10 +568,7 @@ types:
         enum: put_or_call
         doc: 'Identifies whether the series is a put or call type'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   series_definition_extended_message:
     seq:
@@ -668,10 +629,7 @@ types:
         enum: price_method
         doc: 'Specifics the pricing method used for the combo series'
       - id: filler_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: effective_exp_date
         type: str
@@ -694,10 +652,7 @@ types:
         type: u4
         doc: 'This is the orderbook identification'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: leg_side
         type: u1
@@ -721,10 +676,7 @@ types:
         enum: session
         doc: 'Session'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: open
         type: s4
@@ -767,10 +719,7 @@ types:
         type: u2
         doc: 'Numerical identifier of the Underlying This'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: actual_start_date
         type: str
@@ -808,10 +757,7 @@ types:
         enum: priority
         doc: 'Priority'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   series_status_message:
     seq:
@@ -827,10 +773,7 @@ types:
         enum: series_status
         doc: 'The actual status of the series'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   commodity_status_message:
     seq:
@@ -876,10 +819,7 @@ types:
         type: deal_info
         doc: 'Trade condition bitmap'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: quantity
         type: u8
@@ -954,10 +894,7 @@ types:
         enum: trade_state
         doc: 'Trade State'
       - id: filler_3
-        type: str
         size: 3
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
   trade_statistics_message:
     seq:
@@ -975,10 +912,7 @@ types:
         enum: session
         doc: 'Session'
       - id: filler_2
-        type: str
         size: 2
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: statistics_aggregate_quantity
         type: s8
@@ -993,10 +927,7 @@ types:
         type: s4
         doc: 'Lowest price paid for the series trades, trades cancellations'
       - id: filler_4
-        type: str
         size: 4
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'Padding'
       - id: trade_report_volume
         type: u8
