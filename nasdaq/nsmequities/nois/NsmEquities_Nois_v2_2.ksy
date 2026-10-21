@@ -123,7 +123,9 @@ types:
         pad-right: 0x20
         doc: 'Reserved for future use'
       - id: round_lot_size
+        type: str
         size: 6
+        encoding: ASCII
         doc: 'Indicates the number of shares that represent a round lot for the issue'
       - id: round_lots_only
         type: u1
@@ -160,7 +162,9 @@ types:
   nois_message:
     seq:
       - id: imbalance_shares
+        type: str
         size: 9
+        encoding: ASCII
         doc: 'Number of shares not paired at the Current Reference Price'
       - id: imbalance_direction
         type: u1
@@ -173,11 +177,15 @@ types:
         pad-right: 0x20
         doc: 'Denotes the security symbol for the issue in the NASDAQ execution system'
       - id: near_price
+        type: str
         size: 10
-        doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders'
+        encoding: ASCII
+        doc: 'A hypothetical auction-clearing price for cross orders as well as continuous orders. Implied decimal with scale 1e-4'
       - id: current_reference_price
+        type: str
         size: 10
-        doc: 'Indicates price at which the NOII shares are being calculated'
+        encoding: ASCII
+        doc: 'Indicates price at which the NOII shares are being calculated. Implied decimal with scale 1e-4'
       - id: cross_type
         type: u1
         enum: cross_type

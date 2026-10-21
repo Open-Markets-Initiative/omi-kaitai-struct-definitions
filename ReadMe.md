@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1550 | 3,349,322 |
+| 1549 | 3,349,283 |
 
 ## Testing
 
@@ -54,7 +54,7 @@ Other generated code can be found at [Omi Repositories](https://github.com/Open-
 
 ## Redistributors
 
-> [IceDataServices][IceDataServices.Redistributor] · [MarketData][MarketData.Redistributor]
+> [MarketData][MarketData.Redistributor]
 
 ## Related Definitions
 
@@ -115,7 +115,6 @@ Enjoy.
 [Omi.Encoding.Xdp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Xdp.md "Xdp Encoding"
 [Omi.Encoding.Wats]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Wats.md "Wats Encoding"
 [Omi.Encoding.Omd]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Omd.md "Omd Encoding"
-[Omi.Encoding.Ctf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Ctf.md "Ctf Encoding"
 [Omi.Encoding.iMpact]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/iMpact.md "iMpact Encoding"
 [Omi.Encoding.IexTp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/IexTp.md "IexTp Encoding"
 [Omi.Encoding.Snap]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Snap.md "Snap Encoding"
@@ -422,7 +421,6 @@ Enjoy.
 [Hkex.Szse.ChinaConnect]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/Szse/ChinaConnect.md "Orion Market Data China Connect"
 [Hkex.Szse.ChinaConnectRefresh]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/Szse/ChinaConnectRefresh.md "Orion Market Data China Connect Refresh"
 [Hkex.Szse.ChinaConnectRetrans]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Hkex/Protocols/Szse/ChinaConnectRetrans.md "Orion Market Data China Connect Retransmission"
-[Ice.IceDataServices.ConsolidatedFeed]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Ice/Protocols/IceDataServices/ConsolidatedFeed.md "ConsolidatedFeed"
 [Ice.IceFutures.Bgw]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Ice/Protocols/IceFutures/Bgw.md "Binary Order Gateway"
 [Ice.IceFutures.Mdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Ice/Protocols/IceFutures/Mdf.md "Multicast Data Feed"
 [Iex.IexEquities.Deep]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Iex/Protocols/IexEquities/Deep.md "Depth Of Book"
@@ -953,7 +951,6 @@ Enjoy.
 [Globex.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cme/globex "CME Globex"
 [HkexDerivatives.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/hkex/hkexderivatives "Hkex Derivatives Market"
 [HkexSecurities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/hkex/hkexsecurities "Hkex Securities Market"
-[IceDataServices.Redistributor]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/ice "ICE Data Services"
 [IceFutures.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/ice/icefutures "Intercontinental Exchange Futures"
 [IexEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex/iexequities "IEX Equities"
 [IexOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/iex/iexoptions "IEX Options"
