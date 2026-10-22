@@ -89,6 +89,13 @@ class CboeBzxequitiesBinaryorderentryBoeV23Tests(unittest.TestCase):
             parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
             self.assertTrue(parsed._io.is_eof())
 
+    def test_newordermessagetcp(self):
+        for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/NewOrderMessage.Tcp.pcap"):
+            if payloads.partial(payload, 2, 2, "little", 2):
+                self.skipTest("capture ends mid message; tcp reassembly required")
+            parsed = CboeBzxequitiesBinaryorderentryBoeV23.from_bytes(payload)
+            self.assertTrue(parsed._io.is_eof())
+
     def test_orderacknowledgmentmessage(self):
         for payload in payloads.of("omi-data-packets/Cboe/BzxEquities.BinaryOrderEntry.Boe.v2.3/OrderAcknowledgmentMessage.pcap"):
             if payloads.partial(payload, 2, 2, "little", 2):

@@ -7,7 +7,7 @@
 #   Encoding: Millennium Itch
 #   Version: 4.07
 #   Date: 4/20/2026
-#   Specification: JSE Volume 05 - Market Data Gateway MITCH-UDP (407).pdf
+#   Specification: JSE Volume 05 - Market Data Gateway MITCH-UDP (4.07).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

@@ -128,10 +128,8 @@ types:
   login_response_message:
     seq:
       - id: status
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
+        type: u1
+        enum: status
         doc: 'Accepted or reason for reject'
   replay_complete_message:
     seq:
@@ -152,7 +150,7 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
   fractional_symbol_summary_message:
     seq:
       - id: last_update_timestamp
@@ -169,19 +167,19 @@ types:
         doc: 'Cumulative number of shares traded today across all applicable Cboe books'
       - id: consolidated_best_bid_price
         type: decimal_u8_4
-        doc: 'Titanium Equities best bid price. Implied decimal with scale 1e-4'
+        doc: 'Cboe Consolidated best bid price. Implied decimal with scale 1e-4'
       - id: consolidated_best_bid_quantity
         type: u8
-        doc: 'Titanium Equities number of buy-side shares available for this symbol'
+        doc: 'Cboe Consolidated number of buy-side shares available for this symbol'
       - id: consolidated_best_ask_price
         type: decimal_u8_4
-        doc: 'Titanium Equities best ask price. Implied decimal with scale 1e-4'
+        doc: 'Cboe Consolidated best ask price. Implied decimal with scale 1e-4'
       - id: consolidated_best_ask_quantity
         type: u8
-        doc: 'Titanium Equities number of sell-side shares available for this symbol'
+        doc: 'Cboe Consolidated number of sell-side shares available for this symbol'
       - id: national_cumulative_volume
         type: decimal_u8_6
-        doc: 'In the US, cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
+        doc: 'Cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
       - id: fractional_symbol_summary_flags
         type: fractional_symbol_summary_flags
   fractional_symbol_summary_flags:
@@ -206,13 +204,13 @@ types:
       - id: side_indicator
         type: u1
         enum: side_indicator
-        doc: 'Side of the quote update'
+        doc: 'B=Buy Side S=Sell Side'
       - id: consolidated_best_quote_price
         type: decimal_u8_4
-        doc: 'Titanium Equities best price. Implied decimal with scale 1e-4'
+        doc: 'Cboe Consolidated best price. Implied decimal with scale 1e-4'
       - id: consolidated_quote_quantity
         type: u8
-        doc: 'Titanium Equities number of shares available for this symbol'
+        doc: 'Cboe Consolidated number of shares available for this symbol'
   cboe_market_status_message:
     seq:
       - id: timestamp
@@ -221,15 +219,15 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: market_status
         type: u1
         enum: market_status
-        doc: 'Market status indicator'
+        doc: 'N=Normal E=Excluded from Symbol Summary and ADAP updates I=Incomplete'
       - id: session_indicator
         type: u1
         enum: session_indicator
-        doc: 'Session indicator'
+        doc: 'R=Regular trading session P=Pre- or post-market session'
   adap_message:
     seq:
       - id: last_update_timestamp
@@ -248,7 +246,7 @@ types:
         doc: 'Reserved'
       - id: num_adap_block
         type: u1
-        doc: 'Number of ADAP Block messages to follow'
+        doc: 'Number of ADAP Block message to follow'
       - id: adap_block_size
         type: u1
         doc: 'Size of each ADAP Block message'
@@ -282,13 +280,11 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: side
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Side indicator'
+        type: u1
+        enum: side
+        doc: 'B=Buy Side S=Sell Side'
       - id: price_short
         type: decimal_u4_4
         doc: 'Price level to add/update for Market Center''s ADAP book. Implied decimal with scale 1e-4'
@@ -300,13 +296,11 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: side
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Side indicator'
+        type: u1
+        enum: side
+        doc: 'B=Buy Side S=Sell Side'
       - id: price_long
         type: decimal_u8_4
         doc: 'Opening/Closing Price. Implied decimal with scale 1e-4'
@@ -327,11 +321,11 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: retail_price_improvement
         type: u1
         enum: retail_price_improvement
-        doc: 'Retail Price Improvement indicator'
+        doc: 'B=Buy Side RPI S=Sell Side RPI A=Buy & Sell RPI N=No RPI'
   fractional_trade_message:
     seq:
       - id: transaction_time
@@ -346,7 +340,7 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: market_center_execution_id
         type: u8
         doc: 'Market center specific execution identifier of this Execution. Execution ID is also referenced in the Trade Break message'
@@ -361,7 +355,7 @@ types:
         doc: 'Cumulative number of shares traded today across all applicable Cboe books'
       - id: national_cumulative_volume
         type: decimal_u8_6
-        doc: 'In the US, cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
+        doc: 'Cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
       - id: fractional_trade_flags
         type: fractional_trade_flags
   fractional_trade_flags:
@@ -388,7 +382,7 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: market_center_execution_id
         type: u8
         doc: 'Market center specific execution identifier of this Execution. Execution ID is also referenced in the Trade Break message'
@@ -397,7 +391,7 @@ types:
         doc: 'Cumulative number of shares traded today across all applicable Cboe books'
       - id: national_cumulative_volume
         type: decimal_u8_6
-        doc: 'In the US, cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
+        doc: 'Cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
       - id: fractional_trade_break_flags
         type: fractional_trade_break_flags
   fractional_trade_break_flags:
@@ -422,15 +416,15 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: trading_status
         type: u1
         enum: trading_status
-        doc: 'Trading status indicator'
+        doc: 'A=Accepting Orders for Queuing H=Halted Q=Quote-Only S=Exchange Specific Suspension T=Trading'
       - id: reg_sho_action
         type: u1
         enum: reg_sho_action
-        doc: 'Reg SHO Action indicator'
+        doc: '0=No price test in effect 1=Reg SHO price test restriction in effect'
   opening_closing_price_message:
     seq:
       - id: timestamp
@@ -445,11 +439,11 @@ types:
       - id: market_center
         type: u1
         enum: market_center
-        doc: 'All Cboe Markets for this feed'
+        doc: '* = All Cboe Markets for this feed Y=BYX Z=BZX A=EDGA X=EDGX'
       - id: open_close_indicator
         type: u1
         enum: open_close_indicator
-        doc: 'Open/Close indicator'
+        doc: 'O=Price is the Opening price C=Price is the Closing price F=First Regular Hours Trade (effective 11/30/26)'
       - id: price_long
         type: decimal_u8_4
         doc: 'Opening/Closing Price. Implied decimal with scale 1e-4'
@@ -467,7 +461,7 @@ types:
       - id: data_source
         type: u1
         enum: data_source
-        doc: 'Data source indicator'
+        doc: 'C=CTA U=UTP'
       - id: opening_price
         type: decimal_u8_4
         doc: 'Opening Price. 0 if the system has not received an opening price for the security. Implied decimal with scale 1e-4'
@@ -482,7 +476,7 @@ types:
         doc: 'Lowest trade price of the day. Implied decimal with scale 1e-4'
       - id: national_cumulative_volume
         type: decimal_u8_6
-        doc: 'In the US, cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
+        doc: 'Cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
       - id: first_regular_hours_trade_price
         type: decimal_u8_4
         doc: 'Represents the first eligible regular-hours SIP trade. Uses the applicable CTA or UTP market-center designation. Coexists with all existing Opening Price messages. Excludes trades with SIP sale condition C, B, H, I, M, N, Q, R, T, U, V, 7, or 8. Implied decimal with scale 1e-4'
@@ -537,7 +531,7 @@ enums:
       doc: 'The Clear Quote message instructs feed recipients to clear all quotes and Summary and/or ADAP information for the specified symbol on the specified market(s).'
     0xe7:
       id: 'fractional_symbol_summary_message'
-      doc: 'The Fractional Symbol Summary message delivers the Cboe consolidated best bid/offer and total executed volume across all applicable Cboe One US and Cboe One Canada books.'
+      doc: 'The Fractional Symbol Summary message delivers the Cboe consolidated best bid/offer and total executed volume across all applicable Cboe One US Exchanges.'
     0xa5:
       id: 'best_quote_update_message'
       doc: 'The Best Quote Update message is used to update one side of the Cboe consolidated quote information for a symbol.'
@@ -549,7 +543,7 @@ enums:
       doc: 'Each ADAP message delivers one or more updates for a Symbol''s ADAP book. Each ADAP message contains one or more ADAP Block messages.'
     0xa8:
       id: 'rpi_message'
-      doc: 'The Retail Price Improvement (RPI) message is a retail liquidity indicator that includes symbol and side, but not price and size. US Only.'
+      doc: 'The Retail Price Improvement (RPI) message is a retail liquidity indicator that includes symbol and side, but not price and size.'
     0xe8:
       id: 'fractional_trade_message'
       doc: 'Fractional Trade messages are sent when an order is executed in whole or in part on a Cboe exchange.'
@@ -565,6 +559,22 @@ enums:
     0xea:
       id: 'fractional_end_of_day_summary_message'
       doc: 'The Fractional End of Day Summary message is used to give a consolidated, high-level overview of a security for the day.'
+  status:
+    0x41:
+      id: 'login_accepted'
+      doc: 'Login Accepted'
+    0x4e:
+      id: 'not_authorized_invalid_username_password'
+      doc: 'Not Authorized Invalid Username Password'
+    0x42:
+      id: 'session_in_use'
+      doc: 'Session In Use'
+    0x53:
+      id: 'invalid_session'
+      doc: 'Invalid Session'
+    0x51:
+      id: 'next_sequence_is_ahead_of_sequence'
+      doc: 'Next Sequence Is Ahead Of Sequence'
   market_center:
     0x2a:
       id: 'all_cboe_markets'
@@ -581,6 +591,12 @@ enums:
     0x58:
       id: 'edgx'
       doc: 'Edgx'
+    0x43:
+      id: 'cta'
+      doc: 'Cta'
+    0x55:
+      id: 'utp'
+      doc: 'Utp'
   side_indicator:
     0x42:
       id: 'buy_side'
@@ -605,6 +621,13 @@ enums:
     0x50:
       id: 'pre_or_postmarket_session'
       doc: 'Pre Or Postmarket Session'
+  side:
+    0x42:
+      id: 'buy_side'
+      doc: 'Buy Side'
+    0x53:
+      id: 'sell_side'
+      doc: 'Sell Side'
   retail_price_improvement:
     0x42:
       id: 'buy_side_rpi'
@@ -614,7 +637,7 @@ enums:
       doc: 'Sell Side Rpi'
     0x41:
       id: 'buy_and_sell_rpi'
-      doc: 'Buy And Sell Rpi'
+      doc: 'Buy & Sell RPI'
     0x4e:
       id: 'no_rpi'
       doc: 'No Rpi'
@@ -622,21 +645,9 @@ enums:
     0x41:
       id: 'accepting_orders_for_queuing'
       doc: 'Accepting Orders For Queuing'
-    0x46:
-      id: 'halted_full'
-      doc: 'Halted Full'
     0x48:
       id: 'halted'
       doc: 'Halted'
-    0x4d:
-      id: 'delayed_closing'
-      doc: 'Delayed Closing'
-    0x4f:
-      id: 'preclose'
-      doc: 'Preclose'
-    0x50:
-      id: 'postclose'
-      doc: 'Postclose'
     0x51:
       id: 'quote_only'
       doc: 'Quote Only'
@@ -646,9 +657,6 @@ enums:
     0x54:
       id: 'trading'
       doc: 'Trading'
-    0x58:
-      id: 'extended_trading'
-      doc: 'Extended Trading'
   reg_sho_action:
     0x30:
       id: 'no_price_test_in_effect'
@@ -659,10 +667,10 @@ enums:
   open_close_indicator:
     0x4f:
       id: 'opening_price'
-      doc: 'Opening Price'
+      doc: 'Price is the Opening price'
     0x43:
       id: 'closing_price'
-      doc: 'Closing Price'
+      doc: 'Price is the Closing price'
     0x46:
       id: 'first_regular_hours_trade'
       doc: 'First Regular Hours Trade (effective 11/30/26)'
@@ -673,10 +681,4 @@ enums:
     0x55:
       id: 'utp'
       doc: 'Utp'
-    0x69:
-      id: 'indicative_value'
-      doc: 'Indicative Value'
-    0x63:
-      id: 'calculated_value_from_tmx_ip'
-      doc: 'Calculated Value From Tmx Ip'
 
