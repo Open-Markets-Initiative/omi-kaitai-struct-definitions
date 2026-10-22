@@ -259,6 +259,9 @@ enums:
     0x5a:
       id: 'bats_z_exchange'
       doc: 'BATS Z Exchange'
+    0x56:
+      id: 'investors_exchange'
+      doc: 'Investors'' Exchange'
   round_lots_only:
     0x59:
       id: 'round_lots_only'
@@ -349,6 +352,6 @@ enums:
       id: 'close_cross'
       doc: 'Close Cross'
     0x48:
-      id: 'ipo_halt_cross'
+      id: 'intraday_opening_cross_for_ipo'
       doc: 'Intra-day Opening Cross for IPO and Halted/Paused securities'
 
