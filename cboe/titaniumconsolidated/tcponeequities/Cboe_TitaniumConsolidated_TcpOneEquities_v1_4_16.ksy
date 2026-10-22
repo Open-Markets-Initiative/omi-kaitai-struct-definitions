@@ -484,8 +484,8 @@ types:
         type: decimal_u8_6
         doc: 'In the US, cumulative number of shares traded today as reported to the CTA and UTP SIPs. Implied decimal with scale 1e-6'
       - id: first_regular_hours_trade_price
-        type: decimal_u8_6
-        doc: 'Represents the first eligible regular-hours SIP trade. Uses the applicable CTA or UTP market-center designation. Coexists with all existing Opening Price messages. Excludes trades with SIP sale condition C, B, H, I, M, N, Q, R, T, U, V, 7, or 8. Implied decimal with scale 1e-6'
+        type: decimal_u8_4
+        doc: 'Represents the first eligible regular-hours SIP trade. Uses the applicable CTA or UTP market-center designation. Coexists with all existing Opening Price messages. Excludes trades with SIP sale condition C, B, H, I, M, N, Q, R, T, U, V, 7, or 8. Implied decimal with scale 1e-4'
   nanosecond_timestamp:
     seq:
       - id: time

@@ -186,15 +186,11 @@ types:
         enum: sell_order_type
         doc: 'The type of the sell side order'
       - id: buy_waiver_indicator
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'Bitwise field that defines the waivers: bit 1 RFPT reference price, bit 2 NLIQ negotiated liquid, bit 3 OILQ negotiated illiquid, bit 4 PRIC negotiated conditions, bit 5 SIZE above specified size, bit 6 ILQD illiquid instrument'
+        type: buy_waiver_indicator
+        doc: 'Waiver flags for the buy side, a bit mask spelled as four numeric characters'
       - id: sell_waiver_indicator
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'Bitwise field that defines the waivers: bit 1 RFPT reference price, bit 2 NLIQ negotiated liquid, bit 3 OILQ negotiated illiquid, bit 4 PRIC negotiated conditions, bit 5 SIZE above specified size, bit 6 ILQD illiquid instrument'
+        type: sell_waiver_indicator
+        doc: 'Waiver flags for the sell side, a bit mask spelled as four numeric characters'
       - id: notional_amount
         type: str
         size: 14
@@ -221,6 +217,50 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Time the message was created in the Trading System, as local time to the microsecond'
+  buy_waiver_indicator:
+    meta:
+      bit-endian: le
+    seq:
+      - id: rfpt
+        type: b1
+        doc: 'Reference price waiver'
+      - id: nliq
+        type: b1
+        doc: 'Negotiated transaction in liquid instruments waiver'
+      - id: oilq
+        type: b1
+        doc: 'Negotiated transaction in illiquid instruments waiver'
+      - id: pric
+        type: b1
+        doc: 'Negotiated transaction subject to conditions other than the current market price waiver'
+      - id: size
+        type: b1
+        doc: 'Above specified size waiver'
+      - id: ilqd
+        type: b1
+        doc: 'Illiquid instrument waiver'
+  sell_waiver_indicator:
+    meta:
+      bit-endian: le
+    seq:
+      - id: rfpt
+        type: b1
+        doc: 'Reference price waiver'
+      - id: nliq
+        type: b1
+        doc: 'Negotiated transaction in liquid instruments waiver'
+      - id: oilq
+        type: b1
+        doc: 'Negotiated transaction in illiquid instruments waiver'
+      - id: pric
+        type: b1
+        doc: 'Negotiated transaction subject to conditions other than the current market price waiver'
+      - id: size
+        type: b1
+        doc: 'Above specified size waiver'
+      - id: ilqd
+        type: b1
+        doc: 'Illiquid instrument waiver'
   quote_message:
     seq:
       - id: symbol
@@ -397,15 +437,11 @@ types:
         enum: sell_order_type
         doc: 'The type of the sell side order'
       - id: buy_waiver_indicator
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'Bitwise field that defines the waivers: bit 1 RFPT reference price, bit 2 NLIQ negotiated liquid, bit 3 OILQ negotiated illiquid, bit 4 PRIC negotiated conditions, bit 5 SIZE above specified size, bit 6 ILQD illiquid instrument'
+        type: buy_waiver_indicator
+        doc: 'Waiver flags for the buy side, a bit mask spelled as four numeric characters'
       - id: sell_waiver_indicator
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'Bitwise field that defines the waivers: bit 1 RFPT reference price, bit 2 NLIQ negotiated liquid, bit 3 OILQ negotiated illiquid, bit 4 PRIC negotiated conditions, bit 5 SIZE above specified size, bit 6 ILQD illiquid instrument'
+        type: sell_waiver_indicator
+        doc: 'Waiver flags for the sell side, a bit mask spelled as four numeric characters'
       - id: notional_amount
         type: str
         size: 14
