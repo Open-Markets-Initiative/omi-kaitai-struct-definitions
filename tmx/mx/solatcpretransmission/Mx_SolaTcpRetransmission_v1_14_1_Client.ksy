@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tmx Mx SolaTcpRetransmission Hsvf v1.12
+# Kaitai struct definition for: Tmx Mx SolaTcpRetransmission Hsvf v1.14.1
 #
 # Protocol:
 #   Organization: TMX Group
 #   Protocol: Sola Tcp Retransmission
 #   Encoding: High Speed Vendor Feed
-#   Version: 1.12
-#   Date: 3/23/2018
-#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.12.2).pdf
+#   Version: 1.14.1
+#   Date: 2/5/2024
+#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.14.1).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tmx_mx_solatcpretransmission_hsvf_v1_12_client
-  title: Tmx Mx SolaTcpRetransmission Hsvf v1.12
+  id: tmx_mx_solatcpretransmission_hsvf_v1_14_1_client
+  title: Tmx Mx SolaTcpRetransmission Hsvf v1.14.1
   license: GPL-3.0
   endian: be
 
-doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.12'
+doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.14.1'
 doc-ref: https://www.tmxwebstore.com
 
 seq:
@@ -68,9 +68,9 @@ types:
     seq:
       - id: sequence_number
         type: str
-        size: 9
+        size: 10
         encoding: ASCII
-        doc: 'Sequence numbers will range from ascii decimal 000000001 to 999999999'
+        doc: 'The sequence numbers will range from 0000000001 to 9999999999 (decimal, ASCII)'
       - id: client_message_type
         type: str
         size: 2
@@ -108,12 +108,12 @@ types:
         doc: 'Specific address and port on which market is disseminated based on a list of CPUs and Market Depth Setting. Refer to Line Definitions'
       - id: start
         type: str
-        size: 9
+        size: 10
         encoding: ASCII
         doc: 'Starting message number'
       - id: end
         type: str
-        size: 9
+        size: 10
         encoding: ASCII
         doc: 'Ending message number'
 
@@ -247,6 +247,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   trade_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -299,6 +320,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   net_change_sign:
     0x2b:
       id: 'positive'
@@ -358,6 +400,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   price_indicator_marker:
     0x41:
       id: 'asof_trade'
@@ -575,6 +638,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   ask_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -627,6 +711,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   instrument_status_marker:
     0x59:
       id: 'preopening'
@@ -694,58 +799,6 @@ enums:
     0x41:
       id: 'implied'
       doc: 'Implied'
-  price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
-    0x31:
-      id: 'ten'
-      doc: '1/10'
-    0x32:
-      id: 'hundred'
-      doc: '1/100'
-    0x33:
-      id: 'thousand'
-      doc: '1/1,000'
-    0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
-    0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
-    0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
   maximum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -798,6 +851,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   minimum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -850,6 +924,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick_increment_fraction_indicator:
     0x30:
       id: 'whole'
@@ -902,6 +997,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   option_type:
     0x41:
       id: 'american'
@@ -961,6 +1077,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   delivery_type:
     0x43:
       id: 'cash'
@@ -1012,13 +1149,248 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
-  leg_ratio_sign:
-    0x2b:
-      id: 'buy_of_the_underlying'
-      doc: 'Buy Of The Underlying'
-    0x2d:
-      id: 'sell_of_the_underlying'
-      doc: 'Sell Of The Underlying'
+  strategy_type:
+    0x43:
+      id: 'classic'
+      doc: 'Classic'
+    0x53:
+      id: 'strip'
+      doc: 'Strip'
+    0x56:
+      id: 'covered_regular'
+      doc: 'Covered Regular'
+    0x52:
+      id: 'covered_reference_fixed'
+      doc: 'Covered Reference Fixed'
+    0x55:
+      id: 'covered_with_stock'
+      doc: 'Covered With Stock'
+  leg_ratio_or_delta_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  leg_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  initial_order_side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+  initial_order_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   last_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1071,6 +1443,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick:
     0x2b:
       id: 'uptick'
@@ -1130,6 +1523,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   high_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1182,6 +1596,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   low_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1234,7 +1669,28 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
-  settlement_price_fraction_indicator:
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  closing_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -1286,7 +1742,28 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
-  previous_settlement_price_fraction_indicator:
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  previous_closing_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -1338,6 +1815,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   reason:
     0x53:
       id: 'start_of_day'
@@ -1403,6 +1901,173 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  settlement_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  previous_settlement_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   previous_settlement_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1455,6 +2120,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   external_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1507,6 +2193,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   last_price_sign:
     0x2b:
       id: 'positive'
@@ -1535,6 +2242,93 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
+  order_side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+  order_price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  order_type:
+    0x41:
+      id: 'initial_order'
+      doc: 'Initial Order'
+    0x42:
+      id: 'improvement_order'
+      doc: 'Improvement Order'
   group_status:
     0x59:
       id: 'preopening'
@@ -1563,6 +2357,152 @@ enums:
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'
+  coupon_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
+  conversion_factor_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   bulletin_type:
     0x31:
       id: 'regular_text_bulletin'
@@ -1629,6 +2569,27 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   tick_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1681,4 +2642,25 @@ enums:
     0x47:
       id: 'negative_million'
       doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
 

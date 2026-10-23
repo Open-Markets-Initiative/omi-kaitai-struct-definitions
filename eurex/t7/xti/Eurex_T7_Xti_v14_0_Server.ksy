@@ -7,7 +7,7 @@
 #   Encoding: Flat Binary Encoding
 #   Version: 14.0
 #   Date: 8/18/2025
-#   Specification: T7_R.14.0_Enhanced_Trading_Interface_-_Derivatives_Message_Reference_Version_2.pdf
+#   Specification: T7_R.14.0_Enhanced_Trading_Interface_-_Cash_Message_Reference_Version 2.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,9 +36,7 @@ meta:
   endian: le
 
 doc: 'Eurex Exchange T7 Cash Enhanced Trading Interface Fbe v14.0'
-doc-ref:
-  - https://www.eurex.com/ex-en/technology/t7
-  - https://www.eurex.com/ex-en/technology/t7
+doc-ref: https://www.eurex.com/ex-en/technology/t7
 
 seq:
   - id: server_message

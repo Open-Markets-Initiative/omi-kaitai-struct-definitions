@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tmx Mx SolaTcpRetransmission Hsvf v1.14
+# Kaitai struct definition for: Tmx Mx SolaTcpRetransmission Hsvf v1.13.3
 #
 # Protocol:
 #   Organization: TMX Group
 #   Protocol: Sola Tcp Retransmission
 #   Encoding: High Speed Vendor Feed
-#   Version: 1.14
-#   Date: 2/5/2024
-#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.14).pdf
+#   Version: 1.13.3
+#   Date: 10/5/2022
+#   Specification: MX SOLA HSVF Multicast Specifications Guide (1.13.3).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tmx_mx_solatcpretransmission_hsvf_v1_14_client
-  title: Tmx Mx SolaTcpRetransmission Hsvf v1.14
+  id: tmx_mx_solatcpretransmission_hsvf_v1_13_3_client
+  title: Tmx Mx SolaTcpRetransmission Hsvf v1.13.3
   license: GPL-3.0
   endian: be
 
-doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.14'
+doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.13.3'
 doc-ref: https://www.tmxwebstore.com
 
 seq:
@@ -799,6 +799,79 @@ enums:
     0x41:
       id: 'implied'
       doc: 'Implied'
+  price_fraction_indicator:
+    0x30:
+      id: 'whole'
+      doc: '1/1'
+    0x31:
+      id: 'ten'
+      doc: '1/10'
+    0x32:
+      id: 'hundred'
+      doc: '1/100'
+    0x33:
+      id: 'thousand'
+      doc: '1/1,000'
+    0x34:
+      id: 'ten_thousand'
+      doc: '1/10,000'
+    0x35:
+      id: 'hundred_thousand'
+      doc: '1/100,000'
+    0x36:
+      id: 'million'
+      doc: '1/1,000,000'
+    0x37:
+      id: 'ten_million'
+      doc: '1/10,000,000'
+    0x38:
+      id: 'hundred_million'
+      doc: '1/100,000,000'
+    0x39:
+      id: 'billion'
+      doc: '1/1,000,000,000'
+    0x41:
+      id: 'negative_whole'
+      doc: '-1/1'
+    0x42:
+      id: 'negative_ten'
+      doc: '-1/10'
+    0x43:
+      id: 'negative_hundred'
+      doc: '-1/100'
+    0x44:
+      id: 'negative_thousand'
+      doc: '-1/1,000'
+    0x45:
+      id: 'negative_ten_thousand'
+      doc: '-1/10,000'
+    0x46:
+      id: 'negative_hundred_thousand'
+      doc: '-1/100,000'
+    0x47:
+      id: 'negative_million'
+      doc: '-1/1,000,000'
+    0x5a:
+      id: 'times_ten'
+      doc: '10'
+    0x59:
+      id: 'times_hundred'
+      doc: '100'
+    0x58:
+      id: 'times_thousand'
+      doc: '1,000'
+    0x57:
+      id: 'times_ten_thousand'
+      doc: '10,000'
+    0x56:
+      id: 'times_hundred_thousand'
+      doc: '100,000'
+    0x55:
+      id: 'times_million'
+      doc: '1,000,000'
+    0x20:
+      id: 'empty'
+      doc: 'Empty'
   maximum_threshold_price_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1162,9 +1235,6 @@ enums:
     0x52:
       id: 'covered_reference_fixed'
       doc: 'Covered Reference Fixed'
-    0x55:
-      id: 'covered_with_stock'
-      doc: 'Covered With Stock'
   leg_ratio_or_delta_fraction_indicator:
     0x30:
       id: 'whole'
@@ -1239,86 +1309,6 @@ enums:
       id: 'empty'
       doc: 'Empty'
   leg_price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
-    0x31:
-      id: 'ten'
-      doc: '1/10'
-    0x32:
-      id: 'hundred'
-      doc: '1/100'
-    0x33:
-      id: 'thousand'
-      doc: '1/1,000'
-    0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
-    0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
-    0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
-    0x5a:
-      id: 'times_ten'
-      doc: '10'
-    0x59:
-      id: 'times_hundred'
-      doc: '100'
-    0x58:
-      id: 'times_thousand'
-      doc: '1,000'
-    0x57:
-      id: 'times_ten_thousand'
-      doc: '10,000'
-    0x56:
-      id: 'times_hundred_thousand'
-      doc: '100,000'
-    0x55:
-      id: 'times_million'
-      doc: '1,000,000'
-    0x20:
-      id: 'empty'
-      doc: 'Empty'
-  initial_order_side:
-    0x42:
-      id: 'buy'
-      doc: 'Buy'
-    0x53:
-      id: 'sell'
-      doc: 'Sell'
-  initial_order_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -1690,7 +1680,7 @@ enums:
     0x20:
       id: 'empty'
       doc: 'Empty'
-  closing_price_fraction_indicator:
+  settlement_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -1763,7 +1753,7 @@ enums:
     0x20:
       id: 'empty'
       doc: 'Empty'
-  previous_closing_price_fraction_indicator:
+  previous_settlement_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -1850,152 +1840,6 @@ enums:
       id: 'trade_cancellation'
       doc: 'Trade Cancellation'
   opening_price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
-    0x31:
-      id: 'ten'
-      doc: '1/10'
-    0x32:
-      id: 'hundred'
-      doc: '1/100'
-    0x33:
-      id: 'thousand'
-      doc: '1/1,000'
-    0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
-    0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
-    0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
-    0x5a:
-      id: 'times_ten'
-      doc: '10'
-    0x59:
-      id: 'times_hundred'
-      doc: '100'
-    0x58:
-      id: 'times_thousand'
-      doc: '1,000'
-    0x57:
-      id: 'times_ten_thousand'
-      doc: '10,000'
-    0x56:
-      id: 'times_hundred_thousand'
-      doc: '100,000'
-    0x55:
-      id: 'times_million'
-      doc: '1,000,000'
-    0x20:
-      id: 'empty'
-      doc: 'Empty'
-  settlement_price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
-    0x31:
-      id: 'ten'
-      doc: '1/10'
-    0x32:
-      id: 'hundred'
-      doc: '1/100'
-    0x33:
-      id: 'thousand'
-      doc: '1/1,000'
-    0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
-    0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
-    0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
-    0x5a:
-      id: 'times_ten'
-      doc: '10'
-    0x59:
-      id: 'times_hundred'
-      doc: '100'
-    0x58:
-      id: 'times_thousand'
-      doc: '1,000'
-    0x57:
-      id: 'times_ten_thousand'
-      doc: '10,000'
-    0x56:
-      id: 'times_hundred_thousand'
-      doc: '100,000'
-    0x55:
-      id: 'times_million'
-      doc: '1,000,000'
-    0x20:
-      id: 'empty'
-      doc: 'Empty'
-  previous_settlement_price_fraction_indicator:
     0x30:
       id: 'whole'
       doc: '1/1'
@@ -2242,93 +2086,6 @@ enums:
     0x2d:
       id: 'negative'
       doc: 'Negative'
-  order_side:
-    0x42:
-      id: 'buy'
-      doc: 'Buy'
-    0x53:
-      id: 'sell'
-      doc: 'Sell'
-  order_price_fraction_indicator:
-    0x30:
-      id: 'whole'
-      doc: '1/1'
-    0x31:
-      id: 'ten'
-      doc: '1/10'
-    0x32:
-      id: 'hundred'
-      doc: '1/100'
-    0x33:
-      id: 'thousand'
-      doc: '1/1,000'
-    0x34:
-      id: 'ten_thousand'
-      doc: '1/10,000'
-    0x35:
-      id: 'hundred_thousand'
-      doc: '1/100,000'
-    0x36:
-      id: 'million'
-      doc: '1/1,000,000'
-    0x37:
-      id: 'ten_million'
-      doc: '1/10,000,000'
-    0x38:
-      id: 'hundred_million'
-      doc: '1/100,000,000'
-    0x39:
-      id: 'billion'
-      doc: '1/1,000,000,000'
-    0x41:
-      id: 'negative_whole'
-      doc: '-1/1'
-    0x42:
-      id: 'negative_ten'
-      doc: '-1/10'
-    0x43:
-      id: 'negative_hundred'
-      doc: '-1/100'
-    0x44:
-      id: 'negative_thousand'
-      doc: '-1/1,000'
-    0x45:
-      id: 'negative_ten_thousand'
-      doc: '-1/10,000'
-    0x46:
-      id: 'negative_hundred_thousand'
-      doc: '-1/100,000'
-    0x47:
-      id: 'negative_million'
-      doc: '-1/1,000,000'
-    0x5a:
-      id: 'times_ten'
-      doc: '10'
-    0x59:
-      id: 'times_hundred'
-      doc: '100'
-    0x58:
-      id: 'times_thousand'
-      doc: '1,000'
-    0x57:
-      id: 'times_ten_thousand'
-      doc: '10,000'
-    0x56:
-      id: 'times_hundred_thousand'
-      doc: '100,000'
-    0x55:
-      id: 'times_million'
-      doc: '1,000,000'
-    0x20:
-      id: 'empty'
-      doc: 'Empty'
-  order_type:
-    0x41:
-      id: 'initial_order'
-      doc: 'Initial Order'
-    0x42:
-      id: 'improvement_order'
-      doc: 'Improvement Order'
   group_status:
     0x59:
       id: 'preopening'
