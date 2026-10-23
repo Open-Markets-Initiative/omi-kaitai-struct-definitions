@@ -309,6 +309,7 @@ types:
         doc: 'The ID of the multicast channel over which the packet was sent'
       - id: retransmit_method
         type: u1
+        enum: retransmit_method
         doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
   refresh_request_message:
     seq:
@@ -996,28 +997,28 @@ enums:
       doc: 'Consolidated Fractional Volume Message'
   market_id:
     1:
-      id: 'nyse'
+      id: 'nyse_equities'
       doc: 'NYSE Equities'
     3:
-      id: 'nyse_arca'
+      id: 'nyse_arca_equities'
       doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     5:
       id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
+      doc: 'NYSE Bonds'
     8:
       id: 'nyse_american_options'
-      doc: 'Nyse American Options'
+      doc: 'NYSE American Options'
     9:
-      id: 'nyse_american'
+      id: 'nyse_american_equities'
       doc: 'NYSE American Equities'
     10:
-      id: 'nyse_national'
+      id: 'nyse_national_equities'
       doc: 'NYSE National Equities'
     11:
-      id: 'nyse_texas'
+      id: 'nyse_texas_equities'
       doc: 'NYSE Texas Equities'
     0:
       id: 'nyse_group_bqt'
@@ -1225,8 +1226,8 @@ enums:
       id: 'finra'
       doc: 'Finra'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
       id: 'miami_pearl'
       doc: 'Miami Pearl'
@@ -1301,6 +1302,10 @@ enums:
     0x58:
       id: 'closed'
       doc: 'Closed'
+  retransmit_method:
+    0:
+      id: 'deliver_via_udp'
+      doc: 'Deliver Via Udp'
   status:
     0x30:
       id: 'message_was_accepted'

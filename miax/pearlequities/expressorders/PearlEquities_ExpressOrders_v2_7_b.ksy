@@ -1320,8 +1320,8 @@ enums:
       id: 'texas_stock_exchange'
       doc: 'Texas Stock Exchange'
     0x47:
-      id: 'n_24_x_exchange'
-      doc: 'N 24 X Exchange'
+      id: 'n24x_exchange'
+      doc: '24 X Exchange'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'
@@ -2161,8 +2161,8 @@ enums:
       id: 'texas_stock_exchange'
       doc: 'Texas Stock Exchange'
     0x47:
-      id: 'n_24_x_exchange'
-      doc: 'N 24 X Exchange'
+      id: 'n24x_exchange'
+      doc: '24 X Exchange'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'

@@ -7,7 +7,7 @@
 #   Encoding: Pillar Stream Protocol
 #   Version: 3.27
 #   Date: 7/21/2026
-#   Specification: NYSE_Pillar_Options_Gateway_Binary_Protocol_Specification.pdf
+#   Specification: NYSE_Pillar_Options_Gateway_Binary_Protocol_Specification (3.27).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -121,10 +121,10 @@ types:
     seq:
       - id: sess
         type: u4
-        doc: '32 bit session id'
-      - id: user
+        doc: '32 bit session id (env_id[31:24], sess_num[23:0])'
+      - id: value_field
         type: u4
-        doc: 'Id of stream within session'
+        doc: 'Stream identifier value (stream_type[31:24], user_id[23:8], sub_id[7:0])'
   close:
     seq:
       - id: msg_header
@@ -1521,6 +1521,48 @@ enums:
     18:
       id: 'not_logged_in'
       doc: 'Not logged in'
+    24:
+      id: 'invalid_login_details'
+      doc: 'Invalid login details'
+    27:
+      id: 'already_logged_in'
+      doc: 'Already logged in'
+    28:
+      id: 'heartbeat_timeout'
+      doc: 'Heartbeat timeout'
+    29:
+      id: 'login_timed_out'
+      doc: 'Login timed out'
+    33:
+      id: 'invalid_message'
+      doc: 'Invalid message'
+    54:
+      id: 'no_stream_permission'
+      doc: 'No stream permission'
+    81:
+      id: 'invalid_protocol_version'
+      doc: 'Invalid protocol version'
+    82:
+      id: 'message_out_of_sequence'
+      doc: 'Message out of sequence'
+    84:
+      id: 'invalid_stream'
+      doc: 'Invalid stream'
+    85:
+      id: 'stream_not_open'
+      doc: 'Stream not open'
+    86:
+      id: 'invalid_timestamp'
+      doc: 'Invalid timestamp'
+    89:
+      id: 'denial_of_service'
+      doc: 'Denial of service'
+    90:
+      id: 'write_permission_revoked'
+      doc: 'Write permission revoked'
+    93:
+      id: 'invalid_multimessage'
+      doc: 'Invalid Multi-message'
   underlying_type:
     0x41:
       id: 'adr'

@@ -7,7 +7,7 @@
 #   Encoding: Miax Express Orders
 #   Version: 2.7.a
 #   Date: 7/15/2025
-#   Specification: miax express orders meo (2026-03-17).pdf
+#   Specification: miax express orders meo (2025-07-19).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -1317,8 +1317,8 @@ enums:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x47:
-      id: 'n_24_x_exchange'
-      doc: 'N 24 X Exchange'
+      id: 'n24x_exchange'
+      doc: '24 X Exchange'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'
@@ -2155,8 +2155,8 @@ enums:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x47:
-      id: 'n_24_x_exchange'
-      doc: 'N 24 X Exchange'
+      id: 'n24x_exchange'
+      doc: '24 X Exchange'
     0x48:
       id: 'miax_pearl_equities'
       doc: 'Miax Pearl Equities'

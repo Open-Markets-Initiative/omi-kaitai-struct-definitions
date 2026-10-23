@@ -7,7 +7,7 @@
 #   Encoding: Pillar
 #   Version: 1.7
 #   Date: 7/30/2026
-#   Specification: NYSE_Pillar_Depth_Client_Specification.pdf
+#   Specification: NYSE_Pillar_Depth_Client_Specification (1.7).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -143,6 +143,7 @@ types:
         doc: 'For listed equity markets, the market where this symbol is listed'
       - id: price_scale_code
         type: u1
+        enum: price_scale_code
         doc: 'Specifies placement of the decimal point in price fields for this security'
       - id: security_type
         type: u1
@@ -512,27 +513,36 @@ enums:
       doc: 'Imbalance messages are published once a second during auctions to update price and volume information.'
   market_id:
     1:
-      id: 'nyse'
+      id: 'nyse_equities'
       doc: 'NYSE Equities'
     3:
-      id: 'nyse_arca'
+      id: 'nyse_arca_equities'
       doc: 'NYSE Arca Equities'
+    4:
+      id: 'nyse_arca_options'
+      doc: 'NYSE Arca Options'
+    5:
+      id: 'nyse_bonds'
+      doc: 'NYSE Bonds'
+    8:
+      id: 'nyse_american_options'
+      doc: 'NYSE American Options'
     9:
-      id: 'nyse_american'
+      id: 'nyse_american_equities'
       doc: 'NYSE American Equities'
     10:
-      id: 'nyse_national'
+      id: 'nyse_national_equities'
       doc: 'NYSE National Equities'
     11:
-      id: 'nyse_texas'
+      id: 'nyse_texas_equities'
       doc: 'NYSE Texas Equities'
   exchange_code:
-    0x46:
-      id: 'txse'
-      doc: 'Txse'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x4c:
       id: 'ltse'
       doc: 'Ltse'
@@ -554,6 +564,16 @@ enums:
     0x5a:
       id: 'cboe'
       doc: 'Cboe'
+  price_scale_code:
+    6:
+      id: 'low_priced_securities'
+      doc: 'Low Priced Securities'
+    4:
+      id: 'medium_priced_securities'
+      doc: 'Medium Priced Securities'
+    3:
+      id: 'high_priced_securities'
+      doc: 'High Priced Securities'
   security_type:
     0x41:
       id: 'american_depositary_receipts'
@@ -720,20 +740,23 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_oms_tx'
-      doc: 'Nasdaq Oms Tx'
+      id: 'nasdaq_omx_tx'
+      doc: 'Nasdaq Omx Tx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'finra'
       doc: 'Finra'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
-      id: 'miami_pearl'
-      doc: 'Miami Pearl'
+      id: 'miax_pearl'
+      doc: 'Miax Pearl'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'

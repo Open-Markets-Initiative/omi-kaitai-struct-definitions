@@ -1099,7 +1099,7 @@ enums:
       id: 'finra_adf'
       doc: 'FINRA Alternative Display Facility (ADF)'
     0x47:
-      id: 'n_24_x'
+      id: 'n24x'
       doc: '24X National Exchange LLC (24X)'
     0x48:
       id: 'miax'
@@ -1166,8 +1166,8 @@ enums:
       id: 'finra_adf'
       doc: 'Finra Adf'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
       id: 'miax_pearl'
       doc: 'Miax Pearl'

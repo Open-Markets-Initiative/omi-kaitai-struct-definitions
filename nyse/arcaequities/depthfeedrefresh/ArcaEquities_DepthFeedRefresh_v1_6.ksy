@@ -496,28 +496,28 @@ enums:
       doc: 'Imbalance messages are published once a second during auctions to update price and volume information.'
   market_id:
     1:
-      id: 'nyse'
+      id: 'nyse_equities'
       doc: 'NYSE Equities'
     3:
-      id: 'nyse_arca'
+      id: 'nyse_arca_equities'
       doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     5:
       id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
+      doc: 'NYSE Bonds'
     8:
       id: 'nyse_american_options'
-      doc: 'Nyse American Options'
+      doc: 'NYSE American Options'
     9:
-      id: 'nyse_american'
+      id: 'nyse_american_equities'
       doc: 'NYSE American Equities'
     10:
-      id: 'nyse_national'
+      id: 'nyse_national_equities'
       doc: 'NYSE National Equities'
     11:
-      id: 'nyse_texas'
+      id: 'nyse_texas_equities'
       doc: 'NYSE Texas Equities'
   exchange_code:
     0x41:
@@ -719,8 +719,8 @@ enums:
       id: 'finra'
       doc: 'Finra'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
       id: 'miami_pearl'
       doc: 'Miami Pearl'

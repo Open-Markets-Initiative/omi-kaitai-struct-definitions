@@ -1320,9 +1320,12 @@ enums:
     0x44:
       id: 'finra'
       doc: 'Finra'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x49:
       id: 'ise'
       doc: 'Ise'

@@ -7,7 +7,7 @@
 #   Encoding: Pillar
 #   Version: 1.7
 #   Date: 7/30/2026
-#   Specification: NYSE_Pillar_Depth_Client_Specification.pdf
+#   Specification: NYSE_Pillar_Depth_Client_Specification (1.7).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -142,6 +142,7 @@ types:
         doc: 'The ID of the multicast channel on which the gap occurred'
       - id: retransmit_method
         type: u1
+        enum: retransmit_method
         doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
   refresh_request_message:
     seq:
@@ -246,6 +247,10 @@ enums:
     15:
       id: 'refresh_request_message'
       doc: 'Clients who have experienced a failure and need a refresh of the state of one or all symbols in a specific channel should send a Refresh Request message via TCP to the Request Controller.'
+  retransmit_method:
+    0:
+      id: 'deliver_via_udp'
+      doc: 'Deliver Via Udp'
   status:
     0x30:
       id: 'message_was_accepted'

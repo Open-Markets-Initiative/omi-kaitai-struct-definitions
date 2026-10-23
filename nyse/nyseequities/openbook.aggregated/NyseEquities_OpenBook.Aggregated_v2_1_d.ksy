@@ -172,6 +172,7 @@ types:
         doc: 'The previous day''s closing volume for the security'
       - id: price_resolution
         type: u1
+        enum: price_resolution
         doc: 'Minimum price increment: 0 - All Penny, 1 - Penny/Nickel, 5 - Nickel/Dime'
       - id: round_lot
         type: u1
@@ -291,6 +292,7 @@ types:
         doc: 'The ID of the multicast channel for which the request was made'
       - id: retransmit_method
         type: u1
+        enum: retransmit_method
         doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
   refresh_request_message:
     seq:
@@ -605,28 +607,28 @@ enums:
   market_id:
     1:
       id: 'nyse_equities'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     5:
       id: 'nyse_bonds'
-      doc: 'Nyse Bonds'
+      doc: 'NYSE Bonds'
     8:
       id: 'nyse_american_options'
-      doc: 'Nyse American Options'
+      doc: 'NYSE American Options'
     9:
       id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
-      id: 'nyse_texas_equities'
-      doc: 'Nyse Texas Equities'
+      id: 'nyse_chicago'
+      doc: 'NYSE Chicago'
   exchange_code:
     0x41:
       id: 'nyse_american'
@@ -698,6 +700,16 @@ enums:
     0x57:
       id: 'warrant'
       doc: 'Warrant'
+  price_resolution:
+    0:
+      id: 'all_penny'
+      doc: 'All Penny'
+    1:
+      id: 'penny_nickel'
+      doc: 'Penny Nickel'
+    5:
+      id: 'nickel_dime'
+      doc: 'Nickel Dime'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -829,8 +841,8 @@ enums:
       id: 'ltse'
       doc: 'Ltse'
     0x4d:
-      id: 'nyse_texas'
-      doc: 'Nyse Texas'
+      id: 'nyse_chicago'
+      doc: 'Nyse Chicago'
     0x4e:
       id: 'nyse'
       doc: 'Nyse'
@@ -887,6 +899,10 @@ enums:
     0x58:
       id: 'closed'
       doc: 'Closed'
+  retransmit_method:
+    0:
+      id: 'deliver_via_udp'
+      doc: 'Deliver Via Udp'
   status:
     0x30:
       id: 'message_was_accepted'

@@ -7,7 +7,7 @@
 #   Encoding: Pillar
 #   Version: 1.2.j
 #   Date: 11/18/2025
-#   Specification: PILLAR_TOP_Client_Specification.pdf
+#   Specification: PILLAR_TOP_Client_Specification (1.2j).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -927,25 +927,25 @@ enums:
   market_id:
     1:
       id: 'nyse_equities'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     4:
       id: 'nyse_arca_options'
-      doc: 'Nyse Arca Options'
+      doc: 'NYSE Arca Options'
     8:
       id: 'nyse_american_options'
-      doc: 'Nyse American Options'
+      doc: 'NYSE American Options'
     9:
       id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
       id: 'nyse_texas_equities'
-      doc: 'Nyse Texas Equities'
+      doc: 'NYSE Texas Equities'
   exchange_code:
     0x41:
       id: 'nyse_american'
@@ -973,7 +973,7 @@ enums:
       doc: 'Cboe'
     0x20:
       id: 'otc_or_index_based_product_space_or_0_x_20'
-      doc: 'Otc Or Index Based Product Space Or 0 X 20'
+      doc: '(space or 0x20) for OTC or Index based product. (Note: security Type = C to identify OTC or Security Type = M to identify Index)'
   price_scale_code:
     6:
       id: 'low_priced_securities'
@@ -1159,8 +1159,8 @@ enums:
       id: 'finra'
       doc: 'Finra'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x49:
       id: 'ise'
       doc: 'Ise'
@@ -1329,8 +1329,8 @@ enums:
       id: 'rejected_due_to_maximum_number_of_refresh_requests_in_a_day'
       doc: 'Rejected Due To Maximum Number Of Refresh Requests In A Day'
     0x36:
-      id: 'rejected_request_message_seq_num_ttl_is_too_old'
-      doc: 'Rejected Request Message Seq Num Ttl Is Too Old'
+      id: 'rejected_request_message_seq_num_ttl_time_to_live_is_too_old_use_refresh_to_recover_current_state_if_necessary'
+      doc: 'Rejected Request Message Seq Num Ttl Time To Live Is Too Old Use Refresh To Recover Current State If Necessary'
     0x37:
       id: 'rejected_due_to_an_invalid_channel_id'
       doc: 'Rejected Due To An Invalid Channel Id'
@@ -1338,8 +1338,8 @@ enums:
       id: 'rejected_due_to_an_invalid_product_id'
       doc: 'Rejected Due To An Invalid Product Id'
     0x39:
-      id: 'rejected_due_to_invalid_msg_type_or_mismatch_between_msg_type_and_msg_size'
-      doc: 'Rejected Due To Invalid Msg Type Or Mismatch Between Msg Type And Msg Size'
+      id: 'rejected_due_to_1_invalid_msg_type_or_2_mismatch_between_msg_type_and_msg_size'
+      doc: 'Rejected Due To 1 Invalid Msg Type Or 2 Mismatch Between Msg Type And Msg Size'
   quote_condition:
     0x31:
       id: 'regular_trading'

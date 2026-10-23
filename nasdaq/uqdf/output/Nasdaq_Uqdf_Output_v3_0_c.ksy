@@ -1536,8 +1536,8 @@ enums:
       id: 'texas_stock_exchange_llc'
       doc: 'Texas Stock Exchange Llc'
     0x47:
-      id: 'n_24_x_national_exchange_llc'
-      doc: 'N 24 X National Exchange Llc'
+      id: 'n24x_national_exchange_llc'
+      doc: '24 X National Exchange Llc'
     0x44:
       id: 'financial_industry_regulatory_authority'
       doc: 'Financial Industry Regulatory Authority'

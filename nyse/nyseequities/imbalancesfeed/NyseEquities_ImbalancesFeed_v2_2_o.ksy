@@ -7,7 +7,7 @@
 #   Encoding: Pillar
 #   Version: 2.2.o
 #   Date: 07/30/2026
-#   Specification: NYSE_Pillar_Order_Imbalances_Client_Specification.pdf
+#   Specification: NYSE_Pillar_Order_Imbalances_Client_Specification (2.2o).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -160,6 +160,7 @@ types:
         doc: 'For listed equity markets, the market where this symbol is listed'
       - id: price_scale_code
         type: u1
+        enum: price_scale_code
         doc: 'Specifies placement of the decimal point in price fields for this security on the Pillar equity markets. See Prices: 6 - low priced securities, 4 - medium priced securities, 3 - high priced securities'
       - id: security_type
         type: u1
@@ -176,6 +177,7 @@ types:
         doc: 'The previous day''s closing volume for the security'
       - id: price_resolution
         type: u1
+        enum: price_resolution
         doc: 'The price increment for the Outright series for the underlying symbol: 0 - All Penny, 1 - Penny/Nickel, 5 - Nickel/Dime'
       - id: round_lot
         type: u1
@@ -189,9 +191,11 @@ types:
         doc: 'The Unit of Trade in shares for this security on the Pillar equity markets. Valid values are 1, 10, 50 and 100'
       - id: late_close_eligible
         type: u1
+        enum: late_close_eligible
         doc: 'The Outright series for the underlying symbol is eligible for a later Core session close: 0 - Not eligible, 1 - Eligible'
       - id: eth_eligible
         type: u1
+        enum: eth_eligible
         doc: 'The Outright series for the underlying symbol is eligible for Extended Trading Sessions: 0 - Not eligible, 1 - Eligible'
   symbol_clear_message:
     seq:
@@ -298,6 +302,7 @@ types:
         doc: 'The ID of the multicast channel over which the packet was sent'
       - id: retransmit_method
         type: u1
+        enum: retransmit_method
         doc: 'The delivery method for the requested symbol index mapping information. Valid values: 0 - deliver via UDP'
   refresh_request_message:
     seq:
@@ -592,19 +597,19 @@ enums:
   market_id:
     1:
       id: 'nyse_equities'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     9:
       id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
       id: 'nyse_texas_equities'
-      doc: 'Nyse Texas Equities'
+      doc: 'NYSE Texas Equities'
   exchange_code:
     0x41:
       id: 'nyse_american'
@@ -633,6 +638,16 @@ enums:
     0x5a:
       id: 'cboe'
       doc: 'Cboe'
+  price_scale_code:
+    6:
+      id: 'low_priced_securities'
+      doc: 'Low Priced Securities'
+    4:
+      id: 'medium_priced_securities'
+      doc: 'Medium Priced Securities'
+    3:
+      id: 'high_priced_securities'
+      doc: 'High Priced Securities'
   security_type:
     0x41:
       id: 'american_depositary_receipts'
@@ -682,6 +697,16 @@ enums:
     0x57:
       id: 'warrants'
       doc: 'Warrants'
+  price_resolution:
+    0:
+      id: 'all_penny'
+      doc: 'All Penny'
+    1:
+      id: 'penny_nickel'
+      doc: 'Penny Nickel'
+    5:
+      id: 'nickel_dime'
+      doc: 'Nickel Dime'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -689,6 +714,20 @@ enums:
     0x4e:
       id: 'no_field'
       doc: 'No'
+  late_close_eligible:
+    0:
+      id: 'not_eligible'
+      doc: 'Not Eligible'
+    1:
+      id: 'eligible'
+      doc: 'Eligible'
+  eth_eligible:
+    0:
+      id: 'not_eligible'
+      doc: 'Not Eligible'
+    1:
+      id: 'eligible'
+      doc: 'Eligible'
   security_status:
     0x34:
       id: 'trading_halt'
@@ -765,7 +804,7 @@ enums:
       doc: 'Merger Effective'
     0x46:
       id: 'etf_iiv_etf_components_prices_not_available'
-      doc: 'Etf Iiv Etf Components Prices Not Available'
+      doc: 'Etf Iivetf Components Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -800,9 +839,12 @@ enums:
     0x44:
       id: 'finra'
       doc: 'Finra'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
       id: 'miax_pearl'
       doc: 'Miax Pearl'
@@ -880,6 +922,10 @@ enums:
     0x58:
       id: 'closed'
       doc: 'Closed'
+  retransmit_method:
+    0:
+      id: 'deliver_via_udp'
+      doc: 'Deliver Via Udp'
   status:
     0x30:
       id: 'message_was_accepted'

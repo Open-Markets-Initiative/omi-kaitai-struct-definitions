@@ -7,7 +7,7 @@
 #   Encoding: Pillar
 #   Version: 2.5.h
 #   Date: 07/30/2026
-#   Specification: NYSE_Pillar_Integrated_Feed_Client_Specification.pdf
+#   Specification: NYSE_Pillar_Integrated_Feed_Client_Specification (2.5h).pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -154,6 +154,7 @@ types:
         doc: 'For listed equity markets, the market where this symbol is listed'
       - id: price_scale_code
         type: u1
+        enum: price_scale_code
         doc: 'Specifies placement of the decimal point in price fields for this security'
       - id: security_type
         type: u1
@@ -170,6 +171,7 @@ types:
         doc: 'The previous day''s closing volume for the security'
       - id: price_resolution
         type: u1
+        enum: price_resolution
         doc: 'Minimum price increment: 0 - All Penny, 1 - Penny/Nickel, 5 - Nickel/Dime'
       - id: round_lot
         type: u1
@@ -491,26 +493,26 @@ enums:
   market_id:
     1:
       id: 'nyse_equities'
-      doc: 'Nyse Equities'
+      doc: 'NYSE Equities'
     3:
       id: 'nyse_arca_equities'
-      doc: 'Nyse Arca Equities'
+      doc: 'NYSE Arca Equities'
     9:
       id: 'nyse_american_equities'
-      doc: 'Nyse American Equities'
+      doc: 'NYSE American Equities'
     10:
       id: 'nyse_national_equities'
-      doc: 'Nyse National Equities'
+      doc: 'NYSE National Equities'
     11:
       id: 'nyse_texas_equities'
-      doc: 'Nyse Texas Equities'
+      doc: 'NYSE Texas Equities'
   exchange_code:
-    0x46:
-      id: 'txse'
-      doc: 'Txse'
     0x41:
       id: 'nyse_american'
       doc: 'Nyse American'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x4c:
       id: 'ltse'
       doc: 'Ltse'
@@ -532,10 +534,20 @@ enums:
     0x5a:
       id: 'cboe'
       doc: 'Cboe'
+  price_scale_code:
+    6:
+      id: 'low_priced_securities'
+      doc: 'Low Priced Securities'
+    4:
+      id: 'medium_priced_securities'
+      doc: 'Medium Priced Securities'
+    3:
+      id: 'high_priced_securities'
+      doc: 'High Priced Securities'
   security_type:
     0x41:
-      id: 'adr'
-      doc: 'Adr'
+      id: 'american_depositary_receipts'
+      doc: 'American Depositary Receipts'
     0x43:
       id: 'common_stock'
       doc: 'Common Stock'
@@ -543,14 +555,14 @@ enums:
       id: 'debentures'
       doc: 'Debentures'
     0x45:
-      id: 'etf'
-      doc: 'Etf'
+      id: 'exchange_traded_funds'
+      doc: 'Exchange Traded Funds'
     0x46:
       id: 'foreign'
       doc: 'Foreign'
     0x48:
-      id: 'us_depositary_shares'
-      doc: 'Us Depositary Shares'
+      id: 'american_depositary_shares'
+      doc: 'American Depositary Shares'
     0x49:
       id: 'units'
       doc: 'Units'
@@ -558,8 +570,8 @@ enums:
       id: 'index_linked_notes'
       doc: 'Index Linked Notes'
     0x4d:
-      id: 'miscliquid_trust'
-      doc: 'Miscliquid Trust'
+      id: 'other_blank'
+      doc: 'Other Blank'
     0x4f:
       id: 'ordinary_shares'
       doc: 'Ordinary Shares'
@@ -570,8 +582,8 @@ enums:
       id: 'rights'
       doc: 'Rights'
     0x53:
-      id: 'shares_of_beneficiary_interest'
-      doc: 'Shares Of Beneficiary Interest'
+      id: 'shares_of_beneficial_interest'
+      doc: 'Shares Of Beneficial Interest'
     0x54:
       id: 'test'
       doc: 'Test'
@@ -579,8 +591,18 @@ enums:
       id: 'closed_end_fund'
       doc: 'Closed End Fund'
     0x57:
-      id: 'warrant'
-      doc: 'Warrant'
+      id: 'warrants'
+      doc: 'Warrants'
+  price_resolution:
+    0:
+      id: 'all_penny'
+      doc: 'All Penny'
+    1:
+      id: 'penny_nickel'
+      doc: 'Penny Nickel'
+    5:
+      id: 'nickel_dime'
+      doc: 'Nickel Dime'
   round_lot:
     0x59:
       id: 'yes_field'
@@ -677,8 +699,8 @@ enums:
       id: 'merger_effective'
       doc: 'Merger Effective'
     0x46:
-      id: 'etf_iiv_etf_component_prices_not_available'
-      doc: 'Etf Iiv Etf Component Prices Not Available'
+      id: 'etf_iiv_etf_components_prices_not_available'
+      doc: 'Etf Iivetf Components Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -705,20 +727,23 @@ enums:
       id: 'nyse_american'
       doc: 'Nyse American'
     0x42:
-      id: 'nasdaq_oms_tx'
-      doc: 'Nasdaq Oms Tx'
+      id: 'nasdaq_omx_tx'
+      doc: 'Nasdaq Omx Tx'
     0x43:
       id: 'nyse_national'
       doc: 'Nyse National'
     0x44:
       id: 'finra'
       doc: 'Finra'
+    0x46:
+      id: 'txse'
+      doc: 'Txse'
     0x47:
-      id: 'n_24_x'
-      doc: 'N 24 X'
+      id: 'n24x'
+      doc: '24 X'
     0x48:
-      id: 'miami_peral'
-      doc: 'Miami Peral'
+      id: 'miax_pearl'
+      doc: 'Miax Pearl'
     0x49:
       id: 'nasdaq_ise'
       doc: 'Nasdaq Ise'

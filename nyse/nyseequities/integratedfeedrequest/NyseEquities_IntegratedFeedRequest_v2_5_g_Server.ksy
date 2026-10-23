@@ -208,6 +208,10 @@ enums:
     15:
       id: 'refresh_request_message'
       doc: 'Clients who have experienced a failure and need a refresh of the state of one or all symbols in a specific channel should send a Refresh Request message via TCP to the Request Controller.'
+  retransmit_method:
+    0:
+      id: 'deliver_via_udp'
+      doc: 'Deliver Via Udp'
   status:
     0x30:
       id: 'message_was_accepted'

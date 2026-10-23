@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nyse Options StreamProtocol PillarStream v1.6
+# Kaitai struct definition for: Nyse Options StreamProtocol PillarStream v1.1.6
 #
 # Protocol:
 #   Organization: New York Stock Exchange
 #   Protocol: Stream Protocol
 #   Encoding: Pillar Stream Protocol
-#   Version: 1.6
-#   Date: 9/26/2019
-#   Specification: NYSE_Pillar_Stream_Protocol_Specification (1.1.7).pdf
+#   Version: 1.1.6
+#   Date: 8/26/2019
+#   Specification: 20200716141036_KXKMVSRC.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,24 +30,25 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nyse_options_streamprotocol_pillarstream_v1_6_clientpillarmessage
-  title: Nyse Options StreamProtocol PillarStream v1.6
+  id: nyse_options_streamprotocol_pillarstream_v1_1_6_serverpillarmessage
+  title: Nyse Options StreamProtocol PillarStream v1.1.6
   license: GPL-3.0
   endian: le
 
-doc: 'New York Stock Exchange Options Stream Protocol PillarStream v1.6'
+doc: 'New York Stock Exchange Options Stream Protocol PillarStream v1.1.6'
 doc-ref: https://www.nyse.com/connectivity/specs
 
 seq:
-  - id: client_message
+  - id: server_message
     type:
       switch-on: peek_msg_type
       cases:
-        'msg_type::login': login_message
+        'msg_type::login_response': login_response
+        'msg_type::stream_avail': stream_avail
         'msg_type::heartbeat': heartbeat
-        'msg_type::open': open
-        'msg_type::close': close
-        'msg_type::seq_msg': client_seq_msg
+        'msg_type::open_response': open_response
+        'msg_type::close_response': close_response
+        'msg_type::seq_msg': server_seq_msg
 
 instances:
   peek_msg_type:
@@ -56,7 +57,7 @@ instances:
     enum: msg_type
 
 types:
-  login_message:
+  login_response:
     seq:
       - id: msg_header
         type: msg_header
@@ -66,21 +67,10 @@ types:
         size: 16
         encoding: ASCII
         doc: 'Pillar Username'
-      - id: password
-        type: str
-        size: 32
-        encoding: ASCII
-        doc: 'User password in plain text'
-      - id: mic
-        type: str
-        size: 4
-        encoding: ASCII
-        doc: 'Market to login'
-      - id: version
-        type: str
-        size: 20
-        encoding: ASCII
-        doc: 'Protocol version, should be 1.1'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'Pillar Status Code'
   msg_header:
     seq:
       - id: msg_type
@@ -90,12 +80,7 @@ types:
       - id: msg_length
         type: u2
         doc: 'Total message length, including this header'
-  heartbeat:
-    seq:
-      - id: msg_header
-        type: msg_header
-        doc: 'Pillar Stream Message Header'
-  open:
+  stream_avail:
     seq:
       - id: msg_header
         type: msg_header
@@ -103,18 +88,12 @@ types:
       - id: stream_id
         type: stream_id
         doc: 'Pillar Stream Protocol Stream Identifier'
-      - id: start_seq
+      - id: next_seq
         type: u8
-        doc: 'Start sequence number'
-      - id: end_seq
-        type: u8
-        doc: 'End sequence (ignored for write request)'
+        doc: 'Next sequence number'
       - id: access
         type: u1
         doc: 'Available access on the stream'
-      - id: mode
-        type: u1
-        doc: 'Mode requested'
   stream_id:
     seq:
       - id: sess
@@ -123,7 +102,12 @@ types:
       - id: user
         type: u4
         doc: 'Id of stream within session'
-  close:
+  heartbeat:
+    seq:
+      - id: msg_header
+        type: msg_header
+        doc: 'Pillar Stream Message Header'
+  open_response:
     seq:
       - id: msg_header
         type: msg_header
@@ -131,7 +115,26 @@ types:
       - id: stream_id
         type: stream_id
         doc: 'Pillar Stream Protocol Stream Identifier'
-  client_seq_msg:
+      - id: status
+        type: u1
+        enum: status
+        doc: 'Pillar Status Code'
+      - id: access
+        type: u1
+        doc: 'Available access on the stream'
+  close_response:
+    seq:
+      - id: msg_header
+        type: msg_header
+        doc: 'Pillar Stream Message Header'
+      - id: stream_id
+        type: stream_id
+        doc: 'Pillar Stream Protocol Stream Identifier'
+      - id: status
+        type: u1
+        enum: status
+        doc: 'Pillar Status Code'
+  server_seq_msg:
     seq:
       - id: msg_header
         type: msg_header
@@ -148,9 +151,9 @@ types:
       - id: seq_msg_header
         type: seq_msg_header
         doc: 'Pillar Stream Sequenced Message Header'
-      - id: client_sequenced_message
+      - id: server_sequenced_message
         size: seq_msg_header.seq_msg_length - 4
-        doc: 'Raw sequenced message bytes sent by the member firm'
+        doc: 'Raw sequenced message bytes sent by the exchange'
   seq_msg_id:
     seq:
       - id: stream_id
