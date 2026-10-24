@@ -7,7 +7,7 @@
 #   Encoding: Specialized Quote Interface
 #   Version: 9.0
 #   Date: 09/22/2026
-#   Specification: Options_ETH_SQF.pdf
+#   Specification: Options_SQF.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,10 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq MRX Specialized Quote Interface Sqf v9.0'
-doc-ref:
-  - https://www.nasdaq.com/Options_ETH_SQF
-  - https://www.nasdaq.com/Options_SQF
-  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
+doc-ref: https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
 
 seq:
   - id: client_soup_bin_tcp_packet

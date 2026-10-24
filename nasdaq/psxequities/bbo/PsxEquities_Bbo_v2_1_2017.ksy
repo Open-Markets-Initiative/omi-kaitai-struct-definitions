@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer Itch v2.1.2017'
-doc-ref: http://www.nasdaqtrader.com/Trader.aspx?id=DPSpecs_USEquities
+doc-ref: http://nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/PSXbboSpecification2.1.pdf
 
 seq:
   - id: packet_header

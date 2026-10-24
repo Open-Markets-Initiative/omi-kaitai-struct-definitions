@@ -7,7 +7,7 @@
 #   Encoding: Itch
 #   Version: 3.0
 #   Date: 08/03/2026
-#   Specification: Options_ETH_CTI.pdf
+#   Specification: Options_CTI.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -37,9 +37,8 @@ meta:
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX Clearing Trade Interface Itch v3.0'
 doc-ref:
-  - https://www.nasdaq.com/Options_ETH_CTI
-  - https://www.nasdaq.com/Options_CTI
   - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/soupbintcp.pdf
 
 seq:
   - id: server_soup_bin_tcp_packet

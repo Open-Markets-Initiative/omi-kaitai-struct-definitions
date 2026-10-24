@@ -53,10 +53,15 @@ types:
       - id: packet_body
         size: frame_header.message_length + 5 - 11
         type:
-          switch-on: packet_body.heartbeat_body.body_header.msg_type
+          switch-on: peek_msg_type
           cases:
             'msg_type::heartbeat': heartbeat_body
             _: business_bodies
+    instances:
+      peek_msg_type:
+        pos: _io.pos + 2
+        type: u1
+        enum: msg_type
   frame_header_struct:
     seq:
       - id: start_of_frame

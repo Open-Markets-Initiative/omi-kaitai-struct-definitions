@@ -36,7 +36,9 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Options Clearing Trade Interface Itch v2.1'
-doc-ref: https://www.nasdaq.com/docs/2024/02/28/0299-Q24_BX-Options-Clearing-Trade-Interface-V2.1.pdf
+doc-ref:
+  - https://www.nasdaq.com/docs/2024/02/28/0299-Q24_BX-Options-Clearing-Trade-Interface-V2.1.pdf
+  - https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/soupbintcp.pdf
 
 seq:
   - id: server_soup_bin_tcp_packet

@@ -53,12 +53,17 @@ types:
       - id: client_body
         size: frame_header.message_length + 5 - 11
         type:
-          switch-on: client_body.heartbeat_body.body_header.msg_type
+          switch-on: peek_msg_type
           cases:
             'msg_type::heartbeat': heartbeat_body
             'msg_type::login_request': login_request
             'msg_type::logout': logout
             'msg_type::replay_request': replay_request
+    instances:
+      peek_msg_type:
+        pos: _io.pos + 2
+        type: u1
+        enum: msg_type
   frame_header:
     seq:
       - id: start_of_frame

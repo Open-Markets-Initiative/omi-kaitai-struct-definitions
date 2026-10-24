@@ -141,7 +141,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -157,7 +157,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_fraction_pair
         type:
-          switch-on: net_change_fraction_pair.net_change_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
@@ -176,6 +176,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   option_symbol:
     seq:
       - id: root_symbol
@@ -190,7 +199,7 @@ types:
         doc: 'Option expiry month code'
       - id: strike_price_fraction_pair
         type:
-          switch-on: strike_price_fraction_pair.strike_price_negative_whole_pair.strike_price_fraction_indicator
+          switch-on: peek_strike_price_fraction_indicator
           cases:
             'strike_price_fraction_indicator::negative_whole': strike_price_negative_whole_pair
             'strike_price_fraction_indicator::negative_ten': strike_price_negative_ten_pair
@@ -210,6 +219,11 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Expiry day of the option'
+    instances:
+      peek_strike_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: strike_price_fraction_indicator
   strike_price_negative_whole_pair:
     seq:
       - id: raw_strike_price
@@ -490,7 +504,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -510,7 +524,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_future_options_trade_message_fraction_pair
         type:
-          switch-on: net_change_future_options_trade_message_fraction_pair.net_change_future_options_trade_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_future_options_trade_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_future_options_trade_message_negative_ten_pair
@@ -525,6 +539,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   future_option_symbol:
     seq:
       - id: root_symbol
@@ -553,7 +576,7 @@ types:
         doc: 'Call or Put'
       - id: strike_price_fraction_pair
         type:
-          switch-on: strike_price_fraction_pair.strike_price_negative_whole_pair.strike_price_fraction_indicator
+          switch-on: peek_strike_price_fraction_indicator
           cases:
             'strike_price_fraction_indicator::negative_whole': strike_price_negative_whole_pair
             'strike_price_fraction_indicator::negative_ten': strike_price_negative_ten_pair
@@ -563,6 +586,11 @@ types:
             'strike_price_fraction_indicator::negative_hundred_thousand': strike_price_negative_hundred_thousand_pair
             'strike_price_fraction_indicator::negative_million': strike_price_negative_million_pair
             _: strike_price_numeric_pair
+    instances:
+      peek_strike_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: strike_price_fraction_indicator
   net_change_future_options_trade_message_negative_whole_pair:
     seq:
       - id: raw_net_change_future_options_trade_message
@@ -667,7 +695,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -683,7 +711,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_futures_trade_message_fraction_pair
         type:
-          switch-on: net_change_futures_trade_message_fraction_pair.net_change_futures_trade_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_futures_trade_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_futures_trade_message_negative_ten_pair
@@ -702,6 +730,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   future_product:
     seq:
       - id: root_symbol
@@ -835,7 +872,7 @@ types:
         doc: 'For Trade Price field (sign)'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -851,7 +888,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_fraction_pair
         type:
-          switch-on: net_change_fraction_pair.net_change_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_negative_ten_pair
@@ -870,6 +907,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   option_request_for_quote_message:
     seq:
       - id: exchange_id
@@ -975,7 +1021,7 @@ types:
         doc: 'Option expiry month code'
       - id: strike_price_schedule_notice_fraction_pair
         type:
-          switch-on: strike_price_schedule_notice_fraction_pair.strike_price_schedule_notice_negative_whole_pair.strike_price_fraction_indicator
+          switch-on: peek_strike_price_fraction_indicator
           cases:
             'strike_price_fraction_indicator::negative_whole': strike_price_schedule_notice_negative_whole_pair
             'strike_price_fraction_indicator::negative_ten': strike_price_schedule_notice_negative_ten_pair
@@ -995,6 +1041,11 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Expiry day of the option'
+    instances:
+      peek_strike_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: strike_price_fraction_indicator
   strike_price_schedule_notice_negative_whole_pair:
     seq:
       - id: raw_strike_price_schedule_notice
@@ -1145,7 +1196,7 @@ types:
         doc: 'Option symbology'
       - id: bid_price_quote
         type:
-          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
@@ -1164,7 +1215,7 @@ types:
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_quote
         type:
-          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
@@ -1185,6 +1236,17 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -1394,7 +1456,7 @@ types:
         doc: 'Option on future symbology'
       - id: bid_price_quote
         type:
-          switch-on: bid_price_quote.bid_price_quote_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_opening_pair
             '"0"': bid_price_quote_opening_pair
@@ -1413,7 +1475,7 @@ types:
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_quote
         type:
-          switch-on: ask_price_quote.ask_price_quote_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_opening_pair
             '"0"': ask_price_quote_opening_pair
@@ -1434,6 +1496,17 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   futures_quote_message:
     seq:
       - id: exchange_id
@@ -1445,7 +1518,7 @@ types:
         doc: 'Future product symbology'
       - id: bid_price_quote_futures_quote_message
         type:
-          switch-on: bid_price_quote_futures_quote_message.bid_price_quote_futures_quote_message_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_futures_quote_message_opening_pair
             '"0"': bid_price_quote_futures_quote_message_opening_pair
@@ -1464,7 +1537,7 @@ types:
         doc: 'Number of futures contracts represented by the Bid Price If size is greater than 99999, the 5th character becomes an exponent Refer to Indicator Code'
       - id: ask_price_quote_futures_quote_message
         type:
-          switch-on: ask_price_quote_futures_quote_message.ask_price_quote_futures_quote_message_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_futures_quote_message_opening_pair
             '"0"': ask_price_quote_futures_quote_message_opening_pair
@@ -1485,6 +1558,17 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_futures_quote_message_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -1701,7 +1785,7 @@ types:
         doc: 'For Bid Price field'
       - id: bid_price_quote_strategy_quote_message
         type:
-          switch-on: bid_price_quote_strategy_quote_message.bid_price_quote_strategy_quote_message_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_strategy_quote_message_opening_pair
             '"0"': bid_price_quote_strategy_quote_message_opening_pair
@@ -1724,7 +1808,7 @@ types:
         doc: 'For Ask Price field'
       - id: ask_price_quote_strategy_quote_message
         type:
-          switch-on: ask_price_quote_strategy_quote_message.ask_price_quote_strategy_quote_message_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_strategy_quote_message_opening_pair
             '"0"': ask_price_quote_strategy_quote_message_opening_pair
@@ -1745,6 +1829,17 @@ types:
         type: u1
         enum: instrument_status_marker
         doc: 'Indicates instrument status'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_strategy_quote_message_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -1974,7 +2069,7 @@ types:
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_quote_option_market_depth_level
         type:
-          switch-on: bid_price_quote_option_market_depth_level.bid_price_quote_option_market_depth_level_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_option_market_depth_level_opening_pair
             '"0"': bid_price_quote_option_market_depth_level_opening_pair
@@ -1998,7 +2093,7 @@ types:
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_quote_option_market_depth_level
         type:
-          switch-on: ask_price_quote_option_market_depth_level.ask_price_quote_option_market_depth_level_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_option_market_depth_level_opening_pair
             '"0"': ask_price_quote_option_market_depth_level_opening_pair
@@ -2020,6 +2115,17 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_option_market_depth_level_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -2249,7 +2355,7 @@ types:
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_quote_future_options_market_depth_trading_instrument
         type:
-          switch-on: bid_price_quote_future_options_market_depth_trading_instrument.bid_price_quote_future_options_market_depth_trading_instrument_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_future_options_market_depth_trading_instrument_opening_pair
             '"0"': bid_price_quote_future_options_market_depth_trading_instrument_opening_pair
@@ -2273,7 +2379,7 @@ types:
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_quote_future_options_market_depth_trading_instrument
         type:
-          switch-on: ask_price_quote_future_options_market_depth_trading_instrument.ask_price_quote_future_options_market_depth_trading_instrument_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_future_options_market_depth_trading_instrument_opening_pair
             '"0"': ask_price_quote_future_options_market_depth_trading_instrument_opening_pair
@@ -2295,6 +2401,17 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_future_options_market_depth_trading_instrument_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -2524,7 +2641,7 @@ types:
         doc: 'Level of market depth. 1 to 5 and A (Implied)'
       - id: bid_price_quote_futures_market_depth_trading_instrument
         type:
-          switch-on: bid_price_quote_futures_market_depth_trading_instrument.bid_price_quote_futures_market_depth_trading_instrument_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
             '"0"': bid_price_quote_futures_market_depth_trading_instrument_opening_pair
@@ -2548,7 +2665,7 @@ types:
         doc: 'Number of bid orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied bid orders making up the implied bid size at that implied bid price. If greater than 99-> the 2nd character becomes an exponent'
       - id: ask_price_futures_depth_futures_market_depth_trading_instrument
         type:
-          switch-on: ask_price_futures_depth_futures_market_depth_trading_instrument.ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair.ask_price_futures_depth_opening
+          switch-on: peek_ask_price_futures_depth_opening
           cases:
             '"OUV"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
             '"0"': ask_price_futures_depth_futures_market_depth_trading_instrument_opening_pair
@@ -2570,6 +2687,17 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_futures_depth_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_futures_market_depth_trading_instrument_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -2806,7 +2934,7 @@ types:
         doc: 'For Bid Price field'
       - id: bid_price_quote_strategy_market_depth_trading_instrument
         type:
-          switch-on: bid_price_quote_strategy_market_depth_trading_instrument.bid_price_quote_strategy_market_depth_trading_instrument_opening_pair.bid_price_quote_opening
+          switch-on: peek_bid_price_quote_opening
           cases:
             '"OUV"': bid_price_quote_strategy_market_depth_trading_instrument_opening_pair
             '"0"': bid_price_quote_strategy_market_depth_trading_instrument_opening_pair
@@ -2834,7 +2962,7 @@ types:
         doc: 'For Ask Price field'
       - id: ask_price_quote_strategy_market_depth_trading_instrument
         type:
-          switch-on: ask_price_quote_strategy_market_depth_trading_instrument.ask_price_quote_strategy_market_depth_trading_instrument_opening_pair.ask_price_quote_opening
+          switch-on: peek_ask_price_quote_opening
           cases:
             '"OUV"': ask_price_quote_strategy_market_depth_trading_instrument_opening_pair
             '"0"': ask_price_quote_strategy_market_depth_trading_instrument_opening_pair
@@ -2856,6 +2984,17 @@ types:
         size: 2
         encoding: ASCII
         doc: 'Number of Ask Orders, present at a given moment, in the order book. For Implied, it represents the indicative number of implied ask orders making up the implied ask size at that implied ask price. If greater than 99, the 2nd character becomes an exponent'
+    instances:
+      peek_bid_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
+      peek_ask_price_quote_opening:
+        pos: _io.pos
+        type: str
+        size: 7
+        encoding: ASCII
   bid_price_quote_strategy_market_depth_trading_instrument_opening_pair:
     seq:
       - id: bid_price_quote_opening
@@ -3070,7 +3209,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -3089,6 +3228,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
   future_options_trade_cancellation_message:
     seq:
       - id: exchange_id
@@ -3105,7 +3249,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: price_fraction_pair
         type:
-          switch-on: price_fraction_pair.price_negative_whole_pair.price_fraction_indicator
+          switch-on: peek_price_fraction_indicator
           cases:
             'price_fraction_indicator::negative_whole': price_negative_whole_pair
             'price_fraction_indicator::negative_ten': price_negative_ten_pair
@@ -3124,6 +3268,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: price_fraction_indicator
   price_negative_whole_pair:
     seq:
       - id: raw_price
@@ -3228,7 +3377,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -3247,6 +3396,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
   strategy_trade_cancellation_message:
     seq:
       - id: exchange_id
@@ -3270,7 +3424,7 @@ types:
         doc: 'For Trade Price field (sign)'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -3285,6 +3439,11 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
   option_instrument_keys_message:
     seq:
       - id: exchange_id
@@ -3312,7 +3471,7 @@ types:
         doc: 'Minimum authorized number of contract per order'
       - id: maximum_threshold_price_options_fraction_pair
         type:
-          switch-on: maximum_threshold_price_options_fraction_pair.maximum_threshold_price_options_negative_whole_pair.maximum_threshold_price_fraction_indicator
+          switch-on: peek_maximum_threshold_price_fraction_indicator
           cases:
             'maximum_threshold_price_fraction_indicator::negative_whole': maximum_threshold_price_options_negative_whole_pair
             'maximum_threshold_price_fraction_indicator::negative_ten': maximum_threshold_price_options_negative_ten_pair
@@ -3324,7 +3483,7 @@ types:
             _: maximum_threshold_price_options_numeric_pair
       - id: minimum_threshold_price_options_fraction_pair
         type:
-          switch-on: minimum_threshold_price_options_fraction_pair.minimum_threshold_price_options_negative_whole_pair.minimum_threshold_price_fraction_indicator
+          switch-on: peek_minimum_threshold_price_fraction_indicator
           cases:
             'minimum_threshold_price_fraction_indicator::negative_whole': minimum_threshold_price_options_negative_whole_pair
             'minimum_threshold_price_fraction_indicator::negative_ten': minimum_threshold_price_options_negative_ten_pair
@@ -3336,7 +3495,7 @@ types:
             _: minimum_threshold_price_options_numeric_pair
       - id: tick_increment
         type:
-          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          switch-on: peek_tick_increment_fraction_indicator
           cases:
             'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
             'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
@@ -3405,7 +3564,7 @@ types:
         doc: 'Defines the quantity of an underlying per contract'
       - id: tick_value_fraction_pair
         type:
-          switch-on: tick_value_fraction_pair.tick_value_negative_whole_pair.tick_value_fraction_indicator
+          switch-on: peek_tick_value_fraction_indicator
           cases:
             'tick_value_fraction_indicator::negative_whole': tick_value_negative_whole_pair
             'tick_value_fraction_indicator::negative_ten': tick_value_negative_ten_pair
@@ -3428,6 +3587,23 @@ types:
       - id: last_trading_datetime
         type: yyyymmddhhmmss_ascii_timestamp
         doc: 'Indicates when the instrument stops trading'
+    instances:
+      peek_maximum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
+      peek_minimum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
+      peek_tick_increment_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_increment_fraction_indicator
+      peek_tick_value_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_value_fraction_indicator
   maximum_threshold_price_options_negative_whole_pair:
     seq:
       - id: raw_maximum_threshold_price_options
@@ -3821,7 +3997,7 @@ types:
         doc: 'Minimum authorized number of contract per order'
       - id: maximum_threshold_price_options_fraction_pair
         type:
-          switch-on: maximum_threshold_price_options_fraction_pair.maximum_threshold_price_options_negative_whole_pair.maximum_threshold_price_fraction_indicator
+          switch-on: peek_maximum_threshold_price_fraction_indicator
           cases:
             'maximum_threshold_price_fraction_indicator::negative_whole': maximum_threshold_price_options_negative_whole_pair
             'maximum_threshold_price_fraction_indicator::negative_ten': maximum_threshold_price_options_negative_ten_pair
@@ -3833,7 +4009,7 @@ types:
             _: maximum_threshold_price_options_numeric_pair
       - id: minimum_threshold_price_options_fraction_pair
         type:
-          switch-on: minimum_threshold_price_options_fraction_pair.minimum_threshold_price_options_negative_whole_pair.minimum_threshold_price_fraction_indicator
+          switch-on: peek_minimum_threshold_price_fraction_indicator
           cases:
             'minimum_threshold_price_fraction_indicator::negative_whole': minimum_threshold_price_options_negative_whole_pair
             'minimum_threshold_price_fraction_indicator::negative_ten': minimum_threshold_price_options_negative_ten_pair
@@ -3845,7 +4021,7 @@ types:
             _: minimum_threshold_price_options_numeric_pair
       - id: tick_increment
         type:
-          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          switch-on: peek_tick_increment_fraction_indicator
           cases:
             'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
             'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
@@ -3899,7 +4075,7 @@ types:
         doc: 'Defines the quantity of an underlying per contract'
       - id: tick_value_fraction_pair
         type:
-          switch-on: tick_value_fraction_pair.tick_value_negative_whole_pair.tick_value_fraction_indicator
+          switch-on: peek_tick_value_fraction_indicator
           cases:
             'tick_value_fraction_indicator::negative_whole': tick_value_negative_whole_pair
             'tick_value_fraction_indicator::negative_ten': tick_value_negative_ten_pair
@@ -3937,6 +4113,23 @@ types:
       - id: last_trading_datetime
         type: yyyymmddhhmmss_ascii_timestamp
         doc: 'Indicates when the instrument stops trading'
+    instances:
+      peek_maximum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
+      peek_minimum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
+      peek_tick_increment_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_increment_fraction_indicator
+      peek_tick_value_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_value_fraction_indicator
   underlying_instrument_keys_message:
     seq:
       - id: exchange_id
@@ -3983,7 +4176,7 @@ types:
         doc: 'Minimum authorized number of contract per order'
       - id: maximum_threshold_price_futures_fraction_pair
         type:
-          switch-on: maximum_threshold_price_futures_fraction_pair.maximum_threshold_price_futures_negative_whole_pair.maximum_threshold_price_fraction_indicator
+          switch-on: peek_maximum_threshold_price_fraction_indicator
           cases:
             'maximum_threshold_price_fraction_indicator::negative_whole': maximum_threshold_price_futures_negative_whole_pair
             'maximum_threshold_price_fraction_indicator::negative_ten': maximum_threshold_price_futures_negative_ten_pair
@@ -3995,7 +4188,7 @@ types:
             _: maximum_threshold_price_futures_numeric_pair
       - id: minimum_threshold_price_futures_fraction_pair
         type:
-          switch-on: minimum_threshold_price_futures_fraction_pair.minimum_threshold_price_futures_negative_whole_pair.minimum_threshold_price_fraction_indicator
+          switch-on: peek_minimum_threshold_price_fraction_indicator
           cases:
             'minimum_threshold_price_fraction_indicator::negative_whole': minimum_threshold_price_futures_negative_whole_pair
             'minimum_threshold_price_fraction_indicator::negative_ten': minimum_threshold_price_futures_negative_ten_pair
@@ -4007,7 +4200,7 @@ types:
             _: minimum_threshold_price_futures_numeric_pair
       - id: tick_increment
         type:
-          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          switch-on: peek_tick_increment_fraction_indicator
           cases:
             'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
             'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
@@ -4061,7 +4254,7 @@ types:
         doc: 'Defines the quantity of an underlying per contract'
       - id: tick_value_fraction_pair
         type:
-          switch-on: tick_value_fraction_pair.tick_value_negative_whole_pair.tick_value_fraction_indicator
+          switch-on: peek_tick_value_fraction_indicator
           cases:
             'tick_value_fraction_indicator::negative_whole': tick_value_negative_whole_pair
             'tick_value_fraction_indicator::negative_ten': tick_value_negative_ten_pair
@@ -4092,6 +4285,23 @@ types:
       - id: last_trading_datetime
         type: yyyymmddhhmmss_ascii_timestamp
         doc: 'Indicates when the instrument stops trading'
+    instances:
+      peek_maximum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
+      peek_minimum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
+      peek_tick_increment_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_increment_fraction_indicator
+      peek_tick_value_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_value_fraction_indicator
   maximum_threshold_price_futures_negative_whole_pair:
     seq:
       - id: raw_maximum_threshold_price_futures
@@ -4329,7 +4539,7 @@ types:
         doc: 'Minimum authorized number of contract per order'
       - id: maximum_threshold_price_options_fraction_pair
         type:
-          switch-on: maximum_threshold_price_options_fraction_pair.maximum_threshold_price_options_negative_whole_pair.maximum_threshold_price_fraction_indicator
+          switch-on: peek_maximum_threshold_price_fraction_indicator
           cases:
             'maximum_threshold_price_fraction_indicator::negative_whole': maximum_threshold_price_options_negative_whole_pair
             'maximum_threshold_price_fraction_indicator::negative_ten': maximum_threshold_price_options_negative_ten_pair
@@ -4341,7 +4551,7 @@ types:
             _: maximum_threshold_price_options_numeric_pair
       - id: minimum_threshold_price_options_fraction_pair
         type:
-          switch-on: minimum_threshold_price_options_fraction_pair.minimum_threshold_price_options_negative_whole_pair.minimum_threshold_price_fraction_indicator
+          switch-on: peek_minimum_threshold_price_fraction_indicator
           cases:
             'minimum_threshold_price_fraction_indicator::negative_whole': minimum_threshold_price_options_negative_whole_pair
             'minimum_threshold_price_fraction_indicator::negative_ten': minimum_threshold_price_options_negative_ten_pair
@@ -4353,7 +4563,7 @@ types:
             _: minimum_threshold_price_options_numeric_pair
       - id: tick_increment
         type:
-          switch-on: tick_increment.tick_increment_numeric_pair.tick_increment_fraction_indicator
+          switch-on: peek_tick_increment_fraction_indicator
           cases:
             'tick_increment_fraction_indicator::whole': tick_increment_numeric_pair
             'tick_increment_fraction_indicator::ten': tick_increment_numeric_pair
@@ -4426,6 +4636,19 @@ types:
         repeat: expr
         repeat-expr: num_strategy_instrument_leg.to_i
         doc: 'Strategy Instrument Leg'
+    instances:
+      peek_maximum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: maximum_threshold_price_fraction_indicator
+      peek_minimum_threshold_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: minimum_threshold_price_fraction_indicator
+      peek_tick_increment_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_increment_fraction_indicator
   strategy_instrument_leg:
     seq:
       - id: leg_group_instrument
@@ -4440,7 +4663,7 @@ types:
         doc: 'Leg Instrument'
       - id: leg_ratio_or_delta_fraction_pair
         type:
-          switch-on: leg_ratio_or_delta_fraction_pair.leg_ratio_or_delta_negative_whole_pair.leg_ratio_or_delta_fraction_indicator
+          switch-on: peek_leg_ratio_or_delta_fraction_indicator
           cases:
             'leg_ratio_or_delta_fraction_indicator::negative_whole': leg_ratio_or_delta_negative_whole_pair
             'leg_ratio_or_delta_fraction_indicator::negative_ten': leg_ratio_or_delta_negative_ten_pair
@@ -4452,7 +4675,7 @@ types:
             _: leg_ratio_or_delta_numeric_pair
       - id: leg_price_fraction_pair
         type:
-          switch-on: leg_price_fraction_pair.leg_price_negative_whole_pair.leg_price_fraction_indicator
+          switch-on: peek_leg_price_fraction_indicator
           cases:
             'leg_price_fraction_indicator::negative_whole': leg_price_negative_whole_pair
             'leg_price_fraction_indicator::negative_ten': leg_price_negative_ten_pair
@@ -4462,6 +4685,15 @@ types:
             'leg_price_fraction_indicator::negative_hundred_thousand': leg_price_negative_hundred_thousand_pair
             'leg_price_fraction_indicator::negative_million': leg_price_negative_million_pair
             _: leg_price_numeric_pair
+    instances:
+      peek_leg_ratio_or_delta_fraction_indicator:
+        pos: _io.pos + 4
+        type: u1
+        enum: leg_ratio_or_delta_fraction_indicator
+      peek_leg_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: leg_price_fraction_indicator
   leg_ratio_or_delta_negative_whole_pair:
     seq:
       - id: raw_leg_ratio_or_delta
@@ -4649,7 +4881,7 @@ types:
         doc: 'Option symbology'
       - id: bid_price_summary_fraction_pair
         type:
-          switch-on: bid_price_summary_fraction_pair.bid_price_summary_negative_whole_pair.bid_price_fraction_indicator
+          switch-on: peek_bid_price_fraction_indicator
           cases:
             'bid_price_fraction_indicator::negative_whole': bid_price_summary_negative_whole_pair
             'bid_price_fraction_indicator::negative_ten': bid_price_summary_negative_ten_pair
@@ -4666,7 +4898,7 @@ types:
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_summary_fraction_pair
         type:
-          switch-on: ask_price_summary_fraction_pair.ask_price_summary_negative_whole_pair.ask_price_fraction_indicator
+          switch-on: peek_ask_price_fraction_indicator
           cases:
             'ask_price_fraction_indicator::negative_whole': ask_price_summary_negative_whole_pair
             'ask_price_fraction_indicator::negative_ten': ask_price_summary_negative_ten_pair
@@ -4683,7 +4915,7 @@ types:
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: last_price_fraction_pair
         type:
-          switch-on: last_price_fraction_pair.last_price_negative_whole_pair.last_price_fraction_indicator
+          switch-on: peek_last_price_fraction_indicator
           cases:
             'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
             'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
@@ -4716,7 +4948,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_option_summary_message_fraction_pair
         type:
-          switch-on: net_change_option_summary_message_fraction_pair.net_change_option_summary_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_option_summary_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_option_summary_message_negative_ten_pair
@@ -4728,7 +4960,7 @@ types:
             _: net_change_option_summary_message_numeric_pair
       - id: open_price_fraction_pair
         type:
-          switch-on: open_price_fraction_pair.open_price_negative_whole_pair.open_price_fraction_indicator
+          switch-on: peek_open_price_fraction_indicator
           cases:
             'open_price_fraction_indicator::negative_whole': open_price_negative_whole_pair
             'open_price_fraction_indicator::negative_ten': open_price_negative_ten_pair
@@ -4740,7 +4972,7 @@ types:
             _: open_price_numeric_pair
       - id: high_price_fraction_pair
         type:
-          switch-on: high_price_fraction_pair.high_price_negative_whole_pair.high_price_fraction_indicator
+          switch-on: peek_high_price_fraction_indicator
           cases:
             'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
             'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
@@ -4752,7 +4984,7 @@ types:
             _: high_price_numeric_pair
       - id: low_price_fraction_pair
         type:
-          switch-on: low_price_fraction_pair.low_price_negative_whole_pair.low_price_fraction_indicator
+          switch-on: peek_low_price_fraction_indicator
           cases:
             'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
             'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
@@ -4770,7 +5002,7 @@ types:
         doc: 'Refer to Options Markers'
       - id: settlement_price_fraction_pair
         type:
-          switch-on: settlement_price_fraction_pair.settlement_price_negative_whole_pair.settlement_price_fraction_indicator
+          switch-on: peek_settlement_price_fraction_indicator
           cases:
             'settlement_price_fraction_indicator::negative_whole': settlement_price_negative_whole_pair
             'settlement_price_fraction_indicator::negative_ten': settlement_price_negative_ten_pair
@@ -4782,7 +5014,7 @@ types:
             _: settlement_price_numeric_pair
       - id: previous_settlement_price_fraction_pair
         type:
-          switch-on: previous_settlement_price_fraction_pair.previous_settlement_price_negative_whole_pair.previous_settlement_price_fraction_indicator
+          switch-on: peek_previous_settlement_price_fraction_indicator
           cases:
             'previous_settlement_price_fraction_indicator::negative_whole': previous_settlement_price_negative_whole_pair
             'previous_settlement_price_fraction_indicator::negative_ten': previous_settlement_price_negative_ten_pair
@@ -4796,6 +5028,43 @@ types:
         type: u1
         enum: reason
         doc: 'Indicates the reason of the summary message'
+    instances:
+      peek_bid_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: bid_price_fraction_indicator
+      peek_ask_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: ask_price_fraction_indicator
+      peek_last_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: last_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
+      peek_open_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: open_price_fraction_indicator
+      peek_high_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: high_price_fraction_indicator
+      peek_low_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: low_price_fraction_indicator
+      peek_settlement_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: settlement_price_fraction_indicator
+      peek_previous_settlement_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: previous_settlement_price_fraction_indicator
   bid_price_summary_negative_whole_pair:
     seq:
       - id: raw_bid_price_summary
@@ -5599,7 +5868,7 @@ types:
         doc: 'Option on future symbology'
       - id: bid_price_summary_fraction_pair
         type:
-          switch-on: bid_price_summary_fraction_pair.bid_price_summary_negative_whole_pair.bid_price_fraction_indicator
+          switch-on: peek_bid_price_fraction_indicator
           cases:
             'bid_price_fraction_indicator::negative_whole': bid_price_summary_negative_whole_pair
             'bid_price_fraction_indicator::negative_ten': bid_price_summary_negative_ten_pair
@@ -5616,7 +5885,7 @@ types:
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_summary_fraction_pair
         type:
-          switch-on: ask_price_summary_fraction_pair.ask_price_summary_negative_whole_pair.ask_price_fraction_indicator
+          switch-on: peek_ask_price_fraction_indicator
           cases:
             'ask_price_fraction_indicator::negative_whole': ask_price_summary_negative_whole_pair
             'ask_price_fraction_indicator::negative_ten': ask_price_summary_negative_ten_pair
@@ -5633,7 +5902,7 @@ types:
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: last_price_fraction_pair
         type:
-          switch-on: last_price_fraction_pair.last_price_negative_whole_pair.last_price_fraction_indicator
+          switch-on: peek_last_price_fraction_indicator
           cases:
             'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
             'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
@@ -5666,7 +5935,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_future_options_summary_message_fraction_pair
         type:
-          switch-on: net_change_future_options_summary_message_fraction_pair.net_change_future_options_summary_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_future_options_summary_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_future_options_summary_message_negative_ten_pair
@@ -5678,7 +5947,7 @@ types:
             _: net_change_future_options_summary_message_numeric_pair
       - id: opening_price_fraction_pair
         type:
-          switch-on: opening_price_fraction_pair.opening_price_negative_whole_pair.opening_price_fraction_indicator
+          switch-on: peek_opening_price_fraction_indicator
           cases:
             'opening_price_fraction_indicator::negative_whole': opening_price_negative_whole_pair
             'opening_price_fraction_indicator::negative_ten': opening_price_negative_ten_pair
@@ -5690,7 +5959,7 @@ types:
             _: opening_price_numeric_pair
       - id: high_price_fraction_pair
         type:
-          switch-on: high_price_fraction_pair.high_price_negative_whole_pair.high_price_fraction_indicator
+          switch-on: peek_high_price_fraction_indicator
           cases:
             'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
             'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
@@ -5702,7 +5971,7 @@ types:
             _: high_price_numeric_pair
       - id: low_price_fraction_pair
         type:
-          switch-on: low_price_fraction_pair.low_price_negative_whole_pair.low_price_fraction_indicator
+          switch-on: peek_low_price_fraction_indicator
           cases:
             'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
             'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
@@ -5714,7 +5983,7 @@ types:
             _: low_price_numeric_pair
       - id: settlement_price_future_options_summary_message_fraction_pair
         type:
-          switch-on: settlement_price_future_options_summary_message_fraction_pair.settlement_price_future_options_summary_message_negative_whole_pair.settlement_price_fraction_indicator
+          switch-on: peek_settlement_price_fraction_indicator
           cases:
             'settlement_price_fraction_indicator::negative_whole': settlement_price_future_options_summary_message_negative_whole_pair
             'settlement_price_fraction_indicator::negative_ten': settlement_price_future_options_summary_message_negative_ten_pair
@@ -5726,7 +5995,7 @@ types:
             _: settlement_price_future_options_summary_message_numeric_pair
       - id: previous_settlement_price_fraction_pair
         type:
-          switch-on: previous_settlement_price_fraction_pair.previous_settlement_price_negative_whole_pair.previous_settlement_price_fraction_indicator
+          switch-on: peek_previous_settlement_price_fraction_indicator
           cases:
             'previous_settlement_price_fraction_indicator::negative_whole': previous_settlement_price_negative_whole_pair
             'previous_settlement_price_fraction_indicator::negative_ten': previous_settlement_price_negative_ten_pair
@@ -5740,6 +6009,43 @@ types:
         type: u1
         enum: reason
         doc: 'Indicates the reason of the summary message'
+    instances:
+      peek_bid_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: bid_price_fraction_indicator
+      peek_ask_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: ask_price_fraction_indicator
+      peek_last_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: last_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
+      peek_opening_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: opening_price_fraction_indicator
+      peek_high_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: high_price_fraction_indicator
+      peek_low_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: low_price_fraction_indicator
+      peek_settlement_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: settlement_price_fraction_indicator
+      peek_previous_settlement_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: previous_settlement_price_fraction_indicator
   net_change_future_options_summary_message_negative_whole_pair:
     seq:
       - id: raw_net_change_future_options_summary_message
@@ -6015,7 +6321,7 @@ types:
         doc: 'Future product symbology'
       - id: bid_price_summary_fraction_pair
         type:
-          switch-on: bid_price_summary_fraction_pair.bid_price_summary_negative_whole_pair.bid_price_fraction_indicator
+          switch-on: peek_bid_price_fraction_indicator
           cases:
             'bid_price_fraction_indicator::negative_whole': bid_price_summary_negative_whole_pair
             'bid_price_fraction_indicator::negative_ten': bid_price_summary_negative_ten_pair
@@ -6032,7 +6338,7 @@ types:
         doc: 'Number of option contracts represented by the Bid Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: ask_price_summary_fraction_pair
         type:
-          switch-on: ask_price_summary_fraction_pair.ask_price_summary_negative_whole_pair.ask_price_fraction_indicator
+          switch-on: peek_ask_price_fraction_indicator
           cases:
             'ask_price_fraction_indicator::negative_whole': ask_price_summary_negative_whole_pair
             'ask_price_fraction_indicator::negative_ten': ask_price_summary_negative_ten_pair
@@ -6049,7 +6355,7 @@ types:
         doc: 'Number of option contracts represented by the Ask Price. If size is greater than 99999, the 5th character becomes an exponent'
       - id: last_price_fraction_pair
         type:
-          switch-on: last_price_fraction_pair.last_price_negative_whole_pair.last_price_fraction_indicator
+          switch-on: peek_last_price_fraction_indicator
           cases:
             'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
             'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
@@ -6061,7 +6367,7 @@ types:
             _: last_price_numeric_pair
       - id: open_price_fraction_pair
         type:
-          switch-on: open_price_fraction_pair.open_price_negative_whole_pair.open_price_fraction_indicator
+          switch-on: peek_open_price_fraction_indicator
           cases:
             'open_price_fraction_indicator::negative_whole': open_price_negative_whole_pair
             'open_price_fraction_indicator::negative_ten': open_price_negative_ten_pair
@@ -6073,7 +6379,7 @@ types:
             _: open_price_numeric_pair
       - id: high_price_fraction_pair
         type:
-          switch-on: high_price_fraction_pair.high_price_negative_whole_pair.high_price_fraction_indicator
+          switch-on: peek_high_price_fraction_indicator
           cases:
             'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
             'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
@@ -6085,7 +6391,7 @@ types:
             _: high_price_numeric_pair
       - id: low_price_fraction_pair
         type:
-          switch-on: low_price_fraction_pair.low_price_negative_whole_pair.low_price_fraction_indicator
+          switch-on: peek_low_price_fraction_indicator
           cases:
             'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
             'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
@@ -6097,7 +6403,7 @@ types:
             _: low_price_numeric_pair
       - id: settlement_price_future_options_summary_message_fraction_pair
         type:
-          switch-on: settlement_price_future_options_summary_message_fraction_pair.settlement_price_future_options_summary_message_negative_whole_pair.settlement_price_fraction_indicator
+          switch-on: peek_settlement_price_fraction_indicator
           cases:
             'settlement_price_fraction_indicator::negative_whole': settlement_price_future_options_summary_message_negative_whole_pair
             'settlement_price_fraction_indicator::negative_ten': settlement_price_future_options_summary_message_negative_ten_pair
@@ -6113,7 +6419,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_futures_summary_message_fraction_pair
         type:
-          switch-on: net_change_futures_summary_message_fraction_pair.net_change_futures_summary_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_futures_summary_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_futures_summary_message_negative_ten_pair
@@ -6130,7 +6436,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: previous_settlement_fraction_pair
         type:
-          switch-on: previous_settlement_fraction_pair.previous_settlement_negative_whole_pair.previous_settlement_fraction_indicator
+          switch-on: peek_previous_settlement_fraction_indicator
           cases:
             'previous_settlement_fraction_indicator::negative_whole': previous_settlement_negative_whole_pair
             'previous_settlement_fraction_indicator::negative_ten': previous_settlement_negative_ten_pair
@@ -6154,7 +6460,7 @@ types:
         doc: 'Indicates the reason of the summary message'
       - id: external_price_at_source_fraction_pair
         type:
-          switch-on: external_price_at_source_fraction_pair.external_price_at_source_negative_whole_pair.external_price_fraction_indicator
+          switch-on: peek_external_price_fraction_indicator
           cases:
             'external_price_fraction_indicator::negative_whole': external_price_at_source_negative_whole_pair
             'external_price_fraction_indicator::negative_ten': external_price_at_source_negative_ten_pair
@@ -6164,6 +6470,47 @@ types:
             'external_price_fraction_indicator::negative_hundred_thousand': external_price_at_source_negative_hundred_thousand_pair
             'external_price_fraction_indicator::negative_million': external_price_at_source_negative_million_pair
             _: external_price_at_source_numeric_pair
+    instances:
+      peek_bid_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: bid_price_fraction_indicator
+      peek_ask_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: ask_price_fraction_indicator
+      peek_last_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: last_price_fraction_indicator
+      peek_open_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: open_price_fraction_indicator
+      peek_high_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: high_price_fraction_indicator
+      peek_low_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: low_price_fraction_indicator
+      peek_settlement_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: settlement_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
+      peek_previous_settlement_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: previous_settlement_fraction_indicator
+      peek_external_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: external_price_fraction_indicator
   net_change_futures_summary_message_negative_whole_pair:
     seq:
       - id: raw_net_change_futures_summary_message
@@ -6446,7 +6793,7 @@ types:
         doc: 'For Bid Price field'
       - id: bid_price_summary_fraction_pair
         type:
-          switch-on: bid_price_summary_fraction_pair.bid_price_summary_negative_whole_pair.bid_price_fraction_indicator
+          switch-on: peek_bid_price_fraction_indicator
           cases:
             'bid_price_fraction_indicator::negative_whole': bid_price_summary_negative_whole_pair
             'bid_price_fraction_indicator::negative_ten': bid_price_summary_negative_ten_pair
@@ -6467,7 +6814,7 @@ types:
         doc: 'For Ask Price field'
       - id: ask_price_summary_fraction_pair
         type:
-          switch-on: ask_price_summary_fraction_pair.ask_price_summary_negative_whole_pair.ask_price_fraction_indicator
+          switch-on: peek_ask_price_fraction_indicator
           cases:
             'ask_price_fraction_indicator::negative_whole': ask_price_summary_negative_whole_pair
             'ask_price_fraction_indicator::negative_ten': ask_price_summary_negative_ten_pair
@@ -6488,7 +6835,7 @@ types:
         doc: 'For the Last Price field'
       - id: last_price_fraction_pair
         type:
-          switch-on: last_price_fraction_pair.last_price_negative_whole_pair.last_price_fraction_indicator
+          switch-on: peek_last_price_fraction_indicator
           cases:
             'last_price_fraction_indicator::negative_whole': last_price_negative_whole_pair
             'last_price_fraction_indicator::negative_ten': last_price_negative_ten_pair
@@ -6504,7 +6851,7 @@ types:
         doc: 'For the Open Price field'
       - id: open_price_fraction_pair
         type:
-          switch-on: open_price_fraction_pair.open_price_negative_whole_pair.open_price_fraction_indicator
+          switch-on: peek_open_price_fraction_indicator
           cases:
             'open_price_fraction_indicator::negative_whole': open_price_negative_whole_pair
             'open_price_fraction_indicator::negative_ten': open_price_negative_ten_pair
@@ -6520,7 +6867,7 @@ types:
         doc: 'For the High Price field'
       - id: high_price_fraction_pair
         type:
-          switch-on: high_price_fraction_pair.high_price_negative_whole_pair.high_price_fraction_indicator
+          switch-on: peek_high_price_fraction_indicator
           cases:
             'high_price_fraction_indicator::negative_whole': high_price_negative_whole_pair
             'high_price_fraction_indicator::negative_ten': high_price_negative_ten_pair
@@ -6536,7 +6883,7 @@ types:
         doc: 'For the Low Price field'
       - id: low_price_fraction_pair
         type:
-          switch-on: low_price_fraction_pair.low_price_negative_whole_pair.low_price_fraction_indicator
+          switch-on: peek_low_price_fraction_indicator
           cases:
             'low_price_fraction_indicator::negative_whole': low_price_negative_whole_pair
             'low_price_fraction_indicator::negative_ten': low_price_negative_ten_pair
@@ -6552,7 +6899,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_strategy_summary_message_fraction_pair
         type:
-          switch-on: net_change_strategy_summary_message_fraction_pair.net_change_strategy_summary_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_strategy_summary_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_strategy_summary_message_negative_ten_pair
@@ -6571,6 +6918,35 @@ types:
         type: u1
         enum: reason
         doc: 'Indicates the reason of the summary message'
+    instances:
+      peek_bid_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: bid_price_fraction_indicator
+      peek_ask_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: ask_price_fraction_indicator
+      peek_last_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: last_price_fraction_indicator
+      peek_open_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: open_price_fraction_indicator
+      peek_high_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: high_price_fraction_indicator
+      peek_low_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: low_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   net_change_strategy_summary_message_negative_whole_pair:
     seq:
       - id: raw_net_change_strategy_summary_message
@@ -6699,7 +7075,7 @@ types:
         doc: 'Number of contracts for the trade'
       - id: trade_price_fraction_pair
         type:
-          switch-on: trade_price_fraction_pair.trade_price_negative_whole_pair.trade_price_fraction_indicator
+          switch-on: peek_trade_price_fraction_indicator
           cases:
             'trade_price_fraction_indicator::negative_whole': trade_price_negative_whole_pair
             'trade_price_fraction_indicator::negative_ten': trade_price_negative_ten_pair
@@ -6715,7 +7091,7 @@ types:
         doc: 'For the net change field'
       - id: net_change_futures_trade_correction_message_fraction_pair
         type:
-          switch-on: net_change_futures_trade_correction_message_fraction_pair.net_change_futures_trade_correction_message_negative_whole_pair.net_change_fraction_indicator
+          switch-on: peek_net_change_fraction_indicator
           cases:
             'net_change_fraction_indicator::negative_whole': net_change_futures_trade_correction_message_negative_whole_pair
             'net_change_fraction_indicator::negative_ten': net_change_futures_trade_correction_message_negative_ten_pair
@@ -6734,6 +7110,15 @@ types:
         size: 8
         encoding: ASCII
         doc: 'Unique Trade Number for this instrument'
+    instances:
+      peek_trade_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: trade_price_fraction_indicator
+      peek_net_change_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: net_change_fraction_indicator
   net_change_futures_trade_correction_message_negative_whole_pair:
     seq:
       - id: raw_net_change_futures_trade_correction_message
@@ -6881,7 +7266,7 @@ types:
         doc: 'Bond expiration'
       - id: coupon_fraction_pair
         type:
-          switch-on: coupon_fraction_pair.coupon_negative_whole_pair.coupon_fraction_indicator
+          switch-on: peek_coupon_fraction_indicator
           cases:
             'coupon_fraction_indicator::negative_whole': coupon_negative_whole_pair
             'coupon_fraction_indicator::negative_ten': coupon_negative_ten_pair
@@ -6898,7 +7283,7 @@ types:
         doc: 'Outstanding amount'
       - id: conversion_factor_fraction_pair
         type:
-          switch-on: conversion_factor_fraction_pair.conversion_factor_negative_whole_pair.conversion_factor_fraction_indicator
+          switch-on: peek_conversion_factor_fraction_indicator
           cases:
             'conversion_factor_fraction_indicator::negative_whole': conversion_factor_negative_whole_pair
             'conversion_factor_fraction_indicator::negative_ten': conversion_factor_negative_ten_pair
@@ -6908,6 +7293,15 @@ types:
             'conversion_factor_fraction_indicator::negative_hundred_thousand': conversion_factor_negative_hundred_thousand_pair
             'conversion_factor_fraction_indicator::negative_million': conversion_factor_negative_million_pair
             _: conversion_factor_numeric_pair
+    instances:
+      peek_coupon_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: coupon_fraction_indicator
+      peek_conversion_factor_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: conversion_factor_fraction_indicator
   coupon_negative_whole_pair:
     seq:
       - id: raw_coupon
@@ -7167,7 +7561,7 @@ types:
     seq:
       - id: min_price_fraction_pair
         type:
-          switch-on: min_price_fraction_pair.min_price_negative_whole_pair.min_price_fraction_indicator
+          switch-on: peek_min_price_fraction_indicator
           cases:
             'min_price_fraction_indicator::negative_whole': min_price_negative_whole_pair
             'min_price_fraction_indicator::negative_ten': min_price_negative_ten_pair
@@ -7179,7 +7573,7 @@ types:
             _: min_price_numeric_pair
       - id: tick_price_fraction_pair
         type:
-          switch-on: tick_price_fraction_pair.tick_price_negative_whole_pair.tick_price_fraction_indicator
+          switch-on: peek_tick_price_fraction_indicator
           cases:
             'tick_price_fraction_indicator::negative_whole': tick_price_negative_whole_pair
             'tick_price_fraction_indicator::negative_ten': tick_price_negative_ten_pair
@@ -7189,6 +7583,15 @@ types:
             'tick_price_fraction_indicator::negative_hundred_thousand': tick_price_negative_hundred_thousand_pair
             'tick_price_fraction_indicator::negative_million': tick_price_negative_million_pair
             _: tick_price_numeric_pair
+    instances:
+      peek_min_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: min_price_fraction_indicator
+      peek_tick_price_fraction_indicator:
+        pos: _io.pos + 7
+        type: u1
+        enum: tick_price_fraction_indicator
   min_price_negative_whole_pair:
     seq:
       - id: raw_min_price

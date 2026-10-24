@@ -7,7 +7,7 @@
 #   Encoding: Ouch
 #   Version: 3.0.0
 #   Date: 08/17/2026
-#   Specification: Options_ETH_OTTO.pdf
+#   Specification: Options_OTTO.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,10 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq ISE Ouch to Trade Options Ouch v3.0.0'
-doc-ref:
-  - https://www.nasdaq.com/Options_ETH_OTTO
-  - https://www.nasdaq.com/Options_OTTO
-  - https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
+doc-ref: https://www.nasdaq.com/products/north-american-markets/resources/options-specifications-and-resources-hub
 
 seq:
   - id: server_soup_bin_tcp_packet

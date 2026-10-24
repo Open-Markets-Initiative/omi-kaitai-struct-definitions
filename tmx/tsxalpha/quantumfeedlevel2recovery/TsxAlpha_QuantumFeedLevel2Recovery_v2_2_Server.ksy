@@ -53,13 +53,18 @@ types:
       - id: server_body
         size: frame_header.message_length + 5 - 11
         type:
-          switch-on: server_body.heartbeat_body.body_header.msg_type
+          switch-on: peek_msg_type
           cases:
             'msg_type::heartbeat': heartbeat_body
             'msg_type::login_response': login_response
             'msg_type::ack': ack
             'msg_type::sequence_jump': sequence_jump
             'msg_type::reject': reject
+    instances:
+      peek_msg_type:
+        pos: _io.pos + 2
+        type: u1
+        enum: msg_type
   frame_header:
     seq:
       - id: start_of_frame
