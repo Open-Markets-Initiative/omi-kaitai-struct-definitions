@@ -36,9 +36,7 @@ meta:
   endian: le
 
 doc: 'Eurex Exchange T7 Cash Enhanced Trading Interface Fbe v9.0'
-doc-ref:
-  - https://www.eurex.com/ex-en/technology/t7
-  - https://www.eurex.com/ex-en/technology/t7
+doc-ref: https://www.eurex.com/ex-en/technology/t7
 
 seq:
   - id: server_message

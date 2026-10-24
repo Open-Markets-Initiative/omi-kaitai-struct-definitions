@@ -7,7 +7,7 @@
 #   Encoding: Currenex Binary Protocol
 #   Version: 26
 #   Date: 4/6/2024
-#   Specification: Currenex OUCH Order Service Specification (2024-06-04).pdf
+#   Specification: OUCH-Spec.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

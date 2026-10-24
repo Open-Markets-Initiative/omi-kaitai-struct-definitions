@@ -7,7 +7,7 @@
 #   Encoding: Orion Market Data
 #   Version: 2.0
 #   Date: 9/16/2025
-#   Specification: HKEX_OMD_Derivatives_Binary_Interface_Specifications_v2_0.pdf
+#   Specification: HKEX_OMD_Derivatives_Binary_Interface_Specifications_v2.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

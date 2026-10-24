@@ -7,7 +7,7 @@
 #   Encoding: Orion Market Data
 #   Version: 1.4
 #   Date: 4/22/2022
-#   Specification: HKEX_OMD_China_Connect_Securities_Interface_Specifications_v1_4.pdf
+#   Specification: OMD_Interface_Specification_China_Connect_Securities (v1.4).pdf
 #
 # Script:
 #   Generator: 1.0.0.0

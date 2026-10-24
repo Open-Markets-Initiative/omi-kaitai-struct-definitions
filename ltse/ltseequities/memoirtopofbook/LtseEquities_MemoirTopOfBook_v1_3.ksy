@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 1.3
 #   Date: 12/13/2023
-#   Specification: LTSE MEMOIR Top of Book Feed v1.3.pdf
+#   Specification: (v1.3) LTSE MEMOIR Top of Book Feed.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

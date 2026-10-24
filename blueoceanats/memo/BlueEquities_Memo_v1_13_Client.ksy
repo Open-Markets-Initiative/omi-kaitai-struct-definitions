@@ -36,9 +36,7 @@ meta:
   endian: be
 
 doc: 'Blue Ocean Technologies Blue Equities Members Orders Sbe v1.13'
-doc-ref:
-  - https://blueocean-tech.io/trading-updates
-  - https://blueocean-tech.io/trading-updates
+doc-ref: https://blueocean-tech.io/trading-updates
 
 seq:
   - id: common_header

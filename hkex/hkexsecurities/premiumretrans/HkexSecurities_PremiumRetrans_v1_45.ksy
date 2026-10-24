@@ -7,7 +7,7 @@
 #   Encoding: Orion Market Data
 #   Version: 1.45
 #   Date: 1/9/2026
-#   Specification: HKEX_OMDC_Binary_Interface_Specifications_v1_45.pdf
+#   Specification: HKEX_OMDC_Binary_Interface_Specifications_v1.45.pdf
 #
 # Script:
 #   Generator: 1.0.0.0

@@ -36,9 +36,7 @@ meta:
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq GEMX Top Of Market Itch v2.1'
-doc-ref:
-  - https://data.nasdaq.com/market-data-specifications
-  - https://data.nasdaq.com/market-data-specifications
+doc-ref: https://data.nasdaq.com/market-data-specifications
 
 seq:
   - id: server_soup_bin_tcp_packet
