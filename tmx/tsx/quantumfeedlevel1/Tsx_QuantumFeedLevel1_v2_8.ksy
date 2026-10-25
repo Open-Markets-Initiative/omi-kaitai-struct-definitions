@@ -626,9 +626,6 @@ enums:
     0x56:
       id: 'tsx_venture'
       doc: 'Tsx Venture'
-    0x4e:
-      id: 'tsx_na_vex'
-      doc: 'Tsx Na Vex'
     0x51:
       id: 'nasdaq'
       doc: 'Nasdaq'

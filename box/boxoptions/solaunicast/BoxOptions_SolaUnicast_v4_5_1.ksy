@@ -3654,7 +3654,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Indicates the expiry duration of the Improvement Phase (value is in SSCC)'
+        doc: 'Indicates the expiry duration of the Improvement Phase (value is in SSCC). Implied decimal with scale 1e-2'
       - id: minimum_quantity_for_improvement_order
         type: str
         size: 8
@@ -3836,7 +3836,7 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Indicates the expiry duration of the Improvement Phase (value is in SSCC)'
+        doc: 'Indicates the expiry duration of the Improvement Phase (value is in SSCC). Implied decimal with scale 1e-2'
       - id: minimum_quantity_for_improvement_order
         type: str
         size: 8

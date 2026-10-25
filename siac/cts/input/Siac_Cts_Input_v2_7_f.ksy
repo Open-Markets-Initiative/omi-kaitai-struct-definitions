@@ -78,17 +78,34 @@ types:
       - id: message_header
         type: message_header
         doc: 'Cta participant input message header (26 bytes)'
-      - id: category_payload
+      - id: message_payload
         size: message_header.message_length - 26
         type:
-          switch-on: message_header.message_category
+          switch-on: message_header
           cases:
-            'message_category::administrative': administrative_message
-            'message_category::control': control_message
-            'message_category::indices': indices_message
-            'message_category::market_status': market_status_message
-            'message_category::prior_day': prior_day_message
-            'message_category::trade': trade_message
+            16722: rejection_message
+            16727: warning_message
+            17230: sequence_information_and_message_count_response_message
+            17205: test_message
+            18761: index_message
+            18769: bid_and_offer_index_message
+            19791: approximate_trades_and_total_dollar_value_message
+            19792: crossing_session_message
+            20547: prior_day_trade_correction_message
+            20559: fractional_prior_day_trade_correction_message
+            20564: prior_day_trade_message
+            20562: fractional_prior_day_trade_message
+            20568: prior_day_trade_cancel_error_message
+            20549: fractional_prior_day_trade_cancel_error_message
+            21569: auction_status_message
+            21571: trade_correction_message
+            21583: fractional_trade_correction_message
+            21580: long_trade_message
+            21586: fractional_long_trade_message
+            21587: trading_status_message
+            21588: short_trade_message
+            21576: fractional_short_trade_message
+            21592: trade_cancel_error_message
   message_header:
     seq:
       - id: message_length
@@ -128,19 +145,6 @@ types:
       - id: nanoseconds
         type: nanosecond_offset
         doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
-  administrative_message:
-    seq:
-      - id: administrative_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Administrative message'
-      - id: administrative_message_payload
-        type:
-          switch-on: administrative_message_type
-          cases:
-            '"R"': rejection_message
-            '"W"': warning_message
   rejection_message:
     seq:
       - id: error_code
@@ -163,19 +167,6 @@ types:
       - id: previous_participant_reference_number
         type: s8
         doc: 'Participant Reference Number prior to the gap that triggered the Warning'
-  control_message:
-    seq:
-      - id: control_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Control message'
-      - id: control_message_payload
-        type:
-          switch-on: control_message_type
-          cases:
-            '"N"': sequence_information_and_message_count_response_message
-            '"5"': test_message
   sequence_information_and_message_count_response_message:
     seq:
       - id: current_block_sequence_number
@@ -195,19 +186,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'All ASCII characters starting with hex 0 and ending hex FF, in sequential order'
-  indices_message:
-    seq:
-      - id: indices_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Index message'
-      - id: indices_message_payload
-        type:
-          switch-on: indices_message_type
-          cases:
-            '"I"': index_message
-            '"Q"': bid_and_offer_index_message
   index_message:
     seq:
       - id: index_symbol
@@ -217,8 +195,8 @@ types:
         pad-right: 0x20
         doc: 'Left justified, space-filled. Contains the Index symbol'
       - id: index_value
-        type: s8
-        doc: 'Index value (not a price) with implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Index value (not a price) with implied 6 decimal places. Implied decimal with scale 1e-6'
   bid_and_offer_index_message:
     seq:
       - id: index_symbol
@@ -228,60 +206,30 @@ types:
         pad-right: 0x20
         doc: 'Left justified, space-filled. Contains the Index symbol'
       - id: bid_index_value
-        type: s8
-        doc: 'Index value (not a price) representing the index''s calculation formula using current Bid values of the component securities. Implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Index value (not a price) representing the index''s calculation formula using current Bid values of the component securities. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: offer_index_value
-        type: s8
-        doc: 'Index value (not a price) representing the index''s calculation formula using current Offer values of the component securities. Implied 6 decimal places'
-  market_status_message:
-    seq:
-      - id: market_status_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Market Status message'
-      - id: market_status_message_payload
-        type:
-          switch-on: market_status_message_type
-          cases:
-            '"O"': approximate_trades_and_total_dollar_value_message
-            '"P"': crossing_session_message
+        type: decimal_s8_6
+        doc: 'Index value (not a price) representing the index''s calculation formula using current Offer values of the component securities. Implied 6 decimal places. Implied decimal with scale 1e-6'
   approximate_trades_and_total_dollar_value_message:
     seq:
       - id: total_trades
         type: u4
         doc: 'Total number of trade transactions executed from a Participant. Optional set to zero'
       - id: dollar_value
-        type: u8
-        doc: 'Total dollar worth of the daily trade transactions. Implied 6 decimal places. Optional set to zero'
+        type: decimal_u8_6
+        doc: 'Total dollar worth of the daily trade transactions. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
   crossing_session_message:
     seq:
       - id: crossing_session_i_total_trades_volume
         type: u8
         doc: 'Shares traded at the Participant''s close price after the close of the Participant''s regular session. Optional set to zero'
       - id: crossing_session_ii_dollar_value
-        type: u8
-        doc: 'Dollar Value traded after the close of the Participant''s regular session. Implied 6 decimal places. Optional set to zero'
+        type: decimal_u8_6
+        doc: 'Dollar Value traded after the close of the Participant''s regular session. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: crossing_session_ii_total_trades_volume
         type: u8
         doc: 'Shares traded after the close of the Participant''s regular session. Optional set to zero'
-  prior_day_message:
-    seq:
-      - id: prior_day_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Prior Day message'
-      - id: prior_day_message_payload
-        type:
-          switch-on: prior_day_message_type
-          cases:
-            '"C"': prior_day_trade_correction_message
-            '"O"': fractional_prior_day_trade_correction_message
-            '"T"': prior_day_trade_message
-            '"R"': fractional_prior_day_trade_message
-            '"X"': prior_day_trade_cancel_error_message
-            '"E"': fractional_prior_day_trade_cancel_error_message
   prior_day_trade_correction_message:
     seq:
       - id: security_symbol
@@ -402,8 +350,8 @@ types:
         type: decimal_u8_6
         doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
-        type: u8
-        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_sellers_sale_days
         type: u1
         doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
@@ -439,8 +387,8 @@ types:
         type: decimal_u8_6
         doc: 'Original monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_fractional_trade_volume
-        type: u8
-        doc: 'Original total number of shares (represented in fraction) traded. Implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Original total number of shares (represented in fraction) traded. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_sellers_sale_days
         type: u1
         doc: 'Original Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
@@ -538,8 +486,8 @@ types:
         type: decimal_u8_6
         doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
+        type: decimal_u8_6
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
@@ -634,8 +582,8 @@ types:
         type: decimal_u8_6
         doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
+        type: decimal_u8_6
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
@@ -662,26 +610,6 @@ types:
         type: u1
         enum: cancel_error_action
         doc: 'Denotes whether the referenced transaction is to be cancelled or errored'
-  trade_message:
-    seq:
-      - id: trade_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Trade message'
-      - id: trade_message_payload
-        type:
-          switch-on: trade_message_type
-          cases:
-            '"A"': auction_status_message
-            '"C"': trade_correction_message
-            '"O"': fractional_trade_correction_message
-            '"L"': long_trade_message
-            '"R"': fractional_long_trade_message
-            '"S"': trading_status_message
-            '"T"': short_trade_message
-            '"H"': fractional_short_trade_message
-            '"X"': trade_cancel_error_message
   auction_status_message:
     seq:
       - id: security_symbol
@@ -794,8 +722,8 @@ types:
         type: decimal_u8_6
         doc: 'Corrected monetary value of an individual share. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
-        type: u8
-        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Corrected total number of shares (represented in fraction) traded. Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_sellers_sale_days
         type: u1
         doc: 'Corrected Seller''s Sale Days. Allowed values 2 through 60. Optional set to zero'
@@ -888,8 +816,8 @@ types:
         type: decimal_u8_6
         doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
+        type: decimal_u8_6
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Number of days that may elapse before delivery of the security. Allowed values 2 through 60. Optional set to zero'
@@ -952,28 +880,27 @@ types:
         doc: 'Unique identifier for each Trading Status Message; used to eliminate duplicate Trading Status messages received over CQS and CTS input lines'
   short_trade_message:
     seq:
-      - id: security_symbol
+      - id: security_symbol_short
         type: str
-        size: 11
+        size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
-      - id: sale_condition
+        doc: 'Left justified, space-filled. Short form security symbol used in Short Trade messages'
+      - id: sale_condition_short
         type: str
-        size: 4
+        size: 1
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
+        doc: 'Sale Condition for Short-form messages. Must belong to the Sale Condition Category given in the message'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
         doc: 'Identifies the Sale Condition Category level associated with a Short Trade'
-      - id: trade_price
-        type: decimal_u8_6
-        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
-      - id: trade_volume
-        type: u4
-        doc: 'Total number of shares traded in a single transaction for an individual security'
+      - id: trade_price_short
+        type: decimal_u2_2
+        doc: 'Monetary value of an individual share at the time of the trade (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
+      - id: trade_volume_short
+        type: u2
+        doc: 'Total number of shares traded in a single transaction for an individual security (short form)'
       - id: reserved_3
         type: str
         size: 3
@@ -982,28 +909,27 @@ types:
         doc: 'Reserved for future use (TBD)'
   fractional_short_trade_message:
     seq:
-      - id: security_symbol
+      - id: security_symbol_short
         type: str
-        size: 11
+        size: 5
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Left justified, space-filled. Root symbol may be 1 to 6 characters with remaining characters available for possible suffixes'
-      - id: sale_condition
+        doc: 'Left justified, space-filled. Short form security symbol used in Short Trade messages'
+      - id: sale_condition_short
         type: str
-        size: 4
+        size: 1
         encoding: ASCII
-        pad-right: 0x20
-        doc: 'Sale Condition for Long-form messages. Four positional Category levels per Sale Condition table'
+        doc: 'Sale Condition for Short-form messages. Must belong to the Sale Condition Category given in the message'
       - id: sale_condition_category
         type: u1
         enum: sale_condition_category
         doc: 'Identifies the Sale Condition Category level associated with a Short Trade'
-      - id: trade_price
-        type: decimal_u8_6
-        doc: 'Monetary value of an individual share at the time of the trade. Implied 6 decimal places. Optional set to zero. Implied decimal with scale 1e-6'
-      - id: fractional_trade_volume
-        type: u8
-        doc: 'Total number of shares (represented in fraction) traded in a single transaction. Implied 6 decimal places. Optional set to zero'
+      - id: trade_price_short
+        type: decimal_u2_2
+        doc: 'Monetary value of an individual share at the time of the trade (short form). Implied 2 decimal places. Implied decimal with scale 1e-2'
+      - id: fractional_trade_volume_short
+        type: decimal_u4_6
+        doc: 'Total number of shares (represented in fraction) traded in a single transaction (short form). Implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved_3
         type: str
         size: 3
@@ -1075,6 +1001,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -1089,6 +1022,20 @@ types:
     instances:
       is_null:
         value: value.time == 0
+  decimal_u2_2:
+    seq:
+      - id: mantissa
+        type: u2
+    instances:
+      real:
+        value: mantissa / 100.0
+  decimal_u4_6:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   message_category:
@@ -1099,7 +1046,7 @@ enums:
       id: 'control'
       doc: 'Control Category Source May Be Either Participant Or Cts Processor'
     0x49:
-      id: 'indices'
+      id: 'index'
       doc: 'Index Category Index Messages Provide Index Value Information For A Security'
     0x4d:
       id: 'market_status'

@@ -49,7 +49,7 @@ types:
     seq:
       - id: technical_header
         type: technical_header
-        doc: 'Cme Technical Header. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+        doc: 'Cme Technical Header'
       - id: tcp_message
         type: tcp_message
         doc: 'Cme Market Data Message'
@@ -64,17 +64,14 @@ types:
       - id: tcp_sending_time
         type: u8
         doc: 'Packet Sending Time'
-      - id: tcp_message_size
-        type: u2
-        doc: 'Message Size'
   tcp_message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: payload
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::md_incremental_refresh_spectrum': md_incremental_refresh_spectrum
             'template_id::md_incremental_refresh_ticker': md_incremental_refresh_ticker
@@ -82,6 +79,14 @@ types:
             'template_id::md_snapshot_refresh_ticker': md_snapshot_refresh_ticker
             'template_id::global_day_roll': global_day_roll
   message_header:
+    seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
     seq:
       - id: block_length
         type: u2
@@ -101,7 +106,7 @@ types:
         type: match_event_indicator
         doc: 'EventIndicator bit set'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_spectrum_groups
         type: incremental_refresh_spectrum_groups
@@ -193,7 +198,7 @@ types:
         type: match_event_indicator
         doc: 'EventIndicator bit set'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_ticker_groups
         type: incremental_refresh_ticker_groups
@@ -277,7 +282,7 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: block_extension
-        size: _parent.message_header.block_length - 76
+        size: _parent.message_header.simple_binary_header.block_length - 76
         doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_spectrum_groups
         type: snapshot_refresh_spectrum_groups
@@ -335,7 +340,7 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: block_extension
-        size: _parent.message_header.block_length - 76
+        size: _parent.message_header.simple_binary_header.block_length - 76
         doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_ticker_groups
         type: snapshot_refresh_ticker_groups
@@ -388,7 +393,7 @@ types:
         enum: security_trading_event
         doc: 'Signals the start of the next Global day or a Global day roll'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
   nanosecond_timestamp:
     seq:

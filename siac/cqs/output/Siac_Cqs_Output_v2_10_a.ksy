@@ -173,8 +173,8 @@ types:
         enum: luld_tier
         doc: 'Identifies the Limit Up Limit Down tier of the security symbol'
       - id: luld_leverage_ratio
-        type: u4
-        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol. Has implied 6 decimal places'
+        type: decimal_u4_6
+        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: test
         type: u1
         enum: test
@@ -398,14 +398,14 @@ types:
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value associated with Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value associated with Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Identifies the daily established drop level value associated with Level 2 = 13% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value associated with Level 2 = 13% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Identifies the daily established drop level value associated with Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value associated with Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved
         type: str
         size: 1
@@ -1049,6 +1049,20 @@ types:
     seq:
       - id: mantissa
         type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_u4_6:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
     instances:
       real:
         value: mantissa / 1000000.0

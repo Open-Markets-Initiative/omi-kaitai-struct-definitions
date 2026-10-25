@@ -58,19 +58,24 @@ types:
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
-      - id: message_size
-        type: u2
-        doc: 'Message Size'
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: payload
-        size: message_size - 10
+        size: message_header.message_size - 10
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::md_incremental_refresh_btec': md_incremental_refresh_btec
   message_header:
+    seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
     seq:
       - id: block_length
         type: u2
@@ -90,7 +95,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Event processing time (UTC), sent in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: block_extension
-        size: _parent.message_header.block_length - 10
+        size: _parent.message_header.simple_binary_header.block_length - 10
         doc: 'Bytes the stated block holds beyond the 10 this version reads'
       - id: incremental_refresh_btec_groups
         type: incremental_refresh_btec_groups

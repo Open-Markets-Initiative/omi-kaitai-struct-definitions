@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'New York Stock Exchange New York Stock Exchange Equities Imbalances Feed Pillar v2.2.h'
-doc-ref: https://www.nyse.com/market-data/real-time/imbalances
+doc-ref: https://www.nyse.com/publicdocs/nyse/data/NYSE_Pillar_Order_Imbalances_Client_Specification.pdf
 
 seq:
   - id: packet_header

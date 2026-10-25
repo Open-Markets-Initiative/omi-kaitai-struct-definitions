@@ -58,16 +58,13 @@ types:
         doc: 'Packet Sending Time. Nanoseconds since Unix epoch'
   message_struct:
     seq:
-      - id: message_size
-        type: u2
-        doc: 'Message Size'
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: payload
-        size: message_size - 10
+        size: message_header.message_size - 10
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::md_incremental_refresh_spectrum': md_incremental_refresh_spectrum
             'template_id::md_incremental_refresh_ticker': md_incremental_refresh_ticker
@@ -75,6 +72,14 @@ types:
             'template_id::md_snapshot_refresh_ticker': md_snapshot_refresh_ticker
             'template_id::global_day_roll': global_day_roll
   message_header:
+    seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
     seq:
       - id: block_length
         type: u2
@@ -94,7 +99,7 @@ types:
         type: match_event_indicator
         doc: 'EventIndicator bit set'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_spectrum_groups
         type: incremental_refresh_spectrum_groups
@@ -186,7 +191,7 @@ types:
         type: match_event_indicator
         doc: 'EventIndicator bit set'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: incremental_refresh_ticker_groups
         type: incremental_refresh_ticker_groups
@@ -270,7 +275,7 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: block_extension
-        size: _parent.message_header.block_length - 76
+        size: _parent.message_header.simple_binary_header.block_length - 76
         doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_spectrum_groups
         type: snapshot_refresh_spectrum_groups
@@ -328,7 +333,7 @@ types:
         type: s4
         doc: 'SecurityID as referenced in MDP3 and Ilink3 protocols'
       - id: block_extension
-        size: _parent.message_header.block_length - 76
+        size: _parent.message_header.simple_binary_header.block_length - 76
         doc: 'Bytes the stated block holds beyond the 76 this version reads'
       - id: snapshot_refresh_ticker_groups
         type: snapshot_refresh_ticker_groups
@@ -381,7 +386,7 @@ types:
         enum: security_trading_event
         doc: 'Signals the start of the next Global day or a Global day roll'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
   nanosecond_timestamp:
     seq:

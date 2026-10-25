@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'New York Stock Exchange Options Xdp v1.3.a'
-doc-ref: https://www.nyse.com/market-data/real-time/options-top-feed
+doc-ref: https://www.nyse.com/publicdocs/nyse/data/XDP_Options_Client_Specification_v1.3a.pdf
 
 seq:
   - id: packet_header

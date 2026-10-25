@@ -36,7 +36,9 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe C2 Options Multicast Depth Of Book Spin v2.41.66'
-doc-ref: http://markets.cboe.com/us/options/support/technical/
+doc-ref:
+  - http://markets.cboe.com/us/equities/support/technical
+  - http://markets.cboe.com/us/options/support/technical/
 
 seq:
   - id: packet_header

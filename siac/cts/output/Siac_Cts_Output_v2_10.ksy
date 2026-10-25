@@ -6,8 +6,8 @@
 #   Protocol: Output
 #   Encoding: Consolidated Tape Association
 #   Version: 2.10
-#   Date: 8/30/2024
-#   Specification: Siac.Cts.Output.Cta.v2.10.c.pdf
+#   Date: 6/12/2024
+#   Specification: Siac.Cts.Output.Cta.v2.10.b.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -347,8 +347,8 @@ types:
         pad-right: 0x20
         doc: 'Contains the Index symbol'
       - id: index_value
-        type: s8
-        doc: 'The Index Value represents a statistical composite that measures changes in the economy or in financial markets'
+        type: decimal_s8_6
+        doc: 'The Index Value represents a statistical composite that measures changes in the economy or in financial markets. Implied decimal with scale 1e-6'
   bid_and_offer_index_message:
     seq:
       - id: participant_id
@@ -374,11 +374,11 @@ types:
         pad-right: 0x20
         doc: 'Contains the Index symbol'
       - id: bid_index_value
-        type: s8
-        doc: 'The Bid Index Value represents the value of the index’s calculation formula using the current Bid values of the component securities'
+        type: decimal_s8_6
+        doc: 'The Bid Index Value represents the value of the index’s calculation formula using the current Bid values of the component securities. Implied decimal with scale 1e-6'
       - id: offer_index_value
-        type: s8
-        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities'
+        type: decimal_s8_6
+        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities. Implied decimal with scale 1e-6'
   market_status_message:
     seq:
       - id: market_status_message_type
@@ -414,14 +414,14 @@ types:
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Decline Level 13% of Previous Close'
+        type: decimal_s8_6
+        doc: 'Decline Level 13% of Previous Close. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Decline Level 20% of Previous Close'
+        type: decimal_s8_6
+        doc: 'Decline Level 20% of Previous Close. Implied decimal with scale 1e-6'
       - id: reserved
         type: u1
         doc: 'Field is reserved for future use'
@@ -518,8 +518,8 @@ types:
         enum: participant_id
         doc: 'Participant or Processor that generated the message'
       - id: fractional_trade_total_volume
-        type: u8
-        doc: 'Contains the total number of shares traded for each Participant'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares traded for each Participant. Implied decimal with scale 1e-6'
   approximate_trades_and_total_dollar_value_message:
     seq:
       - id: participant_id
@@ -542,8 +542,8 @@ types:
         type: u4
         doc: 'Contains the total number of trade transactions executed from a Market Center'
       - id: dollar_value
-        type: u8
-        doc: 'The Dollar Value represents the total dollar worth of the daily trade transactions'
+        type: decimal_u8_6
+        doc: 'The Dollar Value represents the total dollar worth of the daily trade transactions. Implied decimal with scale 1e-6'
   crossing_session_summary_message:
     seq:
       - id: participant_id
@@ -562,13 +562,13 @@ types:
       - id: participant_reference_number
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
-      - id: crossing_session_1_total_trades_volume
+      - id: crossing_session_i_total_trades_volume
         type: u8
         doc: 'Contains the number of shares traded at the Participant’s close price and taking place after the close of a Participant’s regular session'
-      - id: crossing_session_2_dollar_value
-        type: u8
-        doc: 'Contains the Dollar Value traded after the close of a Participant’s regular session'
-      - id: crossing_session_2_total_trades_volume
+      - id: crossing_session_ii_dollar_value
+        type: decimal_u8_6
+        doc: 'Contains the Dollar Value traded after the close of a Participant’s regular session. Implied decimal with scale 1e-6'
+      - id: crossing_session_ii_total_trades_volume
         type: u8
         doc: 'Contains the number of shares traded after the close of a Participant’s regular session'
   prior_day_message:
@@ -579,14 +579,14 @@ types:
         doc: 'Prior Day message type'
       - id: prior_day_message_payload
         type:
-          switch-on: prior_day_message_type.to_i.as<s4>
+          switch-on: prior_day_message_type
           cases:
-            67: prior_day_trade_correction_message
-            79: fractional_prior_day_trade_correction_message
-            84: prior_day_trade_message
-            82: fractional_prior_day_trade_message
-            88: prior_day_trade_cancel_error_message
-            69: fractional_prior_day_trade_cancel_error_message
+            'prior_day_message_type::prior_day_trade_correction_message': prior_day_trade_correction_message
+            'prior_day_message_type::fractional_prior_day_trade_correction_message': fractional_prior_day_trade_correction_message
+            'prior_day_message_type::prior_day_trade_message': prior_day_trade_message
+            'prior_day_message_type::fractional_prior_day_trade_message': fractional_prior_day_trade_message
+            'prior_day_message_type::prior_day_trade_cancel_error_message': prior_day_trade_cancel_error_message
+            'prior_day_message_type::fractional_prior_day_trade_cancel_error_message': fractional_prior_day_trade_cancel_error_message
   prior_day_trade_correction_message:
     seq:
       - id: participant_id
@@ -756,8 +756,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -785,8 +785,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -899,8 +899,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -1021,8 +1021,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -1265,8 +1265,8 @@ types:
         type: decimal_u8_6
         doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -1384,8 +1384,8 @@ types:
         type: decimal_u8_6
         doc: 'The Open Price represents the first qualifying price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: tick
         type: u1
         enum: tick
@@ -1702,8 +1702,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -1728,8 +1728,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -1764,8 +1764,8 @@ types:
         type: decimal_u8_6
         doc: 'The Low Price represents the lowest price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: tick
         type: u1
         enum: tick
@@ -1788,8 +1788,8 @@ types:
         type: decimal_u8_6
         doc: 'The Open Price represents the first qualifying price paid for a security during the trading day. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis at the time it is disseminated. Implied decimal with scale 1e-6'
       - id: tick
         type: u1
         enum: tick
@@ -1908,8 +1908,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -2105,8 +2105,8 @@ types:
         type: decimal_u2_2
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-2'
       - id: fractional_trade_volume_short
-        type: u4
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u4_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
@@ -2234,8 +2234,8 @@ types:
         type: decimal_u8_6
         doc: 'The Trade Price is the monetary value of an individual share of security at the time of the trade. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security'
+        type: decimal_u8_6
+        doc: 'The Fractional Trade Volume contains the total number of shares which traded in a single transaction for an individual security. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security'
@@ -2314,6 +2314,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -2335,6 +2342,13 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  decimal_u4_6:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 1000000.0
 
 enums:
   retransmission_indicator:
@@ -2464,7 +2478,7 @@ enums:
       id: 'bid_and_offer_index_message'
       doc: 'Bid And Offer Index Message'
   market_status_message_type:
-    0x4d:
+    0x4b:
       id: 'market_wide_circuit_breaker_decline_level_status_message'
       doc: 'Market Wide Circuit Breaker Decline Level Status Message'
     0x4c:
@@ -2502,18 +2516,18 @@ enums:
     0x4f:
       id: 'fractional_prior_day_trade_correction_message'
       doc: 'Fractional Prior Day Trade Correction Message'
-    0x4c:
+    0x54:
       id: 'prior_day_trade_message'
       doc: 'Prior Day Trade Message'
     0x52:
       id: 'fractional_prior_day_trade_message'
       doc: 'Fractional Prior Day Trade Message'
     0x58:
-      id: 'prior_day_trade_message_x58'
-      doc: 'Prior Day Trade Message'
+      id: 'prior_day_trade_cancel_error_message'
+      doc: 'Prior Day Trade Cancel Error Message'
     0x45:
-      id: 'fractional_prior_day_trade_message_x45'
-      doc: 'Fractional Prior Day Trade Message'
+      id: 'fractional_prior_day_trade_cancel_error_message'
+      doc: 'Fractional Prior Day Trade Cancel Error Message'
   instrument_type:
     0x30:
       id: 'cta_eligible_equity'

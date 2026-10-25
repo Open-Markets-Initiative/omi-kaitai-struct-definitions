@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'New York Stock Exchange New York Stock Exchange Equities Open Book Ultra v2.1.k'
-doc-ref: https://www.nyse.com/market-data/real-time/openbook-ultra
+doc-ref: https://www.nyse.com/publicdocs/nyse/data/OpenBook_Ultra_Client_Specification.pdf
 
 seq:
   - id: packet_header

@@ -62,6 +62,7 @@ types:
             'message_category::control': control_message
       - id: message_separator
         type: u1
+        enum: message_separator
         doc: 'message separator'
   quotation_message:
     seq:
@@ -575,4 +576,11 @@ enums:
     0x58:
       id: 'end_of_trade_reporting_message'
       doc: 'The End of Trade Reporting Control Message signals that the ORF system is closed for market participant trade transactions'
+  message_separator:
+    31:
+      id: 'unit_separator'
+      doc: 'Ends a message that is not the last message in the block'
+    3:
+      id: 'end_of_text'
+      doc: 'Ends the last message in the block'
 

@@ -49,7 +49,7 @@ types:
     seq:
       - id: technical_header
         type: technical_header
-        doc: 'Cme Technical Header. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+        doc: 'Cme Technical Header'
       - id: tcp_message
         type: tcp_message
         doc: 'Cme Market Data Message'
@@ -64,17 +64,14 @@ types:
       - id: tcp_sending_time
         type: u8
         doc: 'Packet Sending Time'
-      - id: tcp_message_size
-        type: u2
-        doc: 'Message Size'
   tcp_message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: payload
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::admin_login': admin_login
             'template_id::admin_logout': admin_logout
@@ -91,6 +88,14 @@ types:
             'template_id::md_instrument_definition_eris': md_instrument_definition_eris
   message_header:
     seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
+    seq:
       - id: block_length
         type: u2
       - id: template_id
@@ -106,7 +111,7 @@ types:
         type: s1
         doc: 'Heartbeat interval (seconds)'
       - id: block_extension
-        size: _parent.message_header.block_length - 1
+        size: _parent.message_header.simple_binary_header.block_length - 1
         doc: 'Bytes the stated block holds beyond the 1 this version reads'
   admin_logout:
     seq:
@@ -116,7 +121,7 @@ types:
         encoding: ASCII
         doc: 'Free format text string. May include logout confirmation or reason for logout'
       - id: block_extension
-        size: _parent.message_header.block_length - 180
+        size: _parent.message_header.simple_binary_header.block_length - 180
         doc: 'Bytes the stated block holds beyond the 180 this version reads'
   md_incremental_refresh_eris_reference_data_and_daily_statistics:
     seq:
@@ -130,7 +135,7 @@ types:
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_reference_data_groups
         type: eris_reference_data_groups
@@ -717,7 +722,7 @@ types:
         encoding: ASCII
         doc: 'Describes a class of service for a given data feed'
       - id: block_extension
-        size: _parent.message_header.block_length - 60
+        size: _parent.message_header.simple_binary_header.block_length - 60
         doc: 'Bytes the stated block holds beyond the 60 this version reads'
       - id: news_indices_related_sym_groups
         type: news_indices_related_sym_groups
@@ -777,7 +782,7 @@ types:
         type: u2
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799)'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: trade_blocks_original_groups
         type: trade_blocks_original_groups
@@ -1108,7 +1113,7 @@ types:
         encoding: ASCII
         doc: 'Quote request ID defined by the exchange'
       - id: block_extension
-        size: _parent.message_header.block_length - 35
+        size: _parent.message_header.simple_binary_header.block_length - 35
         doc: 'Bytes the stated block holds beyond the 35 this version reads'
       - id: quote_request_related_sym_groups
         type: quote_request_related_sym_groups
@@ -1199,7 +1204,7 @@ types:
         type: u2_nullable
         doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 63
+        size: _parent.message_header.simple_binary_header.block_length - 63
         doc: 'Bytes the stated block holds beyond the 63 this version reads'
       - id: inst_attrib_groups
         type: inst_attrib_groups
@@ -1253,7 +1258,7 @@ types:
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 13
+        size: _parent.message_header.simple_binary_header.block_length - 13
         doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: incremental_refresh_indices_groups
         type: incremental_refresh_indices_groups
@@ -1395,7 +1400,7 @@ types:
         type: u2_nullable
         doc: 'Indicates date of trade referenced in this message in YYYYMMDD format (expressed in local time at place of trade). Returned only in trade and trade cancel execution reports. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 13
+        size: _parent.message_header.simple_binary_header.block_length - 13
         doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: trade_blocks_legacy_groups
         type: trade_blocks_legacy_groups
@@ -1561,7 +1566,7 @@ types:
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_original_groups
         type: eris_original_groups
@@ -1675,7 +1680,7 @@ types:
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: eris_groups
         type: eris_groups
@@ -1784,7 +1789,7 @@ types:
         type: u2_nullable
         doc: 'Total number of messages contained within batch which is defined by match event indicator (5799). Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 13
+        size: _parent.message_header.simple_binary_header.block_length - 13
         doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: otc_original_groups
         type: otc_original_groups
@@ -2075,7 +2080,7 @@ types:
         type: u2_nullable
         doc: 'This value indicates the channel ID as defined in the XML configuration file. Nullable, No Value = 65535'
       - id: block_extension
-        size: _parent.message_header.block_length - 95
+        size: _parent.message_header.simple_binary_header.block_length - 95
         doc: 'Bytes the stated block holds beyond the 95 this version reads'
       - id: eris_feed_types_groups
         type: eris_feed_types_groups

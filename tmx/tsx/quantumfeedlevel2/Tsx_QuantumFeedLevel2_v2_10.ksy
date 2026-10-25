@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tmx Tsx QuantumFeedLevel2 Xmt v2.1
+# Kaitai struct definition for: Tmx Tsx QuantumFeedLevel2 Xmt v2.10
 #
 # Protocol:
 #   Organization: TMX Group
 #   Protocol: Quantum Feed Level 2
 #   Encoding: eXtreme Message Transfer
-#   Version: 2.1
-#   Date: 10/20/2015
+#   Version: 2.10
+#   Date: 6/26/2014
 #   Specification: Unknown
 #
 # Script:
@@ -30,13 +30,15 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tmx_tsx_quantumfeedlevel2_xmt_v2_1
-  title: Tmx Tsx QuantumFeedLevel2 Xmt v2.1
+  id: tmx_tsx_quantumfeedlevel2_xmt_v2_10
+  title: Tmx Tsx QuantumFeedLevel2 Xmt v2.10
   license: GPL-3.0
   endian: le
 
-doc: 'TMX Group Toronto Stock Exchange Quantum Feed Level 2 Xmt v2.1'
-doc-ref: https://www.tmxwebstore.com
+doc: 'TMX Group Toronto Stock Exchange Quantum Feed Level 2 Xmt v2.10'
+doc-ref:
+  - https://github.com/zkutch/xmt_protocol_parser
+  - https://www.tmxwebstore.com/
 
 seq:
   - id: packet
@@ -224,40 +226,6 @@ types:
       - id: last_sale
         type: decimal_u8_6_nullable
         doc: 'Last Sale Price Of A Stock. Implied decimal with scale 1e-6. Nullable, No Value = 0'
-      - id: listing_market
-        type: u1
-        enum: listing_market
-        doc: 'The Market On Which A Security Is Listed'
-      - id: product_type
-        type: u1
-        enum: product_type
-        doc: 'The Product Type For A Symbol'
-      - id: buy_maximum_quantity
-        type: u4_nullable
-        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Purchase. Nullable, No Value = 0'
-      - id: buy_minimum_quantity
-        type: u4_nullable
-        doc: 'The Minimum Quantity Of A Mutual Fund Required To Purchase. Nullable, No Value = 0'
-      - id: sell_maximum_quantity
-        type: u4_nullable
-        doc: 'The Maximum Quantity Of A Mutual Fund Allowed To Sell. Nullable, No Value = 0'
-      - id: sell_minimum_quantity
-        type: u4_nullable
-        doc: 'The Minimum Quantity Of A Mutual Fund Required To Sell. Nullable, No Value = 0'
-      - id: stock_state
-        type: str
-        size: 2
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'The State Of The Stock'
-      - id: test_symbol
-        type: u1
-        enum: test_symbol
-        doc: 'Indicates The Symbol Is A Test Symbol'
-      - id: moc_eligible
-        type: u1
-        enum: moc_eligible
-        doc: 'Identifies Whether The Stock Is Eligible To Trade In The Market On Close Session Each Trading Day'
   order_book_message:
     seq:
       - id: symbol
@@ -433,22 +401,6 @@ types:
       - id: imbalance_reference_price
         type: decimal_u8_6_nullable
         doc: 'The Price That Determines If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
-      - id: paired_volume
-        type: u4_nullable
-        doc: 'The Number Of Moc And Loc Shares That Are Able Be Matched At The Reference Price. Nullable, No Value = 0'
-      - id: market_order_imbalance_volume
-        type: u4_nullable
-        doc: 'Indicates The Share Imbalance When Considering Moc Orders Only Note This Will Not Change From Freeze Period As Moc Orders Are Not Allowed After This Time. Nullable, No Value = 0'
-      - id: market_order_imbalance_side
-        type: u1
-        enum: market_order_imbalance_side
-        doc: 'Side Buy Or Sell Of The Market Order Imbalance Volume'
-      - id: near_indicative_closing_price
-        type: decimal_u8_6_nullable
-        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Onclose Orders Moc Loc And Visible Continuous Market Orders Effectively This Is The Price At Which The Closing Print Would Occur At The Time Of Publication. Implied decimal with scale 1e-6. Nullable, No Value = 0'
-      - id: far_indicative_closing_price
-        type: decimal_u8_6_nullable
-        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Closing Interest Only Moc Loc This Calculation Excludes Continuous Market Orders. Implied decimal with scale 1e-6. Nullable, No Value = 0'
   order_booked_message:
     seq:
       - id: symbol
@@ -645,14 +597,6 @@ types:
       - id: trading_system_time_stamp
         type: microsecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Microseconds since Unix epoch. Nullable, No Value = 0'
-      - id: listing_market
-        type: u1
-        enum: listing_market
-        doc: 'The Market On Which A Security Is Listed'
-      - id: product_type
-        type: u1
-        enum: product_type
-        doc: 'The Product Type For A Symbol'
   trade_report_message:
     seq:
       - id: symbol
@@ -702,21 +646,6 @@ types:
       - id: trading_system_time_stamp
         type: microsecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Microseconds since Unix epoch. Nullable, No Value = 0'
-      - id: listing_market
-        type: u1
-        enum: listing_market
-        doc: 'The Market On Which A Security Is Listed'
-      - id: product_type
-        type: u1
-        enum: product_type
-        doc: 'The Product Type For A Symbol'
-      - id: trade_date
-        type: yyyymmdd_date_nullable
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
-      - id: is_mid_only
-        type: u1
-        enum: is_mid_only
-        doc: 'Indicates A Dark Contra Midpoint Only Plus To Contra Midpoint Only Plus Execution'
   trade_report_terms_message:
     seq:
       - id: symbol
@@ -787,17 +716,6 @@ types:
       - id: trading_system_time_stamp
         type: microsecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Microseconds since Unix epoch. Nullable, No Value = 0'
-      - id: listing_market
-        type: u1
-        enum: listing_market
-        doc: 'The Market On Which A Security Is Listed'
-      - id: product_type
-        type: u1
-        enum: product_type
-        doc: 'The Product Type For A Symbol'
-      - id: trade_date
-        type: yyyymmdd_date_nullable
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
   trade_cancelled_terms_message:
     seq:
       - id: symbol
@@ -856,29 +774,6 @@ types:
       - id: trading_system_time_stamp
         type: microsecond_timestamp_nullable
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Microseconds since Unix epoch. Nullable, No Value = 0'
-      - id: listing_market
-        type: u1
-        enum: listing_market
-        doc: 'The Market On Which A Security Is Listed'
-      - id: product_type
-        type: u1
-        enum: product_type
-        doc: 'The Product Type For A Symbol'
-      - id: trade_date
-        type: yyyymmdd_date_nullable
-        doc: 'Effective Date Of The Trade Will Only Be Filled When The Effective Date Is Different From The Current Date. Nullable, No Value = 0'
-      - id: is_mid_only
-        type: u1
-        enum: is_mid_only
-        doc: 'Indicates A Dark Contra Midpoint Only Plus To Contra Midpoint Only Plus Execution'
-      - id: is_dark
-        type: u1
-        enum: is_dark
-        doc: 'Indicates At Least One Side Of The Trade Is Dark'
-      - id: is_conditional
-        type: u1
-        enum: is_conditional
-        doc: 'Indicates A Firmup Conditional To Firmup Conditional Execution'
   trade_correction_terms_message:
     seq:
       - id: symbol
@@ -958,17 +853,17 @@ types:
     instances:
       is_null:
         value: value.mantissa == 0
-  u4_nullable:
-    seq:
-      - id: value
-        type: u4
-    instances:
-      is_null:
-        value: value == 0
   u8_nullable:
     seq:
       - id: value
         type: u8
+    instances:
+      is_null:
+        value: value == 0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
     instances:
       is_null:
         value: value == 0
@@ -1012,24 +907,6 @@ types:
     instances:
       is_null:
         value: value.time == 0
-  yyyymmdd_date:
-    seq:
-      - id: packed
-        type: s4
-    instances:
-      year:
-        value: packed / 10000
-      month:
-        value: packed / 100 % 100
-      day:
-        value: packed % 100
-  yyyymmdd_date_nullable:
-    seq:
-      - id: value
-        type: yyyymmdd_date
-    instances:
-      is_null:
-        value: value.packed == 0
 
 enums:
   ack_required_poss_dup:
@@ -1048,67 +925,67 @@ enums:
       doc: 'The Heartbeat message is sent by either side during idle periods for the opposite side to detect whether the session is still alive.'
     0x4a:
       id: 'symbol_status_message'
-      doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for the Alpha market. One message is disseminated for each valid symbol at the beginning of each trading day.'
+      doc: 'Symbol Status messages contain information regarding equity, debenture, or trading Instruments for the current trading day for both TSX and TSXV markets. One message is disseminated for each valid symbol at the beginning of each trading day.'
     0x47:
       id: 'order_book_message'
-      doc: 'An Order Book message provides public information for all open non-terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day'
+      doc: 'An Order Book message provides public information for all open non-terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day. Feed clients can use the Order Book message to initialize their order book for the current trading day.'
     0x6a:
       id: 'order_book_terms_message'
-      doc: 'An Order Book – Terms Message provides public information for all open terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day. Feed clients can use the Order Book – Terms message to initialize their order book for the current trading day.'
+      doc: 'An Order Book – Terms message provides public information for all open terms orders in the market at the start of day. One message is disseminated for each valid non-terms order at the beginning of each trading day. Feed clients can use the Order Book – Terms message to initialize their order book for the current trading day.'
     0x41:
       id: 'assign_cop_orders_message'
-      doc: 'An Assign COP – Orders message specifies the calculated opening price (COP) for a security and the participating orders that are priced at the COP. Each Assign COP – Orders message can contain up to 15 orders priced at COP, and the orders are positional. All the orders reported on a single Assign COP – Orders message always belong to the same market side.'
+      doc: 'An Assign COP – Orders message specifies the calculated opening price (COP) for a security and the participating orders that are priced at the COP. Each Assign COP – Orders message can contain up to 15 orders priced at COP, and the orders are positional. All the orders reported on a single Assign COP – Orders message always belong to the same market side. Note: This message is generated only if one or more orders are repriced to the COP.'
     0x42:
       id: 'assign_cop_no_orders_message'
-      doc: 'An Assign COP – Orders message specifies the calculated opening price (COP) for a security and the participating orders that are priced at the COP'
+      doc: 'An Assign COP – No Order message specifies the calculated opening price for a security when there are no orders that are to be repriced to the COP. Note: This message is generated only if the COP is changing, but no orders are being repriced to the COP.'
     0x43:
       id: 'assign_limit_message'
-      doc: 'An Assign Limit message is disseminated when former better-priced-limit orders are reset to their true limits.'
+      doc: 'An Assign Limit message is disseminated when former better-priced-limit orders are reset to their true limits. Each Assign Limit message can contain up to 15 orders along with their prices, and the orders are positional. All the orders reported on a single Assign Limit message always belong to the same market side.'
     0x45:
       id: 'market_state_update_message'
-      doc: 'A Market State Update message is disseminated each time a notice of a market state change or a trading session change is sent from the Trading Engine'
+      doc: 'A Market State Update message is disseminated each time a notice of a market state change or a trading session change is sent from the Trading Engine.'
     0x46:
       id: 'moc_imbalance_message'
-      doc: 'The MOC Imbalance message is disseminated for MOC eligible symbols every 10 seconds starting from the beginning of the MOC Imbalance trading session'
+      doc: 'A MOC Imbalance message is disseminated for every MOC-eligible stock. The MOC Imbalance message is disseminated once per MOC-eligible stock at the beginning of the MOC Imbalance trading session.'
     0x50:
       id: 'order_booked_message'
-      doc: 'An Order Booked message is disseminated in response to a new non-terms order being entered into the trading system'
+      doc: 'An Order Booked message is disseminated in response to a new non-terms order being entered into the trading system.'
     0x6d:
       id: 'order_booked_terms_message'
-      doc: 'An Order Booked - Terms message is disseminated in response to a new terms order being entered into the trading system'
+      doc: 'An Order Booked - Terms message is disseminated in response to a new terms order being entered into the trading system.'
     0x51:
       id: 'order_cancelled_message'
-      doc: 'An Order Cancelled message is disseminated if a non-terms order is cancelled'
+      doc: 'An Order Cancelled message is disseminated if a non-terms order is cancelled.'
     0x6e:
       id: 'order_cancelled_terms_message'
-      doc: 'An Order Cancelled – Terms message is disseminated if a terms order is cancelled'
+      doc: 'An Order Cancelled – Terms message is disseminated if a terms order is cancelled.'
     0x52:
       id: 'order_price_time_assigned_message'
-      doc: 'An Order Price-Time Assigned message is disseminated when a new Price or Time is assigned to a non-terms order'
+      doc: 'An Order Price-Time Assigned message is disseminated when a new Price or Time is assigned to a non-terms order.'
     0x6f:
       id: 'order_price_time_assigned_terms_message'
-      doc: 'An Order Price-Time Assigned – Terms message is disseminated if a new Price or Time is assigned to a terms order'
+      doc: 'An Order Price-Time Assigned – Terms message is disseminated if a new Price or Time is assigned to a terms order.'
     0x49:
       id: 'stock_status_message'
-      doc: 'A Stock Status notification is disseminated in response to a change in stock status from the Trading Engine'
+      doc: 'A Stock Status notification is disseminated in response to a change in stock status from the Trading Engine.'
     0x53:
       id: 'trade_report_message'
-      doc: 'A Trade Report is produced when a trade occurs that has no settlement terms'
+      doc: 'A Trade Report is generated when a trade occurs that has no settlement terms.'
     0x70:
       id: 'trade_report_terms_message'
-      doc: 'A Trade Report – Terms is produced when a trade occurs that and has settlement terms and has Non-Resident participation with or without settlement terms'
+      doc: 'A Trade Report – Terms is generated when a trade occurs that has settlement terms.'
     0x54:
       id: 'trade_cancelled_message'
-      doc: 'A Trade Cancelled message is produced when a trade with no settlement terms is cancelled.'
+      doc: 'A Trade Cancelled message is generated when a trade with no settlement terms is cancelled.'
     0x71:
       id: 'trade_cancelled_terms_message'
-      doc: 'A Trade Cancelled – Terms message is produced when a trade with settlement terms is cancelled.'
+      doc: 'A Trade Cancelled – Terms message is generated when a trade with settlement terms is cancelled.'
     0x55:
       id: 'trade_correction_message'
-      doc: 'A Trade Correction message is produced when a trade with no settlement terms is corrected'
+      doc: 'A Trade Correction message is generated when a trade with no settlement terms is corrected'
     0x72:
       id: 'trade_correction_terms_message'
-      doc: 'A Trade Correction – Terms message is produced when a trade with settlement terms is corrected'
+      doc: 'A Trade Correction – Terms message is generated when a trade with settlement terms is corrected.'
   source_id:
     0x30:
       id: 'non_source_related'
@@ -1129,61 +1006,6 @@ enums:
     0x43:
       id: 'cad'
       doc: 'Cad'
-  listing_market:
-    0x54:
-      id: 'tsx'
-      doc: 'Tsx'
-    0x56:
-      id: 'tsx_venture'
-      doc: 'Tsx Venture'
-    0x4e:
-      id: 'tsx_na_vex'
-      doc: 'Tsx Na Vex'
-    0x51:
-      id: 'nasdaq'
-      doc: 'Nasdaq'
-    0x53:
-      id: 'nyse'
-      doc: 'Nyse'
-    0x4d:
-      id: 'nyse_mkt'
-      doc: 'Nyse Mkt'
-    0x58:
-      id: 'n_no_market'
-      doc: 'N No Market'
-  product_type:
-    0x42:
-      id: 'debenture'
-      doc: 'Debenture'
-    0x45:
-      id: 'equity'
-      doc: 'Equity'
-    0x4d:
-      id: 'mutual_fund'
-      doc: 'Mutual Fund'
-    0x46:
-      id: 'etf'
-      doc: 'Etf'
-    0x55:
-      id: 'us_equity'
-      doc: 'Us Equity'
-    0x4f:
-      id: 'bond'
-      doc: 'Bond'
-  test_symbol:
-    0x59:
-      id: 'yes_field'
-      doc: 'Yes'
-    0x4e:
-      id: 'no_field'
-      doc: 'No'
-  moc_eligible:
-    0x59:
-      id: 'yes_field'
-      doc: 'Yes'
-    0x4e:
-      id: 'no_field'
-      doc: 'No'
   order_side:
     0x42:
       id: 'buy'
@@ -1214,9 +1036,6 @@ enums:
     0x44:
       id: 'valid_settlement_date'
       doc: 'Valid Settlement Date'
-    0x20:
-      id: 'no_settlement_terms'
-      doc: 'No Settlement Terms'
   market_state:
     0x50:
       id: 'preopen'
@@ -1230,9 +1049,6 @@ enums:
     0x4d:
       id: 'moc_imbalance'
       doc: 'Moc Imbalance'
-    0x54:
-      id: 'moc_freeze'
-      doc: 'Moc Freeze'
     0x41:
       id: 'ccp_determination'
       doc: 'Ccp Determination'
@@ -1248,38 +1064,13 @@ enums:
     0x52:
       id: 'extended_hours_open'
       doc: 'Extended Hours Open'
+    0x46:
+      id: 'extended_hours_close'
+      doc: 'Extended Hours Close'
     0x43:
       id: 'closed'
       doc: 'Closed'
-    0x4a:
-      id: 'nav_ex_closed'
-      doc: 'Nav Ex Closed'
-    0x47:
-      id: 'nav_ex_order_entry'
-      doc: 'Nav Ex Order Entry'
-    0x48:
-      id: 'nav_ex_order_entry_close'
-      doc: 'Nav Ex Order Entry Close'
-    0x4b:
-      id: 'nav_ex_am_execution'
-      doc: 'Nav Ex Am Execution'
-    0x58:
-      id: 'nav_ex_pm_execution'
-      doc: 'Nav Ex Pm Execution'
-    0x59:
-      id: 'nav_ex_close'
-      doc: 'Nav Ex Close'
   imbalance_side:
-    0x42:
-      id: 'buy'
-      doc: 'Buy'
-    0x53:
-      id: 'sell'
-      doc: 'Sell'
-    0x20:
-      id: 'no_imbalance_exists'
-      doc: 'No Imbalance Exists'
-  market_order_imbalance_side:
     0x42:
       id: 'buy'
       doc: 'Buy'
@@ -1305,29 +1096,13 @@ enums:
       doc: 'Basis'
     0x43:
       id: 'contingent'
-      doc: 'Contingent'
-    0x44:
-      id: 'derivative_related'
-      doc: 'Derivative Related'
-    0x52:
-      id: 'regular'
-      doc: 'Regular'
+      doc: 'Tsx Only'
     0x53:
       id: 'special_trading_session'
-      doc: 'Special Trading Session'
+      doc: 'Tsx Only'
     0x56:
       id: 'volume_weighted_average_price'
-      doc: 'Volume Weighted Average Price'
-    0x20:
-      id: 'default_trade_was_not_a_cross'
-      doc: 'Default Trade Was Not A Cross'
-  is_mid_only:
-    0x59:
-      id: 'yes_field'
-      doc: 'Yes'
-    0x4e:
-      id: 'no_field'
-      doc: 'No'
+      doc: 'Tsx Only'
   initiated_by:
     0x42:
       id: 'buy'
@@ -1338,18 +1113,4 @@ enums:
     0x43:
       id: 'both'
       doc: 'Both'
-  is_dark:
-    0x59:
-      id: 'yes_field'
-      doc: 'Yes'
-    0x4e:
-      id: 'no_field'
-      doc: 'No'
-  is_conditional:
-    0x59:
-      id: 'yes_field'
-      doc: 'Yes'
-    0x4e:
-      id: 'no_field'
-      doc: 'No'
 

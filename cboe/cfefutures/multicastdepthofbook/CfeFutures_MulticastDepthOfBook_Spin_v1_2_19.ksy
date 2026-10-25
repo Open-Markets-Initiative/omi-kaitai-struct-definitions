@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Futures Exchange Futures Multicast Depth Of Book Spin v1.2.19'
-doc-ref: http://markets.cboe.com/us/futures/support/technical/
+doc-ref: http://markets.cboe.com/us/futures/support/technical
 
 seq:
   - id: packet_header

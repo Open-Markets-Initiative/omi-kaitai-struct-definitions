@@ -259,8 +259,8 @@ types:
         enum: luld_tier
         doc: 'Identifies the Limit Up Limit Down tier of the security symbol'
       - id: luld_leverage_ratio
-        type: u4
-        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol. Has implied 6 decimal places'
+        type: decimal_u4_6
+        doc: 'Represents the Leverage ratio associated with the LULD Tier of the security symbol. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: test
         type: u1
         enum: test
@@ -443,8 +443,8 @@ types:
         pad-right: 0x20
         doc: 'Contains the Index symbol. Left justified, space-filled'
       - id: index_value
-        type: s8
-        doc: 'Represents a statistical composite that measures changes in the economy or in financial markets. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Represents a statistical composite that measures changes in the economy or in financial markets. Has implied 6 decimal places. Implied decimal with scale 1e-6'
   bid_and_offer_index_message:
     seq:
       - id: participant_id
@@ -470,11 +470,11 @@ types:
         pad-right: 0x20
         doc: 'Contains the Index symbol. Left justified, space-filled'
       - id: bid_index_value
-        type: s8
-        doc: 'Represents the value of the index''s calculation formula using the current Bid values of the component securities. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Represents the value of the index''s calculation formula using the current Bid values of the component securities. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: offer_index_value
-        type: s8
-        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Represents the value of the index calculation formula using the current offer values of the component securities. Has implied 6 decimal places. Implied decimal with scale 1e-6'
   market_status_message:
     seq:
       - id: market_status_message_type
@@ -510,14 +510,14 @@ types:
         type: s8
         doc: 'Contains the Participant Reference Number'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Identifies the daily established drop level value. Level 2 = 13% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value. Level 2 = 13% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Identifies the daily established drop level value. Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value. Level 3 = 20% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: reserved
         type: str
         size: 1
@@ -618,8 +618,8 @@ types:
         enum: participant_id
         doc: 'Identifies the Participant or Processor that initiated the message'
       - id: fractional_trade_total_volume
-        type: u8
-        doc: 'Contains the total number of shares traded for each Participant. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares traded for each Participant. Has implied 6 decimal places. Implied decimal with scale 1e-6'
   approximate_trades_and_total_dollar_value_message:
     seq:
       - id: participant_id
@@ -642,8 +642,8 @@ types:
         type: u4
         doc: 'Contains the total number of trade transactions executed from a Market Center'
       - id: dollar_value
-        type: u8
-        doc: 'Represents the total dollar worth of the daily trade transactions. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Represents the total dollar worth of the daily trade transactions. Has implied 6 decimal places. Implied decimal with scale 1e-6'
   crossing_session_summary_message:
     seq:
       - id: participant_id
@@ -666,8 +666,8 @@ types:
         type: u8
         doc: 'Contains the number of shares traded at the Participant''s close price and taking place after the close of a Participant''s regular session'
       - id: crossing_session_ii_dollar_value
-        type: u8
-        doc: 'Contains the Dollar Value traded after the close of a Participant''s regular session. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the Dollar Value traded after the close of a Participant''s regular session. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: crossing_session_ii_total_trades_volume
         type: u8
         doc: 'Contains the number of shares traded after the close of a Participant''s regular session'
@@ -984,8 +984,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
@@ -1043,8 +1043,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
@@ -1102,8 +1102,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
@@ -1348,8 +1348,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the lowest price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: short_sale_restriction_indicator
         type: u1
         enum: short_sale_restriction_indicator
@@ -1469,8 +1469,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the first qualifying price paid for a security during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_total_volume
-        type: u8
-        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains Total Volume of shares traded in a security either on a Consolidated or an individual Participant basis. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: tick
         type: u1
         enum: tick
@@ -2004,8 +2004,8 @@ types:
         type: decimal_u8_6
         doc: 'Corrected monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_fractional_trade_volume
-        type: u8
-        doc: 'Corrected total number of shares which traded in a single transaction. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Corrected total number of shares which traded in a single transaction. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: corrected_sellers_sale_days
         type: u1
         doc: 'Corrected number of days that may elapse before delivery of the security'
@@ -2044,8 +2044,8 @@ types:
         type: decimal_u8_6
         doc: 'Original monetary value of an individual share of security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_fractional_trade_volume
-        type: u8
-        doc: 'Original total number of shares which traded in a single transaction. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Original total number of shares which traded in a single transaction. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: original_sellers_sale_days
         type: u1
         doc: 'Original number of days that may elapse before delivery of the security'
@@ -2090,8 +2090,8 @@ types:
         type: decimal_u8_6
         doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_fractional_total_volume
-        type: u8
-        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_tick
         type: str
         size: 1
@@ -2113,8 +2113,8 @@ types:
         type: decimal_u8_6
         doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_fractional_total_volume
-        type: u8
-        doc: 'Participant total volume of shares traded. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Participant total volume of shares traded. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_tick
         type: str
         size: 1
@@ -2155,8 +2155,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
@@ -2302,8 +2302,8 @@ types:
         type: decimal_u2_2
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 2 decimal places. Implied decimal with scale 1e-2'
       - id: fractional_trade_volume_4
-        type: u4
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u4_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: primary_listing_market_participant_id
         type: u1
         enum: primary_listing_market_participant_id
@@ -2351,8 +2351,8 @@ types:
         type: decimal_u8_6
         doc: 'Represents the monetary value of an individual share of security at the time of the trade. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: fractional_trade_volume
-        type: u8
-        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Contains the total number of shares which traded in a single transaction for an individual security. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: sellers_sale_days
         type: u1
         doc: 'Specifies the number of days that may elapse before delivery of the security. Allowed values 2 through 60 days'
@@ -2408,8 +2408,8 @@ types:
         type: decimal_u8_6
         doc: 'Consolidated lowest price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_fractional_total_volume
-        type: u8
-        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Consolidated total volume of shares traded. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: consolidated_tick
         type: str
         size: 1
@@ -2431,8 +2431,8 @@ types:
         type: decimal_u8_6
         doc: 'Participant first qualifying price paid during the trading day. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_fractional_total_volume
-        type: u8
-        doc: 'Participant total volume of shares traded. Has implied 6 decimal places'
+        type: decimal_u8_6
+        doc: 'Participant total volume of shares traded. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: participant_tick
         type: str
         size: 1
@@ -2477,6 +2477,20 @@ types:
     seq:
       - id: mantissa
         type: u8
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_u4_6:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 1000000.0
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
     instances:
       real:
         value: mantissa / 1000000.0

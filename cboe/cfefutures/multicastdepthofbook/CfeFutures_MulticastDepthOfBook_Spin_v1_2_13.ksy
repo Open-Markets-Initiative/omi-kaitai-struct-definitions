@@ -7,7 +7,7 @@
 #   Encoding: Spin
 #   Version: 1.2.13
 #   Date: 04/07/2025
-#   Specification: Cboe Futures Exchange Multicast PITCH Specification (2025-05-04).pdf
+#   Specification: Cboe Futures Exchange Multicast PITCH Specification.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Futures Exchange Futures Multicast Depth Of Book Spin v1.2.13'
-doc-ref: http://markets.cboe.com/us/futures/support/technical/
+doc-ref: http://markets.cboe.com/us/futures/support/technical
 
 seq:
   - id: packet_header

@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'New York Stock Exchange Nyse Arca Equities ArcaBook Xdp v1.9.a'
-doc-ref: https://www.nyse.com/market-data/real-time/arcabook
+doc-ref: https://www.nyse.com/market-data/real-time/openbook-ultra
 
 seq:
   - id: packet_header

@@ -254,7 +254,7 @@ types:
         enum: bypass
         doc: 'An Indicator For Bypass Crosses Which Can Be Printed Outside Of The Protected Nbbo And Are Not Subject To Cross Interference'
       - id: trade_time_stamp
-        type: u4_nullable
+        type: hhmmss_time_nullable
         doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: settlement_terms
         type: u1
@@ -301,7 +301,7 @@ types:
         type: u2_nullable
         doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: trade_time_stamp
-        type: u4_nullable
+        type: hhmmss_time_nullable
         doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
       - id: last_sale
         type: decimal_u8_6_nullable
@@ -390,6 +390,24 @@ types:
     instances:
       is_null:
         value: value == 0
+  hhmmss_time:
+    seq:
+      - id: time
+        type: s4
+    instances:
+      hour:
+        value: time / 10000 % 100
+      minute:
+        value: time / 100 % 100
+      second:
+        value: time % 100
+  hhmmss_time_nullable:
+    seq:
+      - id: value
+        type: hhmmss_time
+    instances:
+      is_null:
+        value: value.time == 0
   nanosecond_timestamp:
     seq:
       - id: time

@@ -204,11 +204,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -308,8 +312,10 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: trader_id
         type: str
         size: 8
@@ -326,11 +332,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -377,8 +387,10 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: trader_id
         type: str
         size: 8
@@ -394,11 +406,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -513,11 +529,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -564,8 +584,10 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -637,12 +659,12 @@ types:
         doc: 'The guide states this block as (1 to 350 occurrences)'
   risk_limits_usage_occurrence:
     seq:
-      - id: trader
+      - id: usage_trader
         type: str_4_nullable
-        doc: 'Last four (4) Characters of the Trader ID. Nullable, No Value = 0'
-      - id: group
+        doc: 'Last four (4) Characters of the Trader ID. Nullable, No Value ='
+      - id: usage_group
         type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value ='
       - id: usage_status
         type: u1
         enum: usage_status
@@ -667,8 +689,10 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: filler_2
         size: 2
         doc: 'Stated inline as String (2)'
@@ -693,16 +717,20 @@ types:
   excluded_instrument_notice_occurrence:
     seq:
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
   group_state_change:
     seq:
       - id: outgoing_messages_header
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: group_state
         type: u1
         enum: group_state
@@ -713,11 +741,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: instrument_state
         type: u1
         enum: instrument_state
@@ -728,11 +760,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -829,11 +865,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb
         type: u1
         enum: verb
@@ -876,11 +916,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -896,11 +940,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -972,11 +1020,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -1048,11 +1100,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -1149,11 +1205,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: trader_id
         type: str
         size: 8
@@ -1200,11 +1260,15 @@ types:
         type: outgoing_messages_header
         doc: 'The guide states these fields once, as the Outgoing Messages Header, for every business message the Exchange sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: quantity
         type: str_8_nullable
         doc: 'Number of contracts or shares. Nullable, No Value = 0'
@@ -1243,24 +1307,6 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "      "
-  str_2_nullable:
-    seq:
-      - id: value
-        size: 2
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: text == "0"
-  str_4_nullable:
-    seq:
-      - id: value
-        size: 4
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: text == "0"
   str_50_nullable:
     seq:
       - id: value
@@ -1270,6 +1316,24 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 32
+  str_4_nullable:
+    seq:
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "    "
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "  "
   str_10_nullable:
     seq:
       - id: value
@@ -1344,76 +1408,76 @@ enums:
   open_close:
     0x4f:
       id: 'all_legs_are_open_or_single_security'
-      doc: 'All Legs Are Open Or Single Security'
+      doc: 'Any Number Of Legs Or Single Security'
     0x43:
       id: 'all_legs_are_closed_or_single_security'
-      doc: 'All Legs Are Closed Or Single Security'
+      doc: 'Any Number Of Legs Or Single Security'
     0x31:
       id: 'leg_1_open_leg_2_close'
-      doc: '1 St Leg Open 2 Nd Leg Close'
+      doc: '2 Legged Strategy'
     0x32:
       id: 'leg_1_close_leg_2_open'
-      doc: '1 St Leg Close 2 Nd Leg Open'
+      doc: '2 Legged Strategy'
     0x33:
       id: 'leg_1_open_leg_2_open_leg_3_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x34:
       id: 'leg_1_open_leg_2_close_leg_3_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x35:
       id: 'leg_1_open_leg_2_close_leg_3_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x36:
       id: 'leg_1_close_leg_2_open_leg_3_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x37:
       id: 'leg_1_close_leg_2_open_leg_3_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x38:
       id: 'leg_1_close_leg_2_close_leg_3_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x41:
       id: 'leg_1_open_leg_2_open_leg_3_open_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x42:
       id: 'leg_1_open_leg_2_open_leg_3_close_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x44:
       id: 'leg_1_open_leg_2_open_leg_3_close_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x45:
       id: 'leg_1_open_leg_2_close_leg_3_open_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x46:
       id: 'leg_1_open_leg_2_close_leg_3_open_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x47:
       id: 'leg_1_open_leg_2_close_leg_3_close_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x48:
       id: 'leg_1_open_leg_2_close_leg_3_close_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x49:
       id: 'leg_1_close_leg_2_open_leg_3_open_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4a:
       id: 'leg_1_close_leg_2_open_leg_3_open_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x4b:
       id: 'leg_1_close_leg_2_open_leg_3_close_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4c:
       id: 'leg_1_close_leg_2_open_leg_3_close_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x4d:
       id: 'leg_1_close_leg_2_close_leg_3_open_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4e:
       id: 'leg_1_close_leg_2_close_leg_3_open_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x50:
       id: 'leg_1_close_leg_2_close_leg_3_close_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
   hedge_spec:
     0x48:
       id: 'hedger'

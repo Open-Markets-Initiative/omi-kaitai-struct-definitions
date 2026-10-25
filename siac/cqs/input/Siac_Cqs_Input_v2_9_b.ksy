@@ -78,15 +78,28 @@ types:
       - id: message_header
         type: message_header
         doc: 'Cta participant input message header (26 bytes)'
-      - id: category_payload
+      - id: message_payload
         size: message_header.message_length - 26
         type:
-          switch-on: message_header.message_category
+          switch-on: message_header
           cases:
-            'message_category::administrative': administrative_message
-            'message_category::control': control_message
-            'message_category::quote': quote_message
-            'message_category::trade': trade_message
+            16722: rejection_message
+            16720: partial_rejection_message
+            16727: warning_message
+            17230: sequence_information_and_message_count_response_message
+            17234: odd_lot_refresh_request_message
+            17205: test_message
+            20801: auction_status_message
+            20817: short_quote_message
+            20812: long_quote_message
+            20819: special_long_quote_message
+            20816: round_lot_short_quote_message
+            20811: round_lot_long_quote_message
+            20821: round_lot_finra_adf_quote_message
+            20818: odd_lot_short_quote_message
+            20813: odd_lot_long_quote_message
+            20820: odd_lot_finra_adf_quote_message
+            21587: trading_status_message
   message_header:
     seq:
       - id: message_length
@@ -126,20 +139,6 @@ types:
       - id: nanoseconds
         type: nanosecond_offset
         doc: 'Nanosecond portion of the timestamp. Nanoseconds since Second epoch'
-  administrative_message:
-    seq:
-      - id: administrative_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Administrative message'
-      - id: administrative_message_payload
-        type:
-          switch-on: administrative_message_type
-          cases:
-            '"R"': rejection_message
-            '"P"': partial_rejection_message
-            '"W"': warning_message
   rejection_message:
     seq:
       - id: error_code
@@ -282,20 +281,6 @@ types:
       - id: previous_participant_reference_number
         type: s8
         doc: 'Participant Reference Number prior to the gap that triggered the Warning'
-  control_message:
-    seq:
-      - id: control_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Control message'
-      - id: control_message_payload
-        type:
-          switch-on: control_message_type
-          cases:
-            '"N"': sequence_information_and_message_count_response_message
-            '"R"': odd_lot_refresh_request_message
-            '"5"': test_message
   sequence_information_and_message_count_response_message:
     seq:
       - id: current_block_sequence_number
@@ -335,27 +320,6 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'All ASCII characters starting with hex 0 and ending hex FF, in sequential order'
-  quote_message:
-    seq:
-      - id: quote_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Quote message'
-      - id: quote_message_payload
-        type:
-          switch-on: quote_message_type
-          cases:
-            '"A"': auction_status_message
-            '"Q"': short_quote_message
-            '"L"': long_quote_message
-            '"S"': special_long_quote_message
-            '"P"': round_lot_short_quote_message
-            '"K"': round_lot_long_quote_message
-            '"U"': round_lot_finra_adf_quote_message
-            '"R"': odd_lot_short_quote_message
-            '"M"': odd_lot_long_quote_message
-            '"T"': odd_lot_finra_adf_quote_message
   auction_status_message:
     seq:
       - id: security_symbol
@@ -926,18 +890,6 @@ types:
         repeat: expr
         repeat-expr: num_odd_lot_offer_extended_quote_appendage
         doc: 'Repeating Odd Lot Extended Quote Appendage for the offer side, including FINRA Market Maker ID'
-  trade_message:
-    seq:
-      - id: trade_message_type
-        type: str
-        size: 1
-        encoding: ASCII
-        doc: 'Identifies the type of Trade message'
-      - id: trade_message_payload
-        type:
-          switch-on: trade_message_type
-          cases:
-            '"S"': trading_status_message
   trading_status_message:
     seq:
       - id: security_symbol

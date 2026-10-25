@@ -49,7 +49,7 @@ types:
     seq:
       - id: client_technical_header
         type: client_technical_header
-        doc: 'Cme Technical Header sent by the subscriber to Cme. Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+        doc: 'Cme Technical Header sent by the subscriber to Cme'
       - id: client_message
         type: client_message
         doc: 'Cme Session Message sent by the subscriber to Cme'
@@ -64,17 +64,14 @@ types:
       - id: sending_time
         type: nanosecond_timestamp
         doc: 'Packet Sending Time, nanoseconds since the Unix epoch. Nanoseconds since Unix epoch'
-      - id: message_size
-        type: u2
-        doc: 'Message Size'
   client_message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: client_payload
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::negotiate': negotiate
             'template_id::terminate': terminate
@@ -82,6 +79,14 @@ types:
             'template_id::security_list_request': security_list_request
             'template_id::security_status_request': security_status_request
   message_header:
+    seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
     seq:
       - id: block_length
         type: u2
@@ -121,7 +126,7 @@ types:
         encoding: ASCII
         doc: 'Firm ID'
       - id: block_extension
-        size: _parent.message_header.block_length - 78
+        size: _parent.message_header.simple_binary_header.block_length - 78
         doc: 'Bytes the stated block holds beyond the 78 this version reads'
   terminate:
     seq:
@@ -144,7 +149,7 @@ types:
         size: 5
         doc: '5 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 70
+        size: _parent.message_header.simple_binary_header.block_length - 70
         doc: 'Bytes the stated block holds beyond the 70 this version reads'
   market_data_request:
     seq:
@@ -156,7 +161,7 @@ types:
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
       - id: block_extension
-        size: _parent.message_header.block_length - 5
+        size: _parent.message_header.simple_binary_header.block_length - 5
         doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: market_data_request_security_groups
         type: market_data_request_security_groups
@@ -218,7 +223,7 @@ types:
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
       - id: block_extension
-        size: _parent.message_header.block_length - 5
+        size: _parent.message_header.simple_binary_header.block_length - 5
         doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: security_list_request_security_groups
         type: security_list_request_security_groups
@@ -274,7 +279,7 @@ types:
         enum: subscription_req_type
         doc: 'Subscription Request Type indicates to the type of response expected'
       - id: block_extension
-        size: _parent.message_header.block_length - 5
+        size: _parent.message_header.simple_binary_header.block_length - 5
         doc: 'Bytes the stated block holds beyond the 5 this version reads'
       - id: security_status_request_security_groups
         type: security_status_request_security_groups

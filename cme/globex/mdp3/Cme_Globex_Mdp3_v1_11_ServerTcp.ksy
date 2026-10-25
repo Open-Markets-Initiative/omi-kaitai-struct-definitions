@@ -49,7 +49,7 @@ types:
     seq:
       - id: server_technical_header
         type: server_technical_header
-        doc: 'Cme Technical Header sent by Cme to the firm. Tcp Message Size is the last field so this fixed 16 byte header spans everything up to and including the length the reassembly reads'
+        doc: 'Cme Technical Header sent by Cme to the firm'
       - id: server_tcp_message
         type: server_tcp_message
         doc: 'Cme Tcp Message sent by Cme to the firm'
@@ -64,17 +64,14 @@ types:
       - id: tcp_sending_time
         type: nanosecond_timestamp
         doc: 'Packet Sending Time, nanoseconds since the Unix epoch. Nanoseconds since Unix epoch'
-      - id: tcp_message_size
-        type: u2
-        doc: 'Message Size'
   server_tcp_message:
     seq:
       - id: message_header
         type: message_header
-        doc: 'Template ID and length of message root'
+        doc: 'Message Size followed by the Simple Binary Header'
       - id: server_payload
         type:
-          switch-on: message_header.template_id
+          switch-on: message_header.simple_binary_header.template_id
           cases:
             'template_id::channel_reset': channel_reset
             'template_id::admin_login': admin_login
@@ -106,6 +103,14 @@ types:
             'template_id::request_reject': request_reject
   message_header:
     seq:
+      - id: message_size
+        type: u2
+        doc: 'Message Size'
+      - id: simple_binary_header
+        type: simple_binary_header
+        doc: 'Template ID and length of message root'
+  simple_binary_header:
+    seq:
       - id: block_length
         type: u2
       - id: template_id
@@ -125,7 +130,7 @@ types:
         type: match_event_indicator
         doc: 'MatchEventIndicator bit set'
       - id: block_extension
-        size: _parent.message_header.block_length - 9
+        size: _parent.message_header.simple_binary_header.block_length - 9
         doc: 'Bytes the stated block holds beyond the 9 this version reads'
       - id: channel_reset_groups
         type: channel_reset_groups
@@ -188,7 +193,7 @@ types:
         type: s1
         doc: 'Heartbeat interval (seconds)'
       - id: block_extension
-        size: _parent.message_header.block_length - 1
+        size: _parent.message_header.simple_binary_header.block_length - 1
         doc: 'Bytes the stated block holds beyond the 1 this version reads'
   admin_logout:
     seq:
@@ -198,7 +203,7 @@ types:
         encoding: ASCII
         doc: 'Free format text string. May include logout confirmation or reason for logout'
       - id: block_extension
-        size: _parent.message_header.block_length - 180
+        size: _parent.message_header.simple_binary_header.block_length - 180
         doc: 'Bytes the stated block holds beyond the 180 this version reads'
   security_status:
     seq:
@@ -236,7 +241,7 @@ types:
         enum: security_trading_event
         doc: 'Identifies an additional event or a rule related to the status'
       - id: block_extension
-        size: _parent.message_header.block_length - 30
+        size: _parent.message_header.simple_binary_header.block_length - 30
         doc: 'Bytes the stated block holds beyond the 30 this version reads'
   md_incremental_refresh_volume:
     seq:
@@ -250,7 +255,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_volume_groups
         type: incremental_refresh_volume_groups
@@ -303,7 +308,7 @@ types:
         size: 3
         doc: '3 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 35
+        size: _parent.message_header.simple_binary_header.block_length - 35
         doc: 'Bytes the stated block holds beyond the 35 this version reads'
       - id: related_sym_groups
         type: related_sym_groups
@@ -355,7 +360,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_book_groups
         type: incremental_refresh_book_groups
@@ -466,7 +471,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_order_book_groups
         type: incremental_refresh_order_book_groups
@@ -524,7 +529,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_trade_summary_groups
         type: incremental_refresh_trade_summary_groups
@@ -611,7 +616,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_daily_statistics_groups
         type: incremental_refresh_daily_statistics_groups
@@ -700,7 +705,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_limits_banding_groups
         type: incremental_refresh_limits_banding_groups
@@ -747,7 +752,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: incremental_refresh_session_statistics_groups
         type: incremental_refresh_session_statistics_groups
@@ -829,7 +834,7 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: block_extension
-        size: _parent.message_header.block_length - 59
+        size: _parent.message_header.simple_binary_header.block_length - 59
         doc: 'Bytes the stated block holds beyond the 59 this version reads'
       - id: snapshot_full_refresh_groups
         type: snapshot_full_refresh_groups
@@ -895,7 +900,7 @@ types:
         type: nanosecond_timestamp
         doc: 'Start of event processing time in number of nanoseconds since Unix epoch. Nanoseconds since Unix epoch'
       - id: block_extension
-        size: _parent.message_header.block_length - 28
+        size: _parent.message_header.simple_binary_header.block_length - 28
         doc: 'Bytes the stated block holds beyond the 28 this version reads'
       - id: snapshot_full_refresh_order_book_groups
         type: snapshot_full_refresh_order_book_groups
@@ -1092,7 +1097,7 @@ types:
         type: u8_nullable
         doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: block_extension
-        size: _parent.message_header.block_length - 224
+        size: _parent.message_header.simple_binary_header.block_length - 224
         doc: 'Bytes the stated block holds beyond the 224 this version reads'
       - id: events_groups
         type: events_groups
@@ -1441,7 +1446,7 @@ types:
         type: u8_nullable
         doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: block_extension
-        size: _parent.message_header.block_length - 221
+        size: _parent.message_header.simple_binary_header.block_length - 221
         doc: 'Bytes the stated block holds beyond the 221 this version reads'
       - id: events_groups
         type: events_groups
@@ -1670,7 +1675,7 @@ types:
         encoding: ASCII
         doc: 'Long name of the instrument'
       - id: block_extension
-        size: _parent.message_header.block_length - 255
+        size: _parent.message_header.simple_binary_header.block_length - 255
         doc: 'Bytes the stated block holds beyond the 255 this version reads'
       - id: events_groups
         type: events_groups
@@ -1920,7 +1925,7 @@ types:
         type: u8_nullable
         doc: 'External unique instrument ID. Nullable, No Value = 18446744073709551615'
       - id: block_extension
-        size: _parent.message_header.block_length - 338
+        size: _parent.message_header.simple_binary_header.block_length - 338
         doc: 'Bytes the stated block holds beyond the 338 this version reads'
       - id: events_groups
         type: events_groups
@@ -2104,7 +2109,7 @@ types:
         encoding: ASCII
         doc: 'Full Repo Term Code'
       - id: block_extension
-        size: _parent.message_header.block_length - 275
+        size: _parent.message_header.simple_binary_header.block_length - 275
         doc: 'Bytes the stated block holds beyond the 275 this version reads'
       - id: events_groups
         type: events_groups
@@ -2225,7 +2230,7 @@ types:
         type: s4
         doc: 'Security ID'
       - id: block_extension
-        size: _parent.message_header.block_length - 13
+        size: _parent.message_header.simple_binary_header.block_length - 13
         doc: 'Bytes the stated block holds beyond the 13 this version reads'
       - id: snapshot_refresh_top_orders_groups
         type: snapshot_refresh_top_orders_groups
@@ -2294,7 +2299,7 @@ types:
         enum: security_trading_event
         doc: 'Identifies an additional event or a rule related to the status'
       - id: block_extension
-        size: _parent.message_header.block_length - 30
+        size: _parent.message_header.simple_binary_header.block_length - 30
         doc: 'Bytes the stated block holds beyond the 30 this version reads'
       - id: security_status_workup_groups
         type: security_status_workup_groups
@@ -2345,7 +2350,7 @@ types:
         type: decimal_s8_9_nullable
         doc: 'Differential value for price banding. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: block_extension
-        size: _parent.message_header.block_length - 37
+        size: _parent.message_header.simple_binary_header.block_length - 37
         doc: 'Bytes the stated block holds beyond the 37 this version reads'
       - id: snapshot_full_refresh_tcp_groups
         type: snapshot_full_refresh_tcp_groups
@@ -2405,7 +2410,7 @@ types:
         size: 2
         doc: '2 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 11
+        size: _parent.message_header.simple_binary_header.block_length - 11
         doc: 'Bytes the stated block holds beyond the 11 this version reads'
       - id: collateral_market_value_groups
         type: collateral_market_value_groups
@@ -2469,7 +2474,7 @@ types:
         size: 5
         doc: '5 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 70
+        size: _parent.message_header.simple_binary_header.block_length - 70
         doc: 'Bytes the stated block holds beyond the 70 this version reads'
   negotiation_response:
     seq:
@@ -2486,7 +2491,7 @@ types:
         size: 4
         doc: '4 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 22
+        size: _parent.message_header.simple_binary_header.block_length - 22
         doc: 'Bytes the stated block holds beyond the 22 this version reads'
   terminate:
     seq:
@@ -2509,7 +2514,7 @@ types:
         size: 5
         doc: '5 bytes padding'
       - id: block_extension
-        size: _parent.message_header.block_length - 70
+        size: _parent.message_header.simple_binary_header.block_length - 70
         doc: 'Bytes the stated block holds beyond the 70 this version reads'
   request_ack:
     seq:
@@ -2525,7 +2530,7 @@ types:
         enum: md_req_id_status
         doc: 'Status of the request acknowledgement'
       - id: block_extension
-        size: _parent.message_header.block_length - 6
+        size: _parent.message_header.simple_binary_header.block_length - 6
         doc: 'Bytes the stated block holds beyond the 6 this version reads'
       - id: request_ack_security_groups
         type: request_ack_security_groups
@@ -2586,7 +2591,7 @@ types:
         encoding: ASCII
         doc: 'Reject reason details'
       - id: block_extension
-        size: _parent.message_header.block_length - 105
+        size: _parent.message_header.simple_binary_header.block_length - 105
         doc: 'Bytes the stated block holds beyond the 105 this version reads'
   nanosecond_timestamp:
     seq:

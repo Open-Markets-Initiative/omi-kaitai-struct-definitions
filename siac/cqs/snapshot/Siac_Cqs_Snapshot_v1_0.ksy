@@ -136,14 +136,14 @@ types:
         enum: participant_id
         doc: 'Participant or Processor that generated the message'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%. Implied decimal with scale 1e-6'
       - id: reserved
         type: u1
         doc: 'Field is reserved for future use'
@@ -394,6 +394,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -417,7 +424,7 @@ enums:
       id: 'only_one_block'
       doc: 'Only one Block in Snapshot sequence'
   message_category:
-    0x4b:
+    0x52:
       id: 'snapshot'
       doc: 'Snapshot Message Header'
   snapshot_message_type:

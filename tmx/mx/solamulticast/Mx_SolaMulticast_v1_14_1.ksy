@@ -4286,7 +4286,7 @@ types:
         type: str
         size: 1
         encoding: ASCII
-        doc: 'Contract expiry month from the first expiring leg Refer to Month Codes'
+        doc: 'Contract expiry month from the first expiring leg Refer to Month Codes. For Market Flow Indicator first letter W, use the Call Options and Strategies month table (A-L). For first letter U, V or Y, use the Futures / Futures Options / Strategies month table. For June, W uses F and U, V and Y use M'
       - id: expiry_day
         type: str
         size: 2

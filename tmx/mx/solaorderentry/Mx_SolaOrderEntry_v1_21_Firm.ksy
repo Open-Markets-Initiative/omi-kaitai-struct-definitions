@@ -220,8 +220,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: clearing_data
         type: clearing_data
         doc: 'The guide states these fields once, as Clearing Data, for every message that carries them'
@@ -333,8 +335,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: type_of_cancellation_q_quotes_only
         type: u1
         enum: type_of_cancellation_q_quotes_only
@@ -344,19 +348,19 @@ types:
       - id: incoming_messages_header
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
-      - id: group
+      - id: group_filter
         type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
-      - id: instrument
+        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value ='
+      - id: instrument_filter
         type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        doc: 'Instrument identification within a group. Nullable, No Value ='
       - id: type_of_cancellation
         type: u1
         enum: type_of_cancellation
         doc: 'Type of cancellation: A = All Q = QuotesOnly O = OrdersOnly S = StopOrdersOnly M = MarketOrdersOnly'
       - id: account_type_filter
         type: str_8_nullable
-        doc: 'List of account types: ‘24’ for both House and Pro ‘12’ for both Customer and House. Nullable, No Value = 0'
+        doc: 'List of account types: ‘24’ for both House and Pro ‘12’ for both Customer and House. Nullable, No Value ='
   set_group_risk_limits:
     seq:
       - id: incoming_messages_header
@@ -382,8 +386,10 @@ types:
         type: str_4_nullable
         doc: 'Last four (4) Characters of the Trader ID. Nullable, No Value = 0'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: net_exposure_action
         type: u1
         enum: net_exposure_action
@@ -499,11 +505,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: price_type
         type: u1
         enum: price_type
@@ -569,11 +579,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: price_type
         type: u1
         enum: price_type
@@ -687,11 +701,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: filler_1
         size: 1
         doc: 'Stated inline as String (1)'
@@ -776,8 +794,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -796,11 +816,15 @@ types:
   bulk_quote_price_4_quantity_2_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -821,8 +845,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -841,11 +867,15 @@ types:
   bulk_quote_price_6_quantity_2_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -866,8 +896,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -886,11 +918,15 @@ types:
   bulk_quote_price_8_quantity_2_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -911,8 +947,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -931,11 +969,15 @@ types:
   bulk_quote_price_10_quantity_2_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -956,8 +998,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -976,11 +1020,15 @@ types:
   bulk_quote_price_4_quantity_4_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1001,8 +1049,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1021,11 +1071,15 @@ types:
   bulk_quote_price_6_quantity_4_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1046,8 +1100,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1066,11 +1122,15 @@ types:
   bulk_quote_price_8_quantity_4_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1091,8 +1151,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1111,11 +1173,15 @@ types:
   bulk_quote_price_10_quantity_4_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1136,8 +1202,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1156,11 +1224,15 @@ types:
   bulk_quote_price_4_quantity_6_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1181,8 +1253,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1201,11 +1275,15 @@ types:
   bulk_quote_price_6_quantity_6_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1226,8 +1304,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1246,11 +1326,15 @@ types:
   bulk_quote_price_8_quantity_6_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1271,8 +1355,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1291,11 +1377,15 @@ types:
   bulk_quote_price_10_quantity_6_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1316,8 +1406,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1336,11 +1428,15 @@ types:
   bulk_quote_price_4_quantity_8_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1361,8 +1457,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1381,11 +1479,15 @@ types:
   bulk_quote_price_6_quantity_8_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1406,8 +1508,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1426,11 +1530,15 @@ types:
   bulk_quote_price_8_quantity_8_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1451,8 +1559,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: quote_identifier_on_this_group
         type: str
         size: 8
@@ -1471,11 +1581,15 @@ types:
   bulk_quote_occurrence:
     seq:
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: verb_side
         type: u1
         enum: verb_side
@@ -1496,11 +1610,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: quantity
         type: str_8_nullable
         doc: 'Number of contracts or shares. Nullable, No Value = 0'
@@ -1514,8 +1632,10 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: protection_type_advanced_protection_advanced_protection_disabled
         type: u1
         enum: protection_type_advanced_protection_advanced_protection_disabled
@@ -1526,11 +1646,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: quantity
         type: str_8_nullable
         doc: 'Number of contracts or shares. Nullable, No Value = 0'
@@ -1540,11 +1664,15 @@ types:
         type: incoming_messages_header
         doc: 'The guide states these fields once, as the Incoming Messages Header, for every business message a Participant sends. Message Type is read by the packet before the branch, so it is not repeated here'
       - id: group
-        type: str_2_nullable
-        doc: 'Group identification within the system. A group is composed of instruments. Nullable, No Value = 0'
+        type: str
+        size: 2
+        encoding: ASCII
+        doc: 'Group identification within the system. A group is composed of instruments'
       - id: instrument
-        type: str_4_nullable
-        doc: 'Instrument identification within a group. Nullable, No Value = 0'
+        type: str
+        size: 4
+        encoding: ASCII
+        doc: 'Instrument identification within a group'
       - id: cancelled_order_id
         type: str
         size: 8
@@ -1590,15 +1718,6 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: text == "0"
-  str_2_nullable:
-    seq:
-      - id: value
-        size: 2
-    instances:
-      text:
-        value: value.to_s("ASCII")
-      is_null:
-        value: text == "0"
   str_50_nullable:
     seq:
       - id: value
@@ -1608,6 +1727,15 @@ types:
         value: value.to_s("ASCII")
       is_null:
         value: value[0] == 32
+  str_2_nullable:
+    seq:
+      - id: value
+        size: 2
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "  "
   str_10_nullable:
     seq:
       - id: value
@@ -1695,76 +1823,76 @@ enums:
   open_close:
     0x4f:
       id: 'all_legs_are_open_or_single_security'
-      doc: 'All Legs Are Open Or Single Security'
+      doc: 'Any Number Of Legs Or Single Security'
     0x43:
       id: 'all_legs_are_closed_or_single_security'
-      doc: 'All Legs Are Closed Or Single Security'
+      doc: 'Any Number Of Legs Or Single Security'
     0x31:
       id: 'leg_1_open_leg_2_close'
-      doc: '1 St Leg Open 2 Nd Leg Close'
+      doc: '2 Legged Strategy'
     0x32:
       id: 'leg_1_close_leg_2_open'
-      doc: '1 St Leg Close 2 Nd Leg Open'
+      doc: '2 Legged Strategy'
     0x33:
       id: 'leg_1_open_leg_2_open_leg_3_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x34:
       id: 'leg_1_open_leg_2_close_leg_3_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x35:
       id: 'leg_1_open_leg_2_close_leg_3_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x36:
       id: 'leg_1_close_leg_2_open_leg_3_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x37:
       id: 'leg_1_close_leg_2_open_leg_3_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close'
+      doc: '3 Legged Strategy'
     0x38:
       id: 'leg_1_close_leg_2_close_leg_3_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open'
+      doc: '3 Legged Strategy'
     0x41:
       id: 'leg_1_open_leg_2_open_leg_3_open_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x42:
       id: 'leg_1_open_leg_2_open_leg_3_close_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x44:
       id: 'leg_1_open_leg_2_open_leg_3_close_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x45:
       id: 'leg_1_open_leg_2_close_leg_3_open_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x46:
       id: 'leg_1_open_leg_2_close_leg_3_open_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x47:
       id: 'leg_1_open_leg_2_close_leg_3_close_leg_4_open'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x48:
       id: 'leg_1_open_leg_2_close_leg_3_close_leg_4_close'
-      doc: '1 St Leg Open 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x49:
       id: 'leg_1_close_leg_2_open_leg_3_open_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4a:
       id: 'leg_1_close_leg_2_open_leg_3_open_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x4b:
       id: 'leg_1_close_leg_2_open_leg_3_close_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4c:
       id: 'leg_1_close_leg_2_open_leg_3_close_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Open 3 Rd Leg Close 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x4d:
       id: 'leg_1_close_leg_2_close_leg_3_open_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Open'
+      doc: '4 Legged Strategy'
     0x4e:
       id: 'leg_1_close_leg_2_close_leg_3_open_leg_4_close'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Open 4 Th Leg Close'
+      doc: '4 Legged Strategy'
     0x50:
       id: 'leg_1_close_leg_2_close_leg_3_close_leg_4_open'
-      doc: '1 St Leg Close 2 Nd Leg Close 3 Rd Leg Close 4 Th Leg Open'
+      doc: '4 Legged Strategy'
   hedge_spec:
     0x48:
       id: 'hedger'

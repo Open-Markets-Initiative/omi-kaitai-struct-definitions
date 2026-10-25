@@ -363,14 +363,14 @@ types:
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value. Level 1 = 7% of Previous Close S&P 500 Value. Has implied 6 decimal places. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%. Implied decimal with scale 1e-6'
       - id: reserved
         type: u1
         doc: 'Field is reserved for future use'
@@ -909,6 +909,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -1040,7 +1047,7 @@ enums:
       id: 'end_of_day_message'
       doc: 'End Of Day Message'
   market_status_message_type:
-    0x4d:
+    0x4b:
       id: 'market_wide_circuit_breaker_decline_level_status_message'
       doc: 'Market Wide Circuit Breaker Decline Level Status Message'
     0x4c:

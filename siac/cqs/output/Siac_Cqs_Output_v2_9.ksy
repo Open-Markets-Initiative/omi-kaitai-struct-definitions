@@ -120,8 +120,6 @@ types:
             'control_message_type::start_of_day_message': start_of_day_message
             'control_message_type::finra_close_message': finra_close_message
             'control_message_type::reset_block_sequence_number_message': reset_block_sequence_number_message
-            'control_message_type::start_of_test_cycle_message': start_of_test_cycle_message
-            'control_message_type::end_of_test_cycle_message': end_of_test_cycle_message
             'control_message_type::finra_open_message': finra_open_message
             'control_message_type::disaster_recovery_data_center_activation_message': disaster_recovery_data_center_activation_message
             'control_message_type::line_integrity_message': line_integrity_message
@@ -171,42 +169,6 @@ types:
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
   reset_block_sequence_number_message:
-    seq:
-      - id: participant_id
-        type: u1
-        enum: participant_id
-        doc: 'Participant or Processor that generated the message'
-      - id: participant_timestamp
-        type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
-      - id: message_id
-        type: u1
-        doc: 'The Message ID identifies the individual message within the block beginning with number one'
-      - id: transaction_id
-        type: u4
-        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
-      - id: participant_reference_number
-        type: s8
-        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
-  start_of_test_cycle_message:
-    seq:
-      - id: participant_id
-        type: u1
-        enum: participant_id
-        doc: 'Participant or Processor that generated the message'
-      - id: participant_timestamp
-        type: participant_timestamp
-        doc: 'Participant Timestamp. Nanoseconds since Unix epoch'
-      - id: message_id
-        type: u1
-        doc: 'The Message ID identifies the individual message within the block beginning with number one'
-      - id: transaction_id
-        type: u4
-        doc: 'The Transaction Id will be populated by CQS and is Reserved for Internal Use only'
-      - id: participant_reference_number
-        type: s8
-        doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
-  end_of_test_cycle_message:
     seq:
       - id: participant_id
         type: u1
@@ -327,14 +289,14 @@ types:
         type: s8
         doc: 'Participant Reference Number is a pass-thru of the inbound Participant Reference number assigned to a transaction'
       - id: mwcb_level_1
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 7%. Implied decimal with scale 1e-6'
       - id: mwcb_level_2
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 13%. Implied decimal with scale 1e-6'
       - id: mwcb_level_3
-        type: s8
-        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%'
+        type: decimal_s8_6
+        doc: 'Identifies the daily established drop level value (trigger value) associated with each Decline Level 20%. Implied decimal with scale 1e-6'
       - id: reserved
         type: u1
         doc: 'Field is reserved for future use'
@@ -868,6 +830,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  decimal_s8_6:
+    seq:
+      - id: mantissa
+        type: s8
+    instances:
+      real:
+        value: mantissa / 1000000.0
   decimal_u8_6:
     seq:
       - id: mantissa
@@ -911,12 +880,6 @@ enums:
     0x4c:
       id: 'reset_block_sequence_number_message'
       doc: 'Reset Block Sequence Number Message'
-    0x4d:
-      id: 'start_of_test_cycle_message'
-      doc: 'Start Of Test Cycle Message'
-    0x4e:
-      id: 'end_of_test_cycle_message'
-      doc: 'End Of Test Cycle Message'
     0x4f:
       id: 'finra_open_message'
       doc: 'Finra Open Message'
@@ -991,7 +954,7 @@ enums:
       id: 'cboe_bzx'
       doc: 'Cboe BZX Exchange'
   market_status_message_type:
-    0x4d:
+    0x4b:
       id: 'market_wide_circuit_breaker_decline_level_status_message'
       doc: 'Market Wide Circuit Breaker Decline Level Status Message'
     0x4c:

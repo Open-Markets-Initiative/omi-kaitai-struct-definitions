@@ -46,6 +46,17 @@ seq:
 types:
   mach_message_struct:
     seq:
+      - id: mach_packet_header
+        type: mach_packet_header
+        doc: 'Mach packet header (12 bytes)'
+      - id: payload
+        size: mach_packet_header.packet_length - 12
+        type:
+          switch-on: mach_packet_header.packet_type
+          cases:
+            'packet_type::application_message': application_message
+  mach_packet_header:
+    seq:
       - id: sequence_number
         type: u8
         doc: 'Original sequence number from the live feed'
@@ -59,11 +70,6 @@ types:
       - id: session_number
         type: u1
         doc: 'protocol packet type'
-      - id: payload
-        type:
-          switch-on: packet_type
-          cases:
-            'packet_type::application_message': application_message
   application_message:
     seq:
       - id: message_type
@@ -71,7 +77,7 @@ types:
         enum: message_type
         doc: 'Code identifying this message type'
       - id: data
-        size: _parent.packet_length - 12 - 1
+        size: _parent.mach_packet_header.packet_length - 12 - 1
         type:
           switch-on: message_type
           cases:
