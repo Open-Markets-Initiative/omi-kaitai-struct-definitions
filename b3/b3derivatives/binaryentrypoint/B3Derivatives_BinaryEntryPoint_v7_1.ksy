@@ -128,8 +128,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: timestamp
-        type: u8
-        doc: 'timestamp'
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: entering_firm
         type: u4
         doc: 'enteringFirm'
@@ -204,8 +204,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: entering_firm
         type: u4
         doc: 'enteringFirm'
@@ -221,8 +221,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: entering_firm_optional
         type: u4_nullable
         doc: 'enteringFirm. Nullable, No Value = 0'
@@ -248,8 +248,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: timestamp
-        type: u8
-        doc: 'timestamp'
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: keep_alive_interval
         type: u8
         doc: 'keepAliveInterval'
@@ -281,8 +281,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: keep_alive_interval
         type: u8
         doc: 'keepAliveInterval'
@@ -304,8 +304,8 @@ types:
         type: u8
         doc: 'sessionVerID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: establishment_reject_code
         type: u1
         enum: establishment_reject_code
@@ -359,8 +359,8 @@ types:
         type: u4
         doc: 'sessionID'
       - id: timestamp
-        type: u8
-        doc: 'timestamp'
+        type: nanosecond_timestamp
+        doc: 'timestamp. Nanoseconds since Unix epoch'
       - id: from_seq_no
         type: u4
         doc: 'fromSeqNo'
@@ -376,8 +376,8 @@ types:
         type: u4
         doc: 'sessionID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: next_seq_no
         type: u4
         doc: 'nextSeqNo'
@@ -393,8 +393,8 @@ types:
         type: u4
         doc: 'sessionID'
       - id: request_timestamp
-        type: u8
-        doc: 'requestTimestamp'
+        type: nanosecond_timestamp
+        doc: 'requestTimestamp. Nanoseconds since Unix epoch'
       - id: retransmit_reject_code
         type: u1
         enum: retransmit_reject_code
@@ -2470,6 +2470,19 @@ types:
       - id: block_extension
         size: _parent.group_size_encoding.block_length - 4
         doc: 'Bytes the stated block holds beyond the 4 this version reads'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
   u4_nullable:
     seq:
       - id: value
@@ -2484,19 +2497,6 @@ types:
     instances:
       is_null:
         value: value == 0
-  nanosecond_timestamp:
-    seq:
-      - id: time
-        type: s8
-    instances:
-      hour:
-        value: time / 3600000000000 % 24
-      minute:
-        value: time / 60000000000 % 60
-      second:
-        value: time / 1000000000 % 60
-      millisecond:
-        value: time / 1000000 % 1000
   nanosecond_timestamp_nullable:
     seq:
       - id: value
