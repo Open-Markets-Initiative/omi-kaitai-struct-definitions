@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'TMX Group Toronto Stock Exchange Index Feed Qrtmd v1.19'
-doc-ref: https://www.tmxwebstore.com/
+doc-ref: https://www.tmxwebstore.com/products/qrtmd
 
 seq:
   - id: qrtmd_stx

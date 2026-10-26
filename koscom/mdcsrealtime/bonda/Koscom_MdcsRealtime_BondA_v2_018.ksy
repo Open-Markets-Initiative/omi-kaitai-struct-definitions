@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'Koscom Co., Ltd. MDCS Realtime Market Data MDCS Realtime Bond A Exture v2.018'
-doc-ref: https://data.koscom.co.kr
+doc-ref: https://www.koscom.co.kr/eng
 
 seq:
   - id: packet

@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'TMX Group TSX Alpha Exchange Level 1 Qrtmd v2.1'
-doc-ref: https://www.tmxwebstore.com/
+doc-ref: https://www.tmxwebstore.com/products/qrtmd
 
 seq:
   - id: qrtmd_stx

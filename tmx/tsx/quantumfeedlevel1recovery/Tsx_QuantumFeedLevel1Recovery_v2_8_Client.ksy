@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'TMX Group Toronto Stock Exchange Quantum Feed Level 1 Recovery Xmt v2.8'
-doc-ref: https://www.tmxwebstore.com/
+doc-ref: https://www.tmxwebstore.com/products/binary-feeds-quantumfeeds
 
 seq:
   - id: client_frame

@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.13.3'
-doc-ref: https://www.tmxwebstore.com
+doc-ref: https://www.tmxwebstore.com/products/mx-market-data
 
 seq:
   - id: server_frame

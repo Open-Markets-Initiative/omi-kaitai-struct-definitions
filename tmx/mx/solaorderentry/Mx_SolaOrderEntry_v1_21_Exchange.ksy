@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'TMX Group Montreal Exchange Sola Order Entry Sail v1.21'
-doc-ref: https://www.tmxwebstore.com
+doc-ref: https://www.tmxwebstore.com/products/mx-order-entry
 
 seq:
   - id: message_length

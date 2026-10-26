@@ -7,7 +7,7 @@
 #   Encoding: Simple Binary Encoding
 #   Version: 1.10.a
 #   Date: 2/25/2026
-#   Specification: MXOP-Specifications-20260225.zip
+#   Specification: Unknown
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -36,7 +36,6 @@ meta:
   endian: be
 
 doc: 'The Members Exchange Memx Options Members Orders Sbe v1.10.a'
-doc-ref: https://memxtrading.com
 
 seq:
   - id: common_header

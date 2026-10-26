@@ -36,7 +36,7 @@ meta:
   endian: le
 
 doc: 'TMX Group Toronto Stock Exchange Quantum Feed Level 1 Xmt v2.6'
-doc-ref: https://www.tmxwebstore.com/
+doc-ref: https://www.tmxwebstore.com/products/binary-feeds-quantumfeeds
 
 seq:
   - id: packet

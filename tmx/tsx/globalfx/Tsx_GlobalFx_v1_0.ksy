@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'TMX Group Toronto Stock Exchange Global Fx Feed Gfx v1.0'
-doc-ref: https://www.tmx.com/market-data
+doc-ref: https://www.tmxwebstore.com/products/global-fx
 
 seq:
   - id: msg_type
