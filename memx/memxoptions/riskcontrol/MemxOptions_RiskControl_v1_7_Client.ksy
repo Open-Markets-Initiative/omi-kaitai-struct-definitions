@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'The Members Exchange Memx Options Risk Control Sbe v1.7'
-doc-ref: https://memxtrading.com
+doc-ref: https://www.memxtrading.com/specs
 
 seq:
   - id: common_header

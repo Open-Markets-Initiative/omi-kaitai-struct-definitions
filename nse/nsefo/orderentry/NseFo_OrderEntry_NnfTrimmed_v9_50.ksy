@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'National Stock Exchange of India Ltd NSE Futures & Options Order Entry NnfTrimmed v9.50'
-doc-ref: https://www.nseindia.com/trade/members-trading-software-vendors-api-download
+doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:
   - id: message

@@ -36,6 +36,7 @@ meta:
   endian: be
 
 doc: 'The Members Exchange Memx Options Members Orders Sbe v1.10.a'
+doc-ref: https://www.memxtrading.com/specs
 
 seq:
   - id: common_header

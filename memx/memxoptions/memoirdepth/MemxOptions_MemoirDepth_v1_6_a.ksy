@@ -36,7 +36,7 @@ meta:
   endian: be
 
 doc: 'The Members Exchange Memx Options Member Order Information Record Depth Sbe v1.6.a'
-doc-ref: https://memxtrading.com/
+doc-ref: https://www.memxtrading.com/specs
 
 seq:
   - id: common_header
