@@ -387,7 +387,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Corresponds to MMT v3 Level 3.12'
-      - id: giveup_flag
+      - id: give_up_flag
         type: str
         size: 4
         encoding: ASCII

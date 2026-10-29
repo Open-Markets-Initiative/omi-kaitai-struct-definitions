@@ -245,10 +245,10 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Trade. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: bypass
         type: u1
         enum: bypass
@@ -299,10 +299,10 @@ types:
         doc: 'The Price In A Valid Currency. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: trade_time_stamp
         type: hhmmss_time_nullable
         doc: 'The Time At Which The Trade Occurred Manually Set When A Trade Is Added. Nullable, No Value = 0'
@@ -530,8 +530,8 @@ enums:
       id: 'nn'
       doc: 'Nn'
     0x4d:
-      id: 'ms_derivativesrelated_contingent_equity_trade'
-      doc: 'Ms Derivativesrelated Contingent Equity Trade'
+      id: 'ms_derivatives_related_contingent_equity_trade'
+      doc: 'Ms Derivatives Related Contingent Equity Trade'
     0x54:
       id: 'ct_cash_today'
       doc: 'Ct Cash Today'

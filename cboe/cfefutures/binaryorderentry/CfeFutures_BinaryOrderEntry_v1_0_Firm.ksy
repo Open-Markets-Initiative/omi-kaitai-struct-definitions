@@ -649,8 +649,8 @@ enums:
       id: 'electronic'
       doc: 'Electronic'
     0x43:
-      id: 'vendorprovided_platform_billed_by'
-      doc: 'Vendorprovided Platform Billed By'
+      id: 'vendor_provided_platform_billed_by'
+      doc: 'Vendor Provided Platform Billed By'
     0x47:
       id: 'sponsored_access_via_exchange_api'
       doc: 'Sponsored Access Via Exchange Api'

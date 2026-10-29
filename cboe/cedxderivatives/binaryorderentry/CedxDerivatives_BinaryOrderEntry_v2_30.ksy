@@ -13467,7 +13467,7 @@ enums:
       id: 'desk'
       doc: 'Desk'
     0x43:
-      id: 'vendorprovided_platform_billed_by_executing_broker'
+      id: 'vendor_provided_platform_billed_by_executing_broker'
       doc: 'Vendor-provided Platform billed by Executing Broker (For complex)'
     0x47:
       id: 'sponsored_access_via_exchange_api_or_fix_provided_by'
@@ -13476,7 +13476,7 @@ enums:
       id: 'premium_algorithmic_trading_provider_billed_by_execut'
       doc: 'Premium Algorithmic Trading Provider, billed by Execut- ing Broker (For complex)'
     0x44:
-      id: 'other_including_otherprovided_screen'
+      id: 'other_including_other_provided_screen'
       doc: 'Other, including other-provided screen (For complex)'
   account_type:
     0x31:
@@ -14130,13 +14130,13 @@ enums:
       doc: 'Session End'
   multileg_reporting_type:
     0x31:
-      id: 'singleleg_simple_instrument'
+      id: 'single_leg_simple_instrument'
       doc: 'Single-leg /Simple instrument'
     0x32:
-      id: 'individual_leg_of_multileg_instrument'
+      id: 'individual_leg_of_multi_leg_instrument'
       doc: 'Individual leg of multi-leg instrument (Options), or Sim- ple instrument execution that is part of a Spread instrument execution (Futures)'
     0x33:
-      id: 'entire_multileg_spread_instrument_package'
+      id: 'entire_multi_leg_spread_instrument_package'
       doc: 'Entire multi-leg / Spread instrument package'
   purge_reject_reason:
     0x41:

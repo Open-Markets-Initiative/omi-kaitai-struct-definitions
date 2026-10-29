@@ -185,7 +185,7 @@ enums:
       id: 'market_on_close_or_cxd_conditional'
       doc: 'Market On Close on the Order Execution Message; CXD Conditional on the Trade Message'
     0x4c:
-      id: 'melo'
+      id: 'm_elo'
       doc: 'M-ELO, Trade Message'
     0x50:
       id: 'cxd_pure_stream'

@@ -248,9 +248,9 @@ types:
         type: u1
         enum: new_listing_flag
         doc: 'Indicates the New listing flag'
-      - id: whenissued_transaction_flag
+      - id: when_issued_transaction_flag
         type: u1
-        enum: whenissued_transaction_flag
+        enum: when_issued_transaction_flag
         doc: 'Indicates the When-issued transaction issue'
       - id: short_selling_price_restriction_applied_flag_at_the_regular_distribution
         type: u1
@@ -260,7 +260,7 @@ types:
         type: u1
         enum: loan_margin_flag
         doc: 'Indicates the Loan・margin flag'
-      - id: exdividend_exright_flag
+      - id: ex_dividend_ex_right_flag
         type: str
         size: 2
         encoding: ASCII
@@ -667,10 +667,10 @@ enums:
     0x20:
       id: 'other_than_the_above'
       doc: 'Other Than The Above'
-  whenissued_transaction_flag:
+  when_issued_transaction_flag:
     0x31:
-      id: 'whenissued_transaction_issue'
-      doc: 'Whenissued Transaction Issue'
+      id: 'when_issued_transaction_issue'
+      doc: 'When Issued Transaction Issue'
     0x20:
       id: 'other_than_the_above'
       doc: 'Other Than The Above'

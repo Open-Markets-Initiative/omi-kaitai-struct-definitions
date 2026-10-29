@@ -33,7 +33,7 @@ meta:
   id: a2x_a2xequities_udpheader_amd_v1
   title: A2X UdpHeader Amd v1
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'A2X Markets A2X Equities Udp Headers Amd v1'
 doc-ref: https://www.a2x.co.za/?page_id=734/#a2xtech

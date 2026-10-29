@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Databento Historical Dbn v3
+# Kaitai struct definition for: Databento Normalized Dbn v2
 #
 # Protocol:
 #   Organization: Databento
-#   Protocol: Historical
+#   Protocol: Normalized
 #   Encoding: Databento Binary Encoding
-#   Version: 3
+#   Version: 2
 #   Date: 10/4/2026
 #   Specification: Unknown
 #
@@ -30,15 +30,17 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: databento_marketdata_historical_dbn_v3
-  title: Databento Historical Dbn v3
+  id: databento_marketdata_normalized_dbn_v2_file
+  title: Databento Normalized Dbn v2
   license: GPL-3.0
   endian: le
 
-doc: 'Databento Databento Market Data Historical Dbn v3'
+doc: 'Databento Databento Market Data Normalized Dbn v2'
 doc-ref:
-  - https://github.com/databento/dbn
   - https://databento.com/docs/standards-and-conventions/databento-binary-encoding
+  - https://github.com/databento/dbn
+  - https://databento.com/docs/api-reference-live/basics/protocol
+  - https://github.com/databento/databento-rs
 
 seq:
   - id: metadata
@@ -201,7 +203,7 @@ types:
             'rtype::bbo_1_minute': bbo_msg
       - id: ts_out_time
         type: nanosecond_timestamp
-        if: _root.metadata.ts_out == ts_out::yes_field
+        if: == 1
         doc: 'The live gateway send timestamp, present on every record when the metadata ts_out flag is set. Nanoseconds since Unix epoch'
   record_header:
     seq:
@@ -445,6 +447,9 @@ types:
       - id: max_price_variation
         type: decimal_s8_9_nullable
         doc: 'The max price variation, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
+      - id: trading_reference_price
+        type: decimal_s8_9
+        doc: 'The trading session settlement price on trading_reference_date, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9'
       - id: unit_of_measure_qty
         type: decimal_s8_9_nullable
         doc: 'The unit of measure qty, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
@@ -457,21 +462,15 @@ types:
       - id: strike_price
         type: decimal_s8_9_nullable
         doc: 'The strike price, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: raw_instrument_id
-        type: u8
-        doc: 'The instrument ID assigned by the publisher; may be the same as instrument_id'
-      - id: leg_price
-        type: decimal_s8_9_nullable
-        doc: 'The leg price, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
-      - id: leg_delta
-        type: decimal_s8_9_nullable
-        doc: 'The leg delta, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: inst_attrib_value
         type: s4
         doc: 'A bitmap of instrument eligibility attributes; venue-specific'
       - id: underlying_id
         type: u4
         doc: 'The underlying id'
+      - id: raw_instrument_id
+        type: u4
+        doc: 'The instrument ID assigned by the publisher; may be the same as instrument_id'
       - id: market_depth_implied
         type: s4
         doc: 'The market depth implied'
@@ -505,24 +504,9 @@ types:
       - id: original_contract_size
         type: s4
         doc: 'The original contract size'
-      - id: leg_instrument_id
-        type: u4
-        doc: 'The leg instrument id'
-      - id: leg_ratio_price_numerator
-        type: s4
-        doc: 'The leg ratio price numerator'
-      - id: leg_ratio_price_denominator
-        type: s4
-        doc: 'The leg ratio price denominator'
-      - id: leg_ratio_qty_numerator
-        type: s4
-        doc: 'The leg ratio qty numerator'
-      - id: leg_ratio_qty_denominator
-        type: s4
-        doc: 'The leg ratio qty denominator'
-      - id: leg_underlying_id
-        type: u4
-        doc: 'The leg underlying id'
+      - id: trading_reference_date
+        type: u2
+        doc: 'The trading session date corresponding to the settlement price in trading_reference_price, in number of days since the UNIX epoch'
       - id: appl_id
         type: s2
         doc: 'The appl id'
@@ -535,12 +519,6 @@ types:
       - id: channel
         type: u2
         doc: 'The channel ID assigned by Databento as an incrementing integer starting at zero'
-      - id: leg_count
-        type: u2
-        doc: 'The leg count'
-      - id: leg_index
-        type: u2
-        doc: 'The leg index'
       - id: currency
         type: str
         size: 4
@@ -573,7 +551,7 @@ types:
         doc: 'The exchange'
       - id: asset
         type: str
-        size: 11
+        size: 7
         encoding: ASCII
         doc: 'The asset'
       - id: cfi
@@ -601,11 +579,6 @@ types:
         size: 4
         encoding: ASCII
         doc: 'The strike price currency'
-      - id: leg_raw_symbol
-        type: str
-        size: 71
-        encoding: ASCII
-        doc: 'The leg raw symbol'
       - id: instrument_class
         type: u1
         enum: instrument_class
@@ -614,12 +587,18 @@ types:
         type: u1
         enum: match_algorithm
         doc: 'The matching algorithm used for the instrument, typically FIFO'
+      - id: md_security_trading_status
+        type: u1
+        doc: 'The current trading state of the instrument'
       - id: main_fraction
         type: u1
         doc: 'The main fraction'
       - id: price_display_format
         type: u1
         doc: 'The price display format'
+      - id: settl_price_type
+        type: u1
+        doc: 'The type indicators for the settlement price, as a bitmap'
       - id: sub_fraction
         type: u1
         doc: 'The sub fraction'
@@ -652,17 +631,9 @@ types:
       - id: tick_rule
         type: u1
         doc: 'The tick rule'
-      - id: leg_instrument_class
-        type: u1
-        enum: leg_instrument_class
-        doc: 'The classification of the leg instrument'
-      - id: leg_side
-        type: u1
-        enum: leg_side
-        doc: 'The side taken for the leg when purchasing the spread'
-      - id: reserved_17
-        size: 17
-        doc: 'Reserved, 17 bytes'
+      - id: reserved_10
+        size: 10
+        doc: 'Reserved, 10 bytes'
   imbalance_msg:
     seq:
       - id: ts_recv
@@ -796,8 +767,8 @@ types:
         type: decimal_s8_9_nullable
         doc: 'The price where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: quantity
-        type: s8_nullable
-        doc: 'The value for non-price statistics. Nullable, No Value = 9223372036854775807'
+        type: s4_nullable
+        doc: 'The value for non-price statistics. Nullable, No Value = 2147483647'
       - id: sequence
         type: u4
         doc: 'The message sequence number assigned at the venue'
@@ -818,9 +789,9 @@ types:
       - id: stat_flags
         type: u1
         doc: 'Additional flags associated with certain stat types'
-      - id: reserved_18
-        size: 18
-        doc: 'Reserved, 18 bytes'
+      - id: reserved_6
+        size: 6
+        doc: 'Reserved, 6 bytes'
   mbo_msg:
     seq:
       - id: order_id
@@ -1033,13 +1004,13 @@ types:
     instances:
       is_null:
         value: value.mantissa == 9223372036854775807
-  s8_nullable:
+  s4_nullable:
     seq:
       - id: value
-        type: s8
+        type: s4
     instances:
       is_null:
-        value: value == 9223372036854775807
+        value: value == 2147483647
 
 enums:
   schema:
@@ -1259,28 +1230,6 @@ enums:
   user_defined_instrument:
     0x4e: 'no_field'
     0x59: 'yes_field'
-  leg_instrument_class:
-    0x42: 'bond'
-    0x43: 'call'
-    0x46: 'future'
-    0x49: 'index'
-    0x4b: 'stock'
-    0x4d: 'mixed_spread'
-    0x50: 'put'
-    0x53: 'future_spread'
-    0x54: 'option_spread'
-    0x58: 'fx_spot'
-    0x59: 'commodity_spot'
-  leg_side:
-    0x41:
-      id: 'ask'
-      doc: 'A sell order or sell aggressor in a trade'
-    0x42:
-      id: 'bid'
-      doc: 'A buy order or a buy aggressor in a trade'
-    0x4e:
-      id: 'none'
-      doc: 'No side specified by the original source'
   unpaired_side:
     0x41:
       id: 'ask'

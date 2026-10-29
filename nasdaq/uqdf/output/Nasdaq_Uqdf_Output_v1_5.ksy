@@ -836,7 +836,7 @@ enums:
       id: 'originated_from_the_market_participant'
       doc: 'Originated from the market participant'
     0x45:
-      id: 'si_pgenerated_transaction'
+      id: 'sip_generated_transaction'
       doc: 'SIP-generated transaction'
   luld_bbo_indicator:
     0x20:

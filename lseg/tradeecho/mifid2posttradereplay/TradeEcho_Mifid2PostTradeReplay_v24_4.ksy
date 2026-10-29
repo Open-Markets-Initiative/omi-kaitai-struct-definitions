@@ -283,25 +283,25 @@ types:
       - id: volume
         type: decimal_u8_4
         doc: 'Cumulative volume of all trades for the trading day. Implied decimal with scale 1e-4'
-      - id: volume_onbook_only
+      - id: volume_on_book_only
         type: decimal_u8_4
         doc: 'Cumulative volume for the trading day excluding off-book trades. Implied decimal with scale 1e-4'
       - id: vwap
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: vwap_onbook_only
+      - id: vwap_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
       - id: number_of_trades
         type: u4
         doc: 'Count of all trades for the day'
-      - id: number_of_trades_onbook_only
+      - id: number_of_trades_on_book_only
         type: u4
         doc: 'Count of trades for the day excluding off-book trades'
       - id: turnover
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: turnover_onbook_only
+      - id: turnover_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
   mifid_ii_trade_report_message:
@@ -536,7 +536,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Duplicative Indicator'
-      - id: thirdcountry_trading_venue_of_execution
+      - id: third_country_trading_venue_of_execution
         type: str_4_nullable
         doc: 'Identification of the third-country trading venue where the transaction was executed'
       - id: portfolio_transaction_flag
@@ -886,8 +886,8 @@ enums:
       id: 'negotiated_trade_larger_than_lis_brought_onto_a_venue'
       doc: 'Negotiated Trade Larger Than Lis Brought Onto A Venue'
     0x38:
-      id: 'negotiated_trade_with_pretrade_transparency_waiver'
-      doc: 'Negotiated Trade With Pretrade Transparency Waiver'
+      id: 'negotiated_trade_with_pre_trade_transparency_waiver'
+      doc: 'Negotiated Trade With Pre Trade Transparency Waiver'
     0x2d:
       id: 'not_a_negotiated_trade'
       doc: 'Not A Negotiated Trade'

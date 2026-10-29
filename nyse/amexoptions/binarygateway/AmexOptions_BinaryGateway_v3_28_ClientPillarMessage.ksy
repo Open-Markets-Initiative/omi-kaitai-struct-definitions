@@ -1715,8 +1715,8 @@ enums:
       id: 'system_not_available'
       doc: 'System Not Available'
     77:
-      id: 'system_full_mengrateexceeded'
-      doc: 'System Full Mengrateexceeded'
+      id: 'system_full_meng_rate_exceeded'
+      doc: 'System Full Meng Rate Exceeded'
     78:
       id: 'throttle_reject'
       doc: 'Throttle Reject'
@@ -1925,8 +1925,8 @@ enums:
       id: 'invalid_instruction_for_io_cs'
       doc: 'Invalid Instruction For Io Cs'
     147:
-      id: 'system_full_cgrateexceeded'
-      doc: 'System Full Cgrateexceeded'
+      id: 'system_full_cg_rate_exceeded'
+      doc: 'System Full Cg Rate Exceeded'
     148:
       id: 'pending_cancel_auction_running'
       doc: 'Pending Cancel Auction Running'

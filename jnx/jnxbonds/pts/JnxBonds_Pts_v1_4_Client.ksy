@@ -257,8 +257,8 @@ enums:
       id: 'unused'
       doc: 'Unused'
     0x50:
-      id: 'postonly'
-      doc: 'Postonly'
+      id: 'post_only'
+      doc: 'Post Only'
   capacity:
     0x41:
       id: 'agency'

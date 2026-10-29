@@ -2972,8 +2972,8 @@ enums:
       id: 'no_trade_through_exempt_reason'
       doc: 'No Trade Through Exempt Reason'
     0x46:
-      id: 'intermarket_sweep_order'
-      doc: 'Intermarket Sweep Order'
+      id: 'inter_market_sweep_order'
+      doc: 'Inter Market Sweep Order'
     0x34:
       id: 'derivatively_priced'
       doc: 'Derivatively Priced'
@@ -3236,8 +3236,8 @@ enums:
       id: 'automatic_execution'
       doc: 'Automatic Execution'
     0x46:
-      id: 'intermarket_sweep_order'
-      doc: 'Intermarket Sweep Order'
+      id: 'inter_market_sweep_order'
+      doc: 'Inter Market Sweep Order'
     0x48:
       id: 'price_variation_trade'
       doc: 'Price Variation Trade'

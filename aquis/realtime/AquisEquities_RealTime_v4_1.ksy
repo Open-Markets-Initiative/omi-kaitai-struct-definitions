@@ -33,7 +33,7 @@ meta:
   id: aquis_aquisequities_realtime_amd_v4_1
   title: Aquis RealTime Amd v4.1
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'Aquis Exchange Aquis Equities Real Time Market Data Feed Amd v4.1'
 doc-ref: https://www.aquis.eu/markets/documents
@@ -89,24 +89,24 @@ types:
   order_add:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: side
         type: u1
         enum: side
         doc: 'Side of the order'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: md_flags
         type: md_flags
         doc: 'Market data flags'
@@ -123,61 +123,61 @@ types:
   order_cancel:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: md_flags
         type: md_flags
         doc: 'Market data flags'
   order_modify:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: md_flags
         type: md_flags
         doc: 'Market data flags'
   trade:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trade_type
         type: u1
         enum: trade_type
         doc: 'Code identifying type of trade'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
       - id: trade_ref
-        type: u4le
+        type: u4
         doc: 'Trade reference number'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: mic
         type: str
         size: 4
@@ -241,20 +241,20 @@ types:
   trade_bust_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: trade_ref
-        type: u4le
+        type: u4
         doc: 'Trade reference number'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: binary_mmt
         type: binary_mmt
         doc: 'Post-trade regulatory flags (MMT)'
@@ -269,15 +269,15 @@ types:
         encoding: ASCII
         doc: 'Short name'
       - id: threshold
-        type: u8le
-        doc: 'The price threshold at which this tick data applies'
+        type: decimal_u8_5
+        doc: 'The price threshold at which this tick data applies. Implied decimal with scale 1e-5'
       - id: tick_size
-        type: u8le
-        doc: 'The tick size (price increment)'
+        type: decimal_u8_5
+        doc: 'The tick size (price increment). Implied decimal with scale 1e-5'
   security_definition_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: umtf
         type: str
@@ -310,12 +310,9 @@ types:
         size: 20
         encoding: ASCII
         doc: 'Reserved'
-      - id: lot_size
-        type: u8le
-        doc: 'Lot size for the security; always set to 1,000,000,000 to represent a lot size of 1'
-      - id: lot_size_decimal
-        type: u1
-        doc: 'Number of decimals implied in lotSize; always set to 9'
+      - id: lot_size_composite
+        type: lot_size_composite
+        doc: 'Lot size scaled at runtime by lotSizeDecimal'
   security_definition_flags:
     meta:
       bit-endian: le
@@ -344,10 +341,18 @@ types:
       - id: unused_8
         type: b8
         doc: 'Reserved'
+  lot_size_composite:
+    seq:
+      - id: lot_size
+        type: u8
+        doc: 'Lot size for the security; always set to 1,000,000,000 to represent a lot size of 1'
+      - id: lot_size_decimal
+        type: u1
+        doc: 'Number of decimals implied in lotSize; always set to 9'
   security_status_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trading_status
         type: u1
@@ -357,8 +362,8 @@ types:
         type: market_flags
         doc: 'Market status flags'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: trading_phase
         type: u1
         enum: trading_phase
@@ -382,34 +387,54 @@ types:
   ao_d_update_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: indicative_price
-        type: u8le
-        doc: 'Indicative auction price'
+        type: decimal_u8_5
+        doc: 'Indicative auction price. Implied decimal with scale 1e-5'
       - id: match_vol
-        type: u4le
+        type: u4
         doc: 'Indicative matched volume'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
   ma_c_update_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: indicative_price
-        type: u8le
-        doc: 'Indicative auction price'
+        type: decimal_u8_5
+        doc: 'Indicative auction price. Implied decimal with scale 1e-5'
       - id: closing_buy_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the buy side during the closing market; otherwise set to 0'
       - id: closing_sell_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the sell side during the closing market; otherwise set to 0'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this market data event'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
+  decimal_u8_5:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000.0
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
 
 enums:
   msg_type:

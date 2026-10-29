@@ -825,25 +825,25 @@ enums:
       id: 'opening_cross_billable'
       doc: 'O = Opening Cross (billable)'
     0x4d:
-      id: 'opening_cross_nonbillable'
+      id: 'opening_cross_non_billable'
       doc: 'M = Opening Cross (non-billable)'
     0x43:
       id: 'closing_cross_billable'
       doc: 'C = Closing Cross (billable)'
     0x4c:
-      id: 'closing_cross_nonbillable'
+      id: 'closing_cross_non_billable'
       doc: 'L = Closing Cross (non-billable)'
     0x48:
       id: 'halt_ipo_cross_billable'
       doc: 'H = Halt/IPO Cross (billable)'
     0x4b:
-      id: 'halt_ipo_cross_nonbillable'
+      id: 'halt_ipo_cross_non_billable'
       doc: 'K = Halt/IPO Cross (non-billable)'
     0x49:
-      id: 'intraday_and_postmarket_crosses'
+      id: 'intraday_and_post_market_crosses'
       doc: 'I = Intraday and post-market crosses'
     0x4a:
-      id: 'nondisplayed_and_added_liquidity'
+      id: 'non_displayed_and_added_liquidity'
       doc: 'J = Non-displayed and added liquidity'
     0x59:
       id: 're_routed_by_nyse'

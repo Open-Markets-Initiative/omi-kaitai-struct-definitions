@@ -1971,17 +1971,17 @@ enums:
       doc: 'Wash'
   multileg_reporting_type:
     0x31:
-      id: 'singleleg_instrument'
-      doc: 'Singleleg Instrument'
+      id: 'single_leg_instrument'
+      doc: 'Single Leg Instrument'
     0x32:
-      id: 'individual_leg_of_multileg_instrument'
-      doc: 'Individual Leg Of Multileg Instrument'
+      id: 'individual_leg_of_multi_leg_instrument'
+      doc: 'Individual Leg Of Multi Leg Instrument'
     0x33:
-      id: 'entire_multileg_instrument_package'
-      doc: 'Entire Multileg Instrument Package'
+      id: 'entire_multi_leg_instrument_package'
+      doc: 'Entire Multi Leg Instrument Package'
     0x34:
-      id: 'last_individual_leg_of_multileg_instrument'
-      doc: 'Last Individual Leg Of Multileg Instrument'
+      id: 'last_individual_leg_of_multi_leg_instrument'
+      doc: 'Last Individual Leg Of Multi Leg Instrument'
   sender_location_id:
     0x46:
       id: 'floor'

@@ -105,8 +105,8 @@ types:
         type:
           switch-on: inbound_quote_messages_message_type
           cases:
-            '"Q"': protected_exchange_quote_message_shortform_message
-            '"L"': protected_exchange_quote_message_longform_message
+            '"Q"': protected_exchange_quote_message_short_form_message
+            '"L"': protected_exchange_quote_message_long_form_message
             '"O"': exchange_odd_lot_quote_message_short_form_message
             '"J"': exchange_odd_lot_quote_message_long_form_message
             '"P"': exchange_combined_quote_message_short_form_message
@@ -115,7 +115,7 @@ types:
             '"F"': finra_protected_quote_message_without_bbo_info_message
             '"H"': finra_adf_odd_lot_quotation_message
             '"R"': finra_adf_combined_quote_message_with_bbo
-  protected_exchange_quote_message_shortform_message:
+  protected_exchange_quote_message_short_form_message:
     seq:
       - id: orig
         type: str
@@ -158,7 +158,7 @@ types:
         type: u1
         enum: rii
         doc: 'Retail Interest Indicator code'
-  protected_exchange_quote_message_longform_message:
+  protected_exchange_quote_message_long_form_message:
     seq:
       - id: orig
         type: str
@@ -1940,17 +1940,17 @@ enums:
       id: 'closed_quote'
       doc: 'Closed Quote'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote_automated'
       doc: 'Opening Quote Automated'
     0x52:
-      id: 'regular_twosided_open_quote_automated'
-      doc: 'Regular Twosided Open Quote Automated'
+      id: 'regular_two_sided_open_quote_automated'
+      doc: 'Regular Two Sided Open Quote Automated'
     0x55:
-      id: 'manual_bid_and_ask_nonfirm'
-      doc: 'Manual Bid And Ask Nonfirm'
+      id: 'manual_bid_and_ask_non_firm'
+      doc: 'Manual Bid And Ask Non Firm'
     0x58:
       id: 'order_influx'
       doc: 'Order Influx'
@@ -1996,14 +1996,14 @@ enums:
       id: 'closed_quote'
       doc: 'Closed Quote'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote_automated'
       doc: 'Opening Quote Automated'
     0x52:
-      id: 'regular_twosided_open_quote_automated'
-      doc: 'Regular Twosided Open Quote Automated'
+      id: 'regular_two_sided_open_quote_automated'
+      doc: 'Regular Two Sided Open Quote Automated'
   bbo_indicator:
     0x41:
       id: 'no_finra_bbo_change'

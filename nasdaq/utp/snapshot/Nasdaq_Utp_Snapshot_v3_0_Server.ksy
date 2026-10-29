@@ -717,8 +717,8 @@ types:
       - id: num_utp_adf_mpid_odd_lot_attachment
         type: u2
         doc: 'Odd Lot Attachment Count'
-      - id: national_bbo_appendage_longform
-        type: national_bbo_appendage_longform
+      - id: national_bbo_appendage_long_form
+        type: national_bbo_appendage_long_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: finra_adf_mpid_appendage
@@ -735,7 +735,7 @@ types:
         repeat-expr: num_utp_adf_mpid_odd_lot_attachment
         if: odd_lot_attachment_type == odd_lot_attachment_type::mpid_form_odd_lot_price_levels_attached
         doc: 'UTP ADF MPID Odd Lot Attachment. Provides one or more odd lot price levels as an attachment to the odd lot or combined quote message, including ADF MPID attribution. Repeats Odd Lot Attachment Count times. ADF Market Participant Identifier is populated with the FINRA ADF MPID update if necessary'
-  national_bbo_appendage_longform:
+  national_bbo_appendage_long_form:
     seq:
       - id: nbbo_quote_condition
         type: str
@@ -1241,17 +1241,17 @@ enums:
       id: 'closed_quote'
       doc: 'Closed Quote'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote_automated'
       doc: 'Opening Quote Automated'
     0x52:
-      id: 'regular_twosided_open_quote_automated'
-      doc: 'Regular Twosided Open Quote Automated'
+      id: 'regular_two_sided_open_quote_automated'
+      doc: 'Regular Two Sided Open Quote Automated'
     0x55:
-      id: 'manual_bid_and_ask_nonfirm'
-      doc: 'Manual Bid And Ask Nonfirm'
+      id: 'manual_bid_and_ask_non_firm'
+      doc: 'Manual Bid And Ask Non Firm'
     0x58:
       id: 'order_influx'
       doc: 'Order Influx'
@@ -1269,8 +1269,8 @@ enums:
       id: 'transaction_originated_from_market_participant'
       doc: 'Transaction Originated From Market Participant'
     0x45:
-      id: 'si_pgenerated_transaction_eg_price_band_change'
-      doc: 'Si Pgenerated Transaction Eg Price Band Change'
+      id: 'sip_generated_transaction_eg_price_band_change'
+      doc: 'Sip Generated Transaction Eg Price Band Change'
   luld_bbo_indicator:
     0x20:
       id: 'limit_up_limit_down_not_applicable'

@@ -33,7 +33,7 @@ meta:
   id: aquis_aquisequities_udpheader_amd_v1_0
   title: Aquis UdpHeader Amd v1.0
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'Aquis Exchange Aquis Equities Udp Headers Amd v1.0'
 doc-ref: https://www.aquis.eu/technologies

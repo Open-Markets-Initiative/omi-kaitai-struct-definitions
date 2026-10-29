@@ -1111,7 +1111,7 @@ enums:
       id: 'short_sale_restriction_deactivated'
       doc: 'Short Sale Restriction Deactivated'
     0x50:
-      id: 'preopening'
+      id: 'pre_opening'
       doc: 'Pre-opening'
     0x45:
       id: 'early_session'
@@ -1241,7 +1241,7 @@ enums:
       doc: 'Short Sale Restriction in Effect'
   market_state:
     0x50:
-      id: 'preopening'
+      id: 'pre_opening'
       doc: 'Pre-opening'
     0x45:
       id: 'early_session'

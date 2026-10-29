@@ -431,8 +431,8 @@ enums:
       doc: 'Bond other than the above'
   market_identification_flag:
     0x31:
-      id: 'singleissue_transaction'
-      doc: 'Singleissue Transaction'
+      id: 'single_issue_transaction'
+      doc: 'Single Issue Transaction'
     0x32:
       id: 'basket_transaction'
       doc: 'Basket Transaction'

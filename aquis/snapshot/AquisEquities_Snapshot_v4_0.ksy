@@ -33,7 +33,7 @@ meta:
   id: aquis_aquisequities_snapshot_amd_v4_0
   title: Aquis Snapshot Amd v4.0
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'Aquis Exchange Aquis Equities Aquis Market Data Snapshot Amd v4.0'
 doc-ref: https://www.aquis.eu/markets/documents
@@ -83,18 +83,18 @@ types:
   snapshot_start_message:
     seq:
       - id: stream_seq_no
-        type: u4le
+        type: u4
         doc: 'Sequence number of the last message in the continuous stream which relates to this snapshot'
       - id: security_count
-        type: u2le
+        type: u2
         doc: 'Number of securities reported in this snapshot'
       - id: timestamp
-        type: u8le
-        doc: 'Timestamp of this snapshot'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this snapshot. Nanoseconds since Unix epoch'
   book_status_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trading_status
         type: u1
@@ -104,17 +104,17 @@ types:
         type: market_flags
         doc: 'Market status flags'
       - id: entries
-        type: u2le
+        type: u2
         doc: 'Number of open orders in the book for this security'
       - id: closing_buy_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the buy side during the closing market; otherwise 0'
       - id: closing_sell_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the sell side during the closing market; otherwise 0'
       - id: indicative_price
-        type: u8le
-        doc: 'Indicative auction price'
+        type: decimal_u8_5
+        doc: 'Indicative auction price. Implied decimal with scale 1e-5'
   market_flags:
     meta:
       bit-endian: le
@@ -134,39 +134,59 @@ types:
   book_entry_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: side
         type: u1
         enum: side
         doc: '1 = Buy Order, 2 = Sell Order'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
   ma_c_book_entry_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: side
         type: u1
         enum: side
         doc: '1 = Buy Order, 2 = Sell Order'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8le
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Unique order reference number for the day'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  decimal_u8_5:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000.0
 
 enums:
   msg_type:

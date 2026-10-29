@@ -339,7 +339,7 @@ enums:
       doc: 'Sell Implied'
   printable:
     0x4e:
-      id: 'nonprintable'
+      id: 'non_printable'
       doc: 'non-printable'
     0x59:
       id: 'printable'
@@ -393,7 +393,7 @@ enums:
       id: 'firm'
       doc: 'Firm'
     0x4d:
-      id: 'onfloor'
+      id: 'on_floor'
       doc: 'On-floor Market Maker'
     0x50:
       id: 'professional'

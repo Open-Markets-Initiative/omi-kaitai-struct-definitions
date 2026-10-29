@@ -1110,8 +1110,8 @@ enums:
       id: 'algorithmic_trade'
       doc: 'Algorithmic Trade'
     0x2d:
-      id: 'nonalgorithmic_trade'
-      doc: 'Nonalgorithmic Trade'
+      id: 'non_algorithmic_trade'
+      doc: 'Non Algorithmic Trade'
   transaction_category:
     0x44:
       id: 'dark_trade'
@@ -1316,8 +1316,8 @@ enums:
       id: 'aim'
       doc: 'Aim'
     0x43:
-      id: 'crfq'
-      doc: 'Crfq'
+      id: 'c_rfq'
+      doc: 'C Rfq'
   opening_condition:
     0x4f:
       id: 'would_open'

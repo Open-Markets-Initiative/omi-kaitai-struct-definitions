@@ -331,7 +331,7 @@ enums:
       id: 'non_display_and_mid_point'
       doc: 'Non-Display and Mid-Point Trade Now'
     0x42:
-      id: 'melo_and_continuous_book_midpoint'
+      id: 'm_elo_and_continuous_book_midpoint'
       doc: 'M-ELO and Continuous Book Midpoint'
   capacity:
     0x4f:
@@ -354,7 +354,7 @@ enums:
       id: 'not_eligible'
       doc: 'not eligible'
     0x79:
-      id: 'tradeat'
+      id: 'trade_at'
       doc: 'Trade-at Intermarket Sweep Order'
   cross_type:
     0x4e:
@@ -557,7 +557,7 @@ enums:
       id: 'halt'
       doc: 'Halt Cross'
     0x4a:
-      id: 'nondisplayed'
+      id: 'non_displayed'
       doc: 'Non-displayed adding liquidity'
     0x4e:
       id: 'passive_midpoint_execution'

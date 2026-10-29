@@ -316,7 +316,7 @@ types:
         type: b1
       - id: sm_stressed_market
         type: b1
-      - id: ew_marketwide_exceptional_circumstance
+      - id: ew_market_wide_exceptional_circumstance
         type: b1
   note_codes_bit_field_5:
     meta:
@@ -328,7 +328,7 @@ types:
         type: b1
       - id: da_digital_asset
         type: b1
-      - id: kn_knockout_buy_back_into_next_trading_day
+      - id: kn_knock_out_buy_back_into_next_trading_day
         type: b1
       - id: reserved_58
         type: b4

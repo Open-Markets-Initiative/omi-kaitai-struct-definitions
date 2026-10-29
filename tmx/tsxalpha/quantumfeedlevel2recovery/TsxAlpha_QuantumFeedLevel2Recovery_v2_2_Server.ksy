@@ -431,7 +431,7 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
@@ -440,7 +440,7 @@ types:
         doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
@@ -486,7 +486,7 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
@@ -495,7 +495,7 @@ types:
         doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
@@ -566,10 +566,10 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
@@ -616,10 +616,10 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Participating Organ Ization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
@@ -979,8 +979,8 @@ enums:
       doc: 'Sell'
   market_state:
     0x50:
-      id: 'preopen'
-      doc: 'Preopen'
+      id: 'pre_open'
+      doc: 'Pre Open'
     0x4f:
       id: 'opening'
       doc: 'Opening'

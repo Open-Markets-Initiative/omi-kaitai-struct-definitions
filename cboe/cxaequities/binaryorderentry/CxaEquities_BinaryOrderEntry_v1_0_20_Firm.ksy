@@ -923,8 +923,8 @@ enums:
       id: 'iceberg_order_reload'
       doc: 'Iceberg Order Reload'
     0x57:
-      id: 'would_have_selftraded'
-      doc: 'Would Have Selftraded'
+      id: 'would_have_self_traded'
+      doc: 'Would Have Self Traded'
     0x52:
       id: 'replaced_by_another_port_ie_purge_amend_port'
       doc: 'Replaced By Another Port Ie Purge Amend Port'

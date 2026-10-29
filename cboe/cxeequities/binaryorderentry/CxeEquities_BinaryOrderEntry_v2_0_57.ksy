@@ -9372,7 +9372,7 @@ enums:
       id: 'cboe_closing_cross'
       doc: 'Cboe Closing Cross'
     0x53:
-      id: 'liquidity_alps_bbo'
+      id: 'liquidity_a_lps_bbo'
       doc: 'Liquidity A-LPS BBO'
   central_counterparty:
     0x45:
@@ -9385,7 +9385,7 @@ enums:
       id: 'lch_sa'
       doc: 'LCH SA (Paris)'
     0x58:
-      id: 'six_xclear'
+      id: 'six_x_clear'
       doc: 'SIX x-clear'
     0x4e:
       id: 'none_clearing_suppressed_for_self_match'

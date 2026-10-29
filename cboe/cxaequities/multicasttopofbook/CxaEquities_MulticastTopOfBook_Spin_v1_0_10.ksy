@@ -317,8 +317,8 @@ enums:
       id: 'closed'
       doc: 'Closed'
     0x41:
-      id: 'premarket'
-      doc: 'Premarket'
+      id: 'pre_market'
+      doc: 'Pre Market'
     0x54:
       id: 'trading'
       doc: 'Trading'
@@ -326,8 +326,8 @@ enums:
       id: 'moc_trading'
       doc: 'Moc Trading'
     0x50:
-      id: 'postmarket'
-      doc: 'Postmarket'
+      id: 'post_market'
+      doc: 'Post Market'
     0x48:
       id: 'halted'
       doc: 'Halted'

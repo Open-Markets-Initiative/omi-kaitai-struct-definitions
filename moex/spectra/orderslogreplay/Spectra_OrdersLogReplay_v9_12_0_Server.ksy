@@ -55,8 +55,8 @@ types:
         type:
           switch-on: market_data_packet_header.msg_flags.incremental_packet
           cases:
-            'incremental_packet::snapshot_packet': server_session
-            'incremental_packet::incremental_packet': server_replay
+            false: server_session
+            true: server_replay
   market_data_packet_header:
     seq:
       - id: msg_seq_num

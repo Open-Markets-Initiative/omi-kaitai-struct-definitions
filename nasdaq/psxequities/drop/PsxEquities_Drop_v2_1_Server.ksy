@@ -825,13 +825,13 @@ enums:
       id: 'opening_cross'
       doc: 'O = Opening Cross'
     0x4d:
-      id: 'opening_cross_imbalanceonly'
+      id: 'opening_cross_imbalance_only'
       doc: 'M = Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'C = Closing Cross'
     0x4c:
-      id: 'closing_cross_imbalanceonly'
+      id: 'closing_cross_imbalance_only'
       doc: 'L = Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'
@@ -840,7 +840,7 @@ enums:
       id: 'halt_cross'
       doc: 'K = Halt Cross'
     0x4a:
-      id: 'nondisplayed_and_added_liquidity'
+      id: 'non_displayed_and_added_liquidity'
       doc: 'J = Non-displayed and added liquidity'
     0x59:
       id: 're_routed_by_nyse'

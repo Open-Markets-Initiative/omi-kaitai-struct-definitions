@@ -353,9 +353,9 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Client initiated; pass-thru. Must be left-justified'
-      - id: intermarket_sweep_eligibility
+      - id: inter_market_sweep_eligibility
         type: u1
-        enum: intermarket_sweep_eligibility
+        enum: inter_market_sweep_eligibility
         doc: 'Inter-market sweep eligibility'
       - id: cross_type
         type: u1
@@ -666,7 +666,7 @@ enums:
     0x4e:
       id: 'not_a_trade_now'
       doc: 'Not a Trade Now message'
-  intermarket_sweep_eligibility:
+  inter_market_sweep_eligibility:
     0x59:
       id: 'eligible'
       doc: 'Eligible'

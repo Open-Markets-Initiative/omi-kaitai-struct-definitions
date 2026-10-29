@@ -184,8 +184,8 @@ enums:
       id: 'afternoon_session_trading_hours'
       doc: 'Afternoon Session Trading Hours'
     23:
-      id: 'afternoon_session_preclosing'
-      doc: 'Afternoon Session Preclosing'
+      id: 'afternoon_session_pre_closing'
+      doc: 'Afternoon Session Pre Closing'
     29:
       id: 'end_of_afternoon_session'
       doc: 'End Of Afternoon Session'
@@ -250,14 +250,14 @@ enums:
       doc: 'Buy Order'
   order_condition:
     0:
-      id: 'nonconditional'
-      doc: 'Nonconditional'
+      id: 'non_conditional'
+      doc: 'Non Conditional'
     2:
-      id: 'onopen'
-      doc: 'Onopen'
+      id: 'on_open'
+      doc: 'On Open'
     4:
-      id: 'onclose'
-      doc: 'Onclose'
+      id: 'on_close'
+      doc: 'On Close'
     6:
       id: 'funari'
       doc: 'Funari'

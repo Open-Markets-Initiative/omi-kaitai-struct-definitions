@@ -463,8 +463,8 @@ enums:
       id: 'regular_trade'
       doc: 'Regular Trade'
     0x55:
-      id: 'unintentional_selfcross'
-      doc: 'Unintentional Selfcross'
+      id: 'unintentional_self_cross'
+      doc: 'Unintentional Self Cross'
   stat_update:
     0x41:
       id: 'all_stats'

@@ -496,7 +496,7 @@ enums:
       id: 'post_only'
       doc: 'Post-Only'
     0x5a:
-      id: 'changed_to_nondisplayed'
+      id: 'changed_to_non_displayed'
       doc: 'Entered as displayed but changed to non-displayed'
     0x49:
       id: 'imbalance_only'
@@ -528,7 +528,7 @@ enums:
       id: 'not_eligible'
       doc: 'not eligible'
     0x79:
-      id: 'tradeat'
+      id: 'trade_at'
       doc: 'Trade-at Intermarket Sweep Order'
   cross_type:
     0x4e:
@@ -685,7 +685,7 @@ enums:
       id: 'halt'
       doc: 'Halt Cross'
     0x4a:
-      id: 'nondisplayed'
+      id: 'non_displayed'
       doc: 'Non-displayed adding liquidity'
     0x6d:
       id: 'removed_x6d'

@@ -66,11 +66,11 @@ types:
             'message_type::security_list_message': security_list_message
             'message_type::security_list_update_report_message': security_list_update_report_message
             'message_type::security_status_message': security_status_message
-            'message_type::trade_market_post_transparency_information_topofbook_message': trade_market_post_transparency_information_topofbook_message
+            'message_type::trade_market_post_transparency_information_top_of_book_message': trade_market_post_transparency_information_top_of_book_message
             'message_type::trade_trade_amendment_or_cancellation_message': trade_trade_amendment_or_cancellation_message
             'message_type::indication_of_interest_message': indication_of_interest_message
             'message_type::rfq_market_pre_transparency_information_message': rfq_market_pre_transparency_information_message
-            'message_type::topofbook_retail_message': topofbook_retail_message
+            'message_type::top_of_book_retail_message': top_of_book_retail_message
   message_header:
     seq:
       - id: message_size
@@ -698,7 +698,7 @@ types:
       - id: block_static_range
         type: decimal_s8_6
         doc: 'Static range for parametrised blocks. Implied decimal with scale 1e-6'
-  trade_market_post_transparency_information_topofbook_message:
+  trade_market_post_transparency_information_top_of_book_message:
     seq:
       - id: sequence_number
         type: u4
@@ -827,9 +827,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -1030,7 +1030,7 @@ types:
       - id: ask_px_5
         type: decimal_s8_6_nullable
         doc: 'Sell price level 5. Implied decimal with scale 1e-6. Nullable, Market Orders = -9223372036854775808'
-  topofbook_retail_message:
+  top_of_book_retail_message:
     seq:
       - id: sequence_number
         type: u4
@@ -1166,7 +1166,7 @@ enums:
       id: 'security_status_message'
       doc: 'Message sent by the server to inform on the status of one security'
     0x10:
-      id: 'trade_market_post_transparency_information_topofbook_message'
+      id: 'trade_market_post_transparency_information_top_of_book_message'
       doc: 'Used by the server to communicate trade information related to trades resulting from order matching in channels C/D and E/F. It is also used in channels A/B when the trade is the result of order matching at the end of an auction period (where only top-of-book information is shown)'
     0x18:
       id: 'trade_trade_amendment_or_cancellation_message'
@@ -1178,7 +1178,7 @@ enums:
       id: 'rfq_market_pre_transparency_information_message'
       doc: 'Used by the server to communicate price information about RFQs. The contents of the RFQID field match those of the field IOIID in the corresponding Indication of Interest message'
     0x91:
-      id: 'topofbook_retail_message'
+      id: 'top_of_book_retail_message'
       doc: 'Specific message for the Retail Service. This message is sent through the UDP channels G/H'
   test_production_ind:
     0x54:
@@ -1459,8 +1459,8 @@ enums:
       id: 'pre_open'
       doc: 'Pre Open'
     26:
-      id: 'postclose_ready_to_trade_in_tal'
-      doc: 'Postclose Ready To Trade In Tal'
+      id: 'post_close_ready_to_trade_in_tal'
+      doc: 'Post Close Ready To Trade In Tal'
     23:
       id: 'fast_market'
       doc: 'Fast Market'
@@ -1478,11 +1478,11 @@ enums:
       id: 'halted_by_market_surveillance'
       doc: 'Halted By Market Surveillance'
     102:
-      id: 'knockout'
-      doc: 'Knockout'
+      id: 'knock_out'
+      doc: 'Knock Out'
     103:
-      id: 'knockin_pending'
-      doc: 'Knockin Pending'
+      id: 'knock_in_pending'
+      doc: 'Knock In Pending'
   static_range_type:
     0x50:
       id: 'percentage'
@@ -1586,7 +1586,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  bencrfpt_flag:
+  benc_rfpt_flag:
     0x20:
       id: 'normal_trade'
       doc: 'Normal Trade'

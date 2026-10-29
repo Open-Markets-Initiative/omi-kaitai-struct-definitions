@@ -866,28 +866,28 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Investor code 1000: Financial Investment 2000: Insurance 3000: Investment Trust 3100: Private Placement 4000: Bank 5000: Other Finance 6000: Pension Fund 7000: Unclassified 7100: Other Corporation 800'
-      - id: sellside_arbitrage_volume
+      - id: sell_side_arbitrage_volume
         type: s8
         doc: 'Sell-side Arbitrage Volume'
-      - id: sellside_arbitrage_value
+      - id: sell_side_arbitrage_value
         size: 16
         doc: 'Sell-side Arbitrage Value'
-      - id: sellside_nonarbitrage_volume
+      - id: sell_side_non_arbitrage_volume
         type: s8
         doc: 'Sell-side Non-arbitrage Volume'
-      - id: sellside_nonarbitrage_value
+      - id: sell_side_non_arbitrage_value
         size: 16
         doc: 'Sell-side Non-arbitrage Value'
-      - id: buyside_arbitrage_volume
+      - id: buy_side_arbitrage_volume
         type: s8
         doc: 'Buy-side Arbitrage Volume'
-      - id: buyside_arbitrage_value
+      - id: buy_side_arbitrage_value
         size: 16
         doc: 'Buy-side Arbitrage Value'
-      - id: buyside_nonarbitrage_volume
+      - id: buy_side_non_arbitrage_volume
         type: s8
         doc: 'Buy-side Non-arbitrage Volume'
-      - id: buyside_nonarbitrage_value
+      - id: buy_side_non_arbitrage_value
         size: 16
         doc: 'Buy-side Non-arbitrage Value'
       - id: end_keyword
@@ -904,28 +904,28 @@ types:
       - id: a_designated_number_for_an_issue_from_krx
         type: s4
         doc: 'A designated number for each issue on a daily basis from KRX'
-      - id: sellside_arbitrage_trading_remaining_quantity
+      - id: sell_side_arbitrage_trading_remaining_quantity
         type: s8
         doc: 'Sell-side Arbitrage Trading Remaining Quantity'
-      - id: buyside_arbitrage_trading_remaining_quantity
+      - id: buy_side_arbitrage_trading_remaining_quantity
         type: s8
         doc: 'Buy-side Arbitrage Trading Remaining Quantity'
-      - id: sellside_nonarbitrage_remaining_quantity
+      - id: sell_side_non_arbitrage_remaining_quantity
         type: s8
         doc: 'Sell-side Non-arbitrage Remaining Quantity'
-      - id: buyside_nonarbitrage_remaining_quantity
+      - id: buy_side_non_arbitrage_remaining_quantity
         type: s8
         doc: 'Buy-side Non-arbitrage Remaining Quantity'
-      - id: sellside_arbitrage_quantity
+      - id: sell_side_arbitrage_quantity
         type: s8
         doc: 'Sell-side Arbitrage Quantity'
-      - id: buyside_arbitrage_quantity
+      - id: buy_side_arbitrage_quantity
         type: s8
         doc: 'Buy-side Arbitrage Quantity'
-      - id: sellside_nonarbitrage_quantity
+      - id: sell_side_non_arbitrage_quantity
         type: s8
         doc: 'Sell-side Non-arbitrage Quantity'
-      - id: buyside_nonarbitrage_quantity
+      - id: buy_side_non_arbitrage_quantity
         type: s8
         doc: 'Buy-side Non-arbitrage Quantity'
       - id: arbitrage_ask_trust_trading_volume
@@ -981,28 +981,28 @@ types:
         doc: 'A keyword indicating the end of a message. (%HFF) * Data type is Int for Binary'
   program_trading_information_of_total_aggregated_information_message:
     seq:
-      - id: sellside_arbitrage_trading_remaining_quantity
+      - id: sell_side_arbitrage_trading_remaining_quantity
         type: s8
         doc: 'Sell-side Arbitrage Trading Remaining Quantity'
-      - id: buyside_arbitrage_trading_remaining_quantity
+      - id: buy_side_arbitrage_trading_remaining_quantity
         type: s8
         doc: 'Buy-side Arbitrage Trading Remaining Quantity'
-      - id: sellside_nonarbitrage_remaining_quantity
+      - id: sell_side_non_arbitrage_remaining_quantity
         type: s8
         doc: 'Sell-side Non-arbitrage Remaining Quantity'
-      - id: buyside_nonarbitrage_remaining_quantity
+      - id: buy_side_non_arbitrage_remaining_quantity
         type: s8
         doc: 'Buy-side Non-arbitrage Remaining Quantity'
-      - id: sellside_arbitrage_quantity
+      - id: sell_side_arbitrage_quantity
         type: s8
         doc: 'Sell-side Arbitrage Quantity'
-      - id: buyside_arbitrage_quantity
+      - id: buy_side_arbitrage_quantity
         type: s8
         doc: 'Buy-side Arbitrage Quantity'
-      - id: sellside_nonarbitrage_quantity
+      - id: sell_side_non_arbitrage_quantity
         type: s8
         doc: 'Sell-side Non-arbitrage Quantity'
-      - id: buyside_nonarbitrage_quantity
+      - id: buy_side_non_arbitrage_quantity
         type: s8
         doc: 'Buy-side Non-arbitrage Quantity'
       - id: arbitrage_ask_trust_trading_volume
@@ -1445,7 +1445,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Unfaithful Disclosure'
-      - id: backdoor_listing
+      - id: back_door_listing
         type: str
         size: 1
         encoding: ASCII
@@ -1616,7 +1616,7 @@ types:
       - id: unit_of_volume_in_main_board
         type: s8
         doc: 'Unit of Volume in Main Board'
-      - id: lot_size_afterhours_trading
+      - id: lot_size_after_hours_trading
         type: s8
         doc: 'Lot Size(After-hours Trading)'
       - id: rei_ts_type_code
@@ -1655,19 +1655,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Closing Price Trading Possibility in the After Hours'
-      - id: closing_price_trading_in_the_preopening_market
+      - id: closing_price_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to a Closing Price Trading in the Pre-opening Market'
-      - id: block_trading_in_the_preopening_market
+      - id: block_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Block Trading in the Pre-opening Market'
-      - id: basket_trading_in_the_preopening_market
+      - id: basket_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
@@ -1721,7 +1721,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Delisting date for Issues (Spot: the next of a last trading date, Derv: the last payment date)'
-      - id: shortterm_overheat_issue_type_code
+      - id: short_term_overheat_issue_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -2116,22 +2116,22 @@ types:
       - id: total_number_of_tradable_issues_on_competitive_trading
         type: s4
         doc: 'Total number of tradable issues on Competitive Trading'
-      - id: premarket_accumulated_trading_volume
+      - id: pre_market_accumulated_trading_volume
         type: s8
         doc: 'Pre-market accumulated trading volume in the Regular market'
-      - id: premarket_accumulated_trading_value
+      - id: pre_market_accumulated_trading_value
         size: 16
         doc: 'Pre-market accumulated trading value in the Regular market'
-      - id: mainmarket_accumulated_trading_volume
+      - id: main_market_accumulated_trading_volume
         type: s8
         doc: 'Main-market accumulated trading volume in the Regular market'
-      - id: mainmarket_accumulated_trading_value
+      - id: main_market_accumulated_trading_value
         size: 16
         doc: 'Main-market accumulated trading value in the Regular market'
-      - id: aftermarket_accumulated_trading_volume
+      - id: after_market_accumulated_trading_volume
         type: s8
         doc: 'After-market accumulated trading volume in the Regular market'
-      - id: aftermarket_accumulated_trading_value
+      - id: after_market_accumulated_trading_value
         size: 16
         doc: 'After-market accumulated trading value in the Regular market'
       - id: end_keyword

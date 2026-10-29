@@ -332,7 +332,7 @@ enums:
       id: 'firm_order'
       doc: 'Firm Order'
     0x4d:
-      id: 'onfloor_market_maker'
+      id: 'on_floor_market_maker'
       doc: 'On-floor Market Maker'
     0x42:
       id: 'broker_dealer_order'

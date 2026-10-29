@@ -219,8 +219,8 @@ enums:
       id: 'delisted'
       doc: 'Delisted'
     3:
-      id: 'exinterest'
-      doc: 'Exinterest'
+      id: 'ex_interest'
+      doc: 'Ex Interest'
     4:
       id: 'missed_an_interest_payment'
       doc: 'Missed An Interest Payment'

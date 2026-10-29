@@ -120,7 +120,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: event_code
         type: u1
@@ -132,7 +132,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -150,11 +150,8 @@ types:
         pad-right: 0x20
         doc: 'Additional instrument series information'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Reserved for future use'
+        type: str_12_nullable
+        doc: 'Reserved for future use. Nullable, No Value ='
       - id: exchange
         type: str
         size: 6
@@ -225,7 +222,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -243,11 +240,8 @@ types:
         pad-right: 0x20
         doc: 'Additional instrument series information'
       - id: isin
-        type: str
-        size: 12
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Reserved for future use'
+        type: str_12_nullable
+        doc: 'Reserved for future use. Nullable, No Value ='
       - id: exchange
         type: str
         size: 6
@@ -335,18 +329,15 @@ types:
         type: u4
         doc: 'The Settlement Date as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date'
       - id: basis_of_quotation
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Blank filled. Not available for ASX 24 products'
+        type: str_10_nullable
+        doc: 'Blank filled. Not available for ASX 24 products. Nullable, No Value ='
   combination_symbol_directory_message:
     seq:
       - id: nanoseconds
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -411,7 +402,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -476,7 +467,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -491,7 +482,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -518,7 +509,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -539,7 +530,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -557,7 +548,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -600,7 +591,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -637,7 +628,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -684,7 +675,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -711,7 +702,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -738,7 +729,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -756,7 +747,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -795,7 +786,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -857,7 +848,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -871,7 +862,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -894,7 +885,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -923,7 +914,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -952,7 +943,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: source_id
         type: str
@@ -972,7 +963,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -990,7 +981,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -1019,7 +1010,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date. Represented as number of days since 1 January 1970'
       - id: tradeable_instrument_id
         type: u4
@@ -1031,7 +1022,7 @@ types:
         type: u8
         doc: 'Number of open contracts at EOD for the specified VOI Trade Date'
       - id: voi_trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date the VOI information is applicable to'
   second_timestamp:
     seq:
@@ -1055,6 +1046,22 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
+  str_12_nullable:
+    seq:
+      - id: value
+        size: 12
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "            "
   decimal_s8_2:
     seq:
       - id: mantissa
@@ -1062,6 +1069,15 @@ types:
     instances:
       real:
         value: mantissa / 100.0
+  str_10_nullable:
+    seq:
+      - id: value
+        size: 10
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      is_null:
+        value: text == "          "
 
 enums:
   message_type:

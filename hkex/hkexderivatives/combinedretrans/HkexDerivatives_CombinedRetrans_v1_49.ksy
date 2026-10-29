@@ -1260,8 +1260,8 @@ enums:
       id: 'cesc_index_futures_and_options'
       doc: 'Cesc Index Futures And Options'
     2:
-      id: 'stock_futures_in_omdd_partition_1'
-      doc: 'Stock Futures In Omdd Partition 1'
+      id: 'stock_futures_in_omd_d_partition_1'
+      doc: 'Stock Futures In Omd D Partition 1'
     3:
       id: 'three_year_exchange_fund_note_futures'
       doc: 'Three Year Exchange Fund Note Futures'
@@ -1269,11 +1269,11 @@ enums:
       id: 'mini_hang_seng_index_futures_and_options'
       doc: 'Mini Hang Seng Index Futures And Options'
     18:
-      id: 'weekly_stock_options_in_omdd_partition_1'
-      doc: 'Weekly Stock Options In Omdd Partition 1'
+      id: 'weekly_stock_options_in_omd_d_partition_1'
+      doc: 'Weekly Stock Options In Omd D Partition 1'
     20:
-      id: 'stock_options_in_omdd_partition_1'
-      doc: 'Stock Options In Omdd Partition 1'
+      id: 'stock_options_in_omd_d_partition_1'
+      doc: 'Stock Options In Omd D Partition 1'
     24:
       id: 'hibor'
       doc: 'Hibor'
@@ -1371,11 +1371,11 @@ enums:
       id: 'cash_settled_cnhusd_futures'
       doc: 'Cash Settled Cnhusd Futures'
     143:
-      id: 'stock_futures_in_omdd_partition_3'
-      doc: 'Stock Futures In Omdd Partition 3'
+      id: 'stock_futures_in_omd_d_partition_3'
+      doc: 'Stock Futures In Omd D Partition 3'
     145:
-      id: 'weekly_stock_options_in_omdd_partition_3'
-      doc: 'Weekly Stock Options In Omdd Partition 3'
+      id: 'weekly_stock_options_in_omd_d_partition_3'
+      doc: 'Weekly Stock Options In Omd D Partition 3'
     153:
       id: 'msci_china_a_50_connect_index_futures'
       doc: 'Msci China A 50 Connect Index Futures'

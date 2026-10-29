@@ -103,17 +103,17 @@ types:
         type:
           switch-on: trade_message_type
           cases:
-            '"A"': trade_report_message_shortform_message
-            '"W"': trade_report_message_longform_message
+            '"A"': trade_report_message_short_form_message
+            '"W"': trade_report_message_long_form_message
             '"Z"': trade_cancel_error_message
             '"Y"': trade_correction_message
             '"H"': prior_day_as_of_trade_message
-            '"M"': fractional_trade_report_message_shortform_message
-            '"N"': fractional_trade_report_message_longform_message
+            '"M"': fractional_trade_report_message_short_form_message
+            '"N"': fractional_trade_report_message_long_form_message
             '"O"': fractional_trade_cancel_error_message
             '"P"': fractional_trade_correction_message
             '"Q"': fractional_as_of_trade_message
-  trade_report_message_shortform_message:
+  trade_report_message_short_form_message:
     seq:
       - id: market_center_originator
         type: u1
@@ -168,7 +168,7 @@ types:
         type: u1
         enum: participant_price_change_indicator
         doc: 'Participant Price Change Indicator'
-  trade_report_message_longform_message:
+  trade_report_message_long_form_message:
     seq:
       - id: market_center_originator
         type: u1
@@ -478,7 +478,7 @@ types:
       - id: timestamp_of_trade
         type: nanosecond_timestamp
         doc: 'Timestamp of original trade. Nanoseconds since Unix epoch'
-  fractional_trade_report_message_shortform_message:
+  fractional_trade_report_message_short_form_message:
     seq:
       - id: market_center_originator
         type: u1
@@ -533,7 +533,7 @@ types:
         type: u1
         enum: participant_price_change_indicator
         doc: 'Participant Price Change Indicator'
-  fractional_trade_report_message_longform_message:
+  fractional_trade_report_message_long_form_message:
     seq:
       - id: market_center_originator
         type: u1

@@ -2243,13 +2243,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Trading Halt'
-      - id: knockout_elw_type_code
+      - id: knock_out_elw_type_code
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'The status of warrants "Y": Knock-out'
-      - id: knockout_elw_triggering_time
+      - id: knock_out_elw_triggering_time
         type: str
         size: 9
         encoding: ASCII
@@ -2938,7 +2938,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Information whether it is a designated issue for administration, liquidation trade, feverish issue in the short-term and issue with super low liquidity'
-      - id: closing_price_trading_in_the_preopening_market
+      - id: closing_price_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
@@ -3121,7 +3121,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Unfaithful Disclosure'
-      - id: backdoor_listing
+      - id: back_door_listing
         type: str
         size: 1
         encoding: ASCII
@@ -3338,7 +3338,7 @@ types:
         size: 11
         encoding: ASCII
         doc: 'Unit of Volume in Main Board'
-      - id: lot_size_afterhours_trading
+      - id: lot_size_after_hours_trading
         type: str
         size: 11
         encoding: ASCII
@@ -3379,19 +3379,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Closing PriceTrading Possibility in the After Hours'
-      - id: closing_price_trading_in_the_preopening_market
+      - id: closing_price_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to a Closing Price Trading in the Pre-opening Market'
-      - id: block_trading_in_the_preopening_market
+      - id: block_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Block Trading in the Pre-opening Market'
-      - id: basket_trading_in_the_preopening_market
+      - id: basket_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
@@ -3449,7 +3449,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Delisting date for Issues (Spot: the next of a last trading date, Derv: the last payment date)'
-      - id: shortterm_overheat_issue_type_code
+      - id: short_term_overheat_issue_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -3809,7 +3809,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'An amount of treasury stock that a company plans to buy during the regular session'
-      - id: buying_volume_block_trading_in_offhours_session
+      - id: buying_volume_block_trading_in_off_hours_session
         type: str
         size: 12
         encoding: ASCII
@@ -4012,7 +4012,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N (whether an issue is a constituent of KRX Bio TOP 10 Index)'
-      - id: korea_valueup_index
+      - id: korea_value_up_index
         type: str
         size: 1
         encoding: ASCII
@@ -4289,7 +4289,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: buyin_type_code
+      - id: buy_in_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -4301,7 +4301,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Group ID (Equities, Investment firms, ETF, ELW, Futures, Options etc.)'
-      - id: buyin_volume
+      - id: buy_in_volume
         type: str
         size: 15
         encoding: ASCII
@@ -4514,7 +4514,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ELW rights type code such as standard and digital. * Digital ELW: An ELW adopting digital option that makes a payment if a price exceeds certain level rather than a profit is being made depends on und'
-      - id: elwlp_holding_quantity
+      - id: elw_lp_holding_quantity
         type: str
         size: 15
         encoding: ASCII
@@ -4581,7 +4581,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The date when a payment is being made due to the execution of ETN rights'
-      - id: etnlp_holding_quantity
+      - id: etn_lp_holding_quantity
         type: str
         size: 15
         encoding: ASCII
@@ -4764,18 +4764,18 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'ISIN Code'
-      - id: base_price_to_knockout_elw
+      - id: base_price_to_knock_out_elw
         type: str
         size: 13
         encoding: ASCII
         doc: 'Base Price to knock-out ELW'
-      - id: knockout_elw_rights
+      - id: knock_out_elw_rights
         type: str
         size: 200
         encoding: ASCII
         pad-right: 0x20
         doc: 'Knock-out ELW_Rights'
-      - id: knockout_elw_calculation_of_appraised_price
+      - id: knock_out_elw_calculation_of_appraised_price
         type: str
         size: 300
         encoding: ASCII
@@ -4808,7 +4808,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Trading Date of Underlying Asset'
-      - id: the_date_knockout_occurred
+      - id: the_date_knock_out_occurred
         type: str
         size: 8
         encoding: ASCII
@@ -4863,42 +4863,42 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Investor category code (e.g. 1000 Financial Investors, 2000 Insurance, 3000 Asset Management, etc.)'
-      - id: sellside_arbitrage_volume
+      - id: sell_side_arbitrage_volume
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Arbitrage Volume'
-      - id: sellside_arbitrage_value
+      - id: sell_side_arbitrage_value
         type: str
         size: 22
         encoding: ASCII
         doc: 'Sell-side Arbitrage Value'
-      - id: sellside_nonarbitrage_volume
+      - id: sell_side_non_arbitrage_volume
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Volume'
-      - id: sellside_nonarbitrage_value
+      - id: sell_side_non_arbitrage_value
         type: str
         size: 22
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Value'
-      - id: buyside_arbitrage_volume
+      - id: buy_side_arbitrage_volume
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Arbitrage Volume'
-      - id: buyside_arbitrage_value
+      - id: buy_side_arbitrage_value
         type: str
         size: 22
         encoding: ASCII
         doc: 'Buy-side Arbitrage Value'
-      - id: buyside_nonarbitrage_volume
+      - id: buy_side_non_arbitrage_volume
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Non-arbitrage Volume'
-      - id: buyside_nonarbitrage_value
+      - id: buy_side_non_arbitrage_value
         type: str
         size: 22
         encoding: ASCII
@@ -4920,42 +4920,42 @@ types:
         size: 6
         encoding: ASCII
         doc: 'A designated number for each issue on a daily basis - Market(Information Product) : KOSPI(Securities A, Securities C), KOSDAQ(Securities B), KONEX(Securities B), Derivatives(DRV A), Spot Gold(Commodit'
-      - id: sellside_arbitrage_trading_remaining_quantity
+      - id: sell_side_arbitrage_trading_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Arbitrage Trading Remaining Quantity'
-      - id: buyside_arbitrage_trading_remaining_quantity
+      - id: buy_side_arbitrage_trading_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Arbitrage Trading Remaining Quantity'
-      - id: sellside_nonarbitrage_remaining_quantity
+      - id: sell_side_non_arbitrage_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Remaining Quantity'
-      - id: buyside_nonarbitrage_remaining_quantity
+      - id: buy_side_non_arbitrage_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Non-arbitrage Remaining Quantity'
-      - id: sellside_arbitrage_quantity
+      - id: sell_side_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Arbitrage Quantity'
-      - id: buyside_arbitrage_quantity
+      - id: buy_side_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Arbitrage Quantity'
-      - id: sellside_nonarbitrage_quantity
+      - id: sell_side_non_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Quantity'
-      - id: buyside_nonarbitrage_quantity
+      - id: buy_side_non_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
@@ -5046,42 +5046,42 @@ types:
         doc: 'End of text sentinel (0xFF)'
   securities_program_trading_information_of_total_aggregated_message:
     seq:
-      - id: sellside_arbitrage_trading_remaining_quantity
+      - id: sell_side_arbitrage_trading_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Arbitrage Trading Remaining Quantity'
-      - id: buyside_arbitrage_trading_remaining_quantity
+      - id: buy_side_arbitrage_trading_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Arbitrage Trading Remaining Quantity'
-      - id: sellside_nonarbitrage_remaining_quantity
+      - id: sell_side_non_arbitrage_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Remaining Quantity'
-      - id: buyside_nonarbitrage_remaining_quantity
+      - id: buy_side_non_arbitrage_remaining_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Non-arbitrage Remaining Quantity'
-      - id: sellside_arbitrage_quantity
+      - id: sell_side_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Arbitrage Quantity'
-      - id: buyside_arbitrage_quantity
+      - id: buy_side_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Buy-side Arbitrage Quantity'
-      - id: sellside_nonarbitrage_quantity
+      - id: sell_side_non_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII
         doc: 'Sell-side Non-arbitrage Quantity'
-      - id: buyside_nonarbitrage_quantity
+      - id: buy_side_non_arbitrage_quantity
         type: str
         size: 15
         encoding: ASCII

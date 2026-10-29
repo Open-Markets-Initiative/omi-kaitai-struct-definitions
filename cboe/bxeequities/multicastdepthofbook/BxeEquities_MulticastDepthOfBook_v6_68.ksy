@@ -898,8 +898,8 @@ enums:
       id: 'algorithmic_trade'
       doc: 'Algorithmic Trade'
     0x2d:
-      id: 'nonalgorithmic_trade'
-      doc: 'Nonalgorithmic Trade'
+      id: 'non_algorithmic_trade'
+      doc: 'Non Algorithmic Trade'
   transaction_category:
     0x44:
       id: 'dark_trade'
@@ -960,11 +960,11 @@ enums:
       id: 'uk_the_trade_was_reported_to_cboe_late_and_out_of_the_main_session'
       doc: 'Uk The Trade Was Reported To Cboe Late And Out Of The Main Session'
     0x47:
-      id: 'uk_the_trade_was_an_execution_against_retailonly_liquidity'
-      doc: 'Uk The Trade Was An Execution Against Retailonly Liquidity'
+      id: 'uk_the_trade_was_an_execution_against_retail_only_liquidity'
+      doc: 'Uk The Trade Was An Execution Against Retail Only Liquidity'
     0x4b:
-      id: 'eu_the_trade_was_an_execution_against_retailonly_liquidity'
-      doc: 'Eu The Trade Was An Execution Against Retailonly Liquidity'
+      id: 'eu_the_trade_was_an_execution_against_retail_only_liquidity'
+      doc: 'Eu The Trade Was An Execution Against Retail Only Liquidity'
   negotiated_trade:
     0x31:
       id: 'negotiated_trade_in_liquid_financial_instruments'

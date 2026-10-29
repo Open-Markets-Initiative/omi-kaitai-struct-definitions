@@ -3171,7 +3171,7 @@ types:
         size: 13
         encoding: ASCII
         doc: 'Number of Bidders'
-      - id: bidtocover_ratio
+      - id: bid_to_cover_ratio
         type: str
         size: 11
         encoding: ASCII

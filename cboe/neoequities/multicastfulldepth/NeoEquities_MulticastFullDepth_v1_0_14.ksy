@@ -156,13 +156,13 @@ types:
       - id: unused_3
         type: b3
         doc: 'Reserved'
-      - id: neol
+      - id: neo_l
         type: b1
         doc: 'NEO-L book allowed'
-      - id: neon
+      - id: neo_n
         type: b1
         doc: 'NEO-N book allowed'
-      - id: neod
+      - id: neo_d
         type: b1
         doc: 'NEO-D book allowed'
       - id: crossing_facility
@@ -641,14 +641,14 @@ enums:
       id: 'all_books'
       doc: 'All Books'
     3:
-      id: 'neol'
-      doc: 'Neol'
+      id: 'neo_l'
+      doc: 'Neo L'
     4:
-      id: 'neon'
-      doc: 'Neon'
+      id: 'neo_n'
+      doc: 'Neo N'
     5:
-      id: 'neod'
-      doc: 'Neod'
+      id: 'neo_d'
+      doc: 'Neo D'
     6:
       id: 'crossing_facility'
       doc: 'Crossing Facility'
@@ -669,8 +669,8 @@ enums:
       id: 'delayed_closing'
       doc: 'Delayed Closing'
     0x4f:
-      id: 'preclose'
-      doc: 'Preclose'
+      id: 'pre_close'
+      doc: 'Pre Close'
     0x50:
       id: 'post_close'
       doc: 'Post Close'
@@ -739,8 +739,8 @@ enums:
       id: 'future'
       doc: 'Future'
     11:
-      id: 'nonnet'
-      doc: 'Nonnet'
+      id: 'non_net'
+      doc: 'Non Net'
   cross_type:
     0:
       id: 'none'

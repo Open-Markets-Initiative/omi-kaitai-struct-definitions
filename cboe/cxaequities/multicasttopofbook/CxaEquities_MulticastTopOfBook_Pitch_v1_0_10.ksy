@@ -371,8 +371,8 @@ enums:
       id: 'closed'
       doc: 'Closed'
     0x41:
-      id: 'premarket'
-      doc: 'Premarket'
+      id: 'pre_market'
+      doc: 'Pre Market'
     0x54:
       id: 'trading'
       doc: 'Trading'
@@ -380,8 +380,8 @@ enums:
       id: 'moc_trading'
       doc: 'Moc Trading'
     0x50:
-      id: 'postmarket'
-      doc: 'Postmarket'
+      id: 'post_market'
+      doc: 'Post Market'
     0x48:
       id: 'halted'
       doc: 'Halted'
@@ -418,8 +418,8 @@ enums:
       id: 'halt_auction_re_opening'
       doc: 'Halt Auction Re Opening'
     0x20:
-      id: 'offexchange_trade_report'
-      doc: 'Offexchange Trade Report'
+      id: 'off_exchange_trade_report'
+      doc: 'Off Exchange Trade Report'
   trade_designation:
     0x43:
       id: 'cxac_limit'
@@ -437,8 +437,8 @@ enums:
       id: 'cxam_moc'
       doc: 'Cxam Moc'
     0x20:
-      id: 'not_applicable_offexchange'
-      doc: 'Not Applicable Offexchange'
+      id: 'not_applicable_off_exchange'
+      doc: 'Not Applicable Off Exchange'
   trade_report_type:
     0x42:
       id: 'block_trade'
@@ -465,8 +465,8 @@ enums:
       id: 'etf_trade_report_for_unit_creations_or_redemptions'
       doc: 'Etf Trade Report For Unit Creations Or Redemptions'
     0x20:
-      id: 'not_applicable_onexchange'
-      doc: 'Not Applicable Onexchange'
+      id: 'not_applicable_on_exchange'
+      doc: 'Not Applicable On Exchange'
   value_category:
     0x31:
       id: 'closing_price'

@@ -2214,13 +2214,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Calculation Time'
-      - id: shortterm_interest_rates_type_code
+      - id: short_term_interest_rates_type_code
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Short-term Interest Rates Type Code'
-      - id: shortterm_yield
+      - id: short_term_yield
         type: str
         size: 13
         encoding: ASCII
@@ -2243,7 +2243,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Calculation Time'
-      - id: shortterm_interest_rates_type_code
+      - id: short_term_interest_rates_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -2503,7 +2503,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Other Types of Bond 1:Regular Bond 2:Equity Related Bond 3:ELS/ELB 4:DLS/DLB 5:Electronic Short-term (For the code 3 and 4; in Bond market, only ELB and DLB can be listed while ELS, DLS cannot'
-      - id: optionembedded_type_code
+      - id: option_embedded_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -2721,7 +2721,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Bond_Delisted Date'
-      - id: equitylinked_bond_rights_type_code
+      - id: equity_linked_bond_rights_type_code
         type: str
         size: 2
         encoding: ASCII
@@ -2739,7 +2739,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Issue Name'
-      - id: equitylinked_bond_exercise_price
+      - id: equity_linked_bond_exercise_price
         type: str
         size: 11
         encoding: ASCII
@@ -2779,7 +2779,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Profit Participating_Accum. Status Y: Accumulated, N: Non Accumulated'
-      - id: issue_code_of_postexercise
+      - id: issue_code_of_post_exercise
         type: str
         size: 12
         encoding: ASCII
@@ -2991,7 +2991,7 @@ types:
         size: 14
         encoding: ASCII
         doc: 'Principal Accrued Interest Rate on Bank Holidays_Type Code'
-      - id: stopout_rate
+      - id: stop_out_rate
         type: str
         size: 14
         encoding: ASCII

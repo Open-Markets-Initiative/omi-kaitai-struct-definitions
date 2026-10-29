@@ -615,7 +615,7 @@ enums:
       id: 'not_eligible'
       doc: 'not eligible'
     0x79:
-      id: 'tradeat'
+      id: 'trade_at'
       doc: 'Trade-at Intermarket Sweep Order'
   cross_type:
     0x4e:
@@ -824,7 +824,7 @@ enums:
       id: 'halt'
       doc: 'Halt Cross'
     0x4a:
-      id: 'nondisplayed'
+      id: 'non_displayed'
       doc: 'Non-displayed adding liquidity'
     0x57:
       id: 'added_post_only'

@@ -268,7 +268,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Type of the emission allowance. Conditionally required'
-      - id: otc_posttrade_indicator
+      - id: otc_post_trade_indicator
         type: str
         size: 4
         encoding: ASCII

@@ -9627,8 +9627,8 @@ enums:
       doc: '-1/1,000,000'
   price_indicator_marker:
     0x41:
-      id: 'asoftrade'
-      doc: 'Asoftrade'
+      id: 'as_of_trade'
+      doc: 'As Of Trade'
     0x42:
       id: 'block_trade'
       doc: 'Block Trade'
@@ -9884,8 +9884,8 @@ enums:
       doc: 'Both'
   series_status:
     0x59:
-      id: 'preopening_phase'
-      doc: 'Preopening Phase'
+      id: 'pre_opening_phase'
+      doc: 'Pre Opening Phase'
     0x4f:
       id: 'opening_phase'
       doc: 'Opening Phase'
@@ -9914,8 +9914,8 @@ enums:
       id: 'surveillance_intervention_phase'
       doc: 'Surveillance Intervention phase (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries_phase'
-      doc: 'Endof Day Inquiries Phase'
+      id: 'end_of_day_inquiries_phase'
+      doc: 'End Of Day Inquiries Phase'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'
@@ -10025,8 +10025,8 @@ enums:
       doc: '-1/1,000,000'
   instrument_status_marker:
     0x59:
-      id: 'preopening_phase'
-      doc: 'Preopening Phase'
+      id: 'pre_opening_phase'
+      doc: 'Pre Opening Phase'
     0x4f:
       id: 'opening_phase'
       doc: 'Opening Phase'
@@ -10055,8 +10055,8 @@ enums:
       id: 'surveillance_intervention_phase'
       doc: 'Surveillance Intervention phase (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries_phase'
-      doc: 'Endof Day Inquiries Phase'
+      id: 'end_of_day_inquiries_phase'
+      doc: 'End Of Day Inquiries Phase'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'
@@ -10166,8 +10166,8 @@ enums:
       doc: '-1/1,000,000'
   market_price_indicator:
     0x41:
-      id: 'asoftrade'
-      doc: 'Asoftrade'
+      id: 'as_of_trade'
+      doc: 'As Of Trade'
     0x42:
       id: 'block_trade'
       doc: 'Block Trade'
@@ -11295,8 +11295,8 @@ enums:
       doc: '-1/1,000,000'
   group_status:
     0x59:
-      id: 'preopening_phase'
-      doc: 'Preopening Phase'
+      id: 'pre_opening_phase'
+      doc: 'Pre Opening Phase'
     0x4f:
       id: 'opening_phase'
       doc: 'Opening Phase'
@@ -11316,8 +11316,8 @@ enums:
       id: 'surveillance_intervention_phase'
       doc: 'Surveillance Intervention phase (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries_phase'
-      doc: 'Endof Day Inquiries Phase'
+      id: 'end_of_day_inquiries_phase'
+      doc: 'End Of Day Inquiries Phase'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'

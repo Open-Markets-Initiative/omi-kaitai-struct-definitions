@@ -1072,11 +1072,11 @@ enums:
       doc: 'Suspended'
   execution_report_pegged_exec_inst:
     1:
-      id: 'permissioned_for_execution_against_midpriced_pegged_orders'
-      doc: 'Permissioned For Execution Against Midpriced Pegged Orders'
+      id: 'permissioned_for_execution_against_mid_priced_pegged_orders'
+      doc: 'Permissioned For Execution Against Mid Priced Pegged Orders'
     2:
-      id: 'not_permissioned_for_execution_against_midpriced_pegged_orders'
-      doc: 'Not Permissioned For Execution Against Midpriced Pegged Orders'
+      id: 'not_permissioned_for_execution_against_mid_priced_pegged_orders'
+      doc: 'Not Permissioned For Execution Against Mid Priced Pegged Orders'
   side:
     0:
       id: 'none'

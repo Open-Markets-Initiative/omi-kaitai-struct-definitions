@@ -402,17 +402,17 @@ enums:
       id: 'closed_quote'
       doc: 'Closed Quote'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote_automated'
       doc: 'Opening Quote Automated'
     0x52:
-      id: 'regular_twosided_open_quote_automated'
-      doc: 'Regular Twosided Open Quote Automated'
+      id: 'regular_two_sided_open_quote_automated'
+      doc: 'Regular Two Sided Open Quote Automated'
     0x55:
-      id: 'manual_bid_and_ask_nonfirm'
-      doc: 'Manual Bid And Ask Nonfirm'
+      id: 'manual_bid_and_ask_non_firm'
+      doc: 'Manual Bid And Ask Non Firm'
     0x58:
       id: 'order_influx'
       doc: 'Order Influx'
@@ -430,8 +430,8 @@ enums:
       id: 'transaction_originated_from_market_participant'
       doc: 'Transaction Originated From Market Participant'
     0x45:
-      id: 'si_pgenerated_transaction_eg_price_band_change'
-      doc: 'Si Pgenerated Transaction Eg Price Band Change'
+      id: 'sip_generated_transaction_eg_price_band_change'
+      doc: 'Sip Generated Transaction Eg Price Band Change'
   luld_bbo_indicator:
     0x20:
       id: 'limit_up_limit_down_not_applicable'

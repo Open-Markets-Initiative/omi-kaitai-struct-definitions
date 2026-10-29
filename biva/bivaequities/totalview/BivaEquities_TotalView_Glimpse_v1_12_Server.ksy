@@ -559,8 +559,8 @@ enums:
       doc: 'Sell'
   cross_type:
     0x4f:
-      id: 'preopening_session'
-      doc: 'Preopening Session'
+      id: 'pre_opening_session'
+      doc: 'Pre Opening Session'
     0x49:
       id: 'intraday_auction'
       doc: 'Intraday Auction'

@@ -299,8 +299,8 @@ enums:
       id: 'slow_on_both_ask_and_bid'
       doc: 'Slow On Both Ask And Bid'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote'
       doc: 'Opening Quote'
@@ -325,8 +325,8 @@ enums:
       id: 'delisted'
       doc: 'Delisted'
     3:
-      id: 'exinterest'
-      doc: 'Exinterest'
+      id: 'ex_interest'
+      doc: 'Ex Interest'
     4:
       id: 'missed_an_interest_payment'
       doc: 'Missed An Interest Payment'

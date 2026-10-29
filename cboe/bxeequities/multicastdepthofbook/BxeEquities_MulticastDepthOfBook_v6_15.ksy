@@ -752,8 +752,8 @@ enums:
       id: 'technical_trade'
       doc: 'Technical Trade'
     0x47:
-      id: 'giveup_givein_trade'
-      doc: 'Giveup Givein Trade'
+      id: 'give_up_give_in_trade'
+      doc: 'Give Up Give In Trade'
     0x46:
       id: 'trade_with_conditions'
       doc: 'Trade With Conditions'

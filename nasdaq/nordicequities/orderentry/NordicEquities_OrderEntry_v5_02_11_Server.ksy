@@ -1028,8 +1028,8 @@ enums:
       id: 'market_maker_order_refresh'
       doc: 'Market Maker Order Refresh'
     0x50:
-      id: 'topof_book'
-      doc: 'Topof Book'
+      id: 'top_of_book'
+      doc: 'Top Of Book'
     0x51:
       id: 'dark_lit_sweep_atomic'
       doc: 'Dark Lit Sweep Atomic'

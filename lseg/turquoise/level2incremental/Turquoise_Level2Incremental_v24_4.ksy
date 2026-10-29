@@ -466,25 +466,25 @@ types:
       - id: volume
         type: decimal_u8_4
         doc: 'Cumulative volume of all trades for the trading day. Implied decimal with scale 1e-4'
-      - id: volume_onbook_only
+      - id: volume_on_book_only
         type: decimal_u8_4
         doc: 'Cumulative volume for the trading day excluding off-book trades. Implied decimal with scale 1e-4'
       - id: vwap
         type: decimal_s8_4
         doc: 'Volume weighted average price for the day for all trades. Implied decimal with scale 1e-4'
-      - id: vwap_onbook_only
+      - id: vwap_on_book_only
         type: decimal_s8_4
         doc: 'Volume weighted average price for the day excluding off-book trades. Implied decimal with scale 1e-4'
       - id: number_of_trades
         type: u4
         doc: 'Count of all trades for the day'
-      - id: number_of_trades_onbook_only
+      - id: number_of_trades_on_book_only
         type: u4
         doc: 'Count of trades for the day excluding off-book trades'
       - id: turnover
         type: decimal_s8_4
         doc: 'Turnover of all trades for the day. Implied decimal with scale 1e-4'
-      - id: turnover_onbook_only
+      - id: turnover_on_book_only
         type: decimal_s8_4
         doc: 'Turnover for the day excluding off-book trades. Implied decimal with scale 1e-4'
   statistics_update_message:

@@ -1353,8 +1353,8 @@ enums:
       id: 'stop_loss_index'
       doc: 'Stop Loss Index'
     0x54:
-      id: 'realtime_index_value'
-      doc: 'Realtime Index Value'
+      id: 'real_time_index_value'
+      doc: 'Real Time Index Value'
   exception:
     0x23:
       id: 'index_with_hsil_defined_exceptional_rule_applied'
@@ -1456,11 +1456,11 @@ enums:
       doc: 'Vcm Not Applicable'
   short_sell_flag:
     0x59:
-      id: 'shortsell_allowed'
-      doc: 'Shortsell Allowed'
+      id: 'short_sell_allowed'
+      doc: 'Short Sell Allowed'
     0x4e:
-      id: 'shortsell_not_allowed'
-      doc: 'Shortsell Not Allowed'
+      id: 'short_sell_not_allowed'
+      doc: 'Short Sell Not Allowed'
   cas_flag:
     0x59:
       id: 'cas_applicable'
@@ -1656,17 +1656,17 @@ enums:
       id: 'automatch_normal_public_trade_type_space'
       doc: 'Automatch Normal Public Trade Type Space'
     4:
-      id: 'late_trade_offexchange_previous_day_public_trade_type_p'
-      doc: 'Late Trade Offexchange Previous Day Public Trade Type P'
+      id: 'late_trade_off_exchange_previous_day_public_trade_type_p'
+      doc: 'Late Trade Off Exchange Previous Day Public Trade Type P'
     22:
-      id: 'nondirect_off_exchange_trade_public_trade_type_m'
-      doc: 'Nondirect Off Exchange Trade Public Trade Type M'
+      id: 'non_direct_off_exchange_trade_public_trade_type_m'
+      doc: 'Non Direct Off Exchange Trade Public Trade Type M'
     100:
       id: 'automatch_internalized_public_trade_type_y'
       doc: 'Automatch Internalized Public Trade Type Y'
     101:
-      id: 'direct_offexchange_trade_public_trade_type_x'
-      doc: 'Direct Offexchange Trade Public Trade Type X'
+      id: 'direct_off_exchange_trade_public_trade_type_x'
+      doc: 'Direct Off Exchange Trade Public Trade Type X'
     102:
       id: 'odd_lot_trade_public_trade_type_d'
       doc: 'Odd Lot Trade Public Trade Type D'

@@ -127,8 +127,8 @@ types:
         enum: error_code
         doc: 'Error code of the record'
       - id: header_timestamp
-        type: dos_nanosecond_timestamp
-        doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix. Nanoseconds since Dos epoch'
+        type: s8
+        doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix'
       - id: time_stamp_1
         type: str
         size: 8
@@ -1258,7 +1258,7 @@ types:
       - id: user_type
         type: s2
         doc: 'Type of the user'
-      - id: brokernumber
+      - id: broker_number
         type: str
         size: 5
         encoding: ASCII
@@ -2188,21 +2188,6 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
-  dos_nanosecond_timestamp:
-    seq:
-      - id: time
-        type: s8
-    instances:
-      unix_seconds:
-        value: time / 1000000000 + 315532800
-      hour:
-        value: time / 3600000000000 % 24
-      minute:
-        value: time / 60000000000 % 60
-      second:
-        value: time / 1000000000 % 60
-      millisecond:
-        value: time / 1000000 % 1000
   floating_point_integer:
     seq:
       - id: value

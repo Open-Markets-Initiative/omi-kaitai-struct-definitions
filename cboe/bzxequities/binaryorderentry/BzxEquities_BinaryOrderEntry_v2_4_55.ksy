@@ -3460,8 +3460,8 @@ enums:
       id: 'removed_liquidity'
       doc: 'Removed Liquidity'
     0x57:
-      id: 'waiting_for_execution_at_premarket_time'
-      doc: 'Waiting For Execution At Premarket Time'
+      id: 'waiting_for_execution_at_pre_market_time'
+      doc: 'Waiting For Execution At Pre Market Time'
     0x58:
       id: 'routed_to_another_market'
       doc: 'Routed To Another Market'

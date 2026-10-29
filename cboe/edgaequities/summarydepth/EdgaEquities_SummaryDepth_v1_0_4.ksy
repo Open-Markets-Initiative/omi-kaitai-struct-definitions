@@ -271,7 +271,7 @@ types:
       - id: unused_1
         type: b1
         doc: 'Reserved'
-      - id: lastsale_eligible
+      - id: last_sale_eligible
         type: b1
         doc: 'last-sale eligible'
       - id: unused_6

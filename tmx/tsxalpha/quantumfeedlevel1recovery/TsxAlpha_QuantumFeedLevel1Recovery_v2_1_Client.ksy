@@ -303,8 +303,8 @@ enums:
       id: 'nn'
       doc: 'Nn'
     0x4d:
-      id: 'ms_derivativesrelated_contingent_equity_trade'
-      doc: 'Ms Derivativesrelated Contingent Equity Trade'
+      id: 'ms_derivatives_related_contingent_equity_trade'
+      doc: 'Ms Derivatives Related Contingent Equity Trade'
     0x54:
       id: 'ct_cash_today'
       doc: 'Ct Cash Today'

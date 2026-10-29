@@ -827,8 +827,8 @@ enums:
       id: 'trade_at_the_pnbbo_midpoint_only'
       doc: 'Trade At The Pnbbo Midpoint Only'
     0x52:
-      id: 'trade_at_the_nearside_pnbbo'
-      doc: 'Trade At The Nearside Pnbbo'
+      id: 'trade_at_the_near_side_pnbbo'
+      doc: 'Trade At The Near Side Pnbbo'
     0x70:
       id: 'trade_at_the_less_aggressive_of_pnbbo_midpoint_or_minimum_improvement_from_the_pnbbo'
       doc: 'Trade At The Less Aggressive Of Pnbbo Midpoint Or Minimum Improvement From The Pnbbo'
@@ -911,14 +911,14 @@ enums:
       id: 'crossing_facility'
       doc: 'Crossing Facility'
     0x44:
-      id: 'neod'
-      doc: 'Neod'
+      id: 'neo_d'
+      doc: 'Neo D'
     0x4c:
-      id: 'neol'
-      doc: 'Neol'
+      id: 'neo_l'
+      doc: 'Neo L'
     0x4e:
-      id: 'neon'
-      doc: 'Neon'
+      id: 'neo_n'
+      doc: 'Neo N'
     0x53:
       id: 'sst'
       doc: 'Sst'
@@ -1403,8 +1403,8 @@ enums:
       id: 'reprice_ex_opr_mtl'
       doc: 'Reprice Ex Opr Mtl'
     0x57:
-      id: 'partial_reduce_due_selftrade_prevention_result_based_on_no_trade_feat'
-      doc: 'Partial Reduce Due Selftrade Prevention Result Based On No Trade Feat'
+      id: 'partial_reduce_due_self_trade_prevention_result_based_on_no_trade_feat'
+      doc: 'Partial Reduce Due Self Trade Prevention Result Based On No Trade Feat'
     0x54:
       id: 'triggered_stop_order'
       doc: 'Triggered Stop Order'
@@ -1434,8 +1434,8 @@ enums:
       doc: 'Market Maker Preferential Trading'
   is_self_trade:
     0x59:
-      id: 'broker_executed_a_selftrade_using_no_trade_feat_t_suppress_from_tape'
-      doc: 'Broker Executed A Selftrade Using No Trade Feat T Suppress From Tape'
+      id: 'broker_executed_a_self_trade_using_no_trade_feat_t_suppress_from_tape'
+      doc: 'Broker Executed A Self Trade Using No Trade Feat T Suppress From Tape'
     0x4e:
       id: 'all_other_cases'
       doc: 'All Other Cases'

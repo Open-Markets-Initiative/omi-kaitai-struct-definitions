@@ -3717,7 +3717,7 @@ types:
         size: 22
         encoding: ASCII
         doc: 'A multiplier used for calculating trading value and settlement'
-      - id: type_of_liquidityproviding_lp
+      - id: type_of_liquidity_providing_lp
         type: str
         size: 1
         encoding: ASCII

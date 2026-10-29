@@ -298,11 +298,11 @@ enums:
       doc: 'The Top Of Book (TOB) message is generated when the top price level has been modified. TOB messages for different markets (SSE and SZSE) are sent via different channels.'
   shortsell_flag:
     0x59:
-      id: 'shortsell_allowed'
-      doc: 'Shortsell Allowed'
+      id: 'short_sell_allowed'
+      doc: 'Short Sell Allowed'
     0x4e:
-      id: 'shortsell_not_allowed'
-      doc: 'Shortsell Not Allowed'
+      id: 'short_sell_not_allowed'
+      doc: 'Short Sell Not Allowed'
   security_trading_status:
     2:
       id: 'trading_halt'

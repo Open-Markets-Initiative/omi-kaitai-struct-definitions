@@ -466,7 +466,7 @@ enums:
       id: 'periodic_indicative_other_securities'
       doc: 'Periodic Indicative Other Securities'
     0x4b:
-      id: 'realtime_quotes'
+      id: 'real_time_quotes'
       doc: 'Real-time quotes'
     0x4c:
       id: 'periodic_indicative_quotes'

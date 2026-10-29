@@ -85,10 +85,10 @@ types:
         type: u1
         enum: message_type
         doc: 'Message code, which section 2.1 names by a letter and a number, L for a Link Subsystem message and R for a Trading Subsystem message'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: sessionid
+      - id: session_id
         type: u2
         doc: 'Tcp connection session number, connection to the trading system being allowed only if fcm_id and session_id are provided together'
   header_time:
@@ -101,11 +101,11 @@ types:
         doc: 'One thousandth of a second, the millisecond fraction of the second carried beside it. Milliseconds since Second epoch'
   wake_up_call_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
-      - id: startinboundnum
+      - id: start_in_bound_num
         type: u4
         doc: 'Order message start No, assigned zero'
   wake_up_call_confirmed_message:
@@ -116,19 +116,19 @@ types:
         doc: 'Version, indicating the message version, with 1 denoting the use of the new FLEX message'
   logon_notice_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
-      - id: appendno
+      - id: append_no
         type: u2
         doc: 'Appended check value, a three-digit random number the futures commission merchant is asked to include in its logon message for the calculation of KEY-VALUE'
-      - id: endoutboundnum
+      - id: end_out_bound_num
         type: u4
         doc: 'The last end message No, the number of the last valid response message Taifex sent the futures commission merchant'
-      - id: systemtype
+      - id: system_type
         type: u1
-        enum: systemtype
+        enum: system_type
         doc: 'System type, naming the market and the trading session'
       - id: encrypt_method
         type: u1
@@ -136,24 +136,24 @@ types:
         doc: 'Encryption method, 0 if unencrypted'
   final_sequential_number_notification_for_group_message:
     seq:
-      - id: subhdr
-        type: subhdr
+      - id: sub_hdr
+        type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: statuscode_uint_162
+      - id: status_code_uint_162
         type: u2
-        enum: statuscode_uint_162
+        enum: status_code_uint_162
         doc: 'Status code, referring to the Error Message Table'
-      - id: partid
+      - id: part_id
         type: u1
-        enum: partid
+        enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
-      - id: endoutboundnum
+      - id: end_out_bound_num
         type: u4
         doc: 'The last end message No, the number of the last valid response message Taifex sent the futures commission merchant'
       - id: reserved_8
         size: 8
         doc: 'Reserved'
-  subhdr:
+  sub_hdr:
     seq:
       - id: msg_type_ext
         type: u1
@@ -162,126 +162,126 @@ types:
       - id: preserve
         type: u1
         doc: 'Preserve, whose default is 0'
-      - id: msgtimens
+      - id: msg_time_ns
         type: nanosecond_offset
         doc: 'Nanosecond-level timing details for the msg_time field in the hdr, of which currently only data at the microsecond level is available. Nanoseconds since Second epoch'
   request_logon_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
-      - id: appendno
+      - id: append_no
         type: u2
         doc: 'Appended check value, a three-digit random number the futures commission merchant is asked to include in its logon message for the calculation of KEY-VALUE'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: sessionid
+      - id: session_id
         type: u2
         doc: 'Tcp connection session number, connection to the trading system being allowed only if fcm_id and session_id are provided together'
-      - id: systemtype
+      - id: system_type
         type: u1
-        enum: systemtype
+        enum: system_type
         doc: 'System type, naming the market and the trading session'
-      - id: apcode
+      - id: ap_code
         type: u1
-        enum: apcode
+        enum: ap_code
         doc: 'Application system code, naming the line the session joins'
-      - id: keyvalue
+      - id: key_value
         type: u1
         doc: 'Key value, the two-digit number at the thousandth and hundredth place of append_no multiplied by the password the futures commission merchant set on line application'
-      - id: requeststartseq
+      - id: request_start_seq
         type: u4
         doc: 'The start message No this time, entered as 0 for the Clearing member order and execution report Line and the TMPDC Session'
-      - id: cancelordersec
+      - id: cancel_order_sec
         type: u1
         doc: 'Reject order second on an order line, and the reply data per second in units of 100 on a TMPCM or TMPDC session'
   activate_application_system_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
       - id: heart_bt_int
         type: u1
         doc: 'Seconds in synchronization, whose default is 30'
-      - id: maxflowctrlcnt
+      - id: max_flow_ctrl_cnt
         type: u2
         doc: 'Maximum flow per second, informing the futures commission merchant of the limit of input per second in this session'
   activate_application_system_confirmed_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
   logout_confirmed_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
   confirm_connection_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
   connection_confirmed_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
   order_status_report_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
         enum: exec_type
         doc: 'Execution type'
-      - id: cmid
+      - id: cm_id
         type: u2
         doc: 'Clearing member ID, read from the FCM ID Mapping File P06'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: orderno
+      - id: order_no
         type: str
         size: 5
         encoding: ASCII
         doc: 'Order No, whose five characters may all be alphanumeric'
-      - id: ordid
+      - id: ord_id
         type: u4
         doc: 'Order serial No, a number of at most seven digits'
-      - id: userdefine
+      - id: user_define
         type: str
         size: 8
         encoding: ASCII
         doc: 'FCM defined variable, which the trading system updates in the order status when it adds, cancels or changes an order'
-      - id: symboltype
+      - id: symbol_type
         type: u1
-        enum: symboltype
+        enum: symbol_type
         doc: 'Product ID format, 1 for a numeric and 2 for a text product ID'
-      - id: sym_symbolx
+      - id: sym_symbol_x
         type:
-          switch-on: symboltype
+          switch-on: symbol_type
           cases:
-            'symboltype::numeric_product_id': symbolnum
-            'symboltype::text_product_id': symboltext
+            'symbol_type::numeric_product_id': symbol_num
+            'symbol_type::text_product_id': symbol_text
       - id: price
         type: s4
         doc: 'Order price, an integer whose number of decimal digits is the Decimal_Locator of the product definition file'
       - id: qty
         type: u2
         doc: 'Order quantity'
-      - id: investoracno
+      - id: investor_acno
         type: u4
         doc: 'Investor account No'
-      - id: investorflag
+      - id: investor_flag
         type: str
         size: 1
         encoding: ASCII
@@ -308,7 +308,7 @@ types:
       - id: last_qty
         type: u2
         doc: 'Last quantity executed, which is the last execution quantity for an execution report and 0 for a cancel, decrease or modify price order'
-      - id: pxsubtotal
+      - id: px_subtotal
         type: s8
         doc: 'Cumulative weighted execution price, which divided by CumQty is the average price per contract'
       - id: cum_qty
@@ -317,40 +317,40 @@ types:
       - id: leaves_qty
         type: u2
         doc: 'Remaining quantity'
-      - id: beforeqty
+      - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: legside_uint_822
+      - id: leg_side_uint_822
         type: u1
-        enum: legside_uint_822
+        enum: leg_side_uint_822
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
-      - id: legpx
+      - id: leg_px
         type: s4
         doc: 'Execution price for both legs'
-      - id: legqty_uint_1624
+      - id: leg_qty_uint_1624
         type: u2
         doc: 'Quantity executed for both legs'
-      - id: orgtranstime_msgtime
-        type: orgtranstime_msgtime
+      - id: org_trans_time_msg_time
+        type: org_trans_time_msg_time
         doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
-      - id: transact_time_msgtime
-        type: transact_time_msgtime
+      - id: transact_time_msg_time
+        type: transact_time_msg_time
         doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: uniqid
+      - id: uniq_id
         type: u4
         doc: 'Unique ID, a system unique No assigned to the order reply of each order'
-      - id: rptseq
+      - id: rpt_seq
         type: u4
         doc: 'Report sequence No'
-      - id: protocoltype
+      - id: protocol_type
         type: u1
-        enum: protocoltype
+        enum: protocol_type
         doc: 'Source of new order data, distinguishing the protocol the order was placed over'
-  symbolnum:
+  symbol_num:
     seq:
       - id: pseq_1
         type: u2
@@ -358,35 +358,35 @@ types:
       - id: pseq_2
         type: u2
         doc: 'Second leg product ID, where 0 means a single order'
-      - id: legside_uint_822
+      - id: leg_side_uint_822
         type: u1
-        enum: legside_uint_822
+        enum: leg_side_uint_822
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
-      - id: combop
+      - id: comb_op
         type: u1
-        enum: combop
+        enum: comb_op
         doc: 'ID of multi-leg order'
       - id: reserved_13
         size: 13
         doc: 'Make up field length'
-  symboltext:
+  symbol_text:
     seq:
       - id: symbol_char_2020
         type: str
         size: 20
         encoding: ASCII
         doc: 'Text product ID'
-  orgtranstime_msgtime:
+  org_trans_time_msg_time:
     seq:
-      - id: epochs_int_324
+      - id: epoch_s_int_324
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: ms
         type: millisecond_timestamp
         doc: 'One thousandth of a second. Milliseconds since Second epoch'
-  transact_time_msgtime:
+  transact_time_msg_time:
     seq:
-      - id: epochs_int_324
+      - id: epoch_s_int_324
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: ms
@@ -394,53 +394,53 @@ types:
         doc: 'One thousandth of a second. Milliseconds since Second epoch'
   order_status_report_long_format_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
         enum: exec_type
         doc: 'Execution type'
-      - id: cmid
+      - id: cm_id
         type: u2
         doc: 'Clearing member ID, read from the FCM ID Mapping File P06'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: orderno
+      - id: order_no
         type: str
         size: 5
         encoding: ASCII
         doc: 'Order No, whose five characters may all be alphanumeric'
-      - id: ordid
+      - id: ord_id
         type: u4
         doc: 'Order serial No, a number of at most seven digits'
-      - id: userdefine
+      - id: user_define
         type: str
         size: 8
         encoding: ASCII
         doc: 'FCM defined variable, which the trading system updates in the order status when it adds, cancels or changes an order'
-      - id: symboltype
+      - id: symbol_type
         type: u1
-        enum: symboltype
+        enum: symbol_type
         doc: 'Product ID format, 1 for a numeric and 2 for a text product ID'
-      - id: sym_longsymbolx
+      - id: sym_long_symbol_x
         type:
-          switch-on: symboltype
+          switch-on: symbol_type
           cases:
-            'symboltype::numeric_product_id_long_format': longsymbolnum
-            'symboltype::text_product_id_long_format': longsymboltext
+            'symbol_type::numeric_product_id_long_format': long_symbol_num
+            'symbol_type::text_product_id_long_format': long_symbol_text
       - id: price
         type: s4
         doc: 'Order price, an integer whose number of decimal digits is the Decimal_Locator of the product definition file'
       - id: qty
         type: u2
         doc: 'Order quantity'
-      - id: investoracno
+      - id: investor_acno
         type: u4
         doc: 'Investor account No'
-      - id: investorflag
+      - id: investor_flag
         type: str
         size: 1
         encoding: ASCII
@@ -467,7 +467,7 @@ types:
       - id: last_qty
         type: u2
         doc: 'Last quantity executed, which is the last execution quantity for an execution report and 0 for a cancel, decrease or modify price order'
-      - id: pxsubtotal
+      - id: px_subtotal
         type: s8
         doc: 'Cumulative weighted execution price, which divided by CumQty is the average price per contract'
       - id: cum_qty
@@ -476,40 +476,40 @@ types:
       - id: leaves_qty
         type: u2
         doc: 'Remaining quantity'
-      - id: beforeqty
+      - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: legside_uint_822
+      - id: leg_side_uint_822
         type: u1
-        enum: legside_uint_822
+        enum: leg_side_uint_822
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
-      - id: legpx
+      - id: leg_px
         type: s4
         doc: 'Execution price for both legs'
-      - id: legqty_uint_1624
+      - id: leg_qty_uint_1624
         type: u2
         doc: 'Quantity executed for both legs'
-      - id: orgtranstime_msgtime
-        type: orgtranstime_msgtime
+      - id: org_trans_time_msg_time
+        type: org_trans_time_msg_time
         doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
-      - id: transact_time_msgtime
-        type: transact_time_msgtime
+      - id: transact_time_msg_time
+        type: transact_time_msg_time
         doc: 'Tmp time format, the seconds since the epoch and the thousandth of a second. Milliseconds since Unix epoch'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: uniqid
+      - id: uniq_id
         type: u4
         doc: 'Unique ID, a system unique No assigned to the order reply of each order'
-      - id: rptseq
+      - id: rpt_seq
         type: u4
         doc: 'Report sequence No'
-      - id: protocoltype
+      - id: protocol_type
         type: u1
-        enum: protocoltype
+        enum: protocol_type
         doc: 'Source of new order data, distinguishing the protocol the order was placed over'
-  longsymbolnum:
+  long_symbol_num:
     seq:
       - id: pseq_1
         type: u2
@@ -517,18 +517,18 @@ types:
       - id: pseq_2
         type: u2
         doc: 'Second leg product ID, where 0 means a single order'
-      - id: legside_uint_822
+      - id: leg_side_uint_822
         type: u1
-        enum: legside_uint_822
+        enum: leg_side_uint_822
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
-      - id: combop
+      - id: comb_op
         type: u1
-        enum: combop
+        enum: comb_op
         doc: 'ID of multi-leg order'
       - id: reserved_33
         size: 33
         doc: 'Make up field length'
-  longsymboltext:
+  long_symbol_text:
     seq:
       - id: symbol_char_4040
         type: str
@@ -537,31 +537,31 @@ types:
         doc: 'Text product ID'
   error_report_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
       - id: exec_type
         type: u1
         enum: exec_type
         doc: 'Execution type'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: orderno
+      - id: order_no
         type: str
         size: 5
         encoding: ASCII
         doc: 'Order No, whose five characters may all be alphanumeric'
-      - id: ordid
+      - id: ord_id
         type: u4
         doc: 'Order serial No, a number of at most seven digits'
-      - id: userdefine
+      - id: user_define
         type: str
         size: 8
         encoding: ASCII
         doc: 'FCM defined variable, which the trading system updates in the order status when it adds, cancels or changes an order'
-      - id: rptseq
+      - id: rpt_seq
         type: u4
         doc: 'Report sequence No'
       - id: side
@@ -570,61 +570,61 @@ types:
         doc: 'Buy/sell code'
   flex_order_status_report_message:
     seq:
-      - id: subhdr
-        type: subhdr
+      - id: sub_hdr
+        type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: partid
+      - id: part_id
         type: u1
-        enum: partid
+        enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
       - id: no_leg
         type: u1
         doc: 'Number of legs, which is 1 for a single-leg product and by which the content of the NoLeg related block is modified'
-      - id: statuscode_uint_162
+      - id: status_code_uint_162
         type: u2
-        enum: statuscode_uint_162
+        enum: status_code_uint_162
         doc: 'Status code, referring to the Error Message Table'
       - id: exec_type
         type: u1
         enum: exec_type
         doc: 'Execution type'
-      - id: cmid
+      - id: cm_id
         type: u2
         doc: 'Clearing member ID, read from the FCM ID Mapping File P06'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: orderno
+      - id: order_no
         type: str
         size: 5
         encoding: ASCII
         doc: 'Order No, whose five characters may all be alphanumeric'
-      - id: ordid
+      - id: ord_id
         type: u4
         doc: 'Order serial No, a number of at most seven digits'
-      - id: userdefine
+      - id: user_define
         type: str
         size: 8
         encoding: ASCII
         doc: 'FCM defined variable, which the trading system updates in the order status when it adds, cancels or changes an order'
-      - id: sym_flexproductx
+      - id: sym_flex_product_x
         type:
-          switch-on: subhdr.msg_type_ext
+          switch-on: sub_hdr.msg_type_ext
           cases:
-            'msg_type_ext::single_leg_order_with_a_numeric_product_serial_number': symbolnumx
-            'msg_type_ext::single_leg_order_with_a_textual_product_symbol': symboltxtx
-            'msg_type_ext::multi_leg_order_with_a_numeric_product_serial_number': multilegnum
-            'msg_type_ext::multi_leg_order_with_a_textual_product_symbol': multilegtxt
+            'msg_type_ext::single_leg_order_with_a_numeric_product_serial_number': symbol_num_x
+            'msg_type_ext::single_leg_order_with_a_textual_product_symbol': symbol_txt_x
+            'msg_type_ext::multi_leg_order_with_a_numeric_product_serial_number': multi_leg_num
+            'msg_type_ext::multi_leg_order_with_a_textual_product_symbol': multi_leg_txt
       - id: price
         type: s4
         doc: 'Order price, an integer whose number of decimal digits is the Decimal_Locator of the product definition file'
       - id: qty
         type: u2
         doc: 'Order quantity'
-      - id: investoracno
+      - id: investor_acno
         type: u4
         doc: 'Investor account No'
-      - id: investorflag
+      - id: investor_flag
         type: str
         size: 1
         encoding: ASCII
@@ -651,7 +651,7 @@ types:
       - id: last_qty
         type: u2
         doc: 'Last quantity executed, which is the last execution quantity for an execution report and 0 for a cancel, decrease or modify price order'
-      - id: pxsubtotal
+      - id: px_subtotal
         type: s8
         doc: 'Cumulative weighted execution price, which divided by CumQty is the average price per contract'
       - id: cum_qty
@@ -660,121 +660,121 @@ types:
       - id: leaves_qty
         type: u2
         doc: 'Remaining quantity'
-      - id: beforeqty
+      - id: before_qty
         type: u2
         doc: 'Remaining order quantity before match'
-      - id: orgtranstime_msgtimex
-        type: orgtranstime_msgtimex
+      - id: org_trans_time_msg_time_x
+        type: org_trans_time_msg_time_x
         doc: 'Tmp Expanded Time Format, the seconds since the epoch and the billionth of a second, which the FLEX reports carry in place of msg_time. Nanoseconds since Unix epoch'
-      - id: transact_time_msgtimex
-        type: transact_time_msgtimex
+      - id: transact_time_msg_time_x
+        type: transact_time_msg_time_x
         doc: 'Tmp Expanded Time Format, the seconds since the epoch and the billionth of a second, which the FLEX reports carry in place of msg_time. Nanoseconds since Unix epoch'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: uniqid
+      - id: uniq_id
         type: u4
         doc: 'Unique ID, a system unique No assigned to the order reply of each order'
-      - id: rptseq
+      - id: rpt_seq
         type: u4
         doc: 'Report sequence No'
-      - id: rptsessionid
+      - id: rpt_session_id
         type: u2
         doc: 'Session ID, the current session_id where target_id is 4 and the session_id of the original reporting session where it is 3, 8 or 9'
-      - id: rptsessionseq
+      - id: rpt_session_seq
         type: u4
         doc: 'Session serial No, the current session_seq where target_id is 4 and the session_seq of the original reporting session where it is 8 or 9'
       - id: reserved_12
         size: 12
         doc: 'Reserved'
-  symbolnumx:
+  symbol_num_x:
     seq:
       - id: pseq
         type: u4
         doc: 'Numeric product serial number, referring to the product serial number in XP08'
-  symboltxtx:
+  symbol_txt_x:
     seq:
-      - id: prodid
+      - id: prod_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'Textual Product Symbol, referring to the product symbol in XP08'
-  multilegnum:
+  multi_leg_num:
     seq:
-      - id: num_legentrynum
+      - id: num_leg_entry_num
         type: u1
         doc: 'Number of legs, which is 1 for a single-leg product and by which the content of the NoLeg related block is modified'
-      - id: combop
+      - id: comb_op
         type: u1
-        enum: combop
+        enum: comb_op
         doc: 'ID of multi-leg order'
-      - id: legentrynum
-        type: legentrynum
+      - id: leg_entry_num
+        type: leg_entry_num
         repeat: expr
-        repeat-expr: num_legentrynum
+        repeat-expr: num_leg_entry_num
         doc: 'One leg of a multi leg FLEX order whose product is named by a numeric product serial number'
-  legentrynum:
+  leg_entry_num:
     seq:
-      - id: legsym_symbolnumx
-        type: legsym_symbolnumx
+      - id: leg_sym_symbol_num_x
+        type: leg_sym_symbol_num_x
         doc: 'FLEX Numeric Single Product Serial number, naming a FLEX product by the serial number of the XP08 product and time flow group definition file'
-      - id: legside_uint_81
+      - id: leg_side_uint_81
         type: u1
-        enum: legside_uint_81
+        enum: leg_side_uint_81
         doc: 'Buy/sell code for one leg'
-      - id: legqty_uint_162
+      - id: leg_qty_uint_162
         type: u2
         doc: 'Quantity for one leg'
-  legsym_symbolnumx:
+  leg_sym_symbol_num_x:
     seq:
       - id: pseq
         type: u4
         doc: 'Numeric product serial number, referring to the product serial number in XP08'
-  multilegtxt:
+  multi_leg_txt:
     seq:
-      - id: num_legentrytxt
+      - id: num_leg_entry_txt
         type: u1
         doc: 'Number of legs, which is 1 for a single-leg product and by which the content of the NoLeg related block is modified'
-      - id: combop
+      - id: comb_op
         type: u1
-        enum: combop
+        enum: comb_op
         doc: 'ID of multi-leg order'
-      - id: legentrytxt
-        type: legentrytxt
+      - id: leg_entry_txt
+        type: leg_entry_txt
         repeat: expr
-        repeat-expr: num_legentrytxt
+        repeat-expr: num_leg_entry_txt
         doc: 'One leg of a multi leg FLEX order whose product is named by a textual product symbol'
-  legentrytxt:
+  leg_entry_txt:
     seq:
-      - id: legsym_symboltxtx
-        type: legsym_symboltxtx
+      - id: leg_sym_symbol_txt_x
+        type: leg_sym_symbol_txt_x
         doc: 'FLEX Textual Single Product Symbol, naming a FLEX product by the product symbol of the XP08 product and time flow group definition file'
-      - id: legside_uint_81
+      - id: leg_side_uint_81
         type: u1
-        enum: legside_uint_81
+        enum: leg_side_uint_81
         doc: 'Buy/sell code for one leg'
-      - id: legqty_uint_162
+      - id: leg_qty_uint_162
         type: u2
         doc: 'Quantity for one leg'
-  legsym_symboltxtx:
+  leg_sym_symbol_txt_x:
     seq:
-      - id: prodid
+      - id: prod_id
         type: str
         size: 20
         encoding: ASCII
         doc: 'Textual Product Symbol, referring to the product symbol in XP08'
-  orgtranstime_msgtimex:
+  org_trans_time_msg_time_x:
     seq:
-      - id: epochs_uint_324
+      - id: epoch_s_uint_324
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: nanosecond
         type: nanosecond_offset
         doc: 'One billionth of a second. Nanoseconds since Second epoch'
-  transact_time_msgtimex:
+  transact_time_msg_time_x:
     seq:
-      - id: epochs_uint_324
+      - id: epoch_s_uint_324
         type: second_timestamp
         doc: 'Seconds since the epoch, the number of seconds from 1970/01/01 0:0 UTC. Seconds since Unix epoch'
       - id: nanosecond
@@ -782,41 +782,41 @@ types:
         doc: 'One billionth of a second. Nanoseconds since Second epoch'
   flex_error_report_message:
     seq:
-      - id: subhdr
-        type: subhdr
+      - id: sub_hdr
+        type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: partid
+      - id: part_id
         type: u1
-        enum: partid
+        enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
       - id: ori_message_type
         type: u1
         doc: 'Original message code, the code of the message this error reports on'
-      - id: statuscode_uint_162
+      - id: status_code_uint_162
         type: u2
-        enum: statuscode_uint_162
+        enum: status_code_uint_162
         doc: 'Status code, referring to the Error Message Table'
       - id: exec_type
         type: u1
         enum: exec_type
         doc: 'Execution type'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: orderno
+      - id: order_no
         type: str
         size: 5
         encoding: ASCII
         doc: 'Order No, whose five characters may all be alphanumeric'
-      - id: ordid
+      - id: ord_id
         type: u4
         doc: 'Order serial No, a number of at most seven digits'
-      - id: userdefine
+      - id: user_define
         type: str
         size: 8
         encoding: ASCII
         doc: 'FCM defined variable, which the trading system updates in the order status when it adds, cancels or changes an order'
-      - id: rptseq
+      - id: rpt_seq
         type: u4
         doc: 'Report sequence No'
       - id: side
@@ -828,72 +828,72 @@ types:
         doc: 'Reserved'
   drop_copy_initiate_operation_message:
     seq:
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: reqcmseq
+      - id: req_cm_seq
         type: u4
         doc: 'Request report start No, corresponding to the rpt_seq of the reports the connection will receive'
   drop_copy_initiate_operation_confirmed_message:
     seq:
-      - id: statuscode_uint_81
+      - id: status_code_uint_81
         type: u1
-        enum: statuscode_uint_81
+        enum: status_code_uint_81
         doc: 'Status code, referring to the Error Message Tables'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: reqcmseq
+      - id: req_cm_seq
         type: u4
         doc: 'Request report start No, corresponding to the rpt_seq of the reports the connection will receive'
   flex_drop_copy_initiate_operation_message:
     seq:
-      - id: subhdr
-        type: subhdr
+      - id: sub_hdr
+        type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: partid
+      - id: part_id
         type: u1
-        enum: partid
+        enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: reqcmseq
+      - id: req_cm_seq
         type: u4
         doc: 'Request report start No, corresponding to the rpt_seq of the reports the connection will receive'
   flex_drop_copy_initiate_operation_confirmed_message:
     seq:
-      - id: subhdr
-        type: subhdr
+      - id: sub_hdr
+        type: sub_hdr
         doc: 'Tmp Expanded Message Header, which assigns different functionalities to a MessageType by defining additional subcategories for it'
-      - id: partid
+      - id: part_id
         type: u1
-        enum: partid
+        enum: part_id
         doc: 'Partition ID, referring to Section 3.6'
-      - id: statuscode_uint_162
+      - id: status_code_uint_162
         type: u2
-        enum: statuscode_uint_162
+        enum: status_code_uint_162
         doc: 'Status code, referring to the Error Message Table'
-      - id: fcmid
+      - id: fcm_id
         type: u2
         doc: 'FCM ID, read from the FCM ID Mapping File P06'
-      - id: targetid
+      - id: target_id
         type: u1
-        enum: targetid
+        enum: target_id
         doc: 'Target ID, naming the report this message carries and the line it is sent on'
-      - id: reqcmseq
+      - id: req_cm_seq
         type: u4
         doc: 'Request report start No, corresponding to the rpt_seq of the reports the connection will receive'
       - id: reserved_16
@@ -1015,7 +1015,7 @@ enums:
     216:
       id: 'flex_drop_copy_initiate_operation_confirmed_message'
       doc: 'TMPDC initiate FLEX operation confirmed message, with which Taifex confirms the FLEX drop copy subscription.'
-  statuscode_uint_81:
+  status_code_uint_81:
     0:
       id: 'succeed'
       doc: 'Succeed'
@@ -1065,8 +1065,8 @@ enums:
       id: 'investor_id_code_error'
       doc: 'Investor Id Code Error'
     16:
-      id: 'reject_delete_or_modify_order_during_noncancel_period'
-      doc: 'Reject Delete Or Modify Order During Noncancel Period'
+      id: 'reject_delete_or_modify_order_during_non_cancel_period'
+      doc: 'Reject Delete Or Modify Order During Non Cancel Period'
     17:
       id: 'duplicate_order_no_or_quote_no'
       doc: 'Duplicate Order No Or Quote No'
@@ -1089,8 +1089,8 @@ enums:
       id: 'price_inquiry_not_accepted_yet_or_price_is_at_risefall_limit_price_inquiry_not_accepted'
       doc: 'Price inquiry not accepted yet, or price is at rise/fall limit, price inquiry not accepted'
     24:
-      id: 'buysell_error'
-      doc: 'Buysell Error'
+      id: 'buy_sell_error'
+      doc: 'Buy Sell Error'
     25:
       id: 'ord_type_error'
       doc: 'Ord Type Error'
@@ -1125,8 +1125,8 @@ enums:
       id: 'remaining_quantity_of_the_unmodified_side_is_zero'
       doc: 'The remaining quantity of the unmodified side is zero (single-side quote order modification)'
     36:
-      id: 'the_unfilled_part_of_the_oneway_quote_is_less_than_the_minimum_quantity_limit'
-      doc: 'The Unfilled Part Of The Oneway Quote Is Less Than The Minimum Quantity Limit'
+      id: 'the_unfilled_part_of_the_one_way_quote_is_less_than_the_minimum_quantity_limit'
+      doc: 'The Unfilled Part Of The One Way Quote Is Less Than The Minimum Quantity Limit'
     37:
       id: 'price_inquiry_already_present'
       doc: 'Price inquiry already present; new inquiry not accepted'
@@ -1137,7 +1137,7 @@ enums:
       id: 'decrease_quantity_error'
       doc: 'Decrease Quantity Error'
     40:
-      id: 'price_error_singleside_quote_order_modification'
+      id: 'price_error_single_side_quote_order_modification'
       doc: 'Price error (single-side quote order modification)'
     41:
       id: 'settlement_month_error'
@@ -1149,10 +1149,10 @@ enums:
       id: 'clearing_member_id_error'
       doc: 'Clearing Member Id Error'
     44:
-      id: 'ordersource_error'
+      id: 'order_source_error'
       doc: 'order_source error'
     45:
-      id: 'infosource_error'
+      id: 'info_source_error'
       doc: 'info_source error'
     46:
       id: 'disable_kill_switch_operation_error'
@@ -1194,8 +1194,8 @@ enums:
       id: 'no_such_contract'
       doc: 'No Such Contract'
     78:
-      id: 'order_of_this_contract_is_restricted_for_this_accountcode'
-      doc: 'Order Of This Contract Is Restricted For This Accountcode'
+      id: 'order_of_this_contract_is_restricted_for_this_account_code'
+      doc: 'Order Of This Contract Is Restricted For This Account Code'
     79:
       id: 'order_deleted_due_to_trading_suspension_or_order_acceptance_before_collective_bidding'
       doc: 'Order Deleted Due To Trading Suspension Or Order Acceptance Before Collective Bidding'
@@ -1236,7 +1236,7 @@ enums:
       id: 'illegal_time_to_get_file'
       doc: 'Illegal Time To Get File'
     150:
-      id: 'fcmuniqueid_or_serial_no_duplicate'
+      id: 'fcm_unique_id_or_serial_no_duplicate'
       doc: 'fcm_unique_id or serial no duplicate'
     151:
       id: 'product_can_not_block_trade'
@@ -1245,13 +1245,13 @@ enums:
       id: 'block_trade_order_quantity_error'
       doc: 'Block Trade Order Quantity Error'
     153:
-      id: 'invalid_prodcount'
+      id: 'invalid_prod_count'
       doc: 'Invalid prod_count'
     154:
-      id: 'prodcount_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
+      id: 'prod_count_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
       doc: 'prod_count is not match with the number of legs in a block trade order'
     155:
-      id: 'invalid_fcmuniqueid_or_serial_no'
+      id: 'invalid_fcm_unique_id_or_serial_no'
       doc: 'invalid fcm_unique_id or serial no'
     156:
       id: 'block_trade_id_duplicate'
@@ -1260,16 +1260,16 @@ enums:
       id: 'invalid_block_trade_id'
       doc: 'Invalid Block Trade Id'
     158:
-      id: 'invalid_participantfcmcount'
+      id: 'invalid_participant_fcm_count'
       doc: 'Invalid participant_fcm_count'
     159:
-      id: 'participantfcmcount_is_not_consistent_with_participantfcmid_list'
+      id: 'participant_fcm_count_is_not_consistent_with_participant_fcm_id_list'
       doc: 'participant_fcm_count is not consistent with participant_fcm_id list'
     160:
-      id: 'participantfcmid_error'
+      id: 'participant_fcm_id_error'
       doc: 'participant_fcm_id error'
     161:
-      id: 'invalid_prodcount_161'
+      id: 'invalid_prod_count_161'
       doc: 'Invalid prod_count'
     162:
       id: 'block_trade_id_does_not_exist'
@@ -1287,22 +1287,22 @@ enums:
       id: 'negotiated_block_trade_wait_fcm_to_comfirm_order'
       doc: 'Negotiated Block Trade Wait Fcm To Comfirm Order'
     167:
-      id: 'fcmid_not_matching_represent_fcm'
+      id: 'fcm_id_not_matching_represent_fcm'
       doc: 'fcm_id not matching represent FCM'
     168:
-      id: 'symboltype_error'
+      id: 'symbol_type_error'
       doc: 'symbol_type error'
     169:
-      id: 'invalid_ordercount_of_negotiated_block_trade_confirm_input'
+      id: 'invalid_order_count_of_negotiated_block_trade_confirm_input'
       doc: 'Invalid order_count of negotiated block trade confirm input'
     170:
-      id: 'number_of_orders_in_b_31_xb_31_is_not_consistent_with_ordercount_field'
+      id: 'number_of_orders_in_b_31_xb_31_is_not_consistent_with_order_count_field'
       doc: 'number of orders in B31/XB31 is not consistent with order_count field'
     171:
       id: 'negotiated_block_trade_is_not_in_the_status_of_waiting_for_confirm_input'
       doc: 'Negotiated Block Trade Is Not In The Status Of Waiting For Confirm Input'
     172:
-      id: 'investoracno_duplicate_in_negotiated_block_trade_confirm_input'
+      id: 'investor_acno_duplicate_in_negotiated_block_trade_confirm_input'
       doc: 'investor_acno duplicate in negotiated block trade confirm input'
     175:
       id: 'negotiated_block_trade_timed_out'
@@ -1320,31 +1320,31 @@ enums:
       id: 'significant_system_time_error'
       doc: 'Significant system time error. This is a warning.'
     201:
-      id: 'appendno_error'
+      id: 'append_no_error'
       doc: '“append_no” ERROR'
     202:
-      id: 'fcmid_error'
+      id: 'fcm_id_error'
       doc: '“fcm_id” ERROR'
     203:
-      id: 'apcode_error'
+      id: 'ap_code_error'
       doc: '“ap_code” ERROR'
     204:
-      id: 'keyvalue_error'
+      id: 'key_value_error'
       doc: '“key_value” ERROR'
     205:
-      id: 'sessionid_error'
+      id: 'session_id_error'
       doc: '“session_id” ERROR'
     206:
-      id: 'systemtype_error'
+      id: 'system_type_error'
       doc: '“system_type” ERROR'
     207:
       id: 'msg_seq_num_error'
       doc: '“MsgSeqNum” ERROR'
     208:
-      id: 'targetid_error'
+      id: 'target_id_error'
       doc: '“target_id” ERROR'
     209:
-      id: 'flowgroupno_error'
+      id: 'flow_group_no_error'
       doc: 'flow_group_no ERROR'
     210:
       id: 'subscription_request_type_error'
@@ -1353,7 +1353,7 @@ enums:
       id: 'msg_type_ext_error'
       doc: 'Msg Type Ext Error'
     221:
-      id: 'partid_error'
+      id: 'part_id_error'
       doc: 'part_id ERROR'
     240:
       id: 'session_exceeds_the_flow_limit'
@@ -1362,7 +1362,7 @@ enums:
       id: 'session_exceeds_flow_limit_continuously_and_is_locked'
       doc: 'a session exceeds flow limit continuously, system will lock this session for a period of time.'
     242:
-      id: 'order_older_than_cancelordersec_and_rejected'
+      id: 'order_older_than_cancel_order_sec_and_rejected'
       doc: 'The difference between msg_time of R01/R31/RX01 and TAIFEX trading system''s R01/R31/RX01 receiving time is larger than “cancel_order_sec” value. This order will be rejected. TAIFEX will not check status_code=242 when ExecType=4.'
     248:
       id: 'session_reach_80_of_the_flow_limit'
@@ -1380,7 +1380,7 @@ enums:
     1:
       id: 'regular_trading_and_flex_trading'
       doc: 'Regular Trading And Flex Trading'
-  systemtype:
+  system_type:
     10:
       id: 'options_regular_market_hours'
       doc: 'Options Regular Market Hours'
@@ -1416,7 +1416,7 @@ enums:
     255:
       id: 'unexpected_error_record'
       doc: 'Unexpected Error Record'
-  statuscode_uint_162:
+  status_code_uint_162:
     0:
       id: 'succeed'
       doc: 'Succeed'
@@ -1466,8 +1466,8 @@ enums:
       id: 'investor_id_code_error'
       doc: 'Investor Id Code Error'
     16:
-      id: 'reject_delete_or_modify_order_during_noncancel_period'
-      doc: 'Reject Delete Or Modify Order During Noncancel Period'
+      id: 'reject_delete_or_modify_order_during_non_cancel_period'
+      doc: 'Reject Delete Or Modify Order During Non Cancel Period'
     17:
       id: 'duplicate_order_no_or_quote_no'
       doc: 'Duplicate Order No Or Quote No'
@@ -1490,8 +1490,8 @@ enums:
       id: 'price_inquiry_not_accepted_yet_or_price_is_at_risefall_limit_price_inquiry_not_accepted'
       doc: 'Price inquiry not accepted yet, or price is at rise/fall limit, price inquiry not accepted'
     24:
-      id: 'buysell_error'
-      doc: 'Buysell Error'
+      id: 'buy_sell_error'
+      doc: 'Buy Sell Error'
     25:
       id: 'ord_type_error'
       doc: 'Ord Type Error'
@@ -1526,8 +1526,8 @@ enums:
       id: 'remaining_quantity_of_the_unmodified_side_is_zero'
       doc: 'The remaining quantity of the unmodified side is zero (single-side quote order modification)'
     36:
-      id: 'the_unfilled_part_of_the_oneway_quote_is_less_than_the_minimum_quantity_limit'
-      doc: 'The Unfilled Part Of The Oneway Quote Is Less Than The Minimum Quantity Limit'
+      id: 'the_unfilled_part_of_the_one_way_quote_is_less_than_the_minimum_quantity_limit'
+      doc: 'The Unfilled Part Of The One Way Quote Is Less Than The Minimum Quantity Limit'
     37:
       id: 'price_inquiry_already_present'
       doc: 'Price inquiry already present; new inquiry not accepted'
@@ -1538,7 +1538,7 @@ enums:
       id: 'decrease_quantity_error'
       doc: 'Decrease Quantity Error'
     40:
-      id: 'price_error_singleside_quote_order_modification'
+      id: 'price_error_single_side_quote_order_modification'
       doc: 'Price error (single-side quote order modification)'
     41:
       id: 'settlement_month_error'
@@ -1550,10 +1550,10 @@ enums:
       id: 'clearing_member_id_error'
       doc: 'Clearing Member Id Error'
     44:
-      id: 'ordersource_error'
+      id: 'order_source_error'
       doc: 'order_source error'
     45:
-      id: 'infosource_error'
+      id: 'info_source_error'
       doc: 'info_source error'
     46:
       id: 'disable_kill_switch_operation_error'
@@ -1595,8 +1595,8 @@ enums:
       id: 'no_such_contract'
       doc: 'No Such Contract'
     78:
-      id: 'order_of_this_contract_is_restricted_for_this_accountcode'
-      doc: 'Order Of This Contract Is Restricted For This Accountcode'
+      id: 'order_of_this_contract_is_restricted_for_this_account_code'
+      doc: 'Order Of This Contract Is Restricted For This Account Code'
     79:
       id: 'order_deleted_due_to_trading_suspension_or_order_acceptance_before_collective_bidding'
       doc: 'Order Deleted Due To Trading Suspension Or Order Acceptance Before Collective Bidding'
@@ -1637,7 +1637,7 @@ enums:
       id: 'illegal_time_to_get_file'
       doc: 'Illegal Time To Get File'
     150:
-      id: 'fcmuniqueid_or_serial_no_duplicate'
+      id: 'fcm_unique_id_or_serial_no_duplicate'
       doc: 'fcm_unique_id or serial no duplicate'
     151:
       id: 'product_can_not_block_trade'
@@ -1646,13 +1646,13 @@ enums:
       id: 'block_trade_order_quantity_error'
       doc: 'Block Trade Order Quantity Error'
     153:
-      id: 'invalid_prodcount'
+      id: 'invalid_prod_count'
       doc: 'Invalid prod_count'
     154:
-      id: 'prodcount_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
+      id: 'prod_count_is_not_match_with_the_number_of_legs_in_a_block_trade_order'
       doc: 'prod_count is not match with the number of legs in a block trade order'
     155:
-      id: 'invalid_fcmuniqueid_or_serial_no'
+      id: 'invalid_fcm_unique_id_or_serial_no'
       doc: 'invalid fcm_unique_id or serial no'
     156:
       id: 'block_trade_id_duplicate'
@@ -1661,16 +1661,16 @@ enums:
       id: 'invalid_block_trade_id'
       doc: 'Invalid Block Trade Id'
     158:
-      id: 'invalid_participantfcmcount'
+      id: 'invalid_participant_fcm_count'
       doc: 'Invalid participant_fcm_count'
     159:
-      id: 'participantfcmcount_is_not_consistent_with_participantfcmid_list'
+      id: 'participant_fcm_count_is_not_consistent_with_participant_fcm_id_list'
       doc: 'participant_fcm_count is not consistent with participant_fcm_id list'
     160:
-      id: 'participantfcmid_error'
+      id: 'participant_fcm_id_error'
       doc: 'participant_fcm_id error'
     161:
-      id: 'invalid_prodcount_161'
+      id: 'invalid_prod_count_161'
       doc: 'Invalid prod_count'
     162:
       id: 'block_trade_id_does_not_exist'
@@ -1688,22 +1688,22 @@ enums:
       id: 'negotiated_block_trade_wait_fcm_to_comfirm_order'
       doc: 'Negotiated Block Trade Wait Fcm To Comfirm Order'
     167:
-      id: 'fcmid_not_matching_represent_fcm'
+      id: 'fcm_id_not_matching_represent_fcm'
       doc: 'fcm_id not matching represent FCM'
     168:
-      id: 'symboltype_error'
+      id: 'symbol_type_error'
       doc: 'symbol_type error'
     169:
-      id: 'invalid_ordercount_of_negotiated_block_trade_confirm_input'
+      id: 'invalid_order_count_of_negotiated_block_trade_confirm_input'
       doc: 'Invalid order_count of negotiated block trade confirm input'
     170:
-      id: 'number_of_orders_in_b_31_xb_31_is_not_consistent_with_ordercount_field'
+      id: 'number_of_orders_in_b_31_xb_31_is_not_consistent_with_order_count_field'
       doc: 'number of orders in B31/XB31 is not consistent with order_count field'
     171:
       id: 'negotiated_block_trade_is_not_in_the_status_of_waiting_for_confirm_input'
       doc: 'Negotiated Block Trade Is Not In The Status Of Waiting For Confirm Input'
     172:
-      id: 'investoracno_duplicate_in_negotiated_block_trade_confirm_input'
+      id: 'investor_acno_duplicate_in_negotiated_block_trade_confirm_input'
       doc: 'investor_acno duplicate in negotiated block trade confirm input'
     175:
       id: 'negotiated_block_trade_timed_out'
@@ -1721,31 +1721,31 @@ enums:
       id: 'significant_system_time_error'
       doc: 'Significant system time error. This is a warning.'
     201:
-      id: 'appendno_error'
+      id: 'append_no_error'
       doc: '“append_no” ERROR'
     202:
-      id: 'fcmid_error'
+      id: 'fcm_id_error'
       doc: '“fcm_id” ERROR'
     203:
-      id: 'apcode_error'
+      id: 'ap_code_error'
       doc: '“ap_code” ERROR'
     204:
-      id: 'keyvalue_error'
+      id: 'key_value_error'
       doc: '“key_value” ERROR'
     205:
-      id: 'sessionid_error'
+      id: 'session_id_error'
       doc: '“session_id” ERROR'
     206:
-      id: 'systemtype_error'
+      id: 'system_type_error'
       doc: '“system_type” ERROR'
     207:
       id: 'msg_seq_num_error'
       doc: '“MsgSeqNum” ERROR'
     208:
-      id: 'targetid_error'
+      id: 'target_id_error'
       doc: '“target_id” ERROR'
     209:
-      id: 'flowgroupno_error'
+      id: 'flow_group_no_error'
       doc: 'flow_group_no ERROR'
     210:
       id: 'subscription_request_type_error'
@@ -1754,7 +1754,7 @@ enums:
       id: 'msg_type_ext_error'
       doc: 'Msg Type Ext Error'
     221:
-      id: 'partid_error'
+      id: 'part_id_error'
       doc: 'part_id ERROR'
     240:
       id: 'session_exceeds_the_flow_limit'
@@ -1763,7 +1763,7 @@ enums:
       id: 'session_exceeds_flow_limit_continuously_and_is_locked'
       doc: 'a session exceeds flow limit continuously, system will lock this session for a period of time.'
     242:
-      id: 'order_older_than_cancelordersec_and_rejected'
+      id: 'order_older_than_cancel_order_sec_and_rejected'
       doc: 'The difference between msg_time of R01/R31/RX01 and TAIFEX trading system''s R01/R31/RX01 receiving time is larger than “cancel_order_sec” value. This order will be rejected. TAIFEX will not check status_code=242 when ExecType=4.'
     248:
       id: 'session_reach_80_of_the_flow_limit'
@@ -1796,8 +1796,8 @@ enums:
       id: 'no_record_of_successful_flex_contract_application_was_found'
       doc: 'No Record Of Successful Flex Contract Application Was Found'
     310:
-      id: 'nonflexible_contract_application_period'
-      doc: 'Nonflexible Contract Application Period'
+      id: 'non_flexible_contract_application_period'
+      doc: 'Non Flexible Contract Application Period'
     311:
       id: 'the_proprietary_trading_account_has_not_been_approved_to_apply_for_flex_contracts'
       doc: 'The Proprietary Trading Account Has Not Been Approved To Apply For Flex Contracts'
@@ -1808,7 +1808,7 @@ enums:
       id: 'incorrect_coverage_range_for_the_flex_contract'
       doc: 'Incorrect Coverage Range For The Flex Contract'
     314:
-      id: 'invalid_strikeprice_for_the_flex_contract'
+      id: 'invalid_strike_price_for_the_flex_contract'
       doc: 'Invalid strike_price for the FLEX contract.'
     315:
       id: 'invalid_security_request_type_for_the_flex_contract'
@@ -1820,19 +1820,19 @@ enums:
       id: 'invalid_type_for_the_flex_contract'
       doc: 'Invalid Type For The Flex Contract'
     318:
-      id: 'expirytype_error'
+      id: 'expiry_type_error'
       doc: '“expiry_type” ERROR'
     319:
-      id: 'callputcode_error'
+      id: 'call_put_code_error'
       doc: '“call_put_code” ERROR'
-  partid:
+  part_id:
     102:
       id: 'flex_options_regular_market_hours'
       doc: 'Flex Options Regular Market Hours'
     202:
       id: 'flex_futures_regular_market_hours'
       doc: 'Flex Futures Regular Market Hours'
-  apcode:
+  ap_code:
     4:
       id: 'fcm_order_transaction'
       doc: 'Fcm Order Transaction'
@@ -1870,7 +1870,7 @@ enums:
     0x6d:
       id: 'modify_price_replying_to_the_original_line'
       doc: 'Modify Price Replying To The Original Line'
-  symboltype:
+  symbol_type:
     1:
       id: 'numeric_product_id'
       doc: 'Numeric Product Id'
@@ -1883,7 +1883,7 @@ enums:
     4:
       id: 'text_product_id_long_format'
       doc: 'Text Product Id Long Format'
-  legside_uint_822:
+  leg_side_uint_822:
     0:
       id: 'single_order'
       doc: 'Single Order'
@@ -1893,7 +1893,7 @@ enums:
     2:
       id: 'sell'
       doc: 'Sell'
-  combop:
+  comb_op:
     0:
       id: 'single_order'
       doc: 'Single Order'
@@ -1961,7 +1961,7 @@ enums:
     0x39:
       id: 'market_maker_quote'
       doc: 'Market Maker Quote'
-  targetid:
+  target_id:
     3:
       id: 'execution_report_including_head_office_and_branch_offices_in_r_02_format'
       doc: 'Execution Report Including Head Office And Branch Offices In R 02 Format'
@@ -1992,7 +1992,7 @@ enums:
     23:
       id: 'execution_report_including_head_office_and_branch_offices_in_r_06_format'
       doc: 'Execution Report Including Head Office And Branch Offices In R 06 Format'
-  protocoltype:
+  protocol_type:
     0:
       id: 'reserved'
       doc: 'Reserved'
@@ -2002,7 +2002,7 @@ enums:
     2:
       id: 'fix'
       doc: 'Fix'
-  legside_uint_81:
+  leg_side_uint_81:
     0:
       id: 'single_order'
       doc: 'Single Order'

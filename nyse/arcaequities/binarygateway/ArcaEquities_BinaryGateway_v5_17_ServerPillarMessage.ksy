@@ -1473,10 +1473,10 @@ enums:
       id: 'dmm_auction_aoc'
       doc: 'DMM Open/Re-open/Close with or without Auction (AOC)'
     2:
-      id: 'dmm_preauction'
+      id: 'dmm_pre_auction'
       doc: 'DMM Pre-auction'
     3:
-      id: 'dmm_afterauction'
+      id: 'dmm_after_auction'
       doc: 'DMM After-auction'
     4:
       id: 'qct'
@@ -1528,7 +1528,7 @@ enums:
       id: 'cco'
       doc: 'Capital Commitment Order (CCO)'
     6:
-      id: 'cco_partial_fill_contraside'
+      id: 'cco_partial_fill_contra_side'
       doc: 'Capital Commitment Order (CCO) – partial fill contra-side'
   trading_session_id:
     1:
@@ -2352,8 +2352,8 @@ enums:
       id: 'system_not_available'
       doc: 'System Not Available'
     77:
-      id: 'system_full_mengrateexceeded'
-      doc: 'System Full Mengrateexceeded'
+      id: 'system_full_meng_rate_exceeded'
+      doc: 'System Full Meng Rate Exceeded'
     78:
       id: 'throttle_reject'
       doc: 'Throttle Reject'
@@ -2562,8 +2562,8 @@ enums:
       id: 'invalid_instruction_for_io_cs'
       doc: 'Invalid Instruction For Io Cs'
     147:
-      id: 'system_full_cgrateexceeded'
-      doc: 'System Full Cgrateexceeded'
+      id: 'system_full_cg_rate_exceeded'
+      doc: 'System Full Cg Rate Exceeded'
     148:
       id: 'pending_cancel_auction_running'
       doc: 'Pending Cancel Auction Running'

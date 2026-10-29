@@ -527,11 +527,11 @@ enums:
       id: 'complex_to_complex_electronic_trade_cboe_auction_type_is_coa'
       doc: 'Complex To Complex Electronic Trade Cboe Auction Type Is Coa'
     0x67:
-      id: 'complex_auction_trade_cboe_order_types_include_caim_csam'
-      doc: 'Complex Auction Trade Cboe Order Types Include Caim Csam'
+      id: 'complex_auction_trade_cboe_order_types_include_c_aim_c_sam'
+      doc: 'Complex Auction Trade Cboe Order Types Include C Aim C Sam'
     0x68:
-      id: 'complex_cross_cboe_auction_types_include_cust_to_cust_caim_cqcc'
-      doc: 'Complex Cross Cboe Auction Types Include Cust To Cust Caim Cqcc'
+      id: 'complex_cross_cboe_auction_types_include_cust_to_cust_c_aim_c_qcc'
+      doc: 'Complex Cross Cboe Auction Types Include Cust To Cust C Aim C Qcc'
     0x69:
       id: 'complex_floor_trade_deprecated_all_complex_floor_executions_are_reported_as_condition_m'
       doc: 'Complex Floor Trade Deprecated All Complex Floor Executions Are Reported As Condition M'
@@ -539,8 +539,8 @@ enums:
       id: 'complex_electronic_trade_against_single_legs'
       doc: 'Complex Electronic Trade Against Single Legs'
     0x6b:
-      id: 'complex_with_stock_options_auction_trade_cboe_auction_types_include_caim_w_stock_csam_w_stock'
-      doc: 'Complex With Stock Options Auction Trade Cboe Auction Types Include Caim W Stock Csam W Stock'
+      id: 'complex_with_stock_options_auction_trade_cboe_auction_types_include_c_aim_w_stock_c_sam_w_stock'
+      doc: 'Complex With Stock Options Auction Trade Cboe Auction Types Include C Aim W Stock C Sam W Stock'
     0x6d:
       id: 'complex_floor_trade_against_single_legs_all_complex_floor_executions_are_reported_as_condition_m'
       doc: 'Complex Floor Trade Against Single Legs All Complex Floor Executions Are Reported As Condition M'
@@ -548,8 +548,8 @@ enums:
       id: 'complex_with_stock_electronic_trade_includes_coa_auctions_done_electronically'
       doc: 'Complex With Stock Electronic Trade Includes Coa Auctions Done Electronically'
     0x6f:
-      id: 'complex_with_stock_cross_cboe_auction_types_include_cqcc_w_stock'
-      doc: 'Complex With Stock Cross Cboe Auction Types Include Cqcc W Stock'
+      id: 'complex_with_stock_cross_cboe_auction_types_include_c_qcc_w_stock'
+      doc: 'Complex With Stock Cross Cboe Auction Types Include C Qcc W Stock'
     0x70:
       id: 'complex_with_stock_floor_trade'
       doc: 'Complex With Stock Floor Trade'

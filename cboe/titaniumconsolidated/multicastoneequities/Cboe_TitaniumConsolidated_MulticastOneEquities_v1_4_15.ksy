@@ -548,8 +548,8 @@ enums:
       id: 'regular_trading_session'
       doc: 'Regular Trading Session'
     0x50:
-      id: 'pre_or_postmarket_session'
-      doc: 'Pre Or Postmarket Session'
+      id: 'pre_or_post_market_session'
+      doc: 'Pre Or Post Market Session'
   side:
     0x42:
       id: 'buy_side'

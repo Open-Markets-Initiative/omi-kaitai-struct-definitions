@@ -1882,7 +1882,7 @@ enums:
   type_of_last_price:
     4:
       id: 'first_traded_price'
-      doc: '1 Traded Price'
+      doc: 'First Traded Price'
     7:
       id: 'n_traded_price_resume_after_reservation'
       doc: 'N Traded Price Resume After Reservation'

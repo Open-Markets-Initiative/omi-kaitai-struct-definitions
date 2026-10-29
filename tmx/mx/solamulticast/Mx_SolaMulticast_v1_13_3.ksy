@@ -8156,8 +8156,8 @@ enums:
       doc: 'Empty'
   price_indicator_marker:
     0x41:
-      id: 'asof_trade'
-      doc: 'Asof Trade'
+      id: 'as_of_trade'
+      doc: 'As Of Trade'
     0x42:
       id: 'block_trade'
       doc: 'Block Trade'
@@ -8287,8 +8287,8 @@ enums:
       doc: 'Both'
   series_status:
     0x59:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -8314,8 +8314,8 @@ enums:
       id: 'surveillance_intervention'
       doc: 'Surveillance intervention (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries'
-      doc: 'Endof Day Inquiries'
+      id: 'end_of_day_inquiries'
+      doc: 'End Of Day Inquiries'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'
@@ -8467,8 +8467,8 @@ enums:
       doc: 'Empty'
   instrument_status_marker:
     0x59:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -8494,8 +8494,8 @@ enums:
       id: 'surveillance_intervention'
       doc: 'Surveillance intervention (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries'
-      doc: 'Endof Day Inquiries'
+      id: 'end_of_day_inquiries'
+      doc: 'End Of Day Inquiries'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'
@@ -9821,8 +9821,8 @@ enums:
       doc: 'Negative'
   group_status:
     0x59:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -9842,8 +9842,8 @@ enums:
       id: 'surveillance_intervention'
       doc: 'Surveillance intervention (Consultation phase)'
     0x43:
-      id: 'endof_day_inquiries'
-      doc: 'Endof Day Inquiries'
+      id: 'end_of_day_inquiries'
+      doc: 'End Of Day Inquiries'
     0x20:
       id: 'if_not_used'
       doc: 'If Not Used'

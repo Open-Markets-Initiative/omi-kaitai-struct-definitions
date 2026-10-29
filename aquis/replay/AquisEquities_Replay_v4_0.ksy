@@ -33,7 +33,7 @@ meta:
   id: aquis_aquisequities_replay_amd_v4_0
   title: Aquis Replay Amd v4.0
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'Aquis Exchange Aquis Equities Market Data Replay Amd v4.0'
 doc-ref: https://www.aquis.eu/markets/documents
@@ -85,10 +85,10 @@ types:
   replay_request_message:
     seq:
       - id: begin_seq_no
-        type: u4le
+        type: u4
         doc: 'Stream seqNo of first message requested'
       - id: end_seq_no
-        type: u4le
+        type: u4
         doc: 'Stream seqNo of last message requested'
   replay_response_message:
     seq:

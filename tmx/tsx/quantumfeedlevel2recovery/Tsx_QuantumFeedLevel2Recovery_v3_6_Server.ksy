@@ -300,7 +300,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -327,7 +327,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -381,7 +381,7 @@ types:
     seq:
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
@@ -425,7 +425,7 @@ types:
     seq:
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To An Order By The Trading System. Nullable, No Value = 0'
@@ -464,7 +464,7 @@ types:
         doc: 'The Time At Which The Event Being Reported Occurred In The Trading Engine. Nanoseconds since Unix epoch. Nullable, No Value = 0'
       - id: imbalance_reference_price
         type: decimal_u8_6_nullable
-        doc: 'The Price That Determines If A Given Limitpriced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
+        doc: 'The Price That Determines If A Given Limit Priced Market On Close Loc Order Can Contribute To The Moc Imbalance All Loc Orders That Are Priced Equal To Or More Aggressively Than This Price Will Contribute To The Moc Imbalance. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: paired_volume
         type: u4_nullable
         doc: 'The Number Of Moc And Loc Shares That Are Able Be Matched At The Reference Price. Nullable, No Value = 0'
@@ -477,7 +477,7 @@ types:
         doc: 'Side Buy Or Sell Of The Market Order Imbalance Volume'
       - id: near_indicative_closing_price
         type: decimal_u8_6_nullable
-        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Onclose Orders Moc Loc And Visible Continuous Market Orders Effectively This Is The Price At Which The Closing Print Would Occur At The Time Of Publication. Implied decimal with scale 1e-6. Nullable, No Value = 0'
+        doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On On Close Orders Moc Loc And Visible Continuous Market Orders Effectively This Is The Price At Which The Closing Print Would Occur At The Time Of Publication. Implied decimal with scale 1e-6. Nullable, No Value = 0'
       - id: far_indicative_closing_price
         type: decimal_u8_6_nullable
         doc: 'The Calculated Closing Price That Will Maximize The Number Of Shares Matched Based On Closing Interest Only Moc Loc This Calculation Excludes Continuous Market Orders. Implied decimal with scale 1e-6. Nullable, No Value = 0'
@@ -494,7 +494,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -524,7 +524,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -565,7 +565,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -586,7 +586,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -607,7 +607,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -637,7 +637,7 @@ types:
         doc: 'A Unique Alphanumeric Identifier For A Security'
       - id: broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization. Nullable, No Value = 0'
       - id: order_side
         type: u1
         enum: order_side
@@ -670,7 +670,7 @@ types:
         size: 40
         encoding: ASCII
         pad-right: 0x20
-        doc: 'A Text Field Corresponding To A Reason Code Entered When A Stock Is Halted Or The Initiator Of A Delayed Opening On A Stock Or When There Is A Change To The Rt Oddlot Trader On A Stock As Well This Is A Systemproduced Text Field To Describe The Disabling Of The Moc Session By Tsx Trading Services'
+        doc: 'A Text Field Corresponding To A Reason Code Entered When A Stock Is Halted Or The Initiator Of A Delayed Opening On A Stock Or When There Is A Change To The Rt Oddlot Trader On A Stock As Well This Is A System Produced Text Field To Describe The Disabling Of The Moc Session By Tsx Trading Services'
       - id: stock_state
         type: str
         size: 2
@@ -707,7 +707,7 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
@@ -716,7 +716,7 @@ types:
         doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Partici Pating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
@@ -759,7 +759,7 @@ types:
       - id: is_conditional
         type: u1
         enum: is_conditional
-        doc: 'Indicates A Firmup Conditional To Firmup Conditional Execution'
+        doc: 'Indicates A Firm Up Conditional To Firm Up Conditional Execution'
   trade_report_terms_message:
     seq:
       - id: symbol
@@ -779,7 +779,7 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: buy_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To The Buy Order By The Trading System. Nullable, No Value = 0'
@@ -788,7 +788,7 @@ types:
         doc: 'Public Remaining Display Volume For The Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Partici Pating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: sell_order_id
         type: u8_nullable
         doc: 'Public Numeric Identifier Assigned To A Sell Order By The Trading System. Nullable, No Value = 0'
@@ -874,10 +874,10 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Partici Pating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
@@ -921,7 +921,7 @@ types:
       - id: is_conditional
         type: u1
         enum: is_conditional
-        doc: 'Indicates A Firmup Conditional To Firmup Conditional Execution'
+        doc: 'Indicates A Firm Up Conditional To Firm Up Conditional Execution'
   trade_correction_terms_message:
     seq:
       - id: symbol
@@ -941,10 +941,10 @@ types:
         doc: 'The Quantity Of Shares For An Order Or Fill. Nullable, No Value = 0'
       - id: buy_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Public Number Uniquely Identifying A Participating Organization Associated With A Buy Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Public Number Uniquely Identifying A Partici Pating Organization Associated With A Buy Order. Nullable, No Value = 0'
       - id: sell_broker_number
         type: u2_nullable
-        doc: 'An Exchangeassigned Number Uniquely Identifying A Participating Organization Associated With A Sell Order. Nullable, No Value = 0'
+        doc: 'An Exchange Assigned Number Uniquely Identifying A Partici Pating Organization Associated With A Sell Order. Nullable, No Value = 0'
       - id: initiated_by
         type: u1
         enum: initiated_by
@@ -1400,8 +1400,8 @@ enums:
       doc: 'No Settlement Terms'
   market_state:
     0x50:
-      id: 'preopen'
-      doc: 'Preopen'
+      id: 'pre_open'
+      doc: 'Pre Open'
     0x4f:
       id: 'opening'
       doc: 'Opening'

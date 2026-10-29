@@ -3,9 +3,11 @@
 
 ## Databento
 
-| [Protocol][Omi.Databento.Protocol.Definitions] | [Encoding][Omi.Encoding.Definitions] | Version | Date | Size | [Deployment][Omi.Glossary.Deployment] | [Testing][Omi.Glossary.Testing] | [Documentation][Omi.Databento.Specifications] |
-| --- | --- | --- | ---: | ---: | --- | --- | --- |
-| [Historical][Databento.MarketData.Historical] | [Dbn][Omi.Encoding.Dbn] | [3][Databento.MarketData.Historical.Dbn.v3.Definition] | 10/4/2026 | 1344 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Databento.MarketData.Historical.Dbn.v3.Url] |
+| [Protocol][Omi.Databento.Protocol.Definitions] | [Encoding][Omi.Encoding.Definitions] | Version | Transport | Date | Size | [Deployment][Omi.Glossary.Deployment] | [Testing][Omi.Glossary.Testing] | [Documentation][Omi.Databento.Specifications] |
+| --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
+| [Normalized][Databento.MarketData.Normalized] | [Dbn][Omi.Encoding.Dbn] | 1 | [File][Databento.MarketData.Normalized.Dbn.v1.File.Definition] [Gateway Stream][Databento.MarketData.Normalized.Dbn.v1.GatewayStream.Definition] [Client Stream][Databento.MarketData.Normalized.Dbn.v1.ClientStream.Definition] | 10/4/2026 | 2888 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Databento.MarketData.Normalized.Dbn.v1.Url] - [html][Databento.MarketData.Normalized.Dbn.v1.Html] |
+| [Normalized][Databento.MarketData.Normalized] | [Dbn][Omi.Encoding.Dbn] | 2 | [File][Databento.MarketData.Normalized.Dbn.v2.File.Definition] [Gateway Stream][Databento.MarketData.Normalized.Dbn.v2.GatewayStream.Definition] [Client Stream][Databento.MarketData.Normalized.Dbn.v2.ClientStream.Definition] | 10/4/2026 | 2954 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Databento.MarketData.Normalized.Dbn.v2.Url] - [html][Databento.MarketData.Normalized.Dbn.v2.Html] |
+| [Normalized][Databento.MarketData.Normalized] | [Dbn][Omi.Encoding.Dbn] | 3 | [File][Databento.MarketData.Normalized.Dbn.v3.File.Definition] [Gateway Stream][Databento.MarketData.Normalized.Dbn.v3.GatewayStream.Definition] [Client Stream][Databento.MarketData.Normalized.Dbn.v3.ClientStream.Definition] | 10/4/2026 | 3082 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Databento.MarketData.Normalized.Dbn.v3.Url] - [html][Databento.MarketData.Normalized.Dbn.v3.Html] |
 
 
 <p align="center"><a href="https://databento.com" title="Databento Website"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/Website.png" alt="Website" width="32" height="32"></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/databento" title="Databento on LinkedIn"><img src="https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/raw/main/About/Icons/LinkedIn.png" alt="LinkedIn" width="32" height="32"></a></p>
@@ -29,7 +31,20 @@
 [Omi.Databento.Specifications]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/tree/main/Organizations/Databento/Specifications "Databento Specifications Directory"
 [Omi.Encoding.Dbn]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Dbn.md "Dbn Encoding"
 [MarketData.Redistributor]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/tree/main/Organizations/Databento/Protocols/MarketData "Databento MarketData"
-[Databento.MarketData.Historical]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Protocols/MarketData/Historical.md "Historical"
+[Databento.MarketData.Normalized]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Protocols/MarketData/Normalized.md "Normalized"
 
-[Databento.MarketData.Historical.Dbn.v3.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/historical/Databento_MarketData_Historical_v3.ksy "Databento Historical Dbn v3 Kaitai Struct Definition"
-[Databento.MarketData.Historical.Dbn.v3.Url]: https://github.com/databento/dbn "Databento 3 Url"
+[Databento.MarketData.Normalized.Dbn.v1.File.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v1_File.ksy "Databento Normalized Dbn v1 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v1.Url]: https://databento.com/docs/standards-and-conventions/databento-binary-encoding "Databento 1 Url"
+[Databento.MarketData.Normalized.Dbn.v1.Html]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Specifications/Documentation/Databento.MarketData.Normalized.Dbn.html "Databento 1 Html"
+[Databento.MarketData.Normalized.Dbn.v1.GatewayStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v1_GatewayStream.ksy "Databento Normalized Dbn v1 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v1.ClientStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v1_ClientStream.ksy "Databento Normalized Dbn v1 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v2.File.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v2_File.ksy "Databento Normalized Dbn v2 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v2.Url]: https://databento.com/docs/standards-and-conventions/databento-binary-encoding "Databento 2 Url"
+[Databento.MarketData.Normalized.Dbn.v2.Html]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Specifications/Documentation/Databento.MarketData.Normalized.Dbn.html "Databento 2 Html"
+[Databento.MarketData.Normalized.Dbn.v2.GatewayStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v2_GatewayStream.ksy "Databento Normalized Dbn v2 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v2.ClientStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v2_ClientStream.ksy "Databento Normalized Dbn v2 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v3.File.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v3_File.ksy "Databento Normalized Dbn v3 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v3.Url]: https://databento.com/docs/standards-and-conventions/databento-binary-encoding "Databento 3 Url"
+[Databento.MarketData.Normalized.Dbn.v3.Html]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/Databento/Specifications/Documentation/Databento.MarketData.Normalized.Dbn.html "Databento 3 Html"
+[Databento.MarketData.Normalized.Dbn.v3.GatewayStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v3_GatewayStream.ksy "Databento Normalized Dbn v3 Kaitai Struct Definition"
+[Databento.MarketData.Normalized.Dbn.v3.ClientStream.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/databento/normalized/Databento_MarketData_Normalized_v3_ClientStream.ksy "Databento Normalized Dbn v3 Kaitai Struct Definition"

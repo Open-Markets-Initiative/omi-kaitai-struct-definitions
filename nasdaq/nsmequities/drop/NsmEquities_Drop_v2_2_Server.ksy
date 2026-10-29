@@ -1119,13 +1119,13 @@ enums:
       id: 'opening_cross'
       doc: 'O = Opening Cross'
     0x4d:
-      id: 'opening_cross_imbalanceonly'
+      id: 'opening_cross_imbalance_only'
       doc: 'M = Opening Cross (imbalance-only)'
     0x43:
       id: 'closing_cross'
       doc: 'C = Closing Cross'
     0x4c:
-      id: 'closing_cross_imbalanceonly'
+      id: 'closing_cross_imbalance_only'
       doc: 'L = Closing Cross (imbalance-only)'
     0x48:
       id: 'halt_ipo_cross'
@@ -1134,7 +1134,7 @@ enums:
       id: 'halt_cross'
       doc: 'K = Halt Cross'
     0x4a:
-      id: 'nondisplayed_adding_liquidity'
+      id: 'non_displayed_adding_liquidity'
       doc: 'J = Non-displayed adding liquidity'
     0x59:
       id: 're_routed_by_nyse'
@@ -1161,7 +1161,7 @@ enums:
       id: 'on_close_order_on_arca'
       doc: 'Z = On-Close order (on ARCA)'
     0x57:
-      id: 'added_postonly_not_currently_available'
+      id: 'added_post_only_not_currently_available'
       doc: 'W = Added post-only (not currently available)'
     0x6d:
       id: 'removed_liquidity_at_a_midpoint'
@@ -1173,10 +1173,10 @@ enums:
       id: 'supplemental_order_execution'
       doc: '0 = Supplemental order execution'
     0x37:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo'
       doc: '7 = Displayed, liquidity-adding order improves the NBBO'
     0x38:
-      id: 'displayed_liquidityadding_order_sets_the_qbbo_while_joining_the_nbbo'
+      id: 'displayed_liquidity_adding_order_sets_the_qbbo_while_joining_the_nbbo'
       doc: '8 = Displayed, liquidity-adding order sets the QBBO while joining the NBBO'
     0x64:
       id: 'retail_designated_execution_that_removed_liquidity_not_currently_available'
@@ -1185,7 +1185,7 @@ enums:
       id: 'retail_designated_execution_that_added_displayed_liquidity'
       doc: 'e = Retail designated execution that added displayed liquidity'
     0x66:
-      id: 'retail_designated_execution_that_added_nondisplayed_liquidity_not_currently_available'
+      id: 'retail_designated_execution_that_added_non_displayed_liquidity_not_currently_available'
       doc: 'f = Retail designated execution that added non-displayed liquidity (not currently available)'
     0x6a:
       id: 'rpi_order_that_provides_liquidity'
@@ -1194,31 +1194,31 @@ enums:
       id: 'retail_order_that_removes_rpi_liquidity'
       doc: 'r = Retail order that removes RPI liquidity'
     0x74:
-      id: 'retail_order_that_removes_price_improving_nondisplayed_liquidity_other_than_rpi_liquidity'
+      id: 'retail_order_that_removes_price_improving_non_displayed_liquidity_other_than_rpi_liquidity'
       doc: 't = Retail order that removes price improving non-displayed liquidity other than RPI liquidity'
     0x34:
       id: 'added_displayed_liquidity_in_a_group_a_symbol'
       doc: '4 = Added displayed liquidity in a Group A symbol'
     0x35:
-      id: 'added_nondisplayed_liquidity_in_a_group_a_symbol'
+      id: 'added_non_displayed_liquidity_in_a_group_a_symbol'
       doc: '5 = Added non-displayed liquidity in a Group A symbol'
     0x36:
       id: 'liquidity_removing_order_in_a_group_a_symbol'
       doc: '6 = Liquidity Removing Order in a Group A symbol'
     0x67:
-      id: 'added_nondisplayed_midpoint_liquidity_in_a_group_a_symbol'
+      id: 'added_non_displayed_midpoint_liquidity_in_a_group_a_symbol'
       doc: 'g = Added non-displayed midpoint liquidity in a Group A symbol'
     0x61:
       id: 'added_displayed_liquidity_in_a_scip_symbol'
       doc: 'a = Added displayed liquidity in a SCIP Symbol'
     0x78:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo_in_a_scip_symbol'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo_in_a_scip_symbol'
       doc: 'x = Displayed, liquidity-adding order improves the NBBO in a SCIP Symbol'
     0x79:
-      id: 'displayed_liquidityadding_order_set_the_qbbo_while_joining_the_nbbo_in_a_scip_symbol'
+      id: 'displayed_liquidity_adding_order_set_the_qbbo_while_joining_the_nbbo_in_a_scip_symbol'
       doc: 'y = Displayed, liquidity-adding order set the QBBO while joining the NBBO in a SCIP Symbol'
     0x62:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo_in_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo_in_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'
       doc: 'b = Displayed, liquidity-adding order improves the NBBO in pilot symbol during specified LULD Pricing Pilot timeframe'
     0x63:
       id: 'added_displayed_liquidity_in_a_pilot_symbol_during_specified_luld_pricing_pilot_timeframe'

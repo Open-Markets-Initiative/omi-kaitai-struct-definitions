@@ -1515,11 +1515,11 @@ enums:
       id: 'only_accept_order_if_setting_new_bbo_or_joining_existing_bbo_otherwise_expire_order'
       doc: 'Only Accept Order If Setting New Bbo Or Joining Existing Bbo Otherwise Expire Order'
     2:
-      id: 'only_accept_order_if_will_be_at_bbo_or_within_one_visible_pricepoint_otherwise_expire_order'
-      doc: 'Only Accept Order If Will Be At Bbo Or Within One Visible Pricepoint Otherwise Expire Order'
+      id: 'only_accept_order_if_will_be_at_bbo_or_within_one_visible_price_point_otherwise_expire_order'
+      doc: 'Only Accept Order If Will Be At Bbo Or Within One Visible Price Point Otherwise Expire Order'
     3:
-      id: 'only_accept_order_if_will_be_at_bbo_or_within_two_visible_pricepoints_otherwise_expire_order'
-      doc: 'Only Accept Order If Will Be At Bbo Or Within Two Visible Pricepoints Otherwise Expire Order'
+      id: 'only_accept_order_if_will_be_at_bbo_or_within_two_visible_price_points_otherwise_expire_order'
+      doc: 'Only Accept Order If Will Be At Bbo Or Within Two Visible Price Points Otherwise Expire Order'
   client_id:
     0:
       id: 'none'
@@ -1543,11 +1543,11 @@ enums:
       id: 'default_field'
       doc: 'Default'
     1:
-      id: 'permitted_to_execute_against_midpriced_pegged_orders'
-      doc: 'Permitted To Execute Against Midpriced Pegged Orders'
+      id: 'permitted_to_execute_against_mid_priced_pegged_orders'
+      doc: 'Permitted To Execute Against Mid Priced Pegged Orders'
     2:
-      id: 'not_permitted_to_execute_against_midpriced_pegged_orders'
-      doc: 'Not Permitted To Execute Against Midpriced Pegged Orders'
+      id: 'not_permitted_to_execute_against_mid_priced_pegged_orders'
+      doc: 'Not Permitted To Execute Against Mid Priced Pegged Orders'
   owner_type:
     0:
       id: 'default_field'
@@ -1563,11 +1563,11 @@ enums:
       id: 'default_field'
       doc: 'Default'
     1:
-      id: 'permitted_to_execute_against_midpriced_pegged_orders'
-      doc: 'Permitted To Execute Against Midpriced Pegged Orders'
+      id: 'permitted_to_execute_against_mid_priced_pegged_orders'
+      doc: 'Permitted To Execute Against Mid Priced Pegged Orders'
     2:
-      id: 'not_permitted_to_execute_against_midpriced_pegged_orders'
-      doc: 'Not Permitted To Execute Against Midpriced Pegged Orders'
+      id: 'not_permitted_to_execute_against_mid_priced_pegged_orders'
+      doc: 'Not Permitted To Execute Against Mid Priced Pegged Orders'
   mass_cancel_request_type:
     3:
       id: 'all_firm_orders_of_an_instrument'
@@ -1631,11 +1631,11 @@ enums:
       doc: 'Suspended'
   execution_report_pegged_exec_inst:
     1:
-      id: 'permissioned_for_execution_against_midpriced_pegged_orders'
-      doc: 'Permissioned For Execution Against Midpriced Pegged Orders'
+      id: 'permissioned_for_execution_against_mid_priced_pegged_orders'
+      doc: 'Permissioned For Execution Against Mid Priced Pegged Orders'
     2:
-      id: 'not_permissioned_for_execution_against_midpriced_pegged_orders'
-      doc: 'Not Permissioned For Execution Against Midpriced Pegged Orders'
+      id: 'not_permissioned_for_execution_against_mid_priced_pegged_orders'
+      doc: 'Not Permissioned For Execution Against Mid Priced Pegged Orders'
   trade_liquidity_indicator:
     0x41:
       id: 'added_liquidity'

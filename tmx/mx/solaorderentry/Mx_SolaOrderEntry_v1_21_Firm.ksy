@@ -2185,8 +2185,8 @@ enums:
       id: 'day'
       doc: 'Valid For The Current Day Only Day'
     0x50:
-      id: 'preopening'
-      doc: 'Valid During Current Preopening'
+      id: 'pre_opening'
+      doc: 'Valid During Current Pre Opening'
     0x57:
       id: 'while_connected'
       doc: 'While Connected'
@@ -2270,8 +2270,8 @@ enums:
       id: 'eliminated_by_mod'
       doc: 'Eliminated By Mod'
     0x4e:
-      id: 'eliminated_due_to_wash_trade_prevention_in_nontrading_state'
-      doc: 'Eliminated Due To Wash Trade Prevention In Nontrading State'
+      id: 'eliminated_due_to_wash_trade_prevention_in_non_trading_state'
+      doc: 'Eliminated Due To Wash Trade Prevention In Non Trading State'
     0x51:
       id: 'eliminated_due_to_wash_trade_prevention_against_quote'
       doc: 'Eliminated Due To Wash Trade Prevention Against Quote'
@@ -2349,8 +2349,8 @@ enums:
       id: 'no_cancel_period'
       doc: 'No Cancel Period'
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x4f:
       id: 'opening'
       doc: 'Opening'
@@ -2383,8 +2383,8 @@ enums:
       id: 'forbidden'
       doc: 'Forbidden Trading Is Forbidden For This Instrument Orders And Quotes Are Rejected'
     0x52:
-      id: 'orders_and_quotes_are_processed_in_preopening_if_the_group_is_in_trading_status'
-      doc: 'Orders And Quotes Are Processed In Preopening If The Group Is In Trading Status'
+      id: 'orders_and_quotes_are_processed_in_pre_opening_if_the_group_is_in_trading_status'
+      doc: 'Orders And Quotes Are Processed In Pre Opening If The Group Is In Trading Status'
   special_trade_indicator:
     0x20:
       id: 'normal_trade'

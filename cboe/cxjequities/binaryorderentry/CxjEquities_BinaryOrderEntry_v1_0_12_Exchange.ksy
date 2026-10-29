@@ -808,8 +808,8 @@ enums:
       doc: 'Session End'
   restatement_reason:
     0x57:
-      id: 'would_have_selftraded'
-      doc: 'Would Have Selftraded'
+      id: 'would_have_self_traded'
+      doc: 'Would Have Self Traded'
   last_capacity:
     0x31:
       id: 'agent'

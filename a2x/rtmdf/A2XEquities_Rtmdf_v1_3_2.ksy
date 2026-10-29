@@ -33,7 +33,7 @@ meta:
   id: a2x_a2xequities_rtmdf_amd_v1_3_2
   title: A2X Rtmdf Amd v1.3.2
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'A2X Markets A2X Equities Real Time Market Data Feed Amd v1.3.2'
 doc-ref: https://www.a2x.co.za/?page_id=531
@@ -83,92 +83,92 @@ types:
   order_add_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: side
         type: u1
         enum: side
         doc: 'Order Side'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   order_cancel_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   order_modify_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   trade_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trade_type
         type: u1
         enum: trade_type
         doc: 'Code identifying type of trade (see below)'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
       - id: trade_ref
-        type: u4le
+        type: u4
         doc: 'Trade reference number'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   trade_bust_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of shares being added to the book'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: trade_ref
-        type: u4le
+        type: u4
         doc: 'Trade reference number'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   tick_table_data_message:
     seq:
@@ -181,15 +181,15 @@ types:
         encoding: ASCII
         doc: 'Short name'
       - id: threshold
-        type: u8le
+        type: u8
         doc: 'The price threshold at which this tick'
       - id: tick_size
-        type: u8le
+        type: u8
         doc: 'The tick size (price increment)'
   security_definition_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: umtf
         type: str
@@ -242,7 +242,7 @@ types:
   security_status_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trading_status
         type: u1
@@ -252,7 +252,7 @@ types:
         type: market_flags
         doc: 'Market Flagss'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   market_flags:
     meta:
@@ -273,33 +273,33 @@ types:
   auction_on_demand_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: indicative_price
-        type: u8le
+        type: u8
         doc: 'Indicative auction price'
       - id: match_vol
-        type: u4le
+        type: u4
         doc: 'Indicative matched volume'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
   market_at_close:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: indicative_price
-        type: u8le
+        type: u8
         doc: 'Indicative auction price'
       - id: closing_buy_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the buy side during'
       - id: closing_sell_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the sell side during'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this market data event'
 
 enums:

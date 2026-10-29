@@ -74,12 +74,12 @@ types:
             'message_type::quote_market_pre_transparency_information_message': quote_market_pre_transparency_information_message
             'message_type::order_cancellation_market_member_message': order_cancellation_market_member_message
             'message_type::quote_cancellation_market_member_message': quote_cancellation_market_member_message
-            'message_type::trade_market_post_transparency_information_topofbook_message': trade_market_post_transparency_information_topofbook_message
+            'message_type::trade_market_post_transparency_information_top_of_book_message': trade_market_post_transparency_information_top_of_book_message
             'message_type::trade_trade_amendment_or_cancellation_message': trade_trade_amendment_or_cancellation_message
             'message_type::trade_market_post_transparency_information_full_depth_message': trade_market_post_transparency_information_full_depth_message
             'message_type::indication_of_interest_message': indication_of_interest_message
             'message_type::rfq_market_pre_transparency_information_message': rfq_market_pre_transparency_information_message
-            'message_type::topofbook_message': topofbook_message
+            'message_type::top_of_book_message': top_of_book_message
             'message_type::order_and_quote_client_data_message': order_and_quote_client_data_message
             'message_type::delta_protection_parameters_message': delta_protection_parameters_message
             'message_type::simple_new_order_message': simple_new_order_message
@@ -1165,7 +1165,7 @@ types:
       - id: secondary_order_id_2
         type: u4
         doc: 'System Order Number'
-  trade_market_post_transparency_information_topofbook_message:
+  trade_market_post_transparency_information_top_of_book_message:
     seq:
       - id: sequence_number
         type: u4
@@ -1276,9 +1276,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -1567,7 +1567,7 @@ types:
       - id: ask_px_5
         type: decimal_s8_6_nullable
         doc: 'Sell price level 5. Implied decimal with scale 1e-6. Nullable, Market Orders = -9223372036854775808'
-  topofbook_message:
+  top_of_book_message:
     seq:
       - id: sequence_number
         type: u4
@@ -2509,9 +2509,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -2752,9 +2752,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -2995,9 +2995,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -3664,7 +3664,7 @@ enums:
       id: 'quote_cancellation_market_member_message'
       doc: 'Used by the Server to communicate information about quote cancellation. The same message is used in Full-Depth data feeds (for quote cancellations of any user), in the Order Entry Server (for cancellations of user quotes) and in the Market & Order Server (for quote cancellations of any user)'
     0x10:
-      id: 'trade_market_post_transparency_information_topofbook_message'
+      id: 'trade_market_post_transparency_information_top_of_book_message'
       doc: 'Used by the server to communicate trade information related to trades resulting from order matching in channels C/D and E/F. It is also used in channels A/B when the trade is the result of order matching at the end of an auction period (where only top-of-book information is shown)'
     0x18:
       id: 'trade_trade_amendment_or_cancellation_message'
@@ -3679,7 +3679,7 @@ enums:
       id: 'rfq_market_pre_transparency_information_message'
       doc: 'Used by the server to communicate price information about RFQs. The contents of the RFQID field match those of the field IOIID in the corresponding Indication of Interest message'
     0x82:
-      id: 'topofbook_message'
+      id: 'top_of_book_message'
       doc: 'Used by the UDP Servers to communicate Top-of-book price information during auctions. When there is an indicative match price, the fields BidPx1 and AskPx1 will have the same value'
     0x6f:
       id: 'order_and_quote_client_data_message'
@@ -4154,8 +4154,8 @@ enums:
       id: 'pre_open'
       doc: 'Pre Open'
     26:
-      id: 'postclose_ready_to_trade_in_tal'
-      doc: 'Postclose Ready To Trade In Tal'
+      id: 'post_close_ready_to_trade_in_tal'
+      doc: 'Post Close Ready To Trade In Tal'
     23:
       id: 'fast_market'
       doc: 'Fast Market'
@@ -4173,11 +4173,11 @@ enums:
       id: 'halted_by_market_surveillance'
       doc: 'Halted By Market Surveillance'
     102:
-      id: 'knockout'
-      doc: 'Knockout'
+      id: 'knock_out'
+      doc: 'Knock Out'
     103:
-      id: 'knockin_pending'
-      doc: 'Knockin Pending'
+      id: 'knock_in_pending'
+      doc: 'Knock In Pending'
   side:
     0x31:
       id: 'buy'
@@ -4294,7 +4294,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  bencrfpt_flag:
+  benc_rfpt_flag:
     0x20:
       id: 'normal_trade'
       doc: 'Normal Trade'
@@ -4524,11 +4524,11 @@ enums:
       id: 'cancelled_partially_filled'
       doc: 'Cancelled Partially Filled'
     0x41:
-      id: 'nonworking_order_pending_validation'
-      doc: 'Nonworking Order Pending Validation'
+      id: 'non_working_order_pending_validation'
+      doc: 'Non Working Order Pending Validation'
     0x53:
-      id: 'nonworking_order_pending_activation'
-      doc: 'Nonworking Order Pending Activation'
+      id: 'non_working_order_pending_activation'
+      doc: 'Non Working Order Pending Activation'
     0x43:
       id: 'expired'
       doc: 'Expired'
@@ -4636,8 +4636,8 @@ enums:
       id: 'by_hft_filter_limit_maximum_number_of_contracts_matched'
       doc: 'By Hft Filter Limit Maximum Number Of Contracts Matched'
     0x6f:
-      id: 'by_selfmatch_prevention'
-      doc: 'By Selfmatch Prevention'
+      id: 'by_self_match_prevention'
+      doc: 'By Self Match Prevention'
     0x70:
       id: 'auction_price_order_cancelled_at_the_end_of_the_auction'
       doc: 'Auction Price Order Cancelled At The End Of The Auction'
@@ -4700,8 +4700,8 @@ enums:
       id: 'order_refresh'
       doc: 'Order Refresh'
     0x44:
-      id: 'stop_order_triggered_attheclose_order_activation'
-      doc: 'Stop Order Triggered Attheclose Order Activation'
+      id: 'stop_order_triggered_at_the_close_order_activation'
+      doc: 'Stop Order Triggered At The Close Order Activation'
     0x38:
       id: 'order_rejection'
       doc: 'Order Rejection'
@@ -4743,11 +4743,11 @@ enums:
       id: 'cancelled_partially_filled'
       doc: 'Cancelled Partially Filled'
     0x41:
-      id: 'nonworking_order_pending_validation'
-      doc: 'Nonworking Order Pending Validation'
+      id: 'non_working_order_pending_validation'
+      doc: 'Non Working Order Pending Validation'
     0x53:
-      id: 'nonworking_order_pending_activation'
-      doc: 'Nonworking Order Pending Activation'
+      id: 'non_working_order_pending_activation'
+      doc: 'Non Working Order Pending Activation'
   ord_rej_reason_2:
     0x31:
       id: 'by_trader'
@@ -4852,8 +4852,8 @@ enums:
       id: 'by_hft_filter_limit_maximum_number_of_contracts_matched'
       doc: 'By Hft Filter Limit Maximum Number Of Contracts Matched'
     0x6f:
-      id: 'by_selfmatch_prevention'
-      doc: 'By Selfmatch Prevention'
+      id: 'by_self_match_prevention'
+      doc: 'By Self Match Prevention'
     0x70:
       id: 'auction_price_order_cancelled_at_the_end_of_the_auction'
       doc: 'Auction Price Order Cancelled At The End Of The Auction'
@@ -5026,8 +5026,8 @@ enums:
       id: 'by_hft_filter_limit_maximum_number_of_contracts_matched'
       doc: 'By Hft Filter Limit Maximum Number Of Contracts Matched'
     0x6f:
-      id: 'by_selfmatch_prevention'
-      doc: 'By Selfmatch Prevention'
+      id: 'by_self_match_prevention'
+      doc: 'By Self Match Prevention'
     0x70:
       id: 'auction_price_order_cancelled_at_the_end_of_the_auction'
       doc: 'Auction Price Order Cancelled At The End Of The Auction'

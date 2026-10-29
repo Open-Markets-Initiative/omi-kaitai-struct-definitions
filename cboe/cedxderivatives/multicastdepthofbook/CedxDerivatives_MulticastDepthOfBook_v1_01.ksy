@@ -1089,8 +1089,8 @@ enums:
       id: 'algorithmic_trade'
       doc: 'Algorithmic Trade'
     0x2d:
-      id: 'nonalgorithmic_trade'
-      doc: 'Nonalgorithmic Trade'
+      id: 'non_algorithmic_trade'
+      doc: 'Non Algorithmic Trade'
   transaction_category:
     0x44:
       id: 'dark_trade'

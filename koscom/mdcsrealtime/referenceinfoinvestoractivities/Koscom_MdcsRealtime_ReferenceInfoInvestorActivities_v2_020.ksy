@@ -841,7 +841,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Transmission Date'
-      - id: buyin_type_code
+      - id: buy_in_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -853,7 +853,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Security Group ID (Equities, Investment firms, ETF, ELW, Futures, Options etc.)'
-      - id: buyin_volume
+      - id: buy_in_volume
         type: str
         size: 15
         encoding: ASCII

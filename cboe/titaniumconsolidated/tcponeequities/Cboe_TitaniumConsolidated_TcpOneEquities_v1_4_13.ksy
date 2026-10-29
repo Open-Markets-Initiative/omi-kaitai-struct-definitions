@@ -853,14 +853,14 @@ enums:
       id: 'edgx'
       doc: 'Edgx'
     0x4c:
-      id: 'neol'
-      doc: 'Neol'
+      id: 'neo_l'
+      doc: 'Neo L'
     0x4e:
-      id: 'neon'
-      doc: 'Neon'
+      id: 'neo_n'
+      doc: 'Neo N'
     0x44:
-      id: 'neod'
-      doc: 'Neod'
+      id: 'neo_d'
+      doc: 'Neo D'
     0x4d:
       id: 'match_now'
       doc: 'Match Now'
@@ -868,8 +868,8 @@ enums:
       id: 'neo_cross'
       doc: 'Neo Cross'
     0x74:
-      id: 'neosst'
-      doc: 'Neosst'
+      id: 'neo_sst'
+      doc: 'Neo Sst'
   side_indicator:
     0x42:
       id: 'buy_side'
@@ -892,8 +892,8 @@ enums:
       id: 'regular_trading_session'
       doc: 'Regular Trading Session'
     0x50:
-      id: 'pre_or_postmarket_session'
-      doc: 'Pre Or Postmarket Session'
+      id: 'pre_or_post_market_session'
+      doc: 'Pre Or Post Market Session'
   retail_price_improvement:
     0x42:
       id: 'buy_side_rpi'
@@ -921,11 +921,11 @@ enums:
       id: 'delayed_closing'
       doc: 'Delayed Closing'
     0x4f:
-      id: 'preclose'
-      doc: 'Preclose'
+      id: 'pre_close'
+      doc: 'Pre Close'
     0x50:
-      id: 'postclose'
-      doc: 'Postclose'
+      id: 'post_close'
+      doc: 'Post Close'
     0x51:
       id: 'quote_only'
       doc: 'Quote Only'

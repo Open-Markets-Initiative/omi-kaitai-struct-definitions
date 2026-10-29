@@ -796,8 +796,8 @@ enums:
       doc: 'None'
   negotiation_indicator:
     0x38:
-      id: 'negotiated_trade_with_pretrade_transparency_waiver'
-      doc: 'Negotiated Trade With Pretrade Transparency Waiver'
+      id: 'negotiated_trade_with_pre_trade_transparency_waiver'
+      doc: 'Negotiated Trade With Pre Trade Transparency Waiver'
     0x2d:
       id: 'not_a_negotiated_trade'
       doc: 'Not A Negotiated Trade'

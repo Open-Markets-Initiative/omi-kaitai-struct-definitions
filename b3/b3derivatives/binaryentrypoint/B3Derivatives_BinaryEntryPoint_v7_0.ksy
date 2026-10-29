@@ -3198,7 +3198,7 @@ enums:
       doc: 'Attempt To Cancel An Order With A Different Sender Location Id Than The Original Order'
     002059:
       id: 'stop_price_maximini_must_be_smaller_than_or_equal_to_trigger_price'
-      doc: 'Stop Price Maximini Must Be Smaller Than Or Equal To Trigger Price'
+      doc: 'Stop Price Maxi Mini Must Be Smaller Than Or Equal To Trigger Price'
     002060:
       id: 'sell_order_stop_price_must_be_below_last_trade_price'
       doc: 'Sell Order Stop Price Must Be Below Last Trade Price'
@@ -3210,7 +3210,7 @@ enums:
       doc: 'The Modify Was Submitted On A Different Product Than The Original Order'
     002101:
       id: 'attempt_to_modify_an_order_with_a_different_inflightfill_mitigation_status_than_first_modification'
-      doc: 'Attempt To Modify An Order With A Different Inflightfill Mitigation Status Than First Modification'
+      doc: 'Attempt To Modify An Order With A Different In Flight Fill Mitigation Status Than First Modification'
     002102:
       id: 'attempt_to_modify_an_order_with_a_different_sendercompid_than_the_original_order'
       doc: 'Attempt To Modify An Order With A Different Sender Comp Id Than The Original Order'
@@ -3525,7 +3525,7 @@ enums:
       doc: 'No Partial Match Found For This Fak Order'
     007008:
       id: 'maximum_quantity_depth_for_any_one_price_group_max_may_not_exceed_integermax_value'
-      doc: 'Maximum Quantity Depth For Any One Price Group Max May Not Exceed Integer Maxvalue'
+      doc: 'Maximum Quantity Depth For Any One Price Group Max May Not Exceed Integer Max Value'
     007009:
       id: 'contract_for_this_order_contract_is_past_expiration_date_and_may_no_longer_be_traded'
       doc: 'Contract For This Order Contract Is Past Expiration Date And May No Longer Be Traded'
@@ -3720,7 +3720,7 @@ enums:
       doc: 'Rlp Order Rejected Only One Order Is Allowed By Firm And Side'
     007126:
       id: 'invalid_field_for_order_with_routing_instruction_tag_35487_equals_1_retail_liquidity_taker'
-      doc: 'Invalid Field For Order With Routing Instruction Tag 35487 Equals 1 Retailliquiditytaker'
+      doc: 'Invalid Field For Order With Routing Instruction Tag 35487 Equals 1 Retail Liquidity Taker'
     007127:
       id: 'invalid_field_for_order_with_order_type_tag_40_equals_p_pegged'
       doc: 'Invalid Field For Order With Order Type Tag 40 Equals P Pegged'
@@ -3741,10 +3741,10 @@ enums:
       doc: 'Order Rejected Pegged Orders Are Not Allowed For This Contract'
     007133:
       id: 'order_rejected_routing_instruction_tag_35487_equals_broker_only_3_not_allowed_for_this_group'
-      doc: 'Order Rejected Routinginstruction Tag 35487 Equals Brokeronly 3 Not Allowed For This Group'
+      doc: 'Order Rejected Routing Instruction Tag 35487 Equals Broker Only 3 Not Allowed For This Group'
     007134:
       id: 'order_rejected_only_pegged_order_with_routing_instruction_tag_35487_equals_broker_only_3_is_allowed_for_this_group'
-      doc: 'Order Rejected Only Pegged Order With Routinginstruction Tag 35487 Equals Brokeronly 3 Is Allowed For This Group'
+      doc: 'Order Rejected Only Pegged Order With Routing Instruction Tag 35487 Equals Broker Only 3 Is Allowed For This Group'
     007135:
       id: 'cross_order_suspended_for_the_participant_or_session'
       doc: 'Cross Order Suspended For The Participant Or Session'
@@ -3918,7 +3918,7 @@ enums:
       doc: 'Transient Account Is Hierarchically Blocked On Protected Mode'
     030026:
       id: 'crossorders_or_crossforward_not_allowed_while_account_in_protected_mode'
-      doc: 'Crossorders Or Crossforward Not Allowed While Account In Protected Mode'
+      doc: 'Cross Orders Or Cross Forward Not Allowed While Account In Protected Mode'
     030027:
       id: 'transient_account_not_allowed_in_extended_hours'
       doc: 'Transient Account Not Allowed In Extended Hours'
@@ -3939,7 +3939,7 @@ enums:
       doc: 'Document In Blocked Profile'
     030036:
       id: 'crossorders_or_crossforward_not_allowed_while_document_in_protected_mode'
-      doc: 'Crossorders Or Crossforward Not Allowed While Document In Protected Mode'
+      doc: 'Cross Orders Or Cross Forward Not Allowed While Document In Protected Mode'
     030041:
       id: 'entering_trader_negotiation_blocked'
       doc: 'Entering Trader Negotiation Blocked'
@@ -4233,7 +4233,7 @@ enums:
       doc: 'Transient Account Is Hierarchically Blocked On Protected Mode'
     031026:
       id: 'crossorders_or_crossforward_not_allowed_while_account_in_protected_mode_031026'
-      doc: 'Crossorders Or Crossforward Not Allowed While Account In Protected Mode'
+      doc: 'Cross Orders Or Cross Forward Not Allowed While Account In Protected Mode'
     031027:
       id: 'transient_account_not_allowed_in_extended_hours_031027'
       doc: 'Transient Account Not Allowed In Extended Hours'
@@ -4254,7 +4254,7 @@ enums:
       doc: 'Document In Blocked Profile'
     031036:
       id: 'crossorders_or_crossforward_not_allowed_while_document_in_protected_mode_031036'
-      doc: 'Crossorders Or Crossforward Not Allowed While Document In Protected Mode'
+      doc: 'Cross Orders Or Cross Forward Not Allowed While Document In Protected Mode'
     031041:
       id: 'entering_trader_negotiation_blocked_031041'
       doc: 'Entering Trader Negotiation Blocked'
@@ -4807,10 +4807,10 @@ enums:
       doc: 'Contrary Exercise Already Registered For This Position'
     008070:
       id: 'inthemoney_contract_allows_contrary_exercise_to_not_exercise_automatically_only'
-      doc: 'Inthemoney Contract Allows Contrary Exercise To Not Exercise Automatically Only'
+      doc: 'In The Money Contract Allows Contrary Exercise To Not Exercise Automatically Only'
     008071:
       id: 'atoutthemoney_contract_allows_contrary_exercise_to_exercise_automatically_only'
-      doc: 'At Outthemoney Contract Allows Contrary Exercise To Exercise Automatically Only'
+      doc: 'At Out The Money Contract Allows Contrary Exercise To Exercise Automatically Only'
     008072:
       id: 'dma_is_not_allowed_to_request_contrary_exercise'
       doc: 'Dma Is Not Allowed To Request Contrary Exercise'

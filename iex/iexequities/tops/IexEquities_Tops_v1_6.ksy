@@ -348,7 +348,7 @@ types:
       - id: unused_3
         type: b3
         doc: 'Unused'
-      - id: singleprice_cross_trade
+      - id: single_price_cross_trade
         type: b1
         doc: 'Trade resulting from a single-price cross'
       - id: trade_through_exempt

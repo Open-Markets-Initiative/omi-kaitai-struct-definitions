@@ -137,7 +137,7 @@ types:
       - id: version
         type: u1
         doc: 'Version of OTTO Interface. Currently set to 3'
-      - id: subversion
+      - id: sub_version
         type: u1
         doc: 'Sub-version of the interface. Currently set to 0'
   simple_instrument_directory_message:

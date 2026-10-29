@@ -261,8 +261,8 @@ enums:
       id: 'stop_loss_index'
       doc: 'Stop Loss Index'
     0x54:
-      id: 'realtime_index_value'
-      doc: 'Realtime Index Value'
+      id: 'real_time_index_value'
+      doc: 'Real Time Index Value'
   exception:
     0x23:
       id: 'index_with_hsil_defined_exceptional_rule_applied'

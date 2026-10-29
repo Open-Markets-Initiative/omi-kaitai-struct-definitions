@@ -636,8 +636,8 @@ enums:
       id: 'trading_halted_orders_can_be_cancelled_but_no_new_orders_can_be_entered'
       doc: 'Trading Halted Orders Can Be Cancelled But No New Orders Can Be Entered'
     0x51:
-      id: 'start_of_market_hours_the_preopen_auction_is_concluded_and_continuous_trading_begins'
-      doc: 'Start Of Market Hours The Preopen Auction Is Concluded And Continuous Trading Begins'
+      id: 'start_of_market_hours_the_pre_open_auction_is_concluded_and_continuous_trading_begins'
+      doc: 'Start Of Market Hours The Pre Open Auction Is Concluded And Continuous Trading Begins'
     0x4d:
       id: 'end_of_market_hours_indicates_the_end_of_continuous_trading'
       doc: 'End Of Market Hours Indicates The End Of Continuous Trading'
@@ -749,8 +749,8 @@ enums:
       id: 'vwap'
       doc: 'Vwap'
     0x44:
-      id: 'derivativerelated'
-      doc: 'Derivativerelated'
+      id: 'derivative_related'
+      doc: 'Derivative Related'
     0x20:
       id: 'otherwise_empty_string_not_specified'
       doc: 'Otherwise Empty String Not Specified'

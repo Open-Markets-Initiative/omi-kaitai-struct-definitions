@@ -1240,13 +1240,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Trading Halt'
-      - id: knockout_elw_type_code
+      - id: knock_out_elw_type_code
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'The status of warrants "Y": Knock-out'
-      - id: knockout_elw_triggering_time
+      - id: knock_out_elw_triggering_time
         type: str
         size: 9
         encoding: ASCII
@@ -1942,7 +1942,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Unfaithful Disclosure'
-      - id: backdoor_listing
+      - id: back_door_listing
         type: str
         size: 1
         encoding: ASCII
@@ -2159,7 +2159,7 @@ types:
         size: 11
         encoding: ASCII
         doc: 'Unit of Volume in Main Board'
-      - id: lot_size_afterhours_trading
+      - id: lot_size_after_hours_trading
         type: str
         size: 11
         encoding: ASCII
@@ -2200,19 +2200,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Closing Price Trading Possibility in the After Hours'
-      - id: closing_price_trading_in_the_preopening_market
+      - id: closing_price_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to a Closing Price Trading in the Pre-opening Market'
-      - id: block_trading_in_the_preopening_market
+      - id: block_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Block Trading in the Pre-opening Market'
-      - id: basket_trading_in_the_preopening_market
+      - id: basket_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
@@ -2270,7 +2270,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Delisting date for Issues (Spot: the next of a last trading date, Derv: the last payment date)'
-      - id: shortterm_overheat_issue_type_code
+      - id: short_term_overheat_issue_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -2734,32 +2734,32 @@ types:
         size: 5
         encoding: ASCII
         doc: 'Total number of tradable issues on Competitive Trading'
-      - id: premarket_accumulated_trading_volume
+      - id: pre_market_accumulated_trading_volume
         type: str
         size: 12
         encoding: ASCII
         doc: 'Pre-market accumulated trading volume in the Regular market'
-      - id: premarket_accumulated_trading_value
+      - id: pre_market_accumulated_trading_value
         type: str
         size: 22
         encoding: ASCII
         doc: 'Pre-market accumulated trading value in the Regular market'
-      - id: mainmarket_accumulated_trading_volume
+      - id: main_market_accumulated_trading_volume
         type: str
         size: 12
         encoding: ASCII
         doc: 'Main-market accumulated trading volume in the Regular market'
-      - id: mainmarket_accumulated_trading_value
+      - id: main_market_accumulated_trading_value
         type: str
         size: 22
         encoding: ASCII
         doc: 'Main-market accumulated trading value in the Regular market'
-      - id: aftermarket_accumulated_trading_volume
+      - id: after_market_accumulated_trading_volume
         type: str
         size: 12
         encoding: ASCII
         doc: 'After-market accumulated trading volume in the Regular market'
-      - id: aftermarket_accumulated_trading_value
+      - id: after_market_accumulated_trading_value
         type: str
         size: 22
         encoding: ASCII

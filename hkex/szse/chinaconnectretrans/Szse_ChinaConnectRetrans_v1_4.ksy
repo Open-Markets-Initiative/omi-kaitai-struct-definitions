@@ -405,11 +405,11 @@ enums:
       doc: 'Exceeds Maximum Requests In A Day'
   shortsell_flag:
     0x59:
-      id: 'shortsell_allowed'
-      doc: 'Shortsell Allowed'
+      id: 'short_sell_allowed'
+      doc: 'Short Sell Allowed'
     0x4e:
-      id: 'shortsell_not_allowed'
-      doc: 'Shortsell Not Allowed'
+      id: 'short_sell_not_allowed'
+      doc: 'Short Sell Not Allowed'
   security_trading_status:
     2:
       id: 'trading_halt'

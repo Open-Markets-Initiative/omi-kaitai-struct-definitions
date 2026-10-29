@@ -218,49 +218,43 @@ types:
         encoding: ASCII
         doc: 'Time the message was created in the Trading System, as local time to the microsecond'
   buy_waiver_indicator:
-    meta:
-      bit-endian: le
     seq:
-      - id: rfpt
-        type: b1
-        doc: 'Reference price waiver'
-      - id: nliq
-        type: b1
-        doc: 'Negotiated transaction in liquid instruments waiver'
-      - id: oilq
-        type: b1
-        doc: 'Negotiated transaction in illiquid instruments waiver'
-      - id: pric
-        type: b1
-        doc: 'Negotiated transaction subject to conditions other than the current market price waiver'
-      - id: size
-        type: b1
-        doc: 'Above specified size waiver'
-      - id: ilqd
-        type: b1
-        doc: 'Illiquid instrument waiver'
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      rfpt:
+        value: ((text.to_i >> 0) & 1) == 1
+      nliq:
+        value: ((text.to_i >> 1) & 1) == 1
+      oilq:
+        value: ((text.to_i >> 2) & 1) == 1
+      pric:
+        value: ((text.to_i >> 3) & 1) == 1
+      size:
+        value: ((text.to_i >> 4) & 1) == 1
+      ilqd:
+        value: ((text.to_i >> 5) & 1) == 1
   sell_waiver_indicator:
-    meta:
-      bit-endian: le
     seq:
-      - id: rfpt
-        type: b1
-        doc: 'Reference price waiver'
-      - id: nliq
-        type: b1
-        doc: 'Negotiated transaction in liquid instruments waiver'
-      - id: oilq
-        type: b1
-        doc: 'Negotiated transaction in illiquid instruments waiver'
-      - id: pric
-        type: b1
-        doc: 'Negotiated transaction subject to conditions other than the current market price waiver'
-      - id: size
-        type: b1
-        doc: 'Above specified size waiver'
-      - id: ilqd
-        type: b1
-        doc: 'Illiquid instrument waiver'
+      - id: value
+        size: 4
+    instances:
+      text:
+        value: value.to_s("ASCII")
+      rfpt:
+        value: ((text.to_i >> 0) & 1) == 1
+      nliq:
+        value: ((text.to_i >> 1) & 1) == 1
+      oilq:
+        value: ((text.to_i >> 2) & 1) == 1
+      pric:
+        value: ((text.to_i >> 3) & 1) == 1
+      size:
+        value: ((text.to_i >> 4) & 1) == 1
+      ilqd:
+        value: ((text.to_i >> 5) & 1) == 1
   quote_message:
     seq:
       - id: symbol

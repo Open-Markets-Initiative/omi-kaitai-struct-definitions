@@ -506,7 +506,7 @@ enums:
       id: 'trading_halted'
       doc: 'Trading Halted'
     0x34:
-      id: 'preopen'
+      id: 'pre_open'
       doc: 'Pre-open'
     0x35:
       id: 'rotation_legal_width_quote_pending'

@@ -110,7 +110,7 @@ types:
       - id: version
         type: u1
         doc: 'Version of this interface. Currently set to 1'
-      - id: subversion
+      - id: sub_version
         type: u1
         doc: 'Sub-version of this interface. Currently set to 0'
   complex_strategy_directory_message:

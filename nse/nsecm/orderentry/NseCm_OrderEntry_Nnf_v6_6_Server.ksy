@@ -121,8 +121,8 @@ types:
         type: s2
         doc: 'Zero when the request succeeded, otherwise an Error Response follows'
       - id: header_timestamp
-        type: dos_nanosecond_timestamp
-        doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix. Nanoseconds since Dos epoch'
+        type: s8
+        doc: 'Host end field, carrying nanoseconds since midnight 01-Jan-1980 on the transaction codes listed in the appendix'
       - id: time_stamp_1
         type: str
         size: 8
@@ -1607,6 +1607,20 @@ types:
         value: time / 60 % 60
       second:
         value: time % 60
+  decimal_s4_2:
+    seq:
+      - id: mantissa
+        type: s4
+    instances:
+      real:
+        value: mantissa / 100.0
+  floating_point_integer:
+    seq:
+      - id: value
+        type: f8
+    instances:
+      integer:
+        value: value.as<s8>
   dos_nanosecond_timestamp:
     seq:
       - id: time
@@ -1622,20 +1636,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_s4_2:
-    seq:
-      - id: mantissa
-        type: s4
-    instances:
-      real:
-        value: mantissa / 100.0
-  floating_point_integer:
-    seq:
-      - id: value
-        type: f8
-    instances:
-      integer:
-        value: value.as<s8>
 
 enums:
   transaction_code:

@@ -142,7 +142,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: event_code
         type: u1
@@ -154,7 +154,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -224,7 +224,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -266,7 +266,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -362,7 +362,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -377,7 +377,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -404,7 +404,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -431,7 +431,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -452,7 +452,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -470,7 +470,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -497,7 +497,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -524,7 +524,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -542,7 +542,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: order_number
         type: u8
@@ -582,7 +582,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: order_number
         type: u8
@@ -599,7 +599,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: order_number
         type: u8
@@ -610,7 +610,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -644,7 +644,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -680,7 +680,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -730,7 +730,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: buyer
         type: u4
@@ -791,7 +791,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: order_number
         type: u8
@@ -831,7 +831,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -884,7 +884,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: match_number
         type: u4
@@ -895,7 +895,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -921,7 +921,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -979,7 +979,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -1002,7 +1002,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: source_id
         type: str
@@ -1022,7 +1022,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -1039,7 +1039,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -1068,7 +1068,7 @@ types:
         type: nanosecond_offset
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
       - id: contract_number
         type: u4
@@ -1080,7 +1080,7 @@ types:
         type: u4
         doc: 'Number of open contracts at end of day for the specified VOI trade date'
       - id: voi_trade_date
-        type: u2
+        type: epoch_date
         doc: 'Trade date to which the VOI information applies'
   second_timestamp:
     seq:
@@ -1104,6 +1104,13 @@ types:
         value: time / 1000 % 1000
       nanosecond:
         value: time % 1000
+  epoch_date:
+    seq:
+      - id: days
+        type: u2
+    instances:
+      unix_seconds:
+        value: days * 86400
   decimal_s4_2:
     seq:
       - id: mantissa

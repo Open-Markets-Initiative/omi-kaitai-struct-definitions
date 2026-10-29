@@ -807,7 +807,7 @@ enums:
       id: 'reduced_liquidity'
       doc: 'R = Reduced Liquidity'
     0x4a:
-      id: 'nondisplayed_and_added_liquidity'
+      id: 'non_displayed_and_added_liquidity'
       doc: 'J = Non-displayed and Added Liquidity'
     0x58:
       id: 'routed'
@@ -858,19 +858,19 @@ enums:
       id: 'rmo_retail_order_removes_rpi_liquidity'
       doc: 'r = RMO Retail Order removes RPI liquidity'
     0x74:
-      id: 'rmo_retail_order_removes_price_improving_nondisplayed_liquidity_other_than_rpi_liquidity'
+      id: 'rmo_retail_order_removes_price_improving_non_displayed_liquidity_other_than_rpi_liquidity'
       doc: 't = RMO Retail Order removes price improving non-displayed liquidity other than RPI liquidity'
     0x71:
       id: 'rmo_retail_order_removes_non_rpi_midpoint_liquidity'
       doc: 'q = RMO Retail Order removes non-RPI mid-point liquidity'
     0x37:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo'
       doc: '7 = Displayed, liquidity-adding order improves the NBBO'
     0x38:
-      id: 'displayed_liquidityadding_order_sets_the_bxbbo_while_joining_the_nbbo'
+      id: 'displayed_liquidity_adding_order_sets_the_bxbbo_while_joining_the_nbbo'
       doc: '8 = Displayed, liquidity-adding order sets the BXBBO while joining the NBBO'
     0x70:
-      id: 'removed_price_improving_nondisplayed_liquidity'
+      id: 'removed_price_improving_non_displayed_liquidity'
       doc: 'p = Removed price improving non-displayed liquidity'
     0x4e:
       id: 'passive_midpoint_execution'

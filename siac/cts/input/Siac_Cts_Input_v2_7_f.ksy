@@ -81,7 +81,7 @@ types:
       - id: message_payload
         size: message_header.message_length - 26
         type:
-          switch-on: message_header
+          switch-on: message_header_key
           cases:
             16722: rejection_message
             16727: warning_message
@@ -106,6 +106,10 @@ types:
             21588: short_trade_message
             21576: fractional_short_trade_message
             21592: trade_cancel_error_message
+    instances:
+      message_header_key:
+        pos: _io.pos - 24
+        type: u2be
   message_header:
     seq:
       - id: message_length

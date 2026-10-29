@@ -644,8 +644,8 @@ enums:
       id: 'short_sale_restriction_deactivated'
       doc: 'Short Sale Restriction Deactivated'
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x42:
       id: 'begin_accepting_orders'
       doc: 'Begin Accepting Orders'
@@ -700,7 +700,7 @@ enums:
       doc: 'Merger Effective'
     0x46:
       id: 'etf_iiv_etf_components_prices_not_available'
-      doc: 'Etf Iivetf Components Prices Not Available'
+      doc: 'ETF IIV / ETF Components Prices Not Available'
     0x4e:
       id: 'corporate_action'
       doc: 'Corporate Action'
@@ -801,8 +801,8 @@ enums:
       doc: 'Short Sale Restriction In Effect'
   market_state:
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x4e:
       id: 'overnight_session'
       doc: 'Overnight Session'

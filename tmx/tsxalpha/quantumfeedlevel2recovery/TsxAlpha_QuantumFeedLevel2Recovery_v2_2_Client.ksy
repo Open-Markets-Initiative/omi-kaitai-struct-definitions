@@ -321,8 +321,8 @@ enums:
       doc: 'Sell'
   market_state:
     0x50:
-      id: 'preopen'
-      doc: 'Preopen'
+      id: 'pre_open'
+      doc: 'Pre Open'
     0x4f:
       id: 'opening'
       doc: 'Opening'

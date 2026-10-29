@@ -33,7 +33,7 @@ meta:
   id: a2x_a2xequities_snapshot_amd_v1_3_2
   title: A2X Snapshot Amd v1.3.2
   license: GPL-3.0
-  endian: be
+  endian: le
 
 doc: 'A2X Markets A2X Equities Snapshot Feed Amd v1.3.2'
 doc-ref: https://www.a2x.co.za/?page_id=531
@@ -77,18 +77,18 @@ types:
   snapshot_start_message:
     seq:
       - id: stream_seq_no
-        type: u4le
+        type: u4
         doc: 'The sequence number of the last message'
       - id: security_count
-        type: u2le
+        type: u2
         doc: 'Number of securities reported in this'
       - id: timestamp
-        type: u8le
+        type: u8
         doc: 'Timestamp of this snapshot'
   book_status_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: trading_status
         type: u1
@@ -97,16 +97,16 @@ types:
         type: market_flags
         doc: 'Market Flagss'
       - id: entries
-        type: u2le
+        type: u2
         doc: 'Number of open orders in the book for this'
       - id: closing_buy_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the buy side during'
       - id: closing_sell_qty
-        type: u4le
+        type: u4
         doc: 'Total order quantity on the sell side during'
       - id: indicative_price
-        type: u8le
+        type: u8
         doc: 'Indicative auction price'
   market_flags:
     meta:
@@ -127,30 +127,30 @@ types:
   book_entry_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
   market_at_close_book_entry_message:
     seq:
       - id: security_id
-        type: u2le
+        type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: quantity
-        type: u4le
+        type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8le
+        type: u8
         doc: 'The price of the order'
       - id: order_ref
-        type: u4le
+        type: u4
         doc: 'Order reference number'
 
 enums:

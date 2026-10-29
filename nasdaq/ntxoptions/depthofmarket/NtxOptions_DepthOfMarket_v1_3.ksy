@@ -778,7 +778,7 @@ enums:
       doc: 'Sell'
   printable:
     0x4e:
-      id: 'nonprintable'
+      id: 'non_printable'
       doc: 'non-printable'
     0x59:
       id: 'printable'
@@ -835,7 +835,7 @@ enums:
       id: 'firm_joint'
       doc: 'Firm/ Joint Back Office'
     0x4d:
-      id: 'onfloor'
+      id: 'on_floor'
       doc: 'On-floor Market Maker'
     0x50:
       id: 'professional'

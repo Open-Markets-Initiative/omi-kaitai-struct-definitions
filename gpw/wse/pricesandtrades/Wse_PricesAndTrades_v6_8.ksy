@@ -764,7 +764,7 @@ enums:
   type_of_last_price:
     4:
       id: 'first_traded_price'
-      doc: '1 St Traded Price'
+      doc: 'First Traded Price'
     7:
       id: 'n_th_traded_price_resume_after_unhalting_of_the_instrument'
       doc: 'N Th Traded Price Resume After Unhalting Of The Instrument'

@@ -1229,8 +1229,8 @@ enums:
       id: 'short_sale_restriction_deactivated'
       doc: 'Short Sale Restriction Deactivated'
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x42:
       id: 'begin_accepting_orders'
       doc: 'Begin Accepting Orders'
@@ -1383,8 +1383,8 @@ enums:
       doc: 'Short Sale Restriction In Effect'
   market_state:
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x45:
       id: 'early_session'
       doc: 'Early Session'
@@ -1432,8 +1432,8 @@ enums:
       id: 'suspend'
       doc: 'Suspend'
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x42:
       id: 'begin_accepting_orders'
       doc: 'Begin Accepting Orders'
@@ -1511,8 +1511,8 @@ enums:
       id: 'customer'
       doc: 'Customer'
     0x4e:
-      id: 'noncustomer'
-      doc: 'Noncustomer'
+      id: 'non_customer'
+      doc: 'Non Customer'
     0x44:
       id: 'derived_for_future_use'
       doc: 'Derived For Future Use'

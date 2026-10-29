@@ -113,7 +113,7 @@ types:
       - id: version
         type: u1
         doc: 'Version of this interface. Currently set to 3'
-      - id: subversion
+      - id: sub_version
         type: u1
         doc: 'Sub-version of this interface. Currently set to 0'
   options_directory_message:
@@ -483,7 +483,7 @@ enums:
       doc: 'Closed for auto execution'
   quote_condition:
     0x46:
-      id: 'nonfirm_quote'
+      id: 'non_firm_quote'
       doc: 'Non-firm quote on both bid/ask sides'
     0x52:
       id: 'rotational_quote'

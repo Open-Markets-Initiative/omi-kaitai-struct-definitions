@@ -1122,8 +1122,8 @@ enums:
       id: 'contra_party_is_a_customer_non_finra_member'
       doc: 'Contra Party Is A Customer Non Finra Member'
     0x41:
-      id: 'contra_party_is_a_nonmember_affiliate'
-      doc: 'Contra Party Is A Nonmember Affiliate'
+      id: 'contra_party_is_a_non_member_affiliate'
+      doc: 'Contra Party Is A Non Member Affiliate'
     0x54:
       id: 'contra_party_is_an_alternative_trading_system_ats'
       doc: 'Contra Party Is An Alternative Trading System Ats'

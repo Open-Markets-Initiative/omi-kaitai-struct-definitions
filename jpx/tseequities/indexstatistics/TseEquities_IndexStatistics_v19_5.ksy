@@ -228,8 +228,8 @@ types:
       - id: total_market_value
         type: total_market_value
         doc: 'Total market value'
-      - id: market_value_dayonday_comparison
-        type: market_value_dayonday_comparison
+      - id: market_value_day_on_day_comparison
+        type: market_value_day_on_day_comparison
         doc: 'Market value Day-on-day comparison'
   total_market_value:
     seq:
@@ -243,13 +243,13 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Indicates the total market value. The unit used for the computation is 1 million yen. Implied decimal with scale 1e-4'
-  market_value_dayonday_comparison:
+  market_value_day_on_day_comparison:
     seq:
       - id: trading_volume_turnover_unit_flag
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: dayonday_comparison_c_14
+      - id: day_on_day_comparison_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -279,8 +279,8 @@ types:
       - id: simple_yield
         type: simple_yield
         doc: 'Simple yield'
-      - id: yield_dayonday_comparison
-        type: yield_dayonday_comparison
+      - id: yield_day_on_day_comparison
+        type: yield_day_on_day_comparison
         doc: 'Yield Day-on-day comparison'
   simple_yield:
     seq:
@@ -294,9 +294,9 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-  yield_dayonday_comparison:
+  yield_day_on_day_comparison:
     seq:
-      - id: dayonday_comparison_c_8
+      - id: day_on_day_comparison_c_8
         type: str
         size: 8
         encoding: ASCII
@@ -326,8 +326,8 @@ types:
       - id: weighted_yield
         type: weighted_yield
         doc: 'Weighted yield'
-      - id: yield_dayonday_comparison
-        type: yield_dayonday_comparison
+      - id: yield_day_on_day_comparison
+        type: yield_day_on_day_comparison
         doc: 'Yield Day-on-day comparison'
   weighted_yield:
     seq:
@@ -361,8 +361,8 @@ types:
       - id: simple_stock_price_average
         type: simple_stock_price_average
         doc: 'Simple stock price average'
-      - id: stock_price_average_dayonday_comparison
-        type: stock_price_average_dayonday_comparison
+      - id: stock_price_average_day_on_day_comparison
+        type: stock_price_average_day_on_day_comparison
         doc: 'Stock price average Day-on-day comparison'
   simple_stock_price_average:
     seq:
@@ -380,13 +380,13 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-  stock_price_average_dayonday_comparison:
+  stock_price_average_day_on_day_comparison:
     seq:
       - id: unit_flag
         type: u1
         enum: unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: dayonday_comparison_c_14
+      - id: day_on_day_comparison_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -416,8 +416,8 @@ types:
       - id: weighted_stock_price_average
         type: weighted_stock_price_average
         doc: 'Weighted stock price average'
-      - id: stock_price_average_dayonday_comparison
-        type: stock_price_average_dayonday_comparison
+      - id: stock_price_average_day_on_day_comparison
+        type: stock_price_average_day_on_day_comparison
         doc: 'Stock price average Day-on-day comparison'
   weighted_stock_price_average:
     seq:
@@ -455,8 +455,8 @@ types:
       - id: simple_stock_price_average
         type: simple_stock_price_average
         doc: 'Simple stock price average'
-      - id: stock_price_average_dayonday_comparison
-        type: stock_price_average_dayonday_comparison
+      - id: stock_price_average_day_on_day_comparison
+        type: stock_price_average_day_on_day_comparison
         doc: 'Stock price average Day-on-day comparison'
   japanese_yen_cb_indicator_message:
     seq:
@@ -512,7 +512,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: dayonday_comparison_c_14
+      - id: day_on_day_comparison_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -534,7 +534,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-      - id: dayonday_comparison_c_8
+      - id: day_on_day_comparison_c_8
         type: str
         size: 8
         encoding: ASCII
@@ -564,7 +564,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: dayonday_comparison_c_14
+      - id: day_on_day_comparison_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -586,7 +586,7 @@ types:
         type: u1
         enum: sign
         doc: 'Indicates the sign of Day-on-day comparison'
-      - id: dayonday_comparison_c_8
+      - id: day_on_day_comparison_c_8
         type: str
         size: 8
         encoding: ASCII
@@ -939,7 +939,7 @@ types:
         type: u1
         enum: second_unit_flag
         doc: 'Indicates that this is the unit flag'
-      - id: dayonday_comparison_c_14
+      - id: day_on_day_comparison_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -1233,7 +1233,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: singleissue_transaction_c_14
+      - id: single_issue_transaction_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -1275,7 +1275,7 @@ types:
         type: u1
         enum: trading_volume_turnover_unit_flag
         doc: 'Indicates the unit of the turnover'
-      - id: singleissue_transaction_c_14
+      - id: single_issue_transaction_c_14
         type: str
         size: 14
         encoding: ASCII
@@ -1313,7 +1313,7 @@ types:
         doc: 'Indicates the aggregate of turnovers for transactions conducted on the ToSTNeT'
   number_of_transactions:
     seq:
-      - id: singleissue_transaction_c_8
+      - id: single_issue_transaction_c_8
         type: str
         size: 8
         encoding: ASCII
@@ -1351,8 +1351,8 @@ types:
       - id: current_price
         type: current_price
         doc: 'Current price'
-      - id: index_dayonday_comparison
-        type: index_dayonday_comparison
+      - id: index_day_on_day_comparison
+        type: index_day_on_day_comparison
         doc: 'Index Day-on-day comparison'
   open:
     seq:
@@ -1446,7 +1446,7 @@ types:
         type: u1
         enum: flag
         doc: 'Indicates the flag of the opening price'
-  index_dayonday_comparison:
+  index_day_on_day_comparison:
     seq:
       - id: net_change_rate
         type: str

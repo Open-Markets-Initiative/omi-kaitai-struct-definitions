@@ -138,7 +138,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Identifies the security class for the issue as assigned by NASDAQ. See Appendix for allowable values'
-      - id: issue_subtype
+      - id: issue_sub_type
         type: str
         size: 2
         encoding: ASCII

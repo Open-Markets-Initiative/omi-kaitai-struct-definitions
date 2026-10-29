@@ -236,7 +236,7 @@ types:
       - id: firm_quote_book
         type: b1
         doc: 'Firm Quote Book'
-      - id: offbook
+      - id: off_book
         type: b1
         doc: 'Off-book'
       - id: electronic_order_book
@@ -745,8 +745,8 @@ enums:
       id: 'firm_quote_book'
       doc: 'Firm Quote Book'
     2:
-      id: 'offbook'
-      doc: 'Offbook'
+      id: 'off_book'
+      doc: 'Off Book'
     3:
       id: 'electronic_order_book'
       doc: 'Electronic Order Book'

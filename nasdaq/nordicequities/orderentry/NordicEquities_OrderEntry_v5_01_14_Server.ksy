@@ -959,11 +959,11 @@ enums:
       id: 'market_maker_order_refresh'
       doc: 'Market Maker Order Refresh'
     0x50:
-      id: 'topof_book'
-      doc: 'Topof Book'
+      id: 'top_of_book'
+      doc: 'Top Of Book'
     0x51:
-      id: 'darklit_sweep'
-      doc: 'Darklit Sweep'
+      id: 'dark_lit_sweep'
+      doc: 'Dark Lit Sweep'
     0x54:
       id: 'trade_now'
       doc: 'Trade Now'

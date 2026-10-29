@@ -302,25 +302,25 @@ types:
       - id: volume
         type: decimal_u8_4
         doc: 'Cumulative volume of all trades for the trading day. Implied decimal with scale 1e-4'
-      - id: volume_onbook_only
+      - id: volume_on_book_only
         type: decimal_u8_4
         doc: 'Cumulative volume for the trading day excluding off-book trades. Implied decimal with scale 1e-4'
       - id: vwap
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: vwap_onbook_only
+      - id: vwap_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
       - id: number_of_trades
         type: u4
         doc: 'Count of all trades for the day'
-      - id: number_of_trades_onbook_only
+      - id: number_of_trades_on_book_only
         type: u4
         doc: 'Count of trades for the day excluding off-book trades'
       - id: turnover
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: turnover_onbook_only
+      - id: turnover_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
       - id: official_opening_price
@@ -329,10 +329,10 @@ types:
       - id: official_closing_price
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
-      - id: trade_high_onbook_only
+      - id: trade_high_on_book_only
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
-      - id: trade_low_onbook_only
+      - id: trade_low_on_book_only
         type: decimal_s8_8
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-8'
       - id: trade_high
@@ -647,7 +647,7 @@ types:
         size: 1
         encoding: ASCII
         doc: 'Duplicative Indicator'
-      - id: thirdcountry_trading_venue_of_execution
+      - id: third_country_trading_venue_of_execution
         type: str_4_nullable
         doc: 'Identification of the third-country trading venue where the transaction was executed'
       - id: portfolio_transaction_flag
@@ -872,8 +872,8 @@ enums:
       id: 'si_quote_book'
       doc: 'Si Quote Book'
     2:
-      id: 'offbook'
-      doc: 'Offbook'
+      id: 'off_book'
+      doc: 'Off Book'
   source_venue:
     11:
       id: 'trade_echo'
@@ -1049,8 +1049,8 @@ enums:
       id: 'negotiated_trade_larger_than_lis_brought_onto_a_venue'
       doc: 'Negotiated Trade Larger Than Lis Brought Onto A Venue'
     0x38:
-      id: 'negotiated_trade_with_pretrade_transparency_waiver'
-      doc: 'Negotiated Trade With Pretrade Transparency Waiver'
+      id: 'negotiated_trade_with_pre_trade_transparency_waiver'
+      doc: 'Negotiated Trade With Pre Trade Transparency Waiver'
     0x2d:
       id: 'not_a_negotiated_trade'
       doc: 'Not A Negotiated Trade'

@@ -102,14 +102,14 @@ types:
         type:
           switch-on: quote_message_type
           cases:
-            '"E"': utp_quote_shortform_message
-            '"F"': utp_quote_longform_message
+            '"E"': utp_quote_short_form_message
+            '"F"': utp_quote_long_form_message
             '"M"': finra_adf_market_participant_quotation_message
             '"C"': combined_quote_message_short_form_message
             '"D"': combined_quote_message_long_form_message
             '"A"': odd_lot_quote_message_short_form_message
             '"B"': odd_lot_quote_message_long_form_message
-  utp_quote_shortform_message:
+  utp_quote_short_form_message:
     seq:
       - id: market_center_originator
         type: u1
@@ -170,15 +170,15 @@ types:
         type: u1
         enum: luld_national_bbo_indicator
         doc: 'LULD National BBO Indicator'
-      - id: national_bbo_appendage_shortform
-        type: national_bbo_appendage_shortform
+      - id: national_bbo_appendage_short_form
+        type: national_bbo_appendage_short_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
-      - id: national_bbo_appendage_longform
-        type: national_bbo_appendage_longform
+      - id: national_bbo_appendage_long_form
+        type: national_bbo_appendage_long_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
-  national_bbo_appendage_shortform:
+  national_bbo_appendage_short_form:
     seq:
       - id: nbbo_quote_condition
         type: str
@@ -207,7 +207,7 @@ types:
       - id: national_best_ask_size_short
         type: u2
         doc: 'National Best Ask Size'
-  national_bbo_appendage_longform:
+  national_bbo_appendage_long_form:
     seq:
       - id: nbbo_quote_condition
         type: str
@@ -236,7 +236,7 @@ types:
       - id: national_best_ask_size_long
         type: u4
         doc: 'National Best Ask Size'
-  utp_quote_longform_message:
+  utp_quote_long_form_message:
     seq:
       - id: market_center_originator
         type: u1
@@ -304,12 +304,12 @@ types:
         type: u1
         enum: finra_adf_mpid_appendage_indicator
         doc: 'FINRA ADF MPID Appendage Indicator'
-      - id: national_bbo_appendage_shortform
-        type: national_bbo_appendage_shortform
+      - id: national_bbo_appendage_short_form
+        type: national_bbo_appendage_short_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
-      - id: national_bbo_appendage_longform
-        type: national_bbo_appendage_longform
+      - id: national_bbo_appendage_long_form
+        type: national_bbo_appendage_long_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
   finra_adf_market_participant_quotation_message:
@@ -434,12 +434,12 @@ types:
       - id: odd_lot_attachment_count
         type: u2
         doc: 'Number of odd lot price levels included in the attachment'
-      - id: national_bbo_appendage_shortform
-        type: national_bbo_appendage_shortform
+      - id: national_bbo_appendage_short_form
+        type: national_bbo_appendage_short_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
-      - id: national_bbo_appendage_longform
-        type: national_bbo_appendage_longform
+      - id: national_bbo_appendage_long_form
+        type: national_bbo_appendage_long_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: bolo_appendage_short_form
@@ -692,12 +692,12 @@ types:
       - id: odd_lot_attachment_count
         type: u2
         doc: 'Number of odd lot price levels included in the attachment'
-      - id: national_bbo_appendage_shortform
-        type: national_bbo_appendage_shortform
+      - id: national_bbo_appendage_short_form
+        type: national_bbo_appendage_short_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::short_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Short-form'
-      - id: national_bbo_appendage_longform
-        type: national_bbo_appendage_longform
+      - id: national_bbo_appendage_long_form
+        type: national_bbo_appendage_long_form
         if: nbbo_appendage_indicator == nbbo_appendage_indicator::long_form_national_bbo_appendage_attached
         doc: 'National BBO Appendage Long-form'
       - id: finra_adf_mpid_appendage
@@ -1589,17 +1589,17 @@ enums:
       id: 'closed_quote'
       doc: 'Closed Quote'
     0x4e:
-      id: 'nonfirm_quote'
-      doc: 'Nonfirm Quote'
+      id: 'non_firm_quote'
+      doc: 'Non Firm Quote'
     0x4f:
       id: 'opening_quote_automated'
       doc: 'Opening Quote Automated'
     0x52:
-      id: 'regular_twosided_open_quote_automated'
-      doc: 'Regular Twosided Open Quote Automated'
+      id: 'regular_two_sided_open_quote_automated'
+      doc: 'Regular Two Sided Open Quote Automated'
     0x55:
-      id: 'manual_bid_and_ask_nonfirm'
-      doc: 'Manual Bid And Ask Nonfirm'
+      id: 'manual_bid_and_ask_non_firm'
+      doc: 'Manual Bid And Ask Non Firm'
     0x58:
       id: 'order_influx'
       doc: 'Order Influx'
@@ -1617,8 +1617,8 @@ enums:
       id: 'transaction_originated_from_market_participant'
       doc: 'Transaction Originated From Market Participant'
     0x45:
-      id: 'si_pgenerated_transaction_eg_price_band_change'
-      doc: 'Si Pgenerated Transaction Eg Price Band Change'
+      id: 'sip_generated_transaction_eg_price_band_change'
+      doc: 'Sip Generated Transaction Eg Price Band Change'
   luld_bbo_indicator:
     0x20:
       id: 'limit_up_limit_down_not_applicable'
@@ -1908,8 +1908,8 @@ enums:
       doc: 'Market Wide Circuit Breaker Decline Level 3 Breached 20% Decline'
   special_condition:
     0x4f:
-      id: 'onesided_national_bbo_at_market_close'
-      doc: 'Onesided National Bbo At Market Close'
+      id: 'one_sided_national_bbo_at_market_close'
+      doc: 'One Sided National Bbo At Market Close'
     0x48:
       id: 'trading_halt_in_effect_at_market_close'
       doc: 'Trading Halt In Effect At Market Close'

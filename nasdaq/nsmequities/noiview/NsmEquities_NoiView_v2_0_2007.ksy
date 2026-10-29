@@ -302,8 +302,8 @@ enums:
       id: 'halt_in_effect'
       doc: 'Halt In Effect'
     0x51:
-      id: 'quotationonly_period_in_effect'
-      doc: 'Quotationonly Period In Effect'
+      id: 'quotation_only_period_in_effect'
+      doc: 'Quotation Only Period In Effect'
     0x54:
       id: 'trading_on_nasdaq'
       doc: 'Trading On Nasdaq'

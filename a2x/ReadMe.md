@@ -6,7 +6,9 @@
 | [Protocol][Omi.A2X.Protocol.Definitions] | [Encoding][Omi.Encoding.Definitions] | Version | Date | Size | [Deployment][Omi.Glossary.Deployment] | [Testing][Omi.Glossary.Testing] | [Documentation][Omi.A2X.Specifications] |
 | --- | --- | --- | ---: | ---: | --- | --- | --- |
 | [Rtmdf][A2X.A2XEquities.Rtmdf] | [Amd][Omi.Encoding.Amd] | [1.3.2][A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Definition] | 9/15/2022 | 382 | [Active][Omi.Glossary.Deployment.Active] | [Beta][Omi.Glossary.Testing.Beta] | [url][A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Url] - [pdf][A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Pdf] |
+| [Rtmdf][A2X.A2XEquities.Rtmdf] | [Amd][Omi.Encoding.Amd] | [2.5][A2X.A2XEquities.Rtmdf.Amd.v2.5.Definition] | 8/1/2026 | 449 | [Pending][Omi.Glossary.Deployment.Pending] | [Untested][Omi.Glossary.Testing.Untested] | [url][A2X.A2XEquities.Rtmdf.Amd.v2.5.Url] - [pdf][A2X.A2XEquities.Rtmdf.Amd.v2.5.Pdf] |
 | [Snapshot][A2X.A2XEquities.Snapshot] | [Amd][Omi.Encoding.Amd] | [1.3.2][A2X.A2XEquities.Snapshot.Amd.v1.3.2.Definition] | 9/15/2022 | 173 | [Active][Omi.Glossary.Deployment.Active] | [Beta][Omi.Glossary.Testing.Beta] | [url][A2X.A2XEquities.Snapshot.Amd.v1.3.2.Url] - [pdf][A2X.A2XEquities.Snapshot.Amd.v1.3.2.Pdf] |
+| [Snapshot][A2X.A2XEquities.Snapshot] | [Amd][Omi.Encoding.Amd] | [2.5][A2X.A2XEquities.Snapshot.Amd.v2.5.Definition] | 8/1/2026 | 246 | [Pending][Omi.Glossary.Deployment.Pending] | [Untested][Omi.Glossary.Testing.Untested] | [url][A2X.A2XEquities.Snapshot.Amd.v2.5.Url] - [pdf][A2X.A2XEquities.Snapshot.Amd.v2.5.Pdf] |
 | [UdpHeader][A2X.A2XEquities.UdpHeader] | [Amd][Omi.Encoding.Amd] | [1][A2X.A2XEquities.UdpHeader.Amd.v1.Definition] | 9/1/2017 | 69 | [Header][Omi.Glossary.Deployment.Header] | [Beta][Omi.Glossary.Testing.Beta] | [url][A2X.A2XEquities.UdpHeader.Amd.v1.Url] |
 
 
@@ -38,8 +40,14 @@
 [A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/a2x/rtmdf/A2XEquities_Rtmdf_v1_3_2.ksy "A2X Rtmdf Amd v1.3.2 Kaitai Struct Definition"
 [A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Url]: https://www.a2x.co.za/?page_id=531 "A2X Markets 1.3.2 Url"
 [A2X.A2XEquities.Rtmdf.Amd.v1.3.2.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/A2X/Specifications/A2X.A2XEquities.MarketDataTechnicalSpecification.Amd.v1.3.2.pdf "A2X Markets 1.3.2 Pdf"
+[A2X.A2XEquities.Rtmdf.Amd.v2.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/a2x/rtmdf/A2XEquities_Rtmdf_v2_5.ksy "A2X Rtmdf Amd v2.5 Kaitai Struct Definition"
+[A2X.A2XEquities.Rtmdf.Amd.v2.5.Url]: https://www.a2x.co.za/?page_id=531 "A2X Markets 2.5 Url"
+[A2X.A2XEquities.Rtmdf.Amd.v2.5.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/A2X/Specifications/ "A2X Markets 2.5 Pdf"
 [A2X.A2XEquities.Snapshot.Amd.v1.3.2.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/a2x/snapshot/A2XEquities_Snapshot_v1_3_2.ksy "A2X Snapshot Amd v1.3.2 Kaitai Struct Definition"
 [A2X.A2XEquities.Snapshot.Amd.v1.3.2.Url]: https://www.a2x.co.za/?page_id=531 "A2X Markets 1.3.2 Url"
 [A2X.A2XEquities.Snapshot.Amd.v1.3.2.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/A2X/Specifications/A2X.A2XEquities.MarketDataTechnicalSpecification.Amd.v1.3.2.pdf "A2X Markets 1.3.2 Pdf"
+[A2X.A2XEquities.Snapshot.Amd.v2.5.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/a2x/snapshot/A2XEquities_Snapshot_v2_5.ksy "A2X Snapshot Amd v2.5 Kaitai Struct Definition"
+[A2X.A2XEquities.Snapshot.Amd.v2.5.Url]: https://www.a2x.co.za/?page_id=531 "A2X Markets 2.5 Url"
+[A2X.A2XEquities.Snapshot.Amd.v2.5.Pdf]: https://github.com/Open-Markets-Initiative/Open-Markets-Initiative/blob/main/Organizations/A2X/Specifications/ "A2X Markets 2.5 Pdf"
 [A2X.A2XEquities.UdpHeader.Amd.v1.Definition]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/blob/main/a2x/udpheader/A2XEquities_UdpHeader_v1.ksy "A2X UdpHeader Amd v1 Kaitai Struct Definition"
 [A2X.A2XEquities.UdpHeader.Amd.v1.Url]: https://www.a2x.co.za/?page_id=734/#a2xtech "A2X Markets 1 Url"

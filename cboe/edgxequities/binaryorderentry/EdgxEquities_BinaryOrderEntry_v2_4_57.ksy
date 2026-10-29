@@ -7736,7 +7736,7 @@ enums:
       id: 'removed_liquidity'
       doc: 'Removed Liquidity'
     0x57:
-      id: 'waiting_for_execution_at_premarket_time_as'
+      id: 'waiting_for_execution_at_pre_market_time_as'
       doc: 'Waiting for execution at pre-market time as defined by TimeInForce value and ''Hold Early to 7am'' port setting. Only applied on the initial order acknowledgment.'
     0x58:
       id: 'routed_to_another_market'

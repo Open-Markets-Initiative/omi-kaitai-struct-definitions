@@ -1825,8 +1825,8 @@ enums:
       id: 'prohibited'
       doc: 'Prohibited'
     0x4d:
-      id: 'minibatch'
-      doc: 'Minibatch'
+      id: 'mini_batch'
+      doc: 'Mini Batch'
     0x4e:
       id: 'market_operation_center_intervention'
       doc: 'Market Operation Center Intervention'
@@ -1834,8 +1834,8 @@ enums:
       id: 'opening'
       doc: 'Opening'
     0x50:
-      id: 'preopening'
-      doc: 'Preopening'
+      id: 'pre_opening'
+      doc: 'Pre Opening'
     0x53:
       id: 'continuous_trading_session'
       doc: 'Continuous Trading Session'

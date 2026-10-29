@@ -14111,16 +14111,16 @@ enums:
       doc: 'Sell'
   multileg_reporting_type:
     0x31:
-      id: 'singleleg_instrument'
+      id: 'single_leg_instrument'
       doc: 'Single-leg instrument'
     0x32:
-      id: 'individual_leg_of_multileg_instrument'
+      id: 'individual_leg_of_multi_leg_instrument'
       doc: 'Individual leg of multi-leg instrument'
     0x33:
-      id: 'entire_multileg_instrument_package'
+      id: 'entire_multi_leg_instrument_package'
       doc: 'Entire multi-leg instrument package'
     0x34:
-      id: 'last_individual_leg_of_multileg_instrument'
+      id: 'last_individual_leg_of_multi_leg_instrument'
       doc: 'Last individual leg of multi-leg instrument'
   base_liquidity_indicator:
     0x41:

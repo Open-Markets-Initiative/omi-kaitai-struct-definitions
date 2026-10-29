@@ -8199,7 +8199,7 @@ enums:
       id: 'lch_clearnet'
       doc: 'LCH.Clearnet'
     0x58:
-      id: 'six_xclear'
+      id: 'six_x_clear'
       doc: 'SIX x-clear'
     0x43:
       id: 'euro_ccp'

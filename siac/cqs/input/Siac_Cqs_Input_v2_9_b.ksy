@@ -81,7 +81,7 @@ types:
       - id: message_payload
         size: message_header.message_length - 26
         type:
-          switch-on: message_header
+          switch-on: message_header_key
           cases:
             16722: rejection_message
             16720: partial_rejection_message
@@ -100,6 +100,10 @@ types:
             20813: odd_lot_long_quote_message
             20820: odd_lot_finra_adf_quote_message
             21587: trading_status_message
+    instances:
+      message_header_key:
+        pos: _io.pos - 24
+        type: u2be
   message_header:
     seq:
       - id: message_length

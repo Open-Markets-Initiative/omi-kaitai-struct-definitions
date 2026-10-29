@@ -232,7 +232,7 @@ types:
       - id: unused_2
         type: b2
         doc: 'Reserved for future use'
-      - id: offbook
+      - id: off_book
         type: b1
         doc: 'Off-book trading is allowed for the instrument'
       - id: unused_5
@@ -280,25 +280,25 @@ types:
       - id: volume
         type: decimal_u8_4
         doc: 'Cumulative volume of all trades for the trading day. Implied decimal with scale 1e-4'
-      - id: volume_onbook_only
+      - id: volume_on_book_only
         type: decimal_u8_4
         doc: 'Cumulative volume for the trading day excluding off-book trades. Implied decimal with scale 1e-4'
       - id: vwap
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: vwap_onbook_only
+      - id: vwap_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
       - id: number_of_trades
         type: u4
         doc: 'Count of all trades for the day'
-      - id: number_of_trades_onbook_only
+      - id: number_of_trades_on_book_only
         type: u4
         doc: 'Count of trades for the day excluding off-book trades'
       - id: turnover
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
-      - id: turnover_onbook_only
+      - id: turnover_on_book_only
         type: decimal_s8_4
         doc: 'Not Applicable to TRADEcho. Implied decimal with scale 1e-4'
   mifid_ii_trade_report_message:
@@ -537,7 +537,7 @@ types:
         type: u1
         enum: duplicative_indicator
         doc: 'Duplicative indicator short code'
-      - id: thirdcountry_trading_venue_of_execution
+      - id: third_country_trading_venue_of_execution
         type: str_4_nullable
         doc: 'Identification of the third-country trading venue where the transaction was executed'
       - id: portfolio_transaction_flag
@@ -869,8 +869,8 @@ enums:
       doc: 'Scheduled Transition'
   order_book_type:
     2:
-      id: 'offbook'
-      doc: 'Offbook'
+      id: 'off_book'
+      doc: 'Off Book'
   venue_type:
     0:
       id: 'unspecified'

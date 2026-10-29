@@ -506,8 +506,8 @@ enums:
       id: 'si_quote_book'
       doc: 'Si Quote Book'
     2:
-      id: 'offbook'
-      doc: 'Offbook'
+      id: 'off_book'
+      doc: 'Off Book'
   source_venue:
     11:
       id: 'trade_echo'

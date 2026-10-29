@@ -7331,7 +7331,7 @@ enums:
       id: 'electronic'
       doc: 'Electronic (default)'
     0x43:
-      id: 'vendorprovided_platform_billed_by_executing_broker'
+      id: 'vendor_provided_platform_billed_by_executing_broker'
       doc: 'Vendor-provided platform, billed by Executing Broker'
     0x47:
       id: 'sponsored_access_via_exchange_api_or_fix_provided_by'
@@ -7340,7 +7340,7 @@ enums:
       id: 'premium_algorithmic_trading_provider_billed_by_executing'
       doc: 'Premium algorithmic trading provider, billed by executing broker'
     0x44:
-      id: 'other_including_otherprovided_screen'
+      id: 'other_including_other_provided_screen'
       doc: 'Other, including other-provided screen'
   cancel_orig_on_reject:
     0x4e:

@@ -1732,22 +1732,22 @@ types:
         size: 9
         encoding: ASCII
         doc: '9999999V99 Information Category 03S: Fund unit, 05S: TU unit. Implied decimal with scale 1e-2'
-      - id: previous_days_nontaxable_base_price_for_overseas_stocks
+      - id: previous_days_non_taxable_base_price_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
         doc: '9999999V99. Implied decimal with scale 1e-2'
-      - id: previous_days_nontaxable_base_price_before_dividend_for_overseas_stocks
+      - id: previous_days_non_taxable_base_price_before_dividend_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
         doc: '9999999V99. Implied decimal with scale 1e-2'
-      - id: day_before_previous_days_nontaxable_base_price_for_overseas_stocks
+      - id: day_before_previous_days_non_taxable_base_price_for_overseas_stocks
         type: str
         size: 9
         encoding: ASCII
         doc: '9999999V99. Implied decimal with scale 1e-2'
-      - id: number_of_freefloating_etf_shares
+      - id: number_of_free_floating_etf_shares
         type: str
         size: 16
         encoding: ASCII

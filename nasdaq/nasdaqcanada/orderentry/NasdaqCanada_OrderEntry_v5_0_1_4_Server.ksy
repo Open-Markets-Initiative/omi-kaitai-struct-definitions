@@ -1138,7 +1138,7 @@ enums:
       id: 'seek_price_improvement'
       doc: 'Seek Price Improvement'
     0x4c:
-      id: 'melo'
+      id: 'm_elo'
       doc: 'M-ELO (CXC Only)'
     0x6f:
       id: 'odd_lot_liquidity_providing'
@@ -1177,7 +1177,7 @@ enums:
       id: 'foreign_dealer_equivalent'
       doc: 'Order received from foreign dealer equivalent (FDE)'
     0x37:
-      id: 'executiononly_service'
+      id: 'execution_only_service'
       doc: 'Order received from an execution-only service (OEO)'
   routing_arrangement_indicator:
     0x30:
@@ -1250,7 +1250,7 @@ enums:
       id: 'conditional_order'
       doc: 'Conditional Order (CXD only)'
     0x58:
-      id: 'extended_firmup_time_conditional_order'
+      id: 'extended_firm_up_time_conditional_order'
       doc: 'eXtended Firm-up Time (XFT) conditional order (CXD only)'
   allow_conditional:
     0x4e:
@@ -1664,10 +1664,10 @@ enums:
       id: 'order_removed_hidden_liquidity'
       doc: 'Order removed hidden liquidity'
     0x64:
-      id: 'order_added_hidden_liquidity_atthetouch'
+      id: 'order_added_hidden_liquidity_at_the_touch'
       doc: 'Order added hidden liquidity at-the-touch'
     0x44:
-      id: 'order_removed_hidden_liquidity_atthetouch'
+      id: 'order_removed_hidden_liquidity_at_the_touch'
       doc: 'Order removed hidden liquidity at-the-touch'
     0x67:
       id: 'order_added_gef_liquidity'
@@ -1679,7 +1679,7 @@ enums:
       id: 'market_on_close'
       doc: 'Market On Close'
     0x53:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo'
       doc: 'Displayed, liquidity-adding order improves the NBBO'
     0x4f:
       id: 'opening_closing_auction'
@@ -1688,10 +1688,10 @@ enums:
       id: 'last_sale_trading_session'
       doc: 'Last Sale Trading Session (TSX/TSXV)'
     0x4c:
-      id: 'melo'
+      id: 'm_elo'
       doc: 'M-ELO'
     0x50:
-      id: 'cxd_pure_stream_ratebased_execution'
+      id: 'cxd_pure_stream_rate_based_execution'
       doc: 'CXD PureStream rate-based execution'
     0x4d:
       id: 'cxd_pure_stream_ls_midpoint_block_removed_liquidity'
@@ -1822,7 +1822,7 @@ enums:
       id: 'stream_off'
       doc: 'Stream Off'
     0x52:
-      id: 'conditional_order_firmup_request'
+      id: 'conditional_order_firm_up_request'
       doc: 'Conditional order firm-up request'
   order_restated_optional_field:
     37:

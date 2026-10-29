@@ -181,7 +181,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Left justified, right blank filled Used with Client Order ID and Client Memo for Order Identification'
-      - id: subtrader_id
+      - id: sub_trader_id
         type: str
         size: 3
         encoding: ASCII
@@ -247,7 +247,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Left justified, right blank filled Used with Client Order ID and Client Memo for Order Identification'
-      - id: subtrader_id
+      - id: sub_trader_id
         type: str
         size: 3
         encoding: ASCII
@@ -326,7 +326,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Left justified, right blank filled Used with Client Order ID and Client Memo for Order Identification'
-      - id: subtrader_id
+      - id: sub_trader_id
         type: str
         size: 3
         encoding: ASCII
@@ -392,7 +392,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Left justified, right blank filled Used with Client Order ID and Client Memo for Order Identification'
-      - id: subtrader_id
+      - id: sub_trader_id
         type: str
         size: 3
         encoding: ASCII

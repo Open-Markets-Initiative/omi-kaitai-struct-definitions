@@ -479,7 +479,7 @@ enums:
       id: 'sweep_order'
       doc: 'Sweep order (can be dual-posted if entered price is at half-tick)'
     0x50:
-      id: 'dualposted_sweep_order'
+      id: 'dual_posted_sweep_order'
       doc: 'Dual-posted Sweep order (mid-tick flag enabled)'
     0x42:
       id: 'centre_point_block_order_with_single_fill_maq'
@@ -569,10 +569,10 @@ enums:
       doc: 'Inactivated Day order'
   deal_source:
     1:
-      id: 'continuous_automatch'
+      id: 'continuous_auto_match'
       doc: 'Single series to single series auto-matched during continuous trading'
     20:
-      id: 'auction_automatch'
+      id: 'auction_auto_match'
       doc: 'Single series to single series auto-matched during an auction'
     36:
       id: 'tailor_made_combination_match'

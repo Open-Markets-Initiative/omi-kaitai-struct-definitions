@@ -1321,7 +1321,7 @@ enums:
       id: 'after_hours_closing'
       doc: 'After hours closing cross'
     0x4a:
-      id: 'nondisplayed_adding_liquidity'
+      id: 'non_displayed_adding_liquidity'
       doc: 'Non-displayed adding liquidity'
     0x6a:
       id: 'rpi_order_provides_liquidity'
@@ -1351,7 +1351,7 @@ enums:
       id: 'opening'
       doc: 'Opening Cross'
     0x70:
-      id: 'removed_price_improving_nondisplayed_liquidity'
+      id: 'removed_price_improving_non_displayed_liquidity'
       doc: 'Removed price improving non-displayed liquidity'
     0x71:
       id: 'rmo_retail_order_removes_non_rpi_midpoint_liquidity'
@@ -1363,34 +1363,34 @@ enums:
       id: 'retail_order_removes_rpi_liquidity'
       doc: 'Retail Order removes RPI liquidity'
     0x74:
-      id: 'retail_order_removes_price_improving_nondisplayed_liquidity_other_than_rpi_liquidity'
+      id: 'retail_order_removes_price_improving_non_displayed_liquidity_other_than_rpi_liquidity'
       doc: 'Retail Order removes price improving non-displayed liquidity other than RPI liquidity'
     0x75:
-      id: 'added_nondisplayed_liquidity_via_a_reserve_order'
+      id: 'added_non_displayed_liquidity_via_a_reserve_order'
       doc: 'Added non-displayed liquidity via a Reserve order'
     0x30:
       id: 'supplemental'
       doc: 'Supplemental order execution'
     0x37:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo'
       doc: 'Displayed, liquidity-adding order improves the NBBO'
     0x38:
-      id: 'displayed_liquidityadding_order_sets_the_qbbo_while_joining_the_nbbo'
+      id: 'displayed_liquidity_adding_order_sets_the_qbbo_while_joining_the_nbbo'
       doc: 'Displayed, liquidity-adding order sets the QBBO while joining the NBBO'
     0x31:
       id: 'rpi_order_provides_liquidity_no_rpii'
       doc: 'RPI order provides liquidity, No RPII'
     0x32:
-      id: 'added_in_the_premarket'
+      id: 'added_in_the_pre_market'
       doc: 'Added in the pre-market'
     0x33:
-      id: 'removed_in_the_premarket'
+      id: 'removed_in_the_pre_market'
       doc: 'Removed in the pre-market'
     0x35:
-      id: 'displayed_liquidityadding_order_improves_the_nbbo_in_the_premarket'
+      id: 'displayed_liquidity_adding_order_improves_the_nbbo_in_the_pre_market'
       doc: 'Displayed, liquidity-adding order improves the NBBO in the pre-market'
     0x39:
-      id: 'nondisplayed_adding_liquidity_in_the_premarket'
+      id: 'non_displayed_adding_liquidity_in_the_pre_market'
       doc: 'Non-displayed adding liquidity in the pre-market'
   aiq_canceled_optional_field:
     28:

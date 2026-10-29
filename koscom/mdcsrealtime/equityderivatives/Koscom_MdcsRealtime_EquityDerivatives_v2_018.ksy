@@ -1018,7 +1018,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to Unfaithful Disclosure'
-      - id: backdoor_listing
+      - id: back_door_listing
         type: str
         size: 1
         encoding: ASCII
@@ -1235,7 +1235,7 @@ types:
         size: 11
         encoding: ASCII
         doc: 'Unit of Volume in Main Board'
-      - id: lot_size_afterhours_trading
+      - id: lot_size_after_hours_trading
         type: str
         size: 11
         encoding: ASCII
@@ -1276,19 +1276,19 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Closing PriceTrading Possibility in the After Hours'
-      - id: closing_price_trading_in_the_preopening_market
+      - id: closing_price_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N to a Closing Price Trading in the Pre-opening Market'
-      - id: block_trading_in_the_preopening_market
+      - id: block_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
         pad-right: 0x20
         doc: 'Block Trading in the Pre-opening Market'
-      - id: basket_trading_in_the_preopening_market
+      - id: basket_trading_in_the_pre_opening_market
         type: str
         size: 1
         encoding: ASCII
@@ -1346,7 +1346,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Delisting date for Issues (Spot: the next of a last trading date, Derv: the last payment date)'
-      - id: shortterm_overheat_issue_type_code
+      - id: short_term_overheat_issue_type_code
         type: str
         size: 1
         encoding: ASCII
@@ -1706,7 +1706,7 @@ types:
         size: 12
         encoding: ASCII
         doc: 'An amount of treasury stock that a company plans to buy during the regular session'
-      - id: buying_volume_block_trading_in_offhours_session
+      - id: buying_volume_block_trading_in_off_hours_session
         type: str
         size: 12
         encoding: ASCII
@@ -1909,7 +1909,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Y/N (whether an issue is a constituent of KRX Bio TOP 10 Index)'
-      - id: korea_valueup_index
+      - id: korea_value_up_index
         type: str
         size: 1
         encoding: ASCII

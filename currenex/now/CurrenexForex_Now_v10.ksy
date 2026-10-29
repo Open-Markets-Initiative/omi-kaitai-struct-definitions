@@ -176,7 +176,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Subscribe to now paid/given with bucketed size'
-      - id: subscribe_to_nowwamr_with_confidence_factor
+      - id: subscribe_to_now_wamr_with_confidence_factor
         type: str
         size: 1
         encoding: ASCII
@@ -205,7 +205,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Subscribe to now paid/given with bucketed size'
-      - id: subscribe_to_nowwamr_with_confidence_factor
+      - id: subscribe_to_now_wamr_with_confidence_factor
         type: str
         size: 1
         encoding: ASCII

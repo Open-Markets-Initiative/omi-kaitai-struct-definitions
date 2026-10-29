@@ -1128,8 +1128,8 @@ enums:
       id: 'stop_loss_index'
       doc: 'Stop Loss Index'
     0x54:
-      id: 'realtime_index_value'
-      doc: 'Realtime Index Value'
+      id: 'real_time_index_value'
+      doc: 'Real Time Index Value'
   exception:
     0x23:
       id: 'index_with_hsil_defined_exceptional_rule_applied'
@@ -1231,11 +1231,11 @@ enums:
       doc: 'Vcm Not Applicable'
   short_sell_flag:
     0x59:
-      id: 'shortsell_allowed'
-      doc: 'Shortsell Allowed'
+      id: 'short_sell_allowed'
+      doc: 'Short Sell Allowed'
     0x4e:
-      id: 'shortsell_not_allowed'
-      doc: 'Shortsell Not Allowed'
+      id: 'short_sell_not_allowed'
+      doc: 'Short Sell Not Allowed'
   cas_flag:
     0x59:
       id: 'cas_applicable'

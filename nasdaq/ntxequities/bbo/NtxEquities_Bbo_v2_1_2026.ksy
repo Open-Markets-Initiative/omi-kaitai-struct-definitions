@@ -138,7 +138,7 @@ types:
         type: u1
         enum: issue_classification
         doc: 'Identifies the security class for the issue as assigned by Nasdaq. See Appendix for allowable values'
-      - id: issue_subtype
+      - id: issue_sub_type
         type: str
         size: 2
         encoding: ASCII

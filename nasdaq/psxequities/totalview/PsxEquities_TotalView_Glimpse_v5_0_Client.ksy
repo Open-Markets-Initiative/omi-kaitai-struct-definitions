@@ -327,7 +327,7 @@ enums:
       id: 'halted_paused_across_all_us_equity_markets'
       doc: 'Halted/Paused across all U.S. equity markets'
     0x51:
-      id: 'quotation_only_period_for_crossmarket_halt_or_pause'
+      id: 'quotation_only_period_for_cross_market_halt_or_pause'
       doc: 'Quotation only period for cross-market halt or pause'
     0x54:
       id: 'trading_on_psx'

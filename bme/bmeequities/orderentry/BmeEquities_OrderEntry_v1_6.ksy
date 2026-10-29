@@ -1989,9 +1989,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -2252,9 +2252,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -2515,9 +2515,9 @@ types:
       - id: last_change_flag
         type: u1_nullable
         doc: 'Indicates if this trade changes the instrument Last price. Nullable, No Value = 255'
-      - id: bencrfpt_flag
+      - id: benc_rfpt_flag
         type: u1
-        enum: bencrfpt_flag
+        enum: benc_rfpt_flag
         doc: 'Benchmark or Reference Price Indicator MMT'
       - id: trade_price_condition
         type: u1
@@ -3712,8 +3712,8 @@ enums:
       id: 'pre_open'
       doc: 'Pre Open'
     26:
-      id: 'postclose_ready_to_trade_in_tal'
-      doc: 'Postclose Ready To Trade In Tal'
+      id: 'post_close_ready_to_trade_in_tal'
+      doc: 'Post Close Ready To Trade In Tal'
     23:
       id: 'fast_market'
       doc: 'Fast Market'
@@ -3750,11 +3750,11 @@ enums:
       id: 'halted_by_market_surveillance'
       doc: 'Halted By Market Surveillance'
     102:
-      id: 'knockout'
-      doc: 'Knockout'
+      id: 'knock_out'
+      doc: 'Knock Out'
     103:
-      id: 'knockin_pending'
-      doc: 'Knockin Pending'
+      id: 'knock_in_pending'
+      doc: 'Knock In Pending'
   exemption_situation:
     0x30:
       id: 'specialists_non_exempted'
@@ -3948,11 +3948,11 @@ enums:
       id: 'cancelled_partially_filled'
       doc: 'Cancelled Partially Filled'
     0x41:
-      id: 'nonworking_order_pending_validation'
-      doc: 'Nonworking Order Pending Validation'
+      id: 'non_working_order_pending_validation'
+      doc: 'Non Working Order Pending Validation'
     0x53:
-      id: 'nonworking_order_pending_activation'
-      doc: 'Nonworking Order Pending Activation'
+      id: 'non_working_order_pending_activation'
+      doc: 'Non Working Order Pending Activation'
     0x43:
       id: 'expired'
       doc: 'Expired'
@@ -4100,8 +4100,8 @@ enums:
       id: 'order_refresh'
       doc: 'Order Refresh'
     0x44:
-      id: 'stop_order_triggered_attheclose_order_activation'
-      doc: 'Stop Order Triggered Attheclose Order Activation'
+      id: 'stop_order_triggered_at_the_close_order_activation'
+      doc: 'Stop Order Triggered At The Close Order Activation'
     0x38:
       id: 'order_rejection'
       doc: 'Order Rejection'
@@ -4143,11 +4143,11 @@ enums:
       id: 'cancelled_partially_filled'
       doc: 'Cancelled Partially Filled'
     0x41:
-      id: 'nonworking_order_pending_validation'
-      doc: 'Nonworking Order Pending Validation'
+      id: 'non_working_order_pending_validation'
+      doc: 'Non Working Order Pending Validation'
     0x53:
-      id: 'nonworking_order_pending_activation'
-      doc: 'Nonworking Order Pending Activation'
+      id: 'non_working_order_pending_activation'
+      doc: 'Non Working Order Pending Activation'
   ord_rej_reason_2:
     0x31:
       id: 'by_trader'
@@ -4618,7 +4618,7 @@ enums:
     1:
       id: 'true_field'
       doc: 'True'
-  bencrfpt_flag:
+  benc_rfpt_flag:
     0x20:
       id: 'normal_trade'
       doc: 'Normal Trade'

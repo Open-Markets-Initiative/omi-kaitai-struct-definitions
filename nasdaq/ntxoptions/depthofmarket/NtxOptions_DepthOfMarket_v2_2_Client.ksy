@@ -311,7 +311,7 @@ enums:
       doc: 'Sell AON'
   printable:
     0x4e:
-      id: 'nonprintable'
+      id: 'non_printable'
       doc: 'non-printable'
     0x59:
       id: 'printable'

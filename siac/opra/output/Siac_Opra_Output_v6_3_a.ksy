@@ -936,7 +936,7 @@ enums:
       doc: 'Series Mapping Message Used To Report Mapping Information For Each Option Series To The Output Line It Is Assigned For The Current Opra Session'
     0x59:
       id: 'underlying_value'
-      doc: 'Underlying Value Message Subdispatch Handled At The Category Message Type Lowbyte Level'
+      doc: 'Underlying Value Message Sub Dispatch Handled At The Category Message Type Low Byte Level'
   administrative_message_type:
     0x20:
       id: 'administrative'
