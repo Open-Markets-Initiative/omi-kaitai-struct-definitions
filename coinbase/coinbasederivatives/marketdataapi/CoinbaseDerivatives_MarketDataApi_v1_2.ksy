@@ -170,10 +170,10 @@ types:
         doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: contract_size
         type: s4
         doc: 'contractSize'
@@ -222,7 +222,7 @@ types:
         doc: 'instrSeqNum'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: reserved
         type: s2
         doc: 'Two bytes of padding, reserved for future use'
@@ -274,10 +274,10 @@ types:
         doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: contract_size
         type: s4
         doc: 'contractSize'
@@ -594,13 +594,13 @@ types:
         doc: 'orderCount'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: product_group
         type: s1
         enum: product_group
@@ -659,13 +659,13 @@ types:
         doc: 'orderCount'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: product_group
         type: s1
         enum: product_group

@@ -121,7 +121,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -133,7 +133,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -188,7 +188,7 @@ types:
         doc: 'Minimum tick size. Divide by the Price Fractional Denominator to determine the floating point value'
       - id: last_trading_date
         type: u4
-        doc: 'The Last Trading Day as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date'
+        doc: 'The Last Trading Day as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date. Seconds since Unix epoch'
       - id: prior_day_settlement
         type: decimal_s8_2
         doc: 'Prior Day Settlement price. Divide by the Price Fractional Denominator to determine the floating point value. Implied decimal with scale 1e-2'
@@ -215,7 +215,7 @@ types:
         doc: 'Indicates the number of lots that represent a block lot for the order book'
       - id: expiry_date
         type: u4
-        doc: 'The Settlement Date as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date'
+        doc: 'The Settlement Date as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date. Seconds since Unix epoch'
   options_symbol_directory_message:
     seq:
       - id: nanoseconds
@@ -223,7 +223,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -297,7 +297,7 @@ types:
         doc: 'Minimum tick size for the Strike Price. Divide by the Strike Price Fractional Denominator to determine the floating point value'
       - id: last_trading_date
         type: u4
-        doc: 'The Last Trading Day as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date'
+        doc: 'The Last Trading Day as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date. Seconds since Unix epoch'
       - id: prior_day_settlement
         type: decimal_s8_2
         doc: 'Prior Day Settlement price. Divide by the Price Fractional Denominator to determine the floating point value. Implied decimal with scale 1e-2'
@@ -327,7 +327,7 @@ types:
         doc: 'Indicates the number of lots that represent a block lot for the order book'
       - id: expiry_date
         type: u4
-        doc: 'The Settlement Date as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date'
+        doc: 'The Settlement Date as specified in the ASX 24 Contract Specifications. Reported in Unix Time (number of seconds since 00:00 1 January 1970 GMT). Convert to AEST/ADST as appropriate to determine the date. Seconds since Unix epoch'
       - id: basis_of_quotation
         type: str_10_nullable
         doc: 'Blank filled. Not available for ASX 24 products. Nullable, No Value ='
@@ -338,7 +338,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -403,7 +403,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -468,7 +468,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -483,7 +483,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -510,7 +510,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -531,7 +531,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -549,7 +549,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -592,7 +592,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -629,7 +629,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -676,7 +676,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -703,7 +703,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -730,7 +730,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -748,7 +748,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -787,7 +787,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -849,7 +849,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -863,7 +863,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -886,7 +886,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -915,7 +915,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -944,7 +944,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: source_id
         type: str
         size: 6
@@ -964,7 +964,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -982,7 +982,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -1011,7 +1011,7 @@ types:
         doc: 'Nanoseconds portion of the Nanoseconds, accurate to 1,000 nanoseconds. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date. Represented as number of days since 1 January 1970'
+        doc: 'Trade Date. Represented as number of days since 1 January 1970. Days since Unix epoch'
       - id: tradeable_instrument_id
         type: u4
         doc: 'Identifier of the Order Book'
@@ -1023,7 +1023,7 @@ types:
         doc: 'Number of open contracts at EOD for the specified VOI Trade Date'
       - id: voi_trade_date
         type: epoch_date
-        doc: 'Trade Date the VOI information is applicable to'
+        doc: 'Trade Date the VOI information is applicable to. Days since Unix epoch'
   second_timestamp:
     seq:
       - id: time

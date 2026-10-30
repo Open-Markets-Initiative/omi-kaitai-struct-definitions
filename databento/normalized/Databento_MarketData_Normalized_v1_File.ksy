@@ -445,8 +445,8 @@ types:
         type: decimal_s8_9_nullable
         doc: 'The max price variation, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: trading_reference_price
-        type: decimal_s8_9
-        doc: 'The trading session settlement price on trading_reference_date, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9'
+        type: decimal_s8_9_nullable
+        doc: 'The trading session settlement price on trading_reference_date, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'
       - id: unit_of_measure_qty
         type: decimal_s8_9_nullable
         doc: 'The unit of measure qty, where every 1 unit corresponds to 1e-9. Implied decimal with scale 1e-9. Nullable, No Value = 9223372036854775807'

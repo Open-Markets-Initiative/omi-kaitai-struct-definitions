@@ -105,7 +105,7 @@ types:
         doc: 'Environment code'
       - id: session_date
         type: epoch_date
-        doc: 'Session Date'
+        doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
         doc: 'Requested sequence number'
@@ -281,10 +281,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -385,7 +385,7 @@ types:
         doc: 'Flexible Expiry Indicator'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: number_of_decimals
         type: u1
         doc: 'Number of Decimals'
@@ -632,10 +632,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -736,7 +736,7 @@ types:
         doc: 'Flexible Expiry Indicator'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: number_of_decimals
         type: u1
         doc: 'Number of Decimals'
@@ -1113,7 +1113,7 @@ types:
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
         type: epoch_date
-        doc: 'Trade Session Date'
+        doc: 'Trade Session Date. Days since Unix epoch'
       - id: amended_trade_type
         type: u1
         enum: amended_trade_type
@@ -1123,7 +1123,7 @@ types:
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
         type: epoch_date
-        doc: 'Date of the amended/cancelled trade'
+        doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
   indication_of_interest_message:
     seq:
       - id: sequence_number

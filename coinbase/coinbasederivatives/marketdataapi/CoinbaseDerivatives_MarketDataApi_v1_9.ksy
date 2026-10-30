@@ -175,10 +175,10 @@ types:
         doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: old_contract_size
         type: s4
         doc: 'oldContractSize'
@@ -239,7 +239,7 @@ types:
         doc: 'instrSeqNum'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: reserved
         type: s2
         doc: 'Two bytes of padding, reserved for future use'
@@ -317,10 +317,10 @@ types:
         doc: 'Currency used for price'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: old_contract_size
         type: s4
         doc: 'oldContractSize'
@@ -405,10 +405,10 @@ types:
         doc: 'strikePrice. Implied decimal with scale 1e-9'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: prior_settlement_price
         type: decimal_s8_9
         doc: 'priorSettlementPrice. Implied decimal with scale 1e-9'
@@ -755,13 +755,13 @@ types:
         doc: 'orderCount'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: product_group
         type: s1
         enum: product_group
@@ -832,13 +832,13 @@ types:
         doc: 'orderCount'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: product_group
         type: s1
         enum: product_group
@@ -914,13 +914,13 @@ types:
         doc: 'orderCount'
       - id: first_trading_session_date
         type: epoch_date
-        doc: 'firstTradingSessionDate'
+        doc: 'firstTradingSessionDate. Days since Unix epoch'
       - id: last_trading_session_date
         type: epoch_date
-        doc: 'lastTradingSessionDate'
+        doc: 'lastTradingSessionDate. Days since Unix epoch'
       - id: trading_session_date
         type: epoch_date
-        doc: 'tradingSessionDate'
+        doc: 'tradingSessionDate. Days since Unix epoch'
       - id: product_group
         type: s1
         enum: product_group

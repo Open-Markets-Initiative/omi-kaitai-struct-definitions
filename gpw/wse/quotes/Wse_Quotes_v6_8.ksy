@@ -42,10 +42,10 @@ seq:
   - id: packet_header
     type: packet_header_struct
     doc: 'All messages are preceded by a common packet header format, which section 1.1 states for every Market Information message'
-  - id: message
-    type: message_struct
-    repeat: expr
-    repeat-expr: packet_header.number_msg_entries
+  - id: message_buffer
+    type: message_buffer_struct
+    size-eos: true
+    doc: 'The packet''s message area: the messages it counts, or one ZliB block holding them'
 
 types:
   packet_header_struct:
@@ -73,7 +73,13 @@ types:
       - id: number_msg_entries
         type: u1
         doc: 'The number of messages that are contained within the packet'
-  message_struct:
+  message_buffer_struct:
+    seq:
+      - id: message
+        type: message
+        repeat: expr
+        repeat-expr: _root.packet_header.number_msg_entries
+  message:
     seq:
       - id: message_header
         type: message_header

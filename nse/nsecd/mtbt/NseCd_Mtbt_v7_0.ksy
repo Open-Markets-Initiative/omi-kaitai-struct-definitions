@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseCd Mtbt Binary v7.0
+# Kaitai struct definition for: Nse NseCd Mtbt Tbt v7.0
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
 #   Protocol: Multicast Tick By Tick
-#   Encoding: Binary
+#   Encoding: Tbt
 #   Version: 7.0
 #   Date: 8/1/2026
 #   Specification: MTBT_FO_NNF_PROTOCOL_7.0_20260817172155.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsecd_mtbt_binary_v7_0
-  title: Nse NseCd Mtbt Binary v7.0
+  id: nse_nsecd_mtbt_tbt_v7_0
+  title: Nse NseCd Mtbt Tbt v7.0
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Multicast Tick By Tick Binary v7.0'
+doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Multicast Tick By Tick Tbt v7.0'
 doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:

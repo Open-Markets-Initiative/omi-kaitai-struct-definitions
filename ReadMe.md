@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1636 | 3,554,508 |
+| 1636 | 3,554,588 |
 
 ## Testing
 
@@ -137,11 +137,12 @@ Enjoy.
 [Omi.Encoding.Sqf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Sqf.md "Sqf Encoding"
 [Omi.Encoding.AsciiItch]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/AsciiItch.md "AsciiItch Encoding"
 [Omi.Encoding.GeniumAmd]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/GeniumAmd.md "GeniumAmd Encoding"
-[Omi.Encoding.Binary]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Binary.md "Binary Encoding"
+[Omi.Encoding.Prm]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Prm.md "Prm Encoding"
 [Omi.Encoding.Utp]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Utp.md "Utp Encoding"
 [Omi.Encoding.NxtAscii]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/NxtAscii.md "NxtAscii Encoding"
 [Omi.Encoding.NxtBinary]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/NxtBinary.md "NxtBinary Encoding"
 [Omi.Encoding.NnfDirect]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/NnfDirect.md "NnfDirect Encoding"
+[Omi.Encoding.Tbt]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Tbt.md "Tbt Encoding"
 [Omi.Encoding.Nnf]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/Nnf.md "Nnf Encoding"
 [Omi.Encoding.NnfBcast]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/NnfBcast.md "NnfBcast Encoding"
 [Omi.Encoding.NnfDc]: https://github.com/Open-Markets-Initiative/Directory/blob/main/Protocols/NnfDc.md "NnfDc Encoding"

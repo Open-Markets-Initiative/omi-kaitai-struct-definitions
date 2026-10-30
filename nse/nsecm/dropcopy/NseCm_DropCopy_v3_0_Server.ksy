@@ -55,6 +55,7 @@ types:
         doc: 'RESPONSE_MESSAGE_HEADER, present once per packet however many messages are packed behind it'
       - id: message_buffer
         type: message_buffer
+        size: packet_header.packet_length - 24
         doc: 'Messages packed in Fifo order, inflated first when Compression Indicator says they arrive compressed'
   packet_header:
     seq:

@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseCd Snapshot Binary v7.1
+# Kaitai struct definition for: Nse NseCd Snapshot Tbt v7.1
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
 #   Protocol: Mtbt Order Book Snapshot Recovery
-#   Encoding: Binary
+#   Encoding: Tbt
 #   Version: 7.1
 #   Date: 9/1/2026
 #   Specification: MTBT_FO_NNF_PROTOCOL_7.1_20260902170959.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsecd_snapshot_binary_v7_1_response
-  title: Nse NseCd Snapshot Binary v7.1
+  id: nse_nsecd_snapshot_tbt_v7_1_response
+  title: Nse NseCd Snapshot Tbt v7.1
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Mtbt Order Book Snapshot Recovery Binary v7.1'
+doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Mtbt Order Book Snapshot Recovery Tbt v7.1'
 doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:

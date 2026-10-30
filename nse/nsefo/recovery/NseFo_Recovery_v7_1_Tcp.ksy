@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseFo Recovery Binary v7.1
+# Kaitai struct definition for: Nse NseFo Recovery Tbt v7.1
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
 #   Protocol: Mtbt Tick Data Recovery
-#   Encoding: Binary
+#   Encoding: Tbt
 #   Version: 7.1
 #   Date: 9/1/2026
 #   Specification: MTBT_FO_NNF_PROTOCOL_7.1_20260902170959.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsefo_recovery_binary_v7_1_tcp
-  title: Nse NseFo Recovery Binary v7.1
+  id: nse_nsefo_recovery_tbt_v7_1_tcp
+  title: Nse NseFo Recovery Tbt v7.1
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Futures & Options Mtbt Tick Data Recovery Binary v7.1'
+doc: 'National Stock Exchange of India Ltd NSE Futures & Options Mtbt Tick Data Recovery Tbt v7.1'
 doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:

@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nasdaq NordicEquities RiskControl Binary v1.00.1
+# Kaitai struct definition for: Nasdaq NordicEquities RiskControl Prm v1.00.1
 #
 # Protocol:
 #   Organization: National Association of Securities Dealers Automated Quotations (Nasdaq)
 #   Protocol: Nordic Pre-Trade Risk Management
-#   Encoding: Binary
+#   Encoding: Prm
 #   Version: 1.00.1
 #   Date: 02/10/2026
 #   Specification: Nasdaq-Nordic---PRM-v.1.00.1.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nasdaq_nordicequities_riskcontrol_binary_v1_00_1_server
-  title: Nasdaq NordicEquities RiskControl Binary v1.00.1
+  id: nasdaq_nordicequities_riskcontrol_prm_v1_00_1_server
+  title: Nasdaq NordicEquities RiskControl Prm v1.00.1
   license: GPL-3.0
   endian: be
 
-doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Pre-Trade Risk Management Binary v1.00.1'
+doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Nordic Equities Nordic Pre-Trade Risk Management Prm v1.00.1'
 doc-ref: https://www.nasdaq.com/solutions/pre-trade-risk-management
 
 seq:

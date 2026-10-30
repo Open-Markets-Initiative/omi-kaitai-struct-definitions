@@ -143,7 +143,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: event_code
         type: u1
         enum: event_code
@@ -155,7 +155,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -225,7 +225,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -267,7 +267,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -363,7 +363,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -378,7 +378,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -405,7 +405,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -432,7 +432,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -453,7 +453,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -471,7 +471,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -498,7 +498,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -525,7 +525,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -543,7 +543,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: order_number
         type: u8
         doc: 'Order number assigned by Matching Engine'
@@ -583,7 +583,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: order_number
         type: u8
         doc: 'Order number assigned by Matching Engine'
@@ -600,7 +600,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: order_number
         type: u8
         doc: 'Order number assigned by Matching Engine'
@@ -611,7 +611,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -645,7 +645,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -681,7 +681,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -731,7 +731,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: buyer
         type: u4
         doc: 'Buyer Contract Number Field Element Identifier'
@@ -792,7 +792,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: order_number
         type: u8
         doc: 'Order number assigned by Matching Engine'
@@ -832,7 +832,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -885,7 +885,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: match_number
         type: u4
         doc: 'Deal Number'
@@ -896,7 +896,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -922,7 +922,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -980,7 +980,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -1003,7 +1003,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: source_id
         type: str
         size: 6
@@ -1023,7 +1023,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -1040,7 +1040,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -1069,7 +1069,7 @@ types:
         doc: 'Nanoseconds portion of the timestamp. Nanoseconds since Second epoch'
       - id: trade_date
         type: epoch_date
-        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates'
+        doc: 'Trade Date of event as applicable, if Event Code is “P” or “R”, applies to all active trade dates. Days since Unix epoch'
       - id: contract_number
         type: u4
         doc: 'Contract Number Field Element Identifier'
@@ -1081,7 +1081,7 @@ types:
         doc: 'Number of open contracts at end of day for the specified VOI trade date'
       - id: voi_trade_date
         type: epoch_date
-        doc: 'Trade date to which the VOI information applies'
+        doc: 'Trade date to which the VOI information applies. Days since Unix epoch'
   second_timestamp:
     seq:
       - id: time

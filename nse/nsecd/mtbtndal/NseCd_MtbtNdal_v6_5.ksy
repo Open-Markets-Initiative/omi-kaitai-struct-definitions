@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseCd MtbtNdal Binary v6.5
+# Kaitai struct definition for: Nse NseCd MtbtNdal Tbt v6.5
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
 #   Protocol: Multicast Tick By Tick Data Feed
-#   Encoding: Binary
+#   Encoding: Tbt
 #   Version: 6.5
 #   Date: 8/3/2026
 #   Specification: Realtime_CM_CD_TBT_ver_6.5.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsecd_mtbtndal_binary_v6_5
-  title: Nse NseCd MtbtNdal Binary v6.5
+  id: nse_nsecd_mtbtndal_tbt_v6_5
+  title: Nse NseCd MtbtNdal Tbt v6.5
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Multicast Tick By Tick Data Feed Binary v6.5'
+doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Multicast Tick By Tick Data Feed Tbt v6.5'
 doc-ref: https://www.nseindia.com/static/market-data/real-time-data-subscription
 
 seq:

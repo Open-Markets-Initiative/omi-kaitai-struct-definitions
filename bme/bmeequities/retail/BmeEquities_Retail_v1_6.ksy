@@ -102,7 +102,7 @@ types:
         doc: 'Environment code'
       - id: session_date
         type: epoch_date
-        doc: 'Session Date'
+        doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
         doc: 'Requested sequence number'
@@ -273,10 +273,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -375,7 +375,7 @@ types:
         doc: 'Barrier. Implied decimal with scale 1e-6'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: automatic_expiration
         type: u1_nullable
         doc: 'Automatic Expiration. Nullable, No Value = 255'
@@ -417,7 +417,7 @@ types:
         doc: 'Outstanding Capital. Implied decimal with scale 1e-4'
       - id: first_trading_date
         type: epoch_date
-        doc: 'First Trading Date'
+        doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
         enum: settlement_system
@@ -439,7 +439,7 @@ types:
         doc: 'Minimum Capital. Implied decimal with scale 1e-4'
       - id: last_admission_date
         type: epoch_date
-        doc: 'Last Trading Date'
+        doc: 'Last Trading Date. Days since Unix epoch'
       - id: barrier_return
         type: decimal_s8_6
         doc: 'Barrier Return. Implied decimal with scale 1e-6'
@@ -604,10 +604,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -706,7 +706,7 @@ types:
         doc: 'Barrier. Implied decimal with scale 1e-6'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: automatic_expiration
         type: u1_nullable
         doc: 'Automatic Expiration. Nullable, No Value = 255'
@@ -748,7 +748,7 @@ types:
         doc: 'Outstanding Capital. Implied decimal with scale 1e-4'
       - id: first_trading_date
         type: epoch_date
-        doc: 'First Trading Date'
+        doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
         enum: settlement_system
@@ -770,7 +770,7 @@ types:
         doc: 'Minimum Capital. Implied decimal with scale 1e-4'
       - id: last_admission_date
         type: epoch_date
-        doc: 'Last Trading Date'
+        doc: 'Last Trading Date. Days since Unix epoch'
       - id: barrier_return
         type: decimal_s8_6
         doc: 'Barrier Return. Implied decimal with scale 1e-6'
@@ -911,7 +911,7 @@ types:
         doc: 'Actual UTC time for the end of the auction. Nanoseconds since Unix epoch'
       - id: liquidative_value_date
         type: epoch_date
-        doc: 'Date of the Net Asset Value'
+        doc: 'Date of the Net Asset Value. Days since Unix epoch'
       - id: bonus_warrants_with_active_bonus
         type: u1_nullable
         doc: 'Indicates whether the bonus is active or not (bonus). Nullable, No Value = 255'
@@ -1006,7 +1006,7 @@ types:
         doc: 'Stock Exchange code of the buyer'
       - id: settl_date
         type: epoch_date
-        doc: 'Settlement date'
+        doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
         enum: transaction_category
@@ -1064,7 +1064,7 @@ types:
         doc: 'Stock Exchange code of the buyer'
       - id: settl_date
         type: epoch_date
-        doc: 'Settlement date'
+        doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
         enum: transaction_category
@@ -1096,7 +1096,7 @@ types:
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
         type: epoch_date
-        doc: 'Trade Session Date'
+        doc: 'Trade Session Date. Days since Unix epoch'
       - id: volume_float
         type: decimal_u8_6
         doc: 'Volume with decimal places. Implied decimal with scale 1e-6'
@@ -1113,7 +1113,7 @@ types:
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
         type: epoch_date
-        doc: 'Date of the amended/cancelled trade'
+        doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
   top_of_book_retail_message:
     seq:
       - id: sequence_number

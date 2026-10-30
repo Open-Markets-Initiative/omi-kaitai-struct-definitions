@@ -105,7 +105,7 @@ types:
         doc: 'Environment code'
       - id: session_date
         type: epoch_date
-        doc: 'Session Date'
+        doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
         doc: 'Requested sequence number'
@@ -276,10 +276,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -334,7 +334,7 @@ types:
         doc: 'Security Status'
       - id: coupon_payment_date
         type: epoch_date
-        doc: 'Coupon Payment Date'
+        doc: 'Coupon Payment Date. Days since Unix epoch'
       - id: min_price_increment
         type: decimal_s8_6
         doc: 'Minimum Price Increment. Implied decimal with scale 1e-6'
@@ -355,7 +355,7 @@ types:
         doc: 'Trading Scope'
       - id: first_trading_date
         type: epoch_date
-        doc: 'First Trading Date'
+        doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
         enum: settlement_system
@@ -391,7 +391,7 @@ types:
         doc: 'Accrued Interest Calculation Procedure'
       - id: next_redemption_date
         type: epoch_date
-        doc: 'Next Redemption Date'
+        doc: 'Next Redemption Date. Days since Unix epoch'
       - id: type_of_redemption
         type: str
         size: 2
@@ -406,7 +406,7 @@ types:
         doc: 'Calculation Method'
       - id: date_last_coupon_was_paid
         type: epoch_date
-        doc: 'Date Last Coupon Was Paid'
+        doc: 'Date Last Coupon Was Paid. Days since Unix epoch'
       - id: bond_seniority
         type: str
         size: 4
@@ -414,10 +414,10 @@ types:
         doc: 'Bond Seniority'
       - id: interest_accrual_date
         type: epoch_date
-        doc: 'Start date for the coupon yield'
+        doc: 'Start date for the coupon yield. Days since Unix epoch'
       - id: start_date
         type: epoch_date
-        doc: 'Value date'
+        doc: 'Value date. Days since Unix epoch'
       - id: price_type
         type: u1
         enum: price_type
@@ -496,10 +496,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -554,7 +554,7 @@ types:
         doc: 'Security Status'
       - id: coupon_payment_date
         type: epoch_date
-        doc: 'Coupon Payment Date'
+        doc: 'Coupon Payment Date. Days since Unix epoch'
       - id: min_price_increment
         type: decimal_s8_6
         doc: 'Minimum Price Increment. Implied decimal with scale 1e-6'
@@ -575,7 +575,7 @@ types:
         doc: 'Trading Scope'
       - id: first_trading_date
         type: epoch_date
-        doc: 'First Trading Date'
+        doc: 'First Trading Date. Days since Unix epoch'
       - id: settlement_system
         type: u1
         enum: settlement_system
@@ -611,7 +611,7 @@ types:
         doc: 'Accrued Interest Calculation Procedure'
       - id: next_redemption_date
         type: epoch_date
-        doc: 'Next Redemption Date'
+        doc: 'Next Redemption Date. Days since Unix epoch'
       - id: type_of_redemption
         type: str
         size: 2
@@ -626,7 +626,7 @@ types:
         doc: 'Calculation Method'
       - id: date_last_coupon_was_paid
         type: epoch_date
-        doc: 'Date Last Coupon Was Paid'
+        doc: 'Date Last Coupon Was Paid. Days since Unix epoch'
       - id: bond_seniority
         type: str
         size: 4
@@ -634,10 +634,10 @@ types:
         doc: 'Bond Seniority'
       - id: interest_accrual_date
         type: epoch_date
-        doc: 'Start date for the coupon yield'
+        doc: 'Start date for the coupon yield. Days since Unix epoch'
       - id: start_date
         type: epoch_date
-        doc: 'Value date'
+        doc: 'Value date. Days since Unix epoch'
       - id: price_type
         type: u1
         enum: price_type
@@ -757,7 +757,7 @@ types:
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
         type: epoch_date
-        doc: 'Settlement date'
+        doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
         enum: transaction_category
@@ -820,7 +820,7 @@ types:
         doc: 'Interest rate of coupon. Implied decimal with scale 1e-6'
       - id: settl_date
         type: epoch_date
-        doc: 'Settlement date'
+        doc: 'Settlement date. Days since Unix epoch'
       - id: transaction_category
         type: u1
         enum: transaction_category
@@ -856,10 +856,10 @@ types:
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
         type: epoch_date
-        doc: 'Trade Session Date'
+        doc: 'Trade Session Date. Days since Unix epoch'
       - id: settl_date_2
         type: epoch_date
-        doc: 'Settlement date of the second leg'
+        doc: 'Settlement date of the second leg. Days since Unix epoch'
       - id: end_cash
         type: decimal_s8_4
         doc: 'Amount to be settled at the end of the Repo Trade. Implied decimal with scale 1e-4'
@@ -872,7 +872,7 @@ types:
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
         type: epoch_date
-        doc: 'Date of the amended/cancelled trade'
+        doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
   indication_of_interest_message:
     seq:
       - id: sequence_number

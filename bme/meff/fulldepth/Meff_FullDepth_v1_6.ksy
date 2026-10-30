@@ -111,7 +111,7 @@ types:
         doc: 'Environment code'
       - id: session_date
         type: epoch_date
-        doc: 'Session Date'
+        doc: 'Session Date. Days since Unix epoch'
       - id: expected_sequence_number
         type: u4
         doc: 'Requested sequence number'
@@ -287,10 +287,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -391,7 +391,7 @@ types:
         doc: 'Flexible Expiry Indicator'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: number_of_decimals
         type: u1
         doc: 'Number of Decimals'
@@ -638,10 +638,10 @@ types:
         doc: 'Security type'
       - id: maturity_date
         type: epoch_date
-        doc: 'Expiration date'
+        doc: 'Expiration date. Days since Unix epoch'
       - id: issue_date
         type: epoch_date
-        doc: 'Date security issued'
+        doc: 'Date security issued. Days since Unix epoch'
       - id: contract_multiplier
         type: decimal_s8_4
         doc: 'Conversion factor between price units and monetary units. Implied decimal with scale 1e-4'
@@ -742,7 +742,7 @@ types:
         doc: 'Flexible Expiry Indicator'
       - id: last_trading_day
         type: epoch_date
-        doc: 'Last Trading Day'
+        doc: 'Last Trading Day. Days since Unix epoch'
       - id: number_of_decimals
         type: u1
         doc: 'Number of Decimals'
@@ -1007,7 +1007,7 @@ types:
         doc: 'System Order Number'
       - id: entry_date
         type: epoch_date
-        doc: 'System order entry date (when System Order Number was assigned)'
+        doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: side
         type: u1
         enum: side
@@ -1075,7 +1075,7 @@ types:
         doc: 'System Order Number'
       - id: entry_date
         type: epoch_date
-        doc: 'System order entry date (when System Order Number was assigned)'
+        doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
   quote_cancellation_market_member_message:
     seq:
       - id: sequence_number
@@ -1232,7 +1232,7 @@ types:
         doc: 'Trade date and time. Nanoseconds since Unix epoch'
       - id: trade_session_date
         type: epoch_date
-        doc: 'Trade Session Date'
+        doc: 'Trade Session Date. Days since Unix epoch'
       - id: amended_trade_type
         type: u1
         enum: amended_trade_type
@@ -1242,7 +1242,7 @@ types:
         doc: 'System Trade Number of the amended/cancelled trade'
       - id: amended_trade_date
         type: epoch_date
-        doc: 'Date of the amended/cancelled trade'
+        doc: 'Date of the amended/cancelled trade. Days since Unix epoch'
   trade_market_post_transparency_information_full_depth_message:
     seq:
       - id: sequence_number
@@ -1302,7 +1302,7 @@ types:
         doc: 'System Order Number'
       - id: entry_date
         type: epoch_date
-        doc: 'System order entry date (when System Order Number was assigned)'
+        doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority
         type: u4
         doc: 'Priority'
@@ -1320,7 +1320,7 @@ types:
         doc: 'System Order Number'
       - id: entry_date_2
         type: epoch_date
-        doc: 'System order entry date (when System Order Number was assigned)'
+        doc: 'System order entry date (when System Order Number was assigned). Days since Unix epoch'
       - id: priority_2
         type: u4
         doc: 'Priority'

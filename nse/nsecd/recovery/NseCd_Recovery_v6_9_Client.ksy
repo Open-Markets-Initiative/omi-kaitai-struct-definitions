@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Nse NseCd Recovery Binary v6.9
+# Kaitai struct definition for: Nse NseCd Recovery Tbt v6.9
 #
 # Protocol:
 #   Organization: National Stock Exchange of India Ltd
 #   Protocol: Mtbt Tick Data Recovery
-#   Encoding: Binary
+#   Encoding: Tbt
 #   Version: 6.9
 #   Date: 4/1/2026
 #   Specification: MTBT_FO_NNF_PROTOCOL_6_9_20260717161139.pdf
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: nse_nsecd_recovery_binary_v6_9_client
-  title: Nse NseCd Recovery Binary v6.9
+  id: nse_nsecd_recovery_tbt_v6_9_client
+  title: Nse NseCd Recovery Tbt v6.9
   license: GPL-3.0
   endian: le
 
-doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Mtbt Tick Data Recovery Binary v6.9'
+doc: 'National Stock Exchange of India Ltd NSE Currency Derivatives Mtbt Tick Data Recovery Tbt v6.9'
 doc-ref: https://www.nseindia.com/static/trade/platform-services-neat-trading-system-protocols
 
 seq:
