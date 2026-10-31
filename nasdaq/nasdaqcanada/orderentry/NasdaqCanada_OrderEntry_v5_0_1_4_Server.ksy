@@ -182,8 +182,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_accepted_appendage
         type: order_accepted_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Order Accepted Appendage'
   order_accepted_appendage:
     seq:
@@ -275,8 +274,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_replaced_appendage
         type: order_replaced_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Order Replaced Appendage'
   order_replaced_appendage:
     seq:
@@ -339,8 +337,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_canceled_appendage
         type: order_canceled_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Order Canceled Appendage'
   order_canceled_appendage:
     seq:
@@ -389,8 +386,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: stp_canceled_appendage
         type: stp_canceled_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'STP Canceled Appendage'
   stp_canceled_appendage:
     seq:
@@ -440,8 +436,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_executed_appendage
         type: order_executed_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Order Executed Appendage'
   order_executed_appendage:
     seq:
@@ -486,8 +481,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: corrected_trade_appendage
         type: corrected_trade_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Corrected Trade Appendage'
   corrected_trade_appendage:
     seq:
@@ -523,8 +517,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: rejected_order_appendage
         type: rejected_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Rejected Order Appendage'
   rejected_order_appendage:
     seq:
@@ -560,8 +553,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: cancel_reject_appendage
         type: cancel_reject_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Cancel Reject Appendage'
   cancel_reject_appendage:
     seq:
@@ -595,8 +587,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_restated_appendage
         type: order_restated_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Order Restated Appendage'
   order_restated_appendage:
     seq:
@@ -628,8 +619,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: account_query_response_appendage
         type: account_query_response_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Account Query Response Appendage'
   account_query_response_appendage:
     seq:

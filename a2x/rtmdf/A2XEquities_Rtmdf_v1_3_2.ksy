@@ -118,9 +118,9 @@ types:
       - id: security_id
         type: u2
         doc: 'Numeric identifier of the relevant security'
-      - id: quantity
+      - id: remaining_quantity
         type: u4
-        doc: 'Number of shares being added to the book'
+        doc: 'Number of shares remaining in the book'
       - id: price
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
@@ -139,12 +139,12 @@ types:
         type: u1
         enum: trade_type
         doc: 'Code identifying type of trade'
-      - id: quantity
+      - id: traded_quantity
         type: u4
-        doc: 'Number of shares being added to the book'
-      - id: price
+        doc: 'Number of shares traded'
+      - id: execution_price
         type: decimal_u8_5
-        doc: 'The price of the order. Implied decimal with scale 1e-5'
+        doc: 'The execution price. Implied decimal with scale 1e-5'
       - id: order_ref
         type: u4_nullable
         doc: 'Order reference number. Nullable, No Value = 0'
@@ -159,12 +159,12 @@ types:
       - id: security_id
         type: u2
         doc: 'Numeric identifier of the relevant security'
-      - id: quantity
+      - id: traded_quantity
         type: u4
-        doc: 'Number of shares being added to the book'
-      - id: price
+        doc: 'Number of shares traded'
+      - id: execution_price
         type: decimal_u8_5
-        doc: 'The price of the order. Implied decimal with scale 1e-5'
+        doc: 'The execution price. Implied decimal with scale 1e-5'
       - id: trade_ref
         type: u4
         doc: 'Trade reference number'

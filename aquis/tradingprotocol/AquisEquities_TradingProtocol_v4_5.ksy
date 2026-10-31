@@ -529,9 +529,9 @@ types:
       - id: status
         type: status
         doc: 'Status of order and reject or cancel code'
-      - id: timestamp
+      - id: cancellation_timestamp
         type: nanosecond_timestamp
-        doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
+        doc: 'Time that the cancellation was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
       - id: user_tag
         type: u8
         doc: 'Free form tag assigned by trading Member'
@@ -549,9 +549,9 @@ types:
       - id: status
         type: status
         doc: 'Status of order and reject or cancel code'
-      - id: timestamp
+      - id: modification_timestamp
         type: nanosecond_timestamp
-        doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
+        doc: 'Time that the modification was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
       - id: user_tag
         type: u8
         doc: 'Free form tag assigned by trading Member'
@@ -669,9 +669,9 @@ types:
       - id: security_id_short
         type: u2
         doc: 'Numeric security identifier'
-      - id: timestamp
+      - id: trade_timestamp
         type: nanosecond_timestamp
-        doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
+        doc: 'Time that the trade occurred on the Aquis system. Nanoseconds since Unix epoch'
       - id: user_tag
         type: u8
         doc: 'Free form tag assigned by trading Member'
@@ -708,9 +708,9 @@ types:
       - id: trade_ref
         type: u4
         doc: 'Trade reference number. Corresponds to the TVTIC (RTS 24 Art.12 & RTS 22 Field 3 Table 2)'
-      - id: timestamp
+      - id: bust_timestamp
         type: nanosecond_timestamp
-        doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
+        doc: 'Time that the trade was busted by Aquis. Nanoseconds since Unix epoch'
   ioi_add_message:
     seq:
       - id: security_id_short
@@ -809,9 +809,9 @@ types:
       - id: min_qty
         type: u4_nullable
         doc: 'Minimum quantity (shares) of an order to be executed. Nullable, No Value = 0'
-      - id: timestamp
+      - id: invite_timestamp
         type: nanosecond_timestamp
-        doc: 'Time that the order was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
+        doc: 'Time the IOI Invite was sent. Nanoseconds since Unix epoch'
       - id: user_tag
         type: u8
         doc: 'Free form tag assigned by trading Member'

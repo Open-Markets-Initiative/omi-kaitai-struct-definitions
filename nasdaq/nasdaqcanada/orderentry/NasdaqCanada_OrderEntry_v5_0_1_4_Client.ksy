@@ -161,8 +161,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: enter_order_appendage
         type: enter_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Enter Order Appendage'
   enter_order_appendage:
     seq:
@@ -242,8 +241,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: replace_order_request_appendage
         type: replace_order_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Replace Order Request Appendage'
   replace_order_request_appendage:
     seq:
@@ -295,8 +293,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: cancel_order_request_appendage
         type: cancel_order_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Cancel Order Request Appendage'
   cancel_order_request_appendage:
     seq:
@@ -320,8 +317,7 @@ types:
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: account_query_request_appendage
         type: account_query_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Account Query Request Appendage'
   account_query_request_appendage:
     seq:

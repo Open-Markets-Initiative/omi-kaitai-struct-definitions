@@ -171,8 +171,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: enter_order_appendage
         type: enter_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Enter Order Appendage'
   enter_order_appendage:
     seq:
@@ -245,8 +244,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: replace_order_appendage
         type: replace_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Replace Order Appendage'
   replace_order_appendage:
     seq:
@@ -294,8 +292,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: cancel_order_appendage
         type: cancel_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Cancel Order Appendage'
   cancel_order_appendage:
     seq:
@@ -330,8 +327,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: modify_order_appendage
         type: modify_order_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Modify Order Appendage'
   modify_order_appendage:
     seq:
@@ -358,8 +354,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: account_query_appendage
         type: account_query_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Account Query Appendage'
   account_query_appendage:
     seq:
@@ -398,8 +393,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: mass_cancel_request_appendage
         type: mass_cancel_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Mass Cancel Request Appendage'
   mass_cancel_request_appendage:
     seq:
@@ -434,8 +428,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: disable_order_entry_request_appendage
         type: disable_order_entry_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Disable Order Entry Request Appendage'
   disable_order_entry_request_appendage:
     seq:
@@ -468,8 +461,7 @@ types:
         doc: 'The length of the remaining Optional Appendage field'
       - id: enable_order_entry_request_appendage
         type: enable_order_entry_request_appendage
-        repeat: expr
-        repeat-expr: appendage_length
+        repeat: eos
         doc: 'Enable Order Entry Request Appendage'
   enable_order_entry_request_appendage:
     seq:
