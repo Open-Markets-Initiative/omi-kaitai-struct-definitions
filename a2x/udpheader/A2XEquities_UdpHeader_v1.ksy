@@ -46,6 +46,7 @@ seq:
     type: message_struct
     repeat: expr
     repeat-expr: num_message
+    doc: 'A2X Amd Message'
 
 types:
   message_struct:

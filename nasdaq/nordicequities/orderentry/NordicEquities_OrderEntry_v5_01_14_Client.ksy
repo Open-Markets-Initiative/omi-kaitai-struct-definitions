@@ -164,7 +164,8 @@ types:
         doc: 'Remaining length of the TagValue element'
       - id: tagvalue
         type: tagvalue
-        repeat: eos
+        repeat: expr
+        repeat-expr: appendage_length
         doc: 'Additional appendage tag value'
   party_role_qualifier:
     seq:
@@ -418,7 +419,8 @@ types:
         doc: 'Remaining length of the TagValue element'
       - id: tagvalue
         type: tagvalue
-        repeat: eos
+        repeat: expr
+        repeat-expr: appendage_length
         doc: 'Additional appendage tag value'
   cancel_order_message:
     seq:

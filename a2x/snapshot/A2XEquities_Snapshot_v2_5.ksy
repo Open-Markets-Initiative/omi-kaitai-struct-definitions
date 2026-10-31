@@ -46,6 +46,7 @@ seq:
     type: message_struct
     repeat: expr
     repeat-expr: num_message
+    doc: 'A2X Amd Message'
 
 types:
   message_struct:
@@ -93,7 +94,7 @@ types:
       - id: trading_status
         type: u1
         enum: trading_status
-        doc: 'See Section 3.4.8 (Security Status message)'
+        doc: 'Trading status of the security'
       - id: market_flags
         type: market_flags
         doc: 'Market flags'
@@ -101,11 +102,11 @@ types:
         type: u2
         doc: 'Number of open orders in the book for this security'
       - id: closing_buy_qty
-        type: u4
-        doc: 'Total order quantity on the buy side during the closing market, otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the buy side during the closing market. Nullable, No Value = 0'
       - id: closing_sell_qty
-        type: u4
-        doc: 'Total order quantity on the sell side during the closing market, otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the sell side during the closing market. Nullable, No Value = 0'
       - id: indicative_price
         type: decimal_u8_5
         doc: 'Indicative auction price. Implied decimal with scale 1e-5'
@@ -115,13 +116,13 @@ types:
     seq:
       - id: trading
         type: b1
-        doc: '0 = Continuous Trading Closed, 1 = Continuous Trading Open'
+        doc: 'Continuous trading open or closed'
       - id: mac_open
         type: b1
-        doc: '0 = MaC is Closed, 1 = MaC is Open'
+        doc: 'MaC open or closed'
       - id: mac_run
         type: b1
-        doc: '0 = MaC is not locked down, 1 = MaC is locked down'
+        doc: 'MaC locked down or not'
       - id: unused_5
         type: b5
         doc: 'Reserved'
@@ -133,7 +134,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '1 = Buy Order, 2 = Sell Order'
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
@@ -151,7 +152,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '1 = Buy Order, 2 = Sell Order'
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
@@ -174,6 +175,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   decimal_u8_5:
     seq:
       - id: mantissa

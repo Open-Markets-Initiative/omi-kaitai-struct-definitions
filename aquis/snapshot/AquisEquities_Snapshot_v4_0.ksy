@@ -6,8 +6,8 @@
 #   Protocol: Aquis Market Data Snapshot
 #   Encoding: Aquis Market Data Protocol
 #   Version: 4.0
-#   Date: 8/1/2025
-#   Specification: Unknown
+#   Date: 8/15/2025
+#   Specification: Aquis Market Data Technical Specification v4.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -53,7 +53,7 @@ types:
     seq:
       - id: message_count
         type: u1
-        doc: 'Number of messages in this packet'
+        doc: 'number of messages (n) in this packet'
   message_struct:
     seq:
       - id: message_header
@@ -67,7 +67,7 @@ types:
             'msg_type::snapshot_start_message': snapshot_start_message
             'msg_type::book_status_message': book_status_message
             'msg_type::book_entry_message': book_entry_message
-            'msg_type::ma_c_book_entry_message': ma_c_book_entry_message
+            'msg_type::mac_book_entry_message': mac_book_entry_message
   message_header:
     seq:
       - id: msg_type
@@ -84,7 +84,7 @@ types:
     seq:
       - id: stream_seq_no
         type: u4
-        doc: 'Sequence number of the last message in the continuous stream which relates to this snapshot'
+        doc: 'The sequence number of the last message in the continuous stream which relates to this snapshot'
       - id: security_count
         type: u2
         doc: 'Number of securities reported in this snapshot'
@@ -107,11 +107,11 @@ types:
         type: u2
         doc: 'Number of open orders in the book for this security'
       - id: closing_buy_qty
-        type: u4
-        doc: 'Total order quantity on the buy side during the closing market; otherwise 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the buy side during the closing market. Nullable, No Value = 0'
       - id: closing_sell_qty
-        type: u4
-        doc: 'Total order quantity on the sell side during the closing market; otherwise 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the sell side during the closing market. Nullable, No Value = 0'
       - id: indicative_price
         type: decimal_u8_5
         doc: 'Indicative auction price. Implied decimal with scale 1e-5'
@@ -121,13 +121,13 @@ types:
     seq:
       - id: trading
         type: b1
-        doc: 'Continuous trading status; 0 = Closed, 1 = Open'
+        doc: 'Continuous trading open or closed'
       - id: mac_open
         type: b1
-        doc: 'MaC status; 0 = Closed, 1 = Open'
+        doc: 'MaC open or closed'
       - id: mac_run
         type: b1
-        doc: 'MaC lockdown status; 0 = Not locked down, 1 = Locked down'
+        doc: 'MaC locked down or not'
       - id: unused_5
         type: b5
         doc: 'Reserved'
@@ -139,7 +139,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '1 = Buy Order, 2 = Sell Order'
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
@@ -149,7 +149,7 @@ types:
       - id: order_ref
         type: u4
         doc: 'Unique order reference number for the day'
-  ma_c_book_entry_message:
+  mac_book_entry_message:
     seq:
       - id: security_id
         type: u2
@@ -157,7 +157,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '1 = Buy Order, 2 = Sell Order'
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
@@ -180,6 +180,13 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   decimal_u8_5:
     seq:
       - id: mantissa
@@ -192,16 +199,16 @@ enums:
   msg_type:
     10:
       id: 'snapshot_start_message'
-      doc: 'Published as the first message in a snapshot, identifying the continuous stream sequence number and number of securities being reported.'
+      doc: 'A Snapshot Start message is published as the first message in a snapshot to identify the sequence number in the continuous stream that this snapshot relates to. It also states the number of securities being reported in this snapshot.'
     11:
       id: 'book_status_message'
-      doc: 'Published to report the trading and market status of each security and the number of open orders on the order book at the time of the snapshot.'
+      doc: 'A Book Status message is published to report the trading and market status of each security and the number of open orders on the order book for the security at the time of the snapshot.'
     12:
       id: 'book_entry_message'
-      doc: 'Published after each Book Status message to provide details of each order for building the book.'
+      doc: 'An appropriate number of Book Entry messages is published after each Book Status message to provide details of each order and allow the book to be built.'
     18:
-      id: 'ma_c_book_entry_message'
-      doc: 'Published during MaC phase to provide the volume of the 5 best bid and offer orders per security in chronological order.'
+      id: 'mac_book_entry_message'
+      doc: 'During the MaC phase, Aquis will publish the volume of the 5 best bid and offer orders per security in chronological order using the MaC Book Entry Message.'
   trading_status:
     1:
       id: 'active'
@@ -213,11 +220,32 @@ enums:
       id: 'suspended'
       doc: 'Suspended'
     8:
-      id: 'ao_d_start'
-      doc: 'Ao D Start'
+      id: 'aod_start'
+      doc: 'AoD Start'
     24:
-      id: 'ao_d_end'
-      doc: 'Ao D End'
+      id: 'aod_end'
+      doc: 'AoD End'
+  trading:
+    0:
+      id: 'continuous_trading_closed'
+      doc: 'Continuous Trading Closed'
+    1:
+      id: 'continuous_trading_open'
+      doc: 'Continuous Trading Open'
+  mac_open:
+    0:
+      id: 'mac_is_closed'
+      doc: 'MaC is closed'
+    1:
+      id: 'mac_is_open'
+      doc: 'MaC is open'
+  mac_run:
+    0:
+      id: 'mac_is_not_locked_down'
+      doc: 'MaC is not locked down'
+    1:
+      id: 'mac_is_locked_down'
+      doc: 'MaC is locked down'
   side:
     1:
       id: 'buy_order'

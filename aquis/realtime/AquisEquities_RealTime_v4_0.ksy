@@ -6,8 +6,8 @@
 #   Protocol: Real Time Market Data Feed
 #   Encoding: Aquis Market Data Protocol
 #   Version: 4.0
-#   Date: 8/1/2025
-#   Specification: Unknown
+#   Date: 8/15/2025
+#   Specification: Aquis Market Data Technical Specification v4.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -53,7 +53,7 @@ types:
     seq:
       - id: message_count
         type: u1
-        doc: 'Number of messages in this packet'
+        doc: 'number of messages (n) in this packet'
   message_struct:
     seq:
       - id: message_header
@@ -64,16 +64,16 @@ types:
         type:
           switch-on: message_header.msg_type
           cases:
-            'msg_type::order_add': order_add
-            'msg_type::order_cancel': order_cancel
-            'msg_type::order_modify': order_modify
-            'msg_type::trade': trade
+            'msg_type::order_add_message': order_add_message
+            'msg_type::order_cancel_message': order_cancel_message
+            'msg_type::order_modify_message': order_modify_message
+            'msg_type::trade_message': trade_message
             'msg_type::trade_bust_message': trade_bust_message
             'msg_type::tick_table_data_message': tick_table_data_message
             'msg_type::security_definition_message': security_definition_message
             'msg_type::security_status_message': security_status_message
-            'msg_type::ao_d_update_message': ao_d_update_message
-            'msg_type::ma_c_update_message': ma_c_update_message
+            'msg_type::aod_update_message': aod_update_message
+            'msg_type::mac_update_message': mac_update_message
   message_header:
     seq:
       - id: msg_type
@@ -86,7 +86,7 @@ types:
       - id: seq_no
         type: u4
         doc: 'Sequence number of this message in the market data stream for the current trading day'
-  order_add:
+  order_add_message:
     seq:
       - id: security_id
         type: u2
@@ -102,8 +102,8 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Unique order reference number for the day'
+        type: u4_nullable
+        doc: 'Unique order reference number for the day. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -114,27 +114,27 @@ types:
     meta:
       bit-endian: le
     seq:
-      - id: unrestricted_liquidity_indicator
+      - id: unrestricted_liquidity
         type: b1
-        doc: 'Indicates whether unrestricted liquidity is available at the top of the book'
+        doc: 'Flag to indicate whether there is unrestricted liquidity available at the top of the book. For order messages: Refers to the side indicated in the order. For trade messages: Refers to the passive side of the trade'
       - id: unused_7
         type: b7
         doc: 'Reserved'
-  order_cancel:
+  order_cancel_message:
     seq:
       - id: security_id
         type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: order_ref
-        type: u4
-        doc: 'Unique order reference number for the day'
+        type: u4_nullable
+        doc: 'Unique order reference number for the day. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: md_flags
         type: md_flags
         doc: 'Market data flags'
-  order_modify:
+  order_modify_message:
     seq:
       - id: security_id
         type: u2
@@ -146,15 +146,15 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Unique order reference number for the day'
+        type: u4_nullable
+        doc: 'Unique order reference number for the day. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
       - id: md_flags
         type: md_flags
         doc: 'Market data flags'
-  trade:
+  trade_message:
     seq:
       - id: security_id
         type: u2
@@ -162,7 +162,7 @@ types:
       - id: trade_type
         type: u1
         enum: trade_type
-        doc: 'Code identifying type of trade'
+        doc: 'Code identifying type of trade (see below)'
       - id: quantity
         type: u4
         doc: 'Number of shares being added to the book'
@@ -170,8 +170,8 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Unique order reference number for the day'
+        type: u4_nullable
+        doc: 'Unique order reference number for the day. Nullable, No Value = 0'
       - id: trade_ref
         type: u4
         doc: 'Trade reference number'
@@ -297,10 +297,10 @@ types:
       - id: tick_table_id
         type: u1
         doc: 'Numeric identifier for this tick table or static tick'
-      - id: security_definition_flags
-        type: security_definition_flags
-        doc: 'Security definition flags'
-      - id: reserved_20
+      - id: flags
+        type: flags
+        doc: 'Security flags'
+      - id: reserved
         type: str
         size: 20
         encoding: ASCII
@@ -308,31 +308,31 @@ types:
       - id: lot_size_composite
         type: lot_size_composite
         doc: 'Lot size scaled at runtime by lotSizeDecimal'
-  security_definition_flags:
+  flags:
     meta:
       bit-endian: le
     seq:
       - id: mac_enabled
         type: b1
-        doc: '0 = Not enabled for MaC, 1 = Enabled for MaC'
+        doc: 'Security is enabled for the MaC'
       - id: test_stock
         type: b1
-        doc: '0 = Not a test stock, 1 = Test stock'
+        doc: 'Security is a test stock'
       - id: illiquid
         type: b1
-        doc: '0 = Liquid, 1 = Illiquid'
+        doc: 'Security is illiquid'
       - id: unused_1
         type: b1
         doc: 'Reserved'
       - id: aod_enabled
         type: b1
-        doc: '0 = Not enabled for AoD, 1 = Enabled for AoD'
+        doc: 'Security is enabled for the AoD'
       - id: unused_2
         type: b2
         doc: 'Spare'
       - id: avx_enabled
         type: b1
-        doc: '0 = Not enabled for AVM, 1 = Enabled for AVM'
+        doc: 'Security is enabled for AVM'
       - id: unused_8
         type: b8
         doc: 'Reserved'
@@ -340,10 +340,10 @@ types:
     seq:
       - id: lot_size
         type: u8
-        doc: 'Lot size for the security; always set to 1,000,000,000 to represent a lot size of 1'
+        doc: 'Lot size for the security. This will always be set to 1,000,000,000 to represent a lot size of 1'
       - id: lot_size_decimal
         type: u1
-        doc: 'Number of decimals implied in lotSize; always set to 9'
+        doc: 'Number of decimals implied in lotSize Will always be set to 9'
   security_status_message:
     seq:
       - id: security_id
@@ -369,17 +369,17 @@ types:
     seq:
       - id: trading
         type: b1
-        doc: 'Continuous trading status; 0 = Closed, 1 = Open'
+        doc: 'Continuous trading open or closed'
       - id: mac_open
         type: b1
-        doc: 'MaC status; 0 = Closed, 1 = Open'
+        doc: 'MaC open or closed'
       - id: mac_run
         type: b1
-        doc: 'MaC lockdown status; 0 = Not locked down, 1 = Locked down'
+        doc: 'MaC locked down or not'
       - id: unused_5
         type: b5
         doc: 'Reserved'
-  ao_d_update_message:
+  aod_update_message:
     seq:
       - id: security_id
         type: u2
@@ -393,7 +393,7 @@ types:
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
-  ma_c_update_message:
+  mac_update_message:
     seq:
       - id: security_id
         type: u2
@@ -402,11 +402,11 @@ types:
         type: decimal_u8_5
         doc: 'Indicative auction price. Implied decimal with scale 1e-5'
       - id: closing_buy_qty
-        type: u4
-        doc: 'Total order quantity on the buy side during the closing market; otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the buy side during the closing market. Nullable, No Value = 0'
       - id: closing_sell_qty
-        type: u4
-        doc: 'Total order quantity on the sell side during the closing market; otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the sell side during the closing market. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -417,6 +417,13 @@ types:
     instances:
       real:
         value: mantissa / 100000.0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   nanosecond_timestamp:
     seq:
       - id: time
@@ -433,35 +440,38 @@ types:
 
 enums:
   msg_type:
+    1:
+      id: 'heartbeat_message'
+      doc: 'The Heartbeat message carries no data; it is simply a message header with msgType of 1.'
     2:
-      id: 'order_add'
+      id: 'order_add_message'
       doc: 'The Order Add message is published when order quantity is posted to the order book for a particular security.'
     3:
-      id: 'order_cancel'
-      doc: 'Published when a visible order is removed from the book.'
+      id: 'order_cancel_message'
+      doc: 'The Order Cancel message is published when a visible order is removed from the book.'
     4:
-      id: 'order_modify'
-      doc: 'Published when a visible order is modified by the client.'
+      id: 'order_modify_message'
+      doc: 'The Order Modify message is published when a visible order is modified by the client (change of price and/or quantity).'
     5:
-      id: 'trade'
-      doc: 'Published whenever an order trades, partially or fully.'
+      id: 'trade_message'
+      doc: 'Whenever an order trades, partially or fully, a Trade message is published.'
     6:
       id: 'trade_bust_message'
-      doc: 'Published when a trade has been declared erroneous by Aquis.'
+      doc: 'If a trade has been declared erroneous by Aquis then a Trade Bust message is published.'
     7:
       id: 'tick_table_data_message'
-      doc: 'Published pre-market to specify dynamic tick tables and static ticks controlling valid price increments for securities on the order book.'
+      doc: 'A series of Tick Table Data messages are published pre-market to specify the dynamic tick tables and static ticks that apply to the securities traded on Aquis.'
     8:
       id: 'security_definition_message'
-      doc: 'Published pre-market to identify securities traded on Aquis, associating securityID with a particular security.'
+      doc: 'A series of Security Definition messages are published pre-market to identify the securities traded on Aquis (those relevant to the particular feed e.g. Euronext securities).'
     9:
       id: 'security_status_message'
-      doc: 'Published when the trading status of a security or its market changes.'
+      doc: 'The Security Status message is published when the trading status of a security changes or when there is a change to the status of the market on Aquis to which the security belongs.'
     17:
-      id: 'ao_d_update_message'
-      doc: 'Published during AoD to provide the indicative price and matched volume.'
+      id: 'aod_update_message'
+      doc: 'During the AoD this message is used to publish the indicative price and indicative matched volume.'
     16:
-      id: 'ma_c_update_message'
+      id: 'mac_update_message'
       doc: 'During the MaC this message is used to publish the indicative price from the buy and sell order totals.'
   side:
     1:
@@ -470,28 +480,35 @@ enums:
     2:
       id: 'sell_order'
       doc: 'Sell Order'
+  unrestricted_liquidity:
+    0:
+      id: 'restricted_liquidity_only'
+      doc: 'Restricted Liquidity Only'
+    1:
+      id: 'unrestricted_liquidity_available'
+      doc: 'Unrestricted Liquidity Available'
   trade_type:
     1:
-      id: 'visible_order'
-      doc: 'Visible Order'
+      id: 'visible'
+      doc: 'A trade against visible order quantity in the continuous trading order book'
     2:
-      id: 'hidden_order'
-      doc: 'Hidden Order'
+      id: 'hidden_or_reserve'
+      doc: 'A trade against hidden or reserve quantity in the continuous trading order book'
     3:
-      id: 'market_at_close'
-      doc: 'Market At Close'
+      id: 'market_at_close_trade'
+      doc: 'Market at Close (MaC) trade'
     4:
-      id: 'lis_cross'
-      doc: 'Lis Cross'
+      id: 'lis_cross_trade'
+      doc: 'LIS Cross trade'
     5:
-      id: 'benchmark_cross'
-      doc: 'Benchmark Cross'
+      id: 'benchmark_cross_trade'
+      doc: 'Benchmark Cross trade'
     6:
-      id: 'auction_on_demand'
-      doc: 'Auction On Demand'
+      id: 'auction_on_demand_trade'
+      doc: 'Auction on Demand (AoD) trade'
     12:
-      id: 'aquis_vwap_match'
-      doc: 'Aquis Vwap Match'
+      id: 'aquis_vwap_match_trade'
+      doc: 'Aquis VWAP Match (AVM) trade'
   market_mechanism:
     1:
       id: 'central_limit_order_book'
@@ -614,8 +631,8 @@ enums:
       id: 'reference_price_trade'
       doc: 'Reference Price Trade'
     3:
-      id: 'no_benchmark_or_reference_price'
-      doc: 'No Benchmark Or Reference Price'
+      id: 'no_benchmark_or_ref_price'
+      doc: 'No Benchmark Or Ref Price'
   dividend:
     0:
       id: 'no_field'
@@ -662,19 +679,23 @@ enums:
       doc: 'Non Immediate Publication'
     3:
       id: 'lrgs'
-      doc: 'Lrgs'
+      doc: 'LRGS (Large in Scale)'
     4:
       id: 'ilqd'
-      doc: 'Ilqd'
+      doc: 'ILQD (Illiquid Instrument)'
     5:
       id: 'size'
-      doc: 'Size'
+      doc: 'SIZE (Size Specific)'
     6:
       id: 'ilqd_and_size'
       doc: 'Ilqd And Size'
     7:
       id: 'ilqd_and_lrgs'
       doc: 'Ilqd And Lrgs'
+  deferral_type:
+    0:
+      id: 'none_apply'
+      doc: 'None Apply'
   duplicative_indicator:
     0:
       id: 'unique'
@@ -693,11 +714,32 @@ enums:
       id: 'suspended'
       doc: 'Suspended'
     8:
-      id: 'ao_d_start'
-      doc: 'Ao D Start'
+      id: 'aod_start'
+      doc: 'AoD Start'
     24:
-      id: 'ao_d_end'
-      doc: 'Ao D End'
+      id: 'aod_end'
+      doc: 'AoD End'
+  trading:
+    0:
+      id: 'continuous_trading_closed'
+      doc: 'Continuous Trading Closed'
+    1:
+      id: 'continuous_trading_open'
+      doc: 'Continuous Trading Open'
+  mac_open:
+    0:
+      id: 'mac_is_closed'
+      doc: 'MaC is closed'
+    1:
+      id: 'mac_is_open'
+      doc: 'MaC is open'
+  mac_run:
+    0:
+      id: 'mac_is_not_locked_down'
+      doc: 'MaC is not locked down'
+    1:
+      id: 'mac_is_locked_down'
+      doc: 'MaC is locked down'
   trading_phase:
     0:
       id: 'closed'

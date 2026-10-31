@@ -6,7 +6,7 @@
 | Division | [Protocol][Omi.Cnsx.Protocol.Definitions] | [Encoding][Omi.Encoding.Definitions] | Version | Date | Size | [Deployment][Omi.Glossary.Deployment] | [Testing][Omi.Glossary.Testing] | [Documentation][Omi.Cnsx.Specifications] |
 | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
 | [Cse][Cse.Exchange] | [Multicast][Cnsx.Cse.Multicast] | [Mmd][Omi.Encoding.Mmd] | [2.8][Cnsx.Cse.Multicast.Mmd.v2.8.Definition] | 11/7/2025 | 958 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Cnsx.Cse.Multicast.Mmd.v2.8.Url] |
-| [Cse][Cse.Exchange] | [Retransmission][Cnsx.Cse.Retransmission] | [Mmd][Omi.Encoding.Mmd] | [2.8][Cnsx.Cse.Retransmission.Mmd.v2.8.Definition] | 11/7/2025 | 1075 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Cnsx.Cse.Retransmission.Mmd.v2.8.Url] |
+| [Cse][Cse.Exchange] | [Retransmission][Cnsx.Cse.Retransmission] | [Mmd][Omi.Encoding.Mmd] | [2.8][Cnsx.Cse.Retransmission.Mmd.v2.8.Definition] | 11/7/2025 | 1,075 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Cnsx.Cse.Retransmission.Mmd.v2.8.Url] |
 | [Cse2][Cse2.Exchange] | [Multicast][Cnsx.Cse2.Multicast] | [Mmd][Omi.Encoding.Mmd] | [1.6][Cnsx.Cse2.Multicast.Mmd.v1.6.Definition] | 11/7/2025 | 798 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Cnsx.Cse2.Multicast.Mmd.v1.6.Url] |
 | [Cse2][Cse2.Exchange] | [Retransmission][Cnsx.Cse2.Retransmission] | [Mmd][Omi.Encoding.Mmd] | [1.6][Cnsx.Cse2.Retransmission.Mmd.v1.6.Definition] | 11/7/2025 | 915 | [Active][Omi.Glossary.Deployment.Active] | [Untested][Omi.Glossary.Testing.Untested] | [url][Cnsx.Cse2.Retransmission.Mmd.v1.6.Url] |
 

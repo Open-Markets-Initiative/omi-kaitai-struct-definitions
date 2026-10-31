@@ -53,7 +53,7 @@ types:
     seq:
       - id: message_count
         type: u1
-        doc: 'Number of messages in this packet'
+        doc: 'number of messages (n) in this packet'
   message_struct:
     seq:
       - id: message_header

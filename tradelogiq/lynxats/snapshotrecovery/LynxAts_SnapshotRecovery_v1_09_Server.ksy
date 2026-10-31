@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq TcpLevel1 Itch v1.01
+# Kaitai struct definition for: Tradelogiq LynxAts SnapshotRecovery Itch v1.09
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Lynx Tcp Level 1
+#   Protocol: Lynx Snapshot Recovery
 #   Encoding: Itch
-#   Version: 1.01
-#   Date: 01/30/2022
-#   Specification: TradelogiQ-Level-1-ITCH-5.0-Specification-v1.01.pdf
+#   Version: 1.09
+#   Date: 06/05/2025
+#   Specification: Tradelogiq-SnapshotRecovery-Specifications-v1.09.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_lynxats_tcplevel1_itch_v1_01_server
-  title: Tradelogiq TcpLevel1 Itch v1.01
+  id: tradelogiq_lynxats_snapshotrecovery_itch_v1_09_server
+  title: Tradelogiq LynxAts SnapshotRecovery Itch v1.09
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Tcp Level 1 Itch v1.01'
+doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Snapshot Recovery Itch v1.09'
 
 seq:
   - id: server_soup_tcp_packet
@@ -103,124 +103,17 @@ types:
         type:
           switch-on: message_type
           cases:
-            'message_type::quote_message': quote_message
-            'message_type::trade_report_message': trade_report_message
-            'message_type::trade_bust_message': trade_bust_message
-            'message_type::trade_correction_message': trade_correction_message
             'message_type::system_event_message': system_event_message
             'message_type::stock_directory_message': stock_directory_message
             'message_type::extended_stock_directory_message': extended_stock_directory_message
-            'message_type::stock_status_message': stock_status_message
-  quote_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: stock_symbol
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Stock Identifier for which BBO quotation message is being generated'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: best_bid_price
-        type: decimal_u8_4
-        doc: 'Denotes best bid price on Tradelogiq''s books either OMEGA or LYNX. Implied decimal with scale 1e-4'
-      - id: best_bid_size
-        type: u4
-        doc: 'Denotes the total number of shares available for display on Tradelogiq''s order books at the best bid price'
-      - id: best_ask_price
-        type: decimal_u8_4
-        doc: 'Denotes best ask price on Tradelogiq''s order books either OMEGA or LYNX. Implied decimal with scale 1e-4'
-      - id: best_ask_size
-        type: u4
-        doc: 'Denotes the total number of shares available for display on Tradelogiq''s order books at the best ask price'
-  trade_report_message:
-    seq:
-      - id: conditions
-        type: str
-        size: 5
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Trade condition codes, W for Bypass, X for Internal Cross and E for Odd Lot. Note: Field may be blank'
-      - id: stock_symbol
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Stock Identifier for which BBO quotation message is being generated'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: trade_id
-        type: u4
-        doc: 'Indicates the internal number of the given trade transaction'
-      - id: trade_price
-        type: decimal_u8_4
-        doc: 'The price associated with the trade transaction being reported. Implied decimal with scale 1e-4'
-      - id: trade_size
-        type: u4
-        doc: 'Number of shares on the trade transaction'
-      - id: buy_broker
-        type: u2
-        doc: 'Buy Side Broker Number or 1 for Anonymous'
-      - id: sell_broker
-        type: u2
-        doc: 'Sell Side Broker Number or 1 for Anonymous'
-  trade_bust_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: stock_symbol
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Stock Identifier for which BBO quotation message is being generated'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: trade_id
-        type: u4
-        doc: 'Indicates the internal number of the given trade transaction'
-  trade_correction_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: stock_symbol
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Stock Identifier for which BBO quotation message is being generated'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: original_trade_id
-        type: u4
-        doc: 'Original internal number of the given trade transaction'
-      - id: original_trade_price
-        type: decimal_u8_4
-        doc: 'Original price associated with the trade transaction. Implied decimal with scale 1e-4'
-      - id: original_trade_size
-        type: u4
-        doc: 'Trade Size reported on the original trade transaction'
-      - id: corrected_trade_price
-        type: decimal_u8_4
-        doc: 'Price associated with the trade correction reported. Implied decimal with scale 1e-4'
-      - id: corrected_trade_size
-        type: u4
-        doc: 'Number of shares with the trade correction'
+            'message_type::stock_trading_action_message': stock_trading_action_message
+            'message_type::add_order_message': add_order_message
   system_event_message:
     seq:
       - id: event_code
         type: u1
         enum: event_code
-        doc: 'See Below For codes'
+        doc: 'Start-Of-Messages opens the spin and End-Of-Messages closes it'
       - id: reserved_2
         size: 2
         doc: 'Reserved'
@@ -319,18 +212,15 @@ types:
       - id: reserved_3
         size: 3
         doc: 'Reserved'
-  stock_status_message:
+  stock_trading_action_message:
     seq:
       - id: trading_state
         type: u1
         enum: trading_state
         doc: 'The current trading state for the issue'
-      - id: stock
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Denotes the security symbol on Omega ATS and Lynx ATS'
+      - id: instrument_id
+        type: u2
+        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
@@ -340,6 +230,33 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reason the security is halted. Note: Field may be blank'
+  add_order_message:
+    seq:
+      - id: buy_sell_indicator
+        type: u1
+        enum: buy_sell_indicator
+        doc: 'Side of order'
+      - id: instrument_id
+        type: u2
+        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
+      - id: timestamp
+        type: nanosecond_timestamp
+        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
+      - id: order_reference_number
+        type: u4
+        doc: 'Unique reference number assigned to the new order'
+      - id: shares
+        type: u4
+        doc: 'Total number of shares associated with the order being added to the book'
+      - id: price
+        type: decimal_u4_4
+        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
+      - id: exec_broker_id
+        type: u2
+        doc: 'Firm number or ''1'' for anonymous orders'
+      - id: reserved_2
+        size: 2
+        doc: 'Reserved'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -353,13 +270,6 @@ types:
         value: time / 1000000000 % 60
       millisecond:
         value: time / 1000000 % 1000
-  decimal_u8_4:
-    seq:
-      - id: mantissa
-        type: u8
-    instances:
-      real:
-        value: mantissa / 10000.0
   yyyymmdd_ascii_date:
     seq:
       - id: text
@@ -373,6 +283,13 @@ types:
         value: text.substring(4, 6).to_i
       day:
         value: text.substring(6, 8).to_i
+  decimal_u4_4:
+    seq:
+      - id: mantissa
+        type: u4
+    instances:
+      real:
+        value: mantissa / 10000.0
 
 enums:
   client_packet_type:
@@ -409,49 +326,40 @@ enums:
       id: 'session_not_available'
       doc: 'Session invalid or not available'
   message_type:
-    0x57:
-      id: 'quote_message'
-      doc: 'Tradelogiq''s BBO will broadcast real-time updates every time Tradelogiq''s top of book changes.'
-    0x54:
-      id: 'trade_report_message'
-      doc: 'Relays all transactions available from or reported by Tradelogiq''s two trading books for the current business day.'
-    0x4e:
-      id: 'trade_bust_message'
-      doc: 'If trade is cancelled or busted during the day Trade Bust Message will be sent.'
-    0x4d:
-      id: 'trade_correction_message'
-      doc: 'Trade amendments during the day will send this message.'
     0x53:
       id: 'system_event_message'
-      doc: 'The system event message is used to signal a market or a data feed handler event.'
+      doc: 'The spin consists of a Start-Of-Messages event, Add Order messages and an End-Of-Messages event, after which the Reallocation Server disconnects.'
     0x52:
       id: 'stock_directory_message'
-      doc: 'At start of each trading day, OSI disseminates stock directory messages for supported securities.'
+      doc: 'A Requested Sequence Number of 1 returns the symbol spin, the Instrument Directory messages distributed early in the Tradelogiq start of day.'
     0x72:
       id: 'extended_stock_directory_message'
-      doc: 'Extended Stock Directory are for Special stock symbols eg warrants debentures rights.'
+      doc: 'The symbol spin carries the Extended Stock Directory of bonds, debentures, rights, notes and warrants alongside the Stock Directory.'
     0x48:
-      id: 'stock_status_message'
-      doc: 'This message indicates the current trading status of a stock.'
+      id: 'stock_trading_action_message'
+      doc: 'If sequence 1 is used for the Sequenced Number field the reallocation server will return the symbol spin with the stock trading status messages before returning all open orders seen on the book.'
+    0x41:
+      id: 'add_order_message'
+      doc: 'Only open orders are sent in the spin; the spin will not contain any message for an order which is no longer in the book.'
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'The start if day message is the first message sent out in a trading day'
+      doc: 'Start-Of-Messages event, the first message of the spin'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This message indicate that Tradelogiq order books are Open and ready to start accepting order'
+      doc: 'This message indicates that Tradelogiq is open and ready to start accepting orders.'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This message is intended to indicate that Market Hours order are available for execution'
+      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This message is intended to indicate that Market Hours are no longer available for execution'
+      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It indicates that Tradelogiq order books are now closed and will not accept new orders'
+      doc: 'It indicates that Tradelogiq is now closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This is always the last message sent in any trading day.'
+      doc: 'End-Of-Messages event, after which the Reallocation Server disconnects'
     0x42:
       id: 'trading_halted'
       doc: 'Trading Halted due to Market-Wide Circuit Breaker'
@@ -463,20 +371,20 @@ enums:
       id: 'tsx'
       doc: 'TSX'
     0x76:
-      id: 'venture'
-      doc: 'Venture'
+      id: 'tsx_venture'
+      doc: 'TSX Venture'
     0x63:
-      id: 'cnsx'
-      doc: 'CNSX'
+      id: 'cse'
+      doc: 'CSE'
     0x71:
       id: 'nasdaq_canada'
       doc: 'Nasdaq Canada'
     0x6f:
-      id: 'omega'
-      doc: 'Omega'
+      id: 'omega_ats'
+      doc: 'Omega ATS'
     0x7a:
-      id: 'aequitas'
-      doc: 'Aequitas'
+      id: 'cboe_canada'
+      doc: 'CBOE Canada'
   shortable:
     0x45:
       id: 'short_exempt'
@@ -506,7 +414,7 @@ enums:
       doc: 'Annual'
     0x53:
       id: 'semi_annual'
-      doc: 'Semi Annual'
+      doc: 'Semi-Annual'
     0x51:
       id: 'quarterly'
       doc: 'Quarterly'
@@ -514,6 +422,9 @@ enums:
       id: 'monthly'
       doc: 'Monthly'
   security_type:
+    0x62:
+      id: 'bonds'
+      doc: 'Bonds'
     0x64:
       id: 'debentures'
       doc: 'Debentures'
@@ -533,4 +444,11 @@ enums:
     0x54:
       id: 'trading'
       doc: 'Trading'
+  buy_sell_indicator:
+    0x42:
+      id: 'buy_order'
+      doc: 'Buy order'
+    0x53:
+      id: 'sell_order'
+      doc: 'Sell order'
 

@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq TcpLevel2 Itch v2.01
+# Kaitai struct definition for: Tradelogiq OmegaAts TcpLevel1 Itch v1.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Omega Tcp Level 2
+#   Protocol: Omega Tcp Level 1
 #   Encoding: Itch
-#   Version: 2.01
-#   Date: 01/13/2026
-#   Specification: Tradelogiq-Level-2-ITCH-5.0-Specification-v2.01.pdf
+#   Version: 1.01
+#   Date: 01/30/2022
+#   Specification: TradelogiQ-Level-1-ITCH-5.0-Specification-v1.01.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_omegaats_tcplevel2_itch_v2_01_client
-  title: Tradelogiq TcpLevel2 Itch v2.01
+  id: tradelogiq_omegaats_tcplevel1_itch_v1_01_client
+  title: Tradelogiq OmegaAts TcpLevel1 Itch v1.01
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Omega ATS Omega Tcp Level 2 Itch v2.01'
+doc: 'Tradelogiq Markets Inc. Omega ATS Omega Tcp Level 1 Itch v1.01'
 
 seq:
   - id: client_soup_tcp_packet
@@ -132,64 +132,46 @@ enums:
       id: 'session_not_available'
       doc: 'Session invalid or not available'
   message_type:
+    0x57:
+      id: 'quote_message'
+      doc: 'Tradelogiq''s BBO will broadcast real-time updates every time Tradelogiq''s top of book changes.'
+    0x54:
+      id: 'trade_report_message'
+      doc: 'Relays all transactions available from or reported by Tradelogiq''s two trading books for the current business day.'
+    0x4e:
+      id: 'trade_bust_message'
+      doc: 'If trade is cancelled or busted during the day Trade Bust Message will be sent.'
+    0x4d:
+      id: 'trade_correction_message'
+      doc: 'Trade amendments during the day will send this message.'
     0x53:
       id: 'system_event_message'
-      doc: 'The system event message type is used to signal a market or data feed handler event.'
+      doc: 'The system event message is used to signal a market or a data feed handler event.'
     0x52:
       id: 'stock_directory_message'
-      doc: 'At the start of each trading day, Tradelogiq disseminates stock directory messages for all supported securities.'
+      doc: 'At start of each trading day, OSI disseminates stock directory messages for supported securities.'
     0x72:
       id: 'extended_stock_directory_message'
-      doc: 'Extended Stock Directory messages carry the additional reference data of bonds, debentures, rights, notes and warrants.'
+      doc: 'Extended Stock Directory are for Special stock symbols eg warrants debentures rights.'
     0x48:
-      id: 'stock_trading_action_message'
-      doc: 'Tradelogiq uses this administrative message to indicate the current trading status of a security.'
-    0x41:
-      id: 'add_order_message'
-      doc: 'An Add Order Message indicates that a new order has been accepted by Omega ATS or Lynx ATS and was added to the visible order book.'
-    0x45:
-      id: 'order_executed_message'
-      doc: 'This message is sent whenever an order on the book is executed in whole or in part.'
-    0x43:
-      id: 'order_executed_with_price_message'
-      doc: 'This message is sent whenever an order on the book is executed at a display price different from the original.'
-    0x44:
-      id: 'order_delete_message'
-      doc: 'This message is sent whenever an order on the book is being cancelled.'
-    0x55:
-      id: 'order_replace_message'
-      doc: 'This message is sent whenever an order on the book has been cancelled and replaced.'
-    0x58:
-      id: 'order_cancel_message'
-      doc: 'This message is sent whenever an order on the book is modified as a result of a partial cancellation.'
-    0x50:
-      id: 'trade_message'
-      doc: 'The Trade Message is designed to provide execution details for normal match events involving non-displayed order types.'
-    0x51:
-      id: 'cross_trade_message'
-      doc: 'Cross trades are only accepted on Omega ATS.'
-    0x42:
-      id: 'trade_bust_message'
-      doc: 'The Trade Bust message is sent whenever an execution on Omega ATS or Lynx ATS is cancelled.'
-    0x4d:
-      id: 'trade_amend_message'
-      doc: 'The Trade Amend/Correction message is sent whenever an execution on Omega ATS or Lynx ATS is amended.'
+      id: 'stock_status_message'
+      doc: 'This message indicates the current trading status of a stock.'
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside of timestamp messages, the start of day message is the first message sent out in a trading day'
+      doc: 'The start if day message is the first message sent out in a trading day'
     0x53:
       id: 'start_of_system_hours'
-      doc: 'This message indicates that Tradelogiq is open and ready to start accepting orders.'
+      doc: 'This message indicate that Tradelogiq order books are Open and ready to start accepting order'
     0x51:
       id: 'start_of_market_hours'
-      doc: 'This message is intended to indicate that Market Hours orders are available for execution.'
+      doc: 'This message is intended to indicate that Market Hours order are available for execution'
     0x4d:
       id: 'end_of_market_hours'
-      doc: 'This message is intended to indicate that Market Hours orders are no longer available for execution.'
+      doc: 'This message is intended to indicate that Market Hours are no longer available for execution'
     0x45:
       id: 'end_of_system_hours'
-      doc: 'It indicates that Tradelogiq is now closed and will not accept any new orders.'
+      doc: 'It indicates that Tradelogiq order books are now closed and will not accept new orders'
     0x43:
       id: 'end_of_messages'
       doc: 'This is always the last message sent in any trading day.'
@@ -204,20 +186,20 @@ enums:
       id: 'tsx'
       doc: 'TSX'
     0x76:
-      id: 'tsx_venture'
-      doc: 'TSX Venture'
+      id: 'venture'
+      doc: 'Venture'
     0x63:
-      id: 'cse'
-      doc: 'CSE'
+      id: 'cnsx'
+      doc: 'CNSX'
     0x71:
       id: 'nasdaq_canada'
       doc: 'Nasdaq Canada'
     0x6f:
-      id: 'omega_ats'
-      doc: 'Omega ATS'
+      id: 'omega'
+      doc: 'Omega'
     0x7a:
-      id: 'cboe_canada'
-      doc: 'CBOE Canada'
+      id: 'aequitas'
+      doc: 'Aequitas'
   shortable:
     0x45:
       id: 'short_exempt'
@@ -247,7 +229,7 @@ enums:
       doc: 'Annual'
     0x53:
       id: 'semi_annual'
-      doc: 'Semi-Annual'
+      doc: 'Semi Annual'
     0x51:
       id: 'quarterly'
       doc: 'Quarterly'
@@ -255,9 +237,6 @@ enums:
       id: 'monthly'
       doc: 'Monthly'
   security_type:
-    0x62:
-      id: 'bonds'
-      doc: 'Bonds'
     0x64:
       id: 'debentures'
       doc: 'Debentures'
@@ -277,58 +256,4 @@ enums:
     0x54:
       id: 'trading'
       doc: 'Trading'
-  buy_sell_indicator:
-    0x42:
-      id: 'buy_order'
-      doc: 'Buy order'
-    0x53:
-      id: 'sell_order'
-      doc: 'Sell order'
-  side:
-    0x42:
-      id: 'buy'
-      doc: 'Buy'
-    0x53:
-      id: 'sell'
-      doc: 'Sell'
-  midpoint_book_trade:
-    0:
-      id: 'no_field'
-      doc: 'No'
-    1:
-      id: 'yes_field'
-      doc: 'Yes represents Midpoint Book trade on Lynx ATS'
-  cross_type:
-    0x44:
-      id: 'derivatives_cross'
-      doc: 'Derivatives Cross'
-    0x49:
-      id: 'internal_cross'
-      doc: 'Internal Cross'
-    0x4d:
-      id: 'intentional_cross'
-      doc: 'Intentional Cross'
-    0x4e:
-      id: 'net_asset_value_cross'
-      doc: 'Net Asset Value (NAV) Cross'
-  bypass:
-    0x59:
-      id: 'bypass'
-      doc: 'Bypass'
-    0x4e:
-      id: 'non_bypass'
-      doc: 'Non Bypass'
-  settlement_type:
-    0x30:
-      id: 'regular_settlement'
-      doc: 'Regular Settlement'
-    0x31:
-      id: 'cash'
-      doc: 'Cash (T+0)'
-    0x32:
-      id: 'next_day'
-      doc: 'Next Day (T+1)'
-    0x33:
-      id: 'delayed_delivery'
-      doc: 'Delayed Delivery'
 

@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq TcpLevel1 Itch v1.01
+# Kaitai struct definition for: Tradelogiq LynxAts MulticastLevel1 Itch v1.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Lynx Tcp Level 1
+#   Protocol: Lynx Multicast Level 1
 #   Encoding: Itch
 #   Version: 1.01
 #   Date: 01/30/2022
@@ -30,107 +30,28 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_lynxats_tcplevel1_itch_v1_01_client
-  title: Tradelogiq TcpLevel1 Itch v1.01
+  id: tradelogiq_lynxats_multicastlevel1_itch_v1_01_request
+  title: Tradelogiq LynxAts MulticastLevel1 Itch v1.01
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Tcp Level 1 Itch v1.01'
+doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Multicast Level 1 Itch v1.01'
 
 seq:
-  - id: client_soup_tcp_packet
-    type: client_soup_tcp_packet_struct
-    repeat: eos
-    doc: 'Soup Tcp Packet sent by the client'
-
-types:
-  client_soup_tcp_packet_struct:
-    seq:
-      - id: client_packet_header
-        type: client_packet_header
-        doc: 'Tradelogiq SoupTcp Client Packet Header'
-      - id: client_payload
-        size: client_packet_header.packet_length + 2 - 3
-        type:
-          switch-on: client_packet_header.client_packet_type
-          cases:
-            'client_packet_type::login_request_packet': login_request_packet
-            'client_packet_type::unsequenced_data_packet': unsequenced_data_packet
-  client_packet_header:
-    seq:
-      - id: packet_length
-        type: u2
-        doc: 'Number of bytes after this field until the next packet'
-      - id: client_packet_type
-        type: u1
-        enum: client_packet_type
-        doc: 'Code identifying the packet the client sends'
-  login_request_packet:
-    seq:
-      - id: username
-        type: str
-        size: 6
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Username, case-insensitive and padded on the right with spaces'
-      - id: password
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Password, case-insensitive and padded on the right with spaces'
-      - id: requested_session
-        type: str
-        size: 10
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Specifies session to log onto. All blanks to log onto the currently active session'
-      - id: requested_sequence_number
-        type: str
-        size: 20
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Specifies the next sequence number the client wants to receive upon connection or 0 to start receiving the most recently generated message'
-  unsequenced_data_packet:
-    seq:
-      - id: unsequenced_message
-        size: _parent.client_packet_header.packet_length - 1
-        doc: 'Data defined by a higher protocol'
+  - id: request_session
+    type: str
+    size: 10
+    encoding: ASCII
+    pad-right: 0x20
+    doc: 'Indicates the session to which this belongs'
+  - id: request_sequence_number
+    type: u8
+    doc: 'First requested sequence number'
+  - id: requested_message_count
+    type: u2
+    doc: 'The number of messages requested for retransmission'
 
 enums:
-  client_packet_type:
-    0x4c:
-      id: 'login_request_packet'
-      doc: 'Login Request Packet'
-    0x55:
-      id: 'unsequenced_data_packet'
-      doc: 'Unsequenced Data Packet'
-    0x52:
-      id: 'client_heartbeat_packet'
-      doc: 'Client Heartbeat Packet'
-    0x4f:
-      id: 'logout_request_packet'
-      doc: 'Logout Request Packet'
-  server_packet_type:
-    0x41:
-      id: 'login_accepted_packet'
-      doc: 'Login Accepted Packet'
-    0x4a:
-      id: 'login_rejected_packet'
-      doc: 'Login Rejected Packet'
-    0x53:
-      id: 'sequenced_data_packet'
-      doc: 'Sequenced Data Packet'
-    0x48:
-      id: 'server_heartbeat_packet'
-      doc: 'Server Heartbeat Packet'
-  reject_reason_code:
-    0x41:
-      id: 'not_authorized'
-      doc: 'Not Authorized, invalid user or password'
-    0x53:
-      id: 'session_not_available'
-      doc: 'Session invalid or not available'
   message_type:
     0x57:
       id: 'quote_message'

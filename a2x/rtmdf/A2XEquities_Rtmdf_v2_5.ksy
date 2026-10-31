@@ -46,6 +46,7 @@ seq:
     type: message_struct
     repeat: expr
     repeat-expr: num_message
+    doc: 'A2X Amd Message'
 
 types:
   message_struct:
@@ -88,7 +89,7 @@ types:
       - id: side
         type: u1
         enum: side
-        doc: '1 = Buy Order, 2 = Sell Order'
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of shares being added to the book'
@@ -96,8 +97,8 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Order reference number'
+        type: u4_nullable
+        doc: 'Order reference number. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -110,7 +111,7 @@ types:
     seq:
       - id: unrestricted_liquidity
         type: b1
-        doc: 'Flag to indicate whether there is unrestricted liquidity available at the top of the book'
+        doc: 'Flag to indicate whether there is unrestricted liquidity available at the top of the book. For order messages: refers to the side indicated in the order'
       - id: unused_7
         type: b7
         doc: 'Reserved'
@@ -120,8 +121,8 @@ types:
         type: u2
         doc: 'Numeric identifier of the relevant security'
       - id: order_ref
-        type: u4
-        doc: 'Order reference number'
+        type: u4_nullable
+        doc: 'Order reference number. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -140,8 +141,8 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Order reference number'
+        type: u4_nullable
+        doc: 'Order reference number. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -164,8 +165,8 @@ types:
         type: decimal_u8_5
         doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
-        type: u4
-        doc: 'Order reference number'
+        type: u4_nullable
+        doc: 'Order reference number. Nullable, No Value = 0'
       - id: trade_ref
         type: u4
         doc: 'Trade reference number'
@@ -242,19 +243,19 @@ types:
     seq:
       - id: mac_enabled
         type: b1
-        doc: '0 = Security is not enabled for the MaC, 1 = Security is enabled for the MaC'
+        doc: 'Security is enabled for the MaC'
       - id: test_stock
         type: b1
-        doc: '0 = Security is not a test stock, 1 = Security is a test stock'
+        doc: 'Security is a test stock'
       - id: illiquid
         type: b1
-        doc: '0 = Security is liquid, 1 = Security is illiquid'
+        doc: 'Security is illiquid'
       - id: unused_1
         type: b1
         doc: 'Reserved'
       - id: aod_enabled
         type: b1
-        doc: '0 = Security is not enabled for the AoD, 1 = Security is enabled for the AoD'
+        doc: 'Security is enabled for the AoD'
       - id: unused_11
         type: b11
         doc: 'Reserved'
@@ -266,7 +267,7 @@ types:
       - id: trading_status
         type: u1
         enum: trading_status
-        doc: 'Possible values'
+        doc: 'Trading status of the security'
       - id: market_flags
         type: market_flags
         doc: 'Market flags'
@@ -279,13 +280,13 @@ types:
     seq:
       - id: trading
         type: b1
-        doc: '0 = Continuous Trading Closed, 1 = Continuous Trading Open'
+        doc: 'Continuous trading open or closed'
       - id: mac_open
         type: b1
-        doc: '0 = MaC is Closed, 1 = MaC is Open'
+        doc: 'MaC open or closed'
       - id: mac_run
         type: b1
-        doc: '0 = MaC is not locked down, 1 = MaC is locked down'
+        doc: 'MaC locked down or not'
       - id: unused_5
         type: b5
         doc: 'Reserved'
@@ -298,11 +299,11 @@ types:
         type: decimal_u8_5
         doc: 'Indicative auction price. Implied decimal with scale 1e-5'
       - id: closing_buy_qty
-        type: u4
-        doc: 'Total order quantity on the buy side during the closing market, otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the buy side during the closing market. Nullable, No Value = 0'
       - id: closing_sell_qty
-        type: u4
-        doc: 'Total order quantity on the sell side during the closing market, otherwise set to 0'
+        type: u4_nullable
+        doc: 'Total order quantity on the sell side during the closing market. Nullable, No Value = 0'
       - id: timestamp
         type: nanosecond_timestamp
         doc: 'Timestamp of this market data event. Nanoseconds since Unix epoch'
@@ -327,6 +328,13 @@ types:
     instances:
       real:
         value: mantissa / 100000.0
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
   nanosecond_timestamp:
     seq:
       - id: time

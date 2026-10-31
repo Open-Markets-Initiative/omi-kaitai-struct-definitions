@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq SnapshotRecovery Itch v1.09
+# Kaitai struct definition for: Tradelogiq LynxAts SnapshotRecovery Itch v1.09
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Omega Snapshot Recovery
+#   Protocol: Lynx Snapshot Recovery
 #   Encoding: Itch
 #   Version: 1.09
 #   Date: 06/05/2025
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_omegaats_snapshotrecovery_itch_v1_09_client
-  title: Tradelogiq SnapshotRecovery Itch v1.09
+  id: tradelogiq_lynxats_snapshotrecovery_itch_v1_09_client
+  title: Tradelogiq LynxAts SnapshotRecovery Itch v1.09
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Omega ATS Omega Snapshot Recovery Itch v1.09'
+doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Snapshot Recovery Itch v1.09'
 
 seq:
   - id: client_soup_tcp_packet

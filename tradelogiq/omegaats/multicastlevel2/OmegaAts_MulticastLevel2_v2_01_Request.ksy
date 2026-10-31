@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq MulticastLevel2 Itch v2.01
+# Kaitai struct definition for: Tradelogiq OmegaAts MulticastLevel2 Itch v2.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Lynx Multicast Level 2
+#   Protocol: Omega Multicast Level 2
 #   Encoding: Itch
 #   Version: 2.01
 #   Date: 01/13/2026
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_lynxats_multicastlevel2_itch_v2_01_request
-  title: Tradelogiq MulticastLevel2 Itch v2.01
+  id: tradelogiq_omegaats_multicastlevel2_itch_v2_01_request
+  title: Tradelogiq OmegaAts MulticastLevel2 Itch v2.01
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Multicast Level 2 Itch v2.01'
+doc: 'Tradelogiq Markets Inc. Omega ATS Omega Multicast Level 2 Itch v2.01'
 
 seq:
   - id: request_session

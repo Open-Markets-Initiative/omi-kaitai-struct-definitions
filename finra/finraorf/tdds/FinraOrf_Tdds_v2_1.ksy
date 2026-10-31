@@ -596,10 +596,7 @@ types:
         encoding: ASCII
         doc: 'This Closing Price field reflects the final last sale eligible transaction reported to ORF for the security during the current business day'
       - id: reserved_1
-        type: str
         size: 1
-        encoding: ASCII
-        pad-right: 0x20
         doc: 'This field will be space filled'
       - id: net_change_denominator
         type: str

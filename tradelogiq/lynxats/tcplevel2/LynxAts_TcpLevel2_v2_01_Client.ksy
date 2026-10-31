@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq TcpLevel2 Itch v2.01
+# Kaitai struct definition for: Tradelogiq LynxAts TcpLevel2 Itch v2.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
@@ -31,7 +31,7 @@
 
 meta:
   id: tradelogiq_lynxats_tcplevel2_itch_v2_01_client
-  title: Tradelogiq TcpLevel2 Itch v2.01
+  title: Tradelogiq LynxAts TcpLevel2 Itch v2.01
   license: GPL-3.0
   endian: be
 

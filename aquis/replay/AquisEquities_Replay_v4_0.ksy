@@ -6,8 +6,8 @@
 #   Protocol: Market Data Replay
 #   Encoding: Aquis Market Data Protocol
 #   Version: 4.0
-#   Date: 8/1/2025
-#   Specification: Unknown
+#   Date: 8/15/2025
+#   Specification: Aquis Market Data Technical Specification v4.0.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -95,19 +95,19 @@ types:
       - id: response_code
         type: u1
         enum: response_code
-        doc: 'Response code'
+        doc: 'Replay response code'
 
 enums:
   msg_type:
     13:
       id: 'login_message'
-      doc: 'Sent to authenticate with the replay server before using the message replay service.'
+      doc: 'If a recipient wishes to use the message replay service, they must first be authenticated by sending a Login message to the relevant replay server.'
     14:
       id: 'replay_request_message'
-      doc: 'Sent to request a particular message or range of messages from the replay server.'
+      doc: 'The recipient sends a Replay Request message to request a particular message or range of messages from the replay server.'
     15:
       id: 'replay_response_message'
-      doc: 'Sent by Aquis to acknowledge a successful login or report problems with a Resend Request.'
+      doc: 'Aquis will send a Replay Response message to the recipient to acknowledge a successful Login or to report problems with a Resend Request.'
   response_code:
     0:
       id: 'login_successful'

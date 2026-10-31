@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq TcpLevel2 Itch v2.01
+# Kaitai struct definition for: Tradelogiq OmegaAts SnapshotRecovery Itch v1.09
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Omega Tcp Level 2
+#   Protocol: Omega Snapshot Recovery
 #   Encoding: Itch
-#   Version: 2.01
-#   Date: 01/13/2026
-#   Specification: Tradelogiq-Level-2-ITCH-5.0-Specification-v2.01.pdf
+#   Version: 1.09
+#   Date: 06/05/2025
+#   Specification: Tradelogiq-SnapshotRecovery-Specifications-v1.09.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_omegaats_tcplevel2_itch_v2_01_server
-  title: Tradelogiq TcpLevel2 Itch v2.01
+  id: tradelogiq_omegaats_snapshotrecovery_itch_v1_09_server
+  title: Tradelogiq OmegaAts SnapshotRecovery Itch v1.09
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Omega ATS Omega Tcp Level 2 Itch v2.01'
+doc: 'Tradelogiq Markets Inc. Omega ATS Omega Snapshot Recovery Itch v1.09'
 
 seq:
   - id: server_soup_tcp_packet
@@ -108,21 +108,12 @@ types:
             'message_type::extended_stock_directory_message': extended_stock_directory_message
             'message_type::stock_trading_action_message': stock_trading_action_message
             'message_type::add_order_message': add_order_message
-            'message_type::order_executed_message': order_executed_message
-            'message_type::order_executed_with_price_message': order_executed_with_price_message
-            'message_type::order_delete_message': order_delete_message
-            'message_type::order_replace_message': order_replace_message
-            'message_type::order_cancel_message': order_cancel_message
-            'message_type::trade_message': trade_message
-            'message_type::cross_trade_message': cross_trade_message
-            'message_type::trade_bust_message': trade_bust_message
-            'message_type::trade_amend_message': trade_amend_message
   system_event_message:
     seq:
       - id: event_code
         type: u1
         enum: event_code
-        doc: 'See System Event Codes below'
+        doc: 'Start-Of-Messages opens the spin and End-Of-Messages closes it'
       - id: reserved_2
         size: 2
         doc: 'Reserved'
@@ -266,230 +257,6 @@ types:
       - id: reserved_2
         size: 2
         doc: 'Reserved'
-  order_executed_message:
-    seq:
-      - id: marker
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Used to denote specialty markers'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: order_reference_number
-        type: u4
-        doc: 'Unique reference number assigned to the new order'
-      - id: executed_shares
-        type: u4
-        doc: 'The number of shares executed'
-      - id: match_number
-        type: u4
-        doc: 'Day unique Match Number for this execution'
-      - id: contra_broker_id
-        type: u2
-        doc: 'Broker number for contra side or ''1'' for anonymous'
-      - id: reserved_2
-        size: 2
-        doc: 'Reserved'
-  order_executed_with_price_message:
-    seq:
-      - id: marker
-        type: str
-        size: 1
-        encoding: ASCII
-        pad-right: 0x20
-        doc: 'Used to denote specialty markers'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: order_reference_number
-        type: u4
-        doc: 'Unique reference number assigned to the new order'
-      - id: executed_shares
-        type: u4
-        doc: 'The number of shares executed'
-      - id: execution_price
-        type: decimal_u4_4
-        doc: 'The display price of this execution if different from the original. Implied decimal with scale 1e-4'
-      - id: match_number
-        type: u4
-        doc: 'Day unique Match Number for this execution'
-      - id: contra_broker_id
-        type: u2
-        doc: 'Broker number for contra side or ''1'' for anonymous'
-      - id: reserved_2
-        size: 2
-        doc: 'Reserved'
-  order_delete_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: order_reference_number
-        type: u4
-        doc: 'Unique reference number assigned to the new order'
-  order_replace_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: original_order_reference_number
-        type: u4
-        doc: 'The original reference number of the order being replaced'
-      - id: new_order_reference_number
-        type: u4
-        doc: 'The order reference number for this order at time of replacement'
-      - id: shares
-        type: u4
-        doc: 'Total number of shares associated with the order being added to the book'
-      - id: price
-        type: decimal_u4_4
-        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
-  order_cancel_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: order_reference_number
-        type: u4
-        doc: 'Unique reference number assigned to the new order'
-      - id: cancelled_shares
-        type: u4
-        doc: 'The number of shares to be removed from the display size of the order as the result of a cancellation'
-  trade_message:
-    seq:
-      - id: side
-        type: u1
-        enum: side
-        doc: 'Side of execution. Note: side will always be ''B'''
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: midpoint_book_trade
-        type: u4
-        enum: midpoint_book_trade
-        doc: 'Yes represents Midpoint Book trade on Lynx ATS'
-      - id: shares
-        type: u4
-        doc: 'Total number of shares associated with the order being added to the book'
-      - id: price
-        type: decimal_u4_4
-        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
-      - id: match_number
-        type: u4
-        doc: 'Day unique Match Number for this execution'
-      - id: buy_broker_id
-        type: u2
-        doc: 'Buy broker number or ''1'' for anonymous'
-      - id: sell_broker_id
-        type: u2
-        doc: 'Sell broker number or ''1'' for anonymous'
-  cross_trade_message:
-    seq:
-      - id: cross_type
-        type: u1
-        enum: cross_type
-        doc: 'The kind of cross being reported'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: shares
-        type: u4
-        doc: 'Total number of shares associated with the order being added to the book'
-      - id: price
-        type: decimal_u4_4
-        doc: 'The display price of the new order. Implied decimal with scale 1e-4'
-      - id: match_number
-        type: u4
-        doc: 'Day unique Match Number for this execution'
-      - id: buy_broker_id
-        type: u2
-        doc: 'Buy broker number or ''1'' for anonymous'
-      - id: sell_broker_id
-        type: u2
-        doc: 'Sell broker number or ''1'' for anonymous'
-      - id: bypass
-        type: u1
-        enum: bypass
-        doc: 'Whether the cross bypassed the order book'
-      - id: settlement_type
-        type: u1
-        enum: settlement_type
-        doc: 'Settlement terms of the cross'
-      - id: reserved_2
-        size: 2
-        doc: 'Reserved'
-  trade_bust_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: match_number
-        type: u4
-        doc: 'Day unique Match Number for this execution'
-  trade_amend_message:
-    seq:
-      - id: reserved_1
-        size: 1
-        doc: 'Reserved'
-      - id: instrument_id
-        type: u2
-        doc: 'Internal instrument identifier for Omega ATS and Lynx ATS'
-      - id: timestamp
-        type: nanosecond_timestamp
-        doc: 'Nanoseconds since midnight. Nanoseconds since Midnight epoch'
-      - id: original_trade_id
-        type: u4
-        doc: 'Original internal number of the given trade transaction'
-      - id: original_trade_price
-        type: decimal_u8_4
-        doc: 'Original price associated with the trade transaction. Implied decimal with scale 1e-4'
-      - id: original_trade_size
-        type: u4
-        doc: 'Trade Size reported on the original trade transaction'
-      - id: corrected_trade_price
-        type: decimal_u8_4
-        doc: 'Price associated with the trade correction reported. Implied decimal with scale 1e-4'
-      - id: corrected_trade_size
-        type: u4
-        doc: 'Number of shares with the trade correction'
   nanosecond_timestamp:
     seq:
       - id: time
@@ -520,13 +287,6 @@ types:
     seq:
       - id: mantissa
         type: u4
-    instances:
-      real:
-        value: mantissa / 10000.0
-  decimal_u8_4:
-    seq:
-      - id: mantissa
-        type: u8
     instances:
       real:
         value: mantissa / 10000.0
@@ -568,50 +328,23 @@ enums:
   message_type:
     0x53:
       id: 'system_event_message'
-      doc: 'The system event message type is used to signal a market or data feed handler event.'
+      doc: 'The spin consists of a Start-Of-Messages event, Add Order messages and an End-Of-Messages event, after which the Reallocation Server disconnects.'
     0x52:
       id: 'stock_directory_message'
-      doc: 'At the start of each trading day, Tradelogiq disseminates stock directory messages for all supported securities.'
+      doc: 'A Requested Sequence Number of 1 returns the symbol spin, the Instrument Directory messages distributed early in the Tradelogiq start of day.'
     0x72:
       id: 'extended_stock_directory_message'
-      doc: 'Extended Stock Directory messages carry the additional reference data of bonds, debentures, rights, notes and warrants.'
+      doc: 'The symbol spin carries the Extended Stock Directory of bonds, debentures, rights, notes and warrants alongside the Stock Directory.'
     0x48:
       id: 'stock_trading_action_message'
-      doc: 'Tradelogiq uses this administrative message to indicate the current trading status of a security.'
+      doc: 'If sequence 1 is used for the Sequenced Number field the reallocation server will return the symbol spin with the stock trading status messages before returning all open orders seen on the book.'
     0x41:
       id: 'add_order_message'
-      doc: 'An Add Order Message indicates that a new order has been accepted by Omega ATS or Lynx ATS and was added to the visible order book.'
-    0x45:
-      id: 'order_executed_message'
-      doc: 'This message is sent whenever an order on the book is executed in whole or in part.'
-    0x43:
-      id: 'order_executed_with_price_message'
-      doc: 'This message is sent whenever an order on the book is executed at a display price different from the original.'
-    0x44:
-      id: 'order_delete_message'
-      doc: 'This message is sent whenever an order on the book is being cancelled.'
-    0x55:
-      id: 'order_replace_message'
-      doc: 'This message is sent whenever an order on the book has been cancelled and replaced.'
-    0x58:
-      id: 'order_cancel_message'
-      doc: 'This message is sent whenever an order on the book is modified as a result of a partial cancellation.'
-    0x50:
-      id: 'trade_message'
-      doc: 'The Trade Message is designed to provide execution details for normal match events involving non-displayed order types.'
-    0x51:
-      id: 'cross_trade_message'
-      doc: 'Cross trades are only accepted on Omega ATS.'
-    0x42:
-      id: 'trade_bust_message'
-      doc: 'The Trade Bust message is sent whenever an execution on Omega ATS or Lynx ATS is cancelled.'
-    0x4d:
-      id: 'trade_amend_message'
-      doc: 'The Trade Amend/Correction message is sent whenever an execution on Omega ATS or Lynx ATS is amended.'
+      doc: 'Only open orders are sent in the spin; the spin will not contain any message for an order which is no longer in the book.'
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Outside of timestamp messages, the start of day message is the first message sent out in a trading day'
+      doc: 'Start-Of-Messages event, the first message of the spin'
     0x53:
       id: 'start_of_system_hours'
       doc: 'This message indicates that Tradelogiq is open and ready to start accepting orders.'
@@ -626,7 +359,7 @@ enums:
       doc: 'It indicates that Tradelogiq is now closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'This is always the last message sent in any trading day.'
+      doc: 'End-Of-Messages event, after which the Reallocation Server disconnects'
     0x42:
       id: 'trading_halted'
       doc: 'Trading Halted due to Market-Wide Circuit Breaker'
@@ -718,51 +451,4 @@ enums:
     0x53:
       id: 'sell_order'
       doc: 'Sell order'
-  side:
-    0x42:
-      id: 'buy'
-      doc: 'Buy'
-    0x53:
-      id: 'sell'
-      doc: 'Sell'
-  midpoint_book_trade:
-    0:
-      id: 'no_field'
-      doc: 'No'
-    1:
-      id: 'yes_field'
-      doc: 'Yes represents Midpoint Book trade on Lynx ATS'
-  cross_type:
-    0x44:
-      id: 'derivatives_cross'
-      doc: 'Derivatives Cross'
-    0x49:
-      id: 'internal_cross'
-      doc: 'Internal Cross'
-    0x4d:
-      id: 'intentional_cross'
-      doc: 'Intentional Cross'
-    0x4e:
-      id: 'net_asset_value_cross'
-      doc: 'Net Asset Value (NAV) Cross'
-  bypass:
-    0x59:
-      id: 'bypass'
-      doc: 'Bypass'
-    0x4e:
-      id: 'non_bypass'
-      doc: 'Non Bypass'
-  settlement_type:
-    0x30:
-      id: 'regular_settlement'
-      doc: 'Regular Settlement'
-    0x31:
-      id: 'cash'
-      doc: 'Cash (T+0)'
-    0x32:
-      id: 'next_day'
-      doc: 'Next Day (T+1)'
-    0x33:
-      id: 'delayed_delivery'
-      doc: 'Delayed Delivery'
 

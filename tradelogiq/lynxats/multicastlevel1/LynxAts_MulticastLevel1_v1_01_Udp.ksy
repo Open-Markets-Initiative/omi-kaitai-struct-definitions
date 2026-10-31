@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq MulticastLevel1 Itch v1.01
+# Kaitai struct definition for: Tradelogiq LynxAts MulticastLevel1 Itch v1.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
@@ -31,7 +31,7 @@
 
 meta:
   id: tradelogiq_lynxats_multicastlevel1_itch_v1_01_udp
-  title: Tradelogiq MulticastLevel1 Itch v1.01
+  title: Tradelogiq LynxAts MulticastLevel1 Itch v1.01
   license: GPL-3.0
   endian: be
 

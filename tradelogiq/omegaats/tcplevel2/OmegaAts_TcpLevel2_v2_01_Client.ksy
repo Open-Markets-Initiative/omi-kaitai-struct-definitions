@@ -1,13 +1,13 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq SnapshotRecovery Itch v1.09
+# Kaitai struct definition for: Tradelogiq OmegaAts TcpLevel2 Itch v2.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Lynx Snapshot Recovery
+#   Protocol: Omega Tcp Level 2
 #   Encoding: Itch
-#   Version: 1.09
-#   Date: 06/05/2025
-#   Specification: Tradelogiq-SnapshotRecovery-Specifications-v1.09.pdf
+#   Version: 2.01
+#   Date: 01/13/2026
+#   Specification: Tradelogiq-Level-2-ITCH-5.0-Specification-v2.01.pdf
 #
 # Script:
 #   Generator: 1.0.0.0
@@ -30,12 +30,12 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_lynxats_snapshotrecovery_itch_v1_09_client
-  title: Tradelogiq SnapshotRecovery Itch v1.09
+  id: tradelogiq_omegaats_tcplevel2_itch_v2_01_client
+  title: Tradelogiq OmegaAts TcpLevel2 Itch v2.01
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Snapshot Recovery Itch v1.09'
+doc: 'Tradelogiq Markets Inc. Omega ATS Omega Tcp Level 2 Itch v2.01'
 
 seq:
   - id: client_soup_tcp_packet
@@ -134,23 +134,50 @@ enums:
   message_type:
     0x53:
       id: 'system_event_message'
-      doc: 'The spin consists of a Start-Of-Messages event, Add Order messages and an End-Of-Messages event, after which the Reallocation Server disconnects.'
+      doc: 'The system event message type is used to signal a market or data feed handler event.'
     0x52:
       id: 'stock_directory_message'
-      doc: 'A Requested Sequence Number of 1 returns the symbol spin, the Instrument Directory messages distributed early in the Tradelogiq start of day.'
+      doc: 'At the start of each trading day, Tradelogiq disseminates stock directory messages for all supported securities.'
     0x72:
       id: 'extended_stock_directory_message'
-      doc: 'The symbol spin carries the Extended Stock Directory of bonds, debentures, rights, notes and warrants alongside the Stock Directory.'
+      doc: 'Extended Stock Directory messages carry the additional reference data of bonds, debentures, rights, notes and warrants.'
     0x48:
       id: 'stock_trading_action_message'
-      doc: 'If sequence 1 is used for the Sequenced Number field the reallocation server will return the symbol spin with the stock trading status messages before returning all open orders seen on the book.'
+      doc: 'Tradelogiq uses this administrative message to indicate the current trading status of a security.'
     0x41:
       id: 'add_order_message'
-      doc: 'Only open orders are sent in the spin; the spin will not contain any message for an order which is no longer in the book.'
+      doc: 'An Add Order Message indicates that a new order has been accepted by Omega ATS or Lynx ATS and was added to the visible order book.'
+    0x45:
+      id: 'order_executed_message'
+      doc: 'This message is sent whenever an order on the book is executed in whole or in part.'
+    0x43:
+      id: 'order_executed_with_price_message'
+      doc: 'This message is sent whenever an order on the book is executed at a display price different from the original.'
+    0x44:
+      id: 'order_delete_message'
+      doc: 'This message is sent whenever an order on the book is being cancelled.'
+    0x55:
+      id: 'order_replace_message'
+      doc: 'This message is sent whenever an order on the book has been cancelled and replaced.'
+    0x58:
+      id: 'order_cancel_message'
+      doc: 'This message is sent whenever an order on the book is modified as a result of a partial cancellation.'
+    0x50:
+      id: 'trade_message'
+      doc: 'The Trade Message is designed to provide execution details for normal match events involving non-displayed order types.'
+    0x51:
+      id: 'cross_trade_message'
+      doc: 'Cross trades are only accepted on Omega ATS.'
+    0x42:
+      id: 'trade_bust_message'
+      doc: 'The Trade Bust message is sent whenever an execution on Omega ATS or Lynx ATS is cancelled.'
+    0x4d:
+      id: 'trade_amend_message'
+      doc: 'The Trade Amend/Correction message is sent whenever an execution on Omega ATS or Lynx ATS is amended.'
   event_code:
     0x4f:
       id: 'start_of_messages'
-      doc: 'Start-Of-Messages event, the first message of the spin'
+      doc: 'Outside of timestamp messages, the start of day message is the first message sent out in a trading day'
     0x53:
       id: 'start_of_system_hours'
       doc: 'This message indicates that Tradelogiq is open and ready to start accepting orders.'
@@ -165,7 +192,7 @@ enums:
       doc: 'It indicates that Tradelogiq is now closed and will not accept any new orders.'
     0x43:
       id: 'end_of_messages'
-      doc: 'End-Of-Messages event, after which the Reallocation Server disconnects'
+      doc: 'This is always the last message sent in any trading day.'
     0x42:
       id: 'trading_halted'
       doc: 'Trading Halted due to Market-Wide Circuit Breaker'
@@ -257,4 +284,51 @@ enums:
     0x53:
       id: 'sell_order'
       doc: 'Sell order'
+  side:
+    0x42:
+      id: 'buy'
+      doc: 'Buy'
+    0x53:
+      id: 'sell'
+      doc: 'Sell'
+  midpoint_book_trade:
+    0:
+      id: 'no_field'
+      doc: 'No'
+    1:
+      id: 'yes_field'
+      doc: 'Yes represents Midpoint Book trade on Lynx ATS'
+  cross_type:
+    0x44:
+      id: 'derivatives_cross'
+      doc: 'Derivatives Cross'
+    0x49:
+      id: 'internal_cross'
+      doc: 'Internal Cross'
+    0x4d:
+      id: 'intentional_cross'
+      doc: 'Intentional Cross'
+    0x4e:
+      id: 'net_asset_value_cross'
+      doc: 'Net Asset Value (NAV) Cross'
+  bypass:
+    0x59:
+      id: 'bypass'
+      doc: 'Bypass'
+    0x4e:
+      id: 'non_bypass'
+      doc: 'Non Bypass'
+  settlement_type:
+    0x30:
+      id: 'regular_settlement'
+      doc: 'Regular Settlement'
+    0x31:
+      id: 'cash'
+      doc: 'Cash (T+0)'
+    0x32:
+      id: 'next_day'
+      doc: 'Next Day (T+1)'
+    0x33:
+      id: 'delayed_delivery'
+      doc: 'Delayed Delivery'
 

@@ -21,7 +21,7 @@ Updates are greatly appreciated; however, this entire repository is source gener
 
 | Protocol Count | Generated Lines |
 | --- | --- |
-| 1636 | 3,554,588 |
+| 1,636 | 3,555,607 |
 
 ## Testing
 
@@ -995,7 +995,7 @@ Enjoy.
 [LmeSelect.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/lme/lmeselect "LMEselect"
 [Lse.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/lseg/lse "London Stock Exchange"
 [LtseEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/ltse/ltseequities "Ltse Equities"
-[LynxAts.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/tradelogiq "Lynx ATS"
+[LynxAts.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/tradelogiq/lynxats "Lynx ATS"
 [MarketData.Redistributor]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/databento "Databento Market Data"
 [MatchNow.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/cboe/matchnow "Cboe Canada MATCHNow"
 [MdcsRealtime.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/koscom/mdcsrealtime "MDCS Realtime Market Data"
@@ -1030,7 +1030,7 @@ Enjoy.
 [NyseOptions.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/nyse/nyseoptions "New York Stock Exchange Options"
 [OdxEquities.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/odx/odxequities "Odx Equities"
 [OdxSecurityToken.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/odx/odxsecuritytoken "Odx Security Token"
-[OmegaAts.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/tradelogiq "Omega ATS"
+[OmegaAts.Ats]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/tradelogiq/omegaats "Omega ATS"
 [OnyxFutures.Exchange]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/miax/onyxfutures "MIAX Futures Onyx"
 [Opra.Consolidator]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/siac/opra "Options Price Reporting Authority"
 [Optiq.Platform]: https://github.com/Open-Markets-Initiative/omi-kaitai-struct-definitions/tree/main/euronext/optiq "Euronext Optiq"

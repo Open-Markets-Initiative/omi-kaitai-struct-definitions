@@ -6,7 +6,7 @@
 #   Protocol: Snapshot Feed
 #   Encoding: A2X Market Data
 #   Version: 1.3.2
-#   Date: 9/15/2022
+#   Date: 8/15/2022
 #   Specification: A2X712-Market-Data-Techincal-Specification-v1.3.2.pdf
 #
 # Script:
@@ -46,6 +46,7 @@ seq:
     type: message_struct
     repeat: expr
     repeat-expr: num_message
+    doc: 'A2X Amd Message'
 
 types:
   message_struct:
@@ -61,7 +62,7 @@ types:
             'msg_type::snapshot_start_message': snapshot_start_message
             'msg_type::book_status_message': book_status_message
             'msg_type::book_entry_message': book_entry_message
-            'msg_type::market_at_close_book_entry_message': market_at_close_book_entry_message
+            'msg_type::mac_book_entry_message': mac_book_entry_message
   message_header:
     seq:
       - id: msg_type
@@ -78,13 +79,13 @@ types:
     seq:
       - id: stream_seq_no
         type: u4
-        doc: 'The sequence number of the last message'
+        doc: 'The sequence number of the last message in the continuous stream which relates to this snapshot'
       - id: security_count
         type: u2
-        doc: 'Number of securities reported in this'
+        doc: 'Number of securities reported in this snapshot'
       - id: timestamp
-        type: u8
-        doc: 'Timestamp of this snapshot'
+        type: nanosecond_timestamp
+        doc: 'Timestamp of this snapshot. Nanoseconds since Unix epoch'
   book_status_message:
     seq:
       - id: security_id
@@ -92,82 +93,162 @@ types:
         doc: 'Numeric identifier of the relevant security'
       - id: trading_status
         type: u1
-        doc: 'Trading Status'
+        enum: trading_status
+        doc: 'Trading status of the security'
       - id: market_flags
         type: market_flags
-        doc: 'Market Flagss'
+        doc: 'Market flags'
       - id: entries
         type: u2
-        doc: 'Number of open orders in the book for this'
+        doc: 'Number of open orders in the book for this security'
       - id: closing_buy_qty
-        type: u4
-        doc: 'Total order quantity on the buy side during'
+        type: u4_nullable
+        doc: 'Total order quantity on the buy side during the closing market. Nullable, No Value = 0'
       - id: closing_sell_qty
-        type: u4
-        doc: 'Total order quantity on the sell side during'
+        type: u4_nullable
+        doc: 'Total order quantity on the sell side during the closing market. Nullable, No Value = 0'
       - id: indicative_price
-        type: u8
-        doc: 'Indicative auction price'
+        type: decimal_u8_5
+        doc: 'Indicative auction price. Implied decimal with scale 1e-5'
   market_flags:
     meta:
       bit-endian: le
     seq:
-      - id: unused_5
-        type: b5
-        doc: 'Reserved for future use'
-      - id: mac_run
-        type: b1
-        doc: 'Locked'
-      - id: mac_open
-        type: b1
-        doc: 'Open'
       - id: trading
         type: b1
-        doc: 'Continuous Trading'
+        doc: 'Continuous trading open or closed'
+      - id: mac_open
+        type: b1
+        doc: 'MaC open or closed'
+      - id: mac_run
+        type: b1
+        doc: 'MaC locked down or not'
+      - id: unused_5
+        type: b5
+        doc: 'Reserved'
   book_entry_message:
     seq:
       - id: security_id
         type: u2
         doc: 'Numeric identifier of the relevant security'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
         type: u4
         doc: 'Order reference number'
-  market_at_close_book_entry_message:
+  mac_book_entry_message:
     seq:
       - id: security_id
         type: u2
         doc: 'Numeric identifier of the relevant security'
+      - id: side
+        type: u1
+        enum: side
+        doc: 'Side of the order'
       - id: quantity
         type: u4
         doc: 'Number of open shares'
       - id: price
-        type: u8
-        doc: 'The price of the order'
+        type: decimal_u8_5
+        doc: 'The price of the order. Implied decimal with scale 1e-5'
       - id: order_ref
         type: u4
         doc: 'Order reference number'
+  nanosecond_timestamp:
+    seq:
+      - id: time
+        type: s8
+    instances:
+      hour:
+        value: time / 3600000000000 % 24
+      minute:
+        value: time / 60000000000 % 60
+      second:
+        value: time / 1000000000 % 60
+      millisecond:
+        value: time / 1000000 % 1000
+  u4_nullable:
+    seq:
+      - id: value
+        type: u4
+    instances:
+      is_null:
+        value: value == 0
+  decimal_u8_5:
+    seq:
+      - id: mantissa
+        type: u8
+    instances:
+      real:
+        value: mantissa / 100000.0
 
 enums:
   msg_type:
     1:
       id: 'heartbeat_message'
-      doc: 'The Heartbeat message carries no data'
+      doc: 'The Heartbeat message carries no data; it is simply a message header with msgType of 1.'
     10:
       id: 'snapshot_start_message'
-      doc: 'A Snapshot Start message is published as the first message in a snapshot to identify the continous stream'
+      doc: 'A Snapshot Start message is published as the first message in a snapshot to identify the sequence number in the continuous stream that this snapshot relates to.'
     11:
       id: 'book_status_message'
-      doc: 'A Book Status message is published to report the trading and market status of each security and the number of open orders on the order book for the security at the time of the snapshot'
+      doc: 'A Book Status message is published to report the trading and market status of each security and the number of open orders on the order book for the security at the time of the snapshot.'
     12:
       id: 'book_entry_message'
-      doc: 'An appropriate number of Book Entry messages is published after each Book Status message to provide details of each order and allow the book to be built'
+      doc: 'An appropriate number of Book Entry messages is published after each Book Status message to provide details of each order and allow the book to be built.'
     18:
-      id: 'market_at_close_book_entry_message'
-      doc: 'A2X will publish the volume of the 5 best bid and offer orders per security in chronological order'
+      id: 'mac_book_entry_message'
+      doc: 'During the MaC phase, A2X will publish the volume of the 5 best bid and offer orders per security in chronological order using the MaC Book Entry Message.'
+  trading_status:
+    1:
+      id: 'active'
+      doc: 'Active'
+    2:
+      id: 'halted'
+      doc: 'Halted'
+    3:
+      id: 'suspended'
+      doc: 'Suspended'
+    8:
+      id: 'aod_start'
+      doc: 'AoD Start'
+    24:
+      id: 'aod_end'
+      doc: 'AoD End'
+  trading:
+    0:
+      id: 'continuous_trading_closed'
+      doc: 'Continuous Trading Closed'
+    1:
+      id: 'continuous_trading_open'
+      doc: 'Continuous Tradging Open'
+  mac_open:
+    0:
+      id: 'mac_is_closed'
+      doc: 'MaC is Closed'
+    1:
+      id: 'mac_is_open'
+      doc: 'MaC is Open'
+  mac_run:
+    0:
+      id: 'mac_is_not_locked_down'
+      doc: 'MaC is not locked down'
+    1:
+      id: 'mac_is_locked_down'
+      doc: 'MaC is locked down'
+  side:
+    1:
+      id: 'buy_order'
+      doc: 'Buy Order'
+    2:
+      id: 'sell_order'
+      doc: 'Sell Order'
 

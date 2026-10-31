@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------
-# Kaitai struct definition for: Tradelogiq MulticastLevel2 Itch v2.01
+# Kaitai struct definition for: Tradelogiq LynxAts TcpLevel2 Itch v2.01
 #
 # Protocol:
 #   Organization: Tradelogiq Markets Inc.
-#   Protocol: Omega Multicast Level 2
+#   Protocol: Lynx Tcp Level 2
 #   Encoding: Itch
 #   Version: 2.01
 #   Date: 01/13/2026
@@ -30,49 +30,78 @@
 # ---------------------------------------------------------------------
 
 meta:
-  id: tradelogiq_omegaats_multicastlevel2_itch_v2_01_udp
-  title: Tradelogiq MulticastLevel2 Itch v2.01
+  id: tradelogiq_lynxats_tcplevel2_itch_v2_01_server
+  title: Tradelogiq LynxAts TcpLevel2 Itch v2.01
   license: GPL-3.0
   endian: be
 
-doc: 'Tradelogiq Markets Inc. Omega ATS Omega Multicast Level 2 Itch v2.01'
+doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Tcp Level 2 Itch v2.01'
 
 seq:
-  - id: packet_header
-    type: packet_header_struct
-    doc: 'Tradelogiq Qtp Downstream Packet Header'
-  - id: messages
-    repeat: expr
-    repeat-expr: packet_header.message_count
-    type:
-      switch-on: packet_header.message_count
-      cases:
-        _: message
+  - id: server_soup_tcp_packet
+    type: server_soup_tcp_packet_struct
+    repeat: eos
+    doc: 'Soup Tcp Packet sent by the server'
 
 types:
-  packet_header_struct:
+  server_soup_tcp_packet_struct:
     seq:
-      - id: session
+      - id: server_packet_header
+        type: server_packet_header
+        doc: 'Tradelogiq SoupTcp Server Packet Header'
+      - id: server_payload
+        size: server_packet_header.packet_length + 2 - 3
+        type:
+          switch-on: server_packet_header.server_packet_type
+          cases:
+            'server_packet_type::login_accepted_packet': login_accepted_packet
+            'server_packet_type::login_rejected_packet': login_rejected_packet
+            'server_packet_type::sequenced_data_packet': sequenced_data_packet
+  server_packet_header:
+    seq:
+      - id: packet_length
+        type: u2
+        doc: 'Number of bytes after this field until the next packet'
+      - id: server_packet_type
+        type: u1
+        enum: server_packet_type
+        doc: 'Code identifying the packet the server sends'
+  login_accepted_packet:
+    seq:
+      - id: accepted_session
         type: str
         size: 10
         encoding: ASCII
         pad-right: 0x20
-        doc: 'Indicates the session to which the packet belongs'
-      - id: sequence_number
-        type: u8
-        doc: 'Sequence number of the first message in the packet'
-      - id: message_count
-        type: u2
-        doc: 'The count of messages contained in this packet'
-  message:
+        doc: 'Session ID of the session that is now logged into. Left padded with spaces'
+      - id: accepted_sequence_number
+        type: str
+        size: 20
+        encoding: ASCII
+        pad-right: 0x20
+        doc: 'The sequence number of the next Sequenced Message to be sent. Left padded with spaces'
+  login_rejected_packet:
     seq:
-      - id: message_header
-        type: message_header
-        doc: 'Tradelogiq Qtp Message Block Header'
+      - id: reject_reason_code
+        type: u1
+        enum: reject_reason_code
+        doc: 'Why the login was rejected'
+  sequenced_data_packet:
+    seq:
+      - id: sequenced_message
+        type: sequenced_message
+        if: _parent.server_packet_header.packet_length > 1
+        doc: 'The higher-level protocol message carried by a Sequenced Data Packet'
+  sequenced_message:
+    seq:
+      - id: message_type
+        type: u1
+        enum: message_type
+        doc: 'Code identifying this message type'
       - id: payload
-        size: message_header.message_length - 1
+        size: _parent._parent.server_packet_header.packet_length - 2
         type:
-          switch-on: message_header.message_type
+          switch-on: message_type
           cases:
             'message_type::system_event_message': system_event_message
             'message_type::stock_directory_message': stock_directory_message
@@ -88,15 +117,6 @@ types:
             'message_type::cross_trade_message': cross_trade_message
             'message_type::trade_bust_message': trade_bust_message
             'message_type::trade_amend_message': trade_amend_message
-  message_header:
-    seq:
-      - id: message_length
-        type: u2
-        doc: 'The length in bytes of the message contained in this message block'
-      - id: message_type
-        type: u1
-        enum: message_type
-        doc: 'Code identifying this message type'
   system_event_message:
     seq:
       - id: event_code
@@ -512,6 +532,39 @@ types:
         value: mantissa / 10000.0
 
 enums:
+  client_packet_type:
+    0x4c:
+      id: 'login_request_packet'
+      doc: 'Login Request Packet'
+    0x55:
+      id: 'unsequenced_data_packet'
+      doc: 'Unsequenced Data Packet'
+    0x52:
+      id: 'client_heartbeat_packet'
+      doc: 'Client Heartbeat Packet'
+    0x4f:
+      id: 'logout_request_packet'
+      doc: 'Logout Request Packet'
+  server_packet_type:
+    0x41:
+      id: 'login_accepted_packet'
+      doc: 'Login Accepted Packet'
+    0x4a:
+      id: 'login_rejected_packet'
+      doc: 'Login Rejected Packet'
+    0x53:
+      id: 'sequenced_data_packet'
+      doc: 'Sequenced Data Packet'
+    0x48:
+      id: 'server_heartbeat_packet'
+      doc: 'Server Heartbeat Packet'
+  reject_reason_code:
+    0x41:
+      id: 'not_authorized'
+      doc: 'Not Authorized, invalid user or password'
+    0x53:
+      id: 'session_not_available'
+      doc: 'Session invalid or not available'
   message_type:
     0x53:
       id: 'system_event_message'
