@@ -222,6 +222,8 @@ types:
         doc: 'Maximum 3 lines'
       - id: content
         size: 320
+        repeat: expr
+        repeat-expr: num_content
         doc: 'Market Alert Content'
   modify_order:
     seq:

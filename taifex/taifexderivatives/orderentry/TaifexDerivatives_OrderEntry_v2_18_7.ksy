@@ -397,6 +397,8 @@ types:
       - id: leg_side_uint_822
         type: u1
         enum: leg_side_uint_822
+        repeat: expr
+        repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
       - id: comb_op
         type: u1
@@ -497,6 +499,8 @@ types:
       - id: leg_side_uint_822
         type: u1
         enum: leg_side_uint_822
+        repeat: expr
+        repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
       - id: comb_op
         type: u1
@@ -602,12 +606,18 @@ types:
       - id: leg_side_uint_822
         type: u1
         enum: leg_side_uint_822
+        repeat: expr
+        repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
       - id: leg_px
         type: s4
+        repeat: expr
+        repeat-expr: 2
         doc: 'Execution price for both legs'
       - id: leg_qty_uint_1624
         type: u2
+        repeat: expr
+        repeat-expr: 2
         doc: 'Quantity executed for both legs'
       - id: org_trans_time_msg_time
         type: org_trans_time_msg_time
@@ -735,12 +745,18 @@ types:
       - id: leg_side_uint_822
         type: u1
         enum: leg_side_uint_822
+        repeat: expr
+        repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
       - id: leg_px
         type: s4
+        repeat: expr
+        repeat-expr: 2
         doc: 'Execution price for both legs'
       - id: leg_qty_uint_1624
         type: u2
+        repeat: expr
+        repeat-expr: 2
         doc: 'Quantity executed for both legs'
       - id: org_trans_time_msg_time
         type: org_trans_time_msg_time
@@ -1099,9 +1115,13 @@ types:
         doc: 'Remaining order quantity before match'
       - id: leg_px
         type: s4
+        repeat: expr
+        repeat-expr: 2
         doc: 'Execution price for both legs'
       - id: leg_qty_uint_1624
         type: u2
+        repeat: expr
+        repeat-expr: 2
         doc: 'Quantity executed for both legs'
       - id: transact_time_msg_time
         type: transact_time_msg_time
@@ -1209,12 +1229,18 @@ types:
       - id: leg_side_uint_822
         type: u1
         enum: leg_side_uint_822
+        repeat: expr
+        repeat-expr: 2
         doc: 'Buy/sell code for both legs, where 0 in the first element means a single order'
       - id: leg_px
         type: s4
+        repeat: expr
+        repeat-expr: 2
         doc: 'Execution price for both legs'
       - id: leg_qty_uint_1624
         type: u2
+        repeat: expr
+        repeat-expr: 2
         doc: 'Quantity executed for both legs'
       - id: org_trans_time_msg_time
         type: org_trans_time_msg_time

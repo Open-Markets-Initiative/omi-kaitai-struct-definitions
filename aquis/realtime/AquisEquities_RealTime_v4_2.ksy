@@ -797,10 +797,10 @@ enums:
   macplus_run:
     0:
       id: 'mac_plus_is_not_locked_down'
-      doc: 'MaC + is not locked down'
+      doc: 'MaC+ is not locked down'
     1:
       id: 'mac_plus_is_locked_down'
-      doc: 'MaC + is locked down'
+      doc: 'MaC+ is locked down'
   trading_phase:
     0:
       id: 'closed'

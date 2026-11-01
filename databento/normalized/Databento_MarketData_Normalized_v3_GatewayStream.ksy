@@ -142,6 +142,8 @@ types:
         type: str
         size: 71
         encoding: ASCII
+        repeat: expr
+        repeat-expr: num_symbol
         doc: 'One of the query input symbols'
       - id: num_partial_symbol
         type: u4
@@ -150,6 +152,8 @@ types:
         type: str
         size: 71
         encoding: ASCII
+        repeat: expr
+        repeat-expr: num_partial_symbol
         doc: 'One of the symbols that did not resolve for at least one day in the query time range'
       - id: num_not_found_symbol
         type: u4
@@ -158,6 +162,8 @@ types:
         type: str
         size: 71
         encoding: ASCII
+        repeat: expr
+        repeat-expr: num_not_found_symbol
         doc: 'One of the symbols that did not resolve for any day in the query time range'
       - id: num_symbol_mapping
         type: u4

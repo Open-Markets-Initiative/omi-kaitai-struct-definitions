@@ -257,6 +257,8 @@ types:
         doc: 'Number of repeating RiskGroupID included in this message. Value 0 to 10'
       - id: risk_group_id
         type: u2
+        repeat: expr
+        repeat-expr: num_risk_group_id
         doc: 'Used to group orders for use in order purges where multiple orders can be cancelled by specifying a list of RiskGroupIDs'
   decimal_s8_4:
     seq:

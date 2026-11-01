@@ -743,6 +743,8 @@ types:
         doc: 'Number of CustomGroupID fields in the message'
       - id: custom_group_id
         type: u2
+        repeat: expr
+        repeat-expr: num_custom_group_id
         doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   reset_risk_message:
     seq:

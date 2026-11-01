@@ -180,7 +180,7 @@ types:
         type: u1
         enum: algo_indicator
         doc: 'Whether the order resulted from algorithmic trading'
-      - id: appendage_length
+      - id: num_tagvalue
         type: u2
         doc: 'Remaining length of the TagValue element'
       - id: tagvalue
@@ -447,7 +447,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Name of responsible trader'
-      - id: appendage_length
+      - id: num_tagvalue
         type: u2
         doc: 'Remaining length of the TagValue element'
       - id: tagvalue
@@ -618,7 +618,7 @@ types:
         type: u1
         enum: restate_reason
         doc: 'The reason for this order being restated'
-      - id: appendage_length
+      - id: num_tagvalue
         type: u2
         doc: 'Remaining length of the TagValue element'
       - id: tagvalue

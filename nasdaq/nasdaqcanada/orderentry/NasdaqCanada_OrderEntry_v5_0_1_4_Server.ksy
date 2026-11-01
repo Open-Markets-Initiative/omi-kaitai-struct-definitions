@@ -177,7 +177,7 @@ types:
         type: u1
         enum: order_state
         doc: 'L = Order Live; D = Order Dead'
-      - id: appendage_length
+      - id: num_order_accepted_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_accepted_appendage
@@ -269,7 +269,7 @@ types:
         type: u1
         enum: order_state
         doc: 'L = Order Live; D = Order Dead'
-      - id: appendage_length
+      - id: num_order_replaced_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_replaced_appendage
@@ -332,7 +332,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Reasons the order was reduced or canceled. See Appendix C for the available reasons (printed as Reason)'
-      - id: appendage_length
+      - id: num_order_canceled_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_canceled_appendage
@@ -381,7 +381,7 @@ types:
         type: u1
         enum: liquidity_flag
         doc: 'Liquidity flag the order received. See Appendix E'
-      - id: appendage_length
+      - id: num_stp_canceled_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: stp_canceled_appendage
@@ -431,7 +431,7 @@ types:
       - id: contra_broker
         type: u4
         doc: 'TSX Broker Number on the opposite side of the trade. Will be set to 0 if the contra order is anonymous'
-      - id: appendage_length
+      - id: num_order_executed_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_executed_appendage
@@ -476,7 +476,7 @@ types:
       - id: price
         type: decimal_u8_8
         doc: 'Maximum 999,999. A price of 0 will be treated as a market order. Implied 8 decimal places. Implied decimal with scale 1e-8'
-      - id: appendage_length
+      - id: num_corrected_trade_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: corrected_trade_appendage
@@ -512,7 +512,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The reason the order was rejected. See Appendix D (printed as Reason)'
-      - id: appendage_length
+      - id: num_rejected_order_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: rejected_order_appendage
@@ -548,7 +548,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'The reason the order was rejected. See Appendix D (printed as Reason)'
-      - id: appendage_length
+      - id: num_cancel_reject_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: cancel_reject_appendage
@@ -582,7 +582,7 @@ types:
         type: u1
         enum: restate_reason
         doc: 'The reason for this order being restated (printed as Reason)'
-      - id: appendage_length
+      - id: num_order_restated_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: order_restated_appendage
@@ -613,7 +613,7 @@ types:
       - id: next_user_ref_num
         type: u4
         doc: 'The next available UserRefNum'
-      - id: appendage_length
+      - id: num_account_query_response_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'

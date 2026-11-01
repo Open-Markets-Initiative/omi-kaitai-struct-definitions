@@ -385,6 +385,8 @@ types:
         doc: 'Number of repeating CustomGroupId’s included in this message'
       - id: custom_group_id
         type: u2
+        repeat: expr
+        repeat-expr: num_custom_group_id
         doc: 'Used to group orders for use in mass cancels where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   quote_update_message:
     seq:

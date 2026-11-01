@@ -189,7 +189,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_order_accepted_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: order_accepted_appendage
@@ -291,7 +291,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_replaced_message_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: replaced_message_appendage
@@ -339,7 +339,7 @@ types:
         type: u1
         enum: cancel_order_reason
         doc: 'Reason the order was reduced or canceled'
-      - id: appendage_length
+      - id: num_canceled_message_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -393,7 +393,7 @@ types:
         type: u1
         enum: aiq_strategy
         doc: 'AIQ strategy used on the cancelled order'
-      - id: appendage_length
+      - id: num_aiq_canceled_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -437,7 +437,7 @@ types:
       - id: match_number
         type: u8
         doc: 'Assigned by the exchange to identify the trade. Both the buy and the sell executions participating in the trade will share the same match number'
-      - id: appendage_length
+      - id: num_order_executed_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: order_executed_appendage
@@ -480,7 +480,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_broken_trade_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -521,7 +521,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_rejected_order_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -552,7 +552,7 @@ types:
       - id: user_ref_num
         type: u4
         doc: 'UserRefNum must be day-unique and strictly increasing for each OUCH account'
-      - id: appendage_length
+      - id: num_cancel_pending_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -583,7 +583,7 @@ types:
       - id: user_ref_num
         type: u4
         doc: 'UserRefNum must be day-unique and strictly increasing for each OUCH account'
-      - id: appendage_length
+      - id: num_cancel_reject_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -624,7 +624,7 @@ types:
       - id: order_reference_number
         type: u8
         doc: 'The day-unique Order Reference Number assigned by NASDAQ to this order'
-      - id: appendage_length
+      - id: num_order_priority_update_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -662,7 +662,7 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
-      - id: appendage_length
+      - id: num_order_modified_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -699,7 +699,7 @@ types:
         type: u1
         enum: order_restated_reason
         doc: 'The reason for this order being restated'
-      - id: appendage_length
+      - id: num_order_restated_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: order_restated_appendage
@@ -732,7 +732,7 @@ types:
       - id: next_user_ref_num
         type: u4
         doc: 'The next available UserRefNum'
-      - id: appendage_length
+      - id: num_account_query_response_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -775,7 +775,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Stock Symbol'
-      - id: appendage_length
+      - id: num_mass_cancel_response_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: mass_cancel_response_appendage
@@ -813,7 +813,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical OUCH account can potentially enter orders for multiple firms in a Service Bureau configuration'
-      - id: appendage_length
+      - id: num_disable_order_entry_response_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: disable_order_entry_response_appendage
@@ -849,7 +849,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical OUCH account can potentially enter orders for multiple firms in a Service Bureau configuration'
-      - id: appendage_length
+      - id: num_enable_order_entry_response_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: enable_order_entry_response_appendage

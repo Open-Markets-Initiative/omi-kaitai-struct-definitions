@@ -384,7 +384,7 @@ enums:
       doc: 'Market at Close (MaC) Trade'
     4:
       id: 'large_in_scale_cross_trade'
-      doc: 'Large In Scale(LIS) Cross Trade'
+      doc: 'Large In Scale (LIS) Cross Trade'
     5:
       id: 'benchmark_cross_trade'
       doc: 'Benchmark Cross Trade'
@@ -413,7 +413,7 @@ enums:
       doc: 'Continuous Trading Closed'
     1:
       id: 'continuous_trading_open'
-      doc: 'Continuous Tradging Open'
+      doc: 'Continuous Trading Open'
   mac_open:
     0:
       id: 'mac_is_closed'

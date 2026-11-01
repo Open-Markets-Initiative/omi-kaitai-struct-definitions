@@ -265,10 +265,10 @@ enums:
   macplus_run:
     0:
       id: 'mac_plus_is_not_locked_down'
-      doc: 'MaC + is not locked down'
+      doc: 'MaC+ is not locked down'
     1:
       id: 'mac_plus_is_locked_down'
-      doc: 'MaC + is locked down'
+      doc: 'MaC+ is locked down'
   side:
     1:
       id: 'buy_order'

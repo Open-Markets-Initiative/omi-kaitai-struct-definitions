@@ -156,7 +156,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Required for Canadian regulatory reporting, and represents the trading system''s user ID for the trader'
-      - id: appendage_length
+      - id: num_enter_order_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: enter_order_appendage
@@ -236,7 +236,7 @@ types:
         type: u1
         enum: time_in_force
         doc: '0 = Day; 3 = Immediate or Cancel; 6 = Good Till Date (GTD), must be used with ExpireTime; 8 = Stream Or Kill (SOK), CXD PureStream only; P = Post-Only Order'
-      - id: appendage_length
+      - id: num_replace_order_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: replace_order_request_appendage
@@ -288,7 +288,7 @@ types:
       - id: order_qty
         type: u4
         doc: 'Total number of shares'
-      - id: appendage_length
+      - id: num_cancel_order_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: cancel_order_request_appendage
@@ -312,7 +312,7 @@ types:
             'cancel_order_request_optional_field::userrefidx': user_ref_idx_value
   account_query_request_message:
     seq:
-      - id: appendage_length
+      - id: num_account_query_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage Field. Required. If no optional appendage, length=0'
       - id: account_query_request_appendage

@@ -538,6 +538,8 @@ types:
         doc: 'The number of single side deletes in this block. Max possible value = 360'
       - id: cancelled_reference_number_delta
         type: u4
+        repeat: expr
+        repeat-expr: num_cancelled_reference_number_delta
         doc: 'The order/quote side reference number delta associated with the cancelled order/quote. n = 0 to (Total Number – 1)'
   non_auction_options_trade_message:
     seq:

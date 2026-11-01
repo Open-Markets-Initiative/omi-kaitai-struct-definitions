@@ -305,10 +305,8 @@ types:
       - id: flags
         type: flags
         doc: 'Security flags'
-      - id: reserved
-        type: str
+      - id: reserved_20
         size: 20
-        encoding: ASCII
         doc: 'Reserved'
       - id: lot_size_composite
         type: lot_size_composite

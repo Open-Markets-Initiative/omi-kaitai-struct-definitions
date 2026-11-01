@@ -410,6 +410,8 @@ types:
         doc: 'Number of repeating RiskGroupID values included in this message'
       - id: risk_group_id
         type: u2
+        repeat: expr
+        repeat-expr: num_risk_group_id
         doc: 'Used to group orders for use in Purge Orders messages where multiple orders can be cancelled by specifying a list of RiskGroupIDs'
   reset_risk_us_equities_v_1:
     seq:

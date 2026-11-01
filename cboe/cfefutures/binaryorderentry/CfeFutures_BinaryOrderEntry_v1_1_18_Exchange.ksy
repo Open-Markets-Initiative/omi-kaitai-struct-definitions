@@ -387,6 +387,8 @@ types:
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
+        repeat: expr
+        repeat-expr: num_leg_position_effect
         doc: 'Indicates status of client position in the option for this leg'
   order_rejected:
     seq:

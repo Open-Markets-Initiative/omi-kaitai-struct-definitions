@@ -229,7 +229,7 @@ enums:
       doc: 'Continuous Trading Closed'
     1:
       id: 'continuous_trading_open'
-      doc: 'Continuous Tradging Open'
+      doc: 'Continuous Trading Open'
   mac_open:
     0:
       id: 'mac_is_closed'

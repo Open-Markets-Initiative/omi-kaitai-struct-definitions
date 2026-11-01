@@ -816,6 +816,8 @@ types:
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
+        repeat: expr
+        repeat-expr: num_leg_position_effect
         doc: 'Indicates status of member position in the option leg of a complex order'
   new_complex_order_short_message:
     seq:
@@ -931,6 +933,8 @@ types:
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
+        repeat: expr
+        repeat-expr: num_leg_position_effect
         doc: 'Indicates status of member position in the option leg of a complex order'
   new_order_cross_multileg_message:
     seq:
@@ -1053,6 +1057,8 @@ types:
       - id: leg_position_effect
         type: u1
         enum: leg_position_effect
+        repeat: expr
+        repeat-expr: num_leg_position_effect
         doc: 'Indicates status of member position in the option leg of a complex order'
   cancel_order_message:
     seq:
@@ -1365,6 +1371,8 @@ types:
         doc: 'Number of CustomGroupID fields in the message'
       - id: custom_group_id
         type: u2
+        repeat: expr
+        repeat-expr: num_custom_group_id
         doc: 'Used to group orders for use inPurge Ordersmessages where multiple orders can be cancelled by specifying a list of CustomGroupIds'
   reset_risk_message:
     seq:

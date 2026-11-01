@@ -166,7 +166,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_enter_order_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: enter_order_appendage
@@ -239,7 +239,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Customer order identifier. ClOrdID will not be checked for day-uniqueness for each OUCH account'
-      - id: appendage_length
+      - id: num_replace_order_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: replace_order_appendage
@@ -286,7 +286,7 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
-      - id: appendage_length
+      - id: num_cancel_order_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -321,7 +321,7 @@ types:
       - id: quantity
         type: u4
         doc: 'Total number of shares. Must be greater than zero and less than 1,000,000'
-      - id: appendage_length
+      - id: num_modify_order_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -348,7 +348,7 @@ types:
             'modify_order_optional_field::locate_broker': locate_broker_value
   account_query_message:
     seq:
-      - id: appendage_length
+      - id: num_account_query_appendage
         type: u2
         if: not _io.eof
         doc: 'The length of the remaining Optional Appendage field'
@@ -388,7 +388,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'Stock Symbol'
-      - id: appendage_length
+      - id: num_mass_cancel_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: mass_cancel_request_appendage
@@ -423,7 +423,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical OUCH account can potentially enter orders for multiple firms in a Service Bureau configuration'
-      - id: appendage_length
+      - id: num_disable_order_entry_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: disable_order_entry_request_appendage
@@ -456,7 +456,7 @@ types:
         encoding: ASCII
         pad-right: 0x20
         doc: 'This field should contain all caps. Firm identifier for the order entry firm. One logical OUCH account can potentially enter orders for multiple firms in a Service Bureau configuration'
-      - id: appendage_length
+      - id: num_enable_order_entry_request_appendage
         type: u2
         doc: 'The length of the remaining Optional Appendage field'
       - id: enable_order_entry_request_appendage
