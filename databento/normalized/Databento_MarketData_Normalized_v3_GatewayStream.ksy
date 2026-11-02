@@ -239,7 +239,7 @@ types:
             'rtype::bbo_1_minute': bbo_msg
       - id: ts_out_time
         type: nanosecond_timestamp
-        if: == 1
+        if: _root.metadata.ts_out == ts_out::yes_field
         doc: 'The live gateway send timestamp, present on every record when the metadata ts_out flag is set. Nanoseconds since Unix epoch'
   record_header:
     seq:
