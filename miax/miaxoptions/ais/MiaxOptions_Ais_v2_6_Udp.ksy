@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: miax_miaxoptions_ais_mach_v2_6_udp
   title: Miax MiaxOptions Ais Mach v2.6
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Miami International Holdings MIAX Options Administrative Information Subscriber Mach v2.6'

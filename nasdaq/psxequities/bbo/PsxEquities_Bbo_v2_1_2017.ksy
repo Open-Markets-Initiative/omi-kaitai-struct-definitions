@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_psxequities_bbo_itch_v2_1_2017
   title: Nasdaq PsxEquities Bbo Itch v2.1.2017
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer Itch v2.1.2017'

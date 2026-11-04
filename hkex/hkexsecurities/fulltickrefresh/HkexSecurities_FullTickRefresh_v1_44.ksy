@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: hkex_hkexsecurities_fulltickrefresh_omd_v1_44
   title: Hkex HkexSecurities FullTickRefresh Omd v1.44
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Hong Kong Exchanges and Clearing Hkex Securities Market Orion Market Data Cash FullTick Refresh Omd v1.44'

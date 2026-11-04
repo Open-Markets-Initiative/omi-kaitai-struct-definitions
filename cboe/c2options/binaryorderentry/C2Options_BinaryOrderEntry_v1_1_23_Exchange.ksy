@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_c2options_binaryorderentry_boe3_v1_1_23_exchange
   title: Cboe C2Options BinaryOrderEntry Boe3 v1.1.23
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe C2 Options Binary Order Entry Boe3 v1.1.23'

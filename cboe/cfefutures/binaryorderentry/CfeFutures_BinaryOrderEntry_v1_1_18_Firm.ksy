@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_cfefutures_binaryorderentry_boe3_v1_1_18_firm
   title: Cboe CfeFutures BinaryOrderEntry Boe3 v1.1.18
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Futures Exchange Futures Binary Order Entry Boe3 v1.1.18'
@@ -273,7 +273,9 @@ types:
         encoding: ASCII
         doc: 'Simple Instruments can be specified by providing the mapped symbol format in the Symbol field or by providing the product name (e'
       - id: security_desc
+        type: str
         size: 16
+        encoding: ASCII
         doc: 'The options on futures identifier name'
       - id: capacity
         type: u1
@@ -703,7 +705,9 @@ types:
         encoding: ASCII
         doc: 'The symbol id for the Simple Options on Futures instrument'
       - id: security_desc
+        type: str
         size: 16
+        encoding: ASCII
         doc: 'The options on futures identifier name'
       - id: leg_ratio_qty
         type: u4

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: odx_odxequities_pts_ouch_v1_0_server
   title: Odx OdxEquities Pts Ouch v1.0
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Osaka Digital Exchange Odx Equities Proprietary Trading System Ouch v1.0'

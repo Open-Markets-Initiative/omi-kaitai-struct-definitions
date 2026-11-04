@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cnsx_cse2_retransmission_mmd_v1_6
   title: Cnsx Cse2 Retransmission Mmd v1.6
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Canadian Securities Exchange CSE2 CSE2 Multicast Market Data Retransmission Mmd v1.6'

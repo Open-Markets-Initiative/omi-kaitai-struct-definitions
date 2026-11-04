@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: aquis_aquisstockexchange_realtime_amd_v1_2_3
   title: Aquis RealTime Amd v1.2.3
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Aquis Exchange Aquis Stock Exchange Real Time Market Data Feed Amd v1.2.3'

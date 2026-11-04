@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_utdf_output_utp_v3_0_c
   title: Nasdaq Utdf Output Utp v3.0.c
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq UTP Trade Data Feed Output Utp v3.0.c'

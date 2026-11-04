@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: a2x_a2xequities_snapshot_amd_v2_5
   title: A2X Snapshot Amd v2.5
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'A2X Markets A2X Equities Snapshot Feed Amd v2.5'

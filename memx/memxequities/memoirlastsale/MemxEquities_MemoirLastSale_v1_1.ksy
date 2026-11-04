@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: memx_memxequities_memoirlastsale_sbe_v1_1
   title: Memx MemxEquities MemoirLastSale Sbe v1.1
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'The Members Exchange Memx Equities Member Order Information Record Last Sale Sbe v1.1'

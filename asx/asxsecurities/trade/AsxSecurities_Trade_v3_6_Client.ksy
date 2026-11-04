@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: asx_asxsecurities_trade_ouch_v3_6_client
   title: Asx AsxSecurities Trade Ouch v3.6
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Australian Securities Exchange Asx Securities Asx Trade Ouch v3.6'

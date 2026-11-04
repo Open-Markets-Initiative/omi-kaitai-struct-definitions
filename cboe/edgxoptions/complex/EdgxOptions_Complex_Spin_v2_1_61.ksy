@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_edgxoptions_complex_spin_v2_1_61
   title: Cboe EdgxOptions Complex Spin v2.1.61
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe Edgx Options Complex Spin v2.1.61'

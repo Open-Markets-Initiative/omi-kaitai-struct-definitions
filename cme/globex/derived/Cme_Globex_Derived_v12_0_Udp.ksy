@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cme_globex_derived_sbe_v12_0_udp
   title: Cme Globex Derived Sbe v12.0
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'CME Group CME Globex Derived Market Data Sbe v12.0'

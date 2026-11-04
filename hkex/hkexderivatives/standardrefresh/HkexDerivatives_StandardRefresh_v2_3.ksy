@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: hkex_hkexderivatives_standardrefresh_omd_v2_3
   title: Hkex HkexDerivatives StandardRefresh Omd v2.3
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Hong Kong Exchanges and Clearing Hkex Derivatives Market Orion Market Data Derivatives Standard Refresh Omd v2.3'

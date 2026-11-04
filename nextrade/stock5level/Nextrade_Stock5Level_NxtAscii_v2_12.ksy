@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nextrade_nextrade_stock5level_nxtascii_v2_12
   title: Nextrade Stock5Level NxtAscii v2.12
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Nextrade Nextrade Nextrade Stock Market Data 5 Level NxtAscii v2.12'

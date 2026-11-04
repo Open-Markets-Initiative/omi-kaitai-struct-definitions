@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nyse_amexoptions_complexfeed_pillar_v1_0_h
   title: Nyse AmexOptions ComplexFeed Pillar v1.0.h
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'New York Stock Exchange Nyse Amex Options Complex Feed Pillar v1.0.h'

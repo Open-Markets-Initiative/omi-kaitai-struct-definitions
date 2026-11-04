@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: szse_szsesecurities_tcpmarketdata_szsebinary_v1_17
   title: Szse SzseSecurities TcpMarketData SzseBinary v1.17
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Shenzhen Stock Exchange Shenzhen Stock Exchange Szse Tcp Market Data SzseBinary v1.17'

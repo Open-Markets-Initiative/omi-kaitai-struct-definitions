@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cme_globex_mdp3_sbe_v1_10_servertcp
   title: Cme Globex Mdp3 Sbe v1.10
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'CME Group CME Globex Market Data Platform 3 Sbe v1.10'

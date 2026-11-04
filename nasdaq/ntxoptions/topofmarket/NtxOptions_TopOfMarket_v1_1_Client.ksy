@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_ntxoptions_topofmarket_glimpse_v1_1_client
   title: Nasdaq NtxOptions TopOfMarket Glimpse v1.1
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Options Top Of Market Glimpse v1.1'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: iex_iexequities_deep_iextp_v1_06
   title: Iex IexEquities Deep IexTp v1.06
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Investors Exchange IEX Equities Depth Of Book IexTp v1.06'

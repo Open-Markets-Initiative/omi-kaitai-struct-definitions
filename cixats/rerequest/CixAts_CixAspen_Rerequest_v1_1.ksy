@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cixats_cixaspen_rerequest_aspen_v1_1
   title: CixAts Rerequest Aspen v1.1
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'CIX Trading Inc. CIX Aspen CIX Udp Rerequest Aspen v1.1'

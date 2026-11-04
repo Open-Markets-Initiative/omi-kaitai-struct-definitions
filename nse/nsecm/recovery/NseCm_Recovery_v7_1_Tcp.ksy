@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nse_nsecm_recovery_tbt_v7_1_tcp
   title: Nse NseCm Recovery Tbt v7.1
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'National Stock Exchange of India Ltd NSE Capital Market Mtbt Tick Data Recovery Tbt v7.1'

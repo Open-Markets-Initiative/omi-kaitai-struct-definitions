@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_edgaequities_top_asciipitch_v1_3_10
   title: Cboe EdgaEquities Top AsciiPitch v1.3.10
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Chicago Board Options Exchange Cboe Edga Equities Top AsciiPitch v1.3.10'

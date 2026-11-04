@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: miax_onyxfutures_topofmarket_mach_v1_3_a
   title: Miax OnyxFutures TopOfMarket Mach v1.3.a
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Miami International Holdings MIAX Futures Onyx Top Of Market Mach v1.3.a'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: txse_txseequities_feed_rake_v1_0
   title: Txse TxseEquities Feed Rake v1.0
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Texas Stock Exchange Txse Equities FEED Full-Depth Market Data Rake v1.0'

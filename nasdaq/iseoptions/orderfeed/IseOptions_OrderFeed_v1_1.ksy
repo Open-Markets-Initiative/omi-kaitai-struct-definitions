@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_iseoptions_orderfeed_itch_v1_1
   title: Nasdaq IseOptions OrderFeed Itch v1.1
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq ISE Ise Order Feed Market Data Itch v1.1'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nse_nsecom_orderentry_nnf_v3_5_client
   title: Nse NseCom OrderEntry Nnf v3.5
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Stock Exchange of India Ltd NSE Commodity Derivatives Order Entry Nnf v3.5'

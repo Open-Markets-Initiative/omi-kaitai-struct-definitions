@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: hkex_hkexsecurities_standardrefresh_omd_v1_45
   title: Hkex HkexSecurities StandardRefresh Omd v1.45
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Hong Kong Exchanges and Clearing Hkex Securities Market Orion Market Data Cash Standard Refresh Omd v1.45'
@@ -215,7 +215,12 @@ types:
         doc: 'Unique number for the news page within each NewsType'
       - id: headline
         size: 320
-        doc: 'News headline. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
+        type:
+          switch-on: news_type
+          cases:
+            '"EXN"': headline_ascii_value
+            '"EXC"': headline_utf16_value
+            _: headline_utf16_value
       - id: cancel_flag
         type: u1
         enum: cancel_flag
@@ -280,7 +285,12 @@ types:
     seq:
       - id: news_line
         size: 160
-        doc: 'News line. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
+        type:
+          switch-on: _parent.news_type
+          cases:
+            '"EXN"': news_line_ascii_value
+            '"EXC"': news_line_utf16_value
+            _: news_line_utf16_value
   nominal_price_message:
     seq:
       - id: security_code
@@ -743,6 +753,30 @@ types:
       - id: vcm_upper_price
         type: decimal_s4_3
         doc: 'Upper price in the price band allowed during the cooling off period. 3 implied decimal places. Implied decimal with scale 1e-3'
+  headline_ascii_value:
+    seq:
+      - id: headline_ascii
+        type: str
+        size: 320
+        encoding: ASCII
+        doc: 'News headline. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
+  headline_utf16_value:
+    seq:
+      - id: headline_utf16
+        size: 320
+        doc: 'News headline. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
+  news_line_ascii_value:
+    seq:
+      - id: news_line_ascii
+        type: str
+        size: 160
+        encoding: ASCII
+        doc: 'News line. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
+  news_line_utf16_value:
+    seq:
+      - id: news_line_utf16
+        size: 160
+        doc: 'News line. ASCII encoded if NewsType is EXN, Unicode UTF-16LE encoded if NewsType is EXC'
   nanosecond_timestamp:
     seq:
       - id: time

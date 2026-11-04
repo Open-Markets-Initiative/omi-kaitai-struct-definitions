@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_titaniumconsolidated_indices_cgif_v1_4_13
   title: Cboe TitaniumConsolidated Indices Cgif v1.4.13
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Chicago Board Options Exchange Cboe Titanium Consolidated Global Indices Feed Cgif v1.4.13'

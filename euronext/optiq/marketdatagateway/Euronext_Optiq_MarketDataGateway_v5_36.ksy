@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: euronext_optiq_marketdatagateway_sbe_v5_36
   title: Euronext Optiq MarketDataGateway Sbe v5.36
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Euronext Euronext Optiq Market Data Gateway Sbe v5.36'

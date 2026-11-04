@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: tmx_mx_solaorderentry_sail_v1_21_firm
   title: Tmx Mx SolaOrderEntry Sail v1.21
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'TMX Group Montreal Exchange Sola Order Entry Sail v1.21'

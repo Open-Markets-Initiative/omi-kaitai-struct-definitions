@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: tmx_mx_solatcpretransmission_hsvf_v1_14_1_client
   title: Tmx Mx SolaTcpRetransmission Hsvf v1.14.1
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'TMX Group Montreal Exchange Sola Tcp Retransmission Hsvf v1.14.1'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_phlxoptions_orders_itch_v1_91
   title: Nasdaq PhlxOptions Orders Itch v1.91
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PHLX PHLX Orders Itch v1.91'

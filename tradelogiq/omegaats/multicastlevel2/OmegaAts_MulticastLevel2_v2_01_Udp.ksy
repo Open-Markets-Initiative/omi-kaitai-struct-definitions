@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: tradelogiq_omegaats_multicastlevel2_itch_v2_01_udp
   title: Tradelogiq OmegaAts MulticastLevel2 Itch v2.01
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Tradelogiq Markets Inc. Omega ATS Omega Multicast Level 2 Itch v2.01'

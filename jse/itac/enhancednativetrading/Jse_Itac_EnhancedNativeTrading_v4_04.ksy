@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: jse_itac_enhancednativetrading_ntgi_v4_04
   title: Jse Itac EnhancedNativeTrading Ntgi v4.04
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'JSE Limited Integrated Trading and Clearing Enhanced Native Trading Gateway Ntgi v4.04'

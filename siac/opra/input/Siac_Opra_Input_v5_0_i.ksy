@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: siac_opra_input_obi_v5_0_i
   title: Siac Opra Input Obi v5.0.i
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'The Securities Industry Automation Corporation Options Price Reporting Authority Input Obi v5.0.i'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_c1options_multicastdepthofbook_pitch_v2_41_66
   title: Cboe C1Options MulticastDepthOfBook Pitch v2.41.66
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Chicago Board Options Exchange Cboe C1 Options Multicast Depth Of Book Pitch v2.41.66'

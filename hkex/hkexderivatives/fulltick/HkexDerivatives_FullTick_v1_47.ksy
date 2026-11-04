@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: hkex_hkexderivatives_fulltick_omd_v1_47
   title: Hkex HkexDerivatives FullTick Omd v1.47
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Hong Kong Exchanges and Clearing Hkex Derivatives Market Orion Market Data Derivatives FullTick Omd v1.47'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: moex_spectra_orderslogsnapshot_simba_v9_12_0
   title: Moex Spectra OrdersLogSnapshot Simba v9.12.0
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Moscow Exchange MOEX Derivatives Market SIMBA Spectra Orders Log Snapshot Simba v9.12.0'

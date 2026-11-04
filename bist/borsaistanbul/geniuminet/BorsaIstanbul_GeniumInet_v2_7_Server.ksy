@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: bist_borsaistanbul_geniuminet_glimpse_v2_7_server
   title: Bist BorsaIstanbul GeniumInet Glimpse v2.7
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Borsa İstanbul A.Ş. Borsa Istanbul Genium Inet Glimpse v2.7'

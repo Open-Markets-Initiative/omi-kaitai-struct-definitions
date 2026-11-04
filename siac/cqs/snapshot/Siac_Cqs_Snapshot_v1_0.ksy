@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: siac_cqs_snapshot_cta_v1_0
   title: Siac Cqs Snapshot Cta v1.0
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'The Securities Industry Automation Corporation Consolidated Quotation System Snapshot Cta v1.0'

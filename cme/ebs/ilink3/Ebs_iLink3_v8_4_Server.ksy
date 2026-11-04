@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cme_ebs_ilink3_sbe_v8_4_server
   title: Cme Ebs iLink3 Sbe v8.4
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'CME Group EBS Market iLink 3 Sbe v8.4'

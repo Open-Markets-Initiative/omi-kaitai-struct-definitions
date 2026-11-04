@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: taifex_taifexderivatives_clearingmember_tmp_v2_18_7
   title: Taifex TaifexDerivatives ClearingMember Tmp v2.18.7
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Taiwan Futures Exchange Taifex Derivatives Clearing Member Order And Execution Report Tmp v2.18.7'

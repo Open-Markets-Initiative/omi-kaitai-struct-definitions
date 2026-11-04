@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: n24x_24xequities_memo_sbe_v1_13_server
   title: 24X Memo Sbe v1.13
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: '24 National Exchange 24X Equities Members Orders Sbe v1.13'

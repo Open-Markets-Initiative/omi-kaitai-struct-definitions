@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: bse_bseindia_eti_fbe_v1_6_14_server
   title: Bse BseIndia Eti Fbe v1.6.14
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'BSE Limited BSE India Enhanced Trading Interface Fbe v1.6.14'

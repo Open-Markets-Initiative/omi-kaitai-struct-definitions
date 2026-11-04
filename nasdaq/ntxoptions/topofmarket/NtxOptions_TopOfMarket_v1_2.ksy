@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_ntxoptions_topofmarket_itch_v1_2
   title: Nasdaq NtxOptions TopOfMarket Itch v1.2
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq Texas Options Top Of Market Itch v1.2'

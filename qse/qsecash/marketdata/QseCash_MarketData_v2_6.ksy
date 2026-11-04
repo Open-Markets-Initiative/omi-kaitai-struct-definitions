@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: qse_qsecash_marketdata_xdp_v2_6
   title: Qse QseCash MarketData Xdp v2.6
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Qatar Stock Exchange Qatar Stock Exchange Qse Cash Market Data Xdp v2.6'

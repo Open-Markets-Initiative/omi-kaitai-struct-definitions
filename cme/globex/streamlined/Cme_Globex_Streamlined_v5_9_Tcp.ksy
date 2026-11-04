@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cme_globex_streamlined_sbe_v5_9_tcp
   title: Cme Globex Streamlined Sbe v5.9
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'CME Group CME Globex Streamlined Market Data Sbe v5.9'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: euronext_optiq_dropcopygateway_sbe_v6_65
   title: Euronext Optiq DropCopyGateway Sbe v6.65
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Euronext Euronext Optiq Drop Copy Gateway Sbe v6.65'

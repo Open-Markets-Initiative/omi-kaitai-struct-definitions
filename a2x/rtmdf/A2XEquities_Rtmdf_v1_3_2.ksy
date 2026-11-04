@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: a2x_a2xequities_rtmdf_amd_v1_3_2
   title: A2X Rtmdf Amd v1.3.2
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'A2X Markets A2X Equities Real Time Market Data Feed Amd v1.3.2'

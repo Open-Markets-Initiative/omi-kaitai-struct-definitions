@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nasdaq_psxequities_bbo_asciiitch_v1_1_2013_2
   title: Nasdaq PsxEquities Bbo AsciiItch v1.1.2013.2
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'National Association of Securities Dealers Automated Quotations (Nasdaq) Nasdaq PSX Best Bid And Offer AsciiItch v1.1.2013.2'

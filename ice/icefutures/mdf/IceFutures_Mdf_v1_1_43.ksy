@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: ice_icefutures_mdf_impact_v1_1_43
   title: Ice IceFutures Mdf iMpact v1.1.43
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Intercontinental Exchange Intercontinental Exchange Futures Multicast Data Feed iMpact v1.1.43'

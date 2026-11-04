@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: jpx_osederivatives_geniuminet_ouch_v5_0_server
   title: Jpx OseDerivatives GeniumInet Ouch v5.0
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Japan Exchange Group Osaka Securities Exchange Genium Inet Ouch v5.0'

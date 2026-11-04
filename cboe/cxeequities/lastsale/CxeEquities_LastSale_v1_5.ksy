@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_cxeequities_lastsale_asciipitch_v1_5
   title: Cboe CxeEquities LastSale AsciiPitch v1.5
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Chicago Board Options Exchange Cboe CXE Last Sale AsciiPitch v1.5'

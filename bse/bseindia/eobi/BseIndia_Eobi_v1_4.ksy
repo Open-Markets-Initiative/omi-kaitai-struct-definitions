@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: bse_bseindia_eobi_fbe_v1_4
   title: Bse BseIndia Eobi Fbe v1.4
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'BSE Limited BSE India Enhanced Order Book Interface Fbe v1.4'

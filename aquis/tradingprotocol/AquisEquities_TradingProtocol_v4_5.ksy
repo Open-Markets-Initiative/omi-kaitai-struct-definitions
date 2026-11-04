@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: aquis_aquisequities_tradingprotocol_atp_v4_5
   title: Aquis TradingProtocol Atp v4.5
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Aquis Exchange Aquis Equities Aquis Trading Protocol Atp v4.5'
@@ -477,9 +477,13 @@ types:
       - id: market_data_id
         type: u4_nullable
         doc: 'The ID of this order as seen in the Aquis market data. Nullable, No Value = 0'
-      - id: status
-        type: status
-        doc: 'Status of order and reject or cancel code'
+      - id: order_add_response_status
+        type:
+          switch-on: peek_order_status
+          cases:
+            'order_status::cancelled': status_cancel_reason
+            'order_status::rejected': status_reject_reason
+            _: status
       - id: traded_quantity
         type: u4
         doc: 'Number of shares traded, if any'
@@ -495,6 +499,33 @@ types:
       - id: reserved_2
         size: 2
         doc: 'Reserved'
+    instances:
+      peek_order_status_container:
+        pos: _io.pos
+        type: u1
+      peek_order_status:
+        value: (peek_order_status_container >> 5) & 7
+        enum: order_status
+  status_cancel_reason:
+    meta:
+      bit-endian: le
+    seq:
+      - id: cancel_reason
+        type: b5
+        doc: 'Reason code if rejected or cancelled; otherwise zero'
+      - id: order_status
+        type: b3
+        doc: 'Order status'
+  status_reject_reason:
+    meta:
+      bit-endian: le
+    seq:
+      - id: reject_reason
+        type: b5
+        doc: 'Reason code if rejected or cancelled; otherwise zero'
+      - id: order_status
+        type: b3
+        doc: 'Order status'
   status:
     meta:
       bit-endian: le
@@ -526,9 +557,13 @@ types:
       - id: request_ref
         type: u4_nullable
         doc: 'Sequence number (msgSeqNo) of the trading Member''s request message. Nullable, No Value = 0'
-      - id: status
-        type: status
-        doc: 'Status of order and reject or cancel code'
+      - id: order_cancel_response_status
+        type:
+          switch-on: peek_order_status
+          cases:
+            'order_status::cancelled': status_cancel_reason
+            'order_status::rejected': status_reject_reason
+            _: status
       - id: cancellation_timestamp
         type: nanosecond_timestamp
         doc: 'Time that the cancellation was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
@@ -538,6 +573,13 @@ types:
       - id: reserved_2
         size: 2
         doc: 'Reserved'
+    instances:
+      peek_order_status_container:
+        pos: _io.pos
+        type: u1
+      peek_order_status:
+        value: (peek_order_status_container >> 5) & 7
+        enum: order_status
   order_modify_response_message:
     seq:
       - id: order_ref
@@ -546,9 +588,12 @@ types:
       - id: request_ref
         type: u4_nullable
         doc: 'Sequence number (msgSeqNo) of the trading Member''s request message. Nullable, No Value = 0'
-      - id: status
-        type: status
-        doc: 'Status of order and reject or cancel code'
+      - id: order_modify_response_status
+        type:
+          switch-on: peek_order_status
+          cases:
+            'order_status::rejected': status_reject_reason
+            _: status_modification_reason
       - id: modification_timestamp
         type: nanosecond_timestamp
         doc: 'Time that the modification was accepted or rejected by the Aquis system. Nanoseconds since Unix epoch'
@@ -561,6 +606,23 @@ types:
       - id: reserved_2
         size: 2
         doc: 'Reserved'
+    instances:
+      peek_order_status_container:
+        pos: _io.pos
+        type: u1
+      peek_order_status:
+        value: (peek_order_status_container >> 5) & 7
+        enum: order_status
+  status_modification_reason:
+    meta:
+      bit-endian: le
+    seq:
+      - id: modification_reason
+        type: b5
+        doc: 'Reason code if rejected or cancelled; otherwise zero'
+      - id: order_status
+        type: b3
+        doc: 'Order status'
   order_modify_response_flags:
     meta:
       bit-endian: le
@@ -1143,6 +1205,58 @@ enums:
     4:
       id: 'restricted_pocr_order'
       doc: 'Restricted POCR Order'
+  cancel_reason:
+    1:
+      id: 'member_request'
+      doc: 'Member Request'
+    2:
+      id: 'aquis_forced_cancel'
+      doc: 'Aquis Forced Cancel'
+    3:
+      id: 'market_close'
+      doc: 'Market Close'
+    4:
+      id: 'expired'
+      doc: 'Expired'
+    5:
+      id: 'reserved'
+      doc: 'Reserved'
+    6:
+      id: 'aborted'
+      doc: 'Aborted'
+    7:
+      id: 'self_trade_prevention'
+      doc: 'Self Trade Prevention'
+    8:
+      id: 'cancel_on_disconnect'
+      doc: 'Cancel On Disconnect'
+    9:
+      id: 'post_only_cancel'
+      doc: 'Post-only cancel (cancel to prevent aggressive trade)'
+    10:
+      id: 'cancel_residual_quantity'
+      doc: 'Cancel Residual Quantity'
+    11:
+      id: 'post_only_cancel_resting'
+      doc: 'Post-only cancel resting (cancel to prevent aggressive trade)'
+    12:
+      id: 'minimum_resting_value'
+      doc: 'Minimum Resting Value'
+    14:
+      id: 'cancel_pending'
+      doc: 'Cancel Pending'
+    17:
+      id: 'limit_exceeded'
+      doc: 'Limit Exceeded'
+    18:
+      id: 'counterparty_cancel'
+      doc: 'Counterparty Cancel'
+    19:
+      id: 'unsuccessful'
+      doc: 'Unsuccessful'
+    20:
+      id: 'technical'
+      doc: 'Technical'
   order_status:
     1:
       id: 'pending_new'
@@ -1162,6 +1276,88 @@ enums:
     6:
       id: 'modified'
       doc: 'Modified'
+  reject_reason:
+    1:
+      id: 'not_authorised_to_trade'
+      doc: 'Not Authorised To Trade'
+    2:
+      id: 'invalid_quantity'
+      doc: 'Invalid Quantity'
+    3:
+      id: 'invalid_price'
+      doc: 'Invalid Price'
+    4:
+      id: 'unknown_security'
+      doc: 'Unknown Security'
+    5:
+      id: 'price_does_not_conform_to_tick'
+      doc: 'Price Does Not Conform To Tick'
+    6:
+      id: 'invalid_order_type'
+      doc: 'Invalid Order Type'
+    7:
+      id: 'invalid_side'
+      doc: 'Invalid Side'
+    8:
+      id: 'invalid_order_capacity'
+      doc: 'Invalid Order Capacity'
+    9:
+      id: 'market_is_closed'
+      doc: 'Market Is Closed'
+    10:
+      id: 'halted'
+      doc: 'Halted'
+    11:
+      id: 'suspended'
+      doc: 'Suspended'
+    12:
+      id: 'invalid_time_in_force'
+      doc: 'Invalid Time In Force'
+    13:
+      id: 'order_not_found_not_open'
+      doc: 'Order Not Found / Not Open'
+    15:
+      id: 'failed_price_range_check'
+      doc: 'Failed Price Range Check'
+    16:
+      id: 'invalid_clearing_account'
+      doc: 'Invalid Clearing Account'
+    17:
+      id: 'not_supported'
+      doc: 'Not Supported'
+    18:
+      id: 'max_value_exceeded'
+      doc: 'Max Value Exceeded'
+    19:
+      id: 'auction_ended'
+      doc: 'Auction Ended'
+    20:
+      id: 'drop_feed_down'
+      doc: 'Drop Feed Down'
+    21:
+      id: 'technical_reject'
+      doc: 'Technical Reject'
+    23:
+      id: 'stock_restricted'
+      doc: 'Stock Restricted'
+    24:
+      id: 'minimum_consideration'
+      doc: 'Minimum Consideration'
+    25:
+      id: 'pending_auction'
+      doc: 'Pending Auction'
+    27:
+      id: 'invalid'
+      doc: 'Invalid'
+    29:
+      id: 'bad_date'
+      doc: 'Bad Date'
+    30:
+      id: 'duplicate'
+      doc: 'Duplicate'
+    31:
+      id: 'reject_internal'
+      doc: 'Reject Internal'
   lis:
     0:
       id: 'reference_price_waiver'
@@ -1169,6 +1365,13 @@ enums:
     1:
       id: 'large_in_scale'
       doc: 'Large in Scale (LIS)'
+  modification_reason:
+    1:
+      id: 'modification_accepted'
+      doc: 'Modification Accepted'
+    2:
+      id: 'order_cancelled'
+      doc: 'Order cancelled as a result of modification which updates the remaining quantity to zero'
   trade_capture_type:
     1:
       id: 'lis_cross'

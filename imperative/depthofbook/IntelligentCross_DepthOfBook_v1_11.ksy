@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: imperative_intelligentcross_depthofbook_aspen_v1_11
   title: Imperative DepthOfBook Aspen v1.11
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Imperative Execution Intelligent Cross Depth Of Book Aspen v1.11'

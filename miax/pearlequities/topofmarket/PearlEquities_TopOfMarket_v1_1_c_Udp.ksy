@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: miax_pearlequities_topofmarket_mach_v1_1_c_udp
   title: Miax PearlEquities TopOfMarket Mach v1.1.c
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Miami International Holdings MIAX Pearl Equities Top Of Market Mach v1.1.c'

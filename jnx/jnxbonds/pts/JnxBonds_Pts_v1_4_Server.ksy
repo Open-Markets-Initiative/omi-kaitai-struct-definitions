@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: jnx_jnxbonds_pts_ouch_v1_4_server
   title: Jnx JnxBonds Pts Ouch v1.4
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Japannext Securities Japannext Bonds Ouch v1.4'

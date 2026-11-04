@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nyse_options_streamprotocol_pillarstream_v1_1_6_serverpillarmessage
   title: Nyse Options StreamProtocol PillarStream v1.1.6
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'New York Stock Exchange Options Stream Protocol PillarStream v1.1.6'

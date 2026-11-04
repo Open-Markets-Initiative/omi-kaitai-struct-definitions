@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: tradelogiq_lynxats_multicastlevel1_itch_v1_01_request
   title: Tradelogiq LynxAts MulticastLevel1 Itch v1.01
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Tradelogiq Markets Inc. Lynx ATS Lynx Multicast Level 1 Itch v1.01'

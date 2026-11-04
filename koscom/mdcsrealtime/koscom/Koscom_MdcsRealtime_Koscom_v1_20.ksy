@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: koscom_mdcsrealtime_koscom_exture_v1_20
   title: Koscom MdcsRealtime Koscom Exture v1.20
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Koscom Co., Ltd. MDCS Realtime Market Data MDCS Realtime Koscom Exture v1.20'

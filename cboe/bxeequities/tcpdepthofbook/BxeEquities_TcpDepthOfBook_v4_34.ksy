@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: cboe_bxeequities_tcpdepthofbook_asciipitch_v4_34
   title: Cboe BxeEquities TcpDepthOfBook AsciiPitch v4.34
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Chicago Board Options Exchange Cboe BXE Tcp Depth Of Book AsciiPitch v4.34'

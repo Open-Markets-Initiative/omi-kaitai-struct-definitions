@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: iex_iexequities_deep_snap_v1_6
   title: Iex IexEquities Deep Snap v1.6
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'Investors Exchange IEX Equities Deep Snap v1.6'

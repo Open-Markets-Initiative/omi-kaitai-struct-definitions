@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: bist_borsaistanbul_geniuminet_itch_v21_12
   title: Bist BorsaIstanbul GeniumInet Itch v21.12
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Borsa İstanbul A.Ş. Borsa Istanbul Genium Inet Itch v21.12'

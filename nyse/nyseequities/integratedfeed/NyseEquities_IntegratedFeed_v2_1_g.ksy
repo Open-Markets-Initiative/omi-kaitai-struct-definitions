@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: nyse_nyseequities_integratedfeed_xdp_v2_1_g
   title: Nyse NyseEquities IntegratedFeed Xdp v2.1.g
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'New York Stock Exchange New York Stock Exchange Equities Integrated Feed Xdp v2.1.g'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: lme_lmeselect_warehousestocksnapshot_lmesource_v4_18
   title: Lme LmeSelect WarehouseStockSnapshot LmeSource v4.18
-  license: GPL-3.0
+  license: MIT-0
   endian: le
 
 doc: 'The London Metal Exchange LMEselect LMEsource WarehouseStock Refresh LmeSource v4.18'

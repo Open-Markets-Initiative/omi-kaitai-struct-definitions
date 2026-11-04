@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: memx_memxequities_commonheader_tcp_v1_2_server
   title: Memx MemxEquities CommonHeader Tcp v1.2
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'The Members Exchange Memx Equities Common Header Tcp v1.2'

@@ -11,7 +11,7 @@
 #
 # Script:
 #   Generator: 1.0.0.0
-#   License: Public/GPLv3
+#   License: MIT No Attribution
 #   Authors: Omi Developers
 #
 # Copyright (c) 2026 Scaled Sources LLC.  https://www.scaledsources.com
@@ -32,7 +32,7 @@
 meta:
   id: jnx_jnxequities_pts_itch_v1_7_server
   title: Jnx JnxEquities Pts Itch v1.7
-  license: GPL-3.0
+  license: MIT-0
   endian: be
 
 doc: 'Japannext Securities Japannext Equities Proprietary Trading System Itch v1.7'
