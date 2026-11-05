@@ -107,6 +107,7 @@ types:
         enum: message_type_large_classification
         doc: 'Large Classification indicates Message Type'
       - id: message_type_medium_classification
+        size: 2
         type:
           switch-on: message_type_large_classification
           cases:
@@ -115,6 +116,7 @@ types:
             'message_type_large_classification::index_message': index_medium_classification_value
             'message_type_large_classification::issue_basic_message': issue_basic_medium_classification_value
             'message_type_large_classification::control_message': control_medium_classification_value
+            _: other_medium_classification_value
   issue_classification:
     seq:
       - id: issue_classification_large_classification

@@ -373,7 +373,7 @@ types:
       - id: price_minimum_tick
         type: u4
         doc: 'Minimum tick size. Divide by the Price Fractional Denominator to determine the floating point value'
-      - id: legs
+      - id: num_combination_leg
         type: u1
         doc: 'Number of legs'
       - id: combination_leg
@@ -438,7 +438,7 @@ types:
       - id: price_minimum_tick
         type: u4
         doc: 'Minimum tick size. Divide by the Price Fractional Denominator to determine the floating point value'
-      - id: legs
+      - id: num_bundle_leg
         type: u1
         doc: 'Number of legs'
       - id: bundle_leg

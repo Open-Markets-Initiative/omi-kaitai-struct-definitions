@@ -735,8 +735,8 @@ types:
         type: decimal_u4_4
         doc: 'The current reference price when the DLCR volatility test has successfully passed. Implied decimal with scale 1e-4'
       - id: near_execution_time
-        type: u8
-        doc: 'The time at which the Near Execution Price was determined'
+        type: nanosecond_timestamp
+        doc: 'The time at which the Near Execution Price was determined. Nanoseconds since Midnight epoch'
       - id: lower_price_range_collar
         type: decimal_u4_4
         doc: 'Indicates the price of the Lower Auction Collar Threshold. Implied decimal with scale 1e-4'
